@@ -1,0 +1,11 @@
+constants:
+
+  cloudfront:
+    domain: <%= ENV['STW_CLOUDFRONT_DOMAIN'] %>
+
+  simple_token_web:
+    root_url: <%= ENV['STW_ROOT_URL'] %>
+
+  pepo_campaign:
+    encrypted_client_id: <%= ENV['STW_CAMPAIGN_ENCRYPTED_CLIENT_ID'] %>
+    encrypted_list_id: <%= ENV['STW_CAMPAIGN_ENCRYPTED_LIST_ID']%>

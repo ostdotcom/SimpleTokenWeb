@@ -1,0 +1,171 @@
+.abouthead{
+  .simpletoken-logo{
+    max-width: 288px;
+  }
+  .desc{
+    color: #97c2b7;
+    font-weight: 500;
+    letter-spacing: 1.7px;
+    margin: 15px 0 0;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+.team{
+  a{
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+  .team-member{
+    cursor: pointer;
+    &:hover{
+      .name-link{
+        color: #597a84;
+        border-bottom: 1px solid #34445b;
+      }
+    }
+  }
+ .heading{
+   color: #6da4a9;
+   font-weight: 300;
+   margin-bottom: 30px;
+   margin-top: 40px;
+   font-size: 38px;
+ }
+ .rounded-circle{
+   border-radius: 50%;
+ }
+ .col-sm-4{
+   margin-bottom: 25px;
+   text-align: center;
+ }
+ .member-name{
+   font-size: 20px;
+   height: 25px;
+   line-height: 20px;
+   font-weight: 500;
+   color: #597a84;
+   margin-top: 15px;
+   margin-bottom: 5px;
+ }
+  .dis-block{
+    display: block;
+  }
+  .diB{
+    display: inline-block;
+  }
+  .job-title{
+    color: #333;
+  }
+  .join-team{
+    color: #597a84;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 30px 0 20px;
+    span{
+      font-weight: 500;
+    }
+  }
+}
+
+.early-investors{
+  background: #6ca3a9;
+  padding: 40px 0;
+  margin-top: 65px;
+  margin-bottom: 40px;
+  ul{
+    padding: 0;
+    li{
+      list-style-type: none;
+    }
+  }
+  .heading{
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 40px;
+    font-size: 38px;
+    margin-top: 0;
+  }
+  .col-sm-4{
+    margin-bottom: 25px;
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: center;
+    justify-content: center;
+    min-height: 60px;
+  }
+  .investors-image{
+    width: 120px;
+    @media(min-width: 768px){
+      width: 160px;
+    }
+  }
+}
+
+.advisors{
+  ul{
+    padding: 0;
+    li{
+      list-style-type: none;
+    }
+  }
+  .heading{
+    color: #6da4a9;
+    font-weight: 300;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    font-size: 38px;
+  }
+  .col-sm-4{
+    margin-bottom: 25px;
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: center;
+    justify-content: center;
+    min-height: 66px;
+  }
+  .advisor-name{
+    font-weight: 300;
+    margin: 0;
+    font-size: 16px;
+    @media(min-width: 1200px){
+      font-size: 20px;
+    }
+  }
+}
+
+.documents{
+  .heading{
+    color: #6da4a9;
+    font-weight: 300;
+    margin-bottom: 30px;
+    margin-top: 60px;
+    font-size: 44px;
+  }
+  .small-title-2{
+    color: #5a768c;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .min-width-240{
+    min-width: 240px;
+  }
+}
+
+.office-locations{
+  margin-bottom: 30px;
+  color: #597a84;
+  font-size: 18px;
+  margin-top: 50px;
+}

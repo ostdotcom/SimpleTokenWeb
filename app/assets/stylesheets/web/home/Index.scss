@@ -1,0 +1,402 @@
+.uber-banner{
+  background-color: #e4b030;
+  padding: 10px 0;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  a{
+    font-weight: 500;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+  span{
+    vertical-align: middle;
+  }
+}
+.container-jumbotron{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  .desc{
+    color: #597a84;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 10px 0 30px 0;
+    line-height: 1.5;
+    letter-spacing: 0.8px;
+    h1{
+      font-weight: 600;
+      color: #597a84;
+      font-size: 18px;
+      line-height: 1.5;
+      letter-spacing: 0.8px;
+    }
+  }
+  .logo-desktop{
+    max-width: 60%;
+  }
+  .btn-features, .btn-documents{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  @media (min-width: 768px){
+    .btn-features, .btn-documents{
+      margin-right: 10px;
+    }
+    .btn-documents{
+      margin-left: 10px;
+    }
+  }
+}
+
+.container-illustration-desktop{
+  background: #91c0ad;
+  height: 100px;
+}
+
+.container-jumbotron-desc{
+  background: #91c0ad;
+  padding-bottom: 60px;
+  .desc{
+    color: #fff;
+    font-size: 22px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+}
+
+.container-features{
+  padding-top: 40px;
+  padding-bottom: 20px;
+  .feature{
+    padding: 20px 0;
+  }
+  .col-right{
+    text-align: left;
+    padding-right: 60px;
+  }
+  .col-left{
+    text-align: right;
+    padding-left: 60px;
+  }
+  .col-text{
+    position: relative;
+    transform: translateY(35%);
+  }
+  .img-responsive{
+    display: inline-block !important;
+    max-width: 85% !important;
+  }
+  h1,h2{
+    font-size: 50px;
+    font-weight: 300;
+    letter-spacing: 1.3px;
+    color: #c0993a;
+  }
+  .desc{
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.4px;
+    color: #597a84;
+  }
+}
+
+.container-documents{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .heading-2{
+    font-size: 38px;
+  }
+  h1,h2{
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 1.3px;
+    color: #6ca3a9;
+    margin-bottom: 40px;
+    b{
+      color: #c0993a;
+    }
+  }
+  h2{
+    margin-bottom: 20px;
+  }
+  p{
+    color: #7f9183;
+    font-size: 18px;
+  }
+  .iframe-wrapper {
+    width: 595px;
+    max-width: 100%;
+    border: 2px solid #5a768c;
+    border-radius: 5px;
+    margin: 20px auto 40px auto;
+    position: relative;
+    &:after{
+      padding-top: 81.51%;
+      display: block;
+      content: '';
+    }
+    .iframe-container{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      iframe{
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+    }
+  }
+  .small-title-2{
+    color: #5a768c;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    display: block;
+  }
+}
+
+.container-subscribe {
+  h1,h2{
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 1.3px;
+    color: #6ca3a9;
+    text-align: center;
+  }
+  h2{
+    font-size: 38px;
+  }
+  .simpletoken-form{
+    padding: 10px 20px;
+    .form-group{
+      label.help-block{
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        color: #5a768c;
+      }
+      .checkbox{
+        margin-bottom: 20px;
+        label{
+          font-size: 16px;
+          font-weight: 400;
+          letter-spacing: 0.5px;
+          color: #5a768c;
+          .help-block{
+            font-size: 14px;
+            font-weight: 100;
+            letter-spacing: 0.5px;
+            color: #5a768c;
+          }
+        }
+        input[type=checkbox]:checked {
+          ~ label{
+            font-weight: 700;
+          }
+        }
+      }
+    }
+    .subscribe{
+      padding:30px 0;
+      .form-group{
+        width:100%;
+        input.form-control{
+          width:70%;
+          display: inline-block;
+          font-size: 16px;
+          height: 40px;
+          border-color: #CDD7DA;
+          &:focus{
+            border-color: #5a768c;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+#subscribe-success{
+  text-align: center;
+  background: #91C0AD;
+  border-radius: 10px;
+  padding: 10px 10px 25px 10px;
+  margin: 40px auto;
+  .small-title{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    display: block;
+  }
+  .small-desc{
+    color: #fff;
+    font-weight: 300;
+    font-size: 16px;
+    display: block;
+  }
+}
+
+// Hide views specific to other viewports
+.container-illustration-vtablet-mobile,
+.logo-mobile,
+.feature-mobile{
+  display: none;
+}
+
+// Tablet landscape
+@media (min-width: 768px) and (max-width: 1200px) {
+  .container-jumbotron{
+    .btn-features{
+      margin-left:0;
+    }
+    .btn-documents{
+      margin-right:0;
+    }
+  }
+  .container-features,
+  .container-documents,
+  .container-subscribe{
+    h1,h2{
+      font-size: 35px;
+    }
+  }
+  .container-illustration-vtablet-mobile{
+    img{
+      max-width: 490px;
+    }
+  }
+  .container-illustration-vtablet-mobile,
+  .logo-mobile{
+    display: none;
+  }
+}
+
+// Tablet portrait
+@media (min-width: 768px) and (max-width: 1000px) {
+  .container-jumbotron{
+    .col-left{
+      text-align: center;
+      img{
+        margin: 0 auto;
+        max-width: 45%;
+      }
+      .desc{
+        padding:30px 60px;
+      }
+    }
+  }
+  .container-jumbotron-desc{
+    .desc{
+      padding: 10px 0 0 0;
+    }
+  }
+  .container-illustration-vtablet-mobile{
+    img{
+      max-width: 490px;
+    }
+  }
+  .container-illustration-desktop,
+  .logo-desktop{
+    display: none;
+  }
+  .container-illustration-vtablet-mobile,
+  .logo-mobile{
+    display: block;
+  }
+  .container-features{
+    .col-text{
+      transform: none;
+    }
+  }
+}
+
+// Mobile portrait, landscape
+@media (max-width: 767px) {
+  .uber-banner{
+    font-size: 12px;
+    text-align: left;
+    padding: 10px 20px;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    -webkit-align-items: center;
+  }
+  .container-jumbotron{
+    .col-left{
+      text-align: center;
+      padding: 0 40px;
+      img{
+        margin: 0 auto;
+      }
+    }
+  }
+  .container-jumbotron-desc{
+    .desc{
+      padding: 10px;
+    }
+  }
+  .container-illustration-vtablet-mobile{
+    img{
+      max-width: 300px;
+    }
+  }
+  .container-features{
+    .feature-mobile{
+      text-align: center;
+      padding: 20px;
+      img{
+        width:300px;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .container-subscribe {
+    .simpletoken-form{
+      .subscribe{
+        .form-group{
+          input.form-control,
+          button.btn{
+            width:100%;
+            margin: 5px 0;
+          }
+        }
+      }
+    }
+  }
+
+  .container-features,
+  .container-documents,
+  .container-subscribe{
+    h1,h2{
+      font-size: 30px;
+    }
+  }
+
+  .container-illustration-desktop,
+  .logo-desktop,
+  .feature{
+    display: none;
+  }
+  .container-illustration-vtablet-mobile,
+  .logo-mobile,
+  .feature-mobile{
+    display: block;
+  }
+}

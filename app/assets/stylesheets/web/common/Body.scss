@@ -1,0 +1,233 @@
+// HTML and Body styling
+html,
+body{
+  font-family: Quasimoda;
+  font-weight: 100;
+}
+
+// Generic reusable classes
+.text-link{
+  color: #597a84;
+  display: inline-block;
+  &:focus{
+    color: #34445b;
+    outline: none;
+    text-decoration: none;
+  }
+  &:hover{
+    color: #34445b;
+    text-decoration: none;
+    border-bottom: 1px solid #34445b;
+  }
+  &:active{
+    color: #c0993a;
+    text-decoration: none;
+    border-bottom: 1px solid #c0993a;
+  }
+}
+
+.error {
+  font-size: 12px;
+  color: #e7003b;
+  padding: 2px 0;
+  display: block;
+  min-height: 20px;
+  @media (min-width: 480px) {
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+
+.download-btn{
+  span{
+    vertical-align: middle;
+  }
+}
+
+.small-title{
+  color: #7f9183;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.small-desc{
+  color: #6ca3a9;
+  font-weight: 300;
+  font-size: 16px;
+  display: block;
+}
+
+.label-info{
+  background-color: #c0993a;
+}
+
+h1.page-title{
+  font-size: 50px;
+  font-weight: 600;
+  color: #34445b;
+  small{
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: 1.2px;
+    line-height: 1.5;
+    display: block;
+    color: #6da4a9;
+  }
+}
+
+.container-text-page{
+  color: #5a768c;
+  line-height: 1.5;
+  .content{
+    padding:0 10px 40px 10px;
+  }
+  h4{
+    margin-top: 40px;
+  }
+}
+
+.container-documents{
+  min-height: calc(100vh - 130px);
+  .sub-title{
+    font-size: 20px;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #6DA4A9;
+  }
+  .horizontal-line{
+    margin-top: 20px;
+    border-bottom: 1px solid #91c0ad;
+  }
+  a{
+    color: #5a768c;
+    &:hover{
+      border-bottom: 1px solid #5a768c;
+      text-decoration: none;
+    }
+    &:focus{
+      text-decoration: none;
+    }
+  }
+  .see-all{
+    margin-top: 0;
+    display: inline-block;
+    border-bottom: 1px solid #7f9183;
+  }
+}
+
+// Header CSS
+.navbar-simpletoken{
+  border: none;
+  .navbar-nav > li > a, .about-link-mobile{
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 300;
+    color: #34445b;
+    margin-right: 15px;
+    &:hover, &:focus{
+      outline: none;
+      background-color: inherit;
+      border-bottom: 1px solid #34445b;
+    }
+    &:active{
+      color: #c0993a;
+      border-bottom: 1px solid #c0993a;
+    }
+    @media (min-width: 768px){
+      padding: 0;
+      margin: 15px 15px 0;
+    }
+    &.selected-nav{
+      color: #c0993a;
+      text-decoration: none;
+      @media (min-width: 768px){
+        border-bottom: 1px solid #c0993a;
+      }
+    }
+  }
+  .navbar-brand{
+    padding: 10px 0 0 20px;
+  }
+  .navbar-toggle .icon-bar {
+    background-color: #34445b;
+  }
+  .navbar-header .navbar-toggle{
+    background-color: #edfaf1;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    padding: 18px 18px;
+  }
+  @media (max-width: 767px){
+    .navbar-nav{
+      background-color: #edfaf1;
+      margin-top: 0;
+    }
+  }
+}
+
+
+// Footer CSS
+.container-footer{
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1.3px;
+  text-align: center;
+  padding: 20px 10px;
+  color: #9ea9a7;
+  a,
+  a:hover,
+  a:active{
+    color: #9ea9a7;
+    border-bottom: 1px solid #9ea9a7;
+    text-decoration: none;
+  }
+}
+
+
+/* Checkboxes CSS Starts */
+input[type="checkbox"]{
+  position: absolute;
+  opacity: 0;
+  display: none;
+}
+input[type="checkbox"] ~ label{
+  height: 22px;
+  margin: 0;
+  display: inline-block;
+  position: relative;
+  padding: 0 25px 0 40px;
+  cursor: pointer;
+}
+input[type="checkbox"] ~ label::before,
+input[type="checkbox"] ~ label::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+input[type="checkbox"] ~ label::before{
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-image: url('//d3attjoi5jlede.cloudfront.net/simpletoken/image/simple-token-sprite1x-v3.png');
+  background-repeat: no-repeat;
+  background-position: -44px -6px;
+}
+input[type="checkbox"] ~ label::after{
+  display: none;
+  width: 22px;
+  height: 22px;
+  background-image: url('//d3attjoi5jlede.cloudfront.net/simpletoken/image/simple-token-sprite1x-v3.png');
+  background-repeat: no-repeat;
+  background-position: -74px -6px;
+}
+input[type="checkbox"]:checked ~ label::after{
+  display: inline-block;
+}
+/* Checkboxes CSS Ends */

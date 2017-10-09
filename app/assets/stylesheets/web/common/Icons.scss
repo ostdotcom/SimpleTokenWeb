@@ -1,0 +1,102 @@
+$sprite-retina-location: "//d3attjoi5jlede.cloudfront.net/simpletoken/image/simple-token-sprite2x-v10.png";
+$sprite-location: "//d3attjoi5jlede.cloudfront.net/simpletoken/image/simple-token-sprite1x-v10.png";
+
+@mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
+  background-image: url($sprite-location);
+  background-size: 1000px * $scale/100 1000px * $scale/100;
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    background-image: url($sprite-retina-location);
+    background-size: 1000px * $scale/100 1000px * $scale/100;
+  }
+  display: inline-block;
+  outline: none !important;
+  &:focus {
+    outline: none;
+    background-position: $posX * $scale/100 $posY * $scale/100;
+  }
+  width: $width * $scale/100;
+  height: $height * $scale/100;
+  background-position: $posX * $scale/100 $posY * $scale/100;
+  &:hover {
+    background-position: $offsetHover * $scale/100 $posY * $scale/100;
+  }
+  &:active {
+    background-position: $offsetActive * $scale/100 $posY * $scale/100;
+  }
+}
+
+.uber-banner-icon{
+  @include icon-generator(46px, 32px, -10px, -196px, -10px, -10px, 70);
+}
+.blue-down-arrow{
+  @include icon-generator(46px, 23px, -3px, -9px, -3px, -3px, 80);
+}
+
+.small-logo{
+  @include icon-generator(100px, 80px, 0px, -30px, 0px, 0px, 40);
+}
+
+.download-icon{
+  @include icon-generator(28px, 29px, -9px, -158px, -9px, -9px);
+}
+
+.download-icon-small{
+  @include icon-generator(28px, 29px, -9px, -236px, -9px, -9px, 60);
+}
+
+.social-twitter-icon{
+  @include icon-generator(98px, 98px, -765px, -19px, -881px, -881px, 55);
+}
+
+.social-linkedIn-icon{
+  @include icon-generator(98px, 98px, -765px, -553px, -881px, -881px, 55);
+}
+
+.social-slideshare-icon{
+  @include icon-generator(98px, 98px, -765px, -661px, -881px, -881px, 55);
+}
+
+.social-telegram-icon{
+  @include icon-generator(98px, 98px, -765px, -232px, -881px, -881px, 55);
+}
+
+.social-medium-icon{
+  @include icon-generator(98px, 98px, -765px, -446px, -881px, -881px, 55);
+}
+
+.social-facebook-icon{
+  @include icon-generator(98px, 98px, -765px, -126px, -880px, -880px, 55);
+}
+
+.download-btn{
+  &:hover{
+    .download-icon{
+      @include icon-generator(28px, 29px, -39px, -158px, -39px, -39px);
+    }
+  }
+}
+
+.jumbotron-twitter-icon{
+  @include icon-generator(98px, 98px, -531px, -19px, -650px, -531px, 55);
+}
+
+.jumbotron-linkedIn-icon{
+  @include icon-generator(98px, 98px, -531px, -553px, -650px, -531px, 55);
+}
+
+.jumbotron-facebook-icon{
+  @include icon-generator(98px, 98px, -531px, -126px, -650px, -531px, 55);
+}
+
+.jumbotron-telegram-icon{
+  @include icon-generator(98px, 98px, -531px, -234px, -650px, -531px, 55);
+}
+
+.jumbotron-medium-icon{
+  @include icon-generator(98px, 98px, -531px, -446px, -650px, -531px, 55);
+}
