@@ -5,6 +5,11 @@ body{
   font-weight: 100;
 }
 
+
+.bg-gradient{
+  background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 135px, #ffffff 100%);
+}
+
 // Generic reusable classes
 .text-link{
   color: #597a84;
