@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   scope '', controller: 'web/home' do
     get '/' => :index
+    get '/login' => :login
     get '/about' => :about
     get '/privacy' => :privacy
     get '/terms' => :terms
