@@ -322,18 +322,6 @@ module Result
       end
     end
 
-    # is request forbidden
-    #
-    # * Author: Kedar
-    # * Date: 09/10/2017
-    # * Reviewed By: Sunil Khedar
-    #
-    # @return [Result::Base] returns an object of Result::Base class
-    #
-    def is_forbidden_action?
-      http_code == GlobalConstant::ErrorCode.forbidden
-    end
-
     # is request for a non found resource
     #
     # * Author: Kedar

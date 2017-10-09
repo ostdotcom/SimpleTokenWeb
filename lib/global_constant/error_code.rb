@@ -25,10 +25,6 @@ module GlobalConstant
         404
       end
 
-      def forbidden
-        403
-      end
-
       def internal_server_error
         500
       end
