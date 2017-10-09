@@ -12,4 +12,7 @@ class Admin::HomeController < Admin::BaseController
   def login
   end
 
+  def authentication
+  end
+
 end

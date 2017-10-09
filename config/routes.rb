@@ -8,11 +8,12 @@ Rails.application.routes.draw do
     get '/privacy' => :privacy
     get '/terms' => :terms
     get '/documents' => :documents
-end
+  end
 
   scope 'admin/', controller: 'admin/home' do
     get '/' => :login
-end
+    get '/authentication' => :authentication
+  end
 
 
 

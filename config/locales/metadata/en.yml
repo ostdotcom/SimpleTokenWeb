@@ -157,5 +157,12 @@ en:
         :title: Simple Token Admin Login
         :robots: 'noindex, nofollow'
       :assets:
-        :specific_css_required: 0
+        :specific_css_required: 1
+
+    authentication:
+      :meta:
+        :title: Simple Token Admin Login Authentication
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 1
 
