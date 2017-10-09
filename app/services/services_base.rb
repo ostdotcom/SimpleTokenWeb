@@ -1,6 +1,5 @@
 class ServicesBase
 
-  #TODO: review it
   include Util::ResultHelper
 
   attr_reader :params
@@ -47,7 +46,7 @@ class ServicesBase
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  # @return [Result::Base] returns an object of Result::Base class
+  # @return [Result::Base]
   #
   def validate
     # perform presence related validations here
@@ -66,22 +65,6 @@ class ServicesBase
                                {}) if missing_mandatory_params.any?
 
     success
-  end
-
-  # Response for not found actions
-  #
-  # * Author: Kedar
-  # * Date: 09/10/2017
-  # * Reviewed By: Sunil Khedar
-  #
-  # @return [Result::Base] returns an object of Result::Base class
-  #
-  def response_for_not_found_action
-    error_with_action_and_data('sb_2',
-                               'Not Found.',
-                               'Not Found.',
-                               GlobalConstant::ErrorAction.entity_not_found,
-                               {})
   end
 
 end
