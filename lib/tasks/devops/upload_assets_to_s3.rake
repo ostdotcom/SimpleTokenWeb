@@ -21,6 +21,8 @@ namespace :devops do
 
     # auth_key_str = "--access_key=#{access_key} --secret_key=#{secrete_key}"
 
+    permission_options = "--acl public --content-encoding gzip --cache-control 'public, max-age=315360000' --expires 'Thu, 25 Jun 2025 20:00:00 GMT'"
+
     Dir.chdir("./public#{Rails.application.config.assets.prefix}") do
       Dir['**/*.*'].each do |file|
         file_path = Pathname(file)
@@ -30,11 +32,11 @@ namespace :devops do
           upload_file_extension = upload_file_name.split(".").last.to_s
           puts file_path
           if upload_file_extension.include?("js")
-            puts "aws s3 cp #{Rails.root.to_s}/public#{Rails.application.config.assets.prefix}/#{file} s3://#{asset_bucket}#{Rails.application.config.assets.prefix}/#{upload_file_name} --acl-public --add-header 'Content-Encoding: gzip' --add-header 'Cache-Control: public, max-age=315360000' --add-header 'Expires: Thu, 25 Jun 2025 20:00:00 GMT'  --mime-type 'application/x-javascript'"
-            %x{aws s3 cp #{Rails.root.to_s}/public#{Rails.application.config.assets.prefix}/#{file} s3://#{asset_bucket}#{Rails.application.config.assets.prefix}/#{upload_file_name} --acl-public --add-header 'Content-Encoding: gzip' --add-header 'Cache-Control: public, max-age=315360000' --add-header 'Expires: Thu, 25 Jun 2025 20:00:00 GMT'  --mime-type 'application/x-javascript'}
+            puts "aws s3 cp #{Rails.root.to_s}/public#{Rails.application.config.assets.prefix}/#{file} s3://#{asset_bucket}#{Rails.application.config.assets.prefix}/#{upload_file_name} #{permission_options} --content-type 'application/x-javascript'"
+            %x{aws s3 cp #{Rails.root.to_s}/public#{Rails.application.config.assets.prefix}/#{file} s3://#{asset_bucket}#{Rails.application.config.assets.prefix}/#{upload_file_name} #{permission_options} --content-type 'application/x-javascript'}
           elsif upload_file_extension.include?("css")
-            puts "aws s3 cp #{Rails.root.to_s}/public#{Rails.application.config.assets.prefix}/#{file} s3://#{asset_bucket}#{Rails.application.config.assets.prefix}/#{environment}/#{upload_file_name} --acl-public --add-header 'Content-Encoding: gzip' --add-header 'Cache-Control: public, max-age=315360000' --add-header 'Expires: Thu, 25 Jun 2025 20:00:00 GMT' --mime-type 'text/css'"
-            %x{aws s3 cp #{Rails.root.to_s}/public#{Rails.application.config.assets.prefix}/#{file} s3://#{asset_bucket}#{Rails.application.config.assets.prefix}/#{upload_file_name} --acl-public --add-header 'Content-Encoding: gzip' --add-header 'Cache-Control: public, max-age=315360000' --add-header 'Expires: Thu, 25 Jun 2025 20:00:00 GMT' --mime-type 'text/css'}
+            puts "aws s3 cp #{Rails.root.to_s}/public#{Rails.application.config.assets.prefix}/#{file} s3://#{asset_bucket}#{Rails.application.config.assets.prefix}/#{environment}/#{upload_file_name} #{permission_options} --content-type 'text/css'"
+            %x{aws s3 cp #{Rails.root.to_s}/public#{Rails.application.config.assets.prefix}/#{file} s3://#{asset_bucket}#{Rails.application.config.assets.prefix}/#{upload_file_name} #{permission_options} --content-type 'text/css'}
           else
             puts "Can't upload #{file}"
           end
