@@ -21,7 +21,7 @@ namespace :devops do
 
     # auth_key_str = "--access_key=#{access_key} --secret_key=#{secrete_key}"
 
-    permission_options = "--acl public --content-encoding gzip --cache-control 'public, max-age=315360000' --expires 'Thu, 25 Jun 2025 20:00:00 GMT'"
+    permission_options = "--acl public-read --content-encoding gzip --cache-control 'public, max-age=315360000' --expires 'Thu, 25 Jun 2025 20:00:00 GMT'"
 
     Dir.chdir("./public#{Rails.application.config.assets.prefix}") do
       Dir['**/*.*'].each do |file|
