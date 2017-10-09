@@ -149,3 +149,13 @@ en:
           :image: 'https://d3attjoi5jlede.cloudfront.net/simpletoken/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 0
+
+  admin/home:
+
+    login:
+      :meta:
+        :title: Simple Token Admin Login
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 0
+

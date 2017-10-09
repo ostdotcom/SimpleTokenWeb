@@ -8,7 +8,13 @@ Rails.application.routes.draw do
     get '/privacy' => :privacy
     get '/terms' => :terms
     get '/documents' => :documents
-  end
+end
+
+  scope 'admin/', controller: 'admin/home' do
+    get '/' => :login
+end
+
+
 
   match '*permalink', to: 'application#not_found', via: :all
 end
