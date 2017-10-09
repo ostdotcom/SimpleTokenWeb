@@ -8,9 +8,9 @@ namespace :devops do
     # access_key = ENV['access_key'].to_s
     # secret_key = ENV['secret_key'].to_s
 
-    if access_key.blank? || secret_key.blank?
-      exit!
-    end
+    # if access_key.blank? || secret_key.blank?
+    #   exit!
+    # end
 
     environment = Rails.env
     asset_bucket = "wa.simpletoken.org"
