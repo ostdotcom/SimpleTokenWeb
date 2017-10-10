@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get '/' => :index
     get '/login' => :login
     get '/reset' => :reset
+    get '/register' => :register
     get '/about' => :about
     get '/privacy' => :privacy
     get '/terms' => :terms
