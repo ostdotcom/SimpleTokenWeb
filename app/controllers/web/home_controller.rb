@@ -23,6 +23,15 @@ class Web::HomeController < Web::BaseController
 
   # Action for the home page index
   #
+  # * Author: Tahir
+  # * Date: 10/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def loggedin
+  end
+
+  # Action for the home page index
+  #
   # * Author: Kedar
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
