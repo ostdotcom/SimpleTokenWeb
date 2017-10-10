@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get '/reset' => :reset
     get '/register' => :register
     get '/loggedin' => :loggedin
+    get '/token' => :token
     get '/about' => :about
     get '/privacy' => :privacy
     get '/terms' => :terms
