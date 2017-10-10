@@ -1,5 +1,5 @@
-$sprite-retina-location: "//d3attjoi5jlede.cloudfront.net/simpletoken/image/about-page_sprite-2x-v11.png";
-$sprite-location: "//d3attjoi5jlede.cloudfront.net/simpletoken/image/about-page_sprite-1x-v11.png";
+$sprite-retina-location: "//d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-2x-v11.png";
+$sprite-location: "//d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-1x-v11.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
