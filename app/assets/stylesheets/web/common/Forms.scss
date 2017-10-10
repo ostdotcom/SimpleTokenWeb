@@ -118,6 +118,7 @@
     line-height: 43px;
     min-width: 160px;
     font-size: 12px;
+    cursor: pointer;
   }
 
   .upload-image{
@@ -211,4 +212,9 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+label.upload-file input[type="file"] {
+  position: fixed;
+  top: -1000px;
 }
