@@ -2,6 +2,46 @@
 en:
   web/home:
 
+    login:
+      :meta:
+        :title: 'Simple Token | Login'
+        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token'
+        :name: 'Simple Token'
+        :robots: 'index, follow'
+        :og:
+          :title: 'Simple Token | Login'
+          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :type: 'website'
+          :image: 'https://d3attjoi5jlede.cloudfront.net/simpletoken/fav-icon/Simple-Token-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'Simple Token | Login'
+          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :image: 'https://d3attjoi5jlede.cloudfront.net/simpletoken/fav-icon/Simple-Token-og-v1.png'
+
+    reset:
+      :meta:
+        :title: 'Simple Token | Reset Password'
+        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token'
+        :name: 'Simple Token'
+        :robots: 'index, follow'
+        :og:
+          :title: 'Simple Token | Reset Password'
+          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :type: 'website'
+          :image: 'https://d3attjoi5jlede.cloudfront.net/simpletoken/fav-icon/Simple-Token-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'Simple Token | Reset Password'
+          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :image: 'https://d3attjoi5jlede.cloudfront.net/simpletoken/fav-icon/Simple-Token-og-v1.png'
+
     index:
       :meta:
         :title: 'Simple Token | The Bridge between Cryptocurrencies and Consumer Apps.'
@@ -109,3 +149,20 @@ en:
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 0
+
+  admin/home:
+
+    login:
+      :meta:
+        :title: Simple Token Admin Login
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 1
+
+    authentication:
+      :meta:
+        :title: Simple Token Admin Login Authentication
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 1
+

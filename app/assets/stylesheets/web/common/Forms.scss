@@ -1,0 +1,156 @@
+/* Generic styling for forms across application.
+ * Use mark-up prescribed by Bootstrap- http://getbootstrap.com/css/#forms-example
+ * Use class .simple-token-form where you want to apply this along with .form-header or .form-footer as applicable
+ */
+
+
+.simple-token-form{
+
+  .form-header{
+    color: #6ca3a9;
+    font-size: 30px;
+    font-weight: 300;
+    margin: 25px 0 0;
+  }
+
+  .form-sub-header{
+    color: #597a84;
+    margin-top: 10px;
+  }
+
+  .form-group{
+
+    margin-bottom: 0;
+
+    .input-group{
+
+      .form-control:first-child{
+        border-right: none;
+      }
+      .input-group-addon{
+        background: #fff;
+        border: solid 1px #cdd7da;
+        color: #c2e8ea;
+        border-left: none;
+        box-shadow: none;
+        top: 0px;
+      }
+      .input-group-addon.clicked{
+        color: #75a9b0;
+      }
+
+    }
+
+    .form-control{
+      border: solid 1px #cdd7da;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      color: #435353;
+      height: 40px;
+      font-size: 16px;
+      font-weight: 300;
+      &::-webkit-input-placeholder{
+        color: #ccd4d4;
+        font-style: italic;
+      }
+      &:-moz-placeholder{
+        color: #ccd4d4;
+        font-style: italic;
+      }
+      &::-moz-placeholder{
+        color: #ccd4d4;
+        font-style: italic;
+      }
+      &:-ms-input-placeholder{
+        color: #ccd4d4;
+        font-style: italic;
+      }
+    }
+
+    > label{
+      font-size: 12px;
+      color: #6c9ba9;
+      text-transform: uppercase;
+      font-weight: 500 !important;
+      letter-spacing: 0.4px;
+      > a{
+        color: #75a9b0;
+        text-decoration: none;
+        &:focus{
+          outline: none;
+        }
+      }
+      .requiredField{
+        font-size: 10px;
+        letter-spacing: 0.2px;
+      }
+      .popover{
+        font-size: 12px;
+        a{
+          color: #30b3c5;
+        }
+      }
+    }
+  }
+
+  .error {
+    font-size: smaller;
+    color: #e7003b;
+    padding: 2px 0;
+    display: block;
+    min-height: 20px;
+  }
+
+  .success{
+    font-size: smaller;
+    color: green;
+    padding: 2px 0;
+    display: block;
+    min-height: 20px;
+  }
+
+  .error-group{
+    display: block;
+    min-height: 20px;
+  }
+
+  .error-inline{
+    display: inline;
+    min-height: 0 ;
+  }
+
+}
+
+
+/* Webkit specific overrides
+ */
+input[type="text"]::-webkit-input-placeholder{
+  color: #ccd4d4;
+  font-style: italic;
+}
+input[type="text"]:-moz-placeholder{
+  color: #ccd4d4;
+  font-style: italic;
+}
+input[type="text"]::-moz-placeholder{
+  color: #ccd4d4;
+  font-style: italic;
+}
+input[type="text"]:-ms-input-placeholder{
+  color: #ccd4d4;
+  font-style: italic;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}

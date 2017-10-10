@@ -1,0 +1,50 @@
+.sign-up-form{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .user-form{
+    max-width: 350px;
+    min-width: 300px;
+    margin: 25px auto 0;
+    .forgot-password{
+      font-size: 12px;
+      letter-spacing: 0.4px;
+      color: #597a84;
+      &:hover{
+        text-decoration: none;
+        border-bottom: 1px solid #597a84;
+      }
+    }
+    .user-form-footer{
+      margin: 25px auto 0;
+      text-align: center;
+      .st-btn{
+        display: block;
+        margin: 0 auto;
+        color: #fff;
+        border-radius: 3px;
+        background-color: #e4b030;
+        font-weight: 500;
+        padding: 10px 25px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .create-account{
+        color: #5a768c;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 0.4px;
+        border-bottom: 1px solid #5a768c;
+        text-decoration: none;
+        margin: 15px 0 0;
+        display: inline-block;
+        &:hover, &:focus{
+          text-decoration: none;
+          outline: none;
+        }
+      }
+    }
+
+  }
+}

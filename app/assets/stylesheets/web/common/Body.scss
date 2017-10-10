@@ -1,8 +1,17 @@
 // HTML and Body styling
 html,
 body{
-  font-family: Quasimoda;
+  font-family: 'Quasimoda', Source Sans Pro, sans-serif;
+  color: #565a5c;
   font-weight: 100;
+  line-height: 1.43;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.bg-gradient{
+  background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 135px, #ffffff 100%);
 }
 
 // Generic reusable classes
