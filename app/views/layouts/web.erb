@@ -82,16 +82,17 @@
   <script>
     window.name = "<%= [*('A'..'Z')].sample(8).join %>";
     try{Typekit.load({
-      async: true,
-      active: function(){
-        document.body.style.visibility = "visible";
-      },
-      inactive: function(){
-        document.body.style.visibility = "visible";
-      }
+        async: true,
+        active: function(){
+            document.body.style.visibility = "visible";
+        },
+        inactive: function(){
+            document.body.style.visibility = "visible";
+        }
     });}catch(e){
-      document.body.style.visibility = "visible";
+        document.body.style.visibility = "visible";
     }
+    setTimeout(function(){ document.body.style.visibility = "visible"; }, 1000);
   </script>
 
   <link rel="icon" type="image/png" sizes="64x64" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/64.png"/>
