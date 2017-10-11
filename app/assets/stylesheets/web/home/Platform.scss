@@ -209,6 +209,7 @@
         img{
           margin: 20px 0 0 0;
           max-height: 300px;
+          max-width: 90%;
         }
       }
     }
@@ -409,7 +410,8 @@
       }
     }
     .btn-gold{
-      width:90%
+      display: block;
+      width: 100%;
     }
     .images-mobile{
       padding-bottom: 110%;
@@ -443,6 +445,12 @@
     p.lead{
       font-size: 16px;
       line-height: 1.2;
+    }
+  }
+
+  .container-stack-band{
+    .logo{
+      width: 130px;
     }
   }
 

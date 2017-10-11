@@ -110,12 +110,12 @@
 
     modulesInit: function(){
         $('[data-module="transaction"].module-wrapper') .css('transform', 'translate(0px, -270px)');
-        $('[data-module="wallet"].module-wrapper')      .css('transform', 'translate(120px, -270px)');
-        $('[data-module="admin"].module-wrapper')       .css('transform', 'translate(241px, -270px)');
-        $('[data-module="identity"].module-wrapper')    .css('transform', 'translate(361px, -270px)');
-        $('[data-module="ledger"].module-wrapper')      .css('transform', 'translate(-120px, -270px)');
-        $('[data-module="rights"].module-wrapper')      .css('transform', 'translate(-241px, -270px)');
-        $('[data-module="token-design"].module-wrapper').css('transform', 'translate(-361px, -270px)');
+        $('[data-module="wallet"].module-wrapper')      .css('transform', 'translate(130px, -270px)');
+        $('[data-module="admin"].module-wrapper')       .css('transform', 'translate(260px, -270px)');
+        $('[data-module="identity"].module-wrapper')    .css('transform', 'translate(390px, -270px)');
+        $('[data-module="ledger"].module-wrapper')      .css('transform', 'translate(-130px, -270px)');
+        $('[data-module="rights"].module-wrapper')      .css('transform', 'translate(-260px, -270px)');
+        $('[data-module="token-design"].module-wrapper').css('transform', 'translate(-390px, -270px)');
         $('.module-wrapper .title').css('opacity', '0');
         $('.container-stack-heading').css('opacity', '0');
         $('.module-contents').css('opacity', '0');
@@ -487,28 +487,28 @@
                 $('.asset')
                     .fadeOut(500, function(){
                         $('.asset').removeAttr('style');
-                        oThis.architectureAnim(0, 100);
-                        oThis.architectureAnim(1, 100);
+                        oThis.architectureAnim(0, 1);
+                        oThis.architectureAnim(1, 1);
                     })
                 break;
             case -2:
                 $('.asset')
                     .fadeOut(500, function(){
                         $('.asset').removeAttr('style');
-                        oThis.architectureAnim(0, 100);
-                        oThis.architectureAnim(1, 100);
-                        oThis.architectureAnim(1.5, 100);
-                        oThis.architectureAnim(2, 100);
+                        oThis.architectureAnim(0, 1);
+                        oThis.architectureAnim(1, 1);
+                        oThis.architectureAnim(1.5, 1);
+                        oThis.architectureAnim(2, 1);
                     })
                 break;
             case -3:
                 $('.asset')
                     .fadeOut(500, function(){
                         $('.asset').removeAttr('style');
-                        oThis.architectureAnim(0, 100);
-                        oThis.architectureAnim(1, 100);
-                        oThis.architectureAnim(1.5, 100);
-                        oThis.architectureAnim(3, 100);
+                        oThis.architectureAnim(0, 1);
+                        oThis.architectureAnim(1, 1);
+                        oThis.architectureAnim(1.5, 1);
+                        oThis.architectureAnim(3, 1);
                     })
                 break;
         }
