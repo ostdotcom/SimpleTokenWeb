@@ -5,7 +5,7 @@
       utilsNs = ns("simpletoken.utils"),
     oThis;
 
-  homeNs.login = oThis = {
+  homeNs.kyc = oThis = {
 
       init: function (config) {
           oThis.bindButtonActions();
@@ -13,16 +13,16 @@
 
       bindButtonActions: function () {
 
-          $("#userLogin").click(function (event) {
+          $("#kycSubmit").click(function (event) {
               event.preventDefault();
-              oThis.login();
+              oThis.submit();
           });
 
       },
 
     //TODO::initTokenSale=1 dynamic for dev
-      login: function () {
-          var $form = $('#userLoginForm');
+      submit: function () {
+          var $form = $('#kycForm');
           $.ajax({
               url: $form.attr('action'),
               dataType: 'json',
@@ -31,7 +31,7 @@
               success: function (response) {
                   console.log(response);
                   if (response.success == true) {
-                      window.location = '/update-kyc?initTokenSale=1';
+                      window.location = '/reserve-token?initTokenSale=1';
                       return false;
                   } else {
                       alert(response.err.display_text);

@@ -2,6 +2,7 @@
 (function (window) {
 
   var homeNs = ns("simpletoken.home"),
+      utilsNs = ns("simpletoken.utils"),
     oThis;
 
   homeNs.signup = oThis = {
