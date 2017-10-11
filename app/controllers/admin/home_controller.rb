@@ -3,11 +3,6 @@ class Admin::HomeController < Admin::BaseController
 
   before_action :set_page_meta_info
 
-  # TODO: Rework on this step
-  before_action :parse_cookie, only: [:login, :authentication]
-  before_action :step_1_logged_in?, only: [:login]
-  before_action :step_2_logged_in?, only: [:login, :authentication]
-
   # Admin login
   #
   # * Author: Aman
