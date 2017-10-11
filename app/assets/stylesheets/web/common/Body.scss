@@ -18,6 +18,14 @@ body{
   padding: 80px 0;
 }
 
+.poRel{
+  position: relative;
+}
+
+.height100vh{
+  height: 100vh;
+}
+
 // Generic reusable classes
 .text-link{
   color: #597a84;
@@ -193,6 +201,7 @@ h1.page-title{
   text-align: center;
   padding: 20px 10px;
   color: #9ea9a7;
+  background: #e5efe8;
   a,
   a:hover,
   a:active{

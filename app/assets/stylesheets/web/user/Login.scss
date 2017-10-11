@@ -1,5 +1,8 @@
 .sign-up-form{
   min-height: 100vh;
+  @media (min-width: 768px) {
+    min-height: calc(100vh - 60px);
+  }
   display: flex;
   align-items: center;
   justify-content: center;
