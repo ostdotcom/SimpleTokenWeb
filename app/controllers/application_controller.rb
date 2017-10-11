@@ -19,8 +19,7 @@ class ApplicationController < ActionController::Base
   def not_found
     res = {
       error: 'stw_not_found',
-      error_message: 'page not found',
-      data: {},
+      error_display_text: 'Page not found',
       http_code: GlobalConstant::ErrorCode.not_found
     }
     @response = Result::Base.error(res)
