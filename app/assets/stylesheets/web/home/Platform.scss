@@ -398,20 +398,8 @@
   }
 }
 
-// Tablet portrait
-@media (min-width: 768px) and (max-width: 1000px) {
-
-  .container-jumbotron{
-    padding-top: 0px;
-    .images-desktop{
-      margin-top: 30px;
-    }
-  }
-
-}
-
 // Mobile portrait, landscape
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
   .container-jumbotron{
     padding-top: 0px;
@@ -522,8 +510,8 @@
           }
         }
         img{
+          max-width: 400px;
           width: 100%;
-          padding: 0 30px;
         }
       }
 
@@ -566,7 +554,7 @@
   .container-architecture-parts{
     .part-connector{
       top: 40px;
-      width: 70%;
+      width: 250px;
       border-top: 1px dotted #84d1d4;
     }
     .part-wrapper{
