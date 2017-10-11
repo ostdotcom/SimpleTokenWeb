@@ -17,17 +17,7 @@
           oThis.onSubscribe();
       });
 
-      $('.masthead-arrow').click(function(event){
-          var scrollTop = Math.min($('body').height() - $('.masthead').height(), $('.masthead').height());
-          if( $(window).scrollTop() < scrollTop ){
-              $('html,body').animate({
-                  scrollTop: scrollTop
-              }, 800);
-          }
-      });
-
       $(".smooth-scroll").on('click', function(event) {
-
         if (this.hash !== "") {
             event.preventDefault();
             var hash = this.hash;
@@ -40,6 +30,7 @@
       $("a[href='#subscribe']").on('click', function(event) {
         $('#is_token_sale_user').prop('checked', true);
       });
+
     },
 
 
