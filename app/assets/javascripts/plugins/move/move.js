@@ -1,4 +1,12 @@
-
+/*!
+ * Move.js
+ * http://visionmedia.github.io/move.js/
+ *
+ * Copyright (c) 2011 TJ Holowaychuk <tj@vision-media.ca>
+ * Released under the MIT license
+ * https://github.com/visionmedia/move.js
+ *
+ */
 ;(function(){
 
     /**
