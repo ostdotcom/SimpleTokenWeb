@@ -15,4 +15,8 @@ class Admin::HomeController < Admin::BaseController
   def authentication
   end
 
+  def do_login
+
+  end
+
 end
