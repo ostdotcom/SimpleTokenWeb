@@ -82,15 +82,8 @@
   <script>
     window.name = "<%= [*('A'..'Z')].sample(8).join %>";
     try{Typekit.load({
-      async: true,
-      active: function(){
-        document.body.style.visibility = "visible";
-      },
-      inactive: function(){
-        document.body.style.visibility = "visible";
-      }
+      async: true
     });}catch(e){
-      document.body.style.visibility = "visible";
     }
   </script>
 
@@ -112,7 +105,7 @@
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 </head>
 
-<body contenteditable="false" style="visibility:hidden">
+<body contenteditable="false">
 
 <main id="site-content" class="<%= yield (:gradient_class) %>">
   <%= yield %>
