@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get '/change-password' => :change_password
       get '/update-kyc' => :kyc_form
       get '/reserve-token' => :branded_token_form
+      get '/verification-link' => :verification_link
     end
     # Route not found handler. Should be the last entry here
     match '*permalink', to: 'application#not_found', via: :all

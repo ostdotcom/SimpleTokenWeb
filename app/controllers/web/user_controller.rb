@@ -58,4 +58,13 @@ class Web::UserController < Web::BaseController
   def branded_token_form
   end
 
+  # Branded token form
+  #
+  # * Author: Tahir
+  # * Date: 10/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def verification_link
+  end
+
 end
