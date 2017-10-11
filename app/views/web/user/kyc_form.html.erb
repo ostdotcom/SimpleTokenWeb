@@ -30,16 +30,14 @@
                 <div class="form-group">
                   <label for="">first name</label>
                   <input type="text" class="form-control" name="first_name" value="" tabindex="1"/>
-
-                  <div class="error" id="err_ct_first_name"></div>
+                  <div class="error" data-for="first_name"></div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">last name</label>
                   <input type="text" class="form-control" name="last_name" value="" tabindex="2"/>
-
-                  <div class="error" id="err_ct_last_name"></div>
+                  <div class="error" data-for="last_name"></div>
                 </div>
               </div>
             </div>
@@ -49,16 +47,14 @@
                 <div class="form-group">
                   <label for="">birth date</label>
                   <input type="text" class="form-control" name="birthdate" value="" tabindex="3" />
-
-                  <div class="error" id="err_ct_birth_date"></div>
+                  <div class="error" data-for="birthdate"></div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">email</label>
-                  <input type="text" class="form-control" name="email" value="" tabindex="4" />
-
-                  <div class="error" id="err_ct_email"></div>
+                  <input type="text" class="form-control" name="email" value="thahir.punewala@gmail.com" tabindex="4" disabled/>
+                  <div class="error"></div>
                 </div>
               </div>
             </div>
@@ -68,16 +64,14 @@
                 <div class="form-group">
                   <label for="">street address</label>
                   <input type="text" class="form-control" name="street_address" value="" tabindex="5" />
-
-                  <div class="error" id="err_ct_street_address"></div>
+                  <div class="error" data-for="street_address"></div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">city</label>
                   <input type="text" class="form-control" name="city" value="" tabindex="6" />
-
-                  <div class="error" id="err_ct_city"></div>
+                  <div class="error" data-for="city"></div>
                 </div>
               </div>
             </div>
@@ -87,16 +81,14 @@
                 <div class="form-group">
                   <label for="">state / region</label>
                   <input type="text" class="form-control" name="state" value="" tabindex="7" />
-
-                  <div class="error" id="err_ct_state"></div>
+                  <div class="error" data-for="state"></div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">country</label>
                   <input type="text" class="form-control" name="country" value="" tabindex="8" />
-
-                  <div class="error" id="err_ct_country"></div>
+                  <div class="error" data-for="country"></div>
                 </div>
               </div>
             </div>
@@ -106,16 +98,7 @@
                 <div class="form-group">
                   <label for="">zip / postal code</label>
                   <input type="text" class="form-control" name="postal_code" value="" tabindex="9" />
-
-                  <div class="error" id="err_ct_zipcode"></div>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-6 hidden-xs">
-                <div class="form-group">
-                  <label for="" style="visibility: hidden">country</label>
-                  <input type="text" class="form-control" name="country1" value="" style="visibility: hidden" />
-
-                  <div class="error"></div>
+                  <div class="error" data-for="postal_code"></div>
                 </div>
               </div>
             </div>
@@ -125,8 +108,7 @@
                 <div class="form-group">
                   <label for="">ethereum address</label>
                   <input type="text" class="form-control" name="ethereum_address" value="" tabindex="10" />
-
-                  <div class="error" id="err_ct_ethereum_address"></div>
+                  <div class="error" data-for="ethereum_address"></div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
@@ -141,8 +123,7 @@
                 <div class="form-group">
                   <label for="">estimated participation amount ($)</label>
                   <input type="text" class="form-control" name="estimated_participation_amount" value="" tabindex="11" />
-
-                  <div class="error" id="err_ct_estimated_amount"></div>
+                  <div class="error" data-for="estimated_participation_amount"></div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
@@ -159,15 +140,13 @@
                 <div class="form-group">
                   <label for="">passport number</label>
                   <input type="text" class="form-control" name="passport_number" value="" tabindex="12" />
-
-                  <div class="error" id="err_ct_passport_number"></div>
+                  <div class="error" data-for="passport_number"></div>
                 </div>
 
                 <div class="form-group">
                   <label for="">passport country</label>
                   <input type="text" class="form-control" name="passport_country" value="" tabindex="13" />
-
-                  <div class="error" id="err_ct_passport_country"></div>
+                  <div class="error" data-for="passport_country"></div>
                 </div>
 
               </div>
@@ -180,9 +159,10 @@
                   <label for="">passport scan</label>
                   <div>
                     <label class="upload-file btn-common btn-grey upload-image-btn">
-                      <input type="file" name="passport_file" id="" class="upload btn btn-orange" accept="image/*" tabindex="14" />
+                      <input type="file" name="passport_file" class="upload btn btn-orange" accept="image/*" tabindex="14" />
                       <span>Upload</span>
                     </label>
+                    <div class="error" data-for="passport_file"></div>
                     <a href="" class="btn-common btn-grey upload-image" title="image" tabindex="15">IMG</a>
                     <div class="form-instructions thumbnail-upload-instructions">Please upload a high quality image. Image size: Min 400kb Formats : JPG / PNG / PDF</div>
                   </div>
@@ -195,9 +175,10 @@
                   </div>
                   <div>
                     <label class="upload-file btn-common btn-grey upload-image-btn">
-                      <input type="file" name="selfie_file" id="" class="upload btn btn-orange" accept="image/*" tabindex="16">
+                      <input type="file" name="selfie_file" class="upload btn btn-orange" accept="image/*" tabindex="16">
                       <span>Upload</span>
                     </label>
+                    <div class="error" data-for="selfie_file"></div>
                     <a href="" class="btn-common btn-grey upload-image" title="image" tabindex="17">IMG</a>
                     <div class="form-instructions thumbnail-upload-instructions">Please upload a high quality image. Image size: Min 400kb Formats : JPG / PNG / PDF</div>
                   </div>
