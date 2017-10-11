@@ -577,6 +577,7 @@
           img{
             margin: 0 20px;
             max-height: 460px;
+            max-width: 88%;
           }
         }
       }
@@ -601,6 +602,9 @@
   .container-architecture-parts{
     .part-animation{
       display:none;
+    }
+    .part-static{
+      display:block;
     }
   }
 }
