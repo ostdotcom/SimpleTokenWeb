@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   scope 'admin/', controller: 'admin/home' do
     get '/' => :login
     get '/authentication' => :authentication
+    get '/dashboard' => :dashboard
   end
 
 

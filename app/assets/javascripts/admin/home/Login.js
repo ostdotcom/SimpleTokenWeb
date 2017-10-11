@@ -32,11 +32,11 @@
                         window.location = '/admin/authentication/'
                         return false;
                     } else {
-                        alert(response.err.msg);
+                        alert(response.err.display_text);
                     }
                 },
                 error: function (response) {
-                    console.log(response.err.msg);
+                    console.log(response.err.display_text);
                 },
             });
         }

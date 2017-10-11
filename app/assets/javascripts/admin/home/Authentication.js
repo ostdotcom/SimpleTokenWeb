@@ -28,10 +28,10 @@
                 data: $form.serialize(),
                 success: function (response) {
                     if (response.success == true) {
-                        window.location = '/admin/home/'
+                        window.location = '/admin/dashboard/'
                         return false;
                     } else {
-                        alert(response.err.msg);
+                        alert(response.err.display_text);
                     }
                 },
                 error: function (response) {
