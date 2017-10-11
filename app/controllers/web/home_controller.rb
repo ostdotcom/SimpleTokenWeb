@@ -93,4 +93,13 @@ class Web::HomeController < Web::BaseController
   def documents
   end
 
+  # Action for the platform page
+  #
+  # * Author: Akshay
+  # * Date: 11/10/2017
+  # * Reviewed By: 
+  #
+  def platform
+  end
+
 end

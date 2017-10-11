@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/token' => :token
     get '/changepw' => :changepw
     get '/about' => :about
+    get '/platform' => :platform
     get '/privacy' => :privacy
     get '/terms' => :terms
     get '/documents' => :documents
