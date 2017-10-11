@@ -1,3 +1,81 @@
+@mixin module-generator($color) {
+
+  .module{
+    border-color: $color;
+    .svg{
+      fill: $color;
+    }
+  }
+
+  &:hover{
+    .module {
+      border: 2px solid $color;
+      background: $color;
+      .svg {
+        fill: #fff;
+      }
+    }
+  }
+
+  &.active{
+    .module-outer{
+      border: 1px solid $color;
+      -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+      -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+      .module{
+        border: 2px solid $color;
+        background: $color;
+        .svg{
+          fill: #fff;
+        }
+      }
+    }
+    .title{
+      font-weight: 600;
+    }
+  }
+}
+
+@mixin module-generator-mobile($color) {
+
+  .module{
+    border-color: $color;
+    .svg{
+      fill: $color;
+    }
+  }
+
+  &:hover{
+    .module {
+      border: 1px solid $color;
+      background: $color;
+      .svg {
+        fill: #fff;
+      }
+    }
+  }
+
+  &.active{
+    .module-outer{
+      border: 1px solid $color;
+      -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+      -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+      .module{
+        border: 2px solid $color;
+        background: $color;
+        .svg{
+          fill: #fff;
+        }
+      }
+    }
+    .title{
+      font-weight: 600;
+    }
+  }
+}
+
 .container-jumbotron{
   padding-top: 40px;
   padding-bottom: 40px;
@@ -77,45 +155,6 @@
     line-height: 1.5;
     letter-spacing: 0.8px;
     text-align: center;
-  }
-}
-
-@mixin module-generator($color) {
-
-  .module{
-    border-color: $color;
-    .svg{
-      fill: $color;
-    }
-  }
-
-  &:hover{
-    .module {
-      border: 2px solid $color;
-      background: $color;
-      .svg {
-        fill: #fff;
-      }
-    }
-  }
-
-  &.active{
-    .module-outer{
-      border: 1px solid $color;
-      -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-      -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-      .module{
-        border: 2px solid $color;
-        background: $color;
-        .svg{
-          fill: #fff;
-        }
-      }
-    }
-    .title{
-      font-weight: 600;
-    }
   }
 }
 
@@ -359,43 +398,16 @@
   }
 }
 
-@mixin module-generator-mobile($color) {
+// Tablet portrait
+@media (min-width: 768px) and (max-width: 1000px) {
 
-  .module{
-    border-color: $color;
-    .svg{
-      fill: $color;
+  .container-jumbotron{
+    padding-top: 0px;
+    .images-desktop{
+      margin-top: 30px;
     }
   }
 
-  &:hover{
-    .module {
-      border: 1px solid $color;
-      background: $color;
-      .svg {
-        fill: #fff;
-      }
-    }
-  }
-
-  &.active{
-    .module-outer{
-      border: 1px solid $color;
-      -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-      -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-      .module{
-        border: 2px solid $color;
-        background: $color;
-        .svg{
-          fill: #fff;
-        }
-      }
-    }
-    .title{
-      font-weight: 600;
-    }
-  }
 }
 
 // Mobile portrait, landscape
