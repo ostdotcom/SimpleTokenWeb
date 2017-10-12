@@ -45,6 +45,11 @@ module GlobalConstant
         env_config.fetch('cloudfront', {})[:domain]
       end
 
+      # ST api sidekiq admin interface related configs
+      def api_sidekiq_interface
+        @api_sidekiq_interface ||= env_config.fetch('api_sidekiq_interface', {})
+      end
+
       private
 
       # Env config

@@ -8,5 +8,10 @@ Rails.application.routes.draw do
     get '/documents' => :documents
   end
 
+  namespace 'admin' do
+    # ST Api sidekiq web interface endpoint
+    mount ApiSidekiqServer => '/api-sidekiq'
+  end
+
   match '*permalink', to: 'application#not_found', via: :all
 end

@@ -9,3 +9,8 @@ constants:
   pepo_campaign:
     encrypted_client_id: <%= ENV['STW_CAMPAIGN_ENCRYPTED_CLIENT_ID'] %>
     encrypted_list_id: <%= ENV['STW_CAMPAIGN_ENCRYPTED_LIST_ID']%>
+
+  api_sidekiq_interface:
+    redis_url: <%= ENV['STW_REDIS_ENDPOINT'] %>
+    admin_user: 'sidekiq.admin'
+    admin_pw: <%= ENV['STW_SK_ADMIN_PW'] %>

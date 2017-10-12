@@ -21,6 +21,9 @@ gem 'sanitize', '4.5.0'
 # Exception notifier
 gem 'exception_notification', '4.2.1'
 
+gem 'sidekiq', '5.0.5'
+gem 'redis-namespace', '1.5.3'
+
 gem 'listen', '>= 3.0.5', '< 3.2'
 
 group :development, :test do
