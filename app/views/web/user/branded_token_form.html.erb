@@ -24,19 +24,21 @@
 
       <div class="simple-token-form">
         <h1 class="text-center form-header">Enter a name for your token. If it’s available, <br/>we’ll reserve it for you.</h1>
-        <form class="user-form" method="" action="" id="">
+        <form class="user-form" method="POST" action="/api/user/bt-submit" id="userBtForm">
           <div class="form-group">
             <label for="token_name">token name</label>
-            <input type="text" name="token" id="token_name" class="form-control" autofocus tabindex="1">
+            <input type="text" name="bt_name" id="token_name" class="form-control" autofocus tabindex="1">
           </div>
           <div class="form-instructions text-center" style="max-width: 350px">
             All name reservations are subject to approval from the OpenST Foundation and Trademark rights. For more details <a href="">click here</a> for <a href="">terms and conditions</a> of name reservations.
           </div>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <div class="user-form-footer" style="margin-top: 20px">
-            <a href="" title="skip" class="btn-common btn-grey upload-image-btn" tabindex="5">skip</a>
-            <a href="" class="btn-common btn-gold upload-image-btn" title="done" tabindex="6">done</a>
+            <button type="submit" id="btSkip" title="skip" class="btn-common btn-grey upload-image-btn" tabindex="5">skip</button>
+            <button type="submit" id="btSubmit" class="btn-common btn-gold upload-image-btn" title="done" tabindex="6">done</button>
           </div>
         </form>
+
       </div>
 
     </div>

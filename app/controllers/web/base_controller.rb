@@ -6,9 +6,9 @@ class Web::BaseController < ApplicationController
   # * Author: Aman
   # * Date: 12/10/2017
   # * Reviewed By:
-  #
+  #TODO:: REVISIT
   def verify_user_info_from_cookie
-    service_response = SimpleTokenApi::Request::User.new(request.cookies).get_info
+    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"HTTP_USER_AGENT" => request.env['HTTP_USER_AGENT']}).get_info
 
     if service_response.success?
 
@@ -43,7 +43,14 @@ class Web::BaseController < ApplicationController
 
       redirect_to "/#{redirect_path}#{extra_param}", status: GlobalConstant::ErrorCode.temporary_redirect and return if redirect_path.present?
 
+      else
+        if service_response.err.code == "um_vc_5"
+          redirect_to "/login#{extra_param}", status: GlobalConstant::ErrorCode.temporary_redirect
+          cookies.delete(GlobalConstant::Cookie.user_cookie_name.to_sym, domain: :all)
+          return
+        end
     end
+
 
   end
 
