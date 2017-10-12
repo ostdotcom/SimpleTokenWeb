@@ -29,7 +29,7 @@
         var $fields = $('#kycForm input[type="text"]');
         var error_count = 0;
         $.each($fields, function(key, field){
-          if($(field).val() == ''){
+          if($(field).val().trim() == ''){
             var name = $(field).prev().text();
             $(field).addClass('border-error');
             $(field).next().text(name+' is required');
