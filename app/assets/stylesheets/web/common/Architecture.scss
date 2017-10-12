@@ -52,14 +52,17 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/platform-a
 }
 .p2-i3{
   @include icon-generator(125px, 330px, -845px, -25px, -845px, -845px);
+  transform: scale(0.25, 0.25);
   z-index: 5;
 }
 .p3-i1{
   @include icon-generator(300px, 430px, -1020px, -25px, -1020px, -1020px);
+  transform: scale(0.25, 0.25);
   z-index: 4;
 }
 .p3-i2{
   @include icon-generator(300px, 325px, -28px, -500px, -28px, -28px);
+  transform: scale(0.25, 0.25);
   z-index: 3;
 }
 .p4-i1{
