@@ -28,7 +28,7 @@
 
   .registration-timer{
 
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: #fbfdfd;
     border: solid 1px #6c9ba9;
     width: 100%;
@@ -70,4 +70,85 @@
     }
   }
 
+}
+
+.container-telegram{
+  background-color: #91c0ad;
+  padding: 20px 0;
+
+  .content{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 400px;
+
+    .telegram-connect{
+      min-width: 300px;
+      width: 80%;
+      background: #fff;
+      border-radius: 5px;
+      color: #91c0ad;
+      text-transform: uppercase;
+      font-size: 14px;
+      line-height: 2;
+      font-weight: 600;
+      margin: 30px auto 20px auto;
+    }
+  }
+
+}
+
+.container-dates{
+  margin:40px auto;
+  h2.header{
+    color: #6ca3a9;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-top: 0;
+    font-size: 38px;
+    letter-spacing: 1.3px;
+    text-align: center;
+  }
+}
+
+.container-documents{
+  text-align: center;
+  margin:40px auto;
+  h2.header{
+    color: #6ca3a9;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-top: 0;
+    font-size: 38px;
+    letter-spacing: 1.3px;
+    text-align: center;
+  }
+  .iframe-wrapper {
+    width: 595px;
+    max-width: 100%;
+    border: 2px solid #5a768c;
+    border-radius: 5px;
+    margin: 20px auto 40px auto;
+    position: relative;
+    &:after{
+      padding-top: 81.51%;
+      display: block;
+      content: '';
+    }
+    .iframe-container{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      iframe{
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+    }
+  }
 }
