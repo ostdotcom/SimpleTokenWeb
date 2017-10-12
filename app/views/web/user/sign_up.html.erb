@@ -45,6 +45,7 @@
             </label>
           </div>
           <div class="user-form-footer">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <button type="submit" class="btn btn-gold form-btn-gold" id="userSignUp" title="Register" tabindex="4">register</button>
           </div>
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 30px auto;display: block;"/>
