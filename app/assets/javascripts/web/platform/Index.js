@@ -151,7 +151,7 @@
             move('[data-module="identity"].module-wrapper .title').set({opacity: 1}).ease('in').duration(100).end();
             move('[data-module="token-design"].module-wrapper .title').set({opacity: 1}).ease('in').duration(100).end();
         });
-        //move('.container-stack-heading').set({opacity: 1}).ease('in').duration(800).end();
+        move('.container-stack-heading').set({opacity: 1}).ease('in').duration(800).end();
         move('.module-contents').set({opacity: 1}).ease('in').duration(800).end();
         oThis.animCount++;
     },
