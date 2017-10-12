@@ -104,3 +104,7 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 .success-tick-icon{
   @include icon-generator(103px, 103px, -108px, -5px, -108px, -108px, 50);
 }
+
+.upload-image-icon{
+  @include icon-generator(34px, 28px, -9px, -338px, -9px, -9px, 80);
+}
