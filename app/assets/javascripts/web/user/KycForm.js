@@ -9,15 +9,41 @@
 
       init: function (config) {
           oThis.bindButtonActions();
+
+          var filelist = [];
+          var paramNames = [];
+
+          $('#kycForm').fileupload({
+              dataType: 'json',
+              url: $('#kycForm').attr('action'),
+              method: $('#kycForm').attr('method'),
+              autoUpload: false,
+              singleFileUploads: false,
+              add: function (e, data) {
+                  for(var i = 0; i < data.files.length; i++){
+                      filelist.push(data.files[i])
+                      paramNames.push(e.delegatedEvent.target.name);
+                  }
+              }
+          });
+
+          $('#kycSubmit').click(function(e){
+              e.preventDefault();
+              console.log(filelist, paramNames);
+              //return;
+              $('#kycForm').fileupload('send', {files:filelist, paramName: paramNames});
+          })
       },
 
       bindButtonActions: function () {
 
-          $("#kycSubmit").click(function (event) {
+          /*$("#kycSubmit").click(function (event) {
               event.preventDefault();
               var v = oThis.validate();
-              if(v === true) {oThis.submit();}
-          });
+              if(v === true) {
+                  $("#kycSubmit").trigger( "customName");
+              }
+          });*/
 
           $("#verify-modal-btn").on('click', function () {
             $('#verifyModal').modal('show').css('overflow-y', 'hidden');
@@ -68,7 +94,12 @@
                   alert(utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
               }
           });
+      },
+
+      submit_new: function(){
+
       }
+
   };
 
   $(document).ready(function () {
