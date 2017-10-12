@@ -116,3 +116,7 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
     }
   }
 }
+
+.show-password-eye-icon{
+  @include icon-generator(34px, 22px, -9px, -310px, -49px, -9px, 70);
+}
