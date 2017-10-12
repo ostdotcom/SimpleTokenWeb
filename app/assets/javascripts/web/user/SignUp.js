@@ -16,8 +16,10 @@
           $("#userSignUp").click(function (event) {
               event.preventDefault();
               var v = simpletoken.utils.errorHandling.validationGeneric( $('#userSignUpForm input[type="text"], #userSignUpForm input[type="password"]') );
-              if(v === true) {
+              if(v === true && $('#userSignUpForm input[name=terms_of_service]').is(':checked') == true) {
                   oThis.signup();
+              } else {
+                  $('.error[data-for="terms_of_service"]').text('please agree terms and privacy policy');
               }
           });
 

@@ -27,7 +27,7 @@
 
       if((response.success === false) || (response.err != undefined && response.err != '')){
 
-        simpletoken.utils.errorHandling.clearFormErrors();
+        utilsNs.errorHandling.clearFormErrors();
         $('.error[data-for="general_error"]').text(response.err.display_text);
 
         if(typeof response.err.error_data != undefined){
@@ -42,8 +42,11 @@
     },
 
     validationGeneric: function(jQobjs){
+
         var fields = jQobjs;
         var error_count = 0;
+        utilsNs.errorHandling.clearFormErrors();
+
         $.each(fields, function(key, field){
 
             if($(field).attr('type') === 'text' && $(field).val().trim() == ''){
