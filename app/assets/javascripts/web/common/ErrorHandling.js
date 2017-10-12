@@ -32,7 +32,9 @@
 
         if(typeof response.err.error_data != undefined){
           $.each(response.err.error_data, function(e_key, e_val){
-            $('.error[data-for="'+e_key+'"]').text(e_val);
+            var ele = $('.error[data-for="'+e_key+'"]');
+            ele.text(e_val);
+            ele.parent().find('input').addClass('border-error');
           });
         }
       }
@@ -41,6 +43,7 @@
 
     clearFormErrors: function(){
       $('.error[data-for]').text('');
+      $('input').removeClass('border-error');
     }
 
   };

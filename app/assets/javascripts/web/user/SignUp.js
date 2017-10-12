@@ -34,7 +34,7 @@
                       window.location = '/update-kyc?initTokenSale=1';
                       return false;
                   } else {
-                      alert(response.err.display_text);
+                    simpletoken.utils.errorHandling.displayFormErrors(response);
                   }
               },
               error: function (jqXHR, exception) {
