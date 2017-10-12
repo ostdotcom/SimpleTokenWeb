@@ -52,7 +52,10 @@
     font-size: 16px;
   }
   .modal-body{
-    padding: 30px 50px;
+    padding: 30px 20px;
+    @media (min-width: 768px) {
+      padding: 30px 50px;
+    }
   }
   .modal-content{
     box-shadow: none;
