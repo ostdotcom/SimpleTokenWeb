@@ -51,26 +51,6 @@
 
       },
 
-      validate: function(){
-        var $fields = $('#kycForm input[type="text"]');
-        var error_count = 0;
-        $.each($fields, function(key, field){
-          if($(field).val().trim() == ''){
-            var name = $(field).prev().text();
-            $(field).addClass('border-error');
-            $(field).next().text(name+' is required');
-            error_count++;
-          }
-          else{
-            $(field).removeClass('border-error');
-            $(field).next().text('');
-          }
-
-        });
-        if(error_count === 0) {return true;}
-        return false;
-      },
-
     //TODO::initTokenSale=1 dynamic for dev
       submit: function () {
           var $form = $('#kycForm');

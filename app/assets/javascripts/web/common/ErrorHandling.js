@@ -41,6 +41,37 @@
 
     },
 
+    validationGeneric: function(jQobjs){
+        var fields = jQobjs;
+        var error_count = 0;
+        $.each(fields, function(key, field){
+
+            if($(field).attr('type') === 'text' && $(field).val().trim() == ''){
+
+                var field_name = $(field).closest('.form-group').find('label').text();
+                var field_key = $(field).attr('name');
+
+                $(field).addClass('border-error');
+                $('.error[data-for="'+field_key+'"]').text(field_name+' is required');
+
+                error_count++;
+            }
+
+            if($(field).attr('type') === 'password' && $(field).val().trim().length < 8){
+
+                var field_key = $(field).attr('name');
+
+                $(field).addClass('border-error');
+                $('.error[data-for="'+field_key+'"]').text('should be minimum 8 characters');
+
+                error_count++;
+            }
+
+        });
+        if(error_count === 0) {return true;}
+        return false;
+    },
+
     clearFormErrors: function(){
       $('.error[data-for]').text('');
       $('input').removeClass('border-error');

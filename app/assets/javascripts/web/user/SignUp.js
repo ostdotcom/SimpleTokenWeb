@@ -15,7 +15,10 @@
 
           $("#userSignUp").click(function (event) {
               event.preventDefault();
-              oThis.signup();
+              var v = simpletoken.utils.errorHandling.validationGeneric( $('#userSignUpForm input[type="text"], #userSignUpForm input[type="password"]') );
+              if(v === true) {
+                  oThis.signup();
+              }
           });
 
       },
