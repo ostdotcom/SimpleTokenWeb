@@ -90,6 +90,9 @@
         }
       }
     }
+    .border-error{
+      border-color: red;
+    }
   }
 
   .form-instructions{
@@ -157,11 +160,11 @@
   }
 
   .error {
-    font-size: 14px;
+    font-size: 13px;
     color: #e7003b;
-    padding: 6px 0;
+    padding: 3px 0 0;
     display: block;
-    min-height: 20px;
+    min-height: 25px;
     font-weight: 500;
   }
 

@@ -30,10 +30,16 @@
         var error_count = 0;
         $.each($fields, function(key, field){
           if($(field).val() == ''){
-            var name = $(field).attr('name');
-            $('.error[data-for="'+name+'"]').text(name+' is required');
+            var name = $(field).prev().text();
+            $(field).addClass('border-error');
+            $(field).next().text(name+' is required');
             error_count++;
           }
+          else{
+            $(field).removeClass('border-error');
+            $(field).next().text('');
+          }
+
         });
         if(error_count === 0) {return true;}
         return false;
