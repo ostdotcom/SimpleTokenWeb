@@ -157,11 +157,12 @@
   }
 
   .error {
-    font-size: smaller;
+    font-size: 14px;
     color: #e7003b;
-    padding: 2px 0;
+    padding: 6px 0;
     display: block;
     min-height: 20px;
+    font-weight: 500;
   }
 
   .success{

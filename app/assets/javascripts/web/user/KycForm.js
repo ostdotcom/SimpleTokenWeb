@@ -15,7 +15,8 @@
 
           $("#kycSubmit").click(function (event) {
               event.preventDefault();
-              oThis.submit();
+              var v = oThis.validate();
+              if(v === true) {oThis.submit();}
           });
 
           $("#verify-modal-btn").on('click', function () {
@@ -24,9 +25,24 @@
 
       },
 
+      validate: function(){
+        var $fields = $('#kycForm input[type="text"]');
+        var error_count = 0;
+        $.each($fields, function(key, field){
+          if($(field).val() == ''){
+            var name = $(field).attr('name');
+            $('.error[data-for="'+name+'"]').text(name+' is required');
+            error_count++;
+          }
+        });
+        if(error_count === 0) {return true;}
+        return false;
+      },
+
     //TODO::initTokenSale=1 dynamic for dev
       submit: function () {
           var $form = $('#kycForm');
+          simpletoken.utils.errorHandling.clearFormErrors();
           $.ajax({
               url: $form.attr('action'),
               dataType: 'json',
@@ -38,6 +54,7 @@
                       window.location = '/reserve-token?initTokenSale=1';
                       return false;
                   } else {
+                      simpletoken.utils.errorHandling.displayFormErrors(response);
                       alert(response.err.display_text);
                   }
               },

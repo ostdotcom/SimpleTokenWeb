@@ -21,7 +21,28 @@
         msg = 'Uncaught Error. ' + jqXHR.responseText;
       }
       return msg;
+    },
+
+    displayFormErrors: function(response){
+
+      if((response.success === false) || (response.err != undefined && response.err != '')){
+
+        simpletoken.utils.errorHandling.clearFormErrors();
+        $('.error[data-for="general_error"]').text(response.err.display_text);
+
+        if(typeof response.err.error_data != undefined){
+          $.each(response.err.error_data, function(e_key, e_val){
+            $('.error[data-for="'+e_key+'"]').text(e_val);
+          });
+        }
+      }
+
+    },
+
+    clearFormErrors: function(){
+      $('.error[data-for]').text('');
     }
+
   };
 
 })(window);
