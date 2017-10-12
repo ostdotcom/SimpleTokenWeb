@@ -25,6 +25,9 @@
   .logo-desktop{
     max-width: 60%;
   }
+  .logo-mobile{
+    display: none;
+  }
 
   .registration-timer{
 
@@ -67,6 +70,11 @@
         text-transform: uppercase;
         font-weight: 400;
       }
+    }
+
+    .btn-gold{
+      width: 80%;
+      max-width: 320px;
     }
   }
 
@@ -116,7 +124,7 @@
 
   .container-timeline{
 
-    width: 740px;
+    width: 610px;
     margin: 0 auto;
     padding: 80px 0;
     position: relative;
@@ -158,11 +166,15 @@
     }
 
   }
+  .container-timeline-vertical{
+    display: none;
+  }
 }
 
 .container-documents{
   text-align: center;
   margin:40px auto;
+  min-height: inherit;
   h2.header{
     color: #6ca3a9;
     font-weight: 300;
@@ -197,4 +209,108 @@
       }
     }
   }
+}
+
+// Mobile portrait, landscape
+@media (max-width: 767px) {
+
+  .container-jumbotron{
+
+    .logo-desktop{
+      display: none;
+    }
+    .logo-mobile{
+      display: block;
+      max-width: 220px;
+      width:80%;
+      text-align: center;
+      margin:0 auto;
+    }
+
+    .registration-timer{
+      padding: 10px;
+
+      .countdown{
+        .time{
+          font-size: 30px;
+          .days,
+          .hours,
+          .minutes,
+          .seconds{
+            min-width: 40px;
+          }
+        }
+      }
+
+    }
+
+  }
+
+  .container-dates{
+
+    .container-timeline{
+      display:none;
+    }
+    .container-timeline-vertical{
+      display: block;
+      margin: 80px 0;
+      position: relative;
+
+      .progress{
+        height: 500px;
+        width: 10px;
+        margin: 20px auto;
+        background-color: #91c0ad;
+        .progress-bar{
+          width: 100%;
+          height:0;
+        }
+        .progress-bar-completed{
+          background-color: #597a84;
+        }
+      }
+
+      .milestone{
+        position: absolute;
+        left: calc(50% - 125px);
+        width: 250px;
+        height: 100px;
+        &:nth-of-type(odd){
+          text-align: left;
+          .date,
+          .title{
+            margin-left: 150px;
+          }
+        }
+        &:nth-of-type(even){
+          text-align: right;
+          .date,
+          .title{
+            margin-right: 150px;
+          }
+        }
+        .date{
+          font-size: 16px;
+          font-weight: 600;
+          color: #597a84;
+          margin-top: -50px;
+        }
+        .point{
+          width:30px;
+          height:30px;
+          background: #fff;
+          border: 3px solid #91c0ad;
+          border-radius: 50%;
+          margin: 0 auto 5px auto;
+        }
+        .title{
+          font-size: 13px;
+          font-weight: 600;
+          color: #597a84;
+        }
+      }
+    }
+
+  }
+
 }
