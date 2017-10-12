@@ -9,6 +9,14 @@ module GlobalConstant
         'ta'
       end
 
+      def user_cookie_name
+        'tu'
+      end
+
+      def new_api_cookie_key
+        'new_api_cookies'
+      end
+
     end
 
   end

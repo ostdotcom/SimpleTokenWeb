@@ -15,6 +15,20 @@ module GlobalConstant
         @simple_token_web ||= env_config['simple_token_web']
       end
 
+      def simple_token_api
+        @simple_token_api ||= env_config['simple_token_api']
+      end
+
+      # Root URL
+      #
+      # * Author: Kedar
+      # * Date: 09/10/2017
+      # * Reviewed By: Sunil Khedar
+      #
+      def api_root_url
+        simple_token_api['root_url']
+      end
+
       # Root URL
       #
       # * Author: Kedar
