@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="simple-token-form">
-        <form class="pepo-form" action="/api/user/kyc-submit" enctype="multipart/form-data" method="POST" id="kycForm">
+        <form class="simpletoken-form" action="/api/user/kyc-submit" enctype="multipart/form-data" method="POST" id="kycForm">
           <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
             <h1 class="text-center form-header" style="margin-bottom: 30px">Complete the Registration by Submitting Your KYC & Reserver Your Token Name</h1>
 
@@ -162,8 +162,8 @@
                       <input type="file" name="passport_file" class="upload btn btn-orange" accept="image/*" tabindex="14" />
                       <span>Upload</span>
                     </label>
-                    <div class="error" data-for="passport_file"></div>
                     <a href="" class="btn-common btn-grey upload-image" title="image" tabindex="15">IMG</a>
+                    <div class="error" data-for="passport_file"></div>
                     <div class="form-instructions thumbnail-upload-instructions">Please upload a high quality image. Image size: Min 400kb Formats : JPG / PNG / PDF</div>
                   </div>
                 </div>
@@ -178,14 +178,15 @@
                       <input type="file" name="selfie_file" class="upload btn btn-orange" accept="image/*" tabindex="16">
                       <span>Upload</span>
                     </label>
-                    <div class="error" data-for="selfie_file"></div>
                     <a href="" class="btn-common btn-grey upload-image" title="image" tabindex="17">IMG</a>
+                    <div class="error" data-for="selfie_file"></div>
                     <div class="form-instructions thumbnail-upload-instructions">Please upload a high quality image. Image size: Min 400kb Formats : JPG / PNG / PDF</div>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <div>
+                    <a href="javascript:void(0)" id="verify-modal-btn" class="btn-common btn-gold upload-image-btn" title="Modal" tabindex="18">Modal</a>
                     <button id="kycSubmit" class="btn-common btn-gold upload-image-btn" title="submit" type="submit" tabindex="19">submit</button>
                   </div>
                 </div>
@@ -202,3 +203,5 @@
   </div>
 </div>
 <%= render :partial => "/shared/web/common/footer" %>
+
+<%= render :partial => "/shared/web/modals/verify_modal" %>

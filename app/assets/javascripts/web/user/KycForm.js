@@ -18,6 +18,10 @@
               oThis.submit();
           });
 
+          $("#verify-modal-btn").on('click', function () {
+            $('#verifyModal').modal('show').css('overflow-y', 'hidden');
+          });
+
       },
 
     //TODO::initTokenSale=1 dynamic for dev
