@@ -1,0 +1,56 @@
+.dashboard-page{
+  max-width: 400px;
+  .header{
+    color: #6ca3a9;
+    font-size: 24px;
+    font-weight: 300;
+    margin: 25px 0 0;
+  }
+  .status-msg{
+    color: #597a84;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 15px 0 25px;
+  }
+  .registration-timer{
+    padding: 10px 40px;
+  }
+  .kyc-panel{
+    &.default{
+      background-color: #fbfdfd;
+      border: solid 1px #6c9ba9;
+    }
+    &.error{
+      background-color: rgba(231, 0, 59, 0.05);
+      border: solid 1px #e7003b;
+    }
+    a{
+      color: #597a84;
+      border-bottom: 1px solid #597a84;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.have-question{
+  padding: 40px 0;
+  .question-txt{
+    color: #597a84;
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: 10px;
+  }
+  a{
+    font-size: 12px;
+    font-weight: 500;
+    color: #597a84;
+    display: inline-block;
+    margin: 0 15px;
+    border-bottom: 1px solid #597a84;
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+}

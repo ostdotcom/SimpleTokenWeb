@@ -1,0 +1,60 @@
+<% content_for :gradient_class, "bg-gradient poRel height100vh" %>
+<div class="container-fluid dashboard-page">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="text-center">
+        <img src="//d3attjoi5jlede.cloudfront.net/simpletoken/logo/logo-with-tagline-mobile.png" width="211"/>
+      </div>
+      <div class="text-center">
+        <h1 class="header">This is Your Account Dashboard</h1>
+        <div class="status-msg">Status : KYC Submitted</div>
+        <div class="panel panel-default kyc-panel default">
+          <div class="panel-body">
+            <span class="pull-left">KYC Verification</span>
+            <a href="" class="pull-right">UPDATE INFO</a>
+          </div>
+        </div>
+        <div class="panel panel-default kyc-panel error">
+          <div class="panel-body">
+            <span class="pull-left">Reserve Token Name</span>
+            <a href="" class="pull-right">CHANGE NAME</a>
+          </div>
+        </div>
+        <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 30px auto;display: block;"/>
+        <div class="registration-timer">
+          <h2>PUBLIC SALE OPENS IN</h2>
+          <table class="countdown" data-countdown="1510703999000">
+            <tr class="time">
+              <td class="days">00</td>
+              <td>:</td>
+              <td class="hours">00</td>
+              <td>:</td>
+              <td class="minutes">00</td>
+              <td>:</td>
+              <td class="seconds">00</td>
+            </tr>
+            <tr class="labels">
+              <td>Days</td>
+              <td></td>
+              <td>Hours</td>
+              <td></td>
+              <td>Mins</td>
+              <td></td>
+              <td>Secs</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="text-center have-question">
+      <div class="question-txt">Have Question on the Token Sale? Check these Docs!</div>
+      <a href="">TOKEN SALE GUIDE</a><a href="">WALLET SETUP GUIDE</a>
+    </div>
+    <%= render :partial => "/web/token_sale/telegram" %>
+  </div>
+</div>
+<%= render :partial => "/shared/web/common/footer" %>

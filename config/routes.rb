@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get '/' => :index
     end
     scope '', controller: 'web/user' do
+      get '/dashboard' => :dashboard_home
       get '/sign-up' => :sign_up
       get '/login' => :login
       get '/reset-password' => :reset_password

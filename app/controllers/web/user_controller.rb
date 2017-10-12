@@ -70,4 +70,13 @@ class Web::UserController < Web::BaseController
   def verification_link
   end
 
+  # Branded token form
+  #
+  # * Author: Tahir
+  # * Date: 13/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def dashboard_home
+  end
+
 end
