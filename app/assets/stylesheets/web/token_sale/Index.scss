@@ -102,6 +102,7 @@
 }
 
 .container-dates{
+  text-align: center;
   margin:40px auto;
   h2.header{
     color: #6ca3a9;
@@ -111,6 +112,51 @@
     font-size: 38px;
     letter-spacing: 1.3px;
     text-align: center;
+  }
+
+  .container-timeline{
+
+    width: 740px;
+    margin: 0 auto;
+    padding: 80px 0;
+    position: relative;
+
+    .progress{
+      height: 10px;
+      background-color: #91c0ad;
+      .progress-bar-completed{
+        background-color: #597a84;
+      }
+    }
+
+    .milestone{
+      position: absolute;
+      top: 40px;
+      width: 150px;
+      height: 100px;
+      text-align: center;
+      .date{
+        font-size: 16px;
+        font-weight: 600;
+        color: #597a84;
+        margin-bottom:5px;
+      }
+      .point{
+        width:30px;
+        height:30px;
+        background: #fff;
+        border: 3px solid #91c0ad;
+        border-radius: 50%;
+        margin: 0 auto 5px auto;
+      }
+      .title{
+        font-size: 13px;
+        font-weight: 600;
+        color: #597a84;
+        margin-bottom:5px;
+      }
+    }
+
   }
 }
 
