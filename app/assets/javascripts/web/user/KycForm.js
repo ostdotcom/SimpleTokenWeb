@@ -7,8 +7,20 @@
 
   homeNs.kyc = oThis = {
 
+      uploadParamsResponse: {},
+
       init: function (config) {
           oThis.bindButtonActions();
+
+          $('#fileupload').fileupload({
+              dataType: 'xml',
+              method: 'POST',
+              autoUpload: false,
+              singleFileUploads: false,
+              done: function (e, data) {
+                console.log(e, data);
+              }
+          });
 
           //var filelist = [];
           //var paramNames = [];
@@ -37,31 +49,81 @@
 
       bindButtonActions: function () {
 
-          $("#verify-modal-btn").on('click', function () {
-              $('#verifyModal').modal({
-                  backdrop: 'static',
-                  keyboard: false
-              });
-              $('#verifyModal').modal('show');
-          });
-
-
           $("#kycSubmit").click(function (event) {
               event.preventDefault();
               oThis.validateForm();
           });
 
+          $('#kycVerify').click(function(){
+             if(
+                 $('#is_correct_information').is(':checked') === true &&
+                 $('#is_participating_token_distribution').is(':checked') === true &&
+                 $('#cannot_participate').is(':checked') === true &&
+                 $('#i_agree_terms_conditions').is(':checked') === true
+             ) {
+                 simpletoken.utils.errorHandling.clearFormErrors();
+                 oThis.submitForm();
+             } else {
+                 $('.error[data-for="verify_error"]').text('Please verify all above mentioned confirmations');
+             }
+          });
+
       },
 
       validateForm: function(){
-          //var v = simpletoken.utils.errorHandling.validationGeneric( $('#kycForm input[type="text"], #kycForm input[type="file"]') );
-          //if(v === true) {
+          var v = simpletoken.utils.errorHandling.validationGeneric( $('#kycForm input[type="text"], #kycForm input[type="file"]') );
+          if(v === true) {
               $('#verifyModal').modal({
                   backdrop: 'static',
                   keyboard: false
               }).modal('show');
-          //}
+          }
       },
+
+      makeFileParams: function(){
+          var fileParams = '';
+
+          $.each( $('#kycForm input[type=file]'), function(key, value){
+
+              var file_type = value.files[0].type;
+              var file_name = value.name;
+
+              if(file_type.substr(0,5) == 'image'){
+                  var file_category = 'images';
+              } else if("application/pdf".substr(-3) == 'pdf'){
+                  var file_category = 'pdfs';
+              }
+
+              fileParams += file_category + '[' + file_name + ']=' + file_type + '&';
+
+          });
+
+          return fileParams;
+      },
+
+      submitForm: function(){
+          $.ajax({
+              url: '/api/user/upload-params/?'+oThis.makeFileParams(),
+              success: function(response){
+                  if(response.success === true){
+                      console.log(response);
+                      oThis.uploadParamsResponse = response.data;
+                      oThis.uploadFiles(oThis.uploadParamsResponse);
+                  }
+              }
+          })
+      },
+
+      uploadFiles: function(data){
+          $.each(data, function(upload_key, upload_value){
+              $('#fileupload').fileupload('send', {
+                  files:[$('#kycForm input[name=passport_file_path]')[0].files[0]],
+                  paramName: ['file'],
+                  url: upload_value.url,
+                  formData: upload_value.fields
+              });
+          });
+      }
 
     //  submit: function () {
     //      var $form = $('#kycForm');
