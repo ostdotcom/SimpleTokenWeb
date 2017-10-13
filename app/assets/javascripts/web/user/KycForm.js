@@ -173,7 +173,7 @@
                 data: $data,
                 success: function (response) {
                     if (response.success == true) {
-                        window.location = '/reserve-token?initTokenSale=1';
+                        window.location = '/reserve-token';
                         return false;
                     } else {
                         $('#verifyModal .close').show();
@@ -200,7 +200,7 @@
     //          success: function (response) {
     //              console.log(response);
     //              if (response.success == true) {
-    //                  window.location = '/reserve-token?initTokenSale=1';
+    //                  window.location = '/reserve-token';
     //                  return false;
     //              } else {
     //                  simpletoken.utils.errorHandling.displayFormErrors(response);

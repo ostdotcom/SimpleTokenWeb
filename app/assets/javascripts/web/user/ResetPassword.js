@@ -20,7 +20,6 @@
 
       },
 
-    //TODO::initTokenSale=1 dynamic for dev
       forgot_password: function () {
           var $form = $('#userPasswordResetForm');
           $.ajax({

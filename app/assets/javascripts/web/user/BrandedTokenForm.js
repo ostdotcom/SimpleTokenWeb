@@ -25,7 +25,6 @@
 
       },
 
-    //TODO::initTokenSale=1 dynamic for dev
       submit: function (skip_name) {
           var $form = $('#userBtForm');
           data = $form.serialize();
@@ -39,7 +38,7 @@
               success: function (response) {
                   console.log(response);
                   if (response.success == true) {
-                      window.location = '/verification-link?initTokenSale=1';
+                      window.location = '/verification-link';
                       return false;
                   } else {
                       alert(response.err.display_text);

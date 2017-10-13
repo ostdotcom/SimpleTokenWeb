@@ -6,7 +6,7 @@ class InitTokenSale
     elsif Rails.env.staging?
       request.host == 'sale.stagingsimpletoken.org'
     else
-      request.query_parameters[:initTokenSale].to_i == 1
+      request.host == 'sale.developmentstagingsimpletoken.org'
     end
   end
 

@@ -23,7 +23,7 @@ class Web::BaseController < ApplicationController
   #
   def check_user_cookie
     if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].blank?
-      redirect_to "/login#{extra_dev_param}", status: GlobalConstant::ErrorCode.permanent_redirect and return
+      redirect_to "/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
     end
   end
 
@@ -35,21 +35,11 @@ class Web::BaseController < ApplicationController
   #
   def render_error_response(service_response)
     if service_response.http_code == GlobalConstant::ErrorCode.unauthorized_access
-      redirect_to "/login#{extra_dev_param}", status: GlobalConstant::ErrorCode.permanent_redirect and return
+      redirect_to "/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
     else
       #GlobalConstant::ErrorCode.internal_server_error
       render_error_response_for(service_response)
     end
-  end
-
-  # Development parameter for urls
-  #
-  # * Author: Aman
-  # * Date: 10/10/2017
-  # * Reviewed By: Sunil Khedar
-  #
-  def extra_dev_param
-    Rails.env.development? ? "?initTokenSale=1" : ""
   end
 
   # Redirect to page if cannot access as per user state
@@ -64,7 +54,7 @@ class Web::BaseController < ApplicationController
     path = GlobalConstant::TokenSaleUserState.get_path_for_page(user_token_sale_state)
     http_status = GlobalConstant::ErrorCode.temporary_redirect
 
-    redirect_to "/#{path}#{extra_dev_param}", status: http_status and return
+    redirect_to "/#{path}", status: http_status and return
 
   end
 

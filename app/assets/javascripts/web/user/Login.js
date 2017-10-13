@@ -20,7 +20,6 @@
 
         },
 
-        //TODO::initTokenSale=1 dynamic for dev
         login: function () {
             var $form = $('#userLoginForm');
             $.ajax({
@@ -32,7 +31,7 @@
                     console.log(response);
                     if (response.success == true) {
                         var path = oThis.get_redirect_path(response.data.user_token_sale_state);
-                        window.location = '/' + path + '?initTokenSale=1';
+                        window.location = '/' + path;
                         return false;
                     } else {
                         alert(response.err.display_text);

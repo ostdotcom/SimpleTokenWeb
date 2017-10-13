@@ -20,7 +20,6 @@
 
       },
 
-    //TODO::initTokenSale=1 dynamic for dev
       change_password: function () {
           var $form = $('#changePasswordForm');
           $.ajax({

@@ -25,7 +25,6 @@
 
       },
 
-      //TODO::initTokenSale=1 dynamic for dev
       signup: function () {
           var $form = $('#userSignUpForm');
           $.ajax({
@@ -36,7 +35,7 @@
               success: function (response) {
                   console.log(response);
                   if (response.success == true) {
-                      window.location = '/update-kyc?initTokenSale=1';
+                      window.location = '/update-kyc';
                       return false;
                   } else {
                     simpletoken.utils.errorHandling.displayFormErrors(response);
