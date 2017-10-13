@@ -56,7 +56,7 @@ module GlobalConstant
       # * Reviewed By: Sunil Khedar
       #
       def cloudfront_domain
-        env_config.fetch('cloudfront', {})[:domain]
+        env_config.fetch('cloudfront', {})['domain']
       end
 
       private
