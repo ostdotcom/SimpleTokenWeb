@@ -1,0 +1,42 @@
+.errorPageContent{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .heading{
+    color: #435353;
+    font-size: 50px;
+    @media (min-width: 768px) {
+      font-size: 60px;
+    }
+    font-weight: 300;
+    letter-spacing: 10px;
+    margin: 30px 0;
+    text-transform: uppercase;
+  }
+  .desc{
+    letter-spacing: 0.4px;
+    color: #435353;
+    font-size: 24px;
+    margin-bottom: 20px;
+    span{
+      font-weight: 500;
+    }
+  }
+  img{
+    margin: 0 auto;
+  }
+  .homeBtn{
+    background-color: #e4b030;
+    display: inline-block;
+    border-radius: 30px;
+    padding: 15px 40px;
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+}

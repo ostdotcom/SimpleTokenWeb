@@ -1,0 +1,36 @@
+<style type="text/css">
+  html,
+  body {
+    height: 100%;
+  }
+  .header{
+    position: relative;
+  }
+  #site-content {
+    background-color: #e6f6f6;
+  }
+  @media (min-width: 737px) {
+    #site-content {
+      min-height: calc(100% - 120px);
+      background-color: #e6f6f6;
+    }
+  }
+
+  @media (min-width: 415px) and (max-width: 736px) {
+    #site-content {
+      background-color: #e6f6f6;
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 414px) {
+    #site-content {
+      min-height: calc(100% - 140px);
+      background-color: #e6f6f6;
+    }
+  }
+</style>
+<div class="errorPageContent">
+  <img src="https://d3attjoi5jlede.cloudfront.net/image/pepo-404-bot-icon.png" width="200"/>
+  <h1>The server encountered an error and could not complete your request.</h1>
+  <a href="/?ref=error.500.return" class="errorPageBackToChatLink" title="Return to Homepage">Return to Homepage</a>
+</div>
