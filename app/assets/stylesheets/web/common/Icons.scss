@@ -118,7 +118,13 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 }
 
 .show-password-eye-icon{
-  @include icon-generator(34px, 22px, -9px, -310px, -49px, -9px, 70);
+  @include icon-generator(34px, 22px, -9px, -310px, -9px, -9px, 80);
+}
+
+.input-group-addon.clicked{
+  .show-password-eye-icon{
+    @include icon-generator(34px, 22px, -49px, -310px, -49px, -49px, 80);
+  }
 }
 
 .telegram-connect-icon{
