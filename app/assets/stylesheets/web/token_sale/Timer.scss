@@ -94,6 +94,14 @@
       line-height: 2;
       font-weight: 600;
       margin: 30px auto 20px auto;
+      position: relative;
+    }
+    .telegram-connect-symbol{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-size: 0;
+      transform: translate(-50%, -50%);
     }
   }
 }

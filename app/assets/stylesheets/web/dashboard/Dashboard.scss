@@ -106,3 +106,23 @@
     padding: 0 15px;
   }
 }
+
+
+.token-header{
+  font-size: 20px;
+  color: #597a84;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 20px 0;
+}
+.token-sale-progress{
+  background-color: #fff;
+  border: solid 1px #6c9ba9;
+  box-shadow: none;
+  height: 50px;
+  .progress-bar{
+    background-color: #a5caca;
+    box-shadow: none;
+  }
+}
