@@ -5,7 +5,7 @@
       utilsNs = ns("simpletoken.utils"),
     oThis;
 
-  homeNs.signup = oThis = {
+  homeNs.reset = oThis = {
 
       init: function (config) {
           oThis.bindButtonActions();
@@ -13,21 +13,16 @@
 
       bindButtonActions: function () {
 
-          $("#userSignUp").click(function (event) {
+          $("#recoverPassword").click(function (event) {
               event.preventDefault();
-              var v = simpletoken.utils.errorHandling.validationGeneric( $('#userSignUpForm input[type="text"], #userSignUpForm input[type="password"]') );
-              if(v === true && $('#userSignUpForm input[name=terms_of_service]').is(':checked') == true) {
-                  oThis.signup();
-              } else {
-                  $('.error[data-for="terms_of_service"]').text('please agree terms and privacy policy');
-              }
+              oThis.forgot_password();
           });
 
       },
 
-      //TODO::initTokenSale=1 dynamic for dev
-      signup: function () {
-          var $form = $('#userSignUpForm');
+    //TODO::initTokenSale=1 dynamic for dev
+      forgot_password: function () {
+          var $form = $('#userPasswordResetForm');
           $.ajax({
               url: $form.attr('action'),
               dataType: 'json',
@@ -36,10 +31,10 @@
               success: function (response) {
                   console.log(response);
                   if (response.success == true) {
-                      window.location = '/update-kyc?initTokenSale=1';
+                      alert("success");
                       return false;
                   } else {
-                    simpletoken.utils.errorHandling.displayFormErrors(response);
+                      alert(response.err.display_text);
                   }
               },
               error: function (jqXHR, exception) {

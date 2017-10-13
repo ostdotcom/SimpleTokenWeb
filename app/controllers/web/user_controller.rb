@@ -2,7 +2,7 @@ class Web::UserController < Web::BaseController
 
   layout "web"
 
-  # before_action :verify_user_info_from_cookie, only: [:sign_up, :login, :branded_token_form, :verification_link]
+  # before_action :already_logged_in, only: [:sign_up, :login]
 
   before_action :set_page_meta_info
 

@@ -27,8 +27,8 @@ module SimpleTokenApi
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def get_info
-        get("user-info")
+      def basic_detail
+        get("basic-detail")
       end
 
     end
