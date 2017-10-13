@@ -70,3 +70,20 @@
     min-width: auto;
   }
 }
+
+.termsConditions{
+  max-width: 350px;
+  margin-bottom: 20px;
+  label {
+    font-size: .92em;
+    color: #9aaaaa;
+    font-weight: 500;
+    text-align: left;
+  }
+  a{
+    color: #597a84;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}

@@ -176,16 +176,6 @@
     min-height: 20px;
   }
 
-  .error-group{
-    display: block;
-    min-height: 20px;
-  }
-
-  .error-inline{
-    display: inline;
-    min-height: 0 ;
-  }
-
 }
 
 
@@ -246,19 +236,27 @@ label.upload-file input[type="file"] {
   vertical-align: middle;
 }
 
-.termsConditions{
-  max-width: 350px;
-  margin-bottom: 20px;
-  label {
-    font-size: .92em;
-    color: #9aaaaa;
-    font-weight: 500;
-    text-align: left;
+
+.st-selectpicker{
+  .bootstrap-select > .dropdown-toggle{
+    height: 100%;
+    border: none;
+    &:focus{
+      outline: none !important;
+    }
   }
-  a{
-    color: #597a84;
+  .open > .dropdown-toggle.btn-default{
+    background-color: transparent;
     &:hover{
-      text-decoration: none;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+  .btn-default{
+    &:hover, &:focus{
+      background-color: transparent;
+      border: none;
     }
   }
 }

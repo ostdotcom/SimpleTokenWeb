@@ -28,7 +28,7 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">first name</label>
-                  <input type="text" class="form-control" name="first_name" value="" tabindex="1"/>
+                  <input type="text" class="form-control" name="first_name" value="" tabindex="1" autofocus=""/>
 
                   <div class="error" data-for="first_name"></div>
                 </div>
@@ -91,9 +91,9 @@
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
+                <div class="form-group st-selectpicker">
                   <label for="">country</label>
-                  <select class="form-control" name="country" tabindex="8">
+                  <select class="form-control selectpicker" data-live-search="true" name="country" tabindex="8">
                   <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
                     <option value="<%= country_name %>"><%= country_name.titleize %></option>
                   <% end %>
@@ -159,9 +159,9 @@
                   <div class="error" data-for="passport_number"></div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group st-selectpicker">
                   <label for="">nationality / passport country</label>
-                  <select class="form-control" name="nationality" tabindex="13">
+                  <select class="form-control selectpicker" data-live-search="true" name="nationality" tabindex="13">
                   <% GlobalConstant::CountryNationality.nationalities.each do |nationality_name| %>
                       <option value="<%= nationality_name %>"><%= nationality_name.titleize %></option>
                   <% end %>
