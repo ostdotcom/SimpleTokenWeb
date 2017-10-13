@@ -45,6 +45,22 @@
               $('#verifyModal').modal('show');
           });
 
+
+          $("#kycSubmit").click(function (event) {
+              event.preventDefault();
+              oThis.validateForm();
+          });
+
+      },
+
+      validateForm: function(){
+          //var v = simpletoken.utils.errorHandling.validationGeneric( $('#kycForm input[type="text"], #kycForm input[type="file"]') );
+          //if(v === true) {
+              $('#verifyModal').modal({
+                  backdrop: 'static',
+                  keyboard: false
+              }).modal('show');
+          //}
       },
 
     //  submit: function () {

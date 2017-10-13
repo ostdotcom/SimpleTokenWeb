@@ -7,7 +7,6 @@
       <div class="modal-content">
         <div class="modal-body">
           <div class="heading text-center">Verify Information</div>
-          <form class="simpletoken-form">
             <div class="form-group">
               <div class="checkbox">
                 <input type="checkbox" value="" id="is_correct_information" name="is_correct_information" >
@@ -33,10 +32,8 @@
                   I agree to Terms and Condition.
                 </label>
               </div>
-              <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-              <button class="btn-common btn-gold verify-btn" title="VERIFY">VERIFY</button>
+              <button class="btn-common btn-gold verify-btn" title="Verify">Verify</button>
             </div>
-          </form>
         </div>
       </div>
     </div>
