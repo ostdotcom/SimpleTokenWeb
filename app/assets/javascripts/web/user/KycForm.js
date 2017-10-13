@@ -18,7 +18,11 @@
               autoUpload: false,
               singleFileUploads: false,
               done: function (e, data) {
-                console.log(e, data);
+                  $.each(oThis.uploadParamsResponse, function(upload_key, upload_value){
+                      if(upload_value.fields.key == data.formData.key){
+                          oThis.uploadParamsResponse[upload_key].status = data.jqXHR.status;
+                      }
+                  });
               }
           });
 
