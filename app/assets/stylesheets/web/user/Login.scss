@@ -69,6 +69,16 @@
     display: block;
     min-width: auto;
   }
+  .error{
+    text-align: center;
+    font-weight: 300
+  }
+  .loader-content{
+    min-height: 50px;
+    .status{
+      font-weight: 600;
+    }
+  }
 }
 
 .termsConditions{
