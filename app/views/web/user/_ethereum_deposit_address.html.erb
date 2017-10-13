@@ -4,8 +4,10 @@
       <div class="text-center">
         <h1 class="header">Ethereum Deposit Address</h1>
         <fieldset class="ethereum-deposit-address">
-          <input id="shorten_url" name="" type="text" class="copy-address-input" placeholder="Ethereum Deposit Address" value="" autocomplete="off" autocorrect="off" autocapitalize="off" autofocus="">
-          <input id="shorten_btn" type="submit" class="btn-gold copy-address-button" value="COPY" data-toggle="tooltip" data-placement="top" data-trigger="manual">
+
+          <input type="text" id="visible-input" class="copy-address-input" placeholder="Ethereum Deposit Address" value="" autofocus/>
+          <input type="button" id="visible-button" class="btn-gold copy-address-button" value="Copy">
+
         </fieldset>
       </div>
       <div class="instructions text-center">
@@ -15,3 +17,13 @@
     </div>
   </div>
 </div>
+
+
+<% content_for :end_js do %>
+  <script type="text/javascript">
+    $("#visible-button").on('click', function() {
+      document.querySelector("#visible-input").select();
+      document.execCommand('copy');
+    });
+  </script>
+<% end %>
