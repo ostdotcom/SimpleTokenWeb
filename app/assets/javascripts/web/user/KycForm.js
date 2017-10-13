@@ -9,33 +9,11 @@
 
       uploadParamsResponse: {},
       uploadCount: 0,
+      isChinese: false,
+      formNames: ['passport_file_path','selfie_file_path'],
 
       init: function (config) {
           oThis.bindButtonActions();
-
-          //var filelist = [];
-          //var paramNames = [];
-          //
-          //$('#kycForm').fileupload({
-          //    dataType: 'json',
-          //    url: $('#kycForm').attr('action'),
-          //    method: $('#kycForm').attr('method'),
-          //    autoUpload: false,
-          //    singleFileUploads: false,
-          //    add: function (e, data) {
-          //        for(var i = 0; i < data.files.length; i++){
-          //            filelist.push(data.files[i])
-          //            paramNames.push(e.delegatedEvent.target.name);
-          //        }
-          //    }
-          //});
-          //
-          //$('#kycSubmit').click(function(e){
-          //    e.preventDefault();
-          //    console.log(filelist, paramNames);
-          //    //return;
-          //    $('#kycForm').fileupload('send', {files:filelist, paramName: paramNames});
-          //})
       },
 
       bindButtonActions: function () {
@@ -64,6 +42,23 @@
               },
           });
 
+          $('select[name="nationality"]').on('changed.bs.select', function (e) {
+              if($(this).val() == 'CHINESE'){
+                  oThis.isChinese = true;
+                  $('.residence-proof').show();
+                  oThis.formNames.push('residence_proof_file_path');
+              } else {
+                  oThis.isChinese = false;
+                  $('.residence-proof').hide();
+                  if(oThis.formNames.length == 3) {oThis.formNames.pop()}
+              }
+              console.log(oThis.formNames);
+          });
+
+          $('#kycForm input[type="file"]').change(function(){
+              $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop());
+          });
+
           $("#kycSubmit").click(function (event) {
               event.preventDefault();
               oThis.validateForm();
@@ -86,7 +81,13 @@
       },
 
       validateForm: function(){
-          var v = simpletoken.utils.errorHandling.validationGeneric( $('#kycForm input[type="text"], #kycForm input[type="file"]') );
+          var validate_selectors = [
+              '#kycForm input[type="text"][name]'
+          ];
+          oThis.formNames.forEach(function(value){
+              validate_selectors.push('#kycForm input[name="'+value+'"]');
+          });
+          var v = simpletoken.utils.errorHandling.validationGeneric( $(validate_selectors.join(',')) );
           if(v === true) {
               $('#verifyModal').modal({
                   backdrop: 'static',
@@ -97,8 +98,13 @@
 
       makeFileParams: function(){
           var fileParams = '';
+          var formSelectors = [];
 
-          $.each( $('#kycForm input[type=file]'), function(key, value){
+          oThis.formNames.forEach(function(value){
+              formSelectors.push('#kycForm input[name="'+value+'"]');
+          });
+
+          $.each( $(formSelectors.join(',')), function(key, value){
 
               var file_type = value.files[0].type;
               var file_name = value.name;
@@ -128,7 +134,6 @@
               url: '/api/user/upload-params/?'+oThis.makeFileParams(),
               success: function(response){
                   if(response.success === true){
-                      console.log(response);
                       oThis.uploadParamsResponse = response.data;
                       oThis.uploadFiles(oThis.uploadParamsResponse);
                   }
@@ -188,30 +193,6 @@
                 }
             });
       },
-
-    //  submit: function () {
-    //      var $form = $('#kycForm');
-    //      simpletoken.utils.errorHandling.clearFormErrors();
-    //      $.ajax({
-    //          url: $form.attr('action'),
-    //          dataType: 'json',
-    //          method: $form.attr('method'),
-    //          data: $form.serialize(),
-    //          success: function (response) {
-    //              console.log(response);
-    //              if (response.success == true) {
-    //                  window.location = '/reserve-token';
-    //                  return false;
-    //              } else {
-    //                  simpletoken.utils.errorHandling.displayFormErrors(response);
-    //                  alert(response.err.display_text);
-    //              }
-    //          },
-    //          error: function (jqXHR, exception) {
-    //              alert(utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
-    //          }
-    //      });
-    //  },
 
   };
 
