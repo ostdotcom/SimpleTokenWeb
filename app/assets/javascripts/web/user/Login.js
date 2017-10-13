@@ -7,7 +7,10 @@
 
     homeNs.login = oThis = {
 
+        api_token_sale_state_page_names: null,
+
         init: function (config) {
+            oThis.api_token_sale_state_page_names = config.api_token_sale_state_page_names;
             oThis.bindButtonActions();
         },
 
@@ -15,9 +18,9 @@
 
             $("#userLogin").click(function (event) {
                 event.preventDefault();
-                var v = utilsNs.errorHandling.validationGeneric( $('#userLoginForm input[type="text"], #userLoginForm input[type="password"]') );
-                if(v === true ) {
-                  oThis.login();
+                var v = utilsNs.errorHandling.validationGeneric($('#userLoginForm input[type="text"], #userLoginForm input[type="password"]'));
+                if (v === true) {
+                    oThis.login();
                 }
             });
 
@@ -37,7 +40,7 @@
                         window.location = '/' + path;
                         return false;
                     } else {
-                      utilsNs.errorHandling.displayFormErrors(response);
+                        utilsNs.errorHandling.displayFormErrors(response);
                     }
                 },
                 error: function (jqXHR, exception) {
@@ -49,30 +52,17 @@
         get_redirect_path: function (user_token_sale_state) {
             var path = '';
 
-            switch (user_token_sale_state) {
-                case 'profile_page':
-                    path = "dashboard";
-                    break;
-                case 'verification_page':
-                    path = "verification-link";
-                    break;
-                case 'bt_page':
-                    path = "reserve-token";
-                    break;
-                case 'kyc_page':
-                    path = "update-kyc";
-                    break;
-                default:
-                    alert("Invalid user token sale state");
+            var data = oThis.api_token_sale_state_page_names[user_token_sale_state];
+
+            if (typeof(data) == 'undefined'){
+                alert("Invalid user token sale state");
+                return '';
             }
-
-            return path;
-
+            return data.p;
         }
-    };
 
-    $(document).ready(function () {
-        oThis.init({i18n: {}});
-    });
 
-})(window);
+
+};
+
+})(window, jQuery);
