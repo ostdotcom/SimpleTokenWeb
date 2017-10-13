@@ -38,12 +38,15 @@
       bindButtonActions: function () {
 
           $("#verify-modal-btn").on('click', function () {
-            $('#verifyModal').modal('show').css('overflow-y', 'hidden');
+              $('#verifyModal').modal({
+                  backdrop: 'static',
+                  keyboard: false
+              });
+              $('#verifyModal').modal('show');
           });
 
       },
 
-    //TODO::initTokenSale=1 dynamic for dev
     //  submit: function () {
     //      var $form = $('#kycForm');
     //      simpletoken.utils.errorHandling.clearFormErrors();
