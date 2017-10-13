@@ -172,7 +172,6 @@
 
         if(currentPartNum == 1 && newPartNum == 4){
           oThis.architectureAnim(1.5);
-          oThis.architectureAnim(3);
           oThis.architectureAnim(3.5);
           oThis.architectureAnim(4);
         }
