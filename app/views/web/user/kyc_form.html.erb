@@ -21,13 +21,15 @@
       <div class="simple-token-form">
         <form class="simpletoken-form" action="/api/user/kyc-submit" enctype="multipart/form-data" method="POST" id="kycForm">
           <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-            <h1 class="text-center form-header" style="margin-bottom: 30px">Complete the Registration by Submitting Your KYC & Reserver Your Token Name</h1>
+            <h1 class="text-center form-header" style="margin-bottom: 30px">Complete the Registration by Submitting Your
+              KYC & Reserver Your Token Name</h1>
 
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">first name</label>
                   <input type="text" class="form-control" name="first_name" value="" tabindex="1"/>
+
                   <div class="error" data-for="first_name"></div>
                 </div>
               </div>
@@ -35,6 +37,7 @@
                 <div class="form-group">
                   <label for="">last name</label>
                   <input type="text" class="form-control" name="last_name" value="" tabindex="2"/>
+
                   <div class="error" data-for="last_name"></div>
                 </div>
               </div>
@@ -44,7 +47,8 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">birth date</label>
-                  <input type="text" class="form-control" name="birthdate" value="" tabindex="3" />
+                  <input type="text" class="form-control" name="birthdate" value="" tabindex="3"/>
+
                   <div class="error" data-for="birthdate"></div>
                 </div>
               </div>
@@ -52,6 +56,7 @@
                 <div class="form-group">
                   <label for="">email</label>
                   <input type="text" class="form-control" name="email" value="thahir.punewala@gmail.com" tabindex="4" disabled/>
+
                   <div class="error"></div>
                 </div>
               </div>
@@ -61,14 +66,16 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">street address</label>
-                  <input type="text" class="form-control" name="street_address" value="" tabindex="5" />
+                  <input type="text" class="form-control" name="street_address" value="" tabindex="5"/>
+
                   <div class="error" data-for="street_address"></div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">city</label>
-                  <input type="text" class="form-control" name="city" value="" tabindex="6" />
+                  <input type="text" class="form-control" name="city" value="" tabindex="6"/>
+
                   <div class="error" data-for="city"></div>
                 </div>
               </div>
@@ -78,14 +85,19 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">state / region</label>
-                  <input type="text" class="form-control" name="state" value="" tabindex="7" />
+                  <input type="text" class="form-control" name="state" value="" tabindex="7"/>
+
                   <div class="error" data-for="state"></div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">country</label>
-                  <input type="text" class="form-control" name="country" value="" tabindex="8" />
+                  <select class="form-control" name="country" tabindex="8">
+                  <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
+                    <option value="<%= country_name %>"><%= country_name.titleize %></option>
+                  <% end %>
+                  </select>
                   <div class="error" data-for="country"></div>
                 </div>
               </div>
@@ -95,7 +107,8 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">zip / postal code</label>
-                  <input type="text" class="form-control" name="postal_code" value="" tabindex="9" />
+                  <input type="text" class="form-control" name="postal_code" value="" tabindex="9"/>
+
                   <div class="error" data-for="postal_code"></div>
                 </div>
               </div>
@@ -105,13 +118,15 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">ethereum address</label>
-                  <input type="text" class="form-control" name="ethereum_address" value="" tabindex="10" />
+                  <input type="text" class="form-control" name="ethereum_address" value="" tabindex="10"/>
+
                   <div class="error" data-for="ethereum_address"></div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-instructions">
-                  You will be able to participate in this Token Sale <br/>only by using this specific address. Learn more <br/>about <a href="" title="Wallet Set Up Guide">Wallet Set Up Guide</a>
+                  You will be able to participate in this Token Sale <br/>only by using this specific address. Learn
+                  more <br/>about <a href="" title="Wallet Set Up Guide">Wallet Set Up Guide</a>
                 </div>
               </div>
             </div>
@@ -120,13 +135,15 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                   <label for="">estimated participation amount ($)</label>
-                  <input type="text" class="form-control" name="estimated_participation_amount" value="" tabindex="11" />
+                  <input type="text" class="form-control" name="estimated_participation_amount" value="" tabindex="11"/>
+
                   <div class="error" data-for="estimated_participation_amount"></div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-instructions">
-                  Estimated amount in USD that you would like to <br/>invest in. For more details please check the <br/> <a href="" title="Registration Guide">Registration Guide</a>
+                  Estimated amount in USD that you would like to <br/>invest in. For more details please check the <br/>
+                  <a href="" title="Registration Guide">Registration Guide</a>
                 </div>
               </div>
             </div>
@@ -137,14 +154,20 @@
 
                 <div class="form-group">
                   <label for="">passport number</label>
-                  <input type="text" class="form-control" name="passport_number" value="" tabindex="12" />
+                  <input type="text" class="form-control" name="passport_number" value="" tabindex="12"/>
+
                   <div class="error" data-for="passport_number"></div>
                 </div>
 
                 <div class="form-group">
-                  <label for="">passport country</label>
-                  <input type="text" class="form-control" name="passport_country" value="" tabindex="13" />
-                  <div class="error" data-for="passport_country"></div>
+                  <label for="">nationality / passport country</label>
+                  <select class="form-control" name="nationality" tabindex="13">
+                  <% GlobalConstant::CountryNationality.nationalities.each do |nationality_name| %>
+                      <option value="<%= nationality_name %>"><%= nationality_name.titleize %></option>
+                  <% end %>
+                  </select>
+
+                  <div class="error" data-for="nationality"></div>
                 </div>
 
               </div>
@@ -155,15 +178,16 @@
 
                 <div class="form-group">
                   <label for="">passport scan</label>
+
                   <div>
                     <label class="upload-file btn-common btn-grey upload-image-btn">
-                      <input type="file" name="passport_file" class="upload btn btn-orange" accept="image/*" tabindex="14" />
+                      <input type="file" name="passport_file_path" class="upload btn btn-orange" accept="image/*" tabindex="14"/>
                       <span>Upload</span>
                     </label>
                     <!--<a href="" class="btn-common btn-grey upload-image" title="image" tabindex="15"><span class="upload-image-icon"></span></a>-->
                     <span class="form-instructions thumbnail-upload-instructions">Please upload a high quality <br/>image. Image size: Min 400kb <br/>Formats : JPG / PNG / PDF</span>
                   </div>
-                  <div class="error" data-for="passport_file"></div>
+                  <div class="error" data-for="passport_file_path"></div>
                 </div>
               </div>
             </div>
@@ -172,28 +196,47 @@
               <div class="col-xs-12 col-sm-12">
                 <div class="form-group">
                   <label for="">upload a selfie with your passport</label>
-                  <div style="padding: 0 0 10px 0">
-                    <img src="" width="105" height="105"/>
-                  </div>
                   <div>
                     <label class="upload-file btn-common btn-grey upload-image-btn">
-                      <input type="file" name="selfie_file" class="upload btn btn-orange" accept="image/*" tabindex="16">
+                      <input type="file" name="selfie_file_path" class="upload btn btn-orange" accept="image/*" tabindex="16">
                       <span>Upload</span>
                     </label>
                     <!--<a href="" class="btn-common btn-grey upload-image" title="image" tabindex="17"><span class="upload-image-icon"></span></a>-->
                     <span class="form-instructions thumbnail-upload-instructions">Please upload a high quality <br/>image. Image size: Min 400kb <br/>Formats : JPG / PNG / PDF</span>
                   </div>
-                  <div class="error" data-for="selfie_file"></div>
-                </div>
-
-                <div class="form-group">
-                  <div>
-                    <a href="javascript:void(0)" id="verify-modal-btn" class="btn-common btn-gold upload-image-btn" title="Modal" tabindex="18">Modal</a>
-                    <button id="kycSubmit" class="btn-common btn-gold upload-image-btn" title="submit" type="submit" tabindex="19">submit</button>
-                  </div>
+                  <div class="error" data-for="selfie_file_path"></div>
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12">
+                <div class="form-group">
+                  <label for="">passport scan</label>
+                  <div>
+                    <label class="upload-file btn-common btn-grey upload-image-btn">
+                      <input type="file" name="passport_file_path" class="upload btn btn-orange" accept="image/*" tabindex="14"/>
+                      <span>Upload</span>
+                    </label>
+                    <!--<a href="" class="btn-common btn-grey upload-image" title="image" tabindex="15"><span class="upload-image-icon"></span></a>-->
+                    <span class="form-instructions thumbnail-upload-instructions">Please upload a high quality <br/>image. Image size: Min 400kb <br/>Formats : JPG / PNG / PDF</span>
+                  </div>
+                  <div class="error" data-for="passport_file_path"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12">
+                  <div class="form-group">
+                    <div>
+                      <a href="javascript:void(0)" id="verify-modal-btn" class="btn-common btn-gold upload-image-btn" title="Modal" tabindex="18">Modal</a>
+                      <button id="kycSubmit" class="btn-common btn-gold upload-image-btn" title="submit" type="submit" tabindex="19">submit</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
           </div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
         </form>
