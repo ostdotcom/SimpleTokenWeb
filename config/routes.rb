@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   scope 'admin/', controller: 'admin/home' do
-    get '/' => :login
+    get '/login' => :login
     get '/authentication' => :authentication
     get '/dashboard' => :dashboard
   end

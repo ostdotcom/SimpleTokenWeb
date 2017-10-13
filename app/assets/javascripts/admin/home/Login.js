@@ -30,7 +30,7 @@
         success: function (response) {
           console.log(response);
           if (response.success == true) {
-            window.location = '/admin/authentication/';
+            window.location = '/admin/authentication';
             return false;
           } else {
             alert(response.err.display_text);

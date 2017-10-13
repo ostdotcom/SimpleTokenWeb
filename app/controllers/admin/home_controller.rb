@@ -1,6 +1,9 @@
 class Admin::HomeController < Admin::BaseController
   layout "admin"
 
+  before_action :delete_admin_cookie, only: [:login]
+  before_action :check_admin_cookie, except: [:login]
+
   before_action :set_page_meta_info
 
   # Admin login

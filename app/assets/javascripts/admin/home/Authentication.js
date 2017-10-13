@@ -29,7 +29,7 @@
         data: $form.serialize(),
         success: function (response) {
           if (response.success == true) {
-            window.location = '/admin/dashboard/';
+            window.location = '/admin/dashboard';
             return false;
           } else {
             alert(response.err.display_text);
