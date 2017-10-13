@@ -2,7 +2,8 @@
 (function (window) {
 
   var homeNs = ns("simpletokenadmin.home"),
-    utilsNs = ns("simpletokenadmin.utils"),
+    adminUtilsNs = ns("simpletokenadmin.utils"),
+    utilsNs = ns("simpletoken.utils"),
     oThis;
 
   homeNs.login = oThis = {
@@ -15,7 +16,10 @@
 
       $("#adminLogin").click(function (event) {
         event.preventDefault();
-        oThis.onSubscribe();
+        var v = utilsNs.errorHandling.validationGeneric( $('#adminLoginForm input[type="text"], #adminLoginForm input[type="password"]') );
+        if(v === true ) {
+          oThis.onSubscribe();
+        }
       });
 
     },
@@ -33,11 +37,11 @@
             window.location = '/admin/authentication';
             return false;
           } else {
-            alert(response.err.display_text);
+            utilsNs.errorHandling.displayFormErrors(response);
           }
         },
         error: function (jqXHR, exception) {
-          alert(utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+          alert(adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
         }
       });
     }

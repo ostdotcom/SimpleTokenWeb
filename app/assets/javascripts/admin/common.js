@@ -2,3 +2,4 @@
 //= require plugins/bootstrap/bootstrap
 //= require web/common/SimpleTokenNamespace
 //= require admin/common/ErrorHandling
+//= require web/common/ErrorHandling

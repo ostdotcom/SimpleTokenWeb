@@ -64,10 +64,11 @@
 
             if($(field).attr('type') === 'password' && $(field).val().trim().length < 8){
 
+                var field_name = $(field).closest('.form-group').find('label').text();
                 var field_key = $(field).attr('name');
 
                 $(field).addClass('border-error');
-                $('.error[data-for="'+field_key+'"]').text('should be minimum 8 characters');
+                $('.error[data-for="'+field_key+'"]').text(field_name +' should be minimum 8 characters');
 
                 error_count++;
             }

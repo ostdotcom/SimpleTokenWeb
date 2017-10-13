@@ -241,6 +241,9 @@ label.upload-file input[type="file"] {
   .bootstrap-select > .dropdown-toggle{
     height: 100%;
     border: none;
+    color: #435353;
+    font-weight: 300;
+    font-size: 16px;
     &:focus{
       outline: none !important;
     }

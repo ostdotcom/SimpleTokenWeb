@@ -15,7 +15,7 @@
 
           $("#userSignUp").click(function (event) {
               event.preventDefault();
-              var v = simpletoken.utils.errorHandling.validationGeneric( $('#userSignUpForm input[type="text"], #userSignUpForm input[type="password"]') );
+              var v = utilsNs.errorHandling.validationGeneric( $('#userSignUpForm input[type="text"], #userSignUpForm input[type="password"]') );
               if(v === true && $('#userSignUpForm input[name=terms_of_service]').is(':checked') == true) {
                   oThis.signup();
               } else {
@@ -38,7 +38,7 @@
                       window.location = '/update-kyc';
                       return false;
                   } else {
-                    simpletoken.utils.errorHandling.displayFormErrors(response);
+                    utilsNs.errorHandling.displayFormErrors(response);
                   }
               },
               error: function (jqXHR, exception) {

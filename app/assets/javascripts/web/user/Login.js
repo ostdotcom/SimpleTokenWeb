@@ -15,7 +15,10 @@
 
             $("#userLogin").click(function (event) {
                 event.preventDefault();
-                oThis.login();
+                var v = utilsNs.errorHandling.validationGeneric( $('#userLoginForm input[type="text"], #userLoginForm input[type="password"]') );
+                if(v === true ) {
+                  oThis.login();
+                }
             });
 
         },
@@ -34,7 +37,7 @@
                         window.location = '/' + path;
                         return false;
                     } else {
-                        alert(response.err.display_text);
+                      utilsNs.errorHandling.displayFormErrors(response);
                     }
                 },
                 error: function (jqXHR, exception) {
