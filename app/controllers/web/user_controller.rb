@@ -79,13 +79,4 @@ class Web::UserController < Web::BaseController
   def dashboard_home
   end
 
-  # Branded token form
-  #
-  # * Author: Tahir
-  # * Date: 13/10/2017
-  # * Reviewed By: Sunil Khedar
-  #
-  def ethereum_deposit_address
-  end
-
 end

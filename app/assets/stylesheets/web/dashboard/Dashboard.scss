@@ -1,11 +1,11 @@
+.header{
+  color: #6ca3a9;
+  font-size: 24px;
+  font-weight: 300;
+  margin: 25px 0 0;
+}
 .dashboard-page{
   max-width: 400px;
-  .header{
-    color: #6ca3a9;
-    font-size: 24px;
-    font-weight: 300;
-    margin: 25px 0 0;
-  }
   .status-msg{
     color: #597a84;
     font-weight: 500;
@@ -34,6 +34,26 @@
   }
 }
 
+.instructions{
+  color: #597a84;
+  font-weight: 300;
+  padding: 20px 0 30px;
+  .font500{
+    font-weight: 500;
+  }
+  a{
+    font-size: 14px;
+    font-weight: 500;
+    color: #597a84;
+    display: inline-block;
+    margin-top: 10px;
+    border-bottom: 1px solid #597a84;
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+}
+
 .have-question{
   padding: 40px 0;
   .question-txt{
@@ -52,5 +72,37 @@
     &:hover, &:focus{
       text-decoration: none;
     }
+  }
+}
+
+
+.ethereum-deposit-address{
+  border: 0;
+  padding: 0;
+  margin-top: 20px;
+  position: relative;
+  .copy-address-input{
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    color: #435353;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px #fff;
+    -webkit-appearance: none;
+    border: solid 1px #cdd7da;
+    padding: 15px 18px;
+    font-weight: 300;
+  }
+
+  .copy-address-button {
+    border-radius: 0 3px 3px 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50px;
+    border: none;
+    padding: 0 15px;
   }
 }
