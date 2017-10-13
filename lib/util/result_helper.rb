@@ -2,12 +2,11 @@ module Util
 
   module ResultHelper
 
-
     # Success
     #
     # * Author: Aman
     # * Date: 12/10/2017
-    # * Reviewed By:
+    # * Reviewed By: Sunil
     #
     # @return [Result::Base] returns an object of Result::Base class
     #
@@ -62,7 +61,7 @@ module Util
     #
     # * Author: Aman
     # * Date: 12/10/2017
-    # * Reviewed By:
+    # * Reviewed By: Sunil
     #
     # @param [String] code (mandatory) - error code
     # @param [String] msg (mandatory) - error message
@@ -89,7 +88,7 @@ module Util
     #
     # * Author: Aman
     # * Date: 12/10/2017
-    # * Reviewed By:
+    # * Reviewed By: Sunil
     #
     # @param [Exception] e (mandatory) - Exception object
     # @param [String] code (mandatory) - error code

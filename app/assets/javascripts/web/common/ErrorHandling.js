@@ -11,6 +11,8 @@
         msg = 'Requested page not found.';
       } else if (jqXHR.status == 500) {
         msg = 'Internal Server Error.';
+      } else if (jqXHR.status == 401) {
+          window.location = '/login';
       } else if (exception === 'parsererror') {
         msg = 'Requested JSON parse failed.';
       } else if (exception === 'timeout') {

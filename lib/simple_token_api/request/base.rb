@@ -11,7 +11,7 @@ module SimpleTokenApi
       #
       # * Author: Aman
       # * Date: 12/10/2017
-      # * Reviewed By:
+      # * Reviewed By: Sunil
       #
       # @param [Hash] cookies (optional) - cookies that need to be sent to API
       # @param [Hash] headers (optional) - headers that need to be sent to API
@@ -32,16 +32,16 @@ module SimpleTokenApi
       #
       # * Author: Aman
       # * Date: 12/10/2017
-      # * Reviewed By:
+      # * Reviewed By: Sunil
       #
       # @param [String] api_route (mandatory) - API route
       # @param [Hash] url_params_hash (optional) - API params
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def get(api_route)
+      def get(api_route, url_params_hash = {})
         @request_class = Net::HTTP::Get
-        set_api_url(api_route)
+        set_api_url(api_route, url_params_hash)
         send
       end
 
@@ -51,12 +51,24 @@ module SimpleTokenApi
       #
       # * Author: Aman
       # * Date: 12/10/2017
-      # * Reviewed By:
+      # * Reviewed By: Sunil
       #
       # @return [String] returns API URL
       #
-      def set_api_url(api_route)
-        @api_url = base_url + @service_base_route.to_s + api_route
+      def set_api_url(api_route, url_params_hash)
+        @api_url = base_url + @service_base_route.to_s + api_route + generate_api_parameters(url_params_hash)
+      end
+
+      # Generate API parameters
+      #
+      # * Author: Aman
+      # * Date: 18/04/2017
+      # * Reviewed By: Sunil
+      #
+      # @return [String] returns API Parameters
+      #
+      def generate_api_parameters(url_params_hash)
+        url_params_hash.present? ? ('?' + url_params_hash.to_query) : ''
       end
 
       # Base Simple Token API URL
@@ -71,36 +83,11 @@ module SimpleTokenApi
         "#{GlobalConstant::Base.api_root_url}/api/"
       end
 
-      # Get HTTP Request Object
-      #
-      # * Author: Aman
-      # * Date: 12/10/2017
-      # * Reviewed By:
-      #
-      # @param [String] request_uri (mandatory) - API route
-      #
-      # @return [Net::HTTP::Get or Net::HTTP::POST] return request object with headers and cookies
-      #
-      def get_request_obj(request_uri)
-        req_obj = @request_class.new(request_uri)
-
-        # Forward cookies
-        req_obj['Cookie'] = @cookies.map { |k, v| "#{k}=#{CGI.escape v.to_s}" }.join('; ') if @cookies.present?
-
-
-        # Forward headers
-        @headers.each do |h, v|
-          req_obj[h] = v
-        end if @headers.present?
-
-        req_obj
-      end
-
       # make API Request
       #
       # * Author: Aman
       # * Date: 12/10/2017
-      # * Reviewed By:
+      # * Reviewed By: Sunil
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
@@ -130,57 +117,36 @@ module SimpleTokenApi
 
       end
 
-      # Parse API response
+      # Get HTTP Request Object
       #
       # * Author: Aman
       # * Date: 12/10/2017
-      # * Reviewed By:
+      # * Reviewed By: Sunil
       #
-      # @return [Result::Base] returns an object of Result::Base class
+      # @param [String] request_uri (mandatory) - API route
       #
-      def parse_api_response(http_response)
-        response_data = Oj.load(http_response.body, mode: :strict) rescue {} #, {symbol_keys: true}
+      # @return [Net::HTTP::Get or Net::HTTP::POST] return request object with headers and cookies
+      #
+      def get_request_obj(request_uri)
+        req_obj = @request_class.new(request_uri)
 
-        case http_response.class.name
-          when 'Net::HTTPOK'
-            if response_data['success']
-              # Success
-              success_result(response_data['data'])
-             elsif response_data['err']['action'] == 'permanent_redirect_required'
-              # 301
-              Rails.logger.info("=*=Simple-Token-API-ERROR=*= #{response_data.inspect}")
-              error_with_internal_code('simple_token_api_redirect', 'simple token api redirect', GlobalConstant::ErrorCode.permanent_redirect, response_data['data'], response_data['err']['display_text'])
-            else
-              # API Error
-              Rails.logger.info("=*=Simple-Token-API-ERROR=*= #{response_data.inspect}")
-              error_with_internal_code('simple_token_api_error', 'simple token api error', GlobalConstant::ErrorCode.internal_server_error, {}, response_data['err']['display_text'])
-            end
-          else
-            # HTTP error status code (500, 504...)
-            exception_with_internal_code(Exception.new("Simple Token API STATUS CODE #{http_response.code.to_i}"), 'simple_token_api_exception', 'simple_token api exception', GlobalConstant::ErrorCode.internal_server_error, debug_data)
-        end
-      end
+        # Forward cookies
+        req_obj['Cookie'] = @cookies.map { |k, v| "#{k}=#{CGI.escape v.to_s}" }.join('; ') if @cookies.present?
 
-      # Debug data for exception emails
-      #
-      # * Author: Aman
-      # * Date: 12/10/2017
-      # * Reviewed By:
-      #
-      # @return [Hash] returns an hash of critical information for debugging
-      #
-      def debug_data
-        {
-          headers: @headers,
-          api_url: @api_url
-        }
+
+        # Forward headers
+        @headers.each do |h, v|
+          req_obj[h] = v
+        end if @headers.present?
+
+        req_obj
       end
 
       # Handle API set cookies
       #
       # * Author: Aman
       # * Date: 12/10/2017
-      # * Reviewed By:
+      # * Reviewed By: Sunil
       #
       # @param [HTTP response object] http_response (mandatory) - API response object
       #
@@ -214,7 +180,52 @@ module SimpleTokenApi
         end
 
         @cookies[GlobalConstant::Cookie.new_api_cookie_key.to_sym] = new_api_cookies
+      end
 
+      # Parse API response
+      #
+      # * Author: Aman
+      # * Date: 12/10/2017
+      # * Reviewed By: Sunil
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def parse_api_response(http_response)
+        response_data = Oj.load(http_response.body, mode: :strict) rescue {}
+
+        case http_response.class.name
+          when 'Net::HTTPOK'
+            if response_data['success']
+              # Success
+              success_result(response_data['data'])
+            else
+              # API Error
+              Rails.logger.info("=*=Simple-Token-API-ERROR=*= #{response_data.inspect}")
+              error_with_internal_code('simple_token_api_error', 'simple token api error', GlobalConstant::ErrorCode.internal_server_error, {}, response_data['err']['display_text'])
+            end
+          when "Net::HTTPUnauthorized"
+            # 401
+            Rails.logger.info("=*=Simple-Token-API-ERROR=*= #{response_data.inspect}")
+            error_with_internal_code('simple_token_api_redirect', 'simple token api redirect', GlobalConstant::ErrorCode.unauthorized_access, response_data['data'], response_data['err']['display_text'])
+          else
+            # HTTP error status code (500, 504...)
+            exception_with_internal_code(Exception.new("Simple Token API STATUS CODE #{http_response.code.to_i}"), 'simple_token_api_exception', 'simple_token api exception', GlobalConstant::ErrorCode.internal_server_error, debug_data)
+        end
+      end
+
+      # Debug data for exception emails
+      #
+      # * Author: Aman
+      # * Date: 12/10/2017
+      # * Reviewed By: Sunil
+      #
+      # @return [Hash] returns an hash of critical information for debugging
+      #
+      def debug_data
+        {
+          headers: @headers,
+          api_url: @api_url
+        }
       end
 
     end

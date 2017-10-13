@@ -6,7 +6,7 @@ module SimpleTokenApi
       #
       # * Author: Aman
       # * Date: 12/10/2017
-      # * Reviewed By:
+      # * Reviewed By: Sunil
       #
       # @param [Hash] cookies (optional) - cookies that need to be sent to API
       # @param [Hash] headers (optional) - headers that need to be sent to API

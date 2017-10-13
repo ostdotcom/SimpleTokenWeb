@@ -2,7 +2,7 @@
 (function (window) {
 
   var homeNs = ns("simpletokenadmin.home"),
-    utilsNs = ns("simpletoken.utils"),
+    utilsNs = ns("simpletokenadmin.utils"),
     oThis;
 
   homeNs.login = oThis = {

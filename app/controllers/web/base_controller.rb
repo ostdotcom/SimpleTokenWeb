@@ -1,44 +1,71 @@
 class Web::BaseController < ApplicationController
 
 
-  # Redirect to page based on user state
+  private
+
+  # Delete user cookies
   #
   # * Author: Aman
-  # * Date: 12/10/2017
+  # * Date: 13/10/2017
   # * Reviewed By:
-  #TODO:: REVISIT
-  # def already_logged_in
   #
-  #   return if request.cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].blank?
   #
-  #   service_response = SimpleTokenApi::Request::User.new(request.cookies, {"HTTP_USER_AGENT" => request.env['HTTP_USER_AGENT']}).basic_detail
+  def delete_user_cookie
+    return if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].blank?
+    cookies.delete(GlobalConstant::Cookie.user_cookie_name.to_sym, domain: :all)
+  end
+
+  # redirect to login page if cookie not present
   #
-  #   if service_response.success?
-  #     token_sale_state = service_response.data["user"]["token_sale_state"]
+  # * Author: Aman
+  # * Date: 13/10/2017
+  # * Reviewed By: Sunil
   #
-  #     redirect_path = case token_sale_state
-  #                       when 'profile_page'
-  #                         "profile"
-  #                       when 'do_double_opt_in_page'
-  #                         "verification-link"
-  #                       when 'bt_page'
-  #                         "reserve-token"
-  #                       when 'kyc_page'
-  #                         "update-kyc"
-  #                       else
-  #                         nil
-  #                     end
+  def check_user_cookie
+    if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].blank?
+      redirect_to "/login#{extra_dev_param}", status: GlobalConstant::ErrorCode.permanent_redirect and return
+    end
+  end
+
+  # Render error response pages
   #
-  #     extra_param = "?initTokenSale=1" if Rails.env.development?
-  #     redirect_to "/#{redirect_path}#{extra_param}", status: GlobalConstant::ErrorCode.temporary_redirect and return if redirect_path.present?
-  #   else
-  #     # redirect_to "/login#{extra_param}", status: GlobalConstant::ErrorCode.temporary_redirect
-  #     cookies.delete(GlobalConstant::Cookie.user_cookie_name.to_sym, domain: :all)
-  #   end
+  # * Author: Aman
+  # * Date: 13/10/2017
+  # * Reviewed By: Sunil
   #
-  #   return
+  def render_error_response(service_response)
+    if service_response.http_code == GlobalConstant::ErrorCode.unauthorized_access
+      redirect_to "/login#{extra_dev_param}", status: GlobalConstant::ErrorCode.permanent_redirect and return
+    else
+      #GlobalConstant::ErrorCode.internal_server_error
+      render_error_response_for(service_response)
+    end
+  end
+
+  # Development parameter for urls
   #
-  # end
+  # * Author: Aman
+  # * Date: 10/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def extra_dev_param
+    Rails.env.development? ? "?initTokenSale=1" : ""
+  end
+
+  # Redirect to page if cannot access as per user state
+  #
+  # * Author: Aman
+  # * Date: 10/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def redirect_if_step_not_reachable(user_token_sale_state, allowed_states)
+    return if allowed_states.include?(user_token_sale_state)
+
+    path = GlobalConstant::TokenSaleUserState.get_path_for_page(user_token_sale_state)
+    http_status = GlobalConstant::ErrorCode.temporary_redirect
+
+    redirect_to "/#{path}#{extra_dev_param}", status: http_status and return
+
+  end
 
 end
-

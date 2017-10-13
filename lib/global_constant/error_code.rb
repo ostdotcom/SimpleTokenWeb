@@ -17,7 +17,7 @@ module GlobalConstant
         302
       end
 
-      def login_required
+      def unauthorized_access
         401
       end
 
