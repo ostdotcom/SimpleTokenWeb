@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get '/authentication' => :authentication
     get '/dashboard' => :dashboard
     get '/get-kyc-dashboard' => :get_kyc_dashboard
-    get '/get-kyc-details' => :get_kyc_details
+    get '/get-kyc-details' => :kyc_details
   end
 
   match '*permalink', to: 'application#not_found', via: :all

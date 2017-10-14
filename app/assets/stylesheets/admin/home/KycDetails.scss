@@ -1,0 +1,107 @@
+body{
+  background-color: #f9fafa;
+}
+#kyc-case-details{
+
+  max-width: 1440px;
+
+  .kyc-case-detail-header {
+    font-size: 38px;
+    font-weight: 300px;
+    color: #6ca3a9;
+  }
+
+  .case-status-box, .case-detail-box {
+    background-color: #fff;
+    padding: 15px 25px;
+    border-radius: 7.5px;
+    box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.02);
+    margin-top: 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .case-status-box.first {
+    margin-left: -15px;
+    margin-right: -10px;
+  }
+  .case-status-box.middle {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .case-status-box.last {
+    margin-left: -10px;
+    margin-right: -15px;
+  }
+
+  .status-label, .status-value{
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.4px;
+    text-align: left;
+    color: #4f595d;
+    display: inline-block;
+  }
+  .status-value{
+    font-weight: 500;
+  }
+
+  .status-icon{
+    width: 5px;
+    height: 25px;
+    border-radius: 2.5px;
+    background-color: #e4b030;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 5px;
+  }
+
+  .bigRedDot, .bigGreenDot{
+    width: 10px;
+    height: 10px;
+    opacity: 0.9;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 13px;
+  }
+  .bigRedDot {
+    background-color: #e7003b;
+  }
+  .bigGreenDot {
+    background-color: #a7d646;
+  }
+
+  .case-detail-box {
+    padding: 20px 35px;
+
+    .case-detail-col1, .case-detail-col2, .case-detail-col3, .case-detail-col4{
+      display: inline-block;
+      min-width: 24%;
+    }
+
+    .case-detail-col2 {
+      border-right: solid 10px #f3f6f6;
+      margin-right: 30px;
+    }
+
+    .detail-label, .detail-value {
+      display: block;
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.1px;
+      text-align: left;
+      color: #4f595d;
+    }
+    .detail-label{
+      margin-top: 20px;
+    }
+    .detail-value {
+      font-weight: 600;
+    }
+    .margin-top-0{
+      margin-top: 0;
+    }
+
+  }
+
+}

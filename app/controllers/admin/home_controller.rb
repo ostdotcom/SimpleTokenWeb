@@ -32,7 +32,7 @@ class Admin::HomeController < Admin::BaseController
   #
   def dashboard
     @statuses = {cynopsis_status: 'cleared', admin_status: 'un_processed'}
-    @sort_by = 'newest'
+    @sort_order = 'newest'
   end
 
   # Admin dashboard
@@ -63,6 +63,9 @@ class Admin::HomeController < Admin::BaseController
         ]
     }
 
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent})
+                           .dashboard_detail(params)
+
     render :json => response and return
 
   end
@@ -73,9 +76,12 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def get_kyc_details
+  def kyc_details
 
-    params[:user_case_id]
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent})
+                           .get_kyc_details(params)
+    #binding.pry
+    service_response.data
 
   end
 

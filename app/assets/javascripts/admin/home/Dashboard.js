@@ -106,16 +106,14 @@
                 oThis.oTable.ajax.reload(null, true);
             });
 
-            $("#sort-by").on('change', function () {
-                oThis.sortings.sort_by = $(this).val();
+            $("#sort-order").on('change', function () {
+                oThis.sortings.sort_order = $(this).val();
                 oThis.oTable.ajax.reload(null, true);
 
             });
 
             oThis.$dataTable.on('click', 'tbody tr', function () {
-                console.log(oThis.oTable.ajax.url());
-                console.log(oThis.oTable.row(this).data().user_case_id);
-                //window.location = '/admin/get-kyc-details/?case_id='+oThis.oTable.row(this).data().user_case_id + oThis.filter
+                window.location = '/admin/get-kyc-details/?case_id='+oThis.oTable.row(this).data().user_case_id;
             });
         }
 
