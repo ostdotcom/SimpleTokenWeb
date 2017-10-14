@@ -72,7 +72,7 @@ module Util
     #
     # @return [Result::Base] returns an object of Result::Base class
     #
-    def error_with_internal_code(code, msg, internal_code, data = {}, error_display_text= '')
+    def error_with_internal_code(code, msg, internal_code, data = {}, error_data = {}, error_display_text= '')
 
       Result::Base.error(
           {
@@ -80,7 +80,8 @@ module Util
               error_message: msg,
               error_display_text: error_display_text || msg,
               data: data,
-              http_code: internal_code
+              http_code: internal_code,
+              error_data: error_data
           })
     end
 

@@ -48,13 +48,13 @@ class Web::BaseController < ApplicationController
   # * Date: 10/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def redirect_if_step_not_reachable(user_token_sale_state, allowed_states)
+  def redirect_if_step_not_reachable(user_token_sale_state, allowed_states, extra_url_query_parameter = '')
     return if allowed_states.include?(user_token_sale_state)
 
     path = GlobalConstant::TokenSaleUserState.get_path_for_page(user_token_sale_state)
     http_status = GlobalConstant::ErrorCode.temporary_redirect
 
-    redirect_to "/#{path}", status: http_status and return
+    redirect_to "/#{path}#{extra_url_query_parameter}", status: http_status and return
 
   end
 

@@ -57,6 +57,34 @@ module GlobalConstant
 
       ### Token sale state related pages ####
 
+      ### Token sale user kyc status  ####
+
+      def kyc_status_pending
+        "pending"
+      end
+
+      def kyc_status_approved
+        "approved"
+      end
+
+      def kyc_status_denied
+        "denied"
+      end
+
+      ### Token sale user kyc status  ####
+
+      ### Token sale user participation phase type  ####
+
+      def pre_sale_participation_phase
+        "pre_sale"
+      end
+
+      def pre_phase_two_participation_phase
+        "pre_phase_two"
+      end
+
+      ### Token sale user kyc status  ####
+
 
     end
 

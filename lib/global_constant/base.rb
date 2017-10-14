@@ -19,6 +19,10 @@ module GlobalConstant
         @simple_token_api ||= env_config['simple_token_api']
       end
 
+      def st_token_sale
+        @st_token_sale ||= env_config['st_token_sale']
+      end
+
       # Root URL
       #
       # * Author: Kedar

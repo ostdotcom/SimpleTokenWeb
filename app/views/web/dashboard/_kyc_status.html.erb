@@ -1,0 +1,30 @@
+<div class="container-fluid dashboard-page">
+  <div class="row">
+
+    <div class="col-xs-12">
+      <div class="text-center">
+
+        <div class="status-msg">Status
+          : <%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed please update your information to participate in the sale.' : 'KYC Submitted' %></div>
+
+        <div class="panel panel-default kyc-panel <%= @presenter_obj.is_kyc_denied? ? 'error': 'default' %>">
+          <div class="panel-body">
+            <span class="pull-left"><%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed' : @presenter_obj.is_kyc_approved? ? 'KYC Verified' : 'KYC Verification' %></span>
+            <% unless @presenter_obj.is_kyc_approved? %>
+            <a href="" class="pull-right">UPDATE INFO</a>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="panel panel-default kyc-panel default">
+          <div class="panel-body">
+            <span class="pull-left">Reserve Token Name</span>
+            <a href="" class="pull-right">CHANGE NAME</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

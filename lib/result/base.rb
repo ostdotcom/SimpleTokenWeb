@@ -5,6 +5,7 @@ module Result
     attr_accessor :error,
                   :error_display_text,
                   :error_display_heading,
+                  :error_data,
                   :data,
                   :exception,
                   :http_code
@@ -46,6 +47,7 @@ module Result
     def set_error(params)
       @error = params[:error] if params.key?(:error)
       @error_display_text = params[:error_display_text] if params.key?(:error_display_text)
+      @error_data = params[:error_data] if params.key?(:error_data)
       @error_display_heading = params[:error_display_heading] if params.key?(:error_display_heading)
     end
 
@@ -116,6 +118,7 @@ module Result
     def errors_present?
       @error.present? ||
           @error_display_text.present? ||
+          @error_data.present? ||
           @error_display_heading.present? ||
           @exception.present?
     end
@@ -191,7 +194,7 @@ module Result
     #
     def self.send_notification_mail(e, params)
       ApplicationMailer.notify(
-          body: {exception: {message: e.message, backtrace: e.backtrace}},
+          body: {exception: {message: e.message, backtrace: e.backtrace, error_data: @error_data}},
           data: params,
           subject: "#{params[:error]} : #{params[:error_display_text]}"
       ).deliver
@@ -209,6 +212,7 @@ module Result
       @n_err ||= {
           error: nil,
           error_display_text: nil,
+          error_data: nil,
           error_display_heading: nil
       }
     end
@@ -237,6 +241,7 @@ module Result
       [
           :error,
           :error_display_text,
+          :error_data,
           :error_display_heading
       ]
     end
@@ -289,7 +294,8 @@ module Result
             err: {
                 code: hash[:error],
                 display_text: hash[:error_display_text] || 'Something went wrong.',
-                display_heading: hash[:error_display_heading] || 'Error.'
+                display_heading: hash[:error_display_heading] || 'Error.',
+                error_data: hash[:error_data] || {}
             },
             data: hash[:data] || {}
         }

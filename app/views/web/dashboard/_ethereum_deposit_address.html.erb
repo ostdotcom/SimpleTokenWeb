@@ -1,0 +1,32 @@
+<% if @presenter_obj.can_purchase? %>
+<div class="container-fluid dashboard-page">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="text-center">
+        <h1 class="header">Ethereum Deposit Address</h1>
+        <fieldset class="ethereum-deposit-address">
+
+          <input type="text" id="visible-input" class="copy-address-input" placeholder="Ethereum Deposit Address" value="<%= @presenter_obj.ethereum_address %>" autofocus/>
+          <input type="button" id="visible-button" class="btn-gold copy-address-button" value="Copy">
+
+        </fieldset>
+      </div>
+      <div class="instructions text-center">
+        Participation is only open for <span class="font500">for all registered users</span> Have questions please check the documentation below
+        <a href="">Token Sale Guide</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :end_js do %>
+  <script type="text/javascript">
+    $("#visible-button").on('click', function() {
+      document.querySelector("#visible-input").select();
+      document.execCommand('copy');
+    });
+  </script>
+<% end %>
+
+<% end %>

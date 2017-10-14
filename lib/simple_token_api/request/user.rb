@@ -31,6 +31,19 @@ module SimpleTokenApi
         get("basic-detail")
       end
 
+      # Get User profile page info
+      #
+      # * Author: Aman
+      # * Date: 13/10/2017
+      # * Reviewed By:
+      #
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def profile_detail
+        get("profile")
+      end
+
     end
   end
 end

@@ -52,7 +52,7 @@ class Web::UserController < Web::BaseController
   #
   def kyc_form
 
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent }).basic_detail
+    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent}).basic_detail
 
     # Check if error present or not?
     unless service_response.success?
@@ -81,7 +81,7 @@ class Web::UserController < Web::BaseController
     end
 
     @user = service_response.data["user"]
-    redirect_if_step_not_reachable(@user["user_token_sale_state"],GlobalConstant::TokenSaleUserState.bt_page_allowed_states)
+    redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.bt_page_allowed_states)
   end
 
   # Branded token form
@@ -110,16 +110,24 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def dashboard_home
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent}).basic_detail
+    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent}).profile_detail
 
     # Check if error present or not?
     unless service_response.success?
-      render_error_response(service_response)
+      error_data = service_response.error_data || {}
+      user_token_sale_state = error_data['user_token_sale_state']
+
+      if user_token_sale_state.present? && user_token_sale_state != GlobalConstant::TokenSaleUserState.profile_page
+        extra_param = params[:t].present? ? "?e_t=1" : ""
+        redirect_if_step_not_reachable(user_token_sale_state, GlobalConstant::TokenSaleUserState.profile_page_allowed_states, extra_param)
+      else
+        render_error_response(service_response)
+      end
+
       return
     end
 
-    @user = service_response.data["user"]
-    redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
+    @presenter_obj = ::Presenters::Web::User::Profile.new(service_response, params)
 
   end
 
