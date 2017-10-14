@@ -26,7 +26,7 @@
                 method: 'GET',
                 success: function (response) {
                     if (response.success == true) {
-                        alert(response.message);
+                        alert(response);
                         return false;
                     } else {
                       utilsNs.errorHandling.displayFormErrors(response);

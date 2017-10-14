@@ -128,7 +128,15 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 }
 
 .telegram-connect-icon{
-  @include icon-generator(98px, 98px, -298px, -232px, -414px, -414px, 50);
+  @include icon-generator(98px, 98px, -298px, -232px, -298px, -298px, 50);
+}
+
+.telegram-link{
+  &:hover{
+    .telegram-connect-icon{
+      @include icon-generator(98px, 98px, -414px, -232px, -414px, -414px, 50);
+    }
+  }
 }
 
 .kyc-status-icon-approved{

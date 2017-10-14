@@ -81,7 +81,7 @@
     line-height: 1.5;
     text-align: center;
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 500px;
 
     .telegram-connect{
       min-width: 300px;
@@ -102,6 +102,11 @@
       top: 50%;
       font-size: 0;
       transform: translate(-50%, -50%);
+    }
+  }
+  .telegram-link{
+    &:hover, &:focus{
+      text-decoration: none;
     }
   }
 }
