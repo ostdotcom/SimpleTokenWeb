@@ -15,7 +15,10 @@
 
           $("#resetBtn").click(function (event) {
               event.preventDefault();
-              oThis.change_password();
+              var v = utilsNs.errorHandling.validationGeneric($('#changePasswordForm input[type="text"]'));
+              if (v === true) {
+                oThis.change_password();
+              }
           });
 
       },
