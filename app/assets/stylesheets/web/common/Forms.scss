@@ -103,6 +103,13 @@
       width: 30px;
       padding: 12px 0;
     }
+    .minimum-characters{
+      font-size: 12px;
+      letter-spacing: 0.4px;
+      color: #597a84;
+      margin-top: 6px;
+      font-weight: 300;
+    }
   }
 
   .form-instructions{
@@ -150,7 +157,7 @@
       background: #f2f2f2;
       float: left;
       width: 19%;
-      margin: 8px 1% 4px 0;
+      margin: 8px 1% 0 0;
     }
     .zxcvbn-0 {
       background-color: #e7003b;
