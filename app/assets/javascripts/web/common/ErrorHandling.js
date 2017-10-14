@@ -22,7 +22,8 @@
       } else {
         msg = 'Uncaught Error. ' + jqXHR.responseText;
       }
-      return msg;
+      $('.error[data-for="general_error"]').text(msg);
+
     },
 
     displayFormErrors: function(response){
@@ -84,5 +85,12 @@
     }
 
   };
+
+  $(document).ready(function () {
+    $("#visible-button").on('click', function() {
+      document.querySelector("#visible-input").select();
+      document.execCommand('copy');
+    });
+  });
 
 })(window);

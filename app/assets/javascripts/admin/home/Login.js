@@ -41,7 +41,7 @@
           }
         },
         error: function (jqXHR, exception) {
-          alert(adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+          adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
         }
       });
     }

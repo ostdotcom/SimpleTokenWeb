@@ -185,14 +185,14 @@
                         $('#verifyModal .verify-content').show();
                         $('#verifyModal .loader-content').hide();
                         $('#verifyModal').modal('hide');
-                        simpletoken.utils.errorHandling.displayFormErrors(response);
+                        utilsNs.errorHandling.displayFormErrors(response);
                     }
                 },
                 error: function (jqXHR, exception) {
-                    alert(utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+                  utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
                 }
             });
-      },
+      }
 
   };
 

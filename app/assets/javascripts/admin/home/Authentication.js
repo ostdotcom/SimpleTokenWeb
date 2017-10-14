@@ -2,7 +2,8 @@
 (function (window) {
 
   var homeNs = ns("simpletokenadmin.home"),
-    utilsNs = ns("simpletokenadmin.utils"),
+    adminUtilsNs = ns("simpletokenadmin.utils"),
+    utilsNs = ns("simpletoken.utils"),
     oThis;
 
   homeNs.authentication = oThis = {
@@ -15,7 +16,10 @@
 
       $("#adminAuthentication").click(function (event) {
         event.preventDefault();
-        oThis.onSubscribe();
+        var v = utilsNs.errorHandling.validationGeneric($('#adminAuthForm input[type="text"]'));
+        if (v === true) {
+          oThis.onSubscribe();
+        }
       });
 
     },
@@ -32,11 +36,11 @@
             window.location = '/admin/dashboard';
             return false;
           } else {
-            alert(response.err.display_text);
+            utilsNs.errorHandling.displayFormErrors(response);
           }
         },
         error: function (jqXHR, exception) {
-          alert(utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+          adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
         }
       });
     }

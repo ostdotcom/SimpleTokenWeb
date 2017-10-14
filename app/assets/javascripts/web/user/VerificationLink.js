@@ -29,11 +29,11 @@
                         alert(response.message);
                         return false;
                     } else {
-                        alert(response.err.display_text);
+                      utilsNs.errorHandling.displayFormErrors(response);
                     }
                 },
                 error: function (jqXHR, exception) {
-                    alert(utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+                  utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
                 }
             });
         }

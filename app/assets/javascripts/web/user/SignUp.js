@@ -42,7 +42,7 @@
                   }
               },
               error: function (jqXHR, exception) {
-                  alert(utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+                utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
               }
           });
       }

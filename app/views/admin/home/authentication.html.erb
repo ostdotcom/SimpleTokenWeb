@@ -11,13 +11,14 @@
         <div class="form-sub-header">Please enter an MFA code to complete sign-in.</div>
         <form class="user-form" method="POST" action="/api/admin/mfa" id="adminAuthForm">
           <div class="form-group">
-            <label for="email">mfa code:</label>
+            <label for="email">mfa code</label>
             <input type="text" name="otp" id="otp" value="" class="form-control" autofocus tabindex="1">
-            <span id="err_email" class="error"></span>
+            <div class="error" data-for="otp"></div>
           </div>
           <div class="form-group user-form-footer">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <button type="submit" class="btn btn-gold form-btn-gold" id="adminAuthentication" tabindex="2" title="Submit">Submit</button>
+            <div class="error" data-for="general_error"></div>
             <a href="" title="Cancel" tabindex="3" style="margin-top: 20px;display: inline-block;font-weight: 500;font-size: 16px;">Cancel</a>
           </div>
         </form>
