@@ -5,19 +5,16 @@
       <div class="text-center">
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
       </div>
-      <div class="stepwizard">
-        <div class="stepwizard-row setup-panel">
-          <div class="stepwizard-step">
-            <a href="#step-1" type="button" class="btn btn-circle selected">1</a>
-          </div>
-          <div class="stepwizard-step">
-            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-          </div>
-          <div class="stepwizard-step">
-            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-          </div>
-        </div>
-      </div>
+      <%=
+          render partial: '/shared/web/common/steps',
+                 locals: {
+                         classes: {
+                            step_2: 'active',
+                            step_3: 'incomplete',
+                            connector_2: 'incomplete'
+                         }
+                 }
+      %>
       <div class="simple-token-form">
         <form class="simpletoken-form" action="/api/user/kyc-submit" method="POST" id="kycForm">
           <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
