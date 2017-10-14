@@ -93,6 +93,16 @@
     .border-error{
       border-color: red;
     }
+    .showhide-addon{
+      position: absolute;
+      right: 5px;
+      top: 0;
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+      width: 30px;
+      padding: 12px 0;
+    }
   }
 
   .form-instructions{
