@@ -4,7 +4,7 @@ class Admin::HomeController < Admin::BaseController
   before_action :delete_admin_cookie, only: [:login]
   before_action :check_admin_cookie, except: [:login]
 
-  before_action :set_page_meta_info
+  before_action :set_page_meta_info, :except => [:get_kyc_dashboard]
 
   # Admin login
   #
@@ -31,7 +31,52 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def dashboard
+    @statuses = {cynopsis_status: 'cleared', admin_status: 'un_processed'}
+    @sort_by = 'newest'
   end
 
+  # Admin dashboard
+  #
+  # * Author: Aman
+  # * Date: 09/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def get_kyc_dashboard
+
+    response = {
+        recordsTotal:57,
+        recordsFiltered:43,
+        data: [
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: true, re_submitted: true, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: true, re_submitted: false, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: false, re_submitted: true, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: true, re_submitted: true, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: true, re_submitted: false, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: false, re_submitted: true, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: false, re_submitted: true, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: false, re_submitted: true, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: true, re_submitted: false, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: true, re_submitted: true, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: true, re_submitted: true, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: false, re_submitted: false, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123},
+            {date_time: '12/08/2017 14:32', status: 'Pending', duplicate: true, re_submitted: true, name: 'Some one', country: 'India', passport_no: 'aslkjf234987askjn', nationality: 'Indian', admin: 'Frankie', user_case_id: 123}
+        ]
+    }
+
+    render :json => response and return
+
+  end
+
+  # Admin dashboard
+  #
+  # * Author: Aman
+  # * Date: 09/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def get_kyc_details
+
+    params[:user_case_id]
+
+  end
 
 end

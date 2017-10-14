@@ -1,1 +1,113 @@
-Hello
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" media="all"/>
+
+<%
+  kyc_table_config = {
+      ajax: {
+          url: "/admin/get-kyc-dashboard",
+          type: "GET"
+      },
+      bSort: false,
+      bFilter: true,
+      bLengthChange: false,
+      processing: true,
+      searching: false,
+      serverSide: true,
+      stateSave: false,
+      language: {
+          sInfo: "_START_ - _END_ of _TOTAL_ entries",
+          paginate: {
+              next: "<span> Nxt-icon </span>",
+              previous: "<span> Pv-icon </span>"
+          }
+      },
+      columns: []
+  }
+
+  cynopsis_status = @statuses[:cynopsis_status]
+  admin_status = @statuses[:admin_status]
+  sort_by = @sort_by
+
+  filters = {cynopsis_status: cynopsis_status, admin_status: admin_status}
+  sortings = {sort_by: sort_by}
+%>
+
+<div class="raw">
+  <div id="kyc-dashboard-container" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div style="margin:20px;">
+          <div class="row">
+            <div class="col-sm-12">
+
+              <span class="kyc-check-dashboard">
+                KYC check Dashboard
+              </span>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+
+              <div class="kyc-filter-label">CYNOPSIS STATUS</div>
+              <form class="form-inline">
+                <select id="cynopsis-status" class="form-control selectpicker sort-filter-selecter" style="width: 100%;">
+                  <option value="cleared" <%= 'selected' if cynopsis_status=='cleared' %> > Cleared</option>
+                  <option value="pending" <%= 'selected' if cynopsis_status=='pending' %> > Pending</option>
+                  <option value="approved" <%= 'selected' if cynopsis_status=='approved' %> > Approved</option>
+                  <option value="rejected" <%= 'selected' if cynopsis_status=='rejected' %> > Rejected</option>
+                </select>
+              </form>
+
+            </div>
+
+            <div class="col-sm-2">
+
+              <div class="kyc-filter-label">ADMIN STATUS</div>
+              <form class="form-inline">
+                <select id="admin-status" class="form-control selectpicker" style="width: 100%;">
+                  <option value="un_processed" <%= 'selected' if admin_status=='un_processed' %> > Unprocessed</option>
+                  <option value="qualified" <%= 'selected' if admin_status=='qualified' %> > Qualified</option>
+                  <option value="denied" <%= 'selected' if admin_status=='denied' %> > Denied</option>
+                  <option value="whitelisted" <%= 'selected' if admin_status=='whitelisted' %> > Whitelisted</option>
+                </select>
+              </form>
+
+            </div>
+            <div class="col-sm-2">
+
+              <div class="kyc-filter-label">SORT BY</div>
+              <form class="form-inline">
+                <select id="sort-by" class="form-control selectpicker" style="width: 100%;">
+                  <option value="inc" <%= 'selected' if admin_status=='inc' %> > Oldest</option>
+                  <option value="desc" <%= 'selected' if admin_status=='desc' %> > Newest</option>
+                </select>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <table id="kycCheckDashboard" class="custom-table-grid table display" cellspacing="0" width="100%">
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<% content_for :javascript do %>
+    <script text="text/javascript">
+        $(document).ready(function () {
+            simpletokenadmin.home.dashboard.init({
+                kyc_table_config: <%= raw kyc_table_config.to_json %>,
+                filters: <%= raw filters.to_json %>,
+                sortings: <%= raw sortings.to_json %>
+            });
+        });
+    </script>
+<% end %>
