@@ -30,7 +30,7 @@ module Presenters
         end
 
         def bt_name
-          user['user']
+          user['bt_name']
         end
 
         def email

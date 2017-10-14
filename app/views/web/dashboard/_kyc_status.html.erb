@@ -7,18 +7,24 @@
         <div class="status-msg">Status
           : <%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed please update your information to participate in the sale.' : 'KYC Submitted' %></div>
 
-        <div class="panel panel-default kyc-panel <%= @presenter_obj.is_kyc_denied? ? 'error': 'default' %>">
+        <div class="panel panel-default kyc-panel <%= @presenter_obj.is_kyc_denied? ? 'denied' : 'approved' %>">
           <div class="panel-body">
-            <span class="pull-left"><%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed' : @presenter_obj.is_kyc_approved? ? 'KYC Verified' : 'KYC Verification' %></span>
+            <span class="pull-left">
+              <span class="kyc-status-icon-<%= @presenter_obj.user_kyc_data['kyc_status'] %> ver-middle"></span>
+                <span><%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed' : @presenter_obj.is_kyc_approved? ? 'KYC Verified' : 'KYC Verification' %></span>
+            </span>
             <% unless @presenter_obj.is_kyc_approved? %>
-            <a href="" class="pull-right">UPDATE INFO</a>
+                <a href="" class="pull-right">UPDATE INFO</a>
             <% end %>
           </div>
         </div>
 
-        <div class="panel panel-default kyc-panel default">
+        <div class="panel panel-default kyc-panel approved">
           <div class="panel-body">
-            <span class="pull-left">Reserve Token Name</span>
+            <span class="pull-left">
+                <span class="kyc-status-icon-approved ver-middle"></span>
+              <span class="ver-middle">Reserve Token Name</span>
+            </span>
             <a href="" class="pull-right">CHANGE NAME</a>
           </div>
         </div>
