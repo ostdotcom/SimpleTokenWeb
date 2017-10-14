@@ -64,6 +64,9 @@
         color: #ccd4d4;
         font-style: italic;
       }
+      &:focus{
+        border-color: #7f9183;
+      }
     }
 
     > label{
@@ -91,7 +94,7 @@
       }
     }
     .border-error{
-      border-color: red;
+      border-color: red !important;
     }
     .showhide-addon{
       position: absolute;
