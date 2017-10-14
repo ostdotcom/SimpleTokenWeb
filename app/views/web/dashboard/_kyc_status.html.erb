@@ -4,16 +4,16 @@
     <div class="col-xs-12">
       <div class="text-center">
 
-
-
         <div class="panel panel-default kyc-panel <%= @presenter_obj.is_kyc_denied? ? 'denied' : 'approved' %>">
           <div class="panel-body">
             <span class="pull-left">
               <span class="kyc-status-icon-<%= @presenter_obj.user_kyc_data['kyc_status'] %> ver-middle"></span>
-                <span><%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed' : @presenter_obj.is_kyc_approved? ? 'KYC Verified' : 'KYC Verification' %></span>
+              <span><%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed' : @presenter_obj.is_kyc_approved? ? 'KYC Verified' : 'KYC Verification' %></span>
             </span>
             <% unless @presenter_obj.is_kyc_approved? %>
-                <a href="" class="pull-right">UPDATE INFO</a>
+                <span class="pull-right">
+                  <a href="" class="pull-right">UPDATE INFO</a>
+                </span>
             <% end %>
           </div>
         </div>
@@ -24,7 +24,9 @@
                 <span class="kyc-status-icon-approved ver-middle"></span>
               <span class="ver-middle">Reserve Token Name</span>
             </span>
-            <a href="" class="pull-right">CHANGE NAME</a>
+            <span class="pull-right">
+              <a href="" class="pull-right">CHANGE NAME</a>
+            </span>
           </div>
         </div>
 

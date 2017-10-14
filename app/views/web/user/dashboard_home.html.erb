@@ -1,33 +1,33 @@
 <%= "Double opt in done" if @presenter_obj.is_token_present? %>
 <%= render :partial => "/shared/web/common/loggedin_header" %>
 <div class="text-center">
-  <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
+<img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
 </div>
 
 <% if @presenter_obj.has_sale_ended? %>
-    <%= render :partial => "/web/dashboard/token_sale_ends" %>
-    <%= render :partial => "/web/dashboard/token_sale_progress" %>
-    <%= render :partial => "/web/token_sale/telegram" %>
-    <%= render :partial => "/shared/web/common/footer" %>
+  <%= render :partial => "/web/dashboard/token_sale_ends" %>
+  <%= render :partial => "/web/dashboard/token_sale_ended" %>
+  <%= render :partial => "/web/token_sale/telegram" %>
 <% elsif @presenter_obj.has_sale_paused? %>
-    <%= render :partial => "/web/dashboard/token_sale_pause" %>
-    <%= render :partial => "/web/token_sale/telegram" %>
+  <%= render :partial => "/web/dashboard/token_sale_pause" %>
+  <%= render :partial => "/web/token_sale/telegram" %>
+  <div style="margin: 50px 0">
     <%= render :partial => "/web/dashboard/token_sale_progress" %>
-    <%= render :partial => "/shared/web/common/footer" %>
+  </div>
 <% elsif @presenter_obj.is_sale_ongoing? %>
-    <%= render :partial => "/web/dashboard/ethereum_deposit_address" %>
-    <%= render :partial => "/web/dashboard/token_sale_progress" %>
-    <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 30px auto;display: block;"/>
-    <%= render :partial => "/web/dashboard/kyc_status" %>
-    <%= render :partial => "/web/token_sale/telegram" %>
-    <%= render :partial => "/shared/web/common/footer" %>
+  <%= render :partial => "/web/dashboard/ethereum_deposit_address" %>
+  <%= render :partial => "/web/dashboard/token_sale_progress" %>
+  <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 30px auto;display: block;"/>
+  <%= render :partial => "/web/dashboard/kyc_status" %>
+  <%= render :partial => "/web/token_sale/telegram" %>
 <% else %>
-    <h1 class="header text-center">This is Your Account Dashboard</h1>
-    <div class="status-msg">Status
-      : <%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed please update your information to participate in the sale.' : 'KYC Submitted' %></div>
-    <%= render :partial => "/web/dashboard/kyc_status" %>
-    <%= render :partial => "/web/dashboard/sale_open_timer" %>
-    <%= render :partial => "/web/dashboard/question_on_sale" %>
-    <%= render :partial => "/web/token_sale/telegram" %>
-    <%= render :partial => "/shared/web/common/footer" %>
+  <h1 class="header text-center">This is Your Account Dashboard</h1>
+  <div class="kyc-status-msg text-center">
+    Status: <%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed please update your information to participate in the sale.' : 'KYC Submitted' %>
+  </div>
+  <%= render :partial => "/web/dashboard/kyc_status" %>
+  <%= render :partial => "/web/dashboard/sale_open_timer" %>
+  <%= render :partial => "/web/dashboard/question_on_sale" %>
+  <%= render :partial => "/web/token_sale/telegram" %>
 <% end %>
+<%= render :partial => "/shared/web/common/footer" %>

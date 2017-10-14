@@ -3,17 +3,25 @@
   font-size: 24px;
   font-weight: 300;
   margin: 25px 0 0;
+  line-height: 30px;
+}
+.kyc-status-msg{
+  color: #597a84;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 10px 0 25px;
+}
+.pause-status{
+  color: #597a84;
+  font-weight: 300;
+  margin-top: 20px;
 }
 .dashboard-page{
-  max-width: 400px;
-  .status-msg{
-    color: #597a84;
-    font-weight: 500;
-    letter-spacing: 1px;
-    padding: 15px 0 25px;
+  @media (min-width: 768px) {
+    width: 450px;
   }
   .registration-timer{
-    padding: 10px 40px;
+    padding: 10px 30px;
   }
   .kyc-panel{
     color: #597a84;
@@ -36,6 +44,12 @@
     .ver-middle{
       vertical-align: middle;
     }
+  }
+  .progress-stats{
+    font-weight: 500;
+    color: #597a84;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
   }
 }
 
@@ -114,12 +128,13 @@
 
 
 .token-header{
-  font-size: 20px;
+  font-size: 18px;
   color: #597a84;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 20px 0;
+  letter-spacing: 0.4px;
 }
 .token-sale-progress{
   background-color: #fff;
