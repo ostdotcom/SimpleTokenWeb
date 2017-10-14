@@ -132,11 +132,11 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 }
 
 .kyc-status-icon-approved{
-  @include icon-generator(60px, 60px, -8px, -379px, -8px, -8px, 50);
+  @include icon-generator(60px, 60px, -8px, -379px, -8px, -8px, 40);
 }
 .kyc-status-icon-update{
-  @include icon-generator(60px, 60px, -8px, -448px, -8px, -8px, 50);
+  @include icon-generator(60px, 60px, -8px, -448px, -8px, -8px, 40);
 }
 .kyc-status-icon-denied{
-  @include icon-generator(60px, 60px, -8px, -518px, -8px, -8px, 50);
+  @include icon-generator(60px, 60px, -8px, -518px, -8px, -8px, 40);
 }

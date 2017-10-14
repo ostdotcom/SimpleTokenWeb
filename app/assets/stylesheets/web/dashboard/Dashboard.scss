@@ -16,11 +16,13 @@
     padding: 10px 40px;
   }
   .kyc-panel{
-    &.default{
+    color: #597a84;
+    font-weight: 300;
+    &.approved{
       background-color: #fbfdfd;
       border: solid 1px #6c9ba9;
     }
-    &.error{
+    &.denied{
       background-color: rgba(231, 0, 59, 0.05);
       border: solid 1px #e7003b;
     }
