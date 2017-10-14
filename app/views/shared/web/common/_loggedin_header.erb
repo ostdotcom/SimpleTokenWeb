@@ -18,7 +18,7 @@
         <li><a <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/faq" title="FAQ" <% end %> >FAQ</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a <% if params[:action] == '' %> class="selected-nav" href="javascript:void(0)" <% else %> href="" title="Log out" <% end %> >Log out</a></li>
+        <li><a href="/api/user/logout" title="Log out">Log out</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

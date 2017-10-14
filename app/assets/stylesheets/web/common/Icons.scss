@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v17.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v17.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v18.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v18.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -128,5 +128,15 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 }
 
 .telegram-connect-icon{
-  @include icon-generator(98px, 98px, -414px, -232px, -414px, -414px, 50);
+  @include icon-generator(98px, 98px, -298px, -232px, -414px, -414px, 50);
+}
+
+.kyc-status-icon-approved{
+  @include icon-generator(60px, 60px, -8px, -379px, -8px, -8px, 50);
+}
+.kyc-status-icon-update{
+  @include icon-generator(60px, 60px, -8px, -448px, -8px, -8px, 50);
+}
+.kyc-status-icon-denied{
+  @include icon-generator(60px, 60px, -8px, -518px, -8px, -8px, 50);
 }
