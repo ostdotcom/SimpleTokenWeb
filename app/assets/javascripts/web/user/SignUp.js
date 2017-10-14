@@ -33,7 +33,6 @@
               method: $form.attr('method'),
               data: $form.serialize(),
               success: function (response) {
-                  console.log(response);
                   if (response.success == true) {
                       window.location = '/update-kyc';
                       return false;

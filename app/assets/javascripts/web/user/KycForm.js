@@ -58,7 +58,6 @@
                   $('.residence-proof').hide();
                   if(oThis.formNames.length == 3) {oThis.formNames.pop()}
               }
-              console.log(oThis.formNames);
           });
 
           $('#kycForm input[type="file"]').change(function(){

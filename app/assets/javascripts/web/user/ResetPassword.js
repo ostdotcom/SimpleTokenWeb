@@ -15,7 +15,10 @@
 
           $("#recoverPassword").click(function (event) {
               event.preventDefault();
-              oThis.forgot_password();
+              var v = utilsNs.errorHandling.validationGeneric($('#userPasswordResetForm input[type="text"]'));
+              if (v === true) {
+                oThis.forgot_password();
+              }
           });
 
       },
@@ -28,7 +31,6 @@
               method: $form.attr('method'),
               data: $form.serialize(),
               success: function (response) {
-                  console.log(response);
                   if (response.success == true) {
                       alert("success");
                       return false;

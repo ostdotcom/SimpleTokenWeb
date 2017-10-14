@@ -34,7 +34,6 @@
                 method: $form.attr('method'),
                 data: $form.serialize(),
                 success: function (response) {
-                    console.log(response);
                     if (response.success == true) {
                         var path = oThis.get_redirect_path(response.data.user_token_sale_state);
                         window.location = '/' + path;

@@ -36,7 +36,6 @@
               method: $form.attr('method'),
               data: data,
               success: function (response) {
-                  console.log(response);
                   if (response.success == true) {
                       window.location = '/verification-link';
                       return false;

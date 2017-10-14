@@ -32,7 +32,6 @@
         method: $form.attr('method'),
         data: $form.serialize(),
         success: function (response) {
-          console.log(response);
           if (response.success == true) {
             window.location = '/admin/authentication';
             return false;
