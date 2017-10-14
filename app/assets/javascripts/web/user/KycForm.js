@@ -14,6 +14,7 @@
 
       init: function (config) {
           oThis.bindButtonActions();
+          $('input[name=birthdate]').datepicker();
       },
 
       bindButtonActions: function () {
@@ -40,6 +41,11 @@
                       .css('width', percent + '%')
                       .text(percent + '%');
               },
+              error: function(jqXHR, exception) {
+                  $('#verifyModal .loader-content .status').text(utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+                  $('#verifyModal .close').show();
+                  $('#verifyModal .loader-content .progress').hide();
+              }
           });
 
           $('select[name="nationality"]').on('changed.bs.select', function (e) {

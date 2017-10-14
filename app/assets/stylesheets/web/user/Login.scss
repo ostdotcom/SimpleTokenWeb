@@ -40,6 +40,11 @@
   }
 }
 
+.datepicker a.datepicker-selected {
+  color: #fff;
+  border-radius: 4px;
+  background: #6ca3a9;
+}
 .file-name{
   font-weight: 500;
   font-size: 12px;
