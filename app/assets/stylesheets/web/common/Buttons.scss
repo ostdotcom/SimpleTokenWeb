@@ -110,7 +110,10 @@
   margin: 0 auto;
   padding: 12px 0;
   letter-spacing: 2px;
-  width: 300px;
+  @media (min-width: 768px){
+    width: 300px;
+  }
+  width: 280px;
   text-transform: uppercase;
 }
 
@@ -119,7 +122,10 @@
   margin: 0 auto;
   padding: 12px 0;
   letter-spacing: 2px;
-  width: 300px;
+  @media (min-width: 768px){
+    width: 300px;
+  }
+  width: 280px;
   text-transform: uppercase;
   border-radius: 5px;
   margin-top: 15px;
