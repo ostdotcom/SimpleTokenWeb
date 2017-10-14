@@ -4,7 +4,7 @@
     var tsNs = ns("simpletoken.tokensale"),
         oThis;
 
-    tsNs.index = oThis = {
+    tsNs.timer = oThis = {
 
         countDownTime: new Date($('table[data-countdown]').data('countdown')).getTime(),
 

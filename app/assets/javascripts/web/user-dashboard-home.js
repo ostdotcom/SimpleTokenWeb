@@ -1,1 +1,1 @@
-//= require web/token_sale/Index
+//= require web/token_sale/Timer
