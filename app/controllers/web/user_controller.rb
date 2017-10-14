@@ -52,7 +52,7 @@ class Web::UserController < Web::BaseController
   #
   def kyc_form
 
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent}).basic_detail
+    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
     unless service_response.success?
@@ -72,7 +72,7 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def branded_token_form
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent}).basic_detail
+    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
     unless service_response.success?
@@ -91,7 +91,7 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def verification_link
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent}).basic_detail
+    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
     unless service_response.success?
@@ -110,7 +110,7 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def dashboard_home
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent}).profile_detail(t: params[:t])
+    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).profile_detail(t: params[:t])
 
     # Check if error present or not?
     unless service_response.success?

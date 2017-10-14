@@ -94,10 +94,10 @@ module SimpleTokenApi
       def send
         uri = URI(@api_url)
         http = Net::HTTP.new(uri.host, uri.port)
-        unless Rails.env.development?
-          http.use_ssl = true
-          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-        end
+        # unless Rails.env.development?
+        #   http.use_ssl = true
+        #   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        # end
         http.read_timeout = GlobalConstant::Base.simple_token_api['read_timeout']
         http.open_timeout = GlobalConstant::Base.simple_token_api['open_timeout']
         req_obj = get_request_obj(uri.request_uri)
