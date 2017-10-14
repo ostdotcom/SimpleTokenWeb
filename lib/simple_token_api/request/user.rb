@@ -40,8 +40,8 @@ module SimpleTokenApi
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def profile_detail
-        get("profile")
+      def profile_detail(url_parameters)
+        get("profile", url_parameters)
       end
 
     end
