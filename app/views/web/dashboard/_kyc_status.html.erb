@@ -4,8 +4,7 @@
     <div class="col-xs-12">
       <div class="text-center">
 
-        <div class="status-msg">Status
-          : <%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed please update your information to participate in the sale.' : 'KYC Submitted' %></div>
+
 
         <div class="panel panel-default kyc-panel <%= @presenter_obj.is_kyc_denied? ? 'denied' : 'approved' %>">
           <div class="panel-body">

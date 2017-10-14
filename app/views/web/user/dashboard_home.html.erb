@@ -5,7 +5,7 @@
 </div>
 
 <% if @presenter_obj.has_sale_ended? %>
-    <%= render :partial => "/web/dashboard/token_sale_ends_here" %>
+    <%= render :partial => "/web/dashboard/token_sale_ends" %>
     <%= render :partial => "/web/dashboard/token_sale_progress" %>
     <%= render :partial => "/web/token_sale/telegram" %>
     <%= render :partial => "/shared/web/common/footer" %>
@@ -23,6 +23,8 @@
     <%= render :partial => "/shared/web/common/footer" %>
 <% else %>
     <h1 class="header text-center">This is Your Account Dashboard</h1>
+    <div class="status-msg">Status
+      : <%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed please update your information to participate in the sale.' : 'KYC Submitted' %></div>
     <%= render :partial => "/web/dashboard/kyc_status" %>
     <%= render :partial => "/web/dashboard/sale_open_timer" %>
     <%= render :partial => "/web/dashboard/question_on_sale" %>

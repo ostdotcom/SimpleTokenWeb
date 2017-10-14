@@ -65,7 +65,6 @@ module Presenters
           is_kyc_approved?
         end
 
-
         def is_pre_sale_mode_on?
           (current_time < GlobalConstant::StTokenSale.public_sale_start_date) && is_pre_sale_user?
         end
@@ -75,7 +74,7 @@ module Presenters
         end
 
         def is_sale_ongoing?
-          has_sale_paused? && !has_sale_ended? && has_sale_started?
+          !has_sale_paused? && !has_sale_ended? && has_sale_started?
         end
 
         def has_sale_started?
@@ -83,7 +82,7 @@ module Presenters
         end
 
         def has_sale_paused?
-          token_sale_active_status.to_i != 1
+          (token_sale_active_status.to_i != 1) && has_sale_started?
         end
 
         def has_sale_ended?
