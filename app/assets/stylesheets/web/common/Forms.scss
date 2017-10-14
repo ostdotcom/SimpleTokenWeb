@@ -96,12 +96,13 @@
     .showhide-addon{
       position: absolute;
       right: 5px;
-      top: 0;
-      background-color: transparent;
+      top: 1px;
+      background-color: #fff;
       box-shadow: none;
       border: none;
       width: 30px;
-      padding: 12px 0;
+      padding: 10px 0;
+      font-size: 0;
     }
     .minimum-characters{
       font-size: 12px;
