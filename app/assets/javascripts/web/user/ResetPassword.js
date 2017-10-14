@@ -21,6 +21,11 @@
               }
           });
 
+          $("#resendLink").click(function (event) {
+              event.preventDefault();
+                  oThis.forgot_password();
+          });
+
       },
 
       forgot_password: function () {
@@ -32,7 +37,7 @@
               data: $form.serialize(),
               success: function (response) {
                   if (response.success == true) {
-                      alert("success");
+                      oThis.showSuccess();
                       return false;
                   } else {
                     utilsNs.errorHandling.displayFormErrors(response);
@@ -42,6 +47,13 @@
                 utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
               }
           });
+      },
+
+      showSuccess: function () {
+         var userEmail = $('#email').val();
+          $('#emailSuccess').val(userEmail);
+          $('#resetPassword').hide();
+          $('#resetPasswordSuccess').show();
       }
   };
 
