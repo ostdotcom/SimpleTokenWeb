@@ -20,7 +20,7 @@
         } else if (exception === 'abort') {
             msg = 'Ajax request aborted.';
         } else {
-            msg = 'Uncaught Error. ' + jqXHR.responseText;
+            msg = 'Unable to connect to server.';
         }
         $('.error[data-for="general_error"]').text(msg);
       }

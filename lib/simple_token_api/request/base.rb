@@ -167,7 +167,7 @@ module SimpleTokenApi
             # Zeroth element is cookie name and value
             if i == 0
               cookie_name = c_sub_element_key
-              new_api_cookies[cookie_name] = {value: c_sub_element_value}
+              new_api_cookies[cookie_name] = {value: c_sub_element_value, domain: :all}
             elsif c_sub_element_key == "expires"
               new_api_cookies[cookie_name][c_sub_element_key.to_sym] = Time.parse(c_sub_element_value)
             elsif c_sub_element_key == "domain"
