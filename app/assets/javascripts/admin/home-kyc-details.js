@@ -1,1 +1,1 @@
-//= require admin/home/Dashboard
+//= require admin/home/KycDetails

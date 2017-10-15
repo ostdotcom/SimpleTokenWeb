@@ -63,7 +63,7 @@ class Admin::HomeController < Admin::BaseController
         ]
     }
 
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent})
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
                            .dashboard_detail(params)
 
     render :json => response and return
@@ -78,10 +78,11 @@ class Admin::HomeController < Admin::BaseController
   #
   def kyc_details
 
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"STW_FORWARD_USER_AGENT" => http_user_agent})
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_kyc_details(params)
     #binding.pry
-    service_response.data
+    @service_data = service_response.data
+    Rails.logger.info(@service_data.inspect)
 
   end
 

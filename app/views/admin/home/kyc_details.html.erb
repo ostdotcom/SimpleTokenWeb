@@ -1,14 +1,29 @@
+<%
+  user_detail = @service_data['user_detail'] || {}
+  case_detail = @service_data['case_detail'] || {}
+  admin_kyc_status = case_detail['admin_status']
+  cynopsis_status = case_detail['cynopsis_status']
+  is_re_submitted = case_detail['is_re_submitted']
+  is_duplicate = case_detail['is_duplicate']
+
+%>
 <div class="raw">
   <div id="kyc-case-details" class="container-fluid">
     <div class="row">
       <div class="col-sm-12">
         <div style="margin:20px;">
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-6">
 
               <span class="kyc-case-detail-header">
                 KYC check Dashboard
               </span>
+              <span class="kyc-breadcrumb">
+                <a href="/admin/dashboard"> KYC Dashboard </a> > KYC Details
+              </span>
+
+            </div>
+            <div class="col-sm-6">
 
             </div>
           </div>
@@ -21,30 +36,49 @@
           <div class="col-sm-4">
             <div class="case-status-box first">
               <div>
-                <span class="status-label"> Status ST : </span> <span class="status-icon"> &nbsp; </span> <span class="status-value"> Unprocessed </span>
+                <span class="status-label"> Status ST : </span>
+                <span class="status-icon <%= GlobalConstant::UserKycDetail.admin_kyc_green_status_class[admin_kyc_status] %>"> &nbsp; </span>
+                <span class="status-value">
+                  <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[admin_kyc_status] || ' -- ' %>
+                </span>
               </div>
               <div>
-                <span class="status-label"> Status CY : </span> <span class="status-icon"> &nbsp; </span> <span class="status-value"> Pending </span>
+                <span class="status-label"> Status CY : </span>
+                <span class="status-icon <%= GlobalConstant::UserKycDetail.cynopsis_kyc_green_status_class[cynopsis_status] %>"> &nbsp; </span>
+                <span class="status-value">
+                  <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[cynopsis_status] || ' -- ' %>
+                </span>
               </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="case-status-box middle">
               <div>
-                <span class="status-label"> Resubmitted : </span> <span class="bigGreenDot"> &nbsp; </span> <span class="status-value"> No </span>
+                <span class="status-label"> Resubmitted : </span>
+                <span class="<%= is_re_submitted==1 ? 'bigRedDot' : 'bigGreenDot' %>"> &nbsp; </span>
+                <span class="status-value">
+                  <%= is_re_submitted.to_i==1 ? 'Yes' : 'No' %>
+                </span>
               </div>
               <div>
-                <span class="status-label"> Duplicate : </span> <span class="bigGreenDot"> &nbsp; </span> <span class="status-value"> No </span>
+                <span class="status-label"> Duplicate : </span>
+                <span class="<%= is_duplicate==1 ? 'bigRedDot' : 'bigGreenDot' %>"> &nbsp; </span>
+                <span class="status-value">
+                  <%= is_duplicate.to_i==1 ? 'Yes' : 'No' %>
+                </span>
               </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="case-status-box last">
               <div>
-                <span class="status-label"> Agent : </span> <span class="status-value"> Frankie </span>
+                <span class="status-label"> Agent : </span>
+                <span class="status-value">
+                  <%= case_detail['last_acted_by'] %>
+                </span>
               </div>
               <div>
-                <span class="status-label"> View Logs </span>
+                <span class="status-label" style="text-decoration: underline; cursor: pointer;"> View Logs </span>
               </div>
             </div>
           </div>
@@ -55,41 +89,86 @@
             <div class="case-detail-box">
               <span class="case-detail-col1">
                 <span class="detail-label margin-top-0">First Name</span>
-                <span class="detail-value">Thahir</span>
+                <span class="detail-value"><%= raw user_detail['first_name'] %></span>
                 <span class="detail-label">Birth Date</span>
-                <span class="detail-value">12/08/2014</span>
+                <span class="detail-value"><%= raw user_detail['birthdate'] %></span>
                 <span class="detail-label">Passport Number</span>
-                <span class="detail-value">sd,fnlk230sjdm,.23</span>
+                <span class="detail-value"><%= raw user_detail['passport_number'] %></span>
               </span>
               <span class="case-detail-col2">
                 <span class="detail-label margin-top-0">Last Name</span>
-                <span class="detail-value">Gangareddy</span>
+                <span class="detail-value"><%= raw user_detail['last_name'] %></span>
                 <span class="detail-label">Residence Country</span>
-                <span class="detail-value">India</span>
+                <span class="detail-value"><%= raw user_detail['country'] %></span>
                 <span class="detail-label">Nationality</span>
-                <span class="detail-value">Nepal</span>
+                <span class="detail-value"><%= raw user_detail['nationality'] %></span>
               </span>
               <span class="case-detail-col3">
                 <span class="detail-label margin-top-0">Email Address</span>
-                <span class="detail-value">Gangareddy@gmail.com</span>
+                <span class="detail-value"><%= raw user_detail['email'] %></span>
                 <span class="detail-label">Street Address</span>
-                <span class="detail-value">PuneWala Road</span>
+                <span class="detail-value"><%= raw user_detail['street_address'] %></span>
                 <span class="detail-label">Zip Code</span>
-                <span class="detail-value">420420</span>
+                <span class="detail-value"><%= raw user_detail['postal_code'] %></span>
               </span>
               <span class="case-detail-col4">
                 <span class="detail-label margin-top-0">Date & Time</span>
-                <span class="detail-value">12/08/2018 14:31</span>
+                <span class="detail-value"><%= raw user_detail['kyc_confirmed_at'] %></span>
                 <span class="detail-label">City</span>
-                <span class="detail-value">Pune</span>
+                <span class="detail-value"><%= raw user_detail['city'] %></span>
                 <span class="detail-label">State/ Region</span>
-                <span class="detail-value">Maharashtra</span>
+                <span class="detail-value"><%= raw user_detail['state'] %></span>
               </span>
             </div>
           </div>
         </div>
 
+        <div class="row">
+
+          <% if user_detail['passport_file_url'].present? %>
+              <div class="col-sm-6">
+                <span class="kyc-img-container" >
+                  <span class="img-label">Passport Image</span>
+                  <img class="kyc-image" src="<%= user_detail['passport_file_url'] %>">
+                </span>
+              </div>
+          <% end %>
+
+          <% if user_detail['self_file_url'].present? %>
+              <div class="col-sm-6">
+                <span class="kyc-img-container" >
+                  <span class="img-label">Selfie Image</span>
+                  <img class="kyc-image" src="<%= user_detail['self_file_url'] %>">
+                </span>
+              </div>
+          <% end %>
+
+          <% if user_detail['residence_proof_file_url'].present? %>
+              <div class="col-sm-6">
+                <span class="kyc-img-container" >
+                  <span class="img-label">Proof of Residence </span>
+                  <img class="kyc-image" src="<%= user_detail['residence_proof_file_url'] %>">
+                </span>
+              </div>
+          <% end %>
+
+        </div>
+
       </div>
+    </div>
+  </div>
+</div>
+
+<div id="kycDetailsModal" class="modal fade" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
+        <span aria-hidden="true" class="modal-cross-icon" title="close">X</span>
+      </button>
+      <div class="modal-body">
+      </div>
+
     </div>
   </div>
 </div>

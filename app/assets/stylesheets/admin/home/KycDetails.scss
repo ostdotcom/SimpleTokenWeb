@@ -9,6 +9,14 @@ body{
     font-size: 38px;
     font-weight: 300px;
     color: #6ca3a9;
+    display: block;
+  }
+  .kyc-breadcrumb{
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+    color: #597a84;
+    display: block;
   }
 
   .case-status-box, .case-detail-box {
@@ -49,11 +57,13 @@ body{
     width: 5px;
     height: 25px;
     border-radius: 2.5px;
-    background-color: #e4b030;
     display: inline-block;
     vertical-align: top;
     margin-top: 5px;
   }
+  .status-icon.green{background-color: #a7d646;}
+  .status-icon.yello{background-color: #e4b030;}
+  .status-icon.red{background-color: #e7003b;}
 
   .bigRedDot, .bigGreenDot{
     width: 10px;
@@ -100,6 +110,26 @@ body{
     }
     .margin-top-0{
       margin-top: 0;
+    }
+
+  }
+
+  .kyc-img-container {
+    margin-top: 20px;
+    display: inline-block;
+
+    .img-label{
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: 0.4px;
+      text-align: left;
+      color: #4f595d;
+      margin: 0 0 10px 15px;
+      display: inline-block;
+    }
+
+    .kyc-image {
+      width: 100%;
     }
 
   }
