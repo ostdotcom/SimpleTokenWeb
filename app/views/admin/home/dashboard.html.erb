@@ -2,6 +2,7 @@
 
 <%
   kyc_table_config = {
+      displayStart: @display_start.to_i,
       ajax: {
           url: "/admin/get-kyc-dashboard",
           type: "GET"
@@ -15,20 +16,20 @@
       stateSave: false,
       language: {
           sInfo: "_START_ - _END_ of _TOTAL_ entries",
+          infoFiltered: "",
+          infoEmpty: "No entries to show",
+          emptyTable: "No data available for the given filters",
           paginate: {
-              next: "<span> Nxt-icon </span>",
-              previous: "<span> Pv-icon </span>"
+              next: "<span> Next </span>",
+              previous: "<span> Previous </span>"
           }
       },
+      pagingType: "simple_numbers",
       columns: []
   }
 
-  cynopsis_status = @statuses[:cynopsis_status]
-  admin_status = @statuses[:admin_status]
-  sort_order = @sort_order
-
-  filters = {cynopsis_status: cynopsis_status, admin_status: admin_status}
-  sortings = {sort_order: sort_order}
+  filters = {cynopsis_status: @cynopsis_status, admin_status: @admin_status}
+  sortings = {sort_order: @sort_order}
 %>
 
 <div class="raw">
@@ -51,10 +52,11 @@
               <div class="kyc-filter-label">CYNOPSIS STATUS</div>
               <form class="form-inline">
                 <select id="cynopsis-status" class="form-control selectpicker sort-filter-selecter" style="width: 100%;">
-                  <option value="cleared" <%= 'selected' if cynopsis_status=='cleared' %> > Cleared</option>
-                  <option value="pending" <%= 'selected' if cynopsis_status=='pending' %> > Pending</option>
-                  <option value="approved" <%= 'selected' if cynopsis_status=='approved' %> > Approved</option>
-                  <option value="rejected" <%= 'selected' if cynopsis_status=='rejected' %> > Rejected</option>
+                  <option value="<%= GlobalConstant::UserKycDetail.un_processed_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.un_processed_cynopsis_status %> > Unprocessed</option>
+                  <option value="<%= GlobalConstant::UserKycDetail.cleared_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.cleared_cynopsis_status %> > Cleared</option>
+                  <option value="<%= GlobalConstant::UserKycDetail.pending_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.pending_cynopsis_status %> > Pending</option>
+                  <option value="<%= GlobalConstant::UserKycDetail.approved_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.approved_cynopsis_status %> > Approved</option>
+                  <option value="<%= GlobalConstant::UserKycDetail.rejected_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.rejected_cynopsis_status %> > Rejected</option>
                 </select>
               </form>
 
@@ -65,10 +67,10 @@
               <div class="kyc-filter-label">ADMIN STATUS</div>
               <form class="form-inline">
                 <select id="admin-status" class="form-control selectpicker" style="width: 100%;">
-                  <option value="un_processed" <%= 'selected' if admin_status=='un_processed' %> > Unprocessed</option>
-                  <option value="qualified" <%= 'selected' if admin_status=='qualified' %> > Qualified</option>
-                  <option value="denied" <%= 'selected' if admin_status=='denied' %> > Denied</option>
-                  <option value="whitelisted" <%= 'selected' if admin_status=='whitelisted' %> > Whitelisted</option>
+                  <option value="<%= GlobalConstant::UserKycDetail.un_processed_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.un_processed_admin_status %> > Unprocessed</option>
+                  <option value="<%= GlobalConstant::UserKycDetail.qualified_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.qualified_admin_status %> > Qualified</option>
+                  <option value="<%= GlobalConstant::UserKycDetail.denied_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.denied_admin_status %> > Denied</option>
+                  <option value="<%= GlobalConstant::UserKycDetail.whitelisted_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.whitelisted_admin_status %> > Whitelisted</option>
                 </select>
               </form>
 
@@ -78,8 +80,8 @@
               <div class="kyc-filter-label">SORT BY</div>
               <form class="form-inline">
                 <select id="sort-order" class="form-control selectpicker" style="width: 100%;">
-                  <option value="inc" <%= 'selected' if admin_status=='inc' %> > Oldest</option>
-                  <option value="desc" <%= 'selected' if admin_status=='desc' %> > Newest</option>
+                  <option value="inc" <%= 'selected' if @sort_order=='inc' %> > Oldest</option>
+                  <option value="desc" <%= 'selected' if @sort_order=='desc' %> > Newest</option>
                 </select>
               </form>
 

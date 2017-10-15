@@ -25,6 +25,28 @@
         $(this).find('.modal-body').html('');
       });
 
+      $('.sticky-button').on('click', function () {
+        var r = confirm('Please confirm the action !!')
+          , that = this;
+        if(r==true){
+          var $form = $('#caseActionForm');
+          $.ajax({
+            url: $(that).data('action-url'),
+            dataType: 'json',
+            method: $form.attr('method'),
+            data: $form.serialize(),
+            success: function (response) {
+              if (response.success == true) {
+                window.location = window.location;
+                return false;
+              }
+            },
+            error: function (jqXHR, exception) {
+            }
+          });
+        }
+      });
+
     }
 
   };

@@ -19,7 +19,7 @@
                 KYC check Dashboard
               </span>
               <span class="kyc-breadcrumb">
-                <a href="/admin/dashboard"> KYC Dashboard </a> > KYC Details
+                <a href="/admin/dashboard?<%= @dash_filters.to_query %>&<%= @dash_sortings.to_query %>&display_start=<%= @display_start %>"> KYC Dashboard </a> > KYC Details
               </span>
 
             </div>
@@ -157,6 +157,20 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="sticky-action-buttons-container">
+
+  <form id="caseActionForm" method="POST">
+    <input type="hidden" name="case_id" value="<%= @case_id %>">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <span class="sticky-button red" data-action-url="/api/admin/kyc/deny-kyc">Deny</span>
+    <span class="sticky-button" data-action-url="/api/admin/kyc/data-mismatch">Data Mismatch</span>
+    <span class="sticky-button" data-action-url="/api/admin/kyc/passport-issue">Passport Issue</span>
+    <span class="sticky-button" data-action-url="/api/admin/kyc/selfie-img-issue">Selfie Image Issue</span>
+    <span class="sticky-button green" data-action-url="/api/admin/kyc/qualify">Qualify</span>
+  </form>
+
 </div>
 
 <div id="kycDetailsModal" class="modal fade" role="dialog" tabindex="-1">

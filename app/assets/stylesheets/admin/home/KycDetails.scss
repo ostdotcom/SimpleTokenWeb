@@ -135,3 +135,42 @@ body{
   }
 
 }
+
+.sticky-action-buttons-container{
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #f9fafa;
+  box-shadow: 0 -2px 10px 2px rgba(0, 0, 0, 0.04);
+  padding: 20px 0;
+
+  .sticky-button {
+    display: inline-block;
+    border-radius: 5px;
+    border: solid 2px #7f9183;
+    min-width: 200px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #7f9183;
+    cursor: pointer;
+  }
+  .sticky-button:first-child{
+    margin-left: 0;
+  }
+  .sticky-button.red, .sticky-button.green {
+    color: #fff;
+  }
+  .sticky-button.red{
+    background-color: #d0021b;
+    border-color: #d0021b;
+  }
+  .sticky-button.green {
+    background-color: #7ed321;
+    border-color: #7ed321;
+  }
+
+}

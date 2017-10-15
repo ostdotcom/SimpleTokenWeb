@@ -28,14 +28,20 @@ module SimpleTokenApi
       # @return [Result::Base] returns an object of Result::Base class
       #
       def dashboard_detail(params)
-        request_params = {filters: params[:filters].permit!, sortings: params[:sortings].permit!, page_number: 1}
+        request_params = {
+            filters: params[:filters].permit!,
+            sortings: params[:sortings].permit!,
+            offset: params[:start],
+            page_size: params[:length]
+        }
+
         get("kyc/dashboard", request_params)
       end
 
-      # Get User info
+      # Get Kyc info
       #
-      # * Author: Aman
-      # * Date: 12/10/2017
+      # * Author: Alpesh
+      # * Date: 15/10/2017
       # * Reviewed By:
       #
       #
