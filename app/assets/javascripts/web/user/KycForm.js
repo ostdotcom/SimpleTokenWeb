@@ -66,6 +66,11 @@
               }
           });
 
+          $('#kycForm input').change(function(){
+              $(this).removeClass('border-error');
+              $(this).closest('.form-group').find('.error[data-for]').text('');
+          });
+
           $('#kycForm input[type="file"]').change(function(){
               $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop());
           });
@@ -108,7 +113,7 @@
           }
 
           if(typeof $('#kycForm .g-recaptcha')[0] != 'undefined' &&  grecaptcha.getResponse() == ''){
-              $('.error[data-for="recaptcha"]').text('Please check reCaptcha');
+              $('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
               v = false;
           }
 
