@@ -17,6 +17,14 @@
     color: #597a84;
     margin-top: 10px;
     font-weight: 300;
+    a{
+      color: #597a84;
+      font-weight: 500;
+      border-bottom: 1px solid #597a84;
+      &:hover, &:focus{
+        text-decoration: none;
+      }
+    }
   }
 
   .form-group{
