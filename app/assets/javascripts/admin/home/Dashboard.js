@@ -118,12 +118,10 @@
       oThis.$dataTable.on('click', 'tbody tr', function () {
         oThis.changePageUrl();
         var pageInfo = oThis.oTable.page.info();
-        console.log(pageInfo);
         window.location = '/admin/get-kyc-details/?case_id=' + oThis.oTable.row(this).data().user_case_id + '&' + jQuery.param({filters: oThis.filters})+ '&' + jQuery.param({sortings: oThis.sortings}) + '&display_start=' + pageInfo.start;
       });
 
       oThis.$dataTable.on('start.dt', function ( e, settings, len ) {
-        console.log( 'New page length: '+len );
         oThis.changePageUrl();
       });
 
