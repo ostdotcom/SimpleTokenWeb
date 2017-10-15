@@ -14,7 +14,7 @@
           <div class="user-form-footer">
             <div class="create-account" tabindex="5">Did not receive the email yet?</div>
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-            <a href="javascript:void(0)" id="resendLink" class="btn-common btn-grey form-btn-transparent" title="Re-send Verification Link" tabindex="3">re-send verification link</a>
+            <a href="javascript:void(0)" id="resendLink" class="btn-common btn-grey form-btn-transparent resendLink" title="Re-send Verification Link" tabindex="3">re-send verification link</a>
             <div class="success" id="successMessage"></div>
             <div class="error" data-for="general_error"></div>
           </div>

@@ -17,12 +17,11 @@
 
         bindButtonActions: function () {
 
-            $("#resendLink").click(function (event) {
+            $("#resendLink, .resendLink").click(function (event) {
                 event.preventDefault();
                 oThis.resendEmail();
+                $('#verifyLinkModal').modal('hide');
             });
-
-            $('#errorVerificationLinkBtn').modal('hide');
 
         },
 
