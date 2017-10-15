@@ -14,7 +14,6 @@
 
       init: function (config) {
           oThis.bindButtonActions();
-          $('input[name=birthdate]').datepicker();
       },
 
       bindButtonActions: function () {
@@ -53,6 +52,12 @@
                   $('#verifyModal .loader-content .progress').hide();
               },
           });
+
+          $('input[name=birthdate]')
+              .datepicker()
+              .on('dateChanged.bs.datepicker', function(e) {
+                  $(this).datepicker('hide');
+              });
 
           $('select[name="nationality"]').on('changed.bs.select', function (e) {
               if($(this).val() == 'CHINESE'){
