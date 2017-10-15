@@ -11,7 +11,7 @@
 <div class="raw">
   <div id="kyc-case-details" class="container-fluid">
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-12 kyc-header">
         <div style="margin:20px;">
           <div class="row">
             <div class="col-sm-6">
@@ -160,18 +160,22 @@
   </div>
 </div>
 
-<div class="sticky-action-buttons-container <%= is_case_closed ? 'case-closed' : '' %>">
+<div class="sticky-action-buttons-container <%= 'case-closed' if is_case_closed %>">
 
   <%= is_case_closed ? 'Case Closed' : '' %>
   <form id="caseActionForm" method="POST">
     <input type="hidden" name="case_id" value="<%= @case_id %>">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-    <span class="sticky-button red" data-action-url="/api/admin/kyc/deny-kyc">Deny</span>
-    <span class="sticky-button" data-action-url="/api/admin/kyc/data-mismatch">Data Mismatch</span>
-    <span class="sticky-button" data-action-url="/api/admin/kyc/passport-issue">Passport Issue</span>
-    <span class="sticky-button" data-action-url="/api/admin/kyc/selfie-img-issue">Selfie Image Issue</span>
-    <span class="sticky-button green" data-action-url="/api/admin/kyc/qualify">Qualify</span>
+    <span class="sticky-button <%= 'button-active' unless is_case_closed %> red" data-action-url="/api/admin/kyc/deny-kyc">Deny</span>
+    <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/data-mismatch">Data Mismatch</span>
+    <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/passport-issue">Passport Issue</span>
+    <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/selfie-img-issue">Selfie Image Issue</span>
+    <span class="sticky-button <%= 'button-active' unless is_case_closed %> green" data-action-url="/api/admin/kyc/qualify">Qualify</span>
   </form>
+
+</div>
+
+<div style="height: 85px;">
 
 </div>
 
@@ -179,7 +183,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
 
-      <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
+      <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 36px;position: absolute;right: 12px;top: 0px;z-index: 1">
         <span aria-hidden="true" class="modal-cross-icon" title="close">X</span>
       </button>
       <div class="modal-body">

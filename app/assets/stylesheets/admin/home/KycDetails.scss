@@ -5,15 +5,18 @@ body{
 
   max-width: 1440px;
 
+  .kyc-header{
+    background: #fff;
+  }
   .kyc-case-detail-header {
     font-size: 38px;
-    font-weight: 300px;
+    font-weight: 300;
     color: #6ca3a9;
     display: block;
   }
   .kyc-breadcrumb{
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 300;
     text-align: left;
     color: #597a84;
     display: block;
@@ -42,20 +45,20 @@ body{
   }
 
   .status-label, .status-value{
-    font-size: 24px;
-    font-weight: 300;
+    font-size: 22px;
+    font-weight: 200;
     letter-spacing: 0.4px;
     text-align: left;
     color: #4f595d;
     display: inline-block;
   }
   .status-value{
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .status-icon{
     width: 5px;
-    height: 25px;
+    height: 20px;
     border-radius: 2.5px;
     display: inline-block;
     vertical-align: top;
@@ -96,7 +99,6 @@ body{
 
     .detail-label, .detail-value {
       display: block;
-      font-size: 18px;
       font-weight: 300;
       letter-spacing: 0.1px;
       text-align: left;
@@ -104,9 +106,11 @@ body{
     }
     .detail-label{
       margin-top: 20px;
+      font-size: 16px;
     }
     .detail-value {
-      font-weight: 600;
+      font-weight: 400;
+      font-size: 18px;
     }
     .margin-top-0{
       margin-top: 0;
@@ -153,8 +157,8 @@ body{
     min-width: 200px;
     padding: 5px 10px;
     margin-left: 10px;
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 300;
     color: #7f9183;
     cursor: pointer;
   }
