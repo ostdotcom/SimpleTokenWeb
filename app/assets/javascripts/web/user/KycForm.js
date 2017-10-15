@@ -203,7 +203,7 @@
 
           $.each(data, function(upload_key, upload_value){
               $('#fileupload').fileupload('send', {
-                  files:[$('#kycForm input[name=passport_file_path]')[0].files[0]],
+                  files:[$('#kycForm input[name='+upload_key+']')[0].files[0]],
                   paramName: ['file'],
                   url: upload_value.url,
                   formData: upload_value.fields
