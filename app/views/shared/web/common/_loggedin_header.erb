@@ -15,7 +15,7 @@
       <ul class="nav navbar-nav">
         <li><a <% if params[:action] == '' %> class="selected-nav" href="javascript:void(0)" <% else %> href="" title="Dashboard" <% end %> >Dashboard</a></li>
         <li><a <% if params[:action] == 'documents' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/documents" title="Documents" <% end %> >Documents</a></li>
-        <li><a <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/faq" title="FAQ" <% end %> >FAQ</a></li>
+        <li><a <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/faq/" title="FAQ" <% end %> >FAQ</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/api/user/logout" title="Log out">Log out</a></li>
