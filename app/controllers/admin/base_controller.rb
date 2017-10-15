@@ -1,5 +1,7 @@
 class Admin::BaseController < ApplicationController
 
+  before_action :tmp_basic_auth
+
   private
 
   # Delete admin cookies

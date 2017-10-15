@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_action :set_request_from_bot_flag
 
-  before_action :tmp_basic_auth
-
   # Sanitize params
   include Sanitizer
   before_action :sanitize_params
@@ -40,6 +38,16 @@ class ApplicationController < ActionController::Base
   #
   def http_user_agent
     request.env['HTTP_USER_AGENT'].to_s
+  end
+
+  # Get Ip Address
+  #
+  # * Author: Aman
+  # * Date: 15/10/2017
+  # * Reviewed By: Sunil
+  #
+  def ip_address
+    request.remote_ip.to_s
   end
 
   # set bot request flag in params
@@ -130,7 +138,7 @@ class ApplicationController < ActionController::Base
   #
   # * Author: Aman
   # * Date: 15/10/2017
-  # * Reviewed By:
+  # * Reviewed By: Sunil
   #
   def tmp_basic_auth
     users = {"simpleToken" => ["1qa2ws3ed!!@@##"]}

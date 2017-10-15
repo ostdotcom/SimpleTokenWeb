@@ -4,6 +4,8 @@ class Web::TokenSaleController < Web::BaseController
 
   before_action :set_page_meta_info
 
+  before_action :tmp_basic_auth
+
   # Token sale index
   #
   # * Author: Tahir

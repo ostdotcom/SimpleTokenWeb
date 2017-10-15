@@ -46,7 +46,7 @@ class Web::BaseController < ApplicationController
   #
   # * Author: Aman
   # * Date: 10/10/2017
-  # * Reviewed By: Sunil Khedar
+  # * Reviewed By: Sunil
   #
   def redirect_if_step_not_reachable(user_token_sale_state, allowed_states, extra_url_query_parameter = '')
     return if allowed_states.include?(user_token_sale_state)
