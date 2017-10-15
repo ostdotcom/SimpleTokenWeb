@@ -23,5 +23,4 @@ constants:
 
   recaptcha:
     site_key: <%= ENV['ST_RECAPTCHA_SITE_KEY'] %>
-    secret_key: <%= ENV['ST_RECAPTCHA_SECRET'] %>
 

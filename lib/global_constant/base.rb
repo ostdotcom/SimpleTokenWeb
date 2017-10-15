@@ -63,7 +63,7 @@ module GlobalConstant
         env_config.fetch('cloudfront', {})['domain']
       end
 
-      # Root URL
+      # Recaptcha config
       #
       # * Author: Kedar
       # * Date: 09/10/2017
