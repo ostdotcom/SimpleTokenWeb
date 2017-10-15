@@ -45,7 +45,13 @@
                   $('#verifyModal .loader-content .status').text(utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
                   $('#verifyModal .close').show();
                   $('#verifyModal .loader-content .progress').hide();
-              }
+              },
+              fail: function(e, data) {
+                  var xmlResponse = $( data.jqXHR.responseXML );
+                  $('#verifyModal .loader-content .status').text('Upload Error: '+xmlResponse.find('Code').text()+'. Please contact support.');
+                  $('#verifyModal .close').show();
+                  $('#verifyModal .loader-content .progress').hide();
+              },
           });
 
           $('select[name="nationality"]').on('changed.bs.select', function (e) {
@@ -92,21 +98,35 @@
           oThis.formNames.forEach(function(value){
               validate_selectors.push('#kycForm input[name="'+value+'"]');
           });
+
           var v = simpletoken.utils.errorHandling.validationGeneric( $(validate_selectors.join(',')) );
+
+          if(/^(0x)?[0-9a-f]{40}$/i.test($('#kycForm input[name=ethereum_address]').val()) != true){
+              $('input[name=ethereum_address]').addClass('border-error');
+              $('.error[data-for="ethereum_address"]').text('Invalid ethereum address');
+              v = false;
+          }
+
+          if(typeof $('#kycForm .g-recaptcha')[0] != 'undefined' &&  grecaptcha.getResponse() == ''){
+              $('.error[data-for="recaptcha"]').text('Please check reCaptcha');
+              v = false;
+          }
+
+          oThis.formNames.forEach(function(value){
+              if(typeof $('#kycForm input[name='+value+']')[0].files[0] != 'undefined'){
+                  if( $('#kycForm input[name='+value+']')[0].files[0].size < 1024*200  ){
+                      $('.error[data-for="'+value+'"]').text('File size too small');
+                      v = false;
+                  }
+                  if( $('#kycForm input[name='+value+']')[0].files[0].size > 1024*1024*15 ){
+                      $('.error[data-for="'+value+'"]').text('File size too large. Should be less than 15 mb.');
+                      v = false;
+                  }
+              }
+          });
+
           if(v === true) {
               simpletoken.utils.errorHandling.clearFormErrors();
-
-              if(/^(0x)?[0-9a-f]{40}$/i.test($('#kycForm input[name=ethereum_address]').val()) != true){
-                  $('input[name=ethereum_address]').addClass('border-error');
-                  $('.error[data-for="ethereum_address"]').text('Invalid ethereum address');
-                  return;
-              }
-
-              if(typeof $('.g-recaptcha')[0] != 'undefined' &&  grecaptcha.getResponse() == ''){
-                  $('.error[data-for="recaptcha"]').text('Please check reCaptcha');
-                  return;
-              }
-
               $('#verifyModal').modal({
                   backdrop: 'static',
                   keyboard: false
