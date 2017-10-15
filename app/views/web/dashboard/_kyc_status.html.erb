@@ -10,7 +10,7 @@
               <span class="kyc-status-icon-<%= @presenter_obj.user_kyc_data['kyc_status'] %> ver-middle"></span>
               <span><%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed' : @presenter_obj.is_kyc_approved? ? 'KYC Verified' : 'KYC Verification' %></span>
             </span>
-            <% unless @presenter_obj.is_kyc_approved? %>
+            <% if @presenter_obj.is_kyc_pending? %>
                 <span class="pull-right">
                   <a href="/update-kyc" class="pull-right">UPDATE INFO</a>
                 </span>
