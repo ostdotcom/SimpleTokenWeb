@@ -232,9 +232,14 @@
               </div>
             </div>
 
+
             <% unless is_update %>
-                <div class="g-recaptcha" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>"></div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="g-recaptcha" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="17"></div>
                 <div class="error" data-for="recaptcha"></div>
+              </div>
+            </div>
             <% end %>
 
             <div class="row">
