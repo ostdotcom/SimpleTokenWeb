@@ -14,7 +14,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a <% if params[:action] == 'index' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/" title="Home" <% end %> >Home</a></li>
-        <li><a <% if params[:action] == 'platform' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/platform" title="Platform" <% end %> >Platform</a></li>
+        <% unless Rails.env.production? %>
+            <li><a <% if params[:action] == 'platform' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/platform" title="Platform" <% end %> >Platform</a></li>
+        <% end %>
         <li><a <% if params[:action] == 'about' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/about" title="About" <% end %> >About</a></li>
         <li><a <% if params[:action] == 'documents' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/documents" title="Documents" <% end %> >Documents</a></li>
         <li><a <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/faq" title="FAQ" <% end %> >FAQ</a></li>

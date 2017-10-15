@@ -3,6 +3,8 @@ class Web::HomeController < Web::BaseController
 
   before_action :set_page_meta_info
 
+  skip_before_action :tmp_basic_auth, except: [:platform]
+
   # Action for the home page index
   #
   # * Author: Kedar

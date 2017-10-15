@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_action :set_request_from_bot_flag
 
+  before_action :tmp_basic_auth
+
   # Sanitize params
   include Sanitizer
   before_action :sanitize_params
@@ -20,9 +22,9 @@ class ApplicationController < ActionController::Base
   #
   def not_found
     res = {
-      error: 'stw_not_found',
-      error_display_text: 'Page not found',
-      http_code: GlobalConstant::ErrorCode.not_found
+        error: 'stw_not_found',
+        error_display_text: 'Page not found',
+        http_code: GlobalConstant::ErrorCode.not_found
     }
     @response = Result::Base.error(res)
     render_error_response_for(@response)
@@ -69,10 +71,10 @@ class ApplicationController < ActionController::Base
   #
   def set_page_meta_info(custom_extended_data = {})
     service_response = GetPageMetaInfo.new(
-      controller: params[:controller],
-      action: params[:action],
-      request_url: request.url,
-      custom_extended_data: custom_extended_data
+        controller: params[:controller],
+        action: params[:action],
+        request_url: request.url,
+        custom_extended_data: custom_extended_data
     ).perform
 
     unless service_response.success?
@@ -122,6 +124,25 @@ class ApplicationController < ActionController::Base
         cookies[key.to_sym] = whitelisted_cookie
       end
     end
+  end
+
+  # tmp basic auth
+  #
+  # * Author: Aman
+  # * Date: 15/10/2017
+  # * Reviewed By:
+  #
+  def tmp_basic_auth
+    users = {"simpleToken" => ["1qa2ws3ed!!@@##"]}
+
+    authenticate_or_request_with_http_basic do |username, password|
+      if users[username].present? && users[username][0] == password
+        true
+      else
+        false
+      end
+    end
+
   end
 
 
