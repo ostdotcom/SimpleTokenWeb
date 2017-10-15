@@ -14,6 +14,7 @@
 
       init: function (config) {
           oThis.bindButtonActions();
+          oThis.refreshIndicator();
       },
 
       bindButtonActions: function () {
@@ -101,9 +102,15 @@
 
       },
 
+      refreshIndicator: function(){
+          var $refresh = $('#refresh-indicator');
+          $refresh.val() == 'yes' ? location.reload(true) : $refresh.val('yes');
+      },
+
       validateForm: function(){
           var validate_selectors = [
-              '#kycForm input[name]'
+              '#kycForm input[type=text][name]',
+              '#kycForm input[type=number][name]'
           ];
           oThis.formNames.forEach(function(value){
               validate_selectors.push('#kycForm input[name="'+value+'"]');
@@ -141,8 +148,6 @@
                   backdrop: 'static',
                   keyboard: false
               }).modal('show');
-          } else {
-              $('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
           }
       },
 
