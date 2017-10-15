@@ -36,7 +36,7 @@
                 data: $form.serialize(),
                 success: function (response) {
                     if (response.success == true) {
-                        window.location = '/update-kyc';
+                        window.location = '/add-kyc';
                         return false;
                     } else {
                         utilsNs.errorHandling.displayFormErrors(response);

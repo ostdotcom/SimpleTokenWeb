@@ -50,7 +50,7 @@ class Web::UserController < Web::BaseController
   # * Date: 10/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def kyc_form
+  def add_kyc_form
 
     service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
@@ -62,6 +62,27 @@ class Web::UserController < Web::BaseController
 
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.kyc_page_allowed_states)
+
+  end
+
+  # KYC update form after double opt in
+  #
+  # * Author: Aman
+  # * Date: 15/10/2017
+  # * Reviewed By:
+  #
+  def update_kyc_form
+
+    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @user = service_response.data["user"]
+    redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
 
   end
 

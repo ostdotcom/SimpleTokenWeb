@@ -12,7 +12,7 @@ module GlobalConstant
             profile_page: {p: 'dashboard'},
             verification_page: {p: 'verification-link'},
             bt_page: {p: 'reserve-token'},
-            kyc_page: {p: 'update-kyc'}
+            kyc_page: {p: 'add-kyc'}
         }
       end
 

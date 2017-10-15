@@ -7,12 +7,13 @@ Rails.application.routes.draw do
     end
     scope '', controller: 'web/user' do
       get '/dashboard' => :dashboard_home
+      get '/update-kyc' => :update_kyc_form
       get '/error' => :error_page
       get '/sign-up' => :sign_up
       get '/login' => :login
       get '/reset-password' => :reset_password
       get '/change-password' => :change_password
-      get '/update-kyc' => :kyc_form
+      get '/add-kyc' => :add_kyc_form
       get '/reserve-token' => :branded_token_form
       get '/verification-link' => :verification_link
       get '/change-password-success' => :change_password_success
