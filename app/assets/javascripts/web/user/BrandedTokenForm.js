@@ -18,7 +18,10 @@
 
           $("#btSubmit").click(function (event) {
               event.preventDefault();
-              oThis.submit(false);
+              var v = utilsNs.errorHandling.validationGeneric($('#userBtForm input[type="text"]'));
+              if (v === true) {
+                oThis.submit(false);
+              }
           });
 
           $("#btSkip").click(function (event) {

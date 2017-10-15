@@ -18,15 +18,16 @@
           end
       %>
       <div class="simple-token-form">
-        <h1 class="text-center form-header">Enter a name for your token. If it’s available, <br/>we’ll reserve it for
+        <h1 class="text-center form-header">Enter a name for your token. If it's available, <br/>we'll reserve it for
           you.</h1>
 
         <form class="user-form" method="POST" action="/api/user/bt-submit" id="userBtForm">
           <div class="form-group">
             <label for="token_name">token name</label>
             <input type="text" name="bt_name" id="token_name" class="form-control" autofocus tabindex="1">
+            <div class="error" data-for="bt_name"></div>
           </div>
-          <div class="form-instructions text-center" style="max-width: 350px;font-size: 14px">All name reservations are
+          <div class="form-instructions text-center" style="max-width: 350px;font-size: 14px;padding: 10px 0">All name reservations are
             subject to approval from the OpenST Foundation and Trademark rights. For more details
             <a href="">click here</a> for <a href="">terms and conditions</a> of name reservations.
           </div>
