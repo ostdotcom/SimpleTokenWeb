@@ -13,7 +13,7 @@ module GlobalConstant
             'whitelisted_admin_status' => 'Whitelisted'
         }
       end
-      def admin_kyc_green_status_class
+      def admin_kyc_status_class
         {
             'un_processed_admin_status' => 'yello',
             'qualified_admin_status' => 'green',
@@ -31,7 +31,7 @@ module GlobalConstant
             'rejected_cynopsis_status' => 'Rejected'
         }
       end
-      def cynopsis_kyc_green_status_class
+      def cynopsis_kyc_status_class
         {
             'un_processed_cynopsis_status' => 'yello',
             'cleared_cynopsis_status' => 'green',

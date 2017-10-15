@@ -37,14 +37,14 @@
             <div class="case-status-box first">
               <div>
                 <span class="status-label"> Status ST : </span>
-                <span class="status-icon <%= GlobalConstant::UserKycDetail.admin_kyc_green_status_class[admin_kyc_status] %>"> &nbsp; </span>
+                <span class="status-icon <%= GlobalConstant::UserKycDetail.admin_kyc_status_class[admin_kyc_status] %>"> &nbsp; </span>
                 <span class="status-value">
                   <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[admin_kyc_status] || ' -- ' %>
                 </span>
               </div>
               <div>
                 <span class="status-label"> Status CY : </span>
-                <span class="status-icon <%= GlobalConstant::UserKycDetail.cynopsis_kyc_green_status_class[cynopsis_status] %>"> &nbsp; </span>
+                <span class="status-icon <%= GlobalConstant::UserKycDetail.cynopsis_kyc_status_class[cynopsis_status] %>"> &nbsp; </span>
                 <span class="status-value">
                   <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[cynopsis_status] || ' -- ' %>
                 </span>
