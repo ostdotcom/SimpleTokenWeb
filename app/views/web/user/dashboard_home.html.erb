@@ -1,7 +1,7 @@
-<%= "Double opt in done" if @presenter_obj.is_token_present? %>
+<div id="banner-content"></div>
 <%= render :partial => "/shared/web/common/loggedin_header" %>
 <div class="text-center">
-<img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
+  <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
 </div>
 
 <% if @presenter_obj.has_sale_ended? %>
@@ -31,3 +31,18 @@
   <%= render :partial => "/web/token_sale/telegram" %>
 <% end %>
 <%= render :partial => "/shared/web/common/footer" %>
+
+
+<% if @presenter_obj.is_token_present?
+     content_for :end_js do
+%>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        simpletoken.utils.errorHandling.showSuccessAlert("Your Account is Verified Successfully.");
+      });
+    </script>
+
+  <%
+     end
+     end
+  %>
