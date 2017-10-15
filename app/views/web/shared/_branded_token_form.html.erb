@@ -1,5 +1,5 @@
 <div style="position: absolute;width: 100%">
-  <%= render :partial => "/shared/web/common/loggedin_header" %>
+  <%= render :partial => "/shared/web/common/loggedin_header", locals: {user: @user} %>
 </div>
 <div class="container sign-up-form">
   <div class="row">

@@ -1,4 +1,6 @@
-<% content_for :gradient_class, "bg-gradient poRel height100vh" %>
+<div style="position: absolute;width: 100%">
+  <%= render :partial => "/shared/web/common/loggedin_header", locals: {user: @user} %>
+</div>
 <%= "Invalid token url " if params["e_t"] == 1 %>
 <div class="container sign-up-form">
   <div class="row">

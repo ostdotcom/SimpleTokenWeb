@@ -9,8 +9,7 @@
         <span class="icon-bar"></span>
       </button>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
+<% if GlobalConstant::TokenSaleUserState.profile_page_allowed_states.include?(user["user_token_sale_state"]) %>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a <% if params[:action] == '' %> class="selected-nav" href="javascript:void(0)" <% else %> href="" title="Dashboard" <% end %> >Dashboard</a></li>
@@ -18,8 +17,20 @@
         <li><a <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/faq/" title="FAQ" <% end %> >FAQ</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="javascript:void(0)" title=""><%= user["email"] %></a></li>
         <li><a href="/api/user/logout" title="Log out">Log out</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+
+    <% else %>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><span title=""><%= user["email"] %></span></li>
+        <li><a href="/api/user/logout" title="Log out">Log out</a></li>
+      </ul>
+    </div>
+  <% end %>
+
+  </div>
 </nav>
