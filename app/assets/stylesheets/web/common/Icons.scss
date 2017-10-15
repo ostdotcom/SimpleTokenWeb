@@ -73,6 +73,10 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
   @include icon-generator(98px, 98px, -765px, -126px, -880px, -880px, 55);
 }
 
+.social-github-icon{
+  @include icon-generator(98px, 98px, -766px, -878px, -880px, -880px, 55);
+}
+
 .download-btn{
   &:hover{
     .download-icon{
@@ -99,6 +103,9 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 
 .jumbotron-medium-icon{
   @include icon-generator(98px, 98px, -531px, -446px, -650px, -531px, 55);
+}
+.jumbotron-github-icon{
+  @include icon-generator(98px, 98px, -538px, -878px, -650px, -538px, 55);
 }
 
 .success-tick-icon{
