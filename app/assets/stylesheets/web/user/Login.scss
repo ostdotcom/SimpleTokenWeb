@@ -113,7 +113,7 @@
   }
   a{
     color: #597a84;
-    &:hover{
+    &:hover, &:focus{
       text-decoration: none;
     }
   }

@@ -13,13 +13,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a <% if params[:action] == 'index' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/" title="Home" <% end %> >Home</a></li>
+        <li><a <% if params[:action] == 'index' && params[:controller] == 'web/home' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/" title="Home" <% end %> >Home</a></li>
         <% unless Rails.env.production? %>
-            <li><a <% if params[:action] == 'platform' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/platform" title="Platform" <% end %> >Platform</a></li>
+            <li><a <% if params[:action] == 'platform' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/platform" title="Platform" <% end %> >Platform</a></li>
         <% end %>
-        <li><a <% if params[:action] == 'about' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/about" title="About" <% end %> >About</a></li>
-        <li><a <% if params[:action] == 'documents' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/documents" title="Documents" <% end %> >Documents</a></li>
-        <li><a <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/faq/" title="FAQ" <% end %> >FAQ</a></li>
+        <li><a <% if params[:action] == 'about' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/about" title="About" <% end %> >About</a></li>
+        <li><a <% if params[:action] == 'documents' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" title="Documents" <% end %> >Documents</a></li>
+        <li><a <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/faq/" title="FAQ" <% end %> >FAQ</a></li>
         <li><a href="https://medium.com/simple-token" title="BLOG" target="_blank">BLOG</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
