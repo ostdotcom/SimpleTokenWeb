@@ -8,6 +8,7 @@ class Web::UserController < Web::BaseController
   before_action :set_page_meta_info
 
   before_action :tmp_basic_auth
+  before_action :handle_blacklisted_ip
 
 
   # Sign up
