@@ -25,7 +25,7 @@
         $(this).find('.modal-body').html('');
       });
 
-      $('.sticky-button').on('click', function () {
+      $('.sticky-action-buttons-container').on('click', '.sticky-button', function () {
         var r = confirm('Please confirm the action !!')
           , that = this;
         if(r==true){

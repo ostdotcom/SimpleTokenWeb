@@ -93,6 +93,8 @@ class Admin::HomeController < Admin::BaseController
 
     @service_data = service_response.data
 
+    Rails.logger.info(@service_data)
+
   end
 
 end
