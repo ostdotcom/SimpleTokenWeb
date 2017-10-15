@@ -4,26 +4,12 @@
       <div class="text-center">
         <div class="registration-timer">
           <h2><%= @presenter_obj.is_pre_sale_mode_on? ? 'PRE' : 'PUBLIC' %> SALE OPENS IN</h2>
-          <table class="countdown" data-countdown="<%= (@presenter_obj.sale_start_time.to_i) * 1000 %>">
-            <tr class="time">
-              <td class="days">00</td>
-              <td>:</td>
-              <td class="hours">00</td>
-              <td>:</td>
-              <td class="minutes">00</td>
-              <td>:</td>
-              <td class="seconds">00</td>
-            </tr>
-            <tr class="labels">
-              <td>Days</td>
-              <td></td>
-              <td>Hours</td>
-              <td></td>
-              <td>Mins</td>
-              <td></td>
-              <td>Secs</td>
-            </tr>
-          </table>
+          <%=
+            render partial: '/shared/web/common/countdown_timer',
+                   locals: {
+                           timestamp: (@presenter_obj.sale_start_time.to_i) * 1000
+                   }
+          %>
         </div>
       </div>
     </div>
