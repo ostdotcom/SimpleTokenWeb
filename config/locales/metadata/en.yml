@@ -2,50 +2,6 @@
 en:
   web/user:
 
-    dashboard_home:
-      :meta:
-        :title: 'Simple Token | Login'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-        :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
-        :robots: 'index, follow'
-        :og:
-          :title: 'Simple Token | Login'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Simple Token | Login'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-      :assets:
-        :specific_js_required: 1
-
-    error_page:
-      :meta:
-        :title: 'Simple Token | Login'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-        :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
-        :robots: 'index, follow'
-        :og:
-          :title: 'Simple Token | Login'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Simple Token | Login'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-      :assets:
-          :specific_js_required: 0
-
     login:
       :meta:
         :title: 'Simple Token | Login'
@@ -68,9 +24,9 @@ en:
       :assets:
         :specific_js_required: 1
 
-    reset_password:
+    sign_up:
       :meta:
-        :title: 'Simple Token | Reset Password'
+        :title: 'Simple Token | Register'
         :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
@@ -90,9 +46,9 @@ en:
       :assets:
         :specific_js_required: 1
 
-    sign_up:
+    reset_password:
       :meta:
-        :title: 'Simple Token | Register'
+        :title: 'Simple Token | Reset Password'
         :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
@@ -134,28 +90,6 @@ en:
       :assets:
         :specific_js_required: 1
 
-    update_kyc_form:
-       :meta:
-         :title: 'Simple Token | Logged In'
-         :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-         :canonical: '%{canonical}'
-         :keywords: 'Simple Token'
-         :name: 'Simple Token'
-         :robots: 'index, follow'
-         :og:
-           :title: 'Simple Token | Reset Password'
-           :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-           :type: 'website'
-           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-           :url: '%{og_url}'
-         :twitter:
-           :card: 'summary_large_image'
-           :title: 'Simple Token | Reset Password'
-           :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-       :assets:
-         :specific_js_required: 1
-
     add_branded_token:
       :meta:
         :title: 'Simple Token | Token Name'
@@ -177,6 +111,50 @@ en:
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
+
+    dashboard_home:
+     :meta:
+       :title: 'Simple Token | Login'
+       :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+       :canonical: '%{canonical}'
+       :keywords: 'Simple Token'
+       :name: 'Simple Token'
+       :robots: 'index, follow'
+       :og:
+         :title: 'Simple Token | Login'
+         :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+         :type: 'website'
+         :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+         :url: '%{og_url}'
+       :twitter:
+         :card: 'summary_large_image'
+         :title: 'Simple Token | Login'
+         :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+         :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+     :assets:
+       :specific_js_required: 1
+
+    update_kyc_form:
+       :meta:
+         :title: 'Simple Token | Logged In'
+         :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+         :canonical: '%{canonical}'
+         :keywords: 'Simple Token'
+         :name: 'Simple Token'
+         :robots: 'index, follow'
+         :og:
+           :title: 'Simple Token | Reset Password'
+           :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+           :type: 'website'
+           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+           :url: '%{og_url}'
+         :twitter:
+           :card: 'summary_large_image'
+           :title: 'Simple Token | Reset Password'
+           :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+       :assets:
+         :specific_js_required: 1
 
     update_branded_token:
       :meta:
@@ -243,28 +221,6 @@ en:
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
-
-    change_password_success:
-      :meta:
-        :title: 'Simple Token | Token Name'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-        :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
-        :robots: 'index, follow'
-        :og:
-          :title: 'Simple Token | Token Name'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Simple Token | Token Name'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-      :assets:
-        :specific_js_required: 0
 
   web/home:
 

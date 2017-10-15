@@ -182,14 +182,4 @@ class Web::UserController < Web::BaseController
 
   end
 
-  # Branded token form
-  #
-  # * Author: Tahir
-  # * Date: 13/10/2017
-  # * Reviewed By: Sunil Khedar
-  #
-  def error_page
-    render "web/user/404"
-  end
-
 end

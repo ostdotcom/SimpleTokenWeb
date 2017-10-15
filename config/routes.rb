@@ -6,18 +6,16 @@ Rails.application.routes.draw do
       get '/' => :index
     end
     scope '', controller: 'web/user' do
+      get '/login' => :login
+      get '/sign-up' => :sign_up
       get '/dashboard' => :dashboard_home
       get '/update-kyc' => :update_kyc_form
-      get '/error' => :error_page
-      get '/sign-up' => :sign_up
-      get '/login' => :login
       get '/reset-password' => :reset_password
       get '/change-password' => :change_password
       get '/add-kyc' => :add_kyc_form
       get '/reserve-token' => :add_branded_token
       get '/update-token' => :update_branded_token
       get '/verification-link' => :verification_link
-      get '/change-password-success' => :change_password_success
     end
     # Route not found handler. Should be the last entry here
     match '*permalink', to: 'application#not_found', via: :all

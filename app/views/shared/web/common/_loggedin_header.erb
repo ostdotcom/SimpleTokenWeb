@@ -12,12 +12,12 @@
 <% if GlobalConstant::TokenSaleUserState.profile_page_allowed_states.include?(user["user_token_sale_state"]) %>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a <% if params[:action] == '' %> class="selected-nav" href="javascript:void(0)" <% else %> href="" title="Dashboard" <% end %> >Dashboard</a></li>
-        <li><a <% if params[:action] == 'documents' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/documents" title="Documents" <% end %> >Documents</a></li>
+        <li><a <% if params[:action] == 'dashboard_home' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/dashboard" title="Dashboard" <% end %> >Dashboard</a></li>
+        <li><a <% if params[:action] == 'documents' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" title="Documents" <% end %> >Documents</a></li>
         <li><a <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)" <% else %> href="/faq/" title="FAQ" <% end %> >FAQ</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="javascript:void(0)" title=""><%= user["email"] %></a></li>
+        <li><span><%= user["email"] %></span></li>
         <li><a href="/api/user/logout" title="Log out">Log out</a></li>
       </ul>
     </div>
@@ -26,7 +26,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><span title=""><%= user["email"] %></span></li>
+        <li><span><%= user["email"] %></span></li>
         <li><a href="/api/user/logout" title="Log out">Log out</a></li>
       </ul>
     </div>
