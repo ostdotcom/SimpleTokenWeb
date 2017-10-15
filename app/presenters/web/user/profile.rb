@@ -33,6 +33,10 @@ module Presenters
           user['bt_name']
         end
 
+        def token_name_status_class
+          bt_name.present? ? 'approved' : 'pending'
+        end
+
         def email
           user['email']
         end

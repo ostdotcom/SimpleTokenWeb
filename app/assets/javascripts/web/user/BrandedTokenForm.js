@@ -7,7 +7,10 @@
 
   homeNs.bt = oThis = {
 
+      redirectLocation: '',
+
       init: function (config) {
+          oThis.redirectLocation = config.redirect_location;
           oThis.bindButtonActions();
       },
 
@@ -37,7 +40,7 @@
               data: data,
               success: function (response) {
                   if (response.success == true) {
-                      window.location = '/verification-link';
+                      window.location = oThis.redirectLocation;
                       return false;
                   } else {
                     utilsNs.errorHandling.displayFormErrors(response);
@@ -50,8 +53,4 @@
       }
   };
 
-  $(document).ready(function () {
-    oThis.init({i18n: {}});
-  });
-
-})(window);
+})(window, jQuery);

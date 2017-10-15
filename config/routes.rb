@@ -14,7 +14,8 @@ Rails.application.routes.draw do
       get '/reset-password' => :reset_password
       get '/change-password' => :change_password
       get '/add-kyc' => :add_kyc_form
-      get '/reserve-token' => :branded_token_form
+      get '/reserve-token' => :add_branded_token
+      get '/update-token' => :update_branded_token
       get '/verification-link' => :verification_link
       get '/change-password-success' => :change_password_success
     end
