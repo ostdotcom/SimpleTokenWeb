@@ -5,10 +5,25 @@ constants:
 
   simple_token_web:
     root_url: <%= ENV['STW_ROOT_URL'] %>
+    sale_root_url: <%= ENV['STW_SALE_ROOT_URL'] %>
+
+  simple_token_api:
+    root_url: <%= ENV['STW_API_INTERNAL_ROOT_URL'] %>
+    open_timeout: 5
+    read_timeout: 5
 
   pepo_campaign:
     encrypted_client_id: <%= ENV['STW_CAMPAIGN_ENCRYPTED_CLIENT_ID'] %>
     encrypted_list_id: <%= ENV['STW_CAMPAIGN_ENCRYPTED_LIST_ID']%>
+
+  st_token_sale:
+    pre_sale_start_date:  <%= ENV['ST_PRE_SALE_START_DATE'] %>
+    public_sale_start_date:  <%= ENV['ST_PUBLIC_SALE_START_DATE'] %>
+    public_sale_end_date:  <%= ENV['ST_PUBLIC_SALE_END_DATE'] %>
+    ethereum_address:  <%= ENV['ST_ETHEREUM_ADDRESS'] %>
+
+  recaptcha:
+    site_key: <%= ENV['ST_RECAPTCHA_SITE_KEY'] %>
 
   api_sidekiq_interface:
     redis_url: <%= ENV['STW_REDIS_ENDPOINT'] %>

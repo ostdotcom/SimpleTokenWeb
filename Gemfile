@@ -20,6 +20,7 @@ gem 'oj', '3.3.8'
 gem 'sanitize', '4.5.0'
 # Exception notifier
 gem 'exception_notification', '4.2.1'
+gem 'maxminddb','0.1.14'
 
 gem 'sidekiq', '5.0.5'
 gem 'redis-namespace', '1.5.3'

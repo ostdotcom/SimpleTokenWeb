@@ -1,0 +1,46 @@
+<div id="verifyModal" class="modal fade" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
+        <span aria-hidden="true" class="modal-cross-icon" title="close">X</span>
+      </button>
+      <div class="modal-body">
+        <div class="verify-content">
+          <div class="heading text-center">Verify Information</div>
+          <div class="checkbox">
+            <input type="checkbox" value="" id="is_correct_information" name="is_correct_information" >
+            <label for="is_correct_information">
+              All the personal information I have entered is correct.
+            </label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="" id="is_participating_token_distribution" name="is_participating_token_distribution" >
+            <label for="is_participating_token_distribution">
+              I certify that I’m  participating in the token distribution even in the capacity of an individual (and benificial owner) and not as a representative (or agent) of a third party corporate entity (non natural Person)
+            </label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="" id="cannot_participate" name="cannot_participate" >
+            <label for="cannot_participate">
+              I understand that I cannot participate in the token distribution even with a different Ethereum wallet that was entered in this form.
+            </label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="" id="i_agree_terms_conditions" name="i_agree_terms_conditions" >
+            <label for="i_agree_terms_conditions">
+              I agree to Terms and Condition.
+            </label>
+          </div>
+          <div class="error" data-for="verify_error"></div>
+          <button class="btn-common btn-gold verify-btn" title="Verify" id="kycVerify">Verify</button>
+        </div>
+        <div class="loader-content" style="display: none">
+          <p class="status">Encrypting your data...</p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 1%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v12.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v12.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v18.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v18.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -72,6 +72,7 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 .social-facebook-icon{
   @include icon-generator(98px, 98px, -765px, -126px, -880px, -880px, 55);
 }
+
 .social-github-icon{
   @include icon-generator(98px, 98px, -766px, -878px, -880px, -880px, 55);
 }
@@ -103,7 +104,61 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 .jumbotron-medium-icon{
   @include icon-generator(98px, 98px, -531px, -446px, -650px, -531px, 55);
 }
-
 .jumbotron-github-icon{
   @include icon-generator(98px, 98px, -538px, -878px, -650px, -538px, 55);
+}
+
+.success-tick-green-icon{
+  @include icon-generator(103px, 103px, -108px, -5px, -108px, -108px, 50);
+}
+
+.success-tick-white-icon{
+  @include icon-generator(103px, 103px, -218px, -5px, -218px, -218px, 30);
+}
+
+.upload-image-icon{
+  @include icon-generator(34px, 28px, -9px, -338px, -9px, -9px, 80);
+}
+
+.upload-image{
+  &:hover{
+    .upload-image-icon{
+      @include icon-generator(34px, 28px, -49px, -338px, -49px, -49px, 80);
+    }
+  }
+}
+
+.show-password-eye-icon{
+  @include icon-generator(34px, 22px, -9px, -310px, -9px, -9px, 80);
+}
+
+.input-group-addon.clicked{
+  .show-password-eye-icon{
+    @include icon-generator(34px, 22px, -49px, -310px, -49px, -49px, 80);
+  }
+}
+
+.telegram-connect-icon{
+  @include icon-generator(98px, 98px, -298px, -232px, -298px, -298px, 50);
+}
+
+.telegram-link{
+  &:hover{
+    .telegram-connect-icon{
+      @include icon-generator(98px, 98px, -414px, -232px, -414px, -414px, 50);
+    }
+  }
+}
+
+.kyc-status-icon-approved{
+  @include icon-generator(60px, 60px, -8px, -379px, -8px, -8px, 40);
+}
+.kyc-status-icon-pending{
+  @include icon-generator(60px, 60px, -8px, -448px, -8px, -8px, 40);
+}
+.kyc-status-icon-denied{
+  @include icon-generator(60px, 60px, -8px, -518px, -8px, -8px, 40);
+}
+.kyc-status-modal-error-icon{
+  @include icon-generator(60px, 60px, -8px, -587px, -8px, -8px, 50);
 }

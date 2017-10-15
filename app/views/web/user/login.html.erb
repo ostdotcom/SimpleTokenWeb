@@ -1,0 +1,51 @@
+<% content_for :gradient_class, "bg-gradient poRel height100vh" %>
+<div class="container-fluid sign-up-form">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="text-center">
+        <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
+      </div>
+      <div class="simple-token-form">
+        <h1 class="text-center form-header">Login to Simple Token</h1>
+        <form class="user-form" method="POST" action="/api/user/login" id="userLoginForm">
+          <div class="form-group">
+            <label for="email">email address</label>
+            <input type="text" name="email" id="email" value="" class="form-control" autofocus tabindex="1" autocomplete="off">
+            <div class="error" data-for="email"></div>
+          </div>
+          <div class="form-group">
+            <label for="password">password</label>
+            <div style="position: relative">
+              <input type="password" name="password" id="password" value="" class="form-control" tabindex="2" autocomplete="off">
+              <span class="input-group-addon showhide-addon" id="showhide-password"><span class="show-password-eye-icon"></span></span>
+            </div>
+            <a href="/reset-password" title="Forgot password?" class="forgot-password" tabindex="3">Forgot password?</a>
+            <div class="error" data-for="password"></div>
+          </div>
+          <div class="user-form-footer">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+            <button type="submit" class="btn btn-gold form-btn-gold" id="userLogin" title="LOGIN" tabindex="4">login</button>
+            <div class="error" data-for="general_error"></div>
+          </div>
+          <div class="user-form-footer">
+            <div class="create-account" tabindex="5">Don’t Have an Account Yet?</div>
+            <a href="/sign-up" class="btn-common btn-grey form-btn-transparent" id="" title="Register To Participate" tabindex="6">register
+              to participate</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render :partial => "/shared/web/common/footer" %>
+
+
+<% content_for :end_js do %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            simpletoken.home.login.init({
+                api_token_sale_state_page_names: <%= raw GlobalConstant::TokenSaleUserState.api_token_sale_state_page_names.to_json %>
+            });
+        });
+    </script>
+<% end %>

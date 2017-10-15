@@ -1,0 +1,91 @@
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/platform-architecture-sprite-2x-v2.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/platform-architecture-sprite-1x-v2.png";
+
+@mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
+  background-image: url($sprite-location);
+  background-size: 1500px * $scale/100 1500px * $scale/100;
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    background-image: url($sprite-retina-location);
+    background-size: 1500px * $scale/100 1500px * $scale/100;
+  }
+  display: inline-block;
+  outline: none !important;
+  &:focus {
+    outline: none;
+    background-position: $posX * $scale/100 $posY * $scale/100;
+  }
+  width: $width * $scale/100;
+  height: $height * $scale/100;
+  background-position: $posX * $scale/100 $posY * $scale/100;
+  &:hover {
+    background-position: $offsetHover * $scale/100 $posY * $scale/100;
+  }
+  &:active {
+    background-position: $offsetActive * $scale/100 $posY * $scale/100;
+  }
+}
+
+.p1-i1{
+  @include icon-generator(265px, 290px, -28px, -25px, -28px, -28px);
+  z-index: 10;
+}
+.p1-i2{
+  @include icon-generator(105px, 20px, -40px, -364px, -40px, -40px);
+  z-index: 9;
+}
+.p1-i3{
+  @include icon-generator(290px, 290px, -314px, -17px, -314px, -314px);
+  z-index: 8;
+}
+.p2-i1{
+  @include icon-generator(105px, 20px, -40px, -400px, -40px, -40px);
+  z-index: 7;
+}
+.p2-i2{
+  @include icon-generator(110px, 195px, -650px, -28px, -650px, -650px);
+  z-index: 6;
+}
+.p2-i3{
+  @include icon-generator(125px, 330px, -845px, -25px, -845px, -845px);
+  transform: scale(0.25, 0.25);
+  z-index: 5;
+}
+.p3-i1{
+  @include icon-generator(300px, 430px, -1020px, -25px, -1020px, -1020px);
+  transform: scale(0.25, 0.25);
+  z-index: 4;
+}
+.p3-i2{
+  @include icon-generator(300px, 325px, -28px, -500px, -28px, -28px);
+  transform: scale(0.25, 0.25);
+  z-index: 3;
+}
+.p4-i1{
+  @include icon-generator(270px, 220px, -715px, -500px, -715px, -715px);
+  z-index: 2;
+}
+.p4-i2{
+  @include icon-generator(270px, 220px, -1025px, -510px, -1025px, -1025px);
+  z-index: 2;
+}
+.p4-i3{
+  @include icon-generator(270px, 220px, -405px, -500px, -405px, -405px);
+  z-index: 2;
+}
+.p4-i4{
+  @include icon-generator(105px, 20px, -40px, -400px, -40px, -40px);
+  z-index: 2;
+}
+.p4-i5{
+  @include icon-generator(80px, 80px, -40px, -900px, -40px, -40px);
+  z-index: 2;
+}
+.p4-i6{
+  @include icon-generator(80px, 80px, -40px, -990px, -40px, -40px);
+  z-index: 2;
+}

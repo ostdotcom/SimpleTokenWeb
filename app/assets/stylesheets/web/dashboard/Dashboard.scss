@@ -1,0 +1,179 @@
+.header{
+  color: #6ca3a9;
+  font-size: 24px;
+  font-weight: 300;
+  margin: 25px 0 0;
+  line-height: 30px;
+}
+.kyc-status-msg{
+  color: #597a84;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 10px 0 25px;
+}
+.pause-status{
+  color: #597a84;
+  font-weight: 300;
+  margin-top: 20px;
+}
+.dashboard-page{
+  @media (min-width: 768px) {
+    width: 450px;
+  }
+  .registration-timer{
+    padding: 10px 30px;
+  }
+  .kyc-panel{
+    color: #597a84;
+    font-weight: 300;
+    &.approved{
+      background-color: #fbfdfd;
+      border: solid 1px #6c9ba9;
+    }
+    &.denied{
+      background-color: rgba(231, 0, 59, 0.05);
+      border: solid 1px #e7003b;
+    }
+    a{
+      color: #597a84;
+      border-bottom: 1px solid #597a84;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+    .ver-middle{
+      vertical-align: middle;
+    }
+  }
+  .progress-stats{
+    font-weight: 500;
+    color: #597a84;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+  }
+}
+
+.instructions{
+  color: #597a84;
+  font-weight: 300;
+  padding: 20px 0 30px;
+  .font500{
+    font-weight: 500;
+  }
+  a{
+    font-size: 14px;
+    font-weight: 500;
+    color: #597a84;
+    display: inline-block;
+    margin-top: 10px;
+    border-bottom: 1px solid #597a84;
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+}
+
+.have-question{
+  padding: 40px 0;
+  .question-txt{
+    color: #597a84;
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: 10px;
+  }
+  a{
+    font-size: 12px;
+    font-weight: 500;
+    color: #597a84;
+    display: inline-block;
+    margin: 0 15px;
+    border-bottom: 1px solid #597a84;
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+}
+
+
+.ethereum-deposit-address{
+  border: 0;
+  padding: 0;
+  margin-top: 20px;
+  position: relative;
+  .copy-address-input{
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    color: #435353;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px #fff;
+    -webkit-appearance: none;
+    border: solid 1px #cdd7da;
+    padding: 15px 18px;
+    font-weight: 300;
+  }
+
+  .copy-address-button {
+    border-radius: 0 3px 3px 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50px;
+    border: none;
+    padding: 0 15px;
+  }
+}
+
+
+.token-header{
+  font-size: 18px;
+  color: #597a84;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 20px 0;
+  letter-spacing: 0.4px;
+}
+.token-sale-progress{
+  background-color: #fff;
+  border: solid 1px #6c9ba9;
+  box-shadow: none;
+  height: 50px;
+  .progress-bar{
+    background-color: #a5caca;
+    box-shadow: none;
+  }
+}
+
+
+.simpletoken-alert{
+  position:absolute;
+  top: 0px;
+  width:100%;
+  opacity: 0;
+  font-size: 20px;
+  letter-spacing: 1.1px;
+  color: #ffffff;
+  padding: 20px 0;
+  font-weight: 300;
+  margin: 0;
+  z-index: 999;
+
+  &.success{
+    background-color: #91c0ad;
+  }
+
+  &.error{
+    background-color: #e7003b;
+  }
+
+  .icon{
+    margin-right: 8px;
+  }
+
+  .ver-middle{
+    vertical-align: middle;
+  }
+
+}

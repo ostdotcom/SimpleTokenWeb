@@ -1,0 +1,20 @@
+<div class="container-fluid dashboard-page">
+  <div class="registration-timer">
+    <%= render :partial => "/shared/web/common/token_sale_progress" %>
+    <div class="progress-stats">Raised: 1216 ETH ($4,535,680)</div>
+    <% unless @presenter_obj.has_sale_ended? %>
+        <div class="progress-stats">Avialable: 200 ETH ($332,998)</div>
+        <div class="progress-stats">Ratio: 1 Simple Token = 0.01 ETH</div>
+    <% end %>
+
+    <% if @presenter_obj.is_sale_ongoing? %>
+        <h2><%= @presenter_obj.is_pre_sale_mode_on? ? 'PUBLIC SALE OPENS IN' : 'PUBLIC SALE CLOSES IN' %> </h2>
+        <%=
+            render partial: '/shared/web/common/countdown_timer',
+                   locals: {
+                           timestamp: (@presenter_obj.is_pre_sale_mode_on? ? GlobalConstant::StTokenSale.public_sale_start_date.to_i : GlobalConstant::StTokenSale.public_sale_end_date.to_i) * 1000
+                   }
+        %>
+    <% end %>
+  </div>
+</div>

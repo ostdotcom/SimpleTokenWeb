@@ -15,6 +15,24 @@ module GlobalConstant
         @simple_token_web ||= env_config['simple_token_web']
       end
 
+      def simple_token_api
+        @simple_token_api ||= env_config['simple_token_api']
+      end
+
+      def st_token_sale
+        @st_token_sale ||= env_config['st_token_sale']
+      end
+
+      # Root URL
+      #
+      # * Author: Kedar
+      # * Date: 09/10/2017
+      # * Reviewed By: Sunil Khedar
+      #
+      def api_root_url
+        simple_token_api['root_url']
+      end
+
       # Root URL
       #
       # * Author: Kedar
@@ -42,7 +60,17 @@ module GlobalConstant
       # * Reviewed By: Sunil Khedar
       #
       def cloudfront_domain
-        env_config.fetch('cloudfront', {})[:domain]
+        env_config.fetch('cloudfront', {})['domain']
+      end
+
+      # Recaptcha config
+      #
+      # * Author: Kedar
+      # * Date: 09/10/2017
+      # * Reviewed By: Sunil Khedar
+      #
+      def recaptcha
+        env_config.fetch('recaptcha', {})
       end
 
       # ST api sidekiq admin interface related configs

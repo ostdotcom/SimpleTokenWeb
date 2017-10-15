@@ -1,0 +1,37 @@
+<div class="container-fluid dashboard-page">
+  <div class="row">
+
+    <div class="col-xs-12">
+      <div class="text-center">
+
+        <div class="panel panel-default kyc-panel <%= @presenter_obj.is_kyc_denied? ? 'denied' : 'approved' %>">
+          <div class="panel-body">
+            <span class="pull-left">
+              <span class="kyc-status-icon-<%= @presenter_obj.user_kyc_data['kyc_status'] %> ver-middle"></span>
+              <span><%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed' : @presenter_obj.is_kyc_approved? ? 'KYC Verified' : 'KYC Verification' %></span>
+            </span>
+            <% if @presenter_obj.is_kyc_pending? %>
+                <span class="pull-right">
+                  <a href="/update-kyc" class="pull-right">UPDATE INFO</a>
+                </span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="panel panel-default kyc-panel approved">
+          <div class="panel-body">
+            <span class="pull-left">
+                <span class="kyc-status-icon-<%= @presenter_obj.token_name_status_class %> ver-middle"></span>
+              <span class="ver-middle">Reserve Token Name</span>
+            </span>
+            <span class="pull-right">
+              <a href="/update-token" class="pull-right">CHANGE NAME</a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

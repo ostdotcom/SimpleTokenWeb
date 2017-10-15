@@ -1,0 +1,17 @@
+<div class="container-fluid dashboard-page">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="text-center">
+        <div class="registration-timer">
+          <h2><%= @presenter_obj.is_pre_sale_mode_on? ? 'PRE' : 'PUBLIC' %> SALE OPENS IN</h2>
+          <%=
+            render partial: '/shared/web/common/countdown_timer',
+                   locals: {
+                           timestamp: (@presenter_obj.sale_start_time.to_i) * 1000
+                   }
+          %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,276 @@
+<%= render :partial => "/shared/web/common/loggedin_header", locals: {user: @user} %>
+<div class="container" style="padding-bottom: 80px">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="text-center">
+        <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
+      </div>
+      <%=
+          unless is_update
+            render partial: '/shared/web/common/steps',
+                   locals: {
+                           classes: {
+                                   step_2: 'active',
+                                   step_3: 'incomplete',
+                                   connector_2: 'incomplete'
+                           }
+                   }
+          end
+      %>
+
+      <div class="simple-token-form">
+        <form class="simpletoken-form" action="/api/user/kyc-submit" method="POST" id="kycForm">
+          <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <% if is_update %>
+                <h1 class="text-center form-header" >Please update your KYC information to participate in the Token Sale.</h1>
+                <div class="text-center form-sub-header" style="margin: 20px 0 30px;font-size: 16px">For More Details <a href="">Check This</a></div>
+            <% else %>
+                <h1 class="text-center form-header" style="margin-bottom: 30px">Complete the Registration by Submitting
+                  Your KYC & Reserver Your Token Name</h1>
+            <% end %>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">first name</label>
+                  <input type="text" class="form-control" name="first_name" value="" tabindex="1" autofocus="" autocomplete="off"/>
+
+                  <div class="error" data-for="first_name"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">last name</label>
+                  <input type="text" class="form-control" name="last_name" value="" tabindex="2" autocomplete="off"/>
+
+                  <div class="error" data-for="last_name"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">birth date</label>
+                  <input type="text" class="form-control" name="birthdate" data-week-start="1" data-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" tabindex="3" autocomplete="off"/>
+
+                  <div class="error" data-for="birthdate"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">email</label>
+                  <input type="text" class="form-control" name="email" value="<%= user["email"] %>" tabindex="4" disabled/>
+
+                  <div class="error"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">street address</label>
+                  <input type="text" class="form-control" name="street_address" value="" tabindex="5" autocomplete="off"/>
+
+                  <div class="error" data-for="street_address"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">city</label>
+                  <input type="text" class="form-control" name="city" value="" tabindex="6" autocomplete="off"/>
+
+                  <div class="error" data-for="city"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">state / region</label>
+                  <input type="text" class="form-control" name="state" value="" tabindex="7" autocomplete="off"/>
+
+                  <div class="error" data-for="state"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group st-selectpicker">
+                  <label for="">country</label>
+                  <select class="form-control selectpicker" name="country" tabindex="8">
+                    <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
+                        <option value="<%= country_name %>"><%= country_name.titleize %></option>
+                    <% end %>
+                  </select>
+                  <div class="error" data-for="country"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">zip / postal code</label>
+                  <input type="text" class="form-control" name="postal_code" value="" tabindex="9" autocomplete="off"/>
+
+                  <div class="error" data-for="postal_code"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">ethereum address</label>
+                  <input type="text" class="form-control" name="ethereum_address" value="" tabindex="10" autocomplete="off"/>
+
+                  <div class="error" data-for="ethereum_address"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-instructions">
+                  You will be able to participate in this Token Sale <br/>only by using this specific address. Learn
+                  more <br/>about <a href="" title="Wallet Set Up Guide">Wallet Set Up Guide</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">estimated participation amount ($)</label>
+                  <input type="number" class="form-control" name="estimated_participation_amount" value="" tabindex="11"/>
+
+                  <div class="error" data-for="estimated_participation_amount"></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-instructions">
+                  Estimated amount in USD that you would like to <br/>invest in. For more details please check the <br/>
+                  <a href="" title="Registration Guide">Registration Guide</a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+
+                <div class="form-group">
+                  <label for="">passport number</label>
+                  <input type="text" class="form-control" name="passport_number" value="" tabindex="12"/>
+
+                  <div class="error" data-for="passport_number"></div>
+                </div>
+
+                <div class="form-group st-selectpicker">
+                  <label for="">nationality / passport country</label>
+                  <select class="form-control selectpicker" name="nationality" tabindex="13">
+                    <% GlobalConstant::CountryNationality.nationalities.each do |nationality_name| %>
+                        <option value="<%= nationality_name %>"><%= nationality_name.titleize %></option>
+                    <% end %>
+                  </select>
+
+                  <div class="error" data-for="nationality"></div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12">
+
+                <div class="form-group">
+                  <label for="">passport scan</label>
+                  <div class="file-name"></div>
+                  <div>
+                    <label class="upload-file btn-common btn-grey upload-image-btn">
+                      <input type="file" name="passport_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" tabindex="14"/>
+                      <span>choose file</span>
+                    </label>
+                    <!--<a href="" class="btn-common btn-grey upload-image" title="image" tabindex="15"><span class="upload-image-icon"></span></a>-->
+                    <span class="form-instructions thumbnail-upload-instructions">Please upload a high quality <br/>image. Image size: Min 200kb <br/>Formats : JPG / PNG / PDF</span>
+                  </div>
+                  <div class="error" data-for="passport_file_path"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12">
+                <div class="form-group">
+                  <label for="">upload a selfie with your passport</label>
+                  <div class="file-name"></div>
+                  <div>
+                    <label class="upload-file btn-common btn-grey upload-image-btn">
+                      <input type="file" name="selfie_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" tabindex="15">
+                      <span>choose file</span>
+                    </label>
+                    <!--<a href="" class="btn-common btn-grey upload-image" title="image" tabindex="17"><span class="upload-image-icon"></span></a>-->
+                    <span class="form-instructions thumbnail-upload-instructions">Please upload a high quality <br/>image. Image size: Min 200kb <br/>Formats : JPG / PNG / PDF</span>
+                  </div>
+                  <div class="error" data-for="selfie_file_path"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row residence-proof" style="display:none">
+              <div class="col-xs-12 col-sm-12">
+                <div class="form-group">
+                  <label for="">residence proof</label>
+                  <div class="file-name"></div>
+                  <div>
+                    <label class="upload-file btn-common btn-grey upload-image-btn">
+                      <input type="file" name="residence_proof_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" tabindex="16"/>
+                      <span>choose file</span>
+                    </label>
+                    <span class="form-instructions thumbnail-upload-instructions">Please upload a high quality <br/>image. Image size: Min 400kb <br/>Formats : JPG / PNG / PDF</span>
+                  </div>
+                  <div class="error" data-for="residence_proof_file_path"></div>
+                </div>
+              </div>
+            </div>
+
+
+            <% unless is_update %>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="g-recaptcha" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="17"></div>
+                <div class="error" data-for="recaptcha"></div>
+              </div>
+            </div>
+            <% end %>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12">
+                <div class="form-group">
+                  <div>
+                    <% if is_update %>
+                        <a href="/dashboard" class="btn-common btn-grey upload-image-btn" title="back" tabindex="18" style="margin-right: 20px">back</a>
+                    <% end %>
+                    <button id="kycSubmit" class="btn-common btn-gold upload-image-btn" title="submit" type="submit" tabindex="17">submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="error" data-for="general_error"></div>
+
+          </div>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+        </form>
+        <div id="fileupload"></div>
+        <input type="hidden" id="refresh-indicator" value="no">
+      </div>
+    </div>
+  </div>
+</div>
+
+<% unless is_update %>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+<% end %>
+
+<%= render :partial => "/shared/web/common/footer" %>
+
+<%= render :partial => "/shared/web/modals/verify_modal" %>

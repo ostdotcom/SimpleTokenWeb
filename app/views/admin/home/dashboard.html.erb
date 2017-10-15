@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" media="all"/>
+
+<%
+  kyc_table_config = {
+      displayStart: @display_start.to_i,
+      ajax: {
+          url: "/admin/get-kyc-dashboard",
+          type: "GET"
+      },
+      bSort: false,
+      bFilter: true,
+      bLengthChange: false,
+      processing: true,
+      searching: false,
+      serverSide: true,
+      stateSave: false,
+      language: {
+          sInfo: "_START_ - _END_ of _TOTAL_ entries",
+          infoFiltered: "",
+          infoEmpty: "No entries to show",
+          emptyTable: "No data available for the given filters",
+          paginate: {
+              next: "<span> Next </span>",
+              previous: "<span> Previous </span>"
+          }
+      },
+      pagingType: "simple_numbers",
+      columns: []
+  }
+
+  filters = {cynopsis_status: @cynopsis_status, admin_status: @admin_status}
+  sortings = {sort_order: @sort_order}
+%>
+
+<div class="raw">
+  <div id="kyc-dashboard-container" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 kyc-header">
+        <div style="margin:20px;">
+          <div class="row">
+            <div class="col-sm-12">
+
+              <span class="kyc-check-dashboard">
+                KYC check Dashboard
+              </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+      <div class="col-sm-2">
+
+        <div class="kyc-filter-label">CYNOPSIS STATUS</div>
+        <form class="form-inline">
+          <select id="cynopsis-status" class="form-control selectpicker sort-filter-selecter" style="width: 100%;">
+            <option value="<%= GlobalConstant::UserKycDetail.un_processed_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.un_processed_cynopsis_status %> > Unprocessed</option>
+            <option value="<%= GlobalConstant::UserKycDetail.cleared_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.cleared_cynopsis_status %> > Cleared</option>
+            <option value="<%= GlobalConstant::UserKycDetail.pending_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.pending_cynopsis_status %> > Pending</option>
+            <option value="<%= GlobalConstant::UserKycDetail.approved_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.approved_cynopsis_status %> > Approved</option>
+            <option value="<%= GlobalConstant::UserKycDetail.rejected_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.rejected_cynopsis_status %> > Rejected</option>
+          </select>
+        </form>
+
+      </div>
+
+      <div class="col-sm-2">
+
+        <div class="kyc-filter-label">ADMIN STATUS</div>
+        <form class="form-inline">
+          <select id="admin-status" class="form-control selectpicker" style="width: 100%;">
+            <option value="<%= GlobalConstant::UserKycDetail.un_processed_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.un_processed_admin_status %> > Unprocessed</option>
+            <option value="<%= GlobalConstant::UserKycDetail.qualified_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.qualified_admin_status %> > Qualified</option>
+            <option value="<%= GlobalConstant::UserKycDetail.denied_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.denied_admin_status %> > Denied</option>
+            <option value="<%= GlobalConstant::UserKycDetail.whitelisted_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.whitelisted_admin_status %> > Whitelisted</option>
+          </select>
+        </form>
+
+      </div>
+      <div class="col-sm-2">
+
+        <div class="kyc-filter-label">SORT BY</div>
+        <form class="form-inline">
+          <select id="sort-order" class="form-control selectpicker" style="width: 100%;">
+            <option value="inc" <%= 'selected' if @sort_order=='inc' %> > Oldest</option>
+            <option value="desc" <%= 'selected' if @sort_order=='desc' %> > Newest</option>
+          </select>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <table id="kycCheckDashboard" class="custom-table-grid table display" cellspacing="0" width="100%">
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<% content_for :javascript do %>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script text="text/javascript">
+        $(document).ready(function () {
+            simpletokenadmin.home.dashboard.init({
+                kyc_table_config: <%= raw kyc_table_config.to_json %>,
+                filters: <%= raw filters.to_json %>,
+                sortings: <%= raw sortings.to_json %>
+            });
+        });
+    </script>
+<% end %>
