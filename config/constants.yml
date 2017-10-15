@@ -8,7 +8,7 @@ constants:
     sale_root_url: <%= ENV['STW_SALE_ROOT_URL'] %>
 
   simple_token_api:
-    root_url: <%= ENV['STA_API_ROOT_URL'] %>
+    root_url: <%= ENV['STW_API_INTERNAL_ROOT_URL'] %>
     open_timeout: 5
     read_timeout: 5
 
