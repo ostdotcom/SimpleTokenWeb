@@ -1,13 +1,17 @@
 ;
 (function (window) {
 
-    var homeNs = ns("simpletoken.home"),
+    var verificationNs = ns("simpletoken.verification"),
         utilsNs = ns("simpletoken.utils"),
         oThis;
 
-    homeNs.verification = oThis = {
+      verificationNs.home = oThis = {
+
 
         init: function (config) {
+           if (config.e_t == 1){
+             oThis.onload();
+           }
             oThis.bindButtonActions();
         },
 
@@ -18,15 +22,18 @@
                 oThis.resendEmail();
             });
 
+            $('#errorVerificationLinkBtn').modal('hide');
+
         },
 
         resendEmail: function () {
+          $('#successMessage').text('');
             $.ajax({
                 url: 'api/user/resend-double-opt-in',
                 method: 'GET',
                 success: function (response) {
                     if (response.success == true) {
-                        alert(response);
+                      $('#successMessage').show().text('Verification Link has been sent!');
                         return false;
                     } else {
                       utilsNs.errorHandling.displayFormErrors(response);
@@ -36,12 +43,11 @@
                   utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
                 }
             });
+        },
+
+        onload: function(){
+          $('#verifyLinkModal').modal('show').css('overflow-y', 'hidden');
         }
 
     };
-
-    $(document).ready(function () {
-        oThis.init({i18n: {}});
-    });
-
 })(window);

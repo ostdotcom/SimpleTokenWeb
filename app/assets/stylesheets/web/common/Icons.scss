@@ -148,3 +148,6 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 .kyc-status-icon-denied{
   @include icon-generator(60px, 60px, -8px, -518px, -8px, -8px, 40);
 }
+.kyc-status-modal-error-icon{
+  @include icon-generator(60px, 60px, -8px, -587px, -8px, -8px, 50);
+}

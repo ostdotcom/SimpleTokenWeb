@@ -15,6 +15,7 @@
             <div class="create-account" tabindex="5">Did not receive the email yet?</div>
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <a href="javascript:void(0)" id="resendLink" class="btn-common btn-grey form-btn-transparent" title="Re-send Verification Link" tabindex="3">re-send verification link</a>
+            <div class="success" id="successMessage"></div>
             <div class="error" data-for="general_error"></div>
           </div>
         </div>
@@ -23,3 +24,14 @@
   </div>
 </div>
 <%= render :partial => "/shared/web/common/footer" %>
+<%= render :partial => "/shared/web/modals/verification_link_modal" %>
+
+<% content_for :end_js do %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      simpletoken.verification.home.init({
+        e_t: '<%=  params["e_t"] %>'
+      });
+    });
+  </script>
+<% end %>
