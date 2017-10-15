@@ -21,3 +21,7 @@ constants:
     public_sale_end_date:  <%= ENV['ST_PUBLIC_SALE_END_DATE'] %>
     ethereum_address:  <%= ENV['ST_ETHEREUM_ADDRESS'] %>
 
+  recaptcha:
+    site_key: <%= ENV['ST_RECAPTCHA_SITE_KEY'] %>
+    secret_key: <%= ENV['ST_RECAPTCHA_SECRET'] %>
+
