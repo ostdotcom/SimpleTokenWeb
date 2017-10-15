@@ -95,11 +95,18 @@
           var v = simpletoken.utils.errorHandling.validationGeneric( $(validate_selectors.join(',')) );
           if(v === true) {
               simpletoken.utils.errorHandling.clearFormErrors();
+
               if(/^(0x)?[0-9a-f]{40}$/i.test($('#kycForm input[name=ethereum_address]').val()) != true){
                   $('input[name=ethereum_address]').addClass('border-error');
                   $('.error[data-for="ethereum_address"]').text('Invalid ethereum address');
                   return;
               }
+
+              if(typeof $('.g-recaptcha')[0] != 'undefined' &&  grecaptcha.getResponse() == ''){
+                  $('.error[data-for="recaptcha"]').text('Please check reCaptcha');
+                  return;
+              }
+
               $('#verifyModal').modal({
                   backdrop: 'static',
                   keyboard: false
