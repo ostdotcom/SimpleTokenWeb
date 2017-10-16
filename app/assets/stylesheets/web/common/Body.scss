@@ -258,3 +258,74 @@ input[type="checkbox"]:checked ~ label::after{
   display: inline-block;
 }
 /* Checkboxes CSS Ends */
+
+
+
+#verifyModal, #verifyLinkModal, #update-warning-modal{
+  .heading{
+    color: #6ca3a9;
+    font-size: 30px;
+    font-weight: 300;
+    padding-bottom: 30px;
+  }
+  .desc{
+    color: #597a84;
+    font-weight: 500;
+  }
+  .checkbox{
+    margin-bottom: 20px;
+    color: #597a84;
+    font-size: 16px;
+  }
+  .modal-body{
+    padding: 30px 20px;
+    @media (min-width: 768px) {
+      padding: 30px 50px;
+    }
+  }
+  .modal-content{
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .verify-btn{
+    padding: 10px 25px;
+    border-radius: 3px;
+    margin: 0 auto;
+    display: block;
+    min-width: auto;
+  }
+  .error{
+    text-align: center;
+    font-weight: 300
+  }
+  .loader-content{
+    min-height: 50px;
+    .status{
+      font-weight: 600;
+    }
+    .progress-bar{
+      background: #e4b030;
+      color: #000;
+    }
+  }
+}
+
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}

@@ -53,55 +53,6 @@
   margin-bottom: 5px;
 }
 
-#verifyModal, #verifyLinkModal{
-  .heading{
-    color: #6ca3a9;
-    font-size: 30px;
-    font-weight: 300;
-    padding-bottom: 30px;
-  }
-  .desc{
-    color: #597a84;
-    font-weight: 500;
-  }
-  .checkbox{
-    margin-bottom: 20px;
-    color: #597a84;
-    font-size: 16px;
-  }
-  .modal-body{
-    padding: 30px 20px;
-    @media (min-width: 768px) {
-      padding: 30px 50px;
-    }
-  }
-  .modal-content{
-    box-shadow: none;
-    border-radius: 0;
-  }
-  .verify-btn{
-    padding: 10px 25px;
-    border-radius: 3px;
-    margin: 0 auto;
-    display: block;
-    min-width: auto;
-  }
-  .error{
-    text-align: center;
-    font-weight: 300
-  }
-  .loader-content{
-    min-height: 50px;
-    .status{
-      font-weight: 600;
-    }
-    .progress-bar{
-      background: #e4b030;
-      color: #000;
-    }
-  }
-}
-
 .termsConditions{
   max-width: 350px;
   margin: 5px 0 0;

@@ -13,7 +13,7 @@
               </td>
               <% if @presenter_obj.is_kyc_pending? %>
                 <td>
-                  <a href="/update-kyc">update info</a>
+                  <a href="javascript:void(0)" id="kycWarning">update info</a>
                 </td>
               <% end %>
             </tr>
@@ -41,3 +41,5 @@
 
   </div>
 </div>
+
+<%= render :partial => "/shared/web/modals/kyc_update_warning_modal" %>
