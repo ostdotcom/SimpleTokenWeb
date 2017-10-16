@@ -5,7 +5,7 @@ class Web::UserController < Web::BaseController
   before_action :delete_user_cookie, only: [:sign_up, :login, :reset_password, :change_password]
   before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password]
 
-  before_action :set_page_meta_info
+  before_action :set_page_meta_info, except: [:logout]
 
   before_action :tmp_basic_auth
   before_action :handle_blacklisted_ip
@@ -27,6 +27,18 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def login
+  end
+
+  # Logout
+  #
+  # * Author: Aman
+  # * Date: 15/10/2017
+  # * Reviewed By:
+  #
+  def logout
+    # Clear cookie
+    cookies.delete(GlobalConstant::Cookie.user_cookie_name.to_sym, domain: :all)
+    redirect_to "/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
   # Reset password

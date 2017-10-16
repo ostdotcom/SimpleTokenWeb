@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
     scope '', controller: 'web/user' do
       get '/login' => :login
+      get '/logout' => :logout
       get '/sign-up' => :sign_up
       get '/dashboard' => :dashboard_home
       get '/update-kyc' => :update_kyc_form
