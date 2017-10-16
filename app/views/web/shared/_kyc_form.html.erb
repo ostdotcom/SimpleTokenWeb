@@ -91,7 +91,7 @@
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group st-selectpicker">
                   <label for="country">Country</label>
-                  <select class="form-control selectpicker" title="Country" name="country" tabindex="8" required>
+                  <select class="form-control selectpicker" name="country" tabindex="8" required>
                     <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
                         <option value="<%= country_name %>"><%= country_name.titleize %></option>
                     <% end %>
@@ -155,7 +155,7 @@
 
                 <div class="form-group st-selectpicker">
                   <label for="nationality">Nationality</label>
-                  <select title="Nationality" class="form-control selectpicker" name="nationality" tabindex="13" required>
+                  <select class="form-control selectpicker" name="nationality" tabindex="13" required>
                     <% GlobalConstant::CountryNationality.nationalities.each do |nationality_name| %>
                         <option value="<%= nationality_name %>"><%= nationality_name.titleize %></option>
                     <% end %>
