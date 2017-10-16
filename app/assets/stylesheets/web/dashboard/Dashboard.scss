@@ -26,6 +26,20 @@
   .kyc-panel{
     color: #597a84;
     font-weight: 300;
+    .panel-body{
+      width: 100%;
+      td{
+        padding: 15px;
+        &:first-child{
+          text-align: left;
+          text-transform: capitalize;
+        }
+        &:last-child{
+          text-align: right;
+          text-transform: uppercase;
+        }
+      }
+    }
     &.approved{
       background-color: #fbfdfd;
       border: solid 1px #6c9ba9;
@@ -87,6 +101,7 @@
     color: #597a84;
     display: inline-block;
     margin: 0 15px;
+    text-transform: uppercase;
     border-bottom: 1px solid #597a84;
     &:hover, &:focus{
       text-decoration: none;
