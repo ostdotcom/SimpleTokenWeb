@@ -112,6 +112,7 @@
       validateForm: function(){
 
           var v = false;
+          simpletoken.utils.errorHandling.clearFormErrors();
 
           $('#kycForm input[type="file"]').attr('required',false);
 
