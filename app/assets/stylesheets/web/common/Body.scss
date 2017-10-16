@@ -308,6 +308,9 @@ input[type="checkbox"]:checked ~ label::after{
       color: #000;
     }
   }
+}
+
+#verifyModal{
   a{
     color: #597a84;
     border-bottom: 1px solid #597a84;
@@ -316,7 +319,6 @@ input[type="checkbox"]:checked ~ label::after{
     }
   }
 }
-
 
 .modal {
   text-align: center;

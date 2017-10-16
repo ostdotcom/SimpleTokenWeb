@@ -54,6 +54,9 @@
       height: 40px;
       font-size: 16px;
       font-weight: 300;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
       &::-webkit-input-placeholder{
         color: #ccd4d4;
         font-style: italic;
