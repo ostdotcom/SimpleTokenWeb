@@ -15,6 +15,7 @@
       init: function (config) {
           oThis.bindButtonActions();
           oThis.refreshIndicator();
+          $('#kycForm').setCustomValidity();
       },
 
       bindButtonActions: function () {
@@ -58,6 +59,7 @@
               .datepicker()
               .on('dateChanged.bs.datepicker', function(e) {
                   $(this).datepicker('hide');
+                  $(this).trigger('change');
               });
 
           $('select[name="nationality"]').on('changed.bs.select', function (e) {
@@ -108,6 +110,55 @@
       },
 
       validateForm: function(){
+
+          var v = false;
+
+          $('#kycForm input[type="file"]').attr('required',false);
+
+          oThis.formNames.forEach(function(value){
+              $('#kycForm input[name="'+value+'"]').attr('required',true);
+          });
+
+          $('#kycForm').find('input, select, textarea').each(function(){
+              $(this).trigger('change');
+          });
+
+          if( $('#kycForm .error:not(:empty)').length > 0 ){
+              v = false;
+          } else {
+              v = true;
+          }
+
+          if(typeof $('#kycForm .g-recaptcha')[0] != 'undefined' &&  grecaptcha.getResponse() == ''){
+              $('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+              v = false;
+          }
+
+          oThis.formNames.forEach(function(value){
+              if(typeof $('#kycForm input[name='+value+']')[0].files[0] != 'undefined'){
+                  if( $('#kycForm input[name='+value+']')[0].files[0].size < 1024*200  ){
+                      $('.error[data-for="'+value+'"]').text($(this).attr('title')+ ' file size too small');
+                      v = false;
+                  }
+                  if( $('#kycForm input[name='+value+']')[0].files[0].size > 1024*1024*15 ){
+                      $('.error[data-for="'+value+'"]').text($(this).attr('title')+ ' File size too large. Max allowed 15 mb.');
+                      v = false;
+                  }
+              }
+          });
+
+          if(v === true) {
+              simpletoken.utils.errorHandling.clearFormErrors();
+              $('#verifyModal').modal({
+                  backdrop: 'static',
+                  keyboard: false
+              }).modal('show');
+          }
+
+      },
+
+      /*
+      validateForm: function(){
           var validate_selectors = [
               '#kycForm input[type=text][name]',
               '#kycForm input[type=number][name]'
@@ -150,6 +201,7 @@
               }).modal('show');
           }
       },
+      */
 
       makeFileParams: function(){
           var fileParams = '';

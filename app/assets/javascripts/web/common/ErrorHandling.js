@@ -80,8 +80,18 @@
     },
 
     clearFormErrors: function(){
-      $('.error[data-for]').text('');
-      $('input').removeClass('border-error');
+        $('.error[data-for]').text('');
+        $('input').removeClass('border-error');
+    },
+
+    addFormError: function(field_name, message){
+        $('.error[data-for="'+field_name+'"]').text(message);
+        if(message != ''){
+            $('[name="'+field_name+'"]').addClass('border-error');
+        } else {
+            $('[name="'+field_name+'"]').removeClass('border-error');
+        }
+
     },
 
     showSuccessAlert: function (msg, intervals) {
@@ -139,3 +149,22 @@
   });
 
 })(window);
+
+jQuery.fn.extend({
+    setCustomValidity: function() {
+        var $form = $(this);
+        $form.find('input, select, textarea').each(function(){
+            $(this).on('change', function(){
+                if (this.required && this.value == '') {
+                    simpletoken.utils.errorHandling.addFormError(this.name, this.title+' is required');
+                }
+                else if(this.validity.typeMismatch || this.validity.patternMismatch){
+                    simpletoken.utils.errorHandling.addFormError(this.name, 'Please enter a valid '+this.title);
+                }
+                else {
+                    this.setCustomValidity("");
+                }
+            });
+        });
+    },
+});
