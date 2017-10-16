@@ -32,13 +32,13 @@
             <a href="javascript:void(0)">click here</a> for <a href="">terms and conditions</a> of name reservations.
           </div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-          <div class="user-form-footer" style="margin-top: 20px">
+          <div class="user-form-footer">
             <% if is_update %>
-                <a href="/dashboard" class="btn-common btn-grey upload-image-btn" title="back" tabindex="5">back</a>
+                <a href="/dashboard" class="btn-common btn-grey upload-image-btn" title="back" tabindex="5" style="margin-top: 20px">back</a>
             <% else %>
-                <a href="javascript:void(0)" id="btSkip" class="btn-common btn-grey upload-image-btn" title="skip" tabindex="5">skip</a>
+                <a href="javascript:void(0)" id="btSkip" class="btn-common btn-grey upload-image-btn" title="skip" tabindex="5" style="margin-top: 20px">skip</a>
             <% end %>
-            <a href="javascript:void(0)" id="btSubmit" class="btn-common btn-gold upload-image-btn" title="<%= is_update ? 'update' : 'done' %>" tabindex="6"><%= is_update ? 'update' : 'done' %></a>
+            <a href="javascript:void(0)" id="btSubmit" class="btn-common btn-gold upload-image-btn" style="margin-top: 20px" title="<%= is_update ? 'update' : 'done' %>" tabindex="6"><%= is_update ? 'update' : 'done' %></a>
           </div>
         </form>
 
