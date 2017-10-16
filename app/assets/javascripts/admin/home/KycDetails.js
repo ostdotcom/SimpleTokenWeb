@@ -17,7 +17,7 @@
     bindButtonActions: function (config) {
       $('.kyc-image').on('click', function () {
         var modalBox = $('#kycDetailsModal');
-        modalBox.find('.modal-body').html('<img class="kyc-image" src="'+$(this).attr('src')+'">');
+        modalBox.find('.modal-body').html($(this).parent().html());
         modalBox.modal('show');
       });
 

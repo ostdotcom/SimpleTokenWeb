@@ -28,25 +28,18 @@
       config.columns.unshift(
         {
           title: "Date / Time",
-          data: null,
-          "render": function (data, type, full, meta) {
-            return data.date_time;
-          }
-
+          data: "date_time",
+          render: $.fn.dataTable.render.text()
         },
         {
           title: "Status ST",
-          data: null,
-          "render": function (data, type, full, meta) {
-            return data.status_st;
-          }
+          data: "status_st",
+          render: $.fn.dataTable.render.text()
         },
         {
           title: "Status Cynopsys",
-          data: null,
-          "render": function (data, type, full, meta) {
-            return data.status_cy;
-          }
+          data: "status_cy",
+          render: $.fn.dataTable.render.text()
         },
         {
           title: "Duplicate",
@@ -64,31 +57,23 @@
         },
         {
           title: "Name",
-          data: null,
-          "render": function (data, type, full, meta) {
-            return data.name;
-          }
+          data: "name",
+          render: $.fn.dataTable.render.text()
         },
         {
           title: "Country",
-          data: null,
-          "render": function (data, type, full, meta) {
-            return data.country;
-          }
+          data: "country",
+          render: $.fn.dataTable.render.text()
         },
         {
           title: "Nationality",
-          data: null,
-          "render": function (data, type, full, meta) {
-            return data.nationality;
-          }
+          data: "nationality",
+          render: $.fn.dataTable.render.text()
         },
         {
           title: "Admin",
-          data: null,
-          "render": function (data, type, full, meta) {
-            return data.admin;
-          }
+          data: "admin",
+          render: $.fn.dataTable.render.text()
         }
       );
       oThis.oTable = oThis.$dataTable.DataTable(config);
