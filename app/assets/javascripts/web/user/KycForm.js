@@ -153,6 +153,8 @@
                   backdrop: 'static',
                   keyboard: false
               }).modal('show');
+          } else {
+              $('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
           }
 
       },
@@ -296,7 +298,11 @@
                     }
                 },
                 error: function (jqXHR, exception) {
-                  utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+                    $('#verifyModal .close').show();
+                    $('#verifyModal .verify-content').show();
+                    $('#verifyModal .loader-content').hide();
+                    utilsNs.errorHandling.displayFormErrors(response);
+                    //utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
                 }
             });
       }
