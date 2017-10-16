@@ -61,7 +61,7 @@
 
         showSuccessPage: function () {
             var userEmail = $('#email').val();
-            $('#emailSuccess').val(userEmail);
+            $('#emailSuccess').text(userEmail);
             $('#resetPassword').hide();
             $('#resetPasswordSuccess').show();
         },

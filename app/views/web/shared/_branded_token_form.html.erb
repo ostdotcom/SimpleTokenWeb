@@ -1,4 +1,4 @@
-<div style="position: absolute;width: 100%">
+<div style="position: absolute;width: 100%;z-index: 1">
   <%= render :partial => "/shared/web/common/loggedin_header", locals: {user: @user} %>
 </div>
 <div class="container sign-up-form">
@@ -32,7 +32,7 @@
             <a href="javascript:void(0)">click here</a> for <a href="">terms and conditions</a> of name reservations.
           </div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-          <div class="user-form-footer">
+          <div class="user-form-footer login-page-footer">
             <% if is_update %>
                 <a href="/dashboard" class="btn-common btn-grey upload-image-btn" title="back" tabindex="5" style="margin-top: 20px">back</a>
             <% else %>
