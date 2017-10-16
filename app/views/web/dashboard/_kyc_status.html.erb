@@ -11,11 +11,11 @@
                 <span class="kyc-status-icon-<%= @presenter_obj.user_kyc_data['kyc_status'] %> ver-middle"></span>
                 <span class="ver-middle"><%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed' : @presenter_obj.is_kyc_approved? ? 'KYC Verified' : 'KYC Verification' %></span>
               </td>
-              <% if @presenter_obj.is_kyc_pending? %>
-                <td>
+              <td>
+                <% if @presenter_obj.is_kyc_pending? %>
                   <a href="javascript:void(0)" id="kycWarning">update info</a>
-                </td>
-              <% end %>
+                <% end %>
+              </td>
             </tr>
           </table>
         </div>
@@ -27,11 +27,11 @@
                 <span class="kyc-status-icon-<%= @presenter_obj.token_name_status_class %> ver-middle"></span>
                 <span class="ver-middle">Reserve Token Name</span>
               </td>
-              <% if @presenter_obj.is_kyc_pending? %>
-                <td>
+              <td>
+                <% if @presenter_obj.is_kyc_pending? %>
                   <a href="/update-token">change name</a>
-                </td>
-              <% end %>
+                <% end %>
+              </td>
             </tr>
           </table>
         </div>

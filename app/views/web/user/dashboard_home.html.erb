@@ -18,7 +18,9 @@
   <%= render :partial => "/web/dashboard/ethereum_deposit_address" %>
   <%= render :partial => "/web/dashboard/token_sale_progress" %>
   <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 30px auto;display: block;"/>
-  <%= render :partial => "/web/dashboard/kyc_status" %>
+  <div style="margin-bottom: 50px">
+    <%= render :partial => "/web/dashboard/kyc_status" %>
+  </div>
   <%= render :partial => "/web/token_sale/telegram" %>
 <% else %>
   <h1 class="header text-center">This is Your Account Dashboard</h1>

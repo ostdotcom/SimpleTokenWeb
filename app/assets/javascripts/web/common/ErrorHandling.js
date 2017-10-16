@@ -141,13 +141,6 @@
 
   };
 
-  $(document).ready(function () {
-    $("#visible-button").on('click', function() {
-      document.querySelector("#visible-input").select();
-      document.execCommand('copy');
-    });
-  });
-
 })(window);
 
 jQuery.fn.extend({
