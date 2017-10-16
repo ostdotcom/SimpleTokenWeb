@@ -2,5 +2,4 @@
 //= require plugins/jquery-file-upload/jquery.fileupload
 //= require plugins/bootstrap_select/bootstrap-select
 //= require plugins/bootstrap-datepicker/bootstrap-datepicker
-//= require web/common/ModalHandling
 //= require web/user/KycForm
