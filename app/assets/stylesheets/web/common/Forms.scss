@@ -50,8 +50,6 @@
 
     .form-control{
       border: solid 1px #cdd7da;
-      -webkit-box-shadow: none;
-      box-shadow: none;
       color: #435353;
       height: 40px;
       font-size: 16px;
@@ -242,7 +240,13 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-label.upload-file input[type="file"] {
+input[type="text"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+  label.upload-file input[type="file"] {
   position: fixed;
   top: -1000px;
 }
