@@ -19,6 +19,8 @@
 
             $("#resendLink, .resendLink").click(function (event) {
                 event.preventDefault();
+                var newURL = location.href.split("?")[0];
+                window.history.replaceState({}, document.title, newURL);
                 oThis.resendEmail();
                 $('#verifyLinkModal').modal('hide');
             });
