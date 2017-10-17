@@ -78,6 +78,7 @@ class Web::UserController < Web::BaseController
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.kyc_page_allowed_states)
 
+    get_ip_to_cynopsis_country
   end
 
   # KYC update form after double opt in
@@ -99,6 +100,7 @@ class Web::UserController < Web::BaseController
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
 
+    get_ip_to_cynopsis_country
   end
 
   # Branded token form

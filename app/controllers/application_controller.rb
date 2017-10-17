@@ -47,6 +47,14 @@ class ApplicationController < ActionController::Base
   # * Reviewed By: Sunil
   #
   def ip_address
+
+    # China:
+    # return '220.181.108.118'
+    # US:
+    # return '72.229.28.185'
+    # Germany:
+    # return '85.214.132.117'
+
     request.remote_ip.to_s
   end
 

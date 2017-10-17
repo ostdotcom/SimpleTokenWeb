@@ -92,8 +92,8 @@
                 <div class="form-group st-selectpicker">
                   <label for="country">Country</label>
                   <select class="form-control selectpicker" name="country" tabindex="8" required>
-                    <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
-                        <option value="<%= country_name %>"><%= country_name.titleize %></option>
+                    <% GlobalConstant::CountryNationality.countries.each do |country_name|  %>
+                        <option value="<%= country_name %>" <%= @ip_to_cynopsis_country.to_s.upcase == country_name ? 'selected' : '' %>><%= country_name.titleize %></option>
                     <% end %>
                   </select>
                   <div class="error" data-for="country"></div>

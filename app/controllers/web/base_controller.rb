@@ -1,6 +1,5 @@
 class Web::BaseController < ApplicationController
 
-
   private
 
   # Delete user cookies
@@ -62,15 +61,39 @@ class Web::BaseController < ApplicationController
   #
   # * Author: Aman
   # * Date: 15/10/2017
-  # * Reviewed By:
+  # * Reviewed By: Sunil
   #
   def handle_blacklisted_ip
-    blacklisted_countries = ['china']
-    return unless Util::GeoIpUtil.maxmind_file_exists?
-    geo_ip_obj = Util::GeoIpUtil.new(ip_address: ip_address)
-    return unless  blacklisted_countries.include?(geo_ip_obj.get_country_name.to_s.downcase)
+    blacklisted_countries = ['CHINA']
+    return unless blacklisted_countries.include?(get_country_from_ip.upcase)
+    redirect_to '/', status: GlobalConstant::ErrorCode.permanent_redirect and return
+  end
 
-    redirect_to "/", status: GlobalConstant::ErrorCode.permanent_redirect and return
+  # Get IP based cynopsis country name
+  #
+  # * Author: Sunil
+  # * Date: 17/10/2017
+  # * Reviewed By: Sunil
+  #
+  def get_ip_to_cynopsis_country
+    @ip_to_cynopsis_country ||= GlobalConstant::CountryNationality.cynopsis_country_for(get_country_from_ip)
+  end
+
+  # Get IP based country name
+  #
+  # * Author: Sunil
+  # * Date: 17/10/2017
+  # * Reviewed By: Sunil
+  #
+  def get_country_from_ip
+    @country_from_ip ||= begin
+      country_name = ''
+      if Util::GeoIpUtil.maxmind_file_exists?
+        geo_ip_obj = Util::GeoIpUtil.new(ip_address: ip_address)
+        country_name = geo_ip_obj.get_country_name.to_s
+      end
+      country_name
+    end
   end
 
 end
