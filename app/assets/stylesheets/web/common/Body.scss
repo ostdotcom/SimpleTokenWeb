@@ -139,6 +139,39 @@ h1.page-title{
   }
 }
 
+// Uber banner CSS
+.uber-banner{
+  background-color: #e4b030;
+  padding: 10px 0;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  a{
+    font-weight: 500;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+  span{
+    vertical-align: middle;
+  }
+}
+@media (max-width: 767px) {
+  .uber-banner{
+    font-size: 12px;
+    text-align: left;
+    padding: 10px 20px;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    -webkit-align-items: center;
+  }
+}
+
 // Header CSS
 .navbar-simpletoken{
   border: none;
