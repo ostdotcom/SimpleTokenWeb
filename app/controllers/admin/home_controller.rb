@@ -4,7 +4,7 @@ class Admin::HomeController < Admin::BaseController
   before_action :delete_admin_cookie, only: [:login]
   before_action :check_admin_cookie, except: [:login]
 
-  before_action :set_page_meta_info, :except => [:get_kyc_dashboard]
+  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs]
 
   # Admin login
   #
@@ -26,7 +26,7 @@ class Admin::HomeController < Admin::BaseController
 
   # Admin dashboard
   #
-  # * Author: Aman
+  # * Author: Alpesh
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
@@ -39,7 +39,7 @@ class Admin::HomeController < Admin::BaseController
 
   # Admin dashboard
   #
-  # * Author: Aman
+  # * Author: Alpesh
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
@@ -77,7 +77,7 @@ class Admin::HomeController < Admin::BaseController
 
   # Admin dashboard
   #
-  # * Author: Aman
+  # * Author: Alpesh
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
@@ -94,6 +94,31 @@ class Admin::HomeController < Admin::BaseController
     @service_data = service_response.data
 
     Rails.logger.info(@service_data)
+
+  end
+
+  # Admin dashboard
+  #
+  # * Author: Alpesh
+  # * Date: 09/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def kyc_action_logs
+
+    #service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+    #                      .get_kyc_action_logs(params)
+
+    response = {
+        data: [
+            {data_time: '12/08/17 14:32', status_a: 'Pending', agent: 'Frankie', email_type: 'some'},
+            {data_time: '12/08/17 14:32', status_a: 'Pending', agent: 'Frankie', email_type: 'some'},
+            {data_time: '12/08/17 14:32', status_a: 'Pending', agent: 'Frankie', email_type: 'some'},
+            {data_time: '12/08/17 14:32', status_a: 'Pending', agent: 'Frankie', email_type: 'some'},
+            {data_time: '12/08/17 14:32', status_a: 'Pending', agent: 'Frankie', email_type: 'some'}
+        ]
+    }
+
+    render :json => response and return
 
   end
 

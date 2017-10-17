@@ -29,11 +29,11 @@ module SimpleTokenApi
       #
       def dashboard_detail(params)
         request_params = {
-            filters: params[:filters].permit!,
-            sortings: params[:sortings].permit!,
             offset: params[:start],
             page_size: params[:length]
         }
+        request_params[:filters] = params[:filters].permit! if params[:filters].present?
+        request_params[:sortings] = params[:sortings].permit! if params[:sortings].present?
 
         get("kyc/dashboard", request_params)
       end
@@ -48,6 +48,20 @@ module SimpleTokenApi
       # @return [Result::Base] returns an object of Result::Base class
       #
       def get_kyc_details(params)
+        request_params = {case_id: params[:case_id]}
+        get("kyc/check-details", request_params)
+      end
+
+      # Get Kyc action logs
+      #
+      # * Author: Alpesh
+      # * Date: 15/10/2017
+      # * Reviewed By:
+      #
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def get_kyc_action_logs(params)
         request_params = {case_id: params[:case_id]}
         get("kyc/check-details", request_params)
       end

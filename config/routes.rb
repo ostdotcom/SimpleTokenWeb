@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     get '/dashboard' => :dashboard
     get '/get-kyc-dashboard' => :get_kyc_dashboard
     get '/get-kyc-details' => :kyc_details
+    get '/kyc-action-logs' => :kyc_action_logs
   end
 
   namespace 'admin' do

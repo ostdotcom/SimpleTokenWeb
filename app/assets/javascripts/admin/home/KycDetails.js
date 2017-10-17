@@ -6,9 +6,15 @@
 
   homeNs.kycDetails = oThis = {
 
+    oLogTable: null,
+    logTableConfig: {},
+    $kycLogsTable: $('#kycLogsTable'),
+    $modalBox: $('#kycDetailsModal'),
+
     init: function (config) {
       oThis.initGrid();
       oThis.bindButtonActions();
+      oThis.logTableConfig = config.logs_table_config;
     },
 
     initGrid: function (config) {
@@ -16,12 +22,14 @@
 
     bindButtonActions: function (config) {
       $('.kyc-image, .fullScreenIcon').on('click', function () {
-        var modalBox = $('#kycDetailsModal');
-        modalBox.find('.modal-body').html($(this).closest('.kyc-img-container').html());
-        $('.modal-body > iframe').height((window.innerHeight-150)+'px');
-        //$('.modal-body > img').attr('height', (window.innerHeight-150)+'px');
-        $('.modal-body img').css('max-height', (window.innerHeight-150)+'px');
-        modalBox.modal('show');
+        oThis.$modalBox.find('.modal-body').html($(this).closest('.kyc-img-container').html());
+        $('.modal-body iframe').height((window.innerHeight - 150) + 'px');
+        $('.modal-body img').css('max-height', (window.innerHeight - 150) + 'px');
+        oThis.$modalBox.modal('show');
+      });
+
+      $('#openLogs').on('click', function () {
+        oThis.getLogs();
       });
 
       $('#kycDetailsModal').on('hidden.bs.modal', function () {
@@ -31,7 +39,7 @@
       $('.sticky-action-buttons-container').on('click', '.button-active', function () {
         var r = confirm('Please confirm the action !!')
           , that = this;
-        if(r==true){
+        if (r == true) {
           var $form = $('#caseActionForm');
           $.ajax({
             url: $(that).data('action-url'),
@@ -50,11 +58,46 @@
         }
       });
 
+    },
+
+    getLogs: function () {
+
+      if(!oThis.oLogTable){
+        oThis.logTableConfig.ajax.data = function (data) {
+          return $.extend(data, {});
+        };
+
+        oThis.logTableConfig.columns.unshift(
+          {
+            title: "Date / Time",
+            data: "data_time",
+            render: $.fn.dataTable.render.text(),
+            width:'10%'
+          },
+          {
+            title: "Status",
+            data: "status_a",
+            render: $.fn.dataTable.render.text(),
+            width:'10%'
+          },
+          {
+            title: "Agent",
+            data: "agent",
+            render: $.fn.dataTable.render.text(),
+            width:'10%'
+          },
+          {
+            title: "Email Type",
+            data: "email_type",
+            render: $.fn.dataTable.render.text()
+          }
+        );
+
+        oThis.oLogTable = oThis.$kycLogsTable.DataTable(oThis.logTableConfig);
+      }
+
+      $('#kycLogsModal').modal('show');
     }
 
   };
-
-  $(document).ready(function () {
-    oThis.init({i18n: {}});
-  });
 })(window);
