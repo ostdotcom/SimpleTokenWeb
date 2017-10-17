@@ -31,4 +31,4 @@ constants:
     admin_pw: <%= ENV['STW_SK_ADMIN_PW'] %>
 
   local_path:
-    geo_ip_file: <%= ENV['STA_GEOIP_FILE_WITH_PATH'] %>
+    geo_ip_file: <%= ENV['STW_GEOIP_FILE_WITH_PATH'] %>

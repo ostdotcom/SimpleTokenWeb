@@ -78,6 +78,10 @@ module GlobalConstant
         @api_sidekiq_interface ||= env_config.fetch('api_sidekiq_interface', {})
       end
 
+      def local_path
+        @local_path ||= fetch_config.fetch('local_path', {}).with_indifferent_access
+      end
+
       private
 
       # Env config
