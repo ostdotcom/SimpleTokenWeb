@@ -43,15 +43,15 @@
                       .text(percent + '%');
               },
               error: function(jqXHR, exception) {
-                  $('#verifyModal .loader-content .status').text(utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
-                  $('#verifyModal .close').show();
-                  $('#verifyModal .loader-content .progress').hide();
+                  oThis.verifyModal('show-close');
+                  oThis.verifyModal('hide-progress');
+                  oThis.verifyModal('status-text', utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
               },
               fail: function(e, data) {
                   var xmlResponse = $( data.jqXHR.responseXML );
-                  $('#verifyModal .loader-content .status').text('Upload Error: '+xmlResponse.find('Code').text()+'. Please contact support.');
-                  $('#verifyModal .close').show();
-                  $('#verifyModal .loader-content .progress').hide();
+                  oThis.verifyModal('show-close');
+                  oThis.verifyModal('hide-progress');
+                  oThis.verifyModal('status-text', 'Upload Error: '+xmlResponse.find('Code').text()+'. Please contact support.');
               },
           });
 
@@ -136,62 +136,21 @@
           }
 
           if(v === true) {
+
               simpletoken.utils.errorHandling.clearFormErrors();
+
+              oThis.verifyModal('verify');
+
               $('#verifyModal').modal({
                   backdrop: 'static',
                   keyboard: false
               }).modal('show');
+
           } else {
               $('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
           }
 
       },
-
-      /*
-      validateForm: function(){
-          var validate_selectors = [
-              '#kycForm input[type=text][name]',
-              '#kycForm input[type=number][name]'
-          ];
-          oThis.formNames.forEach(function(value){
-              validate_selectors.push('#kycForm input[name="'+value+'"]');
-          });
-
-          var v = simpletoken.utils.errorHandling.validationGeneric( $(validate_selectors.join(',')) );
-
-          if(/^(0x)?[0-9a-f]{40}$/i.test($('#kycForm input[name=ethereum_address]').val()) != true){
-              $('input[name=ethereum_address]').addClass('border-error');
-              $('.error[data-for="ethereum_address"]').text('Invalid ethereum address');
-              v = false;
-          }
-
-          if(typeof $('#kycForm .g-recaptcha')[0] != 'undefined' &&  grecaptcha.getResponse() == ''){
-              $('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
-              v = false;
-          }
-
-          oThis.formNames.forEach(function(value){
-              if(typeof $('#kycForm input[name='+value+']')[0].files[0] != 'undefined'){
-                  if( $('#kycForm input[name='+value+']')[0].files[0].size < 1024*200  ){
-                      $('.error[data-for="'+value+'"]').text('File size too small');
-                      v = false;
-                  }
-                  if( $('#kycForm input[name='+value+']')[0].files[0].size > 1024*1024*15 ){
-                      $('.error[data-for="'+value+'"]').text('File size too large. Should be less than 15 mb.');
-                      v = false;
-                  }
-              }
-          });
-
-          if(v === true) {
-              simpletoken.utils.errorHandling.clearFormErrors();
-              $('#verifyModal').modal({
-                  backdrop: 'static',
-                  keyboard: false
-              }).modal('show');
-          }
-      },
-      */
 
       makeFileParams: function(){
           var fileParams = '';
@@ -221,11 +180,10 @@
 
       getSignedUrls: function(){
 
-          $('#verifyModal .close').hide();
-          $('#verifyModal .verify-content').hide();
-          $('#verifyModal .loader-content .progress').hide();
-          $('#verifyModal .loader-content .status').text('Encrypting your upload data...');
-          $('#verifyModal .loader-content').show();
+          oThis.verifyModal('loader');
+          oThis.verifyModal('hide-close');
+          oThis.verifyModal('hide-progress');
+          oThis.verifyModal('status-text', 'Encrypting your upload data...');
 
           $.ajax({
               url: '/api/user/upload-params/?'+oThis.makeFileParams(),
@@ -240,8 +198,8 @@
 
       uploadFiles: function(data){
 
-          $('#verifyModal .loader-content .progress').show();
-          $('#verifyModal .loader-content .status').text('Uploading files via secured channel...');
+          oThis.verifyModal('show-progress');
+          oThis.verifyModal('status-text', 'Uploading files via secured channel...');
 
           $.each(data, function(upload_key, upload_value){
               $('#fileupload').fileupload('send', {
@@ -256,8 +214,8 @@
 
       submitData: function(){
 
-            $('#verifyModal .loader-content .progress').hide();
-            $('#verifyModal .loader-content .status').text('Submitting your KYC data...');
+            oThis.verifyModal('hide-progress');
+            oThis.verifyModal('status-text', 'Submitting your KYC data...');
 
             var $form = $('#kycForm');
             var $data = $form.serializeArray().reduce(function(obj, item) {
@@ -278,21 +236,50 @@
                         window.location = '/reserve-token';
                         return false;
                     } else {
-                        $('#verifyModal .close').show();
-                        $('#verifyModal .verify-content').show();
-                        $('#verifyModal .loader-content').hide();
-                        $('#verifyModal').modal('hide');
-                        utilsNs.errorHandling.displayFormErrors(response);
+                        oThis.verifyModal('show-close');
+                        oThis.verifyModal('status-text', response.err.display_text);
                     }
                 },
                 error: function (jqXHR, exception) {
-                    $('#verifyModal .close').show();
-                    $('#verifyModal .verify-content').show();
-                    $('#verifyModal .loader-content').hide();
-                    $('#verifyModal').modal('hide');
-                    utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+                    oThis.verifyModal('show-close');
+                    oThis.verifyModal('status-text', utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
                 }
             });
+      },
+
+      verifyModal: function(mode, message){
+
+          if(mode == 'verify' || typeof mode == 'undefined'){
+              $('#verifyModal .verify-content').show();
+              $('#verifyModal .loader-content').hide();
+              $('#verifyModal .close').show();
+          }
+
+          if(mode == 'loader'){
+              $('#verifyModal .verify-content').hide();
+              $('#verifyModal .loader-content').show();
+          }
+
+          if(mode == 'hide-close'){
+              $('#verifyModal .close').hide();
+          }
+
+          if(mode == 'show-close'){
+              $('#verifyModal .close').show();
+          }
+
+          if(mode == 'hide-progress'){
+              $('#verifyModal .loader-content .progress').hide();
+          }
+
+          if(mode == 'show-progress'){
+              $('#verifyModal .loader-content .progress').show();
+          }
+
+          if(mode == 'status-text'){
+              $('#verifyModal .loader-content .status').text(message);
+          }
+
       }
 
   };
