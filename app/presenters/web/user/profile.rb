@@ -42,7 +42,7 @@ module Presenters
         end
 
         def simple_token_foundation_ethereum_address
-
+          result['foundation_ethereum_address']
         end
 
         def is_token_present?
