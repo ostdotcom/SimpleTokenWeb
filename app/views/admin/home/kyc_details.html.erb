@@ -90,35 +90,35 @@
             <div class="case-detail-box">
               <span class="case-detail-col1">
                 <span class="detail-label margin-top-0">First Name</span>
-                <span class="detail-value"><%= raw user_detail['first_name'] %></span>
+                <span class="detail-value"><%= user_detail['first_name'] %></span>
                 <span class="detail-label">Birth Date</span>
-                <span class="detail-value"><%= raw user_detail['birthdate'] %></span>
+                <span class="detail-value"><%= user_detail['birthdate'] %></span>
                 <span class="detail-label">Passport Number</span>
-                <span class="detail-value"><%= raw user_detail['passport_number'] %></span>
+                <span class="detail-value"><%= user_detail['passport_number'] %></span>
               </span>
               <span class="case-detail-col2">
                 <span class="detail-label margin-top-0">Last Name</span>
-                <span class="detail-value"><%= raw user_detail['last_name'] %></span>
+                <span class="detail-value"><%= user_detail['last_name'] %></span>
                 <span class="detail-label">Residence Country</span>
-                <span class="detail-value"><%= raw user_detail['country'] %></span>
+                <span class="detail-value"><%= user_detail['country'] %></span>
                 <span class="detail-label">Nationality</span>
-                <span class="detail-value"><%= raw user_detail['nationality'] %></span>
+                <span class="detail-value"><%= user_detail['nationality'] %></span>
               </span>
               <span class="case-detail-col3">
                 <span class="detail-label margin-top-0">Email Address</span>
-                <span class="detail-value"><%= raw user_detail['email'] %></span>
+                <span class="detail-value"><%= user_detail['email'] %></span>
                 <span class="detail-label">Street Address</span>
-                <span class="detail-value"><%= raw user_detail['street_address'] %></span>
+                <span class="detail-value"><%= user_detail['street_address'] %></span>
                 <span class="detail-label">Zip Code</span>
-                <span class="detail-value"><%= raw user_detail['postal_code'] %></span>
+                <span class="detail-value"><%= user_detail['postal_code'] %></span>
               </span>
               <span class="case-detail-col4">
                 <span class="detail-label margin-top-0">Date & Time</span>
-                <span class="detail-value"><%= raw user_detail['kyc_confirmed_at'] %></span>
+                <span class="detail-value"><%= user_detail['submitted_at'] %></span>
                 <span class="detail-label">City</span>
-                <span class="detail-value"><%= raw user_detail['city'] %></span>
+                <span class="detail-value"><%= user_detail['city'] %></span>
                 <span class="detail-label">State/ Region</span>
-                <span class="detail-value"><%= raw user_detail['state'] %></span>
+                <span class="detail-value"><%= user_detail['state'] %></span>
               </span>
             </div>
           </div>
@@ -128,27 +128,48 @@
 
           <% if user_detail['passport_file_url'].present? %>
               <div class="col-sm-6">
-                <span class="kyc-img-container" >
-                  <span class="img-label">Passport Image</span>
-                  <img class="kyc-image" src="<%= user_detail['passport_file_url'] %>">
-                </span>
+                <div class="kyc-img-container">
+                  <div class="img-label">Passport Image</div>
+                  <div class="kyc-image">
+                    <% if user_detail['passport_file_url'].match('\/i\/') %>
+                        <img src="<%= user_detail['passport_file_url'] %>">
+                    <% else %>
+                        <iframe src="<%= user_detail['passport_file_url'] %>" frameborder="0"></iframe>
+                    <% end %>
+                  </div>
+                  <div class="fullScreenIcon"> Full Screen </div>
+                </div>
               </div>
           <% end %>
 
-          <% if user_detail['self_file_url'].present? %>
+          <% if user_detail['selfie_file_url'].present? %>
               <div class="col-sm-6">
-                <span class="kyc-img-container" >
-                  <span class="img-label">Selfie Image</span>
-                  <img class="kyc-image" src="<%= user_detail['self_file_url'] %>">
-                </span>
+                <div class="kyc-img-container">
+                  <div class="img-label">Selfie Image</div>
+                  <div class="kyc-image">
+                    <% if user_detail['selfie_file_url'].match('\/i\/') %>
+                        <img src="<%= user_detail['selfie_file_url'] %>">
+                    <% else %>
+                        <iframe src="<%= user_detail['selfie_file_url'] %>" frameborder="0"></iframe>
+                    <% end %>
+                  </div>
+                  <div class="fullScreenIcon"> Full Screen </div>
+                </div>
               </div>
           <% end %>
 
           <% if user_detail['residence_proof_file_url'].present? %>
               <div class="col-sm-6">
-                <span class="kyc-img-container" >
+                <span class="kyc-img-container">
                   <span class="img-label">Proof of Residence </span>
-                  <img class="kyc-image" src="<%= user_detail['residence_proof_file_url'] %>">
+                  <div class="kyc-image">
+                    <% if user_detail['residence_proof_file_url'].match('\/i\/') %>
+                        <img src="<%= user_detail['residence_proof_file_url'] %>">
+                    <% else %>
+                        <iframe src="<%= user_detail['residence_proof_file_url'] %>" frameborder="0"></iframe>
+                    <% end %>
+                  </div>
+                  <div class="fullScreenIcon"> Full Screen </div>
                 </span>
               </div>
           <% end %>
@@ -175,9 +196,7 @@
 
 </div>
 
-<div style="height: 85px;">
-
-</div>
+<div style="height: 85px;"></div>
 
 <div id="kycDetailsModal" class="modal fade" role="dialog" tabindex="-1">
   <div class="modal-dialog">

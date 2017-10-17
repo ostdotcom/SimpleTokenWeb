@@ -15,9 +15,12 @@
     },
 
     bindButtonActions: function (config) {
-      $('.kyc-image').on('click', function () {
+      $('.kyc-image, .fullScreenIcon').on('click', function () {
         var modalBox = $('#kycDetailsModal');
-        modalBox.find('.modal-body').html('<img class="kyc-image" src="'+$(this).attr('src')+'">');
+        modalBox.find('.modal-body').html($(this).closest('.kyc-img-container').html());
+        $('.modal-body > iframe').height((window.innerHeight-150)+'px');
+        //$('.modal-body > img').attr('height', (window.innerHeight-150)+'px');
+        $('.modal-body img').css('max-height', (window.innerHeight-150)+'px');
         modalBox.modal('show');
       });
 
