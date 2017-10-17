@@ -87,9 +87,9 @@ class Admin::HomeController < Admin::BaseController
     service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_kyc_details(params)
 
-    @dash_filters = params[:filters].permit!
-    @dash_sortings = params[:sortings].permit!
-    @display_start = params[:display_start]
+    @dash_filters = params[:filters].present? ? params[:filters].permit! : {}
+    @dash_sortings = params[:sortings].present? ? params[:sortings].permit! : {}
+    @display_start = params[:display_start].to_i
 
     @service_data = service_response.data
 

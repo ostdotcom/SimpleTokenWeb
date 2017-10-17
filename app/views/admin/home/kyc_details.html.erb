@@ -88,12 +88,26 @@
                   <%= is_re_submitted.to_i==1 ? 'Yes' : 'No' %>
                 </span>
               </div>
-              <div>
+              <div id="duplicate-kyc" data-case-id="<%= @case_id %>">
                 <span class="status-label"> Duplicate : </span>
                 <span class="<%= is_duplicate==1 ? 'bigRedDot' : 'bigGreenDot' %>"> &nbsp; </span>
                 <span class="status-value">
                   <%= is_duplicate.to_i==1 ? 'Yes' : 'No' %>
                 </span>
+                <div class="duplicate-kyc-data">
+                  <table id="dupDataTable">
+                    <thead>
+                      <tr>
+                        <th>Case Id</th>
+                        <th>Admin Status</th>
+                        <th>Cynopsis Status</th>
+                        <th>Active Matches</th>
+                        <th>Inactive Matches</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -262,9 +276,14 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script text="text/javascript">
       $(document).ready(function () {
-        simpletokenadmin.home.kycDetails.init({
-          logs_table_config: <%= raw logs_table_config.to_json %>
+        var kycDetailsObj = simpletokenadmin.home.kycDetails.init({
+          logs_table_config: <%= raw logs_table_config.to_json %>,
+          admin_kyc_statuses: <%= raw GlobalConstant::UserKycDetail.admin_kyc_statuses.to_json %>,
+          cynopsis_kyc_statuses: <%= raw GlobalConstant::UserKycDetail.cynopsis_kyc_statuses.to_json %>
         });
+
+        simpletokenadmin.home.kycDetails.getDuplicateKycs(<%= @case_id %>);
+
       });
     </script>
 <% end %>

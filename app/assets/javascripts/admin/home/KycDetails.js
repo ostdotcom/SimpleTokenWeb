@@ -8,6 +8,8 @@
 
     oLogTable: null,
     logTableConfig: {},
+    adminKycStatuses: {},
+    cynopsisKycStatuses: {},
     $kycLogsTable: $('#kycLogsTable'),
     $modalBox: $('#kycDetailsModal'),
 
@@ -15,6 +17,8 @@
       oThis.initGrid();
       oThis.bindButtonActions();
       oThis.logTableConfig = config.logs_table_config;
+      oThis.adminKycStatuses = config.admin_kyc_statuses;
+      oThis.cynopsisKycStatuses = config.cynopsis_kyc_statuses;
     },
 
     initGrid: function (config) {
@@ -62,7 +66,7 @@
 
     getLogs: function () {
 
-      if(!oThis.oLogTable){
+      if (!oThis.oLogTable) {
         oThis.logTableConfig.ajax.data = function (data) {
           return $.extend(data, {});
         };
@@ -72,19 +76,19 @@
             title: "Date / Time",
             data: "data_time",
             render: $.fn.dataTable.render.text(),
-            width:'10%'
+            width: '10%'
           },
           {
             title: "Status",
             data: "status_a",
             render: $.fn.dataTable.render.text(),
-            width:'10%'
+            width: '10%'
           },
           {
             title: "Agent",
             data: "agent",
             render: $.fn.dataTable.render.text(),
-            width:'10%'
+            width: '10%'
           },
           {
             title: "Email Type",
@@ -97,6 +101,38 @@
       }
 
       $('#kycLogsModal').modal('show');
+    },
+
+    getDuplicateKycs: function (case_id) {
+      console.log(oThis.adminKycStatuses);
+      $.ajax({
+        url: '/api/admin/kyc/fetch-duplicate',
+        dataType: 'json',
+        method: 'GET',
+        data: {case_id: case_id},
+        success: function (response) {
+          if (response.success == true) {
+            $duplicateKycData = $('#dupDataTable tbody');
+            for (var userId in response.data) {
+              var dataRow = response.data[userId];
+
+              var displayRow = ''
+                + '<tr class="duplicateCase">'
+                +   '<td class="dupInfo">' + dataRow.case_id + '</td>'
+                +   '<td class="dupInfo">' + oThis.adminKycStatuses[dataRow.admin_status] + '</td>'
+                +   '<td class="dupInfo">' + oThis.cynopsisKycStatuses[dataRow.cynopsis_status] + '</td>'
+                +   '<td class="dupInfo">' + dataRow.active + '</td>'
+                +   '<td class="dupInfo">' + dataRow.inactive +'</td>'
+                + '</tr>';
+
+              $duplicateKycData.append(displayRow);
+            }
+            return false;
+          }
+        },
+        error: function (jqXHR, exception) {
+        }
+      });
     }
 
   };
