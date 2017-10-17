@@ -9,16 +9,16 @@ module Sanitizer
   # @param [Hash] passed_params
   #
   def sanitize_params_recursively(passed_param)
-    if passed_param.is_a? String
+    if passed_param.is_a?(String)
       # if the passed_param is a string, sanitize it directly to remove script tags etc
       passed_param = Sanitize.fragment(passed_param.to_s).gsub("`", "&#x60;")
-    elsif passed_param.is_a? Hash
+    elsif passed_param.is_a?(Hash) || passed_param.is_a?(ActionController::Parameters)
       # if the passed_param is a hash, sanitize the values.
       # we are not sanitizing keys, as not known keys will not be accessed - assumption
       passed_param.each do |key, val|
         passed_param[key] = sanitize_params_recursively(val)
       end
-    elsif passed_param.is_a? Array
+    elsif passed_param.is_a?(Array)
       # if passed_param is a array, sanitize each element
       passed_param.each_with_index do |val, index|
         passed_param[index] = sanitize_params_recursively(val)
@@ -37,17 +37,17 @@ module Sanitizer
   #
   def hashify_params_recursively(passed_param)
 
-    if passed_param.is_a? ActionController::Parameters
+    if passed_param.is_a?(ActionController::Parameters)
       # if the passed_param is a ActionController::Parameters, convert it to a Hash
       # and recursively call this method over that Hash
       hashified_param = HashWithIndifferentAccess.new(passed_param.to_unsafe_hash)
       hashify_params_recursively(hashified_param)
-    elsif passed_param.is_a? Hash
+    elsif passed_param.is_a?(Hash)
       hashified_param = HashWithIndifferentAccess.new
       passed_param.each do |key, val|
         hashified_param[key] = hashify_params_recursively(val)
       end
-    elsif passed_param.is_a? Array
+    elsif passed_param.is_a?(Array)
       hashified_param = passed_param.deep_dup
       hashified_param.each_with_index do |p, i|
         hashified_param[i] = hashify_params_recursively(p)
