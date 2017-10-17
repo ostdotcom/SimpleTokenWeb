@@ -57,6 +57,7 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.action_mailer.perform_deliveries = false
   config.action_mailer.default_url_options = {host: 'simpletoken.org'}
   config.action_mailer.smtp_settings = {
     address: ENV['STW_SES_SMTP_ADDRESS'],
