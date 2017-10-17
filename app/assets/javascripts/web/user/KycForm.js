@@ -289,8 +289,8 @@
                     $('#verifyModal .close').show();
                     $('#verifyModal .verify-content').show();
                     $('#verifyModal .loader-content').hide();
-                    utilsNs.errorHandling.displayFormErrors(response);
-                    //utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+                    $('#verifyModal').modal('hide');
+                    utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
                 }
             });
       }

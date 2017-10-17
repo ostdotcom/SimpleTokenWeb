@@ -23,7 +23,7 @@
         msg = 'Unable to connect to server.';
       }
       $('.error[data-for="general_error"]').text(msg);
-
+      return msg;
     },
 
     displayFormErrors: function(response){
