@@ -17,10 +17,6 @@ module GlobalConstant
         Time.zone.parse(config['public_sale_end_date'])
       end
 
-      def ethereum_address
-        config['ethereum_address']
-      end
-
       private
 
       def config

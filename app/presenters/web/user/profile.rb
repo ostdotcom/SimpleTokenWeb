@@ -41,8 +41,8 @@ module Presenters
           user['email']
         end
 
-        def ethereum_address
-          GlobalConstant::StTokenSale.ethereum_address
+        def simple_token_foundation_ethereum_address
+
         end
 
         def is_token_present?

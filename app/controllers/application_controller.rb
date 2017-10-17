@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   #
   def not_found
     res = {
-        error: 'stw_not_found',
+        error: 's_t_w_not_found',
         error_display_text: 'Page not found',
         http_code: GlobalConstant::ErrorCode.not_found
     }
@@ -94,7 +94,7 @@ class ApplicationController < ActionController::Base
     ).perform
 
     unless service_response.success?
-      raise "Incomplete Page Meta."
+      raise 'Incomplete Page Meta.'
     end
 
     page_extended_data = service_response.data
@@ -149,7 +149,7 @@ class ApplicationController < ActionController::Base
   # * Reviewed By: Sunil
   #
   def tmp_basic_auth
-    users = {"simpleToken" => ["1qa2ws3ed!!@@##"]}
+    users = {'simpleToken' => ['1qa2ws3ed!!@@##']}
 
     authenticate_or_request_with_http_basic do |username, password|
       if users[username].present? && users[username][0] == password
