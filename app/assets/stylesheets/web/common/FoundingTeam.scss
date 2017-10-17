@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-2x-v11.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-1x-v11.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-2x-v13.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-1x-v13.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -94,8 +94,24 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page
 .pepo-logo{
   @include icon-generator(150px, 62px, -383px, -522px, -678px, -383px, 70);
 }
+
+.kenetic-capital-early-backers-logo{
+  @include icon-generator(222px, 80px, -383px, -1012px, -678px, -678px, 70);
+}
+.cm-crypto-capital-logo{
+  @include icon-generator(115px, 123px, -383px, -1239px, -643px, -643px, 70);
+}
+.svk-crypto-logo{
+  @include icon-generator(240px, 54px, -383px, -1524px, -678px, -678px, 70);
+}
+.blockchain-partners-korea-logo{
+  @include icon-generator(240px, 86px, -383px, -1110px, -643px, -1110px, 70);
+}
 .kryptonite-logo{
   @include icon-generator(238px, 62px, -962px, -30px, -1222px, -962px, 70);
+}
+.mick-hagen-logo{
+  @include icon-generator(193px, 80px, -383px, -1404px, -678px, -678px, 70);
 }
 
 
