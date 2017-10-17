@@ -6,7 +6,7 @@ module Util
     #
     # * Author: Aman
     # * Date: 15/10/2017
-    # * Reviewed By:
+    # * Reviewed By: Sunil
     #
     # @return [Boolean]
     #
@@ -18,19 +18,19 @@ module Util
     #
     # * Author: Aman
     # * Date: 15/10/2017
-    # * Reviewed By:
+    # * Reviewed By: Sunil
     #
     # @return [String]
     #
     def self.maxmind_db_data_file_path
-      @maxmind_db_data_file_path ||= "#{Rails.root}/../GeoLite2-City.mmdb"
+      @maxmind_db_data_file_path ||= GlobalConstant::LocalPath.geo_ip_file
     end
 
     # Initialize
     #
     # * Author: Aman
     # * Date: 15/10/2017
-    # * Reviewed By:
+    # * Reviewed By: Sunil
     #
     # Set @maxmind_db_object
     #
@@ -43,9 +43,9 @@ module Util
     #
     # * Author: Aman
     # * Date: 15/10/2017
-    # * Reviewed By:
+    # * Reviewed By: Sunil
     #
-    # @param [String] Ip address for which location details are to be fetched
+    # @params [String] Ip address for which location details are to be fetched
     #
     # @return [Hash]
     #
@@ -55,6 +55,9 @@ module Util
         data = ret.found? ? ret.to_hash.deep_symbolize_keys! : {}
         data
       rescue => e
+        Rails.logger.error("location_details failed with exception: for #{@ip_address} - #{e.message}")
+        # Fail it for non production environments
+        fail "location_details failed with exception: for #{@ip_address} - #{e.message}" unless Rail.env.production?
         {}
       end
     end
