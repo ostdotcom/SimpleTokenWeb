@@ -238,6 +238,7 @@
                     } else {
                         oThis.verifyModal('show-close');
                         oThis.verifyModal('status-text', response.err.display_text);
+                        simpletoken.utils.errorHandling.displayFormErrors(response);
                     }
                 },
                 error: function (jqXHR, exception) {
