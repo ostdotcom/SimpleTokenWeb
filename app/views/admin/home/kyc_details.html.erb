@@ -114,7 +114,7 @@
               </span>
               <span class="case-detail-col4">
                 <span class="detail-label margin-top-0">Date & Time</span>
-                <span class="detail-value"><%= user_detail['kyc_confirmed_at'] %></span>
+                <span class="detail-value"><%= user_detail['submitted_at'] %></span>
                 <span class="detail-label">City</span>
                 <span class="detail-value"><%= user_detail['city'] %></span>
                 <span class="detail-label">State/ Region</span>
@@ -137,21 +137,23 @@
                         <iframe src="<%= user_detail['passport_file_url'] %>" frameborder="0"></iframe>
                     <% end %>
                   </div>
+                  <div class="fullScreenIcon"> Full Screen </div>
                 </div>
               </div>
           <% end %>
 
-          <% if user_detail['self_file_url'].present? %>
+          <% if user_detail['selfie_file_url'].present? %>
               <div class="col-sm-6">
                 <div class="kyc-img-container">
                   <div class="img-label">Selfie Image</div>
                   <div class="kyc-image">
-                    <% if user_detail['self_file_url'].match('\/i\/') %>
-                        <img src="<%= user_detail['self_file_url'] %>">
+                    <% if user_detail['selfie_file_url'].match('\/i\/') %>
+                        <img src="<%= user_detail['selfie_file_url'] %>">
                     <% else %>
-                        <iframe src="<%= user_detail['self_file_url'] %>" frameborder="0"></iframe>
+                        <iframe src="<%= user_detail['selfie_file_url'] %>" frameborder="0"></iframe>
                     <% end %>
                   </div>
+                  <div class="fullScreenIcon"> Full Screen </div>
                 </div>
               </div>
           <% end %>
@@ -167,6 +169,7 @@
                         <iframe src="<%= user_detail['residence_proof_file_url'] %>" frameborder="0"></iframe>
                     <% end %>
                   </div>
+                  <div class="fullScreenIcon"> Full Screen </div>
                 </span>
               </div>
           <% end %>
