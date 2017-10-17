@@ -154,6 +154,15 @@ jQuery.fn.extend({
                 else if(this.validity.typeMismatch || this.validity.patternMismatch){
                     simpletoken.utils.errorHandling.addFormError(this.name, 'Please enter a valid '+this.title);
                 }
+                else if(this.type == 'file' && typeof this.files[0] != 'undefined'){
+                    if(this.files[0].size < $(this).data('min-bytes')){
+                        simpletoken.utils.errorHandling.addFormError(this.name, this.title+' file size too small');
+                    }
+                    if(this.files[0].size > $(this).data('max-bytes')){
+                        var maxMb = $(this).data('max-bytes') / (1024*1024);
+                        simpletoken.utils.errorHandling.addFormError(this.name, this.title+' file size too large. Max allowed '+maxMb+' Mb');
+                    }
+                }
                 else {
                     this.setCustomValidity("");
                 }
