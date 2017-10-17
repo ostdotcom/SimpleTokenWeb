@@ -5,26 +5,12 @@ module GlobalConstant
 
     class << self
 
-      def get(controller, action)
-        config[controller][action]
-      end
-
       def countries
-        fetch_config["countries"]
+        @countries ||= YAML.load_file(open(Rails.root.to_s + '/config/countries.yml'))[:countries]
       end
 
       def nationalities
-        fetch_config["nationalities"]
-      end
-
-      private
-
-      def config
-        @config ||= fetch_config
-      end
-
-      def fetch_config
-        YAML.load_file("#{Rails.root}/config/countries_nationalities.yml")
+        @nationalities ||= YAML.load_file(open(Rails.root.to_s + '/config/nationalities.yml'))[:nationalities]
       end
 
     end
