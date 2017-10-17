@@ -24,7 +24,7 @@
         <form class="user-form" method="POST" action="/api/user/bt-submit" id="userBtForm">
           <div class="form-group">
             <label for="token_name">token name</label>
-            <input type="text" name="bt_name" id="token_name" class="form-control" autofocus tabindex="1">
+            <input type="text" name="bt_name" id="token_name" class="form-control" autofocus tabindex="1" value="<%= @user['bt_name'] %>">
             <div class="error" data-for="bt_name"></div>
           </div>
           <div class="form-instructions text-center" style="max-width: 350px;font-size: 14px;padding: 10px 0">All name reservations are
