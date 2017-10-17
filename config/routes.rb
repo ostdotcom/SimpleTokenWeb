@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     scope '', controller: 'web/token_sale' do
       get '/' => :index
     end
+
     scope '', controller: 'web/user' do
       get '/login' => :login
       get '/logout' => :logout

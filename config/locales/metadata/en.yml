@@ -4,220 +4,220 @@ en:
 
     login:
       :meta:
-        :title: 'Simple Token | Login'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'Log into the Simple Token Project for the Token Sale'
+        :description: 'Log into your Simple Token Project Account for the Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Login'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Log into the Simple Token Project for the Token Sale'
+          :description: 'Log into your Simple Token Project Account for the Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Login'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Log into the Simple Token Project for the Token Sale'
+          :description: 'Log into your Simple Token Project Account for the Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     sign_up:
       :meta:
-        :title: 'Simple Token | Register'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'Register for the Simple Token Project Token Sale'
+        :description: 'Register for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Reset Password'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Register for the Simple Token Project Token Sale'
+          :description: 'Register for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Reset Password'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Register for the Simple Token Project Token Sale'
+          :description: 'Register for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     reset_password:
       :meta:
-        :title: 'Simple Token | Reset Password'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'Reset your password for the Simple Token Project Token Sale'
+        :description: 'Reset your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Reset Password'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Reset your password for the Simple Token Project Token Sale'
+          :description: 'Reset your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Reset Password'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Reset your password for the Simple Token Project Token Sale'
+          :description: 'Reset your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     add_kyc_form:
       :meta:
-        :title: 'Simple Token | Logged In'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'Verify your Identity for the Simple Token Project Token Sale'
+        :description: 'Verify your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Reset Password'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Verify your Identity for the Simple Token Project Token Sale'
+          :description: 'Verify your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Reset Password'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Verify your Identity for the Simple Token Project Token Sale'
+          :description: 'Verify your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     add_branded_token:
       :meta:
-        :title: 'Simple Token | Token Name'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'Reserve your Branded Token Name for the Simple Token Sale'
+        :description: 'Reserve your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Token Name'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Reserve your Branded Token Name for the Simple Token Sale'
+          :description: 'Reserve your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Token Name'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Reserve your Branded Token Name for the Simple Token Sale'
+          :description: 'Reserve your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     dashboard_home:
      :meta:
-       :title: 'Simple Token | Login'
-       :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+       :title: 'Your Dashboard for the Simple Token Project Token Sale'
+       :description: 'Your Dashboard for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
        :canonical: '%{canonical}'
        :keywords: 'Simple Token'
        :name: 'Simple Token'
        :robots: 'index, follow'
        :og:
-         :title: 'Simple Token | Login'
-         :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+         :title: 'Your Dashboard for the Simple Token Project Token Sale'
+         :description: 'Your Dashboard for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
          :type: 'website'
          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
          :url: '%{og_url}'
        :twitter:
          :card: 'summary_large_image'
-         :title: 'Simple Token | Login'
-         :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+         :title: 'Your Dashboard for the Simple Token Project Token Sale'
+         :description: 'Your Dashboard for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
      :assets:
        :specific_js_required: 1
 
     update_kyc_form:
        :meta:
-         :title: 'Simple Token | Logged In'
-         :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+         :title: 'Update your Identity for the Simple Token Project Token Sale'
+         :description: 'Update your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
          :canonical: '%{canonical}'
          :keywords: 'Simple Token'
          :name: 'Simple Token'
          :robots: 'index, follow'
          :og:
-           :title: 'Simple Token | Reset Password'
-           :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+           :title: 'Update your Identity for the Simple Token Project Token Sale'
+           :description: 'Update your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
            :type: 'website'
            :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
            :url: '%{og_url}'
          :twitter:
            :card: 'summary_large_image'
-           :title: 'Simple Token | Reset Password'
-           :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+           :title: 'Update your Identity for the Simple Token Project Token Sale'
+           :description: 'Update your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
            :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
        :assets:
          :specific_js_required: 1
 
     update_branded_token:
       :meta:
-        :title: 'Simple Token | Token Name'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'Update your Branded Token Name for the Simple Token Sale'
+        :description: 'Update your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Token Name'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Update your Branded Token Name for the Simple Token Sale'
+          :description: 'Update your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Token Name'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Update your Branded Token Name for the Simple Token Sale'
+          :description: 'Update your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     change_password:
       :meta:
-        :title: 'Simple Token | Token Name'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'Change your password for the Simple Token Project Token Sale'
+        :description: 'Change your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Token Name'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Change your password for the Simple Token Project Token Sale'
+          :description: 'Change your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Token Name'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Change your password for the Simple Token Project Token Sale'
+          :description: 'Change your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     verification_link:
       :meta:
-        :title: 'Simple Token | Token Name'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'Verify your email for the Simple Token Project Token Sale'
+        :description: 'Verify your email for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Token Name'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Verify your email for the Simple Token Project Token Sale'
+          :description: 'Verify your email for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Token Name'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'Verify your email for the Simple Token Project Token Sale'
+          :description: 'Verify your email for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
@@ -385,20 +385,20 @@ en:
   web/token_sale:
     index:
       :meta:
-        :title: 'Simple Token | The Bridge between Cryptocurrencies and Consumer Apps.'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'The Simple Token Project Token Sale'
+        :description: 'Participate in the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
         :canonical: '%{canonical}'
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | The Bridge between Cryptocurrencies and Consumer Apps.'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'The Simple Token Project Token Sale'
+          :description: 'Participate in the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | The Bridge between Cryptocurrencies and Consumer Apps.'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'The Simple Token Project Token Sale'
+          :description: 'Participate in the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
