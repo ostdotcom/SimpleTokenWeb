@@ -32,6 +32,10 @@ Rails.application.routes.draw do
     get '/documents' => :documents
   end
 
+  scope '', controller: 'web/marketing' do
+    get '/token-sale' => :index
+  end
+
   scope 'admin/', controller: 'admin/home' do
     get '/login' => :login
     get '/authentication' => :authentication
