@@ -46,14 +46,11 @@
     min-height: calc(100vh - 60px)
   }
   .logo-desktop{
-    display: none;
+    max-width: 60%;
+    display: block;
   }
   .logo-mobile{
-    display: block;
-    max-width: 220px;
-    width:80%;
-    text-align: center;
-    margin:0 auto;
+    display: none;
   }
   .container-illustration-desktop{
     background: #91c0ad;
@@ -62,19 +59,17 @@
 }
 
 
-@media (min-width: 768px){
+@media (max-width: 767px){
   .marketing-page{
     .logo-desktop{
-      max-width: 60%;
-      display: block;
-    }
-    .logo-mobile{
       display: none;
     }
-//    .telegram-footer-pos{
-//      bottom: 0;
-//      width: 100%;
-//      position: absolute;
-//    }
+    .logo-mobile{
+      display: block;
+      max-width: 220px;
+      width:80%;
+      text-align: center;
+      margin:0 auto;
+    }
   }
 }
