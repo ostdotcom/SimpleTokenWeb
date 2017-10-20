@@ -28,7 +28,7 @@
                 <span class="ver-middle">Reserve Token Name</span>
               </td>
               <td>
-                <% if @presenter_obj.is_kyc_pending? %>
+                <% unless @presenter_obj.has_sale_ended? %>
                   <a href="/update-token">change name</a>
                 <% end %>
               </td>
