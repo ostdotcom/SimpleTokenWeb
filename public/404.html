@@ -17,6 +17,7 @@
 		  font-weight: 300;
 		  height: 100%;
 		  display: table;
+		  width: 100%;
 	  }
 	  .errorPageContentInner{
 		  display: table-cell;
@@ -24,12 +25,12 @@
 	  }
 	  @media only screen and (max-width: 767px) {
 		  img{
-			  width: 80%
+			  width: 80%;
 		  }
 	  }
 	  @media only screen and (min-width: 768px) {
 		  img{
-			  width: 50%
+			  width: 50%;
 		  }
 	  }
 	  .desc{
@@ -56,7 +57,9 @@
 <body>
 	<div class="errorPageContent">
 		<div class="errorPageContentInner">
-			<img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-404-image-v1.png"/>
+			<div>
+				<img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-404-image-v1.png" alt="404 Error Image"/>
+			</div>
 			<div class="desc">It looks like you are lost!</div>
 			<a href="/" class="homeBtn" title="Lets Get You Home">lets get you home</a>
 		</div>
