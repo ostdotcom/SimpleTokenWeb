@@ -1,0 +1,43 @@
+.marketing-jumbotron{
+  .registration-timer{
+    padding: 20px;
+  }
+  .logo-desktop{
+    max-width: 60%;
+  }
+  .logo-mobile{
+    display: none;
+  }
+  .send-updates{
+    width: 100%;
+    margin: 0;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    letter-spacing: 1px;
+  }
+  .form-control{
+    border: solid 1px #6c9ba9;
+    color: #435353;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    -webkit-appearance: none;
+  }
+}
+
+
+@media (max-width: 767px){
+  .marketing-jumbotron{
+    .logo-desktop{
+      display: none;
+    }
+    .logo-mobile{
+      display: block;
+      max-width: 220px;
+      width:80%;
+      text-align: center;
+      margin:0 auto;
+    }
+  }
+}

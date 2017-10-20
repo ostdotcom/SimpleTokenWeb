@@ -1,0 +1,49 @@
+<div class="container container-jumbotron marketing-jumbotron">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive" />
+      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive" />
+      <div class="desc">
+        <h1>Simple Token will enable anyone to create and manage their own branded token economy. </h1>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-md-offset-1">
+      <div class="registration-timer">
+        <h2>PUBLIC SALE STARTS IN</h2>
+        <%=
+            render partial: '/shared/web/common/countdown_timer',
+            locals: {
+            timestamp: '1510703999000'
+            }
+        %>
+      </div>
+      <div style="margin-top: 30px">
+        <%= render :partial => "/web/marketing/subscribe" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid container-illustration-desktop">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/illustration.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/image/illustration-2x.png 1000w" class="img-responsive" style="position: absolute;max-width: 490px"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid container-illustration-vtablet-mobile">
+  <div class="row">
+    <div class="col-xs-12" style="background: linear-gradient(to bottom, #fff 0%,#fff 80%,#000000 50%,#91c0ad 20%,#91c0ad 20%);">
+      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/illustration.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/image/illustration-2x.png 1000w" class="img-responsive" style="margin:0 auto;"/>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid container-jumbotron-desc">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-md-offset-2">
+      <%= render :partial => "/web/token_sale/telegram" %>
+    </div>
+  </div>
+</div>

@@ -13,4 +13,6 @@ class Web::MarketingController < Web::BaseController
   #
   def index
   end
+
 end
+
