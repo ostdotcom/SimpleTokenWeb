@@ -163,7 +163,7 @@ module SimpleTokenApi
           api_cookie_elements.each_with_index do |c_element, i|
             c_sub_element = c_element.split('=', 2)
             c_sub_element_key = CGI::unescape(c_sub_element[0])
-            c_sub_element_value = CGI::unescape(c_sub_element[1])
+            c_sub_element_value = CGI::unescape(c_sub_element[1]) if c_sub_element[1].present?
             # Zeroth element is cookie name and value
             if i == 0
               cookie_name = c_sub_element_key
@@ -172,6 +172,12 @@ module SimpleTokenApi
               new_api_cookies[cookie_name][c_sub_element_key.to_sym] = Time.zone.parse(c_sub_element_value)
             elsif c_sub_element_key == "domain"
               new_api_cookies[cookie_name][c_sub_element_key.to_sym] = Rails.env.development? ? :all : c_sub_element_value
+            elsif c_sub_element_key == "secure"
+              new_api_cookies[cookie_name][c_sub_element_key.to_sym] = true
+            elsif c_sub_element_key == "HttpOnly"
+              new_api_cookies[cookie_name][:http_only] = true
+            elsif c_sub_element_key == "SameSite"
+              new_api_cookies[cookie_name][:same_site] = c_sub_element_value
             else
               new_api_cookies[cookie_name][c_sub_element_key.to_sym] = c_sub_element_value
             end
