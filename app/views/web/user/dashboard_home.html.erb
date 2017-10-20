@@ -35,7 +35,7 @@
 <%= render :partial => "/shared/web/common/footer" %>
 
 
-<% if @presenter_obj.is_token_present?
+<% if @presenter_obj.is_double_optin_token_present?
      content_for :end_js do
 %>
     <script type="text/javascript">

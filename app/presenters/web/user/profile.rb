@@ -41,11 +41,25 @@ module Presenters
           user['email']
         end
 
+        def user_kyc_status
+          @user_kyc_status ||= begin
+            if [
+                GlobalConstant::TokenSaleUserState.kyc_status_pending,
+                GlobalConstant::TokenSaleUserState.kyc_status_approved,
+                GlobalConstant::TokenSaleUserState.kyc_status_denied
+            ].include?(user_kyc_data['kyc_status'])
+              user_kyc_data['kyc_status']
+            else
+              fail 'Unhandled user kyc status'
+            end
+          end
+        end
+
         def simple_token_foundation_ethereum_address
           result['foundation_ethereum_address']
         end
 
-        def is_token_present?
+        def is_double_optin_token_present?
           @params[:t].present?
         end
 
@@ -54,19 +68,19 @@ module Presenters
         end
 
         def is_kyc_pending?
-          user_kyc_data['kyc_status'] == GlobalConstant::TokenSaleUserState.kyc_status_pending
+          user_kyc_status == GlobalConstant::TokenSaleUserState.kyc_status_pending
         end
 
         def is_kyc_approved?
-          user_kyc_data['kyc_status'] == GlobalConstant::TokenSaleUserState.kyc_status_approved
+          user_kyc_status == GlobalConstant::TokenSaleUserState.kyc_status_approved
         end
 
         def is_kyc_denied?
-          user_kyc_data['kyc_status'] == GlobalConstant::TokenSaleUserState.kyc_status_denied
+          user_kyc_status == GlobalConstant::TokenSaleUserState.kyc_status_denied
         end
 
         def can_purchase?
-          is_kyc_approved?
+          is_kyc_approved? && is_sale_ongoing?
         end
 
         def is_pre_sale_mode_on?
@@ -93,9 +107,10 @@ module Presenters
           current_time >= GlobalConstant::StTokenSale.public_sale_end_date
         end
 
+        private
 
         def current_time
-          @current_time ||= Time.now
+          @current_time ||= Time.zone.now
         end
 
       end
