@@ -51,7 +51,7 @@
       <% end %>
   <% end %>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "WebSite",
@@ -60,7 +60,7 @@
   "image": "<%= og_meta[:image] %>",
 }
 </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "Organization",
@@ -86,6 +86,9 @@
     });}catch(e){
     }
   </script>
+  <% if Rails.env.production? %>
+      <%= render :partial => 'shared/web/thirdparty/gtm_config' %>
+  <% end %>
 
   <link rel="icon" type="image/png" sizes="64x64" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/64.png"/>
   <link rel="apple-touch-icon" sizes="57x57" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/57.png">
@@ -114,9 +117,6 @@
 <%= javascript_include_tag "web/common" %>
 <%= javascript_include_tag "#{specific_manifest_file_path}" if has_specific_js_manifest_file? %>
 
-<% if Rails.env.production? %>
-    <%= render :partial => 'shared/web/thirdparty/ga_config' %>
-<% end %>
 <%= yield(:end_js) %>
 
 </body>
