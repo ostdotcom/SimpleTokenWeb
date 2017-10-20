@@ -424,4 +424,4 @@ en:
           :description: 'Participate in the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
-        :specific_js_required: 0
+        :specific_js_required: 1

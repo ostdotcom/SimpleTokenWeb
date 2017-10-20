@@ -1,4 +1,4 @@
-.marketing-jumbotron{
+.marketing-page{
   .registration-timer{
     padding: 20px;
   }
@@ -24,11 +24,32 @@
     font-weight: 300;
     -webkit-appearance: none;
   }
+  .error {
+    font-size: 13px;
+    color: #e7003b;
+    padding: 3px 0 0;
+    display: block;
+    min-height: 22px;
+    font-weight: 500;
+  }
+  .border-error{
+    border-color: red !important;
+  }
+  #subscribe-success {
+    text-align: center;
+    background: #91c0ad;
+    border-radius: 10px;
+    padding: 10px 10px 25px 10px;
+    margin: 40px auto 0;
+  }
+  .container-jumbotron-desc{
+    padding-bottom: 0;
+  }
 }
 
 
 @media (max-width: 767px){
-  .marketing-jumbotron{
+  .marketing-page{
     .logo-desktop{
       display: none;
     }
