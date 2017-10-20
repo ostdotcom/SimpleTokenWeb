@@ -89,10 +89,8 @@ class Web::BaseController < ApplicationController
   def get_country_from_ip
     @country_from_ip ||= begin
       country_name = ''
-      if Util::GeoIpUtil.maxmind_file_exists?
-        geo_ip_obj = Util::GeoIpUtil.new(ip_address: ip_address)
-        country_name = geo_ip_obj.get_country_name.to_s
-      end
+      geo_ip_obj = Util::GeoIpUtil.new(ip_address: ip_address)
+      country_name = geo_ip_obj.get_country_name.to_s
       country_name
     end
   end
