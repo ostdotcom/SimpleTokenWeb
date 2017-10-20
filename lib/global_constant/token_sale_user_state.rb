@@ -79,10 +79,6 @@ module GlobalConstant
         "pre_sale"
       end
 
-      def pre_phase_two_participation_phase
-        "pre_phase_two"
-      end
-
       ### Token sale user kyc status  ####
 
 

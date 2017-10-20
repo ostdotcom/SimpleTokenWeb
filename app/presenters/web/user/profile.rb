@@ -50,7 +50,7 @@ module Presenters
         end
 
         def is_pre_sale_user?
-          [GlobalConstant::TokenSaleUserState.pre_sale_participation_phase, GlobalConstant::TokenSaleUserState.pre_phase_two_participation_phase].include?(user_kyc_data['token_sale_participation_phase'])
+          GlobalConstant::TokenSaleUserState.pre_sale_participation_phase == user_kyc_data['token_sale_participation_phase']
         end
 
         def is_kyc_pending?
