@@ -1,6 +1,6 @@
 module Util
 
-  class
+  class GeoIpUtil
 
 
     # Initialize
