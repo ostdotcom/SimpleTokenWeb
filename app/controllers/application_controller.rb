@@ -161,5 +161,15 @@ class ApplicationController < ActionController::Base
 
   end
 
+  # Delete the given cookie
+  #
+  # * Author: Aman
+  # * Date: 15/10/2017
+  # * Reviewed By: Sunil
+  #
+  def delete_cookie(cookie_name)
+    cookies.delete(cookie_name.to_sym, domain: :all, secure: !Rails.env.development?, same_site: :strict)
+  end
+
 
 end

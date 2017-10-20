@@ -13,7 +13,7 @@ class Admin::BaseController < ApplicationController
   #
   def delete_admin_cookie
     return if cookies[GlobalConstant::Cookie.admin_cookie_name.to_sym].blank?
-    cookies.delete(GlobalConstant::Cookie.admin_cookie_name.to_sym, domain: :all)
+    delete_cookie(GlobalConstant::Cookie.admin_cookie_name)
   end
 
   # redirect to admin login page if cookie not present

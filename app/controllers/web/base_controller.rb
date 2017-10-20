@@ -11,7 +11,7 @@ class Web::BaseController < ApplicationController
   #
   def delete_user_cookie
     return if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].blank?
-    cookies.delete(GlobalConstant::Cookie.user_cookie_name.to_sym, domain: :all)
+    delete_cookie(GlobalConstant::Cookie.user_cookie_name)
   end
 
   # redirect to login page if cookie not present

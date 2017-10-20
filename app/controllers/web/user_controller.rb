@@ -37,7 +37,7 @@ class Web::UserController < Web::BaseController
   #
   def logout
     # Clear cookie
-    cookies.delete(GlobalConstant::Cookie.user_cookie_name.to_sym, domain: :all)
+    delete_cookie(GlobalConstant::Cookie.user_cookie_name)
     redirect_to "/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
