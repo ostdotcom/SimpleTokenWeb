@@ -47,7 +47,7 @@
         },
 
         onload: function(){
-          $('#verifyLinkModal').modal('show').css('overflow-y', 'hidden');
+          $('#verifyLinkModal').modal('show');
         }
 
     };

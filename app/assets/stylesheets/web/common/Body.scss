@@ -371,3 +371,9 @@ input[type="checkbox"]:checked ~ label::after{
   text-align: left;
   vertical-align: middle;
 }
+
+body.modal-open {
+  overflow: hidden;
+  position:fixed;
+  width: 100%;
+}
