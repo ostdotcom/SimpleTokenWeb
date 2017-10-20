@@ -22,7 +22,8 @@ class Web::BaseController < ApplicationController
   #
   def check_user_cookie
     if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].blank?
-      redirect_to "/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
+      url_params = params[:t].present? ? "?t=#{params[:t]}" : ''
+      redirect_to "/login#{url_params}", status: GlobalConstant::ErrorCode.permanent_redirect and return
     end
   end
 
