@@ -8,7 +8,7 @@
     height: 50px;
     font-size: 16px;
     line-height: 50px;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
   }
   .form-control{
     border: solid 1px #6c9ba9;
@@ -30,13 +30,15 @@
     border-color: red !important;
   }
   #subscribe-success {
-    text-align: center;
-    background: #91c0ad;
-    border-radius: 10px;
-    padding: 10px 10px 25px 10px;
-    margin: 40px auto 0;
-    .small-title, .small-desc{
-      color: #ffffff;
+    margin: 30px auto 0;
+    .desc{
+      text-align: center;
+      background: #6C9BA9;
+      border-radius: 10px;
+      padding: 10px 10px 25px 10px;
+      .small-title, .small-desc{
+        color: #ffffff;
+      }
     }
   }
   .container-jumbotron-desc{
@@ -62,13 +64,20 @@
   .subscribe-success-links{
     width: 100%;
     margin-top: 10px;
-    font-weight: 300;
     table-layout: fixed;
-    a{
-      color: #fff;
-      border-bottom: 1px solid #fff;
-      &:hover, &:focus{
-        text-decoration: none;
+    td{
+      text-align: center;
+      a{
+        color: #597a84;
+        font-weight: 300;
+        font-size: 12px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #597a84;
+        &:hover, &:focus{
+          text-decoration: none;
+          color: #c0993a;
+          border-bottom: 1px solid #c0993a;
+        }
       }
     }
   }
