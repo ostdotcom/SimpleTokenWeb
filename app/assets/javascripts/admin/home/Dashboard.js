@@ -2,7 +2,7 @@
 (function (window) {
 
   var homeNs = ns("simpletokenadmin.home"),
-    utilsNs = ns("simpletokenadmin.utils"),
+    adminUtilsNs = ns("simpletokenadmin.utils"),
     oThis;
 
   homeNs.dashboard = oThis = {
@@ -27,7 +27,7 @@
       };
 
       config.ajax.error = function (jqXHR, textStatus, errorThrown) {
-        utilsNs.errorHandling.xhrErrResponse(jqXHR, errorThrown);
+        adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, errorThrown);
       };
 
       config.columns.unshift(

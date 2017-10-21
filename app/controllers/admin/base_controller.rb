@@ -24,7 +24,13 @@ class Admin::BaseController < ApplicationController
   #
   def check_admin_cookie
     if cookies[GlobalConstant::Cookie.admin_cookie_name.to_sym].blank?
-      redirect_to "/admin/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
+      res = {
+          error: 's_t_w_login_required',
+          error_display_text: 'Unauthorized Access',
+          http_code: GlobalConstant::ErrorCode.unauthorized_access
+      }
+      response = Result::Base.error(res)
+      render_error_response(response)
     end
   end
 
@@ -35,12 +41,19 @@ class Admin::BaseController < ApplicationController
   # * Reviewed By: Sunil
   #
   def render_error_response(service_response)
+    # Clean critical data
+    service_response.data = {}
+
     if service_response.http_code == GlobalConstant::ErrorCode.unauthorized_access
-      redirect_to "/admin/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
+      if request.xhr?
+        (render plain: Oj.dump(service_response.to_json, mode: :compat), status: service_response.http_code) and return
+      else
+        redirect_to '/admin/login', status: GlobalConstant::ErrorCode.permanent_redirect and return
+      end
     else
-      #GlobalConstant::ErrorCode.internal_server_error
       render_error_response_for(service_response)
     end
+
   end
 
 end
