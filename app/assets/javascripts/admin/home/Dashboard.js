@@ -2,6 +2,7 @@
 (function (window) {
 
   var homeNs = ns("simpletokenadmin.home"),
+    utilsNs = ns("simpletokenadmin.utils"),
     oThis;
 
   homeNs.dashboard = oThis = {
@@ -23,6 +24,10 @@
 
       config.ajax.data = function (data) {
         return $.extend(data, {filters: oThis.filters}, {sortings: oThis.sortings}, {page: 4});
+      };
+
+      config.ajax.error = function (jqXHR, textStatus, errorThrown) {
+        utilsNs.errorHandling.xhrErrResponse(jqXHR, errorThrown);
       };
 
       config.columns.unshift(

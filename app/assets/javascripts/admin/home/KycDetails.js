@@ -2,6 +2,7 @@
 (function (window) {
 
   var homeNs = ns("simpletokenadmin.home"),
+    utilsNs = ns("simpletokenadmin.utils"),
     oThis;
 
   homeNs.kycDetails = oThis = {
@@ -57,6 +58,7 @@
               }
             },
             error: function (jqXHR, exception) {
+              utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
             }
           });
         }
@@ -131,6 +133,7 @@
           }
         },
         error: function (jqXHR, exception) {
+          utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
         }
       });
     }

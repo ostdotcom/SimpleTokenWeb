@@ -48,6 +48,12 @@ class Admin::HomeController < Admin::BaseController
     service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
                            .dashboard_detail(params)
 
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
     resp_data = service_response.data
 
     curr_resp_data = []
@@ -87,13 +93,17 @@ class Admin::HomeController < Admin::BaseController
     service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_kyc_details(params)
 
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
     @dash_filters = params[:filters].present? ? params[:filters].permit! : {}
     @dash_sortings = params[:sortings].present? ? params[:sortings].permit! : {}
     @display_start = params[:display_start].to_i
 
     @service_data = service_response.data
-
-    Rails.logger.info(@service_data)
 
   end
 
