@@ -63,7 +63,7 @@ module SimpleTokenApi
       #
       def get_kyc_action_logs(params)
         request_params = {case_id: params[:case_id]}
-        get("kyc/check-details", request_params)
+        get("kyc/get-kyc-action-logs", request_params)
       end
 
     end

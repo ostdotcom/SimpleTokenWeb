@@ -25,7 +25,7 @@
       language: {
           sInfo: "_START_ - _END_ of _TOTAL_ entries",
           infoFiltered: "",
-          infoEmpty: "No entries to show",
+          infoEmpty: "",
           emptyTable: "No data available for the given filters",
           paginate: {
               next: "<span> Next </span>",
@@ -238,6 +238,9 @@
     <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/data-mismatch">Data Mismatch</span>
     <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/passport-issue">Passport Issue</span>
     <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/selfie-img-issue">Selfie Image Issue</span>
+    <% if user_detail['residence_proof_file_url'].present? %>
+        <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/residency-img-issue">Residency Image Issue</span>
+    <% end %>
     <span class="sticky-button <%= 'button-active' unless is_case_closed %> green" data-action-url="/api/admin/kyc/qualify">Qualify</span>
   </form>
 

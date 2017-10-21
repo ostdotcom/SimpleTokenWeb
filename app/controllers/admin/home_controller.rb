@@ -115,7 +115,7 @@ class Admin::HomeController < Admin::BaseController
   #
   def kyc_action_logs
 
-    #service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+    # service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
     #                      .get_kyc_action_logs(params)
 
     response = {
@@ -125,8 +125,7 @@ class Admin::HomeController < Admin::BaseController
             {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'},
             {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'},
             {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'}
-        ],
-        recordsFiltered: 20
+        ]
     }
 
     render :json => response and return
