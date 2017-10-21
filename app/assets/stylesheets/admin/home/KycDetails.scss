@@ -215,6 +215,7 @@ body {
   position: relative;
 
   .duplicate-kyc-data {
+    display: none;
     position: absolute;
     z-index: 2;
     padding: 15px;
@@ -242,4 +243,9 @@ body {
 
   }
 
+}
+#duplicate-kyc:hover {
+  .duplicate-kyc-data {
+    display: block;
+  }
 }

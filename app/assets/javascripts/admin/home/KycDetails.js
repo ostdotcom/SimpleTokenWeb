@@ -118,7 +118,7 @@
 
               var displayRow = ''
                 + '<tr class="duplicateCase">'
-                +   '<td class="dupInfo">' + dataRow.case_id + '</td>'
+                +   '<td class="dupInfo"><a target="_blank" href="/admin/get-kyc-details/?case_id=' + dataRow.case_id + '">' + dataRow.case_id + '</td>'
                 +   '<td class="dupInfo">' + oThis.adminKycStatuses[dataRow.admin_status] + '</td>'
                 +   '<td class="dupInfo">' + oThis.cynopsisKycStatuses[dataRow.cynopsis_status] + '</td>'
                 +   '<td class="dupInfo">' + dataRow.active + '</td>'
