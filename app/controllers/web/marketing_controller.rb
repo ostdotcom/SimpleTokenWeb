@@ -12,4 +12,6 @@ class Web::MarketingController < Web::BaseController
   def index
     @presenter_obj = ::Presenters::Web::Global.new(params)
   end
+
 end
+

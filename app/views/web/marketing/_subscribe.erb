@@ -1,0 +1,13 @@
+<form class="user-form" id="subscribe-form">
+  <div>
+    <input type="email" class="form-control" id="subscribe-form-email" name="email" placeholder="email@example.com">
+    <div class="error"></div>
+  </div>
+  <div style="margin-top: 5px">
+    <button type="submit" class="btn btn-square-gold send-updates" id="subscribe-form-submit" data-jsonp="<%= GlobalConstant::PepoCampaign.subscribe_url %>">send me updates</button>
+  </div>
+</form>
+<div id="subscribe-success" style="display: none">
+  <span class="small-title">Almost finished</span>
+  <span class="small-desc">To confirm your email address, please click the link in the email we just sent you.</span>
+</div>

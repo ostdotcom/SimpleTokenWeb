@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   end
 
   scope '', controller: 'web/marketing' do
-    get '/token-sale' => :index
+    get '/token-sale-landing' => :index
   end
 
   scope 'admin/', controller: 'admin/home' do
