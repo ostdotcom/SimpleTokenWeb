@@ -117,7 +117,7 @@
               var dataRow = response.data[userId];
 
               var displayRow = ''
-                + '<tr class="duplicateCase">'
+                + '<tr class="duplicateCase' + (dataRow.active.length==0 ? '' : ' activeStatus') + '">'
                 +   '<td class="dupInfo"><a target="_blank" href="/admin/get-kyc-details/?case_id=' + dataRow.case_id + '">' + dataRow.case_id + '</td>'
                 +   '<td class="dupInfo">' + oThis.adminKycStatuses[dataRow.admin_status] + '</td>'
                 +   '<td class="dupInfo">' + oThis.cynopsisKycStatuses[dataRow.cynopsis_status] + '</td>'

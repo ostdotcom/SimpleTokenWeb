@@ -232,11 +232,17 @@ body {
       td {
         border-bottom: solid 1px #34445b;
         padding: 10px;
+        opacity: 0.5;
       }
       &:last-child{
         td {
           border: none;
         }
+      }
+    }
+    tr.activeStatus {
+      td {
+        opacity: 1;
       }
     }
 
@@ -248,4 +254,13 @@ body {
   .duplicate-kyc-data {
     display: block;
   }
+}
+
+.logOut{
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 300;
+  color: #34445b;
+  padding: 0;
+  margin: 15px 15px 0;
 }

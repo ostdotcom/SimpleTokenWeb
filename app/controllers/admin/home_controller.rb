@@ -4,7 +4,7 @@ class Admin::HomeController < Admin::BaseController
   before_action :delete_admin_cookie, only: [:login]
   before_action :check_admin_cookie, except: [:login]
 
-  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs]
+  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout]
 
   # Admin login
   #
@@ -120,6 +120,17 @@ class Admin::HomeController < Admin::BaseController
 
     render :json => response and return
 
+  end
+
+  # Admin logout
+  #
+  # * Author: Alpesh
+  # * Date: 09/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def logout
+    delete_admin_cookie
+    redirect_to "/admin/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
 end

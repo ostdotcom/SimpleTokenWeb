@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   scope 'admin/', controller: 'admin/home' do
     get '/login' => :login
+    get '/logout' => :logout
     get '/authentication' => :authentication
     get '/dashboard' => :dashboard
     get '/get-kyc-dashboard' => :get_kyc_dashboard
