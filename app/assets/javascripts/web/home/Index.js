@@ -39,17 +39,7 @@
         var email = $("#subscribe-form-email").val();
 
         var attr_obj = {};
-        var checked_count = 0;
         var errors = [];
-
-        $("#subscribe-form-attrs input[type=checkbox]").each(function(){
-            attr_obj[$(this).attr('id')] = this.checked ? 1 : 0;
-            this.checked ? checked_count++ : checked_count = checked_count;
-        });
-
-        if(checked_count == 0){
-            errors.push('Please select the updates that you are interested in.');
-        }
 
         if (email == '') {
             errors.push('Email is Mandatory!');
@@ -62,6 +52,11 @@
 
         oThis.resetError();
         $("#subscribe-form-submit").prop('disabled', true);
+
+        var attr_obj = {
+          is_general_update: 1,
+          is_token_sale_user: 1
+        };
 
         $.ajax({
 
