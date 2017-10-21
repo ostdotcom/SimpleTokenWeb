@@ -120,12 +120,13 @@ class Admin::HomeController < Admin::BaseController
 
     response = {
         data: [
-            {data_time: '12/08/17 14:32', status_a: 'Pending', agent: 'Frankie', email_type: 'some'},
-            {data_time: '12/08/17 14:32', status_a: 'Pending', agent: 'Frankie', email_type: 'some'},
-            {data_time: '12/08/17 14:32', status_a: 'Pending', agent: 'Frankie', email_type: 'some'},
-            {data_time: '12/08/17 14:32', status_a: 'Pending', agent: 'Frankie', email_type: 'some'},
-            {data_time: '12/08/17 14:32', status_a: 'Pending', agent: 'Frankie', email_type: 'some'}
-        ]
+            {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'},
+            {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'},
+            {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'},
+            {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'},
+            {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'}
+        ],
+        recordsFiltered: 20
     }
 
     render :json => response and return

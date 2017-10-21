@@ -81,12 +81,6 @@
             width: '10%'
           },
           {
-            title: "Status",
-            data: "status_a",
-            render: $.fn.dataTable.render.text(),
-            width: '10%'
-          },
-          {
             title: "Agent",
             data: "agent",
             render: $.fn.dataTable.render.text(),
