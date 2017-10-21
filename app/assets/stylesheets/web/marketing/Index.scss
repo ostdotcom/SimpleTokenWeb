@@ -42,12 +42,12 @@
   .container-jumbotron-desc{
     padding-bottom: 0;
   }
-  .minHeight{
-    min-height: calc(100vh - 60px)
-  }
-  .logo-desktop{
-    max-width: 60%;
-    display: block;
+  .container-jumbotron{
+    padding-top: 20px;
+    .logo-desktop{
+      max-width: 30%;
+      display: block;
+    }
   }
   .logo-mobile{
     display: none;
@@ -55,6 +55,9 @@
   .container-illustration-desktop{
     background: #91c0ad;
     height: 107px;
+  }
+  .container-telegram{
+    padding: 40px 0 30px;
   }
 }
 
@@ -70,6 +73,18 @@
       width:80%;
       text-align: center;
       margin:0 auto;
+    }
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .marketing-page{
+    .container-jumbotron{
+      .logo-desktop{
+        max-width: 40%;
+        display: block;
+      }
     }
   }
 }
