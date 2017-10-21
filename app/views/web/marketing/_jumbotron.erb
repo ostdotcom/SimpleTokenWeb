@@ -1,32 +1,45 @@
 <div class="container container-jumbotron">
   <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-12">
-        <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive hidden-xs" />
-        <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive" />
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-12">
+      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive hidden-xs"/>
+      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
+    </div>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6">
+      <div class="desc">
+        <h1>Simple Token will enable anyone to create and manage their own branded token economy. </h1>
       </div>
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6">
-        <div class="desc">
-          <h1>Simple Token will enable anyone to create and manage their own branded token economy. </h1>
-        </div>
       <span data-toggle="modal" data-target="#youtube-video-modal" data-src="https://www.youtube.com/embed/oLQSM5prDgk?rel=0&autoplay=1">
-        <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/marketing-landing-page-video-image1x-v3.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/image/marketing-landing-page-video-image2x-v3.png 1000w" class="img-responsive" />
+        <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/marketing-landing-page-video-image1x-v3.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/image/marketing-landing-page-video-image2x-v3.png 1000w" class="img-responsive"/>
       </span>
-      </div>
+    </div>
 
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-offset-1 timerTopMargin">
-        <div class="registration-timer hidden-xs">
-          <h2>PUBLIC SALE STARTS IN</h2>
-          <%=
-              render partial: '/shared/web/common/countdown_timer',
-              locals: {
-            timestamp: '1510703999000'
-              }
-          %>
-        </div>
-        <div style="margin-top: 30px">
-          <%= render :partial => "/web/marketing/subscribe" %>
-        </div>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-offset-1 timerTopMargin">
+      <div class="registration-timer hidden-xs">
+        <%
+           if !@presenter_obj.has_pre_sale_register_started?
+             top_lang = 'PRE-REGISTRATION STARTS IN'
+             countdown_t = GlobalConstant::StTokenSale.pre_sale_register_start_date
+           elsif !@presenter_obj.has_pre_sale_register_ended?
+             top_lang = 'PRE-REGISTRATION ENDS IN'
+             countdown_t = GlobalConstant::StTokenSale.pre_sale_register_end_date
+           elsif !@presenter_obj.has_public_sale_started?
+             top_lang = 'TOKEN SALE STARTS IN'
+             countdown_t = GlobalConstant::StTokenSale.public_sale_start_date
+           elsif !@presenter_obj.has_sale_ended?
+             top_lang = 'TOKEN SALE ENDS IN'
+             countdown_t = GlobalConstant::StTokenSale.public_sale_end_date
+           end
+
+        %>
+        <% if top_lang.present? %>
+          <h2><%= top_lang %></h2>
+          <%= render partial: '/shared/web/common/countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}%>
+        <% end %>
       </div>
+      <div style="margin-top: 30px">
+        <%= render :partial => "/web/marketing/subscribe" %>
+      </div>
+    </div>
 
   </div>
 </div>

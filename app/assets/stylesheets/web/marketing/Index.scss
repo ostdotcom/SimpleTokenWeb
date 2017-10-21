@@ -59,6 +59,19 @@
   .container-telegram{
     padding: 40px 0 30px;
   }
+  .subscribe-success-links{
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 300;
+    table-layout: fixed;
+    a{
+      color: #fff;
+      border-bottom: 1px solid #fff;
+      &:hover, &:focus{
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 
