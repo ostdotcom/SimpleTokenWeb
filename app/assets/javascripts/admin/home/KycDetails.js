@@ -76,15 +76,13 @@
         oThis.logTableConfig.columns.unshift(
           {
             title: "Date / Time",
-            data: "data_time",
-            render: $.fn.dataTable.render.text(),
-            width: '10%'
+            data: "date_time",
+            render: $.fn.dataTable.render.text()
           },
           {
             title: "Agent",
             data: "agent",
-            render: $.fn.dataTable.render.text(),
-            width: '10%'
+            render: $.fn.dataTable.render.text()
           },
           {
             title: "Email Type",

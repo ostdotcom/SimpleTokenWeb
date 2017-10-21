@@ -22,7 +22,7 @@ module SimpleTokenApi
       #
       # * Author: Aman
       # * Date: 12/10/2017
-      # * Reviewed By:
+      # * Reviewed By: Sunil
       #
       #
       # @return [Result::Base] returns an object of Result::Base class
@@ -42,7 +42,7 @@ module SimpleTokenApi
       #
       # * Author: Alpesh
       # * Date: 15/10/2017
-      # * Reviewed By:
+      # * Reviewed By: Sunil
       #
       #
       # @return [Result::Base] returns an object of Result::Base class
@@ -56,14 +56,14 @@ module SimpleTokenApi
       #
       # * Author: Alpesh
       # * Date: 15/10/2017
-      # * Reviewed By:
+      # * Reviewed By: Sunil
       #
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
       def get_kyc_action_logs(params)
-        request_params = {case_id: params[:case_id]}
-        get("kyc/get-kyc-action-logs", request_params)
+        request_params = {case_id: params[:case_id], offset: params[:start], limit: params[:length]}
+        get("kyc/kyc-action-logs", request_params)
       end
 
     end

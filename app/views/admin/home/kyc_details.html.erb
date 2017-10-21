@@ -12,9 +12,10 @@
 
   logs_table_config = {
       ajax: {
-          url: "/admin/kyc-action-logs",
+          url: "/admin/kyc-action-logs?case_id=#{@case_id}",
           type: "GET"
       },
+      pageLength: 10,
       bSort: false,
       bFilter: true,
       bLengthChange: false,

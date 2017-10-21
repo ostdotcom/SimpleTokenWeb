@@ -115,17 +115,34 @@ class Admin::HomeController < Admin::BaseController
   #
   def kyc_action_logs
 
-    # service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
-    #                      .get_kyc_action_logs(params)
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+                         .get_kyc_action_logs(params)
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    resp_data = service_response.data
+
+    curr_resp_data = []
+    resp_data['curr_page_data'].each do |c_p_d|
+      curr_resp_data << {
+          date_time: c_p_d['date_time'],
+          agent: c_p_d['agent'],
+          email_type: c_p_d['email_type']
+      }
+    end
+
+    records_filtered = params[:start].to_i + curr_resp_data.length
+    if curr_resp_data.length >= params[:length].to_i
+      records_filtered = records_filtered + 1
+    end
 
     response = {
-        data: [
-            {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'},
-            {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'},
-            {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'},
-            {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'},
-            {data_time: '12/08/17 14:32', agent: 'Frankie', email_type: 'some'}
-        ]
+        recordsFiltered: records_filtered,
+        data: curr_resp_data
     }
 
     render :json => response and return
