@@ -77,6 +77,12 @@
   }
 }
 
+@media (min-width: 768px){
+  .timerTopMargin{
+    margin-top: 40px;
+  }
+}
+
 
 @media (min-width: 768px) and (max-width: 1024px){
   .marketing-page{
@@ -85,6 +91,17 @@
         max-width: 40%;
         display: block;
       }
+    }
+    .registration-timer{
+      padding: 20px 10px;
+    }
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1200px){
+  .marketing-page{
+    .registration-timer{
+      padding: 20px 10px;
     }
   }
 }
