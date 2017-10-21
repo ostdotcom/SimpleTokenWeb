@@ -17,9 +17,6 @@
         oThis.onSubscribe();
       });
 
-
-//      var url = $("#frameVideo").attr('src');
-
       /* Assign empty url value to the iframe src attribute when
        modal hide, which stop the video playing */
       $("#youtube-video-modal").on('hide.bs.modal', function () {
@@ -33,8 +30,7 @@
       });
 
     },
-
-
+      
     onSubscribe: function () {
       var jsonpurl = $("#subscribe-form-submit").data('jsonp');
       var email = $("#subscribe-form-email").val();
