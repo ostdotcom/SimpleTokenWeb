@@ -1,4 +1,26 @@
 .marketing-page{
+  .container-jumbotron{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    .desc{
+      color: #597a84;
+      font-size: 16px;
+      font-weight: 300;
+      padding: 10px 0 15px 0;
+      line-height: 1.5;
+      letter-spacing: 0.8px;
+      h1{
+        font-weight: 600;
+        color: #597a84;
+        font-size: 18px;
+        line-height: 1.5;
+        letter-spacing: 0.8px;
+        @media (max-width: 767px) {
+          text-align: center;
+        }
+      }
+    }
+  }
   .registration-timer{
     padding: 20px;
   }
@@ -29,18 +51,6 @@
   .border-error{
     border-color: red !important;
   }
-  #subscribe-success {
-    margin: 30px auto 0;
-    .desc{
-      text-align: center;
-      background: #6C9BA9;
-      border-radius: 10px;
-      padding: 10px 10px 25px 10px;
-      .small-title, .small-desc{
-        color: #ffffff;
-      }
-    }
-  }
   .container-jumbotron-desc{
     padding-bottom: 0;
   }
@@ -61,22 +71,34 @@
   .container-telegram{
     padding: 40px 0 30px;
   }
-  .subscribe-success-links{
-    width: 100%;
-    margin-top: 10px;
-    table-layout: fixed;
-    td{
+  #subscribe-success {
+    margin: 30px auto 0;
+    .desc{
       text-align: center;
-      a{
-        color: #597a84;
-        font-weight: 300;
-        font-size: 12px;
-        text-transform: uppercase;
-        border-bottom: 1px solid #597a84;
-        &:hover, &:focus{
-          text-decoration: none;
-          color: #c0993a;
-          border-bottom: 1px solid #c0993a;
+      background: #6C9BA9;
+      border-radius: 10px;
+      padding: 10px 10px 25px 10px;
+      .small-title, .small-desc{
+        color: #ffffff;
+      }
+    }
+    .subscribe-success-links{
+      width: 100%;
+      margin-top: 10px;
+      table-layout: fixed;
+      td{
+        text-align: center;
+        a{
+          color: #597a84;
+          font-weight: 300;
+          font-size: 12px;
+          text-transform: uppercase;
+          border-bottom: 1px solid #597a84;
+          &:hover, &:focus{
+            text-decoration: none;
+            color: #c0993a;
+            border-bottom: 1px solid #c0993a;
+          }
         }
       }
     }
@@ -126,4 +148,13 @@
       padding: 20px 10px;
     }
   }
+}
+
+#frameVideo{
+  @media(min-width: 737px){
+    width: 560px;
+    height: 315px;
+  }
+  width: 100%;
+  height: 100%;
 }
