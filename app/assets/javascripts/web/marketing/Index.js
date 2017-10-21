@@ -30,7 +30,7 @@
       });
 
     },
-      
+
     onSubscribe: function () {
       var jsonpurl = $("#subscribe-form-submit").data('jsonp');
       var email = $("#subscribe-form-email").val();
