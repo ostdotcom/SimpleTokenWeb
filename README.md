@@ -9,8 +9,8 @@ export STW_ROOT_URL="http://developmentsimpletoken.org:8080"
 export STW_SALE_ROOT_URL="http://sale.developmentsimpletoken.org:8080"
 export STW_API_INTERNAL_ROOT_URL="http://sale.developmentsimpletoken.org:4000"
 
-export STW_CAMPAIGN_ENCRYPTED_CLIENT_ID="066039d294ad40cef20c56d274735f8a"
-export STW_CAMPAIGN_ENCRYPTED_LIST_ID="2000e71b9c184e57"
+export STW_CAMPAIGN_ENCRYPTED_CLIENT_ID="118e1817b0fa6360e19933fe8af41a34"
+export STW_CAMPAIGN_ENCRYPTED_LIST_ID="275467b8adfdf751"
 
 export STW_REDIS_ENDPOINT=''
 export STW_SK_ADMIN_PW=''
