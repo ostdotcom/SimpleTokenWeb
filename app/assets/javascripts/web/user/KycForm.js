@@ -11,6 +11,7 @@
       uploadCount: 0,
       isChinese: false,
       formNames: ['passport_file_path','selfie_file_path'],
+      popoverPlacement: 'right',
 
       init: function (config) {
           oThis.bindButtonActions();
@@ -92,6 +93,17 @@
               oThis.validateForm();
           });
 
+          if($(window).width() < 767){
+              oThis.popoverPlacement = 'bottom'
+          }
+
+          $('#kycForm label[for=selfie_file_path] .badge').popover({
+              placement: oThis.popoverPlacement,
+              content: $('#selfie-popover').text(),
+              html: true,
+              trigger: 'click'
+          });
+
           $('#kycVerify').click(function(){
              if(
                  $('#is_correct_information').is(':checked') === true &&
@@ -151,7 +163,10 @@
               }).modal('show');
 
           } else {
+
+              grecaptcha.reset();
               $('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
+
           }
 
       },
@@ -275,6 +290,9 @@
 
           if(mode == 'hide-progress'){
               $('#verifyModal .loader-content .progress').hide();
+              $('#verifyModal .loader-content .progress .progress-bar')
+                  .css('width', '1%')
+                  .text('');
           }
 
           if(mode == 'show-progress'){

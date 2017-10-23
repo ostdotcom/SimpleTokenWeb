@@ -187,7 +187,7 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12">
                 <div class="form-group">
-                  <label for="selfie_file_path">Upload a selfie with your passport</label>
+                  <label for="selfie_file_path">Upload a selfie with your passport <span class="badge">i</span></label>
                   <div class="file-name"></div>
                   <div>
                     <label class="upload-file btn-common btn-grey upload-image-btn">
@@ -255,3 +255,22 @@
 <%= render :partial => "/shared/web/common/footer" %>
 
 <%= render :partial => "/shared/web/modals/verify_modal" %>
+
+<script type="custom" id="selfie-popover">
+  <div style="">
+      <div class="row">
+        <div class="col-xs-5">
+          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/kyc-passport-selfie-right-image@2x.png" style="max-width:100%" />
+        </div>
+        <div class="col-xs-7">
+          <p style="font-size:10px; color:#9aaaaa">Please hold the ID in your hand. Both your face and the ID should be clearly visible and any text,
+          numbers or photos on the ID must be readable and not be covered by your fingers.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/kyc-passport-selfie-wrong-image@2x.png" style="max-width:100%" />
+        </div>
+      </div>
+  </div>
+</script>
