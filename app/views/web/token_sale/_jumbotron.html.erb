@@ -17,14 +17,31 @@
     </div>
     <div class="col-sm-12 col-md-6">
       <div class="registration-timer">
-        <h2>Pre-Registration Closes</h2>
-        <%=
-            render partial: '/shared/web/common/countdown_timer',
-                   locals: {
-                           timestamp: '1510703999000'
-                   }
+        <%
+           if !@presenter_obj.has_pre_sale_register_started?
+             top_lang = 'Pre-Registration starts in'
+             countdown_t = GlobalConstant::StTokenSale.pre_sale_register_start_date
+             btn_lang="Pre-register now"
+           elsif !@presenter_obj.has_pre_sale_register_ended?
+             top_lang = 'Pre-Registration ends in'
+             countdown_t = GlobalConstant::StTokenSale.pre_sale_register_end_date
+             btn_lang="Pre-register now"
+           elsif !@presenter_obj.has_public_sale_started?
+             top_lang = 'Token Sale starts in'
+             countdown_t = GlobalConstant::StTokenSale.public_sale_start_date
+             btn_lang="register now"
+           elsif !@presenter_obj.has_sale_ended?
+             top_lang = 'Token Sale ends in'
+             countdown_t = GlobalConstant::StTokenSale.public_sale_end_date
+             btn_lang="register now"
+           end
         %>
-        <a href="/sign-up" class="btn-common btn-gold btn-top-bottom-15">Pre-register now</a>
+
+        <h2><%= top_lang %></h2>
+        <%=
+            render partial: '/shared/web/common/countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}
+        %>
+        <a href="/sign-up" class="btn-common btn-gold btn-top-bottom-15"><%= btn_lang %></a>
       </div>
     </div>
   </div>
