@@ -12,6 +12,76 @@
   }
 }
 
+.container-about-nav{
+
+  margin-top: 40px;
+
+  .nav-item{
+    text-align: center;
+    color: #597a84;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .nav-gradient{
+    margin-top: 20px;
+    border-top: solid 2px #bbdfd0;
+    background: #f3f9f4;
+    background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 100px, #ffffff 100%);
+    height: 100px;
+  }
+}
+
+.container-team{
+
+  margin-top: -100px;
+
+  .heading{
+    color: #6da4a9;
+    font-weight: 300;
+    margin: 40px 0;
+    font-size: 38px;
+  }
+
+  .core-team{
+
+    .thumbnail{
+      padding:0;
+      border: none;
+
+      .caption{
+
+        padding: 10px 0;
+
+        [itemprop="name"]{
+          font-size: 24px;
+          height: 28px;
+          line-height: 24px;
+          font-weight: 300;
+          color: #597a84;
+          margin-top: 15px;
+          margin-bottom: 5px;
+        }
+        [itemprop="jobTitle"]{
+          font-size: 14px;
+          height: 18px;
+          line-height: 14px;
+          font-weight: 300;
+          color: #597a84;
+          margin: 5px 0;
+        }
+        p{
+          height: 150px;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+/*
 .team{
   a{
     &:hover, &:focus{
@@ -69,6 +139,7 @@
     }
   }
 }
+*/
 
 .early-investors{
   background: #6ca3a9;
