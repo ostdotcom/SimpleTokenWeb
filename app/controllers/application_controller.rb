@@ -177,13 +177,16 @@ class ApplicationController < ActionController::Base
   # * Date: 23/10/2017
   # * Reviewed By: Sunil
   #
-  def set_cookie(cookie_name, value, expires)
+  def set_cookie(cookie_name, value, expires, options={})
+    http_only_val = options[:http_only].nil? ?  true :options[:http_only]
+    secure_val = options[:secure].nil? ? !Rails.env.development? : options[:secure]
+
     cookies[cookie_name.to_sym] = {
         value: value,
         expires: expires,
         domain: :all,
-        http_only: true,
-        secure: !Rails.env.development?,
+        http_only: http_only_val,
+        secure: secure_val,
         same_site: :strict
     }
   end

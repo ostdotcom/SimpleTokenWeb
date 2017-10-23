@@ -126,7 +126,7 @@ class Web::BaseController < ApplicationController
       utm_params.merge!('origin_page' => origin_page)
 
       cookie_value = Oj.dump(utm_params)
-      set_cookie(GlobalConstant::Cookie.utm_cookie_name, cookie_value, GlobalConstant::Cookie.utm_cookie_expiry.from_now)
+      set_cookie(GlobalConstant::Cookie.utm_cookie_name, cookie_value, GlobalConstant::Cookie.utm_cookie_expiry.from_now, {http_only: false, secure: false})
     end
 
   end

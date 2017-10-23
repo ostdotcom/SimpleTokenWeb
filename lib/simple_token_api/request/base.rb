@@ -96,7 +96,7 @@ module SimpleTokenApi
         http = Net::HTTP.new(uri.host, uri.port)
         unless Rails.env.development?
           http.use_ssl = true
-          http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
         http.read_timeout = GlobalConstant::Base.simple_token_api['read_timeout']
         http.open_timeout = GlobalConstant::Base.simple_token_api['open_timeout']
