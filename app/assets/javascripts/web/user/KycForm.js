@@ -56,9 +56,13 @@
           });
 
           $('input[name=birthdate]')
-              .datepicker()
-              .on('dateChanged.bs.datepicker', function(e) {
-                  $(this).datepicker('hide');
+              .datepicker({
+                  format: 'dd/mm/yyyy',
+                  autoclose: true,
+                  endDate: '31/12/1999',
+                  orientation: 'bottom'
+              })
+              .on('changeDate', function(e) {
                   $(this).trigger('change');
               });
 

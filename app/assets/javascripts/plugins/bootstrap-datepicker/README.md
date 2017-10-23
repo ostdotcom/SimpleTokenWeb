@@ -1,1 +1,1 @@
-https://github.com/schreifels/bootstrap-datepicker
+https://github.com/uxsolutions/bootstrap-datepicker
