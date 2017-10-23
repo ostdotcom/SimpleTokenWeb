@@ -36,9 +36,9 @@
             <% if is_update %>
                 <a href="/dashboard" class="btn-common btn-grey upload-image-btn" title="back" tabindex="5" style="margin-top: 20px">back</a>
             <% else %>
-                <a href="javascript:void(0)" id="btSkip" class="btn-common btn-grey upload-image-btn" title="skip" tabindex="5" style="margin-top: 20px">skip</a>
+                <button id="btSkip" class="btn-common btn-grey upload-image-btn" title="skip" tabindex="5" style="margin-top: 20px">skip</button>
             <% end %>
-            <a href="javascript:void(0)" id="btSubmit" class="btn-common btn-gold upload-image-btn" style="margin-top: 20px" title="<%= is_update ? 'update' : 'done' %>" tabindex="6"><%= is_update ? 'update' : 'done' %></a>
+                <button type="submit" id="btSubmit" class="btn-common btn-gold upload-image-btn" style="margin-top: 20px" title="<%= is_update ? 'update' : 'done' %>" tabindex="6"><%= is_update ? 'update' : 'done' %></button>
           </div>
         </form>
 
