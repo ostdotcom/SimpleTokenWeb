@@ -43,7 +43,8 @@
     font-size: 38px;
   }
 
-  .core-team{
+  .core-team,
+  .advisor-team{
 
     .thumbnail{
       padding:0;
@@ -77,6 +78,17 @@
 
     }
 
+  }
+
+  .join-team{
+    text-align: center;
+    color: #597a84;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 30px 0 20px;
+    span{
+      font-weight: 500;
+    }
   }
 
 }
