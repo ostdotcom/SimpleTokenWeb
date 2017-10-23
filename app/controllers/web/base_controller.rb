@@ -1,5 +1,7 @@
 class Web::BaseController < ApplicationController
 
+  before_action :set_utm_cookies
+
   private
 
   # Delete user cookies
@@ -105,6 +107,28 @@ class Web::BaseController < ApplicationController
       country_name = geo_ip_obj.get_country_name.to_s
       country_name
     end
+  end
+
+  # Set Utm Parameters for landing pages
+  #
+  # * Author: Aman
+  # * Date: 23/10/2017
+  # * Reviewed By: Sunil
+  #
+  def set_utm_cookies
+
+    if (params[:utm_source].present? || params[:utm_campaign].present? || params[:utm_type].present? || params[:utm_term].present? || params[:utm_medium].present? || params[:utm_content].present?)
+      utm_params = {'utm_type' => params[:utm_type].to_s, 'utm_medium' => params[:utm_medium].to_s, 'utm_source' => params[:utm_source].to_s,
+                    'utm_term' => params[:utm_term].to_s, 'utm_content' => params[:utm_content].to_s, 'utm_campaign' => params[:utm_campaign].to_s}
+
+
+      origin_page = url_for(:only_path => false)
+      utm_params.merge!('origin_page' => origin_page)
+
+      cookie_value = Oj.dump(utm_params)
+      set_cookie(GlobalConstant::Cookie.utm_cookie_name, cookie_value, GlobalConstant::Cookie.utm_cookie_expiry.from_now)
+    end
+
   end
 
 end

@@ -13,6 +13,14 @@ module GlobalConstant
         'tu'
       end
 
+      def utm_cookie_name
+        'st_utm'
+      end
+
+      def utm_cookie_expiry
+        30.days
+      end
+
       def new_api_cookie_key
         'new_api_cookies'
       end
