@@ -7,6 +7,10 @@ module GlobalConstant
 
       ### Admin Status End ###
 
+      def all_admin_status
+        'all'
+      end
+
       def un_processed_admin_status
         'un_processed_admin_status'
       end
@@ -25,6 +29,7 @@ module GlobalConstant
 
       def admin_kyc_statuses
         {
+            all_admin_status => "All",
             un_processed_admin_status => 'Unprocessed',
             qualified_admin_status => 'Qualified',
             denied_admin_status => 'Denied',
@@ -43,6 +48,10 @@ module GlobalConstant
       ### Admin Status End ###
 
       ### Cynopsys Status Start ###
+
+      def all_cynopsis_status
+        'all'
+      end
 
       def un_processed_cynopsis_status
         'un_processed_cynopsis_status'
@@ -66,6 +75,7 @@ module GlobalConstant
 
       def cynopsis_kyc_statuses
         {
+            all_cynopsis_status => "All",
             un_processed_cynopsis_status => 'Unprocessed',
             cleared_cynopsis_status => 'Cleared',
             pending_cynopsis_status => 'Pending',
