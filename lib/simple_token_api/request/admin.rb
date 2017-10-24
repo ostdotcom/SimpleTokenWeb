@@ -49,6 +49,8 @@ module SimpleTokenApi
       #
       def get_kyc_details(params)
         request_params = {case_id: params[:case_id]}
+        request_params[:filters] = params[:filters].permit! if params[:filters].present?
+        request_params[:sortings] = params[:sortings].permit! if params[:sortings].present?
         get("kyc/check-details", request_params)
       end
 

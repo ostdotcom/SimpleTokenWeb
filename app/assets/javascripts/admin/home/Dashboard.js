@@ -119,7 +119,7 @@
 
     changePageUrl: function () {
       var pageInfo = oThis.oTable.page.info();
-      var newUrl = window.location.origin + window.location.pathname + '?' + jQuery.param(oThis.filters) + '&' + jQuery.param(oThis.sortings) + '&display_start=' + pageInfo.start;
+      var newUrl = window.location.origin + window.location.pathname + '?' + jQuery.param({filters: oThis.filters}) + '&' + jQuery.param({sortings: oThis.sortings}) + '&display_start=' + pageInfo.start;
       history.pushState({}, null, newUrl);
     }
 

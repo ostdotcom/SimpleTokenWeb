@@ -31,9 +31,9 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def dashboard
-    @admin_status = params[:admin_status]
-    @cynopsis_status = params[:cynopsis_status]
-    @sort_order = params[:sort_order]
+    @admin_status = params[:filters][:admin_status] if params[:filters].present?
+    @cynopsis_status = params[:filters][:cynopsis_status] if params[:filters].present?
+    @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
     @display_start = params[:display_start]
   end
 
