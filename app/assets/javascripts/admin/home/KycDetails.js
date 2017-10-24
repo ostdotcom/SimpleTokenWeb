@@ -107,6 +107,7 @@
         success: function (response) {
           if (response.success == true) {
             $duplicateKycData = $('#dupDataTable tbody');
+            var totalRows = 0;
             for (var userId in response.data) {
               var dataRow = response.data[userId];
 
@@ -119,7 +120,12 @@
                 +   '<td class="dupInfo">' + dataRow.inactive +'</td>'
                 + '</tr>';
 
+              totalRows++;
               $duplicateKycData.append(displayRow);
+            }
+
+            if(totalRows == 0){
+              $('.duplicate-kyc-data').remove();
             }
             return false;
           }
