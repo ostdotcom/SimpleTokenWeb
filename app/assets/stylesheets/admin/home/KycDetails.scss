@@ -125,21 +125,25 @@ body {
 
   }
 
-  .kyc-img-container {
+  .kyc-img-block{
     margin-top: 20px;
+  }
+  .kyc-img-container {
     display: inline-block;
     width: 100%;
-
-    .img-label {
-      font-size: 24px;
-      font-weight: 300;
-      letter-spacing: 0.4px;
-      text-align: left;
-      color: #4f595d;
-      margin: 0 0 10px 15px;
-      display: inline-block;
-    }
-
+  }
+  .img-label, .fullScreenIcon {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.4px;
+    text-align: left;
+    color: #4f595d;
+    margin: 0 0 10px 15px;
+    //display: inline-block;
+  }
+  .fullScreenIcon{
+    margin: 0 0 0 50px;
   }
 
 }
@@ -203,6 +207,10 @@ body {
     width: 100%;
     height: 400px;
   }
+}
+
+.modal-body .kyc-image img{
+  width: auto;
 }
 
 .fullScreenIcon {

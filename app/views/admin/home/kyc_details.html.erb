@@ -175,9 +175,12 @@
         <div class="row">
 
           <% if user_detail['passport_file_url'].present? %>
-              <div class="col-sm-6">
+              <div class="col-sm-6 kyc-img-block">
+                <div>
+                  <span class="img-label">Passport Image</span>
+                  <span class="fullScreenIcon"> Click to enlarge </span>
+                </div>
                 <div class="kyc-img-container">
-                  <div class="img-label">Passport Image</div>
                   <div class="kyc-image">
                     <% if user_detail['passport_file_url'].match('\/i\/') %>
                         <img src="<%= user_detail['passport_file_url'] %>">
@@ -185,15 +188,17 @@
                         <iframe src="<%= user_detail['passport_file_url'] %>" frameborder="0"></iframe>
                     <% end %>
                   </div>
-                  <div class="fullScreenIcon"> Full Screen</div>
                 </div>
               </div>
           <% end %>
 
           <% if user_detail['selfie_file_url'].present? %>
-              <div class="col-sm-6">
+              <div class="col-sm-6 kyc-img-block">
+                <div>
+                  <span class="img-label">Selfie Image</span>
+                  <span class="fullScreenIcon"> Click to enlarge </span>
+                </div>
                 <div class="kyc-img-container">
-                  <div class="img-label">Selfie Image</div>
                   <div class="kyc-image">
                     <% if user_detail['selfie_file_url'].match('\/i\/') %>
                         <img src="<%= user_detail['selfie_file_url'] %>">
@@ -201,15 +206,17 @@
                         <iframe src="<%= user_detail['selfie_file_url'] %>" frameborder="0"></iframe>
                     <% end %>
                   </div>
-                  <div class="fullScreenIcon"> Full Screen</div>
                 </div>
               </div>
           <% end %>
 
           <% if user_detail['residence_proof_file_url'].present? %>
-              <div class="col-sm-6">
+              <div class="col-sm-6 kyc-img-block">
+                <div>
+                  <span class="img-label">Proof of Residence</span>
+                  <span class="fullScreenIcon"> Click to enlarge </span>
+                </div>
                 <span class="kyc-img-container">
-                  <span class="img-label">Proof of Residence </span>
                   <div class="kyc-image">
                     <% if user_detail['residence_proof_file_url'].match('\/i\/') %>
                         <img src="<%= user_detail['residence_proof_file_url'] %>">
@@ -217,7 +224,6 @@
                         <iframe src="<%= user_detail['residence_proof_file_url'] %>" frameborder="0"></iframe>
                     <% end %>
                   </div>
-                  <div class="fullScreenIcon"> Full Screen </div>
                 </span>
               </div>
           <% end %>

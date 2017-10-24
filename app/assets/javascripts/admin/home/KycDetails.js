@@ -27,9 +27,9 @@
 
     bindButtonActions: function (config) {
       $('.kyc-image, .fullScreenIcon').on('click', function () {
-        oThis.$modalBox.find('.modal-body').html($(this).closest('.kyc-img-container').html());
-        $('.modal-body iframe').height((window.innerHeight - 150) + 'px');
-        $('.modal-body img').css('max-height', (window.innerHeight - 150) + 'px');
+        oThis.$modalBox.find('.modal-body').html($(this).closest('.kyc-img-block').find('.kyc-img-container').html());
+        $('.modal-body iframe').height((window.innerHeight - 100) + 'px');
+        $('.modal-body img').css('max-height', (window.innerHeight - 100) + 'px');
         oThis.$modalBox.modal('show');
       });
 
