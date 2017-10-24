@@ -12,22 +12,16 @@
 
         bindButtonActions: function () {
 
-            $("#subscribe-form-submit").on("click", function (event) {
-                event.preventDefault();
-                oThis.onSubscribe();
-            });
+          $("#subscribe-form-submit").on("click", function (event) {
+              event.preventDefault();
+              oThis.onSubscribe();
+          });
 
-            /* Assign empty url value to the iframe src attribute when
-             modal hide, which stop the video playing */
-            $("#youtube-video-modal").on('hide.bs.modal', function () {
-                $("#frameVideo").attr('src', '');
-            });
-
-            /* Assign the initially stored url back to the iframe src
-             attribute when modal is displayed again */
-            $("#youtube-video-modal").on('show.bs.modal', function (e) {
-                $("#frameVideo").attr('src', $(e.relatedTarget).data('src'));
-            });
+          $('.play-video-image').click(function() {
+            $(this).hide();
+            $(this).next('#videoFrame').attr('src', $(this).next('#videoFrame').data('src'));
+            $(this).next('#videoFrame').show();
+          });
 
         },
 
