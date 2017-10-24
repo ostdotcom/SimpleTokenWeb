@@ -1,132 +1,80 @@
-<div class="container container-team">
+<div id="team">
+  <div class="container container-team" style="padding-top: 57px">
 
-  <div class="row">
-    <h2 class="heading text-center">Meet some of our core team members</h2>
-  </div>
+    <div class="row">
+      <h2 class="heading text-center">Meet some of our core team members</h2>
+    </div>
 
-  <div class="row">
+    <div class="row">
 
-    <div class="col-sm-10 col-sm-offset-1">
+      <div class="col-sm-10 col-sm-offset-1">
 
-      <div class="row">
+        <div class="row">
 
-        <div class="core-team">
+          <div class="core-team">
 
-<%
+            <%
 
-   core_team = [
-                   {
-                           name: "Jason Goldberg",
-                           title: "Chief Executive Officer",
-                           image: "http://via.placeholder.com/350",
-                           description: "Jason Goldberg is a veteran internet entrepreneur with a 18 year history of scaling products to millions of users. Since 2016 Jason’s passion has been to drive mainstream consumer adoption of blockchain technologies. Jason splits time between Berlin, Germany, Pune, India, and Hong Kong."
-                   },
-                   {
-                           name: "Nishith Shah",
-                           title: "Chief Technology Officer",
-                           image: "http://via.placeholder.com/350",
-                           description: "After a year of traveling around the world, Nishith Shah has immersed himself into crypto-economics and blockchain technology. Nishith previously founded several consumer internet companies including Hem.com, Fab.com, Fabulis, socialmedian, True Sparrow and Montred. Nishith is based in Pune, India."
-                   },
-                   {
-                           name: "Ben Bollen",
-                           title: "Chief Technology Strategist",
-                           image: "http://via.placeholder.com/350",
-                           description: "Benjamin Bollen is a physicist working to build decentralized computing systems since 2009 both in theory and as a developer.  Throughout his work Benjamin has been driven to empower people worldwide with open technology.  With Simple Token he joins an effort to bring crypto-currencies to millions of people.  You can find Ben in Berlin, Germany, Brussels, Belgium and Pune, India."
-                   },
-                   {
-                           name: "Paul J du Plessis",
-                           title: "Director Market Development",
-                           image: "http://via.placeholder.com/350",
-                           description: "Paul J du Plessis has 10 years experience building technology for enterprises and growing startups in fintech, insuretech and blockchain technology. Paul joins Simple Token’s mission and open approach to democratizing tokenization for consumer apps as the business development lead working closely with the member companies launching their own branded tokens on the Simple Token network of networks. You can find Paul in Berlin, Germany and Pune, India."
-                   },
-                   {
-                           name: "Jason Banks",
-                           title: "Lead Engineer",
-                           image: "http://via.placeholder.com/350",
-                           description: "From D.C., Jason Banks (“Banks”), enjoys living in big cities and working on complex projects. Prior to joining the tech industry as a software developer in Berlin, Banks practiced law, primarily capital markets and finance, for Shearman & Sterling in New York, Paris, and London."
-                   },
+               core_team = [
+                 {
+                   name: "Jason Goldberg",
+                   title: "Chief Executive Officer",
+                   image: "http://developmentsimpletoken.org:8080/Jason-Goldberg.png",
+                   description: "Jason Goldberg is a veteran internet entrepreneur with a 18 year history of scaling products to millions of users. Since 2016 Jason’s passion has been to drive mainstream consumer adoption of blockchain technologies. Jason splits time between Berlin, Germany, Pune, India, and Hong Kong."
+                 },
+                 {
+                   name: "Nishith Shah",
+                   title: "Chief Technology Officer",
+                   image: "http://developmentsimpletoken.org:8080/Nishith-Shah.png",
+                   description: "After a year of traveling around the world, Nishith Shah has immersed himself into crypto-economics and blockchain technology. Nishith previously founded several consumer internet companies including Hem.com, Fab.com, Fabulis, socialmedian, True Sparrow and Montred. Nishith is based in Pune, India."
+                 },
+                 {
+                   name: "Ben Bollen",
+                   title: "Chief Technology Strategist",
+                   image: "http://developmentsimpletoken.org:8080/Ben-Bollen.png",
+                   description: "Benjamin Bollen is a physicist working to build decentralized computing systems since 2009 both in theory and as a developer.  Throughout his work Benjamin has been driven to empower people worldwide with open technology.  With Simple Token he joins an effort to bring crypto-currencies to millions of people.  You can find Ben in Berlin, Germany, Brussels, Belgium and Pune, India."
+                 },
+                 {
+                   name: "Paul J du Plessis",
+                   title: "Director Market Development",
+                   image: "http://developmentsimpletoken.org:8080/Paul-J-du-Plessis.png",
+                   description: "Paul J du Plessis has 10 years experience building technology for enterprises and growing startups in fintech, insuretech and blockchain technology. Paul joins Simple Token’s mission and open approach to democratizing tokenization for consumer apps as the business development lead working closely with the member companies launching their own branded tokens on the Simple Token network of networks. You can find Paul in Berlin, Germany and Pune, India."
+                 },
+                 {
+                   name: "Jason Banks",
+                   title: "Lead Engineer",
+                   image: "http://developmentsimpletoken.org:8080/Jason-Banks.png",
+                   description: "From D.C., Jason Banks (“Banks”), enjoys living in big cities and working on complex projects. Prior to joining the tech industry as a software developer in Berlin, Banks practiced law, primarily capital markets and finance, for Shearman & Sterling in New York, Paris, and London."
+                 },
+                 {
+                   name: "Aman Barbaria",
+                   title: "Senior Software Engineer",
+                   image: "http://developmentsimpletoken.org:8080/Aman-Barbaria.png",
+                   description: "Aman Barbaria is a senior software engineer with 3 years of working experience in the e-commerce industry. He is passionate towards building consumer facing products. A strong engineering professional with a Bachelor's Degree in Computer engineering from Pune University."
+                 },
+                 {
+                   name: "Akshay Raje",
+                   title: "Lead Software Engineer",
+                   image: "http://developmentsimpletoken.org:8080/Akshay-Raje.png",
+                   description: "Akshay is a lead front-end engineer and the in-house JavaScript expert. He has the expertise in cutting edge front-end technologies, PHP, WordPress and Google Apps. He's a enthusiastic about trading crypto-currencies and often writes about these topics on Medium and Quora."
+                 },
+                 {
+                   name: "Francesco Pacella",
+                   title: "Product Manager",
+                   image: "http://developmentsimpletoken.org:8080/Francesco-Pacella.png",
+                   description: "Francesco Pacella is a Product and Marketing Manager with 5 years of experience. He developed and scaled a number of projects and companies on the tech scene across Europe and Asia focusing on growth, engagement, monetization, and analytics."
+                 },
+                 {
+                   name: "Ignas Peciura",
+                   title: "Product Manager",
+                   image: "http://developmentsimpletoken.org:8080/Ignas-Peciura.png",
+                   description: "Ignas Peciura is a product marketing manager with experience in consumer and B2B apps and financial services. His recent work experience includes Simple Token, Pepo, Mambu GmbH, and Barclays bank. Ignas lives in Berlin where he’s as passionate about the city as he is about his work."
+                 },
                ]
 
-%>
+            %>
 
-          <% core_team.each_with_index do|member, index| %>
-            <% if (index % 3) == 0 %><div class="row"><% end %>
-            <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0" itemprop="member" itemscope itemtype="http://schema.org/Person">
-              <div class="thumbnail">
-                <img itemprop="photo" src="<%=member[:image] %>" alt="<%=member[:name] %>">
-                <div class="caption">
-                  <h3 itemprop="name"><%=member[:name] %></h3>
-                  <h4 itemprop="jobTitle"><%=member[:title] %></h4>
-                  <p><%=member[:description] %></p>
-                </div>
-              </div>
-            </div>
-            <% if ((index % 3) == 2) || ((index + 1) == core_team.length) %></div><% end %>
-          <% end %>
-
-        </div>
-
-      </div>
-
-      <div class="row">
-        <div class="join-team">
-          <p>Join the project team: <span>hiring@simpletoken.org</span></p>
-          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124"/>
-        </div>
-      </div>
-
-      <div class="row">
-        <h2 class="heading text-center">Advisors</h2>
-      </div>
-
-      <div class="row">
-
-        <div class="advisor-team">
-
-          <%
-
-             advisor_team = [
-                     {
-                             name: "Jason Goldberg",
-                             title: "Director & CEO",
-                             image: "http://via.placeholder.com/350",
-                             description: "Jason Goldberg is a veteran internet entrepreneur with a 18 year history of scaling products to millions of users. Since 2016 Jason’s passion has been to drive mainstream consumer adoption of blockchain technologies. Jason splits time between Berlin, Germany, Pune, India, and Hong Kong."
-                     },
-                     {
-                             name: "Nishith Shah",
-                             title: "Director & CTO",
-                             image: "http://via.placeholder.com/350",
-                             description: "Nishith grew up in Vadodara, India, studied computer science at USC, Los Angeles and has now made Pune, India his home. Prior to Fab.com, he co-founded True Sparrow Systems with Deepa Shah, and socialmedian with Jason Goldberg. "
-                     },
-                     {
-                             name: "Ben Bollen",
-                             title: "Chief Technology Strategist",
-                             image: "http://via.placeholder.com/350",
-                             description: "After a masters in theoretical physics, Benjamin pursued research into the nature of quantum information, with a specific interest in computationally efficient representations of strongly correlated systems. Experience gained from teaching general relativity."
-                     },
-                     {
-                             name: "Jason Goldberg",
-                             title: "Director & CEO",
-                             image: "http://via.placeholder.com/350",
-                             description: "Jason Goldberg is a veteran internet entrepreneur with a 18 year history of scaling products to millions of users. Since 2016 Jason’s passion has been to drive mainstream consumer adoption of blockchain technologies. Jason splits time between Berlin, Germany, Pune, India, and Hong Kong."
-                     },
-                     {
-                             name: "Nishith Shah",
-                             title: "Director & CTO",
-                             image: "http://via.placeholder.com/350",
-                             description: "Nishith grew up in Vadodara, India, studied computer science at USC, Los Angeles and has now made Pune, India his home. Prior to Fab.com, he co-founded True Sparrow Systems with Deepa Shah, and socialmedian with Jason Goldberg. "
-                     },
-                     {
-                             name: "Ben Bollen",
-                             title: "Chief Technology Strategist",
-                             image: "http://via.placeholder.com/350",
-                             description: "After a masters in theoretical physics, Benjamin pursued research into the nature of quantum information, with a specific interest in computationally efficient representations of strongly correlated systems. Experience gained from teaching general relativity."
-                     },
-             ]
-
-          %>
-
-          <% advisor_team.each_with_index do|member, index| %>
+            <% core_team.each_with_index do|member, index| %>
               <% if (index % 3) == 0 %><div class="row"><% end %>
               <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0" itemprop="member" itemscope itemtype="http://schema.org/Person">
                 <div class="thumbnail">
@@ -139,8 +87,17 @@
                 </div>
               </div>
               <% if ((index % 3) == 2) || ((index + 1) == core_team.length) %></div><% end %>
-          <% end %>
+            <% end %>
 
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="join-team">
+            <p>Join the project team: <span>hiring@simpletoken.org</span></p>
+            <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124"/>
+          </div>
         </div>
 
       </div>
@@ -148,5 +105,4 @@
     </div>
 
   </div>
-
 </div>
