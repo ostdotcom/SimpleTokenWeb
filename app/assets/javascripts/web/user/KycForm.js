@@ -10,6 +10,7 @@
       uploadParamsResponse: {},
       uploadCount: 0,
       isChinese: false,
+      currentPercent: 0,
       formNames: ['passport_file_path','selfie_file_path'],
       popoverPlacement: 'right',
 
@@ -39,9 +40,12 @@
               },
               progress: function(e, data){
                   var percent = Math.round((data.loaded / data.total) * 100);
-                  $('#verifyModal .loader-content .progress .progress-bar')
-                      .css('width', percent + '%')
-                      .text(percent + '%');
+                  if(oThis.currentPercent < percent){
+                      oThis.currentPercent = percent;
+                      $('#verifyModal .loader-content .progress .progress-bar')
+                          .css('width', percent + '%')
+                          .text(percent + '%');
+                  }
               },
               error: function(jqXHR, exception) {
                   oThis.verifyModal('show-close');
@@ -255,12 +259,14 @@
                         window.location = '/reserve-token';
                         return false;
                     } else {
+                        grecaptcha.reset();
                         oThis.verifyModal('show-close');
                         oThis.verifyModal('status-text', response.err.display_text);
                         simpletoken.utils.errorHandling.displayFormErrors(response);
                     }
                 },
                 error: function (jqXHR, exception) {
+                    grecaptcha.reset();
                     oThis.verifyModal('show-close');
                     oThis.verifyModal('status-text', utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
                 }
