@@ -77,6 +77,14 @@
           color: #597a84;
           margin: 5px 0;
         }
+        a{
+          color: #34445b;
+          font-weight: 500;
+          &:hover, &:focus{
+            text-decoration: none;
+            color: #c0993a;
+          }
+        }
       }
 
     }
