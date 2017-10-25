@@ -21,8 +21,18 @@
     font-weight: 300;
     padding: 15px 0;
     &.active{
-      margin-bottom: -2px;
-      border-bottom: solid 4px #91c0ad;
+      a{
+        color: #91C0AD;
+      }
+      &:before{
+        content: '';
+        display: inline-block;
+        border-bottom: solid 4px #91c0ad;
+        width: 100%;
+        bottom: -1px;
+        position: absolute;
+        left: 0;
+      }
     }
     &:hover, &:focus{
       text-decoration: none;
