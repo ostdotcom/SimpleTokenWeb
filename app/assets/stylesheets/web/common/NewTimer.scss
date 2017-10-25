@@ -1,0 +1,135 @@
+.registration-timer{
+
+//  border-radius: 5px;
+//  background-color: #fbfdfd;
+//  border: solid 1px #6c9ba9;
+//  width: 100%;
+//  padding: 40px;
+//  text-align: center;
+
+  h2{
+    font-size: 18px;
+    color: #91c0ad;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+//    border-bottom: 1px #597a84 solid;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+
+  .countdown{
+//    max-width: 400px;
+//    width: 80%;
+//    margin:20px auto;
+//    color:#597a84;
+//    text-align: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    table-layout: fixed;
+
+//    .time{
+//      font-size: 45px;
+      td{
+        list-style-type: none;
+//        display: inline-block;
+        text-align: center;
+        .element{
+          //        min-width: 60px;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: linear-gradient( to bottom, #91c0ad 0%, #91c0ad 50%, #a7cdbd 51%, #a7cdbd 100%);
+          line-height: 60px;
+          text-align: center;
+          color: #fff;
+          font-size: 28px;
+          font-weight: bold;
+          display: inline-block;
+          letter-spacing: 2px;
+        }
+      }
+
+//    }
+
+    .labels{
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: #91c0ad;
+      letter-spacing: 1.4px;
+      display: block;
+      margin-top: 10px;
+    }
+  }
+
+  .btn-gold{
+    width: 80%;
+    max-width: 320px;
+  }
+}
+
+
+// Mobile portrait, landscape
+@media (max-width: 767px) {
+
+    .registration-timer{
+//      padding: 10px;
+
+      .countdown{
+        .time{
+          font-size: 30px;
+//          .days,
+//          .hours,
+//          .minutes,
+//          .seconds{
+//            min-width: 40px;
+//          }
+        }
+      }
+
+    }
+
+}
+
+.container-telegram{
+  background-color: #91c0ad;
+  padding: 20px 0;
+
+  .content{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 500px;
+
+    .telegram-connect{
+      min-width: 300px;
+      width: 80%;
+      background: #fff;
+      border-radius: 5px;
+      color: #91c0ad;
+      text-transform: uppercase;
+      font-size: 14px;
+      line-height: 2;
+      font-weight: 600;
+      margin: 30px auto 20px auto;
+      position: relative;
+    }
+    .telegram-connect-symbol{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-size: 0;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .telegram-link{
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+}
