@@ -3,26 +3,17 @@
     padding-top: 40px;
     padding-bottom: 40px;
     .desc{
-      font-weight: 600;
+      font-weight: 500;
       color: #597a84;
-      font-size: 18px;
+      font-size: 24px;
       line-height: 1.5;
       letter-spacing: 0.8px;
-      @media (max-width: 767px) {
-        text-align: center;
-      }
     }
     .sub-desc{
-      font-size: 14px;
+      font-size: 16px;
       color: #597a84;
       font-weight: 300;
       margin-bottom: 30px;
-    }
-  }
-  .registration-timer{
-//    padding: 20px 10px;
-    h2{
-      font-size: 18px;
     }
   }
   .send-updates{
@@ -56,7 +47,7 @@
     padding-bottom: 0;
   }
   .container-jumbotron{
-    padding-top: 20px;
+    padding-top: 30px;
     .logo-desktop{
       max-width: 40%;
       display: block;
@@ -71,15 +62,21 @@
     height: 107px;
   }
   .container-telegram{
-    padding: 0 0 30px;
+    padding: 10px 0 30px;
   }
   #subscribe-success {
     margin: 30px auto 0;
     .desc{
-//      text-align: center;
       background: #6C9BA9;
       border-radius: 10px;
       padding: 10px 10px 25px 10px;
+      text-align: center;
+      line-height: 1.3;
+      letter-spacing: 0;
+      .small-title{
+        font-size: 18px;
+        margin-top: 10px;
+      }
       .small-title, .small-desc{
         color: #ffffff;
       }
@@ -127,41 +124,22 @@
   .timerTopMargin{
     margin-top: 40px;
   }
+  .registration-timer{
+    padding: 20px 0;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px){
   .marketing-page{
     .container-jumbotron{
       .logo-desktop{
-        max-width: 40%;
+        max-width: 50%;
         display: block;
         margin: 0 auto;
       }
     }
-    .registration-timer{
-      padding: 20px 10px;
-    }
   }
 }
-
-@media (min-width: 1024px) and (max-width: 1200px){
-  .marketing-page{
-    .registration-timer{
-      padding: 20px 10px;
-    }
-  }
-}
-
-#frameVideo{
-  @media(min-width: 737px){
-    width: 560px;
-    height: 315px;
-  }
-  width: 100%;
-  height: 100%;
-}
-
-
 
 .laptop-wrapper {
   position: relative;
@@ -175,18 +153,22 @@
 }
 
 .ipad-frame {
-  background: url(http://developmentsimpletoken.org:8080/ipad2X.png) center center no-repeat;
-  background-size: contain;
-  padding: 3% 7% 4% 7%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  @media (min-width: 768px) {
+    background: url(https://d36lai1ppm9dxu.cloudfront.net/assets/image/marketing-page-ipad-frame@2x.png) center center no-repeat;
+    background-size: contain;
+    padding: 3% 7% 4% 7%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .video-frame-container{
-  padding: 3% 7% 4% 7%;
+  @media (min-width: 768px){
+    padding: 3% 7% 4% 7%;
+  }
   position: absolute;
   top: 0;
   left: 0;

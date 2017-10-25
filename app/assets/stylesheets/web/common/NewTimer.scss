@@ -1,42 +1,26 @@
 .registration-timer{
-
-//  border-radius: 5px;
-//  background-color: #fbfdfd;
-//  border: solid 1px #6c9ba9;
-//  width: 100%;
-//  padding: 40px;
-//  text-align: center;
-
   h2{
     font-size: 18px;
     color: #91c0ad;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 600;
-//    border-bottom: 1px #597a84 solid;
     padding-bottom: 10px;
     text-align: center;
+    @media (min-width: 768px) {
+      margin-top: 0;
+    }
   }
 
   .countdown{
-//    max-width: 400px;
-//    width: 80%;
-//    margin:20px auto;
-//    color:#597a84;
-//    text-align: center;
     width: 100%;
     padding: 0;
     margin: 0;
     table-layout: fixed;
-
-//    .time{
-//      font-size: 45px;
       td{
         list-style-type: none;
-//        display: inline-block;
         text-align: center;
         .element{
-          //        min-width: 60px;
           width: 60px;
           height: 60px;
           border-radius: 50%;
@@ -50,9 +34,6 @@
           letter-spacing: 2px;
         }
       }
-
-//    }
-
     .labels{
       font-size: 12px;
       text-transform: uppercase;
@@ -68,29 +49,6 @@
     width: 80%;
     max-width: 320px;
   }
-}
-
-
-// Mobile portrait, landscape
-@media (max-width: 767px) {
-
-    .registration-timer{
-//      padding: 10px;
-
-      .countdown{
-        .time{
-          font-size: 30px;
-//          .days,
-//          .hours,
-//          .minutes,
-//          .seconds{
-//            min-width: 40px;
-//          }
-        }
-      }
-
-    }
-
 }
 
 .container-telegram{
