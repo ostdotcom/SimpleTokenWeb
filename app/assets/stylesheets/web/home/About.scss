@@ -6,12 +6,121 @@
     color: #97c2b7;
     font-weight: 500;
     letter-spacing: 1.7px;
-    margin: 15px 0 0;
+    margin: 15px 0 30px;
     font-size: 20px;
     line-height: 24px;
   }
 }
 
+.container-about-nav{
+
+  .nav-item{
+    text-align: center;
+    color: #597a84;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 15px 0;
+    &.active{
+      a{
+        color: #91C0AD;
+      }
+      &:before{
+        content: '';
+        display: inline-block;
+        border-bottom: solid 4px #91c0ad;
+        width: 100%;
+        bottom: -1px;
+        position: absolute;
+        left: 0;
+      }
+    }
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+
+  .nav-gradient{
+    border-bottom: solid 2px #bbdfd0;
+  }
+  ul{
+    li{
+      list-style-type: none;
+    }
+  }
+}
+
+.container-team{
+  &.container-team-bg{
+    background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 100px, #ffffff 100%);
+  }
+  .heading{
+    color: #6da4a9;
+    font-weight: 300;
+    margin-bottom: 40px;
+    margin-top: 0;
+    font-size: 38px;
+  }
+
+  .core-team,
+  .advisor-team{
+
+    .thumbnail{
+      padding:0;
+      border: none;
+      margin-bottom: 0;
+
+      .caption{
+
+        padding: 10px 0;
+
+        [itemprop="name"]{
+          font-size: 20px;
+          height: 28px;
+          line-height: 24px;
+          font-weight: 300;
+          color: #34445b;
+          margin-top: 15px;
+          margin-bottom: 5px;
+        }
+        [itemprop="jobTitle"]{
+          font-size: 14px;
+          height: 18px;
+          line-height: 14px;
+          font-weight: 300;
+          color: #595b5e;
+          margin: 5px 0;
+        }
+        .desc{
+          color: #595b5e;
+          font-weight: 300s;
+        }
+        a{
+          color: #34445b;
+          font-weight: 500;
+          &:hover, &:focus{
+            text-decoration: none;
+            color: #c0993a;
+          }
+        }
+      }
+
+    }
+
+  }
+
+  .join-team{
+    text-align: center;
+    color: #597a84;
+    font-size: 20px;
+    font-weight: 300;
+    span{
+      font-weight: 500;
+    }
+  }
+
+}
+
+/*
 .team{
   a{
     &:hover, &:focus{
@@ -69,11 +178,12 @@
     }
   }
 }
+*/
 
 .early-investors{
   background: #6ca3a9;
   padding: 40px 0;
-  margin-top: 65px;
+  margin-top: 0;
   margin-bottom: 40px;
   ul{
     padding: 0;
@@ -118,7 +228,7 @@
     color: #6da4a9;
     font-weight: 300;
     margin-bottom: 40px;
-    margin-top: 40px;
+    margin-top: 0;
     font-size: 38px;
   }
   .col-sm-4{
@@ -168,4 +278,21 @@
   color: #597a84;
   font-size: 18px;
   margin-top: 50px;
+}
+
+
+.sticky {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background-color: #ffffff;
+}
+
+.paddingTop57{
+  @media (min-width: 737px) {
+    padding-top: 57px;
+  }
+  padding-top: 83px;
 }
