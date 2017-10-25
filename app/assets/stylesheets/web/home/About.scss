@@ -276,3 +276,10 @@
   z-index: 100;
   background-color: #ffffff;
 }
+
+.paddingTop57{
+  @media (min-width: 737) {
+    padding-top: 57px;
+  }
+  padding-top: 83px;
+}
