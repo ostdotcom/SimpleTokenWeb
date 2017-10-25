@@ -18,6 +18,7 @@
                      title: "Advisor",
                      image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/team/Trent-McConaghy.png",
                      linkedIn: 'https://www.linkedin.com/in/trentmc/',
+                     website: 'http://trent.st/',
                      description: "Trent likes to build things that matter for humanity in the long term. He's working on democratizing data. This is via Ocean decentralized data exchange protocol & network, BigchainDB & IPDB blockchain database protocol & network, COALA IP protocol, and advising the Estonian E-residency program. His long-term goal is to help ensure that humanity has a role in an increasingly autonomous world."
                    },
                    {
@@ -56,6 +57,13 @@
                      description: "Gary is well recognised in the Blockchain / Distributed Ledger Technology arena, with particular expertise in the commercial insurance and legal sectors.  He is a founding partner of Team Blockchain, a global virtual consultancy practice and sits on the TechUK DLT Working Group. He provides education, advisory and consultancy services through Distlytics Ltd, the consulting firm that he founded in 2016. He writes articles for magazines and thought leadership blogs on a number of emerging technologies, with a particular emphasis on blockchain."
                    },
                    {
+                     name: "David Bohnett",
+                     title: "Advisor",
+                     image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/team/David-Bohnett.png",
+                     website: 'http://www.bohnettfoundation.org/',
+                     description: "David is a philanthropist, technology entrepreneur, and the founder of early stage private equity firm, Baroda Ventures.​ David began investing in digital currencies and crypto companies in 2014. An Internet pioneer, in 1994, David founded GeoCities.com, once ranked one of the four most trafficked websites in the world. GeoCities became publicly traded on NASDAQ and was acquired by Yahoo!"
+                   },
+                   {
                      name: "Chris Dark",
                      title: "Advisor",
                      image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/team/Chris-Dark.png",
@@ -74,6 +82,7 @@
                      title: "Advisor",
                      image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/team/Thomas-Power.png",
                      linkedIn: 'https://www.linkedin.com/in/thomaspower/',
+                     twitter: 'https://twitter.com/thomaspower',
                      description: "Cutting edge Board Member to numerous companies involved with Bitcoin, Ethereum, and Ripple, deeply connected in Silicon Valley, NYC, London, Australia, New Zealand with over 200,000 Twitter followers since March 2007. Raised and sold over £1bn since 1980. Focused on AI Big Data Bitcoin Blockchain Crypto Ethereum FinTech ICO SaaS Social Media Tokenomics ...very Geeky, Social and Likeable."
                    },
                    {
@@ -88,6 +97,7 @@
                      title: "Advisor",
                      image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/team/Matt-Chweirut.png",
                      linkedIn: 'https://www.linkedin.com/in/mattchwierut/',
+                     website: 'https://www.smithandcrown.com/',
                      description: "Matt Chwierut is the Research Director at Smith + Crown. He guides a research team in evaluating new cryptocurrency protocols, authoring briefing memos on key emerging topics, and reviewing countless white papers and is a Fellow at the Singapore Institute of Management. He holds degrees from University of California Berkeley and Stanford University."
                    },
                    {
@@ -119,6 +129,9 @@
                       <% end %>
                       <% if member[:medium].present? %>
                         <a target="_blank" href="<%= member[:medium] %>"><% if member[:linkedIn].present? || member[:twitter].present? %>•&nbsp;<% end %>Medium</a>
+                      <% end %>
+                      <% if member[:website].present? %>
+                        <a target="_blank" href="<%= member[:website] %>"><% if member[:linkedIn].present? || member[:twitter].present? || member[:medium].present? %>•&nbsp;<% end %>Website</a>
                       <% end %>
                     </p>
                   </div>

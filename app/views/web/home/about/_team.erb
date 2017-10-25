@@ -73,6 +73,7 @@
                    image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/team/Leo.png",
                    linkedIn: 'https://www.linkedin.com/in/lionellolunesu/',
                    twitter: 'https://twitter.com/LioLunesu/',
+                   website: 'http://www.lunesu.com/',
                    description: "Lionello is an engineer with 20 years of international industry experience in software and hardware. He has been involved in start-ups for 15 years. He has led development teams in Bucharest (Romania) and Beijing, and joined Microsoft in 2010 in Shanghai.  Lionello has accrued broad expertise in areas such as virtual reality, e-commerce, cloud computing, blockchain, and IoT."
                  },
                  {
@@ -241,10 +242,13 @@
                         <a target="_blank" href="<%= member[:linkedIn] %>">LinkedIn</a>
                       <% end %>
                       <% if member[:twitter].present? %>
-                      <a target="_blank" href="<%= member[:twitter] %>"><% if member[:linkedIn].present? %>•&nbsp;<% end %>Twitter</a>
+                        <a target="_blank" href="<%= member[:twitter] %>"><% if member[:linkedIn].present? %>•&nbsp;<% end %>Twitter</a>
                       <% end %>
                       <% if member[:medium].present? %>
-                      <a target="_blank" href="<%= member[:medium] %>"><% if member[:linkedIn].present? || member[:twitter].present? %>•&nbsp;<% end %>Medium</a>
+                        <a target="_blank" href="<%= member[:medium] %>"><% if member[:linkedIn].present? || member[:twitter].present? %>•&nbsp;<% end %>Medium</a>
+                      <% end %>
+                      <% if member[:website].present? %>
+                        <a target="_blank" href="<%= member[:website] %>"><% if member[:linkedIn].present? || member[:twitter].present? || member[:medium].present? %>•&nbsp;<% end %>Website</a>
                       <% end %>
                     </p>
                   </div>
