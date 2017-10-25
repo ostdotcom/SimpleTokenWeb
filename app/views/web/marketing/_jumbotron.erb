@@ -14,43 +14,47 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
 
-    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
-      <div class="laptop-wrapper">
-        <div class="ipad-frame">
-          <img src="http://developmentsimpletoken.org:8080/Group 16@2x.png" alt="Marketing Image" class="img-responsive play-video-image"/>
-          <iframe id="videoFrame" class="video-frame-container" data-src="https://www.youtube.com/embed/oLQSM5prDgk?rel=0&autoplay=1" frameborder="0" allowfullscreen hidden style="display:none;"></iframe>
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+          <div class="laptop-wrapper">
+            <div class="ipad-frame">
+              <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/marketing-page-video-cover-image@2x.png" alt="Marketing Image" class="img-responsive play-video-image"/>
+              <iframe id="videoFrame" class="video-frame-container" data-src="https://www.youtube.com/embed/oLQSM5prDgk?rel=0&autoplay=1" frameborder="0" allowfullscreen hidden style="display:none;"></iframe>
+            </div>
+          </div>
         </div>
+
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5 timerTopMargin">
+          <div class="registration-timer hidden-xs">
+            <%
+               if !@presenter_obj.has_pre_sale_register_started?
+                 top_lang = 'PREREGISTRATION STARTS IN'
+                 countdown_t = GlobalConstant::StTokenSale.pre_sale_register_start_date
+               elsif !@presenter_obj.has_pre_sale_register_ended?
+                 top_lang = 'PREREGISTRATION ENDS IN'
+                 countdown_t = GlobalConstant::StTokenSale.pre_sale_register_end_date
+               elsif !@presenter_obj.has_public_sale_started?
+                 top_lang = 'TOKEN SALE STARTS IN'
+                 countdown_t = GlobalConstant::StTokenSale.public_sale_start_date
+               elsif !@presenter_obj.has_sale_ended?
+                 top_lang = 'TOKEN SALE ENDS IN'
+                 countdown_t = GlobalConstant::StTokenSale.public_sale_end_date
+               end
+
+            %>
+            <% if top_lang.present? %>
+              <h2><%= top_lang %></h2>
+              <%= render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}%>
+            <% end %>
+          </div>
+          <div style="margin-top: 30px">
+            <%= render :partial => "/web/marketing/subscribe" %>
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-4 col-lg-offset-1 timerTopMargin">
-      <div class="registration-timer hidden-xs">
-        <%
-           if !@presenter_obj.has_pre_sale_register_started?
-             top_lang = 'PREREGISTRATION STARTS IN'
-             countdown_t = GlobalConstant::StTokenSale.pre_sale_register_start_date
-           elsif !@presenter_obj.has_pre_sale_register_ended?
-             top_lang = 'PREREGISTRATION ENDS IN'
-             countdown_t = GlobalConstant::StTokenSale.pre_sale_register_end_date
-           elsif !@presenter_obj.has_public_sale_started?
-             top_lang = 'TOKEN SALE STARTS IN'
-             countdown_t = GlobalConstant::StTokenSale.public_sale_start_date
-           elsif !@presenter_obj.has_sale_ended?
-             top_lang = 'TOKEN SALE ENDS IN'
-             countdown_t = GlobalConstant::StTokenSale.public_sale_end_date
-           end
-
-        %>
-        <% if top_lang.present? %>
-          <h2><%= top_lang %></h2>
-          <%= render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}%>
-        <% end %>
-      </div>
-      <div style="margin-top: 30px">
-        <%= render :partial => "/web/marketing/subscribe" %>
-      </div>
-    </div>
-
   </div>
 </div>
