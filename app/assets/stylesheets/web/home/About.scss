@@ -50,7 +50,9 @@
 }
 
 .container-team{
-  background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 100px, #ffffff 100%);
+  &.container-team-bg{
+    background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 100px, #ffffff 100%);
+  }
   .heading{
     color: #6da4a9;
     font-weight: 300;
