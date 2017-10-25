@@ -149,7 +149,7 @@ class ApplicationController < ActionController::Base
   # * Reviewed By: Sunil
   #
   def tmp_basic_auth
-    users = {'simpleToken' => ['1qa2ws3ed!!@@##']}
+    users = {'simpleToken' => ['A$F^&n!@$ghf%7']}
 
     authenticate_or_request_with_http_basic do |username, password|
       if users[username].present? && users[username][0] == password
