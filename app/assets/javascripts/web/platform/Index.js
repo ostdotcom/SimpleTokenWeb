@@ -72,6 +72,8 @@
       $('.part-wrapper').removeClass('active');
       $(elem).addClass('active');
       $('.part-content').hide();
+      $('.part-description .lead').hide();
+      $('.part-description [data-part="'+part+'"].lead').fadeIn(500);
       if(oThis.isMobile === false){
         oThis.architectureAnimController(currentPartNum, newPartNum);
       } else {
