@@ -1,49 +1,60 @@
 <div class="container container-jumbotron">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
       <a href="/" title="Simple Token">
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive hidden-xs"/>
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
       </a>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <div class="desc">
-        <h1>Simple Token enables any company to create and manage their own branded token economy.</h1>
-      </div>
-      <span data-toggle="modal" data-target="#youtube-video-modal" data-src="https://www.youtube.com/embed/oLQSM5prDgk?rel=0&autoplay=1" style="cursor: pointer" title="Simple Token">
-        <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/marketing-landing-page-video-image1x-v4.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/image/marketing-landing-page-video-image2x-v4.png 1000w" class="img-responsive" style="margin: 0 auto;"/>
-      </span>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+      <h1 class="desc text-center">Branded Tokens to Turn Your Business into a Dynamic Ecosystem</h1>
     </div>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <div class="sub-desc text-center">The protocol enabling any consumer app to launch a personalised cryptocurrency on public Ethereum sidechain. Preregister for the Early Access token sale.</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
 
-    <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-1 timerTopMargin">
-      <div class="registration-timer hidden-xs">
-        <%
-           if !@presenter_obj.has_pre_sale_register_started?
-             top_lang = 'PRE-REGISTRATION STARTS IN'
-             countdown_t = GlobalConstant::StTokenSale.pre_sale_register_start_date
-           elsif !@presenter_obj.has_pre_sale_register_ended?
-             top_lang = 'PRE-REGISTRATION ENDS IN'
-             countdown_t = GlobalConstant::StTokenSale.pre_sale_register_end_date
-           elsif !@presenter_obj.has_public_sale_started?
-             top_lang = 'TOKEN SALE STARTS IN'
-             countdown_t = GlobalConstant::StTokenSale.public_sale_start_date
-           elsif !@presenter_obj.has_sale_ended?
-             top_lang = 'TOKEN SALE ENDS IN'
-             countdown_t = GlobalConstant::StTokenSale.public_sale_end_date
-           end
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+          <div class="laptop-wrapper">
+            <div class="ipad-frame">
+              <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/marketing-page-video-cover-image@2x.png" alt="Marketing Image" class="img-responsive play-video-image"/>
+              <iframe id="videoFrame" class="video-frame-container" data-src="https://www.youtube.com/embed/oLQSM5prDgk?rel=0&autoplay=1" frameborder="0" allowfullscreen hidden style="display:none;"></iframe>
+            </div>
+          </div>
+        </div>
 
-        %>
-        <% if top_lang.present? %>
-          <h2><%= top_lang %></h2>
-          <%= render partial: '/shared/web/common/countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}%>
-        <% end %>
-      </div>
-      <div style="margin-top: 30px">
-        <%= render :partial => "/web/marketing/subscribe" %>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5 timerTopMargin">
+          <div class="registration-timer hidden-xs">
+            <%
+               if !@presenter_obj.has_pre_sale_register_started?
+                 top_lang = 'PREREGISTRATION STARTS IN'
+                 countdown_t = GlobalConstant::StTokenSale.pre_sale_register_start_date
+               elsif !@presenter_obj.has_pre_sale_register_ended?
+                 top_lang = 'PREREGISTRATION ENDS IN'
+                 countdown_t = GlobalConstant::StTokenSale.pre_sale_register_end_date
+               elsif !@presenter_obj.has_public_sale_started?
+                 top_lang = 'TOKEN SALE STARTS IN'
+                 countdown_t = GlobalConstant::StTokenSale.public_sale_start_date
+               elsif !@presenter_obj.has_sale_ended?
+                 top_lang = 'TOKEN SALE ENDS IN'
+                 countdown_t = GlobalConstant::StTokenSale.public_sale_end_date
+               end
+
+            %>
+            <% if top_lang.present? %>
+              <h2><%= top_lang %></h2>
+              <%= render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}%>
+            <% end %>
+          </div>
+          <div style="margin-top: 30px">
+            <%= render :partial => "/web/marketing/subscribe" %>
+          </div>
+        </div>
+
       </div>
     </div>
-
   </div>
 </div>
-
-<%= render :partial => "/shared/web/modals/landing_page_video" %>

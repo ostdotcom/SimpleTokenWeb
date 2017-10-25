@@ -4,5 +4,5 @@
  *= require web/common/Buttons
  *= require web/common/Icons
  *= require web/marketing/Index
- *= require web/token_sale/Timer
+ *= require web/common/NewTimer
  */
