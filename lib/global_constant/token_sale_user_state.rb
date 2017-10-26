@@ -82,6 +82,15 @@ module GlobalConstant
       ### Token sale user kyc status  ####
 
 
+      ### Token sale admin_action_type  ####
+
+      def no_admin_action_type
+        "no"
+      end
+
+      ### Token sale admin_action_type  ####
+
+
     end
 
   end

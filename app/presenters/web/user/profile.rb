@@ -25,6 +25,10 @@ module Presenters
           @user_kyc_data ||= result['user_kyc_data']
         end
 
+        def is_kyc_upload_needed?
+          is_kyc_pending? && (user_kyc_data['admin_action_type'] != GlobalConstant::TokenSaleUserState.no_admin_action_type)
+        end
+
         def token_sale_active_status
           result['token_sale_active_status']
         end

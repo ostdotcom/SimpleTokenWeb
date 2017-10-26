@@ -25,7 +25,7 @@
 <% else %>
   <h1 class="header text-center">This is Your Account Dashboard</h1>
   <div class="kyc-status-msg text-center">
-    Status: <%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed please update your information to participate in the sale.' : 'KYC Submitted' %>
+    Status: <%= @presenter_obj.is_kyc_upload_needed? ? 'Please update your Kyc' : (@presenter_obj.is_kyc_denied? ? 'KYC Verification Failed please update your information to participate in the sale.' : 'KYC Submitted') %>
   </div>
   <%= render :partial => "/web/dashboard/kyc_status" %>
   <%= render :partial => "/web/dashboard/sale_open_timer" %>
