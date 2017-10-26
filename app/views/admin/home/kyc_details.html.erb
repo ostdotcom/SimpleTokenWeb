@@ -44,13 +44,18 @@
   pass_prev_params[:filters] = @dash_filters if @dash_filters.present?
   pass_prev_params[:sortings] = @dash_sortings if @dash_filters.present?
   pass_prev_params[:display_start] = @display_start if @display_start.present?
+
+  admin_status_filter = GlobalConstant::UserKycDetail.admin_kyc_statuses[@dash_filters['admin_status']] || GlobalConstant::UserKycDetail.all_admin_status
+  cynopsis_status_filter = GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[@dash_filters['cynopsis_status']] || GlobalConstant::UserKycDetail.all_cynopsis_status
 %>
 
 <% if previous_kyc_id.present? %>
-    <a class="fixedPrevKYC" href="/admin/get-kyc-details/?case_id=<%= previous_kyc_id %>&<%= pass_prev_params.to_query %>"> < Prev </a>
+    <a class="fixedPrevKYC" href="/admin/get-kyc-details/?case_id=<%= previous_kyc_id %>&<%= pass_prev_params.to_query %>">
+      < Prev </a>
 <% end %>
 <% if next_kyc_id.present? %>
-    <a class="fixedNextKYC" href="/admin/get-kyc-details/?case_id=<%= next_kyc_id %>&<%= pass_prev_params.to_query %>"> Next > </a>
+    <a class="fixedNextKYC" href="/admin/get-kyc-details/?case_id=<%= next_kyc_id %>&<%= pass_prev_params.to_query %>">
+      Next > </a>
 <% end %>
 
 <div class="raw">
@@ -62,14 +67,20 @@
             <div class="col-sm-10 col-sm-offset-1">
               <div class="row">
                 <div class="col-sm-6">
-
-              <span class="kyc-case-detail-header">
-                KYC check Dashboard
-              </span>
+                  <span class="kyc-case-detail-header">
+                    KYC check Dashboard
+                  </span>
                   <span class="kyc-breadcrumb">
-                <a href="/admin/dashboard?<%= pass_prev_params.to_query %>"> KYC Dashboard </a> > KYC Details
-              </span>
-
+                    <a href="/admin/dashboard?<%= pass_prev_params.to_query %>"> KYC Dashboard </a> > KYC Details
+                  </span>
+                  <span class="kyc-breadcrumb">
+                    <span>Filters (
+                      Admin: <%= admin_status_filter %>
+                      -
+                      Cynopsis: <%= cynopsis_status_filter %>
+                      )
+                    </span>
+                  </span>
                 </div>
                 <div class="col-sm-6" style="text-align: right;">
                   <span></span>
