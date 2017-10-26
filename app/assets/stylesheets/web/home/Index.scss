@@ -53,6 +53,48 @@
   }
 }
 
+.container-press{
+  background-image: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  padding:40px 0;
+
+  h1,h2{
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 1.3px;
+    color: #6ca3a9;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .carousel{
+    .carousel-control 			 { width:  4%; }
+    .carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
+    @media (max-width: 767px) {
+      .carousel-inner .active.left { left: -100%; }
+      .carousel-inner .next        { left:  100%; }
+      .carousel-inner .prev		 { left: -100%; }
+      .active > div { display:none; }
+      .active > div:first-child { display:block; }
+
+    }
+    @media (min-width: 767px) and (max-width: 992px ) {
+      .carousel-inner .active.left { left: -50%; }
+      .carousel-inner .next        { left:  50%; }
+      .carousel-inner .prev		 { left: -50%; }
+      .active > div { display:none; }
+      .active > div:first-child { display:block; }
+      .active > div:first-child + div { display:block; }
+    }
+    @media (min-width: 992px ) {
+      .carousel-inner .active.left { left: -25%; }
+      .carousel-inner .next        { left:  25%; }
+      .carousel-inner .prev		 { left: -25%; }
+    }
+
+  }
+}
+
 .container-features{
   padding-top: 40px;
   padding-bottom: 20px;
