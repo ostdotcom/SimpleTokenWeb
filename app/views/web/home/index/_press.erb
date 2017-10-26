@@ -10,59 +10,57 @@
 
           <div class="video-carousel">
 
-            <div class="carousel-item">
-              <div class="thumbnail">
-                <img src="http://via.placeholder.com/320x180?text=1" alt="CEO Jason Goldberg at Immutable Blockchain Summit">
-                <div class="caption">
-                  <h4>CEO Jason Goldberg at Immutable Blockchain Summit</h4>
-                </div>
-              </div>
-            </div>
+<%
+   videos = [
+       {
+               title: "CEO Jason Goldberg at Immutable Blockchain Summit",
+               video_embed: "https://www.youtube.com/embed/qz8LhpKCsw0?rel=0&autoplay=1",
+               image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-video-poster2x-1.png",
+       },
+       {
+               title: "Jason Goldberg intros Simple Token for apps to launch branded crytpo tokens",
+               video_embed: "https://www.youtube.com/embed/7aY5R1yXhwA?rel=0&autoplay=1",
+               image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-video-poster2x-2.png",
+       },
+       {
+               title: "Epicenter - Bringing Tokens to Mainstream Consumer Applications",
+               video_embed: "https://www.youtube.com/embed/c8swtDtappM?rel=0&autoplay=1",
+               image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-video-poster2x-3.png",
+       },
+       {
+               title: "CEO Jason Goldberg at Immutable Blockchain Summit",
+               video_embed: "https://www.youtube.com/embed/qz8LhpKCsw0?rel=0&autoplay=1",
+               image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-video-poster2x-1.png",
+       },
+       {
+               title: "Jason Goldberg intros Simple Token for apps to launch branded crytpo tokens",
+               video_embed: "https://www.youtube.com/embed/qz8LhpKCsw0?rel=0&autoplay=1",
+               image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-video-poster2x-2.png",
+       },
+   ]
+%>
 
-            <div class="carousel-item">
-              <div class="thumbnail">
-                <img src="http://via.placeholder.com/320x180?text=2" alt="Jason Goldberg intros Simple Token for apps to launch branded crytpo tokens">
-                <div class="caption">
-                  <h4>Jason Goldberg intros Simple Token for apps to launch branded crytpo tokens</h4>
-                </div>
-              </div>
-            </div>
+            <% videos.each_with_index do|video, index| %>
 
-            <div class="carousel-item">
-              <div class="thumbnail">
-                <img src="http://via.placeholder.com/320x180?text=3" alt="Epicenter - Bringing Tokens to Mainstream Consumer Applications">
-                <div class="caption">
-                  <h4>Epicenter - Bringing Tokens to Mainstream Consumer Applications</h4>
-                </div>
-              </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="thumbnail">
-                  <img src="http://via.placeholder.com/320x180?text=4" alt="CEO Jason Goldberg at Immutable Blockchain Summit">
-                  <div class="caption">
-                    <h4>CEO Jason Goldberg at Immutable Blockchain Summit</h4>
+                <div class="carousel-item" data-toggle="modal" data-target="#youtube-video-modal" data-src="<%=video[:video_embed]%>">
+                  <div class="thumbnail">
+                    <div class="video-container">
+                      <div class="play">
+                        <svg class="svg">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
+                          </switch>
+                        </svg>
+                      </div>
+                      <img src="<%=video[:image]%>" alt="<%=video[:title]%>">
+                    </div>
+                    <div class="caption">
+                      <h4><%=video[:title]%></h4>
+                    </div>
                   </div>
                 </div>
-            </div>
 
-            <div class="carousel-item">
-                <div class="thumbnail">
-                  <img src="http://via.placeholder.com/320x180?text=5" alt="Jason Goldberg intros Simple Token for apps to launch branded crytpo tokens">
-                  <div class="caption">
-                    <h4>Jason Goldberg intros Simple Token for apps to launch branded crytpo tokens</h4>
-                  </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="thumbnail">
-                  <img src="http://via.placeholder.com/320x180?text=6" alt="Epicenter - Bringing Tokens to Mainstream Consumer Applications">
-                  <div class="caption">
-                    <h4>Epicenter - Bringing Tokens to Mainstream Consumer Applications</h4>
-                  </div>
-                </div>
-            </div>
+            <% end %>
 
           </div>
 
@@ -72,4 +70,19 @@
 
   </div>
 
+</div>
+
+<div class="modal fade" id="youtube-video-modal" tabindex="-1" role="dialog">
+  <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
+    <span aria-hidden="true" class="modal-close-icon" title="close"></span>
+  </button>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="padding: 0px;">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe src="" frameborder="0" allowfullscreen id="frameVideo" class="embed-responsive-item"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

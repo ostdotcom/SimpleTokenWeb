@@ -76,9 +76,38 @@
         border: 0;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
 
-        img{
-          width: 100%;
+        .video-container{
+          position: relative;
+
+          img{
+            width: 100%;
+          }
+
+          .play{
+            width:50px;
+            height: 50px;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            cursor: pointer;
+            svg{
+              width:100%;
+              height:100%;
+              margin:10px;
+              margin: 0px 5px;
+              fill: #34445b;
+            }
+          }
         }
+
         .caption{
           h4{
             color:#93a8af;
@@ -86,6 +115,22 @@
             line-height: 1.3;
           }
         }
+      }
+
+      &:hover{
+
+        cursor: pointer;
+
+        .thumbnail{
+          .video-container{
+            .play{
+              svg{
+                fill: #e4b030;
+              }
+            }
+          }
+        }
+
       }
     }
 

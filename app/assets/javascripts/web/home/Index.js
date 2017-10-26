@@ -50,6 +50,14 @@
                 ]
             });
 
+            $("#youtube-video-modal").on('hide.bs.modal', function () {
+                $("#frameVideo").attr('src', '');
+            });
+
+            $("#youtube-video-modal").on('show.bs.modal', function (e) {
+                $("#frameVideo").attr('src', $(e.relatedTarget).data('src'));
+            });
+
         },
 
         onSubscribe: function () {
