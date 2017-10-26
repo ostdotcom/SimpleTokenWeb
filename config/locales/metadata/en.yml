@@ -248,7 +248,7 @@ en:
       :meta:
         :title: 'Simple Token | The Bridge between Cryptocurrencies and Consumer Apps.'
         :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-        :canonical: '%{canonical}'
+        :canonical: 'https://simpletoken.org/about'
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'

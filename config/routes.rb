@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   scope '', controller: 'web/home' do
     get '/' => :index
+    get '/team' => :about
     get '/about' => :about
     get '/platform' => :platform
     get '/privacy' => :privacy
