@@ -31,16 +31,19 @@
       margin-left: 10px;
     }
   }
-}
-
-.container-illustration-desktop{
-  background: #91c0ad;
-  height: 100px;
+  .illustration{
+    img{
+      max-width: 490px;
+      margin: -35px auto 0 auto;
+    }
+  }
 }
 
 .container-jumbotron-desc{
   background: #91c0ad;
+  padding-top: 90px;
   padding-bottom: 60px;
+  margin-top: -100px;
   .desc{
     color: #fff;
     font-size: 22px;
@@ -245,7 +248,6 @@
 }
 
 // Hide views specific to other viewports
-.container-illustration-vtablet-mobile,
 .logo-mobile,
 .feature-mobile{
   display: none;
@@ -260,6 +262,12 @@
     .btn-documents{
       margin-right:0;
     }
+    .illustration{
+      img{
+        max-width: 100%;
+        margin: -35px auto 0 auto;
+      }
+    }
   }
   .container-features,
   .container-documents,
@@ -268,12 +276,10 @@
       font-size: 35px;
     }
   }
-  .container-illustration-vtablet-mobile{
-    img{
-      max-width: 490px;
-    }
+  .container-jumbotron-desc {
+    padding-top: 55px;
+    margin-top: -75px;
   }
-  .container-illustration-vtablet-mobile,
   .logo-mobile{
     display: none;
   }
@@ -292,22 +298,21 @@
         padding:30px 60px;
       }
     }
+    .illustration{
+      img{
+        max-width: 490px;
+        margin: 35px auto 0 auto;
+      }
+    }
   }
   .container-jumbotron-desc{
     .desc{
       padding: 10px 0 0 0;
     }
   }
-  .container-illustration-vtablet-mobile{
-    img{
-      max-width: 490px;
-    }
-  }
-  .container-illustration-desktop,
   .logo-desktop{
     display: none;
   }
-  .container-illustration-vtablet-mobile,
   .logo-mobile{
     display: block;
   }
@@ -328,15 +333,16 @@
         margin: 0 auto;
       }
     }
+    .illustration{
+      img{
+        max-width: 300px;
+        margin: 35px auto 0 auto;
+      }
+    }
   }
   .container-jumbotron-desc{
     .desc{
       padding: 10px;
-    }
-  }
-  .container-illustration-vtablet-mobile{
-    img{
-      max-width: 300px;
     }
   }
   .container-features{
@@ -372,12 +378,10 @@
     }
   }
 
-  .container-illustration-desktop,
   .logo-desktop,
   .feature{
     display: none;
   }
-  .container-illustration-vtablet-mobile,
   .logo-mobile,
   .feature-mobile{
     display: block;
