@@ -1,5 +1,7 @@
 /*
  *= require plugins/bootstrap/bootstrap
+ *= require plugins/slick/slick
+ *= require plugins/slick/slick-theme
  *= require web/common/Body
  *= require web/common/Buttons
  *= require web/common/Icons
