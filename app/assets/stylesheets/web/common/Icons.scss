@@ -166,3 +166,6 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 .modal-close-icon{
   @include icon-generator(32px, 32px, -22px, -663px, -22px, -22px, 50);
 }
+.modal-close-black-icon{
+  @include icon-generator(32px, 32px, -22px, -712px, -22px, -22px, 50);
+}
