@@ -12,8 +12,9 @@
 
         bindButtonActions: function() {
 
-          $("#kycWarning").on('click', function () {
+          $("#kycWarning").click( function ( event ) {
             $('#update-warning-modal').modal('show');
+            event.stopPropagation();
           });
 
           $("#continueToUpdate").click(function (event) {
