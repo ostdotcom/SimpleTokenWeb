@@ -94,10 +94,11 @@ body {
 
   .case-detail-box {
     padding: 20px 35px;
+    overflow: hidden;
 
     .case-detail-col1, .case-detail-col2, .case-detail-col3, .case-detail-col4 {
-      display: inline-block;
-      min-width: 24%;
+      width: 24%;
+      float: left;
     }
 
     .case-detail-col2 {

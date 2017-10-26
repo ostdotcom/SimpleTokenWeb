@@ -9,6 +9,7 @@
 
   admin_kyc_status = case_detail['admin_status']
   cynopsis_status = case_detail['cynopsis_status']
+  whitelist_status = case_detail['whitelist_status']
   is_re_submitted = case_detail['is_re_submitted']
   is_duplicate = case_detail['is_duplicate']
 
@@ -45,17 +46,32 @@
   pass_prev_params[:sortings] = @dash_sortings if @dash_filters.present?
   pass_prev_params[:display_start] = @display_start if @display_start.present?
 
-  admin_status_filter = GlobalConstant::UserKycDetail.admin_kyc_statuses[@dash_filters['admin_status']] || GlobalConstant::UserKycDetail.all_admin_status
-  cynopsis_status_filter = GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[@dash_filters['cynopsis_status']] || GlobalConstant::UserKycDetail.all_cynopsis_status
+  dash_filters_display = []
+  dashboard = 'dashboard'
+  if @dash_filters['admin_status'].present?
+    dash_filters_display << "Admin: #{GlobalConstant::UserKycDetail.admin_kyc_statuses[@dash_filters['admin_status']] || GlobalConstant::UserKycDetail.all_admin_status}"
+  end
+
+  if @dash_filters['cynopsis_status']
+    dash_filters_display << "Cynopsis: #{GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[@dash_filters['cynopsis_status']] || GlobalConstant::UserKycDetail.all_cynopsis_status}"
+  end
+
+  if @dash_filters['whitelist_status']
+    dashboard = 'whitelist-dashboard'
+    dash_filters_display << "Whitelist: #{GlobalConstant::UserKycDetail.whitelist_kyc_statuses[@dash_filters['whitelist_status']] || GlobalConstant::UserKycDetail.all_whitelist_status}"
+  end
+
 %>
 
 <% if previous_kyc_id.present? %>
     <a class="fixedPrevKYC" href="/admin/get-kyc-details/?case_id=<%= previous_kyc_id %>&<%= pass_prev_params.to_query %>">
-      < Prev </a>
+      < Prev
+    </a>
 <% end %>
 <% if next_kyc_id.present? %>
     <a class="fixedNextKYC" href="/admin/get-kyc-details/?case_id=<%= next_kyc_id %>&<%= pass_prev_params.to_query %>">
-      Next > </a>
+      Next >
+    </a>
 <% end %>
 
 <div class="raw">
@@ -71,14 +87,10 @@
                     KYC check Dashboard
                   </span>
                   <span class="kyc-breadcrumb">
-                    <a href="/admin/dashboard?<%= pass_prev_params.to_query %>"> KYC Dashboard </a> > KYC Details
+                    <a href="/admin/<%= dashboard %>?<%= pass_prev_params.to_query %>"> KYC Dashboard </a> > KYC Details
                   </span>
                   <span class="kyc-breadcrumb">
-                    <span>Filters (
-                      Admin: <%= admin_status_filter %>
-                      -
-                      Cynopsis: <%= cynopsis_status_filter %>
-                      )
+                    <span>Filters ( <%= dash_filters_display.join(' - ') %> )
                     </span>
                   </span>
                 </div>
@@ -114,6 +126,13 @@
                   <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[cynopsis_status] || ' -- ' %>
                 </span>
               </div>
+              <div>
+                <span class="status-label"> Status Whitelist : </span>
+                <span class="status-icon <%= GlobalConstant::UserKycDetail.whitelist_kyc_status_class[whitelist_status] %>"> &nbsp; </span>
+                <span class="status-value">
+                  <%= GlobalConstant::UserKycDetail.whitelist_kyc_statuses[whitelist_status] || ' -- ' %>
+                </span>
+              </div>
             </div>
           </div>
           <div class="col-sm-4">
@@ -146,6 +165,15 @@
                   </table>
                 </div>
               </div>
+              <div>
+                <span class="status-label"> IP / Country : </span>
+                <% if user_detail['geoip_data'].present? %>
+                    <span class="status-value">
+                      <%= user_detail['geoip_data']['ip_address'] %> / <%= user_detail['geoip_data']['country'] %>
+                    </span>
+                <% end %>
+              </div>
+
             </div>
           </div>
           <div class="col-sm-4">
@@ -158,10 +186,6 @@
               </div>
               <div>
                 <span id="openLogs" class="status-label" style="text-decoration: underline; cursor: pointer;"> View Logs </span>
-                <% if user_detail['geoip_data'].present? %>
-                    <span style="margin-left: 20px;"><%= user_detail['geoip_data']['ip_address'] %>
-                      (<%= user_detail['geoip_data']['country'] %>)</span>
-                <% end %>
               </div>
             </div>
           </div>
@@ -170,38 +194,38 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="case-detail-box">
-              <span class="case-detail-col1">
+              <div class="case-detail-col1">
                 <span class="detail-label margin-top-0">First Name</span>
                 <span class="detail-value"><%= user_detail['first_name'] %></span>
                 <span class="detail-label">Birth Date</span>
                 <span class="detail-value"><%= user_detail['birthdate'] %></span>
                 <span class="detail-label">Passport Number</span>
                 <span class="detail-value"><%= user_detail['passport_number'] %></span>
-              </span>
-              <span class="case-detail-col2">
+              </div>
+              <div class="case-detail-col2">
                 <span class="detail-label margin-top-0">Last Name</span>
                 <span class="detail-value"><%= user_detail['last_name'] %></span>
                 <span class="detail-label">Residence Country</span>
                 <span class="detail-value"><%= user_detail['country'] %></span>
                 <span class="detail-label">Nationality</span>
                 <span class="detail-value"><%= user_detail['nationality'] %></span>
-              </span>
-              <span class="case-detail-col3">
+              </div>
+              <div class="case-detail-col3">
                 <span class="detail-label margin-top-0">Email Address</span>
                 <span class="detail-value"><%= user_detail['email'] %></span>
                 <span class="detail-label">Street Address</span>
                 <span class="detail-value"><%= user_detail['street_address'] %></span>
                 <span class="detail-label">Zip Code</span>
                 <span class="detail-value"><%= user_detail['postal_code'] %></span>
-              </span>
-              <span class="case-detail-col4">
+              </div>
+              <div class="case-detail-col4">
                 <span class="detail-label margin-top-0">Date & Time</span>
                 <span class="detail-value"><%= user_detail['submitted_at'] %></span>
                 <span class="detail-label">City</span>
                 <span class="detail-value"><%= user_detail['city'] %></span>
                 <span class="detail-label">State/ Region</span>
                 <span class="detail-value"><%= user_detail['state'] %></span>
-              </span>
+              </div>
             </div>
           </div>
         </div>

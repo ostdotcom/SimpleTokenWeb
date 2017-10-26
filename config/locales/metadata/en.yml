@@ -375,6 +375,13 @@ en:
       :assets:
         :specific_css_required: 1
 
+    whitelist_dashboard:
+      :meta:
+        :title: Simple Token Admin Dashboard
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 1
+
     kyc_details:
       :meta:
         :title: Simple Token KYC details page

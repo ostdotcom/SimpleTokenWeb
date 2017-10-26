@@ -4,7 +4,7 @@ class Admin::HomeController < Admin::BaseController
   before_action :delete_admin_cookie, only: [:login]
   before_action :check_admin_cookie, except: [:login]
 
-  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout]
+  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard]
 
   # Admin login
   #
@@ -158,6 +158,62 @@ class Admin::HomeController < Admin::BaseController
   def logout
     delete_admin_cookie
     redirect_to "/admin/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
+  end
+
+
+  # Admin dashboard
+  #
+  # * Author: Alpesh
+  # * Date: 09/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def whitelist_dashboard
+    @whitelist_status = params[:filters][:whitelist_status] if params[:filters].present?
+    @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
+    @display_start = params[:display_start]
+  end
+
+  # Admin dashboard
+  #
+  # * Author: Alpesh
+  # * Date: 09/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def get_kyc_whitelist_dashboard
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+                           .whitelist_dashboard_detail(params)
+
+    Rails.logger.info(service_response.inspect)
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    resp_data = service_response.data
+
+    curr_resp_data = []
+    resp_data['curr_page_data'].each do |c_p_d|
+      curr_resp_data << {
+          user_case_id: c_p_d['case_id'],
+          date_time: c_p_d['kyc_confirmed_at'],
+          whitelist_status: GlobalConstant::UserKycDetail.whitelist_kyc_statuses[c_p_d['whitelist_status']],
+          duplicate: c_p_d['is_duplicate'],
+          re_submitted: c_p_d['is_re_submitted'],
+          name: c_p_d['name'],
+          country: c_p_d['country'],
+          nationality: c_p_d['nationality'],
+          admin: c_p_d['last_acted_by']
+      }
+    end
+
+    response = {
+        recordsFiltered: resp_data['meta']['total_filtered_recs'],
+        data: curr_resp_data
+    }
+
+    render :json => response and return
+
   end
 
 end
