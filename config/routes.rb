@@ -25,11 +25,13 @@ Rails.application.routes.draw do
 
   scope '', controller: 'web/home' do
     get '/' => :index
+    get '/team' => :about
     get '/about' => :about
     get '/platform' => :platform
     get '/privacy' => :privacy
     get '/terms' => :terms
     get '/documents' => :documents
+    get '/ip-checker' => :check
   end
 
   scope '', controller: 'web/marketing' do

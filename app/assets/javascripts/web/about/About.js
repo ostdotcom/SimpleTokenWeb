@@ -47,8 +47,9 @@
       var navContainer =  $('.container-about-nav');
       var navOffset = navContainer.offset().top;
       navContainer.wrap('<div class="nav-placeholder"></div>');
-      $('.nav-placeholder').height(navContainer.outerHeight());
-
+      $(window).resize(function(){
+        $('.nav-placeholder').height(navContainer.outerHeight());
+      });
       $(window).scroll(function(){
         var scrollPos = $(window).scrollTop();
         if(scrollPos >= navOffset){

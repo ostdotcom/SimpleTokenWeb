@@ -57,4 +57,8 @@ class Web::HomeController < Web::BaseController
   def platform
   end
 
+  def check
+    @country = get_country_from_ip.upcase
+    @ip_address = ip_address
+  end
 end
