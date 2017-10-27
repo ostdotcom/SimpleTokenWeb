@@ -95,6 +95,31 @@
   }
 }
 
+.eth-deposit-address{
+  .header{
+    font-size: 24px;
+    font-weight: 300;
+    color: #6ca3a9;
+    margin-bottom: 20px;
+  }
+  .btn{
+    padding: 15px 30px;
+  }
+  .eth-link{
+    font-size: 14px;
+    font-weight: 500;
+    color: #597a84;
+    display: inline-block;
+    margin: 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #597a84;
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+}
+
 .instructions{
   color: #597a84;
   font-weight: 300;
