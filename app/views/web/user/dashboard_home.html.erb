@@ -1,6 +1,41 @@
-<%= render :partial => "/web/dashboard/kyc_status" %>
-<%= render :partial => "/web/dashboard/forgot_eth_address" %>
-<%= render :partial => "/web/dashboard/get_ethereum_deposit_address" %>
+<div id="banner-content"></div>
+<%= render :partial => "/shared/web/common/loggedin_header", locals: {user: @presenter_obj.user} %>
+<div class="text-center">
+  <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
+</div>
+
+<% if  @presenter_obj.has_sale_ended? %>
+    <%= render :partial => "/web/dashboard/token_sale_ends" %>
+    <%= render :partial => "/web/token_sale/telegram" %>
+<% elsif  @presenter_obj.has_sale_paused? %>
+    <%= render :partial => "/web/dashboard/token_sale_pause" %>
+    <%= render :partial => "/web/token_sale/telegram" %>
+    <div style="margin: 50px 0">
+      <%= render :partial => "/web/dashboard/token_sale_progress" %>
+    </div>
+<% elsif @presenter_obj.is_sale_ongoing? %>
+    <%= render :partial => "/web/dashboard/sale_open_timer" %>
+    <%= render :partial => "/web/dashboard/ethereum_deposit_address" %>
+    <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 30px auto;display: block;"/>
+    <%= render :partial => "/web/dashboard/kyc_status" %>
+    <%= render :partial => "/web/dashboard/forgot_eth_address" %>
+    <%= render :partial => "/web/token_sale/telegram" %>
+<% else %>
+    <%= render :partial => "/web/dashboard/sale_open_timer" %>
+    <%= render :partial => "/web/dashboard/kyc_status" %>
+    <%= render :partial => "/web/dashboard/forgot_eth_address" %>
+    <%= render :partial => "/web/dashboard/question_on_sale" %>
+    <%= render :partial => "/web/token_sale/telegram" %>
+<% end %>
+<%= render :partial => "/shared/web/common/footer" %>
+
+
+
+<% if false %>
+    <%= render :partial => "/web/dashboard/get_ethereum_deposit_address" %>
+<% end %>
+
+
 
 <% if @presenter_obj.is_double_optin_token_present?
      content_for :end_js do

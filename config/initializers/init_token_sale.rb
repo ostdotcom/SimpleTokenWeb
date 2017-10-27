@@ -7,6 +7,7 @@ class InitTokenSale
       request.host == 'sale.stagingsimpletoken.org'
     else
       request.host == 'sale.developmentsimpletoken.org'
+    end
   end
 
 end

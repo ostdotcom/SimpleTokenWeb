@@ -186,7 +186,7 @@ class Web::UserController < Web::BaseController
 
     params = {}
     user_data = {
-        'user' => {'bt_name' => 'aman', 'email' => 'aman@pepo.com'},
+        'user' => {'bt_name' => 'aman', 'email' => 'aman@pepo.com','user_token_sale_state' => 'profile_page'},
         'user_kyc_data' => {'kyc_status' => 'pending', 'token_sale_participation_phase' => 'pre_sale', 'whitelist_status' => 'done', 'admin_action_type' => 'no', 'bonus_status' => 'approved'}, #['denied', 'approved', 'pending'] ['pre_sale', 'aa']
         'token_sale_active_status' => '1'
     }

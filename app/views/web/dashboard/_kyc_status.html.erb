@@ -73,5 +73,6 @@
 
   </div>
 </div>
-
-<%= render :partial => "/shared/web/modals/kyc_update_warning_modal" %>
+<% if @presenter_obj.show_kyc_update_modal? %>
+    <%= render :partial => "/shared/web/modals/kyc_update_warning_modal" %>
+<% end %>

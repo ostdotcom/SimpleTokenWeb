@@ -68,7 +68,6 @@ module Presenters
         end
 
 
-
         ###########################################
 
 
@@ -76,13 +75,45 @@ module Presenters
           GlobalConstant::TokenSaleUserState.pre_sale_participation_phase == user_kyc_data['token_sale_participation_phase']
         end
 
+        def sale_start_time
+          is_pre_sale_user? ? GlobalConstant::StTokenSale.pre_sale_start_date : GlobalConstant::StTokenSale.public_sale_start_date
+        end
 
+        def is_sale_live?
+          current_time >= sale_start_time
+        end
+
+        def is_pre_sale_mode_on?
+          (current_time < GlobalConstant::StTokenSale.public_sale_start_date) && is_pre_sale_user?
+        end
+
+        def countdown_timestamp
+          if !is_sale_live?
+            sale_start_time
+          elsif is_pre_sale_mode_on?
+            GlobalConstant::StTokenSale.public_sale_start_date
+          else
+            GlobalConstant::StTokenSale.public_sale_end_date
+          end
+        end
+
+        def is_sale_ongoing?
+          is_sale_live?
+        end
+
+        def can_purchase?
+          is_kyc_approved? && ethereum_address_whitelist_done? && is_sale_ongoing?
+        end
+
+        def has_sale_ended?
+          current_time >= GlobalConstant::StTokenSale.public_sale_end_date
+        end
+
+        def has_sale_paused?
+          (token_sale_active_status.to_i != 1) && is_sale_live?
+        end
 
         ###########################################
-
-
-
-
 
 
         ###########################################
@@ -146,7 +177,6 @@ module Presenters
           end
         end
 
-
         def show_ethereum_address_whitelist_status_box?
           is_kyc_approved?
         end
@@ -165,7 +195,7 @@ module Presenters
         end
 
         def token_name_pending?
-          token_name.present?
+          token_name.blank?
         end
 
         def token_name_icon_class
@@ -190,34 +220,6 @@ module Presenters
 
         ###############################################
 
-
-        def can_purchase?
-          is_kyc_approved? && is_sale_ongoing?
-        end
-
-        def is_pre_sale_mode_on?
-          (current_time < GlobalConstant::StTokenSale.public_sale_start_date) && is_pre_sale_user?
-        end
-
-        def sale_start_time
-          is_pre_sale_mode_on? ? GlobalConstant::StTokenSale.pre_sale_start_date : GlobalConstant::StTokenSale.public_sale_start_date
-        end
-
-        def is_sale_ongoing?
-          !has_sale_paused? && !has_sale_ended? && has_sale_started?
-        end
-
-        def has_sale_started?
-          current_time >= sale_start_time
-        end
-
-        def has_sale_paused?
-          (token_sale_active_status.to_i != 1) && has_sale_started?
-        end
-
-        def has_sale_ended?
-          current_time >= GlobalConstant::StTokenSale.public_sale_end_date
-        end
 
         private
 
