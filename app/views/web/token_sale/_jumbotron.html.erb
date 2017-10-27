@@ -11,6 +11,7 @@
           </div>
           <div class="desc">
             <p>Have questions on the Token Sale? Check these documents.</p>
+            <a href="/login" class="btn-common btn-grey btn-top-bottom-15">Login to Participate</a>
             <p>
               <a href="javascript:void(0)" class="link" target="_blank">Token Sale Guide</a>
               <a href="javascript:void(0)" class="link" target="_blank" style="margin-left:20px">Wallet Setup Guide</a>
@@ -40,6 +41,7 @@
             %>
 
             <h2><%= top_lang %></h2>
+            <div class="time-remaining">Time Remaining</div>
             <%=
                 render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}
             %>

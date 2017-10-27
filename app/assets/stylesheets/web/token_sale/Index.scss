@@ -29,6 +29,17 @@
     display: none;
   }
 
+  .time-remaining{
+    background-color: rgba(145, 192, 173, 0.1);
+    padding: 5px;
+    margin: 10px 0 20px 0;
+    text-align: center;
+    color: #91c0ad;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
 }
 
 .container-dates{
