@@ -5,34 +5,40 @@
 </div>
 
 <% if  @presenter_obj.has_sale_ended? %>
-    <%= render :partial => "/web/dashboard/token_sale_ends" %>
-    <%= render :partial => "/web/token_sale/telegram" %>
+  <%= render :partial => "/web/dashboard/token_sale_ends" %>
+  <%= render :partial => "/web/token_sale/telegram" %>
 <% elsif  @presenter_obj.has_sale_paused? %>
-    <%= render :partial => "/web/dashboard/token_sale_pause" %>
-    <%= render :partial => "/web/token_sale/telegram" %>
-    <div style="margin: 50px 0">
-      <%= render :partial => "/web/dashboard/token_sale_progress" %>
-    </div>
+  <%= render :partial => "/web/dashboard/token_sale_pause" %>
+  <%= render :partial => "/web/token_sale/telegram" %>
+  <div style="margin: 50px 0">
+    <%= render :partial => "/web/dashboard/token_sale_progress" %>
+  </div>
 <% elsif @presenter_obj.is_sale_ongoing? %>
-    <%= render :partial => "/web/dashboard/sale_open_timer" %>
-    <%= render :partial => "/web/dashboard/ethereum_deposit_address" %>
+  <%= render :partial => "/web/dashboard/sale_open_timer" %>
+  <%= render :partial => "/web/dashboard/ethereum_deposit_address" %>
+  <%= render :partial => "/web/dashboard/kyc_status" %>
+  <% if !@presenter_obj.can_purchase? %>
     <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 30px auto;display: block;"/>
-    <%= render :partial => "/web/dashboard/kyc_status" %>
-    <%= render :partial => "/web/dashboard/forgot_eth_address" %>
-    <%= render :partial => "/web/token_sale/telegram" %>
+  <% end %>
+  <%= render :partial => "/web/dashboard/forgot_eth_address" %>
+  <% if !@presenter_obj.can_purchase? %>
+  <%= render :partial => "/web/dashboard/question_on_sale" %>
+  <% end %>
+  <%= render :partial => "/web/token_sale/telegram" %>
 <% else %>
-    <%= render :partial => "/web/dashboard/sale_open_timer" %>
-    <%= render :partial => "/web/dashboard/kyc_status" %>
-    <%= render :partial => "/web/dashboard/forgot_eth_address" %>
-    <%= render :partial => "/web/dashboard/question_on_sale" %>
-    <%= render :partial => "/web/token_sale/telegram" %>
+  <%= render :partial => "/web/dashboard/sale_open_timer" %>
+  <%= render :partial => "/web/dashboard/kyc_status" %>
+  <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 20px auto 30px;display: block;">
+  <%= render :partial => "/web/dashboard/forgot_eth_address" %>
+  <%= render :partial => "/web/dashboard/question_on_sale" %>
+  <%= render :partial => "/web/token_sale/telegram" %>
 <% end %>
 <%= render :partial => "/shared/web/common/footer" %>
 
 
 
 <% if false %>
-    <%= render :partial => "/web/dashboard/get_ethereum_deposit_address" %>
+  <%= render :partial => "/web/dashboard/get_ethereum_deposit_address" %>
 <% end %>
 
 
@@ -40,13 +46,13 @@
 <% if @presenter_obj.is_double_optin_token_present?
      content_for :end_js do
 %>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                simpletoken.utils.errorHandling.showSuccessAlert("Your Account is Verified Successfully.");
-            });
-        </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        simpletoken.utils.errorHandling.showSuccessAlert("Your Account is Verified Successfully.");
+      });
+    </script>
 
-    <%
-       end
-       end
-    %>
+  <%
+     end
+     end
+  %>
