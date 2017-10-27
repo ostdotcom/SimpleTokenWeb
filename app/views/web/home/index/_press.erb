@@ -8,71 +8,7 @@
 
         <div class="col-xs-12">
 
-          <div class="video-carousel" style="opacity: 0">
-
-<%
-   videos = [
-       {
-               title: "CEO Jason Goldberg at Immutable Blockchain Summit",
-               video_embed: "https://www.youtube.com/embed/qz8LhpKCsw0?rel=0&autoplay=1",
-               image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-video-poster-qz8LhpKCsw0.png",
-       },
-       {
-               title: "Jason Goldberg intros Simple Token for apps to launch branded crytpo tokens",
-               video_embed: "https://www.youtube.com/embed/7aY5R1yXhwA?rel=0&autoplay=1",
-               image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-video-poster-7aY5R1yXhwA.png",
-       },
-       {
-               title: "Epicenter - Bringing Tokens to Mainstream Consumer Applications",
-               video_embed: "https://www.youtube.com/embed/c8swtDtappM?rel=0&autoplay=1",
-               image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-video-poster-c8swtDtappM.png",
-       },
-       {
-               title: "Simple Token Technical Talk: Blockchain & Side-Chain Process",
-               video_embed: "https://www.youtube.com/embed/W8iedA2dQKs?rel=0&autoplay=1",
-               image: "https://img.youtube.com/vi/W8iedA2dQKs/maxresdefault.jpg",
-       },
-       {
-               title: "Simple Token Finalizes Token Sale Price, Launches “Proof of Support” Program, Announces Advisors",
-               video_embed: "https://www.youtube.com/embed/9OP7Q8uzjjg?rel=0&autoplay=1",
-               image: "https://img.youtube.com/vi/9OP7Q8uzjjg/maxresdefault.jpg",
-       },
-       {
-               title: "Simple Token Technical Talk: Blockchain & Side-Chain Process",
-               video_embed: "https://www.youtube.com/embed/D4z13HqRjFU?rel=0&autoplay=1",
-               image: "https://img.youtube.com/vi/D4z13HqRjFU/maxresdefault.jpg",
-       },
-       {
-               title: "Simple Token CEO Jason Goldberg @ Immutable Blockchain Summit 2017, Hong Kong",
-               video_embed: "https://www.youtube.com/embed/qz8LhpKCsw0?rel=0&autoplay=1",
-               image: "https://img.youtube.com/vi/qz8LhpKCsw0/maxresdefault.jpg",
-       }
-   ]
-%>
-
-            <% videos.each_with_index do|video, index| %>
-
-                <div class="carousel-item" data-toggle="modal" data-target="#youtube-video-modal" data-src="<%=video[:video_embed]%>">
-                  <div class="thumbnail">
-                    <div class="video-container">
-                      <div class="play">
-                        <svg class="svg">
-                          <switch>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
-                          </switch>
-                        </svg>
-                      </div>
-                      <img src="<%=video[:image]%>" alt="<%=video[:title]%>" style="width: 100%;">
-                    </div>
-                    <div class="caption">
-                      <h4><%=video[:title]%></h4>
-                    </div>
-                  </div>
-                </div>
-
-            <% end %>
-
-          </div>
+          <div class="video-carousel" style="opacity: 0"></div>
 
         </div>
 
@@ -124,3 +60,23 @@
     </div>
   </div>
 </div>
+
+<script type="custom" id="carousel-item">
+    <div class="carousel-item" data-toggle="modal" data-target="#youtube-video-modal" data-src="__video_embed__">
+      <div class="thumbnail">
+        <div class="video-container">
+          <div class="play">
+            <svg class="svg">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
+              </switch>
+            </svg>
+          </div>
+          <img src="__image__" alt="__title__" style="width: 100%;">
+        </div>
+        <div class="caption">
+          <h4>__title__</h4>
+        </div>
+      </div>
+    </div>
+</script>
