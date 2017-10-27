@@ -207,7 +207,7 @@ module Presenters
         end
 
         def is_bonus_approval_date_over?
-          current_time > GlobalConstant::StTokenSale.public_sale_start_date
+          current_time <= GlobalConstant::StTokenSale.public_sale_start_date
         end
 
         def show_bonus_box?
@@ -224,7 +224,7 @@ module Presenters
         private
 
         def current_time
-          @current_time ||=      GlobalConstant::StTokenSale.pre_sale_start_date - 1.day || Time.zone.now
+          @current_time ||= Time.zone.now
         end
 
       end
