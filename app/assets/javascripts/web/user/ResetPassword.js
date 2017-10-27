@@ -32,6 +32,9 @@
         },
 
         forgot_password: function (is_resend) {
+            $("#recoverPassword")
+                .text('Recovering...')
+                .prop( "disabled", true );
             $('#successMessage').hide().text('');
             var $form = $('#userPasswordResetForm');
             $.ajax({
@@ -55,6 +58,11 @@
                 },
                 error: function (jqXHR, exception) {
                     utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+                },
+                complete: function(){
+                    $("#recoverPassword")
+                        .text('Recover')
+                        .prop( "disabled", false );
                 }
             });
         },

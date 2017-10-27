@@ -22,6 +22,9 @@
                 event.preventDefault();
                 var v = utilsNs.errorHandling.validationGeneric($('#userLoginForm input[type="text"], #userLoginForm input[type="password"]'));
                 if (v === true) {
+                    $("#userLogin")
+                        .text('logging in...')
+                        .prop( "disabled", true );
                     oThis.login();
                 }
             });
@@ -52,6 +55,11 @@
                 },
                 error: function (jqXHR, exception) {
                     utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+                },
+                complete: function(){
+                    $("#userLogin")
+                        .text('login')
+                        .prop( "disabled", false );
                 }
             });
         },
