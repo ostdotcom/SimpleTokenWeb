@@ -84,7 +84,7 @@
               <div class="row">
                 <div class="col-sm-6">
                   <span class="kyc-case-detail-header">
-                    KYC check Dashboard
+                    KYC Check Dashboard
                   </span>
                   <span class="kyc-breadcrumb">
                     <a href="/admin/<%= dashboard %>?<%= pass_prev_params.to_query %>"> KYC Dashboard </a> > KYC Details
@@ -166,7 +166,7 @@
                 </div>
               </div>
               <div>
-                <span class="status-label"> IP / Country : </span>
+                <span class="status-label"> Reg IP/Country : </span>
                 <% if user_detail['geoip_data'].present? %>
                     <span class="status-value">
                       <%= user_detail['geoip_data']['ip_address'] %> / <%= user_detail['geoip_data']['country'] %>
