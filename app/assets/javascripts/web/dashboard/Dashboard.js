@@ -34,6 +34,10 @@
                 document.execCommand('copy');
             });
 
+            $("#get-deposit-address").click(function (event) {
+              $('#ethereum-confirm-modal').modal('show');
+            });
+
         }
 
     };

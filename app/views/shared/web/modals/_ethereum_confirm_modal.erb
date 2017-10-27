@@ -1,0 +1,40 @@
+<div id="ethereum-confirm-modal" class="modal fade user-modal" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
+        <span aria-hidden="true" class="modal-cross-icon" title="close">X</span>
+      </button>
+      <div class="modal-body">
+        <div class="verify-content">
+          <div class="heading text-center">Please Review and Confirm</div>
+          <div class="checkbox">
+            <input type="checkbox" value="" id="in_the_token_distribution" name="in_the_token_distribution" >
+            <label for="in_the_token_distribution">
+              I have registered and have been approved by Simple Token to participate in the token distribution event.
+            </label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="" id="is_same_ethereum_address" name="is_same_ethereum_address" >
+            <label for="is_same_ethereum_address">
+              The Ethereum wallet address I provided during registration is the same one that I am using in this event.
+            </label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="" id="cannot_exceed_cap" name="cannot_exceed_cap" >
+            <label for="cannot_exceed_cap">
+              I understand that there is a indiviidual cap of 20.20 ETH ($5000), and that I cannot exceed the cap for the first 24 hours of the token distribution event
+            </label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" value="" id="i_agree_terms_conditions" name="i_agree_terms_conditions" >
+            <label for="i_agree_terms_conditions">
+              I agree to <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/terms" title="Terms and Condition" target="_blank">Terms and Condition</a>.
+            </label>
+          </div>
+          <div class="error" data-for="verify_error"></div>
+          <button class="btn-common btn-gold verify-btn" title="Verify" id="userConfirm">CONFIRM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
