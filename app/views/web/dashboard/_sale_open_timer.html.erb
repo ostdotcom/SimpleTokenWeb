@@ -2,14 +2,21 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="text-center">
+
         <div class="registration-timer">
           <h2><%= @presenter_obj.is_pre_sale_mode_on? ? 'PRE' : 'PUBLIC' %> SALE OPENS IN</h2>
+          <div class="panel panel-default time-remain">
+            <div class="panel-body">time remaining</div>
+          </div>
           <%=
-            render partial: '/shared/web/common/countdown_timer',
+            render partial: '/shared/web/common/marketing_countdown_timer',
                    locals: {
                            timestamp: (@presenter_obj.sale_start_time.to_i) * 1000
                    }
           %>
+          <div class="panel panel-default time-remain">
+            <div class="panel-body">sale open till tokens last</div>
+          </div>
         </div>
       </div>
     </div>

@@ -48,6 +48,10 @@
       background-color: rgba(231, 0, 59, 0.05);
       border: solid 1px #e7003b;
     }
+    &.pending-issue{
+      background-color: #fffdf9;
+      border: solid 1px #e4b030;
+    }
     a{
       color: #597a84;
       border-bottom: 1px solid #597a84;
@@ -64,6 +68,18 @@
     color: #597a84;
     margin-bottom: 5px;
     letter-spacing: 1px;
+  }
+  .time-remain{
+    border: none;
+    color: #91c0ad;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    .panel-body{
+      padding: 8px 10px;
+      text-transform: uppercase;
+      background-color: rgba(145, 192, 173, 0.15);
+    }
   }
 }
 
