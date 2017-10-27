@@ -77,6 +77,7 @@
 .container-press{
   background-image: linear-gradient(to bottom, #ffffff, #f8f9fa);
   padding:40px 0;
+  overflow-x: hidden;
 
   h1,h2{
     font-size: 38px;
@@ -488,7 +489,8 @@
 
   .container-features,
   .container-documents,
-  .container-subscribe{
+  .container-subscribe,
+  .container-press{
     h1,h2{
       font-size: 30px;
     }

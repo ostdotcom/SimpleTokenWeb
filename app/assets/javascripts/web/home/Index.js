@@ -42,9 +42,7 @@
                         breakpoint: 769,
                         settings: {
                             slidesToShow: 2,
-                            slidesToScroll: 2,
-                            infinite: true,
-                            dots: true
+                            slidesToScroll: 2
                         }
                     }
                 ]

@@ -7,7 +7,7 @@ $slick-dot-character: "\2022" !default;
 $slick-dot-size: 6px !default;
 $slick-opacity-default: 1 !default;
 $slick-opacity-on-hover: 1 !default;
-$slick-opacity-not-active: 0.4 !default;
+$slick-opacity-not-active: 0 !default;
 
 .slick-list {
   .slick-loading & {
@@ -57,10 +57,10 @@ $slick-opacity-not-active: 0.4 !default;
 }
 
 .slick-prev {
-  left: -70px;
+  left: -55px;
   [dir="rtl"] & {
     left: auto;
-    right: -70px;
+    right: -55px;
   }
   &:before {
     content: $slick-prev-character;
@@ -71,9 +71,9 @@ $slick-opacity-not-active: 0.4 !default;
 }
 
 .slick-next {
-  right: -70px;
+  right: -55px;
   [dir="rtl"] & {
-    left: -70px;
+    left: -55px;
     right: auto;
   }
   &:before {
