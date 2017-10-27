@@ -8,6 +8,7 @@
 
         init: function (config) {
             oThis.bindButtonActions();
+            $('.video-carousel').css('opacity', 1);
         },
 
         bindButtonActions: function () {

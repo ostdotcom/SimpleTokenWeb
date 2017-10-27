@@ -52,10 +52,21 @@
           fill: #34445b;
         }
       }
+
+      &:hover{
+        .play{
+          .svg{
+            fill: #e4b030;
+          }
+        }
+        span{
+          color: #e4b030;
+        }
+      }
     }
     img{
       max-width: 490px;
-      margin: -35px auto 0 auto;
+      margin: -70px auto 0 auto;
     }
   }
 }
@@ -384,7 +395,6 @@
       }
       img{
         max-width: 100%;
-        margin: -35px auto 0 auto;
       }
     }
   }
@@ -420,13 +430,48 @@
     .illustration{
       img{
         max-width: 490px;
-        margin: 35px auto 0 auto;
+        margin: 0 auto;
       }
     }
   }
   .container-jumbotron-desc{
     .desc{
       padding: 10px 0 0 0;
+    }
+  }
+  .container-press{
+    .video-carousel{
+
+      .carousel-item{
+        .thumbnail{
+          .video-container{
+            .play{
+              svg{
+                margin: -3px 5px 0 5px;
+              }
+            }
+          }
+          .caption{
+            h4{
+              font-size: 12px;
+              height: 45px;
+            }
+          }
+        }
+      }
+
+      .slick-prev,
+      .slick-next {
+        &:before {
+          font-size: 30px;
+        }
+      }
+      .slick-prev {
+        left: -37px;
+      }
+      .slick-next {
+        right: -37px;
+      }
     }
   }
   .logo-desktop{
@@ -470,7 +515,7 @@
       }
       img{
         max-width: 300px;
-        margin: 35px auto 0 auto;
+        margin: 0 auto;
       }
     }
   }
