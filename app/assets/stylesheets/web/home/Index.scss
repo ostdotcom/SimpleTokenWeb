@@ -35,7 +35,7 @@
     .btn-play{
       border: none;
       background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
       color: #34445b;
       position: relative;
       top: 295px;
@@ -111,7 +111,7 @@
             padding: 15px;
             background: #ffffff;
             border-radius: 50%;
-            box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
             position: absolute;
             z-index: 1;
             top: 0;
@@ -481,6 +481,7 @@
   }
   .container-press{
     .video-carousel{
+
       .carousel-item{
         .thumbnail{
           .caption{
@@ -490,6 +491,19 @@
             }
           }
         }
+      }
+
+      .slick-prev,
+      .slick-next {
+        &:before {
+          font-size: 30px;
+        }
+      }
+      .slick-prev {
+        left: -45px;
+      }
+      .slick-next {
+        right: -45px;
       }
     }
   }
