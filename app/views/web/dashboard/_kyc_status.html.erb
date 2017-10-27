@@ -52,19 +52,22 @@
 
         <% if @presenter_obj.show_bonus_box? %>
             <div class="panel panel-default kyc-panel approved">
-              <table class="panel-body">
-                <tr>
-                  <td>
-                    <span class="kyc-status-icon-<%= @presenter_obj.bonus_icon_class %> ver-middle"></span>
-                    <span class="ver-middle"><%= @presenter_obj.is_bonus_confirmed? ? '10% Bonus Confirmed' : '10% Bonus Pending' %></span>
-                  </td>
-                  <td>
-                    <% unless @presenter_obj.is_bonus_confirmed? %>
-                        <span id="bonusSupport">PROVE SUPPORT</span>
-                    <% end %>
-                  </td>
-                </tr>
-              </table>
+              <div class="panel-body">
+                <div style="overflow: hidden" >
+                  <span class="pull-left">
+                  <span class="kyc-status-icon-<%= @presenter_obj.bonus_icon_class %> ver-middle"></span>
+                  <span class="ver-middle"><%= @presenter_obj.is_bonus_confirmed? ? '10% Bonus Confirmed' : '10% Bonus Pending' %></span>
+                </span>
+                  <% unless @presenter_obj.is_bonus_confirmed? %>
+                    <a href="javascript:void(0)" id="intro-switch prove-support-link" class="collapsed pull-right" data-toggle="collapse" data-target="#prove-support-content">Prove Support</a>
+                  <% end %>
+                </div>
+                <div id="prove-support-content" class="panel-collapse collapse prove-support-content">
+                  <div class="header">Show some love & get 10% Bonus</div>
+                  <div class="desc">Join our Telegram Channel, share about us on social media and Send us a proof of your support to get 10 % Bonus Tokens</div>
+                  <a href="javascript:void(0)">LEARN MORE</a>
+                </div>
+              </div>
             </div>
         <% end %>
 

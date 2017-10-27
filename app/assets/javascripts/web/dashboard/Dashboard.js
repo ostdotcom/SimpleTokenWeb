@@ -45,6 +45,14 @@
                 oThis.onEthereumConfirm( event );
             });
 
+            $('#prove-support-content').on('shown.bs.collapse', function() {
+              $(this).parents('.kyc-panel').find('#prove-support-link').text('X')
+            });
+
+            $('#prove-support-content').on('hidden.bs.collapse', function() {
+              $(this).parents('.kyc-panel').find('#prove-support-link').text('Prove Support')
+            });
+
         },
         onEthereumConfirm: function ( event ) {
             var jModal = $('#ethereum-confirm-modal'),

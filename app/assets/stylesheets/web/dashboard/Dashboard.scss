@@ -62,6 +62,30 @@
     .ver-middle{
       vertical-align: middle;
     }
+    .prove-support-link{
+      &:focus{
+        text-decoration: none;
+      }
+    }
+    .prove-support-content{
+      color: #597a84;
+      .header{
+        font-size: 18px;
+        margin: 15px 0 0;
+        padding: 15px 0 5px;
+        border-top: solid 1px #597a84;
+      }
+      .desc{
+        font-size: 14px;
+      }
+      a{
+        display: inline-block;
+        margin-top: 20px;
+        &:focus{
+          text-decoration: none;
+        }
+      }
+    }
   }
   .progress-stats{
     font-weight: 500;
@@ -108,7 +132,7 @@
     padding: 15px 30px;
   }
   .eth-link{
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     color: #597a84;
     display: inline-block;
