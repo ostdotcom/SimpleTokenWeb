@@ -294,7 +294,7 @@ input[type="checkbox"]:checked ~ label::after{
 
 
 
-#verifyModal, #verifyLinkModal, #update-warning-modal{
+.user-modal{
   .heading{
     color: #6ca3a9;
     font-size: 30px;
@@ -316,9 +316,30 @@ input[type="checkbox"]:checked ~ label::after{
       padding: 30px 50px;
     }
   }
+  &.modal {
+    text-align: center;
+    padding: 0!important;
+  }
+  &.modal:before {
+    content: '';
+    @media(min-width: 767px){
+      display: inline-block;
+    }
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+  }
+  .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+  }
   .modal-content{
     box-shadow: none;
     border-radius: 0;
+  }
+  body.modal-open {
+    overflow: hidden;
   }
   .verify-btn{
     padding: 10px 25px;
@@ -353,29 +374,27 @@ input[type="checkbox"]:checked ~ label::after{
   }
 }
 
-.modal {
-  text-align: center;
-  padding: 0!important;
-}
-
-.modal:before {
-  content: '';
-  @media(min-width: 768px){
-    display: inline-block;
+.youtube-modal{
+  &.modal {
+    text-align: center;
+    padding: 0!important;
   }
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -4px;
-}
 
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-}
+  &.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+  }
 
-body.modal-open {
-  overflow: hidden;
-  position:fixed;
-  width: 100%;
+  .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  body.modal-open {
+    overflow: hidden;
+  }
 }

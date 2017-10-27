@@ -8,6 +8,7 @@
 
         init: function (config) {
             oThis.bindButtonActions();
+            $('.video-carousel').css('opacity', 1);
         },
 
         bindButtonActions: function () {
@@ -31,8 +32,37 @@
                 $('#is_token_sale_user').prop('checked', true);
             });
 
-        },
+            $('.video-carousel').slick({
+                dots: false,
+                infinite: false,
+                speed: 300,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                responsive: [
+                    {
+                        breakpoint: 769,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    }
+                ]
+            });
 
+            $("#youtube-video-modal").on('hide.bs.modal', function () {
+                $("#frameVideo").attr('src', '');
+            });
+
+            $("#youtube-video-modal").on('show.bs.modal', function (e) {
+                $("#frameVideo").attr('src', $(e.relatedTarget).data('src'));
+            });
+
+            $("#youtube-video-modal").on('shown.bs.modal', function (e) {
+                var width = $("#frameVideo").width();
+                $("#frameVideo").height(width/16*9);
+            })
+
+        },
 
         onSubscribe: function () {
             var jsonpurl = $("#subscribe-form-submit").data('jsonp');

@@ -122,6 +122,10 @@
              }
           });
 
+          if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+              $('.selectpicker').selectpicker('mobile');
+          }
+
       },
 
       refreshIndicator: function(){
@@ -134,25 +138,29 @@
           var v = false;
           simpletoken.utils.errorHandling.clearFormErrors();
 
-          $('#kycForm input[type="file"]').attr('required',false);
+          $kycForm = $('#kycForm');
+
+          $kycForm.find('input[type="file"]').attr('required',false);
 
           oThis.formNames.forEach(function(value){
-              $('#kycForm input[name="'+value+'"]').attr('required',true);
+              $kycForm.find('input[name="'+value+'"]').attr('required',true);
           });
 
-          $('#kycForm').find('input, select, textarea').each(function(){
+          $kycForm.find('input, select, textarea').each(function(){
               $(this).trigger('change');
           });
 
-          if( $('#kycForm .error:not(:empty)').length > 0 ){
+          if( $kycForm.find('.error:not(:empty)').length > 0 ){
               v = false;
           } else {
               v = true;
           }
 
-          if(typeof $('#kycForm .g-recaptcha')[0] != 'undefined' &&  grecaptcha.getResponse() == ''){
-              $('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
-              v = false;
+          if(typeof $kycForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+              if(grecaptcha.getResponse() == ''){
+                  $kycForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+                  v = false;
+              }
           }
 
           if(v === true) {
@@ -168,7 +176,9 @@
 
           } else {
 
-              grecaptcha.reset();
+              if(typeof grecaptcha  != 'undefined'){
+                  grecaptcha.reset();
+              }
               $('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
 
           }

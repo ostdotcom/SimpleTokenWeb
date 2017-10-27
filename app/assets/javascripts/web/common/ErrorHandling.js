@@ -154,6 +154,9 @@ jQuery.fn.extend({
                 else if(this.validity.typeMismatch || this.validity.patternMismatch){
                     simpletoken.utils.errorHandling.addFormError(this.name, 'Please enter a valid '+this.title);
                 }
+                else if(this.validity.rangeUnderflow){
+                    simpletoken.utils.errorHandling.addFormError(this.name, this.title+' cannot be less than '+this.min);
+                }
                 else if(this.type == 'file' && typeof this.files[0] != 'undefined'){
                     if(this.files[0].size < $(this).data('min-bytes')){
                         simpletoken.utils.errorHandling.addFormError(this.name, this.title+' file size too small');

@@ -1,7 +1,7 @@
 class Web::HomeController < Web::BaseController
   layout "web"
 
-  before_action :set_page_meta_info
+  before_action :set_page_meta_info, except: [:redirect_to_team]
 
   # Action for the home page index
   #
@@ -19,6 +19,16 @@ class Web::HomeController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def about
+  end
+
+  # Redirect to /team page
+  #
+  # * Author: Akshay
+  # * Date: 26/10/2017
+  # * Reviewed By:
+  #
+  def redirect_to_team
+    redirect_to '/team', status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
   # Action for the privacy page
