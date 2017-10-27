@@ -15,7 +15,10 @@
             $("#kycUpdate").click(function (event) {
 
                 if ($(this).hasClass('openModal')) {
-                    $('#update-warning-modal').modal('show');
+                    var jModal = $('#update-warning-modal');
+                    //Clear the errors.
+                    simpletoken.utils.errorHandling.clearFormErrors( jModal );
+                    jModal.modal('show');
                 }
                 else{
                     $("#continueToUpdate").click();
@@ -29,8 +32,8 @@
                 return false;
             });
 
-            $("#visible-button").on('click', function () {
-                document.querySelector("#visible-input").select();
+            $("#ethereum-address-copy-btn").on('click', function () {
+                document.querySelector("#ethereum-address-input").select();
                 document.execCommand('copy');
             });
 
@@ -39,21 +42,67 @@
             });
 
             $("#userConfirm").click(function ( event ) {
-                var jModal = $('#ethereum-confirm-modal')
-                    ,jAllCheckboxes = jModal.find("input:checkbox")
-                    ,jCheckedCheckboxes = jAllCheckboxes.filter(":checked")
-                    ,areAllChecked = jAllCheckboxes.length == jCheckedCheckboxes.length
-                ;
-
-                if ( areAllChecked ) {
-                    simpletoken.utils.errorHandling.clearFormErrors();
-                    jModal.modal('hide');
-                } else {
-                    $('.error[data-for="verify_error"]').text('Please verify all above mentioned confirmations');
-                }
-
+                oThis.onEthereumConfirm( event );
             });
 
+        },
+        onEthereumConfirm: function ( event ) {
+            var jModal = $('#ethereum-confirm-modal'),
+                jAllCheckboxes = jModal.find("input:checkbox"),
+                jCheckedCheckboxes = jAllCheckboxes.filter(":checked"),
+                areAllChecked = jAllCheckboxes.length == jCheckedCheckboxes.length
+            ;
+
+            if ( areAllChecked ) {
+                //Clear all errors.
+                simpletoken.utils.errorHandling.clearFormErrors( jModal );
+
+                //Call the server for the address.
+                oThis.getFoundationEthereumAddress();
+                
+            } else {
+                oThis.showEthereumAddressConfirmError( "Please verify all above mentioned confirmations." );
+
+            }            
+        },
+        getFoundationEthereumAddress: function () {
+            var jModal = $('#ethereum-confirm-modal'),
+                dataUrl = "/api/user/ethereum-address",
+            ;
+            $.ajax({
+                url: dataUrl,
+                dataType: 'json',
+                method: "GET",
+                success: function (response) {
+                  if (response.success == true) {
+                    //Show the address.
+                    oThis.showEthereumAddress( response.data[ "foundation_ethereum_address" ] || "" );
+
+                    //Hide the modal.
+                    jModal.modal('hide');
+                    
+                  } else {
+                    simpletoken.utils.errorHandling.displayFormErrors( response );
+                  }
+                },
+                error: function (jqXHR, exception) {
+                    simpletoken.utils.errorHandling.xhrErrResponse(jqXHR, exception);
+                }
+            });
+        },
+        showEthereumAddressConfirmError: function ( errorMessage ) {
+            var jModal = $('#ethereum-confirm-modal'),
+                jErr = jModal.find('.error[data-for="general_error"]')
+            ;
+            jErr.html( errorMessage );
+        },
+        showEthereumAddress: function ( ethAddress ) {
+            var jWrap = $("#ethereum-deposit-address"),
+                jInput = jWrap.find("#ethereum-address-input")
+            ;
+            jInput.val( ethAddress );
+            jWrap.show();
+            $("#get-deposit-address").hide();
         }
 
     };

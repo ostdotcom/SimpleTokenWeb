@@ -79,9 +79,12 @@
         return false;
     },
 
-    clearFormErrors: function(){
-        $('.error[data-for]').text('');
-        $('input').removeClass('border-error');
+    clearFormErrors: function( jParent ){
+        if ( !jParent ) {
+          jParent = $("body");
+        }
+        jParent.find('.error[data-for]').text('');
+        jParent.find('input').removeClass('border-error');
     },
 
     addFormError: function(field_name, message){

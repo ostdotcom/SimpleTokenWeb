@@ -4,12 +4,12 @@
     <div class="col-xs-12">
       <div class="text-center">
         <h1 class="header">Ethereum Deposit Address</h1>
-        <fieldset class="ethereum-deposit-address" style="display: none">
 
-          <input type="text" id="visible-input" class="copy-address-input" placeholder="Ethereum Deposit Address" value=""/>
-          <input type="button" id="visible-button" class="btn-gold copy-address-button" value="Copy">
-
+        <fieldset id="ethereum-deposit-address" class="ethereum-deposit-address" style="display: none">
+          <input  type="text" id="ethereum-address-input" class="copy-address-input" placeholder="Ethereum Deposit Address" readonly value=""/>
+          <input type="button" id="ethereum-address-copy-btn" class="btn-gold copy-address-button" value="Copy">
         </fieldset>
+        
         <a href="javascript:void(0)" class="btn-common btn-grey btn" target="_blank" id="get-deposit-address">GET DEPOSIT ADDRESS</a>
       </div>
     </div>
