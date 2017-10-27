@@ -376,6 +376,6 @@ input[type="checkbox"]:checked ~ label::after{
 
 body.modal-open {
   overflow: hidden;
-  position:fixed;
-  width: 100%;
+  //position:fixed;
+  //width: 100%;
 }
