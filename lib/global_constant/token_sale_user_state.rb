@@ -90,6 +90,17 @@ module GlobalConstant
 
       ### Token sale admin_action_type  ####
 
+      ### ethereum_address_whitelist status  ####
+
+      def ethereum_address_whitelist_done
+        "done"
+      end
+
+      ### ethereum_address_whitelist status  ####
+
+      def bonus_status_approved
+        "approved"
+      end
 
     end
 

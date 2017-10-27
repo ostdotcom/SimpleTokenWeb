@@ -4,29 +4,35 @@
     var dashboardNs = ns("simpletoken.dashboard"),
         oThis;
 
-      dashboardNs.timer = oThis = {
+    dashboardNs.timer = oThis = {
 
         init: function (config) {
-          oThis.bindButtonActions();
+            oThis.bindButtonActions();
         },
 
-        bindButtonActions: function() {
+        bindButtonActions: function () {
 
-          $("#kycWarning").click( function ( event ) {
-            $('#update-warning-modal').modal('show');
-            event.stopPropagation();
-          });
+            $("#kycUpdate").click(function (event) {
 
-          $("#continueToUpdate").click(function (event) {
-            $('#update-warning-modal').modal('hide');
-            window.location = "/update-kyc";
-            return false;
-          });
+                if ($(this).hasClass('openModal')) {
+                    $('#update-warning-modal').modal('show');
+                }
+                else{
+                    $("#continueToUpdate").click();
+                }
+                event.stopPropagation();
+            });
 
-          $("#visible-button").on('click', function() {
-            document.querySelector("#visible-input").select();
-            document.execCommand('copy');
-          });
+            $("#continueToUpdate").click(function (event) {
+                $('#update-warning-modal').modal('hide');
+                window.location = "/update-kyc";
+                return false;
+            });
+
+            $("#visible-button").on('click', function () {
+                document.querySelector("#visible-input").select();
+                document.execCommand('copy');
+            });
 
         }
 
