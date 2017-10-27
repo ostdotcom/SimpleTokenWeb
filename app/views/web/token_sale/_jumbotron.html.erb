@@ -39,7 +39,7 @@
 
         <h2><%= top_lang %></h2>
         <%=
-            render partial: '/shared/web/common/countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}
+            render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}
         %>
         <a href="/sign-up" class="btn-common btn-gold btn-top-bottom-15"><%= btn_lang %></a>
       </div>
