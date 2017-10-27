@@ -67,7 +67,7 @@
         },
         getFoundationEthereumAddress: function () {
             var jModal = $('#ethereum-confirm-modal'),
-                dataUrl = "/api/user/ethereum-address",
+                dataUrl = "/api/user/ethereum-address"
             ;
             $.ajax({
                 url: dataUrl,
