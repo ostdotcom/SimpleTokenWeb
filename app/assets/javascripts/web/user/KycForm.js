@@ -134,24 +134,26 @@
           var v = false;
           simpletoken.utils.errorHandling.clearFormErrors();
 
-          $('#kycForm input[type="file"]').attr('required',false);
+          $kycForm = $('#kycForm');
+
+          $kycForm.find('input[type="file"]').attr('required',false);
 
           oThis.formNames.forEach(function(value){
-              $('#kycForm input[name="'+value+'"]').attr('required',true);
+              $kycForm.find('input[name="'+value+'"]').attr('required',true);
           });
 
-          $('#kycForm').find('input, select, textarea').each(function(){
+          $kycForm.find('input, select, textarea').each(function(){
               $(this).trigger('change');
           });
 
-          if( $('#kycForm .error:not(:empty)').length > 0 ){
+          if( $kycForm.find('.error:not(:empty)').length > 0 ){
               v = false;
           } else {
               v = true;
           }
 
-          if(typeof $('#kycForm .g-recaptcha')[0] != 'undefined' &&  grecaptcha.getResponse() == ''){
-              $('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+          if(typeof $kycForm.find('.g-recaptcha')[0] != 'undefined' &&  grecaptcha.getResponse() == ''){
+              $kycForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
               v = false;
           }
 
