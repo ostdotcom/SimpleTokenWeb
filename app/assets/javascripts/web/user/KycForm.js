@@ -122,6 +122,10 @@
              }
           });
 
+          if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+              $('.selectpicker').selectpicker('mobile');
+          }
+
       },
 
       refreshIndicator: function(){
@@ -152,9 +156,11 @@
               v = true;
           }
 
-          if(typeof $kycForm.find('.g-recaptcha')[0] != 'undefined' &&  grecaptcha.getResponse() == ''){
-              $kycForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
-              v = false;
+          if(typeof $kycForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+              if(grecaptcha.getResponse() == ''){
+                  $kycForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+                  v = false;
+              }
           }
 
           if(v === true) {
@@ -170,7 +176,9 @@
 
           } else {
 
-              grecaptcha.reset();
+              if(typeof grecaptcha  != 'undefined'){
+                  grecaptcha.reset();
+              }
               $('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
 
           }

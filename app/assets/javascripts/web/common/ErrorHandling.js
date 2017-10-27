@@ -148,7 +148,6 @@ jQuery.fn.extend({
         var $form = $(this);
         $form.find('input, select, textarea').each(function(){
             $(this).on('change', function(){
-                console.log(this.validity);
                 if (this.required && this.value == '') {
                     simpletoken.utils.errorHandling.addFormError(this.name, this.title+' is required');
                 }
