@@ -127,11 +127,13 @@
                 </span>
               </div>
               <div>
-                <span class="status-label"> Status Whitelist : </span>
-                <span class="status-icon <%= GlobalConstant::UserKycDetail.whitelist_kyc_status_class[whitelist_status] %>"> &nbsp; </span>
-                <span class="status-value">
-                  <%= GlobalConstant::UserKycDetail.whitelist_kyc_statuses[whitelist_status] || ' -- ' %>
-                </span>
+                <% if whitelist_status.present? %>
+                    <span class="status-label"> Status Whitelist : </span>
+                    <span class="status-icon <%= GlobalConstant::UserKycDetail.whitelist_kyc_status_class[whitelist_status] %>"> &nbsp; </span>
+                    <span class="status-value">
+                      <%= GlobalConstant::UserKycDetail.whitelist_kyc_statuses[whitelist_status] || ' -- ' %>
+                    </span>
+                <% end %>
               </div>
             </div>
           </div>
@@ -236,7 +238,7 @@
               <div class="col-sm-6 kyc-img-block">
                 <div>
                   <span class="img-label">Passport Image</span>
-                  <span class="fullScreenIcon"> Click to enlarge </span>
+                  <span class="fullScreenIcon"> Click to Expand </span>
                 </div>
                 <div class="kyc-img-container">
                   <div class="kyc-image">
@@ -254,7 +256,7 @@
               <div class="col-sm-6 kyc-img-block">
                 <div>
                   <span class="img-label">Selfie Image</span>
-                  <span class="fullScreenIcon"> Click to enlarge </span>
+                  <span class="fullScreenIcon"> Click to Expand </span>
                 </div>
                 <div class="kyc-img-container">
                   <div class="kyc-image">
@@ -272,7 +274,7 @@
               <div class="col-sm-6 kyc-img-block">
                 <div>
                   <span class="img-label">Proof of Residence</span>
-                  <span class="fullScreenIcon"> Click to enlarge </span>
+                  <span class="fullScreenIcon"> Click to Expand </span>
                 </div>
                 <span class="kyc-img-container">
                   <div class="kyc-image">
