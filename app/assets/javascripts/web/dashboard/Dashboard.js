@@ -35,7 +35,23 @@
             });
 
             $("#get-deposit-address").click(function (event) {
-              $('#ethereum-confirm-modal').modal('show');
+                $('#ethereum-confirm-modal').modal('show');
+            });
+
+            $("#userConfirm").click(function ( event ) {
+                var jModal = $('#ethereum-confirm-modal')
+                    ,jAllCheckboxes = jModal.find("input:checkbox")
+                    ,jCheckedCheckboxes = jAllCheckboxes.filter(":checked")
+                    ,areAllChecked = jAllCheckboxes.length == jCheckedCheckboxes.length
+                ;
+
+                if ( areAllChecked ) {
+                    simpletoken.utils.errorHandling.clearFormErrors();
+                    jModal.modal('hide');
+                } else {
+                    $('.error[data-for="verify_error"]').text('Please verify all above mentioned confirmations');
+                }
+
             });
 
         }
