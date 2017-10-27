@@ -58,6 +58,11 @@
                 $("#frameVideo").attr('src', $(e.relatedTarget).data('src'));
             });
 
+            $("#youtube-video-modal").on('shown.bs.modal', function (e) {
+                var width = $("#frameVideo").width();
+                $("#frameVideo").height(width/16*9);
+            })
+
         },
 
         onSubscribe: function () {
