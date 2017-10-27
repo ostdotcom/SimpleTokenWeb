@@ -484,6 +484,13 @@
 
       .carousel-item{
         .thumbnail{
+          .video-container{
+            .play{
+              svg{
+                margin: -3px 5px 0 5px;
+              }
+            }
+          }
           .caption{
             h4{
               font-size: 12px;
@@ -500,10 +507,10 @@
         }
       }
       .slick-prev {
-        left: -45px;
+        left: -37px;
       }
       .slick-next {
-        right: -45px;
+        right: -37px;
       }
     }
   }
