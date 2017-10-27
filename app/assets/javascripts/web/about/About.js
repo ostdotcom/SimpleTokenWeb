@@ -47,9 +47,7 @@
       var navContainer =  $('.container-about-nav');
       var navOffset = navContainer.offset().top;
       navContainer.wrap('<div class="nav-placeholder"></div>');
-      $(window).resize(function(){
-        $('.nav-placeholder').height(navContainer.outerHeight());
-      });
+      $('.nav-placeholder').height(navContainer.outerHeight());
       $(window).scroll(function(){
         var scrollPos = $(window).scrollTop();
         if(scrollPos >= navOffset){
@@ -64,6 +62,9 @@
 
   $(document).ready(function () {
     oThis.init({i18n: {}});
+    $(window).resize(function(){
+      $('.nav-placeholder').height(navContainer.outerHeight());
+    });
   });
 
 })(window);
