@@ -1,7 +1,7 @@
-<div class="container-fluid dashboard-page">
+<div class="container-fluid dashboard-page margin35auto">
   <div class="row">
     <div class="col-xs-12">
-      <div class="text-center">
+      <!--<div class="text-center">-->
 
         <div class="registration-timer">
           <h2><%= @presenter_obj.is_pre_sale_mode_on? ? 'early access sale' : 'public sale' %> <%= @presenter_obj.is_sale_live? ? 'is live' : 'starts in' %></h2>
@@ -24,7 +24,7 @@
           <% end %>
 
         </div>
-      </div>
+      <!--</div>-->
     </div>
   </div>
 </div>

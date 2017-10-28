@@ -17,11 +17,11 @@
   margin-top: 20px;
 }
 .dashboard-page{
-  @media (min-width: 768px) {
+  @media (min-width: 736px) {
     width: 450px;
   }
   .registration-timer{
-    padding: 25px 30px;
+    padding: 0 30px;
   }
   .kyc-panel{
     color: #597a84;
@@ -86,6 +86,9 @@
         }
       }
     }
+    &:last-child{
+      margin-bottom: 0;
+    }
   }
   .progress-stats{
     font-weight: 500;
@@ -108,12 +111,13 @@
 }
 
 .forgot-eth{
-  margin-bottom: 40px;
+//  margin-bottom: 40px;
   .header{
     font-size: 18px;
     font-weight: 500;
     color: #597a84;
     margin-bottom: 20px;
+    margin-top: 0;
   }
   a{
     padding: 15px 0;
@@ -167,11 +171,11 @@
 }
 
 .have-question{
-  padding: 40px 0;
+//  margin: 40px 0;
   .question-txt{
     color: #597a84;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     padding-bottom: 10px;
   }
   a{
@@ -270,4 +274,8 @@
     vertical-align: middle;
   }
 
+}
+
+.margin35auto{
+  margin: 35px auto;
 }
