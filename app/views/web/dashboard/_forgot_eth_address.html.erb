@@ -5,7 +5,7 @@
         <div class="text-center" id="user-eth-address">
           <div class="header">Forgot which ETH address you registered for the sale?</div>
 
-          <div id="user-eth-address-input-wrap">
+          <div id="user-eth-address-input-wrap" class="dashboard-page" style="margin: 0 auto">
             <fieldset id="user-eth-address-fieldset" class="user-eth-address">
               <input type="text" name="user_etherenum_address" id="user-eth-address-input" class="user-eth-address-input" placeholder="Registered Ethereum Address" value="" />
               <input type="button" id="user-eth-address-validate-btn" class="btn-gold user-eth-address-validate-btn" value="CHECK">
@@ -14,17 +14,25 @@
             <div class="error" data-for="general_error"></div>
           </div>
 
-          <div id="user-eth-address-success" style="display:none;">
-            <div class="header">The ethereum address you entered is registered</div>
-            <input type="button" id="user-eth-address-success-done-btn" class="btn-gold user-eth-address-validate-btn" value="DONE">
+          <div id="user-eth-address-success" class="dashboard-page" style="margin: 20px auto">
+            <div class="panel panel-default kyc-panel approved">
+              <div class="panel-body">
+                <div class="header" style="border-bottom: solid 1px #597a84;padding-bottom: 10px"><span class="kyc-status-icon-approved" style="vertical-align: middle"></span>&nbsp;The ethereum address you entered is registered</div>
+                <input type="button" id="user-eth-address-success-done-btn" class="done-btn btn user-eth-address-validate-btn" value="DONE">
+              </div>
+            </div>
           </div>
 
-          <div id="user-eth-address-purchase-details" style="display:none;">
-            <div class="header">Your Token Purchase Details</div>
-            <div><span>Total ETH Sent:</span> <span id="user-eth-address-purchase-sent">234234 ($234234)</span></div>
-            <div><span>Simple Tokens Alloted:</span> <span id="user-eth-address-purchase-alloted">234234 ($234234)</span></div>
-            <div><span>Ratio:</span><span id="user-eth-address-purchase-ratio">1 Simple Token = 0.01 ETH</span></div>
-            <input type="button" id="user-eth-address-purchase-details-done-btn" class="btn-gold user-eth-address-validate-btn" value="DONE">
+          <div id="user-eth-address-purchase-details" class="dashboard-page" style="margin: 20px auto">
+            <div class="panel panel-default kyc-panel approved">
+              <div class="panel-body">
+                <div class="header" style="border-bottom: solid 1px #597a84;padding-bottom: 10px">Your Token Purchase Details</div>
+                <div class="progress-stats"><span>Total ETH Sent:</span> <span id="user-eth-address-purchase-sent">234234 ($234234)</span></div>
+                <div class="progress-stats"><span>Simple Tokens Alloted:</span> <span id="user-eth-address-purchase-alloted">234234 ($234234)</span></div>
+                <div class="progress-stats" style="margin-bottom: 20px"><span>Ratio:</span><span id="user-eth-address-purchase-ratio">1 Simple Token = 0.01 ETH</span></div>
+                <input type="button" id="user-eth-address-purchase-details-done-btn" class="done-btn btn user-eth-address-validate-btn" value="DONE">
+              </div>
+            </div>
           </div>
 
         </div>
