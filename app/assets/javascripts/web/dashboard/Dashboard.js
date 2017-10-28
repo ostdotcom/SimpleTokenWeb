@@ -21,7 +21,8 @@
                     jModal.modal('show');
                 }
                 else{
-                    $("#continueToUpdate").click();
+                    window.location = "/update-kyc";
+                    return false;
                 }
                 event.stopPropagation();
             });

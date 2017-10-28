@@ -98,7 +98,7 @@ module Presenters
         end
 
         def is_sale_ongoing?
-          is_sale_live?
+          is_sale_live? && !has_sale_paused?
         end
 
         def can_purchase?
@@ -207,7 +207,7 @@ module Presenters
         end
 
         def is_bonus_approval_date_over?
-          current_time <= GlobalConstant::StTokenSale.public_sale_start_date
+          current_time > GlobalConstant::StTokenSale.public_sale_start_date
         end
 
         def show_bonus_box?
@@ -216,6 +216,10 @@ module Presenters
 
         def bonus_icon_class
           is_bonus_confirmed? ? 'approved' : 'pending'
+        end
+
+        def show_unable_for_early_purchase_text?
+          (!is_pre_sale_user? && (current_time >= GlobalConstant::StTokenSale.pre_sale_start_date) && (current_time < GlobalConstant::StTokenSale.public_sale_start_date))
         end
 
         ###############################################
