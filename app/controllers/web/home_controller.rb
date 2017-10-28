@@ -67,6 +67,12 @@ class Web::HomeController < Web::BaseController
   def platform
   end
 
+  # Action for the check page
+  #
+  # * Author: Aman
+  # * Date: 28/10/2017
+  # * Reviewed By: Sunil
+  #
   def check
     @country = get_country_from_ip.upcase
     @ip_address = ip_address
