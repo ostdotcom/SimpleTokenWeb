@@ -109,36 +109,6 @@ h1.page-title{
   }
 }
 
-.container-documents{
-  min-height: calc(100vh - 130px);
-  .sub-title{
-    font-size: 20px;
-    display: block;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #6DA4A9;
-  }
-  .horizontal-line{
-    margin-top: 20px;
-    border-bottom: 1px solid #91c0ad;
-  }
-  a{
-    color: #5a768c;
-    &:hover{
-      border-bottom: 1px solid #5a768c;
-      text-decoration: none;
-    }
-    &:focus{
-      text-decoration: none;
-    }
-  }
-  .see-all{
-    margin-top: 0;
-    display: inline-block;
-    border-bottom: 1px solid #7f9183;
-  }
-}
-
 // Uber banner CSS
 .uber-banner{
   background-color: #e4b030;
