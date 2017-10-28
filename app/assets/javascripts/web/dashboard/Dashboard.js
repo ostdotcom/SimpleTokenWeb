@@ -77,6 +77,8 @@
             var jModal = $('#ethereum-confirm-modal'),
                 dataUrl = "/api/user/ethereum-address"
             ;
+            $("#userConfirm").hide();
+            $("#user-confirm-loader").removeClass( "hide" );
             $.ajax({
                 url: dataUrl,
                 dataType: 'json',
@@ -90,11 +92,15 @@
                     jModal.modal('hide');
                     
                   } else {
-                    simpletoken.utils.errorHandling.displayFormErrors( response );
+                    simpletoken.utils.errorHandling.displayFormErrors( response, jModal);
                   }
                 },
                 error: function (jqXHR, exception) {
-                    simpletoken.utils.errorHandling.xhrErrResponse(jqXHR, exception);
+                    simpletoken.utils.errorHandling.xhrErrResponse(jqXHR, exception, jModal);
+                },
+                complete: function () {
+                    $("#userConfirm").show();
+                    $("#user-confirm-loader").addClass( "hide" );
                 }
             });
         },

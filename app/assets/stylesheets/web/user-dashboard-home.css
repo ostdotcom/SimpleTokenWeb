@@ -3,6 +3,7 @@
  *= require web/common/Body
  *= require web/common/Buttons
  *= require web/common/Icons
+ *= require web/common/Loader
  *= require web/dashboard/Dashboard
  *= require web/common/NewTimer
  */
