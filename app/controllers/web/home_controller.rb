@@ -67,6 +67,15 @@ class Web::HomeController < Web::BaseController
   def platform
   end
 
+  # Action for the product page
+  #
+  # * Author: Akshay
+  # * Date: 28/10/2017
+  # * Reviewed By:
+  #
+  def product
+  end
+
   # Action for the check page
   #
   # * Author: Aman
