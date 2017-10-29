@@ -47,16 +47,6 @@ module Presenters
         extra_percent
       end
 
-      def countdown_timer
-        if has_general_access_sale_started?
-          GlobalConstant::StTokenSale.general_access_sale_end_date
-        elsif has_early_access_register_ended?
-          GlobalConstant::StTokenSale.general_access_sale_start_date
-        else
-          GlobalConstant::StTokenSale.early_access_register_end_date
-        end
-      end
-
       private
 
       def current_time
