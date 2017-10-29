@@ -79,7 +79,7 @@ module Presenters
           is_early_access_user? ? GlobalConstant::StTokenSale.early_access_sale_start_date : GlobalConstant::StTokenSale.general_access_sale_start_date
         end
 
-        def is_sale_live?
+        def is_sale_live_for_user?
           current_time >= sale_start_time
         end
 
@@ -88,17 +88,20 @@ module Presenters
         end
 
         def countdown_timestamp
-          if !is_sale_live?
+          if !is_sale_live_for_user?
+            # when is user specific sale going to start
             sale_start_time
           elsif is_early_access_mode_on?
+            # When is early sale going to end
             GlobalConstant::StTokenSale.general_access_sale_start_date
           else
+            # When is general sale going to end
             GlobalConstant::StTokenSale.general_access_sale_end_date
           end
         end
 
         def is_sale_ongoing?
-          is_sale_live? && !has_sale_paused?
+          is_sale_live_for_user? && !has_sale_paused?
         end
 
         def can_purchase?
@@ -110,7 +113,7 @@ module Presenters
         end
 
         def has_sale_paused?
-          (token_sale_active_status.to_i != 1) && is_sale_live?
+          (token_sale_active_status.to_i != 1) && is_sale_live_for_user?
         end
 
         ###########################################
@@ -219,6 +222,7 @@ module Presenters
         end
 
         def show_unable_for_early_purchase_text?
+          # General access users, on 14th while early sale is going on
           (!is_early_access_user? && (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date) && (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date))
         end
 

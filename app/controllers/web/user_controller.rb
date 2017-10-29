@@ -192,14 +192,6 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    params = {}
-    user_data = {
-       'user' => {'bt_name' => 'a', 'email' => 'aman@pepo.com','user_token_sale_state' => 'profile_page'},
-       'user_kyc_data' => {'kyc_status' => 'approved', 'token_sale_participation_phase' => 'early_access', 'whitelist_status' => 'done1', 'admin_action_type' => 'no', 'bonus_status' => 'approved'}, #['denied', 'approved', 'pending'] ['early_access', 'aa']
-       'token_sale_active_status' => '1'
-    }
-    service_response.data = user_data
-
     @presenter_obj = ::Presenters::Web::User::Profile.new(service_response, params)
   end
 
