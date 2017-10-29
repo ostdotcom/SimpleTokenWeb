@@ -259,6 +259,50 @@
 // Mobile portrait, landscape
 @media (max-width: 767px) {
 
+  .container-architecture-parts{
+    .part-connector{
+      top: 50px;
+      width: 250px;
+      border-top: 1px dotted #84d1d4;
+    }
+    .part-wrapper{
+      margin: 5px;
+      .part-outer{
+        padding: 5px;
+        .part{
+          width: 70px;
+          height: 70px;
+          padding: 7px;
+          border: 1px dotted #84d1d4;
+        }
+      }
+      .title{
+        font-size: 14px;
+        width:inherit;
+      }
+    }
+    .part-description{
+      height: 500px;
+
+      p.lead {
+        font-size: 16px;
+        line-height: 1.2;
+        margin: 20px;
+      }
+
+      .part-static{
+        .part-content{
+          img{
+            margin: 0 auto;
+            width: auto;
+            max-height: 350px;
+            max-width: 88%;
+          }
+        }
+      }
+    }
+  }
+
   .container-features{
     h1,h2{
       font-size: 30px;
