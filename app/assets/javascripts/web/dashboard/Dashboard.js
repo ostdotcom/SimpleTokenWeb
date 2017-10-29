@@ -61,6 +61,19 @@
             $("#user-eth-address-success-done-btn, #user-eth-address-purchase-details-done-btn").click(function () {
                 oThis.onUserEthAddressDone();
             });
+
+            $("a[href='#eth-address']").on('click', function(event) {
+              if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+                $('html, body').animate({
+                  scrollTop: $(hash).offset().top
+                }, 500, function(){
+                  $('#user-eth-address-input').focus();
+                });
+              }
+            });
+
         },
         onEthereumConfirm: function ( event ) {
             var jModal = $('#ethereum-confirm-modal'),
