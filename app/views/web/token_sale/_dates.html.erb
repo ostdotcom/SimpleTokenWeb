@@ -18,8 +18,8 @@
         <div class="title">Pre-Registered Sale Ends</div>
       </div>
       <div class="milestone" style="left:calc(66.66% - 75px)">
-        <div class="date"><%= "#{GlobalConstant::StTokenSale.early_access_sale_start_date.day} #{GlobalConstant::StTokenSale.early_access_sale_start_date.strftime('%b')}" %></div>
-        <div class="point" <%= raw 'style="border-color: #597a84"' if @presenter_obj.has_early_access_sale_started? %> ></div>
+        <div class="date"><%= "#{GlobalConstant::StTokenSale.general_access_sale_start_date.day} #{GlobalConstant::StTokenSale.general_access_sale_start_date.strftime('%b')}" %></div>
+        <div class="point" <%= raw 'style="border-color: #597a84"' if @presenter_obj.has_general_access_sale_started? %> ></div>
         <div class="title">Public Sale Starts</div>
       </div>
       <div class="milestone" style="left:calc(100% - 75px)">
@@ -44,8 +44,8 @@
         <div class="title">Pre-Registered Sale Ends</div>
       </div>
       <div class="milestone" style="top:calc(66.66% - 15px)">
-        <div class="point" <%= raw 'style="border-color: #597a84"' if @presenter_obj.has_early_access_sale_started? %> ></div>
-        <div class="date"><%= "#{GlobalConstant::StTokenSale.early_access_sale_start_date.day} #{GlobalConstant::StTokenSale.early_access_sale_start_date.strftime('%b')}" %></div>
+        <div class="point" <%= raw 'style="border-color: #597a84"' if @presenter_obj.has_general_access_sale_started? %> ></div>
+        <div class="date"><%= "#{GlobalConstant::StTokenSale.general_access_sale_start_date.day} #{GlobalConstant::StTokenSale.general_access_sale_start_date.strftime('%b')}" %></div>
         <div class="title">Public Sale Starts</div>
       </div>
       <div class="milestone" style="top:calc(100% - 15px)">
