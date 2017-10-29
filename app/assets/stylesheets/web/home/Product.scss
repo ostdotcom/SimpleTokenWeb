@@ -127,6 +127,7 @@
     .part-static{
       .part-content{
         img{
+          margin: 0 auto;
           max-height: 460px;
           width: 750px;
           max-width: 100%;
@@ -293,7 +294,6 @@
       .part-static{
         .part-content{
           img{
-            margin: 0 auto;
             width: auto;
             max-height: 350px;
             max-width: 88%;
