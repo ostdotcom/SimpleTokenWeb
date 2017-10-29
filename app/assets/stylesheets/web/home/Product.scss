@@ -212,6 +212,15 @@
   padding-bottom: 20px;
   .feature{
     padding: 20px 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
   }
   .col-right{
     text-align: left;
@@ -221,11 +230,8 @@
     text-align: right;
     padding-left: 60px;
   }
-  .col-text{
-    position: relative;
-    //transform: translateY(35%);
-  }
   .img-responsive{
+    max-height: 400px;
     max-width: 85% !important;
     margin: 0 auto;
   }
