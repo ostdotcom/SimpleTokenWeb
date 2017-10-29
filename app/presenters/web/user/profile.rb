@@ -209,6 +209,10 @@ module Presenters
           bonus_value > 0
         end
 
+        def formatted_bonus_value
+          (bonus_value.to_i == bonus_value) ?  bonus_value.to_i : bonus_value
+        end
+
         def is_bonus_approval_date_over?
           current_time > GlobalConstant::StTokenSale.general_access_sale_start_date
         end
