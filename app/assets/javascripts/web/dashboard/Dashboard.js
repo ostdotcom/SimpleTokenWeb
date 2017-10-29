@@ -167,22 +167,34 @@
 
                             sUserEthAddressPurchaseSent = "",
                             sUserEthAddressPurchaseAlloted = "",
-                            sUserEthAddressPurchaseRatio = ""
+                            sUserEthAddressPurchaseRatio = "",
+
+                            totalEthereumSent   = ( purchaseDetails["total_ethereum_sent"]  || 0 ),
+                            totalDollarsSent    = ( purchaseDetails["total_dollars_sent"]   || 0 ),
+                            stAllottedEthereum  = ( purchaseDetails["simple_token_allotted_in_ethereum"] || 0),
+                            stAllottedDollar    = ( purchaseDetails["simple_token_allotted_in_dollar"] || 0)
+
                         ;
 
-                        sUserEthAddressPurchaseSent = ( purchaseDetails["total_ethereum_sent"] || 0 ) 
+                        totalEthereumSent = $.number(totalEthereumSent, 2);
+                        totalDollarsSent = $.number(totalDollarsSent, 2);
+                        stAllottedEthereum = $.number(stAllottedEthereum, 2);
+                        stAllottedDollar = $.number(stAllottedDollar, 2);
+
+
+
+                        sUserEthAddressPurchaseSent = totalEthereumSent 
                             + " ETH "
-                            + " ($" + (purchaseDetails["total_dollars_sent"] || 0) + ")";
+                            + " ($" + totalDollarsSent + ")";
                         jUserEthAddressPurchaseSent.html( sUserEthAddressPurchaseSent );
 
 
-                        sUserEthAddressPurchaseAlloted = ( purchaseDetails["simple_token_allotted_in_ethereum"] || 0 ) 
+                        sUserEthAddressPurchaseAlloted = ( stAllottedEthereum ) 
                             + " ETH "
-                            + " ($" + (purchaseDetails["simple_token_allotted_in_dollar"] || 0) + ")";
+                            + " ($" + stAllottedDollar + ")";
                         jUserEthAddressPurchaseAlloted.html( sUserEthAddressPurchaseAlloted );
-
                         sUserEthAddressPurchaseRatio = purchaseDetails[ "token_to_ethereum_ratio" ];
-                        jUserEthAddressPurchaseRatio.val( sUserEthAddressPurchaseRatio );
+                        jUserEthAddressPurchaseRatio.text( sUserEthAddressPurchaseRatio );
 
                         jResult.show();
                     } else {
