@@ -1,1 +1,1 @@
-
+//= require web/product/Index
