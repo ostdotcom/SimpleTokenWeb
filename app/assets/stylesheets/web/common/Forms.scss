@@ -203,6 +203,10 @@
     font-weight: 500;
   }
 
+  .border-error{
+    border-color: red !important;
+  }
+
   .errors-wrap {
     min-height: 25px;
     .error {

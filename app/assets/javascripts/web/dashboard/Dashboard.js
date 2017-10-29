@@ -151,15 +151,15 @@
             
             if ( !jEthAddr.val() ) {
                 jErr.html( "Invalid Etherenum Address" );
-                //Show Gen Error here if required.
+                oThis.onUserEthAddressError();
                 return;
             }
             
             var data = {
                 "user_ethereum_address" : jEthAddr.val()
             };
-
             simpletoken.utils.errorHandling.clearFormErrors( jWrap );
+            oThis.clearUserEthAddressError();
             $.ajax({
                 url: dataUrl,
                 data: data,
@@ -172,7 +172,7 @@
                     
                     var purchaseDetails = data["purchase_details"];
                     if ( purchaseDetails && Object.keys(purchaseDetails).length > 0 ) {
-                        console.log("purchaseDetails = " , purchaseDetails);
+                        
                         var jResult = jWrap.find("#user-eth-address-purchase-details"),
                             jUserEthAddressPurchaseSent = jResult.find("#user-eth-address-purchase-sent"),
                             jUserEthAddressPurchaseAlloted = jResult.find("#user-eth-address-purchase-alloted"),
@@ -194,18 +194,17 @@
                         stAllottedEthereum = $.number(stAllottedEthereum, 2);
                         stAllottedDollar = $.number(stAllottedDollar, 2);
 
-
-
-                        sUserEthAddressPurchaseSent = totalEthereumSent 
-                            + " ETH "
+                        //
+                        sUserEthAddressPurchaseSent = totalEthereumSent + " ETH "
                             + " ($" + totalDollarsSent + ")";
                         jUserEthAddressPurchaseSent.html( sUserEthAddressPurchaseSent );
 
-
-                        sUserEthAddressPurchaseAlloted = ( stAllottedEthereum ) 
-                            + " ETH "
+                        //
+                        sUserEthAddressPurchaseAlloted = stAllottedEthereum + " ETH "
                             + " ($" + stAllottedDollar + ")";
                         jUserEthAddressPurchaseAlloted.html( sUserEthAddressPurchaseAlloted );
+
+
                         sUserEthAddressPurchaseRatio = purchaseDetails[ "token_to_ethereum_ratio" ];
                         jUserEthAddressPurchaseRatio.text( sUserEthAddressPurchaseRatio );
 
@@ -216,11 +215,13 @@
                     
                   } else {
                     simpletoken.utils.errorHandling.displayFormErrors( response, jWrap);
+                    oThis.onUserEthAddressError();
                   }
 
                 },
                 error: function (jqXHR, exception) { 
                     simpletoken.utils.errorHandling.xhrErrResponse(jqXHR, exception, jWrap);
+                    oThis.onUserEthAddressError();
                 }
             });
         },
@@ -229,6 +230,19 @@
             jWrap.find("#user-eth-address-success").hide();
             jWrap.find("#user-eth-address-purchase-details").hide();
             jWrap.find("#user-eth-address-input-wrap").show();
+        },
+        onUserEthAddressError: function () {
+            var jWrap = $("#user-eth-address"),
+                jEthAddr = jWrap.find("#user-eth-address-input")
+            ;
+            jEthAddr.addClass('border-error');
+
+        },
+        clearUserEthAddressError: function () {
+            var jWrap = $("#user-eth-address"),
+                jEthAddr = jWrap.find("#user-eth-address-input")
+            ;
+            jEthAddr.removeClass('border-error');
         }
         /* Section: Validate User ETH Address - END */
     };
