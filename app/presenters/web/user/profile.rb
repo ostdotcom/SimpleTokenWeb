@@ -75,23 +75,23 @@ module Presenters
           GlobalConstant::TokenSaleUserState.early_access_token_sale_phase == user_kyc_data['token_sale_participation_phase']
         end
 
-        def sale_start_time
+        def sale_start_time_for_user
           is_early_access_user? ? GlobalConstant::StTokenSale.early_access_sale_start_date : GlobalConstant::StTokenSale.general_access_sale_start_date
         end
 
         def is_sale_live_for_user?
-          current_time >= sale_start_time
+          current_time >= sale_start_time_for_user
         end
 
-        def is_early_access_mode_on?
+        def is_early_access_mode_on_for_user?
           (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date) && is_early_access_user?
         end
 
         def countdown_timestamp
           if !is_sale_live_for_user?
             # when is user specific sale going to start
-            sale_start_time
-          elsif is_early_access_mode_on?
+            sale_start_time_for_user
+          elsif is_early_access_mode_on_for_user?
             # When is early sale going to end
             GlobalConstant::StTokenSale.general_access_sale_start_date
           else
@@ -100,12 +100,12 @@ module Presenters
           end
         end
 
-        def is_sale_ongoing?
+        def is_sale_ongoing_for_user?
           is_sale_live_for_user? && !has_sale_paused?
         end
 
         def can_purchase?
-          is_kyc_approved? && ethereum_address_whitelist_done? && is_sale_ongoing?
+          is_kyc_approved? && ethereum_address_whitelist_done? && is_sale_ongoing_for_user?
         end
 
         def has_sale_ended?

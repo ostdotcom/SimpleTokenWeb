@@ -18,7 +18,7 @@
     <% end %>
     <%= render :partial => "/web/dashboard/forgot_eth_address" %>
     <%= render :partial => "/web/token_sale/telegram" %>
-<% elsif @presenter_obj.is_sale_ongoing? %>
+<% elsif @presenter_obj.is_sale_ongoing_for_user? %>
     <%= render :partial => "/web/dashboard/sale_open_timer" %>
     <%= render :partial => "/web/dashboard/ethereum_deposit_address" %>
     <%= render :partial => "/web/dashboard/kyc_status" %>
