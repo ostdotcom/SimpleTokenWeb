@@ -5,13 +5,13 @@
     adminUtilsNs = ns("simpletokenadmin.utils"),
     oThis;
 
-  homeNs.dashboard = oThis = {
+  homeNs.whitelistDashboard = oThis = {
 
     oTable: null,
     page: 0,
     filters: {},
     sortings: {},
-    $dataTable: $('#kycCheckDashboard'),
+    $dataTable: $('#kycWhitelistDashboard'),
 
     init: function (config) {
       oThis.filters = config.filters;
@@ -32,18 +32,13 @@
 
       config.columns.unshift(
         {
-          title: "Date / Time",
+          title: "KYC Date / Time",
           data: "date_time",
           render: $.fn.dataTable.render.text()
         },
         {
-          title: "Status ST",
-          data: "status_st",
-          render: $.fn.dataTable.render.text()
-        },
-        {
-          title: "Status Cynopsys",
-          data: "status_cy",
+          title: "Whitelist Status",
+          data: "whitelist_status",
           render: $.fn.dataTable.render.text()
         },
         {
@@ -87,14 +82,8 @@
 
     bindButtonActions: function (config) {
 
-      $("#cynopsis-status").on('change', function () {
-        oThis.filters.cynopsis_status = $(this).val();
-        oThis.oTable.ajax.reload(null, true);
-        oThis.changePageUrl();
-      });
-
-      $("#admin-status").on('change', function () {
-        oThis.filters.admin_status = $(this).val();
+      $("#whitelist-status").on('change', function () {
+        oThis.filters.whitelist_status = $(this).val();
         oThis.oTable.ajax.reload(null, true);
         oThis.changePageUrl();
       });

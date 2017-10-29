@@ -29,7 +29,7 @@ module GlobalConstant
 
       def admin_kyc_statuses
         {
-            all_admin_status => "All",
+            all_admin_status => 'All',
             un_processed_admin_status => 'Unprocessed',
             qualified_admin_status => 'Qualified',
             denied_admin_status => 'Denied',
@@ -75,7 +75,7 @@ module GlobalConstant
 
       def cynopsis_kyc_statuses
         {
-            all_cynopsis_status => "All",
+            all_cynopsis_status => 'All',
             un_processed_cynopsis_status => 'Unprocessed',
             cleared_cynopsis_status => 'Cleared',
             pending_cynopsis_status => 'Pending',
@@ -94,6 +94,50 @@ module GlobalConstant
       end
 
       ### Cynopsys Status End ###
+
+
+
+      ### Admin Status End ###
+
+      def all_whitelist_status
+        'all'
+      end
+
+      def unprocessed_whitelist_status
+        'unprocessed'
+      end
+
+      def started_whitelist_status
+        'started'
+      end
+
+      def done_whitelist_status
+        'done'
+      end
+
+      def failed_whitelist_status
+        'failed'
+      end
+
+      def whitelist_kyc_statuses
+        {
+            all_whitelist_status => 'All',
+            unprocessed_whitelist_status => 'Unprocessed',
+            started_whitelist_status => 'Started',
+            done_whitelist_status => 'Done',
+            failed_whitelist_status => 'Failed'
+        }
+      end
+      def whitelist_kyc_status_class
+        {
+            unprocessed_whitelist_status => 'yello',
+            started_whitelist_status => 'yello',
+            done_whitelist_status => 'green',
+            failed_whitelist_status => 'red'
+        }
+      end
+
+      ### Admin Status End ###
 
     end
 

@@ -47,6 +47,8 @@ Rails.application.routes.draw do
     get '/get-kyc-dashboard' => :get_kyc_dashboard
     get '/get-kyc-details' => :kyc_details
     get '/kyc-action-logs' => :kyc_action_logs
+    get '/whitelist-dashboard' => :whitelist_dashboard
+    get '/get-kyc-whitelist-dashboard' => :get_kyc_whitelist_dashboard
   end
 
   namespace 'admin' do
