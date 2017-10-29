@@ -75,8 +75,12 @@ module GlobalConstant
 
       ### Token sale user participation phase type  ####
 
-      def pre_sale_participation_phase
-        "pre_sale"
+      def early_access_token_sale_phase
+        "early_access"
+      end
+
+      def general_access_token_sale_phase
+        'general_access'
       end
 
       ### Token sale user kyc status  ####
@@ -94,12 +98,6 @@ module GlobalConstant
 
       def ethereum_address_whitelist_done
         "done"
-      end
-
-      ### ethereum_address_whitelist status  ####
-
-      def bonus_status_approved
-        "approved"
       end
 
     end

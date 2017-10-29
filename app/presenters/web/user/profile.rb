@@ -59,8 +59,8 @@ module Presenters
           user_kyc_data['whitelist_status']
         end
 
-        def bonus_status
-          user_kyc_data['bonus_status']
+        def bonus_value
+          user_kyc_data['pos_bonus_percentage'].to_f
         end
 
         def token_sale_active_status
@@ -71,29 +71,29 @@ module Presenters
         ###########################################
 
 
-        def is_pre_sale_user?
-          GlobalConstant::TokenSaleUserState.pre_sale_participation_phase == user_kyc_data['token_sale_participation_phase']
+        def is_early_access_user?
+          GlobalConstant::TokenSaleUserState.early_access_token_sale_phase == user_kyc_data['token_sale_participation_phase']
         end
 
         def sale_start_time
-          is_pre_sale_user? ? GlobalConstant::StTokenSale.pre_sale_start_date : GlobalConstant::StTokenSale.public_sale_start_date
+          is_early_access_user? ? GlobalConstant::StTokenSale.early_access_sale_start_date : GlobalConstant::StTokenSale.general_access_sale_start_date
         end
 
         def is_sale_live?
           current_time >= sale_start_time
         end
 
-        def is_pre_sale_mode_on?
-          (current_time < GlobalConstant::StTokenSale.public_sale_start_date) && is_pre_sale_user?
+        def is_early_access_mode_on?
+          (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date) && is_early_access_user?
         end
 
         def countdown_timestamp
           if !is_sale_live?
             sale_start_time
-          elsif is_pre_sale_mode_on?
-            GlobalConstant::StTokenSale.public_sale_start_date
+          elsif is_early_access_mode_on?
+            GlobalConstant::StTokenSale.general_access_sale_start_date
           else
-            GlobalConstant::StTokenSale.public_sale_end_date
+            GlobalConstant::StTokenSale.general_access_sale_end_date
           end
         end
 
@@ -106,7 +106,7 @@ module Presenters
         end
 
         def has_sale_ended?
-          current_time >= GlobalConstant::StTokenSale.public_sale_end_date
+          current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date
         end
 
         def has_sale_paused?
@@ -203,15 +203,15 @@ module Presenters
         end
 
         def is_bonus_confirmed?
-          bonus_status == GlobalConstant::TokenSaleUserState.bonus_status_approved
+          bonus_value > 0
         end
 
         def is_bonus_approval_date_over?
-          current_time > GlobalConstant::StTokenSale.public_sale_start_date
+          current_time > GlobalConstant::StTokenSale.general_access_sale_start_date
         end
 
         def show_bonus_box?
-          is_pre_sale_user? && (is_bonus_confirmed? || !is_bonus_approval_date_over?)
+          is_early_access_user? && (is_bonus_confirmed? || !is_bonus_approval_date_over?)
         end
 
         def bonus_icon_class
@@ -219,7 +219,7 @@ module Presenters
         end
 
         def show_unable_for_early_purchase_text?
-          (!is_pre_sale_user? && (current_time >= GlobalConstant::StTokenSale.pre_sale_start_date) && (current_time < GlobalConstant::StTokenSale.public_sale_start_date))
+          (!is_early_access_user? && (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date) && (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date))
         end
 
         ###############################################

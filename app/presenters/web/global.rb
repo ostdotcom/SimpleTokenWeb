@@ -12,28 +12,28 @@ module Presenters
         @params = params
       end
 
-      def has_pre_sale_register_started?
-        current_time >= GlobalConstant::StTokenSale.pre_sale_register_start_date
+      def has_early_access_register_started?
+        current_time >= GlobalConstant::StTokenSale.early_access_register_start_date
       end
 
-      def has_pre_sale_register_ended?
-        current_time >= GlobalConstant::StTokenSale.pre_sale_register_end_date
+      def has_early_access_register_ended?
+        current_time >= GlobalConstant::StTokenSale.early_access_register_end_date
       end
 
-      def has_pre_sale_started?
-        current_time >= GlobalConstant::StTokenSale.pre_sale_start_date
+      def has_early_access_sale_started?
+        current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date
       end
 
-      def has_pre_sale_ended?
-        current_time >= GlobalConstant::StTokenSale.public_sale_start_date
+      def has_early_access_sale_ended?
+        current_time >= GlobalConstant::StTokenSale.general_access_sale_start_date
       end
 
-      def has_public_sale_started?
-        current_time >= GlobalConstant::StTokenSale.public_sale_start_date
+      def has_general_access_sale_started?
+        current_time >= GlobalConstant::StTokenSale.general_access_sale_start_date
       end
 
       def has_sale_ended?
-        current_time >= GlobalConstant::StTokenSale.public_sale_end_date
+        current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date
       end
 
       private

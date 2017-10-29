@@ -5,24 +5,24 @@ module GlobalConstant
 
     class << self
 
-      def pre_sale_start_date
-       Time.zone.parse(config['sale_dates']['pre_sale_start_date'])
+      def early_access_sale_start_date
+       Time.zone.parse(config['sale_dates']['early_access_sale_start_date'])
       end
 
-      def public_sale_start_date
-        Time.zone.parse(config['sale_dates']['public_sale_start_date'])
+      def general_access_sale_start_date
+        Time.zone.parse(config['sale_dates']['general_access_sale_start_date'])
       end
 
-      def public_sale_end_date
-        Time.zone.parse(config['sale_dates']['public_sale_end_date'])
+      def general_access_sale_end_date
+        Time.zone.parse(config['sale_dates']['general_access_sale_end_date'])
       end
 
-      def pre_sale_register_start_date
-        Time.zone.parse(config['user_register_dates']['pre_sale_register_start_date'])
+      def early_access_register_start_date
+        Time.zone.parse(config['user_register_dates']['early_access_register_start_date'])
       end
 
-      def pre_sale_register_end_date
-        Time.zone.parse(config['user_register_dates']['pre_sale_register_end_date'])
+      def early_access_register_end_date
+        Time.zone.parse(config['user_register_dates']['early_access_register_end_date'])
       end
 
       private
