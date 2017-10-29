@@ -36,13 +36,6 @@
 <%= render :partial => "/shared/web/common/footer" %>
 
 
-
-<% if false %>
-  <%= render :partial => "/web/dashboard/get_ethereum_deposit_address" %>
-<% end %>
-
-
-
 <% if @presenter_obj.is_double_optin_token_present?
      content_for :end_js do
 %>
