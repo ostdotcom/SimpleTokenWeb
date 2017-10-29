@@ -58,7 +58,7 @@
                 <div style="overflow: hidden" >
                   <span class="pull-left">
                   <span class="kyc-status-icon-<%= @presenter_obj.bonus_icon_class %> ver-middle"></span>
-                  <span class="ver-middle"><%= @presenter_obj.is_bonus_confirmed? ? '10% Bonus Confirmed' : '10% Bonus Pending' %></span>
+                    <span class="ver-middle"><%= @presenter_obj.is_bonus_confirmed? ? "#{@presenter_obj.bonus_value}% Bonus Confirmed" : '10% Bonus Pending' %></span>
                 </span>
                   <% unless @presenter_obj.is_bonus_confirmed? %>
                     <a href="javascript:void(0)" id="prove-support-link" class="collapsed pull-right" data-toggle="collapse" data-target="#prove-support-content">Prove Support</a>
