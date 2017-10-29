@@ -414,17 +414,24 @@ en:
 
     dashboard:
       :meta:
-        :title: Simple Token Admin Dashboard
+        :title: Simple Token Dashboard
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 1
 
     whitelist_dashboard:
       :meta:
-        :title: Simple Token Admin Dashboard
+        :title: Simple Token Whitelist Dashboard
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 1
+
+    pos_dashboard:
+      :meta:
+        :title: Simple Token POS Dashboard
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 0
 
     kyc_details:
       :meta:

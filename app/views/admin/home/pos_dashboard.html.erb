@@ -1,0 +1,11 @@
+<button id="exportPosBtn" class="btn" style="background-color: orange;color: #fff;margin:50px;padding: 15px 30px;border: none;font-size: 18px">Export POS Bonus List</button>
+<div class="error" data-for="general_error"></div>
+
+<% content_for :javascript do %>
+    <script text="text/javascript">
+        $(document).ready(function () {
+            simpletokenadmin.home.posDashboard.init({
+            });
+        });
+    </script>
+<% end %>

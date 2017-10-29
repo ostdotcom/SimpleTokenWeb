@@ -216,4 +216,13 @@ class Admin::HomeController < Admin::BaseController
 
   end
 
+  # Pos dashboard
+  #
+  # * Author: Aman
+  # * Date: 29/10/2017
+  # * Reviewed By: Sunil
+  #
+  def pos_dashboard
+  end
+
 end
