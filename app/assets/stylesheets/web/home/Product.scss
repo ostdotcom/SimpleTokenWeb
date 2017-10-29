@@ -12,6 +12,7 @@
       font-size: 44px;
       margin-top:20px;
       margin-bottom:10px;
+      text-align: center;
     }
     p{
       color: #597a84;
@@ -21,6 +22,7 @@
       letter-spacing: 0.8px;
       text-align: center;
       margin: 20px auto;
+      text-align: center;
     }
     .get-started{
       margin-top:20px;
@@ -126,9 +128,80 @@
       .part-content{
         img{
           max-height: 460px;
-          max-width: 760px;
+          width: 750px;
+          max-width: 100%;
         }
       }
+    }
+  }
+
+}
+
+.container-management{
+
+  background: #91c0ad;
+  padding-top: 40px;
+  padding-bottom: 120px;
+
+  .heading{
+    color: #fff;
+    font-weight: 600;
+    font-size: 36px;
+    margin:20px 0;
+    text-align: center;
+  }
+  .desc{
+    color: #fff;
+    font-size: 22px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+}
+
+.container-management-images{
+  max-width: 600px;
+  margin:-100px auto 20px auto;
+
+  .images-desktop{
+    .ipad{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 97%;
+      border: 0;
+    }
+    .iphone{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 75%;
+      border: 0;
+    }
+  }
+
+  .images-mobile{
+    padding-bottom: 100%;
+    position: relative;
+    .iphone-1{
+      width:30%;
+      position:absolute;
+      bottom: 0;
+    }
+    .iphone-2{
+      width:44%;
+      position:absolute;
+      bottom: 0;
+      right: 30%;
+      z-index: 1;
+    }
+    .iphone-3{
+      width:50%;
+      position:absolute;
+      bottom: 0;
+      right:0;
     }
   }
 
