@@ -1,47 +1,43 @@
 <div class="container container-jumbotron">
   <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive" />
-      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive" />
-      <div class="desc">
-        <h1>Simple Token enables anyone to create and manage their own branded token economy.</h1>
-        <p>Pre-registration is now open. You must be pre-registered and pass KYC/AML checks in order to pre-reserve your brand’s tokens and to purchase on day 1.</p>
-      </div>
-      <div class="desc">
-        <p>Have questions on the Token Sale? Check these documents.</p>
-        <p>
-          <a href="javascript:void(0)" class="link" target="_blank">Token Sale Guide</a>
-          <a href="javascript:void(0)" class="link" target="_blank" style="margin-left:20px">Wallet Setup Guide</a>
-        </p>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6">
-      <div class="registration-timer">
-        <%
-           if !@presenter_obj.has_early_access_register_started?
-             top_lang = 'Pre-Registration starts in'
-             countdown_t = GlobalConstant::StTokenSale.early_access_register_start_date
-             btn_lang="Pre-register now"
-           elsif !@presenter_obj.has_early_access_register_ended?
-             top_lang = 'Pre-Registration ends in'
-             countdown_t = GlobalConstant::StTokenSale.early_access_register_end_date
-             btn_lang="Pre-register now"
-           elsif !@presenter_obj.has_general_access_sale_started?
-             top_lang = 'Token Sale starts in'
-             countdown_t = GlobalConstant::StTokenSale.general_access_sale_start_date
-             btn_lang="register now"
-           elsif !@presenter_obj.has_sale_ended?
-             top_lang = 'Token Sale ends in'
-             countdown_t = GlobalConstant::StTokenSale.general_access_sale_end_date
-             btn_lang="register now"
-           end
-        %>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive" />
+          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive" />
+          <div class="desc">
+            <h1>Simple Token enables anyone to create and manage their own branded token economy.</h1>
+            <p>Pre-registration is now open. You must be pre-registered and pass KYC/AML checks in order to pre-reserve your brand’s tokens and to purchase on day 1.</p>
+          </div>
+          <div class="desc">
+            <p>Have questions on the Token Sale? Check these documents.</p>
+            <a href="/login" class="btn-common btn-grey btn-top-bottom-15">Login to Participate</a>
+            <p>
+              <a href="javascript:void(0)" class="link" target="_blank">Token Sale Guide</a>
+              <a href="javascript:void(0)" class="link" target="_blank" style="margin-left:20px">Wallet Setup Guide</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5">
+          <div class="registration-timer text-center">
+            <%
+               if @presenter_obj.has_public_sale_started?
+                 top_lang = 'register and buy now the public sale is live'
+               elsif @presenter_obj.has_pre_sale_register_ended?
+                 top_lang = 'register now for public access'
+               else
+                 top_lang = 'sign up now for early access'
+               end
+            %>
 
-        <h2><%= top_lang %></h2>
-        <%=
-            render partial: '/shared/web/common/countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}
-        %>
-        <a href="/sign-up" class="btn-common btn-gold btn-top-bottom-15"><%= btn_lang %></a>
+            <h2><%= top_lang %></h2>
+            <div class="time-remaining">Time Remaining</div>
+            <%=
+                render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: @presenter_obj.countdown_timer.to_i * 1000}
+            %>
+            <a href="/sign-up" class="btn-common btn-gold btn-top-bottom-15">register now</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
