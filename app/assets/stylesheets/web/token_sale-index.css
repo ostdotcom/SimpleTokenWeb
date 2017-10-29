@@ -5,5 +5,5 @@
  *= require web/common/Icons
  *= require web/common/Social
  *= require web/token_sale/Index
- *= require web/token_sale/Timer
+ *= require web/common/NewTimer
  */

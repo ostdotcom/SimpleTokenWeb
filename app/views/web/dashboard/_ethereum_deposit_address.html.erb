@@ -1,21 +1,26 @@
 <% if @presenter_obj.can_purchase? %>
-<div class="container-fluid dashboard-page">
+<div class="container-fluid dashboard-page eth-deposit-address">
   <div class="row">
     <div class="col-xs-12">
       <div class="text-center">
         <h1 class="header">Ethereum Deposit Address</h1>
-        <fieldset class="ethereum-deposit-address">
 
-          <input type="text" id="visible-input" class="copy-address-input" placeholder="Ethereum Deposit Address" value="<%= @presenter_obj.simple_token_foundation_ethereum_address %>"/>
-          <input type="button" id="visible-button" class="btn-gold copy-address-button" value="Copy">
-
+        <fieldset id="ethereum-deposit-address" class="ethereum-deposit-address" style="display: none">
+          <input  type="text" id="ethereum-address-input" class="copy-address-input" placeholder="Ethereum Deposit Address" readonly value=""/>
+          <input type="button" id="ethereum-address-copy-btn" class="btn-gold copy-address-button" value="Copy">
         </fieldset>
-      </div>
-      <div class="instructions text-center">
-        Participation is only open for <span class="font500">for all registered users</span> Have questions please check the documentation below
-        <a href="javascript:void(0)">Token Sale Guide</a>
+        
+        <a href="javascript:void(0)" class="btn-common btn-grey btn" target="_blank" id="get-deposit-address">GET DEPOSIT ADDRESS</a>
       </div>
     </div>
   </div>
 </div>
+<div class="eth-deposit-address text-center" style="margin: 25px 0">
+  <a href="#eth-address" class="smooth-scroll eth-link" title="Check Your ETH Address">check your eth address</a>
+  <a href="javascript:void(0)" target="_blank" class="eth-link" title="Token Sale Guide">token sale guide</a>
+  <a href="javascript:void(0)" target="_blank" class="eth-link" title="Wallet Setup Guide">wallet setup guide</a>
+</div>
 <% end %>
+
+
+<%= render :partial => "/shared/web/modals/ethereum_confirm_modal" %>

@@ -194,13 +194,25 @@
     }
   }
 
-  .error {
+  .errors-wrap, .error {
     font-size: 13px;
     color: #e7003b;
     padding: 3px 0 0;
     display: block;
     min-height: 25px;
     font-weight: 500;
+  }
+
+  .border-error{
+    border-color: red !important;
+  }
+
+  .errors-wrap {
+    min-height: 25px;
+    .error {
+      min-height: auto;
+      padding: 0;
+    }
   }
 
   .success{

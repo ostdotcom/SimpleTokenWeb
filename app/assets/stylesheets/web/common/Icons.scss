@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v19.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v19.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v20.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v20.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -158,6 +158,9 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 }
 .kyc-status-icon-denied{
   @include icon-generator(60px, 60px, -8px, -518px, -8px, -8px, 40);
+}
+.kyc-status-icon-pending-issue{
+  @include icon-generator(60px, 60px, -8px, -764px, -8px, -8px, 40);
 }
 .kyc-status-modal-error-icon{
   @include icon-generator(60px, 60px, -8px, -587px, -8px, -8px, 50);

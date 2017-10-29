@@ -3,7 +3,11 @@
   var utilsNs = ns("simpletoken.utils");
 
   utilsNs.errorHandling = {
-    xhrErrResponse: function(jqXHR, exception){
+    xhrErrResponse: function(jqXHR, exception, jParent ){
+      if ( !jParent ) {
+        jParent = $("body");
+      }
+
       var msg = '';
       if (jqXHR.status === 0) {
         msg = 'Not able to connect to server. Please verify your internet connection.';
@@ -22,11 +26,15 @@
       } else {
         msg = 'Unable to connect to server.';
       }
-      $('.error[data-for="general_error"]').text(msg);
+
+      jParent.find('.error[data-for="general_error"]').text(msg);
       return msg;
     },
 
-    displayFormErrors: function(response){
+    displayFormErrors: function(response, jParent){
+      if ( !jParent ) {
+        jParent = $("body");
+      }
 
       if((response.success === false) || (response.err != undefined && response.err != '')){
 
@@ -35,7 +43,7 @@
 
         if(typeof response.err.error_data != undefined){
           $.each(response.err.error_data, function(e_key, e_val){
-            var ele = $('.error[data-for="'+e_key+'"]');
+            var ele = jParent.find('.error[data-for="'+e_key+'"]');
             ele.text(e_val);
             ele.parent().find('input').addClass('border-error');
           });
@@ -79,9 +87,12 @@
         return false;
     },
 
-    clearFormErrors: function(){
-        $('.error[data-for]').text('');
-        $('input').removeClass('border-error');
+    clearFormErrors: function( jParent ){
+        if ( !jParent ) {
+          jParent = $("body");
+        }
+        jParent.find('.error[data-for]').text('');
+        jParent.find('input').removeClass('border-error');
     },
 
     addFormError: function(field_name, message){

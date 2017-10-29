@@ -45,7 +45,7 @@ body{
   }
 }
 
-.error {
+.errors-wrap, .error {
   font-size: 12px;
   color: #e7003b;
   padding: 2px 0;
@@ -54,6 +54,18 @@ body{
   @media (min-width: 480px) {
     margin: 0 auto;
     text-align: left;
+  }
+}
+
+.border-error{
+  border-color: red !important;
+}
+
+.errors-wrap {
+  min-height: 22px;
+  .error {
+    min-height: auto;
+    padding: 0;
   }
 }
 

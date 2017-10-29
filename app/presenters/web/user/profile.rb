@@ -17,32 +17,24 @@ module Presenters
           @result ||= @response_data_obj.data
         end
 
+        def is_double_optin_token_present?
+          @params[:t].present?
+        end
+
         def user
           @user ||= result['user']
         end
 
-        def user_kyc_data
-          @user_kyc_data ||= result['user_kyc_data']
-        end
-
-        def is_kyc_upload_needed?
-          is_kyc_pending? && (user_kyc_data['admin_action_type'] != GlobalConstant::TokenSaleUserState.no_admin_action_type)
-        end
-
-        def token_sale_active_status
-          result['token_sale_active_status']
-        end
-
-        def bt_name
+        def token_name
           user['bt_name']
-        end
-
-        def token_name_status_class
-          bt_name.present? ? 'approved' : 'pending'
         end
 
         def email
           user['email']
+        end
+
+        def user_kyc_data
+          @user_kyc_data ||= result['user_kyc_data']
         end
 
         def user_kyc_status
@@ -59,20 +51,79 @@ module Presenters
           end
         end
 
-        def simple_token_foundation_ethereum_address
-          result['foundation_ethereum_address']
+        def admin_action_type
+          user_kyc_data['admin_action_type']
         end
 
-        def is_double_optin_token_present?
-          @params[:t].present?
+        def whitelist_status
+          user_kyc_data['whitelist_status']
         end
 
-        def is_pre_sale_user?
-          GlobalConstant::TokenSaleUserState.pre_sale_participation_phase == user_kyc_data['token_sale_participation_phase']
+        def bonus_value
+          user_kyc_data['pos_bonus_percentage'].to_f
         end
+
+        def token_sale_active_status
+          result['token_sale_active_status']
+        end
+
+
+        ###########################################
+
+
+        def is_early_access_user?
+          GlobalConstant::TokenSaleUserState.early_access_token_sale_phase == user_kyc_data['token_sale_participation_phase']
+        end
+
+        def sale_start_time
+          is_early_access_user? ? GlobalConstant::StTokenSale.early_access_sale_start_date : GlobalConstant::StTokenSale.general_access_sale_start_date
+        end
+
+        def is_sale_live?
+          current_time >= sale_start_time
+        end
+
+        def is_early_access_mode_on?
+          (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date) && is_early_access_user?
+        end
+
+        def countdown_timestamp
+          if !is_sale_live?
+            sale_start_time
+          elsif is_early_access_mode_on?
+            GlobalConstant::StTokenSale.general_access_sale_start_date
+          else
+            GlobalConstant::StTokenSale.general_access_sale_end_date
+          end
+        end
+
+        def is_sale_ongoing?
+          is_sale_live? && !has_sale_paused?
+        end
+
+        def can_purchase?
+          is_kyc_approved? && ethereum_address_whitelist_done? && is_sale_ongoing?
+        end
+
+        def has_sale_ended?
+          current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date
+        end
+
+        def has_sale_paused?
+          (token_sale_active_status.to_i != 1) && is_sale_live?
+        end
+
+        ###########################################
+
+
+        ###########################################
 
         def is_kyc_pending?
           user_kyc_status == GlobalConstant::TokenSaleUserState.kyc_status_pending
+        end
+
+        def is_kyc_pending_and_upload_needed?
+          is_kyc_pending? && (admin_action_type != GlobalConstant::TokenSaleUserState.no_admin_action_type)
         end
 
         def is_kyc_approved?
@@ -83,33 +134,96 @@ module Presenters
           user_kyc_status == GlobalConstant::TokenSaleUserState.kyc_status_denied
         end
 
-        def can_purchase?
-          is_kyc_approved? && is_sale_ongoing?
+        def kyc_verification_icon_class
+          case true
+            when is_kyc_pending_and_upload_needed?
+              'pending-issue'
+            when is_kyc_pending?
+              'pending'
+            when is_kyc_approved?
+              'approved'
+            when is_kyc_denied?
+              'denied'
+          end
         end
 
-        def is_pre_sale_mode_on?
-          (current_time < GlobalConstant::StTokenSale.public_sale_start_date) && is_pre_sale_user?
+        def kyc_verification_class
+          case true
+            when is_kyc_pending_and_upload_needed?
+              'pending-issue'
+            when is_kyc_pending?
+              'approved'
+            when is_kyc_approved?
+              'approved'
+            when is_kyc_denied?
+              'denied'
+          end
         end
 
-        def sale_start_time
-          is_pre_sale_mode_on? ? GlobalConstant::StTokenSale.pre_sale_start_date : GlobalConstant::StTokenSale.public_sale_start_date
+        def show_kyc_update_modal?
+          !is_kyc_pending_and_upload_needed?
         end
 
-        def is_sale_ongoing?
-          !has_sale_paused? && !has_sale_ended? && has_sale_started?
+        def kyc_verification_text
+          case true
+            when is_kyc_pending_and_upload_needed?
+              'KYC Verification Issue'
+            when is_kyc_pending?
+              'KYC Verification Pending'
+            when is_kyc_approved?
+              'KYC Verified'
+            when is_kyc_denied?
+              'KYC Verification Failed'
+          end
         end
 
-        def has_sale_started?
-          current_time >= sale_start_time
+        def show_ethereum_address_whitelist_status_box?
+          is_kyc_approved?
         end
 
-        def has_sale_paused?
-          (token_sale_active_status.to_i != 1) && has_sale_started?
+        def ethereum_address_whitelist_done?
+          (GlobalConstant::TokenSaleUserState.ethereum_address_whitelist_done == whitelist_status)
         end
 
-        def has_sale_ended?
-          current_time >= GlobalConstant::StTokenSale.public_sale_end_date
+        def ethereum_address_whitelist_icon_class
+          case true
+            when ethereum_address_whitelist_done?
+              'approved'
+            else
+              'pending'
+          end
         end
+
+        def token_name_pending?
+          token_name.blank?
+        end
+
+        def token_name_icon_class
+          token_name_pending? ? 'pending' : 'approved'
+        end
+
+        def is_bonus_confirmed?
+          bonus_value > 0
+        end
+
+        def is_bonus_approval_date_over?
+          current_time > GlobalConstant::StTokenSale.general_access_sale_start_date
+        end
+
+        def show_bonus_box?
+          is_early_access_user? && (is_bonus_confirmed? || !is_bonus_approval_date_over?)
+        end
+
+        def bonus_icon_class
+          is_bonus_confirmed? ? 'approved' : 'pending'
+        end
+
+        def show_unable_for_early_purchase_text?
+          (!is_early_access_user? && (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date) && (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date))
+        end
+
+        ###############################################
+
 
         private
 

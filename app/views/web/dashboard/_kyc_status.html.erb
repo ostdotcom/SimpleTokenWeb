@@ -1,45 +1,82 @@
-<div class="container-fluid dashboard-page">
+<div class="container-fluid dashboard-page margin35auto">
   <div class="row">
 
     <div class="col-xs-12">
-      <div class="text-center">
 
-        <div class="panel panel-default kyc-panel <%= @presenter_obj.is_kyc_denied? ? 'denied' : 'approved' %>">
+      <%if @presenter_obj.show_unable_for_early_purchase_text? %>
+          <div class="text-center early-access-purchase">Only Early Access users will be able to purchase on 14th Nov</div>
+      <% end %>
+        <div class="panel panel-default kyc-panel <%= @presenter_obj.kyc_verification_class %>">
           <table class="panel-body">
             <tr>
               <td>
-                <span class="kyc-status-icon-<%= @presenter_obj.user_kyc_data['kyc_status'] %> ver-middle"></span>
-                <span class="ver-middle"><%= @presenter_obj.is_kyc_denied? ? 'KYC Verification Failed' : @presenter_obj.is_kyc_approved? ? 'KYC Verified' : 'KYC Verification' %></span>
+                <span class="kyc-status-icon-<%= @presenter_obj.kyc_verification_icon_class %> ver-middle"></span>
+                <span class="ver-middle"><%= @presenter_obj.kyc_verification_text %></span>
               </td>
               <td>
                 <% if @presenter_obj.is_kyc_pending? %>
-                  <a href="javascript:void(0)" id="kycWarning">update info</a>
+                    <a href="javascript:void(0)" <%= raw 'class="openModal"' if @presenter_obj.show_kyc_update_modal? %> id="kycUpdate">update
+                      kyc</a>
                 <% end %>
               </td>
             </tr>
           </table>
         </div>
+
+        <% if @presenter_obj.show_ethereum_address_whitelist_status_box? %>
+            <div class="panel panel-default kyc-panel approved">
+              <table class="panel-body">
+                <tr>
+                  <td>
+                    <span class="kyc-status-icon-<%= @presenter_obj.ethereum_address_whitelist_icon_class %> ver-middle"></span>
+                    <span class="ver-middle"><%= @presenter_obj.ethereum_address_whitelist_done? ? 'Ethereum Address Whitelisted' : 'Ethereum Address Whitelisting in Progress' %></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              </table>
+            </div>
+        <% end %>
 
         <div class="panel panel-default kyc-panel approved">
           <table class="panel-body">
             <tr>
               <td>
-                <span class="kyc-status-icon-<%= @presenter_obj.token_name_status_class %> ver-middle"></span>
-                <span class="ver-middle">Reserve Token Name</span>
+                <span class="kyc-status-icon-<%= @presenter_obj.token_name_icon_class %> ver-middle"></span>
+                <span class="ver-middle"><%= @presenter_obj.token_name_pending? ? 'Token Name Not Reserved' : 'Token Name Reserved' %></span>
               </td>
               <td>
-                <% unless @presenter_obj.has_sale_ended? %>
-                  <a href="/update-token">change name</a>
-                <% end %>
+                <a href="/update-token"><%= @presenter_obj.token_name_pending? ? 'reserve name' : 'change name' %></a>
               </td>
             </tr>
           </table>
         </div>
 
-      </div>
+        <% if @presenter_obj.show_bonus_box? %>
+            <div class="panel panel-default kyc-panel approved">
+              <div class="panel-body">
+                <div style="overflow: hidden" >
+                  <span class="pull-left">
+                  <span class="kyc-status-icon-<%= @presenter_obj.bonus_icon_class %> ver-middle"></span>
+                    <span class="ver-middle"><%= @presenter_obj.is_bonus_confirmed? ? "#{@presenter_obj.bonus_value}% Bonus Confirmed" : '10% Bonus Pending' %></span>
+                </span>
+                  <% unless @presenter_obj.is_bonus_confirmed? %>
+                    <a href="javascript:void(0)" id="prove-support-link" class="collapsed pull-right" data-toggle="collapse" data-target="#prove-support-content">Prove Support</a>
+                  <% end %>
+                </div>
+                <div id="prove-support-content" class="panel-collapse collapse prove-support-content text-center">
+                  <div class="header">Show some love & get 10% Bonus</div>
+                  <div class="desc">Join our Telegram Channel, share about us on social media and Send us a proof of your support to get 10 % Bonus Tokens</div>
+                  <a href="javascript:void(0)">LEARN MORE</a>
+                </div>
+              </div>
+            </div>
+        <% end %>
+
     </div>
 
   </div>
 </div>
-
-<%= render :partial => "/shared/web/modals/kyc_update_warning_modal" %>
+<% if @presenter_obj.show_kyc_update_modal? %>
+    <%= render :partial => "/shared/web/modals/kyc_update_warning_modal" %>
+<% end %>

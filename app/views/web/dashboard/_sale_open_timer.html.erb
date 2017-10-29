@@ -1,17 +1,30 @@
-<div class="container-fluid dashboard-page">
+<div class="container-fluid dashboard-page margin35auto">
   <div class="row">
     <div class="col-xs-12">
-      <div class="text-center">
+      <!--<div class="text-center">-->
+
         <div class="registration-timer">
-          <h2><%= @presenter_obj.is_pre_sale_mode_on? ? 'PRE' : 'PUBLIC' %> SALE OPENS IN</h2>
+          <h2><%= @presenter_obj.is_early_access_mode_on? ? 'early access sale' : 'public sale' %> <%= @presenter_obj.is_sale_live? ? 'is live' : 'starts in' %></h2>
+          <% if @presenter_obj.is_sale_live? %>
+              <div class="panel panel-default time-remain">
+                <div class="panel-body text-center">time remaining</div>
+              </div>
+          <% end %>
+
           <%=
-            render partial: '/shared/web/common/countdown_timer',
-                   locals: {
-                           timestamp: (@presenter_obj.sale_start_time.to_i) * 1000
-                   }
+              render partial: '/shared/web/common/marketing_countdown_timer',
+                     locals: {
+                             timestamp: (@presenter_obj.countdown_timestamp.to_i) * 1000
+                     }
           %>
+          <% if @presenter_obj.is_sale_live? && !@presenter_obj.is_early_access_mode_on? %>
+              <div class="panel panel-default time-remain">
+                <div class="panel-body text-center">sale open till tokens last</div>
+              </div>
+          <% end %>
+
         </div>
-      </div>
+      <!--</div>-->
     </div>
   </div>
 </div>
