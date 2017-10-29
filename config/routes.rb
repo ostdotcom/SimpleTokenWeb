@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get '/reserve-token' => :add_branded_token
       get '/update-token' => :update_branded_token
       get '/verification-link' => :verification_link
+      get '/token-sale-blocked-region' => :token_sale_blocked_region
     end
     # Route not found handler. Should be the last entry here
     match '*permalink', to: 'application#not_found', via: :all
@@ -46,6 +47,9 @@ Rails.application.routes.draw do
     get '/get-kyc-dashboard' => :get_kyc_dashboard
     get '/get-kyc-details' => :kyc_details
     get '/kyc-action-logs' => :kyc_action_logs
+    get '/whitelist-dashboard' => :whitelist_dashboard
+    get '/get-kyc-whitelist-dashboard' => :get_kyc_whitelist_dashboard
+    get '/pos-dashboard' => :pos_dashboard
   end
 
   namespace 'admin' do

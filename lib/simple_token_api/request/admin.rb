@@ -68,6 +68,26 @@ module SimpleTokenApi
         get("kyc/kyc-action-logs", request_params)
       end
 
+      # Get User info
+      #
+      # * Author: Aman
+      # * Date: 12/10/2017
+      # * Reviewed By: Sunil
+      #
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def whitelist_dashboard_detail(params)
+        request_params = {
+            offset: params[:start],
+            page_size: params[:length]
+        }
+        request_params[:filters] = params[:filters].permit! if params[:filters].present?
+        request_params[:sortings] = params[:sortings].permit! if params[:sortings].present?
+
+        get("kyc/whitelist-dashboard", request_params)
+      end
+
     end
   end
 end

@@ -3,13 +3,12 @@ class Web::UserController < Web::BaseController
   layout "web"
 
   before_action :delete_user_cookie, only: [:sign_up, :login, :reset_password, :change_password]
-  before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password]
+  before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
 
   before_action :set_page_meta_info, except: [:logout]
 
-  before_action :tmp_basic_auth
-  before_action :handle_blacklisted_ip
-
+  before_action :tmp_basic_auth, except: [:token_sale_blocked_region]
+  before_action :handle_blacklisted_ip, except: [:token_sale_blocked_region]
 
   # Sign up
   #
@@ -27,6 +26,15 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def login
+  end
+
+  # Action for the blacklisted countries ip page
+  #
+  # * Author: Aman
+  # * Date: 28/10/2017
+  # * Reviewed By: Sunil
+  #
+  def token_sale_blocked_region
   end
 
   # Logout

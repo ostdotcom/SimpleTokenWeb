@@ -79,9 +79,9 @@ class Web::BaseController < ApplicationController
   # * Reviewed By: Sunil
   #
   def handle_blacklisted_ip
-    blacklisted_countries = ['CHINA']
-    return unless blacklisted_countries.include?(get_country_from_ip.upcase)
-    redirect_to '/', status: GlobalConstant::ErrorCode.permanent_redirect and return
+    blacklisted_countries = GlobalConstant::GeoIp.blaclisted_ip_from_countries
+    return unless blacklisted_countries.include?(get_country_from_ip.downcase)
+    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
   # Get IP based cynopsis country name

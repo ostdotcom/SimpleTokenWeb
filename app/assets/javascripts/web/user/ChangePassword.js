@@ -17,7 +17,10 @@
               event.preventDefault();
               var v = utilsNs.errorHandling.validationGeneric($('#changePasswordForm input[type="text"]'));
               if (v === true) {
-                oThis.change_password();
+                  $("#resetBtn")
+                      .text('resetting password...')
+                      .prop( "disabled", true );
+                  oThis.change_password();
               }
           });
 
@@ -40,6 +43,11 @@
               },
               error: function (jqXHR, exception) {
                 utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+              },
+              complete: function(){
+                  $("#resetBtn")
+                      .text('reset password')
+                      .prop( "disabled", false );
               }
           });
       },
