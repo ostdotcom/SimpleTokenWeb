@@ -12,31 +12,31 @@ module Presenters
         @params = params
       end
 
-      def has_public_sale_started?
-        current_time >= GlobalConstant::StTokenSale.public_sale_start_date
+      def has_general_access_sale_started?
+        current_time >= GlobalConstant::StTokenSale.general_access_sale_start_date
       end
 
-      def has_pre_sale_register_ended?
-        current_time >= GlobalConstant::StTokenSale.pre_sale_register_end_date
+      def has_early_access_register_ended?
+        current_time >= GlobalConstant::StTokenSale.early_access_register_end_date
       end
 
-      def has_pre_sale_register_started?
-        current_time >= GlobalConstant::StTokenSale.pre_sale_register_start_date
+      def has_early_access_register_started?
+        current_time >= GlobalConstant::StTokenSale.early_access_register_start_date
       end
 
       def has_sale_ended?
-        current_time >= GlobalConstant::StTokenSale.public_sale_end_date
+        current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date
       end
 
       def progress_bar_percent
         if has_sale_ended?
           100
-        elsif has_public_sale_started?
-          66.66 + interval_percent(GlobalConstant::StTokenSale.public_sale_start_date, GlobalConstant::StTokenSale.public_sale_end_date)
-        elsif has_pre_sale_register_ended?
-          33.33 + interval_percent(GlobalConstant::StTokenSale.pre_sale_register_end_date, GlobalConstant::StTokenSale.public_sale_start_date)
+        elsif has_general_access_sale_started?
+          66.66 + interval_percent(GlobalConstant::StTokenSale.general_access_sale_start_date, GlobalConstant::StTokenSale.general_access_sale_end_date)
+        elsif has_early_access_register_ended?
+          33.33 + interval_percent(GlobalConstant::StTokenSale.early_access_register_end_date, GlobalConstant::StTokenSale.general_access_sale_start_date)
         else
-          interval_percent(GlobalConstant::StTokenSale.pre_sale_register_start_date, GlobalConstant::StTokenSale.pre_sale_register_end_date)
+          interval_percent(GlobalConstant::StTokenSale.early_access_register_start_date, GlobalConstant::StTokenSale.early_access_register_end_date)
         end
       end
 
@@ -48,12 +48,12 @@ module Presenters
       end
 
       def countdown_timer
-        if has_public_sale_started?
-          GlobalConstant::StTokenSale.public_sale_end_date
-        elsif has_pre_sale_register_ended?
-          GlobalConstant::StTokenSale.public_sale_start_date
+        if has_general_access_sale_started?
+          GlobalConstant::StTokenSale.general_access_sale_end_date
+        elsif has_early_access_register_ended?
+          GlobalConstant::StTokenSale.general_access_sale_start_date
         else
-          GlobalConstant::StTokenSale.pre_sale_register_end_date
+          GlobalConstant::StTokenSale.early_access_register_end_date
         end
       end
 

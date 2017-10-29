@@ -21,9 +21,9 @@
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5">
           <div class="registration-timer text-center">
             <%
-               if @presenter_obj.has_public_sale_started?
+               if @presenter_obj.has_general_access_sale_started?
                  top_lang = 'register and buy now the public sale is live'
-               elsif @presenter_obj.has_pre_sale_register_ended?
+               elsif @presenter_obj.has_early_access_register_ended?
                  top_lang = 'register now for public access'
                else
                  top_lang = 'sign up now for early access'
