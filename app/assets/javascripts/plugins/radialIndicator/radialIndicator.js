@@ -367,7 +367,7 @@
                 if ((!back && counter >= val) || (back && counter <= val)) {
                     if (self.current_value == counter) {
                         clearInterval(self.intvFunc);
-                        if (indOption.onAnimationComplete) indOption.onAnimationComplete(self.current_value);
+                        if (indOption.onAnimationComplete) indOption.onAnimationComplete(self.current_value, self);
                         return;
                     } else {
                         counter = val;
