@@ -4,3 +4,4 @@
 //= require admin/common/ErrorHandling
 //= require admin/common/CSRFAjax
 //= require web/common/ErrorHandling
+//= require web/common/UtmHelper
