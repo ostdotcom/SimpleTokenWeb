@@ -42,107 +42,107 @@
 
 }
 
-.container-dates{
-  text-align: center;
-  margin:40px auto;
-  h2.header{
-    color: #6ca3a9;
-    font-weight: 300;
-    line-height: 1.5;
-    margin-top: 0;
-    font-size: 38px;
-    letter-spacing: 1.3px;
-    text-align: center;
-  }
+//.container-dates{
+//  text-align: center;
+//  margin:40px auto;
+//  h2.header{
+//    color: #6ca3a9;
+//    font-weight: 300;
+//    line-height: 1.5;
+//    margin-top: 0;
+//    font-size: 38px;
+//    letter-spacing: 1.3px;
+//    text-align: center;
+//  }
+//
+//  .container-timeline{
+//
+//    width: 610px;
+//    margin: 0 auto;
+//    padding: 80px 0;
+//    position: relative;
+//
+//    .progress{
+//      height: 10px;
+//      background-color: #91c0ad;
+//      .progress-bar-completed{
+//        background-color: #597a84;
+//      }
+//    }
+//
+//    .milestone{
+//      position: absolute;
+//      top: 40px;
+//      width: 150px;
+//      height: 100px;
+//      text-align: center;
+//      .date{
+//        font-size: 16px;
+//        font-weight: 600;
+//        color: #597a84;
+//        margin-bottom:5px;
+//      }
+//      .point{
+//        width:30px;
+//        height:30px;
+//        background: #fff;
+//        border: 3px solid #91c0ad;
+//        border-radius: 50%;
+//        margin: 0 auto 5px auto;
+//      }
+//      .title{
+//        font-size: 13px;
+//        font-weight: 600;
+//        color: #597a84;
+//        margin-bottom:5px;
+//      }
+//    }
+//
+//  }
+//  .container-timeline-vertical{
+//    display: none;
+//  }
+//}
 
-  .container-timeline{
-
-    width: 610px;
-    margin: 0 auto;
-    padding: 80px 0;
-    position: relative;
-
-    .progress{
-      height: 10px;
-      background-color: #91c0ad;
-      .progress-bar-completed{
-        background-color: #597a84;
-      }
-    }
-
-    .milestone{
-      position: absolute;
-      top: 40px;
-      width: 150px;
-      height: 100px;
-      text-align: center;
-      .date{
-        font-size: 16px;
-        font-weight: 600;
-        color: #597a84;
-        margin-bottom:5px;
-      }
-      .point{
-        width:30px;
-        height:30px;
-        background: #fff;
-        border: 3px solid #91c0ad;
-        border-radius: 50%;
-        margin: 0 auto 5px auto;
-      }
-      .title{
-        font-size: 13px;
-        font-weight: 600;
-        color: #597a84;
-        margin-bottom:5px;
-      }
-    }
-
-  }
-  .container-timeline-vertical{
-    display: none;
-  }
-}
-
-.container-documents{
-  text-align: center;
-  margin:40px auto;
-  min-height: inherit;
-  h2.header{
-    color: #6ca3a9;
-    font-weight: 300;
-    line-height: 1.5;
-    margin-top: 0;
-    font-size: 38px;
-    letter-spacing: 1.3px;
-    text-align: center;
-  }
-  .iframe-wrapper {
-    width: 595px;
-    max-width: 100%;
-    border: 2px solid #5a768c;
-    border-radius: 5px;
-    margin: 20px auto 40px auto;
-    position: relative;
-    &:after{
-      padding-top: 81.51%;
-      display: block;
-      content: '';
-    }
-    .iframe-container{
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      iframe{
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-    }
-  }
-}
+//.container-documents{
+//  text-align: center;
+//  margin:40px auto;
+//  min-height: inherit;
+//  h2.header{
+//    color: #6ca3a9;
+//    font-weight: 300;
+//    line-height: 1.5;
+//    margin-top: 0;
+//    font-size: 38px;
+//    letter-spacing: 1.3px;
+//    text-align: center;
+//  }
+//  .iframe-wrapper {
+//    width: 595px;
+//    max-width: 100%;
+//    border: 2px solid #5a768c;
+//    border-radius: 5px;
+//    margin: 20px auto 40px auto;
+//    position: relative;
+//    &:after{
+//      padding-top: 81.51%;
+//      display: block;
+//      content: '';
+//    }
+//    .iframe-container{
+//      position: absolute;
+//      top: 0;
+//      bottom: 0;
+//      right: 0;
+//      left: 0;
+//      iframe{
+//        width: 100%;
+//        height: 100%;
+//        border: 0;
+//      }
+//    }
+//  }
+//}
 
 // Mobile portrait, landscape
 @media (max-width: 767px) {
@@ -162,71 +162,102 @@
 
   }
 
-  .container-dates{
+//  .container-dates{
+//
+//    .container-timeline{
+//      display:none;
+//    }
+//    .container-timeline-vertical{
+//      display: block;
+//      margin: 80px 0;
+//      position: relative;
+//
+//      .progress{
+//        height: 500px;
+//        width: 10px;
+//        margin: 20px auto;
+//        background-color: #91c0ad;
+//        .progress-bar{
+//          width: 100%;
+//          height:0;
+//        }
+//        .progress-bar-completed{
+//          background-color: #597a84;
+//        }
+//      }
+//
+//      .milestone{
+//        position: absolute;
+//        left: calc(50% - 125px);
+//        width: 250px;
+//        height: 100px;
+//        &:nth-of-type(odd){
+//          text-align: left;
+//          .date,
+//          .title{
+//            margin-left: 150px;
+//          }
+//        }
+//        &:nth-of-type(even){
+//          text-align: right;
+//          .date,
+//          .title{
+//            margin-right: 150px;
+//          }
+//        }
+//        .date{
+//          font-size: 16px;
+//          font-weight: 600;
+//          color: #597a84;
+//          margin-top: -50px;
+//        }
+//        .point{
+//          width:30px;
+//          height:30px;
+//          background: #fff;
+//          border: 3px solid #91c0ad;
+//          border-radius: 50%;
+//          margin: 0 auto 5px auto;
+//        }
+//        .title{
+//          font-size: 13px;
+//          font-weight: 600;
+//          color: #597a84;
+//        }
+//      }
+//    }
+//
+//  }
 
-    .container-timeline{
-      display:none;
+}
+
+.early-investors{
+  background: #6ca3a9;
+  padding: 40px 0;
+  margin-top: 0;
+  margin-bottom: 40px;
+  ul{
+    padding: 0;
+    li{
+      list-style-type: none;
     }
-    .container-timeline-vertical{
-      display: block;
-      margin: 80px 0;
-      position: relative;
-
-      .progress{
-        height: 500px;
-        width: 10px;
-        margin: 20px auto;
-        background-color: #91c0ad;
-        .progress-bar{
-          width: 100%;
-          height:0;
-        }
-        .progress-bar-completed{
-          background-color: #597a84;
-        }
-      }
-
-      .milestone{
-        position: absolute;
-        left: calc(50% - 125px);
-        width: 250px;
-        height: 100px;
-        &:nth-of-type(odd){
-          text-align: left;
-          .date,
-          .title{
-            margin-left: 150px;
-          }
-        }
-        &:nth-of-type(even){
-          text-align: right;
-          .date,
-          .title{
-            margin-right: 150px;
-          }
-        }
-        .date{
-          font-size: 16px;
-          font-weight: 600;
-          color: #597a84;
-          margin-top: -50px;
-        }
-        .point{
-          width:30px;
-          height:30px;
-          background: #fff;
-          border: 3px solid #91c0ad;
-          border-radius: 50%;
-          margin: 0 auto 5px auto;
-        }
-        .title{
-          font-size: 13px;
-          font-weight: 600;
-          color: #597a84;
-        }
-      }
-    }
-
   }
-
+  .heading{
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 40px;
+    font-size: 38px;
+    margin-top: 0;
+  }
+  .col-sm-4, .col-sm-3{
+    margin-bottom: 25px;
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: center;
+    justify-content: center;
+    min-height: 60px;
+  }
 }
