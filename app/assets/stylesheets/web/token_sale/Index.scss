@@ -353,6 +353,36 @@
   }
 }
 
+.container-why{
+  .header{
+    color: #6ca3a9;
+    margin-top: 0;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+  }
+
+  .image{
+    text-align: center;
+    img{
+      width: 100%;
+    }
+  }
+
+  .copy{
+    h3{
+      font-size: 20px;
+      color: #597a84;
+    }
+  }
+
+  .desc{
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    color: #597a84;
+    font-weight: 300;
+  }
+}
 
 .nav-sticky {
   position: fixed;
@@ -368,4 +398,21 @@
     padding-top: 57px;
   }
   padding-top: 83px;
+}
+
+.no-mobile{
+  display: block !important;
+}
+.only-mobile{
+  display: none !important;
+}
+
+// Mobile portrait, landscape
+@media (max-width: 767px) {
+  .no-mobile{
+    display: none !important;
+  }
+  .only-mobile{
+    display: block !important;
+  }
 }
