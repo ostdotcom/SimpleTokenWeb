@@ -9,6 +9,7 @@
  *= require web/token_sale/Index
  *= require web/token_sale/TokenAllocation
  *= require web/token_sale/TokenKeyDates
+ *= require web/token_sale/ReserveBrandedToken
  *= require web/common/NewTimer
  *= require web/common/Press
  *= require web/common/FoundingTeam
