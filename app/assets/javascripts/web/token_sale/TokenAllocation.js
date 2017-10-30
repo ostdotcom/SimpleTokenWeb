@@ -6,7 +6,7 @@
     jRoot: null,
     isAnimateDone: false,
     radialDefaults: {
-      radius: 36,
+      radius: 50,
       barWidth: 5,
       barBgColor: "rgba(145, 192, 173, 0.15)",
       barColor: "#6ba4aa",

@@ -333,6 +333,17 @@
       color: #597a84;
     }
   }
+  .ext-links{
+    color: #597a84;
+    margin: 0 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: solid 1px #597a84;
+    &:hover{
+      text-decoration: none;
+    }
+  }
 }
 
 .nav-sticky {

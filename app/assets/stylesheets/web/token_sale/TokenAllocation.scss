@@ -1,17 +1,15 @@
-.container-token-allocation {
-  .token-allocation-desc-wrap,
-  .token-allocation-radial-wrap, 
-  .token-allocation-radial {
-    display: inline-block;
+.container-token-allocation{
+  .header{
+    color: #6ca3a9;
+    margin-top: 0;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
   }
-
-  .token-allocation-radial-wrap {
-    float: left;
+  .ver-middle{
+    display: table;
+    .ver-middle-inner{
+      display: table-cell;
+      vertical-align: middle;
+    }
   }
-
-  .token-allocation-desc-wrap {
-    float: right;
-  }
-
 }
-

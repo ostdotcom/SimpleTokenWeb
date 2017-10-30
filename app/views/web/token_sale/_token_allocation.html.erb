@@ -39,22 +39,23 @@
   ]
 %>
 
-<div class="container container-token-allocation" id="container-token-allocation">
+<div class="container container-token-allocation paddingTop57" id="container-token-allocation">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
       <div class="row">
-        <h2 class="">Token Allocation</h2>
-
+        <h2 class="header text-center">Token Allocation</h2>
         <% allocation_data.each_with_index do | data, indx | %>
           <div class="col-xs-12 col-sm-6">
-            <div class="token-allocation-radial-wrap">
-              <span class="token-allocation-radial" 
-                    data-radial-value="<%= data[:init_value] %>"
-                    data-bar-color="<%= data[:bar_color] %>"></span>
-            </div>
-            <div class="token-allocation-desc-wrap">
-              <h3 class="token-allocation-desc-header"><%= data[:heading] %></h3>
-              <div class="token-allocation-desc-text"><%= data[:description] %></div>
+            <div class="ver-middle">
+              <div class="token-allocation-radial-wrap ver-middle-inner">
+                <span class="token-allocation-radial"
+                      data-radial-value="<%= data[:init_value] %>"
+                      data-bar-color="<%= data[:bar_color] %>"></span>
+              </div>
+              <div class="token-allocation-desc-wrap ver-middle-inner">
+                <h3 class="token-allocation-desc-header"><%= data[:heading] %></h3>
+                <div class="token-allocation-desc-text"><%= data[:description] %></div>
+              </div>
             </div>
           </div>
         <% end %>
