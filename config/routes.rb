@@ -28,7 +28,8 @@ Rails.application.routes.draw do
     get '/' => :index
     get '/team' => :about
     get '/about' => :redirect_to_team
-    get '/platform' => :platform
+    #get '/platform' => :platform
+    get '/product' => :product
     get '/privacy' => :privacy
     get '/terms' => :terms
     get '/documents' => :documents

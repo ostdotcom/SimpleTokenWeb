@@ -9,14 +9,14 @@
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
       </div>
       <div class="simple-token-form">
-        <h1 class="text-center form-header">Thanks for Registration</h1>
-        <div class="form-sub-header text-center" style="font-weight: 500;font-size: 18px;margin-top: 25px">Check Your Inbox and verify your Registration</div>
-        <div class="form-sub-header text-center">We have sent an email to <%= @user["email"] %> please click on the <br/>Verify Button in the email to Activate your account</div>
+        <h1 class="text-center form-header">Thank you for registering</h1>
+        <div class="form-sub-header text-center" style="font-weight: 500;font-size: 18px;margin-top: 25px">Check your inbox to activate your account</div>
+        <div class="form-sub-header text-center">We have sent an email to <%= @user["email"] %>. Please click on the "Activate Account"</br> button in the email to access your account.</div>
         <div class="user-form">
           <div class="user-form-footer">
-            <div class="create-account" tabindex="5">Did not receive the email yet?</div>
+            <div class="create-account">Didn't receive the email?</div>
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-            <a href="javascript:void(0)" id="resendLink" class="btn-common btn-grey form-btn-transparent resendLink" title="Re-send Verification Link" tabindex="3">re-send verification link</a>
+            <a href="javascript:void(0)" id="resendLink" class="btn-common btn-grey form-btn-transparent resendLink" title="Re-send Activation Email" tabindex="1">Re-send Activation Email</a>
             <div class="success" id="successMessage"></div>
             <div class="error" data-for="general_error"></div>
           </div>

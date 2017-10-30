@@ -18,8 +18,7 @@
           end
       %>
       <div class="simple-token-form">
-        <h1 class="text-center form-header">Enter a name for your token. If it's available, <br/>we'll reserve it for
-          you.</h1>
+        <h1 class="text-center form-header">Reserve your branded token name</h1>
 
         <form class="user-form" method="POST" action="/api/user/bt-submit" id="userBtForm">
           <div class="form-group">
@@ -28,8 +27,8 @@
             <div class="error" data-for="bt_name"></div>
           </div>
           <div class="form-instructions text-center" style="max-width: 350px;font-size: 14px;padding: 10px 0">All name reservations are
-            subject to approval from the OpenST Foundation and Trademark rights. For more details
-            <a href="javascript:void(0)">click here</a> for <a href="">terms and conditions</a> of name reservations.
+            subject to approval from the OpenST Foundation and Trademark rights. For more details refer to
+            <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/terms" title="Terms and Conditions" target="_blank">Terms and Conditions</a>.
           </div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <div class="user-form-footer login-page-footer">
