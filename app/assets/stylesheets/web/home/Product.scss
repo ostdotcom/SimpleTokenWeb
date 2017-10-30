@@ -1,6 +1,6 @@
 .container-jumbotron{
   background-color: #f7faf8;
-  background: linear-gradient(to bottom, #ffffff 0%, #f7faf8 50%, #f7faf8 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 20%, #f7faf8 80%, #f7faf8 100%);
 
   .copy{
     max-width: 600px;
@@ -97,7 +97,7 @@
       }
       .title{
         color: #6ca3a9;
-        font-weight: 500;
+        font-weight: 300;
       }
     }
 
@@ -295,7 +295,7 @@
         .part-content{
           img{
             width: auto;
-            max-height: 350px;
+            max-height: 400px;
             max-width: 88%;
           }
         }
