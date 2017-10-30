@@ -77,6 +77,10 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
   @include icon-generator(98px, 98px, -766px, -878px, -880px, -880px, 55);
 }
 
+.social-github-icon-small{
+  @include icon-generator(98px, 98px, -766px, -878px, -766px, -766px, 30);
+}
+
 .download-btn{
   &:hover{
     .download-icon{
