@@ -1,1 +1,1 @@
-//= require web/about/About
+//= require web/common/StickyHeader

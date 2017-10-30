@@ -1,7 +1,7 @@
 //= require plugins/slick/slick
 //= require web/home/Index
 //= require web/common/PressVideos
-//= require web/about/About
+//= require web/common/StickyHeader
 //= require web/token_sale/Timer
 //= require plugins/radialIndicator/radialIndicator
 //= require plugins/jquery-visible/jquery.visible
