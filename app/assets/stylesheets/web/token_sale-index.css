@@ -7,6 +7,7 @@
  *= require web/common/Icons
  *= require web/common/Social
  *= require web/token_sale/Index
+ *= require web/token_sale/TokenAllocation
  *= require web/common/NewTimer
  *= require web/common/Press
  *= require web/common/FoundingTeam

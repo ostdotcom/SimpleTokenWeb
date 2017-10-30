@@ -1,0 +1,17 @@
+.container-token-allocation {
+  .token-allocation-desc-wrap,
+  .token-allocation-radial-wrap, 
+  .token-allocation-radial {
+    display: inline-block;
+  }
+
+  .token-allocation-radial-wrap {
+    float: left;
+  }
+
+  .token-allocation-desc-wrap {
+    float: right;
+  }
+
+}
+

@@ -1,0 +1,64 @@
+<%
+  allocation_data = [
+    {
+      heading: "Token Sale",
+      description: "240,000,000 ST to be sold in token sale #1, representing 30% of the total token supply.",
+      init_value: 30,
+      bar_color: "#6ba4aa",
+    },
+    {
+      heading: "Future Token Sale",
+      description: "12.9% of token supply reserved for possible future token sales, locked in a smart contract for a minimum of 6 months.",
+      init_value: 12.9,
+      bar_color: "#91c0ad",
+    },
+    {
+      heading: "Accelerator Program",
+      description: "27.2% of token supply reserved for grants for promising projects building branded token economies on Simple Token.",
+      init_value: 27.2,
+      bar_color: "#e4b030",
+    },
+    {
+      heading: "Early Backers",
+      description: "5.6% of tokens allocated to early financial backers who supported the project development since early 2016. 3 year vesting schedule.",
+      init_value: 5.6,
+      bar_color: "#7f9183",
+    },
+    {
+      heading: "Advisors",
+      description: "10% of tokens allocated to project advisors. 2 year linear schedule.",
+      init_value: 10,
+      bar_color: "#6c9ba9",
+    },
+    {
+      heading: "Founders",
+      description: "10% of tokens allocated to the Founding Team. 3 to 4 year vesting schedules.",
+      init_value: 10,
+      bar_color: "#597a84",
+    },
+  ]
+%>
+
+<div class="container container-token-allocation" id="container-token-allocation">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
+        <h2 class="">Token Allocation</h2>
+
+        <% allocation_data.each_with_index do | data, indx | %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="token-allocation-radial-wrap">
+              <span class="token-allocation-radial" 
+                    data-init-value="<%= data[:init_value] %>"
+                    data-bar-color="<%= data[:bar_color] %>"></span>
+            </div>
+            <div class="token-allocation-desc-wrap">
+              <h3 class="token-allocation-desc-header"><%= data[:heading] %></h3>
+              <div class="token-allocation-desc-text"><%= data[:description] %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
