@@ -5,11 +5,28 @@
     margin-bottom: 30px;
     letter-spacing: 0.5px;
   }
+  .token-allocation-radial-wrap{
+    padding-right: 20px;
+  }
   .ver-middle{
     display: table;
+    font-size: 0;
     .ver-middle-inner{
       display: table-cell;
       vertical-align: middle;
     }
+  }
+  .header-title{
+    font-weight: 600;
+    color: #6ca3a9;
+    margin-top: 0;
+    font-size: 18px;
+  }
+  .desc{
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    color: #597a84;
+    font-weight: 300;
   }
 }
