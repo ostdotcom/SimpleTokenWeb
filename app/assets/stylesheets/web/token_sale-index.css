@@ -12,4 +12,5 @@
  *= require web/common/Press
  *= require web/common/FoundingTeam
  *= require web/common/PressVideos
+ *= require web/common/Telegram
  */

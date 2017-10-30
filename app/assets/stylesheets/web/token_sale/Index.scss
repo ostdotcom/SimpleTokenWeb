@@ -344,7 +344,16 @@
       text-decoration: none;
     }
   }
+  &.container-faqs{
+    .header-title{
+      text-transform: none;
+    }
+    .desc{
+      font-weight: 300;
+    }
+  }
 }
+
 
 .nav-sticky {
   position: fixed;

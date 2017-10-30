@@ -1,0 +1,43 @@
+<%
+  faqs_data = [
+    {
+      question: "How does early access work?",
+      answer: "The token sale starts on November 14, 2017. The first day of the token sale is restricted to Early Access whitelisted individuals only. To get on the Early Access whitelist, register at https://simpletoken.org/ between 1-11 November, 2017. A standard KYC / AML / CTF compliance check is required. Once your KYC / AML / CTF is approved, you will be added to the Early Access whitelist."
+    },
+    {
+      question: "What if i miss the preregistration period?",
+      answer: "If you register after 11 November you can still register and participate in the Public token sale which starts on 15 November. A standard KYC/AML/CTF compliance check is required. Once your KYC / AML / CTF is approved, you will be added to the Public Sale whitelist."
+    },
+    {
+      question: "Requirements or restrictions?",
+      answer: "Any individual over age of 18, who passes KYC / AML / CTF checks can participate in the token sale with the exception of residents of U.N sanctioned countries, China and New York State (USA). To learn more about the KYC / AML / CTF requirements or about the specific restrictions please visit our FAQ pages or ask our team in our Telegram channel."
+    },
+    {
+      question: "Which ETH address should you send the money in?",
+      answer: "Simple Token will never publish an ETH address here or in any emails, or on social media sites. The only place you will get our ETH address is when you log into your account on https://sale.simpletoken.org and only after you have completed all requirements to enable your account to purchase."
+    },
+  ]
+%>
+
+<div class="container container-sale-details container-faqs paddingTop57" id="faq">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
+        <h2 class="header text-center">FAQ’s</h2>
+        <% faqs_data.each_with_index do | data, indx | %>
+          <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+            <div class="well">
+              <h3 class="header-title" style=""><%= data[:question] %></h3>
+              <div class="desc"><%= data[:answer] %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <a href="javascript:void(0)" target="_blank" title="See All Faq" class="ext-links">See All Faq</a>
+    <a href="javascript:void(0)" target="_blank" title="Go To Telegram" class="ext-links">Go To Telegram</a>
+    <a href="javascript:void(0)" target="_blank" title="Registration Guide" class="ext-links">Registration Guide</a>
+  </div>
+</div>
