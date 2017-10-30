@@ -421,3 +421,19 @@
     display: block !important;
   }
 }
+
+.token-sale-progress{
+  padding-top: 25px;
+  margin-top: 20px;
+  border-top: 2px solid rgba(145, 192, 173, 0.1);
+  .progress{
+    background-color: #fff;
+    border: solid 1px #8fc0ae;
+    box-shadow: none;
+    height: 35px;
+  }
+  .progress-bar{
+    background-color: #8fc0ae;
+    box-shadow: none;
+  }
+}
