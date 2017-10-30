@@ -49,7 +49,8 @@
               </span>
             </div>
             <div class="col-sm-6" style="text-align: right;">
-              <span></span>
+              <a href="/admin/whitelist-dashboard" title="Log out" class="logOut">Whitelist Dash</a>
+              <span> | </span>
               <a href="/admin/logout" title="Log out" class="logOut">Log out</a>
             </div>
           </div>
@@ -74,9 +75,6 @@
             </option>
             <option value="<%= GlobalConstant::UserKycDetail.denied_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.denied_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.denied_admin_status] %>
-            </option>
-            <option value="<%= GlobalConstant::UserKycDetail.whitelisted_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.whitelisted_admin_status %> >
-              <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.whitelisted_admin_status] %>
             </option>
           </select>
         </form>
