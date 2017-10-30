@@ -51,9 +51,9 @@
       $(window).scroll(function(){
         var scrollPos = $(window).scrollTop();
         if(scrollPos >= navOffset){
-          $('.container-about-nav').addClass("sticky");
+          $('.container-about-nav').addClass("nav-sticky");
         } else{
-          $('.container-about-nav').removeClass("sticky");
+          $('.container-about-nav').removeClass("nav-sticky");
         };
       });
     }

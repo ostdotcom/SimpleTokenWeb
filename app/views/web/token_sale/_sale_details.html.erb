@@ -1,0 +1,62 @@
+<%
+  sale_details_data = [
+    {
+      heading: "Hard Cap",
+      description: "20,000,00000"
+    },
+    {
+      heading: "Market Cap",
+      description: "$20,000,000"
+    },
+    {
+      heading: "Total Token Supply",
+      description: "1 Simple Token = 0.01 ETH"
+    },
+    {
+      heading: "Erc20 Token",
+      description: "Yes"
+    },
+    {
+      heading: "Token Public Sale Price (Eth)",
+      description: "0.035"
+    },
+    {
+      heading: "Token Public Sale Price (Usd)",
+      description: "$98473298"
+    },
+    {
+      heading: "Minimum Purchase",
+      description: "0.1 ETH"
+    },
+    {
+      heading: "Maximum Purchase",
+      description: "TBA"
+    },
+    {
+      heading: "Token Distribution",
+      description: "Immediate"
+    },
+    {
+      heading: "Token Activation",
+      description: "No later than December 12, 2017"
+    },
+  ]
+%>
+
+<div class="container container-sale-details paddingTop57" id="saledetails">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
+        <h2 class="header text-center">Sale Details</h2>
+        <% sale_details_data.each_with_index do | data, indx | %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="well">
+              <h3 class="header-title"><%= data[:heading] %></h3>
+              <div class="desc"><%= data[:description] %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
