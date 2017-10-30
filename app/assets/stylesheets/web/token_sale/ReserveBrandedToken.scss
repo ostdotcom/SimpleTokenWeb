@@ -1,3 +1,6 @@
+$btn-width: 124px;
+$txt-margin: ($btn-width)/2;
+
 .container-reserve{
 
   .header{
@@ -17,11 +20,17 @@
     text-align: center;
   }
 
-  .user-eth-address {
+
+  .ver-middle {
+    vertical-align: middle;
+  }
+
+  .reserve-token-name-fieldset {
     border: 0;
     padding: 0;
     margin-top: 20px;
     position: relative;
+
     .reserve-token-name-input {
       width: 100%;
       height: 50px;
@@ -35,6 +44,9 @@
       border: solid 1px #cdd7da;
       padding: 15px 18px;
       font-weight: 300;
+      padding-right: $btn-width;
+
+
       &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         color: #cdd7da;
       }
@@ -42,9 +54,6 @@
         color: #cdd7da;
       }
       :-ms-input-placeholder { /* IE 10+ */
-        color: #cdd7da;
-      }
-      :-moz-placeholder { /* Firefox 18- */
         color: #cdd7da;
       }
     }
@@ -59,7 +68,16 @@
       padding: 0 15px;
       font-weight: 500;
       letter-spacing: 0.4px;
+      min-width: $btn-width;
+    }
+    .reserve-token-name-success {
+      display: block;
+      position: absolute;
+      padding: 11px 15px;
+      background-color: #ffffff;
+      top: 1px;
+      width: calc(100% - 4px);
+      margin: 0 2px;
     }
   }
-
 }

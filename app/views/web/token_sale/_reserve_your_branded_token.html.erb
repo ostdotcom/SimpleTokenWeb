@@ -1,3 +1,4 @@
+
 <section class="container container-reserve">
 
   <div class="row">
@@ -7,17 +8,17 @@
         <p class="desc">Every purchase of Simple Tokens includes a branded token name reservation. What will your token be named? Please note: All token name reservations are subject to project vetting and applicable trademark laws prior to approval for launch on Simple Token sidechains.</p>
 
       <div id="reserve-token-name-input-wrap" class="dashboard-page" style="margin: 0 auto">
-        <fieldset id="reserve-token-name-fieldset" class="user-eth-address">
-          <input type="text" name="user_etherenum_address" id="reserve-token-name-input" class="reserve-token-name-input" placeholder="Enter the ETH Address you registered with" value="" />
+        <fieldset id="reserve-token-name-fieldset" class="reserve-token-name-fieldset">
+          <input type="text" id="reserve-token-name-input" class="reserve-token-name-input" placeholder="Reserve your branded token name" value="" readonly />
           <input type="button" id="reserve-token-name-validate-btn" class="btn-gold reserve-token-name-validate-btn" value="CHECK">
+          <div id="reserve-token-name-success" class="reserve-token-name-success" style="display:none;">
+            <span class="kyc-status-icon-approved ver-middle"></span>
+            <span class="ver-middle">Branded Token Name Reserved</span>
+          </div>
         </fieldset>
-        <div class="errors-wrap">
-          <div class="error" data-for="user_etherenum_address"></div>
-          <div class="error" data-for="general_error"></div>
-        </div>
       </div>
 
     </div>
+    
   </div>
-
 </section>
