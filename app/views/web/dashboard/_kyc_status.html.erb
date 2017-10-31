@@ -62,8 +62,7 @@
                     <span class="ver-middle"><%= @presenter_obj.is_bonus_confirmed? ? "#{@presenter_obj.formatted_bonus_value}% Bonus Confirmed" : '10% Bonus Pending' %></span>
                 </span>
                 <% unless @presenter_obj.is_bonus_confirmed? %>
-                    <a href="javascript:void(0)" id="prove-support-link" class="collapsed pull-right" data-toggle="collapse" data-target="#prove-support-content">Prove
-                      Support</a>
+                    <a href="javascript:void(0)" id="prove-support-link" class="collapsed pull-right" data-toggle="collapse" data-target="#prove-support-content">PROVE SUPPORT</a>
                 <% end %>
               </div>
               <div id="prove-support-content" class="panel-collapse collapse prove-support-content text-center">

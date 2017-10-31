@@ -83,23 +83,23 @@
           };
         })( frameStr );
 
-        oThis.frames.push( FrameFactory(frameFn, grpId, 100) );
+        oThis.frames.push( FrameFactory(frameFn, grpId, 150) );
       }
     },
     generateButtonFrames: function () {
       var grpId = "btn_animation";
       
       //Set button active state.
-      oThis.frames.push( FrameFactory(oThis.buttonActiveFrame, grpId, 200) );
+      oThis.frames.push( FrameFactory(oThis.buttonActiveFrame, grpId, 150) );
 
       //Set button 'CHECKING...' text.
-      oThis.frames.push( FrameFactory(oThis.buttonCheckingFrame, grpId, 200) );
+      oThis.frames.push( FrameFactory(oThis.buttonCheckingFrame, grpId, 1000) );
 
       //Show Success
       oThis.frames.push( FrameFactory(oThis.successFrame, grpId, 1000) );
 
       //Show Last Frame
-      oThis.frames.push( FrameFactory(oThis.lastFrame, grpId, 1000) );
+      oThis.frames.push( FrameFactory(oThis.lastFrame, grpId, 2000) );
 
     },
     buttonActiveFrame: function () {
@@ -110,7 +110,7 @@
     buttonCheckingFrame: function () {
       var jBtn = oThis.jBtn;
       jBtn.removeClass("active-cls");
-      jBtn.val("CHECKING...");
+      jBtn.val("RESERVING...");
       oThis.playNextFrame();
     },
     successFrame: function () {
@@ -186,7 +186,7 @@
 
       frameFn = frames[ currentFrameIndex ];
       if ( oThis.DEBUG ) {
-        console.log("currentFrameIndex = " + currentFrameIndex, "frames.length = " , frames.length);
+        console.log("currentFrameIndex = " + currentFrameIndex, "frames.length = " , frames.length, "frameFn.frameTime = " , frameFn.frameTime);
         console.log("frameFn" , frameFn);
         console.log("Will play frameFn.frameId = " , frameFn.frameId , "frameFn.frameIndx =" , frameFn.frameIndx , "frameFn.frameGroupId = " , frameFn.frameGroupId);
       }

@@ -51,7 +51,7 @@
             });
 
             $('#prove-support-content').on('hidden.bs.collapse', function() {
-              $(this).parents('.kyc-panel').find('#prove-support-link').text('Prove Support')
+              $(this).parents('.kyc-panel').find('#prove-support-link').text('PROVE SUPPORT')
             });
 
             $("#user-eth-address-validate-btn").click( function( event ) {
