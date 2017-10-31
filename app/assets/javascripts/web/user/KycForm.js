@@ -16,6 +16,7 @@
       $kycForm: $('#kycForm'),
 
       init: function (config) {
+          oThis.config = config;
           oThis.bindButtonActions();
           oThis.refreshIndicator();
           oThis.$kycForm.setCustomValidity();
@@ -162,12 +163,19 @@
 
               simpletoken.utils.errorHandling.clearFormErrors();
 
-              oThis.verifyModal('verify');
+              if(oThis.config.is_update === true){
 
-              $('#verifyModal').modal({
-                  backdrop: 'static',
-                  keyboard: false
-              }).modal('show');
+                  // Show verify modal only for progress and start upload process
+                  oThis.verifyModal();
+                  oThis.getSignedUrls();
+
+              } else {
+
+                  // Show verify modal with checkboxes
+                  oThis.verifyModal();
+                  oThis.verifyModal('verify');
+
+              }
 
           } else {
 
@@ -282,7 +290,14 @@
 
           $verifyModal = $('#verifyModal');
 
-          if(mode == 'verify' || typeof mode == 'undefined'){
+          if(typeof mode == 'undefined'){
+              $verifyModal.modal({
+                  backdrop: 'static',
+                  keyboard: false
+              }).modal('show');
+          }
+
+          if(mode == 'verify'){
               $verifyModal.find('.verify-content').show();
               $verifyModal.find('.loader-content').hide();
               $verifyModal.find('.close').show();
@@ -320,9 +335,5 @@
       }
 
   };
-
-  $(document).ready(function () {
-    oThis.init({i18n: {}});
-  });
 
 })(window);
