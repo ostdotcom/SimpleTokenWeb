@@ -169,7 +169,7 @@
               simpletoken.utils.errorHandling.clearFormErrors();
 
               oThis.verifyModal('verify');
-
+              $('#verifyModal').find("input:checkbox").prop('checked',false);
               $('#verifyModal').modal({
                   backdrop: 'static',
                   keyboard: false
