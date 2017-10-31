@@ -286,3 +286,17 @@
 .container-social{
   padding-top: 40px;
 }
+
+.side-by-side-content{
+  @media (min-width: 768px) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+  }
+}
