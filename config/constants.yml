@@ -35,3 +35,6 @@ constants:
 
   local_path:
     geo_ip_file: <%= ENV['STW_GEOIP_FILE_WITH_PATH'] %>
+
+  memcached:
+    instances: <%= ENV['STW_MEMCACHED_INSTANCES'] %>
