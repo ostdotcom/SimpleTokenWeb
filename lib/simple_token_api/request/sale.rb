@@ -28,6 +28,7 @@ module SimpleTokenApi
       # @return [Result::Base] returns an object of Result::Base class
       #
       def get_sale_stat
+        Rails.logger.info("---- getting sale details from simple token api")
         get("details")
       end
 
