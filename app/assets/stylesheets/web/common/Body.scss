@@ -1,4 +1,12 @@
 // HTML and Body styling
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
 html,
 body{
   font-family: 'Quasimoda', Source Sans Pro, sans-serif;
@@ -18,10 +26,6 @@ body{
 
 .poRel{
   position: relative;
-}
-
-.height100vh{
-  height: 100vh;
 }
 
 // Generic reusable classes
@@ -215,7 +219,15 @@ h1.page-title{
 
 // Footer CSS
 .container-footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
   font-size: 14px;
+  @media (max-width: 767px) {
+    font-size: 10px;
+  }
   font-weight: 300;
   letter-spacing: 1.3px;
   text-align: center;
