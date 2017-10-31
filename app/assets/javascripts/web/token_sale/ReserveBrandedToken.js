@@ -26,7 +26,7 @@
     jInput: null,
     jBtn: null,
     jSuccess: null,
-    tokenNames: ["PepoCoin", "SunilCoin", "ThahirCoin", "AkshayCoin", "AbhayCoin", "KedarCoin", "AlpeshCoin","AmanCoin", "RachinCoin"],
+    tokenNames: ["GameToken", "BikeCoin", "FitPoints"],
     frames: [],
     currentFrameIndex: 0,
     isPaused: true,
