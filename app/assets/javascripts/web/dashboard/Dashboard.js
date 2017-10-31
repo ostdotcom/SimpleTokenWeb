@@ -96,7 +96,7 @@
         },
         getFoundationEthereumAddress: function () {
             var jModal = $('#ethereum-confirm-modal'),
-                dataUrl = "/api/user/ethereum-address"
+                dataUrl = "/api/user/token-sale-foundation-address"
             ;
             $("#userConfirm").hide();
             $("#user-confirm-loader").removeClass( "hide" );
