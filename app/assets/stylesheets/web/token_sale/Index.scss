@@ -37,6 +37,7 @@
     color: #91c0ad;
     font-size: 12px;
     font-weight: 600;
+    letter-spacing: 2px;
     text-transform: uppercase;
   }
 
@@ -308,7 +309,7 @@
   .header{
     color: #6ca3a9;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     letter-spacing: 0.5px;
   }
   .well{
@@ -320,15 +321,15 @@
     background-color: rgba(244, 248, 246, 0.8);
     .header-title{
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 300;
       color: #597a84;
       margin-top: 0;
       letter-spacing: 0.4px;
       text-transform: uppercase;
     }
     .desc{
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 18px;
+      font-weight: 500;
       color: #597a84;
     }
   }
@@ -339,7 +340,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     border-bottom: solid 1px #597a84;
-    &:hover{
+    &:hover, &:focus{
       text-decoration: none;
     }
   }
@@ -357,7 +358,7 @@
   .header{
     color: #6ca3a9;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     letter-spacing: 0.5px;
   }
 
@@ -371,7 +372,8 @@
   .copy{
     h3{
       font-size: 20px;
-      color: #597a84;
+      color: #6ca3a9;
+      line-height: 1.2;
     }
   }
 
@@ -381,7 +383,7 @@
   }
 
   .desc{
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4;
     letter-spacing: 0.2px;
     color: #597a84;
