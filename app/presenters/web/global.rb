@@ -16,6 +16,10 @@ module Presenters
         current_time >= GlobalConstant::StTokenSale.general_access_sale_start_date
       end
 
+      def is_early_access_sale_on?
+        (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date) && !has_general_access_sale_started?
+      end
+
       def has_early_access_register_ended?
         current_time >= GlobalConstant::StTokenSale.early_access_register_end_date
       end
