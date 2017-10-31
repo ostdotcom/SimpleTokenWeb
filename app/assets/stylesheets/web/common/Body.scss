@@ -301,6 +301,7 @@ input[type="checkbox"]:checked ~ label::after{
   &.modal {
     text-align: center;
     padding: 0!important;
+    z-index: 1070;
   }
   &.modal:before {
     content: '';
