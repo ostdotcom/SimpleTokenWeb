@@ -31,9 +31,9 @@ $rows: ceil($items/2);
 
 /* Card sizing */
 
-$card-height: 236px;
+$card-height: 254px;
 $card-width: 354px;
-$inner-margin: 5px;
+$inner-margin: 15px;
 $number-size: 20px;
 $stagger: 180px;
 $outer-margin: 45px;
@@ -172,7 +172,7 @@ $counter: $items - $rows + 2;
       display: flex;
       align-items: center;
       color: #fff;
-      background-color: rgba(145, 192, 173, 0.9);
+      background-color: #91C0AD;
       .number-box {
         display: inline;
         float: left;
@@ -190,7 +190,7 @@ $counter: $items - $rows + 2;
     }
 
     .head::after {
-      border-color: rgba(145, 192, 173, 0.9)
+      border-color: #91C0AD;
     }
     .body {
       background: #fff;
@@ -198,7 +198,7 @@ $counter: $items - $rows + 2;
       padding: 14px 10px;
       p {
         font-size: 16px;
-        line-height: 18px;
+        line-height: 22px;
         font-weight: 300;
         color: #597a84;
         margin-bottom: $inner-margin;
