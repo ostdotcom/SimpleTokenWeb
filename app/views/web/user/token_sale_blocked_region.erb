@@ -1,4 +1,80 @@
-<div style="padding-top:50px;text-align:center">
-  <span style="font-size:35px;color: black;">The country you are in is not entitled to participate in the ST token sale and therefore your current IP is blacklisted.
-    Please refer to the <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/terms" style="color: black;">Terms and Conditions page.</a></span>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+      html, body {
+          height: 100%;
+      }
+
+      body {
+          font-family: arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          text-align: center;
+      }
+
+      @media only screen and (max-width: 767px) {
+          img {
+              width: 80%;
+          }
+      }
+
+      @media only screen and (min-width: 768px) {
+          img {
+              width: 20%;
+              padding-top: 50px;
+          }
+      }
+
+      .desc2 {
+          letter-spacing: 0.4px;
+          color: #435353;
+          font-size: 20px;
+          font-weight: 300;
+          padding: 10px 300px 20px 300px;
+          margin: 30px 0 20px;
+      }
+
+      .desc1 {
+          letter-spacing: 0.4px;
+          color: #435353;
+          font-size: 32px;
+          font-weight: 300;
+          margin: 30px 0 20px;
+      }
+
+      .homeBtn {
+          background-color: #e4b030;
+          display: inline-block;
+          border-radius: 30px;
+          padding: 15px 40px;
+          color: #fff;
+          font-weight: 300;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          text-decoration: none;
+      }
+  </style>
+</head>
+
+<body>
+
+<div class="errorPageContent">
+  <div class="errorPageContentInner">
+    <div>
+      <a href="/"><img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo.png" alt="simpletoken" class="simpletoken-logo"/></a>
+    </div>
+
+    <div class="desc1">THE IP YOU ARE TRYING TO CONNECT IS BLOCKED</div>
+    <div class="desc2">The country you are in is not eligible to participate in the ST token sale and therefore your
+      current IP is blocked. Please refer to the Terms and Conditions page.
+    </div>
+    <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/terms" class="homeBtn" title="Lets Get You Home">terms
+      and conditions</a>
+  </div>
 </div>
+
+
+</body>
+</html>

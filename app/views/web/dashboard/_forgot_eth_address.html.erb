@@ -3,7 +3,11 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="text-center" id="user-eth-address">
-          <div class="header">Check your ETH address registration status and ST balance</div>
+          <% if @presenter_obj.can_purchase? %>
+              <div class="header">Check your ETH address registration status and ST balance</div>
+          <% else %>
+              <div class="header">Check your ETH address registration status</div>
+          <% end %>
 
           <div id="user-eth-address-input-wrap" class="dashboard-page" style="margin: 0 auto">
             <fieldset id="user-eth-address-fieldset" class="user-eth-address">

@@ -32,16 +32,13 @@ module GlobalConstant
       private
 
       def token_sale_details
-        get_token_sale_details_from_memcache.present? ?
-            get_token_sale_details_from_memcache :
-            get_token_sale_details_from_api
+        data = get_token_sale_details_from_memcache
+        data.present? ? data : get_token_sale_details_from_api
       end
 
       def get_token_sale_details_from_memcache
-        @get_token_sale_details_from_memcache ||= begin
-          memcache_key_object = MemcacheKey.new('token_sale.sale_details')
-          Memcache.read(memcache_key_object.key_template)
-        end
+        memcache_key_object = MemcacheKey.new('token_sale.sale_details')
+        Memcache.read(memcache_key_object.key_template)
       end
 
       def get_token_sale_details_from_api
