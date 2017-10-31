@@ -236,7 +236,7 @@ module Presenters
         private
 
         def current_time
-          @current_time ||= Time.zone.now
+          @current_time ||= Time.zone.now + @params[:test_after_days].days
         end
 
       end
