@@ -44,6 +44,7 @@
       $('.sticky-action-buttons-container').on('click', '.button-active', function () {
         var r = confirm('Please confirm the action !!')
           , that = this;
+        $('.error[data-for="action_error"]').hide();
         if (r == true) {
           var $form = $('#caseActionForm');
           $.ajax({
@@ -55,6 +56,8 @@
               if (response.success == true) {
                 window.location = window.location;
                 return false;
+              } else {
+                $('.error[data-for="action_error"]').text(response.err.msg).fadeIn(10).fadeOut(8000);
               }
             },
             error: function (jqXHR, exception) {

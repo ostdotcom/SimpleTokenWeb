@@ -65,7 +65,7 @@
                   format: 'dd/mm/yyyy',
                   autoclose: true,
                   startDate: '01/01/1900',
-                  endDate: '31/12/1999',
+                  endDate: '01/11/1999',
                   orientation: 'bottom'
               })
               .on('changeDate', function(e) {

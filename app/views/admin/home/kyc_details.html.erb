@@ -298,6 +298,7 @@
 <div class="sticky-action-buttons-container <%= 'case-closed' if is_case_closed %>">
 
   <%= is_case_closed ? 'Case Closed' : '' %>
+  <div class="error" data-for="action_error" style="display: none;"></div>
   <form id="caseActionForm" method="POST">
     <input type="hidden" name="case_id" value="<%= @case_id %>">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>

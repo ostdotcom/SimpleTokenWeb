@@ -34,7 +34,7 @@
                 method: 'GET',
                 success: function (response) {
                     if (response.success == true) {
-                      $('#successMessage').show().text('Verification Link has been sent!');
+                      $('#successMessage').show().text('Activation email has been sent!');
                         return false;
                     } else {
                       utilsNs.errorHandling.displayFormErrors(response);

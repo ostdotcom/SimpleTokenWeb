@@ -15,9 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a <% if params[:action] == 'index' && params[:controller] == 'web/home' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/" title="Home" <% end %> >Home</a></li>
-        <% unless Rails.env.production? %>
         <li><a <% if params[:action] == 'product' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="Product" <% end %> >Product</a></li>
-        <% end %>
         <li><a <% if params[:action] == 'about' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/team" title="Team" <% end %> >Team</a></li>
         <li><a <% if params[:action] == 'documents' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" title="Documents" <% end %> >Documents</a></li>
         <li><a <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/faq/" title="FAQ" <% end %> >FAQ</a></li>
