@@ -181,7 +181,7 @@ module Presenters
         end
 
         def show_ethereum_address_whitelist_status_box?
-          false && is_kyc_approved?
+          is_kyc_approved?
         end
 
         def ethereum_address_whitelist_done?
@@ -210,7 +210,7 @@ module Presenters
         end
 
         def formatted_bonus_value
-          (bonus_value.to_i == bonus_value) ?  bonus_value.to_i : bonus_value
+          (bonus_value.to_i == bonus_value) ? bonus_value.to_i : bonus_value
         end
 
         def is_bonus_approval_date_over?
