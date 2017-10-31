@@ -116,6 +116,10 @@ module Presenters
           (token_sale_active_status.to_i != 1) && is_sale_live_for_user?
         end
 
+        def has_sale_ended_before_time?
+          @has_sale_ended_before_time ||= GlobalConstant::StTokenSale.has_sale_ended_before_time?
+        end
+
         ###########################################
 
 
