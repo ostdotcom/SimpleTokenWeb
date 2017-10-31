@@ -246,7 +246,7 @@
     box-shadow: 0 0 0 1px #fff;
     -webkit-appearance: none;
     border: solid 1px #cdd7da;
-    padding: 15px 18px;
+    padding: 15px 80px 15px 15px;
     font-weight: 300;
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: #cdd7da;
@@ -271,6 +271,7 @@
     border: none;
     padding: 0 15px;
     font-weight: 500;
+    width: 80px;
     letter-spacing: 0.4px;
   }
 }
