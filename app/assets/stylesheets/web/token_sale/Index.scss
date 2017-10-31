@@ -140,7 +140,9 @@
     color: #6ca3a9;
     margin-top: 0;
     margin-bottom: 40px;
-    letter-spacing: 0.5px;
+    font-size: 38px;
+    letter-spacing: 1.3px;
+    font-weight: 300;
   }
   .well{
     padding: 15px;
@@ -194,7 +196,10 @@
     color: #6ca3a9;
     margin-top: 0;
     margin-bottom: 40px;
-    letter-spacing: 0.5px;
+    line-height: 1.5;
+    font-size: 38px;
+    font-weight: 300;
+    letter-spacing: 1.3px;
   }
 
   .image{
@@ -273,4 +278,8 @@
     background-color: #8fc0ae;
     box-shadow: none;
   }
+}
+
+.container-social{
+  padding-top: 40px;
 }
