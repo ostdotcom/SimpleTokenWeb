@@ -58,7 +58,7 @@
     generateEmptyFrame: function ( grpId ) {
       var frameFn = function () {
         oThis.jInput.val("");
-        oThis.jBtn.removeClass("active-cls").val("CHECK").show();
+        oThis.jBtn.removeClass("active-cls").val("RESERVE").show();
         oThis.jSuccess.hide();
         oThis.playNextFrame();
       };
@@ -92,7 +92,7 @@
       //Set button active state.
       oThis.frames.push( FrameFactory(oThis.buttonActiveFrame, grpId, 150) );
 
-      //Set button 'CHECKING...' text.
+      //Set button 'RESERVING...' text.
       oThis.frames.push( FrameFactory(oThis.buttonCheckingFrame, grpId, 1000) );
 
       //Show Success
@@ -120,7 +120,7 @@
       jBtn.fadeOut();
       jSuccess.fadeIn( function () {
         jBtn.hide();
-        jBtn.val("CHECK");  
+        jBtn.val("RESERVE");  
         oThis.playNextFrame();
       });
     },

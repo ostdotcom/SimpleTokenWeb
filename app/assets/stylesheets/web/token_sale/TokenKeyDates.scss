@@ -217,5 +217,8 @@ $counter: $items - $rows + 2;
     //     }
     //   }
     // }
+    &.demo-card--step5{
+      margin-bottom: 0;
+    }
   }
 }

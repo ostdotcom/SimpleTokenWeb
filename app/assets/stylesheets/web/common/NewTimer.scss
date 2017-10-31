@@ -7,6 +7,9 @@
     font-weight: 600;
     padding-bottom: 10px;
     text-align: center;
+    @media (max-width: 736px) {
+      line-height: 1.5;
+    }
     @media (min-width: 768px) {
       margin-top: 0;
     }
@@ -47,6 +50,7 @@
 
   .btn-gold{
     width: 80%;
+    margin-top: 30px;
     max-width: 320px;
   }
 }
