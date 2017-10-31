@@ -181,7 +181,7 @@ module Presenters
         end
 
         def show_ethereum_address_whitelist_status_box?
-          is_kyc_approved?
+          false && is_kyc_approved?
         end
 
         def ethereum_address_whitelist_done?

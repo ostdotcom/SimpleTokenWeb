@@ -46,7 +46,7 @@ module SimpleTokenWeb
     memcache_instance = GlobalConstant::Cache.memcached_instances
 
     memcache_options = {
-        namespace: "stw_#{Rails.env}",
+        namespace: "st_#{Rails.env}",
         expires_in: 1.day,
         compress: false,
         down_retry_delay: 5,

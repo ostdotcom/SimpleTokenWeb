@@ -86,6 +86,10 @@ module GlobalConstant
         @memcache_config ||= env_config.fetch('memcached', {}).with_indifferent_access
       end
 
+      def environment_name
+        Rails.env
+      end
+
       private
 
       # Env config

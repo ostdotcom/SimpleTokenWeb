@@ -6,7 +6,7 @@ module GlobalConstant
     class << self
 
       def early_access_sale_start_date
-       Time.zone.parse(config['sale_dates']['early_access_sale_start_date'])
+        Time.zone.parse(config['sale_dates']['early_access_sale_start_date'])
       end
 
       def general_access_sale_start_date
@@ -32,12 +32,16 @@ module GlobalConstant
       private
 
       def token_sale_details
-        return get_token_sale_details_from_memcache if get_token_sale_details_from_memcache.present?
-        get_token_sale_details_from_api
+        get_token_sale_details_from_memcache.present? ?
+            get_token_sale_details_from_memcache :
+            get_token_sale_details_from_api
       end
 
       def get_token_sale_details_from_memcache
-        @get_token_sale_details_from_memcache ||= Memcache.read('token_sale.sale_details')
+        @get_token_sale_details_from_memcache ||= begin
+          memcache_key_object = MemcacheKey.new('token_sale.sale_details')
+          Memcache.read(memcache_key_object.key_template)
+        end
       end
 
       def get_token_sale_details_from_api
