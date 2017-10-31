@@ -51,7 +51,7 @@ $timeline: rgba(145, 192, 173, 0.9);
 
 /* Calculations */
 
-$container-height: $rows * ($card-height + $outer-margin) + $stagger;
+$container-height: $rows * ($card-height + $outer-margin);
 $container-width: $card-width*2 + $outer-margin*3;
 $head-height: $number-size + 50;
 $body-height: $card-height - $head-height;
