@@ -108,11 +108,18 @@
               oThis.popoverPlacement = 'bottom'
           }
 
+          oThis.$kycForm.find('label[for=passport_file_path] .badge').popover({
+              placement: oThis.popoverPlacement,
+              content: $('#passport-popover').text(),
+              html: true,
+              trigger: 'hover'
+          });
+
           oThis.$kycForm.find('label[for=selfie_file_path] .badge').popover({
               placement: oThis.popoverPlacement,
               content: $('#selfie-popover').text(),
               html: true,
-              trigger: 'click'
+              trigger: 'hover'
           });
 
           $('#kycVerify').click(function(){
