@@ -13,11 +13,12 @@
       currentPercent: 0,
       formNames: ['passport_file_path','selfie_file_path'],
       popoverPlacement: 'right',
+      $kycForm: $('#kycForm'),
 
       init: function (config) {
           oThis.bindButtonActions();
           oThis.refreshIndicator();
-          $('#kycForm').setCustomValidity();
+          oThis.$kycForm.setCustomValidity();
       },
 
       bindButtonActions: function () {
@@ -60,7 +61,7 @@
               },
           });
 
-          $('input[name=birthdate]')
+          oThis.$kycForm.find('input[name=birthdate]')
               .datepicker({
                   format: 'dd/mm/yyyy',
                   autoclose: true,
@@ -72,7 +73,7 @@
                   $(this).trigger('change');
               });
 
-          $('select[name="nationality"]').on('changed.bs.select', function (e) {
+          oThis.$kycForm.find('select[name="nationality"]').on('changed.bs.select', function (e) {
               if($(this).val() == 'CHINESE'){
                   oThis.isChinese = true;
                   $('.residence-proof').show();
@@ -84,12 +85,12 @@
               }
           });
 
-          $('#kycForm input').change(function(){
+          oThis.$kycForm.find('input').change(function(){
               $(this).removeClass('border-error');
               $(this).closest('.form-group').find('.error[data-for]').text('');
           });
 
-          $('#kycForm input[type="file"]').change(function(){
+          oThis.$kycForm.find('input[type="file"]').change(function(){
               $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop());
           });
 
@@ -102,7 +103,7 @@
               oThis.popoverPlacement = 'bottom'
           }
 
-          $('#kycForm label[for=selfie_file_path] .badge').popover({
+          oThis.$kycForm.find('label[for=selfie_file_path] .badge').popover({
               placement: oThis.popoverPlacement,
               content: $('#selfie-popover').text(),
               html: true,
@@ -110,12 +111,7 @@
           });
 
           $('#kycVerify').click(function(){
-             if(
-                 $('#is_correct_information').is(':checked') === true &&
-                 $('#is_participating_token_distribution').is(':checked') === true &&
-                 $('#cannot_participate').is(':checked') === true &&
-                 $('#i_agree_terms_conditions').is(':checked') === true
-             ) {
+             if($('#verifyModal input:checkbox:checked').length == $('#verifyModal input:checkbox').length) {
                  simpletoken.utils.errorHandling.clearFormErrors();
                  oThis.getSignedUrls();
              } else {
@@ -139,27 +135,25 @@
           var v = false;
           simpletoken.utils.errorHandling.clearFormErrors();
 
-          $kycForm = $('#kycForm');
-
-          $kycForm.find('input[type="file"]').attr('required',false);
+          oThis.$kycForm.find('input[type="file"]').attr('required',false);
 
           oThis.formNames.forEach(function(value){
-              $kycForm.find('input[name="'+value+'"]').attr('required',true);
+              oThis.$kycForm.find('input[name="'+value+'"]').attr('required',true);
           });
 
-          $kycForm.find('input, select, textarea').each(function(){
+          oThis.$kycForm.find('input, select, textarea').each(function(){
               $(this).trigger('change');
           });
 
-          if( $kycForm.find('.error:not(:empty)').length > 0 ){
+          if( oThis.$kycForm.find('.error:not(:empty)').length > 0 ){
               v = false;
           } else {
               v = true;
           }
 
-          if(typeof $kycForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+          if(typeof oThis.$kycForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
               if(grecaptcha.getResponse() == ''){
-                  $kycForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+                  oThis.$kycForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
                   v = false;
               }
           }
@@ -169,7 +163,7 @@
               simpletoken.utils.errorHandling.clearFormErrors();
 
               oThis.verifyModal('verify');
-              $('#verifyModal').find("input:checkbox").prop('checked',false);
+
               $('#verifyModal').modal({
                   backdrop: 'static',
                   keyboard: false
@@ -286,38 +280,41 @@
 
       verifyModal: function(mode, message){
 
+          $verifyModal = $('#verifyModal');
+
           if(mode == 'verify' || typeof mode == 'undefined'){
-              $('#verifyModal .verify-content').show();
-              $('#verifyModal .loader-content').hide();
-              $('#verifyModal .close').show();
+              $verifyModal.find('.verify-content').show();
+              $verifyModal.find('.loader-content').hide();
+              $verifyModal.find('.close').show();
+              $verifyModal.find('input:checkbox').prop('checked',false);
           }
 
           if(mode == 'loader'){
-              $('#verifyModal .verify-content').hide();
-              $('#verifyModal .loader-content').show();
+              $verifyModal.find('.verify-content').hide();
+              $verifyModal.find('.loader-content').show();
           }
 
           if(mode == 'hide-close'){
-              $('#verifyModal .close').hide();
+              $verifyModal.find('.close').hide();
           }
 
           if(mode == 'show-close'){
-              $('#verifyModal .close').show();
+              $verifyModal.find('.close').show();
           }
 
           if(mode == 'hide-progress'){
-              $('#verifyModal .loader-content .progress').hide();
-              $('#verifyModal .loader-content .progress .progress-bar')
+              $verifyModal.find('.loader-content .progress').hide();
+              $verifyModal.find('.loader-content .progress .progress-bar')
                   .css('width', '1%')
                   .text('');
           }
 
           if(mode == 'show-progress'){
-              $('#verifyModal .loader-content .progress').show();
+              $verifyModal.find('.loader-content .progress').show();
           }
 
           if(mode == 'status-text'){
-              $('#verifyModal .loader-content .status').text(message);
+              $verifyModal.find('.loader-content .status').text(message);
           }
 
       }
