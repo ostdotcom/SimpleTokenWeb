@@ -142,25 +142,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # tmp basic auth
-  #
-  # * Author: Aman
-  # * Date: 15/10/2017
-  # * Reviewed By: Sunil
-  #
-  def tmp_basic_auth
-    users = {'simpleToken' => ['A$F^&n!@$ghf%7']}
-
-    authenticate_or_request_with_http_basic do |username, password|
-      if users[username].present? && users[username][0] == password
-        true
-      else
-        false
-      end
-    end
-
-  end
-
   # Delete the given cookie
   #
   # * Author: Aman
