@@ -95,6 +95,10 @@
               $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop());
           });
 
+          oThis.$kycForm.find('input[name="ethereum_address"]').change(function(){
+              oThis.isValidAddress( oThis.$kycForm.find('input[name="ethereum_address"]').val() );
+          });
+
           $("#kycSubmit").click(function (event) {
               event.preventDefault();
               oThis.validateForm();
@@ -131,6 +135,22 @@
           $refresh.val() == 'yes' ? location.reload(true) : $refresh.val('yes');
       },
 
+      isValidAddress: function(address){
+          $.ajax({
+              url: '/api/user/check-ethereum-address',
+              data: {
+                  'ethereum_address': address
+              },
+              success: function(response){
+                  if((response.success === false) || (response.err != undefined && response.err != '')){
+                      if(typeof response.err.error_data != undefined){
+                          oThis.$kycForm.find('.error[data-for="ethereum_address"]').text(response.err.error_data.ethereum_address);
+                      }
+                  }
+              }
+          });
+      },
+
       validateForm: function(){
 
           var v = false;
@@ -159,7 +179,7 @@
               }
           }
 
-          if(v === true) {
+          if(v === true && oThis.$kycForm.find('.error:not(:empty)').length == 0) {
 
               simpletoken.utils.errorHandling.clearFormErrors();
 
