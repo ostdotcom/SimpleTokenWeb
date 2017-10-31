@@ -13,6 +13,7 @@
       currentPercent: 0,
       formNames: ['passport_file_path','selfie_file_path'],
       popoverPlacement: 'right',
+      $kycForm: $('#kycForm'),
 
       init: function (config) {
           oThis.bindButtonActions();
@@ -60,7 +61,7 @@
               },
           });
 
-          $('input[name=birthdate]')
+          oThis.$kycForm.find('input[name=birthdate]')
               .datepicker({
                   format: 'dd/mm/yyyy',
                   autoclose: true,
@@ -72,7 +73,7 @@
                   $(this).trigger('change');
               });
 
-          $('select[name="nationality"]').on('changed.bs.select', function (e) {
+          oThis.$kycForm.find('select[name="nationality"]').on('changed.bs.select', function (e) {
               if($(this).val() == 'CHINESE'){
                   oThis.isChinese = true;
                   $('.residence-proof').show();
@@ -84,12 +85,12 @@
               }
           });
 
-          $('#kycForm input').change(function(){
+          oThis.$kycForm.find('input').change(function(){
               $(this).removeClass('border-error');
               $(this).closest('.form-group').find('.error[data-for]').text('');
           });
 
-          $('#kycForm input[type="file"]').change(function(){
+          oThis.$kycForm.find('input[type="file"]').change(function(){
               $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop());
           });
 
@@ -102,7 +103,7 @@
               oThis.popoverPlacement = 'bottom'
           }
 
-          $('#kycForm label[for=selfie_file_path] .badge').popover({
+          oThis.$kycForm.find('label[for=selfie_file_path] .badge').popover({
               placement: oThis.popoverPlacement,
               content: $('#selfie-popover').text(),
               html: true,
@@ -139,27 +140,25 @@
           var v = false;
           simpletoken.utils.errorHandling.clearFormErrors();
 
-          $kycForm = $('#kycForm');
-
-          $kycForm.find('input[type="file"]').attr('required',false);
+          oThis.$kycForm.find('input[type="file"]').attr('required',false);
 
           oThis.formNames.forEach(function(value){
-              $kycForm.find('input[name="'+value+'"]').attr('required',true);
+              oThis.$kycForm.find('input[name="'+value+'"]').attr('required',true);
           });
 
-          $kycForm.find('input, select, textarea').each(function(){
+          oThis.$kycForm.find('input, select, textarea').each(function(){
               $(this).trigger('change');
           });
 
-          if( $kycForm.find('.error:not(:empty)').length > 0 ){
+          if( oThis.$kycForm.find('.error:not(:empty)').length > 0 ){
               v = false;
           } else {
               v = true;
           }
 
-          if(typeof $kycForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+          if(typeof oThis.$kycForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
               if(grecaptcha.getResponse() == ''){
-                  $kycForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+                  oThis.$kycForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
                   v = false;
               }
           }
@@ -180,7 +179,7 @@
               if(typeof grecaptcha  != 'undefined'){
                   grecaptcha.reset();
               }
-              $('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
+              oThis.$kycForm.find('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
 
           }
 
