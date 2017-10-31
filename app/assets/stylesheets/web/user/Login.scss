@@ -1,8 +1,6 @@
 .sign-up-form{
-  min-height: 100vh;
-  @media (min-width: 768px) {
-    min-height: calc(100vh - 60px);
-  }
+  min-height: calc(100vh - 60px);
+  padding: 30px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,12 +65,5 @@
     &:hover, &:focus{
       text-decoration: none;
     }
-  }
-}
-
-
-.login-page-footer{
-  @media (max-width: 736px) {
-    margin-bottom: 30px;
   }
 }

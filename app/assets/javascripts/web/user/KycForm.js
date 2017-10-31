@@ -16,9 +16,10 @@
       $kycForm: $('#kycForm'),
 
       init: function (config) {
+          oThis.config = config;
           oThis.bindButtonActions();
           oThis.refreshIndicator();
-          $('#kycForm').setCustomValidity();
+          oThis.$kycForm.setCustomValidity();
       },
 
       bindButtonActions: function () {
@@ -111,12 +112,7 @@
           });
 
           $('#kycVerify').click(function(){
-             if(
-                 $('#is_correct_information').is(':checked') === true &&
-                 $('#is_participating_token_distribution').is(':checked') === true &&
-                 $('#cannot_participate').is(':checked') === true &&
-                 $('#i_agree_terms_conditions').is(':checked') === true
-             ) {
+             if($('#verifyModal input:checkbox:checked').length == $('#verifyModal input:checkbox').length) {
                  simpletoken.utils.errorHandling.clearFormErrors();
                  oThis.getSignedUrls();
              } else {
@@ -167,13 +163,18 @@
 
               simpletoken.utils.errorHandling.clearFormErrors();
 
-              oThis.verifyModal('verify');
+              if(oThis.config.is_update === true){
+                  // Show verify modal only for progress and start upload process
+                  oThis.verifyModal();
+                  oThis.getSignedUrls();
 
-              $('#verifyModal').find("input:checkbox").prop('checked',false);
-              $('#verifyModal').modal({
-                  backdrop: 'static',
-                  keyboard: false
-              }).modal('show');
+              } else {
+
+                  // Show verify modal with checkboxes
+                  oThis.verifyModal();
+                  oThis.verifyModal('verify');
+
+              }
 
           } else {
 
@@ -286,46 +287,52 @@
 
       verifyModal: function(mode, message){
 
-          if(mode == 'verify' || typeof mode == 'undefined'){
-              $('#verifyModal .verify-content').show();
-              $('#verifyModal .loader-content').hide();
-              $('#verifyModal .close').show();
+          $verifyModal = $('#verifyModal');
+
+          if(typeof mode == 'undefined'){
+              $verifyModal.modal({
+                  backdrop: 'static',
+                  keyboard: false
+              }).modal('show');
+          }
+
+          if(mode == 'verify'){
+              $verifyModal.find('.verify-content').show();
+              $verifyModal.find('.loader-content').hide();
+              $verifyModal.find('.close').show();
+              $verifyModal.find('input:checkbox').prop('checked',false);
           }
 
           if(mode == 'loader'){
-              $('#verifyModal .verify-content').hide();
-              $('#verifyModal .loader-content').show();
+              $verifyModal.find('.verify-content').hide();
+              $verifyModal.find('.loader-content').show();
           }
 
           if(mode == 'hide-close'){
-              $('#verifyModal .close').hide();
+              $verifyModal.find('.close').hide();
           }
 
           if(mode == 'show-close'){
-              $('#verifyModal .close').show();
+              $verifyModal.find('.close').show();
           }
 
           if(mode == 'hide-progress'){
-              $('#verifyModal .loader-content .progress').hide();
-              $('#verifyModal .loader-content .progress .progress-bar')
+              $verifyModal.find('.loader-content .progress').hide();
+              $verifyModal.find('.loader-content .progress .progress-bar')
                   .css('width', '1%')
                   .text('');
           }
 
           if(mode == 'show-progress'){
-              $('#verifyModal .loader-content .progress').show();
+              $verifyModal.find('.loader-content .progress').show();
           }
 
           if(mode == 'status-text'){
-              $('#verifyModal .loader-content .status').text(message);
+              $verifyModal.find('.loader-content .status').text(message);
           }
 
       }
 
   };
-
-  $(document).ready(function () {
-    oThis.init({i18n: {}});
-  });
 
 })(window);

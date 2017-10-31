@@ -82,6 +82,10 @@ module GlobalConstant
         @local_path ||= fetch_config.fetch('local_path', {}).with_indifferent_access
       end
 
+      def memcache_config
+        @memcache_config ||= env_config.fetch('memcached', {}).with_indifferent_access
+      end
+
       private
 
       # Env config

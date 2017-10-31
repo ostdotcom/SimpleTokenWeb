@@ -1,0 +1,4 @@
+token_sale:
+  sale_details:
+    key_template: 'token_sale_start_end_details'
+    expiry_in_hours: 3600
