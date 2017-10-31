@@ -246,7 +246,7 @@
     box-shadow: 0 0 0 1px #fff;
     -webkit-appearance: none;
     border: solid 1px #cdd7da;
-    padding: 15px 18px;
+    padding: 15px 80px 15px 15px;
     font-weight: 300;
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: #cdd7da;
@@ -271,6 +271,7 @@
     border: none;
     padding: 0 15px;
     font-weight: 500;
+    width: 80px;
     letter-spacing: 0.4px;
   }
 }
@@ -284,16 +285,6 @@
   font-weight: 500;
   padding: 20px 0;
   letter-spacing: 0.4px;
-}
-.token-sale-progress{
-  background-color: #fff;
-  border: solid 1px #6c9ba9;
-  box-shadow: none;
-  height: 50px;
-  .progress-bar{
-    background-color: #a5caca;
-    box-shadow: none;
-  }
 }
 
 

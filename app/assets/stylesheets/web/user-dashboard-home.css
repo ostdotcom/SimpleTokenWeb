@@ -6,4 +6,5 @@
  *= require web/common/Loader
  *= require web/dashboard/Dashboard
  *= require web/common/NewTimer
+ *= require web/common/Telegram
  */

@@ -164,7 +164,6 @@
               simpletoken.utils.errorHandling.clearFormErrors();
 
               if(oThis.config.is_update === true){
-
                   // Show verify modal only for progress and start upload process
                   oThis.verifyModal();
                   oThis.getSignedUrls();
@@ -182,7 +181,7 @@
               if(typeof grecaptcha  != 'undefined'){
                   grecaptcha.reset();
               }
-              $('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
+              oThis.$kycForm.find('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
 
           }
 

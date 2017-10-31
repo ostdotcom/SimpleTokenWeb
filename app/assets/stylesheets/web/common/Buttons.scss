@@ -28,11 +28,13 @@
   border-color: #e4b030;
   background: #e4b030;
   color: #fff;
+  &.focus-cls,
   &:focus{
     color: #fff;
     outline: none;
     text-decoration: none;
   }
+  &.hover-cls, &.active-cls,
   &:hover, &:active{
     color: #fff;
     text-decoration: none;

@@ -1,0 +1,65 @@
+<%
+  sale_details_data = [
+    {
+      heading: "Hard Cap",
+      description: "240,000,000 Tokens, $20M in value"
+    },
+    {
+      heading: "Market Cap",
+      description: "$66,666,666.67"
+    },
+    {
+      heading: "Total Token Supply",
+      description: "800,000,000 finite supply"
+    },
+    {
+      heading: "ERC20 TOKEN",
+      description: "Yes"
+    },
+    {
+      heading: "TOKEN PUBLIC SALE PRICE (ETH)",
+      description: "TBA 11 Nov, 2017"
+    },
+    {
+      heading: "TOKEN PUBLIC SALE PRICE (USD)",
+      description: "$0.0833"
+    },
+    {
+      heading: "Minimum Purchase",
+      description: "0.1 ETH"
+    },
+    {
+      heading: "Maximum Purchase",
+      description: "TBA 11 Nov, 2017"
+    },
+    {
+      heading: "Token Distribution",
+      description: "Immediate"
+    },
+    {
+      heading: "Token Activation",
+      description: "ASAP, no later than 12 Dec, 2017"
+    },
+  ]
+%>
+
+<div class="container container-sale-details paddingTop57" id="saledetails">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+      <div class="row">
+        <h2 class="header text-center">Sale Details</h2>
+        <% sale_details_data.each_with_index do | data, indx | %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="well">
+              <h3 class="header-title"><%= data[:heading] %></h3>
+              <div class="desc"><%= data[:description] %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center" style="margin-top: 30px">
+    <a href="https://drive.google.com/file/d/0B1E_xJPbELBKblpNak8xQS1WelU/view" target="_blank" title="Datasheet" class="ext-links">Datasheet</a><a href="https://docs.google.com/document/d/15NZeBs4ozy4o2qCFes7g7A0VAiaIatVu44U1uoe6VM0/edit" target="_blank" title="Terms And Conditions" class="ext-links">Terms And Conditions</a>
+  </div>
+</div>
