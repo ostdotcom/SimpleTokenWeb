@@ -6,7 +6,7 @@ class MemcacheKey
   #
   # * Author: Aman
   # * Date: 30/10/2017
-  # * Reviewed By:
+  # * Reviewed By: Sunil
   #
   def initialize(entity)
     buffer = self.class.config_for_entity(entity)
@@ -20,7 +20,7 @@ class MemcacheKey
   #
   # * Author: Aman
   # * Date: 30/10/2017
-  # * Reviewed By:
+  # * Reviewed By: Sunil
   #
   def self.config_for_entity(entity)
     config_for_all_keys[entity.to_sym]
@@ -30,7 +30,7 @@ class MemcacheKey
   #
   # * Author: Aman
   # * Date: 30/10/2017
-  # * Reviewed By:
+  # * Reviewed By: Sunil
   #
   # Sets @memcache_config
   #
