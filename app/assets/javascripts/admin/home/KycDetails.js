@@ -62,7 +62,7 @@
                             window.location = window.location;
                             return false;
                         } else {
-                            $form.find('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
+                            $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
                         }
                     },
                     error: function (jqXHR, exception) {
