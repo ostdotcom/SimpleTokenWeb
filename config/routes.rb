@@ -40,6 +40,10 @@ Rails.application.routes.draw do
     get '/token-sale-landing' => :index
   end
 
+  scope '', controller: 'web/producthunt' do
+    get '/product-hunt' => :index
+  end
+
   scope 'admin/', controller: 'admin/home' do
     get '/login' => :login
     get '/logout' => :logout
