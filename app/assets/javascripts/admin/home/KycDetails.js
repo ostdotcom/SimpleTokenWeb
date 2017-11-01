@@ -53,7 +53,7 @@
             $('#submit_modal_form').click(function(){
                 var $form = $('#modal_form');
                 $.ajax({
-                    url: form.attr('action'),
+                    url: $form.attr('action'),
                     dataType: 'json',
                     method: $form.attr('method'),
                     data: $form.serialize(),
