@@ -6,33 +6,39 @@
       </button>
       <div class="modal-body">
         <div class="verify-content">
-          <div class="heading text-center">Verify Information</div>
+          <div class="heading text-center">I confirm the following</div>
           <div class="checkbox">
-            <input type="checkbox" value="" id="is_correct_information" name="is_correct_information" >
-            <label for="is_correct_information">
-              All the personal information I have entered is correct.
+            <input type="checkbox" id="p1" name="p1" >
+            <label for="p1">
+              All the information I have entered is true and complete.
             </label>
           </div>
           <div class="checkbox">
-            <input type="checkbox" value="" id="is_participating_token_distribution" name="is_participating_token_distribution" >
-            <label for="is_participating_token_distribution">
-              I certify that I’m  participating in the token distribution event in the capacity of an individual (and beneficial owner) and not as a representative (or agent) of a third party corporate entity (non natural Person)
+            <input type="checkbox" id="p2" name="p2" >
+            <label for="p2">
+              I am not restricted under any law from providing this information or purchasing Simple Tokens.
             </label>
           </div>
           <div class="checkbox">
-            <input type="checkbox" value="" id="cannot_participate" name="cannot_participate" >
-            <label for="cannot_participate">
-              I understand that I can only participate in the Token Sale with the Ethereum Address that was entered in this form.
+            <input type="checkbox" id="p3" name="p3" >
+            <label for="p3">
+              I act on my own behalf, unless I have notified you in writing.
             </label>
           </div>
           <div class="checkbox">
-            <input type="checkbox" value="" id="i_agree_terms_conditions" name="i_agree_terms_conditions" >
-            <label for="i_agree_terms_conditions">
-              I agree to <a href="https://drive.google.com/file/d/0B1E_xJPbELBKeU9pUk5uSnNqWFU/view" title="Terms and Conditions" target="_blank">Terms and Conditions</a>.
+            <input type="checkbox" id="p4" name="p4" >
+            <label for="p4">
+              I have read, understood and agree to <a href="https://simpletoken.org/privacy" target="_blank">OpenST Limited's Privacy Policy</a>. I acknowledge this may change.  I also understand that any purchase of Simple Tokens will be subject to additional terms and conditions.
+            </label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" id="p5" name="p5" >
+            <label for="p5">
+              I agree that I will send payment from, and receive any Simple Tokens to, the digital wallet address I have entered on this website.
             </label>
           </div>
           <div class="error" data-for="verify_error"></div>
-          <button class="btn-common btn-gold verify-btn" title="Verify" id="kycVerify">Verify</button>
+          <button class="btn-common btn-gold verify-btn" title="Verify" id="kycVerify">I Agree</button>
         </div>
         <div class="loader-content" style="display: none">
           <p class="status">Encrypting your data...</p>
