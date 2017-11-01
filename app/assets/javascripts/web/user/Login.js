@@ -41,13 +41,13 @@
                 success: function (response) {
                     if (response.success == true) {
 
-                        var t_prameter = '';
-
-                        if (oThis.d_token && 'profile_page' == response.data.user_token_sale_state) {
-                            t_prameter = '?t=' + oThis.d_token;
+                        if (oThis.d_token && (['verification_page', 'profile_page'].indexOf(response.data.user_token_sale_state) > -1) ) {
+                            window.location = '/dashboard?t=' + oThis.d_token;
+                            return false;
                         }
+
                         var path = oThis.get_redirect_path(response.data.user_token_sale_state);
-                        window.location = '/' + path + t_prameter;
+                        window.location = '/' + path;
                         return false;
                     } else {
                         utilsNs.errorHandling.displayFormErrors(response);
