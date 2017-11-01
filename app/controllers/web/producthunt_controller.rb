@@ -1,5 +1,5 @@
 class Web::ProducthuntController < Web::BaseController
-  layout "marketing"
+  layout "producthunt"
 
   before_action :set_page_meta_info
 

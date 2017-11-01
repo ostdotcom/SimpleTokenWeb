@@ -248,6 +248,12 @@ h1.page-title{
   }
 }
 
+.telegram-at-bottom {
+    position: absolute;
+    bottom: 60px; /* Same as footer height */
+    width: 100%;
+}
+
 
 /* Checkboxes CSS Starts */
 input[type="checkbox"]{

@@ -108,12 +108,17 @@
   <script src="https://cdn.optimizely.com/js/9103640545.js"></script>
 </head>
 
-<body contenteditable="false">
-
+<body contenteditable="false" style="margin-bottom: 205px">
+<%
+  # body margin-bottom is height of telegram + height of footer
+%>
 <main id="site-content" class="<%= yield (:gradient_class) %>">
   <%= yield %>
 </main>
 
+<div class="telegram-at-bottom">
+  <%= render :partial => "/web/token_sale/telegram" %>
+</div>
 <%= render :partial => "/shared/web/common/footer" %>
 
 <%= javascript_include_tag "web/common" %>
