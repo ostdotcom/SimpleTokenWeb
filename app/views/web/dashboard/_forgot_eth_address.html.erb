@@ -6,12 +6,13 @@
           <% if @presenter_obj.can_purchase? %>
               <div class="header">Check your ETH address registration status and ST balance</div>
           <% else %>
-              <div class="header">Check your ETH address registration status</div>
+              <div class="header">Not sure which ETH address you submitted?</div>
           <% end %>
 
           <div id="user-eth-address-input-wrap" class="dashboard-page" style="margin: 0 auto">
             <fieldset id="user-eth-address-fieldset" class="user-eth-address">
-              <input type="text" name="user_etherenum_address" id="user-eth-address-input" class="user-eth-address-input" placeholder="Enter the ETH Address you registered with" value="" />
+              <input type="text" name="user_etherenum_address" id="user-eth-address-input" class="user-eth-address-input" 
+                      placeholder="Enter the ETH Address you submitted" value="" />
               <input type="button" id="user-eth-address-validate-btn" class="btn-gold user-eth-address-validate-btn" value="CHECK">
             </fieldset>
             <div class="errors-wrap">
@@ -23,7 +24,7 @@
           <div id="user-eth-address-success" class="dashboard-page" style="margin: 20px auto;display: none;">
             <div class="panel panel-default kyc-panel approved">
               <div class="panel-body">
-                <div class="header" style="border-bottom: solid 1px #597a84;padding-bottom: 10px"><span class="kyc-status-icon-approved" style="vertical-align: middle"></span>&nbsp;Confirmed, this is the ETH address you provided</div>
+                <div class="header" style="border-bottom: solid 1px #597a84;padding-bottom: 10px"><span class="kyc-status-icon-approved" style="vertical-align: middle"></span>&nbsp;Yes, this is the ETH address you provided.</div>
                 <input type="button" id="user-eth-address-success-done-btn" class="done-btn btn user-eth-address-validate-btn" value="DONE">
               </div>
             </div>
