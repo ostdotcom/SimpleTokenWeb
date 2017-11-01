@@ -200,7 +200,7 @@
                 <span class="detail-label margin-top-0">First Name</span>
                 <span class="detail-value"><%= user_detail['first_name'] %></span>
                 <span class="detail-label">Birth Date</span>
-                <span class="detail-value"><%= user_detail['birthdate'] %></span>
+                <span class="detail-value"><%= Time.parse(user_detail['birthdate']).strftime("%d/%m/%Y") %></span>
                 <span class="detail-label">Passport Number</span>
                 <span class="detail-value"><%= user_detail['passport_number'] %></span>
               </div>
