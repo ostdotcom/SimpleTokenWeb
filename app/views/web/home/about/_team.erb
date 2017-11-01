@@ -243,13 +243,16 @@
                         <a target="_blank" href="<%= member[:linkedIn] %>">LinkedIn</a>
                       <% end %>
                       <% if member[:twitter].present? %>
-                        <a target="_blank" href="<%= member[:twitter] %>"><% if member[:linkedIn].present? %>•&nbsp;<% end %>Twitter</a>
+                        <% if member[:linkedIn].present? %>•&nbsp;<% end %>
+                        <a target="_blank" href="<%= member[:twitter] %>">Twitter</a>
                       <% end %>
                       <% if member[:medium].present? %>
-                        <a target="_blank" href="<%= member[:medium] %>"><% if member[:linkedIn].present? || member[:twitter].present? %>•&nbsp;<% end %>Medium</a>
+                        <% if member[:linkedIn].present? || member[:twitter].present? %>•&nbsp;<% end %>
+                        <a target="_blank" href="<%= member[:medium] %>">Medium</a>
                       <% end %>
                       <% if member[:website].present? %>
-                        <a target="_blank" href="<%= member[:website] %>"><% if member[:linkedIn].present? || member[:twitter].present? || member[:medium].present? %>•&nbsp;<% end %>Website</a>
+                        <% if member[:linkedIn].present? || member[:twitter].present? || member[:medium].present? %>•&nbsp;<% end %>
+                        <a target="_blank" href="<%= member[:website] %>">Website</a>
                       <% end %>
                     </p>
                   </div>

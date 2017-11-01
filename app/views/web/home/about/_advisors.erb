@@ -43,6 +43,15 @@
                      description: "Co-founder and Managing Partner of Kenetic Capital (formerly Jen Advisors), one of the first Blockchain Venture Capital and Cryptocurrency Funds as well as Token Sale Consulting in Asia. An early investor in crypto-currencies, Jehan Chu founded Ethereum Meetup Hong Kong and grew it from 5 persons to over 1,100 and hosted >60 Blockchain events including Ethereum Founder Vitalik Buterin 7 times."
                    },
                    {
+                     name: "Gil Penchina",
+                     title: "Advisor",
+                     image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/team/Gil-Penchina.png",
+                     linkedIn: 'https://www.linkedin.com/in/gilpenchina/',
+                     twitter: 'https://twitter.com/gilpenchina/',
+                     medium: 'https://medium.com/@gilpenchina/',
+                     description: "Gil Penchina is a serial entrepreneur and super angel. He was an angel in Brave, Ripple, Filecoin, Civic, EOS and in Paypal in 1999. He’s a frequent media contributor on Blockchain on TechCrunch and Medium. He is a co-founder at Pryze.com and Partner at Ridge Ventures. Previously co-founder of Fastly, CEO of Wikia, now a top 50 website and was a member of the pre-IPO team at eBay."
+                   },
+                   {
                      name: "Sebastian Quinn-Watson",
                      title: "Advisor",
                      image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/team/Sebastian-Quinn-Watson.png",
@@ -55,6 +64,15 @@
                      image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/team/Gary-Nuttall.png",
                      linkedIn: 'https://www.linkedin.com/in/garynuttall/',
                      description: "Gary is well recognised in the Blockchain / Distributed Ledger Technology arena, with particular expertise in the commercial insurance and legal sectors.  He is a founding partner of Team Blockchain, a global virtual consultancy practice and sits on the TechUK DLT Working Group. He provides education, advisory and consultancy services through Distlytics Ltd, the consulting firm that he founded in 2016. He writes articles for magazines and thought leadership blogs on a number of emerging technologies, with a particular emphasis on blockchain."
+                   },
+                   {
+                     name: "Mark Bonchek",
+                     title: "Advisor",
+                     image: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/team/Mark-Bonchek.png",
+                     linkedIn: 'https://www.linkedin.com/in/mbonchek/',
+                     twitter: 'https://twitter.com/MarkBonchek/',
+                     website: 'https://www.shift.to/',
+                     description: "Mark Bonchek is the founder and CEO of Shift Thinking and a faculty member of Singularity University. He has published over 50 articles in Harvard Business Review, including the first on branded currency in 2013.  In 1997, Mark received Harvard's first PhD on the topic of social media. Mark helps organizations rethink how to engage customers, accelerate growth and transform markets."
                    },
                    {
                      name: "David Bohnett",
@@ -125,13 +143,16 @@
                         <a target="_blank" href="<%= member[:linkedIn] %>">LinkedIn</a>
                       <% end %>
                       <% if member[:twitter].present? %>
-                        <a target="_blank" href="<%= member[:twitter] %>"><% if member[:linkedIn].present? %>•&nbsp;<% end %>Twitter</a>
+                        <% if member[:linkedIn].present? %>•&nbsp;<% end %>
+                        <a target="_blank" href="<%= member[:twitter] %>">Twitter</a>
                       <% end %>
                       <% if member[:medium].present? %>
-                        <a target="_blank" href="<%= member[:medium] %>"><% if member[:linkedIn].present? || member[:twitter].present? %>•&nbsp;<% end %>Medium</a>
+                        <% if member[:linkedIn].present? || member[:twitter].present? %>•&nbsp;<% end %>
+                        <a target="_blank" href="<%= member[:medium] %>">Medium</a>
                       <% end %>
                       <% if member[:website].present? %>
-                        <a target="_blank" href="<%= member[:website] %>"><% if member[:linkedIn].present? || member[:twitter].present? || member[:medium].present? %>•&nbsp;<% end %>Website</a>
+                        <% if member[:linkedIn].present? || member[:twitter].present? || member[:medium].present? %>•&nbsp;<% end %>
+                        <a target="_blank" href="<%= member[:website] %>">Website</a>
                       <% end %>
                     </p>
                   </div>

@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-homepage-press-2x.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-homepage-press-1x.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-homepage-press@2x-2.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-homepage-press@1x-2.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -39,4 +39,13 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 }
 .block-tribune-logo{
   @include icon-generator(477px, 111px, -30px, -404px, -547px, -547px, 36);
+}
+.smith-crown-logo{
+  @include icon-generator(485px, 121px, -30px, -559px, -547px, -547px, 36);
+}
+.chipin-logo{
+  @include icon-generator(300px, 78px, -30px, -724px, -547px, -547px, 36);
+}
+.icorating-logo{
+  @include icon-generator(472px, 102px, -28px, -847px, -545px, -547px, 36);
 }
