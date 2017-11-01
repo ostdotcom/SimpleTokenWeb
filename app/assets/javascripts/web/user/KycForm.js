@@ -96,7 +96,9 @@
           });
 
           oThis.$kycForm.find('input[name="ethereum_address"]').change(function(){
-              oThis.isValidAddress( oThis.$kycForm.find('input[name="ethereum_address"]').val() );
+              if(this.validity.patternMismatch === false){
+                  oThis.isValidAddress( $(this).val() );
+              }
           });
 
           $("#kycSubmit").click(function (event) {
@@ -160,7 +162,6 @@
 
       validateForm: function(){
 
-          var v = false;
           simpletoken.utils.errorHandling.clearFormErrors();
 
           oThis.$kycForm.find('input[type="file"]').attr('required',false);
@@ -173,20 +174,13 @@
               $(this).trigger('change');
           });
 
-          if( oThis.$kycForm.find('.error:not(:empty)').length > 0 ){
-              v = false;
-          } else {
-              v = true;
-          }
-
           if(typeof oThis.$kycForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
               if(grecaptcha.getResponse() == ''){
                   oThis.$kycForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
-                  v = false;
               }
           }
 
-          if(v === true && oThis.$kycForm.find('.error:not(:empty)').length == 0) {
+          if(oThis.$kycForm.find('.error:not(:empty)').length == 0) {
 
               simpletoken.utils.errorHandling.clearFormErrors();
 
