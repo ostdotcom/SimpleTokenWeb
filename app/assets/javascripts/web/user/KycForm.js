@@ -95,11 +95,11 @@
               $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop());
           });
 
-          oThis.$kycForm.find('input[name="ethereum_address"]').change(function(){
-              if(this.validity.patternMismatch === false){
-                  oThis.isValidAddress( $(this).val() );
-              }
-          });
+          //oThis.$kycForm.find('input[name="ethereum_address"]').change(function(){
+          //    if(this.validity.patternMismatch === false){
+          //        oThis.isValidAddress( $(this).val() );
+          //    }
+          //});
 
           $("#kycSubmit").click(function (event) {
               event.preventDefault();
@@ -144,7 +144,7 @@
           $refresh.val() == 'yes' ? location.reload(true) : $refresh.val('yes');
       },
 
-      isValidAddress: function(address){
+      isValidAddress: function(address, onValidCallback, onErrorCallback){
           $.ajax({
               url: '/api/user/check-ethereum-address',
               data: {
@@ -155,6 +155,9 @@
                       if(typeof response.err.error_data != undefined){
                           oThis.$kycForm.find('.error[data-for="ethereum_address"]').text(response.err.error_data.ethereum_address);
                       }
+                      onErrorCallback && onErrorCallback( response );
+                  } else {
+                      onValidCallback && onValidCallback( response );
                   }
               }
           });
@@ -181,31 +184,42 @@
           }
 
           if(oThis.$kycForm.find('.error:not(:empty)').length == 0) {
-
               simpletoken.utils.errorHandling.clearFormErrors();
+              //Validate Eth Address
+              var ethAddress = oThis.$kycForm.find('input[name="ethereum_address"]').val();
+              oThis.isValidAddress(ethAddress,
+                  function () { /* Success Callback */
+                    oThis.onFormValid();
+                  }, function () { /* Error Callback */
+                      oThis.onFormError();
+                  });
 
-              if(oThis.config.is_update === true){
-                  // Show verify modal only for progress and start upload process
-                  oThis.verifyModal();
-                  oThis.getSignedUrls();
+          } else {
+              oThis.onFormError();
+          }
 
-              } else {
+      },
+      onFormValid: function () {
+          simpletoken.utils.errorHandling.clearFormErrors();
 
-                  // Show verify modal with checkboxes
-                  oThis.verifyModal();
-                  oThis.verifyModal('verify');
-
-              }
+          if(oThis.config.is_update === true){
+              // Show verify modal only for progress and start upload process
+              oThis.verifyModal();
+              oThis.getSignedUrls();
 
           } else {
 
-              if(typeof grecaptcha  != 'undefined'){
-                  grecaptcha.reset();
-              }
-              oThis.$kycForm.find('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
+              // Show verify modal with checkboxes
+              oThis.verifyModal();
+              oThis.verifyModal('verify');
 
           }
-
+      },
+      onFormError: function () {
+          if(typeof grecaptcha  != 'undefined'){
+              grecaptcha.reset();
+          }
+          oThis.$kycForm.find('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
       },
 
       makeFileParams: function(){
