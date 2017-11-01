@@ -185,12 +185,26 @@
 
           if(oThis.$kycForm.find('.error:not(:empty)').length == 0) {
               simpletoken.utils.errorHandling.clearFormErrors();
+              var jKYCSubmit = oThis.$kycForm.find("#kycSubmit")
+
+              //Disbale the Submit Button
+              jKYCSubmit.prop("disabled", true).text("SUBMITTING...");
+
               //Validate Eth Address
               var ethAddress = oThis.$kycForm.find('input[name="ethereum_address"]').val();
               oThis.isValidAddress(ethAddress,
                   function () { /* Success Callback */
+                    //Enable the Submit Button
+                    jKYCSubmit.prop("disabled", false).text("SUBMIT");
+
+                    //Form is now valid
                     oThis.onFormValid();
                   }, function () { /* Error Callback */
+                      
+                      //Enable the Submit Button
+                      jKYCSubmit.prop("disabled", false).text("SUBMIT");
+
+                      //Form has Errors..
                       oThis.onFormError();
                   });
 
