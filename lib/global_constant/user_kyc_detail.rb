@@ -128,6 +128,7 @@ module GlobalConstant
             failed_whitelist_status => 'Failed'
         }
       end
+
       def whitelist_kyc_status_class
         {
             unprocessed_whitelist_status => 'yello',
@@ -138,6 +139,19 @@ module GlobalConstant
       end
 
       ### Admin Status End ###
+
+      ### Admin Email communication Messages Start ###
+
+      def admin_action_type
+        {
+            'data_mismatch' => 'Data Mismatch Communicated',
+            'passport_issue' => 'Passport Image Issue Communicated',
+            'selfie_issue' => 'Selfie Image Issue Communicated',
+            'residency_issue' => 'Residency Image Issue Communicated'
+        }
+      end
+
+      ### Admin Email communication Messages End ###
 
     end
 
