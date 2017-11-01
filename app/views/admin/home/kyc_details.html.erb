@@ -246,7 +246,7 @@
                 <div class="kyc-img-container">
                   <div class="kyc-image">
                     <% if user_detail['passport_file_url'].match('\/i\/') %>
-                        <img src="<%= user_detail['passport_file_url'] %>">
+                        <a href="<%= user_detail['passport_file_url'] %>" target="_blank"><img src="<%= user_detail['passport_file_url'] %>"></a>
                     <% else %>
                         <iframe src="<%= user_detail['passport_file_url'] %>" frameborder="0"></iframe>
                     <% end %>
@@ -264,7 +264,7 @@
                 <div class="kyc-img-container">
                   <div class="kyc-image">
                     <% if user_detail['selfie_file_url'].match('\/i\/') %>
-                        <img src="<%= user_detail['selfie_file_url'] %>">
+                        <a href="<%= user_detail['selfie_file_url'] %>" target="_blank"><img src="<%= user_detail['selfie_file_url'] %>"></a>
                     <% else %>
                         <iframe src="<%= user_detail['selfie_file_url'] %>" frameborder="0"></iframe>
                     <% end %>
@@ -282,7 +282,7 @@
                 <span class="kyc-img-container">
                   <div class="kyc-image">
                     <% if user_detail['residence_proof_file_url'].match('\/i\/') %>
-                        <img src="<%= user_detail['residence_proof_file_url'] %>">
+                        <a href="<%= user_detail['residence_proof_file_url'] %>" target="_blank"><img src="<%= user_detail['residence_proof_file_url'] %>"></a>
                     <% else %>
                         <iframe src="<%= user_detail['residence_proof_file_url'] %>" frameborder="0"></iframe>
                     <% end %>
@@ -319,7 +319,7 @@
 
 <div style="height: 85px;"></div>
 
-<div id="kycDetailsModal" class="modal fade" role="dialog" tabindex="-1">
+<div id="kycDetailsModal" class="modal fade full-page-modal" role="dialog" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -333,7 +333,7 @@
   </div>
 </div>
 
-<div id="kycLogsModal" class="modal fade" role="dialog" tabindex="-1">
+<div id="kycLogsModal" class="modal fade full-page-modal" role="dialog" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 36px;position: absolute;right: 12px;top: 0px;z-index: 1">
@@ -347,6 +347,57 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div id="kycCaseActionModal" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form action="/api/admin/kyc/data-mismatch" method="POST" id="modal_form">
+          <input type="hidden" name="case_id" value="<%= @case_id %>">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Mismatch Reason</h4>
+          </div>
+          <div class="modal-body">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="first_name" value="1">
+                  First Name
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="last_name" value="1">
+                  Last Name
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="birthdate" value="1">
+                  Date of Birth
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="nationality" value="1">
+                  Nationality
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="passport_number" value="1">
+                  Passport Number
+                </label>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="submit_modal_form">Send Mail</button>
+          </div>
+      </form>
     </div>
   </div>
 </div>

@@ -27,10 +27,14 @@
 
     bindButtonActions: function (config) {
       $('.kyc-image, .fullScreenIcon').on('click', function () {
-        oThis.$modalBox.find('.modal-body').html($(this).closest('.kyc-img-block').find('.kyc-img-container').html());
-        $('.modal-body iframe').height((window.innerHeight - 100) + 'px');
-        $('.modal-body img').css('max-height', (window.innerHeight - 100) + 'px');
-        oThis.$modalBox.modal('show');
+        if($(this).find('a').length > 0){
+            return;
+        }  else {
+            oThis.$modalBox.find('.modal-body').html($(this).closest('.kyc-img-block').find('.kyc-img-container').html());
+            $('.modal-body iframe').height((window.innerHeight - 100) + 'px');
+            $('.modal-body img').css('max-height', (window.innerHeight - 100) + 'px');
+            oThis.$modalBox.modal('show');
+        }
       });
 
       $('#openLogs').on('click', function () {
@@ -42,28 +46,57 @@
       });
 
       $('.sticky-action-buttons-container').on('click', '.button-active', function () {
-        var r = confirm('Please confirm the action !!')
-          , that = this;
-        $('.error[data-for="action_error"]').hide();
-        if (r == true) {
-          var $form = $('#caseActionForm');
-          $.ajax({
-            url: $(that).data('action-url'),
-            dataType: 'json',
-            method: $form.attr('method'),
-            data: $form.serialize(),
-            success: function (response) {
-              if (response.success == true) {
-                window.location = window.location;
-                return false;
-              } else {
-                $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
-              }
-            },
-            error: function (jqXHR, exception) {
-              adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+
+        if($(this).data('action-url') === '/api/admin/kyc/data-mismatch'){
+
+            $('#kycCaseActionModal').modal();
+            $('#submit_modal_form').click(function(){
+                var $form = $('#modal_form');
+                $.ajax({
+                    url: form.attr('action'),
+                    dataType: 'json',
+                    method: $form.attr('method'),
+                    data: $form.serialize(),
+                    success: function (response) {
+                        if (response.success == true) {
+                            window.location = window.location;
+                            return false;
+                        } else {
+                            $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
+                        }
+                    },
+                    error: function (jqXHR, exception) {
+                        adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+                    }
+                });
+            });
+
+        } else {
+
+            var r = confirm('Please confirm the action !!')
+                , that = this;
+            $('.error[data-for="action_error"]').hide();
+            if (r == true) {
+                var $form = $('#caseActionForm');
+                $.ajax({
+                    url: $(that).data('action-url'),
+                    dataType: 'json',
+                    method: $form.attr('method'),
+                    data: $form.serialize(),
+                    success: function (response) {
+                        if (response.success == true) {
+                            window.location = window.location;
+                            return false;
+                        } else {
+                            $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
+                        }
+                    },
+                    error: function (jqXHR, exception) {
+                        adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+                    }
+                });
             }
-          });
+
         }
       });
 
