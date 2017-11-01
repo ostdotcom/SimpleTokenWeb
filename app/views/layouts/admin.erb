@@ -31,8 +31,6 @@
   <%= yield %>
 </main>
 
-<%= render :partial => "/shared/web/common/footer" %>
-
 <%= javascript_include_tag "admin/common" %>
 <%= javascript_include_tag "#{specific_manifest_file_path}", :defer => "defer" if has_specific_js_manifest_file? %>
 
