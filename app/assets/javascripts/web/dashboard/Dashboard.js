@@ -47,11 +47,11 @@
             });
 
             $('#prove-support-content').on('shown.bs.collapse', function() {
-              $(this).parents('.kyc-panel').find('#prove-support-link').text('X')
+              $(this).parents('.kyc-panel').find('#prove-support-link').text("").addClass("close-accordian-icon");
             });
 
             $('#prove-support-content').on('hidden.bs.collapse', function() {
-              $(this).parents('.kyc-panel').find('#prove-support-link').text('PROVE SUPPORT')
+              $(this).parents('.kyc-panel').find('#prove-support-link').text('PROVE SUPPORT').removeClass("close-accordian-icon");
             });
 
             $("#user-eth-address-validate-btn").click( function( event ) {

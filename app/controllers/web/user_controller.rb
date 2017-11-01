@@ -7,7 +7,6 @@ class Web::UserController < Web::BaseController
 
   before_action :set_page_meta_info, except: [:logout]
 
-  before_action :tmp_basic_auth, except: [:token_sale_blocked_region]
   before_action :handle_blacklisted_ip, except: [:token_sale_blocked_region]
 
   # Sign up

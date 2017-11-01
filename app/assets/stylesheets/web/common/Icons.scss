@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v21.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v21.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v22.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v22.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -181,4 +181,8 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 }
 .modal-close-black-icon{
   @include icon-generator(32px, 32px, -22px, -712px, -22px, -22px, 50);
+}
+
+.close-accordian-icon {
+  @include icon-generator(29px, 29px, -21px, -850px, -21px, -21px, 50);
 }
