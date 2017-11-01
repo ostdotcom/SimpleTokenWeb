@@ -144,10 +144,10 @@ module GlobalConstant
 
       def admin_action_type
         {
-            'data_mismatch' => 'Data Mismatch Communicated',
-            'passport_issue' => 'Passport Image Issue Communicated',
-            'selfie_issue' => 'Selfie Image Issue Communicated',
-            'residency_issue' => 'Residency Image Issue Communicated'
+            'data_mismatch' => 'Data Mismatch Email Sent',
+            'passport_issue' => 'Passport Image Issue Email Sent',
+            'selfie_issue' => 'Selfie Image Issue Email Sent',
+            'residency_issue' => 'Residency Image Issue Email Sent'
         }
       end
 

@@ -121,8 +121,8 @@
             render: $.fn.dataTable.render.text()
           },
           {
-            title: "Email Type",
-            data: "email_type",
+            title: "Activity",
+            data: "activity",
             render: $.fn.dataTable.render.text()
           }
         );

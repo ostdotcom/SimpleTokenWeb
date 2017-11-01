@@ -131,7 +131,7 @@ class Admin::HomeController < Admin::BaseController
       curr_resp_data << {
           date_time: c_p_d['date_time'],
           agent: c_p_d['agent'],
-          email_type: c_p_d['email_type']
+          activity: c_p_d['activity']
       }
     end
 
