@@ -12,11 +12,6 @@
 
         bindButtonActions: function () {
 
-          $("#subscribe-form-submit").on("click", function (event) {
-              event.preventDefault();
-              oThis.onSubscribe();
-          });
-
           $('.play-video-image').click(function() {
             $(this).hide();
             $(this).next('#videoFrame').attr('src', $(this).next('#videoFrame').data('src'));

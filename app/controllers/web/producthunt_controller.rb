@@ -3,7 +3,7 @@ class Web::ProducthuntController < Web::BaseController
 
   before_action :set_page_meta_info
 
-  # Marketing landing page
+  # Producthunt landing page
   #
   # * Author: Tahir
   # * Date: 01/11/2017
