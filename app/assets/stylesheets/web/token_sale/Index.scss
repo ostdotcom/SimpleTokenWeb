@@ -289,20 +289,3 @@
     align-items: center;
   }
 }
-
-.ext-links{
-  color: #597a84;
-  display: inline-block;
-  margin: 0 10px 15px 10px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  font-size: 14px;
-  text-transform: uppercase;
-  padding-bottom: 3px;
-  border-bottom: solid 1px #597a84;
-  &:hover, &:focus{
-    text-decoration: none;
-    color: #c0993a;
-    border-bottom: 1px solid #c0993a;
-  }
-}

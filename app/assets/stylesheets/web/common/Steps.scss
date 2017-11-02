@@ -80,7 +80,7 @@
       display: inline-block;
       list-style-type: none;
       position: relative;
-      border: dashed 1.5px #6ca3a9;
+      border: dotted 1.5px #6ca3a9;
       .icon-pos{
         position: absolute;
         top: 0;
@@ -100,14 +100,9 @@
       letter-spacing: 0.6px;
     }
     .learn-more{
-      color: #597a84;
       font-size: 12px;
       font-weight: 300;
       text-transform: uppercase;
-      border-bottom: 1px solid #597a84;
-      &:hover, &:focus{
-        text-decoration: none;
-      }
     }
   }
 }
