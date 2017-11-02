@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v22.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v22.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v23.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v23.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -185,4 +185,14 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 
 .close-accordian-icon {
   @include icon-generator(29px, 29px, -21px, -850px, -21px, -21px, 50);
+}
+
+.kyc-instructions-passport-icon{
+  @include icon-generator(142px, 196px, -118px, -640px, -118px, -118px , 25);
+}
+.kyc-instructions-camera-icon{
+  @include icon-generator(192px, 158px, -120px, -466px, -120px, -120px, 25);
+}
+.kyc-instructions-public-ethereum-icon{
+  @include icon-generator(128px, 200px, -120px, -252px, -120px, -120px, 25);
 }
