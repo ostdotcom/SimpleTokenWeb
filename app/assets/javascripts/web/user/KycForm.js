@@ -95,12 +95,6 @@
               $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop());
           });
 
-          //oThis.$kycForm.find('input[name="ethereum_address"]').change(function(){
-          //    if(this.validity.patternMismatch === false){
-          //        oThis.isValidAddress( $(this).val() );
-          //    }
-          //});
-
           $("#kycSubmit").click(function (event) {
               event.preventDefault();
               oThis.validateForm();
@@ -159,6 +153,9 @@
                   } else {
                       onValidCallback && onValidCallback( response );
                   }
+              },
+              error: function (jqXHR, exception) {
+                  utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
               }
           });
       },
@@ -275,7 +272,15 @@
                   if(response.success === true){
                       oThis.uploadParamsResponse = response.data;
                       oThis.uploadFiles(oThis.uploadParamsResponse);
+                  }  else {
+                      grecaptcha.reset();
+                      oThis.verifyModal('show-close');
+                      oThis.verifyModal('status-text', response.err.display_text);
+                      simpletoken.utils.errorHandling.displayFormErrors(response);
                   }
+              },
+              error: function (jqXHR, exception) {
+                  utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
               }
           })
       },
