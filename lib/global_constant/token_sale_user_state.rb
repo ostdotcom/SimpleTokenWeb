@@ -39,11 +39,11 @@ module GlobalConstant
       end
 
       def kyc_page_allowed_states
-        ["kyc_page", "bt_page", "verification_page"]
+        ["kyc_page"]
       end
 
       def bt_page_allowed_states
-        ["bt_page", "verification_page"]
+        ["bt_page"]
       end
 
       def verification_page_allowed_states
