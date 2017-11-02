@@ -8,7 +8,7 @@ class Web::UserController < Web::BaseController
   before_action :set_page_meta_info, except: [:logout]
 
   before_action :handle_blacklisted_ip, except: [:token_sale_blocked_region]
-  # after_action :remove_browser_caching
+  after_action :remove_browser_caching
 
   # Sign up
   #
@@ -204,11 +204,11 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil
   #
   def remove_browser_caching
-    # response.headers['Pragma'] = 'no-cache'
-    # response.headers['Cache-Control'] = 'no-store, no-cache, max-age=0, must-revalidate, post-check=0, pre-check=0'
-    # response.headers['Vary'] = '*'
-    # response.headers['Expires'] = '-1'
-    # response.headers['Last-Modified'] = "#{Time.now.gmtime.strftime("%a, %d %b %Y %T GMT")}"
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Cache-Control'] = 'no-store, no-cache, max-age=0, must-revalidate, post-check=0, pre-check=0'
+    response.headers['Vary'] = '*'
+    response.headers['Expires'] = '-1'
+    response.headers['Last-Modified'] = "#{Time.now.gmtime.strftime("%a, %d %b %Y %T GMT")}"
   end
 
 end
