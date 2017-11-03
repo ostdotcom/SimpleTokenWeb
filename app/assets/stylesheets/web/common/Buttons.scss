@@ -156,9 +156,14 @@
   text-transform: uppercase;
   padding-bottom: 3px;
   border-bottom: solid 1px #597a84;
-  &:hover, &:focus{
-    text-decoration: none;
+  &:hover{
     color: #c0993a;
+    text-decoration: none;
     border-bottom: 1px solid #c0993a;
+  }
+  &:focus{
+    color: #597a84;
+    text-decoration: none;
+    border-bottom: 1px solid #597a84;
   }
 }

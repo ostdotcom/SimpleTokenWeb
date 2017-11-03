@@ -196,3 +196,21 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 .kyc-instructions-public-ethereum-icon{
   @include icon-generator(128px, 200px, -120px, -252px, -120px, -120px, 25);
 }
+
+.jumbotron-registration-guide-icon{
+  @include icon-generator(49px, 49px, -108px, -124px, -108px, -108px, 50);
+}
+.jumbotron-how-to-purchase-icon{
+  @include icon-generator(49px, 49px, -108px, -180px, -108px, -108px, 50);
+}
+
+.jumbotron-links{
+  &:hover{
+    .jumbotron-registration-guide-icon{
+      @include icon-generator(49px, 49px, -160px, -124px, -160px, -160px, 50);
+    }
+    .jumbotron-how-to-purchase-icon{
+      @include icon-generator(49px, 49px, -160px, -180px, -160px, -160px, 50);
+    }
+  }
+}
