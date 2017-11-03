@@ -58,20 +58,28 @@
         $dataAction = $(this).data('action-url');
         $kycCaseActionModal = $('#kycCaseActionModal');
 
+        var copyMap = {};
+        copyMap['/api/admin/kyc/data-mismatch'] = 'Data Mismatch';
+        copyMap['/api/admin/kyc/passport-issue'] = 'Passport Issue';
+        copyMap['/api/admin/kyc/selfie-img-issue'] = 'Selfie Issue';
+        copyMap['/api/admin/kyc/residency-img-issue'] = 'Residency Image Issue';
+        copyMap['/api/admin/kyc/deny-kyc'] = 'Deny KYC';
+        copyMap['/api/admin/kyc/qualify'] = 'Quality';
+
         if ($dataAction == '/api/admin/kyc/data-mismatch') {
-          $kycCaseActionModal.find('.modal-title').text($('#data_mismatch_form').data('title'));
           $kycCaseActionModal.find('.form-fields').html($('#data_mismatch_form').text());
         }
 
         if ($dataAction == '/api/admin/kyc/passport-issue' || $dataAction == '/api/admin/kyc/selfie-img-issue' || $dataAction == '/api/admin/kyc/residency-img-issue') {
-          $kycCaseActionModal.find('.modal-title').text($('#image_mismatch_form').data('title'));
           $kycCaseActionModal.find('.form-fields').html($('#image_mismatch_form').text());
         }
 
         if ($dataAction == '/api/admin/kyc/deny-kyc' || $dataAction == '/api/admin/kyc/qualify') {
-          $kycCaseActionModal.find('.modal-title').text($('#confirm_form').data('title'));
           $kycCaseActionModal.find('.form-fields').html($('#confirm_form').text());
         }
+
+        $kycCaseActionModal.find('.modal-title').text( copyMap[$dataAction] );
+        $kycCaseActionModal.find('.title-placeholder').text( copyMap[$dataAction] );
 
         $('#kycCaseActionModal').modal();
         $('#submit_modal_form').click(function () {
