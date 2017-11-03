@@ -91,6 +91,18 @@
       list-style-type: none;
     }
   }
+
+  .col-sm-4{
+    margin-bottom: 25px;
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: center;
+    justify-content: center;
+    min-height: 66px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1000px){

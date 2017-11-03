@@ -191,7 +191,7 @@
     text-align: center;
   }
   h2{
-    font-size: 38px;
+    font-size: 36px;
   }
   .desc{
     text-align: center;
@@ -201,83 +201,86 @@
     padding: 15px 0 0px;
     line-height: 1.6;
   }
-  .error{
-    min-height: 25px;
-    font-weight: 300;
-    font-size: 14px;
+  .register-now-btn{
+    margin: 30px 0px 60px;
   }
-  .simpletoken-form{
-    .form-group{
-      label.help-block{
-        font-size: 18px;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-        color: #5a768c;
-      }
-      .checkbox{
-        margin-bottom: 20px;
-        label{
-          font-size: 16px;
-          font-weight: 400;
-          letter-spacing: 0.5px;
-          color: #5a768c;
-          .help-block{
-            font-size: 14px;
-            font-weight: 100;
-            letter-spacing: 0.5px;
-            color: #5a768c;
-          }
-        }
-        input[type=checkbox]:checked {
-          ~ label{
-            font-weight: 700;
-          }
-        }
-      }
-    }
-    .subscribe{
-      padding:30px 0;
-      .form-group{
-        width:100%;
-        input.form-control{
-          width:70%;
-          display: inline-block;
-          font-size: 16px;
-          height: 40px;
-          border-color: #CDD7DA;
-          &:focus{
-            border-color: #5a768c;
-            box-shadow: none;
-            -webkit-box-shadow: none;
-          }
-        }
-      }
-    }
-  }
+//  .error{
+//    min-height: 25px;
+//    font-weight: 300;
+//    font-size: 14px;
+//  }
+//  .simpletoken-form{
+//    .form-group{
+//      label.help-block{
+//        font-size: 18px;
+//        font-weight: 500;
+//        letter-spacing: 0.5px;
+//        color: #5a768c;
+//      }
+//      .checkbox{
+//        margin-bottom: 20px;
+//        label{
+//          font-size: 16px;
+//          font-weight: 400;
+//          letter-spacing: 0.5px;
+//          color: #5a768c;
+//          .help-block{
+//            font-size: 14px;
+//            font-weight: 100;
+//            letter-spacing: 0.5px;
+//            color: #5a768c;
+//          }
+//        }
+//        input[type=checkbox]:checked {
+//          ~ label{
+//            font-weight: 700;
+//          }
+//        }
+//      }
+//    }
+//    .subscribe{
+//      padding:30px 0;
+//      .form-group{
+//        width:100%;
+//        input.form-control{
+//          width:70%;
+//          display: inline-block;
+//          font-size: 16px;
+//          height: 40px;
+//          border-color: #CDD7DA;
+//          &:focus{
+//            border-color: #5a768c;
+//            box-shadow: none;
+//            -webkit-box-shadow: none;
+//          }
+//        }
+//      }
+//    }
+//  }
 }
 
-#subscribe-success{
-  text-align: center;
-  background: #91C0AD;
-  border-radius: 10px;
-  padding: 10px 15px 25px 10px;
-  margin: 40px auto;
-  .small-title{
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 3px;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    display: block;
-  }
-  .small-desc{
-    color: #fff;
-    font-weight: 300;
-    font-size: 16px;
-    display: block;
-  }
-}
+//#subscribe-success{
+//  text-align: center;
+//  background: #91C0AD;
+//  border-radius: 10px;
+//  padding: 10px 15px 25px 10px;
+//  margin: 40px auto;
+//  .small-title{
+//    color: #fff;
+//    text-transform: uppercase;
+//    font-weight: 600;
+//    letter-spacing: 3px;
+//    margin-top: 20px;
+//    margin-bottom: 5px;
+//    display: block;
+//  }
+//  .small-desc{
+//    color: #fff;
+//    font-weight: 300;
+//    font-size: 16px;
+//    display: block;
+//  }
+//}
 
 // Hide views specific to other viewports
 .logo-mobile,
@@ -405,19 +408,19 @@
     }
   }
 
-  .container-subscribe {
-    .simpletoken-form{
-      .subscribe{
-        .form-group{
-          input.form-control,
-          button.btn{
-            width:100%;
-            margin: 5px 0;
-          }
-        }
-      }
-    }
-  }
+//  .container-subscribe {
+//    .simpletoken-form{
+//      .subscribe{
+//        .form-group{
+//          input.form-control,
+//          button.btn{
+//            width:100%;
+//            margin: 5px 0;
+//          }
+//        }
+//      }
+//    }
+//  }
 
   .container-features,
   .container-documents,
