@@ -9,9 +9,10 @@
 
       uploadParamsResponse: {},
       uploadCount: 0,
-      isChinese: false,
+      isResidencyProofNeeded: false,
       currentPercent: 0,
       formNames: ['passport_file_path','selfie_file_path'],
+      residencyProofMandatoryCountries: ['CHINESE','NEW ZEALANDER'],
       popoverPlacement: 'right',
       $kycForm: $('#kycForm'),
 
@@ -75,12 +76,18 @@
               });
 
           oThis.$kycForm.find('select[name="nationality"]').on('changed.bs.select', function (e) {
-              if($(this).val() == 'CHINESE'){
-                  oThis.isChinese = true;
+              if( oThis.residencyProofMandatoryCountries.indexOf($(this).val()) > -1  ){
+                  if(oThis.isResidencyProofNeeded === true){
+                      return;
+                  }
+                  oThis.isResidencyProofNeeded = true;
                   $('.residence-proof').show();
                   oThis.formNames.push('residence_proof_file_path');
               } else {
-                  oThis.isChinese = false;
+                  if(oThis.isResidencyProofNeeded === false ){
+                      return;
+                  }
+                  oThis.isResidencyProofNeeded = false;
                   $('.residence-proof').hide();
                   if(oThis.formNames.length == 3) {oThis.formNames.pop()}
               }
