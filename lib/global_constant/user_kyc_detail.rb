@@ -19,6 +19,10 @@ module GlobalConstant
         'qualified_admin_status'
       end
 
+      def reviewed_admin_status
+        'reviewed_admin_status'
+      end
+
       def denied_admin_status
         'denied_admin_status'
       end
@@ -32,6 +36,7 @@ module GlobalConstant
             all_admin_status => 'All',
             un_processed_admin_status => 'Unprocessed',
             qualified_admin_status => 'Qualified',
+            reviewed_admin_status => 'Reviewed',
             denied_admin_status => 'Denied',
             whitelisted_admin_status => 'Whitelisted'
         }

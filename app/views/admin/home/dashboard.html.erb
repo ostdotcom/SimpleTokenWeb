@@ -3,6 +3,7 @@
 <%
   kyc_table_config = {
       displayStart: @display_start.to_i,
+      pageLength: 30,
       ajax: {
           url: "/admin/get-kyc-dashboard",
           type: "GET"
@@ -73,6 +74,9 @@
             <option value="<%= GlobalConstant::UserKycDetail.qualified_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.qualified_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.qualified_admin_status] %>
             </option>
+            <option value="<%= GlobalConstant::UserKycDetail.reviewed_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.reviewed_admin_status %> >
+              <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.reviewed_admin_status] %>
+            </option>
             <option value="<%= GlobalConstant::UserKycDetail.denied_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.denied_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.denied_admin_status] %>
             </option>
@@ -101,6 +105,12 @@
             <option value="<%= GlobalConstant::UserKycDetail.approved_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.approved_cynopsis_status %> >
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.approved_cynopsis_status] %>
             </option>
+            <option value="<%= GlobalConstant::UserKycDetail.cleared_cynopsis_status %>_<%= GlobalConstant::UserKycDetail.approved_cynopsis_status %>"
+                    <%= 'selected' if @cynopsis_status=="#{GlobalConstant::UserKycDetail.cleared_cynopsis_status}_#{GlobalConstant::UserKycDetail.approved_cynopsis_status}" %> >
+              <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.cleared_cynopsis_status] %> |
+              <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.approved_cynopsis_status] %>
+            </option>
+
             <option value="<%= GlobalConstant::UserKycDetail.rejected_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.rejected_cynopsis_status %> >
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.rejected_cynopsis_status] %>
             </option>
