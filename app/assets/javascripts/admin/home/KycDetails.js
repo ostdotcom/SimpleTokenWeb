@@ -27,13 +27,13 @@
 
     bindButtonActions: function (config) {
       $('.kyc-image, .fullScreenIcon').on('click', function () {
-        if($(this).find('a').length > 0){
-            return;
-        }  else {
-            oThis.$modalBox.find('.modal-body').html($(this).closest('.kyc-img-block').find('.kyc-img-container').html());
-            $('.modal-body iframe').height((window.innerHeight - 100) + 'px');
-            $('.modal-body img').css('max-height', (window.innerHeight - 100) + 'px');
-            oThis.$modalBox.modal('show');
+        if ($(this).find('a').length > 0) {
+          return;
+        } else {
+          oThis.$modalBox.find('.modal-body').html($(this).closest('.kyc-img-block').find('.kyc-img-container').html());
+          $('.modal-body iframe').height((window.innerHeight - 100) + 'px');
+          $('.modal-body img').css('max-height', (window.innerHeight - 100) + 'px');
+          oThis.$modalBox.modal('show');
         }
       });
 
@@ -45,48 +45,38 @@
         $(this).find('.modal-body').html('');
       });
 
-      $('#kycCaseActionModal').on('click', 'input[type=radio][name=message_type]', function(){
-        if($('#message_type_standard').prop('checked')){
-            $('#custom_message_text').attr('disabled', true);
+      $('#kycCaseActionModal').on('click', 'input[type=radio][name=message_type]', function () {
+        if ($('#message_type_standard').prop('checked')) {
+          $('#custom_message_text').attr('disabled', true);
         } else {
-            $('#custom_message_text').attr('disabled', false);
+          $('#custom_message_text').attr('disabled', false);
         }
       });
 
       $('.sticky-action-buttons-container').on('click', '.button-active', function () {
 
-          $dataAction = $(this).data('action-url');
-          $kycCaseActionModal = $('#kycCaseActionModal');
+        $dataAction = $(this).data('action-url');
+        $kycCaseActionModal = $('#kycCaseActionModal');
 
-          if($dataAction == '/api/admin/kyc/data-mismatch'){
-              $kycCaseActionModal.find('.form-fields').html( $('#data_mismatch_form').text() );
-          }
+        if ($dataAction == '/api/admin/kyc/data-mismatch') {
+          $kycCaseActionModal.find('.modal-title').text($('#data_mismatch_form').data('title'));
+          $kycCaseActionModal.find('.form-fields').html($('#data_mismatch_form').text());
+        }
 
-          if($dataAction == '/api/admin/kyc/passport-issue' || $dataAction == '/api/admin/kyc/selfie-img-issue' || $dataAction == '/api/admin/kyc/residency-img-issue'){
-              $kycCaseActionModal.find('.form-fields').html( $('#image_mismatch_form').text() );
-          }
+        if ($dataAction == '/api/admin/kyc/passport-issue' || $dataAction == '/api/admin/kyc/selfie-img-issue' || $dataAction == '/api/admin/kyc/residency-img-issue') {
+          $kycCaseActionModal.find('.modal-title').text($('#image_mismatch_form').data('title'));
+          $kycCaseActionModal.find('.form-fields').html($('#image_mismatch_form').text());
+        }
 
-          $('#kycCaseActionModal').modal();
-          $('#submit_modal_form').click(function(){
-              var $form = $('#modal_form');
-              $.ajax({
-                  url: $dataAction,
-                  dataType: 'json',
-                  method: $form.attr('method'),
-                  data: $form.serialize(),
-                  success: function (response) {
-                      if (response.success == true) {
-                          window.location = window.location;
-                          return false;
-                      } else {
-                          $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
-                      }
-                  },
-                  error: function (jqXHR, exception) {
-                      adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
-                  }
-              });
-          });
+        if ($dataAction == '/api/admin/kyc/deny-kyc' || $dataAction == '/api/admin/kyc/qualify') {
+          $kycCaseActionModal.find('.modal-title').text($('#confirm_form').data('title'));
+          $kycCaseActionModal.find('.form-fields').html($('#confirm_form').text());
+        }
+
+        $('#kycCaseActionModal').modal();
+        $('#submit_modal_form').click(function () {
+          oThis.formSubmit($dataAction);
+        });
 
         //if($(this).data('action-url') === '/api/admin/kyc/data-mismatch'){
         //
@@ -119,6 +109,27 @@
         //}
       });
 
+    },
+
+    formSubmit: function ($dataAction) {
+      var $form = $('#modal_form');
+      $.ajax({
+        url: $dataAction,
+        dataType: 'json',
+        method: $form.attr('method'),
+        data: $form.serialize(),
+        success: function (response) {
+          if (response.success == true) {
+            window.location = window.location;
+            return false;
+          } else {
+            $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
+          }
+        },
+        error: function (jqXHR, exception) {
+          adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+        }
+      });
     },
 
     getLogs: function () {
@@ -167,19 +178,19 @@
               var dataRow = response.data[userId];
 
               var displayRow = ''
-                + '<tr class="duplicateCase' + (dataRow.active.length==0 ? '' : ' activeStatus') + '">'
-                +   '<td class="dupInfo"><a target="_blank" href="/admin/get-kyc-details/?case_id=' + dataRow.case_id + '">' + dataRow.case_id + '</td>'
-                +   '<td class="dupInfo">' + oThis.adminKycStatuses[dataRow.admin_status] + '</td>'
-                +   '<td class="dupInfo">' + oThis.cynopsisKycStatuses[dataRow.cynopsis_status] + '</td>'
-                +   '<td class="dupInfo">' + dataRow.active + '</td>'
-                +   '<td class="dupInfo">' + dataRow.inactive +'</td>'
+                + '<tr class="duplicateCase' + (dataRow.active.length == 0 ? '' : ' activeStatus') + '">'
+                + '<td class="dupInfo"><a target="_blank" href="/admin/get-kyc-details/?case_id=' + dataRow.case_id + '">' + dataRow.case_id + '</td>'
+                + '<td class="dupInfo">' + oThis.adminKycStatuses[dataRow.admin_status] + '</td>'
+                + '<td class="dupInfo">' + oThis.cynopsisKycStatuses[dataRow.cynopsis_status] + '</td>'
+                + '<td class="dupInfo">' + dataRow.active + '</td>'
+                + '<td class="dupInfo">' + dataRow.inactive + '</td>'
                 + '</tr>';
 
               totalRows++;
               $duplicateKycData.append(displayRow);
             }
 
-            if(totalRows == 0){
+            if (totalRows == 0) {
               $('.duplicate-kyc-data').remove();
             }
             return false;

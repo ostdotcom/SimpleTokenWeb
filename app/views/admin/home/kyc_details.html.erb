@@ -306,11 +306,11 @@
     <input type="hidden" name="case_id" value="<%= @case_id %>">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
     <span class="sticky-button <%= 'button-active' unless is_case_closed %> red" data-action-url="/api/admin/kyc/deny-kyc">Deny</span>
-    <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/data-mismatch">Data Mismatch</span>
-    <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/passport-issue">Passport Issue</span>
-    <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/selfie-img-issue">Selfie Image Issue</span>
+    <span class="sticky-button <%= 'button-active' unless is_case_closed %> need-confirmation" data-action-url="/api/admin/kyc/data-mismatch">Data Mismatch</span>
+    <span class="sticky-button <%= 'button-active' unless is_case_closed %> need-confirmation" data-action-url="/api/admin/kyc/passport-issue">Passport Issue</span>
+    <span class="sticky-button <%= 'button-active' unless is_case_closed %> need-confirmation" data-action-url="/api/admin/kyc/selfie-img-issue">Selfie Image Issue</span>
     <% if user_detail['residence_proof_file_url'].present? %>
-        <span class="sticky-button <%= 'button-active' unless is_case_closed %>" data-action-url="/api/admin/kyc/residency-img-issue">Residency Image Issue</span>
+    <span class="sticky-button <%= 'button-active' unless is_case_closed %> need-confirmation" data-action-url="/api/admin/kyc/residency-img-issue">Residency Image Issue</span>
     <% end %>
     <span class="sticky-button <%= 'button-active' unless is_case_closed %> green" data-action-url="/api/admin/kyc/qualify">Qualify</span>
   </form>
@@ -359,7 +359,7 @@
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Mismatch Reason</h4>
+            <h4 class="modal-title" id="myModalLabel"></h4>
           </div>
           <div id="data_mismatch" class="modal-body">
               <div class="error" data-for="action_error"></div>
@@ -376,7 +376,7 @@
   </div>
 </div>
 
-<script type="custom" id="data_mismatch_form">
+<script type="custom" id="data_mismatch_form" data-title="Data Mismatch Reason">
   <div class="checkbox">
   <label>
     <input type="checkbox" name="email_temp_vars[first_name]" value="1">
@@ -409,7 +409,7 @@
 </div>
 </script>
 
-<script type="custom" id="image_mismatch_form">
+<script type="custom" id="image_mismatch_form" data-title="Image Issue">
 <div class="radio">
   <label>
     <input type="radio" name="message_type" id="message_type_standard" value="standard" checked>
@@ -423,6 +423,10 @@
   </label>
 </div>
 <textarea class="form-control" name="email_temp_vars[custom_message]" id="custom_message_text" rows="3" disabled></textarea>
+</script>
+
+<script type="custom" id="confirm_form" data-title="Confirm">
+  <p class="lead">Are you sure you want to approve / deny?</p>
 </script>
 
 <% content_for :javascript do %>
