@@ -45,59 +45,78 @@
         $(this).find('.modal-body').html('');
       });
 
+      $('#kycCaseActionModal').on('click', 'input[type=radio][name=message_type]', function(){
+        if($('#message_type_standard').prop('checked')){
+            $('#custom_message_text').attr('disabled', true);
+        } else {
+            $('#custom_message_text').attr('disabled', false);
+        }
+      });
+
       $('.sticky-action-buttons-container').on('click', '.button-active', function () {
 
-        if($(this).data('action-url') === '/api/admin/kyc/data-mismatch'){
+          $dataAction = $(this).data('action-url');
+          $kycCaseActionModal = $('#kycCaseActionModal');
 
-            $('#kycCaseActionModal').modal();
-            $('#submit_modal_form').click(function(){
-                var $form = $('#modal_form');
-                $.ajax({
-                    url: $form.attr('action'),
-                    dataType: 'json',
-                    method: $form.attr('method'),
-                    data: $form.serialize(),
-                    success: function (response) {
-                        if (response.success == true) {
-                            window.location = window.location;
-                            return false;
-                        } else {
-                            $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
-                        }
-                    },
-                    error: function (jqXHR, exception) {
-                        adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
-                    }
-                });
-            });
+          if($dataAction == '/api/admin/kyc/data-mismatch'){
+              $kycCaseActionModal.find('.form-fields').html( $('#data_mismatch_form').text() );
+          }
 
-        } else {
+          if($dataAction == '/api/admin/kyc/passport-issue' || $dataAction == '/api/admin/kyc/selfie-img-issue' || $dataAction == '/api/admin/kyc/residency-img-issue'){
+              $kycCaseActionModal.find('.form-fields').html( $('#image_mismatch_form').text() );
+          }
 
-            var r = confirm('Please confirm the action !!')
-                , that = this;
-            $('.error[data-for="action_error"]').hide();
-            if (r == true) {
-                var $form = $('#caseActionForm');
-                $.ajax({
-                    url: $(that).data('action-url'),
-                    dataType: 'json',
-                    method: $form.attr('method'),
-                    data: $form.serialize(),
-                    success: function (response) {
-                        if (response.success == true) {
-                            window.location = window.location;
-                            return false;
-                        } else {
-                            $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
-                        }
-                    },
-                    error: function (jqXHR, exception) {
-                        adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
-                    }
-                });
-            }
+          $('#kycCaseActionModal').modal();
+          $('#submit_modal_form').click(function(){
+              var $form = $('#modal_form');
+              $.ajax({
+                  url: $dataAction,
+                  dataType: 'json',
+                  method: $form.attr('method'),
+                  data: $form.serialize(),
+                  success: function (response) {
+                      if (response.success == true) {
+                          window.location = window.location;
+                          return false;
+                      } else {
+                          $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
+                      }
+                  },
+                  error: function (jqXHR, exception) {
+                      adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+                  }
+              });
+          });
 
-        }
+        //if($(this).data('action-url') === '/api/admin/kyc/data-mismatch'){
+        //
+        //} else {
+        //
+        //    var r = confirm('Please confirm the action !!')
+        //        , that = this;
+        //    $('.error[data-for="action_error"]').hide();
+        //    if (r == true) {
+        //        var $form = $('#caseActionForm');
+        //        $.ajax({
+        //            url: $(that).data('action-url'),
+        //            dataType: 'json',
+        //            method: $form.attr('method'),
+        //            data: $form.serialize(),
+        //            success: function (response) {
+        //                if (response.success == true) {
+        //                    window.location = window.location;
+        //                    return false;
+        //                } else {
+        //                    $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
+        //                }
+        //            },
+        //            error: function (jqXHR, exception) {
+        //                adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+        //            }
+        //        });
+        //    }
+        //
+        //}
       });
 
     },
