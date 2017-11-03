@@ -19,6 +19,7 @@
     }
     .jumbotron-links{
       display: inline-block;
+      margin: 10px 10px 0px 0px;
       a.link{
         margin: 0;
         vertical-align: middle;
@@ -27,7 +28,10 @@
         display: inline-block;
         font-weight: 500;
         letter-spacing: 1px;
-        font-size: 14px;
+        font-size: 12px;
+        @media (min-width: 768px){
+          font-size: 14px;
+        }
         text-transform: uppercase;
         &:hover{
           color: #c0993a;
