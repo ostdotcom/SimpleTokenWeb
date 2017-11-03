@@ -53,6 +53,9 @@
         }
       });
 
+
+
+
       $('.sticky-action-buttons-container').on('click', '.button-active', function () {
 
         $dataAction = $(this).data('action-url');
@@ -82,7 +85,8 @@
         $kycCaseActionModal.find('.title-placeholder').text( copyMap[$dataAction] );
 
         $('#kycCaseActionModal').modal();
-        $('#submit_modal_form').click(function () {
+
+        $('#submit_modal_form').unbind('click').click(function () {
           oThis.formSubmit($dataAction);
         });
 
