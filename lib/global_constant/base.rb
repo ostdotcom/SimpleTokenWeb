@@ -90,6 +90,14 @@ module GlobalConstant
         Rails.env
       end
 
+      def page_loaded_at_key
+        'page_loaded_at'
+      end
+
+      def current_time
+        Time.now
+      end
+
       private
 
       # Env config

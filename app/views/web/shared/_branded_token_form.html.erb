@@ -31,6 +31,7 @@
             <a href="https://drive.google.com/file/d/0B1E_xJPbELBKeU9pUk5uSnNqWFU/view" title="Terms and Conditions" target="_blank">Terms and Conditions</a>.
           </div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+          <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
           <div class="user-form-footer login-page-footer">
             <button type="" id="btSubmit" class="btn-common btn-gold upload-image-btn" style="margin-top: 20px" title="<%= is_update ? 'update' : 'done' %>" tabindex="2"><%= is_update ? 'update' : 'done' %></button>
             <% if is_update %>
