@@ -307,6 +307,12 @@
   padding-top: 40px;
 }
 
+.container-press{
+  &.token-sale-press{
+    padding: 0;
+  }
+}
+
 .side-by-side-content{
   @media (min-width: 768px) {
     display: -webkit-box;

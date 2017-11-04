@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get '/product' => :product
     get '/privacy' => :privacy
     get '/terms' => :terms
+    get '/news' => :news
     get '/documents' => :documents
     get '/ip-checker' => :check
   end
