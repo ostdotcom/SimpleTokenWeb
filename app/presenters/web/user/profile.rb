@@ -59,8 +59,12 @@ module Presenters
           user_kyc_data['whitelist_status']
         end
 
-        def bonus_value
+        def pos_bonus_value
           user_kyc_data['pos_bonus_percentage'].to_f
+        end
+
+        def alternate_token_bonus_name
+          user_kyc_data['alternate_token_name_for_bonus'].to_s
         end
 
         def token_sale_active_status
@@ -206,11 +210,32 @@ module Presenters
         end
 
         def is_bonus_confirmed?
-          bonus_value > 0
+          is_pos_bonus_confirmed? || is_alternate_token_bonus_confirmed?
         end
 
-        def formatted_bonus_value
-          (bonus_value.to_i == bonus_value) ? bonus_value.to_i : bonus_value
+        def multple_bonus_confirmed?
+          is_pos_bonus_confirmed? && is_alternate_token_bonus_confirmed?
+        end
+
+        def is_pos_bonus_confirmed?
+          pos_bonus_value > 0
+        end
+
+        def is_alternate_token_bonus_confirmed?
+          alternate_token_bonus_name.present?
+        end
+
+        def bonus_text
+          if multple_bonus_confirmed?
+            "10% Early Access Bonus"
+          elsif is_pos_bonus_confirmed?
+            val = (pos_bonus_value.to_i == pos_bonus_value) ? pos_bonus_value.to_i : pos_bonus_value
+            "#{val}% Proof Of Support Bonus"
+          elsif is_alternate_token_bonus_confirmed?
+            "10% #{alternate_token_bonus_name} Airdrop Bonus"
+          else
+            '10% Bonus Pending'
+          end
         end
 
         def is_bonus_approval_date_over?
