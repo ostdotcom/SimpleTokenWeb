@@ -75,14 +75,16 @@
     }
     .prove-support-content{
       color: #597a84;
+      &.drop-bonus{
+        .header{
+          border-top: solid 2px #e0eaed;
+        }
+      }
       .header{
         font-size: 18px;
         margin: 15px 0 0;
         padding: 15px 0 5px;
         border-top: solid 1px #597a84;
-      }
-      .desc{
-        font-size: 14px;
       }
       a{
         display: inline-block;
