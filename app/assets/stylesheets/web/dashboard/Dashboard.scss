@@ -33,10 +33,12 @@
         padding: 15px;
         &:first-child{
           text-align: left;
+          padding-right: 0;
           text-transform: capitalize;
         }
         &:last-child{
           text-align: right;
+          padding-left: 0;
           text-transform: uppercase;
         }
       }
