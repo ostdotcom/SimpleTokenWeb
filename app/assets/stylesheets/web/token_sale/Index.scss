@@ -288,6 +288,7 @@
     a{
       margin: 0 0 20px;
       min-width: 260px;
+      vertical-align: top;
       &:last-child{
         padding: 13px 20px;
         @media (min-width: 768px) {
