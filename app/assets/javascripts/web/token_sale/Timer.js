@@ -11,7 +11,7 @@
     init: function (config) {
       oThis.bindButtonActions();
       var cd = oThis.countDown();
-      if (cd !== false) {
+      if (typeof cd != 'number') {
         oThis.updateTimer(cd)
       }
     },
@@ -24,6 +24,10 @@
 
       var distance = oThis.countDownTime - new Date().getTime();
 
+      if (distance < 0) {
+        return distance;
+      }
+
       var days = Math.floor(distance / (86400000)) + "";
       var hours = Math.floor((distance % (86400000)) / (3600000)) + "";
       var minutes = Math.floor((distance % (3600000)) / (60000)) + "";
@@ -33,10 +37,6 @@
       while (hours.length < 2) hours = "0" + hours;
       while (minutes.length < 2) minutes = "0" + minutes;
       while (seconds.length < 2) seconds = "0" + seconds;
-
-      if (distance < 0) {
-        return false;
-      }
 
       return {days: days, hours: hours, minutes: minutes, seconds: seconds}
     },
@@ -56,8 +56,11 @@
 
   var x = setInterval(function () {
     var cd = oThis.countDown();
-    if (cd === false) {
+    if (typeof cd == 'number') {
       clearInterval(x);
+      if(cd < 0 && cd > -1000){
+        location.reload();
+      }
     } else {
       oThis.updateTimer(cd)
     }
