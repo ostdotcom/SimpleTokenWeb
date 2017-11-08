@@ -24,7 +24,7 @@
 
       var distance = oThis.countDownTime - new Date().getTime();
 
-      if (distance < 0) {
+      if (distance <= 0) {
         return distance;
       }
 
@@ -58,7 +58,7 @@
     var cd = oThis.countDown();
     if (typeof cd == 'number') {
       clearInterval(x);
-      if(cd < 0 && cd > -1000){
+      if(cd <= 0 && cd > -1000){
         location.reload();
       }
     } else {
