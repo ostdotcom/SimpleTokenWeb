@@ -8,24 +8,27 @@
         </div>
 
         <div class="row">
-          <div class="col-xs-12 col-lg-6 image only-mobile">
-            <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/why-simple-token-1x.png" alt="Sale Details" title="Sale Details" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/image/why-simple-token-2x.png" />
+          <div class="col-xs-12 col-lg-6 image only-mobile illustration">
+            <%= render :partial => "/web/token_sale/why_image_svg" %>
           </div>
           <div class="side-by-side-content">
             <div class="col-xs-12 col-sm-6 copy">
-              <h3>The new standard in blockchain technology</h3>
-              <p class="desc">The business and technical challenge our team set out to solve is to enable mainstream businesses to benefit from deploying their own branded crypto-backed token economies, without the legal, regulatory, and technology headaches involved with going it alone.</p>
-              <p class="desc">Monetize user contributions and content. Power peer-to-peer transactions. Provide meaningful incentives and rewards. Develop transparent loyalty programs. Unleash thousands of new monetization and supply & demand possibilities.</p>
+              <h3 style="margin-bottom: 20px">A new standard in blockchain technology</h3>
+              <p class="desc">The Simple Token solution enables any business to launch a cryptocurrency on a blockchain without the legal, regulatory, and technology headaches involved with doing it alone.</p>
+              <p class="desc">ST is an ERC20 token and OpenST-Protocol enables the creation of utility tokens on a sidechain while their value is backed by staked crypto-assets on public Ethereum.</p>
             </div>
-            <div class="col-xs-12 col-sm-6 image no-mobile">
-              <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/why-simple-token-1x.png" alt="Sale Details" title="Sale Details" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/image/why-simple-token-2x.png" />
+            <div class="col-xs-12 col-sm-6 image no-mobile illustration">
+              <%= render :partial => "/web/token_sale/why_image_svg" %>
             </div>
           </div>
         </div>
 
         <div class="row">
           <div class="col-xs-12 button">
-            <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" class="btn-common btn-gold" title="Learn More">Learn More</a>
+            <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" class="btn-common btn-gold" title="About The Product">About The Product</a>
+            <a href="https://github.com/OpenSTFoundation/openst-protocol" class="btn-common btn-grey view-on-github" title="View On Github" target="_blank">
+              <span>View On Github</span>
+              <span class="view-on-github-icon"></span></a>
           </div>
         </div>
 
