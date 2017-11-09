@@ -1,6 +1,16 @@
 <%
   sale_details_data = [
     {
+      heading: "Soft Cap",
+      description: "50,000,000 Tokens",
+      status: "Achieved"
+    },
+    {
+      heading: "Target",
+      description: "100,000,000 Tokens",
+      link: "Bonus Details"
+    },
+    {
       heading: "Hard Cap",
       description: "240,000,000 Tokens, $20M in value"
     },
@@ -30,7 +40,7 @@
     },
     {
       heading: "Maximum Purchase",
-      description: "TBA 11 Nov, 2017"
+      description: "TBA 12 Nov, 2017"
     },
     {
       heading: "Token Distribution",
@@ -38,7 +48,7 @@
     },
     {
       heading: "Token Activation",
-      description: "ASAP, no later than 12 Dec, 2017"
+      description: "ASAP, no later than 22 Dec, 2017"
     },
   ]
 %>
@@ -51,13 +61,27 @@
         <% sale_details_data.each_with_index do | data, indx | %>
           <div class="col-xs-12 col-sm-6">
             <div class="well">
-              <h3 class="header-title"><%= data[:heading] %></h3>
-              <div class="desc"><%= data[:description] %></div>
+              <div style="display: inline-block">
+                <h3 class="header-title"><%= data[:heading] %></h3>
+                <div class="desc"><%= data[:description] %></div>
+              </div>
+              <% if data[:link].present? %>
+                <a href="#communityBonus" class="details-link smooth-scroll"><%= data[:link] %></a>
+              <% end %>
+              <% if data[:status].present? %>
+                <span class="soft-cap-status">
+                  <span class="kyc-status-icon-approved ver-middle"></span>
+                  <span class="ver-middle"><%= data[:status] %></span>
+                </span>
+              <% end %>
             </div>
           </div>
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="desc text-center" style="margin: 20px 0 0">
+    *Any remaining unsold tokens from token sale #1 after all bonuses have been allocated shall be burned
   </div>
   <div class="row text-center" style="margin-top: 30px">
     <a href="https://drive.google.com/file/d/0B1E_xJPbELBKblpNak8xQS1WelU/view" target="_blank" title="Datasheet" class="ext-links">Datasheet</a><a href="https://drive.google.com/file/d/0B1E_xJPbELBKeU9pUk5uSnNqWFU/view" target="_blank" title="Terms And Conditions" class="ext-links">Terms And Conditions</a>
