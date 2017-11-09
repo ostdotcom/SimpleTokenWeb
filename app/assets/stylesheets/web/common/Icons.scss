@@ -226,3 +226,13 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
     }
   }
 }
+
+.progress-total-sold-icon{
+  @include icon-generator(78px, 68px, -174px, -853px, -174px, -174px, 50);
+}
+.progress-total-eth-icon{
+  @include icon-generator(128px, 200px, -120px, -252px, -120px, -120px, 20);
+}
+.progress-total-usd-icon{
+  @include icon-generator(36px, 68px, -126px, -852px, -126px, -126px, 50);
+}
