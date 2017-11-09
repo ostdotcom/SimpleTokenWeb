@@ -184,8 +184,8 @@
 
                             totalEthereumSent   = ( purchaseDetails["total_ethereum_sent"]  || 0 ),
                             totalDollarsSent    = ( purchaseDetails["total_dollars_sent"]   || 0 ),
-                            stAllottedEthereum  = ( purchaseDetails["simple_token_allotted_in_ethereum"] || 0),
-                            stAllottedDollar    = ( purchaseDetails["simple_token_allotted_in_dollar"] || 0)
+                            stAllottedEthereum  = ( purchaseDetails["simple_token_sent"] || 0),
+                            stAllottedDollar    = ( purchaseDetails["simple_token_sent"] || 0)
 
                         ;
 
