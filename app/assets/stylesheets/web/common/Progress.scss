@@ -3,6 +3,24 @@
   &.signup{
     background-color: #91c0ad;
   }
+  &.dashboard{
+   background-color: transparent;
+    .header{
+      color: #91c0ad;
+    }
+    .item{
+      background-color: #f1f8f5;
+      margin: 0 0 10px;
+    }
+  }
+  &.paused{
+    .header{
+      display: none;
+    }
+    .progress{
+      display: none;
+    }
+  }
   .header{
     margin: 0;
     color: #fff;
