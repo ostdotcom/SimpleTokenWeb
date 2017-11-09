@@ -63,8 +63,8 @@
   }
 
   .time-remaining{
-    background-color: rgba(145, 192, 173, 0.1);
-    padding: 5px;
+//    background-color: rgba(145, 192, 173, 0.1);
+//    padding: 5px;
     margin: 10px 0 20px 0;
     text-align: center;
     color: #91c0ad;
@@ -75,7 +75,18 @@
   }
 
   .registration-timer{
-    padding-top: 30px;
+    padding: 30px 0;
+    border-radius: 5px;
+    background-color: #f1f8f5;
+    h2{
+      margin-top: 0;
+    }
+    .countdown{
+      @media (min-width: 768px) {
+        width: 75%;
+        margin: 0 auto;
+      }
+    }
   }
 
 }
@@ -341,18 +352,34 @@
 }
 
 .token-sale-progress{
-  padding-top: 25px;
-  margin-top: 20px;
-  border-top: 2px solid rgba(145, 192, 173, 0.1);
+  padding: 30px 0 0;
+  &.bg-color{
+    background-color: #91c0ad;
+  }
+  .header{
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
   .progress{
     background-color: #fff;
     border: solid 1px #8fc0ae;
     box-shadow: none;
-    height: 35px;
+    height: 15px;
+    border-radius: 25px;
+    margin: 20px 0 0;
   }
   .progress-bar{
-    background-color: #8fc0ae;
+    background-color: #6e9686;
     box-shadow: none;
+  }
+  .item{
+    padding: 20px 15px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background-color: #ffffff;
+    margin: 30px 0;
   }
 }
 
