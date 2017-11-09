@@ -29,7 +29,7 @@ module Presenters
       end
 
       def has_sale_ended?
-        current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date
+        current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date || GlobalConstant::StTokenSale.has_sale_ended_before_time?
       end
 
       def progress_bar_percent
