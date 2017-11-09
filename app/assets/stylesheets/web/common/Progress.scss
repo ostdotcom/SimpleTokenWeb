@@ -1,0 +1,45 @@
+.token-sale-progress{
+  padding: 30px 0 0;
+  &.signup{
+    background-color: #91c0ad;
+  }
+  .header{
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  .progress{
+    background-color: #fff;
+    border: solid 1px #8fc0ae;
+    box-shadow: none;
+    height: 15px;
+    border-radius: 25px;
+    margin: 20px 0 30px;
+  }
+  .progress-bar{
+    background-color: #6e9686;
+    box-shadow: none;
+  }
+  .item{
+    padding: 20px 15px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin: 0 0 30px;
+    display: flex;
+    align-items: center;
+  }
+  .item-stats{
+    color: #7f9183;
+    margin-left: 10px;
+    text-align: left;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    .total-header{
+      font-weight: 300;
+    }
+    .total-value{
+      font-weight: 500;
+    }
+  }
+}

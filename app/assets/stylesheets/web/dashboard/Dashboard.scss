@@ -146,17 +146,22 @@
 }
 
 .eth-deposit-address{
+  background-color: #6c99a6;
+  padding: 30px 0;
   .header{
     font-size: 24px;
     font-weight: 300;
-    color: #6ca3a9;
+    color: #fff;
     margin-bottom: 20px;
     margin-top: 0;
   }
   .btn{
     padding: 15px 30px;
   }
-  .eth-link{
+}
+
+.eth-address-links{
+  a{
     font-size: 12px;
     font-weight: 500;
     color: #597a84;
@@ -227,7 +232,7 @@
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    box-shadow: 0 0 0 1px #fff;
+    box-shadow: none;
     -webkit-appearance: none;
     border: solid 1px #cdd7da;
     padding: 15px 18px;
@@ -242,6 +247,7 @@
     height: 50px;
     border: none;
     padding: 0 15px;
+    text-transform: uppercase;
   }
 }
 
