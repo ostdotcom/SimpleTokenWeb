@@ -71,8 +71,12 @@ module Presenters
           result['token_sale_active_status']
         end
 
+        def sale_details
+          result["sale_details"]
+        end
+
         def sale_ended_before_time_state
-          result['sale_ended_before_time']
+          sale_details['sale_ended_before_time']
         end
 
         ###########################################
