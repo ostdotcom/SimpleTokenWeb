@@ -448,6 +448,13 @@ en:
       :assets:
         :specific_css_required: 1
 
+    sale_dashboard:
+      :meta:
+        :title: Sale Dashboard
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 1
+
     pos_dashboard:
       :meta:
         :title: Simple Token POS Dashboard

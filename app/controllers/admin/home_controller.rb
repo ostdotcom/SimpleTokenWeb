@@ -4,7 +4,7 @@ class Admin::HomeController < Admin::BaseController
   before_action :delete_admin_cookie, only: [:login]
   before_action :check_admin_cookie, except: [:login]
 
-  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard]
+  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard, :get_sale_dashboard]
 
   # Admin login
   #
@@ -223,6 +223,54 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil
   #
   def pos_dashboard
+  end
+
+
+  # Admin dashboard
+  #
+  # * Author: Alpesh
+  # * Date: 09/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def sale_dashboard
+  end
+
+  # Admin dashboard
+  #
+  # * Author: Alpesh
+  # * Date: 09/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def get_sale_dashboard
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+                           .sale_dashboard_detail(params)
+
+    Rails.logger.info(service_response.inspect)
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    resp_data = service_response.data
+
+    curr_resp_data = []
+    resp_data['curr_page_data'].each do |c_p_d|
+      curr_resp_data << {
+          date_time: c_p_d['day_timestamp'],
+          total_etherium: c_p_d['total_etherium'],
+          total_tokens_sold: c_p_d['total_tokens_sold'],
+          total_dollers_value: c_p_d['total_dollers_value']
+      }
+    end
+
+    response = {
+        recordsFiltered: resp_data['meta']['total_filtered_recs'],
+        data: curr_resp_data
+    }
+
+    render :json => response and return
+
   end
 
 end
