@@ -28,7 +28,6 @@
       letter-spacing: 0.8px;
       text-align: center;
       margin: 20px auto;
-      text-align: center;
     }
     .get-started{
       margin-top:10px;
@@ -412,5 +411,16 @@
   }
   .only-mobile{
     display: block !important;
+  }
+}
+
+
+.container-member-companies{
+  h2{
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 1.3px;
+    color: #597a84;
+    margin: 30px 0 40px;
   }
 }
