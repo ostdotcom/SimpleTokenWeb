@@ -65,7 +65,7 @@
   .time-remaining{
 //    background-color: rgba(145, 192, 173, 0.1);
 //    padding: 5px;
-    margin: 10px 0 20px 0;
+    margin: 5px 0 20px 0;
     text-align: center;
     color: #91c0ad;
     font-size: 12px;
@@ -80,6 +80,7 @@
     background-color: #f1f8f5;
     h2{
       margin-top: 0;
+      padding-bottom: 0;
     }
     .countdown{
       @media (min-width: 768px) {

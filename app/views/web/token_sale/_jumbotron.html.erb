@@ -36,13 +36,13 @@
             <p style="margin: 0">Have questions on the Token Sale? Check these documents.</p>
             <span class="jumbotron-links">
               <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit" class="link" target="_blank" title="Registration Guide">
-                <span class="jumbotron-registration-guide-icon icon-pos"></span>
+                <span class="registration-guide-link-icon icon-pos"></span>
                 <span class="border-btm">Registration Guide</span>
               </a>
             </span>
             <span class="jumbotron-links">
               <a href="https://simpletoken.org/faq/categories/token-sale/" class="link" target="_blank" title="Token Sale FAQ">
-                <span class="jumbotron-how-to-purchase-icon icon-pos"></span>
+                <span class="faq-link-icon icon-pos"></span>
                 <span class="border-btm">Token Sale FAQ</span>
               </a>
             </span>
@@ -64,7 +64,7 @@
             %>
 
             <h2><%= top_lang %></h2>
-
+            <span class="time-remaining-icon"></span>
             <div class="time-remaining">&mdash;&nbsp;Time Remaining&nbsp;&mdash;</div>
             <%=
                 render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: countdown_timer.to_i * 1000}
