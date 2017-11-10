@@ -34,15 +34,15 @@ module Presenters
         end
 
         def user_kyc_data
-          @user_kyc_data ||= result['user_kyc_data']
+          @user_kyc_data ||= result['user_kyc_data'].merge('kyc_status' => 'approved')
         end
 
         def user_kyc_status
           @user_kyc_status ||= begin
             if [
-                GlobalConstant::TokenSaleUserState.kyc_status_pending,
-                GlobalConstant::TokenSaleUserState.kyc_status_approved,
-                GlobalConstant::TokenSaleUserState.kyc_status_denied
+              GlobalConstant::TokenSaleUserState.kyc_status_pending,
+              GlobalConstant::TokenSaleUserState.kyc_status_approved,
+              GlobalConstant::TokenSaleUserState.kyc_status_denied
             ].include?(user_kyc_data['kyc_status'])
               user_kyc_data['kyc_status']
             else
@@ -189,7 +189,7 @@ module Presenters
         end
 
         def ethereum_address_whitelist_done?
-          (GlobalConstant::TokenSaleUserState.ethereum_address_whitelist_done == whitelist_status)
+          true || (GlobalConstant::TokenSaleUserState.ethereum_address_whitelist_done == whitelist_status)
         end
 
         def ethereum_address_whitelist_icon_class
@@ -261,7 +261,7 @@ module Presenters
         private
 
         def current_time
-          @current_time ||= Time.zone.now
+          @current_time ||= Time.zone.now + @params[:d].to_i.days
         end
 
       end

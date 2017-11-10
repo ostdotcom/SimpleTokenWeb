@@ -19,9 +19,24 @@
   <%= render :partial => "/web/token_sale/sale_progress" %>
 </div>
 <div class="eth-address-links text-center" style="margin: 25px 0">
-  <a href="#eth-address" class="smooth-scroll eth-link" title="Check Your ETH Address">check your eth address</a>
-  <a href="https://simpletoken.org/faq/categories/token-sale/" target="_blank" class="eth-link" title="Token Sale Faq">token sale faq</a>
-  <a href="javascript:void(0)" target="_blank" class="eth-link" title="Wallet Setup Guide">how to purchase guide</a>
+  <span class="jumbotron-links">
+    <a href="#eth-address" class="smooth-scroll eth-link link" title="Check Your ETH Address">
+      <span class="check-your-eth-link-icon icon-pos"></span>
+      <span class="border-btm">check your eth address</span>
+    </a>
+  </span>
+  <span class="jumbotron-links">
+    <a href="https://simpletoken.org/faq/categories/token-sale/" target="_blank" class="link" title="Token Sale Faq">
+      <span class="token-sale-link-icon icon-pos"></span>
+      <span class="border-btm">token sale faq</span>
+    </a>
+  </span>
+  <span class="jumbotron-links">
+    <a href="javascript:void(0)" target="_blank" class="link" title="Wallet Setup Guide">
+      <span class="registration-guide-link-icon icon-pos"></span>
+      <span class="border-btm">how to purchase guide</span>
+    </a>
+  </span>
 </div>
 <% end %>
 

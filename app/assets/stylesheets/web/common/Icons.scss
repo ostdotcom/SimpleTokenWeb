@@ -221,6 +221,9 @@ $sprite-location: "http://sale.developmentsimpletoken.org:8080/simple-token-spri
 .faq-link-icon{
   @include icon-generator(28px, 38px, -338px, -750px, -338px, -338px, 80);
 }
+.go-to-telegram-link-icon{
+  @include icon-generator(30px, 26px, -337px, -799px, -337px, -337px);
+}
 
 .jumbotron-links{
   &:hover{
@@ -247,6 +250,9 @@ $sprite-location: "http://sale.developmentsimpletoken.org:8080/simple-token-spri
     }
     .faq-link-icon{
       @include icon-generator(28px, 38px, -378px, -750px, -378px, -378px, 80);
+    }
+    .go-to-telegram-link-icon{
+      @include icon-generator(30px, 26px, -377px, -799px, -377px, -377px);
     }
   }
 }
