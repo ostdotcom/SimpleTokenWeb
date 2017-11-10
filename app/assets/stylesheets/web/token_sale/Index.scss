@@ -156,6 +156,13 @@
     letter-spacing: 1.3px;
     font-weight: 300;
   }
+  .desc{
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    color: #597a84;
+    font-weight: 300;
+  }
   .well{
     padding: 15px;
     border: none;
@@ -176,6 +183,26 @@
       font-weight: 500;
       color: #597a84;
     }
+    .details-link{
+      color: #597a84;
+      margin-left: 10px;
+      font-weight: 300;
+      display: inline-block;
+      border-bottom: 1px solid #597a84;
+      &:hover, &:focus{
+        text-decoration: none;
+      }
+    }
+    .soft-cap-status{
+      float: right;
+      color: #597a84;
+      font-weight: 500;
+      padding-top: 12px;
+      font-size: 16px;
+      .ver-middle{
+        vertical-align: middle;
+      }
+    }
   }
   &.container-faqs{
     .header-title{
@@ -191,6 +218,44 @@
   }
 }
 
+.container-bonus-details{
+  .header{
+    color: #6ca3a9;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 38px;
+    letter-spacing: 1.3px;
+    font-weight: 300;
+  }
+  .sub-title{
+    font-size: 18px;
+    font-weight: 500;
+    color: #597a84;
+  }
+  .desc{
+    font-weight: 300;
+    color: #597a84;
+    font-size: 16px;
+    margin: 10px 0 30px;
+  }
+  .well{
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: none;
+    margin-bottom: 15px;
+    background-color: rgba(244, 248, 246, 0.8);
+    .text-line{
+      color: #597a84;
+      font-weight: 300;
+      font-size: 16px;
+      letter-spacing: 0.6px;
+      .text-bold{
+        font-weight: 500;
+      }
+    }
+  }
+}
 
 .container-why, .container-token-key-dates{
   .header{
@@ -321,7 +386,7 @@
 
 .container-press{
   &.token-sale-press{
-    padding: 0;
+    padding: 0 0 30px;
   }
 }
 
