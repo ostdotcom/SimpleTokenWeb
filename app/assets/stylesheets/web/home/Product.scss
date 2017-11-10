@@ -31,7 +31,11 @@
     }
     .get-started{
       margin-top:10px;
-      margin-bottom:40px;
+      margin-bottom:30px;
+      @media(min-width: 568px){
+        margin-left: 10px;
+        margin-right: 10px;
+      }
     }
   }
 
@@ -440,6 +444,17 @@
     margin-bottom: 40px;
     .text-bold{
       font-weight: 500;
+    }
+  }
+  .cta-group{
+    margin-bottom: 50px;
+    .get-started{
+      margin-top:10px;
+      margin-bottom: 15px;
+      @media(min-width: 568px){
+        margin-left: 10px;
+        margin-right: 10px;
+      }
     }
   }
 }
