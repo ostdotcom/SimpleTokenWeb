@@ -207,7 +207,7 @@ $sprite-location: "http://sale.developmentsimpletoken.org:8080/simple-token-spri
   @include icon-generator(28px, 40px, -337px, -504px, -337px, -337px, 80);
 }
 .token-sale-link-icon{
-  @include icon-generator(28px, 38px, -338px, -555px, -338px, -338px, 80);
+  @include icon-generator(30px, 40px, -337px, -554px, -338px, -338px, 80);
 }
 .check-your-eth-link-icon{
   @include icon-generator(22px, 36px, -338px, -699px, -338px, -338px, 80);
@@ -220,6 +220,9 @@ $sprite-location: "http://sale.developmentsimpletoken.org:8080/simple-token-spri
 }
 .faq-link-icon{
   @include icon-generator(28px, 38px, -338px, -750px, -338px, -338px, 80);
+}
+.documents-link-icon{
+  @include icon-generator(30px, 40px, -337px, -834px, -337px, -337px, 80);
 }
 .go-to-telegram-link-icon{
   @include icon-generator(30px, 26px, -337px, -799px, -337px, -337px);
@@ -237,7 +240,7 @@ $sprite-location: "http://sale.developmentsimpletoken.org:8080/simple-token-spri
       @include icon-generator(28px, 40px, -377px, -504px, -377px, -377px, 80);
     }
     .token-sale-link-icon{
-      @include icon-generator(28px, 38px, -378px, -555px, -378px, -378px, 80);
+      @include icon-generator(30px, 40px, -377px, -554px, -377px, -377px, 80);
     }
     .check-your-eth-link-icon{
       @include icon-generator(22px, 36px, -378px, -699px, -378px, -378px, 80);
@@ -250,6 +253,9 @@ $sprite-location: "http://sale.developmentsimpletoken.org:8080/simple-token-spri
     }
     .faq-link-icon{
       @include icon-generator(28px, 38px, -378px, -750px, -378px, -378px, 80);
+    }
+    .documents-link-icon{
+      @include icon-generator(30px, 40px, -377px, -834px, -377px, -377px, 80);
     }
     .go-to-telegram-link-icon{
       @include icon-generator(30px, 26px, -377px, -799px, -377px, -377px);
