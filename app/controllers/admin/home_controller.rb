@@ -33,6 +33,7 @@ class Admin::HomeController < Admin::BaseController
   def dashboard
     @admin_status = params[:filters][:admin_status] if params[:filters].present?
     @cynopsis_status = params[:filters][:cynopsis_status] if params[:filters].present?
+    @admin_action = params[:filters][:admin_action] if params[:filters].present?
     @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
     @display_start = params[:display_start]
   end

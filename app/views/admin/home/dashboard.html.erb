@@ -76,11 +76,27 @@
             <option value="<%= GlobalConstant::UserKycDetail.qualified_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.qualified_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.qualified_admin_status] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.reviewed_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.reviewed_admin_status %> >
-              <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.reviewed_admin_status] %>
-            </option>
             <option value="<%= GlobalConstant::UserKycDetail.denied_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.denied_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.denied_admin_status] %>
+            </option>
+          </select>
+        </form>
+
+      </div>
+
+      <div class="col-sm-2">
+
+        <div class="kyc-filter-label">ADMIN REVIEW STATUS</div>
+        <form class="form-inline">
+          <select id="admin-action" class="form-control selectpicker" style="width: 100%;">
+            <option value="<%= GlobalConstant::UserKycDetail.all_admin_actions %>" <%= 'selected' if @admin_action==GlobalConstant::UserKycDetail.all_admin_actions %> >
+              <%= GlobalConstant::UserKycDetail.admin_action_names[GlobalConstant::UserKycDetail.all_admin_actions] %>
+            </option>
+            <option value="<%= GlobalConstant::UserKycDetail.no_admin_action %>" <%= 'selected' if @admin_action==GlobalConstant::UserKycDetail.no_admin_action %> >
+              <%= GlobalConstant::UserKycDetail.admin_action_names[GlobalConstant::UserKycDetail.no_admin_action] %>
+            </option>
+            <option value="<%= GlobalConstant::UserKycDetail.taken_admin_action %>" <%= 'selected' if @admin_action==GlobalConstant::UserKycDetail.taken_admin_action %> >
+              <%= GlobalConstant::UserKycDetail.admin_action_names[GlobalConstant::UserKycDetail.taken_admin_action] %>
             </option>
           </select>
         </form>
