@@ -15,24 +15,26 @@
       description: "240,000,000 Tokens, $20M in value"
     },
     {
-      heading: "Market Cap",
-      description: "$66,666,666.67"
-    },
-    {
       heading: "Total Token Supply",
       description: "800,000,000 finite supply"
     },
     {
-      heading: "ERC20 TOKEN",
-      description: "Yes"
-    },
-    {
-      heading: "TOKEN PUBLIC SALE PRICE (ETH)",
-      description: "TBA 11 Nov, 2017"
+      heading: "TOKEN PUBLIC SALE PRICE",
+      description: "1 ETH = 3598.214 ST",
+      setdate: "Set 10-Nov-2017",
+      tcs: "T's & C's."
     },
     {
       heading: "TOKEN PUBLIC SALE PRICE (USD)",
       description: "$0.0833"
+    },
+    {
+      heading: "Market Cap",
+      description: "$66,666,666.67"
+    },
+    {
+      heading: "ERC20 TOKEN",
+      description: "Yes"
     },
     {
       heading: "Minimum Purchase",
@@ -67,6 +69,15 @@
               </div>
               <% if data[:link].present? %>
                 <a href="#communityBonus" class="details-link smooth-scroll"><%= data[:link] %></a>
+              <% end %>
+              <% if data[:setdate].present? && data[:tcs].present? %>
+                <div style="display: inline-block;float: right;">
+                  <div class="setdate"><%= data[:setdate] %></div>
+                  <div>
+                    <span class="setdate">as per</span>
+                    <a href="https://drive.google.com/file/d/0B1E_xJPbELBKeU9pUk5uSnNqWFU/view" class="details-link" style="margin-left: 0" target="_blank"><%= data[:tcs] %></a>
+                  </div>
+                </div>
               <% end %>
               <% if data[:status].present? %>
                 <span class="soft-cap-status">
