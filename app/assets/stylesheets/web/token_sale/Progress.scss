@@ -1,4 +1,4 @@
-.container-dates{
+.container-progress{
   text-align: center;
   margin:40px auto;
   h2.header{
@@ -13,44 +13,100 @@
 
   .container-timeline{
 
-    width: 610px;
+    width: 900px;
     margin: 0 auto;
     padding: 80px 0;
     position: relative;
 
     .progress{
-      height: 10px;
-      background-color: #91c0ad;
-      .progress-bar-completed{
-        background-color: #597a84;
+      height: 5px;
+      background-color: #c6ede8;
+      box-shadow: none;
+
+      .progress-bar{
+
+        background-color: inherit;
+        box-shadow: none;
+
+        .pb-inner{
+          height: 100%;
+        }
+
+        &.pb-1{
+          .in-progress{
+            background: #61bfba;
+          }
+          .complete{
+            background: #61bfba;
+            width: 100%;
+          }
+        }
+        &.pb-2{
+          .in-progress{
+            background: #61bfba;
+          }
+          .complete{
+            background: linear-gradient(to right, #61bfba, #e4b030 100%);
+            width: 100%;
+          }
+        }
+        &.pb-3{
+          .in-progress{
+            background: #e4b030;
+          }
+          .complete{
+            background: linear-gradient(to right, #e4b030, #f58a23 100%);
+            width: 100%;
+          }
+        }
+        &.pb-4{
+          .in-progress{
+            background: #f58a23;
+          }
+          .complete{
+            background: linear-gradient(to right, #f58a23, #d0021b 100%);
+            width: 100%;
+          }
+        }
+        &.pb-5{
+          .in-progress{
+            background: #d0021b;
+          }
+          .complete{
+            background: linear-gradient(to right, #d0021b, #740602 100%);
+            width: 100%;
+          }
+        }
       }
     }
 
-    .milestone{
-      position: absolute;
-      top: 40px;
-      width: 150px;
-      height: 100px;
-      text-align: center;
-      .date{
-        font-size: 16px;
-        font-weight: 600;
-        color: #597a84;
-        margin-bottom:5px;
-      }
-      .point{
-        width:30px;
-        height:30px;
-        background: #fff;
-        border: 3px solid #91c0ad;
-        border-radius: 50%;
-        margin: 0 auto 5px auto;
-      }
-      .title{
-        font-size: 13px;
-        font-weight: 600;
-        color: #597a84;
-        margin-bottom:5px;
+    .milestones{
+      .milestone{
+        position: absolute;
+        top: 40px;
+        width: 150px;
+        height: 100px;
+        text-align: center;
+        .st{
+          font-size: 16px;
+          font-weight: 600;
+          color: #597a84;
+          margin-bottom:5px;
+        }
+        .point{
+          width:30px;
+          height:30px;
+          background: #fff;
+          border: 3px solid #91c0ad;
+          border-radius: 50%;
+          margin: 0 auto 5px auto;
+        }
+        .title{
+          font-size: 13px;
+          font-weight: 600;
+          color: #597a84;
+          margin-bottom:5px;
+        }
       }
     }
 
@@ -93,19 +149,19 @@
         height: 100px;
         &:nth-of-type(odd){
           text-align: left;
-          .date,
+          .st,
           .title{
             margin-left: 150px;
           }
         }
         &:nth-of-type(even){
           text-align: right;
-          .date,
+          .st,
           .title{
             margin-right: 150px;
           }
         }
-        .date{
+        .st{
           font-size: 16px;
           font-weight: 600;
           color: #597a84;
