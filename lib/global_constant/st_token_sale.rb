@@ -26,14 +26,14 @@ module GlobalConstant
       end
 
       def has_sale_ended_before_time?
-        token_sale_details["sale_ended_before_time"].to_i == 1
+        token_sale_details[:sale_ended_before_time].to_i == 1
       end
 
       private
 
       def token_sale_details
         data = get_token_sale_details_from_memcache
-        data.present? ? data : get_token_sale_details_from_api
+        data.present? ? data[:sale_details] : get_token_sale_details_from_api
       end
 
       def get_token_sale_details_from_memcache
@@ -44,7 +44,7 @@ module GlobalConstant
       def get_token_sale_details_from_api
         response = SimpleTokenApi::Request::Sale.new.get_sale_stat
         return {} unless response.success?
-        response.data
+        HashWithIndifferentAccess.new(response.data["sale_details"])
       end
 
       def config
