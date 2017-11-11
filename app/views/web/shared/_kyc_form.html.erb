@@ -5,21 +5,8 @@
       <div class="text-center">
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
       </div>
-      <%=
-          unless is_update
-            render partial: '/shared/web/common/steps',
-                   locals: {
-                           classes: {
-                                   step_2: 'active',
-                                   step_3: 'incomplete',
-                                   connector_2: 'incomplete'
-                           }
-                   }
-          end
-      %>
-
       <div class="simple-token-form">
-        <form class="simpletoken-form" action="/api/user/kyc-submit" method="POST" id="kycForm">
+        <form class="simpletoken-form kyc-form" action="/api/user/kyc-submit" method="POST" id="kycForm">
           <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
             <% if is_update %>
                 <h1 class="text-center form-header" style="margin-bottom: 10px">Update Your Registration Details</h1>
