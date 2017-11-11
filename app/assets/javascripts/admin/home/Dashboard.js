@@ -99,8 +99,8 @@
         oThis.changePageUrl();
       });
 
-      $("#admin-action").on('change', function () {
-        oThis.filters.admin_action = $(this).val();
+      $("#admin-action-type").on('change', function () {
+        oThis.filters.admin_action_type = $(this).val();
         oThis.oTable.ajax.reload(null, true);
         oThis.changePageUrl();
       });

@@ -140,42 +140,55 @@ module GlobalConstant
 
       ### Admin Status End ###
 
-      ### Admin action Start ###
-      def all_admin_actions
-        'all'
+
+      ### admin action type ####
+
+      def no_admin_action_type
+        'no'
       end
 
-      def no_admin_action
-        'no_admin_action'
+      def any_admin_action_type
+        'any'
       end
 
-      def taken_admin_action
-        'taken_admin_action'
+      def data_mismatch_admin_action_type
+        'data_mismatch'
       end
 
-      def admin_action_names
+      def passport_issue_admin_action_type
+        'passport_issue'
+      end
+
+      def selfie_issue_admin_action_type
+        'selfie_issue'
+      end
+
+      def residency_issue_admin_action_type
+        'residency_issue'
+      end
+
+      def admin_action_type_names
         {
-            all_admin_actions => "All",
-            no_admin_action => "Not Reviewed",
-            taken_admin_action => "Reviewed"
+            no_admin_action_type => 'No Review Action',
+            any_admin_action_type => 'Any Review Action',
+            data_mismatch_admin_action_type => 'Data Mismatch',
+            passport_issue_admin_action_type => 'Passport Image Issue',
+            selfie_issue_admin_action_type => 'Selfie Image Issue',
+            residency_issue_admin_action_type => 'Residency Image Issue'
         }
-
       end
 
-      ### Admin action End ###
-
-      ### Admin Email communication Messages Start ###
 
       def admin_action_type
         {
-            'data_mismatch' => 'Data Mismatch Email Sent',
-            'passport_issue' => 'Passport Image Issue Email Sent',
-            'selfie_issue' => 'Selfie Image Issue Email Sent',
-            'residency_issue' => 'Residency Image Issue Email Sent'
+            data_mismatch_admin_action_type => 'Data Mismatch Email Sent',
+            passport_issue_admin_action_type => 'Passport Image Issue Email Sent',
+            selfie_issue_admin_action_type => 'Selfie Image Issue Email Sent',
+            residency_issue_admin_action_type => 'Residency Image Issue Email Sent'
         }
       end
 
-      ### Admin Email communication Messages End ###
+      ### admin action type End ####
 
     end
 
