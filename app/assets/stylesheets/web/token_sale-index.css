@@ -16,4 +16,5 @@
  *= require web/common/PressVideos
  *= require web/common/Telegram
  *= require web/common/Progress
+ *= require web/token_sale/Progress
  */
