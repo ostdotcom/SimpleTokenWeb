@@ -55,5 +55,11 @@
     @media(min-width: 737px){
       padding: 20px 0 10px 0;
     }
+    &.choose-file-instructions{
+      padding: 0 0 0 5px;
+      @media(min-width: 737px){
+        padding: 0 0 0 15px;
+      }
+    }
   }
 }
