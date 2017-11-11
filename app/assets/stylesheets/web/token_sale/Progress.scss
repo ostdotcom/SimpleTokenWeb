@@ -89,11 +89,20 @@
         text-align: center;
         .st{
           font-size: 16px;
-          color: #597a84;
+          color: #a7b2b5;
           margin-bottom:5px;
           strong{
             font-weight: 500;
           }
+        }
+        .line{
+          height: 100px;
+          width: 1px;
+          border: 1px dashed #597a84;
+          position: absolute;
+          left: 50px;
+          top: 22px;
+          z-index: -1;
         }
         .point{
           width:25px;
@@ -109,8 +118,29 @@
             background: #afe1d4;
             border-radius: 50%;
           }
+        }
 
-          &.in-progress{
+        .desc{
+          text-align: center;
+          color: #6c9ba9;
+          .title{
+            font-size: 16px;
+            font-weight: 500;
+          }
+          .sub{
+            font-size: 11px;
+          }
+          .bonus{
+            font-size: 13px;
+            font-weight: 500;
+          }
+        }
+
+        &.in-progress{
+          .st{
+            color: #54b79e;
+          }
+          .point{
             width:30px;
             height:30px;
             border: none;
@@ -119,50 +149,67 @@
               display: none;
             }
           }
+        }
 
-          &.complete{
+        &.complete{
+          .st{
+            color: #597a84;
+          }
+          .point{
             border: none;
             .point-inner{
               display: none;
             }
           }
         }
-        .desc{
-          text-align: center;
-        }
 
-        &.ms-1{
-          .in-progress,
-          .complete{
+        &.ms-1.in-progress,
+        &.ms-1.complete{
+          .point{
             background: #61bfba;
           }
+          .desc{
+            color: #61bfba;
+          }
         }
 
-        &.ms-2{
-          .in-progress,
-          .complete{
+        &.ms-2.in-progress,
+        &.ms-2.complete{
+          .point{
             background: #e4b030;
           }
+          .desc{
+            color: #e4b030;
+          }
         }
 
-        &.ms-3{
-          .in-progress,
-          .complete{
+        &.ms-3.in-progress,
+        &.ms-3.complete{
+          .point{
             background: #f58a23;
           }
-        }
-
-        &.ms-4{
-          .in-progress,
-          .complete{
-            background: #d0021b;
+          .desc{
+            color: #f58a23;
           }
         }
 
-        &.ms-5{
-          .in-progress,
-          .complete{
+        &.ms-4.in-progress,
+        &.ms-4.complete{
+          .point{
+            background: #d0021b;
+          }
+          .desc{
+            color: #d0021b;
+          }
+        }
+
+        &.ms-5.in-progress,
+        &.ms-5.complete{
+          .point{
             background: #740602;
+          }
+          .desc{
+            color: #740602;
           }
         }
 
