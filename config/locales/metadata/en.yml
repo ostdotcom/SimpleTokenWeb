@@ -448,7 +448,14 @@ en:
       :assets:
         :specific_css_required: 1
 
-    sale_dashboard:
+    sale_all_dashboard:
+      :meta:
+        :title: Sale Dashboard
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 1
+
+    sale_daily_dashboard:
       :meta:
         :title: Sale Dashboard
         :robots: 'noindex, nofollow'

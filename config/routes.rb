@@ -54,8 +54,10 @@ Rails.application.routes.draw do
     get '/kyc-action-logs' => :kyc_action_logs
     get '/whitelist-dashboard' => :whitelist_dashboard
     get '/get-kyc-whitelist-dashboard' => :get_kyc_whitelist_dashboard
-    get '/sale-dashboard' => :sale_dashboard
-    get '/get-sale-dashboard' => :get_sale_dashboard
+    get '/sale-all-dashboard' => :sale_all_dashboard
+    get '/get-sale-all-dashboard' => :get_sale_all_dashboard
+    get '/sale-daily-dashboard' => :sale_daily_dashboard
+    get '/get-sale-daily-dashboard' => :get_sale_daily_dashboard
     get '/pos-dashboard' => :pos_dashboard
   end
 

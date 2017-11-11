@@ -5,7 +5,7 @@
     adminUtilsNs = ns("simpletokenadmin.utils"),
     oThis;
 
-  homeNs.saleDashboard = oThis = {
+  homeNs.saleDailyDashboard = oThis = {
 
     oTable: null,
     page: 0,
@@ -24,13 +24,13 @@
 
       config.columns.unshift(
         {
-          title: "Date (PST)",
+          title: "Date (PST) <br> one",
           data: "date_time",
           render: $.fn.dataTable.render.text()
         },
         {
-          title: "Total Etherium",
-          data: "total_etherium",
+          title: "Total Etherium (Wei)",
+          data: "total_ethereum",
           render: $.fn.dataTable.render.text()
         },
         {
@@ -40,7 +40,7 @@
         },
         {
           title: "$",
-          data: "total_dollers_value",
+          data: "total_dollars_value",
           render: $.fn.dataTable.render.text()
         }
       );

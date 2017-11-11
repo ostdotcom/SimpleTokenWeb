@@ -5,7 +5,7 @@
       displayStart: @display_start.to_i,
       pageLength: 30,
       ajax: {
-          url: "/admin/get-sale-dashboard",
+          url: "/admin/get-sale-daily-dashboard",
           type: "GET"
       },
       bSort: false,
@@ -43,6 +43,8 @@
               </span>
             </div>
             <div class="col-sm-6" style="text-align: right;">
+              <a href="/admin/sale-all-dashboard" title="Log out" class="logOut">Sale All Dash</a>
+              <span> | </span>
               <a href="/admin/dashboard" title="Log out" class="logOut">KYC Dash</a>
               <span> | </span>
               <a href="/admin/logout" title="Log out" class="logOut">Log out</a>
@@ -69,7 +71,7 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script text="text/javascript">
       $(document).ready(function () {
-        simpletokenadmin.home.saleDashboard.init({
+        simpletokenadmin.home.saleDailyDashboard.init({
           table_config: <%= raw table_config.to_json %>
         });
       });

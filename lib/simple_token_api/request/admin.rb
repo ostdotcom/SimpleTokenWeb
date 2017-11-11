@@ -97,13 +97,31 @@ module SimpleTokenApi
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def sale_dashboard_detail(params)
+      def sale_daily_dashboard_detail(params)
         request_params = {
             offset: params[:start],
             page_size: params[:length]
         }
 
-        get("kyc/sale-dashboard", request_params)
+        get("kyc/sale-daily-dashboard", request_params)
+      end
+
+      # Get Sale dashboard info
+      #
+      # * Author: Alpesh
+      # * Date: 09/11/2017
+      # * Reviewed By:
+      #
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def sale_all_dashboard_detail(params)
+        request_params = {
+            offset: params[:start],
+            page_size: params[:length]
+        }
+
+        get("kyc/sale-all-dashboard", request_params)
       end
 
     end
