@@ -13,7 +13,7 @@
     <%= render :partial => "/web/dashboard/telegram" %>
 <% elsif @presenter_obj.has_sale_paused? %>
     <div class="token-sale-progress text-center paused">
-      <%= render :partial => "/web/token_sale/sale_progress" %>
+      <%= render :partial => "/web/token_sale/sale_stats" %>
     </div>
     <%= render :partial => "/web/dashboard/token_sale_pause" %>
     <% if !@presenter_obj.is_kyc_denied? %>

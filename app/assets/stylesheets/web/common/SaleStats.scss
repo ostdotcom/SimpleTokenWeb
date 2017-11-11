@@ -13,14 +13,6 @@
       border: 1px solid #f1f8f5;
     }
   }
-  &.paused{
-    .header{
-      display: none;
-    }
-    .progress{
-      display: none;
-    }
-  }
   .item{
     padding: 20px 15px;
     border-radius: 5px;

@@ -7,5 +7,5 @@
  *= require web/dashboard/Dashboard
  *= require web/common/NewTimer
  *= require web/common/Telegram
- *= require web/common/Progress
+ *= require web/common/SaleStats
  */
