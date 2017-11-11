@@ -1,9 +1,9 @@
 <% if @presenter_obj.can_purchase? %>
 <div class="container-fluid">
   <div class="row eth-deposit-address">
-    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
       <div class="text-center">
-        <h1 class="header">Ethereum Deposit Address</h1>
+        <h1 class="header">Ethereum Deposit Address for ST Public Sale</h1>
 
         <fieldset id="ethereum-deposit-address" class="ethereum-deposit-address" style="display: none">
           <input  type="text" id="ethereum-address-input" class="copy-address-input" placeholder="Ethereum Deposit Address" readonly value=""/>
@@ -20,21 +20,21 @@
 </div>
 <div class="eth-address-links text-center" style="margin: 25px 0">
   <span class="jumbotron-links">
+    <a href="javascript:void(0)" target="_blank" class="link" title="Wallet Setup Guide">
+      <span class="registration-guide-link-icon icon-pos"></span>
+      <span class="border-btm">how to purchase</span>
+    </a>
+  </span>
+  <span class="jumbotron-links">
     <a href="#eth-address" class="smooth-scroll eth-link link" title="Check Your ETH Address">
       <span class="check-your-eth-link-icon icon-pos"></span>
-      <span class="border-btm">check your eth address</span>
+      <span class="border-btm">verify eth address</span>
     </a>
   </span>
   <span class="jumbotron-links">
     <a href="https://simpletoken.org/faq/categories/token-sale/" target="_blank" class="link" title="Token Sale Faq">
       <span class="token-sale-link-icon icon-pos"></span>
       <span class="border-btm">token sale faq</span>
-    </a>
-  </span>
-  <span class="jumbotron-links">
-    <a href="javascript:void(0)" target="_blank" class="link" title="Wallet Setup Guide">
-      <span class="registration-guide-link-icon icon-pos"></span>
-      <span class="border-btm">how to purchase guide</span>
     </a>
   </span>
 </div>
