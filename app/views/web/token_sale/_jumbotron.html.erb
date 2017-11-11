@@ -1,10 +1,9 @@
 <div class="container container-jumbotron">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-      <div class="row">
+      <div class="row mobile-bottom">
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive"/>
-          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
           <% if @presenter_obj.has_general_access_sale_started? %>
               <div class="desc">
                 <h1>Public Sale is Live!</h1>
@@ -49,6 +48,7 @@
           </div>
         </div>
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5">
+          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
           <div class="registration-timer text-center">
             <%
                if @presenter_obj.has_general_access_sale_started?

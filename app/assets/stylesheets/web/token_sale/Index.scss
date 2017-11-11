@@ -56,7 +56,7 @@
 }
 
 // Mobile portrait, landscape
-@media (max-width: 767px) {
+@media (max-width: 991px) {
 
   .container-jumbotron{
 
@@ -68,9 +68,12 @@
       max-width: 220px;
       width:80%;
       text-align: center;
-      margin:0 auto;
+      margin:0 auto 30px;
     }
-
+    .mobile-bottom{
+      display: flex;
+      flex-direction: column-reverse;
+    }
   }
 }
 
