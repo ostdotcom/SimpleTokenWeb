@@ -174,7 +174,7 @@ module GlobalConstant
             data_mismatch_admin_action_type => 'Data Mismatch',
             passport_issue_admin_action_type => 'Passport Image Issue',
             selfie_issue_admin_action_type => 'Selfie Image Issue',
-            residency_issue_admin_action_type => 'Residency Image Issue'
+            residency_issue_admin_action_type => 'Proof of Residence Issue'
         }
       end
 
