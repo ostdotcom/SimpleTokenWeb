@@ -183,7 +183,6 @@ class Admin::HomeController < Admin::BaseController
     service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
                            .whitelist_dashboard_detail(params)
 
-    Rails.logger.info(service_response.inspect)
     # Check if error present or not?
     unless service_response.success?
       render_error_response(service_response)
@@ -244,8 +243,6 @@ class Admin::HomeController < Admin::BaseController
   def get_sale_all_dashboard
     service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
                            .sale_all_dashboard_detail(params)
-
-    Rails.logger.info(service_response.inspect)
     # Check if error present or not?
     unless service_response.success?
       render_error_response(service_response)
@@ -292,8 +289,6 @@ class Admin::HomeController < Admin::BaseController
   def get_sale_daily_dashboard
     service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
                            .sale_daily_dashboard_detail(params)
-
-    Rails.logger.info(service_response.inspect)
     # Check if error present or not?
     unless service_response.success?
       render_error_response(service_response)

@@ -87,16 +87,16 @@
                 simpletoken.utils.errorHandling.clearFormErrors( jModal );
 
                 //Call the server for the address.
-                oThis.getFoundationEthereumAddress();
+                oThis.getTokenSaleEthereumAddress();
                 
             } else {
                 oThis.showEthereumAddressConfirmError( "Please verify all above mentioned confirmations." );
 
             }            
         },
-        getFoundationEthereumAddress: function () {
+        getTokenSaleEthereumAddress: function () {
             var jModal = $('#ethereum-confirm-modal'),
-                dataUrl = "/api/user/token-sale-foundation-address"
+                dataUrl = "/api/user/get-token-sale-address"
             ;
             $("#userConfirm").hide();
             $("#user-confirm-loader").removeClass( "hide" );
@@ -107,7 +107,7 @@
                 success: function (response) {
                   if (response.success == true) {
                     //Show the address.
-                    oThis.showEthereumAddress( response.data[ "foundation_ethereum_address" ] || "" );
+                    oThis.showEthereumAddress( response.data[ "token_sale_ethereum_address" ] || "" );
 
                     //Hide the modal.
                     jModal.modal('hide');
@@ -182,10 +182,10 @@
                             sUserEthAddressPurchaseAlloted = "",
                             sUserEthAddressPurchaseRatio = "",
 
-                            totalEthereumSent   = ( purchaseDetails["total_ethereum_sent"]  || 0 ),
-                            totalDollarsSent    = ( purchaseDetails["total_dollars_sent"]   || 0 ),
-                            stAllottedEthereum  = ( purchaseDetails["simple_token_sent"] || 0),
-                            stAllottedDollar    = ( purchaseDetails["simple_token_sent"] || 0)
+                            totalEthereumSent   = (0),
+                            totalDollarsSent    = (0),
+                            stAllottedEthereum  = (0),
+                            stAllottedDollar    = (0)
 
                         ;
 
