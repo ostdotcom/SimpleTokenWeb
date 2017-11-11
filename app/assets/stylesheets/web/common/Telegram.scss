@@ -20,21 +20,35 @@
       border-radius: 5px;
       color: #91c0ad;
       text-transform: uppercase;
-      font-size: 14px;
       line-height: 2;
       font-weight: 600;
       margin: 30px auto 20px auto;
       position: relative;
+      font-size: 0;
       &.token-sale-telegram-connect{
         color: #6ca3a9;
+      }
+      .left-comp, .right-comp{
+        letter-spacing: 1px;
+        display: inline-block;
+        width: 125px;
+        font-size: 14px;
+        text-align: center;
+      }
+      .left-comp{
+        margin-right: 25px;
+      }
+      .right-comp{
+        margin-left: 25px;
       }
     }
     .telegram-connect-symbol{
       position: absolute;
       left: 50%;
       top: 50%;
+      margin-left: -25px;
+      margin-top: -25px;
       font-size: 0;
-      transform: translate(-50%, -50%);
     }
   }
   .telegram-link{
