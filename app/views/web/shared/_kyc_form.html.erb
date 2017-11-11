@@ -5,26 +5,13 @@
       <div class="text-center">
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
       </div>
-      <%=
-          unless is_update
-            render partial: '/shared/web/common/steps',
-                   locals: {
-                           classes: {
-                                   step_2: 'active',
-                                   step_3: 'incomplete',
-                                   connector_2: 'incomplete'
-                           }
-                   }
-          end
-      %>
-
       <div class="simple-token-form">
-        <form class="simpletoken-form" action="/api/user/kyc-submit" method="POST" id="kycForm">
+        <form class="simpletoken-form kyc-form" action="/api/user/kyc-submit" method="POST" id="kycForm">
           <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
             <% if is_update %>
                 <h1 class="text-center form-header" style="margin-bottom: 10px">Update Your Registration Details</h1>
             <% else %>
-                <h1 class="text-center form-header" style="margin-bottom: 10px">Register for the Token Sale</h1>
+                <h1 class="text-center form-header" style="margin-bottom: 10px">One Step Away to Access the Token Sale</h1>
             <% end %>
             <div class="kyc-instructions-title">You will need the following items to complete the registration </div>
             <ul class="kyc-instructions text-center">
@@ -203,8 +190,7 @@
                       <input type="file" title="Identification Document" name="passport_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="14" required/>
                       <span>choose file</span>
                     </label>
-                    <span class="form-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200kb, JPG/PNG/PDF only)</span>
-
+                    <span class="form-instructions choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200kb, JPG/PNG/PDF only)</span>
                   </div>
                   <div class="error" data-for="passport_file_path"></div>
                 </div>
@@ -221,7 +207,7 @@
                       <input type="file" title="Selfie with your identification document" name="selfie_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="15" required>
                       <span>choose file</span>
                     </label>
-                    <span class="form-instructions thumbnail-upload-instructions">Please upload a high quality picture<br/> of you holding your ID Document <br/>next to your face. <br/>(Min 200kb, JPG/PNG/PDF only)</span>
+                    <span class="form-instructions choose-file-instructions thumbnail-upload-instructions">Please upload a high quality picture<br/> of you holding your ID Document <br/>next to your face. <br/>(Min 200kb, JPG/PNG/PDF only)</span>
                   </div>
                   <div class="error" data-for="selfie_file_path"></div>
                 </div>

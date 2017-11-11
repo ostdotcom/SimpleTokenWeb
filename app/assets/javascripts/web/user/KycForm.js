@@ -204,7 +204,7 @@
                     //Form is now valid
                     oThis.onFormValid();
                   }, function () { /* Error Callback */
-                      
+
                       //Enable the Submit Button
                       jKYCSubmit.prop("disabled", false).text("SUBMIT");
 
@@ -329,7 +329,12 @@
                 data: $data,
                 success: function (response) {
                     if (response.success == true) {
-                        window.location = '/reserve-token';
+                        if (oThis.config.is_update === true) {
+                            window.location = '/dashboard';
+                        }
+                        else {
+                            window.location = '/verification-link';
+                        }
                         return false;
                     } else {
                         grecaptcha.reset();
