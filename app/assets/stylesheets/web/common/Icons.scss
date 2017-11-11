@@ -1,5 +1,5 @@
-$sprite-retina-location: "http://sale.developmentsimpletoken.org:8080/simple-token-sprite2x-v27.png";
-$sprite-location: "http://sale.developmentsimpletoken.org:8080/simple-token-sprite1x-v27.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v27.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v27.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
