@@ -99,6 +99,12 @@
         oThis.changePageUrl();
       });
 
+      $("#admin-action-type").on('change', function () {
+        oThis.filters.admin_action_type = $(this).val();
+        oThis.oTable.ajax.reload(null, true);
+        oThis.changePageUrl();
+      });
+
       $("#sort-order").on('change', function () {
         oThis.sortings.sort_order = $(this).val();
         oThis.oTable.ajax.reload(null, true);

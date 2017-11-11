@@ -33,7 +33,7 @@
   @cynopsis_status ||= GlobalConstant::UserKycDetail.cleared_cynopsis_status
   @sort_order ||= 'inc'
 
-  filters = {cynopsis_status: @cynopsis_status, admin_status: @admin_status}
+  filters = {cynopsis_status: @cynopsis_status, admin_status: @admin_status, admin_action_type: @admin_action_type}
   sortings = {sort_order: @sort_order}
 
 %>
@@ -50,7 +50,9 @@
               </span>
             </div>
             <div class="col-sm-6" style="text-align: right;">
-              <a href="/admin/whitelist-dashboard" title="Log out" class="logOut">Whitelist Dash</a>
+              <a href="/admin/sale-all-dashboard" title="Sale All Dash" class="logOut">Sale All Dash</a>
+              <span> | </span>
+              <a href="/admin/whitelist-dashboard" title="Whitelist Dash" class="logOut">Whitelist Dash</a>
               <span> | </span>
               <a href="/admin/logout" title="Log out" class="logOut">Log out</a>
             </div>
@@ -74,11 +76,39 @@
             <option value="<%= GlobalConstant::UserKycDetail.qualified_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.qualified_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.qualified_admin_status] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.reviewed_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.reviewed_admin_status %> >
-              <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.reviewed_admin_status] %>
-            </option>
             <option value="<%= GlobalConstant::UserKycDetail.denied_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.denied_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.denied_admin_status] %>
+            </option>
+          </select>
+        </form>
+
+      </div>
+
+      <div class="col-sm-2">
+
+        <div class="kyc-filter-label">ADMIN REVIEW STATUS</div>
+        <form class="form-inline">
+          <select id="admin-action-type" class="form-control selectpicker" style="width: 100%;">
+            <option value="" >
+              Select
+            </option>
+            <option value="<%= GlobalConstant::UserKycDetail.no_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.no_admin_action_type %> >
+              <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.no_admin_action_type] %>
+            </option>
+            <option value="<%= GlobalConstant::UserKycDetail.any_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.any_admin_action_type %> >
+              <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.any_admin_action_type] %>
+            </option>
+            <option value="<%= GlobalConstant::UserKycDetail.data_mismatch_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.data_mismatch_admin_action_type %> >
+              <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.data_mismatch_admin_action_type] %>
+            </option>
+            <option value="<%= GlobalConstant::UserKycDetail.passport_issue_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.passport_issue_admin_action_type %> >
+              <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.passport_issue_admin_action_type] %>
+            </option>
+            <option value="<%= GlobalConstant::UserKycDetail.selfie_issue_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.selfie_issue_admin_action_type %> >
+              <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.selfie_issue_admin_action_type] %>
+            </option>
+            <option value="<%= GlobalConstant::UserKycDetail.residency_issue_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.residency_issue_admin_action_type %> >
+              <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.residency_issue_admin_action_type] %>
             </option>
           </select>
         </form>

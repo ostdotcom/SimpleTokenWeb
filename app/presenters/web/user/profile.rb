@@ -71,6 +71,13 @@ module Presenters
           result['token_sale_active_status']
         end
 
+        def sale_details
+          result["sale_details"]
+        end
+
+        def sale_ended_before_time_state
+          sale_details['sale_ended_before_time']
+        end
 
         ###########################################
 
@@ -113,11 +120,15 @@ module Presenters
         end
 
         def has_sale_ended?
-          GlobalConstant::StTokenSale.has_sale_ended_before_time? || (current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date)
+          (current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date) || has_sale_ended_before_time?
         end
 
         def has_sale_paused?
           (token_sale_active_status.to_i != 1) && is_sale_live_for_user?
+        end
+
+        def has_sale_ended_before_time?
+          sale_ended_before_time_state.to_i == 1
         end
 
         ###########################################

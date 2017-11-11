@@ -19,10 +19,6 @@ module GlobalConstant
         'qualified_admin_status'
       end
 
-      def reviewed_admin_status
-        'reviewed_admin_status'
-      end
-
       def denied_admin_status
         'denied_admin_status'
       end
@@ -36,7 +32,6 @@ module GlobalConstant
             all_admin_status => 'All',
             un_processed_admin_status => 'Unprocessed',
             qualified_admin_status => 'Qualified',
-            reviewed_admin_status => 'Reviewed',
             denied_admin_status => 'Denied',
             whitelisted_admin_status => 'Whitelisted'
         }
@@ -145,18 +140,55 @@ module GlobalConstant
 
       ### Admin Status End ###
 
-      ### Admin Email communication Messages Start ###
 
-      def admin_action_type
+      ### admin action type ####
+
+      def no_admin_action_type
+        'no'
+      end
+
+      def any_admin_action_type
+        'any'
+      end
+
+      def data_mismatch_admin_action_type
+        'data_mismatch'
+      end
+
+      def passport_issue_admin_action_type
+        'passport_issue'
+      end
+
+      def selfie_issue_admin_action_type
+        'selfie_issue'
+      end
+
+      def residency_issue_admin_action_type
+        'residency_issue'
+      end
+
+      def admin_action_type_names
         {
-            'data_mismatch' => 'Data Mismatch Email Sent',
-            'passport_issue' => 'Passport Image Issue Email Sent',
-            'selfie_issue' => 'Selfie Image Issue Email Sent',
-            'residency_issue' => 'Residency Image Issue Email Sent'
+            no_admin_action_type => 'No Review Action',
+            any_admin_action_type => 'Any Review Action',
+            data_mismatch_admin_action_type => 'Data Mismatch',
+            passport_issue_admin_action_type => 'Passport Image Issue',
+            selfie_issue_admin_action_type => 'Selfie Image Issue',
+            residency_issue_admin_action_type => 'Residency Image Issue'
         }
       end
 
-      ### Admin Email communication Messages End ###
+
+      def admin_action_type
+        {
+            data_mismatch_admin_action_type => 'Data Mismatch Email Sent',
+            passport_issue_admin_action_type => 'Passport Image Issue Email Sent',
+            selfie_issue_admin_action_type => 'Selfie Image Issue Email Sent',
+            residency_issue_admin_action_type => 'Residency Image Issue Email Sent'
+        }
+      end
+
+      ### admin action type End ####
 
     end
 
