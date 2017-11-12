@@ -2,7 +2,7 @@ module Presenters
   module Web
     class Global
 
-      include ::Presenters::Web::SaleMilestone
+      include Util::SaleMilestone
 
       # Init
       #

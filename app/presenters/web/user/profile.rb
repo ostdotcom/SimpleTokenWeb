@@ -4,7 +4,7 @@ module Presenters
 
       class Profile
 
-        include ::Presenters::Web::SaleMilestone
+        include Util::SaleMilestone
 
         # Init
         # @param [Result::Base] response_data_obj (mandatory) - Page data
