@@ -96,11 +96,11 @@
           }
         }
         .line{
-          height: 100px;
+          height: 70px;
           width: 1px;
-          border: 1px dashed #597a84;
+          border: 1px dashed #54b79e;
           position: absolute;
-          left: 50px;
+          left: 49px;
           top: 22px;
           z-index: -1;
         }
@@ -118,6 +118,20 @@
             background: #afe1d4;
             border-radius: 50%;
           }
+        }
+        .check{
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          position: absolute;
+          left: 41px;
+          top: 97px;
+          z-index: -1;
+          background: #a7d677;
+          color: #fff;
+          font-size: 12px;
+          padding: 2px;
+          display: none;
         }
 
         .desc{
@@ -149,6 +163,9 @@
               display: none;
             }
           }
+          .check{
+            display: block;
+          }
         }
 
         &.complete{
@@ -160,6 +177,9 @@
             .point-inner{
               display: none;
             }
+          }
+          .check{
+            display: block;
           }
         }
 
