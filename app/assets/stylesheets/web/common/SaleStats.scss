@@ -13,6 +13,19 @@
       border: 1px solid #f1f8f5;
     }
   }
+  &.paused-ended{
+    .item{
+      padding: 30px;
+    }
+    .item-parent{
+      min-width: 290px;
+      @media(min-width: 736px){
+        &:last-child{
+          margin-left: 0;
+        }
+      }
+    }
+  }
   .item{
     padding: 20px 15px;
     border-radius: 5px;
