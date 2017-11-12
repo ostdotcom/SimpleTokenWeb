@@ -72,7 +72,7 @@ module Presenters
       private
 
       def current_time
-        @current_time ||= Time.zone.now + @params[:dd].to_i.days
+        @current_time ||= Time.zone.now
       end
 
     end
