@@ -45,7 +45,7 @@
           render: $.fn.dataTable.render.text()
         },
         {
-          title: "Dollor value ($) <br> <span id='totalDollarVal' class='totalSaleValue'></span>",
+          title: "USD <br> <span id='totalDollarVal' class='totalSaleValue'></span>",
           data: "total_dollars_value",
           render: $.fn.dataTable.render.text()
         }

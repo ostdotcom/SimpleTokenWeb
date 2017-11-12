@@ -124,6 +124,24 @@ module SimpleTokenApi
         get("kyc/sale-all-dashboard", request_params)
       end
 
+      # Get Contract Events Dashboard
+      #
+      # * Author: Alpesh
+      # * Date: 10/11/2017
+      # * Reviewed By:
+      #
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def contract_events_dashboard_detail(params)
+        request_params = {
+            offset: params[:start],
+            page_size: params[:length]
+        }
+
+        get("kyc/contract-events-dashboard", request_params)
+      end
+
     end
   end
 end

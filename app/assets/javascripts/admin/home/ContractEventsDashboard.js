@@ -5,11 +5,11 @@
     adminUtilsNs = ns("simpletokenadmin.utils"),
     oThis;
 
-  homeNs.saleAllDashboard = oThis = {
+  homeNs.contractEventsDashboard = oThis = {
 
     oTable: null,
     page: 0,
-    $dataTable: $('#saleDashboard'),
+    $dataTable: $('#contractEventsDashboard'),
 
     init: function (config) {
       oThis.initGrid(config.table_config);
@@ -22,39 +22,34 @@
         adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, errorThrown);
       };
 
+      config.ajax.dataSrc = function(response) {
+        oThis.allTimeData = response.all_time_data;
+        return response.data;
+      };
+
       config.columns.unshift(
         {
-          title: "Date (PST)",
+          title: "Date Time",
           data: "date_time",
           render: $.fn.dataTable.render.text()
         },
         {
-          title: "Ethereum Addr",
-          data: "ethereum_address",
+          title: "Event Name",
+          data: "event_name",
           render: $.fn.dataTable.render.text()
         },
         {
-          title: "Ethereum Amount",
-          data: "ethereum_value",
-          render: $.fn.dataTable.render.text()
-        },
-        {
-          title: "ST Sold",
-          data: "tokens_sold",
-          render: $.fn.dataTable.render.text()
-        },
-        {
-          title: "USD",
-          data: "usd_value",
+          title: "Receiver Contract Address",
+          data: "contract_address",
           render: $.fn.dataTable.render.text()
         }
+
       );
       oThis.oTable = oThis.$dataTable.DataTable(config);
 
     },
 
     bindButtonActions: function (config) {
-
     }
 
   };
