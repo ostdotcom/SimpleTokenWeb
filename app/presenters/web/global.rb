@@ -43,11 +43,11 @@ module Presenters
       end
 
       def has_sale_ended?
-        current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date || has_sale_ended_before_time?
+        has_general_access_sale_started? && (current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date || has_sale_ended_before_time?)
       end
 
       def has_sale_paused?
-        (token_sale_active_status.to_i != 1) && (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date)
+        (token_sale_active_status.to_i != 1) && has_general_access_sale_started?
       end
 
       def progress_bar_percent

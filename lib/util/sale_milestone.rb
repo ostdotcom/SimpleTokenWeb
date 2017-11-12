@@ -9,7 +9,7 @@ module Util
     end
 
     def total_eth_raised
-      sale_details['total_eth_raised'].to_f.round(2)
+      sale_details['total_eth_raised'].to_i
     end
 
     def formatted_total_st_token_sold
