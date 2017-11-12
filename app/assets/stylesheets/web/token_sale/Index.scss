@@ -59,6 +59,29 @@
 
 }
 
+.container-progress {
+  text-align: center;
+  margin: 40px auto;
+  h2.header {
+    color: #6ca3a9;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-top: 0;
+    font-size: 38px;
+    letter-spacing: 1.3px;
+    text-align: center;
+  }
+  p.lead {
+    color: #6ca3a9;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-top: 0;
+    font-size: 20px;
+    letter-spacing: 1.3px;
+    text-align: center;
+  }
+}
+
 // Mobile portrait, landscape
 @media (max-width: 991px) {
 
