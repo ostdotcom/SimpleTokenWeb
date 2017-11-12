@@ -2,6 +2,8 @@ module Presenters
   module Web
     class Global
 
+      include Presenters::Web::SaleMilestone
+
       # Init
       #
       # @param [Hash] params (optional) - Page params
@@ -11,6 +13,15 @@ module Presenters
       def initialize(params = {})
         @params = params
       end
+
+      def sale_details
+        GlobalConstant::StTokenSale.token_sale_details
+      end
+
+      def has_sale_ended_before_time?
+        sale_details['sale_ended_before_time'].to_i == 1
+      end
+
 
       def has_general_access_sale_started?
         current_time >= GlobalConstant::StTokenSale.general_access_sale_start_date
@@ -29,7 +40,7 @@ module Presenters
       end
 
       def has_sale_ended?
-        current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date || GlobalConstant::StTokenSale.has_sale_ended_before_time?
+        current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date || has_sale_ended_before_time?
       end
 
       def progress_bar_percent

@@ -5,7 +5,7 @@ module Presenters
       include ActionView::Helpers::NumberHelper
 
       def total_st_token_sold
-        (sale_details['total_st_token_sold']|| 50000000).to_i
+        (sale_details['total_st_token_sold']).to_i
       end
 
       def total_eth_raised
@@ -20,7 +20,6 @@ module Presenters
         number_with_delimiter(total_eth_raised)
       end
 
-
       def community_bonus
         case last_milestone_achieved
           when 'hard_cap'
@@ -31,7 +30,8 @@ module Presenters
             25
           when 'target'
             20
-          else 0
+          else
+            0
         end
       end
 
@@ -123,9 +123,6 @@ module Presenters
 
       private
 
-      def current_time
-        @current_time ||= Time.zone.now
-      end
 
     end
   end
