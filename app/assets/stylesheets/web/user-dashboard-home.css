@@ -8,5 +8,5 @@
  *= require web/common/NewTimer
  *= require web/common/Telegram
  *= require web/common/SaleStats
- *= require web/token_sale/Progress
+ *= require web/common/Progress
  */
