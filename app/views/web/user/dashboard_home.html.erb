@@ -6,20 +6,14 @@
 
 <% if @presenter_obj.has_sale_ended? %>
     <%= render :partial => "/web/dashboard/token_sale_ends" %>
-    <div class="token-sale-progress text-center dashboard">
-      <%= render :partial => "/web/token_sale/sale_stats" %>
-    </div>
+    <%= render :partial => "/web/dashboard/progress_bar_with_sale_stats" %>
     <% if !@presenter_obj.is_kyc_denied? %>
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 35px auto 30px;display: block;">
     <% end %>
     <%= render :partial => "/web/dashboard/forgot_eth_address" %>
 <% elsif @presenter_obj.has_sale_paused? %>
     <%= render :partial => "/web/dashboard/token_sale_pause" %>
-
-    <div class="token-sale-progress text-center paused">
-      <%= render :partial => "/web/token_sale/sale_stats" %>
-    </div>
-
+    <%= render :partial => "/web/dashboard/progress_bar_with_sale_stats" %>
     <% if !@presenter_obj.is_kyc_denied? %>
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 35px auto 30px;display: block;">
     <% end %>
@@ -29,18 +23,14 @@
     <% if @presenter_obj.can_purchase? %>
         <%= render :partial => "/web/dashboard/sale_open_timer" %>
         <%= render :partial => "/web/dashboard/ethereum_deposit_address" %>
-        <div class="token-sale-progress text-center dashboard">
-          <%= render :partial => "/web/token_sale/sale_stats" %>
-        </div>
+        <%= render :partial => "/web/dashboard/progress_bar_with_sale_stats" %>
         <%= render :partial => "/web/dashboard/kyc_status" %>
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 35px auto 30px;display: block;">
         <%= render :partial => "/web/dashboard/forgot_eth_address" %>
     <% else %>
         <%= render :partial => "/web/dashboard/sale_open_timer" %>
         <%= render :partial => "/web/dashboard/kyc_status" %>
-        <div class="token-sale-progress text-center dashboard">
-          <%= render :partial => "/web/token_sale/sale_stats" %>
-        </div>
+        <%= render :partial => "/web/dashboard/progress_bar_with_sale_stats" %>
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 35px auto 30px;display: block;">
         <%= render :partial => "/web/dashboard/forgot_eth_address" %>
         <%= render :partial => "/web/dashboard/question_on_sale" %>
