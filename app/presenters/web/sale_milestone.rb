@@ -1,39 +1,47 @@
 module Presenters
   module Web
-    class SaleMilestone
+    module SaleMilestone
 
-      # Init
-      #
-      # @param [Hash] params (optional) - Page params
-      #
-      # @return [Presenters::Web::SaleMilestone] returns an object of Presenters::Web::Global class
-      #
-      def initialize(params = {})
-        @params = params
+      def total_st_token_sold
+        (sale_details['total_st_token_sold']|| 50000000).to_i
       end
 
-      def total_st_sold
-        (params[:total_st_sold] || 50000000).to_i
+      def total_eth_raised
+        sale_details['total_eth_raised']
+      end
+
+      def community_bonus
+        case last_milestone_achieved
+          when 'hard_cap'
+            30
+          when 'power'
+            30
+          when 'kicker'
+            25
+          when 'target'
+            20
+          else 0
+        end
       end
 
       def soft_cap_milestone_achieved?
-        total_st_sold >= GlobalConstant::StTokenSale.soft_cap_st_tokens_milestone
+        total_st_token_sold >= GlobalConstant::StTokenSale.soft_cap_st_tokens_milestone
       end
 
       def target_milestone_achieved?
-        total_st_sold >= GlobalConstant::StTokenSale.target_st_tokens_milestone
+        total_st_token_sold >= GlobalConstant::StTokenSale.target_st_tokens_milestone
       end
 
       def kicker_milestone_achieved?
-        total_st_sold >= GlobalConstant::StTokenSale.kicker_st_tokens_milestone
+        total_st_token_sold >= GlobalConstant::StTokenSale.kicker_st_tokens_milestone
       end
 
       def power_milestone_achieved?
-        total_st_sold >= GlobalConstant::StTokenSale.power_st_tokens_milestone
+        total_st_token_sold >= GlobalConstant::StTokenSale.power_st_tokens_milestone
       end
 
       def hard_cap_milestone_achieved?
-        total_st_sold >= GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
+        total_st_token_sold >= GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
       end
 
       def next_milestone_to_achieve

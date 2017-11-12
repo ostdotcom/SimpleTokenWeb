@@ -4,6 +4,8 @@ module Presenters
 
       class Profile
 
+        include Presenters::Web::SaleMilestone
+
         # Init
         # @param [Result::Base] response_data_obj (mandatory) - Page data
         # @param [Hash] params (optional) - Page params
@@ -258,7 +260,7 @@ module Presenters
         end
 
         def show_community_bonus_box?
-          true
+          community_bonus > 0
         end
 
         def bonus_icon_class
