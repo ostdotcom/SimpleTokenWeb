@@ -2,7 +2,7 @@
 <%= render :partial => "/shared/web/common/navbar" %>
 <%= render :partial => "/web/token_sale/jumbotron" %>
 <% if @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
-  <%= render :partial => "/web/token_sale/telegram" %>
+  <%= render :partial => "/web/dashboard/telegram" %>
 <% end %>
 <div class="container container-progress">
   <div class="content">
