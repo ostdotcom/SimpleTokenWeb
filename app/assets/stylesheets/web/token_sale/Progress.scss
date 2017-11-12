@@ -126,7 +126,7 @@
           background: #fff;
           border: 3px solid #6c9ba9;
           border-radius: 50%;
-          margin: 36px auto 36px auto;
+          margin: 34px auto;
           .point-inner{
             width: 10px;
             height: 10px;
@@ -329,9 +329,39 @@
 
         .milestone{
           width: 100%;
+          height: inherit;
 
+          .st{
+            position: absolute;
+            float: right;
+            right: calc(50% - 100px);
+            top:0;
+          }
+
+          .line{
+            height: 1px;
+            width: 50px;
+            left: calc(50% - 20px);
+            top: 10px;
+          }
           .point{
             margin: 0 auto;
+          }
+          .check{
+            top:0;
+          }
+
+          .desc{
+            position: absolute;
+            float: left;
+            left: calc(50% - 100px);
+            top: 0;
+          }
+
+          &.in-progress{
+            .point{
+              margin: 0 auto;
+            }
           }
         }
 
