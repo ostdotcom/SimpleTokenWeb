@@ -120,7 +120,7 @@ module Presenters
         end
 
         def has_sale_ended?
-          (current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date) || has_sale_ended_before_time?
+           (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date) && ((current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date) || has_sale_ended_before_time?)
         end
 
         def has_sale_paused?
