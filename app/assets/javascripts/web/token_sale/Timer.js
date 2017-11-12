@@ -6,7 +6,8 @@
 
   tsNs.timer = oThis = {
 
-    countDownTime: new Date($('table[data-countdown]').data('countdown')).getTime(),
+    countDownDistanceTime: $('table[data-countdown]').data('countdown'),
+    startTime: new Date().getTime(),
 
     init: function (config) {
       oThis.bindButtonActions();
@@ -22,7 +23,8 @@
 
     countDown: function () {
 
-      var distance = oThis.countDownTime - new Date().getTime();
+      var interval = new Date().getTime() - oThis.startTime;
+      var distance = oThis.countDownDistanceTime - interval;
 
       if (distance <= 0) {
         return distance;
@@ -58,7 +60,7 @@
     var cd = oThis.countDown();
     if (typeof cd == 'number') {
       clearInterval(x);
-      if(cd <= 0 && cd > -1000){
+      if(cd <= 0 && cd > -1100){
         location.reload();
       }
     } else {

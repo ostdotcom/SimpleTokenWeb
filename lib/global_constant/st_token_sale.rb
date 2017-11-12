@@ -29,6 +29,26 @@ module GlobalConstant
         token_sale_details[:sale_ended_before_time].to_i == 1
       end
 
+      def soft_cap_st_tokens_milestone
+        @soft_cap_st_tokens_milestone ||= config['sale_milestones']['soft_cap']
+      end
+
+      def target_st_tokens_milestone
+        @target_st_tokens_milestone ||= config['sale_milestones']['target']
+      end
+
+      def kicker_st_tokens_milestone
+        @kicker_st_tokens_milestone ||= config['sale_milestones']['kicker']
+      end
+
+      def power_st_tokens_milestone
+        @power_st_tokens_milestone ||= config['sale_milestones']['power']
+      end
+
+      def hard_cap_st_tokens_milestone
+        @hard_cap_st_tokens_milestone ||= config['sale_milestones']['hard_cap']
+      end
+
       private
 
       def token_sale_details

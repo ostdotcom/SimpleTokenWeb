@@ -1,0 +1,113 @@
+module Presenters
+  module Web
+    class SaleMilestone
+
+      # Init
+      #
+      # @param [Hash] params (optional) - Page params
+      #
+      # @return [Presenters::Web::SaleMilestone] returns an object of Presenters::Web::Global class
+      #
+      def initialize(params = {})
+        @params = params
+      end
+
+      def total_st_sold
+        (params[:total_st_sold] || 50000000).to_i
+      end
+
+      def soft_cap_milestone_achieved?
+        total_st_sold >= GlobalConstant::StTokenSale.soft_cap_st_tokens_milestone
+      end
+
+      def target_milestone_achieved?
+        total_st_sold >= GlobalConstant::StTokenSale.target_st_tokens_milestone
+      end
+
+      def kicker_milestone_achieved?
+        total_st_sold >= GlobalConstant::StTokenSale.kicker_st_tokens_milestone
+      end
+
+      def power_milestone_achieved?
+        total_st_sold >= GlobalConstant::StTokenSale.power_st_tokens_milestone
+      end
+
+      def hard_cap_milestone_achieved?
+        total_st_sold >= GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
+      end
+
+      def next_milestone_to_achieve
+        @next_milestone_to_achieve ||= case true
+                                         when hard_cap_milestone_achieved?
+                                           'none'
+                                         when power_milestone_achieved?
+                                           'hard_cap'
+                                         when kicker_milestone_achieved?
+                                           'power'
+                                         when target_milestone_achieved?
+                                           'kicker'
+                                         when soft_cap_milestone_achieved?
+                                           'target'
+                                         else
+                                           'soft_cap'
+                                       end
+      end
+
+      def last_milestone_achieved
+        @last_milestone_achieved ||= case true
+                                       when hard_cap_milestone_achieved?
+                                         'hard_cap'
+                                       when power_milestone_achieved?
+                                         'power'
+                                       when kicker_milestone_achieved?
+                                         'kicker'
+                                       when target_milestone_achieved?
+                                         'target'
+                                       when soft_cap_milestone_achieved?
+                                         'soft_cap'
+                                       else
+                                         'none'
+                                     end
+      end
+
+      def state_of(milestone_type)
+        if is_milestone_complete(milestone_type)
+          return last_milestone_achieved == milestone_type ? 'lastMilestone' : 'passedMilestone'
+        else
+          return next_milestone_to_achieve == milestone_type ? 'nextMilestone' : 'futureMilestone'
+        end
+      end
+
+      def is_milestone_complete(milestone_type)
+        send("#{milestone_type}_milestone_achieved?")
+      end
+
+      #
+      # def progress_bar_percent
+      #   if has_sale_ended?
+      #     100
+      #   elsif has_general_access_sale_started?
+      #     66.66 + interval_percent(GlobalConstant::StTokenSale.general_access_sale_start_date, GlobalConstant::StTokenSale.general_access_sale_end_date)
+      #   elsif has_early_access_register_ended?
+      #     33.33 + interval_percent(GlobalConstant::StTokenSale.early_access_register_end_date, GlobalConstant::StTokenSale.general_access_sale_start_date)
+      #   else
+      #     interval_percent(GlobalConstant::StTokenSale.early_access_register_start_date, GlobalConstant::StTokenSale.early_access_register_end_date)
+      #   end
+      # end
+      #
+      # def interval_percent(start_date, end_date)
+      #   total_time_interval = end_date - start_date
+      #   time_passed = current_time - start_date
+      #   extra_percent = (time_passed*(33.33)/total_time_interval)
+      #   extra_percent
+      # end
+
+      private
+
+      def current_time
+        @current_time ||= Time.zone.now
+      end
+
+    end
+  end
+end

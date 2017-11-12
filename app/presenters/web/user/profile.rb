@@ -254,7 +254,7 @@ module Presenters
         end
 
         def show_bonus_box?
-          is_early_access_user? && (is_bonus_confirmed? || !is_bonus_approval_date_over?)
+          !is_kyc_denied? && is_early_access_user? && (is_bonus_confirmed? || !is_bonus_approval_date_over?)
         end
 
         def bonus_icon_class
@@ -264,6 +264,11 @@ module Presenters
         def show_unable_for_early_purchase_text?
           # General access users, on 14th while early sale is going on
           (!is_early_access_user? && (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date) && (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date))
+        end
+
+        def show_max_limit_for_early_purchase_text?
+          # General access users, on 14th while early sale is going on
+          is_early_access_mode_on_for_user? && is_sale_ongoing_for_user?
         end
 
         ###############################################

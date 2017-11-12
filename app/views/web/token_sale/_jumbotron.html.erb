@@ -67,7 +67,7 @@
             <span class="time-remaining-icon"></span>
             <div class="time-remaining">&mdash;&nbsp;Time Remaining&nbsp;&mdash;</div>
             <%=
-                render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: countdown_timer.to_i * 1000}
+                render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: (countdown_timer- Time.now).to_i * 1000}
             %>
             <a href="/sign-up" class="btn-common btn-gold">register now</a>
           </div>
