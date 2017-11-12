@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v27.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v27.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v28.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v28.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -224,6 +224,9 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 .documents-link-icon{
   @include icon-generator(30px, 40px, -337px, -834px, -337px, -337px, 70);
 }
+.check-st-balance-link-icon{
+  @include icon-generator(28px, 20px, -338px, -884px, -338px, -338px, 70);
+}
 .go-to-telegram-link-icon{
   @include icon-generator(30px, 26px, -337px, -799px, -337px, -337px);
 }
@@ -256,6 +259,9 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
     }
     .documents-link-icon{
       @include icon-generator(30px, 40px, -377px, -834px, -377px, -377px, 70);
+    }
+    .check-st-balance-link-icon{
+      @include icon-generator(28px, 20px, -378px, -884px, -378px, -378px, 70);
     }
     .go-to-telegram-link-icon{
       @include icon-generator(30px, 26px, -377px, -799px, -377px, -377px);
