@@ -89,39 +89,50 @@ module Util
                                    end
     end
 
-    def state_of(milestone_type)
+    def class_of_progress_bar(milestone_type)
       if is_milestone_complete(milestone_type)
-        return last_milestone_achieved == milestone_type ? 'lastMilestone' : 'passedMilestone'
+        return 'complete'
       else
-        return next_milestone_to_achieve == milestone_type ? 'nextMilestone' : 'futureMilestone'
+        return next_milestone_to_achieve == milestone_type ? 'in-progress' : ''
+      end
+    end
+
+    def class_of_milestone(milestone_type)
+      if is_milestone_complete(milestone_type)
+        return last_milestone_achieved == milestone_type ? 'complete last-milestone' :  'complete'
+      else
+        return next_milestone_to_achieve == milestone_type ? 'in-progress' : ''
+      end
+    end
+
+    def width_of_progress_bar(milestone_type)
+      if is_milestone_complete(milestone_type)
+        return 100
+      elsif next_milestone_to_achieve != milestone_type
+          0
+      else
+        min, max = 0, 100
+
+        case milestone_type
+          when 'hard_cap'
+            min, max = GlobalConstant::StTokenSale.power_st_tokens_milestone, GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
+          when 'power'
+            min, max = GlobalConstant::StTokenSale.kicker_st_tokens_milestone, GlobalConstant::StTokenSale.power_st_tokens_milestone
+          when 'kicker'
+            min, max = GlobalConstant::StTokenSale.target_st_tokens_milestone, GlobalConstant::StTokenSale.kicker_st_tokens_milestone
+          when 'target'
+            min, max = GlobalConstant::StTokenSale.soft_cap_st_tokens_milestone, GlobalConstant::StTokenSale.target_st_tokens_milestone
+          when 'soft_cap'
+            min, max = 0, GlobalConstant::StTokenSale.soft_cap_st_tokens_milestone
+        end
+
+      ((total_st_token_sold - min) * 100.00 /(max - min)).round(2)
       end
     end
 
     def is_milestone_complete(milestone_type)
       send("#{milestone_type}_milestone_achieved?")
     end
-
-    #
-    # def progress_bar_percent
-    #   if has_sale_ended?
-    #     100
-    #   elsif has_general_access_sale_started?
-    #     66.66 + interval_percent(GlobalConstant::StTokenSale.general_access_sale_start_date, GlobalConstant::StTokenSale.general_access_sale_end_date)
-    #   elsif has_early_access_register_ended?
-    #     33.33 + interval_percent(GlobalConstant::StTokenSale.early_access_register_end_date, GlobalConstant::StTokenSale.general_access_sale_start_date)
-    #   else
-    #     interval_percent(GlobalConstant::StTokenSale.early_access_register_start_date, GlobalConstant::StTokenSale.early_access_register_end_date)
-    #   end
-    # end
-    #
-    # def interval_percent(start_date, end_date)
-    #   total_time_interval = end_date - start_date
-    #   time_passed = current_time - start_date
-    #   extra_percent = (time_passed*(33.33)/total_time_interval)
-    #   extra_percent
-    # end
-
-    private
 
 
   end
