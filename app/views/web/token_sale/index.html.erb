@@ -5,7 +5,7 @@
     <%= render :partial => "/web/dashboard/telegram" %>
 <% end %>
 
-<% if @presenter_obj.has_general_access_sale_started? %>
+<% if @presenter_obj.has_early_access_sale_started? %>
     <div class="container container-progress">
       <div class="content">
         <h2 class="header">Community Crowd Sale Bonuses</h2>
@@ -20,6 +20,7 @@
         </div>
     <% end %>
 <% end %>
+
 <%= render :partial => "/web/token_sale/microsite_nav" %>
 <%= render :partial => "/web/token_sale/why" %>
 <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 30px auto 0;display: block;">
