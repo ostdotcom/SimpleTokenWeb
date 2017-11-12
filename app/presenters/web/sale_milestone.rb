@@ -2,13 +2,24 @@ module Presenters
   module Web
     module SaleMilestone
 
+      include ActionView::Helpers::NumberHelper
+
       def total_st_token_sold
         (sale_details['total_st_token_sold']|| 50000000).to_i
       end
 
       def total_eth_raised
-        sale_details['total_eth_raised']
+        sale_details['total_eth_raised'].to_f.round(2)
       end
+
+      def formatted_total_st_token_sold
+        number_with_delimiter(total_st_token_sold)
+      end
+
+      def formatted_total_eth_raised
+        number_with_delimiter(total_eth_raised)
+      end
+
 
       def community_bonus
         case last_milestone_achieved
