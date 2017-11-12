@@ -54,6 +54,14 @@
               $(this).parents('.kyc-panel').find('#prove-support-link').removeClass("close-accordian-icon");
             });
 
+            $('#community-bonus-content').on('shown.bs.collapse', function() {
+              $(this).parents('.kyc-panel').find('#community-bonus-link').addClass("close-accordian-icon");
+            });
+
+            $('#community-bonus-content').on('hidden.bs.collapse', function() {
+              $(this).parents('.kyc-panel').find('#community-bonus-link').removeClass("close-accordian-icon");
+            });
+
             $("#user-eth-address-validate-btn").click( function( event ) {
                 oThis.onValidateUserEthAddress( event );
             });
