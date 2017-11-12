@@ -366,12 +366,13 @@
 
 .container-progress {
   text-align: center;
-  margin: 40px auto;
+  margin: 40px auto 0 auto;
+  background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 100px, #ffffff 100%);
   h2.header {
     color: #6ca3a9;
     font-weight: 300;
     line-height: 1.5;
-    margin-top: 0;
+    margin-top: 20px;
     font-size: 38px;
     letter-spacing: 1.3px;
     text-align: center;
