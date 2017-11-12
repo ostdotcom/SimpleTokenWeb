@@ -368,7 +368,7 @@ input[type="checkbox"]:checked ~ label::after{
       color: #000;
     }
   }
-  a{
+  a.modal-ext-link{
     color: #597a84;
     border-bottom: 1px solid #597a84;
     &:hover, &:focus{
