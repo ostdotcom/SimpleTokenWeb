@@ -125,7 +125,7 @@
         background: #fff;
         border: 3px solid #6c9ba9;
         border-radius: 50%;
-        margin: 34px auto;
+        margin: 36px auto;
         .point-inner{
           width: 10px;
           height: 10px;
@@ -165,27 +165,6 @@
         }
       }
 
-      &.in-progress{
-        .o-circle{
-          display: block;
-        }
-        .st{
-          color: #54b79e;
-        }
-        .point{
-          width:30px;
-          height:30px;
-          border: none;
-          margin: 34px auto;
-          .point-inner{
-            display: none;
-          }
-        }
-        .check{
-          display: block;
-        }
-      }
-
       &.complete{
         .st{
           color: #597a84;
@@ -201,7 +180,23 @@
         }
       }
 
-      &.ms-1.in-progress,
+      &.last-milestone{
+        .o-circle{
+          display: block;
+        }
+        .st{
+          color: #54b79e;
+        }
+        .point{
+          .point-inner{
+            display: none;
+          }
+        }
+        .check{
+          display: block;
+        }
+      }
+
       &.ms-1.complete{
         .point,
         .circle-inner{
@@ -211,8 +206,12 @@
           color: #61bfba;
         }
       }
+      &.ms-1.in-progress{
+        .point{
+          border: 3px solid #61bfba;
+        }
+      }
 
-      &.ms-2.in-progress,
       &.ms-2.complete{
         .point,
         .circle-inner{
@@ -222,8 +221,12 @@
           color: #e4b030;
         }
       }
+      &.ms-2.in-progress{
+        .point{
+          border: 3px solid #e4b030;
+        }
+      }
 
-      &.ms-3.in-progress,
       &.ms-3.complete{
         .point,
         .circle-inner{
@@ -233,8 +236,12 @@
           color: #f58a23;
         }
       }
+      &.ms-3.in-progress{
+        .point{
+          border: 3px solid #f58a23;
+        }
+      }
 
-      &.ms-4.in-progress,
       &.ms-4.complete{
         .point,
         .circle-inner{
@@ -244,8 +251,12 @@
           color: #d0021b;
         }
       }
+      &.ms-4.in-progress{
+        .point{
+          border: 3px solid #d0021b;
+        }
+      }
 
-      &.ms-5.in-progress,
       &.ms-5.complete{
         .point,
         .circle-inner{
@@ -253,6 +264,11 @@
         }
         .desc{
           color: #740602;
+        }
+      }
+      &.ms-5.in-progress{
+        .point{
+          border: 3px solid #740602;
         }
       }
 
