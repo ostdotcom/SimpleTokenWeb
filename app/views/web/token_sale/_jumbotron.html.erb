@@ -71,14 +71,14 @@
           </div>
 
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5">
-        <% if @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
-
-          <div class="token-sale-progress text-center dashboard paused-ended">
-            <%= render :partial => "/web/token_sale/sale_stats" %>
-          </div>
-
-        <% else %>
             <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
+            <% if @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
+
+              <div class="token-sale-progress text-center dashboard paused-ended">
+                <%= render :partial => "/web/token_sale/sale_stats" %>
+              </div>
+
+            <% else %>
 
             <div class="registration-timer text-center">
               <%
