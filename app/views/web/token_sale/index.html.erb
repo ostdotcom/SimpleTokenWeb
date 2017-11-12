@@ -9,7 +9,9 @@
     <div class="container-fluid container-progress" id="sale-progress-container">
       <div class="content">
         <h2 class="header">Community Crowd Sale Bonuses</h2>
-        <% unless @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %><p class="lead">The more ST sold, the more everyone benefits!</p><% end %>
+        <!--<% unless @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>-->
+          <p class="lead">The more ST sold, the more everyone benefits!</p>
+        <!--<% end %>-->
         <%= render :partial => "/shared/web/common/progress" %>
       </div>
     </div>
