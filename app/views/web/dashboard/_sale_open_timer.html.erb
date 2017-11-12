@@ -6,9 +6,7 @@
         <div class="registration-timer">
           <h2><%= @presenter_obj.is_early_access_mode_on_for_user? ? 'early access sale' : 'public sale' %> <%= @presenter_obj.is_sale_live_for_user? ? 'is live' : 'starts in' %></h2>
           <% if @presenter_obj.is_sale_live_for_user? %>
-              <div class="panel panel-default time-remain">
-                <div class="panel-body text-center">time remaining</div>
-              </div>
+              <div class="time-remain text-center" style="margin-bottom: 20px">&mdash;&nbsp;Time Remaining&nbsp;&mdash;</div>
           <% end %>
 
           <%=
@@ -17,11 +15,9 @@
                              timestamp: (@presenter_obj.countdown_timestamp - Time.now).to_i * 1000
                      }
           %>
-          <% if @presenter_obj.is_sale_live_for_user? && !@presenter_obj.is_early_access_mode_on_for_user? %>
-              <div class="panel panel-default time-remain">
-                <div class="panel-body text-center">sale open till tokens last</div>
-              </div>
-          <% end %>
+          <%# if @presenter_obj.is_sale_live_for_user? && !@presenter_obj.is_early_access_mode_on_for_user? %>
+              <div class="time-remain text-center" style="margin-top: 25px">sale open till tokens last</div>
+          <%# end %>
 
         </div>
       <!--</div>-->
