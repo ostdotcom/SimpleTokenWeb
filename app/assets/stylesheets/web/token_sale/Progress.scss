@@ -26,8 +26,8 @@
 
   .container-timeline{
 
-    width: 900px;
-    margin: 0 auto;
+    width: calc(100% - 100px);
+    margin: 150px auto 0 auto;
     padding: 110px 0;
     position: relative;
 
@@ -103,6 +103,27 @@
         width: 100px;
         height: 200px;
         text-align: center;
+
+        .o-circle{
+          background: url('https://d36lai1ppm9dxu.cloudfront.net/assets/image/o-circle-2x.png');
+          background-size: contain;
+          width: 200px;
+          height: 149.5px;
+          position: absolute;
+          top: -80%;
+          left: -50%;
+          display: none;
+          .circle-inner{
+            width: 60px;
+            height: 60px;
+            margin: 70px auto 20px auto;
+            border-radius: 50%;
+            font-size: 10px;
+            padding: 15px 0;
+            font-weight: 600;
+            color: #fff;
+          }
+        }
         .st{
           font-size: 16px;
           color: #a7b2b5;
@@ -167,6 +188,9 @@
         }
 
         &.in-progress{
+          .o-circle{
+            display: block;
+          }
           .st{
             color: #54b79e;
           }
@@ -201,7 +225,8 @@
 
         &.ms-1.in-progress,
         &.ms-1.complete{
-          .point{
+          .point,
+          .circle-inner{
             background: #61bfba;
           }
           .desc{
@@ -211,7 +236,8 @@
 
         &.ms-2.in-progress,
         &.ms-2.complete{
-          .point{
+          .point,
+          .circle-inner{
             background: #e4b030;
           }
           .desc{
@@ -221,7 +247,8 @@
 
         &.ms-3.in-progress,
         &.ms-3.complete{
-          .point{
+          .point,
+          .circle-inner{
             background: #f58a23;
           }
           .desc{
@@ -231,7 +258,8 @@
 
         &.ms-4.in-progress,
         &.ms-4.complete{
-          .point{
+          .point,
+          .circle-inner{
             background: #d0021b;
           }
           .desc{
@@ -241,7 +269,8 @@
 
         &.ms-5.in-progress,
         &.ms-5.complete{
-          .point{
+          .point,
+          .circle-inner{
             background: #740602;
           }
           .desc{
