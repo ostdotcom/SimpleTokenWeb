@@ -257,6 +257,10 @@ module Presenters
           !is_kyc_denied? && is_early_access_user? && (is_bonus_confirmed? || !is_bonus_approval_date_over?)
         end
 
+        def show_community_bonus_box?
+          true
+        end
+
         def bonus_icon_class
           is_bonus_confirmed? ? 'approved' : 'pending'
         end
