@@ -10,6 +10,10 @@
     padding: 10px 0 15px 0;
     line-height: 1.5;
     letter-spacing: 0.8px;
+    &.links-box{
+      border: solid 1px #f1f8f5;
+      padding: 10px 20px 15px;
+    }
     h1{
       font-weight: 600;
       color: #597a84;
