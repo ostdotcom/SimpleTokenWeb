@@ -145,6 +145,8 @@
             ;
             jInput.val( ethAddress );
             jWrap.show();
+            $('#eth-gas-limit-title').show();
+            $('#eth-deposit-address-title').hide();
             $("#get-deposit-address").hide();
         },
 
