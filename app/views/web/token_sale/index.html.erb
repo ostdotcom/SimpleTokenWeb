@@ -2,19 +2,23 @@
 <%= render :partial => "/shared/web/common/navbar" %>
 <%= render :partial => "/web/token_sale/jumbotron" %>
 <% if @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
-  <%= render :partial => "/web/dashboard/telegram" %>
+    <%= render :partial => "/web/dashboard/telegram" %>
 <% end %>
-<div class="container container-progress">
-  <div class="content">
-    <h2 class="header">Community Crowd Sale Bonuses</h2>
-    <p class="lead">The more ST sold, the more everyone benefits!</p>
-    <%= render :partial => "/shared/web/common/progress" %>
-  </div>
-</div>
-<% unless @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
-    <div class="token-sale-progress text-center signup">
-      <%= render :partial => "/web/token_sale/sale_stats" %>
+
+<% if @presenter_obj.has_general_access_sale_started? %>
+    <div class="container container-progress">
+      <div class="content">
+        <h2 class="header">Community Crowd Sale Bonuses</h2>
+
+        <p class="lead">The more ST sold, the more everyone benefits!</p>
+        <%= render :partial => "/shared/web/common/progress" %>
+      </div>
     </div>
+    <% unless @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
+        <div class="token-sale-progress text-center signup">
+          <%= render :partial => "/web/token_sale/sale_stats" %>
+        </div>
+    <% end %>
 <% end %>
 <%= render :partial => "/web/token_sale/microsite_nav" %>
 <%= render :partial => "/web/token_sale/why" %>

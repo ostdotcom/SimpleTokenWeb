@@ -122,15 +122,19 @@ module Presenters
         end
 
         def has_sale_ended?
-           (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date) && ((current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date) || has_sale_ended_before_time?)
+          has_early_access_sale_start_date_passed? && ((current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date) || has_sale_ended_before_time?)
         end
 
         def has_sale_paused?
-          (token_sale_active_status.to_i != 1) && (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date)
+          (token_sale_active_status.to_i != 1) && has_early_access_sale_start_date_passed?
         end
 
         def has_sale_ended_before_time?
           sale_ended_before_time_state.to_i == 1
+        end
+
+        def has_early_access_sale_start_date_passed?
+          (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date)
         end
 
         ###########################################
@@ -269,7 +273,7 @@ module Presenters
 
         def show_unable_for_early_purchase_text?
           # General access users, on 14th while early sale is going on
-          (!is_early_access_user? && (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date) && (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date))
+          (!is_early_access_user? && has_early_access_sale_start_date_passed? && (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date))
         end
 
         def show_max_limit_for_early_purchase_text?
