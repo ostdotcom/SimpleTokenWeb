@@ -22,6 +22,9 @@ module Presenters
         sale_details['sale_ended_before_time'].to_i == 1
       end
 
+      def token_sale_active_status
+        sale_details['token_sale_active_status']
+      end
 
       def has_general_access_sale_started?
         current_time >= GlobalConstant::StTokenSale.general_access_sale_start_date
@@ -41,6 +44,10 @@ module Presenters
 
       def has_sale_ended?
         current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date || has_sale_ended_before_time?
+      end
+
+      def has_sale_paused?
+        (token_sale_active_status.to_i != 1) && (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date)
       end
 
       def progress_bar_percent
@@ -65,7 +72,7 @@ module Presenters
       private
 
       def current_time
-        @current_time ||= Time.zone.now
+        @current_time ||= Time.zone.now + @params[:dd].to_i.days
       end
 
     end

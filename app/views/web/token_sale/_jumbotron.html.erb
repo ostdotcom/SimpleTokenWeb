@@ -4,7 +4,23 @@
       <div class="row mobile-bottom">
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive"/>
-          <% if @presenter_obj.has_general_access_sale_started? %>
+          <% if @presenter_obj.has_sale_ended? %>
+              <h1>Public Sale has ended successfully!</h1>
+
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
+                blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large
+
+                Even the all-powerful Pointing has no control about the blind texts it</p>
+              <a href="/login" class="btn-common btn-grey btn-top-bottom-15">LOGIN TO YOUR ACCOUNT</a>
+              </div>
+          <% elsif @presenter_obj.has_sale_paused? %>
+              <div class="desc">
+                <h1>Public Sale has Been Paused!</h1>
+
+                <p>Register to reserve your branded tokens and purchase today. </p>
+                <a href="/login" class="btn-common btn-grey btn-top-bottom-15">LOGIN TO YOUR ACCOUNT</a>
+              </div>
+          <% elsif @presenter_obj.has_general_access_sale_started? %>
               <div class="desc">
                 <h1>Public Sale is Live!</h1>
 
@@ -22,17 +38,21 @@
               <div class="desc">
                 <h1>The Software to Easily Launch Cryptocurrencies on a Blockchain</h1>
 
-                <p>Get on the whitelist. Register to reserve your branded tokens and to purchase during the Public sale on 15 November, 2017.</p>
+                <p>Get on the whitelist. Register to reserve your branded tokens and to purchase during the Public sale
+                  on 15 November, 2017.</p>
               </div>
           <% else %>
               <div class="desc">
                 <h1>The Software to Easily Launch Cryptocurrencies on a Blockchain</h1>
 
-                <p>Get Early Access! Register to reserve your branded tokens and to purchase during the Early Access sale on 14 November, 2017.</p>
+                <p>Get Early Access! Register to reserve your branded tokens and to purchase during the Early Access
+                  sale on 14 November, 2017.</p>
               </div>
           <% end %>
-          <div class="desc links-box">
-            <p style="margin: 0">Have questions on the Token Sale? Check these documents.</p>
+
+          <% unless @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
+              <div class="desc links-box">
+                <p style="margin: 0">Have questions on the Token Sale? Check these documents.</p>
             <span class="jumbotron-links">
               <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit" class="link" target="_blank" title="Registration Guide">
                 <span class="registration-guide-link-icon icon-pos"></span>
@@ -45,34 +65,47 @@
                 <span class="border-btm">Token Sale FAQ</span>
               </a>
             </span>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5">
-          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
-          <div class="registration-timer text-center">
-            <%
-               if @presenter_obj.has_general_access_sale_started?
-                 top_lang = 'register and buy now the public sale is live'
-                 countdown_timer = GlobalConstant::StTokenSale.general_access_sale_end_date
-               elsif @presenter_obj.has_early_access_register_ended?
-                 top_lang = 'register now for the public sale'
-                 countdown_timer = GlobalConstant::StTokenSale.general_access_sale_start_date
-               else
-                 top_lang = 'register now for the token sale'
-                 countdown_timer = GlobalConstant::StTokenSale.early_access_register_end_date
-               end
-            %>
+              </div>
+          <% end %>
 
-            <h2><%= top_lang %></h2>
-            <span class="time-remaining-icon"></span>
-            <div class="time-remaining">&mdash;&nbsp;Time Remaining&nbsp;&mdash;</div>
-            <%=
-                render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: (countdown_timer- Time.now).to_i * 1000}
-            %>
-            <a href="/sign-up" class="btn-common btn-gold">register now</a>
           </div>
-        </div>
+
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5">
+        <% if @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
+
+
+        <% else %>
+            <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
+
+            <div class="registration-timer text-center">
+              <%
+                 if @presenter_obj.has_general_access_sale_started?
+                   top_lang = 'register and buy now the public sale is live'
+                   countdown_timer = GlobalConstant::StTokenSale.general_access_sale_end_date
+                 elsif @presenter_obj.has_early_access_register_ended?
+                   top_lang = 'register now for the public sale'
+                   countdown_timer = GlobalConstant::StTokenSale.general_access_sale_start_date
+                 else
+                   top_lang = 'register now for the token sale'
+                   countdown_timer = GlobalConstant::StTokenSale.early_access_register_end_date
+                 end
+              %>
+
+              <h2><%= top_lang %></h2>
+              <span class="time-remaining-icon"></span>
+
+              <div class="time-remaining">&mdash;&nbsp;Time Remaining&nbsp;&mdash;</div>
+              <%=
+                  render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: (countdown_timer- Time.now).to_i * 1000}
+              %>
+              <a href="/sign-up" class="btn-common btn-gold">register now</a>
+            </div>
+        <% end %>
+
       </div>
+
+
     </div>
   </div>
+</div>
 </div>

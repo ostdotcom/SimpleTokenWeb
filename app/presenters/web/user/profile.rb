@@ -69,16 +69,16 @@ module Presenters
           user_kyc_data['alternate_token_name_for_bonus'].to_s
         end
 
-        def token_sale_active_status
-          result['token_sale_active_status']
-        end
-
         def sale_details
           result["sale_details"]
         end
 
         def sale_ended_before_time_state
           sale_details['sale_ended_before_time']
+        end
+
+        def token_sale_active_status
+          sale_details['token_sale_active_status']
         end
 
         ###########################################
