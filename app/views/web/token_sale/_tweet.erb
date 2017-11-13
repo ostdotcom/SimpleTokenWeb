@@ -1,18 +1,30 @@
+<%
+
+   case true
+     when @presenter_obj.power_milestone_achieved?
+       tweet_text = "🔝30% bonus activated! @theSimpleToken — cryptocurrencies for communities. #ICO. "
+     when @presenter_obj.kicker_milestone_achieved?
+       tweet_text = "🚀Join in @theSimpleToken #ICO — #cryptocurrencies for communities. 25% bonus activated! "
+     when @presenter_obj.target_milestone_achieved?
+       tweet_text = "💥I’m in @theSimpleToken #ICO — #cryptocurrencies for communities. 20% bonus for all activated! "
+     else
+       tweet_text = "🔛 It's on! @theSimpleToken #ICO - #cryptocurrency for communities. The more buyers, more bonus for all."
+   end
+%>
 <div class="container-ribbon hidden-xs">
   <div class="ribbon">
     <a class="twitter-share-button"
        href="https://twitter.com/share"
        data-size="large"
-       data-text="I just bought @theSimpleToken — cryptocurrencies for digital communities. Join the #ICO. When target reached: 20% bonus for everyone!"
-       data-url="https://sale.simpletoken.org"
-       data-hashtags="tokensale,ethereum,bitcoin,crytpocurrency">
+       data-text="<%= tweet_text %>"
+       data-url="https://sale.simpletoken.org">
       Tweet
     </a>
   </div>
 </div>
 
 <% content_for :end_js do %>
-    <script>window.twttr = (function(d, s, id) {
+    <script>window.twttr = (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
                 t = window.twttr || {};
         if (d.getElementById(id)) return t;
@@ -22,7 +34,7 @@
         fjs.parentNode.insertBefore(js, fjs);
 
         t._e = [];
-        t.ready = function(f) {
+        t.ready = function (f) {
             t._e.push(f);
         };
 
