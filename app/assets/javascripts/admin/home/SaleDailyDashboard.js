@@ -30,8 +30,8 @@
 
       config.columns.unshift(
         {
-          title: "Date (PST)",
-          data: "date_time",
+          title: "Day",
+          data: "day_no",
           render: $.fn.dataTable.render.text()
         },
         {
@@ -46,7 +46,7 @@
         },
         {
           title: "USD <br> <span id='totalDollarVal' class='totalSaleValue'></span>",
-          data: "total_dollars_value",
+          data: "total_dollar_value",
           render: $.fn.dataTable.render.text()
         }
       );
@@ -56,7 +56,7 @@
 
     bindButtonActions: function (config) {
       oThis.$dataTable.on('draw.dt', function () {
-        $('#totalDollarVal').text('$ ' + oThis.allTimeData.total_dollars_value);
+        $('#totalDollarVal').text('$ ' + oThis.allTimeData.total_dollar_value);
         $('#totalEthers').text(oThis.allTimeData.total_ethereum);
         $('#totalTokensSold').text(oThis.allTimeData.total_tokens_sold);
       });

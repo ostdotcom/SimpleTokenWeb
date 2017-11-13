@@ -305,7 +305,8 @@ class Admin::HomeController < Admin::BaseController
           date_time: c_p_d['day_timestamp'],
           total_ethereum: c_p_d['total_ethereum'],
           total_tokens_sold: c_p_d['total_tokens_sold'],
-          total_dollars_value: c_p_d['total_dollars_value']
+          total_dollar_value: c_p_d['total_dollar_value'],
+          day_no: c_p_d['day_no']
       }
     end
 
