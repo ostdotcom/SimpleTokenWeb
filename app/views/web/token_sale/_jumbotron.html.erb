@@ -29,7 +29,7 @@
               <div class="desc">
                 <h1>The Software To Easily Launch Cryptocurrencies On A Blockchain</h1>
 
-                <p>The 24 hour Early Access sale is underway! Max cap of ___ per purchaser. Login to participate if you have preregistered. Register Now to join the public sale.</p>
+                <p>The 24 hour Early Access sale is underway! Max cap of 40 ETH per purchaser. Login to participate if you have preregistered. Register Now to join the public sale.</p>
                 <a href="/login" class="btn-common btn-grey btn-top-bottom-15">Participate Now</a>
               </div>
           <% elsif @presenter_obj.has_early_access_register_ended? %>
@@ -80,9 +80,12 @@
                  if @presenter_obj.has_general_access_sale_started?
                    top_lang = 'The Public Token Sale is Live'
                    countdown_timer = GlobalConstant::StTokenSale.general_access_sale_end_date
-                 elsif @presenter_obj.has_early_access_register_ended?
+                 elsif @presenter_obj.has_early_access_sale_started?
                    top_lang = 'The Early Access Token Sale is Live'
                    countdown_timer = GlobalConstant::StTokenSale.general_access_sale_start_date
+                 elsif @presenter_obj.has_early_access_register_ended?
+                   top_lang = 'The Early Access Sale Starts Soon'
+                   countdown_timer = GlobalConstant::StTokenSale.early_access_sale_start_date
                  else
                    top_lang = 'Register Now for the Token Sale'
                    countdown_timer = GlobalConstant::StTokenSale.early_access_register_end_date

@@ -1,55 +1,63 @@
 <%
-   text1 = ''
-   text2 = ''
-   text3 = ''
+   if @presenter_obj.present?
+     text1 = ''
+     text2 = ''
+     text3 = ''
 
-   case true
-     when @presenter_obj.has_sale_ended?
-       text1 = 'The token sale has ended.'
-       text3 = 'Learn more on Telegram'
-     when @presenter_obj.has_sale_paused?
-       text1 = 'The token sale has been temporarely paused.'
-       text3 = 'Learn more on Telegram'
-     when @presenter_obj.has_general_access_sale_started?
-       text1 = 'The public token sale is Live Now!'
-       text3 = 'Connect with the team on Telegram'
+     case true
+       when @presenter_obj.has_sale_ended?
+         text1 = 'The token sale has ended.'
+         text3 = 'Learn more on '
+       when @presenter_obj.has_sale_paused?
+         text1 = 'The token sale has been temporarily paused.'
+         text3 = 'Learn more on '
+       when @presenter_obj.has_general_access_sale_started?
+         text1 = 'The public token sale is Live'
+         text3 = 'Connect with the team on '
 
-       case true
-         when @presenter_obj.power_milestone_achieved?
-           text2 = 'ST Power achieved! 30% Power bonus activated!'
-         when @presenter_obj.kicker_milestone_achieved?
-           text2 = 'ST Kicker achieved! 25% Kicker bonus activated!'
-         when @presenter_obj.target_milestone_achieved?
-           text2 = 'ST Target achieved! 20% Target bonus activated!'
-         else
-           text2 = '20% bonus for all when Target is hit.'
-       end
+         case true
+           when @presenter_obj.power_milestone_achieved?
+             text2 = '30% Power bonus activated!'
+           when @presenter_obj.kicker_milestone_achieved?
+             text2 = '25% Kicker bonus activated!'
+           when @presenter_obj.target_milestone_achieved?
+             text2 = '20% Target bonus activated!'
+           else
+             text2 = '20% bonus for all when Target is hit.'
+         end
 
-     when @presenter_obj.has_early_access_sale_started?
-       text1 = 'The 24hr Early Access token sale is Live Now!'
-       text3 = 'Connect with the team on Telegram'
+       when @presenter_obj.has_early_access_sale_started?
+         text1 = 'The Early Access token sale is Live! '
+         text3 = 'Connect with the team on '
 
-       case true
-         when @presenter_obj.kicker_milestone_achieved?
-           text2 = 'ST Kicker achieved! 25% Kicker bonus activated!'
-         when @presenter_obj.target_milestone_achieved?
-           text2 = 'ST Target achieved! 20% Target bonus activated!'
-         else
-           text2 = '20% bonus for all when Target is hit.'
-       end
+         case true
+           when @presenter_obj.kicker_milestone_achieved?
+             text2 = '25% Kicker bonus activated!'
+           when @presenter_obj.target_milestone_achieved?
+             text2 = '20% Target bonus activated!'
+           else
+             text2 = '20% bonus for all when Target is hit.'
+         end
 
-     else
-       text1 = 'Early Access token sale begins 14 Nov. 20% bonus for all when Target is hit.'
-       text2 = ''
-       text3 = 'Connect with the team on Telegram'
+       else
+         text1 = 'Early Access token sale begins 14 Nov. 20% bonus for all when Target is hit.'
+         text2 = ''
+         text3 = 'Connect with the team on '
+     end
+   else
+     text1 = 'Token sale starts 14 November, 2017. Get Early Access and 10% Bonus.'
+     text2 = ''
+     text3 = 'Connect with the team on '
    end
 
 %>
 
 <div class="text-center uber-banner hidden-xs">
   <span class="uber-banner-icon"></span>&nbsp;&nbsp;<%= text1 %>
-  <% if text2.present? %><a href="#sale-progress-container" class="smooth-scroll"><%= text2 %></a><% end %>
-  <a href="https://www.t.me/simpletoken" target="_blank" title="Join our Telegram channel"><%= text3 %></a>
+  <% if text2.present? %>
+      <a href="#sale-progress-container" class="smooth-scroll"><%= text2 %></a>
+  <% end %>
+  <%= text3 %><a href="https://www.t.me/simpletoken" target="_blank" title="Join our Telegram channel">Telegram</a>
 </div>
 
 <div class="container-fluid hidden-sm hidden-md hidden-lg hidden-xl">
@@ -63,8 +71,11 @@
     <div class="col-xs-11">
       <div class="row">
         <%= text1 %>
-        <% if text2.present? %><a href="#sale-progress-container" class="smooth-scroll"><%= text2 %></a><% end %>
-        <a href="https://www.t.me/simpletoken" target="_blank" title="Join our Telegram channel"><%= text3 %></a>
+        <% if text2.present? %>
+            <a href="#sale-progress-container" class="smooth-scroll"><%= text2 %></a>
+        <% end %>
+        <%= text3 %>
+        <a href="https://www.t.me/simpletoken" target="_blank" title="Join our Telegram channel">Telegram</a>
       </div>
     </div>
   </div>
