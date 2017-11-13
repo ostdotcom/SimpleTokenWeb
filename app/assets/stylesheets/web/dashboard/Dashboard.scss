@@ -13,9 +13,15 @@
 }
 .pause-status{
   color: #597a84;
-  font-weight: 300;
   margin-top: 20px;
   font-size: 20px;
+  a{
+    color: #597a84;
+    border-bottom: solid 1px #597a84;
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
 }
 .dashboard-page{
   @media (min-width: 736px) {
@@ -66,7 +72,7 @@
     .ver-middle{
       vertical-align: middle;
     }
-    #prove-support-link{
+    #prove-support-link, #community-bonus-link{
       &:focus{
         text-decoration: none;
       }
@@ -107,17 +113,26 @@
     }
   }
   .progress-stats{
-    font-weight: 500;
+    font-weight: 300;
     color: #597a84;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     letter-spacing: 1px;
+    font-size: 16px;
+    .stats-number{
+      font-weight: 500;
+    }
+  }
+  .stats-note-desc{
+    font-size: 12px;
+    padding: 20px 0 0;
   }
   .time-remain{
     border: none;
     color: #91c0ad;
     font-weight: 500;
     letter-spacing: 1px;
-    margin-top: 20px;
+    font-size: 16px;
+    text-transform: uppercase;
     .panel-body{
       padding: 8px 10px;
       text-transform: uppercase;
@@ -146,30 +161,35 @@
 }
 
 .eth-deposit-address{
+  background-color: #6c99a6;
+  padding: 30px 0;
   .header{
     font-size: 24px;
     font-weight: 300;
-    color: #6ca3a9;
+    color: #fff;
     margin-bottom: 20px;
     margin-top: 0;
   }
   .btn{
     padding: 15px 30px;
   }
-  .eth-link{
-    font-size: 12px;
-    font-weight: 500;
-    color: #597a84;
-    display: inline-block;
-    margin: 0 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #597a84;
-    &:hover, &:focus{
-      text-decoration: none;
-    }
-  }
 }
+
+//.eth-address-links{
+//  a{
+//    font-size: 12px;
+//    font-weight: 500;
+//    color: #597a84;
+//    display: inline-block;
+//    margin: 0 10px;
+//    text-transform: uppercase;
+//    letter-spacing: 1px;
+//    border-bottom: 1px solid #597a84;
+//    &:hover, &:focus{
+//      text-decoration: none;
+//    }
+//  }
+//}
 
 .instructions{
   color: #597a84;
@@ -199,26 +219,27 @@
     font-size: 18px;
     padding-bottom: 10px;
   }
-  a{
-    font-size: 12px;
-    font-weight: 500;
-    color: #597a84;
-    display: inline-block;
-    margin: 0 15px;
-    text-transform: uppercase;
-    border-bottom: 1px solid #597a84;
-    &:hover, &:focus{
-      text-decoration: none;
-    }
-  }
+//  a{
+//    font-size: 12px;
+//    font-weight: 500;
+//    color: #597a84;
+//    display: inline-block;
+//    margin: 0 15px;
+//    text-transform: uppercase;
+//    border-bottom: 1px solid #597a84;
+//    &:hover, &:focus{
+//      text-decoration: none;
+//    }
+//  }
 }
 
 
 .ethereum-deposit-address{
   border: 0;
   padding: 0;
-  margin-top: 20px;
   position: relative;
+  max-width: 500px;
+  margin: 0 auto;
   .copy-address-input{
     width: 100%;
     height: 50px;
@@ -227,7 +248,7 @@
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    box-shadow: 0 0 0 1px #fff;
+    box-shadow: none;
     -webkit-appearance: none;
     border: solid 1px #cdd7da;
     padding: 15px 18px;
@@ -242,6 +263,7 @@
     height: 50px;
     border: none;
     padding: 0 15px;
+    text-transform: uppercase;
   }
 }
 
@@ -336,4 +358,66 @@
 
 .margin35auto{
   margin: 35px auto;
+}
+
+.container-progress {
+  text-align: center;
+  margin: 0 auto;
+  &.gradient{
+    background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 100px, #ffffff 100%);
+  }
+  h2.header {
+    color: #6ca3a9;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-top: 20px;
+    font-size: 38px;
+    letter-spacing: 1.3px;
+    text-align: center;
+  }
+  p.lead {
+    color: #6ca3a9;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-top: 0;
+    font-size: 20px;
+    letter-spacing: 1.3px;
+    text-align: center;
+  }
+}
+
+.container-ribbon{
+  position: absolute;
+  top: 140px;
+  right: 0px;
+  overflow-y: hidden;
+  .ribbon{
+    background: #d4111c;
+    color: #ffffff;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.15);
+    .text{
+      padding: 10px 10px;
+      font-size: 12px;
+      a,
+      a:hover,
+      a:active{
+        text-decoration: none;
+        color: #ffffff;
+      }
+    }
+  }
+  .ribbon-fold{
+    position: absolute;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background: #a51119;
+    transform: rotate(45deg) translate(0, -10px);
+    z-index: -1;
+  }
+  .tweet{
+    margin: 10px;
+    text-align: center;
+  }
 }

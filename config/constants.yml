@@ -24,6 +24,12 @@ constants:
       early_access_sale_start_date:  <%= ENV['STW_EARLY_ACCESS_SALE_START_DATE'] %>
       general_access_sale_start_date:  <%= ENV['STW_GENERAL_ACCESS_SALE_START_DATE'] %>
       general_access_sale_end_date:  <%= ENV['STW_GENERAL_ACCESS_SALE_END_DATE'] %>
+    sale_milestones:
+      soft_cap: 50000000
+      target: 100000000
+      kicker: 120000000
+      power: 180000000
+      hard_cap: 240000000
 
   recaptcha:
     site_key: <%= ENV['STW_RECAPTCHA_SITE_KEY'] %>

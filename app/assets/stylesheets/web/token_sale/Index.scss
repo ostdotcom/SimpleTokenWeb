@@ -10,49 +10,16 @@
     padding: 10px 0 15px 0;
     line-height: 1.5;
     letter-spacing: 0.8px;
+    &.links-box{
+      border: solid 1px #f1f8f5;
+      padding: 10px 20px 15px;
+    }
     h1{
       font-weight: 600;
       color: #597a84;
       font-size: 18px;
       line-height: 1.5;
       letter-spacing: 0.8px;
-    }
-    .jumbotron-links{
-      display: inline-block;
-      margin: 10px 10px 0px 0px;
-      a.link{
-        margin: 0;
-        vertical-align: middle;
-        text-decoration: none;
-        color: #597a84;
-        display: inline-block;
-        font-weight: 500;
-        letter-spacing: 1px;
-        font-size: 12px;
-        @media (min-width: 768px){
-          font-size: 14px;
-        }
-        text-transform: uppercase;
-        &:hover{
-          color: #c0993a;
-          text-decoration: none;
-          .border-btm{
-            border-bottom: 1px solid #c0993a;
-          }
-        }
-        &:focus{
-          color: #597a84;
-          text-decoration: none;
-          border-bottom: none;
-        }
-      }
-      .icon-pos{
-        vertical-align: middle;
-      }
-      .border-btm{
-        vertical-align: bottom;
-        border-bottom: solid 1px #597a84;
-      }
     }
   }
   .logo-desktop{
@@ -63,17 +30,60 @@
   }
 
   .time-remaining{
-    background-color: rgba(145, 192, 173, 0.1);
-    padding: 5px;
-    margin: 10px 0 20px 0;
+//    background-color: rgba(145, 192, 173, 0.1);
+//    padding: 5px;
+    margin: 5px 0 20px 0;
     text-align: center;
     color: #91c0ad;
-    font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
   }
 
+  .registration-timer{
+    padding: 30px 0;
+    border-radius: 5px;
+    background-color: #f1f8f5;
+    h2{
+      margin-top: 0;
+      font-size: 14px;
+      color: #7F9183;
+      padding-bottom: 0;
+    }
+    .countdown{
+      @media (min-width: 768px) {
+        width: 75%;
+        margin: 0 auto;
+      }
+    }
+  }
+
+}
+
+.container-progress {
+  text-align: center;
+  margin: 0 auto;
+  &.gradient{
+    background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 100px, #ffffff 100%);
+  }
+  h2.header {
+    color: #6ca3a9;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-top: 20px;
+    font-size: 38px;
+    letter-spacing: 1.3px;
+    text-align: center;
+  }
+  p.lead {
+    color: #6ca3a9;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-top: 0;
+    font-size: 20px;
+    letter-spacing: 1.3px;
+    text-align: center;
+  }
 }
 
 // Mobile portrait, landscape
@@ -354,7 +364,7 @@
 
   .button{
     text-align: center;
-    margin: 50px 0 20px;
+    margin: 50px 0 40px;
     a{
       margin: 0 0 20px;
       min-width: 260px;
@@ -377,6 +387,22 @@
     letter-spacing: 0.2px;
     color: #597a84;
     font-weight: 300;
+  }
+}
+
+.container-ribbon{
+  position: relative;
+  float: right;
+  top: -80px;
+  .ribbon{
+    background: #1b95e0;
+    color: #ffffff;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.15);
+    padding: 5px 10px 0px 10px;
+    &:hover{
+      background: #0c7abf;
+    }
   }
 }
 
@@ -407,22 +433,6 @@
   }
   .only-mobile{
     display: block !important;
-  }
-}
-
-.token-sale-progress{
-  padding-top: 25px;
-  margin-top: 20px;
-  border-top: 2px solid rgba(145, 192, 173, 0.1);
-  .progress{
-    background-color: #fff;
-    border: solid 1px #8fc0ae;
-    box-shadow: none;
-    height: 35px;
-  }
-  .progress-bar{
-    background-color: #8fc0ae;
-    box-shadow: none;
   }
 }
 

@@ -4,6 +4,8 @@ module Presenters
 
       class Profile
 
+        include Util::SaleMilestone
+
         # Init
         # @param [Result::Base] response_data_obj (mandatory) - Page data
         # @param [Hash] params (optional) - Page params
@@ -40,9 +42,9 @@ module Presenters
         def user_kyc_status
           @user_kyc_status ||= begin
             if [
-                GlobalConstant::TokenSaleUserState.kyc_status_pending,
-                GlobalConstant::TokenSaleUserState.kyc_status_approved,
-                GlobalConstant::TokenSaleUserState.kyc_status_denied
+              GlobalConstant::TokenSaleUserState.kyc_status_pending,
+              GlobalConstant::TokenSaleUserState.kyc_status_approved,
+              GlobalConstant::TokenSaleUserState.kyc_status_denied
             ].include?(user_kyc_data['kyc_status'])
               user_kyc_data['kyc_status']
             else
@@ -67,16 +69,16 @@ module Presenters
           user_kyc_data['alternate_token_name_for_bonus'].to_s
         end
 
-        def token_sale_active_status
-          result['token_sale_active_status']
-        end
-
         def sale_details
           result["sale_details"]
         end
 
         def sale_ended_before_time_state
           sale_details['sale_ended_before_time']
+        end
+
+        def token_sale_active_status
+          sale_details['token_sale_active_status']
         end
 
         ###########################################
@@ -119,16 +121,24 @@ module Presenters
           is_kyc_approved? && ethereum_address_whitelist_done? && is_sale_ongoing_for_user?
         end
 
+        def had_sale_begun_for_user?
+          is_kyc_approved? && ethereum_address_whitelist_done? && is_sale_live_for_user?
+        end
+
         def has_sale_ended?
-          (current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date) || has_sale_ended_before_time?
+          has_early_access_sale_start_date_passed? && ((current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date) || has_sale_ended_before_time?)
         end
 
         def has_sale_paused?
-          (token_sale_active_status.to_i != 1) && is_sale_live_for_user?
+          (token_sale_active_status.to_i != 1) && has_early_access_sale_start_date_passed?
         end
 
         def has_sale_ended_before_time?
           sale_ended_before_time_state.to_i == 1
+        end
+
+        def has_early_access_sale_start_date_passed?
+          (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date)
         end
 
         ###########################################
@@ -254,7 +264,11 @@ module Presenters
         end
 
         def show_bonus_box?
-          is_early_access_user? && (is_bonus_confirmed? || !is_bonus_approval_date_over?)
+          !is_kyc_denied? && is_early_access_user? && (is_bonus_confirmed? || !is_bonus_approval_date_over?)
+        end
+
+        def show_community_bonus_box?
+          community_bonus > 0
         end
 
         def bonus_icon_class
@@ -263,7 +277,12 @@ module Presenters
 
         def show_unable_for_early_purchase_text?
           # General access users, on 14th while early sale is going on
-          (!is_early_access_user? && (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date) && (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date))
+          (!is_early_access_user? && has_early_access_sale_start_date_passed? && (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date))
+        end
+
+        def show_max_limit_for_early_purchase_text?
+          # General access users, on 14th while early sale is going on
+          is_early_access_mode_on_for_user? && is_sale_ongoing_for_user?
         end
 
         ###############################################

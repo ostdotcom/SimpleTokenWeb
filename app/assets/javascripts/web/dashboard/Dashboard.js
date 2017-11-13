@@ -54,6 +54,14 @@
               $(this).parents('.kyc-panel').find('#prove-support-link').removeClass("close-accordian-icon");
             });
 
+            $('#community-bonus-content').on('shown.bs.collapse', function() {
+              $(this).parents('.kyc-panel').find('#community-bonus-link').addClass("close-accordian-icon");
+            });
+
+            $('#community-bonus-content').on('hidden.bs.collapse', function() {
+              $(this).parents('.kyc-panel').find('#community-bonus-link').removeClass("close-accordian-icon");
+            });
+
             $("#user-eth-address-validate-btn").click( function( event ) {
                 oThis.onValidateUserEthAddress( event );
             });
@@ -71,6 +79,16 @@
                 }, 500, function(){
                   $('#user-eth-address-input').focus();
                 });
+              }
+            });
+
+            $("a[href='#sale-progress-container']").on('click', function(event) {
+              if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+                $('html, body').animate({
+                  scrollTop: $(hash).offset().top
+                }, 500);
               }
             });
 
@@ -137,6 +155,8 @@
             ;
             jInput.val( ethAddress );
             jWrap.show();
+            $('#eth-gas-limit-title').show();
+            $('#eth-deposit-address-title').hide();
             $("#get-deposit-address").hide();
         },
 
@@ -174,39 +194,25 @@
                     if ( purchaseDetails && Object.keys(purchaseDetails).length > 0 ) {
                         
                         var jResult = jWrap.find("#user-eth-address-purchase-details"),
-                            jUserEthAddressPurchaseSent = jResult.find("#user-eth-address-purchase-sent"),
-                            jUserEthAddressPurchaseAlloted = jResult.find("#user-eth-address-purchase-alloted"),
-                            jUserEthAddressPurchaseRatio = jResult.find("#user-eth-address-purchase-ratio"),
+                            jUserEthAddressPurchaseEthSent = jResult.find("#user-eth-address-purchase-eth-sent"),
+                            jUserEthAddressPurchaseStAllotted = jResult.find("#user-eth-address-purchase-st-allotted"),
 
-                            sUserEthAddressPurchaseSent = "",
-                            sUserEthAddressPurchaseAlloted = "",
-                            sUserEthAddressPurchaseRatio = "",
+                            sUserEthAddressPurchaseEthSent = "",
+                            sUserEthAddressPurchaseStAllotted = "",
 
-                            totalEthereumSent   = (0),
-                            totalDollarsSent    = (0),
-                            stAllottedEthereum  = (0),
-                            stAllottedDollar    = (0)
+                            totalEthereumSent   = ( purchaseDetails["total_ethereum_sent_by_user"]  || '0' ),
+                            totalStAllotted   =( purchaseDetails["total_simple_token_allotted_to_user"]  || '0' )
 
                         ;
 
-                        totalEthereumSent = $.number(totalEthereumSent, 2);
-                        totalDollarsSent = $.number(totalDollarsSent, 2);
-                        stAllottedEthereum = $.number(stAllottedEthereum, 2);
-                        stAllottedDollar = $.number(stAllottedDollar, 2);
+                        //
+                        sUserEthAddressPurchaseEthSent = totalEthereumSent + " ETH ";
+                        jUserEthAddressPurchaseEthSent.html( sUserEthAddressPurchaseEthSent );
 
                         //
-                        sUserEthAddressPurchaseSent = totalEthereumSent + " ETH "
-                            + " ($" + totalDollarsSent + ")";
-                        jUserEthAddressPurchaseSent.html( sUserEthAddressPurchaseSent );
+                        sUserEthAddressPurchaseStAllotted = totalStAllotted + " ST ";
+                        jUserEthAddressPurchaseStAllotted.html( sUserEthAddressPurchaseStAllotted );
 
-                        //
-                        sUserEthAddressPurchaseAlloted = stAllottedEthereum + " ETH "
-                            + " ($" + stAllottedDollar + ")";
-                        jUserEthAddressPurchaseAlloted.html( sUserEthAddressPurchaseAlloted );
-
-
-                        sUserEthAddressPurchaseRatio = purchaseDetails[ "token_to_ethereum_ratio" ];
-                        jUserEthAddressPurchaseRatio.text( sUserEthAddressPurchaseRatio );
 
                         jResult.show();
                     } else {

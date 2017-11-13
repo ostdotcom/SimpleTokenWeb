@@ -46,7 +46,7 @@
             %>
             <% if top_lang.present? %>
               <h2><%= top_lang %></h2>
-              <%= render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: countdown_t.to_i * 1000}%>
+              <%= render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: (countdown_t - Time.now).to_i * 1000}%>
             <% end %>
           </div>
           <div style="margin-top: 30px">

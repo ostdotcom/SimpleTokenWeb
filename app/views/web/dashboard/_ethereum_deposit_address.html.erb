@@ -1,25 +1,45 @@
 <% if @presenter_obj.can_purchase? %>
-<div class="container-fluid dashboard-page eth-deposit-address">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="text-center">
-        <h1 class="header">Ethereum Deposit Address</h1>
+    <div class="container-fluid">
+      <div class="row eth-deposit-address">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <div class="text-center">
+            <h1 class="header" id="eth-deposit-address-title">Ethereum Deposit Address for ST Public Sale</h1>
+            <h1 class="header" style="display: none" id="eth-gas-limit-title"><% if @presenter_obj.show_max_limit_for_early_purchase_text? %>Individual Max Cap is 40 ETH.<% end %> Set Gas Limit to 150,000.</h1>
+            <fieldset id="ethereum-deposit-address" class="ethereum-deposit-address" style="display: none">
+              <div style="position:relative;">
+                <input type="text" id="ethereum-address-input" class="copy-address-input" placeholder="Ethereum Deposit Address" readonly value=""/>
+                <input type="button" id="ethereum-address-copy-btn" class="btn-gold copy-address-button" value="Copy">
+              </div>
+            </fieldset>
 
-        <fieldset id="ethereum-deposit-address" class="ethereum-deposit-address" style="display: none">
-          <input  type="text" id="ethereum-address-input" class="copy-address-input" placeholder="Ethereum Deposit Address" readonly value=""/>
-          <input type="button" id="ethereum-address-copy-btn" class="btn-gold copy-address-button" value="Copy">
-        </fieldset>
-        
-        <a href="javascript:void(0)" class="btn-common btn-grey btn" id="get-deposit-address">GET DEPOSIT ADDRESS</a>
+            <a href="javascript:void(0)" class="btn-common btn-gold btn" id="get-deposit-address">GET DEPOSIT
+              ADDRESS</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="eth-deposit-address text-center" style="margin: 25px 0">
-  <a href="#eth-address" class="smooth-scroll eth-link" title="Check Your ETH Address">check your eth address</a>
-  <a href="https://simpletoken.org/faq/categories/token-sale/" target="_blank" class="eth-link" title="Token Sale Faq">token sale faq</a>
-  <a href="javascript:void(0)" target="_blank" class="eth-link" title="Wallet Setup Guide">how to purchase guide</a>
-</div>
+
+    <div class="eth-address-links text-center" style="margin: 25px 0">
+      <span class="jumbotron-links">
+        <a href="https://docs.google.com/document/d/1eFv60FGP39XqkMrtZE5FZK49rQ2QSyH3_TCm0wO5FM0/edit?ts=5a06f473&pli=1" target="_blank" class="link" title="How to Purchase">
+          <span class="registration-guide-link-icon icon-pos"></span>
+          <span class="border-btm">how to purchase</span>
+        </a>
+      </span>
+      <span class="jumbotron-links">
+        <a href="#eth-address" class="smooth-scroll eth-link link" title="Check Your ETH Address">
+          <span class="check-your-eth-link-icon icon-pos"></span>
+          <span class="border-btm">verify eth address</span>
+        </a>
+      </span>
+      <span class="jumbotron-links">
+        <a href="#eth-address" class="smooth-scroll eth-link link" title="Check Your ST Balance">
+          <span class="check-st-balance-link-icon icon-pos"></span>
+          <span class="border-btm">check your st balance</span>
+        </a>
+      </span>
+    </div>
+
 <% end %>
 
 

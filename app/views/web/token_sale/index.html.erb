@@ -1,16 +1,37 @@
 <%= render :partial => "/shared/web/common/index_svg_sprite" %>
 <%= render :partial => "/shared/web/common/navbar" %>
 <%= render :partial => "/web/token_sale/jumbotron" %>
-<%= render :partial => "/web/token_sale/telegram" %>
+<% if @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? || (!@presenter_obj.has_early_access_sale_started?) %>
+    <%= render :partial => "/web/dashboard/telegram" %>
+<% end %>
+
+<% if @presenter_obj.has_early_access_sale_started? %>
+    <div class="container-fluid container-progress <%= !(@presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused?) ? 'gradient' : '' %> " id="sale-progress-container">
+      <div class="content">
+        <h2 class="header">Community Crowd Sale Bonuses</h2>
+        <!--<% unless @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>-->
+          <p class="lead">The more ST sold, the more everyone benefits!</p>
+        <!--<% end %>-->
+        <%= render :partial => "/shared/web/common/progress" %>
+      </div>
+    </div>
+    <% unless @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
+        <%= render :partial => "/web/token_sale/tweet" %>
+        <div class="token-sale-progress text-center signup">
+          <%= render :partial => "/web/token_sale/sale_stats" %>
+        </div>
+    <% end %>
+<% end %>
+
 <%= render :partial => "/web/token_sale/microsite_nav" %>
 <%= render :partial => "/web/token_sale/why" %>
-<img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 30px auto 0;display: block;">
+<%= render partial: '/shared/web/common/press', locals: {title: 'In the News'} %>
 <%= render :partial => "/web/token_sale/sale_details" %>
 <%= render :partial => "/web/token_sale/bonus_details" %>
 <%= render :partial => "/web/token_sale/token_allocation" %>
 <%= render :partial => "/web/token_sale/reserve_your_branded_token" %>
 <%= render :partial => "/web/token_sale/token_key_dates" %>
 <%= render :partial => "/web/token_sale/faqs" %>
-<%= render partial: '/shared/web/common/press', locals: {title: 'In the News'} %>
+<%= render partial: '/shared/web/common/press_companies', locals: {title: 'In the News'} %>
 <%= render :partial => "/web/token_sale/early_backers" %>
 <%= render :partial => "/shared/web/common/social" %>

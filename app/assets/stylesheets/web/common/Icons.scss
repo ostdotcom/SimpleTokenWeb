@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v25.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v25.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v29.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v29.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -203,6 +203,33 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 .jumbotron-how-to-purchase-icon{
   @include icon-generator(49px, 49px, -108px, -180px, -108px, -108px, 50);
 }
+.registration-guide-link-icon{
+  @include icon-generator(28px, 40px, -337px, -504px, -337px, -337px, 70);
+}
+.token-sale-link-icon{
+  @include icon-generator(30px, 40px, -337px, -554px, -338px, -338px, 70);
+}
+.check-your-eth-link-icon{
+  @include icon-generator(22px, 36px, -338px, -699px, -338px, -338px, 70);
+}
+.terms-conditions-link-icon{
+  @include icon-generator(34px, 36px, -338px, -604px, -338px, -338px, 70);
+}
+.data-sheet-link-icon{
+  @include icon-generator(26px, 36px, -338px, -652px, -338px, -338px, 70);
+}
+.faq-link-icon{
+  @include icon-generator(29px, 39px, -338px, -750px, -338px, -338px, 70);
+}
+.documents-link-icon{
+  @include icon-generator(30px, 40px, -337px, -834px, -337px, -337px, 70);
+}
+.check-st-balance-link-icon{
+  @include icon-generator(30px, 26px, -337px, -884px, -337px, -337px, 70);
+}
+.go-to-telegram-link-icon{
+  @include icon-generator(30px, 26px, -337px, -799px, -337px, -337px);
+}
 
 .jumbotron-links{
   &:hover{
@@ -211,6 +238,33 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
     }
     .jumbotron-how-to-purchase-icon{
       @include icon-generator(49px, 49px, -160px, -180px, -160px, -160px, 50);
+    }
+    .registration-guide-link-icon{
+      @include icon-generator(28px, 40px, -377px, -504px, -377px, -377px, 70);
+    }
+    .token-sale-link-icon{
+      @include icon-generator(30px, 40px, -377px, -554px, -377px, -377px, 70);
+    }
+    .check-your-eth-link-icon{
+      @include icon-generator(22px, 36px, -378px, -699px, -378px, -378px, 70);
+    }
+    .terms-conditions-link-icon{
+      @include icon-generator(34px, 36px, -378px, -604px, -378px, -378px, 70);
+    }
+    .data-sheet-link-icon{
+      @include icon-generator(26px, 36px, -378px, -652px, -378px, -378px, 70);
+    }
+    .faq-link-icon{
+      @include icon-generator(29px, 39px, -378px, -750px, -378px, -378px, 70);
+    }
+    .documents-link-icon{
+      @include icon-generator(30px, 40px, -377px, -834px, -377px, -377px, 70);
+    }
+    .check-st-balance-link-icon{
+      @include icon-generator(30px, 26px, -377px, -884px, -377px, -377px, 70);
+    }
+    .go-to-telegram-link-icon{
+      @include icon-generator(30px, 26px, -377px, -799px, -377px, -377px);
     }
   }
 }
@@ -225,4 +279,17 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
       @include icon-generator(98px, 98px, -415px, -127px, -415px, -415px, 35);
     }
   }
+}
+
+.progress-total-sold-icon{
+  @include icon-generator(78px, 68px, -174px, -853px, -174px, -174px, 50);
+}
+.progress-total-eth-icon{
+  @include icon-generator(128px, 200px, -120px, -252px, -120px, -120px, 20);
+}
+.progress-total-usd-icon{
+  @include icon-generator(36px, 68px, -126px, -852px, -126px, -126px, 50);
+}
+.time-remaining-icon{
+  @include icon-generator(22px, 26px, -337px, -467px, -337px, -337px, 80);
 }

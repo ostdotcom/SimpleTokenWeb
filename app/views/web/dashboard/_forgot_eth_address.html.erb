@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="text-center" id="user-eth-address">
-          <% if @presenter_obj.can_purchase? %>
-              <div class="header">Check your ETH address registration status and ST balance</div>
+          <% if @presenter_obj.had_sale_begun_for_user? %>
+              <div class="header">Verify ETH Address Status & Fetch ST Balance</div>
           <% else %>
               <div class="header">Not sure which ETH address you submitted?</div>
           <% end %>
@@ -33,20 +33,17 @@
           <div id="user-eth-address-purchase-details" class="dashboard-page" style="margin: 20px auto;display: none;">
             <div class="panel panel-default kyc-panel approved">
               <div class="panel-body">
-                <div class="header" style="border-bottom: solid 1px #597a84;padding-bottom: 10px">Your Token Purchase Details</div>
+                <div class="header" style="border-bottom: solid 1px #597a84;padding-bottom: 10px">Your ST Account Summary</div>
                 <div class="progress-stats">
-                  <span>Total ETH Sent:</span>
-                  <span id="user-eth-address-purchase-sent"></span>
-                </div>
-                <div class="progress-stats">
-                  <span>Simple Tokens Alloted:</span> 
-                  <span id="user-eth-address-purchase-alloted"></span>
+                  <span>ETH Sent:</span>
+                  <span id="user-eth-address-purchase-eth-sent" class="stats-number"></span>
                 </div>
                 <div class="progress-stats" style="margin-bottom: 20px">
-                  <span>Ratio:</span>
-                  <span id="user-eth-address-purchase-ratio"></span>
+                  <span>ST Purchased:</span>
+                  <span id="user-eth-address-purchase-st-allotted" class="stats-number"></span>
                 </div>
-                <input type="button" id="user-eth-address-purchase-details-done-btn" class="done-btn btn user-eth-address-validate-btn" value="DONE">
+                <input type="button" id="user-eth-address-purchase-details-done-btn" style="letter-spacing: 2px" class="done-btn btn user-eth-address-validate-btn" value="DONE">
+                <div class="stats-note-desc">*ST bonuses will be distributed within 45 days from completion of the sale.</div>
               </div>
             </div>
           </div>
