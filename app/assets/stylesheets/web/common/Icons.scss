@@ -225,7 +225,7 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
   @include icon-generator(30px, 40px, -337px, -834px, -337px, -337px, 70);
 }
 .check-st-balance-link-icon{
-  @include icon-generator(28px, 20px, -338px, -884px, -338px, -338px, 70);
+  @include icon-generator(30px, 26px, -337px, -884px, -337px, -337px, 70);
 }
 .go-to-telegram-link-icon{
   @include icon-generator(30px, 26px, -337px, -799px, -337px, -337px);
@@ -261,7 +261,7 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
       @include icon-generator(30px, 40px, -377px, -834px, -377px, -377px, 70);
     }
     .check-st-balance-link-icon{
-      @include icon-generator(28px, 20px, -378px, -884px, -378px, -378px, 70);
+      @include icon-generator(30px, 26px, -377px, -884px, -377px, -377px, 70);
     }
     .go-to-telegram-link-icon{
       @include icon-generator(30px, 26px, -377px, -799px, -377px, -377px);
