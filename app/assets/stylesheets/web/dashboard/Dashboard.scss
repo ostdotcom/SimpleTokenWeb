@@ -399,6 +399,12 @@
     .text{
       padding: 10px 10px;
       font-size: 12px;
+      a,
+      a:hover,
+      a:active{
+        text-decoration: none;
+        color: #ffffff;
+      }
     }
   }
   .ribbon-fold{

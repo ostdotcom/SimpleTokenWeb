@@ -1,4 +1,4 @@
-<div class="container-fluid container-progress <%= !@presenter_obj.has_sale_ended? && !@presenter_obj.has_sale_paused? && !@presenter_obj.can_purchase? ? 'gradient' : '' %> ">
+<div id="sale-progress-container" class="container-fluid container-progress <%= !@presenter_obj.has_sale_ended? && !@presenter_obj.has_sale_paused? && !@presenter_obj.can_purchase? ? 'gradient' : '' %> ">
   <div class="content">
     <% if !@presenter_obj.has_sale_ended? && !@presenter_obj.has_sale_paused? %>
         <h2 class="header">Community Crowd Sale Bonuses</h2>
