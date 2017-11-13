@@ -100,7 +100,8 @@ module SimpleTokenApi
       def sale_daily_dashboard_detail(params)
         request_params = {
             offset: params[:start],
-            page_size: params[:length]
+            page_size: params[:length],
+            tab_type: params[:tab_type]
         }
 
         get("kyc/sale-daily-dashboard", request_params)

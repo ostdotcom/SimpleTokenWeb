@@ -280,6 +280,7 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def sale_daily_dashboard
+    @tab_type = params[:tab_type] || 'day'
   end
 
   # Admin dashboard
@@ -302,11 +303,12 @@ class Admin::HomeController < Admin::BaseController
     curr_resp_data = []
     resp_data['curr_page_data'].each do |c_p_d|
       curr_resp_data << {
-          date_time: c_p_d['day_timestamp'],
+          day_no: c_p_d['day_no'].to_i + 1,
+          date_pst:  c_p_d['date'],
           total_ethereum: c_p_d['total_ethereum'],
           total_tokens_sold: c_p_d['total_tokens_sold'],
           total_dollar_value: c_p_d['total_dollar_value'],
-          day_no: c_p_d['day_no']
+          day_start_time: c_p_d['day_start_time']
       }
     end
 
