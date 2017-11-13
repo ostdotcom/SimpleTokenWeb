@@ -385,3 +385,32 @@
     text-align: center;
   }
 }
+
+.container-ribbon{
+  position: absolute;
+  top: 140px;
+  right: 0px;
+  overflow-y: hidden;
+  .ribbon{
+    background: #d4111c;
+    color: #ffffff;
+    border-radius: 5px 0 0 5px;
+    .text{
+      padding: 10px 10px;
+      font-size: 12px;
+    }
+  }
+  .ribbon-fold{
+    position: absolute;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background: #a51119;
+    transform: rotate(45deg) translate(0, -10px);
+    z-index: -1;
+  }
+  .tweet{
+    margin: 10px;
+    text-align: center;
+  }
+}

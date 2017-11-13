@@ -19,6 +19,7 @@
     <% end %>
     <%= render :partial => "/web/dashboard/forgot_eth_address" %>
 <% elsif @presenter_obj.can_purchase? %>
+    <%= render :partial => "/web/dashboard/ribbon" %>
     <%= render :partial => "/web/dashboard/sale_open_timer" %>
     <%= render :partial => "/web/dashboard/ethereum_deposit_address" %>
     <%= render :partial => "/web/dashboard/progress_bar_with_sale_stats" %>

@@ -1,0 +1,34 @@
+<div class="container-ribbon hidden-xs">
+  <div class="ribbon">
+    <div class="text"><b>25%</b> ST Kicker <b>Bonus Activated!</b></div>
+  </div>
+  <div class="ribbon-fold"></div>
+  <div class="tweet">
+    <a class="twitter-share-button"
+       href="https://twitter.com/share"
+       data-text="I just bought @theSimpleToken — cryptocurrencies for digital communities. Join the #ICO. When target reached: 20% bonus for everyone!"
+       data-url="https://sale.simpletoken.org"
+       data-hashtags="tokensale,ethereum,bitcoin,crytpocurrency">
+      Tweet
+    </a>
+  </div>
+</div>
+
+<% content_for :end_js do %>
+<script>window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+        t._e.push(f);
+    };
+
+    return t;
+}(document, "script", "twitter-wjs"));</script>
+<% end %>
