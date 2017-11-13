@@ -45,16 +45,29 @@
              text2 = '20% bonus'
              text3 = '  for all when Target is hit. ' + text3
          end
+       when @presenter_obj.has_early_access_register_ended?
+         text1 = 'Early Access token sale begins 14 Nov. 20% bonus for all when Target is hit.'
+         text2 = ''
+         text3 = 'Connect with the team on '
 
        else
-         text1 = 'Early Access token sale begins 14 Nov. 20% bonus for all when Target is hit.'
+         text1 = 'Token sale starts 14 November, 2017. Get Early Access and 10% Bonus.'
          text2 = ''
          text3 = 'Connect with the team on '
      end
    else
-     text1 = 'Token sale starts 14 November, 2017. Get Early Access and 10% Bonus.'
-     text2 = ''
-     text3 = 'Connect with the team on '
+
+     if @presenter_obj.has_early_access_register_ended?
+       text1 = 'Early Access token sale begins 14 Nov. 20% bonus for all when Target is hit.'
+       text2 = ''
+       text3 = 'Connect with the team on '
+
+     else
+       text1 = 'Token sale starts 14 November, 2017. Get Early Access and 10% Bonus.'
+       text2 = ''
+       text3 = 'Connect with the team on '
+     end
+
    end
 
 %>
