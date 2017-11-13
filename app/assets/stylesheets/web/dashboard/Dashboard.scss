@@ -13,9 +13,15 @@
 }
 .pause-status{
   color: #597a84;
-  font-weight: 300;
   margin-top: 20px;
   font-size: 20px;
+  a{
+    color: #597a84;
+    border-bottom: solid 1px #597a84;
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
 }
 .dashboard-page{
   @media (min-width: 736px) {
