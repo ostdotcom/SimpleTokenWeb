@@ -17,13 +17,17 @@
 
          case true
            when @presenter_obj.power_milestone_achieved?
-             text2 = '30% Power bonus activated!'
+             text2 = '30% Power bonus'
+             text3 = ' activated! ' + text3
            when @presenter_obj.kicker_milestone_achieved?
-             text2 = '25% Kicker bonus activated!'
+             text2 = '25% Kicker bonus!'
+             text3 = ' activated! ' + text3
            when @presenter_obj.target_milestone_achieved?
-             text2 = '20% Target bonus activated!'
+             text2 = '20% Target bonus!'
+             text3 = ' activated! ' + text3
            else
-             text2 = '20% bonus for all when Target is hit.'
+             text2 = '20% bonus'
+             text3 = '  for all when Target is hit. ! ' + text3
          end
 
        when @presenter_obj.has_early_access_sale_started?
@@ -32,11 +36,14 @@
 
          case true
            when @presenter_obj.kicker_milestone_achieved?
-             text2 = '25% Kicker bonus activated!'
+             text2 = '25% Kicker bonus'
+             text3 = ' activated! ' + text3
            when @presenter_obj.target_milestone_achieved?
-             text2 = '20% Target bonus activated!'
+             text2 = '20% Target bonus'
+             text3 = ' activated! ' + text3
            else
-             text2 = '20% bonus for all when Target is hit.'
+             text2 = '20% bonus'
+             text3 = '  for all when Target is hit. ' + text3
          end
 
        else
