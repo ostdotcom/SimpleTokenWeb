@@ -11,6 +11,9 @@
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 35px auto 30px;display: block;">
     <% end %>
     <%= render :partial => "/web/dashboard/forgot_eth_address" %>
+  <% if @presenter_obj.is_kyc_denied?%>
+    <div style="padding: 25px"></div>
+  <% end %>
 <% elsif @presenter_obj.has_sale_paused? %>
     <%= render :partial => "/web/dashboard/token_sale_pause" %>
     <%= render :partial => "/web/dashboard/progress_bar_with_sale_stats" %>
@@ -18,6 +21,9 @@
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 35px auto 30px;display: block;">
     <% end %>
     <%= render :partial => "/web/dashboard/forgot_eth_address" %>
+  <% if @presenter_obj.is_kyc_denied?%>
+    <div style="padding: 25px"></div>
+  <% end %>
 <% elsif @presenter_obj.can_purchase? %>
     <%= render :partial => "/web/dashboard/ribbon" %>
     <%= render :partial => "/web/dashboard/sale_open_timer" %>
