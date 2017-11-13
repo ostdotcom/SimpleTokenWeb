@@ -2,7 +2,7 @@
    progressbar_milestones = [20.83, 38, 50, 75, 100]
 %>
 
-<div class="timeline-title" <%= @presenter_obj.target_milestone_achieved? || !soft_cap_milestone_achieved? ? 'hidden' : '' %> >
+<div class="timeline-title" <%= @presenter_obj.target_milestone_achieved? || !@presenter_obj.soft_cap_milestone_achieved? ? 'hidden' : '' %> >
     <%= @presenter_obj.width_of_progress_bar('target').to_i %>% of Target Achieved
 </div>
 
