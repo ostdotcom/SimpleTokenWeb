@@ -29,6 +29,19 @@
               }
             });
 
+            $("#youtube-video-modal").on('hide.bs.modal', function () {
+              $("#frameVideo").attr('src', '');
+            });
+
+            $("#youtube-video-modal").on('show.bs.modal', function (e) {
+              $("#frameVideo").attr('src', $(e.relatedTarget).data('src'));
+            });
+
+            $("#youtube-video-modal").on('shown.bs.modal', function (e) {
+              var width = $("#frameVideo").width();
+              $("#frameVideo").height(width/16*9);
+            });
+
         },
 
         partClick: function(elem){
