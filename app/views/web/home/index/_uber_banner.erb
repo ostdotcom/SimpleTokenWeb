@@ -57,7 +57,7 @@
      end
    else
 
-     if @presenter_obj.has_early_access_register_ended?
+     if Time.now >= GlobalConstant::StTokenSale.early_access_register_end_date
        text1 = 'Early Access token sale begins 14 Nov. 20% bonus for all when Target is hit.'
        text2 = ''
        text3 = 'Connect with the team on '
