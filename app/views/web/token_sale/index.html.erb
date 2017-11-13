@@ -6,7 +6,7 @@
 <% end %>
 
 <% if @presenter_obj.has_early_access_sale_started? %>
-    <div class="container-fluid container-progress <%= unless (@presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused?) ? 'gradient' : '' %> " id="sale-progress-container">
+    <div class="container-fluid container-progress <%= (@presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused?) ? 'gradient' : '' %> " id="sale-progress-container">
       <div class="content">
         <h2 class="header">Community Crowd Sale Bonuses</h2>
         <!--<% unless @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>-->
