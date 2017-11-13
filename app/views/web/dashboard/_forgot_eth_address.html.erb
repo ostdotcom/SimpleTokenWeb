@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="text-center" id="user-eth-address">
-          <% if @presenter_obj.can_purchase? %>
+          <% if @presenter_obj.had_sale_begun_for_user? %>
               <div class="header">Verify ETH Address Status & Fetch ST Balance</div>
           <% else %>
               <div class="header">Not sure which ETH address you submitted?</div>

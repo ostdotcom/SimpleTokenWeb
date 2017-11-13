@@ -121,6 +121,10 @@ module Presenters
           is_kyc_approved? && ethereum_address_whitelist_done? && is_sale_ongoing_for_user?
         end
 
+        def had_sale_begun_for_user?
+          is_kyc_approved? && ethereum_address_whitelist_done? && is_sale_live_for_user?
+        end
+
         def has_sale_ended?
           has_early_access_sale_start_date_passed? && ((current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date) || has_sale_ended_before_time?)
         end
