@@ -146,6 +146,19 @@
   }
 }
 
+.white-border-btn{
+  border-radius: 50px;
+  color: #fff;
+  background-color: #6C99A6;
+  border: solid 2px #fff;
+  &:hover{
+    color: #6C99A6;
+    text-decoration: none;
+    background-color: #fff;
+    border-color: #fff;
+  }
+}
+
 .ext-links{
   color: #597a84;
   display: inline-block;
