@@ -93,6 +93,14 @@
       margin-bottom: 20px;
     }
   }
+  .get-started{
+    margin-top:30px;
+    margin-bottom:30px;
+    @media(min-width: 568px){
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
 }
 
 .container-features{
