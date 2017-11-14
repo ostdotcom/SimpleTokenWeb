@@ -39,7 +39,7 @@
       config.columns.unshift(
 
         {
-          title: "Total Etherium <br> <span id='totalEthers' class='totalSaleValue'></span>",
+          title: "Total Ethereum <br> <span id='totalEthers' class='totalSaleValue'></span>",
           data: "total_ethereum",
           render: $.fn.dataTable.render.text()
         },
@@ -54,7 +54,7 @@
           render: $.fn.dataTable.render.text()
         },
         {
-          title: "Average Etherium <br> <span id='averageEthers' class='totalSaleValue'></span>",
+          title: "Average Ethereum <br> <span id='averageEthers' class='totalSaleValue'></span>",
           data: "average",
           render: $.fn.dataTable.render.text()
         },
