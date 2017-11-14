@@ -24,7 +24,7 @@
 
       config.columns.unshift(
         {
-          title: "Date (PST)",
+          title: "Date (UTC)",
           data: "date_time",
           render: $.fn.dataTable.render.text()
         },
