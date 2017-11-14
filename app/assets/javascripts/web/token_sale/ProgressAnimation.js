@@ -9,12 +9,14 @@
     stepCount: 1,
 
     init: function (config) {
-      oThis.interval = setInterval(function () {
-        oThis.step();
-        if(oThis.stepCount > 5){
-          clearInterval(oThis.interval);
-        }
-      }, 600)
+      if($('.container-timeline').visible(true) && !oThis.interval){
+        oThis.interval = setInterval(function () {
+          oThis.step();
+          if(oThis.stepCount > 5){
+            clearInterval(oThis.interval);
+          }
+        }, 600)
+      }
     },
 
     step: function(){
@@ -31,9 +33,11 @@
       $progressVertical.addClass($progressVertical.data('class'));
 
       var $milestone = $('.container-timeline .milestones .ms-'+oThis.stepCount);
-      $milestone.addClass($milestone.data('class'));
-      $milestone.find( ".o-circle").css({
-        transform: 'inherit',
+
+      $milestone.animate({
+        opacity: 1,
+      }, 400, function(){
+        $milestone.addClass($milestone.data('class'));
       });
 
       oThis.stepCount++;
@@ -42,6 +46,10 @@
   };
 
   $(document).ready(function () {
+    oThis.init();
+  });
+
+  $(window).on("scroll", function(){
     oThis.init();
   });
 
