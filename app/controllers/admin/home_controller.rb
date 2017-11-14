@@ -304,11 +304,10 @@ class Admin::HomeController < Admin::BaseController
     resp_data['curr_page_data'].each do |c_p_d|
       curr_resp_data << {
           day_no: c_p_d['day_no'].to_i + 1,
-          date_pst:  c_p_d['date'],
+          display_date:  c_p_d['date'],
           total_ethereum: c_p_d['total_ethereum'],
           total_tokens_sold: c_p_d['total_tokens_sold'],
           total_dollar_value: c_p_d['total_dollar_value'],
-          day_start_time: c_p_d['day_start_time'],
           no_of_transaction: c_p_d['no_of_transaction'],
           average: c_p_d['average_eth'],
           distinct_users: c_p_d['distinct_users']

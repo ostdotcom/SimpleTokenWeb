@@ -74,7 +74,7 @@
         config.columns.unshift(
           {
             title: "Date (PST)",
-            data: "date_pst",
+            data: "display_date",
             render: $.fn.dataTable.render.text()
           }
         );
