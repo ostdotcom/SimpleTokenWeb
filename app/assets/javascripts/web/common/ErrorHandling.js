@@ -39,7 +39,11 @@
       if((response.success === false) || (response.err != undefined && response.err != '')){
 
         utilsNs.errorHandling.clearFormErrors();
-        $('.error[data-for="general_error"]').text(response.err.display_text);
+        if( jParent.find('.error[data-for="general_error"]').length > 0 ){
+          jParent.find('.error[data-for="general_error"]').text(response.err.display_text);
+        } else {
+          $('.error[data-for="general_error"]').text(response.err.display_text);
+        }
 
         if(typeof response.err.error_data != undefined){
           $.each(response.err.error_data, function(e_key, e_val){
