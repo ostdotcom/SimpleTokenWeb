@@ -25,14 +25,14 @@
             <div class="error" data-for="password"></div>
           </div>
           <div class="form-group form-recapcha">
-            <div class="g-recaptcha" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="17"></div>
-            <div class="error" data-for="recaptcha"></div>
+            <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="17"></div>
+            <div class="error" data-for="recaptcha" style="text-align: center"></div>
           </div>
           <div class="user-form-footer">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
             <button type="submit" class="btn btn-gold form-btn-gold" id="userLogin" title="LOGIN" tabindex="4">login</button>
-            <div class="error" data-for="general_error"></div>
+            <div class="error" data-for="general_error" style="text-align: center"></div>
           </div>
           <div class="user-form-footer login-page-footer">
             <div class="create-account" tabindex="5">Don’t Have an Account Yet?</div>
