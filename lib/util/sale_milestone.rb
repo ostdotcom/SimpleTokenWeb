@@ -5,6 +5,7 @@ module Util
     include ActionView::Helpers::NumberHelper
 
     def total_st_token_sold
+      Rails.logger.info((sale_details['total_st_token_sold']).to_i)
       (sale_details['total_st_token_sold']).to_i
     end
 
@@ -137,6 +138,11 @@ module Util
         val =  ((total_st_token_sold * 100.00 )/ GlobalConstant::StTokenSale.target_st_tokens_milestone)
         return (val > 99 ? val.to_i : val.round)
       end
+    end
+
+    def total_st_token_sold
+      90000000
+      #total_st_token_sold
     end
 
     def is_milestone_complete(milestone_type)
