@@ -9,7 +9,7 @@ module Util
     end
 
     def total_eth_raised
-      sale_details['total_eth_raised'].to_i
+      sale_details['total_eth_raised'].to_f.round
     end
 
     def formatted_total_st_token_sold
@@ -127,6 +127,15 @@ module Util
         end
 
       ((total_st_token_sold - min) * 100.00 /(max - min)).round(2)
+      end
+    end
+
+    def target_percent_achieved
+      if target_milestone_achieved?
+        return 100
+      else
+        val =  ((total_st_token_sold * 100.00 )/ GlobalConstant::StTokenSale.target_st_tokens_milestone)
+        return (val > 99 ? val.to_i : val.round)
       end
     end
 

@@ -35,6 +35,9 @@
          text3 = 'Connect with the team on '
 
          case true
+           when @presenter_obj.power_milestone_achieved?
+             text2 = '30% Power bonus'
+             text3 = ' activated! ' + text3
            when @presenter_obj.kicker_milestone_achieved?
              text2 = '25% Kicker bonus'
              text3 = ' activated! ' + text3
@@ -57,13 +60,16 @@
      end
    else
 
-     if Time.now >= GlobalConstant::StTokenSale.early_access_register_end_date
-       text1 = 'Early Access token sale begins 14 Nov. 20% bonus for all when Target is hit.'
+     if Time.now >= GlobalConstant::StTokenSale.general_access_sale_start_date
+       text1 = 'The public token sale is Live!  20% bonus for all when Target is hit. '
        text2 = ''
        text3 = 'Connect with the team on '
-
+     elsif Time.now >= GlobalConstant::StTokenSale.early_access_sale_start_date
+       text1 = 'The Early Access token sale is Live!  20% bonus for all when Target is hit. '
+       text2 = ''
+       text3 = 'Connect with the team on '
      else
-       text1 = 'Token sale starts 14 November, 2017. Get Early Access and 10% Bonus.'
+       text1 = 'Early Access token sale begins 14 Nov. 20% bonus for all when Target is hit. '
        text2 = ''
        text3 = 'Connect with the team on '
      end

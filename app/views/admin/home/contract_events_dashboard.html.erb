@@ -3,9 +3,9 @@
 <%
   table_config = {
       displayStart: @display_start.to_i,
-      pageLength: 30,
+      pageLength: 100,
       ajax: {
-          url: "/admin/get-sale-daily-dashboard",
+          url: "/admin/get-contract-events-dashboard",
           type: "GET"
       },
       bSort: false,
@@ -58,13 +58,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="error" data-for="general_error"></div>
-
-        <select id="tabType" style="margin-bottom: 10px;">
-          <option value="day" <%= 'selected' if @tab_type=='day' %> >Sale Daywise</option>
-          <option value="date" <%= 'selected' if @tab_type=='date' %> >PST Datewise</option>
-        </select>
-
-        <table id="saleDashboard" class="custom-table-grid table display" cellspacing="0" width="100%">
+        <table id="contractEventsDashboard" class="custom-table-grid table display" cellspacing="0" width="100%">
         </table>
       </div>
     </div>
@@ -77,10 +71,9 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script text="text/javascript">
       $(document).ready(function () {
-          simpletokenadmin.home.saleDailyDashboard.init({
-              table_config: <%= raw table_config.to_json %>,
-              tab_type: '<%= @tab_type %>'
-          });
+        simpletokenadmin.home.contractEventsDashboard.init({
+          table_config: <%= raw table_config.to_json %>
+        });
       });
     </script>
 <% end %>

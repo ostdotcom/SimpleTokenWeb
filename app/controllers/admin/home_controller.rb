@@ -4,7 +4,8 @@ class Admin::HomeController < Admin::BaseController
   before_action :delete_admin_cookie, only: [:login]
   before_action :check_admin_cookie, except: [:login]
 
-  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard, :get_sale_all_dashboard, :get_sale_daily_dashboard]
+  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard,
+                                                 :get_sale_all_dashboard, :get_sale_daily_dashboard, :get_contract_events_dashboard]
 
   # Admin login
   #
@@ -279,6 +280,7 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def sale_daily_dashboard
+    @tab_type = params[:tab_type] || 'day'
   end
 
   # Admin dashboard
@@ -301,10 +303,14 @@ class Admin::HomeController < Admin::BaseController
     curr_resp_data = []
     resp_data['curr_page_data'].each do |c_p_d|
       curr_resp_data << {
-          date_time: c_p_d['day_timestamp'],
+          day_no: c_p_d['day_no'].to_i + 1,
+          display_date:  c_p_d['date'],
           total_ethereum: c_p_d['total_ethereum'],
           total_tokens_sold: c_p_d['total_tokens_sold'],
-          total_dollars_value: c_p_d['total_dollars_value']
+          total_dollar_value: c_p_d['total_dollar_value'],
+          no_of_transaction: c_p_d['no_of_transaction'],
+          average: c_p_d['average_eth'],
+          distinct_users: c_p_d['distinct_users']
       }
     end
 
@@ -312,6 +318,52 @@ class Admin::HomeController < Admin::BaseController
         recordsFiltered: resp_data['meta']['total_filtered_recs'],
         data: curr_resp_data,
         all_time_data: resp_data['all_time_data']
+    }
+
+    render :json => response and return
+
+  end
+
+
+  # Contracts events dashboard
+  #
+  # * Author: Alpesh
+  # * Date: 10/11/2017
+  # * Reviewed By:
+  #
+  def contract_events_dashboard
+  end
+
+  # Contracts events Ajax dashboard
+  #
+  # * Author: Alpesh
+  # * Date: 10/11/2017
+  # * Reviewed By:
+  #
+  def get_contract_events_dashboard
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+                           .contract_events_dashboard_detail(params)
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    resp_data = service_response.data
+
+    curr_resp_data = []
+    resp_data['curr_page_data'].each do |c_p_d|
+      curr_resp_data << {
+          block_number: c_p_d['block_number'],
+          event_name: c_p_d['event_name'],
+          contract_address: c_p_d['contract_address'],
+          processed_event_data: c_p_d['processed_event_data'].inspect
+      }
+    end
+
+    response = {
+        recordsFiltered: resp_data['meta']['total_filtered_recs'],
+        data: curr_resp_data
     }
 
     render :json => response and return

@@ -243,7 +243,10 @@
   .copy-address-input{
     width: 100%;
     height: 50px;
-    font-size: 16px;
+    font-size: 14px;
+    @media(min-width: 415px){
+      font-size: 16px;
+    }
     color: #435353;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -251,7 +254,7 @@
     box-shadow: none;
     -webkit-appearance: none;
     border: solid 1px #cdd7da;
-    padding: 15px 18px;
+    padding: 15px;
     font-weight: 300;
   }
 
@@ -263,6 +266,7 @@
     height: 50px;
     border: none;
     padding: 0 15px;
+    font-weight: 500;
     text-transform: uppercase;
   }
 }
@@ -390,7 +394,7 @@
   position: absolute;
   top: 140px;
   right: 0px;
-  overflow-y: hidden;
+  overflow-x: hidden;
   .ribbon{
     background: #d4111c;
     color: #ffffff;
@@ -404,6 +408,10 @@
       a:active{
         text-decoration: none;
         color: #ffffff;
+      }
+      u{
+        text-decoration: none;
+        border-bottom: 1px solid #ffffff;
       }
     }
   }

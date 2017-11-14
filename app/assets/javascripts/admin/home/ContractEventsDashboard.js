@@ -5,11 +5,11 @@
     adminUtilsNs = ns("simpletokenadmin.utils"),
     oThis;
 
-  homeNs.saleAllDashboard = oThis = {
+  homeNs.contractEventsDashboard = oThis = {
 
     oTable: null,
     page: 0,
-    $dataTable: $('#saleDashboard'),
+    $dataTable: $('#contractEventsDashboard'),
 
     init: function (config) {
       oThis.initGrid(config.table_config);
@@ -22,30 +22,33 @@
         adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, errorThrown);
       };
 
+      config.ajax.dataSrc = function(response) {
+        oThis.allTimeData = response.all_time_data;
+        return response.data;
+      };
+
       config.columns.unshift(
         {
-          title: "Date (UTC)",
-          data: "date_time",
-          render: $.fn.dataTable.render.text()
+          title: "Block Number",
+          data: "block_number",
+          render: $.fn.dataTable.render.text(),
+          width: "7%"
         },
         {
-          title: "Ethereum Addr",
-          data: "ethereum_address",
-          render: $.fn.dataTable.render.text()
+          title: "Event Name",
+          data: "event_name",
+          render: $.fn.dataTable.render.text(),
+          width: "12%"
         },
         {
-          title: "Ethereum Amount",
-          data: "ethereum_value",
-          render: $.fn.dataTable.render.text()
+          title: "Receiver Contract Address",
+          data: "contract_address",
+          render: $.fn.dataTable.render.text(),
+          width: "27%"
         },
         {
-          title: "ST Sold",
-          data: "tokens_sold",
-          render: $.fn.dataTable.render.text()
-        },
-        {
-          title: "USD",
-          data: "usd_value",
+          title: "Event Vars",
+          data: "processed_event_data",
           render: $.fn.dataTable.render.text()
         }
       );
@@ -54,7 +57,6 @@
     },
 
     bindButtonActions: function (config) {
-
     }
 
   };
