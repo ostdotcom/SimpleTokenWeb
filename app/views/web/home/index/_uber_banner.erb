@@ -35,6 +35,9 @@
          text3 = 'Connect with the team on '
 
          case true
+           when @presenter_obj.power_milestone_achieved?
+             text2 = '30% Power bonus'
+             text3 = ' activated! ' + text3
            when @presenter_obj.kicker_milestone_achieved?
              text2 = '25% Kicker bonus'
              text3 = ' activated! ' + text3
