@@ -21,6 +21,14 @@
             $("#userLogin").click(function (event) {
                 event.preventDefault();
                 var v = utilsNs.errorHandling.validationGeneric($('#userLoginForm input[type="text"], #userLoginForm input[type="password"]'));
+
+                if(typeof $('#userLoginForm').find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+                  if(grecaptcha.getResponse() == ''){
+                    $('#userLoginForm').find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+                    v = false;
+                  }
+                }
+
                 if (v === true) {
                     $("#userLogin")
                         .text('logging in...')
@@ -51,10 +59,16 @@
                         return false;
                     } else {
                         utilsNs.errorHandling.displayFormErrors(response);
+                        if(typeof grecaptcha  != 'undefined'){
+                          grecaptcha.reset();
+                        }
                     }
                 },
                 error: function (jqXHR, exception) {
                     utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+                    if(typeof grecaptcha  != 'undefined'){
+                      grecaptcha.reset();
+                    }
                 },
                 complete: function(){
                     $("#userLogin")
