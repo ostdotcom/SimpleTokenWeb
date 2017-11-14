@@ -38,6 +38,7 @@
         -webkit-transition: width .6s ease;
         -o-transition: width .6s ease;
         transition: width .6s ease;
+        width:0%;
       }
 
       &.pb-1{
@@ -46,7 +47,6 @@
         }
         .complete{
           background: #61bfba;
-          width: 100%;
         }
       }
       &.pb-2{
@@ -55,7 +55,6 @@
         }
         .complete{
           background: linear-gradient(to right, #61bfba, #e4b030 100%);
-          width: 100%;
         }
       }
       &.pb-3{
@@ -64,7 +63,6 @@
         }
         .complete{
           background: linear-gradient(to right, #e4b030, #f58a23 100%);
-          width: 100%;
         }
       }
       &.pb-4{
@@ -73,7 +71,6 @@
         }
         .complete{
           background: linear-gradient(to right, #f58a23, #d0021b 100%);
-          width: 100%;
         }
       }
       &.pb-5{
@@ -82,7 +79,6 @@
         }
         .complete{
           background: linear-gradient(to right, #d0021b, #740602 100%);
-          width: 100%;
         }
       }
     }
@@ -104,7 +100,8 @@
         position: absolute;
         top: -80%;
         left: -50%;
-        display: none;
+        opacity: 0;
+        transition: opacity 0.6s linear;
         .circle-inner{
           width: 60px;
           height: 60px;
@@ -196,7 +193,7 @@
 
       &.last-milestone{
         .o-circle{
-          display: block;
+          opacity: 1;
         }
         .st{
           color: #54b79e;
