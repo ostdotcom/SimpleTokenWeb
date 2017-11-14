@@ -24,6 +24,10 @@
             <a href="/reset-password" title="Forgot password?" class="forgot-password" tabindex="3">Forgot password?</a>
             <div class="error" data-for="password"></div>
           </div>
+          <div class="form-group">
+            <div class="g-recaptcha" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="17"></div>
+            <div class="error" data-for="recaptcha"></div>
+          </div>
           <div class="user-form-footer">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
@@ -43,6 +47,7 @@
 
 
 <% content_for :end_js do %>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript">
         $(document).ready(function () {
             simpletoken.home.login.init({
