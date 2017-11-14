@@ -352,9 +352,10 @@ class Admin::HomeController < Admin::BaseController
     curr_resp_data = []
     resp_data['curr_page_data'].each do |c_p_d|
       curr_resp_data << {
-          date_time: c_p_d['day_time'],
+          block_number: c_p_d['block_number'],
           event_name: c_p_d['event_name'],
-          contract_address: c_p_d['contract_address']
+          contract_address: c_p_d['contract_address'],
+          processed_event_data: c_p_d['processed_event_data'].inspect
       }
     end
 

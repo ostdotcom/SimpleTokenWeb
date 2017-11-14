@@ -29,21 +29,28 @@
 
       config.columns.unshift(
         {
-          title: "Date Time",
-          data: "date_time",
-          render: $.fn.dataTable.render.text()
+          title: "Block Number",
+          data: "block_number",
+          render: $.fn.dataTable.render.text(),
+          width: "7%"
         },
         {
           title: "Event Name",
           data: "event_name",
-          render: $.fn.dataTable.render.text()
+          render: $.fn.dataTable.render.text(),
+          width: "12%"
         },
         {
           title: "Receiver Contract Address",
           data: "contract_address",
+          render: $.fn.dataTable.render.text(),
+          width: "27%"
+        },
+        {
+          title: "Event Vars",
+          data: "processed_event_data",
           render: $.fn.dataTable.render.text()
         }
-
       );
       oThis.oTable = oThis.$dataTable.DataTable(config);
 
