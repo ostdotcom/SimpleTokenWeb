@@ -17,6 +17,14 @@
                 event.preventDefault();
                 var v = utilsNs.errorHandling.validationGeneric($('#userSignUpForm input[type="text"], #userSignUpForm input[type="password"]'));
                 var ch = $('#userSignUpForm input[name=terms_of_service]').is(':checked');
+
+                if(typeof $('#userSignUpForm').find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+                  if(grecaptcha.getResponse() == ''){
+                    $('#userSignUpForm').find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+                    v = false;
+                  }
+                }
+
                 if (v === true && ch == true) {
                     $("#userSignUp")
                         .text('registering...')
@@ -43,10 +51,16 @@
                         return false;
                     } else {
                         utilsNs.errorHandling.displayFormErrors(response);
+                        if(typeof grecaptcha  != 'undefined'){
+                          grecaptcha.reset();
+                        }
                     }
                 },
                 error: function (jqXHR, exception) {
                     utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+                    if(typeof grecaptcha  != 'undefined'){
+                      grecaptcha.reset();
+                    }
                 },
                 complete: function(){
                     $("#userSignUp")
