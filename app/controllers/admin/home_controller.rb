@@ -308,7 +308,10 @@ class Admin::HomeController < Admin::BaseController
           total_ethereum: c_p_d['total_ethereum'],
           total_tokens_sold: c_p_d['total_tokens_sold'],
           total_dollar_value: c_p_d['total_dollar_value'],
-          day_start_time: c_p_d['day_start_time']
+          day_start_time: c_p_d['day_start_time'],
+          no_of_transaction: c_p_d['no_of_transaction'],
+          average: c_p_d['average_eth'],
+          distinct_users: c_p_d['distinct_users']
       }
     end
 
