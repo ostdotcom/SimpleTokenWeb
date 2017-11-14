@@ -134,7 +134,8 @@ module Util
       if target_milestone_achieved?
         return 100
       else
-        return ((total_st_token_sold * 100.00 )/ GlobalConstant::StTokenSale.target_st_tokens_milestone)
+        val =  ((total_st_token_sold * 100.00 )/ GlobalConstant::StTokenSale.target_st_tokens_milestone)
+        return (val > 99 ? val.to_i : val.round)
       end
     end
 

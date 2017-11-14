@@ -3,7 +3,7 @@
 %>
 
 <div class="timeline-title" <%= @presenter_obj.target_milestone_achieved? || !@presenter_obj.soft_cap_milestone_achieved? ? 'hidden' : '' %> >
-    <%= @presenter_obj.target_percent_achieved.to_i %>% of Target Achieved
+    <%= @presenter_obj.target_percent_achieved %>% of Target Achieved
 </div>
 
 <div class="container-timeline">
