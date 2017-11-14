@@ -39,7 +39,7 @@
       config.columns.unshift(
 
         {
-          title: "Total Etherium <br> <span id='totalEthers' class='totalSaleValue'></span>",
+          title: "Total Ethereum <br> <span id='totalEthers' class='totalSaleValue'></span>",
           data: "total_ethereum",
           render: $.fn.dataTable.render.text()
         },
@@ -52,6 +52,21 @@
           title: "USD <br> <span id='totalDollarVal' class='totalSaleValue'></span>",
           data: "total_dollar_value",
           render: $.fn.dataTable.render.text()
+        },
+        {
+          title: "Average Ethereum <br> <span id='averageEthers' class='totalSaleValue'></span>",
+          data: "average",
+          render: $.fn.dataTable.render.text()
+        },
+        {
+          title: "No of Transaction <br> <span id='noOfTransaction' class='totalSaleValue'></span>",
+          data: "no_of_transaction",
+          render: $.fn.dataTable.render.text()
+        },
+        {
+          title: "Unique Users <br> <span id='uniqueUsers' class='totalSaleValue'></span>",
+          data: "distinct_users",
+          render: $.fn.dataTable.render.text()
         }
       );
 
@@ -59,7 +74,7 @@
         config.columns.unshift(
           {
             title: "Date (PST)",
-            data: "date_pst",
+            data: "display_date",
             render: $.fn.dataTable.render.text()
           }
         );
@@ -82,6 +97,9 @@
         $('#totalDollarVal').text('$ ' + oThis.allTimeData.total_dollar_value);
         $('#totalEthers').text(oThis.allTimeData.total_ethereum);
         $('#totalTokensSold').text(oThis.allTimeData.total_tokens_sold);
+        $('#averageEthers').text(oThis.allTimeData.overall_average_eth);
+        $('#noOfTransaction').text(oThis.allTimeData.total_no_of_transaction);
+        $('#uniqueUsers').text(oThis.allTimeData.distinct_users);
       });
 
       $('#tabType').on('change', function (e) {

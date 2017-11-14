@@ -394,7 +394,7 @@
   position: absolute;
   top: 140px;
   right: 0px;
-  overflow-y: hidden;
+  overflow-x: hidden;
   .ribbon{
     background: #d4111c;
     color: #ffffff;
@@ -408,6 +408,10 @@
       a:active{
         text-decoration: none;
         color: #ffffff;
+      }
+      u{
+        text-decoration: none;
+        border-bottom: 1px solid #ffffff;
       }
     }
   }
