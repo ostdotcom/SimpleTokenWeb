@@ -12,7 +12,7 @@
          text1 = 'The token sale has been temporarily paused.'
          text3 = 'Learn more on '
        when @presenter_obj.has_general_access_sale_started?
-         text1 = 'The public token sale is Live'
+         text1 = 'The token sale is Live -'
          text3 = 'Connect with the team on '
 
          case true
@@ -27,7 +27,7 @@
              text3 = ' activated! ' + text3
            else
              text2 = '20% bonus'
-             text3 = '  for all when Target is hit. ! ' + text3
+             text3 = '  when Target is hit! ' + text3
          end
 
        when @presenter_obj.has_early_access_sale_started?
