@@ -139,6 +139,7 @@ module Util
       end
     end
 
+
     def is_milestone_complete(milestone_type)
       send("#{milestone_type}_milestone_achieved?")
     end
