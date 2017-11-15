@@ -38,6 +38,16 @@
     }
 
   }
+
+  .form-recapcha .form-recapcha-wrap div {
+    text-align: center;
+    width:auto !important;
+  }
+  .form-recapcha .form-recapcha-wrap div div {
+    display: inline-block;
+    width:auto !important;
+  }
+
 }
 
 .datepicker a.datepicker-selected {
