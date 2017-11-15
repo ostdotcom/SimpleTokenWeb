@@ -1,16 +1,53 @@
 <%
    total_st_token_sold =  @presenter_obj.total_st_token_sold;
-   total_st_token_sold = 60000000;
-   current_progress = ( total_st_token_sold * 100)/(100000000);
-   current_progress = current_progress.round(2)
-   current_progress_horz = [87,current_progress].min;
-   current_progress_vert = [90,current_progress].min;
-   progressbar_milestones = [50, 100]
+   current_progress = ( total_st_token_sold * 100 )/(100000000).to_f;
+   current_progress = (current_progress * 100).to_i;
+   current_progress = current_progress / (100).to_f;
 
-   current_display_value = current_progress.to_s;
+
+
+
+   ms1_weight = 50;
+   ms2_weigth = 100;
+   ms_later_percent = 10;
+
+   ms_total = 100 + ms_later_percent;
+   scale_factor = (100).to_f/ms_total;
+
+
+
+   ms1_weight = scale_factor * ms1_weight;
+   ms2_weigth = scale_factor * ms2_weigth;
+
+   horz_limit = scale_factor * 85;
+   vert_limit = scale_factor * 90;
+
+   scaled_current_progress = scale_factor * current_progress;
+   
+   current_progress_horz = [horz_limit, scaled_current_progress].min;
+   current_progress_vert = [vert_limit, scaled_current_progress].min;
+
+
+   progressbar_milestones = [ms1_weight, ms2_weigth, 100];
+
+   current_display_value = number_with_precision( current_progress, precision: 2);
    current_eth_display_value = @presenter_obj.formatted_total_eth_raised.to_s + " ETH";
 
 %>
+<style type="text/css">
+  .later_progress_wrap {
+    background-color: #fff !important;
+  }
+  .later_progress {
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #fff !important; 
+  }
+  .later_dots {
+    border: 5px dotted #e4b030;
+    height: 100% !important;
+  }
+</style>
 
 <div class="timeline-title" <%= @presenter_obj.target_milestone_achieved? || !@presenter_obj.soft_cap_milestone_achieved? ? 'hidden' : '' %> >
     <%= @presenter_obj.target_percent_achieved %>% of Target Achieved
@@ -24,11 +61,16 @@
     <div class="progress-bar pb-2" role="progressbar" style="width: <%=progressbar_milestones[1]-progressbar_milestones[0]%>%">
       <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('target') %>" style="width: <%= @presenter_obj.width_of_progress_bar('target') %>%"></div>
     </div>
+    <div class="progress-bar pb-3" role="progressbar" style="width: <%=progressbar_milestones[2]-progressbar_milestones[1]%>%">
+      <div class="later_progress pb-inner <%= @presenter_obj.class_of_progress_bar('target') %>" >
+        <div class="later_dots"></div>
+      </div>
+    </div>
   </div>
 
   <div class="milestones">
     <div class="milestone ms-1 <%= @presenter_obj.class_of_milestone('soft_cap') %>" style="left:calc(<%=current_progress_horz%>% - 50px)">
-      <div class="st"><strong><%=current_display_value%> M</strong> ST</div>
+      <div class="st"><strong><%=current_display_value%>M</strong> ST</div>
       <div class="line"></div>
       <div class="point">
         <div class="point-inner"></div>
@@ -66,6 +108,11 @@
     <div class="progress-bar pb-2" role="progressbar" style="height: <%=progressbar_milestones[1]-progressbar_milestones[0]%>%">
       <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('target') %>" style="height: <%= @presenter_obj.width_of_progress_bar('target') %>%"></div>
     </div>
+    <div class="progress-bar pb-3" role="progressbar" style="height: <%=progressbar_milestones[2]-progressbar_milestones[1]%>%">
+      <div class="later_progress pb-inner <%= @presenter_obj.class_of_progress_bar('target') %>">
+        <div class="later_dots"></div>
+      </div>
+    </div>
   </div>
   <div class="milestones">
     <div class="milestone ms-1 <%= @presenter_obj.class_of_milestone('soft_cap') %>" style="top:calc(<%= current_progress_vert %>% - 12px)">
@@ -97,6 +144,10 @@
 </div>
 
 <script type="text/unknown">
+  ms1_weight = <%= ms1_weight %>
+  ms2_weight = <%= ms2_weigth %>
+  total_st_token_sold = <%= total_st_token_sold %>
+  current_progress = <%= current_progress %> 
   <%= raw progressbar_milestones.to_json %>
 
 </script>

@@ -5,7 +5,6 @@ module Util
     include ActionView::Helpers::NumberHelper
 
     def total_st_token_sold
-      Rails.logger.info((sale_details['total_st_token_sold']).to_i)
       (sale_details['total_st_token_sold']).to_i
     end
 
@@ -140,10 +139,6 @@ module Util
       end
     end
 
-    def total_st_token_sold
-      90000000
-      #total_st_token_sold
-    end
 
     def is_milestone_complete(milestone_type)
       send("#{milestone_type}_milestone_achieved?")
