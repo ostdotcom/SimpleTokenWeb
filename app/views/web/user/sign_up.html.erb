@@ -18,19 +18,19 @@
           <div class="form-group">
             <label for="password">password</label><span class="pull-right minimum-characters">Minimum 8 characters</span>
             <div style="position: relative">
-              <input type="password" name="password" id="password" value="" class="form-control" tabindex="3" autocomplete="off" />
+              <input type="password" name="password" id="password" value="" class="form-control" tabindex="2" autocomplete="off" />
               <span class="input-group-addon showhide-addon" id="showhide-password"><span class="show-password-eye-icon"></span></span>
             </div>
             <div class="zxcvbn-group"></div>
             <div class="error" data-for="password"></div>
           </div>
           <div class="form-group form-recapcha">
-            <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="17"></div>
+            <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="3"></div>
             <div class="error" data-for="recaptcha" style="text-align: center"></div>
           </div>
           <div class="checkbox termsConditions">
             <input style="display:none;" name="terms_of_service" type="checkbox" class="list-item" value="agree" id="agree-and-acknowledge">
-            <label for="agree-and-acknowledge" class="termsLinks">
+            <label for="agree-and-acknowledge" class="termsLinks" tabindex="4">
               By checking this box, you agree to our <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/terms" title="Terms of Service" target="_blank">Terms of Service</a> and acknowledge and consent to our <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/privacy" title="Privacy Policy" target="_blank">Privacy Policy</a>.
             </label>
             <div class="error" data-for="terms_of_service"></div>
@@ -38,7 +38,7 @@
           <div class="user-form-footer">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
-            <button type="submit" class="btn btn-gold form-btn-gold" id="userSignUp" title="Register" tabindex="4">register</button>
+            <button type="submit" class="btn btn-gold form-btn-gold" id="userSignUp" title="Register" tabindex="5">register</button>
             <div class="error" data-for="general_error" style="text-align: center"></div>
           </div>
           <div class="user-form-footer login-page-footer">
