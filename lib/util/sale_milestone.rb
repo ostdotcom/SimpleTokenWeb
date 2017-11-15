@@ -72,6 +72,21 @@ module Util
                                      end
     end
 
+    def last_milestone_to_show_st_value
+      @last_milestone_to_show_st_value ||= case true
+                                                when hard_cap_milestone_achieved?
+                                                  GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
+                                                when power_milestone_achieved?
+                                                  GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
+                                                when kicker_milestone_achieved?
+                                                  GlobalConstant::StTokenSale.power_st_tokens_milestone
+                                                when target_milestone_achieved?
+                                                  GlobalConstant::StTokenSale.kicker_st_tokens_milestone
+                                                else
+                                                  GlobalConstant::StTokenSale.target_st_tokens_milestone
+                                              end
+    end
+
     def last_milestone_achieved
       @last_milestone_achieved ||= case true
                                      when hard_cap_milestone_achieved?
@@ -99,7 +114,7 @@ module Util
 
     def class_of_milestone(milestone_type)
       if is_milestone_complete(milestone_type)
-        return last_milestone_achieved == milestone_type ? 'complete last-milestone' :  'complete'
+        return last_milestone_achieved == milestone_type ? 'complete last-milestone' : 'complete'
       else
         return next_milestone_to_achieve == milestone_type ? 'in-progress' : ''
       end
@@ -109,7 +124,7 @@ module Util
       if is_milestone_complete(milestone_type)
         return 100
       elsif next_milestone_to_achieve != milestone_type
-          0
+        0
       else
         min, max = 0, 100
 
@@ -121,12 +136,12 @@ module Util
           when 'kicker'
             min, max = GlobalConstant::StTokenSale.target_st_tokens_milestone, GlobalConstant::StTokenSale.kicker_st_tokens_milestone
           when 'target'
-            min, max = GlobalConstant::StTokenSale.soft_cap_st_tokens_milestone, GlobalConstant::StTokenSale.target_st_tokens_milestone
+            min, max = 0, GlobalConstant::StTokenSale.target_st_tokens_milestone
           when 'soft_cap'
             min, max = 0, GlobalConstant::StTokenSale.soft_cap_st_tokens_milestone
         end
 
-      ((total_st_token_sold - min) * 100.00 /(max - min)).round(2)
+        ((total_st_token_sold - min) * 100.00 /(max - min)).round(2)
       end
     end
 
@@ -134,7 +149,7 @@ module Util
       if target_milestone_achieved?
         return 100
       else
-        val =  ((total_st_token_sold * 100.00 )/ GlobalConstant::StTokenSale.target_st_tokens_milestone)
+        val = ((total_st_token_sold * 100.00)/ GlobalConstant::StTokenSale.target_st_tokens_milestone)
         return (val > 99 ? val.to_i : val.round)
       end
     end
