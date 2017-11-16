@@ -40,7 +40,13 @@
         transition: width .6s ease;
       }
 
-      &.pb-1{
+      .continued{
+        width: 100%;
+        border: 5px dotted #c6ede8;
+        background: #ffffff;
+      }
+
+      &.pb-soft_cap{
         .in-progress{
           background: #61bfba;
         }
@@ -48,8 +54,11 @@
           background: #61bfba;
           width: 100%;
         }
+        .continued{
+          border: 5px dotted #61bfba;
+        }
       }
-      &.pb-2{
+      &.pb-target{
         .in-progress{
           background: #61bfba;
         }
@@ -57,8 +66,11 @@
           background: linear-gradient(to right, #61bfba, #e4b030 100%);
           width: 100%;
         }
+        .continued{
+          border: 5px dotted #e4b030;
+        }
       }
-      &.pb-3{
+      &.pb-kicker{
         .in-progress{
           background: #e4b030;
         }
@@ -66,8 +78,11 @@
           background: linear-gradient(to right, #e4b030, #f58a23 100%);
           width: 100%;
         }
+        .continued{
+          border: 5px dotted #f58a23;
+        }
       }
-      &.pb-4{
+      &.pb-power{
         .in-progress{
           background: #f58a23;
         }
@@ -75,14 +90,20 @@
           background: linear-gradient(to right, #f58a23, #d0021b 100%);
           width: 100%;
         }
+        .continued{
+          border: 5px dotted #d0021b;
+        }
       }
-      &.pb-5{
+      &.pb-hard_cap{
         .in-progress{
           background: #d0021b;
         }
         .complete{
           background: linear-gradient(to right, #d0021b, #740602 100%);
           width: 100%;
+        }
+        .continued{
+          border: 5px dotted #740602;
         }
       }
     }
@@ -97,30 +118,11 @@
       text-align: center;
       z-index: 1;
 
-      .o-circle{
-        background: url('https://d36lai1ppm9dxu.cloudfront.net/assets/image/o-circle-2x.png');
-        background-size: contain;
-        width: 200px;
-        height: 149.5px;
-        position: absolute;
-        top: -80%;
-        left: -50%;
-        display: none;
-        .circle-inner{
-          width: 60px;
-          height: 60px;
-          margin: 70px auto 20px auto;
-          border-radius: 50%;
-          font-size: 10px;
-          padding: 15px 0;
-          font-weight: 600;
-          color: #fff;
-        }
-      }
       .st{
         font-size: 16px;
         color: #a7b2b5;
         margin-bottom:5px;
+        background: rgba(255, 255, 255, 0.7);
         strong{
           font-weight: 500;
         }
@@ -152,7 +154,7 @@
       .arrow-line{
         height: 100px;
         width: 1px;
-        border: 1px dashed #54b79e;
+        border: 1px dashed #e4b030;
         position: absolute;
         left: 50%;
         top: -30px;
@@ -166,16 +168,18 @@
         font-size: 20px;
       }
       .info{
-        width: 150px;
+        width: 170px;
         height: 100px;
         border-radius: 5px;
         background-color: #e4b030;
         color: #ffffff;
-        padding: 6px;
+        padding: 6px 20px;
         position: absolute;
         top: -125px;
         p{
           margin:0;
+          font-size: 13px;
+          font-weight: 300;
         }
       }
       .check{
@@ -225,9 +229,6 @@
       }
 
       &.last-milestone{
-        .o-circle{
-          display: block;
-        }
         .st{
           color: #54b79e;
         }
@@ -242,82 +243,97 @@
       }
 
       &.ms-current{
-        width: 150px;
+        width: 170px;
         height: auto;
       }
 
-      &.ms-1.complete{
-        .point,
-        .circle-inner{
-          background: #61bfba;
+      &.ms-soft_cap{
+        &.complete{
+          .point,
+          .circle-inner{
+            background: #61bfba;
+          }
+          .desc,
+          .arrow{
+            color: #61bfba;
+          }
         }
-        .desc{
-          color: #61bfba;
-        }
-      }
-      &.ms-1.in-progress{
-        .point{
-          border: 3px solid #61bfba;
-        }
-      }
-
-      &.ms-2.complete{
-        .point,
-        .circle-inner{
-          background: #e4b030;
-        }
-        .desc{
-          color: #e4b030;
-        }
-      }
-      &.ms-2.in-progress{
-        .point{
-          border: 3px solid #e4b030;
+        &.in-progress{
+          .point{
+            border: 3px solid #61bfba;
+          }
         }
       }
 
-      &.ms-3.complete{
-        .point,
-        .circle-inner{
-          background: #f58a23;
+      &.ms-target{
+        &.complete{
+          .point,
+          .circle-inner{
+            background: #e4b030;
+          }
+          .desc,
+          .arrow{
+            color: #e4b030;
+          }
         }
-        .desc{
-          color: #f58a23;
-        }
-      }
-      &.ms-3.in-progress{
-        .point{
-          border: 3px solid #f58a23;
-        }
-      }
-
-      &.ms-4.complete{
-        .point,
-        .circle-inner{
-          background: #d0021b;
-        }
-        .desc{
-          color: #d0021b;
-        }
-      }
-      &.ms-4.in-progress{
-        .point{
-          border: 3px solid #d0021b;
+        &.in-progress{
+          .point{
+            border: 3px solid #e4b030;
+          }
         }
       }
 
-      &.ms-5.complete{
-        .point,
-        .circle-inner{
-          background: #740602;
+      &.ms-kicker{
+        &.complete{
+          .point,
+          .circle-inner{
+            background: #f58a23;
+          }
+          .desc,
+          .arrow{
+            color: #f58a23;
+          }
         }
-        .desc{
-          color: #740602;
+        &.in-progress{
+          .point{
+            border: 3px solid #f58a23;
+          }
         }
       }
-      &.ms-5.in-progress{
-        .point{
-          border: 3px solid #740602;
+
+      &.ms-power{
+        &.complete{
+          .point,
+          .circle-inner{
+            background: #d0021b;
+          }
+          .desc,
+          .arrow{
+            color: #d0021b;
+          }
+        }
+        &.in-progress{
+          .point{
+            border: 3px solid #d0021b;
+          }
+        }
+      }
+
+      &.ms-hard_cap{
+        &.complete{
+          .point,
+          .circle-inner{
+            background: #740602;
+          }
+          .desc,
+          .arrow{
+            color: #740602;
+          }
+        }
+        &.in-progress{
+          .point{
+            border: 3px solid #740602;
+          }
         }
       }
 

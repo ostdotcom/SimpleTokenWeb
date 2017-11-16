@@ -35,8 +35,6 @@
 
 %>
 
-<%= progressbar_milestones %>
-
 <div class="timeline-title" <%= @presenter_obj.target_milestone_achieved? || !@presenter_obj.soft_cap_milestone_achieved? ? 'hidden' : '' %> >
   <%= @presenter_obj.target_percent_achieved %>% of Target Achieved
 </div>
@@ -47,27 +45,31 @@
 <div class="container-timeline">
   <div class="progress">
 
-    <div class="progress-bar pb-2" role="progressbar" style="width: <%=progressbar_milestones[0]%>%">
+    <div class="progress-bar pb-target" role="progressbar" style="width: <%=progressbar_milestones[0]%>%">
       <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('target') %>" style="width: <%= @presenter_obj.width_of_progress_bar('target') %>%"></div>
     </div>
 
 
     <% if @presenter_obj.target_milestone_achieved? %>
-        <div class="progress-bar pb-3" role="progressbar" style="width: <%=progressbar_milestones[1]-progressbar_milestones[0]%>%">
+        <div class="progress-bar pb-kicker" role="progressbar" style="width: <%=progressbar_milestones[1]-progressbar_milestones[0]%>%">
           <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('kicker') %>" style="width: <%= @presenter_obj.width_of_progress_bar('kicker') %>%"></div>
         </div>
     <% end %>
 
     <% if @presenter_obj.kicker_milestone_achieved? %>
-        <div class="progress-bar pb-4" role="progressbar" style="width: <%=progressbar_milestones[2]-progressbar_milestones[1]%>%">
+        <div class="progress-bar pb-power" role="progressbar" style="width: <%=progressbar_milestones[2]-progressbar_milestones[1]%>%">
           <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('power') %>" style="width: <%= @presenter_obj.width_of_progress_bar('power') %>%"></div>
         </div>
     <% end %>
 
 
     <% if @presenter_obj.power_milestone_achieved? %>
-        <div class="progress-bar pb-5" role="progressbar" style="width: <%=progressbar_milestones[3]-progressbar_milestones[2]%>%">
+        <div class="progress-bar pb-hard_cap" role="progressbar" style="width: <%=progressbar_milestones[3]-progressbar_milestones[2]%>%">
           <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('hard_cap') %> " style="width: <%= @presenter_obj.width_of_progress_bar('hard_cap') %>%"></div>
+        </div>
+    <% else %>
+        <div class="progress-bar pb-target" role="progressbar" style="width: 10%">
+          <div class="pb-inner continued" style="width: 100%"></div>
         </div>
     <% end %>
 
@@ -75,25 +77,19 @@
 
 
   <div class="milestones">
-    <div class="milestone ms-current" style="left:calc(<%= percent_complete %>% - 75px)">
+    <div class="milestone ms-current ms-soft_cap complete" style="left:calc(<%= percent_complete %>% - 85px)">
       <div class="info">
         <p>Kicker Reached</p>
-
         <p>25% Bonus Activated!</p>
-
-        <p>130M ST</p>
-
-        <p>30,100 ETH</p>
+        <p style="margin-top:5px; font-size: 14px">130M ST</p>
+        <p style="font-size: 14px">30,100 ETH</p>
       </div>
       <div class="arrow-line"></div>
       <div class="arrow">&#9654;</div>
     </div>
 
 
-    <div class="milestone ms-2 <%= @presenter_obj.class_of_milestone('target') %>" style="left:calc(<%=progressbar_milestones[0]%>% - 50px)">
-      <div class="o-circle">
-        <div class="circle-inner">ST Target Achieved</div>
-      </div>
+    <div class="milestone ms-target <%= @presenter_obj.class_of_milestone('target') %>" style="left:calc(<%=progressbar_milestones[0]%>% - 50px)">
       <div class="st"><strong>100M</strong> ST</div>
       <div class="line"></div>
       <div class="point">
@@ -108,10 +104,7 @@
     </div>
 
     <% if @presenter_obj.target_milestone_achieved? %>
-        <div class="milestone ms-3 <%= @presenter_obj.class_of_milestone('kicker') %>" style="left:calc(<%=progressbar_milestones[1]%>% - 50px)">
-          <div class="o-circle">
-            <div class="circle-inner">ST Kicker Achieved</div>
-          </div>
+        <div class="milestone ms-kicker <%= @presenter_obj.class_of_milestone('kicker') %>" style="left:calc(<%=progressbar_milestones[1]%>% - 50px)">
           <div class="st"><strong>120M</strong> ST</div>
           <div class="line"></div>
           <div class="point">
@@ -127,10 +120,7 @@
     <% end %>
 
     <% if @presenter_obj.kicker_milestone_achieved? %>
-        <div class="milestone ms-4 <%= @presenter_obj.class_of_milestone('power') %>" style="left:calc(<%=progressbar_milestones[2]%>% - 50px)">
-          <div class="o-circle">
-            <div class="circle-inner">ST Power Achieved</div>
-          </div>
+        <div class="milestone ms-power <%= @presenter_obj.class_of_milestone('power') %>" style="left:calc(<%=progressbar_milestones[2]%>% - 50px)">
           <div class="st"><strong>180M</strong> ST</div>
           <div class="line"></div>
           <div class="point">
@@ -146,10 +136,7 @@
     <% end %>
 
     <% if @presenter_obj.power_milestone_achieved? %>
-        <div class="milestone ms-5 <%= @presenter_obj.class_of_milestone('hard_cap') %>" style="left:calc(<%=progressbar_milestones[3]%>% - 50px)">
-          <div class="o-circle">
-            <div class="circle-inner">Token Sale Ends</div>
-          </div>
+        <div class="milestone ms-hard_cap <%= @presenter_obj.class_of_milestone('hard_cap') %>" style="left:calc(<%=progressbar_milestones[3]%>% - 50px)">
           <div class="st"><strong>240M</strong> ST</div>
           <div class="line"></div>
           <div class="point">
