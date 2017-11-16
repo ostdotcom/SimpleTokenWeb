@@ -12,7 +12,7 @@
       isResidencyProofNeeded: false,
       currentPercent: 0,
       formNames: ['passport_file_path','selfie_file_path'],
-      residencyProofMandatoryCountries: ['CHINESE','NEW ZEALANDER'],
+      residencyProofMandatoryCountries: ['CHINESE', 'NEW ZEALANDER', 'AFGHANI', 'BOSNIAN', 'CENTRAL AFRICAN', 'CUBAN', 'CONGOLESE', 'ERITREAN', 'ETHIOPIAN', 'IRANIAN', 'IRAQI', 'LEBANESE', 'LIBYAN', 'NORTH KOREAN', 'SOMALI', 'SOUTH SUDANESE', 'SUDANESE', 'SYRIAN', 'UGANDAN', 'NI-VANUATU', 'YEMENI'],
       popoverPlacement: 'right',
       $kycForm: $('#kycForm'),
 
