@@ -42,7 +42,7 @@
 
 
 
-<div class="container-timeline">
+<div class="container-timeline" style="max-width: <%= @presenter_obj.kicker_milestone_achieved? ? 1000 : 800 %>px;">
   <div class="progress">
 
     <div class="progress-bar pb-target" role="progressbar" style="width: <%=progressbar_milestones[0]%>%">
@@ -62,13 +62,12 @@
         </div>
     <% end %>
 
-
     <% if @presenter_obj.power_milestone_achieved? %>
         <div class="progress-bar pb-hard_cap" role="progressbar" style="width: <%=progressbar_milestones[3]-progressbar_milestones[2]%>%">
           <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('hard_cap') %> " style="width: <%= @presenter_obj.width_of_progress_bar('hard_cap') %>%"></div>
         </div>
     <% else %>
-        <div class="progress-bar pb-target" role="progressbar" style="width: 10%">
+        <div class="progress-bar pb-<%= @presenter_obj.next_milestone_to_achieve %>" role="progressbar" style="width: 10%">
           <div class="pb-inner continued" style="width: 100%"></div>
         </div>
     <% end %>
@@ -77,7 +76,7 @@
 
 
   <div class="milestones">
-    <div class="milestone ms-current ms-soft_cap complete" style="left:calc(<%= percent_complete %>% - 85px)">
+    <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete %>% - 85px)">
       <div class="info">
         <p>Kicker Reached</p>
         <p>25% Bonus Activated!</p>

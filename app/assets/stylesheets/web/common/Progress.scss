@@ -219,6 +219,8 @@
         }
         .point{
           border: none;
+          width: 7px;
+          border-radius: 25%;
           .point-inner{
             display: none;
           }
