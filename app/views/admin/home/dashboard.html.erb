@@ -30,7 +30,8 @@
   }
 
   @admin_status ||= GlobalConstant::UserKycDetail.un_processed_admin_status
-  @cynopsis_status ||= GlobalConstant::UserKycDetail.cleared_cynopsis_status
+  @cynopsis_status ||= "#{GlobalConstant::UserKycDetail.cleared_cynopsis_status}:#{GlobalConstant::UserKycDetail.approved_cynopsis_status}"
+  @admin_action_type ||= GlobalConstant::UserKycDetail.no_admin_action_type
   @sort_order ||= 'inc'
 
   filters = {cynopsis_status: @cynopsis_status, admin_status: @admin_status, admin_action_type: @admin_action_type}
