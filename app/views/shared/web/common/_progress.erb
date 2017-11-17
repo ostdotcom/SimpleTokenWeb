@@ -30,14 +30,17 @@
 
 %>
 
-<div class="timeline-title" <%= @presenter_obj.target_milestone_achieved? ? 'hidden' : '' %> >
-  <%= @presenter_obj.target_percent_achieved %>% of Target Achieved
-</div>
+<!--
+<div class="timeline-title" <%#= @presenter_obj.target_milestone_achieved? ? 'hidden' : '' %>
+  <%#= @presenter_obj.target_percent_achieved %>% of Target Achieved
+</div>-->
 
 <div class="vertical info">
     <% if @presenter_obj.target_milestone_achieved? %>
         <p><%= @presenter_obj.last_milestone_achieved.titleize %> Reached</p>
         <p><%= @presenter_obj.community_bonus %>% Bonus Activated!</p>
+      <% else %>
+      <p><%= @presenter_obj.target_percent_achieved %>% of Target Achieved</p>
     <% end %>
     <p style="margin-top:5px; font-size: 14px"><%= @presenter_obj.human_readable_format_total_st_token_sold %> ST</p>
     <p style="font-size: 14px"><%= @presenter_obj.formatted_total_eth_raised %> ETH</p>
@@ -80,6 +83,8 @@
         <% if @presenter_obj.target_milestone_achieved? %>
             <p><%= @presenter_obj.last_milestone_achieved.titleize %> Reached</p>
             <p><%= @presenter_obj.community_bonus %>% Bonus Activated!</p>
+        <% else %>
+            <p><%= @presenter_obj.target_percent_achieved %>% of Target Achieved</p>
         <% end %>
         <p style="margin-top:5px; font-size: 14px"><%= @presenter_obj.human_readable_format_total_st_token_sold %> ST</p>
         <p style="font-size: 14px"><%= @presenter_obj.formatted_total_eth_raised %> ETH</p>
