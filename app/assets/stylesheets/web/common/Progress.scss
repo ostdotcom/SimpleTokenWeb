@@ -18,7 +18,6 @@
   }
 
   width: calc(100% - 100px);
-  max-width: 1000px;
   margin: 150px auto 0 auto;
   padding: 110px 0;
   position: relative;
@@ -356,10 +355,11 @@
         margin: 80px 0;
         position: relative;
         width: inherit;
+        height: 700px;
         padding: inherit;
 
         .progress{
-          height: 500px;
+          height: 100%;
           width: 5px;
           margin: 0 auto;
 
@@ -372,30 +372,30 @@
               width: 100%;
             }
 
-            &.pb-1{
+            &.pb-soft_cap{
               .complete{
                 height: 100%;
               }
             }
-            &.pb-2{
+            &.pb-target{
               .complete{
                 background: linear-gradient(to bottom, #61bfba, #e4b030 100%);
                 height: 100%;
               }
             }
-            &.pb-3{
+            &.pb-kicker{
               .complete{
                 background: linear-gradient(to bottom, #e4b030, #f58a23 100%);
                 height: 100%;
               }
             }
-            &.pb-4{
+            &.pb-power{
               .complete{
                 background: linear-gradient(to bottom, #f58a23, #d0021b 100%);
                 height: 100%;
               }
             }
-            &.pb-5{
+            &.pb-hard_cap{
               .complete{
                 background: linear-gradient(to bottom, #d0021b, #740602 100%);
                 height: 100%;
@@ -417,7 +417,6 @@
               right: calc(50% - 100px);
               top:0;
             }
-
             .line{
               height: 1px;
               width: 50px;
@@ -431,12 +430,19 @@
               top:0;
               left: calc(50% - 140px);
             }
-
             .desc{
               position: absolute;
               float: left;
               left: calc(50% - 100px);
               top: 0;
+            }
+
+            &.complete{
+              .point{
+                margin: 8px auto;
+                height: 7px;
+                width: 25px;
+              }
             }
 
             &.in-progress{
