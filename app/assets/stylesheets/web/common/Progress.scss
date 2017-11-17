@@ -162,10 +162,13 @@
         z-index: -1;
       }
       .arrow{
-        color: #54b79e;
+        width:15px;
+        height:15px;
+        border-radius: 50%;
+        background: #54b79e;
         position: absolute;
         left: calc(50% - 3px);
-        top: 58px;
+        top: 65px;
         font-size: 20px;
       }
       .info{
@@ -252,7 +255,8 @@
       &.ms-soft_cap{
         &.complete{
           .point,
-          .circle-inner{
+          .circle-inner,
+          .arrow{
             background: #61bfba;
           }
           .desc,
@@ -270,7 +274,8 @@
       &.ms-target{
         &.complete{
           .point,
-          .circle-inner{
+          .circle-inner,
+          .arrow{
             background: #e4b030;
           }
           .desc,
@@ -288,7 +293,8 @@
       &.ms-kicker{
         &.complete{
           .point,
-          .circle-inner{
+          .circle-inner,
+          .arrow{
             background: #f58a23;
           }
           .desc,
@@ -306,7 +312,8 @@
       &.ms-power{
         &.complete{
           .point,
-          .circle-inner{
+          .circle-inner,
+          .arrow{
             background: #d0021b;
           }
           .desc,
@@ -324,7 +331,8 @@
       &.ms-hard_cap{
         &.complete{
           .point,
-          .circle-inner{
+          .circle-inner,
+          .arrow{
             background: #740602;
           }
           .desc,
@@ -446,7 +454,7 @@
             }
             .arrow{
               top:0;
-              left: calc(50% - 10px);
+              left: calc(50% - 8px);
             }
             .check{
               top:0;

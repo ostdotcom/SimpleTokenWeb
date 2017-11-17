@@ -90,7 +90,7 @@
         <p style="font-size: 14px"><%= @presenter_obj.formatted_total_eth_raised %> ETH</p>
       </div>
       <div class="arrow-line"></div>
-      <div class="arrow">&#9654;</div>
+      <div class="arrow"><!--&#9654;--></div>
     </div>
 
     <div class="milestone ms-target <%= @presenter_obj.class_of_milestone('target') %>" style="left:calc(<%=progressbar_milestones[0]%>% - 50px)">
@@ -186,7 +186,7 @@
   <div class="milestones">
 
     <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="top:calc(<%= percent_complete %>% - 12.5px)">
-      <div class="arrow">&#9660;</div>
+      <div class="arrow"><!--&#9660;--></div>
     </div>
 
     <div class="milestone ms-target <%= @presenter_obj.class_of_milestone('target') %>" style="top:calc(<%=progressbar_milestones[0]%>% - 12.5px)">
