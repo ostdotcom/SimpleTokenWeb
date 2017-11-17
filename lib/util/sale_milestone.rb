@@ -20,6 +20,14 @@ module Util
       number_with_delimiter(total_eth_raised)
     end
 
+    def human_readable_format_total_st_token_sold
+      human_readable_format(total_st_token_sold)
+    end
+
+    def human_readable_format(val)
+      number_to_human(val, precision: 2, significant: false, units: {million: "M", thousand: "K", billion: "B"}, format: "%n%u")
+    end
+
     def community_bonus
       case last_milestone_achieved
         when 'hard_cap'
