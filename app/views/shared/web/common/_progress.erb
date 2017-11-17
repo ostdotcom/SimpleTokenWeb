@@ -78,7 +78,7 @@
 
   <div class="milestones">
 
-    <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete %>% - 85px)">
+    <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete %>% - 90px)">
       <div class="info">
         <% if @presenter_obj.target_milestone_achieved? %>
             <p><%= @presenter_obj.last_milestone_achieved.titleize %> Reached</p>
