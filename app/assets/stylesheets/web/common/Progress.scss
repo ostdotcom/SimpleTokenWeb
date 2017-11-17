@@ -2,13 +2,15 @@
   width: 250px;
   background: #e4b030;
   border-radius: 5px;
-  position: relative;
-  left: calc(50% - 125px);
-  top: 35px;
+  margin:0 auto;
   color: #ffffff;
   font-size: 18px;
   font-weight: 500;
   padding: 15px 0;
+}
+
+.vertical.info{
+  display: none;
 }
 
 .container-timeline{
@@ -18,7 +20,7 @@
   }
 
   width: calc(100% - 100px);
-  margin: 150px auto 0 auto;
+  margin: 110px auto 0 auto;
   padding: 110px 0;
   position: relative;
 
@@ -168,13 +170,12 @@
       }
       .info{
         width: 170px;
-        height: 100px;
         border-radius: 5px;
         background-color: #e4b030;
         color: #ffffff;
         padding: 6px 20px;
         position: absolute;
-        top: -125px;
+        bottom: 30px;
         p{
           margin:0;
           font-size: 13px;
@@ -347,6 +348,21 @@
 
 @media (max-width: 1000px) {
 
+    .vertical.info{
+      display: block;
+      width: 250px;
+      border-radius: 5px;
+      background-color: #e4b030;
+      color: #ffffff;
+      padding: 6px 20px;
+      margin:10px auto;
+      p{
+        margin:0;
+        font-size: 13px;
+        font-weight: 300;
+      }
+    }
+
     .container-timeline{
       display:none;
 
@@ -356,21 +372,6 @@
         position: relative;
         width: inherit;
         padding: inherit;
-
-        .info{
-          width: 170px;
-          height: 100px;
-          border-radius: 5px;
-          background-color: #e4b030;
-          color: #ffffff;
-          padding: 6px 20px;
-          margin:0 auto 10px auto;
-          p{
-            margin:0;
-            font-size: 13px;
-            font-weight: 300;
-          }
-        }
 
         .progress{
           height: 550px;
@@ -441,7 +442,7 @@
               margin: 0 auto;
             }
             .arrow{
-              top:95px;
+              top:0;
               left: calc(50% - 10px);
             }
             .check{
