@@ -31,8 +31,9 @@ module GlobalConstant
             'somalia',
             'south sudan',
             'sudan',
+            'sri lanka',
             'syria',
-            'uganda',
+            'tunisia',
             'vanuatu',
             'yemen',
             'cuba'
