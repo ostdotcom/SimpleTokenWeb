@@ -1,10 +1,10 @@
 <%= render :partial => "/shared/web/common/index_svg_sprite" %>
 <%= render :partial => "/shared/web/common/navbar" %>
 <%= render :partial => "/web/token_sale/jumbotron" %>
-<%= render :partial => "/web/token_sale/microsite_nav" %>
 <% if @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? || (!@presenter_obj.has_early_access_sale_started?) %>
     <%= render :partial => "/web/dashboard/telegram" %>
 <% end %>
+<%= render :partial => "/web/token_sale/microsite_nav" %>
 
 <% if @presenter_obj.has_early_access_sale_started? %>
     <div class="container-fluid container-progress <%= !(@presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused?) ? 'gradient' : '' %> " id="sale-progress-container">
