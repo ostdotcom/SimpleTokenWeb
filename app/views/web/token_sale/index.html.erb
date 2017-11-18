@@ -1,6 +1,7 @@
 <%= render :partial => "/shared/web/common/index_svg_sprite" %>
 <%= render :partial => "/shared/web/common/navbar" %>
 <%= render :partial => "/web/token_sale/jumbotron" %>
+<%= render :partial => "/web/token_sale/microsite_nav" %>
 <% if @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? || (!@presenter_obj.has_early_access_sale_started?) %>
     <%= render :partial => "/web/dashboard/telegram" %>
 <% end %>
@@ -23,7 +24,6 @@
     <% end %>
 <% end %>
 
-<%= render :partial => "/web/token_sale/microsite_nav" %>
 <%= render :partial => "/web/token_sale/why" %>
 <%= render partial: '/shared/web/common/press' %>
 <%= render :partial => "/web/token_sale/sale_details" %>

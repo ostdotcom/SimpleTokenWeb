@@ -55,6 +55,9 @@
         } else{
           $('.container-about-nav').removeClass("nav-sticky");
         };
+        if(navOffset < scrollPos){
+          $('.container-about-nav').find('.nav-item').removeClass('active');
+        }
       });
     }
 
