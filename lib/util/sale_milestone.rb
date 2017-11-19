@@ -5,7 +5,7 @@ module Util
     include ActionView::Helpers::NumberHelper
 
     def total_st_token_sold
-      (sale_details['total_st_token_sold']).to_i
+      (sale_details['total_st_token_sold'].to_f + 2416045.031).to_i
     end
 
     def total_eth_raised
