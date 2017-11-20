@@ -5,7 +5,7 @@ module Util
     include ActionView::Helpers::NumberHelper
 
     def total_st_token_sold
-      (sale_details['total_st_token_sold'].to_f + 2416045.031).to_i
+      (sale_details['total_st_token_sold']).to_i
     end
 
     def total_eth_raised
@@ -19,6 +19,15 @@ module Util
     def formatted_total_eth_raised
       number_with_delimiter(total_eth_raised)
     end
+
+    def total_unique_purchasers
+      sale_details['total_unique_purchasers'].to_i
+    end
+
+    def formatted_total_unique_purchasers
+      number_with_delimiter(total_unique_purchasers)
+    end
+
 
     def human_readable_format_total_st_token_sold
       human_readable_format(total_st_token_sold)
