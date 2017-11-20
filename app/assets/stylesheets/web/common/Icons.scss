@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v29.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v29.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v30.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v30.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -282,13 +282,16 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 }
 
 .progress-total-sold-icon{
-  @include icon-generator(78px, 68px, -174px, -853px, -174px, -174px, 50);
+  @include icon-generator(78px, 68px, -174px, -853px, -174px, -174px, 40);
 }
 .progress-total-eth-icon{
   @include icon-generator(128px, 200px, -120px, -252px, -120px, -120px, 20);
 }
 .progress-total-usd-icon{
   @include icon-generator(36px, 68px, -126px, -852px, -126px, -126px, 50);
+}
+.progress-total-purchasers-icon{
+  @include icon-generator(76px, 76px, -428px, -450px, -428px, -428px, 50);
 }
 .time-remaining-icon{
   @include icon-generator(22px, 26px, -337px, -467px, -337px, -337px, 80);

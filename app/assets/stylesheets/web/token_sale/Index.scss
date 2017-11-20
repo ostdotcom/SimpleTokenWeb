@@ -217,16 +217,6 @@
       font-weight: 500;
       color: #597a84;
     }
-    .details-link{
-      color: #597a84;
-      margin-left: 10px;
-      font-weight: 300;
-      display: inline-block;
-      border-bottom: 1px solid #597a84;
-      &:hover, &:focus{
-        text-decoration: none;
-      }
-    }
     .setdate{
       color: #597a84;
       font-weight: 300;
@@ -242,6 +232,16 @@
       .ver-middle{
         vertical-align: middle;
       }
+    }
+  }
+  .details-link{
+    color: #597a84;
+    margin-left: 10px;
+    font-weight: 300;
+    display: inline-block;
+    border-bottom: 1px solid #597a84;
+    &:hover, &:focus{
+      text-decoration: none;
     }
   }
   &.container-faqs{

@@ -2,7 +2,7 @@
   <div class="item">
     <span class="progress-total-sold-icon"></span>
     <div class="item-stats">
-      <div class="total-header">total st sold</div>
+      <div class="total-header">st towards target</div>
       <div class="total-value"><%=  @presenter_obj.formatted_total_st_token_sold %> ST</div>
     </div>
   </div>
@@ -13,6 +13,15 @@
     <div class="item-stats">
       <div class="total-header">total eth raised</div>
       <div class="total-value"><%=  @presenter_obj.formatted_total_eth_raised %> ETH</div>
+    </div>
+  </div>
+</div>
+<div class="item-parent">
+  <div class="item">
+    <span class="progress-total-purchasers-icon"></span>
+    <div class="item-stats">
+      <div class="total-header">total purchasers</div>
+      <div class="total-value"><%=  @presenter_obj.formatted_total_unique_purchasers %></div>
     </div>
   </div>
 </div>
