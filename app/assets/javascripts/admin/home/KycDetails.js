@@ -187,6 +187,10 @@
     },
 
     changeAddressAndOpenCase: function () {
+      if(!confirm("Please confirm that you want to Change Address / Open Case ?")){
+        return false;
+      }
+
       var $form = $('#openCaseFrm');
       $.ajax({
         url: '/api/admin/kyc/change-address-and-open-case',
