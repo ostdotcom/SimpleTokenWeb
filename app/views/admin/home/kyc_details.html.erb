@@ -95,8 +95,7 @@
                   </span>
                 </div>
                 <div class="col-sm-6" style="text-align: right;">
-                  <span></span>
-                  <a href="/admin/logout" title="Log out" class="logOut">Log out</a>
+                  <%= render :partial => 'header_links' %>
                 </div>
                 <div class="col-sm-12">
                   <div class="error" data-for="general_error"></div>
@@ -301,7 +300,15 @@
 <div class="sticky-action-buttons-container <%= 'case-closed' if is_case_closed %>">
 
   <%= is_case_closed ? 'Case Closed' : '' %>
+  <form id="openCaseFrm">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <input type="hidden" value="<%= @case_id %>" name="case_id">
+    <input type="text" placeholder="Ethereum address" name="ethereum_address" pattern="(0x|0X)?[0-9a-fA-F]{40}" value="" autocomplete="off" style="width:400px" />
+    <input type="button" id="openCase" value="Change Address<%= ' & Open Case' if is_case_closed %>"/>
+  </form>
+
   <div class="error" data-for="action_error" style="display: none;"></div>
+  <div class="success" data-for="action_success" style="display: none;"></div>
   <form id="caseActionForm" method="POST">
     <input type="hidden" name="case_id" value="<%= @case_id %>">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
