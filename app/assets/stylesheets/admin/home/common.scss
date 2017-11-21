@@ -1,0 +1,73 @@
+#searchCaseContainer{
+  position: relative;
+
+  #searchCase{
+
+  }
+  #caseSearchResults{
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    min-width: 300px;
+    border: 1px solid #ccc;
+    width: auto;
+    right: -12px;
+    top: 5px;
+    padding: 0;
+    margin: 15px 15px 0;
+    display: none;
+
+    .searchResultElement{
+      font-size: 16px;
+      font-weight: 300;
+      color: #34445b;
+      padding: 5px 10px;
+      display: block;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+}
+
+#dashboardContainer{
+  cursor: pointer;
+
+  #dashboardHeader{
+    padding: 0;
+    margin: 15px 15px 0;
+    font-size: 16px;
+    font-weight: 300;
+    color: #34445b;
+    padding: 0;
+    margin: 15px 15px 0;
+  }
+
+  #dashboardHolder{
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: auto;
+    right: 108px;
+    top: 5px;
+    padding: 0;
+    margin: 15px 15px 0;
+    display: none;
+
+    .dashElement{
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 300;
+      color: #34445b;
+      padding: 5px 10px;
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+}
+#dashboardContainer:hover{
+  #dashboardHolder{
+    display: block;
+  }
+}

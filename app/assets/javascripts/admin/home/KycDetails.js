@@ -53,7 +53,9 @@
         }
       });
 
-
+      $('#openCase').on('click', function (e) {
+        oThis.changeAddressAndOpenCase();
+      });
 
 
       $('.sticky-action-buttons-container').on('click', '.button-active', function () {
@@ -90,35 +92,6 @@
           oThis.formSubmit($dataAction);
         });
 
-        //if($(this).data('action-url') === '/api/admin/kyc/data-mismatch'){
-        //
-        //} else {
-        //
-        //    var r = confirm('Please confirm the action !!')
-        //        , that = this;
-        //    $('.error[data-for="action_error"]').hide();
-        //    if (r == true) {
-        //        var $form = $('#caseActionForm');
-        //        $.ajax({
-        //            url: $(that).data('action-url'),
-        //            dataType: 'json',
-        //            method: $form.attr('method'),
-        //            data: $form.serialize(),
-        //            success: function (response) {
-        //                if (response.success == true) {
-        //                    window.location = window.location;
-        //                    return false;
-        //                } else {
-        //                    $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
-        //                }
-        //            },
-        //            error: function (jqXHR, exception) {
-        //                adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
-        //            }
-        //        });
-        //    }
-        //
-        //}
       });
 
     },
@@ -176,7 +149,6 @@
     },
 
     getDuplicateKycs: function (case_id) {
-      console.log(oThis.adminKycStatuses);
       $.ajax({
         url: '/api/admin/kyc/fetch-duplicate',
         dataType: 'json',
@@ -206,6 +178,26 @@
               $('.duplicate-kyc-data').remove();
             }
             return false;
+          }
+        },
+        error: function (jqXHR, exception) {
+          adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+        }
+      });
+    },
+
+    changeAddressAndOpenCase: function () {
+      var $form = $('#openCaseFrm');
+      $.ajax({
+        url: '/api/admin/kyc/change-address-and-open-case',
+        dataType: 'json',
+        method: 'POST',
+        data: $form.serialize(),
+        success: function (response) {
+          if (response.success == true) {
+            $('.success[data-for="action_success"]').text("Request Taken. Please check after sometime.").fadeIn(10).fadeOut(10000);
+          } else {
+            $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
           }
         },
         error: function (jqXHR, exception) {

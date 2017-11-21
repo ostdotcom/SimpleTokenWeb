@@ -50,12 +50,9 @@
                 KYC check Dashboard
               </span>
             </div>
+
             <div class="col-sm-6" style="text-align: right;">
-              <a href="/admin/sale-all-dashboard" title="Sale All Dash" class="logOut">Sale All Dash</a>
-              <span> | </span>
-              <a href="/admin/whitelist-dashboard" title="Whitelist Dash" class="logOut">Whitelist Dash</a>
-              <span> | </span>
-              <a href="/admin/logout" title="Log out" class="logOut">Log out</a>
+              <%= render :partial => 'header_links' %>
             </div>
           </div>
         </div>
@@ -90,7 +87,7 @@
         <div class="kyc-filter-label">ADMIN REVIEW STATUS</div>
         <form class="form-inline">
           <select id="admin-action-type" class="form-control selectpicker" style="width: 100%;">
-            <option value="" >
+            <option value="">
               Select
             </option>
             <option value="<%= GlobalConstant::UserKycDetail.no_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.no_admin_action_type %> >
@@ -138,7 +135,8 @@
             </option>
             <option value="<%= GlobalConstant::UserKycDetail.cleared_cynopsis_status %>:<%= GlobalConstant::UserKycDetail.approved_cynopsis_status %>"
                     <%= 'selected' if @cynopsis_status=="#{GlobalConstant::UserKycDetail.cleared_cynopsis_status}:#{GlobalConstant::UserKycDetail.approved_cynopsis_status}" %> >
-              <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.cleared_cynopsis_status] %> |
+              <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.cleared_cynopsis_status] %>
+              |
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.approved_cynopsis_status] %>
             </option>
 
