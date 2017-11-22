@@ -9,20 +9,23 @@
 <% if @presenter_obj.has_early_access_sale_started? %>
     <div class="container-fluid container-progress <%= !(@presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused?) ? 'gradient' : '' %> " id="sale-progress-container">
       <div class="content">
+        <% if !@presenter_obj.target_milestone_achieved? %>
         <h2 class="header">Community Bonuses</h2>
         <p class="lead">
-          <% if !@presenter_obj.target_milestone_achieved? %>
               All buyers get 15% ETH Price Bonus
               <a href="https://medium.com/simple-token/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank">learn
                 more</a><br/>
               +20% additional bonus when Target is hit!
-          <% else %>
-              All buyers get <%= 15 + @presenter_obj.community_bonus %>% Target and ETH Price Bonus
-              <a href="https://medium.com/simple-token/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank">learn
-                more</a><br/>
-              +5% additional bonus when <%= @presenter_obj.next_milestone_to_achieve %> is hit!
-          <% end %>
         </p>
+            <% else %>
+            <h2 class="header"><%= 15 + @presenter_obj.community_bonus %>% Bonus Activated for All Buyers </h2>
+            <p class="lead">
+              <%= @presenter_obj.community_bonus %>% <%=@presenter_obj.last_milestone_achieved.titleize %> Bonus + 15% ETH Price Bonus!
+              <a href="https://medium.com/simple-token/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank">learn
+                more</a>
+            </p>
+
+        <% end %>
         <%= render :partial => "/shared/web/common/progress" %>
       </div>
     </div>

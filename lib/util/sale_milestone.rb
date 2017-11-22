@@ -163,12 +163,8 @@ module Util
     end
 
     def target_percent_achieved
-      if target_milestone_achieved?
-        return 100
-      else
-        val = ((total_st_token_sold * 100.00)/ GlobalConstant::StTokenSale.target_st_tokens_milestone)
-        return (val > 99 ? val.to_i : val.round)
-      end
+      val = ((total_st_token_sold * 100.00)/ GlobalConstant::StTokenSale.target_st_tokens_milestone)
+      return (val > 99 && val < 100 ? val.to_i : val.round)
     end
 
 

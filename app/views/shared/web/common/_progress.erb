@@ -28,20 +28,16 @@
 
    percent_complete = (@presenter_obj.total_st_token_sold * factor).round(2)
 
+   left_buffer, top_buffer = 0, 0
+   if @presenter_obj.target_milestone_achieved?
+     left_buffer = 75 - percent_complete + 1.725 if (percent_complete >= 75 && percent_complete < 76.725)
+     top_buffer = 75 - percent_complete + 2.6 if (percent_complete >= 75 && percent_complete < 77.6)
+   end
+
 %>
 
-<!--
-<div class="timeline-title" <%#= @presenter_obj.target_milestone_achieved? ? 'hidden' : '' %>
-  <%#= @presenter_obj.target_percent_achieved %>% of Target Achieved
-</div>-->
-
 <div class="vertical info">
-    <% if @presenter_obj.target_milestone_achieved? %>
-        <p><%= @presenter_obj.last_milestone_achieved.titleize %> Reached</p>
-        <p><%= @presenter_obj.community_bonus %>% Bonus Activated!</p>
-      <% else %>
       <p><%= @presenter_obj.target_percent_achieved %>% of Target Achieved</p>
-    <% end %>
     <p style="margin-top:5px; font-size: 14px"><%= @presenter_obj.human_readable_format_total_st_token_sold %> ST</p>
     <p style="font-size: 14px"><%= @presenter_obj.formatted_total_eth_raised %> ETH</p>
 </div>
@@ -78,14 +74,9 @@
 
   <div class="milestones">
 
-    <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete %>% - 90px)">
+    <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete + left_buffer %>% - 90px)">
       <div class="info">
-        <% if @presenter_obj.target_milestone_achieved? %>
-            <p><%= @presenter_obj.last_milestone_achieved.titleize %> Reached</p>
-            <p><%= @presenter_obj.community_bonus %>% Bonus Activated!</p>
-        <% else %>
-            <p><%= @presenter_obj.target_percent_achieved %>% of Target Achieved</p>
-        <% end %>
+        <p><%= @presenter_obj.target_percent_achieved %>% of Target Achieved</p>
         <p style="margin-top:5px; font-size: 14px"><%= @presenter_obj.human_readable_format_total_st_token_sold %> ST</p>
         <p style="font-size: 14px"><%= @presenter_obj.formatted_total_eth_raised %> ETH</p>
       </div>
@@ -93,7 +84,7 @@
       <div class="arrow"><!--&#9654;--></div>
     </div>
 
-    <div class="milestone ms-target <%= @presenter_obj.class_of_milestone('target') %>" style="left:calc(<%=progressbar_milestones[0]%>% - 50px)">
+    <div class="milestone ms-target <%= @presenter_obj.class_of_milestone('target') %>"  style="left:calc(<%=progressbar_milestones[0]%>% - 50px)">
       <div class="st"><strong>100M</strong> ST</div>
       <div class="line"></div>
       <div class="point">
@@ -185,7 +176,7 @@
 
   <div class="milestones">
 
-    <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="top:calc(<%= percent_complete %>% - 12.5px)">
+    <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="top:calc(<%= percent_complete + top_buffer %>% - 12.5px)">
       <div class="arrow"><!--&#9660;--></div>
     </div>
 
