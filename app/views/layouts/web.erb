@@ -12,10 +12,6 @@
       <link rel="canonical" href="<%= @page_meta_data[:canonical] %>" />
   <% end %>
 
-  <% if (params[:controller] == "web/user")  && ['update_kyc_form','add_kyc_form','login','sign_up'].include?(params[:action]) %>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <% end %>
-
   <%
     og_meta = @page_meta_data[:og]
     if og_meta.present?
@@ -113,6 +109,11 @@
   <% if !Rails.env.development? %>
   <script src="https://cdn.optimizely.com/js/9103640545.js"></script>
   <% end %>
+
+  <% if (params[:controller] == "web/user")  && ['update_kyc_form','add_kyc_form','login','sign_up'].include?(params[:action]) %>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+  <% end %>
+
 </head>
 
 <body contenteditable="false">
