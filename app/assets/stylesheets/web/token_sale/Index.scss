@@ -86,7 +86,7 @@
     a{
       color: #6ca3a9;
       border-bottom: 1px solid #6ca3a9;
-      &:hover{
+      &:hover, &:focus{
         text-decoration: none;
       }
     }
