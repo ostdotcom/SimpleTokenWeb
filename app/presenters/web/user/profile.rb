@@ -296,6 +296,12 @@ module Presenters
           val
         end
 
+        def try_reload
+          ((is_kyc_pending? && admin_action_type == GlobalConstant::TokenSaleUserState.no_admin_action_type) ||
+              (is_kyc_approved? && !ethereum_address_whitelist_done?)) &&
+              !has_sale_ended? && !has_sale_paused?
+        end
+
         ###############################################
 
 

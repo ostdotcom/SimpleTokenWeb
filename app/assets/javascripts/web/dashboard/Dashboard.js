@@ -8,6 +8,11 @@
 
         init: function (config) {
             oThis.bindButtonActions();
+
+            if (config && config.try_reload == 'true') {
+                oThis.checkForApprovedStatus();
+            }
+
         },
 
         bindButtonActions: function () {
@@ -93,7 +98,30 @@
             });
 
         },
-        onEthereumConfirm: function ( event ) {
+
+        checkForApprovedStatus: function () {
+            setInterval(function () {
+                $.ajax({
+                    url: '/api/user/profile',
+                    dataType: 'json',
+                    method: 'GET',
+                    success: function (response) {
+                        if (response.success == true) {
+
+                            var data = response.data;
+                            if ((data.user_kyc_data.kyc_status == 'approved') && (data.user_kyc_data.whitelist_status == 'done')) {
+                                location.reload();
+                            }
+                            return false;
+                        }
+                    }
+                });
+
+            }, 30000); // 30 seconds
+
+        },
+
+        onEthereumConfirm: function (event) {
             var jModal = $('#ethereum-confirm-modal'),
                 jAllCheckboxes = jModal.find("input:checkbox"),
                 jCheckedCheckboxes = jAllCheckboxes.filter(":checked"),
@@ -106,11 +134,11 @@
 
                 //Call the server for the address.
                 oThis.getTokenSaleEthereumAddress();
-                
+
             } else {
                 oThis.showEthereumAddressConfirmError( "Please verify all above mentioned confirmations." );
 
-            }            
+            }
         },
         getTokenSaleEthereumAddress: function () {
             var jModal = $('#ethereum-confirm-modal'),
@@ -129,7 +157,7 @@
 
                     //Hide the modal.
                     jModal.modal('hide');
-                    
+
                   } else {
                     simpletoken.utils.errorHandling.displayFormErrors( response, jModal);
                   }
@@ -168,13 +196,13 @@
                 jEthAddr = jWrap.find("#user-eth-address-input"),
                 dataUrl = "/api/user/check-ethereum-balance"
             ;
-            
+
             if ( !jEthAddr.val() ) {
                 jErr.html( "Invalid Etherenum Address" );
                 oThis.onUserEthAddressError();
                 return;
             }
-            
+
             var data = {
                 "user_ethereum_address" : jEthAddr.val()
             };
@@ -185,14 +213,14 @@
                 data: data,
                 dataType: "json",
                 method: "GET",
-                success: function (response) { 
+                success: function (response) {
                   if (response.success == true) {
                     var data = response.data || {};
                     jWrap.find("#user-eth-address-input-wrap").hide();
-                    
+
                     var purchaseDetails = data["purchase_details"];
                     if ( purchaseDetails && Object.keys(purchaseDetails).length > 0 ) {
-                        
+
                         var jResult = jWrap.find("#user-eth-address-purchase-details"),
                             jUserEthAddressPurchaseEthSent = jResult.find("#user-eth-address-purchase-eth-sent"),
                             jUserEthAddressPurchaseStAllotted = jResult.find("#user-eth-address-purchase-st-allotted"),
@@ -218,14 +246,14 @@
                     } else {
                         jWrap.find("#user-eth-address-success").show();
                     }
-                    
+
                   } else {
                     simpletoken.utils.errorHandling.displayFormErrors( response, jWrap);
                     oThis.onUserEthAddressError();
                   }
 
                 },
-                error: function (jqXHR, exception) { 
+                error: function (jqXHR, exception) {
                     simpletoken.utils.errorHandling.xhrErrResponse(jqXHR, exception, jWrap);
                     oThis.onUserEthAddressError();
                 }
@@ -252,9 +280,5 @@
         }
         /* Section: Validate User ETH Address - END */
     };
-
-    $(document).ready(function () {
-        oThis.init();
-    });
 
 })(window);
