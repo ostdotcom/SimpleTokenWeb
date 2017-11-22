@@ -46,10 +46,10 @@
               <tr>
                 <td>
                   <span class="kyc-status-icon-<%= @presenter_obj.token_name_icon_class %> ver-middle"></span>
-                  <span class="ver-middle"><%= @presenter_obj.token_name_pending? ? 'Token Name (Optional)' : 'Token Name Reserved' %></span>
+                  <span class="ver-middle"><%= @presenter_obj.token_name_pending? ? 'BT reservation (Optional)' : 'Token Name Reserved' %></span>
                 </td>
                 <td>
-                  <a href="/update-token"><%= @presenter_obj.token_name_pending? ? 'reserve name' : 'change name' %></a>
+                  <a href="/update-token"><%= @presenter_obj.token_name_pending? ? 'learn more' : 'change name' %></a>
                 </td>
               </tr>
             </table>
