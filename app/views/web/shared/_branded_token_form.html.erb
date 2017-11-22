@@ -1,18 +1,24 @@
 <div style="position: absolute;width: 100%;z-index: 1">
   <%= render :partial => "/shared/web/common/loggedin_header", locals: {user: user} %>
 </div>
-<div class="container sign-up-form">
-  <div class="row">
+<div class="container">
+  <div class="row sign-up-form">
     <div class="col-xs-12">
       <div class="text-center">
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
       </div>
       <div class="simple-token-form">
         <h1 class="text-center form-header">Reserve your branded token name</h1>
-
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="desc text-center" style="color: #6ca3a9;font-weight: 300;font-size: 16px;margin: 20px 0 0;">
+              The OpenST protocol enables companies to launch their own branded tokens powered by ST. You can reserve a branded token name now for future use. This step is optional.
+            </div>
+          </div>
+        </div>
         <form class="user-form" method="POST" action="/api/user/bt-submit" id="userBtForm">
           <div class="form-group">
-            <label for="token_name">token name</label>
+            <label for="token_name">desired bt name</label>
             <input type="text" name="bt_name" id="token_name" class="form-control" autofocus tabindex="1" value="<%= user['bt_name'] %>" autocomplete="off">
             <div class="error" data-for="bt_name"></div>
           </div>

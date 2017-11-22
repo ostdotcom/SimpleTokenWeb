@@ -285,6 +285,17 @@ module Presenters
           is_early_access_mode_on_for_user? && is_sale_ongoing_for_user?
         end
 
+        def total_bonus
+          (15 + community_bonus + pos_bonus_value).to_i
+        end
+
+        def no_of_bonus
+          val = 1
+          val += 1 if is_pos_bonus_confirmed? || is_alternate_token_bonus_confirmed?
+          val += 1 if community_bonus > 0
+          val
+        end
+
         ###############################################
 
 

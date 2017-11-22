@@ -83,6 +83,13 @@
     font-size: 20px;
     letter-spacing: 1.3px;
     text-align: center;
+    a{
+      color: #6ca3a9;
+      border-bottom: 1px solid #6ca3a9;
+      &:hover, &:focus{
+        text-decoration: none;
+      }
+    }
   }
 }
 

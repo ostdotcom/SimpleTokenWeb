@@ -65,7 +65,7 @@
       color: #597a84;
       border-bottom: 1px solid #597a84;
       margin-top: 2px;
-      &:hover{
+      &:hover, &:focus{
         text-decoration: none;
       }
     }
