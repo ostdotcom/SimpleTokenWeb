@@ -17,14 +17,12 @@
                 more</a><br/>
               +20% additional bonus when Target is hit!
         </p>
-            <% else %>
-            <h2 class="header"><%= 15 + @presenter_obj.community_bonus %>% Bonus Activated for All Buyers </h2>
-            <p class="lead">
-              <%= @presenter_obj.community_bonus %>% <%=@presenter_obj.last_milestone_achieved.titleize %> Bonus + 15% ETH Price Bonus!
-              <a href="https://medium.com/simple-token/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank">learn
-                more</a>
-            </p>
-
+        <% else %>
+        <h2 class="header"><%= 15 + @presenter_obj.community_bonus %>% Bonus Activated for All Buyers </h2>
+        <p class="lead">
+          <a href="#communityBonus" class="smooth-scroll"><%= @presenter_obj.community_bonus %>% <%=@presenter_obj.last_milestone_achieved.titleize %> Bonus</a> +
+          <a href="https://medium.com/simple-token/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank">15% ETH Price Bonus</a>!
+        </p>
         <% end %>
         <%= render :partial => "/shared/web/common/progress" %>
       </div>
