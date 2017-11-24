@@ -210,6 +210,7 @@
     border-radius: 3px;
     box-shadow: none;
     margin-bottom: 15px;
+    position: relative;
     background-color: rgba(244, 248, 246, 0.8);
     .header-title{
       font-size: 16px;
@@ -231,11 +232,12 @@
       padding-bottom: 8px;
     }
     .soft-cap-status{
-      float: right;
       color: #597a84;
       font-weight: 500;
-      padding-top: 12px;
       font-size: 16px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
       .ver-middle{
         vertical-align: middle;
       }
