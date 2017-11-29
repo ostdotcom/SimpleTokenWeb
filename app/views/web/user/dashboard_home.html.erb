@@ -13,6 +13,10 @@
     <% if @presenter_obj.is_kyc_denied? %>
         <div style="padding: 25px"></div>
     <% end %>
+  <div class="token-sale-progress text-center signup">
+    <%= render :partial => "/web/token_sale/sale_stats" %>
+  </div>
+  <%= render :partial => "/web/dashboard/kyc_status" %>
 <% elsif @presenter_obj.has_sale_paused? %>
     <%= render :partial => "/web/dashboard/token_sale_pause" %>
     <% if !@presenter_obj.is_kyc_denied? %>
