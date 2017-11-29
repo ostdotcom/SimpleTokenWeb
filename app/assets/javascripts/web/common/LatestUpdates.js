@@ -23,17 +23,17 @@
             // this calls simpletoken.videos.index.videos with data
         },
 
-        videos: function(videos){
+        updates: function(posts){
 
-            var $template = $('#carousel-item').text();
+            var $template = $('#latest-update-carousel-item').text();
             var $container = $('.latest-updates-carousel');
             var html = '';
 
-            videos.forEach(function(video){
+            posts.forEach(function(post){
                 var item_html = $template;
-                item_html = item_html.replace(new RegExp('__video_embed__', 'g'), video.video_embed);
-                item_html = item_html.replace(new RegExp('__title__', 'g'), video.title);
-                item_html = item_html.replace(new RegExp('__image__', 'g'), video.image);
+                item_html = item_html.replace(new RegExp('__link__', 'g'), post.link);
+                item_html = item_html.replace(new RegExp('__title__', 'g'), post.title);
+                item_html = item_html.replace(new RegExp('__image__', 'g'), post.image);
                 html += item_html;
             });
             $container.html(html);
