@@ -15,15 +15,15 @@
          text1 = 'The token sale has been temporarily paused.'
          text3 = 'Learn more on '
        when @presenter_obj.has_general_access_sale_started?
-         text1 = 'The token sale is Live'
-         text3 = 'Connect with the team on '
+         text1 = 'The token sale is Live! 5000+ participants,'
+         text3 = 'Connect with us on '
 
          case true
            when @presenter_obj.power_milestone_achieved?
-             text2 = '+30% Power bonus'
+             text2 = '+45% bonus'
              text3 = ' activated! ' + text3
            when @presenter_obj.kicker_milestone_achieved?
-             text2 = '+25% Kicker bonus'
+             text2 = '+40% bonus'
              text3 = ' activated! ' + text3
            when @presenter_obj.target_milestone_achieved?
              text2 = '+20% Target bonus'
@@ -97,9 +97,9 @@
 </div>
 <% else %>
   <div class="text-center uber-banner hidden-xs">
-    <span class="uber-banner-icon"></span>&nbsp;&nbsp;The token sale is Live
-    <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/#sale-progress-container">+25% Kicker Bonus</a>
-    activated! <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Participate Now!">Participate Now!</a>
+    <span class="uber-banner-icon"></span>&nbsp;&nbsp;The token sale is Live! 5000+ participants,
+    <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/#sale-progress-container">+40% bonus</a>
+    activated! <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Participate Now!">Get Started!</a>
   </div>
 
   <div class="container-fluid hidden-sm hidden-md hidden-lg hidden-xl">
@@ -112,9 +112,9 @@
       &nbsp;&nbsp;
       <div class="col-xs-11">
         <div class="row">
-          The token sale is Live
-          <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/#sale-progress-container">+25% Kicker Bonus</a>
-          activated! <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Participate Now!">Participate Now!</a>
+          The token sale is Live! 5000+ participants,
+          <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/#sale-progress-container">+40% bonus</a>
+          activated! <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Participate Now!">Get Started!</a>
         </div>
       </div>
     </div>
