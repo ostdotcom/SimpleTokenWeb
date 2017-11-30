@@ -6,12 +6,10 @@
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive" alt="Simple Token Logo"/>
           <% if @presenter_obj.has_sale_ended? %>
               <div class="desc">
-                <h1>The ST Token Sale Ended</h1>
+                <h1><%= @presenter_obj.target_percent_achieved %>% of Target Achieved!</h1>
 
-                <p>We want to thank the community for the overwhelming response and participation. The ST token sale has
-                  been successfully completed. Login to view your ST account balance. Connect with us on Telegram for
-                  the latest updates.</p>
-                  <a href="/login" class="btn-common btn-gold btn-top-bottom-15">Login St Account</a>
+                <p>We are overwhelmed and humbled by the outpouring of support from the community for our mission to empower digital communities with blockchain technology. You can learn more about the results of the token sale here and login to view a receipt of your purchase.</p>
+                <a href="/login" class="btn-common btn-gold btn-top-bottom-15">Login St Account</a>
 
               </div>
           <% elsif @presenter_obj.has_sale_paused? %>
@@ -72,15 +70,15 @@
               </div>
           <% else %>
             <div class="desc links-box">
-              <p style="margin: 0">Have questions on the Token Sale? Check these documents.</p>
+              <p style="margin: 0">Have questions about your purchase?</p>
               <span class="jumbotron-links">
-                <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit" class="link" target="_blank" title="Registration Guide">
+                <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit" class="link" target="_blank" title="Email Support">
                   <span class="sale-end-support-email-icon icon-pos"></span>
-                  <span class="border-btm">Support Email</span>
+                  <span class="border-btm">Email Support</span>
                 </a>
               </span>
               <span class="jumbotron-links">
-                <a href="https://docs.google.com/document/d/1eFv60FGP39XqkMrtZE5FZK49rQ2QSyH3_TCm0wO5FM0/edit?ts=5a06f473&pli=1" class="link" target="_blank" title="How to Purchase Guide">
+                <a href="https://docs.google.com/document/d/1eFv60FGP39XqkMrtZE5FZK49rQ2QSyH3_TCm0wO5FM0/edit?ts=5a06f473&pli=1" class="link" target="_blank" title="After Sale Guide">
                   <span class="faq-link-icon icon-pos"></span>
                   <span class="border-btm">After Sale Guide</span>
                 </a>

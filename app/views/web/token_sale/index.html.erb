@@ -14,7 +14,10 @@
   <div class="container-fluid container-progress <%= !(@presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused?) ? 'gradient' : '' %> " id="sale-progress-container">
     <div class="content">
       <% if @presenter_obj.has_sale_ended? %>
-        <h2 class="header">Token Sale Ending Result</h2>
+        <h2 class="header"><%= @presenter_obj.target_percent_achieved %>% of Target Achieved</h2>
+        <p class="lead">
+          40% Bonus For All Purchasers on Every Purchase
+        </p>
       <% else %>
         <h2 class="header"><%= 15 + @presenter_obj.community_bonus %>% Bonus Activated for All Buyers </h2>
 

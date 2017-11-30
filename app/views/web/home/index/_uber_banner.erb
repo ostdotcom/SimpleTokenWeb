@@ -9,8 +9,8 @@
 
      case true
        when @presenter_obj.has_sale_ended?
-         text1 = 'The token sale has ended.'
-         text3 = 'Learn more on '
+         text1 = "The Token Sale Ended. #{@presenter_obj.target_percent_achieved}% of Target Achieved!"
+         text3 = 'Connect with us on '
        when @presenter_obj.has_sale_paused?
          text1 = 'The token sale has been temporarily paused.'
          text3 = 'Learn more on '
