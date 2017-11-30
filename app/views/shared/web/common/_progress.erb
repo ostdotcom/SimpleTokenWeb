@@ -89,8 +89,10 @@
 
     <% if @presenter_obj.has_sale_ended? %>
 
-    <div class="milestone ms-ended ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete + left_buffer %>% - 15px)">
-
+    <div class="milestone ms-ended ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete + left_buffer %>% - 12px)">
+      <div class="end-point">
+        <%= @presenter_obj.human_readable_format_total_st_token_sold %> ST
+      </div>
     </div>
 
     <% else %>

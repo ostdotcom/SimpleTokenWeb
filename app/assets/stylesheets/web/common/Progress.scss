@@ -152,6 +152,19 @@
           border-radius: 50%;
         }
       }
+      .end-point{
+        background: #afe1d4;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        position: relative;
+        top: 58px;
+        left: 10px;
+        font-size: 12px;
+        line-height: 50px;
+        color: #fff;
+        font-weight: 500;
+      }
       .arrow-line{
         height: 100px;
         width: 1px;
@@ -258,11 +271,13 @@
         width: 135px;
         height: 180px;
         top:25px;
+        z-index: 40;
       }
 
       &.ms-soft_cap{
         &.complete{
           .point,
+          .end-point,
           .circle-inner,
           .arrow{
             background: #61bfba;
@@ -282,6 +297,7 @@
       &.ms-target{
         &.complete{
           .point,
+          .end-point,
           .circle-inner,
           .arrow{
             background: #e4b030;
@@ -301,6 +317,7 @@
       &.ms-kicker{
         &.complete{
           .point,
+          .end-point,
           .circle-inner,
           .arrow{
             background: #f58a23;
@@ -320,6 +337,7 @@
       &.ms-power{
         &.complete{
           .point,
+          .end-point,
           .circle-inner,
           .arrow{
             background: #d0021b;
@@ -339,6 +357,7 @@
       &.ms-hard_cap{
         &.complete{
           .point,
+          .end-point,
           .circle-inner,
           .arrow{
             background: #740602;
