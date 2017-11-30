@@ -1,11 +1,13 @@
 <%= render :partial => "/shared/web/common/index_svg_sprite" %>
 <%= render :partial => "/shared/web/common/navbar" %>
 <%= render :partial => "/web/home/index/jumbotron" %>
-<%= render partial: '/shared/web/common/press'%>
+<%= render partial: '/shared/web/common/press' %>
 <%= render partial: '/shared/web/common/press_companies', locals: {title: 'In the News'} %>
 <%#= render :partial => "/web/home/index/features" %>
 <%#= render :partial => "/web/home/index/documents" %>
-<%= render :partial => "/web/home/index/subscribe" %>
+<% if Time.zone.now >= GlobalConstant::StTokenSale.general_access_sale_end_date %>
+    <%= render :partial => "/web/home/index/subscribe" %>
+<% end %>
 <div style="padding-top: 40px">
   <%= render :partial => "/shared/web/common/social" %>
 </div>

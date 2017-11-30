@@ -9,20 +9,14 @@
 <% if @presenter_obj.has_early_access_sale_started? %>
     <div class="container-fluid container-progress <%= !(@presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused?) ? 'gradient' : '' %> " id="sale-progress-container">
       <div class="content">
-        <% if !@presenter_obj.target_milestone_achieved? %>
-        <h2 class="header">Community Bonuses</h2>
-        <p class="lead">
-              All buyers get 15% ETH Price Bonus
-              <a href="https://medium.com/simple-token/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank">learn
-                more</a><br/>
-              +20% additional bonus when Target is hit!
-        </p>
+        <% if @presenter_obj.has_sale_ended? %>
+            <h2 class="header">Token Sale Ending Result</h2>
         <% else %>
-        <h2 class="header"><%= 15 + @presenter_obj.community_bonus %>% Bonus Activated for All Buyers </h2>
-        <p class="lead">
-          <a href="#communityBonus" class="smooth-scroll"><%= @presenter_obj.community_bonus %>% <%=@presenter_obj.last_milestone_achieved.titleize %> Bonus</a> +
-          <a href="https://medium.com/simple-token/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank">15% ETH Price Bonus</a>!
-        </p>
+            <h2 class="header"><%= 15 + @presenter_obj.community_bonus %>% Bonus Activated for All Buyers </h2>
+            <p class="lead">
+                <a href="#communityBonus" class="smooth-scroll"><%= @presenter_obj.community_bonus %>% <%=@presenter_obj.last_milestone_achieved.titleize %> Bonus</a> +
+                <a href="https://medium.com/simple-token/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank">15% ETH Price Bonus</a>!
+            </p>
         <% end %>
         <%= render :partial => "/shared/web/common/progress" %>
       </div>
@@ -34,8 +28,10 @@
         </div>
     <% end %>
 <% end %>
-<%= render :partial => "/shared/web/common/latest_updates" %>
-<%= render :partial => "/web/home/index/subscribe" %>
+<% if @presenter_obj.has_sale_ended? %>
+    <%= render :partial => "/shared/web/common/latest_updates" %>
+    <%= render :partial => "/web/home/index/subscribe" %>
+<% end %>
 <%= render :partial => "/web/token_sale/why" %>
 <%= render partial: '/shared/web/common/press' %>
 <%= render :partial => "/web/token_sale/sale_details" %>
