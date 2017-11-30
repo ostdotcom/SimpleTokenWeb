@@ -6,16 +6,11 @@
 
 <% if @presenter_obj.has_sale_ended? %>
     <%= render :partial => "/web/dashboard/token_sale_ends" %>
-    <% if !@presenter_obj.is_kyc_denied? %>
-        <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 35px auto 30px;display: block;">
-    <% end %>
     <%= render :partial => "/web/dashboard/forgot_eth_address" %>
-    <% if @presenter_obj.is_kyc_denied? %>
-        <div style="padding: 25px"></div>
-    <% end %>
   <div class="token-sale-progress text-center signup">
     <%= render :partial => "/web/token_sale/sale_stats" %>
   </div>
+  <%= render :partial => "/web/dashboard/sale_end_links" %>
   <%= render :partial => "/web/dashboard/kyc_status" %>
 <% elsif @presenter_obj.has_sale_paused? %>
     <%= render :partial => "/web/dashboard/token_sale_pause" %>
