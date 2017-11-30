@@ -9,6 +9,9 @@
     <% if @presenter_obj.is_kyc_approved? %>
         <%= render :partial => "/web/dashboard/forgot_eth_address" %>
     <% end %>
+    <% if !@presenter_obj.is_kyc_approved? %>
+      <div style="padding-top: 50px"></div>
+    <% end %>
     <div class="token-sale-progress text-center signup">
       <%= render :partial => "/web/token_sale/sale_stats" %>
     </div>
