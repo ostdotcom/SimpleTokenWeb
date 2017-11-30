@@ -11,7 +11,8 @@
                 <p>We want to thank the community for the overwhelming response and participation. The ST token sale has
                   been successfully completed. Login to view your ST account balance. Connect with us on Telegram for
                   the latest updates.</p>
-                <a href="/login" class="btn-common btn-grey btn-top-bottom-15">Login St Account</a>
+                  <a href="/login" class="btn-common btn-gold btn-top-bottom-15">Login St Account</a>
+
               </div>
           <% elsif @presenter_obj.has_sale_paused? %>
               <div class="desc">
@@ -70,8 +71,21 @@
             </span>
               </div>
           <% else %>
-
-          <!-- add html-->
+            <div class="desc links-box">
+              <p style="margin: 0">Have questions on the Token Sale? Check these documents.</p>
+              <span class="jumbotron-links">
+                <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit" class="link" target="_blank" title="Registration Guide">
+                  <span class="sale-end-support-email-icon icon-pos"></span>
+                  <span class="border-btm">Support Email</span>
+                </a>
+              </span>
+              <span class="jumbotron-links">
+                <a href="https://docs.google.com/document/d/1eFv60FGP39XqkMrtZE5FZK49rQ2QSyH3_TCm0wO5FM0/edit?ts=5a06f473&pli=1" class="link" target="_blank" title="How to Purchase Guide">
+                  <span class="faq-link-icon icon-pos"></span>
+                  <span class="border-btm">After Sale Guide</span>
+                </a>
+              </span>
+            </div>
           <% end %>
 
 
