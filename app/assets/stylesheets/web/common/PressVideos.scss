@@ -2,7 +2,16 @@
   background-image: linear-gradient(to bottom, #ffffff, #f8f9fa);
   padding:40px 0;
   overflow-x: hidden;
-
+  &.paddingTop57{
+    @media (min-width: 415px) {
+      padding-top: 57px;
+    }
+    padding-top: 83px;
+  }
+  .latest-updates-title{
+    margin-bottom: 35px;
+    margin-top: 0;
+  }
   h1,h2{
     font-size: 38px;
     font-weight: 300;
