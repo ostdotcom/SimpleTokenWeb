@@ -5,7 +5,7 @@
       <% if @presenter_obj.has_sale_ended? %>
         <div class="total-header">st purchased</div>
       <% else %>
-        <div class="total-header">st towards <%= @presenter_obj.next_milestone_to_achieve %></div>
+        <div class="total-header">st towards <%= @presenter_obj.next_milestone_to_achieve == 'hard_cap' ? 'sale end' : @presenter_obj.next_milestone_to_achieve %></div>
       <% end %>
       <div class="total-value"><%=  @presenter_obj.formatted_total_st_token_sold %> ST</div>
     </div>
