@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v30.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v30.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite2x-v31.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v31.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -230,6 +230,18 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 .go-to-telegram-link-icon{
   @include icon-generator(30px, 26px, -337px, -799px, -337px, -337px);
 }
+.sale-end-blog-icon{
+  @include icon-generator(37px, 32px, -337px, -919px, -337px, -337px, 60);
+}
+.sale-end-support-email-icon{
+  @include icon-generator(37px, 29px, -337px, -957px, -337px, -337px, 60);
+}
+.sale-end-support-email-icon{
+  @include icon-generator(37px, 29px, -337px, -957px, -337px, -337px, 60);
+}
+.sale-end-after-sale-guide-icon{
+  @include icon-generator(30px, 40px, -337px, -749px, -337px, -337px, 50);
+}
 
 .jumbotron-links{
   &:hover{
@@ -265,6 +277,15 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
     }
     .go-to-telegram-link-icon{
       @include icon-generator(30px, 26px, -377px, -799px, -377px, -377px);
+    }
+    .sale-end-blog-icon{
+      @include icon-generator(37px, 32px, -377px, -919px, -377px, -377px, 60);
+    }
+    .sale-end-support-email-icon{
+      @include icon-generator(37px, 29px, -377px, -957px, -377px, -377px, 60);
+    }
+    .sale-end-after-sale-guide-icon{
+      @include icon-generator(30px, 40px, -377px, -749px, -377px, -377px, 50);
     }
   }
 }

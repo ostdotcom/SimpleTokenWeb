@@ -1,52 +1,92 @@
-<%
-  sale_details_data = [
-    {
-      heading: "Soft Cap",
-      description: "50,000,000 Tokens",
-      status: "Achieved"
-    },
-    {
-      heading: "Target",
-      description: "100,000,000 Tokens",
-      link: "Bonus Details",
-      status: "Achieved"
-    },
-    {
-      heading: "Hard Cap",
-      description: "240,000,000 Tokens"
-    },
-    {
-      heading: "Total Token Supply",
-      description: "800,000,000 finite supply"
-    },
-    {
-      heading: "ST PUBLIC SALE PRICE",
-      description: "1 ETH = 3598.214 ST + ",
-      adjustments: "15% **"
-    },
-    {
-      heading: "ERC20 token",
-      description: "Yes"
-    },
-    {
-      heading: "Minimum Purchase",
-      description: "0.1 ETH"
-    },
-    {
-      heading: "Maximum Purchase",
-      description: "No cap"
-    },
-    {
-      heading: "Token Distribution",
-      description: "Immediate"
-    },
-    {
-      heading: "Token Activation",
-      description: "ASAP, no later than 22 Dec, 2017"
-    },
-  ]
-%>
-
+<% if @presenter_obj.has_sale_ended? %>
+  <%
+     sale_details_data = [
+       {
+         heading: "Soft Cap",
+     description: "50,000,000 Tokens",
+     status: "Achieved"
+     },
+     {
+       heading: "Target",
+     description: "100,000,000 Tokens",
+     status: "Achieved"
+     },
+     {
+       heading: "Total Achievement",
+     description: "#{@presenter_obj.formatted_total_st_token_sold} Tokens"
+     },
+     {
+       heading: "Hard Cap",
+     description: "240,000,000 Tokens Sold"
+     },
+     {
+       heading: "Tokens To Be Burned",
+     description: "TBA"
+     },
+     {
+       heading: "Token Distribution",
+     description: "Immediate"
+     },
+     {
+       heading: "Token Activation",
+     description: "19 December"
+     },
+     {
+       heading: "Bonus Distribution",
+     description: "15 January"
+     },
+     ]
+  %>
+<% else %>
+  <%
+     sale_details_data = [
+       {
+         heading: "Soft Cap",
+     description: "50,000,000 Tokens",
+     status: "Achieved"
+     },
+     {
+       heading: "Target",
+     description: "100,000,000 Tokens",
+     link: "Bonus Details",
+     status: "Achieved"
+     },
+     {
+       heading: "Hard Cap",
+     description: "240,000,000 Tokens Sold"
+     },
+     {
+       heading: "Total Token Supply",
+     description: "800,000,000 finite supply"
+     },
+     {
+       heading: "ST PUBLIC SALE PRICE",
+     description: "1 ETH = 3598.214 ST + ",
+     adjustments: "15% **"
+     },
+     {
+       heading: "ERC20 token",
+     description: "Yes"
+     },
+     {
+       heading: "Minimum Purchase",
+     description: "0.1 ETH"
+     },
+     {
+       heading: "Maximum Purchase",
+     description: "No cap"
+     },
+     {
+       heading: "Token Distribution",
+     description: "Immediate"
+     },
+     {
+       heading: "Token Activation",
+     description: "ASAP, no later than 22 Dec, 2017"
+     },
+     ]
+  %>
+<% end %>
 <div class="container container-sale-details paddingTop57" id="saledetails">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">

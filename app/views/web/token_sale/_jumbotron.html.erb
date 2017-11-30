@@ -6,37 +6,42 @@
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive" alt="Simple Token Logo"/>
           <% if @presenter_obj.has_sale_ended? %>
               <div class="desc">
-              <h1>The ST Token Sale Ended</h1>
+                <h1><%= @presenter_obj.target_percent_achieved %>% of Target Achieved!</h1>
 
-              <p>We want to thank the community for the overwhelming response and participation. The ST token sale has been successfully completed. Login to view your ST account balance. Connect with us on Telegram for the latest updates.</p>
-              <a href="/login" class="btn-common btn-grey btn-top-bottom-15">Login</a>
+                <p>We are overwhelmed and humbled by the outpouring of support from the community for our mission to empower digital communities with blockchain technology. You can learn more about the results of the token sale here and login to view a receipt of your purchase.</p>
+                <a href="/login" class="btn-common btn-gold btn-top-bottom-15">Login St Account</a>
+
               </div>
           <% elsif @presenter_obj.has_sale_paused? %>
               <div class="desc">
                 <h1>Pardon the Interruption</h1>
 
-                <p>The Token Sale has been temporarely paused. We will notify everyone via email as soon as it is live again. Connect with us on Telegram to get the latest updates.</p>
+                <p>The Token Sale has been temporarely paused. We will notify everyone via email as soon as it is live
+                  again. Connect with us on Telegram to get the latest updates.</p>
                 <a href="/login" class="btn-common btn-grey btn-top-bottom-15">Login</a>
               </div>
           <% elsif @presenter_obj.has_general_access_sale_started? %>
               <div class="desc">
                 <h1>Cryptocurrency to Power Digital Communities</h1>
 
-                <p>The public token sale is underway! We're building a network for consumer apps tokenization. Participate Now in the Simple Token sale!</p>
+                <p>The public token sale is underway! We're building a network for consumer apps tokenization.
+                  Participate Now in the Simple Token sale!</p>
                 <!--<a href="/login" class="btn-common btn-grey btn-top-bottom-15">Participate Now</a>-->
               </div>
           <% elsif @presenter_obj.is_early_access_sale_on? %>
               <div class="desc">
                 <h1>The Software To Easily Launch Cryptocurrencies On A Blockchain</h1>
 
-                <p>The 24 hour Early Access sale is underway! Max cap of 40 ETH per purchaser. Login to participate if you have preregistered. Register Now to join the public sale.</p>
+                <p>The 24 hour Early Access sale is underway! Max cap of 40 ETH per purchaser. Login to participate if
+                  you have preregistered. Register Now to join the public sale.</p>
                 <a href="/login" class="btn-common btn-grey btn-top-bottom-15">Participate Now</a>
               </div>
           <% elsif @presenter_obj.has_early_access_register_ended? %>
               <div class="desc">
                 <h1>The Software To Easily Launch Cryptocurrencies On A Blockchain</h1>
 
-                <p>The Early Access token sale starts soon! Simple Token empowers digital communities. Register now to participate in the Public token sale.</p>
+                <p>The Early Access token sale starts soon! Simple Token empowers digital communities. Register now to
+                  participate in the Public token sale.</p>
               </div>
           <% else %>
               <div class="desc">
@@ -63,52 +68,69 @@
               </a>
             </span>
               </div>
+          <% else %>
+            <div class="desc links-box">
+              <p style="margin: 0">Have questions about your purchase?</p>
+              <span class="jumbotron-links">
+                <a href="mailto:support@simpletoken.org" target="_top" class="link" title="Email Support">
+                  <span class="sale-end-support-email-icon icon-pos"></span>
+                  <span class="border-btm">Email Support</span>
+                </a>
+              </span>
+              <span class="jumbotron-links">
+                <a href="https://docs.google.com/document/d/1eFv60FGP39XqkMrtZE5FZK49rQ2QSyH3_TCm0wO5FM0/edit?ts=5a06f473&pli=1" class="link" target="_blank" title="After Sale Guide">
+                  <span class="faq-link-icon icon-pos"></span>
+                  <span class="border-btm">After Sale Guide</span>
+                </a>
+              </span>
+            </div>
           <% end %>
 
-          </div>
 
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5">
-            <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
-            <% if @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
+        </div>
+
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5">
+          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
+          <% if @presenter_obj.has_sale_ended? || @presenter_obj.has_sale_paused? %>
               <div class="token-sale-progress text-center dashboard paused-ended">
                 <%= render :partial => "/web/token_sale/sale_stats" %>
               </div>
-            <% else %>
+          <% else %>
 
-            <div class="registration-timer text-center">
-              <%
-                 if @presenter_obj.has_general_access_sale_started?
-                   top_lang = 'The Public Token Sale is Live'
-                   countdown_timer = GlobalConstant::StTokenSale.general_access_sale_end_date
+              <div class="registration-timer text-center">
+                <%
+                   if @presenter_obj.has_general_access_sale_started?
+                     top_lang = 'The Public Token Sale is Live'
+                     countdown_timer = GlobalConstant::StTokenSale.general_access_sale_end_date
 
-                 elsif @presenter_obj.has_early_access_sale_started?
-                   top_lang = 'The Early Access Token Sale is Live'
-                   countdown_timer = GlobalConstant::StTokenSale.general_access_sale_start_date
+                   elsif @presenter_obj.has_early_access_sale_started?
+                     top_lang = 'The Early Access Token Sale is Live'
+                     countdown_timer = GlobalConstant::StTokenSale.general_access_sale_start_date
 
-                 elsif @presenter_obj.has_early_access_register_ended?
-                   top_lang = 'The Early Access Sale Starts Soon'
-                   countdown_timer = GlobalConstant::StTokenSale.early_access_sale_start_date
+                   elsif @presenter_obj.has_early_access_register_ended?
+                     top_lang = 'The Early Access Sale Starts Soon'
+                     countdown_timer = GlobalConstant::StTokenSale.early_access_sale_start_date
 
-                 else
-                   top_lang = 'Register Now for the Token Sale'
-                   countdown_timer = GlobalConstant::StTokenSale.early_access_register_end_date
-                 end
-              %>
+                   else
+                     top_lang = 'Register Now for the Token Sale'
+                     countdown_timer = GlobalConstant::StTokenSale.early_access_register_end_date
+                   end
+                %>
 
-              <h2><%= top_lang %></h2>
-              <span class="time-remaining-icon"></span>
-              <div class="time-remaining">&mdash;&nbsp;Time Remaining&nbsp;&mdash;</div>
-              <%=
-                  render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: (countdown_timer- Time.now).to_i * 1000}
-              %>
-              <a href="/sign-up" class="btn-common btn-gold">Get Started</a>
-            </div>
-        <% end %>
+                <h2><%= top_lang %></h2>
+                <span class="time-remaining-icon"></span>
+                <div class="time-remaining">&mdash;&nbsp;Time Remaining&nbsp;&mdash;</div>
+                <%=
+                    render partial: '/shared/web/common/marketing_countdown_timer', locals: {timestamp: (countdown_timer- Time.now).to_i * 1000}
+                %>
+                <a href="/sign-up" class="btn-common btn-gold">Get Started</a>
+              </div>
+          <% end %>
+
+        </div>
+
 
       </div>
-
-
     </div>
   </div>
-</div>
 </div>

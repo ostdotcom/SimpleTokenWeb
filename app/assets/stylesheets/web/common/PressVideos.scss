@@ -2,7 +2,16 @@
   background-image: linear-gradient(to bottom, #ffffff, #f8f9fa);
   padding:40px 0;
   overflow-x: hidden;
-
+  &.paddingTop57{
+    @media (min-width: 415px) {
+      padding-top: 57px;
+    }
+    padding-top: 83px;
+  }
+  .latest-updates-title{
+    margin-bottom: 35px;
+    margin-top: 0;
+  }
   h1,h2{
     font-size: 38px;
     font-weight: 300;
@@ -13,7 +22,7 @@
     text-align: center;
   }
 
-  .video-carousel{
+  .video-carousel, .latest-updates-carousel{
     .carousel-item{
       padding: 0 6px;
 
@@ -62,6 +71,14 @@
             overflow: hidden;
           }
         }
+
+        a{
+          text-decoration: none;
+          &:focus{
+            outline: none;
+          }
+        }
+
       }
 
       &:hover{
@@ -107,7 +124,7 @@
 
 @media (min-width: 768px) and (max-width: 1000px){
   .container-press{
-    .video-carousel{
+    .video-carousel, .latest-updates-carousel{
 
       .carousel-item{
         .thumbnail{
@@ -145,7 +162,7 @@
 
 @media (max-width: 767px){
   .container-press{
-    .video-carousel{
+    .video-carousel, .latest-updates-carousel{
 
       .carousel-item{
         .thumbnail{

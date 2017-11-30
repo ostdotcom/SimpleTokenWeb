@@ -152,6 +152,19 @@
           border-radius: 50%;
         }
       }
+      .end-point{
+        background: #afe1d4;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        position: relative;
+        top: calc(50% - 28.5px);
+        left: 10px;
+        font-size: 12px;
+        line-height: 50px;
+        color: #fff;
+        font-weight: 500;
+      }
       .arrow-line{
         height: 100px;
         width: 1px;
@@ -252,9 +265,19 @@
         height: auto;
       }
 
+      &.ms-ended{
+        background: url('https://d36lai1ppm9dxu.cloudfront.net/assets/image/sale-ended-progress-image-web.png');
+        background-size: contain;
+        width: 135px;
+        height: 180px;
+        top:25px;
+        z-index: 40;
+      }
+
       &.ms-soft_cap{
         &.complete{
           .point,
+          .end-point,
           .circle-inner,
           .arrow{
             background: #61bfba;
@@ -274,6 +297,7 @@
       &.ms-target{
         &.complete{
           .point,
+          .end-point,
           .circle-inner,
           .arrow{
             background: #e4b030;
@@ -293,6 +317,7 @@
       &.ms-kicker{
         &.complete{
           .point,
+          .end-point,
           .circle-inner,
           .arrow{
             background: #f58a23;
@@ -312,6 +337,7 @@
       &.ms-power{
         &.complete{
           .point,
+          .end-point,
           .circle-inner,
           .arrow{
             background: #d0021b;
@@ -331,6 +357,7 @@
       &.ms-hard_cap{
         &.complete{
           .point,
+          .end-point,
           .circle-inner,
           .arrow{
             background: #740602;
@@ -452,6 +479,10 @@
             .point{
               margin: 0 auto;
             }
+            .end-point{
+              top: 10px;
+              left: calc(50% - 27.5px);
+            }
             .arrow{
               top:0;
               left: calc(50% - 8px);
@@ -465,6 +496,15 @@
               float: left;
               left: calc(50% - 100px);
               top: 0;
+            }
+
+            &.ms-ended{
+              background: url('https://d36lai1ppm9dxu.cloudfront.net/assets/image/sale-ended-progress-image-mobile.png');
+              background-size: contain;
+              width: 180px;
+              height: 135px;
+              left: calc(50% - 90px);
+              z-index: 40;
             }
 
             &.complete{

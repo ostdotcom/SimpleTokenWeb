@@ -2,7 +2,7 @@
 
    last_milestone_to_show_st_value = @presenter_obj.last_milestone_to_show_st_value
 
-   factor = @presenter_obj.power_milestone_achieved? || GlobalConstant::StTokenSale.has_sale_ended? ? (100.00/last_milestone_to_show_st_value) : (90.00/last_milestone_to_show_st_value)
+   factor = @presenter_obj.power_milestone_achieved? ? (100.00/last_milestone_to_show_st_value) : (90.00/last_milestone_to_show_st_value)
 
    progressbar_milestones_actual_values = []
 
@@ -45,11 +45,6 @@
    left_buffer = mile_percent - percent_complete + left_margin if (percent_complete >= mile_percent && percent_complete < mile_percent + left_margin)
    top_buffer = mile_percent - percent_complete + top_margin if (percent_complete >= mile_percent && percent_complete < mile_percent + top_margin)
 
-   if GlobalConstant::StTokenSale.has_sale_ended? && (progressbar_milestones[-1] - progressbar_milestones[-2] < 4)
-     progressbar_milestones[-2] = progressbar_milestones[-2] - 4
-   end
-
-
 %>
 
 <div class="vertical info">
@@ -61,7 +56,7 @@
 </div>
 
 
-<div class="container-timeline" style="max-width: <%= @presenter_obj.kicker_milestone_achieved? ? 900 : 700 %>px;">
+<div class="container-timeline" style="max-width: <%= @presenter_obj.kicker_milestone_achieved? ? 1000 : 700 %>px;">
 
   <div class="progress">
 
@@ -75,12 +70,12 @@
     <% end %>
     <% if @presenter_obj.kicker_milestone_achieved? %>
         <div class="progress-bar pb-power" role="progressbar" style="width: <%=progressbar_milestones[2]-progressbar_milestones[1]%>%">
-          <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('power') %>" style="width: <%= GlobalConstant::StTokenSale.has_sale_ended? ? 100 : @presenter_obj.width_of_progress_bar('power') %>%"></div>
+          <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('power') %>" style="width: <%= @presenter_obj.width_of_progress_bar('power') %>%"></div>
         </div>
     <% end %>
     <% if @presenter_obj.power_milestone_achieved? %>
         <div class="progress-bar pb-hard_cap" role="progressbar" style="width: <%=progressbar_milestones[3]-progressbar_milestones[2]%>%">
-          <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('hard_cap') %> " style="width: <%= GlobalConstant::StTokenSale.has_sale_ended? ? 100 :  @presenter_obj.width_of_progress_bar('hard_cap') %>%"></div>
+          <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('hard_cap') %> " style="width: <%= @presenter_obj.width_of_progress_bar('hard_cap') %>%"></div>
         </div>
     <% else %>
         <div class="progress-bar pb-<%= @presenter_obj.next_milestone_to_achieve %>" role="progressbar" style="width: 10%">
@@ -92,30 +87,18 @@
 
   <div class="milestones">
 
-    <% if @presenter_obj.has_sale_ended? %>
+    <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete + left_buffer %>% - 90px)">
+      <div class="info">
+        <p><%= @presenter_obj.target_percent_achieved %>% of Target Achieved</p>
 
-        <div class="milestone ms-ended ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%=progressbar_milestones.last %>% - 12px)">
-          <div class="end-point">
-            <%= @presenter_obj.human_readable_format_total_st_token_sold %> ST
-          </div>
-        </div>
+        <p style="margin-top:5px; font-size: 14px"><%= @presenter_obj.human_readable_format_total_st_token_sold %>
+          ST</p>
 
-    <% else %>
-
-        <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete + left_buffer %>% - 90px)">
-          <div class="info">
-            <p><%= @presenter_obj.target_percent_achieved %>% of Target Achieved</p>
-
-            <p style="margin-top:5px; font-size: 14px"><%= @presenter_obj.human_readable_format_total_st_token_sold %>
-              ST</p>
-
-            <p style="font-size: 14px"><%= @presenter_obj.formatted_total_eth_raised %> ETH</p>
-          </div>
-          <div class="arrow-line"></div>
-          <div class="arrow"><!--&#9654;--></div>
-        </div>
-
-    <% end %>
+        <p style="font-size: 14px"><%= @presenter_obj.formatted_total_eth_raised %> ETH</p>
+      </div>
+      <div class="arrow-line"></div>
+      <div class="arrow"><!--&#9654;--></div>
+    </div>
 
     <div class="milestone ms-target <%= @presenter_obj.class_of_milestone('target') %>" style="left:calc(<%=progressbar_milestones[0]%>% - 50px)">
       <div class="st"><strong>100M</strong> ST</div>
@@ -147,7 +130,7 @@
         </div>
     <% end %>
 
-    <% if @presenter_obj.kicker_milestone_achieved? && (!GlobalConstant::StTokenSale.has_sale_ended? || @presenter_obj.power_milestone_achieved?) %>
+    <% if @presenter_obj.kicker_milestone_achieved? %>
         <div class="milestone ms-power <%= @presenter_obj.class_of_milestone('power') %>" style="left:calc(<%=progressbar_milestones[2]%>% - 50px)">
           <div class="st"><strong>180M</strong> ST</div>
           <div class="line"></div>
@@ -163,24 +146,14 @@
         </div>
     <% end %>
 
-    <% if @presenter_obj.power_milestone_achieved? && (!GlobalConstant::StTokenSale.has_sale_ended? || @presenter_obj.hard_cap_milestone_achieved?) %>
+    <% if @presenter_obj.power_milestone_achieved? %>
         <div class="milestone ms-hard_cap <%= @presenter_obj.class_of_milestone('hard_cap') %>" style="left:calc(<%=progressbar_milestones[3]%>% - 50px)">
-          <div class="st">
-            <strong><%= @presenter_obj.human_readable_format(@presenter_obj.hard_cap_st_tokens_milestone_value) %></strong>
-            ST
-          </div>
+          <div class="st"><strong>240M</strong> ST</div>
           <div class="line"></div>
           <div class="point">
             <div class="point-inner"></div>
           </div>
           <div class="check">&#10004;</div>
-          <% if @presenter_obj.increase_hard_cap? %>
-              <div class="desc">
-                <div class="title">Sale End</div>
-                <div class="sub">(Includes 15% Public</div>
-                <div class="bonus">Sale ETH Bonus)</div>
-              </div>
-          <% end %>
         </div>
     <% end %>
 
@@ -202,12 +175,12 @@
     <% end %>
     <% if @presenter_obj.kicker_milestone_achieved? %>
         <div class="progress-bar pb-power" role="progressbar" style="height: <%=progressbar_milestones[2]-progressbar_milestones[1]%>%">
-          <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('power') %>" style="height: <%= GlobalConstant::StTokenSale.has_sale_ended? ? 100 : @presenter_obj.width_of_progress_bar('power') %>%"></div>
+          <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('power') %>" style="height: <%= @presenter_obj.width_of_progress_bar('power') %>%"></div>
         </div>
     <% end %>
     <% if @presenter_obj.power_milestone_achieved? %>
         <div class="progress-bar pb-hard_cap" role="progressbar" style="height: <%=progressbar_milestones[3]-progressbar_milestones[2]%>%">
-          <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('hard_cap') %> " style="height: <%= GlobalConstant::StTokenSale.has_sale_ended? ? 100 : @presenter_obj.width_of_progress_bar('hard_cap') %>%"></div>
+          <div class="pb-inner <%= @presenter_obj.class_of_progress_bar('hard_cap') %> " style="height: <%= @presenter_obj.width_of_progress_bar('hard_cap') %>%"></div>
         </div>
     <% else %>
         <div class="progress-bar pb-<%= @presenter_obj.next_milestone_to_achieve %>" role="progressbar" style="height: 10%">
@@ -219,21 +192,9 @@
 
   <div class="milestones">
 
-    <% if @presenter_obj.has_sale_ended? %>
-
-        <div class="milestone ms-ended ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="top:calc(<%=progressbar_milestones.last %>% - 12px)">
-          <div class="end-point">
-            <%= @presenter_obj.human_readable_format_total_st_token_sold %> ST
-          </div>
-        </div>
-
-    <% else %>
-
-        <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="top:calc(<%= percent_complete + top_buffer %>% - 12.5px)">
-          <div class="arrow"><!--&#9660;--></div>
-        </div>
-
-    <% end %>
+    <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="top:calc(<%= percent_complete + top_buffer %>% - 12.5px)">
+      <div class="arrow"><!--&#9660;--></div>
+    </div>
 
     <div class="milestone ms-target <%= @presenter_obj.class_of_milestone('target') %>" style="top:calc(<%=progressbar_milestones[0]%>% - 12.5px)">
       <div class="st"><strong>100M</strong> ST</div>
@@ -265,7 +226,7 @@
         </div>
     <% end %>
 
-    <% if @presenter_obj.kicker_milestone_achieved? && (!GlobalConstant::StTokenSale.has_sale_ended? || @presenter_obj.power_milestone_achieved?) %>
+    <% if @presenter_obj.kicker_milestone_achieved? %>
         <div class="milestone ms-power <%= @presenter_obj.class_of_milestone('power') %>" style="top:calc(<%=progressbar_milestones[2]%>% - 12.5px)">
           <div class="st"><strong>180M</strong> ST</div>
           <div class="line"></div>
@@ -281,24 +242,14 @@
         </div>
     <% end %>
 
-    <% if @presenter_obj.power_milestone_achieved? && (!GlobalConstant::StTokenSale.has_sale_ended? || @presenter_obj.hard_cap_milestone_achieved?) %>
+    <% if @presenter_obj.power_milestone_achieved? %>
         <div class="milestone ms-hard_cap <%= @presenter_obj.class_of_milestone('hard_cap') %>" style="top:calc(<%=progressbar_milestones[3]%>% - 12.5px)">
-          <div class="st">
-            <strong><%= @presenter_obj.human_readable_format(@presenter_obj.hard_cap_st_tokens_milestone_value) %></strong>
-            ST
-          </div>
+          <div class="st"><strong>240M</strong> ST</div>
           <div class="line"></div>
           <div class="point">
             <div class="point-inner"></div>
           </div>
           <div class="check">&#10004;</div>
-          <% if @presenter_obj.increase_hard_cap? %>
-              <div class="desc">
-                <div class="title">Sale End</div>
-                <div class="sub">(Includes 15% Public</div>
-                <div class="bonus">Sale ETH Bonus)</div>
-              </div>
-          <% end %>
         </div>
     <% end %>
 
