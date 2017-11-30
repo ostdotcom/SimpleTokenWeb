@@ -91,17 +91,19 @@ module Util
 
     def last_milestone_to_show_st_value
       @last_milestone_to_show_st_value ||= case true
-                                                when hard_cap_milestone_achieved?
-                                                  GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
-                                                when power_milestone_achieved?
-                                                  GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
-                                                when kicker_milestone_achieved?
-                                                  GlobalConstant::StTokenSale.power_st_tokens_milestone
-                                                when target_milestone_achieved?
-                                                  GlobalConstant::StTokenSale.kicker_st_tokens_milestone
-                                                else
-                                                  GlobalConstant::StTokenSale.target_st_tokens_milestone
-                                              end
+                                             when GlobalConstant::StTokenSale.has_sale_ended?
+                                               total_st_token_sold
+                                             when hard_cap_milestone_achieved?
+                                               GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
+                                             when power_milestone_achieved?
+                                               GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
+                                             when kicker_milestone_achieved?
+                                               GlobalConstant::StTokenSale.power_st_tokens_milestone
+                                             when target_milestone_achieved?
+                                               GlobalConstant::StTokenSale.kicker_st_tokens_milestone
+                                             else
+                                               GlobalConstant::StTokenSale.target_st_tokens_milestone
+                                           end
     end
 
     def last_milestone_achieved
