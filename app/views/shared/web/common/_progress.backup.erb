@@ -87,14 +87,6 @@
 
   <div class="milestones">
 
-    <% if @presenter_obj.has_sale_ended? %>
-
-    <div class="milestone ms-ended ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete + left_buffer %>% - 15px)">
-
-    </div>
-
-    <% else %>
-
     <div class="milestone ms-current ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%= percent_complete + left_buffer %>% - 90px)">
       <div class="info">
         <p><%= @presenter_obj.target_percent_achieved %>% of Target Achieved</p>
@@ -107,8 +99,6 @@
       <div class="arrow-line"></div>
       <div class="arrow"><!--&#9654;--></div>
     </div>
-
-    <% end %>
 
     <div class="milestone ms-target <%= @presenter_obj.class_of_milestone('target') %>" style="left:calc(<%=progressbar_milestones[0]%>% - 50px)">
       <div class="st"><strong>100M</strong> ST</div>

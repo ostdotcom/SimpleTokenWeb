@@ -252,6 +252,14 @@
         height: auto;
       }
 
+      &.ms-ended{
+        background: url('https://d36lai1ppm9dxu.cloudfront.net/assets/image/sale-ended-progress-image-web.png');
+        background-size: contain;
+        width: 135px;
+        height: 180px;
+        top:25px;
+      }
+
       &.ms-soft_cap{
         &.complete{
           .point,
