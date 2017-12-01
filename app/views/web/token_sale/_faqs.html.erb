@@ -1,62 +1,94 @@
-<%
-  faqs_data = [
-    {
-      question: "How does early access work?",
-      answer: "The token sale starts on November 14, 2017. The first day of the token sale is restricted to Early Access whitelisted individuals only. To get on the Early Access whitelist, register at https://simpletoken.org/ between 1-13 November, 2017. A standard KYC / AML / CTF compliance check is required. Once your KYC / AML / CTF is approved, you will be added to the Early Access whitelist."
-    },
-    {
-      question: "Who should purchase ST?",
-      answer: "Companies who want to create branded tokens. Developers who want to explore developing on OpenST. Individuals contemplating future projects with ST."
-    },
-    {
-      question: "What if i miss the preregistration period?",
-      answer: "If you register after 13 November you can still register and participate in the Public token sale which starts on 15 November. A standard KYC/AML/CTF compliance check is required. Once your KYC / AML / CTF is approved, you will be added to the Public Sale whitelist."
-    },
-    {
-      question: "Requirements or restrictions?",
-      answer: "Any individual over age of 18, who passes KYC / AML / CTF checks can participate in the token sale with the exception of residents of U.N sanctioned countries, China, New Zealand and New York State (USA). To learn more about the KYC / AML / CTF requirements or about the specific restrictions please visit our FAQ pages or ask our team in our Telegram channel."
-    },
-    {
-      question: "Which ETH address should you send the money in?",
-      answer: "Simple Token will never publish an ETH address here or in any emails, or on social media sites. The only place you will get our ETH address is when you log into your account on https://sale.simpletoken.org and only after you have completed all requirements to enable your account to purchase."
-    },
-  ]
-%>
+<% if @presenter_obj.has_sale_ended? %>
+  <%
+    faqs_data = [
+      {
+        question: "When are my tokens transferable?",
+        answer: "Your purchased tokens will be activated on 19 December at 13:00:00 UTC. Once activated you can trade, sell them, and transfer them as you wish."
+      },
+      {
+        question: "When do I get my bonus tokens?",
+        answer: "Your bonus tokens will be distributed and activated on 12 January, 2018 at 13:00:00 UTC. "
+      },
+      {
+        question: "How do I see the Simple Tokens in my wallet?",
+        answer: "Please see our nifty after-sale guide. We have included step-by-step instructions for many of the most popular wallets."
+      },
+      {
+        question: "What are the final details of the sale? ",
+        answer: "We will post the final results of the sale on Tuesday 5 December, 2017, including a summary of buyers, distribution, bonuses, and burns."
+      },
+    ]
+  %>
+<% else %>
+  <%
+     faqs_data = [
+       {
+         question: "How does early access work?",
+     answer: "The token sale starts on November 14, 2017. The first day of the token sale is restricted to Early Access whitelisted individuals only. To get on the Early Access whitelist, register at https://simpletoken.org/ between 1-13 November, 2017. A standard KYC / AML / CTF compliance check is required. Once your KYC / AML / CTF is approved, you will be added to the Early Access whitelist."
+     },
+     {
+       question: "Who should purchase ST?",
+     answer: "Companies who want to create branded tokens. Developers who want to explore developing on OpenST. Individuals contemplating future projects with ST."
+     },
+     {
+       question: "What if i miss the preregistration period?",
+     answer: "If you register after 13 November you can still register and participate in the Public token sale which starts on 15 November. A standard KYC/AML/CTF compliance check is required. Once your KYC / AML / CTF is approved, you will be added to the Public Sale whitelist."
+     },
+     {
+       question: "Requirements or restrictions?",
+     answer: "Any individual over age of 18, who passes KYC / AML / CTF checks can participate in the token sale with the exception of residents of U.N sanctioned countries, China, New Zealand and New York State (USA). To learn more about the KYC / AML / CTF requirements or about the specific restrictions please visit our FAQ pages or ask our team in our Telegram channel."
+     },
+     {
+       question: "Which ETH address should you send the money in?",
+     answer: "Simple Token will never publish an ETH address here or in any emails, or on social media sites. The only place you will get our ETH address is when you log into your account on https://sale.simpletoken.org and only after you have completed all requirements to enable your account to purchase."
+     },
+     ]
+  %>
+<% end %>
 
-<div class="container container-sale-details container-faqs paddingTop57" id="faq">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-      <div class="row">
-        <h2 class="header text-center">FAQ’s</h2>
-        <% faqs_data.each_with_index do | data, indx | %>
-          <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
-            <div class="well">
-              <h3 class="header-title" style=""><%= data[:question] %></h3>
-              <div class="desc"><%= data[:answer] %></div>
+  <div class="container container-sale-details container-faqs paddingTop57" id="faq">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+        <div class="row">
+          <h2 class="header text-center">FAQ’s</h2>
+          <% faqs_data.each_with_index do | data, indx | %>
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+              <div class="well">
+                <h3 class="header-title" style=""><%= data[:question] %></h3>
+                <div class="desc"><%= data[:answer] %></div>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
+    <div class="row text-center" style="margin-top: 30px">
+      <span class="jumbotron-links">
+        <a href="https://simpletoken.org/faq/categories/token-sale/" target="_blank" title="See All Faq" class="link">
+          <span class="faq-link-icon icon-pos"></span>
+          <span class="border-btm">See All Faq</span>
+        </a>
+      </span>
+      <span class="jumbotron-links">
+        <a href="https://www.t.me/simpletoken" target="_blank" title="Go To Telegram" class="link">
+          <span class="go-to-telegram-link-icon icon-pos"></span>
+          <span class="border-btm">Go To Telegram</span>
+        </a>
+      </span>
+      <% if @presenter_obj.has_sale_ended? %>
+        <span class="jumbotron-links">
+          <a href="https://docs.google.com/document/d/19eUCyVHSWBGB79djGnTS6h-OV1EtTkNl8v4ECPQ8xNk/edit" target="_blank" title="After Sale Guide" class="link">
+            <span class="registration-guide-link-icon icon-pos"></span>
+            <span class="border-btm">After Sale Guide</span>
+          </a>
+        </span>
+      <% else %>
+        <span class="jumbotron-links">
+          <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit" target="_blank" title="Registration Guide" class="link">
+            <span class="registration-guide-link-icon icon-pos"></span>
+            <span class="border-btm">Registration Guide</span>
+          </a>
+        </span>
+      <% end %>
+    </div>
   </div>
-  <div class="row text-center" style="margin-top: 30px">
-    <span class="jumbotron-links">
-      <a href="https://simpletoken.org/faq/categories/token-sale/" target="_blank" title="See All Faq" class="link">
-        <span class="faq-link-icon icon-pos"></span>
-        <span class="border-btm">See All Faq</span>
-      </a>
-    </span>
-    <span class="jumbotron-links">
-      <a href="https://www.t.me/simpletoken" target="_blank" title="Go To Telegram" class="link">
-        <span class="go-to-telegram-link-icon icon-pos"></span>
-        <span class="border-btm">Go To Telegram</span>
-      </a>
-    </span>
-    <span class="jumbotron-links">
-      <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit" target="_blank" title="Registration Guide" class="link">
-        <span class="registration-guide-link-icon icon-pos"></span>
-        <span class="border-btm">Registration Guide</span>
-      </a>
-    </span>
-  </div>
-</div>

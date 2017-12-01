@@ -10,7 +10,13 @@
           Easily launch digital currencies on open Ethereum sidechains and turn any business into a dynamic ecosystem.
         </p>
       </div>
-      <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" class="btn-common btn-gold btn-features" title="The token sale is live">The token sale is live</a>
+      <% if Time.zone.now >= GlobalConstant::StTokenSale.general_access_sale_end_date %>
+          <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" class="btn-common btn-gold btn-features" title="The token sale result">token
+            sale results</a>
+      <% else %>
+          <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" class="btn-common btn-gold btn-features" title="The token sale is live">The
+            token sale is live</a>
+      <% end %>
     </div>
 
     <div class="col-sm-12 col-md-6 illustration">
@@ -34,12 +40,15 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-md-offset-2">
       <p class="desc">
-        We're building a network for consumer apps tokenization. Get all the benefits of a blockchain infrastructure without the high costs and risks of building everything yourself from scratch.
+        We're building a network for consumer apps tokenization. Get all the benefits of a blockchain infrastructure
+        without the high costs and risks of building everything yourself from scratch.
       </p>
     </div>
   </div>
   <div class="container-social text-center">
-    <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" class="btn-common btn-gold get-started" title="About the Product">About the Product</a>
-    <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" class="btn-common white-border-btn get-started" title="Get the Docs">Get the Docs</a>
+    <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" class="btn-common btn-gold get-started" title="About the Product">About
+      the Product</a>
+    <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" class="btn-common white-border-btn get-started" title="Get the Docs">Get
+      the Docs</a>
   </div>
 </div>

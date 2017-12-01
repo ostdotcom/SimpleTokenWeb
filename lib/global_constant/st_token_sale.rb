@@ -5,6 +5,10 @@ module GlobalConstant
 
     class << self
 
+      def has_sale_ended?
+        Time.zone.now >= general_access_sale_end_date
+      end
+
       def early_access_sale_start_date
         Time.zone.parse(config['sale_dates']['early_access_sale_start_date'])
       end

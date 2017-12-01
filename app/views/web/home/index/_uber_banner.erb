@@ -9,8 +9,8 @@
 
      case true
        when @presenter_obj.has_sale_ended?
-         text1 = 'The token sale has ended.'
-         text3 = 'Learn more on '
+         text1 = "The Token Sale Ended. #{@presenter_obj.target_percent_achieved}% of Target Achieved!"
+         text3 = 'Connect with us on '
        when @presenter_obj.has_sale_paused?
          text1 = 'The token sale has been temporarily paused.'
          text3 = 'Learn more on '
@@ -67,39 +67,13 @@
 %>
 
 <% if is_token_sale_page %>
-<div class="text-center uber-banner hidden-xs">
-  <span class="uber-banner-icon"></span>&nbsp;&nbsp;<%= text1 %>
-  <% if text2.present? %>
-      <a href="#sale-progress-container" class="smooth-scroll"><%= text2 %></a>
-  <% end %>
-  <%= text3 %><a href="https://www.t.me/simpletoken" target="_blank" title="Join our Telegram channel">Telegram</a>
-</div>
-
-<div class="container-fluid hidden-sm hidden-md hidden-lg hidden-xl">
-  <div class="row uber-banner">
-    <div class="col-xs-1">
-      <div class="row">
-        <span class="uber-banner-icon"></span>
-      </div>
-    </div>
-    &nbsp;&nbsp;
-    <div class="col-xs-11">
-      <div class="row">
-        <%= text1 %>
-        <% if text2.present? %>
-            <a href="#sale-progress-container" class="smooth-scroll"><%= text2 %></a>
-        <% end %>
-        <%= text3 %>
-        <a href="https://www.t.me/simpletoken" target="_blank" title="Join our Telegram channel">Telegram</a>
-      </div>
-    </div>
-  </div>
-</div>
-<% else %>
   <div class="text-center uber-banner hidden-xs">
-    <span class="uber-banner-icon"></span>&nbsp;&nbsp;The token sale is Live! 5000+ participants,
-    <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/#sale-progress-container">+40% bonus</a>
-    activated! <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Participate Now!">Get Started!</a>
+    <span class="uber-banner-icon"></span>&nbsp;&nbsp;<%= text1 %>
+    <% if text2.present? %>
+      <a href="#sale-progress-container" class="smooth-scroll"><%= text2 %></a>
+    <% end %>
+    <%= text3 %>
+    <a href="https://www.t.me/simpletoken" target="_blank" title="Join our Telegram channel">Telegram</a>
   </div>
 
   <div class="container-fluid hidden-sm hidden-md hidden-lg hidden-xl">
@@ -112,13 +86,68 @@
       &nbsp;&nbsp;
       <div class="col-xs-11">
         <div class="row">
-          The token sale is Live! 5000+ participants,
-          <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/#sale-progress-container">+40% bonus</a>
-          activated! <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Participate Now!">Get Started!</a>
+          <%= text1 %>
+          <% if text2.present? %>
+            <a href="#sale-progress-container" class="smooth-scroll"><%= text2 %></a>
+          <% end %>
+          <%= text3 %>
+          <a href="https://www.t.me/simpletoken" target="_blank" title="Join our Telegram channel">Telegram</a>
         </div>
       </div>
     </div>
   </div>
+<% else %>
+  <% if GlobalConstant::StTokenSale.has_sale_ended? %>
+
+    <div class="text-center uber-banner hidden-xs">
+      <span class="uber-banner-icon"></span>&nbsp;&nbsp;The Token Sale Ended with Target Achieved! Connect with us on <a href="https://www.t.me/simpletoken" target="_blank" title="Telegram">Telegram</a>
+    </div>
+
+    <div class="container-fluid hidden-sm hidden-md hidden-lg hidden-xl">
+      <div class="row uber-banner">
+        <div class="col-xs-1">
+          <div class="row">
+            <span class="uber-banner-icon"></span>
+          </div>
+        </div>
+        &nbsp;&nbsp;
+        <div class="col-xs-11">
+          <div class="row">
+            The Token Sale Ended with Target Achieved! Connect with us on <a href="https://www.t.me/simpletoken" target="_blank" title="Telegram">Telegram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="text-center uber-banner hidden-xs">
+      <span class="uber-banner-icon"></span>&nbsp;&nbsp;The token sale is Live! 5000+ participants,
+      <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/#sale-progress-container">+40% bonus</a>
+      activated!
+      <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Participate Now!">Get Started!</a>
+    </div>
+
+    <div class="container-fluid hidden-sm hidden-md hidden-lg hidden-xl">
+      <div class="row uber-banner">
+        <div class="col-xs-1">
+          <div class="row">
+            <span class="uber-banner-icon"></span>
+          </div>
+        </div>
+        &nbsp;&nbsp;
+        <div class="col-xs-11">
+          <div class="row">
+            The token sale is Live! 5000+ participants,
+            <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/#sale-progress-container">+40%
+              bonus</a>
+            activated!
+            <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Participate Now!">Get
+              Started!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
 
 

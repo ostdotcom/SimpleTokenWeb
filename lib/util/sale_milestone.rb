@@ -69,7 +69,15 @@ module Util
     end
 
     def hard_cap_milestone_achieved?
-      total_st_token_sold >= GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
+      total_st_token_sold >= hard_cap_st_tokens_milestone_value
+    end
+
+    def hard_cap_st_tokens_milestone_value
+      increase_hard_cap? ? 268000000: GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
+    end
+
+    def increase_hard_cap?
+      total_st_token_sold > 200000000
     end
 
     def next_milestone_to_achieve
@@ -91,17 +99,19 @@ module Util
 
     def last_milestone_to_show_st_value
       @last_milestone_to_show_st_value ||= case true
-                                                when hard_cap_milestone_achieved?
-                                                  GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
-                                                when power_milestone_achieved?
-                                                  GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
-                                                when kicker_milestone_achieved?
-                                                  GlobalConstant::StTokenSale.power_st_tokens_milestone
-                                                when target_milestone_achieved?
-                                                  GlobalConstant::StTokenSale.kicker_st_tokens_milestone
-                                                else
-                                                  GlobalConstant::StTokenSale.target_st_tokens_milestone
-                                              end
+                                             when GlobalConstant::StTokenSale.has_sale_ended?
+                                               total_st_token_sold
+                                             when hard_cap_milestone_achieved?
+                                               hard_cap_st_tokens_milestone_value
+                                             when power_milestone_achieved?
+                                               hard_cap_st_tokens_milestone_value
+                                             when kicker_milestone_achieved?
+                                               GlobalConstant::StTokenSale.power_st_tokens_milestone
+                                             when target_milestone_achieved?
+                                               GlobalConstant::StTokenSale.kicker_st_tokens_milestone
+                                             else
+                                               GlobalConstant::StTokenSale.target_st_tokens_milestone
+                                           end
     end
 
     def last_milestone_achieved
@@ -147,7 +157,7 @@ module Util
 
         case milestone_type
           when 'hard_cap'
-            min, max = GlobalConstant::StTokenSale.power_st_tokens_milestone, GlobalConstant::StTokenSale.hard_cap_st_tokens_milestone
+            min, max = GlobalConstant::StTokenSale.power_st_tokens_milestone, hard_cap_st_tokens_milestone_value
           when 'power'
             min, max = GlobalConstant::StTokenSale.kicker_st_tokens_milestone, GlobalConstant::StTokenSale.power_st_tokens_milestone
           when 'kicker'

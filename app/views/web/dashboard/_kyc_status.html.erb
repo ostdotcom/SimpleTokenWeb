@@ -8,36 +8,41 @@
             the Early Access sale.
           </div>
       <% end %>
-      <div class="panel panel-default kyc-panel <%= @presenter_obj.kyc_verification_class %>">
-        <table class="panel-body">
-          <tr>
-            <td>
-              <span class="kyc-status-icon-<%= @presenter_obj.kyc_verification_icon_class %> ver-middle"></span>
-              <span class="ver-middle"><%= @presenter_obj.kyc_verification_text %></span>
-            </td>
-            <td>
-              <% if @presenter_obj.is_kyc_pending? %>
-                  <a href="javascript:void(0)" <%= raw 'class="openModal"' if @presenter_obj.show_kyc_update_modal? %> id="kycUpdate">update
-                    kyc</a>
-              <% end %>
-            </td>
-          </tr>
-        </table>
-      </div>
 
-      <% if @presenter_obj.show_ethereum_address_whitelist_status_box? %>
-          <div class="panel panel-default kyc-panel approved">
+      <% if !@presenter_obj.has_sale_ended? %>
+          <div class="panel panel-default kyc-panel <%= @presenter_obj.kyc_verification_class %>">
             <table class="panel-body">
               <tr>
                 <td>
-                  <span class="kyc-status-icon-<%= @presenter_obj.ethereum_address_whitelist_icon_class %> ver-middle"></span>
-                  <span class="ver-middle"><%= @presenter_obj.ethereum_address_whitelist_done? ? 'Ethereum Address Whitelisted' : 'Ethereum Address Whitelisting in Progress' %></span>
+                  <span class="kyc-status-icon-<%= @presenter_obj.kyc_verification_icon_class %> ver-middle"></span>
+                  <span class="ver-middle"><%= @presenter_obj.kyc_verification_text %></span>
                 </td>
+
                 <td>
+                  <% if @presenter_obj.is_kyc_pending? %>
+                      <a href="javascript:void(0)" <%= raw 'class="openModal"' if @presenter_obj.show_kyc_update_modal? %> id="kycUpdate">update
+                        kyc</a>
+                  <% end %>
                 </td>
+
               </tr>
             </table>
           </div>
+
+          <% if @presenter_obj.show_ethereum_address_whitelist_status_box? %>
+              <div class="panel panel-default kyc-panel approved">
+                <table class="panel-body">
+                  <tr>
+                    <td>
+                      <span class="kyc-status-icon-<%= @presenter_obj.ethereum_address_whitelist_icon_class %> ver-middle"></span>
+                      <span class="ver-middle"><%= @presenter_obj.ethereum_address_whitelist_done? ? 'Ethereum Address Whitelisted' : 'Ethereum Address Whitelisting in Progress' %></span>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+          <% end %>
       <% end %>
 
       <% if !@presenter_obj.is_kyc_denied? %>
@@ -160,7 +165,8 @@
                     <span class="kyc-status-icon-approved ver-middle"></span>
                         <span class="ver-middle">15% ETH Price Bonus</span>
                     </span>
-                <a href="https://medium.com/simple-token/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank" class="pull-right">LEARN MORE</a>
+                <a href="https://medium.com/simple-token/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank" class="pull-right">LEARN
+                  MORE</a>
               </div>
             </div>
           </div>
@@ -170,14 +176,17 @@
               <div class="panel panel-default kyc-panel approved">
                 <div class="panel-body text-center">
                   <div style="font-weight: 500;padding-bottom: 10px">TOTAL BONUSES</div>
-                  <div>You will <span style="font-weight: 500">receive <%= @presenter_obj.total_bonus %>% ST bonus</span>
+                  <div>You will
+                    <span style="font-weight: 500">receive <%= @presenter_obj.total_bonus %>% ST bonus</span>
                     on each of your purchases. Bonuses will be distributed within 45 days of the sale end.
                     <%= !@presenter_obj.is_alternate_token_bonus_confirmed? ? '' : (@presenter_obj.multple_bonus_confirmed? ? 'At end of sale, you may choose to receive 10% of your bonus as altdrop instead of ST.' : 'You will also receive 10% bonus in your altdrop of choice.') %>
                   </div>
                 </div>
               </div>
           <% else %>
-            <div class="text-center" style="color: #597a84;font-weight: 500;">Bonuses will be distributed within 45 days of the sale end.</div>
+              <div class="text-center" style="color: #597a84;font-weight: 500;">Bonuses will be distributed within 45
+                days of the sale end.
+              </div>
           <% end %>
 
           <!--kyc denied condition end-->

@@ -17,6 +17,9 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def sign_up
+    if GlobalConstant::StTokenSale.has_sale_ended?
+      redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
+    end
   end
 
   # Login
@@ -74,6 +77,9 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def add_kyc_form
+    if GlobalConstant::StTokenSale.has_sale_ended?
+      redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
+    end
 
     service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
@@ -97,6 +103,10 @@ class Web::UserController < Web::BaseController
   #
   def update_kyc_form
 
+    if GlobalConstant::StTokenSale.has_sale_ended?
+      redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
+    end
+
     service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
@@ -118,6 +128,10 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def add_branded_token
+    if GlobalConstant::StTokenSale.has_sale_ended?
+      redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
+    end
+
     service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
@@ -156,6 +170,10 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def verification_link
+    if GlobalConstant::StTokenSale.has_sale_ended?
+      redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
+    end
+
     service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
