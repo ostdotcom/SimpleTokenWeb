@@ -57,7 +57,9 @@
       }
     }
   }
-
+  .btn-top-bottom-15{
+    margin: 15px 10px;
+  }
 }
 
 .container-progress {
@@ -106,11 +108,17 @@
       max-width: 220px;
       width:80%;
       text-align: center;
-      margin:0 auto 30px;
+      margin:0 auto 0;
     }
     .mobile-bottom{
       display: flex;
       flex-direction: column-reverse;
+    }
+    .desc{
+      text-align: center;
+    }
+    .links-box{
+      margin-bottom: 30px;
     }
   }
 }
