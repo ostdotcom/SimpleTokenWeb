@@ -96,7 +96,7 @@
 
         <div class="milestone ms-ended ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="left:calc(<%=progressbar_milestones.last %>% - 12px)">
           <div class="end-point">
-            <%= @presenter_obj.human_readable_format_total_st_token_sold %> ST
+            <%= @presenter_obj.human_readable_format_total_st_token_sold_single_precision %> ST
           </div>
         </div>
 
@@ -223,7 +223,7 @@
 
         <div class="milestone ms-ended ms-<%= @presenter_obj.last_milestone_achieved %> complete" style="top:calc(<%=progressbar_milestones.last %>% - 12px)">
           <div class="end-point">
-            <%= @presenter_obj.human_readable_format_total_st_token_sold %> ST
+            <%= @presenter_obj.human_readable_format_total_st_token_sold_single_precision %> ST
           </div>
         </div>
 

@@ -33,6 +33,10 @@ module Util
       human_readable_format(total_st_token_sold)
     end
 
+    def human_readable_format_total_st_token_sold_single_precision
+     number_to_human(total_st_token_sold, precision: 1, significant: false, units: {million: "M", thousand: "K", billion: "B"}, format: "%n%u")
+    end
+
     def human_readable_format(val)
       number_to_human(val, precision: 2, significant: false, units: {million: "M", thousand: "K", billion: "B"}, format: "%n%u")
     end
