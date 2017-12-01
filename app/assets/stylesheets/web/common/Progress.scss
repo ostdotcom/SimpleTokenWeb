@@ -372,6 +372,9 @@
             border: 3px solid #740602;
           }
         }
+        .desc {
+          margin-top: -10px;
+        }
       }
 
     }
@@ -496,6 +499,24 @@
               float: left;
               left: calc(50% - 100px);
               top: 0;
+              .title{
+                font-size: 13px;
+                font-weight: 500;
+              }
+              .sub{
+                font-size: 10px;
+              }
+              .bonus{
+                font-size: 12px;
+                font-weight: 500;
+              }
+            }
+
+            &.ms-hard_cap{
+              .desc {
+                margin-top: -15px;
+                left: calc(50% - 155px);
+              }
             }
 
             &.ms-ended{

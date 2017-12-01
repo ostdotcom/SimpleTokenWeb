@@ -45,8 +45,8 @@
    left_buffer = mile_percent - percent_complete + left_margin if (percent_complete >= mile_percent && percent_complete < mile_percent + left_margin)
    top_buffer = mile_percent - percent_complete + top_margin if (percent_complete >= mile_percent && percent_complete < mile_percent + top_margin)
 
-   if GlobalConstant::StTokenSale.has_sale_ended? && (progressbar_milestones[-1] - progressbar_milestones[-2] < 4)
-     progressbar_milestones[-2] = progressbar_milestones[-2] - 4
+   if GlobalConstant::StTokenSale.has_sale_ended? && (progressbar_milestones[-1] - progressbar_milestones[-2] < 7)
+     progressbar_milestones[-2] = progressbar_milestones[-2] - 7
    end
 
 
@@ -177,7 +177,7 @@
           <% if @presenter_obj.increase_hard_cap? %>
               <div class="desc">
                 <div class="title">Sale End</div>
-                <div class="sub">(Includes 15% Public</div>
+                <div class="sub">(240M Hard Cap +15% Public</div>
                 <div class="bonus">Sale ETH Bonus)</div>
               </div>
           <% end %>
@@ -295,7 +295,7 @@
           <% if @presenter_obj.increase_hard_cap? %>
               <div class="desc">
                 <div class="title">Sale End</div>
-                <div class="sub">(Includes 15% Public</div>
+                <div class="sub">(240M Hard Cap +15% Public</div>
                 <div class="bonus">Sale ETH Bonus)</div>
               </div>
           <% end %>

@@ -77,7 +77,7 @@ module Util
     end
 
     def increase_hard_cap?
-      total_st_token_sold > 200000000
+      true
     end
 
     def next_milestone_to_achieve
