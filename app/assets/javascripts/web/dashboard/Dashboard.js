@@ -224,12 +224,15 @@
                         var jResult = jWrap.find("#user-eth-address-purchase-details"),
                             jUserEthAddressPurchaseEthSent = jResult.find("#user-eth-address-purchase-eth-sent"),
                             jUserEthAddressPurchaseStAllotted = jResult.find("#user-eth-address-purchase-st-allotted"),
+                            jUserEthAddressBonusStAllotted = jResult.find("#user-eth-address-bonus-st-allotted"),
 
                             sUserEthAddressPurchaseEthSent = "",
                             sUserEthAddressPurchaseStAllotted = "",
+                            sUserEthAddressBonusStAllotted = "",
 
                             totalEthereumSent   = ( purchaseDetails["total_ethereum_sent_by_user"]  || '0' ),
                             totalStAllotted   =( purchaseDetails["total_simple_token_allotted_to_user"]  || '0' )
+                            totalStBonus   =( purchaseDetails["total_simple_token_bonus_to_user"]  || '0' )
 
                         ;
 
@@ -241,6 +244,9 @@
                         sUserEthAddressPurchaseStAllotted = totalStAllotted + " ST ";
                         jUserEthAddressPurchaseStAllotted.html( sUserEthAddressPurchaseStAllotted );
 
+                        //
+                        sUserEthAddressBonusStAllotted = totalStBonus + " ST ";
+                        jUserEthAddressBonusStAllotted.html( sUserEthAddressBonusStAllotted );
 
                         jResult.show();
                     } else {
