@@ -12,16 +12,9 @@
      status: "Achieved"
      },
      {
-       heading: "Total Achievement",
-     description: "#{@presenter_obj.formatted_total_st_token_sold} Tokens"
-     },
-     {
-       heading: "Hard Cap",
-     description: "240,000,000 Tokens Sold"
-     },
-     {
-       heading: "ERC20 token",
-     description: "Yes"
+       heading: "st purchased",
+       description: "261,070,175 Tokens",
+       includings: "Including Bonuses"
      },
      {
        heading: "Token Distribution",
@@ -109,6 +102,11 @@
                 <span class="soft-cap-status">
                   <span class="kyc-status-icon-approved ver-middle"></span>
                   <span class="ver-middle"><%= data[:status] %></span>
+                </span>
+              <% end %>
+              <% if data[:includings].present? %>
+                <span class="soft-cap-status">
+                  <span class="ver-middle"><%= data[:includings] %></span>
                 </span>
               <% end %>
             </div>

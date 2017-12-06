@@ -1,245 +1,416 @@
 <%= render :partial => "/shared/web/common/navbar" %>
+
+<%
+   press_release = [
+     {
+       header: "Press Releases",
+       title: "Public Token Sale Launch",
+       link: "https://www.prnewswire.com/news-releases/simple-token-to-launch-public-token-sale-november-14-300554187.html",
+       desc: "Simple Token to Launch Public Token Sale November 14",
+       date: "13-Nov-2017"
+     },
+     {
+       title: "First 4 Member Companies Announced",
+       link: "https://docs.google.com/document/d/1XhlZpGqhB1ZWyXvNr295ueclkqSqWc_r3b4Esp3Gc3I/edit?usp=sharing",
+       desc: "Simple Token Announces First Four Member Companies To Launch Branded Tokens on Project’s Ecosystem",
+       date: "31-Oct-2017"
+     },
+     {
+       title: "Final Sale Price Released",
+       link: "https://www.prnewswire.com/news-releases/simple-token-finalizes-token-sale-price-and-announces-dream-team-of-global-advisors-300544542.html",
+       desc: 'Simple Token Finalizes Token Sale Price and Announces "Dream Team" of Global Advisors',
+       date: "26-Oct-2017"
+     },
+     {
+       header: "In the News",
+       title: "Total Retail",
+       link: "http://www.mytotalretail.com/article/blockchain-is-here-retail-needs-get-aboard-or-sink",
+       desc: 'Blockchain is Here: Retail Needs to Get Aboard … or Sink',
+       date: "4-Dec-2017"
+     },
+     {
+       title: "ICO Coin",
+       link: "https://www.youtube.com/watch?v=W6AH5lHKLA8",
+       desc: 'ICO Simple Token Hướng dẫn đăng ký KYC và cách mua ST token',
+       date: "30-Nov-2017"
+     },
+     {
+       title: "OhHeyMatty (YouTube)",
+       link: "https://www.youtube.com/watch?v=AOHAF-c8dck",
+       desc: 'Crypto ICO Weekly Update - Review Of The Top ICOs In Todays Market',
+       date: "29-Nov-2017"
+     },
+     {
+       title: "CRYPTO KING (YouTube)",
+       desc: 'Simple Token ICO is LIVE. **1 Day Remaining**',
+       date: "29-Nov-2017"
+     },
+     {
+       title: "Cryptocurrency Talk",
+       link: "https://cryptocurrencytalk.com/video/view/20863-is-simple-token-the-next-amazon-web-services-aws-my-top-three-icos-ahfrickin/",
+       desc: "'IS SIMPLE TOKEN THE NEXT AMAZON WEB SERVICES (AWS)? MY TOP THREE ICO'S! | AHFRICKIN'",
+       date: "29-Nov-2017"
+     },
+     {
+       title: "ArkEcosystem",
+       link: "https://www.reddit.com/r/ArkEcosystem/comments/7gggkw/log_of_ama_with_simple_token_jason_goldberg_jason/",
+       desc: "AMA with Simple Token - Jason Goldberg and Benjamin Bollen (Archived)",
+       date: "29-Nov-2017"
+     },
+     {
+       title: "The Next Web",
+       link: "https://thenextweb.com/money/2017/11/28/simple-token-ico-picks-up-over-85-percent-of-target-in-6-days/",
+       desc: "Simple Token ICO picks up 125 percent of target in 12 days",
+       date: "28-Nov-2017"
+     },
+     {
+       title: "Marqus Zar (YouTube)",
+       link: "https://www.youtube.com/watch?v=sdpOhss7784",
+       desc: "Simple Token (ST) - What Is Simple Token ICO",
+       date: "25-Nov-2017"
+     },
+     {
+       title: "1000BTC CLUB (Vietnam)",
+       link: "https://www.youtube.com/watch?v=ihymPID5fSE",
+       desc: "ICO Simple Token - Hướng dẫn đăng ký KYC và cách mua ST token",
+       date: "25-Nov-2017"
+     },
+     {
+       title: "Daily Crypto",
+       link: "https://dailycrypto.io/2017/11/25/guest-jason-goldberg-ceo-of-simple-token/",
+       desc: "GUEST: Jason Goldberg, CEO of Simple Token",
+       date: "25-Nov-2017"
+     },
+     {
+       title: "Coin Bloq (YouTube)",
+       link: "https://www.youtube.com/watch?v=2v5wU3nfDjc",
+       desc: "ICO Review: WaBi, Simple Token, UTtoken, Pundi X, Nitro, FundRequest",
+       date: "21-Nov-2017"
+     },
+     {
+       title: "The Cryptonomatron (YouTube)",
+       link: "https://www.youtube.com/watch?v=GnTUuKs6C7s",
+       desc: "SIMPLE TOKEN ICO Review! Cryptocurrency to Power Digital Communities! ST",
+       date: "21-Nov-2017"
+     },
+     {
+       title: "The Bitcoin Podcast",
+       link: "https://thebitcoinpodcast.com/announcements-simple-token/",
+       desc: "Announcements: Simple Token",
+       date: "20-Nov-2017"
+     },
+     {
+       title: "Coindesk",
+       link: "https://www.coindesk.com/ico-presales-boost-vc-3iq-multicoin/",
+       desc: "Even Investors with Access Want ICO Presale Reform",
+       date: "19-Nov-2017"
+     },
+     {
+       title: "Ian Balina (YouTube)",
+       link: "https://www.youtube.com/watch?v=QPBQV34lKfo",
+       desc: "Simple Token ICO Live Stream AMA w/Jason Goldberg",
+       date: "17-Nov-2017"
+     },
+     {
+       title: "Cryptocurrency Talk",
+       link: "https://cryptocurrencytalk.com/video/view/10632-simple-token-ico-live-stream-ama-wjason-goldberg/",
+       desc: "SIMPLE TOKEN ICO LIVE STREAM AMA W/JASON GOLDBERG",
+       date: "17-Nov-2017"
+     },
+     {
+       title: "The Block (UK)",
+       link: "https://www.blockchaintechnology-news.com/2017/11/17/case-study-bridging-the-gap-between-blockchain-and-consumer-with-simple-token/",
+       desc: "Case Study: Simple Token look to bridge the gap between blockchain and consumer",
+       date: "17-Nov-2017"
+     },
+     {
+       title: "Cafe Bitcoin (Vietnam)",
+       link: "https://cafebitcoin.vn/phan-tich-ico-simple-token",
+       desc: "Phân tích ICO: Simple Token",
+       date: "16-Nov-2017"
+     },
+     {
+       title: "Hardware Lab (Korea)",
+       link: "http://www.hwlab.com/news.php?code=29311",
+       desc: "심플 토큰, 11월 14일 공식 토큰 판매 론칭",
+       date: "15-Nov-2017"
+     },
+     {
+       title: "wickedlycrypto (YouTube)",
+       link: "https://www.youtube.com/watch?v=YZOdNj9MJFk",
+       desc: "Simple Token ICO",
+       date: "15-Nov-2017"
+     },
+     {
+       title: "Happy Money Man (YouTube)",
+       link: "https://www.youtube.com/watch?v=-tUQbTaTLVM",
+       desc: "Simple Token ICO - When Moon? Know Before The Crowd - Why Simple Token Is Special",
+       date: "15-Nov-2017"
+     },
+     {
+       title: "Ronatory (Blog)",
+       link: "https://ronatory.wordpress.com/2017/11/15/why-i-invest-in-bitcoin-and-other-cryptocurrencies/",
+       desc: "WHY I INVEST IN BITCOIN AND OTHER CRYPTOCURRENCIES",
+       date: "15-Nov-2017"
+     },
+     {
+       title: "Wallet Weekly",
+       link: "https://www.walletweekly.com/simple-token-ico/",
+       desc: "5 Things to Know About Simple Token, Including Its ICO",
+       date: "15-Nov-2017"
+     },
+     {
+       title: "ICO Drops",
+       link: "https://icodrops.com/simple-token/",
+       desc: "Simple Token (analysis)",
+       date: "15-Nov-2017"
+     },
+     {
+       title: "Concourse​Q",
+       link: "https://concourseq.io/Q/Simple%20Token",
+       desc: "Simple Token (listing and analysis)",
+       date: "15-Nov-2017"
+     },
+     {
+       title: "Acrofan (Korea)​Q",
+       link: "http://kr.acrofan.com/detail.php?number=73286",
+       desc: "심플 토큰, 11월 14일 공식 토큰 판매 론칭",
+       date: "14-Nov-2017"
+     },
+     {
+       title: "News Tap (Korea)",
+       link: "http://www.newstap.co.kr/news/articleView.html?idxno=61950",
+       desc: "심플 토큰, 11월 14일 공식 토큰 판매 론칭",
+       date: "14-Nov-2017"
+     },
+     {
+       title: "KiNews (Korea)",
+       link: "http://www.kinews.net/news/articleView.html?idxno=113437",
+       desc: "심플 토큰, 14일 공식 토큰 판매 시작",
+       date: "14-Nov-2017"
+     },
+     {
+       title: "BrainBox (Korea)",
+       link: "http://www.brainbox.co.kr/bbs/board.php?bo_table=news&wr_id=46892",
+       desc: "심플 토큰 11월 14일 공식 토큰 판매 론칭",
+       date: "14-Nov-2017"
+     },
+     {
+       title: "Ian Balina (YouTube)",
+       link: "https://www.youtube.com/watch?v=YUY0D6mtbAQ",
+       desc: "Simple Token ICO Review - Token To Power Your Business",
+       date: "14-Nov-2017"
+     },
+     {
+       title: "The Merkle",
+       link: "https://themerkle.com/simple-token-altdrop-will-pay-investors-and-early-adopters-in-any-erc20-token-of-their-choice/",
+       desc: "Simple Token Altdrop Will Pay Investors and Early Adopters in any ERC20 Token of their Choice",
+       date: "14-Nov-2017"
+     },
+     {
+       title: "Gründerszene (Germany)",
+       link: "https://www.gruenderszene.de/allgemein/jason-goldberg-fab-hem-simple-token-ico",
+       desc: "Former Fab CEO Jason Goldberg launches ICO",
+       date: "14-Nov-2017"
+     },
+     {
+       title: "Cryptovest",
+       link: "https://cryptovest.com/news/interviews/cryptovest-exclusive-jason-goldberg-founder--ceo-of-simple-token-talks-about-the-project-and-its-upcoming-token-sale/",
+       desc: "Cryptovest Exclusive: Jason Goldberg, Founder & CEO of Simple Token, Talks About the Project and its Upcoming Token Sale",
+       date: "13-Nov-2017"
+     },
+     {
+       title: "am730 (Hong Kong)",
+       link: "https://www.am730.com.hk/column/%E8%B2%A1%E7%B6%93/ico%E9%BB%9E%E6%AD%A2%E4%BF%82%E7%9C%BE%E7%B1%8C%E5%92%81%E7%B0%A1%E5%96%AE-103362",
+       desc: "ICO點止係眾籌咁簡單",
+       date: "13-Nov-2017"
+     },
+     {
+       title: "Economics 3.0 (Facebook, Hong Kong)",
+       link: "https://www.facebook.com/notes/%E7%B6%93%E6%BF%9F-30/ico%E9%BB%9E%E6%AD%A2%E4%BF%82%E7%9C%BE%E7%B1%8C%E5%92%81%E7%B0%A1%E5%96%AE/897499850400376/",
+       desc: "ICO點止係眾籌咁簡單",
+       date: "13-Nov-2017"
+     },
+     {
+       title: "Diary of a Made Man (YouTube)",
+       link: "https://www.youtube.com/watch?v=MvzJr7XHQlA",
+       desc: "ICO Live Stream - Simple Token, Oracle Network, Wax Token, Bloom, Metronome",
+       date: "11-Nov-2017"
+     },
+     {
+       title: "Hacked",
+       link: "https://hacked.com/ico-analysis-simple-token",
+       desc: "ICO Analysis: Simple Token",
+       date: "10-Nov-2017"
+     },
+     {
+       title: "Hong Kong Economic Journal (Hong Kong)",
+       link: "http://www1.hkej.com/dailynews/investment/article/1695471/%E5%8A%A0%E5%AF%86%E8%B2%A8%E5%B9%A3%E9%83%BD%E6%98%AF%E6%8A%95%E6%A9%9F%E5%A4%A7%E6%B3%A1%E6%B2%AB?",
+       desc: "加密貨幣都是投機大泡沫?",
+       date: "7-Nov-2017"
+     },
+     {
+       title: "Meme HK (Hong Kong)",
+       link: "http://news.memehk.com/posts/18866",
+       desc: "加密貨幣都是投機大泡沫? | 曾國平@經濟3.0",
+       date: "7-Nov-2017"
+     },
+     {
+       title: "Economics 3.0 (Facebook, Hong Kong)",
+       link: "https://www.facebook.com/notes/%E7%B6%93%E6%BF%9F-30/%E5%8A%A0%E5%AF%86%E8%B2%A8%E5%B9%A3%E9%83%BD%E6%98%AF%E6%8A%95%E6%A9%9F%E5%A4%A7%E6%B3%A1%E6%B2%AB/893876907429337/",
+       desc: "加密貨幣都是投機大泡沫?",
+       date: "7-Nov-2017"
+     },
+     {
+       title: "Blockchain News",
+       link: "http://www.the-blockchain.com/2017/11/03/simple-token-announces-first-four-member-companies-launch-branded-tokens-projects-ecosystem/",
+       desc: "Simple Token Announces First Four Member Companies – To Launch Branded Tokens on Project’s Ecosystem",
+       date: "3-Nov-2017"
+     },
+     {
+       title: "Ether in the News",
+       link: "http://etherinthenews.com/2017/11/03/simple-token-announces-advisory-board-token-sale-milestones/",
+       desc: "Simple Token Announces Advisory Board, Token Sale Milestones ",
+       date: "3-Nov-2017"
+     },
+     {
+       title: "Coinspeaker",
+       link: "https://www.coinspeaker.com/2017/11/03/simple-token-empowering-developers-get-blockchain/",
+       desc: "Simple Token Empowering Developers to Get on the Blockchain Tech",
+       date: "3-Nov-2017"
+     },
+     {
+       title: "Blockchain News",
+       link: "http://www.the-blockchain.com/2017/11/03/simple-token-announces-advisory-board-token-sale-milestones/",
+       desc: "Simple Token Announces Advisory Board, Token Sale Milestones",
+       date: "3-Nov-2017"
+     },
+     {
+       title: "Medium - Cody McCauley",
+       link: "https://medium.com/@codymcc4/simple-token-bridging-consumer-applications-to-the-blockchain-baff737aa226",
+       desc: "Simple Token: Bridging Consumer Applications to the Blockchain",
+       date: "2-Nov-2017"
+     },
+     {
+       title: "BTC Manager",
+       link: "https://btcmanager.com/building-bridge-cryptocurrencies-main-street/",
+       desc: "Building a Bridge Between Cryptocurrencies and Main Street",
+       date: "2-Nov-2017"
+     },
+     {
+       title: "Hacker Noon - Jason Goldberg",
+       link: "https://hackernoon.com/top-10-cringiest-things-ive-been-told-during-the-ico-process-thus-far-a78e60927042",
+       desc: "Top 10 Cringiest Things I’ve Been Told During the ICO Process (thus far)",
+       date: "2-Nov-2017"
+     },
+     {
+       title: "Product Hunt",
+       link: "https://www.producthunt.com/posts/simple-token",
+       desc: "Simple Token - Launch your own branded crypto token without the ICO drama",
+       date: "2-Nov-2017"
+     },
+     {
+       title: "Hardware Lab (Korea)",
+       link: "http://www.hwlab.com/news.php?code=29268",
+       desc: "Simple Token, Finalizes Token Sale Price and Announces Global Advisors",
+       date: "2-Nov-2017"
+     },
+     {
+       title: "VentureBeat",
+       link: "https://venturebeat.com/2017/10/31/take-off-your-bitcoin-blinders-theres-no-right-way-to-use-blockchain/",
+       desc: "Take off your Bitcoin blinders: There’s no ‘right way’ to use blockchain",
+       date: "1-Nov-2017"
+     },
+     {
+       title: "Interface News (Korea)",
+       link: "http://www.internews.kr/news/articleView.html?idxno=11903",
+       desc: "Simple Token Finalizes Token Sale Price… Announces Global Advisors",
+       date: "31-Oct-2017"
+     },
+     {
+       title: "Hacker Noon - Jason Goldberg",
+       link: "https://hackernoon.com/so-you-want-to-have-a-utility-token-sale-part-i-of-many-the-registration-kyc-process-a3ef6f35f0a8",
+       desc: "So you want to have a utility token sale… (part I of many: the Registration & KYC process)",
+       date: "31-Oct-2017"
+     },
+     {
+       title: "Smith + Crown",
+       link: "https://www.smithandcrown.com/sale/simple-token/",
+       desc: "Simple Token: A Token Issuance Infrastructure for Consumer Apps",
+       date: "31-Oct-2017"
+     },
+     {
+       title: "Chipin ",
+       link: "https://www.chipin.com/simple-token-blockchain-app-tokens/",
+       desc: "Simple Token Takes the Headache out of Blockchain Tokenization",
+       date: "31-Oct-2017"
+     },
+     {
+       title: "It’s Blockchain ",
+       link: "https://itsblockchain.com/simpletoken/",
+       desc: "Simple Token is building Blockchain and Cryptocurrency as a Service",
+       date: "28-Oct-2017"
+     },
+     {
+       title: "Blockchain Reviews",
+       link: "http://blockchainreviews.info/simple-token-review/",
+       desc: "Simple Token assessment",
+       date: "25-Oct-2017"
+     },
+     {
+       title: "Epicenter (YouTube)",
+       link: "https://www.youtube.com/watch?v=c8swtDtappM&t=2s",
+       desc: "#204 Ben Bollen & Jason Goldberg: Simple Token - Bringing Tokens to Mainstream Consumer Applications",
+       date: "11-Oct-2017"
+     },
+     {
+       title: "Yahoo! Finance",
+       link: "https://finance.yahoo.com/video/bitcoin-may-stiff-competition-142955745.html%EF%BB%BF",
+       desc: "Bitcoin may be in for some stiff competition",
+       date: "6-Oct-2017"
+     },
+     {
+       title: "This Week in Startups",
+       link: "http://thisweekinstartups.com/jason-goldberg-pepo-simple-token/",
+       desc: "E767: Jason Goldberg (Pepo, Fab.com) intros Simple Token for apps to launch branded crytpo tokens",
+       date: "3-Oct-2017"
+     },
+     {
+       title: "Block Tribune",
+       link: "http://blocktribune.com/simple-tokens-aims-keep-tokening-simple-ico-soon/",
+       desc: "Simple Tokens Aims To Keep Tokening Simple – ICO Soon",
+       date: "2-Oct-2017"
+     },
+     {
+       title: "Token Economy",
+       link: "https://tokeneconomy.co/token-economy-16-interactive-coin-offerings-valuations-0x-regulators-ad6722f99d38",
+       desc: "Token Economy #16: Interactive Coin Offerings, Valuations, 0x, Regulators",
+       date: "1-Oct-2017"
+     },
+     {
+       title: "World Blockchain Forum (London, on-stage presentation)",
+       link: "https://www.youtube.com/watch?v=joXlimgSMdg",
+       desc: "Simple Token - World Blockchain Forum",
+       date: "25-Sep-2017"
+     },
+   ]
+%>
+
 <div class="container container-text-page container-documents">
-<div class="row">
-  <div class="content">
-    <h1 class="page-title">Simple Token <small>News</small></h1>
-
-    <h4>
-      <span class="sub-title">Medium Posts</span>
-      <a href="https://medium.com/simple-token/0x2c4e8f2d746113d0696ce89b35f0d8bf88e0aeca-simple-token-genesis-683f31eeb21" target="_blank">Simple Token Security Audits — building trust block by block&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Three independent security audits of Simple Token smart contracts by Zeppelin Solutions, Cure+53 and Bok Consulting. No critical or high severity issues found in smart contracts.</p>
-    <span>11-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/simple-token-st-sale-details-important-updates-new-developments-9-november-2017-6fe4aab74831" target="_blank">Simple Token Designs Token Sale to Reward the Community&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>This document describes various aspects of the OpenST Token Sale for “ST.” The sale begins on Tuesday 14 November, 2017.</p>
-    <span>10-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/announcing-2-more-simple-token-partner-companies-floship-and-vidi-vr-a78724084323" target="_blank">Announcing 2 More Simple Token Partner Companies: Floship and Vidi-VR&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Today we are proud to announce two more companies who are partnering with Simple Token to build branded token economies based on the OpenST protocol: Floship and Vidi-VR.</p>
-    <span>9-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/live-end-to-end-demo-of-simple-token-pepo-97fec6357888" target="_blank">Live End-to-End Demo of Simple Token & Pepo&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Demo accompanies public release of OpenST platform v0.9.0 — development Milestone 1 in the Simple Token project.</p>
-    <span>8-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/altdrop-2fa6f148bb8b" target="_blank">#altdrop&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>A special 10% bonus to ERC-20 altcoin token holders who purchase Simple Tokens, paid in their altcoin of choice.</p>
-    <span>6-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/simple-token-loyalty-discounts-on-future-token-sale-7dc87cb4c705" target="_blank">Simple Token Loyalty Discounts on Future Token Sale&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Following the first ST Token Sale on 14 November, 2017, 10% to 17.2% of the total 800,000,000 finite ST token supply will be reserved for possible future token sales.</p>
-    <span>6-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/gushcloud-joins-simple-token-9d4f47e12007" target="_blank">Gushcloud Joins Simple Token&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>We’re excited to announce today that Gushcloud — Asia’s leading influencer marketing and entertainment network — has joined Simple Token to collaborate together on new tokenization concepts.</p>
-    <span>3-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/gil-penchina-and-mark-bonchek-join-the-simple-token-advisory-board-7ffe8b6b3cdf" target="_blank">Gil Penchina and Mark Bonchek join the Simple Token advisory board&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>I’m pleased to announce that Gil Penchina and Mark Bonchek, two technology industry veterans and visionaries, have joined the Simple Token advisory board as active advisors to the project.</p>
-    <span>2-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/early-access-registration-for-simple-token-sale-is-now-underway-24a84125baf3" target="_blank">Early Access registration for Simple Token sale is now underway!&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Here’s a summary of everything you need to know in order to get on the Simple Token early access sale whitelist.</p>
-    <span>1-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/announcing-the-first-4-simple-token-member-companies-xain-interviewbit-digitalknights-and-pepo-f912a550af4b" target="_blank">Announcing the first 4 Simple Token Member Companies: XAIN, InterviewBit, Digital Knights, and Pepo.&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>As we get ready to launch Simple Token on 14 November, 2017 we’ve been pursuing two main parallel tracks:</p>
-    <span>31-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/simple-token-sale-key-data-registration-guide-f96a0517d00b" target="_blank">Simple Token Sale — Key Data & Registration Guide Released&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token “ST” is a utility token that enables any company to create, launch, and manage their own branded digital token economy, powered by Simple Token protocols and software.</p>
-    <span>31-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/openst-protocol-and-platform-released-to-the-public-under-open-source-licenses-d4700d83ea7a" target="_blank">OpenST protocol and platform released to the public under open-source licenses&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>We are building Simple Token to enable mainstream consumer applications to integrate cryptocurrencies seamlessly into their existing applications.</p>
-    <span>28-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/simple-token-finalizes-token-sale-price-43f96e37cc0b" target="_blank">Simple Token Finalizes Token Sale Price. Announces Advisors. Launches Community “Proof of Support” Rewards&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>We have 3 significant announcements today regarding the Simple Token initial sale event (“ICO”) on 14 November, 2017.</p>
-    <span>26-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/the-simple-token-network-accelerator-program-grants-for-startups-and-promising-projects-6346ccc98c1a" target="_blank">The Simple Token Network Accelerator Program — grants for startups and promising projects.&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>This post introduces the Simple Token Network Accelerator program which provides grants to promising projects and developers.</p>
-    <span>24-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/simple-token/uses-lifecycle-of-demand-for-simple-token-8cbfc4ec40f" target="_blank">Uses & Lifecycle of Demand for Simple Token&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>One of the unique aspects of Simple Token [ST] is that it is initially a B2B token but that ultimately the demand for ST will come from consumers.</p>
-    <span>20-Oct-2017</span>
-    <div class="horizontal-line"></div>
-
-
-    <h4>
-      <span class="sub-title">Press Releases</span>
-      <a href="https://docs.google.com/document/d/1XhlZpGqhB1ZWyXvNr295ueclkqSqWc_r3b4Esp3Gc3I/edit?usp=sharing" target="_blank">First 4 Member Companies Announced&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token Announces First Four Member Companies To Launch Branded Tokens on Project’s Ecosystem</p>
-    <span>31-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://www.prnewswire.com/news-releases/simple-token-finalizes-token-sale-price-and-announces-dream-team-of-global-advisors-300544542.html" target="_blank">Final Sale Price Released&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token Finalizes Token Sale Price and Announces "Dream Team" of Global Advisors</p>
-    <span>26-Oct-2017</span>
-    <div class="horizontal-line"></div>
-
-    <h4>
-      <span class="sub-title">In the News</span>
-      <a href="http://www.the-blockchain.com/2017/11/03/simple-token-announces-first-four-member-companies-launch-branded-tokens-projects-ecosystem/" target="_blank">Blockchain News&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token Announces First Four Member Companies To Launch Branded Tokens on Project’s Ecosystem</p>
-    <span>3-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="http://etherinthenews.com/2017/11/03/simple-token-announces-advisory-board-token-sale-milestones/" target="_blank">Ether in the News&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token Announces Advisory Board, Token Sale Milestones</p>
-    <span>3-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://www.coinspeaker.com/2017/11/03/simple-token-empowering-developers-get-blockchain/" target="_blank">Coinspeaker&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token Empowering Developers to Get on the Blockchain Tech</p>
-    <span>3-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="http://www.the-blockchain.com/2017/11/03/simple-token-announces-advisory-board-token-sale-milestones/" target="_blank">Blockchain News&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token Announces Advisory Board, Token Sale Milestones</p>
-    <span>3-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://medium.com/@codymcc4/simple-token-bridging-consumer-applications-to-the-blockchain-baff737aa226" target="_blank">Medium - Cody McCauley&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token: Bridging Consumer Applications to the Blockchain</p>
-    <span>2-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://btcmanager.com/building-bridge-cryptocurrencies-main-street/" target="_blank">BTC Manager&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Building a Bridge Between Cryptocurrencies and Main Street</p>
-    <span>2-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://hackernoon.com/top-10-cringiest-things-ive-been-told-during-the-ico-process-thus-far-a78e60927042" target="_blank">Hacker Noon - Jason Goldberg&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Top 10 Cringiest Things I’ve Been Told During the ICO Process (thus far)</p>
-    <span>2-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://www.producthunt.com/posts/simple-token" target="_blank">Product Hunt&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token - Launch your own branded crypto token without the ICO drama</p>
-    <span>2-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="http://www.hwlab.com/news.php?code=29268" target="_blank">Hardware Lab (Korea)&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token, Finalizes Token Sale Price and Announces Global Advisors</p>
-    <span>2-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://venturebeat.com/2017/10/31/take-off-your-bitcoin-blinders-theres-no-right-way-to-use-blockchain/" target="_blank">VentureBeat&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Take off your Bitcoin blinders: There’s no ‘right way’ to use blockchain</p>
-    <span>1-Nov-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="http://www.newstap.co.kr/news/articleView.html?idxno=61228" target="_blank">News Tap (Korea)&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token Finalizes Token Sale Price and Announces Global Advisors</p>
-    <span>31-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="http://www.pnfnews.com/183392" target="_blank">PNF News (Korea)&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token, 0.0833 dollars, starting sales on the 14th… Global Advisors Announcement</p>
-    <span>31-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="http://www.internews.kr/news/articleView.html?idxno=11903" target="_blank">Interface News (Korea)&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token Finalizes Token Sale Price… Announces Global Advisors</p>
-    <span>31-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://hackernoon.com/so-you-want-to-have-a-utility-token-sale-part-i-of-many-the-registration-kyc-process-a3ef6f35f0a8" target="_blank">Hacker Noon - Jason Goldberg&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>So you want to have a utility token sale… (part I of many: the Registration & KYC process)</p>
-    <span>31-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://www.smithandcrown.com/sale/simple-token/" target="_blank">Smith + Crown&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token: A Token Issuance Infrastructure for Consumer Apps</p>
-    <span>31-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://www.chipin.com/simple-token-blockchain-app-tokens/" target="_blank">Chipin&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token Takes the Headache out of Blockchain Tokenization</p>
-    <span>31-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://itsblockchain.com/simpletoken/" target="_blank">It’s Blockchain&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token is building Blockchain and Cryptocurrency as a Service</p>
-    <span>28-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://finance.yahoo.com/video/bitcoin-may-stiff-competition-142955745.html%EF%BB%BF" target="_blank">Yahoo! Finance&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Bitcoin may be in for some stiff competition</p>
-    <span>6-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="http://thisweekinstartups.com/jason-goldberg-pepo-simple-token/" target="_blank">This Week in Startups&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>E767: Jason Goldberg (Pepo, Fab.com) intros Simple Token for apps to launch branded crytpo tokens</p>
-    <span>3-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="http://blocktribune.com/simple-tokens-aims-keep-tokening-simple-ico-soon/" target="_blank">Block Tribune&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Tokens Aims To Keep Tokening Simple – ICO Soon</p>
-    <span>2-Oct-2017</span>
-    <div class="horizontal-line"></div>
-    <h4>
-      <a href="https://www.youtube.com/watch?v=joXlimgSMdg" target="_blank">World Blockchain Forum (London, on-stage presentation)&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
-    </h4>
-    <p>Simple Token - World Blockchain Forum</p>
-    <span>25-Sep-2017</span>
-    <div class="horizontal-line"></div>
-
+  <div class="row">
+    <div class="content">
+      <h1 class="page-title">Simple Token <small>News</small></h1>
+      <% press_release.each_with_index do | data, index | %>
+        <h4>
+          <% if data[:header].present? %>
+            <span class="sub-title"><%= data[:header] %></span>
+          <% end %>
+          <a href="<%= data[:link] %>" target="_blank"><%= data[:title] %>&nbsp;<span class="download-icon-small" style="vertical-align: bottom"></span></a>
+        </h4>
+        <p><%= data[:desc] %></p>
+        <span><%= data[:date] %></span>
+        <div class="horizontal-line"></div>
+      <% end %>
+    </div>
   </div>
-</div>
-
 </div>
