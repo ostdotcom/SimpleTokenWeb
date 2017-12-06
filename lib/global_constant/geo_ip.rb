@@ -14,30 +14,31 @@ module GlobalConstant
       end
 
       def blaclisted_ip_from_countries
-        [
-            'china',
-            'afghanistan',
-            'bosnia and herzegovina',
-            'central african republic',
-            'congo',
-            'north korea',
-            'eritrea',
-            'ethiopia',
-            'guinea-bissau',
-            'iran',
-            'iraq',
-            'libya',
-            'lebanon',
-            'somalia',
-            'south sudan',
-            'sudan',
-            'sri lanka',
-            'syria',
-            'tunisia',
-            'vanuatu',
-            'yemen',
-            'cuba'
-        ]
+        []
+        # [
+        #     'china',
+        #     'afghanistan',
+        #     'bosnia and herzegovina',
+        #     'central african republic',
+        #     'congo',
+        #     'north korea',
+        #     'eritrea',
+        #     'ethiopia',
+        #     'guinea-bissau',
+        #     'iran',
+        #     'iraq',
+        #     'libya',
+        #     'lebanon',
+        #     'somalia',
+        #     'south sudan',
+        #     'sudan',
+        #     'sri lanka',
+        #     'syria',
+        #     'tunisia',
+        #     'vanuatu',
+        #     'yemen',
+        #     'cuba'
+        # ]
       end
 
     end
