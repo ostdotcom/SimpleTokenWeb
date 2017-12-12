@@ -1,0 +1,43 @@
+<div class="container container-jumbotron">
+  <div class="row">
+
+    <div class="col-sm-12 col-md-6 col-left">
+      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive" alt="Simple Token Logo"/>
+      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive" alt="Simple Token Logo"/>
+      <div class="desc">
+        <h1>The Token Sale Ended with 189% of Target Achieved!</h1>
+        <p>
+          We are overwhelmed and humbled by the outpouring of support from the community for our mission to empower digital communities with blockchain technology.
+        </p>
+      </div>
+      <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/" class="btn-common btn-gold btn-features" title="Explore Simple Token">explore simple token</a>
+      <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/login" class="btn-common btn-grey btn-documents" title="Login">login</a>
+      <div class="desc links-box">
+        <p style="margin: 0">Have questions on the Token Sale?</p>
+        <span class="jumbotron-links">
+          <a href="https://www.t.me/simpletoken" class="link" target="_blank" title="Telegram">
+            <span class="go-to-telegram-link-icon icon-pos"></span>
+            <span class="border-btm">Telegram</span>
+          </a>
+        </span>
+        <span class="jumbotron-links">
+          <a href="https://docs.google.com/document/d/19eUCyVHSWBGB79djGnTS6h-OV1EtTkNl8v4ECPQ8xNk/edit" class="link" target="_blank" title="After Sale Guide">
+            <span class="token-sale-link-icon icon-pos"></span>
+            <span class="border-btm">After Sale Guide</span>
+          </a>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 illustration sale-ends-illustration">
+      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/illustration.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/image/illustration-2x.png 1000w" class="img-responsive" alt="Simple Token Play Video"/>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid container-jumbotron-desc text-center">
+  <div class="row token-sale-progress" style="padding: 0">
+    <%= render :partial => "/web/token_sale/sale_stats" %>
+  </div>
+</div>
