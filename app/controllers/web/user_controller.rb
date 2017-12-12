@@ -17,9 +17,9 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def sign_up
-    # if GlobalConstant::StTokenSale.has_sale_ended?
-    #   redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
-    # end
+    if GlobalConstant::StTokenSale.has_sale_ended?
+      redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
+    end
   end
 
   # Login

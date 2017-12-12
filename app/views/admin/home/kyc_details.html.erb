@@ -203,7 +203,7 @@
                 <span class="detail-value"><%= user_detail['first_name'] %></span>
                 <span class="detail-label">Birth Date</span>
                 <span class="detail-value"><%= Time.parse(user_detail['birthdate']).strftime("%d/%m/%Y") %></span>
-                <span class="detail-label">Passport Number</span>
+                <span class="detail-label">Document ID Number</span>
                 <span class="detail-value"><%= user_detail['passport_number'] %></span>
               </div>
               <div class="case-detail-col2">
@@ -411,7 +411,7 @@
 <div class="checkbox">
   <label>
     <input type="checkbox" name="email_temp_vars[passport_number]" value="1">
-    Passport Number
+    Document ID Number
   </label>
 </div>
 </script>
