@@ -1,0 +1,36 @@
+  <%
+     accelarator_program_data = [
+       {
+        answer: "To some of the first Member Companies who wish to launch their own Branded Tokens powered by Simple Tokens. This could help them fund their development and implementations, incentivize and reward their developers, and provide some warm-up tokens to their users to spur the initial adoption."
+       },
+       {
+        answer: "To developers working to build on and expand the capabilities of the OpenST protocol."
+       },
+       {
+        answer: "To developers creating software modules to help companies manage their token economies, such as KYC-as-a-service, analytics, monitoring, notifications, and economy visualizations."
+       },
+       {
+        answer: "To designers offering proposals for wallet skins, token branding, and other user experience enhancements."
+       },
+       {
+        answer: "ST Accelerator grants can be provided to companies of all sizes, even startups with just an idea. Grants can be provided to the company, project teams, or directly to individuals in support of their contributions."
+       },
+     ]
+  %>
+
+  <div class="container container-sale-details container-faqs paddingTop57" id="faq">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+        <div class="row">
+          <h2 class="header text-center">Network Accelarator Program</h2>
+          <% accelarator_program_data.each_with_index do | data, indx | %>
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+              <div class="well">
+                <div class="desc"><%= data[:answer] %></div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
