@@ -4,11 +4,6 @@
   background-position: bottom;
   background-repeat: repeat-x;
   background-size: contain;
-  h1{
-    font-size: 50px;
-    font-weight: 600;
-    margin: 10px 0 30px;
-  }
   .btn-ost{
     margin-left: 20px;
   }
@@ -16,9 +11,57 @@
 
 .container-mission{
   padding: 50px 0;
-  h2{
-    font-size: 33px;
-    font-weight: 600;
-    margin: 10px 0 30px;
+}
+
+.container-team{
+  padding: 50px 0;
+  background: #f8fbf9;
+
+  .board-team,
+  .advisor-team{
+
+    .thumbnail{
+      padding:0;
+      border: none;
+      background: none;
+      margin-bottom: 0;
+
+      .caption{
+
+        padding: 10px 0;
+
+        [itemprop="name"]{
+          font-size: 20px;
+          height: 28px;
+          line-height: 24px;
+          font-weight: 300;
+          color: #34445b;
+          margin-top: 15px;
+          margin-bottom: 5px;
+        }
+        [itemprop="jobTitle"]{
+          font-size: 14px;
+          height: 18px;
+          line-height: 14px;
+          font-weight: 300;
+          color: #595b5e;
+          margin: 5px 0;
+        }
+        .desc{
+          color: #595b5e;
+          font-weight: 300;
+        }
+        a{
+          color: #34445b;
+          font-weight: 500;
+          &:hover, &:focus{
+            text-decoration: none;
+            color: #c0993a;
+          }
+        }
+      }
+
+    }
+
   }
 }
