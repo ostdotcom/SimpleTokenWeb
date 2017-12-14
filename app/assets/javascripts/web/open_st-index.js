@@ -1,0 +1,1 @@
+//= require web/open_st/Index

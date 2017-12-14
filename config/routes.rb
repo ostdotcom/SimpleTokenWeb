@@ -24,6 +24,24 @@ Rails.application.routes.draw do
     match '*permalink', to: 'application#not_found', via: :all
   end
 
+  # openst.org Routes
+  constraints(InitOpenST) do
+    scope '', controller: 'web/open_st' do
+      get '/' => :index
+    end
+    # Route not found handler. Should be the last entry here
+    match '*permalink', to: 'application#not_found', via: :all
+  end
+
+  # simpletoken.com Routes
+  constraints(InitSTCompany) do
+    scope '', controller: 'web/st_company' do
+      get '/' => :index
+    end
+    # Route not found handler. Should be the last entry here
+    match '*permalink', to: 'application#not_found', via: :all
+  end
+
   scope '', controller: 'web/home' do
     get '/' => :index
     get '/team' => :about
