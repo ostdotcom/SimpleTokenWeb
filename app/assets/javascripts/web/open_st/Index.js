@@ -7,7 +7,7 @@
   openSTNs.index = oThis = {
 
     init: function (config) {
-      window.alert('Hi From Open ST');
+
     }
 
   };
