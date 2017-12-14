@@ -109,10 +109,17 @@
     };
 
     //$(document).ready(function () {
-
+  console.log("userAgent", navigator.userAgent);
+  if ( /Safari/i.test(navigator.userAgent) && ! ( /Chrome/i.test(navigator.userAgent) ) ) {
+    //Use window load for Safari.
     $(window).load(function () {
       oThis.init({i18n: {}});
     });
-
+  } else {
+    //Use document ready.
+    $( document ).ready(function () {
+      oThis.init({i18n: {}});
+    })
+  }
 
 })(window);
