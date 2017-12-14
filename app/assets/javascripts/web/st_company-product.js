@@ -1,2 +1,2 @@
 //= require web/st_company/Index
-//= require web/common/StickyHeader
+//= require web/common/sticky_header
