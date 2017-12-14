@@ -1,0 +1,133 @@
+.container-jumbotron{
+  @media(min-width: 768px){
+    padding-top: 40px;
+  }
+  padding-bottom: 40px;
+  .desc{
+    color: #597a84;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 10px 0 15px 0;
+    line-height: 1.5;
+    letter-spacing: 0.8px;
+    h1{
+      font-weight: 600;
+      color: #597a84;
+      font-size: 18px;
+      line-height: 1.5;
+      letter-spacing: 0.8px;
+    }
+  }
+  .logo-desktop{
+    max-width: 60%;
+  }
+  .logo-mobile{
+    display: none;
+  }
+  .btn-top-bottom-15{
+    margin: 15px 10px;
+  }
+}
+
+.container-why{
+  .header{
+    color: #6ca3a9;
+    margin-top: 0;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    font-size: 38px;
+    font-weight: 300;
+    letter-spacing: 1.3px;
+  }
+
+  .illustration{
+    .btn-play{
+      border: none;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+      color: #34445b;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      padding: 15px;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      .play{
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+        display: inline-block;
+        svg{
+          width:100%;
+          height:100%;
+          fill: #34445b;
+        }
+      }
+
+      &:hover{
+        .play{
+          .svg{
+            fill: #e4b030;
+          }
+        }
+        span{
+          color: #e4b030;
+        }
+      }
+    }
+  }
+
+  .image{
+    text-align: center;
+    img{
+      width: 100%;
+    }
+  }
+
+  .copy{
+    h3{
+      font-size: 20px;
+      color: #6ca3a9;
+      line-height: 1.2;
+    }
+  }
+
+  .button{
+    text-align: center;
+    margin: 50px 0 40px;
+    a{
+      margin: 0 0 20px;
+      min-width: 260px;
+      vertical-align: top;
+      &:last-child{
+        padding: 13px 20px;
+        @media (min-width: 768px) {
+          margin-left: 30px;
+        }
+      }
+    }
+    span{
+      vertical-align: middle;
+    }
+  }
+
+  .desc{
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    color: #597a84;
+    font-weight: 300;
+  }
+}
+
+.bit-more-sponsors{
+  margin: 0;
+  padding: 0;
+  li{
+    margin: 20px 0;
+    min-height: 60px;
+    list-style-type: none;
+  }
+}
