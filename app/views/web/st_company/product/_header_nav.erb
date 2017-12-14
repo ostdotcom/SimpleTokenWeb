@@ -1,0 +1,38 @@
+<%= render :partial => "/web/home/index/uber_banner" %>
+<nav class="navbar navbar-simpletoken" style="background-color: #f7faf8">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed pull-left" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" aria-expanded="false" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a
+        <% if "#{params[:controller]}::#{params[:action]}" == 'web/st_company::index' %> class="selected-nav" href="javascript:void(0)"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/" title="Home"
+        <% end %> >Home</a></li>
+        <li><a
+        <% if "#{params[:controller]}::#{params[:action]}" == 'web/st_company::index' %> class="selected-nav" href="javascript:void(0)"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="Developers"
+        <% end %> >Developers</a></li>
+        <li><a
+        <% if "#{params[:controller]}::#{params[:action]}" == 'web/st_company::product' %> class="selected-nav" href="javascript:void(0)"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/team" title="Business"
+        <% end %> >Business</a></li>
+        <li><a
+        <% if "#{params[:controller]}::#{params[:action]}" == 'web/st_company::index' %> class="selected-nav" href="javascript:void(0)"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" title="About"
+        <% end %> >About</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
