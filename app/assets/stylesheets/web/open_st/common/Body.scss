@@ -15,6 +15,7 @@ body{
   line-height: 1.43;
 }
 
+// Custom .container class
 @media (min-width: 1200px){
   #site-content{
     .container {
@@ -30,11 +31,17 @@ body{
   }
 }
 
+// Global helper classes
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
   display: flex;
   align-items: center;
+}
+p.primary{
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 10px 0 30px;
 }
 
 // Footer CSS
