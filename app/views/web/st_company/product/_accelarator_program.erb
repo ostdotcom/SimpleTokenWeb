@@ -23,6 +23,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
         <div class="row">
           <h2 class="header text-center">Network Accelarator Program</h2>
+          <p class="text-center desc">The Simple Token Network Accellerator Program grants are intended to support app developers and companies whose contributions benefit the entire OpenST ecosystem. Some examples of the types of ST Accelerator grants we envision could include: </p>
           <% accelarator_program_data.each_with_index do | data, indx | %>
             <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
               <div class="well">
@@ -31,6 +32,12 @@
             </div>
           <% end %>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cta-group text-center">
+        <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" class="btn-square gold" title="Learn More">learn more</a>
+        <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" class="btn-square transparent" title="Join The Nap">join the nap</a>
       </div>
     </div>
   </div>
