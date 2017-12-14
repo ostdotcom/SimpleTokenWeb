@@ -1,0 +1,41 @@
+.container-sticky-nav{
+
+  .navbar-nav{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-item{
+    text-align: center;
+    color: #597a84;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 15px 0;
+    &.active{
+      a{
+        color: #91C0AD;
+      }
+      &:before{
+        content: '';
+        display: inline-block;
+        border-bottom: solid 4px #91c0ad;
+        width: 100%;
+        bottom: -1px;
+        position: absolute;
+        left: 0;
+      }
+    }
+    &:hover, &:focus{
+      text-decoration: none;
+    }
+  }
+
+  .nav-gradient{
+    border-bottom: solid 2px #bbdfd0;
+  }
+  ul{
+    li{
+      list-style-type: none;
+    }
+  }
+}
