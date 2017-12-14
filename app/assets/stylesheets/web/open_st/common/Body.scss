@@ -10,9 +10,31 @@ body {
 html,
 body{
   font-family: 'Quasimoda', Source Sans Pro, sans-serif;
-  color: #565a5c;
+  color: #34445b;
   font-weight: 100;
   line-height: 1.43;
+}
+
+@media (min-width: 1200px){
+  #site-content{
+    .container {
+      width: 980px;
+    }
+  }
+}
+@media (min-width: 992px){
+  #site-content {
+    .container {
+      width: 960px;
+    }
+  }
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
 }
 
 // Footer CSS

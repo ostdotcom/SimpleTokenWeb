@@ -1,0 +1,54 @@
+.btn-common{
+  border: solid 2px #34445b;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 20px 30px;
+  text-align: center;
+  letter-spacing: 3px;
+  display: inline-block;
+}
+
+@media (max-width: 767px) {
+  .btn-common{
+    font-size: 10px;
+    padding: 20px;
+    letter-spacing: 2px;
+  }
+}
+
+.btn-blue{
+  border-color: #34445b;
+  background: #34445b;
+  color: #fff;
+  &.focus-cls,
+  &:focus{
+    color: #fff;
+    outline: none;
+    text-decoration: none;
+  }
+  &.hover-cls, &.active-cls,
+  &:hover, &:active{
+    color: #fff;
+    text-decoration: none;
+    background-color: #34445b;
+    border-color: #34445b;
+  }
+}
+
+.btn-white{
+  border-color: #34445b;
+  background: #ffffff;
+  color: #34445b;
+  &:focus{
+    color: #34445b;
+    outline: none;
+    text-decoration: none;
+  }
+  &:hover,&:active{
+    color: #34445b;
+    text-decoration: none;
+    background-color: #ffffff;
+    border-color: #34445b;
+  }
+}

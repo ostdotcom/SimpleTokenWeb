@@ -1,0 +1,20 @@
+.container-jumbotron{
+  min-height: 800px;
+  background-image: url('http://developmentopenst.org:3000/open-st-bg.png');
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: contain;
+  h1{
+    font-size: 50px;
+    font-weight: 600;
+    margin: 10px 0 30px;
+  }
+  p{
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 10px 0 30px;
+  }
+  .btn-ost{
+    margin-left: 20px;
+  }
+}
