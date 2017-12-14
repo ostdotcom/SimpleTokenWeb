@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   constraints(InitSTCompany) do
     scope '', controller: 'web/st_company' do
       get '/' => :index
+      get '/product' => :product
     end
     # Route not found handler. Should be the last entry here
     match '*permalink', to: 'application#not_found', via: :all

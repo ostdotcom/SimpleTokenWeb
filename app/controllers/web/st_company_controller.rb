@@ -8,4 +8,8 @@ class Web::StCompanyController < Web::BaseController
 
   end
 
+  def product
+
+  end
+
 end
