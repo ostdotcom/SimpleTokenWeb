@@ -73,3 +73,29 @@
   background-repeat: repeat-x;
   background-size: contain;
 }
+
+.container-token{
+  padding: 50px 0;
+
+  .statistic{
+    padding: 20px 0 50px 0;
+    .info{
+      display: inline-block;
+      text-transform: uppercase;
+      margin-left: 20px;
+      .info-title{
+        font-size: 14px;
+        line-height: 2;
+      }
+      .info-count{
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.container-token-buy{
+  padding: 50px 0;
+  background: #f8fbf9;
+}

@@ -44,6 +44,11 @@ body{
     line-height: 1.8;
     margin: 10px 0 30px;
   }
+  p.secondary{
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 0 20px;
+  }
   h1.title{
     font-size: 50px;
     font-weight: 600;
@@ -52,6 +57,12 @@ body{
   h2.title{
     font-size: 33px;
     font-weight: 600;
+    margin: 10px 0 30px;
+  }
+  h3.title{
+    color: #597a84;
+    font-size: 20px;
+    font-weight: 500;
     margin: 10px 0 30px;
   }
 }
