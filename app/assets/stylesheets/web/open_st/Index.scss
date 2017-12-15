@@ -69,6 +69,9 @@
   background-position: bottom;
   background-repeat: repeat-x;
   background-size: contain;
+  .btn-github{
+    padding: 10px 20px;
+  }
 }
 
 .container-token{
@@ -99,4 +102,37 @@
 
 .container-featured{
   padding: 50px 0;
+}
+
+.container-network-content{
+  padding: 50px 0;
+
+  .network-use-cases{
+    display: block;
+    list-style: none;
+    overflow: hidden;
+    counter-reset: numList;
+
+    li{
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 0 0 20px 10px;
+
+      &:before{
+        font-size: 18px;
+        line-height: 1.8;
+        margin: 2px 0 20px;
+        counter-increment: numList;
+        content: counter(numList);
+        float: left;
+        position: absolute;
+        left: 15px;
+        text-align: center;
+        color: #fff;
+        width: 30px; height: 30px;
+        background: #bbe0cf;
+        border-radius: 50%;
+      }
+    }
+  }
 }
