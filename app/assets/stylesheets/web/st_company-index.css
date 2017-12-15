@@ -5,9 +5,10 @@
  *= require web/common/Icons
  *= require web/common/Social
  *= require web/common/Press
- *= require web/token_sale/TokenKeyDates
+ *= require web/st_company/TokenKeyDates
  *= require web/common/sticky_header
  *= require web/st_company/Index
+ *= require web/st_company/Technology
  *= require plugins/slick/slick
  *= require plugins/slick/slick-theme
  *= require web/common/Subscribe

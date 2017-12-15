@@ -1,0 +1,224 @@
+/* Media Queries */
+
+@mixin mq-xs {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin mq-sm {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin mq-md {
+  @media (min-width: 720px) {
+    @content;
+  }
+}
+
+@mixin mq-lg {
+  @media (min-width: 1000px) {
+    @content;
+  }
+}
+
+$background: #f7f7f7;
+$border: 2px dotted #4f9cab;
+$items: 11;
+$rows: ceil($items/2);
+
+/* Card sizing */
+
+$card-height: 286px;
+$card-width: 354px;
+$inner-margin: 15px;
+$number-size: 20px;
+$stagger: 180px;
+$outer-margin: 45px;
+$marker-size: 10px;
+
+/* Colors */
+
+$steps: rgba(145, 192, 173, 0.9),;
+$colors: rgba(145, 192, 173, 0.9),
+rgba(145, 192, 173, 0.9),
+rgba(145, 192, 173, 0.9),
+rgba(145, 192, 173, 0.9),
+rgba(145, 192, 173, 0.9);
+$timeline: rgba(145, 192, 173, 0.9);
+
+/* Calculations */
+
+$container-height: $rows * ($card-height + $outer-margin);
+$container-width: $card-width*2 + $outer-margin*3;
+$head-height: $number-size + 50;
+$body-height: $card-height - $head-height;
+$marker-dist: $card-width + $outer-margin/2 - $marker-size/2;
+
+/* Placeholders */
+
+@include mq-lg {
+  %arrow {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+  %marker {
+    position: absolute;
+    content: "";
+    width: $marker-size;
+    height: $marker-size;
+    background-color: #ff9301;
+    border-radius: $marker-size;
+  }
+}
+
+
+/* Some Cool Stuff */
+
+$counter: $items - $rows + 2;
+@for $i from 1 through $rows {
+  .demo-card:nth-child(#{$i*2-1})   { order: $i }
+  .demo-card:nth-child(#{$i*2})     { order: $counter }
+  $counter: $counter + 1;
+}
+
+
+
+#timeline {
+  p.leader {
+    text-align: center;
+    max-width: 90%;
+    margin: auto;
+    margin-bottom: 45px;
+  }
+  .demo-card-wrapper {
+    position: relative;
+    margin: auto;
+    @include mq-lg {
+      display: flex;
+      flex-flow: column wrap;
+      width: $container-width;
+      height: $container-height;
+      margin: 0 auto;
+    }
+    &::after {
+      z-index: 1;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      border-left: $border;
+      @include mq-lg {
+        border-left: 2px dotted #4f9cab;
+      }
+    }
+  }
+  .demo-card {
+    position: relative;
+    display: block;
+    margin: 10px auto 80px;
+    max-width: 94%;
+    z-index: 2;
+    @include mq-sm {
+      max-width: 60%;
+    }
+    @include mq-md {
+      max-width: 60%;
+    }
+    @include mq-lg {
+      max-width: $card-width;
+      margin: $outer-margin;
+      margin-top: $outer-margin/2;
+      margin-bottom: $outer-margin/2;
+      &:nth-child(odd) {
+        margin-right: $outer-margin/2;
+        .head::after {
+          @extend %arrow;
+          border-left-width: 10px;
+          border-left-style: solid;
+          left: 100%;
+        }
+        .head::before {
+          @extend %marker;
+          left: $marker-dist + 1;
+        }
+      }
+      &:nth-child(even) {
+        margin-left: $outer-margin/2;
+        .head::after {
+          @extend %arrow;
+          border-right-width: 10px;
+          border-right-style: solid;
+          right: 100%;
+        }
+        .head::before {
+          @extend %marker;
+          right: $marker-dist - 1;
+        }
+      }
+      &:nth-child(2) {
+        margin-top: $stagger;
+      }
+    }
+    .head {
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background-color: #91C0AD;
+      .number-box {
+        display: inline;
+        float: left;
+        margin: 5px;
+        padding-left: 15px;
+        font-size: $number-size;
+        font-weight: 600;
+      }
+      h3 {
+        font-size: 18px;
+        letter-spacing: 0.4px;
+        margin: 0;
+        padding-left: 10px;
+      }
+    }
+
+    .head::after {
+      border-color: #91C0AD;
+    }
+    .body {
+      background: #fff;
+      border-top: 0;
+      padding: 14px 10px;
+      p {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 300;
+        color: #597a84;
+        margin-bottom: $inner-margin;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+    }
+    // @for $i from 1 through $items {
+    //   &--step#{$i} {
+    //     $color: nth($colors, ((($i - 1) % 4) + 1));
+    //     .head::after {
+    //       border-color: $color;
+    //     }
+    //   }
+    // }
+    &.demo-card--step5{
+      margin-bottom: 0;
+    }
+  }
+}
