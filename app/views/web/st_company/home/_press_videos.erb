@@ -1,0 +1,50 @@
+<div class="container-press token-sale-press">
+
+  <div class="container">
+
+    <div class="row">
+
+        <div class="col-xs-12">
+
+          <div class="video-carousel" style="opacity: 0"></div>
+
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="modal fade youtube-modal" id="youtube-video-modal" tabindex="-1" role="dialog">
+  <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
+    <span aria-hidden="true" class="modal-close-icon" title="close"></span>
+  </button>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" style="background: transparent; box-shadow: none; -webkit-box-shadow:none; border:none">
+      <div class="modal-body" style="padding: 0px;">
+        <iframe src="" frameborder="0" allowfullscreen id="frameVideo" style="width:100%"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="custom" id="carousel-item">
+    <div class="carousel-item" data-toggle="modal" data-target="#youtube-video-modal" data-src="__video_embed__">
+      <div class="thumbnail">
+        <div class="video-container">
+          <div class="play">
+            <svg class="svg">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
+              </switch>
+            </svg>
+          </div>
+          <img src="__image__" alt="__title__" style="width: 100%;">
+        </div>
+        <div class="caption">
+          <h4>__title__</h4>
+        </div>
+      </div>
+    </div>
+</script>

@@ -1,20 +1,24 @@
-<div class="container container-jumbotron">
+<div class="container-fluid container-jumbotron container-play-video">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+    <%= render :partial => "/web/st_company/product/header_nav" %>
+    <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive" alt="Simple Token Logo"/>
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
           <div class="desc">
-            <h1>% of Target Achieved!</h1>
-            <p>We are overwhelmed and humbled by the outpouring of support from the community for our mission to empower digital communities with blockchain technology. You can learn more about the results of the token sale here and login to view a receipt of your purchase.</p>
+            <h1>Cryptocurrency to Empower Digital Communities</h1>
+            <p>Easily launch digital currencies on open Ethereum sidechains and turn any business into a dynamic ecosystem.</p>
           </div>
         </div>
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5">
-          <div class="token-sale-progress text-center">
+          <div class="image no-mobile illustration">
             <%= render :partial => "/web/st_company/home/play_video_svg" %>
           </div>
         </div>
+      </div>
+      <div class="row">
+        <%= render :partial => '/web/st_company/home/press_videos' %>
       </div>
     </div>
   </div>

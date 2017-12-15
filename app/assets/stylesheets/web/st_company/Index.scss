@@ -1,8 +1,7 @@
 .container-jumbotron{
-  @media(min-width: 768px){
-    padding-top: 40px;
-  }
+//  padding-top: 40px;
   padding-bottom: 40px;
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 100px, #f1f8f5 100%);
   .desc{
     color: #597a84;
     font-size: 16px;
@@ -29,7 +28,7 @@
   }
 }
 
-.container-why{
+.container-play-video{
   .header{
     color: #6ca3a9;
     margin-top: 0;
@@ -47,9 +46,12 @@
       box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
       color: #34445b;
       position: absolute;
+      font-weight: 400;
       top: 50%;
       left: 50%;
-      padding: 15px;
+      padding: 13px 0;
+      letter-spacing: 2px;
+      min-width: 170px;
       -webkit-transform: translate(-50%, -50%);
       -moz-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
