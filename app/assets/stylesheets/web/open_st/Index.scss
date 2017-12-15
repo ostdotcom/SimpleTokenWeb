@@ -136,3 +136,27 @@
     }
   }
 }
+
+.container-extended-team{
+  padding: 50px 0;
+  background: #f8fbf9;
+
+  ul{
+    padding: 0;
+    li{
+      list-style-type: none;
+    }
+  }
+  li[itemprop='affiliation']{
+    margin-bottom: 25px;
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: center;
+    justify-content: center;
+    min-height: 66px;
+  }
+
+}
