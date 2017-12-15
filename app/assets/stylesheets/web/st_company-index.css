@@ -1,16 +1,16 @@
 /*
+ *= require plugins/slick/slick
+ *= require plugins/slick/slick-theme
  *= require plugins/bootstrap/bootstrap
  *= require web/common/Body
  *= require web/common/Buttons
  *= require web/common/Icons
  *= require web/common/Social
  *= require web/common/Press
- *= require web/st_company/TokenKeyDates
  *= require web/common/sticky_header
+ *= require web/st_company/TokenKeyDates
  *= require web/st_company/Index
  *= require web/st_company/Technology
- *= require plugins/slick/slick
- *= require plugins/slick/slick-theme
- *= require web/common/Subscribe
+ *= require web/st_company/Subscribe
  *= require web/st_company/PressVideos
  */

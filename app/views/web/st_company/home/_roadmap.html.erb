@@ -3,7 +3,7 @@
   img_root = "//d36lai1ppm9dxu.cloudfront.net/assets/image/";
   img_version = "?v=1";
 
-  key_dates_data = [
+  key_dates_data_2017 = [
     {
       display_date: "1 Nov",
       heading: "Early Registration Starts",
@@ -95,17 +95,58 @@
       }
     }
   ];
+
+  key_dates_data_2018 = [
+    {
+      display_date: "1 Nov",
+      heading: "Early Registration Starts",
+      description: "The final results from the Token Sale will be published on 5 December, including a summary of buyers, distribution, bonuses, and burns.",
+      img: {
+        width: 161,
+        src: img_root + "simpletoken-timeline-early-registration-starts.png" + img_version
+      }
+    },
+    {
+      display_date: "1 Nov",
+      heading: "Early Registration Starts",
+      description: "Any unallocated tokens from the token sale hard cap of 240M ST will be burned on 12 December.",
+      img: {
+        width: 161,
+        src: img_root + "simpletoken-timeline-early-registration-starts.png" + img_version
+      }
+    },
+    {
+      display_date: "1 Nov",
+      heading: "Early Registration Starts",
+      description: "Participants in the Altdrop program will receive their altcoins between 18 and 20 December. Altcoins will be purchased at market rates on 15 December.",
+      img: {
+        width: 161,
+        src: img_root + "simpletoken-timeline-early-registration-starts.png" + img_version
+      }
+    },
+    {
+      display_date: "1 Nov",
+      heading: "Early Registration Starts",
+      description: "Purchased tokens during the token sale will be activated on 19 December, once activated the tokens are transferrable and tradable. (Public sale get 100% of tokens immediately, Private sale get 1/12th monthly)",
+      img: {
+        width: 161,
+        src: img_root + "simpletoken-timeline-early-registration-starts.png" + img_version
+      }
+    }
+  ];
+
 %>
 
 <section class="container container-token-key-dates paddingTop57" id="keydates">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
       <h2 class="header text-center">Roadmap</h2>
+      <h2 class="header text-center">2017</h2>
       <!-- THE CODE | THE CODE | THE CODE | THE CODE | THE CODE -->
-      <div id="timeline">
-        <div class="demo-card-wrapper">
+      <div id="timeline_2017">
+        <div class="demo-card-wrapper road-map-2017">
 
-          <% key_dates_data.each_with_index do | data, indx | %>
+          <% key_dates_data_2017.each_with_index do | data, indx | %>
             <div class="demo-card demo-card--step<%= indx + 1%>">
               <div class="head">
                 <div class="number-box"><%= data[:display_date] %></div>
@@ -120,6 +161,28 @@
             </div>            
           <% end %>
         </div>
+
+        <h2 class="header text-center">2018</h2>
+        <!-- THE CODE | THE CODE | THE CODE | THE CODE | THE CODE -->
+        <div id="timeline_2018">
+          <div class="demo-card-wrapper road-map-2018">
+
+            <% key_dates_data_2018.each_with_index do | data, indx | %>
+              <div class="demo-card demo-card--step<%= indx + 1%>">
+                <div class="head">
+                  <div class="number-box"><%= data[:display_date] %></div>
+                  <h3><%= data[:heading] %></h3>
+                </div>
+                <div class="body">
+                  <p><%= data[:description] %></p>
+                  <% if data[:img].present? %>
+                    <img src="<%= data[:img][:src] %>" style="width:<%= data[:img][:width] %>px;" />
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
       </div>
     </div>
   </div>
