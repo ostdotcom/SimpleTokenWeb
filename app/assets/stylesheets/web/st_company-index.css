@@ -10,5 +10,6 @@
  *= require web/st_company/Index
  *= require plugins/slick/slick
  *= require plugins/slick/slick-theme
+ *= require web/common/Subscribe
  *= require web/st_company/PressVideos
  */
