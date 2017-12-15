@@ -1,6 +1,11 @@
 <%= render :partial => "/shared/web/common/index_svg_sprite" %>
 <%= render :partial => "/web/st_company/product/uber_banner" %>
-<%= render :partial => "/web/st_company/home/jumbotron" %>
+<div class="container-jumbotron-wrap">
+  <%= render :partial => "/web/st_company/home/jumbotron" %>
+  <div style="margin-top: 40px;"></div>
+  <%= render :partial => '/web/st_company/home/press_videos' %>
+</div>
+
 <%= render :partial => "/web/st_company/home/home_nav" %>
 <%= render :partial => "/web/st_company/home/technology" %>
 <%= render :partial => "/web/st_company/home/core_team_members" %>

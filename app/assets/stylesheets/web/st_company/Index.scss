@@ -1,7 +1,8 @@
-.container-jumbotron{
-//  padding-top: 40px;
+.container-jumbotron-wrap {
   padding-bottom: 40px;
   background: linear-gradient(to bottom, #ffffff 0%, #ffffff 100px, #f1f8f5 100%);
+}
+.container-jumbotron{
   .desc{
     color: #597a84;
     font-size: 16px;

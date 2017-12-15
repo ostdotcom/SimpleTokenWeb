@@ -75,9 +75,15 @@
           , scrollLink    = jContainer.find('.scroll')
         ;
         scrollLink.each(function() {
+          if (this.hash === "") {
+            return; /* Do Nothing */
+          }
+
           var hash = this.hash
-            , finalOffset = oThis.getFinalOffsetForHash( hash )
+            , finalOffset
           ;
+
+          finalOffset = oThis.getFinalOffsetForHash( hash );
           if ( finalOffset <= winScrollPos ) {
             $(this).parent().addClass('active');
             $(this).parent().siblings().removeClass('active');
@@ -102,7 +108,14 @@
       },
 
       getFinalOffsetForHash: function ( hash ) {
-        var sectionOffset = $(hash).offset().top;
+        var jHash = $(hash)
+          , sectionOffset
+        ;
+        if ( !jHash.length ) {
+          return Number.MAX_VALUE;
+        }
+
+        sectionOffset = $(hash).offset().top;
         return Math.ceil( sectionOffset - containerHeight );
       }
 
