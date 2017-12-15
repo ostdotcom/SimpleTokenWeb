@@ -68,7 +68,12 @@
                 ]
             });
 
-            $('.video-carousel').css('opacity', 1);
+
+          $('.video-carousel')
+            .removeClass("with-placeholder")
+            .css('opacity', 1)
+          ;
+
           setTimeout(function () {
             $container.find("img").each(function () {
               var jImg = $( this )
