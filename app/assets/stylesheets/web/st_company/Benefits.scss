@@ -1,0 +1,41 @@
+.container-benefits {
+  background: #f8fafa;
+  h2{
+    font-size: 36px;
+    font-weight: 300;
+    color: #597a84;
+    margin: 24px 0 10px;
+  }
+
+  .col-xs-12.col-sm-4 {
+    margin-top: 20px;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 300;
+    color: #597a84;
+    margin: 10px 0;
+  }
+
+  h4, .sub-desc{
+    color: #597a84;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 22px;
+    margin: 0;
+    .text-bold{
+      font-weight: 500;
+    }
+  }
+  p{
+    margin: 20px 0 0;
+    letter-spacing: 0.4px;
+    color: #597a84;
+    line-height: 20px;
+    font-weight: 300;
+    .text-bold{
+      font-weight: 500;
+    }
+  }
+}
