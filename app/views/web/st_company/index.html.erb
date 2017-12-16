@@ -8,8 +8,13 @@
 
 <%= render :partial => "/web/st_company/home/home_nav" %>
 <%= render :partial => "/web/st_company/home/technology" %>
-<%= render :partial => "/web/st_company/product/benefits" %>
+<%= render :partial => "/web/st_company/home/benefits" %>
 <%= render :partial => "/web/st_company/home/latest_updates" %>
+<div class="container-jumbotron-wrap">
+  <%= render :partial => "/web/st_company/home/product" %>
+  <%= render :partial => "/web/st_company/home/benefits" %>
+  <%= render :partial => "/web/st_company/home/latest_updates" %>
+</div>
 <%= render :partial => "/web/st_company/home/binance" %>
 <%= render :partial => "/web/st_company/home/subscribe" %>
 <%= render :partial => "/web/st_company/home/core_team_members" %>
