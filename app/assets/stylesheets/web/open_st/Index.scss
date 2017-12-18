@@ -1,6 +1,6 @@
 .container-jumbotron{
   min-height: 800px;
-  background-image: url('http://developmentopenst.org:3000/open-st-bg.png');
+  background-image: url('https://d36lai1ppm9dxu.cloudfront.net/assets/open-st/images/open-st-bg-2x-1.png');
   background-position: bottom;
   background-repeat: repeat-x;
   background-size: contain;
@@ -65,7 +65,7 @@
 
 .container-protocol{
   padding: 50px 0;
-  background-image: url('http://developmentopenst.org:3000/open-st-muted-graphic.png');
+  background-image: url('https://d36lai1ppm9dxu.cloudfront.net/assets/open-st/images/open-st-muted-graphic-2x.png');
   background-position: bottom;
   background-repeat: repeat-x;
   background-size: contain;
@@ -137,9 +137,9 @@
   }
 }
 
-.container-extended-team{
+.container-extended-team,
+.container-security-auditors{
   padding: 50px 0;
-  background: #f8fbf9;
 
   ul{
     padding: 0;
@@ -159,4 +159,8 @@
     min-height: 66px;
   }
 
+}
+
+.container-extended-team{
+  background: #f8fbf9;
 }

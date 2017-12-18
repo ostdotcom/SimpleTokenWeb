@@ -74,7 +74,8 @@ body{
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 500;
   @media (max-width: 767px) {
     font-size: 10px;
   }
@@ -82,6 +83,7 @@ body{
   padding: 20px 10px;
   color: #597a84;
   background: #f5faf6;
+  text-transform: uppercase;
   a,
   a:hover,
   a:active{
