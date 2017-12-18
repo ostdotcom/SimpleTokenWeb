@@ -91,4 +91,21 @@ body{
     border-bottom: 1px solid #9ea9a7;
     text-decoration: none;
   }
+
+  .copyright{
+    text-align: left;
+  }
+  .privacy{
+    text-align: right;
+  }
+}
+
+@media (max-width: 767px) {
+  .container-footer{
+    .copyright,
+    .privacy{
+      text-align: center;
+      font-size: 7.5px;
+    }
+  }
 }
