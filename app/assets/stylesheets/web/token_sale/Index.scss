@@ -163,6 +163,9 @@
   .nav-item{
     text-align: center;
     color: #597a84;
+    @media (min-width: 768px){
+      font-size: 18px;
+    }
     font-size: 18px;
     font-weight: 300;
     padding: 15px 0;
