@@ -549,3 +549,94 @@ en:
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
+
+  web/st_company:
+    index:
+      :meta:
+        :title: 'Discover The Simple Token Project Token Sale'
+        :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token'
+        :name: 'Simple Token'
+        :robots: 'index, follow'
+        :og:
+          :title: 'Discover The Simple Token Project Token Sale'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :type: 'website'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'Discover The Simple Token Project Token Sale'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+      :assets:
+        :specific_js_required: 1
+
+  web/open_st:
+    index:
+      :meta:
+        :title: 'OpenST Foundation'
+        :description: 'The OpenST Foundation is a non-profit Hong Kong membership company with a mandate is to develop the OpenST protocol, oversee the OST token economy and further the OST ecosystem.'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token, OpenST Foundation'
+        :name: 'OpenST Foundation'
+        :robots: 'index, follow'
+        :og:
+          :title: 'OpenST Foundation'
+          :description: 'The OpenST Foundation is a non-profit Hong Kong membership company with a mandate is to develop the OpenST protocol, oversee the OST token economy and further the OST ecosystem.'
+          :type: 'website'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/open-st/images/openst-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'OpenST Foundation'
+          :description: 'The OpenST Foundation is a non-profit Hong Kong membership company with a mandate is to develop the OpenST protocol, oversee the OST token economy and further the OST ecosystem.'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/open-st/images/openst-og-v1.png'
+      :assets:
+        :specific_js_required: 1
+
+  web/st_company:
+    index:
+      :meta:
+        :title: 'Discover The Simple Token Project Token Sale'
+        :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token'
+        :name: 'Simple Token'
+        :robots: 'index, follow'
+        :og:
+          :title: 'Discover The Simple Token Project Token Sale'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :type: 'website'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'Discover The Simple Token Project Token Sale'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+      :assets:
+        :specific_js_required: 1
+
+    product:
+      :meta:
+        :title: 'Discover The Simple Token Project Token Sale'
+        :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token'
+        :name: 'Simple Token'
+        :robots: 'index, follow'
+        :og:
+          :title: 'Discover The Simple Token Project Token Sale'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :type: 'website'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'Discover The Simple Token Project Token Sale'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+      :assets:
+        :specific_js_required: 1
