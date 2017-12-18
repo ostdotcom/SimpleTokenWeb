@@ -9,9 +9,9 @@ body {
 }
 html,
 body{
-  font-family: 'Quasimoda', Source Sans Pro, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #34445b;
-  font-weight: 100;
+  font-weight: 300;
   line-height: 1.43;
 }
 
@@ -51,13 +51,16 @@ body{
   }
   h1.title{
     font-size: 50px;
-    font-weight: 600;
+    font-weight: 700;
     margin: 10px 0 30px;
   }
   h2.title{
     font-size: 33px;
-    font-weight: 600;
+    font-weight: 500;
     margin: 10px 0 30px;
+    .thin{
+      font-weight: 300;
+    }
   }
   h3.title{
     color: #597a84;

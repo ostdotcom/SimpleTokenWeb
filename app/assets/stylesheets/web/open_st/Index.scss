@@ -31,7 +31,7 @@
           font-size: 20px;
           height: 28px;
           line-height: 24px;
-          font-weight: 300;
+          font-weight: 400;
           color: #34445b;
           margin-top: 15px;
           margin-bottom: 5px;
@@ -40,17 +40,19 @@
           font-size: 14px;
           height: 18px;
           line-height: 14px;
-          font-weight: 300;
-          color: #595b5e;
+          font-weight: 400;
+          color: #8a8d8b;
           margin: 5px 0;
         }
         .desc{
+          font-size: 12px;
+          line-height: 1.8;
           color: #595b5e;
           font-weight: 300;
         }
         a{
           color: #34445b;
-          font-weight: 500;
+          font-weight: 300;
           &:hover, &:focus{
             text-decoration: none;
             color: #c0993a;
@@ -69,8 +71,13 @@
   background-position: bottom;
   background-repeat: repeat-x;
   background-size: contain;
-  .btn-github{
-    padding: 10px 20px;
+  .protocol{
+    p.secondary{
+      min-height: 180px;
+    }
+    .btn-github{
+      padding: 10px 20px;
+    }
   }
 }
 
@@ -83,13 +90,14 @@
       display: inline-block;
       text-transform: uppercase;
       margin-left: 20px;
+      vertical-align: middle;
       .info-title{
         font-size: 14px;
         line-height: 2;
       }
       .info-count{
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 700;
       }
     }
   }
@@ -122,7 +130,7 @@
   h2{
     color: #ffffff;
     font-size: 33px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
   }
   h3{
@@ -196,10 +204,26 @@
 
 // Mobile portrait, landscape
 @media (max-width: 767px) {
+
   .btn-container{
     text-align: center;
     .btn-common{
       width:100%;
     }
   }
+
+  .container-protocol{
+    .protocol{
+      p.secondary{
+        min-height: inherit;
+      }
+    }
+  }
+
+  .container-token{
+    .statistic{
+      text-align: center;
+    }
+  }
+
 }

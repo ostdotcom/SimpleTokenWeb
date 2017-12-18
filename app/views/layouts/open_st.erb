@@ -78,14 +78,8 @@
 
   <%= csrf_meta_tags %>
 
-  <script src="https://use.typekit.net/uly4fdh.js"></script>
-  <script>
-    window.name = "<%= [*('A'..'Z')].sample(8).join %>";
-    try{Typekit.load({
-      async: true
-    });}catch(e){
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
   <% if Rails.env.production? %>
       <%= render :partial => 'shared/web/thirdparty/gtm_config' %>
   <% end %>
