@@ -15,13 +15,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a
-        <% if "#{params[:controller]}::#{params[:action]}" == 'web/home::index' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/" title="Home"
+        <% if "#{params[:controller]}::#{params[:action]}" == 'web/token_sale::index' %> class="selected-nav" href="javascript:void(0)"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Home"
         <% end %> >Home</a></li>
-        <li><a
-        <% if params[:action] == 'product' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="Product"
-        <% end %> >Product</a></li>
         <li><a
         <% if params[:action] == 'about' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/team" title="Team"
@@ -30,15 +26,11 @@
         <% if params[:action] == 'documents' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" title="Documents"
         <% end %> >Documents</a></li>
-        <li><a href="https://medium.com/simple-token" title="BLOG" target="_blank">BLOG</a></li>
         <li><a
         <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/faq/" title="FAQ"
         <% end %> >FAQ</a></li>
-        <li><a
-        <% if "#{params[:controller]}::#{params[:action]}" == 'web/token_sale::index' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Token Sale"
-        <% end %> >Token Sale</a></li>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/login" title="Login">Login</a></li>
