@@ -1,154 +1,20 @@
-<%
-   is_token_sale_page = false
+<div class="text-center uber-banner hidden-xs">
+  <span class="uber-banner-icon"></span>&nbsp;&nbsp;Tokens Unlocked, Listing of “OST” on Binance, OpenST v0.9.1 Release. <a href="https://medium.com/simple-token/simple-token-announces-unlocking-of-tokens-exclusive-debut-listing-of-ost-on-binance-exchange-dcc2ecb41180" target="_blank" title="Learn more">Learn more</a>
+</div>
 
-   if @presenter_obj.present?
-     is_token_sale_page = true
-     text1 = ''
-     text2 = ''
-     text3 = ''
-
-     case true
-       when @presenter_obj.has_sale_ended?
-         text1 = "The Token Sale Ended. #{@presenter_obj.target_percent_achieved}% of Target Achieved!"
-         text3 = 'Connect with us on '
-       when @presenter_obj.has_sale_paused?
-         text1 = 'The token sale has been temporarily paused.'
-         text3 = 'Learn more on '
-       when @presenter_obj.has_general_access_sale_started?
-         text1 = 'The token sale is Live! 6000+ participants,'
-         text3 = 'Connect with us on '
-
-         case true
-           when @presenter_obj.power_milestone_achieved?
-             text2 = '+45% bonus'
-             text3 = ' activated! ' + text3
-           when @presenter_obj.kicker_milestone_achieved?
-             text2 = '+40% bonus'
-             text3 = ' activated! ' + text3
-           when @presenter_obj.target_milestone_achieved?
-             text2 = '+20% Target bonus'
-             text3 = ' activated! ' + text3
-           else
-             text2 = '+20% bonus'
-             text3 = '  when Target is hit! ' + text3
-         end
-
-       when @presenter_obj.has_early_access_sale_started?
-         text1 = 'The Early Access token sale is Live! '
-         text3 = 'Connect with the team on '
-
-         case true
-           when @presenter_obj.power_milestone_achieved?
-             text2 = '30% Power bonus'
-             text3 = ' activated! ' + text3
-           when @presenter_obj.kicker_milestone_achieved?
-             text2 = '25% Kicker bonus'
-             text3 = ' activated! ' + text3
-           when @presenter_obj.target_milestone_achieved?
-             text2 = '20% Target bonus'
-             text3 = ' activated! ' + text3
-           else
-             text2 = '20% bonus'
-             text3 = '  for all when Target is hit. ' + text3
-         end
-       when @presenter_obj.has_early_access_register_ended?
-         text1 = 'Early Access token sale begins 14 Nov. 20% bonus for all when Target is hit.'
-         text2 = ''
-         text3 = 'Connect with the team on '
-
-       else
-         text1 = 'Token sale starts 14 November, 2017. Get Early Access and 10% Bonus.'
-         text2 = ''
-         text3 = 'Connect with the team on '
-     end
-
-   end
-
-%>
-
-<% if is_token_sale_page %>
-  <div class="text-center uber-banner hidden-xs">
-    <span class="uber-banner-icon"></span>&nbsp;&nbsp;<%= text1 %>
-    <% if text2.present? %>
-      <a href="#sale-progress-container" class="smooth-scroll"><%= text2 %></a>
-    <% end %>
-    <%= text3 %>
-    <a href="https://www.t.me/simpletoken" target="_blank" title="Join our Telegram channel">Telegram</a>
-  </div>
-
-  <div class="container-fluid hidden-sm hidden-md hidden-lg hidden-xl">
-    <div class="row uber-banner">
-      <div class="col-xs-1">
-        <div class="row">
-          <span class="uber-banner-icon"></span>
-        </div>
+<div class="container-fluid hidden-sm hidden-md hidden-lg hidden-xl">
+  <div class="row uber-banner">
+    <div class="col-xs-1">
+      <div class="row">
+        <span class="uber-banner-icon"></span>
       </div>
-      &nbsp;&nbsp;
-      <div class="col-xs-11">
-        <div class="row">
-          <%= text1 %>
-          <% if text2.present? %>
-            <a href="#sale-progress-container" class="smooth-scroll"><%= text2 %></a>
-          <% end %>
-          <%= text3 %>
-          <a href="https://www.t.me/simpletoken" target="_blank" title="Join our Telegram channel">Telegram</a>
-        </div>
+    </div>
+    &nbsp;&nbsp;
+    <div class="col-xs-11">
+      <div class="row">
+        Tokens Unlocked, Listing of “OST” on Binance, OpenST v0.9.1 Release. <a href="https://medium.com/simple-token/simple-token-announces-unlocking-of-tokens-exclusive-debut-listing-of-ost-on-binance-exchange-dcc2ecb41180" target="_blank" title="Learn more">Learn more</a>
       </div>
     </div>
   </div>
-<% else %>
-  <% if GlobalConstant::StTokenSale.has_sale_ended? %>
+</div>
 
-    <div class="text-center uber-banner hidden-xs">
-      <span class="uber-banner-icon"></span>&nbsp;&nbsp;The Token Sale Ended with 189% Target Achieved! <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Token Sale Results">Token Sale Results</a>
-    </div>
-
-    <div class="container-fluid hidden-sm hidden-md hidden-lg hidden-xl">
-      <div class="row uber-banner">
-        <div class="col-xs-1">
-          <div class="row">
-            <span class="uber-banner-icon"></span>
-          </div>
-        </div>
-        &nbsp;&nbsp;
-        <div class="col-xs-11">
-          <div class="row">
-            The Token Sale Ended with 189% Target Achieved! <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Token Sale Results">Token Sale Results</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <% else %>
-    <div class="text-center uber-banner hidden-xs">
-      <span class="uber-banner-icon"></span>&nbsp;&nbsp;The token sale is Live! 6000+ participants,
-      <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/#sale-progress-container">+45% bonus</a>
-      activated!
-      <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Participate Now!">Get Started!</a>
-    </div>
-
-    <div class="container-fluid hidden-sm hidden-md hidden-lg hidden-xl">
-      <div class="row uber-banner">
-        <div class="col-xs-1">
-          <div class="row">
-            <span class="uber-banner-icon"></span>
-          </div>
-        </div>
-        &nbsp;&nbsp;
-        <div class="col-xs-11">
-          <div class="row">
-            The token sale is Live! 6000+ participants,
-            <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/#sale-progress-container">+45%
-              bonus</a>
-            activated!
-            <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Participate Now!">Get
-              Started!</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
-
-
-<% end %>
