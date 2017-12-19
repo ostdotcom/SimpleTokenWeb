@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     get '/news' => :news
     get '/documents' => :documents
     get '/ip-checker' => :check
+    get '/ost-in-circulation' => :ost_circulation
   end
 
   scope '', controller: 'web/marketing' do

@@ -1,7 +1,7 @@
 class Web::HomeController < Web::BaseController
   layout "web"
 
-  before_action :set_page_meta_info, except: [:redirect_to_team]
+  before_action :set_page_meta_info, except: [:redirect_to_team, :ost_circulation]
 
   # Action for the home page index
   #
@@ -76,5 +76,16 @@ class Web::HomeController < Web::BaseController
   def check
     @country = get_country_from_ip.upcase
     @ip_address = ip_address
+  end
+
+  # Action to show ost in circulation,
+  # for now its hard-coded, will call api in future.
+  #
+  # * Author: Pankaj
+  # * Date: 19/12/2017
+  # * Reviewed By: Bala
+  #
+  def ost_circulation
+    render :layout => false
   end
 end
