@@ -60,29 +60,13 @@
   "image": "<%= og_meta[:image] %>",
 }
 </script>
-  <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Organization",
-  "name": "<%= @page_meta_data[:name] %>",
-  "url": "<%= og_meta[:url] %>",
-  "logo": "<%= og_meta[:image] %>",
-  "sameAs": [
-    "https://www.facebook.com/simpletoken/",
-    "https://medium.com/@SimpleToken",
-    "https://www.linkedin.com/company/18209852/",
-    "https://twitter.com/TheSimpleToken"
-  ]
-}
-</script>
 
   <%= csrf_meta_tags %>
+  <script>
+      window.name = "<%= [*('A'..'Z')].sample(8).join %>";
+  </script>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-
-  <% if Rails.env.production? %>
-      <%= render :partial => 'shared/web/thirdparty/gtm_config' %>
-  <% end %>
   <link rel="icon" type="image/png" sizes="64x64" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/64.png"/>
   <link rel="apple-touch-icon" sizes="57x57" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/60.png">
