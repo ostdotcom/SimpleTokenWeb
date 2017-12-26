@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   constraints(InitOpenST) do
     scope '', controller: 'web/open_st' do
       get '/' => :index
+      get '/wallet' => :wallet
     end
     # Route not found handler. Should be the last entry here
     match '*permalink', to: 'application#not_found', via: :all

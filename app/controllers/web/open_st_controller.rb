@@ -8,4 +8,9 @@ class Web::OpenStController < Web::BaseController
 
   end
 
+
+  def wallet
+
+  end
+
 end
