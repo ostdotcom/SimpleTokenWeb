@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get '/privacy' => :privacy
     get '/terms' => :terms
     get '/news' => :news
+    get '/careers' => :careers
     get '/documents' => :documents
     get '/ip-checker' => :check
     get '/ost-in-circulation' => :ost_circulation

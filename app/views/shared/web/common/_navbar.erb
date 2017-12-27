@@ -41,6 +41,10 @@
         <% end %> >Token Sale</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a
+        <% if params[:action] == 'careers' %> class="selected-nav" href="javascript:void(0)"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/careers" title="Careers"
+        <% end %> >careers</a></li>
         <li><a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/login" title="Login">Login</a></li>
         <% if !GlobalConstant::StTokenSale.has_sale_ended? %>
             <li>
