@@ -1,54 +1,23 @@
-<div class="container container-jumbotron">
+<div class="container-fluid container-play-video container-jumbotron" style="background: transparent;">
   <div class="row">
-
-    <div class="col-sm-12 col-md-6 col-left">
-      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive" alt="Simple Token Logo"/>
-      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive" alt="Simple Token Logo"/>
-      <div class="desc">
-        <h1>Cryptocurrency to Power Digital Communities</h1>
-        <p>
-          Easily launch digital currencies on open Ethereum sidechains and turn any business into a dynamic ecosystem.
-        </p>
-      </div>
-      <% if Time.zone.now >= GlobalConstant::StTokenSale.general_access_sale_end_date %>
-          <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" class="btn-common btn-gold btn-features" title="The token sale result">token
-            sale results</a>
-      <% else %>
-          <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" class="btn-common btn-gold btn-features" title="The token sale is live">The
-            token sale is live</a>
-      <% end %>
-    </div>
-
-    <div class="col-sm-12 col-md-6 illustration">
-      <div class="btn-common btn-play" data-toggle="modal" data-target="#youtube-video-modal" data-src="https://www.youtube.com/embed/oLQSM5prDgk?rel=0&autoplay=1">
-        <div class="play" style="vertical-align: middle;">
-          <svg class="svg">
-            <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
-            </switch>
-          </svg>
+    <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+      <div class="row">
+        <div class="side-by-side-content">
+          <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+            <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-2x.png 1000w" class="logo-desktop img-responsive" alt="Simple Token Logo"/>
+            <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" class="logo-mobile img-responsive"/>
+            <div class="desc">
+              <h1>Cryptocurrency to Empower Digital Communities</h1>
+              <p>Easily launch digital currencies on open Ethereum sidechains and turn any business into a dynamic ecosystem.</p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-5">
+            <div class="image no-mobile illustration">
+              <%= render :partial => "/web/home/index/play_video" %>
+            </div>
+          </div>
         </div>
-        <span style="vertical-align: middle;line-height: 25px;">Watch Intro</span>
       </div>
-      <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/illustration.png" srcset="https://d36lai1ppm9dxu.cloudfront.net/assets/image/illustration-2x.png 1000w" class="img-responsive" alt="Simple Token Play Video"/>
     </div>
-
-  </div>
-</div>
-
-<div class="container-fluid container-jumbotron-desc">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-md-offset-2">
-      <p class="desc">
-        We're building a network for consumer apps tokenization. Get all the benefits of a blockchain infrastructure
-        without the high costs and risks of building everything yourself from scratch.
-      </p>
-    </div>
-  </div>
-  <div class="container-social text-center">
-    <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" class="btn-common btn-gold get-started" title="About the Product">About
-      the Product</a>
-    <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" class="btn-common white-border-btn get-started" title="Get the Docs">Get
-      the Docs</a>
   </div>
 </div>

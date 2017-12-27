@@ -1,7 +1,11 @@
 <%= render :partial => "/shared/web/common/index_svg_sprite" %>
 <%= render :partial => "/shared/web/common/navbar" %>
-<%= render :partial => "/web/home/index/jumbotron" %>
-<%= render :partial => "/shared/web/common/latest_updates" %>
+<div class="container-jumbotron-wrap">
+  <%= render :partial => "/web/home/index/jumbotron" %>
+  <div style="margin-top: 40px;"></div>
+  <%= render :partial => '/web/home/index/medium_articles' %>
+</div>
+
 <%= render partial: '/shared/web/common/press', locals: {title: 'In the News'} %>
 <%= render partial: '/shared/web/common/press_companies' %>
 <%#= render :partial => "/web/home/index/features" %>

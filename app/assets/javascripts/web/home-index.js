@@ -1,4 +1,4 @@
 //= require plugins/slick/slick
 //= require web/home/Index
-//= require web/common/PressVideos
+//= require web/home/MediumArticles
 //= require web/common/LatestUpdates

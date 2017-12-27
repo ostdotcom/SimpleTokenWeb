@@ -1,11 +1,13 @@
-.container-jumbotron{
-  padding-top: 40px;
+.container-jumbotron-wrap {
   padding-bottom: 40px;
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 100px, #f1f8f5 100%);
+}
+.container-jumbotron{
   .desc{
     color: #597a84;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
-    padding: 10px 0 30px 0;
+    padding: 10px 0 15px 0;
     line-height: 1.5;
     letter-spacing: 0.8px;
     h1{
@@ -19,27 +21,41 @@
   .logo-desktop{
     max-width: 60%;
   }
-  .btn-features, .btn-documents{
-    margin-bottom: 20px;
-    margin-top: 10px;
+  .logo-mobile{
+    display: none;
   }
-  @media (min-width: 768px){
-    .btn-features, .btn-documents{
-      margin-right: 10px;
-    }
-    .btn-documents{
-      margin-left: 10px;
-    }
+  .btn-top-bottom-15{
+    margin: 15px 10px;
   }
+}
+
+.container-play-video{
+  .header{
+    color: #6ca3a9;
+    margin-top: 0;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    font-size: 38px;
+    font-weight: 300;
+    letter-spacing: 1.3px;
+  }
+
   .illustration{
     .btn-play{
       border: none;
       background: rgba(255, 255, 255, 0.9);
       box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
       color: #34445b;
-      position: relative;
-      top: 295px;
-      left: calc(50% - 110px);
+      position: absolute;
+      font-weight: 400;
+      top: 50%;
+      left: 50%;
+      padding: 13px 0;
+      letter-spacing: 2px;
+      min-width: 170px;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
       cursor: pointer;
       .play{
         width: 25px;
@@ -64,307 +80,86 @@
         }
       }
     }
+  }
+
+  .image{
+    text-align: center;
     img{
-      max-width: 490px;
-      margin: -70px auto 0 auto;
+      width: 100%;
     }
-    &.sale-ends-illustration{
-      margin-top: 80px;
+  }
+
+  .copy{
+    h3{
+      font-size: 20px;
+      color: #6ca3a9;
+      line-height: 1.2;
     }
+  }
+
+  .button{
+    text-align: center;
+    margin: 50px 0 40px;
+    a{
+      margin: 0 0 20px;
+      min-width: 260px;
+      vertical-align: top;
+      &:last-child{
+        padding: 13px 20px;
+        @media (min-width: 768px) {
+          margin-left: 30px;
+        }
+      }
+    }
+    span{
+      vertical-align: middle;
+    }
+  }
+
+  .desc{
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    color: #597a84;
+    font-weight: 300;
   }
 }
 
-.container-jumbotron-desc{
-  background: #6C99A6;
-  padding-top: 90px;
-  padding-bottom: 30px;
-  margin-top: -100px;
-  .desc{
-    color: #fff;
-    font-size: 22px;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-    text-align: center;
+.bit-more-sponsors{
+  margin: 0;
+  padding: 0;
+  li{
+    margin: 20px 0;
+    min-height: 60px;
+    list-style-type: none;
+  }
+}
+
+.side-by-side-content{
+  @media (min-width: 991px) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+  }
+}
+
+.container-binance{
+  padding: 25px 0;
+  h2.header{
     margin: 0;
   }
-  .get-started{
-    margin-top:30px;
-    min-width: 230px;
-    @media(min-width: 568px){
-      margin-left: 10px;
-      margin-right: 10px;
-      margin-bottom: 20px;
-    }
-  }
-  .get-started{
-    margin-top:30px;
-    margin-bottom:30px;
-    @media(min-width: 568px){
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-  }
-}
-
-.container-features{
-  padding-top: 40px;
-  padding-bottom: 20px;
-  .feature{
-    padding: 20px 0;
-  }
-  .col-right{
-    text-align: left;
-    padding-right: 60px;
-  }
-  .col-left{
-    text-align: right;
-    padding-left: 60px;
-  }
-  .col-text{
-    position: relative;
-    transform: translateY(35%);
-  }
-  .img-responsive{
-    display: inline-block !important;
-    max-width: 85% !important;
-  }
-  h1,h2{
-    font-size: 50px;
-    font-weight: 300;
-    letter-spacing: 1.3px;
-    color: #c0993a;
-  }
-  .desc{
-    font-size: 18px;
-    line-height: 1.5;
-    letter-spacing: 0.4px;
-    color: #597a84;
-  }
-}
-
-.container-documents{
-  padding-top: 20px;
-  padding-bottom: 20px;
-  .heading-2{
-    font-size: 38px;
-  }
-  h1,h2{
-    font-size: 44px;
-    font-weight: 300;
-    line-height: 1.5;
-    letter-spacing: 1.3px;
-    color: #6ca3a9;
-    margin-bottom: 40px;
-    b{
-      color: #c0993a;
-    }
-  }
-  h2{
-    margin-bottom: 20px;
+  img{
+    display: block;
+    margin: 10px auto;
   }
   p{
-    color: #7f9183;
-    font-size: 18px;
-  }
-  .iframe-wrapper {
-    width: 595px;
-    max-width: 100%;
-    border: 2px solid #5a768c;
-    border-radius: 5px;
-    margin: 20px auto 40px auto;
-    position: relative;
-    &:after{
-      padding-top: 81.51%;
-      display: block;
-      content: '';
-    }
-    .iframe-container{
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      iframe{
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-    }
-  }
-  .small-title-2{
-    color: #5a768c;
-    font-weight: 600;
-    font-size: 16px;
-    letter-spacing: 3px;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    display: block;
-  }
-}
-
-// Hide views specific to other viewports
-.logo-mobile,
-.feature-mobile{
-  display: none;
-}
-
-// Tablet landscape
-@media (min-width: 768px) and (max-width: 1200px) {
-  .container-jumbotron{
-    .btn-features{
-      margin-left:0;
-    }
-    .btn-documents{
-      margin-right:0;
-    }
-    .illustration{
-      .btn-play{
-        top: 310px;
-      }
-      img{
-        max-width: 100%;
-      }
-      &.sale-ends-illustration{
-        margin-top: 175px;
-      }
-    }
-  }
-  .container-features,
-  .container-documents,
-  .container-subscribe{
-    h1,h2{
-      font-size: 35px;
-    }
-  }
-  .container-jumbotron-desc {
-    padding-top: 55px;
-    margin-top: -75px;
-  }
-  .logo-mobile{
-    display: none;
-  }
-}
-
-// Tablet portrait
-@media (min-width: 768px) and (max-width: 1000px) {
-  .container-jumbotron{
-    .col-left{
-      text-align: center;
-      img{
-        margin: 0 auto;
-        max-width: 45%;
-      }
-      .desc{
-        padding:30px 60px;
-      }
-    }
-    .illustration{
-      img{
-        max-width: 490px;
-        margin: 0 auto;
-      }
-      &.sale-ends-illustration{
-        margin-top: 80px;
-      }
-    }
-  }
-  .container-jumbotron-desc{
-    .desc{
-      padding: 10px 0 0 0;
-    }
-  }
-  .logo-desktop{
-    display: none;
-  }
-  .logo-mobile{
-    display: block;
-  }
-  .container-features{
-    .col-text{
-      transform: none;
-    }
-  }
-}
-
-// Mobile portrait, landscape
-@media (max-width: 767px) {
-  .container-jumbotron{
-    .col-left{
-      text-align: center;
-      padding: 0 40px;
-      img{
-        margin: 0 auto;
-      }
-    }
-    .illustration{
-      .btn-play{
-        min-width: inherit;
-        left: calc(50% - 33px);
-        width: 70px;
-        height: 70px;
-        .play{
-          width: 30px;
-          height: 30px;
-          margin-left: 5px;
-          padding: 0;
-        }
-        span{
-          display: none;
-        }
-      }
-      img{
-        max-width: 300px;
-        margin: 0 auto;
-      }
-      &.sale-ends-illustration{
-        margin-top: 50px;
-      }
-    }
-  }
-  .container-jumbotron-desc{
-    .desc{
-      padding: 10px;
-    }
-  }
-  .container-features{
-    .feature-mobile{
-      text-align: center;
-      padding: 20px;
-      img{
-        width:300px;
-        max-width: 100%;
-      }
-    }
-  }
-
-//  .container-subscribe {
-//    .simpletoken-form{
-//      .subscribe{
-//        .form-group{
-//          input.form-control,
-//          button.btn{
-//            width:100%;
-//            margin: 5px 0;
-//          }
-//        }
-//      }
-//    }
-//  }
-
-  .container-features,
-  .container-documents,
-  .container-subscribe{
-    h1,h2{
-      font-size: 30px;
-    }
-  }
-
-  .logo-desktop,
-  .feature{
-    display: none;
-  }
-  .logo-mobile,
-  .feature-mobile{
-    display: block;
+    color: #597a84;
+    letter-spacing: 0.4px;
   }
 }
