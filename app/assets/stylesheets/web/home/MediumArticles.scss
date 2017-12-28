@@ -15,7 +15,7 @@
     text-align: center;
   }
 
-  .video-carousel.with-placeholder {
+  .video-carousel.with-placeholder, .latest-updates-carousel.with-placeholder {
     .carousel-item {
       width: calc(33% - 6px);
       display: inline-block;
@@ -131,7 +131,7 @@
 @media (min-width: 768px) and (max-width: 1000px){
   .container-press{
 
-    .video-carousel.with-placeholder {
+    .video-carousel.with-placeholder, .latest-updates-carousel.with-placeholder {
       .carousel-item {
         width: calc(50% - 12px);
         display: inline-block;
@@ -182,7 +182,7 @@
 @media (max-width: 767px){
   .container-press{
 
-    .video-carousel.with-placeholder {
+    .video-carousel.with-placeholder, .latest-updates-carousel.with-placeholder {
       .carousel-item {
         width: calc(50% - 12px);
         display: inline-block;

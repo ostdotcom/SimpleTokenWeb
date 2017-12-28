@@ -1,53 +1,37 @@
 .container-openst-jumbotron{
-  min-height: 75vh;
   background-image: url('https://d36lai1ppm9dxu.cloudfront.net/assets/open-st/images/open-st-bg-2x-1.png');
   background-position: bottom;
   background-repeat: repeat-x;
   background-size: contain;
-}
+  color: #6ca3a9;
+  @media (min-width: 1024px) {
+    min-height: 80vh;
+  }
+  min-height: 50vh;
   .vertical-center {
-    min-height: 75%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 75vh; /* These two lines are counted as one :-)       */
-//    display: flex;
-//    align-items: center;
+    @media (min-width: 1024px) {
+      min-height: 80%;  /* Fallback for browsers do NOT support vh unit */
+      min-height: 80vh; /* These two lines are counted as one :-)       */
+    }
+    min-height: 50%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 50vh; /* These two lines are counted as one :-)       */
+
   }
   p.primary{
     font-size: 18px;
+    font-weight: 300;
     line-height: 1.8;
     margin: 10px 0 30px;
-
-    a {
-      color: #34445b;
-      text-decoration: none;
-    }
-
-    a:hover,
-    a:active{
-      color: #c0993a;
-      text-decoration: none;
-    }
-  }
-  p.secondary{
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 10px 0 20px;
   }
   h1.title{
     font-size: 50px;
-    font-weight: 700;
-    margin: 10px 0 30px;
+    font-weight: 300;
+    margin: 50px 0 30px;
   }
-  h2.title{
-    font-size: 33px;
-    font-weight: 500;
-    margin: 10px 0 30px;
-    .thin{
-      font-weight: 300;
+  .btn-container{
+    a{
+      margin: 10px;
     }
   }
-  h3.title{
-    color: #597a84;
-    font-size: 20px;
-    font-weight: 500;
-    margin: 10px 0 30px;
-  }
+}
+
