@@ -33,6 +33,7 @@
 
   filters = {whitelist_status: @whitelist_status}
   sortings = {sort_order: @sort_order}
+  client_setup = {'has_email_setup' => true, 'has_whitelist_setup' => true}
 
 %>
 
@@ -48,7 +49,7 @@
               </span>
             </div>
             <div class="col-sm-6" style="text-align: right;">
-              <%= render :partial => 'header_links' %>
+              <%= render :partial => 'header_links', locals: {client_setup: client_setup} %>
             </div>
           </div>
         </div>
