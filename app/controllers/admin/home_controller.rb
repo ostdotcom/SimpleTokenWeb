@@ -4,8 +4,7 @@ class Admin::HomeController < Admin::BaseController
   before_action :delete_admin_cookie, only: [:login]
   before_action :check_admin_cookie, except: [:login]
 
-  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard,
-                                                 :get_sale_all_dashboard, :get_sale_daily_dashboard, :get_contract_events_dashboard]
+  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard]
 
   # Admin login
   #
