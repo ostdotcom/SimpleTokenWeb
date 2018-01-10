@@ -1,3 +1,6 @@
+<%
+   has_whitelist_setup = client_setup['has_whitelist_setup'].nil? ? true : client_setup['has_whitelist_setup']
+%>
 <span id="searchCaseContainer">
   <input type="text" id="searchCase" placeholder="SEARCH BY EMAIL">
   <div id="caseSearchResults"></div>
@@ -5,11 +8,14 @@
 <span id="dashboardContainer">
   <span id="dashboardHeader"> DASHBOARDS </span>
   <div id="dashboardHolder">
+    <a href="/admin/change-password" title="Change Password" class="dashElement">Change Password</a>
     <a href="/admin/dashboard" title="Log out" class="dashElement">KYC Dash</a>
-    <a href="/admin/sale-all-dashboard" title="Sale All Dash" class="dashElement">Sale All Dash</a>
-    <a href="/admin/sale-daily-dashboard" title="Log out" class="dashElement">Sale Daily Dash</a>
-    <a href="/admin/whitelist-dashboard" title="Whitelist Dash" class="dashElement">Whitelist Dash</a>
-    <a href="/admin/get-contract-events-dashboard" title="Whitelist Dash" class="dashElement">Contract Events Dash</a>
+    <!--<a href="/admin/sale-all-dashboard" title="Sale All Dash" class="dashElement">Sale All Dash</a>-->
+    <!--<a href="/admin/sale-daily-dashboard" title="Log out" class="dashElement">Sale Daily Dash</a>-->
+    <% if has_whitelist_setup %>
+        <a href="/admin/whitelist-dashboard" title="Whitelist Dash" class="dashElement">Whitelist Dash</a>
+    <% end %>
+    <!--<a href="/admin/get-contract-events-dashboard" title="Whitelist Dash" class="dashElement">Contract Events Dash</a>-->
   </div>
 </span>
 <span> | </span>

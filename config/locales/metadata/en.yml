@@ -456,6 +456,13 @@ en:
       :assets:
         :specific_css_required: 1
 
+    change_password:
+      :meta:
+        :title: Simple Token Admin Change Password
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 1
+
     dashboard:
       :meta:
         :title: Simple Token Dashboard

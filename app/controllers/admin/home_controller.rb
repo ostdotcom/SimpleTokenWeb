@@ -4,8 +4,7 @@ class Admin::HomeController < Admin::BaseController
   before_action :delete_admin_cookie, only: [:login]
   before_action :check_admin_cookie, except: [:login]
 
-  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard,
-                                                 :get_sale_all_dashboard, :get_sale_daily_dashboard, :get_contract_events_dashboard]
+  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard]
 
   # Admin login
   #
@@ -23,6 +22,23 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def authentication
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_ga_url
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
+  end
+
+  # Admin password change page
+  #
+  # * Author: Aman
+  # * Date: 09/01/2018
+  # * Reviewed By:
+  #
+  def change_password
   end
 
   # Admin dashboard
@@ -32,6 +48,16 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def dashboard
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_client_detail
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
     @admin_status = params[:filters][:admin_status] if params[:filters].present?
     @cynopsis_status = params[:filters][:cynopsis_status] if params[:filters].present?
     @admin_action_type = params[:filters][:admin_action_type] if params[:filters].present?
@@ -162,7 +188,6 @@ class Admin::HomeController < Admin::BaseController
     redirect_to "/admin/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
-
   # Admin dashboard
   #
   # * Author: Alpesh
@@ -170,6 +195,17 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def whitelist_dashboard
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_client_detail
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
+
     @whitelist_status = params[:filters][:whitelist_status] if params[:filters].present?
     @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
     @display_start = params[:display_start]
@@ -223,8 +259,8 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 29/10/2017
   # * Reviewed By: Sunil
   #
-  def pos_dashboard
-  end
+  # def pos_dashboard
+  # end
 
 
   # Admin dashboard
@@ -233,8 +269,8 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def sale_all_dashboard
-  end
+  # def sale_all_dashboard
+  # end
 
   # Admin dashboard
   #
@@ -242,36 +278,36 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def get_sale_all_dashboard
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
-                           .sale_all_dashboard_detail(params)
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    resp_data = service_response.data
-
-    curr_resp_data = []
-    resp_data['curr_page_data'].each do |c_p_d|
-      curr_resp_data << {
-          date_time: c_p_d['day_timestamp'],
-          ethereum_address: c_p_d['ethereum_address'],
-          ethereum_value: c_p_d['ethereum_value'],
-          tokens_sold: c_p_d['tokens_sold'],
-          usd_value: c_p_d['usd_value']
-      }
-    end
-
-    response = {
-        recordsFiltered: resp_data['meta']['total_filtered_recs'],
-        data: curr_resp_data
-    }
-
-    render :json => response and return
-
-  end
+  # def get_sale_all_dashboard
+  #   service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+  #                          .sale_all_dashboard_detail(params)
+  #   # Check if error present or not?
+  #   unless service_response.success?
+  #     render_error_response(service_response)
+  #     return
+  #   end
+  #
+  #   resp_data = service_response.data
+  #
+  #   curr_resp_data = []
+  #   resp_data['curr_page_data'].each do |c_p_d|
+  #     curr_resp_data << {
+  #         date_time: c_p_d['day_timestamp'],
+  #         ethereum_address: c_p_d['ethereum_address'],
+  #         ethereum_value: c_p_d['ethereum_value'],
+  #         tokens_sold: c_p_d['tokens_sold'],
+  #         usd_value: c_p_d['usd_value']
+  #     }
+  #   end
+  #
+  #   response = {
+  #       recordsFiltered: resp_data['meta']['total_filtered_recs'],
+  #       data: curr_resp_data
+  #   }
+  #
+  #   render :json => response and return
+  #
+  # end
 
   # Admin dashboard
   #
@@ -279,9 +315,9 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def sale_daily_dashboard
-    @tab_type = params[:tab_type] || 'day'
-  end
+  # def sale_daily_dashboard
+  #   @tab_type = params[:tab_type] || 'day'
+  # end
 
   # Admin dashboard
   #
@@ -289,40 +325,40 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def get_sale_daily_dashboard
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
-                           .sale_daily_dashboard_detail(params)
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    resp_data = service_response.data
-
-    curr_resp_data = []
-    resp_data['curr_page_data'].each do |c_p_d|
-      curr_resp_data << {
-          day_no: c_p_d['day_no'].to_i + 1,
-          display_date:  c_p_d['date'],
-          total_ethereum: c_p_d['total_ethereum'],
-          total_tokens_sold: c_p_d['total_tokens_sold'],
-          total_dollar_value: c_p_d['total_dollar_value'],
-          no_of_transaction: c_p_d['no_of_transaction'],
-          average: c_p_d['average_eth'],
-          distinct_users: c_p_d['distinct_users']
-      }
-    end
-
-    response = {
-        recordsFiltered: resp_data['meta']['total_filtered_recs'],
-        data: curr_resp_data,
-        all_time_data: resp_data['all_time_data']
-    }
-
-    render :json => response and return
-
-  end
+  # def get_sale_daily_dashboard
+  #   service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+  #                          .sale_daily_dashboard_detail(params)
+  #   # Check if error present or not?
+  #   unless service_response.success?
+  #     render_error_response(service_response)
+  #     return
+  #   end
+  #
+  #   resp_data = service_response.data
+  #
+  #   curr_resp_data = []
+  #   resp_data['curr_page_data'].each do |c_p_d|
+  #     curr_resp_data << {
+  #         day_no: c_p_d['day_no'].to_i + 1,
+  #         display_date:  c_p_d['date'],
+  #         total_ethereum: c_p_d['total_ethereum'],
+  #         total_tokens_sold: c_p_d['total_tokens_sold'],
+  #         total_dollar_value: c_p_d['total_dollar_value'],
+  #         no_of_transaction: c_p_d['no_of_transaction'],
+  #         average: c_p_d['average_eth'],
+  #         distinct_users: c_p_d['distinct_users']
+  #     }
+  #   end
+  #
+  #   response = {
+  #       recordsFiltered: resp_data['meta']['total_filtered_recs'],
+  #       data: curr_resp_data,
+  #       all_time_data: resp_data['all_time_data']
+  #   }
+  #
+  #   render :json => response and return
+  #
+  # end
 
 
   # Contracts events dashboard
@@ -331,8 +367,8 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 10/11/2017
   # * Reviewed By:
   #
-  def contract_events_dashboard
-  end
+  # def contract_events_dashboard
+  # end
 
   # Contracts events Ajax dashboard
   #
@@ -340,34 +376,34 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 10/11/2017
   # * Reviewed By:
   #
-  def get_contract_events_dashboard
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
-                           .contract_events_dashboard_detail(params)
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    resp_data = service_response.data
-
-    curr_resp_data = []
-    resp_data['curr_page_data'].each do |c_p_d|
-      curr_resp_data << {
-          block_number: c_p_d['block_number'],
-          event_name: c_p_d['event_name'],
-          contract_address: c_p_d['contract_address'],
-          processed_event_data: c_p_d['processed_event_data'].inspect
-      }
-    end
-
-    response = {
-        recordsFiltered: resp_data['meta']['total_filtered_recs'],
-        data: curr_resp_data
-    }
-
-    render :json => response and return
-
-  end
+  # def get_contract_events_dashboard
+  #   service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+  #                          .contract_events_dashboard_detail(params)
+  #   # Check if error present or not?
+  #   unless service_response.success?
+  #     render_error_response(service_response)
+  #     return
+  #   end
+  #
+  #   resp_data = service_response.data
+  #
+  #   curr_resp_data = []
+  #   resp_data['curr_page_data'].each do |c_p_d|
+  #     curr_resp_data << {
+  #         block_number: c_p_d['block_number'],
+  #         event_name: c_p_d['event_name'],
+  #         contract_address: c_p_d['contract_address'],
+  #         processed_event_data: c_p_d['processed_event_data'].inspect
+  #     }
+  #   end
+  #
+  #   response = {
+  #       recordsFiltered: resp_data['meta']['total_filtered_recs'],
+  #       data: curr_resp_data
+  #   }
+  #
+  #   render :json => response and return
+  #
+  # end
 
 end
