@@ -22,6 +22,23 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def authentication
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_ga_url
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
+  end
+
+  # Admin password change page
+  #
+  # * Author: Aman
+  # * Date: 09/01/2018
+  # * Reviewed By:
+  #
+  def change_password
   end
 
   # Admin dashboard
@@ -31,6 +48,16 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def dashboard
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_client_detail
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
     @admin_status = params[:filters][:admin_status] if params[:filters].present?
     @cynopsis_status = params[:filters][:cynopsis_status] if params[:filters].present?
     @admin_action_type = params[:filters][:admin_action_type] if params[:filters].present?
@@ -161,7 +188,6 @@ class Admin::HomeController < Admin::BaseController
     redirect_to "/admin/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
-
   # Admin dashboard
   #
   # * Author: Alpesh
@@ -169,6 +195,17 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def whitelist_dashboard
+    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_client_detail
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
+
     @whitelist_status = params[:filters][:whitelist_status] if params[:filters].present?
     @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
     @display_start = params[:display_start]

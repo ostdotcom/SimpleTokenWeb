@@ -36,7 +36,7 @@
 
   filters = {cynopsis_status: @cynopsis_status, admin_status: @admin_status, admin_action_type: @admin_action_type}
   sortings = {sort_order: @sort_order}
-  client_setup = {'has_email_setup' => true, 'has_whitelist_setup' => true}
+  client_setup = @resp_data['client_setup']
 
 %>
 
