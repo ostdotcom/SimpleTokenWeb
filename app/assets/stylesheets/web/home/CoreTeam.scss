@@ -1,0 +1,59 @@
+.container-team{
+  .heading{
+    color: #6da4a9;
+    font-weight: 300;
+    margin-bottom: 40px;
+    margin-top: 0;
+    font-size: 38px;
+  }
+
+  .core-team,
+  .advisor-team{
+
+    .thumbnail{
+      padding:0;
+      border: none;
+      margin-bottom: 0;
+      text-align: left;
+      background-color: transparent;
+
+      .caption{
+
+        padding: 10px 0;
+
+        [itemprop="name"]{
+          font-size: 20px;
+          height: 28px;
+          line-height: 24px;
+          font-weight: 300;
+          color: #34445b;
+          margin-top: 15px;
+          margin-bottom: 5px;
+        }
+        [itemprop="jobTitle"]{
+          font-size: 14px;
+          height: 18px;
+          line-height: 14px;
+          font-weight: 300;
+          color: #595b5e;
+          margin: 5px 0;
+        }
+        .desc{
+          color: #595b5e;
+          font-weight: 300s;
+        }
+        a{
+          color: #34445b;
+          font-weight: 500;
+          &:hover, &:focus{
+            text-decoration: none;
+            color: #c0993a;
+          }
+        }
+      }
+
+    }
+
+  }
+
+}
