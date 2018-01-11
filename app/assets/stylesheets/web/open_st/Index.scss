@@ -104,13 +104,17 @@
 }
 
 .container-token-buy{
-  padding: 50px 0;
+  padding: 50px 0 0;
   background: #f8fbf9;
 
   .binance-logo{
-    width:220px;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
   }
+
+  .btn-container{
+    margin-bottom: 50px;
+  }
+
 }
 
 .container-featured{
