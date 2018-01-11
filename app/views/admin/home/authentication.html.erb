@@ -14,7 +14,7 @@
         <h1 class="text-center form-header">Multi Factor Authentication</h1>
 
         <div class="form-sub-header">Please enter an MFA code to complete sign-in.</div>
-        <form class="user-form" method="POST" action="/api/admin/mfa" id="adminAuthForm">
+        <form class="user-form" style="text-align: center;" method="POST" action="/api/admin/mfa" id="adminAuthForm">
 
           <% if qr_code_url.present? %>
               <div class="">
