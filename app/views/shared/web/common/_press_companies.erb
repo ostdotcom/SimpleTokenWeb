@@ -109,20 +109,18 @@
                 <span class="btc-manager-logo-mobile"></span>
               </a>
             </li>
-            <li class="col-xs-6 text-center">
-              <a href="https://venturebeat.com/2017/10/31/take-off-your-bitcoin-blinders-theres-no-right-way-to-use-blockchain/" title="VentureBeat" target="_blank">
-                <span class="venture-beat-logo-mobile"></span>
-              </a>
-            </li>
+            <!--<li class="col-xs-6 text-center">-->
+              <!--<a href="https://venturebeat.com/2017/10/31/take-off-your-bitcoin-blinders-theres-no-right-way-to-use-blockchain/" title="VentureBeat" target="_blank">-->
+                <!--<span class="venture-beat-logo-mobile"></span>-->
+              <!--</a>-->
+            <!--</li>-->
           </ul>
 
         </div>
 
-        <% if "#{params[:controller]}::#{params[:action]}" == 'web/home::index' %>
-          <div class="text-center" style="margin-top: 30px">
+          <div class="text-center" style="margin-top: 20px">
             <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/news" class="btn-common btn-grey" title="See All News">See All News</a>
           </div>
-        <% end %>
 
       </div>
 
