@@ -2,12 +2,14 @@
 <%= render :partial => "/shared/web/common/navbar" %>
 <%= render :partial => "/web/token_sale/sale_ends_jumbotron" %>
 <%= render :partial => "/web/token_sale/sale_ends_microsite_nav" %>
-<%= render :partial => "/shared/web/common/latest_updates" %>
+<div class="container-press" style="padding-top: 0">
+  <%= render :partial => "/shared/web/common/latest_updates" %>
+  <%= render :partial => '/shared/web/common/press'%>
+</div>
+<%= render :partial => '/shared/web/common/press_companies' %>
 <%= render :partial => "/web/home/index/subscribe" %>
 <%= render :partial => "/web/token_sale/sale_details" %>
 <%= render :partial => "/web/token_sale/token_allocation" %>
 <%= render :partial => "/web/token_sale/token_key_dates" %>
 <%= render :partial => "/web/token_sale/why" %>
-<%= render :partial => '/shared/web/common/press', locals: {title: 'In the News'}  %>
-<%= render :partial => '/shared/web/common/press_companies' %>
 <%= render :partial => "/shared/web/common/social" %>
