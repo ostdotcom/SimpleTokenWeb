@@ -42,7 +42,7 @@
           render: $.fn.dataTable.render.text()
         },
         {
-          title: "Status Cynopsys",
+          title: "Status Cynopsis",
           data: "status_cy",
           render: $.fn.dataTable.render.text()
         },

@@ -69,7 +69,7 @@
         copyMap['/api/admin/kyc/selfie-img-issue'] = 'Selfie Issue';
         copyMap['/api/admin/kyc/residency-img-issue'] = 'Residency Image Issue';
         copyMap['/api/admin/kyc/deny-kyc'] = 'Deny KYC';
-        copyMap['/api/admin/kyc/qualify'] = 'Quality';
+        copyMap['/api/admin/kyc/qualify'] = 'Qualify';
 
         if ($dataAction == '/api/admin/kyc/data-mismatch') {
           $kycCaseActionModal.find('.form-fields').html($('#data_mismatch_form').text());

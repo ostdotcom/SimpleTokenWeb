@@ -47,7 +47,7 @@ module GlobalConstant
 
       ### Admin Status End ###
 
-      ### Cynopsys Status Start ###
+      ### Cynopsis Status Start ###
 
       def all_cynopsis_status
         'all'
@@ -93,7 +93,7 @@ module GlobalConstant
         }
       end
 
-      ### Cynopsys Status End ###
+      ### Cynopsis Status End ###
 
 
 
