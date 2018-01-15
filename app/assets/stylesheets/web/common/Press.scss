@@ -58,3 +58,31 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-tok
 .venture-beat-logo{
   @include icon-generator(477px, 62px, -30px, -1389px, -547px, -547px, 36);
 }
+
+.epic-enter-logo-mobile{
+  @include icon-generator(477px, 117px, -30px, -50px, -547px, -547px, 28);
+}
+.yahoo-finance-logo-mobile{
+  @include icon-generator(456px, 145px, -30px, -211px, -547px, -547px, 28);
+}
+.block-tribune-logo-mobile{
+  @include icon-generator(477px, 111px, -30px, -404px, -547px, -547px, 28);
+}
+.smith-crown-logo-mobile{
+  @include icon-generator(485px, 121px, -30px, -559px, -547px, -547px, 28);
+}
+.chipin-logo-mobile{
+  @include icon-generator(300px, 78px, -30px, -724px, -547px, -547px, 28);
+}
+.icorating-logo-mobile{
+  @include icon-generator(472px, 102px, -28px, -847px, -545px, -547px, 28);
+}
+.blockchain-blog-logo-mobile{
+  @include icon-generator(477px, 197px, -30px, -1000px, -547px, -547px, 28);
+}
+.btc-manager-logo-mobile{
+  @include icon-generator(477px, 102px, -30px, -1242px, -547px, -547px, 28);
+}
+.venture-beat-logo-mobile{
+  @include icon-generator(477px, 62px, -30px, -1389px, -547px, -547px, 28);
+}

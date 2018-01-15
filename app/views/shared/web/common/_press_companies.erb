@@ -6,7 +6,7 @@
 
       <div class="col-xs-12 col-md-8 col-md-offset-2">
 
-        <div class="row">
+        <div class="row hidden-xs">
 
           <ul class="bit-more-sponsors">
             <li class="col-xs-12 col-sm-4 text-center">
@@ -62,43 +62,72 @@
 
         </div>
 
-      </div>
+        <div class="row hidden-sm hidden-md hidden-lg hidden-xl">
 
-    </div>
+          <ul class="bit-more-sponsors">
+            <li class="col-xs-6 text-center">
+              <a href="https://epicenter.tv/episode/204/" title="Epic Enter" target="_blank">
+                <span class="epic-enter-logo-mobile"></span>
+              </a>
+            </li>
+            <li class="col-xs-6 text-center">
+              <a href="https://finance.yahoo.com/video/bitcoin-may-stiff-competition-142955745.html" title="Yahoo Finance" target="_blank">
+                <span class="yahoo-finance-logo-mobile"></span>
+              </a>
+            </li>
+            <li class="col-xs-6 text-center">
+              <a href="http://blocktribune.com/simple-tokens-aims-keep-tokening-simple-ico-soon/" title="Block Tribune" target="_blank">
+                <span class="block-tribune-logo-mobile"></span>
+              </a>
+            </li>
+          </ul>
+          <ul class="bit-more-sponsors">
+            <li class="col-xs-6 text-center">
+              <a href="https://www.smithandcrown.com/sale/simple-token/" title="Smith Crown" target="_blank">
+                <span class="smith-crown-logo-mobile"></span>
+              </a>
+            </li>
+            <li class="col-xs-6 text-center">
+              <a href="https://www.chipin.com/simple-token-blockchain-app-tokens/" title="Chipin" target="_blank">
+                <span class="chipin-logo-mobile"></span>
+              </a>
+            </li>
+            <li class="col-xs-6 text-center">
+              <a href="http://icorating.com/project/594/Simple-Token/review" title="Icorating" target="_blank">
+                <span class="icorating-logo-mobile"></span>
+              </a>
+            </li>
+          </ul>
+          <ul class="bit-more-sponsors">
+            <li class="col-xs-6 text-center">
+              <a href="https://itsblockchain.com/simpletoken/" title="Blockchain Blog" target="_blank">
+                <span class="blockchain-blog-logo-mobile"></span>
+              </a>
+            </li>
+            <li class="col-xs-6 text-center">
+              <a href="https://btcmanager.com/building-bridge-cryptocurrencies-main-street/" title="BTCMANAGER" target="_blank">
+                <span class="btc-manager-logo-mobile"></span>
+              </a>
+            </li>
+            <li class="col-xs-6 text-center">
+              <a href="https://venturebeat.com/2017/10/31/take-off-your-bitcoin-blinders-theres-no-right-way-to-use-blockchain/" title="VentureBeat" target="_blank">
+                <span class="venture-beat-logo-mobile"></span>
+              </a>
+            </li>
+          </ul>
 
-  </div>
+        </div>
 
-</div>
-
-<div class="modal fade youtube-modal" id="youtube-video-modal" tabindex="-1" role="dialog">
-  <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
-    <span aria-hidden="true" class="modal-close-icon" title="close"></span>
-  </button>
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content" style="background: transparent; box-shadow: none; -webkit-box-shadow:none; border:none">
-      <div class="modal-body" style="padding: 0px;">
-        <iframe src="" frameborder="0" allowfullscreen id="frameVideo" style="width:100%"></iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script type="custom" id="carousel-item">
-    <div class="carousel-item" data-toggle="modal" data-target="#youtube-video-modal" data-src="__video_embed__">
-      <div class="thumbnail">
-        <div class="video-container">
-          <div class="play">
-            <svg class="svg">
-              <switch>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
-              </switch>
-            </svg>
+        <% if "#{params[:controller]}::#{params[:action]}" == 'web/home::index' %>
+          <div class="text-center" style="margin-top: 30px">
+            <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/news" class="btn-common btn-grey" title="See All News">See All News</a>
           </div>
-          <img src="__image__" alt="__title__" style="width: 100%;">
-        </div>
-        <div class="caption">
-          <h4>__title__</h4>
-        </div>
+        <% end %>
+
       </div>
+
     </div>
-</script>
+
+  </div>
+
+</div>
