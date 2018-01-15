@@ -18,6 +18,30 @@ module SimpleTokenApi
         @service_base_route = 'admin/'
       end
 
+      # Get details for client info
+      #
+      # * Author: Aman
+      # * Date: 09/01/2017
+      # * Reviewed By:
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def get_client_detail
+        get("profile/detail")
+      end
+
+      # Get details for admin mfa authentication
+      #
+      # * Author: Aman
+      # * Date: 09/01/2017
+      # * Reviewed By:
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def get_ga_url
+        get("get-ga-url")
+      end
+
       # Get User info
       #
       # * Author: Aman

@@ -36,6 +36,7 @@
 
   filters = {cynopsis_status: @cynopsis_status, admin_status: @admin_status, admin_action_type: @admin_action_type}
   sortings = {sort_order: @sort_order}
+  client_setup = @resp_data['client_setup']
 
 %>
 
@@ -52,7 +53,7 @@
             </div>
 
             <div class="col-sm-6" style="text-align: right;">
-              <%= render :partial => 'header_links' %>
+              <%= render :partial => 'header_links', locals: {client_setup: client_setup} %>
             </div>
           </div>
         </div>
