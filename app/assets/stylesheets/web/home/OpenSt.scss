@@ -1,0 +1,37 @@
+.container-openst-jumbotron{
+  background-image: url('https://d36lai1ppm9dxu.cloudfront.net/assets/open-st/images/open-st-bg-2x-1.png');
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: contain;
+  color: #6ca3a9;
+  @media (min-width: 1024px) {
+    min-height: 80vh;
+  }
+  min-height: 50vh;
+  .vertical-center {
+    @media (min-width: 1024px) {
+      min-height: 80%;  /* Fallback for browsers do NOT support vh unit */
+      min-height: 80vh; /* These two lines are counted as one :-)       */
+    }
+    min-height: 50%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 50vh; /* These two lines are counted as one :-)       */
+
+  }
+  p.primary{
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.8;
+    margin: 10px 0 30px;
+  }
+  h1.title{
+    font-size: 50px;
+    font-weight: 300;
+    margin: 50px 0 30px;
+  }
+  .btn-container{
+    a{
+      margin: 10px;
+    }
+  }
+}
+
