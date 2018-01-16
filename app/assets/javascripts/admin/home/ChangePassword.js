@@ -3,7 +3,7 @@
 
   var homeNs = ns("simpletokenadmin.home"),
     adminUtilsNs = ns("simpletokenadmin.utils"),
-    utilsNs = ns("simpletoken.utils"),
+    webUtilsNs = ns("simpletoken.utils"),
     oThis;
 
   homeNs.login = oThis = {
@@ -16,7 +16,7 @@
 
       $("#adminChangePassword").click(function (event) {
         event.preventDefault();
-        var v = utilsNs.errorHandling.validationGeneric( $('#adminChangePasswordForm input[type="password"]') );
+        var v = webUtilsNs.errorHandling.validationGeneric( $('#adminChangePasswordForm input[type="password"]') );
         if(v === true ) {
           oThis.changePassword();
         }
@@ -34,10 +34,13 @@
         success: function (response) {
 
           if (response.success == true) {
-            window.location = '/admin/dashboard';
+            webUtilsNs.errorHandling.showSuccessAlert("Password Changed Successfully");
+            setTimeout(function () {
+              window.location = '/admin/dashboard';
+            }, 2000);
             return false;
           } else {
-            utilsNs.errorHandling.displayFormErrors(response);
+            webUtilsNs.errorHandling.displayFormErrors(response);
           }
         },
         error: function (jqXHR, exception) {
