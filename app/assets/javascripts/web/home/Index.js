@@ -50,7 +50,7 @@
 
             var attr_obj = {
                 is_general_update: 1,
-                is_token_sale_user: 1
+                is_web_after_ico: 1
             };
 
             var utm_params = simpletoken.utils.utmHelper.getUtmFromCookie();
