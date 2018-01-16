@@ -200,6 +200,7 @@
         success: function (response) {
           if (response.success == true) {
             $('.success[data-for="action_success"]').text("Request Taken. Please check after sometime.").fadeIn(10).fadeOut(10000);
+            $('#openCaseInput').val('');
           } else {
             $('.error[data-for="action_error"]').text(response.err.display_text).fadeIn(10).fadeOut(8000);
           }

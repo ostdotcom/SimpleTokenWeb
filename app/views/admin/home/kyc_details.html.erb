@@ -307,7 +307,7 @@
   <form id="openCaseFrm">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
     <input type="hidden" value="<%= @case_id %>" name="case_id">
-    <input type="text" placeholder="Ethereum address" name="ethereum_address" pattern="(0x|0X)?[0-9a-fA-F]{40}" value="" autocomplete="off" style="width:400px"/>
+    <input type="text" id="openCaseInput" placeholder="Ethereum address" name="ethereum_address" pattern="(0x|0X)?[0-9a-fA-F]{40}" value="" autocomplete="off" style="width:400px"/>
     <input type="button" id="openCase" value="Change Address<%= ' & Open Case' if is_case_closed %>"/>
   </form>
 
