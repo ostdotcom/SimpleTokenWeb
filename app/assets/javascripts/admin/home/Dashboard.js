@@ -63,7 +63,8 @@
         {
           title: "Name",
           data: "name",
-          render: $.fn.dataTable.render.text()
+          render: $.fn.dataTable.render.text(),
+          className: 'text-break'
         },
         {
           title: "Country",

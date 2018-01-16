@@ -243,7 +243,7 @@
           <% if user_detail['passport_file_url'].present? %>
               <div class="col-sm-6 kyc-img-block">
                 <div>
-                  <span class="img-label">Passport Image</span>
+                  <span class="img-label">Document ID Image</span>
                   <span class="fullScreenIcon"> Click to Expand </span>
                 </div>
                 <div class="kyc-img-container">
@@ -319,7 +319,7 @@
     <span class="sticky-button <%= 'button-active' unless is_case_closed %> red" data-action-url="/api/admin/kyc/deny-kyc">Deny</span>
     <% if has_email_setup %>
         <span class="sticky-button <%= 'button-active' unless is_case_closed %> need-confirmation" data-action-url="/api/admin/kyc/data-mismatch">Data Mismatch</span>
-        <span class="sticky-button <%= 'button-active' unless is_case_closed %> need-confirmation" data-action-url="/api/admin/kyc/passport-issue">Passport Issue</span>
+        <span class="sticky-button <%= 'button-active' unless is_case_closed %> need-confirmation" data-action-url="/api/admin/kyc/passport-issue">Document ID Issue</span>
         <span class="sticky-button <%= 'button-active' unless is_case_closed %> need-confirmation" data-action-url="/api/admin/kyc/selfie-img-issue">Selfie Image Issue</span>
 
         <% if user_detail['residence_proof_file_url'].present? %>

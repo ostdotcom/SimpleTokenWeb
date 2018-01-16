@@ -65,7 +65,7 @@
 
         var copyMap = {};
         copyMap['/api/admin/kyc/data-mismatch'] = 'Data Mismatch';
-        copyMap['/api/admin/kyc/passport-issue'] = 'Passport Issue';
+        copyMap['/api/admin/kyc/passport-issue'] = 'Document ID Issue';
         copyMap['/api/admin/kyc/selfie-img-issue'] = 'Selfie Issue';
         copyMap['/api/admin/kyc/residency-img-issue'] = 'Residency Image Issue';
         copyMap['/api/admin/kyc/deny-kyc'] = 'Deny KYC';
