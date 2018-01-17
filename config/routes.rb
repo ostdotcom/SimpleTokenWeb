@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     get '/news' => :news
     get '/careers' => :careers
     get '/documents' => :documents
+    get '/partners' => :partners
     get '/ip-checker' => :check
     get '/ost-in-circulation' => :ost_circulation
   end
