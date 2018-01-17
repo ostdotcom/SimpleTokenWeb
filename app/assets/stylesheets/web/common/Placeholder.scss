@@ -1,0 +1,43 @@
+.with-placeholder {
+  .carousel-item {
+    width: calc(33% - 6px);
+    display: inline-block;
+    float: left;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1000px){
+  .with-placeholder {
+    .carousel-item {
+      width: calc(50% - 12px);
+      display: inline-block;
+      float: left;
+      margin: 0 6px;
+    }
+    .carousel-item:nth-child(3) {
+      display: none;
+    }
+  }
+}
+
+
+@media (max-width: 767px){
+  .with-placeholder {
+    .carousel-item {
+      width: calc(50% - 12px);
+      display: inline-block;
+      float: left;
+      margin: 0 6px;
+    }
+    .carousel-item:nth-child(3) {
+      display: none;
+    }
+
+  }
+}
+
+.thumb-img {
+  width: 100%;
+  background: #fff;
+}
