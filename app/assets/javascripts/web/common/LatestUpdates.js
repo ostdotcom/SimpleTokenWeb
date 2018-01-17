@@ -55,7 +55,23 @@
                 ]
             });
 
-            $('.latest-updates-carousel').css('opacity', 1);
+            $('.latest-updates-carousel')
+              .removeClass("with-placeholder")
+              .css('opacity', 1)
+            ;
+
+            setTimeout(function () {
+              $container.find("img").each(function () {
+                var jImg = $( this )
+                  ,dataSrc = jImg.data("thumbSrc")
+                  ;
+                console.log("dataSrc", dataSrc );
+                if ( dataSrc && dataSrc.length ) {
+                  jImg.prop("src", dataSrc);
+                }
+              });
+            }, 0);
+
         }
 
     };
