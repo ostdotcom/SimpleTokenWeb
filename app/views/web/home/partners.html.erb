@@ -1,3 +1,7 @@
+<%= render :partial => "/shared/web/common/index_svg_sprite" %>
 <%= render :partial => "/shared/web/common/navbar" %>
-<%= render :partial => "/web/home/partners/jumbotron" %>
+<div class="container-press container-partners">
+  <%= render :partial => "/web/home/partners/jumbotron" %>
+  <%= render :partial => "/shared/web/common/partners_updates", locals: {title: ''}  %>
+</div>
 <%= render :partial => "/web/home/partners/member_companies" %>
