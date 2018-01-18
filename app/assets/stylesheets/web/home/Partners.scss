@@ -1,4 +1,6 @@
 .container-partners{
+  background-image: linear-gradient(to bottom, #ffffff, #f1f8f5);
+  padding: 20px 0 40px;
   .container-jumbotron{
     padding-bottom: 40px;
     h1.heading{
@@ -16,10 +18,6 @@
       font-weight: 300;
       font-size: 18px;
     }
-  }
-  &.container-press{
-    padding: 20px 0 40px;
-    background-image: linear-gradient(to bottom, #ffffff, #f1f8f5);
   }
 }
 
