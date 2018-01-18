@@ -1,6 +1,7 @@
 .container-contact-us {
   background-color: #f8fafa;
-  padding: 40px 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
   h2{
     font-size: 38px;
     font-weight: 300;
@@ -41,7 +42,9 @@
     position: relative;
   }
 
-  input[type="text"] {
+  input[type="text"],
+  input[type="email"],
+  input[type="number"]{
     width: 100%;
   }
 

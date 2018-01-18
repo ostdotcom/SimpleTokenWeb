@@ -2,6 +2,7 @@
 (function (window) {
 
   var partnersNs = ns("simpletoken.partners"),
+      utilsNs = ns("simpletoken.utils"),
       oThis;
 
   partnersNs.index = oThis = {
@@ -14,7 +15,13 @@
 
         $("#partners-contact-us-submit").on("click", function (event) {
           event.preventDefault();
-          oThis.onSendMessage();
+          var v = utilsNs.errorHandling.validationGeneric($('#partners-contact-us input[type="text"], #partners-contact-us input[type="password"], #partners-contact-us input[type="number"]'));
+          if (v === true) {
+            $("#partners-contact-us-submit")
+              .text('sending ...')
+              .prop( "disabled", true );
+            oThis.onSendMessage();
+          }
         });
 
         $(".smooth-scroll").on('click', function (event) {
@@ -30,27 +37,32 @@
       },
 
       onSendMessage: function () {
-        var contactusurl = $("#partners-contact-us").prop('action');
-
-        $("#partners-contact-us-submit").prop('disabled', true);
+        var $contactusform = $('#partners-contact-us-form');
+        var $contactusformurl = $contactusform.prop('action');
 
         $.ajax({
-
-          url: contactusurl,
-          data: {},
+          url: $contactusformurl,
+          dataType: 'json',
           method: 'POST',
-          success: function (responseJson) {
-            if () {
+          data: $contactusform.serialize(),
+          success: function (response) {
+            if (response.success == true) {
 
+              alert('success message');
 
             } else {
+
+              alert('null');
 
             }
 
           },
-          error: function (response) {
+          error: function (jqXHR, exception) {
+            utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
           },
+
           complete: function (response) {
+            $("#partners-contact-us-submit").prop('disabled', false);
           }
 
         });
