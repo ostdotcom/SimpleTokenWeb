@@ -1,2 +1,3 @@
 //= require plugins/slick/slick
-//= require web/common/PartnersMediumArticles
+//= require web/partners/PartnersMediumArticles
+//= require web/partners/Index
