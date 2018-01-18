@@ -64,7 +64,8 @@
 
         $.each(fields, function(key, field){
 
-            if(($(field).attr('type') === 'text' || $(field).attr('type') === 'number' || $(field).attr('type') === 'file') && $(field).val().trim() == ''){
+            if(($(field).attr('type') === 'text' || $(field).attr('type') === 'number' || $(field).attr('type') === 'file' || $(field).attr('type') === 'email' )
+              && $(field).val().trim() == '' ) {
 
                 var field_name = $(field).closest('.form-group').find('label').text();
                 var field_key = $(field).attr('name');
