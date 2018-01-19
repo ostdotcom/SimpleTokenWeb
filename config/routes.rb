@@ -33,6 +33,15 @@ Rails.application.routes.draw do
     match '*permalink', to: 'application#not_found', via: :all
   end
 
+  # kyc.simpletoken.org Routes
+  constraints(InitKyc) do
+    scope '', controller: 'web/kyc' do
+      get '/' => :index
+    end
+    # Route not found handler. Should be the last entry here
+    match '*permalink', to: 'application#not_found', via: :all
+  end
+
   scope '', controller: 'web/home' do
     get '/' => :index
     get '/team' => :about
