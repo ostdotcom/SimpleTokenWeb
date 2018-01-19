@@ -23,6 +23,10 @@
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="Product"
         <% end %> >Product</a></li>
         <li><a
+        <% if params[:action] == 'partners' %> class="selected-nav" href="javascript:void(0)"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/partners" title="Partners"
+        <% end %> >Partners</a></li>
+        <li><a
         <% if params[:action] == 'about' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/team" title="Team"
         <% end %> >Team</a></li>

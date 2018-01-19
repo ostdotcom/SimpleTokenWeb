@@ -2,7 +2,7 @@
 <%= render :partial => "/shared/web/common/navbar" %>
 <%= render :partial => "/web/home/index/jumbotron" %>
 <div class="container-press">
-  <%= render :partial => "/shared/web/common/latest_updates" %>
+  <%= render :partial => "/shared/web/common/latest_updates", locals: {title: 'Latest Updates'} %>
   <%= render :partial => '/shared/web/common/press'%>
 </div>
 <%= render :partial => '/shared/web/common/press_companies' %>
