@@ -2,4 +2,8 @@
  *= require plugins/bootstrap/bootstrap
  *= require web/common/Icons
  *= require web/kyc/Index
+ *= require web/kyc/SecurityAuditors
+ *= require web/common/Body
+ *= require web/common/Buttons
+ *= require web/common/Social
  */

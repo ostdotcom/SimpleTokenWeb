@@ -1,0 +1,77 @@
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-2x-v19.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-1x-v19.png";
+
+@mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
+  background-image: url($sprite-location);
+  background-size: 1501px * $scale/100 2000px * $scale/100;
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    background-image: url($sprite-retina-location);
+    background-size: 1501px * $scale/100 2000px * $scale/100;
+  }
+  display: inline-block;
+  outline: none !important;
+  &:focus {
+    outline: none;
+    background-position: $posX * $scale/100 $posY * $scale/100;
+  }
+  width: $width * $scale/100;
+  height: $height * $scale/100;
+  background-position: $posX * $scale/100 $posY * $scale/100;
+  &:hover {
+    background-position: $offsetHover * $scale/100 $posY * $scale/100;
+  }
+  &:active {
+    background-position: $offsetActive * $scale/100 $posY * $scale/100;
+  }
+}
+
+
+.cure53-logo{
+  @include icon-generator(233.5px, 37px, -963.5px, -208.5px, -1222px, -1222px);
+}
+.bok-consulting-logo{
+  @include icon-generator(239.5px, 22px, -963.5px, -273.5px, -1222px, -1222px);
+}
+.z-audits-logo{
+  @include icon-generator(238.5px, 36.5px, -963.5px, -324px, -1222px, -1222px);
+}
+
+.security-auditors{
+  ul{
+    padding: 0;
+    li{
+      list-style-type: none;
+    }
+  }
+  .heading{
+    color: #6da4a9;
+    font-weight: 300;
+    margin-bottom: 40px;
+    margin-top: 0;
+    font-size: 38px;
+  }
+  .col-sm-4{
+    margin-bottom: 25px;
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: center;
+    justify-content: center;
+    min-height: 66px;
+  }
+  .advisor-name{
+    font-weight: 300;
+    margin: 0;
+    font-size: 16px;
+    @media(min-width: 1200px){
+      font-size: 20px;
+    }
+  }
+}
