@@ -440,6 +440,28 @@ en:
       :assets:
         :specific_js_required: 0
 
+    partners:
+      :meta:
+        :title: 'Simple Token | Partner Companies'
+        :description: 'Simple Token business and technical challenge is to enable mainstream applications to benefit from deploying their own branded crypto-backed token economies.'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token'
+        :name: 'Simple Token'
+        :robots: 'index, follow'
+        :og:
+          :title: 'Simple Token | Partner Companies'
+          :description: 'Simple Token business and technical challenge is to enable mainstream applications to benefit from deploying their own branded crypto-backed token economies.'
+          :type: 'website'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'Simple Token | Partner Companies'
+          :description: 'Simple Token business and technical challenge is to enable mainstream applications to benefit from deploying their own branded crypto-backed token economies.'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+      :assets:
+        :specific_js_required: 1
+
   admin/home:
 
     login:
