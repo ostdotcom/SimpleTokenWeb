@@ -37,11 +37,26 @@
     line-height: 40px;
     padding: 0 20px;
   }
-  table{
+  .table{
     border-spacing: 3px 0px;
     border-collapse: unset;
+    &.data-rows{
+      margin: 15px 0;
+    }
+    &.table-tabs{
+      margin-bottom: 0;
+    }
     tr{
-      td{
+      th{
+        background-color: #fff;
+        &:first-child{
+          background-color: transparent;
+        }
+        &:last-child{
+          background-color: #eff9fa;
+        }
+      }
+      th, td{
         border: none;
         text-align: center;
         vertical-align: middle;
@@ -51,10 +66,10 @@
         &:first-child{
           padding: 14px 20px;
           text-align: left;
-          width: 50%;
+          width: 60%;
         }
         &:last-child{
-          width: 30%;
+          width: 20%;
         }
       }
       &.active{
