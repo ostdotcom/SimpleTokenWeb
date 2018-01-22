@@ -1,31 +1,50 @@
 .container-faqs {
   background-color: #eff9fa;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  .bg-image{
+    background: url(http://kyc.developmentsimpletoken.org:8080/images/bg-faq-icon.svg) no-repeat right bottom;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    background-size: 75% 70%;
+  }
   h2{
     font-size: 44px;
     font-weight: 500;
-    color: #fff;
+    color: #438cad;
     text-align: center;
-    margin: 0 0 50px;
+    margin: 0;
     letter-spacing: 2px;
   }
   h3{
     font-size: 20px;
     font-weight: 500;
-    color: #736844;
+    color: #597a84;
     margin: 15px 0 10px;
     letter-spacing: 1px;
   }
   p{
-    color: #736844;
+    color: #597a84;
     font-weight: 300;
-    margin: 0 0 40px;
+    margin: 0 0 30px;
     letter-spacing: 1px;
   }
-  a{
+  .read-more{
     margin: 0 auto;
     letter-spacing: 1px;
     line-height: 40px;
+    color: #c0993a;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #c0993a;
+    &:hover, &:focus{
+      outline: none;
+      text-decoration: none;
+    }
+  }
+  .square-btn{
+    margin: 30px auto 0;
+    letter-spacing: 1px;
+    line-height: 40px;
+    padding: 0 20px;
   }
 }

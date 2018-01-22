@@ -4,7 +4,6 @@
       <div class="col-xs-12 col-sm-10 col-sm-offset-1">
         <h2 class="text-center">FAQs</h2>
         <%
-           img_root = "//d36lai1ppm9dxu.cloudfront.net/assets/image/member-companies/";
            more_benefits = [
              {
                title: "Integration with Cynopsis-Artemis API",
@@ -21,19 +20,21 @@
            ]
         %>
 
-        <% more_benefits.each_with_index do|member, index| %>
-          <% if (index % 3) == 0 %><div class="row"><% end %>
-          <div class="col-xs-12 col-sm-6 col-sm-offset-0" itemprop="member" itemscope itemtype="http://schema.org/Person">
-            <h3><%= raw member[:title] %></h3>
-            <p class="companies-desc"><%= raw member[:description] %></p>
-            <a href="" class=""><%= raw member[:readmore] %></a>
+        <div class="row bg-image">
+          <% more_benefits.each_with_index do|member, index| %>
+            <% if (index % 3) == 0 %><div class="row"><% end %>
+            <div class="col-xs-12 col-sm-6 col-sm-offset-0">
+              <h3><%= raw member[:title] %></h3>
+              <p class="companies-desc"><%= raw member[:description] %></p>
+              <a href="" class="read-more"><%= raw member[:readmore] %></a>
+            </div>
+            <% if ((index % 3) == 2) || ((index + 1) == more_benefits.length) %></div><% end %>
+          <% end %>
+          <div class="text-center col-xs-12">
+            <a href="" class="btn btn-square-gold square-btn" title="Read Documentation">Read Documentation</a>
           </div>
-          <% if ((index % 3) == 2) || ((index + 1) == more_benefits.length) %></div><% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
-    <div class="text-center">
-      <a href="#contactus" class="btn btn-square-gold smooth-scroll" title="Read Documentation">Read Documentation</a>
     </div>
   </div>
 </div>
