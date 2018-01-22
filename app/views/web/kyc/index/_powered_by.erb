@@ -1,3 +1,64 @@
+<%
+   tick_image = "http://kyc.developmentsimpletoken.org:8080/images/check-mark.svg";
+   powered_by = [
+     {
+      col1: "Staging (KYC + AML/CTF + Eth whitelist)",
+      col2: tick_image,
+      col3: tick_image,
+      bg_color: 'active'
+     },
+     {
+      col1: "Easy-KYC Dashboard",
+      col2: tick_image,
+      col3: tick_image
+     },
+     {
+      col1: "AML/CTF record checks",
+      col2: tick_image,
+      col3: tick_image
+     },
+     {
+      col1: "Statutory record retention",
+      col2: tick_image,
+      col3: tick_image
+     },
+     {
+      col1: "ETH Whitelisting",
+      col2: tick_image,
+      col3: tick_image
+     },
+     {
+      col1: "256-bit AES and SSL/TLS encryption",
+      col2: tick_image,
+      col3: tick_image
+     },
+     {
+       col1: "ostCAMPAIGNS",
+       col2: tick_image,
+      col3: tick_image
+     },
+     {
+       col1: "Admin Logins w/ Two-Factor Auth",
+       col2: tick_image,
+       col3: tick_image
+     },
+     {
+       col1: "Priority Support",
+       col2: tick_image,
+       col3: tick_image
+     },
+     {
+       col1: "Number of API calls included",
+       col2: tick_image,
+       col3: tick_image
+     },
+     {
+       col1: "Automated Face Recognition",
+       col2: tick_image,
+       col3: tick_image
+     },
+   ]
+%>
 <div class="container-powered">
   <div class="container-fluid">
     <div class="row">
@@ -5,6 +66,19 @@
         <h2>Powered by </h2>
         <p>OST KYC offers flexible features to run your ICO and charges in OST based on the volume of API calls utilized.</p>
       </div>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+      <table class="table">
+        <tbody>
+          <% powered_by.each_with_index do|data, index| %>
+            <tr class="<%= data[:bg_color] %>">
+              <td><%= data[:col1] %></td>
+              <td><img src="<%= data[:col2] %>"/></td>
+              <td><img src="<%= data[:col3] %>"/></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

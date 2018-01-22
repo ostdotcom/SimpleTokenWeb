@@ -1,34 +1,34 @@
+<%
+   faqs = [
+     {
+       title: "Integration with Cynopsis-Artemis API",
+       description: "An overview of the Simple Token Project and a vision for ongoing development of OpenST and Simple Token software, applications, and services by 3rd party developers.",
+       readmore: "Read More",
+       readmoreurl: ""
+     },
+     {
+       title: "Level of Encryption of users’ Personal Data",
+       description: "Simple Token is an ERC20 token (ST) and a protocol developed by OpenST to support token economies in mainstream consumer internet companies. This document provides an overview of the OpenST protocol and platform utility.",
+       readmore: "Read More",
+       readmoreurl: ""
+     },
+   ]
+%>
+
 <div class="container-faqs">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1">
         <h2>FAQs</h2>
-        <%
-           more_benefits = [
-             {
-               title: "Integration with Cynopsis-Artemis API",
-               description: "An overview of the Simple Token Project and a vision for ongoing development of OpenST and Simple Token software, applications, and services by 3rd party developers.",
-               readmore: "Read More",
-               readmoreurl: ""
-             },
-             {
-               title: "Level of Encryption of users’ Personal Data",
-               description: "Simple Token is an ERC20 token (ST) and a protocol developed by OpenST to support token economies in mainstream consumer internet companies. This document provides an overview of the OpenST protocol and platform utility.",
-               readmore: "Read More",
-               readmoreurl: ""
-             },
-           ]
-        %>
-
-        <div class="row bg-image">
-          <% more_benefits.each_with_index do|member, index| %>
+        <div class="bg-image">
+          <% faqs.each_with_index do|data, index| %>
             <% if (index % 3) == 0 %><div class="row"><% end %>
             <div class="col-xs-12 col-sm-6 col-sm-offset-0">
-              <h3><%= raw member[:title] %></h3>
-              <p class="companies-desc"><%= raw member[:description] %></p>
-              <a href="" class="read-more"><%= raw member[:readmore] %></a>
+              <h3><%= raw data[:title] %></h3>
+              <p class="companies-desc"><%= raw data[:description] %></p>
+              <a href="" class="read-more"><%= raw data[:readmore] %></a>
             </div>
-            <% if ((index % 3) == 2) || ((index + 1) == more_benefits.length) %></div><% end %>
+            <% if ((index % 3) == 2) || ((index + 1) == faqs.length) %></div><% end %>
           <% end %>
           <div class="text-center col-xs-12">
             <a href="" class="btn btn-square-gold square-btn" title="Read Documentation">Read Documentation</a>

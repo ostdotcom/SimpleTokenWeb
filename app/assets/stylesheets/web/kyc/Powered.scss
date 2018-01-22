@@ -9,18 +9,12 @@
     margin: 0;
     letter-spacing: 2px;
   }
-  h3{
-    font-size: 20px;
-    font-weight: 500;
-    color: #597a84;
-    margin: 15px 0 10px;
-    letter-spacing: 1px;
-  }
   p{
     color: #597a84;
     font-weight: 300;
     margin: 0 0 30px;
     letter-spacing: 1px;
+    text-align: center;
   }
   .read-more{
     margin: 0 auto;
@@ -39,5 +33,21 @@
     letter-spacing: 1px;
     line-height: 40px;
     padding: 0 20px;
+  }
+  table{
+    border-spacing: 2px 0px;
+    border-collapse: unset;
+    tr{
+      .active{
+        td{
+          background-color: #f3fbfd;
+        }
+      }
+      .transparent{
+        td{
+          background-color: #ffffff;
+        }
+      }
+    }
   }
 }

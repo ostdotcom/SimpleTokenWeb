@@ -1,68 +1,68 @@
+<%
+   img_root = "//d36lai1ppm9dxu.cloudfront.net/assets/image/member-companies/";
+   more_benefits = [
+   {
+     title: "Review Process",
+     description: "200 free sandbox API calls for testing.",
+     image:{
+       src: "http://kyc.developmentsimpletoken.org:8080/images/review-process.svg",
+       height: "75",
+       alt: "Review process"
+     }
+   },
+   {
+     title: "Encryption",
+     description: "256-bit AES and SSL/TLS encryption.",
+     image:{
+       src: "http://kyc.developmentsimpletoken.org:8080/images/encryption.svg",
+       height: "75",
+       alt: "Encryption"
+     }
+   },
+   {
+     title: "Admin and 2FA",
+     description: "Unlimited Admin Logins with two-factor authentication.",
+     image:{
+       src: "http://kyc.developmentsimpletoken.org:8080/images/admin-2fa.svg",
+       height: "75",
+       alt: "Admin and 2FA"
+     }
+   },
+   {
+     title: "Transactional Emails",
+     description: "A dedicated Pepo Campaigns account to manage your ICO Transactionals and Email Communications",
+     image:{
+       src: "http://kyc.developmentsimpletoken.org:8080/images/transactional.svg",
+       height: "75",
+       alt: "Transactional Emails"
+     }
+   },
+   {
+     title: "Smart Filters",
+     description: "Quickly sort by KYC status, risk status and ID status.",
+     image:{
+       src: "http://kyc.developmentsimpletoken.org:8080/images/smart-filters.svg",
+       height: "75",
+       alt: "Smart Filters"
+     }
+   },
+   {
+     title: "Support",
+     description: "Documentation and Integration Technical Support",
+     image:{
+       src: "http://kyc.developmentsimpletoken.org:8080/images/support.svg",
+       height: "75",
+       alt: "Support"
+     }
+   },
+   ]
+%>
+
 <div class="container-more-benefits">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1">
         <h2 class="text-center">More Benefits</h2>
-        <%
-           img_root = "//d36lai1ppm9dxu.cloudfront.net/assets/image/member-companies/";
-           more_benefits = [
-             {
-               title: "Review Process",
-               description: "200 free sandbox API calls for testing.",
-               image:{
-                 src: "http://kyc.developmentsimpletoken.org:8080/images/review-process.svg",
-                 height: "75",
-                 alt: "Review process"
-               }
-             },
-             {
-               title: "Encryption",
-               description: "256-bit AES and SSL/TLS encryption.",
-               image:{
-                 src: "http://kyc.developmentsimpletoken.org:8080/images/encryption.svg",
-                 height: "75",
-                 alt: "Encryption"
-               }
-             },
-             {
-               title: "Admin and 2FA",
-               description: "Unlimited Admin Logins with two-factor authentication.",
-               image:{
-                 src: "http://kyc.developmentsimpletoken.org:8080/images/admin-2fa.svg",
-                 height: "75",
-                 alt: "Admin and 2FA"
-               }
-             },
-             {
-               title: "Transactional Emails",
-               description: "A dedicated Pepo Campaigns account to manage your ICO Transactionals and Email Communications",
-               image:{
-                 src: "http://kyc.developmentsimpletoken.org:8080/images/transactional.svg",
-                 height: "75",
-                 alt: "Transactional Emails"
-               }
-             },
-             {
-               title: "Smart Filters",
-               description: "Quickly sort by KYC status, risk status and ID status.",
-               image:{
-                 src: "http://kyc.developmentsimpletoken.org:8080/images/smart-filters.svg",
-                 height: "75",
-                 alt: "Smart Filters"
-               }
-             },
-             {
-               title: "Support",
-               description: "Documentation and Integration Technical Support",
-               image:{
-                 src: "http://kyc.developmentsimpletoken.org:8080/images/support.svg",
-                 height: "75",
-                 alt: "Support"
-               }
-             },
-           ]
-        %>
-
         <% more_benefits.each_with_index do|member, index| %>
           <% if (index % 3) == 0 %><div class="row"><% end %>
           <div class="col-xs-12 col-sm-4 col-sm-offset-0" itemprop="member" itemscope itemtype="http://schema.org/Person">
