@@ -1,16 +1,10 @@
-.container-faqs {
-  background-color: #eff9fa;
+.container-powered {
+  background-color: #a4dee0;
   padding-top: 50px;
-  padding-bottom: 50px;
-  .bg-image{
-    background: url(http://kyc.developmentsimpletoken.org:8080/images/bg-faq-icon.svg) no-repeat right bottom;
-    background-size: 75% 70%;
-    padding-bottom: 40px;
-  }
   h2{
     font-size: 44px;
-    font-weight: 500;
-    color: #438cad;
+    font-weight: 300;
+    color: #fff;
     text-align: center;
     margin: 0;
     letter-spacing: 2px;
@@ -19,13 +13,13 @@
     font-size: 20px;
     font-weight: 500;
     color: #597a84;
-    margin: 50px 0 10px;
+    margin: 15px 0 10px;
     letter-spacing: 1px;
   }
   p{
     color: #597a84;
     font-weight: 300;
-    margin: 0 0 40px;
+    margin: 0 0 30px;
     letter-spacing: 1px;
   }
   .read-more{
