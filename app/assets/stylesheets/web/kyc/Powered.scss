@@ -45,10 +45,37 @@
     }
     &.table-tabs{
       margin-bottom: 0;
+      .title{
+        color: #234359;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .price{
+        color: #c0993a;
+        font-size: 40px;
+        font-weight: bold;
+        sup{
+          font-size: 12px;
+          padding-bottom: 1px;
+          border-bottom: 1px solid #c0993a;
+          top: -24px;
+          font-weight: 300;
+          left: 5px;
+          letter-spacing: 1px;
+        }
+      }
+      .desc{
+        color: #5a7a7f;
+      }
+      span{
+        margin: 5px 0;
+        display: block;
+      }
     }
     tr{
       th{
         background-color: #fff;
+        padding: 10px 10px !important;
         &:first-child{
           background-color: transparent;
         }
