@@ -1,0 +1,46 @@
+.container-features{
+
+  .container-fluid{
+    background-size: 100%;
+    background: #aee1e3;
+    background-image: url('/images/top-half-yellow-triangle.svg'), linear-gradient(to bottom, #ffd242 0%,#ffd242 28%,#aee1e3 28%,#aee1e3 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 40px;
+    min-height: 1400px;
+  }
+
+  h2{
+    color: #ffffff;
+    font-size: 38px;
+    font-weight: 100;
+    line-height: 1.4;
+  }
+
+  h3{
+    font-size: 28px;
+    font-weight: 100;
+    line-height: 1.4;
+  }
+
+  .feature{
+    margin-top: 60px;
+
+    .desc-luminos{
+      mix-blend-mode: luminosity;
+    }
+
+    .img-luminos{
+      margin: 0 0 30px 0;
+      mix-blend-mode: luminosity;
+      display: block;
+      max-width: 90%;
+      height: auto;
+    }
+
+    .head-luminos{
+      mix-blend-mode: luminosity;
+    }
+  }
+
+}
