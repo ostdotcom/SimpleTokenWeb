@@ -101,7 +101,9 @@
       });
     },
 
+    isVideoPlaying: false,
     showVideo: function( jItem ){
+      oThis.isVideoPlaying = true;
       var jIframe = jItem.find('iframe');
 
 
@@ -124,13 +126,16 @@
     },
 
     hideVideo: function(){
+      if( oThis.isVideoPlaying ) {
         oThis.jVideoCarousal.carousel('cycle');
         oThis.jVideoCarousal.find('img').css({
           visibility: "visible"
         });
         oThis.jVideoCarousal.find("button").show();
         oThis.jVideoCarousal.find('iframe').removeAttr('src');
-        oThis.jVideoCarousal.find('iframe').hide();
+        oThis.jVideoCarousal.find('iframe').hide();     
+        oThis.isVideoPlaying = false;   
+      }
     }
 
 
