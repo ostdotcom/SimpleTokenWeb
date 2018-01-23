@@ -1,13 +1,16 @@
 .container-features{
 
   .container-fluid{
-    background-size: 100%;
+    background-size: cover;
     background: #aee1e3;
-    background-image: url('/images/top-half-yellow-triangle.svg'), linear-gradient(to bottom, #ffd242 0%,#ffd242 28%,#aee1e3 28%,#aee1e3 100%);
+    background-image: url('/images/top-half-yellow-triangle.svg'), linear-gradient(to bottom, #ffd242 0%,#ffd242 26%,#aee1e3 26%,#aee1e3 100%);
     background-repeat: no-repeat;
     background-position: center;
-    padding-top: 40px;
-    min-height: 1400px;
+    padding: 40px 0 20px 0;
+    @media (max-width: 768px) {
+
+      background-image: url('/images/top-half-yellow-triangle.svg'), linear-gradient(to bottom, #ffd242 0%,#ffd242 36%,#aee1e3 36%,#aee1e3 100%);
+    }
   }
 
   h2{
@@ -41,6 +44,10 @@
     .head-luminos{
       mix-blend-mode: luminosity;
     }
+  }
+
+  .btn-wrap{
+    margin: 20px 0;
   }
 
 }

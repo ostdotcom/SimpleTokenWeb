@@ -8,9 +8,16 @@
     font-size: 28px;
     font-weight: 100;
     line-height: 1.4;
+    @media (max-width: 1200px) {
+      font-size: 20px;
+    }
   }
 
   .ost-kyc-hero{
     margin-bottom: -40px;
+  }
+
+  .btn-wrap{
+    margin: 20px 0;
   }
 }
