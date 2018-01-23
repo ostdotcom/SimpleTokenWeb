@@ -1,39 +1,46 @@
 <%
+
+  youtube_url_params="?loop=1&playlist=W6zmaxrIrp4&showinfo=0&enablejsapi=1&autoplay=1"
   data_set = [
     {
       :heading => "Architecture",
       :caption => "Launch your own branded digital currency, powered by Simple Tokens.",
       :img_src => "//d5qlujvqiya5c.cloudfront.net/common-assets/images/home_page/features_template_builder_image_v1.png",
-      :iframe_src => "https://www.youtube.com/embed/W6zmaxrIrp4?loop=1&playlist=W6zmaxrIrp4&showinfo=0&enablejsapi=1&autoplay=1"
+      :iframe_src => "https://www.youtube.com/embed/W6zmaxrIrp4" + youtube_url_params,
+      :play_btn_text => "WATCH DEMO"
     },
     {
       :heading => "Review Process",
       :caption => "Launch your own branded digital currency, powered by Simple Tokens.",
       :img_src => "//d5qlujvqiya5c.cloudfront.net/common-assets/images/home_page/features_template_builder_image_v1.png",
-      :iframe_src => "https://www.youtube.com/embed/W6zmaxrIrp4?loop=1&playlist=W6zmaxrIrp4&showinfo=0&enablejsapi=1&autoplay=1"
+      :iframe_src => "https://www.youtube.com/embed/W6zmaxrIrp4" + youtube_url_params,
+      :play_btn_text => "WATCH DEMO"
     },
     {
       :heading => "Issues Resolution",
       :caption => "Launch your own branded digital currency, powered by Simple Tokens.",
       :img_src => "//d5qlujvqiya5c.cloudfront.net/common-assets/images/home_page/features_template_builder_image_v1.png",
-      :iframe_src => "https://www.youtube.com/embed/W6zmaxrIrp4?loop=1&playlist=W6zmaxrIrp4&showinfo=0&enablejsapi=1&autoplay=1"
+      :iframe_src => "https://www.youtube.com/embed/W6zmaxrIrp4" + youtube_url_params,
+      :play_btn_text => "WATCH DEMO"
     },
     {
       :heading => "Whitelisting",
       :caption => "Launch your own branded digital currency, powered by Simple Tokens.",
       :img_src => "//d5qlujvqiya5c.cloudfront.net/common-assets/images/home_page/features_template_builder_image_v1.png",
-      :iframe_src => "https://www.youtube.com/embed/W6zmaxrIrp4?loop=1&playlist=W6zmaxrIrp4&showinfo=0&enablejsapi=1&autoplay=1"
+      :iframe_src => "https://www.youtube.com/embed/W6zmaxrIrp4" + youtube_url_params,
+      :play_btn_text => "WATCH DEMO"
     }
   ];
   
 %>
 
 
-<div class="container-fluid" id="kyc-video-carousel-container">
+<section class="container-fluid" id="kyc-video-carousel-container">
   <h2 class="section-header">Fits All Your ICO Process Needs</h2>
-  <div id="kyc-video-carousel" class="carousel slide featuresSection carouselMobile" data-ride="carousel">
-    <!-- roundedIndicators Indicators -->
-    <ol class="carousel-indicators topMenuIndicators row">
+
+  <div id="kyc-video-carousel" class="carousel slide featuresSection carouselMobile">
+    <!-- data-ride="carousel" -->
+    <ol class="carousel-indicators topMenuIndicators hidden-xs">
       <% data_set.each_with_index do |data, indx| %>
         <li data-target="#kyc-video-carousel" 
           data-slide-to="<%= indx %>" 
@@ -43,16 +50,18 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <% data_set.each_with_index do |data, indx| %>
-        <div class="item <%= indx == 0 ? 'active' : '' %>">
+        <div class="item <%= indx == 0 ? 'active' : '' %>" data-indx="<%= indx %>">
           <div class="kyc-carousel-caption">
             <h3><%= data[:caption] %></h3>
           </div>
           <div class="row">
             <div class="col-xs-1"></div>
             <div class="kyc-carousel-content col-xs-10">
-              <span class="pepo-play-icon play-icon-position"></span>
-              <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-responsive"/>
-              <iframe class="embed-responsive-item" data-src="<%= data[:iframe_src] %>" allowfullscreen hidden style="border:0"></iframe>
+              <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-responsive" />
+              <iframe class="embed-youtube-item" data-src="<%= data[:iframe_src] %>" allowfullscreen style="border:0"></iframe>
+              <button type="submit" class="btn btn-square-gold ost-kyc-play-btn" title="<%= data[:play_btn_text] %>">
+                 <span class="ost-kyc-play-icon"></span><%= data[:play_btn_text] %>
+               </button>
             </div>
             <div class="col-xs-1"></div>
           </div>
@@ -60,7 +69,7 @@
       <% end %>
     </div>
     <!-- roundedIndicators Indicators -->
-    <ol class="carousel-indicators roundedIndicators">
+    <ol class="carousel-indicators roundedIndicators hidden-sm hidden-md hidden-lg hidden-xl">
       <% data_set.each_with_index do |data, indx| %>
         <li data-target="#kyc-video-carousel" 
           data-slide-to="<%= indx %>" 
@@ -68,4 +77,4 @@
       <% end %>
     </ol>
   </div>
-</div>
+</section>

@@ -7,15 +7,33 @@
 
   KycNs.index = oThis = {
     jContactForm: null,
+    jVideoCarousal: null,
 
     init: function (config) {
       oThis.jContactForm = $('#partners-contact-us-form');
       oThis.jContactForm.setCustomValidity();
+      oThis.jVideoCarousal = $("#kyc-video-carousel");
+      oThis.bindEventListeners();
       oThis.bindButtonActions();
+    },
+
+    bindEventListeners: function () {
+      var oThis = this;
+      $("#kyc-video-carousel").on('slide.bs.carousel slid.bs.carousel', function ( event ) {
+        var relatedTarget = event.relatedTarget
+          , jEl          = $( relatedTarget )
+          , indx         = jEl.data("indx")
+        ;
+        $("[data-slide-to=" + indx + "]").addClass("active");
+        oThis.hideVideo();
+      });
     },
 
     bindButtonActions: function () {
 
+      $(".carousel-inner .item").on("click",  function () {
+        oThis.showVideo( $(this) );
+      });
 
       $("#partners-contact-us-submit").on("click", function (event) {
         event.preventDefault();
@@ -81,7 +99,40 @@
         }
 
       });
+    },
+
+    showVideo: function( jItem ){
+      var jIframe = jItem.find('iframe');
+
+
+      console.log( jIframe );
+      console.log( jItem );
+      console.log( oThis.jVideoCarousal );
+      //Pause the Carousal
+      oThis.jVideoCarousal.carousel('pause');
+
+      //Hide Image
+      jItem.find('img').css({
+        visibility: "hidden"
+      })
+
+      //Show Iframe
+      jIframe.attr({'src' : jIframe.data('src') }).show();
+
+      //Hide the play button
+      jItem.find("button").hide();
+    },
+
+    hideVideo: function(){
+        oThis.jVideoCarousal.carousel('cycle');
+        oThis.jVideoCarousal.find('img').css({
+          visibility: "visible"
+        });
+        oThis.jVideoCarousal.find("button").show();
+        oThis.jVideoCarousal.find('iframe').removeAttr('src');
+        oThis.jVideoCarousal.find('iframe').hide();
     }
+
 
   };
 

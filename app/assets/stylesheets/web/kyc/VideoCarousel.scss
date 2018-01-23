@@ -1,5 +1,8 @@
 $roundedIndicatorsHeight: 6px;
 $roundedIndicatorsRadius: $roundedIndicatorsHeight/2;
+$captionHeight: 20px;
+$captionBottomMargin: 10px;
+$activeArrowTop: $captionHeight + $captionBottomMargin + 4px;
 #kyc-video-carousel-container {
   padding: 10px 0px;
 
@@ -31,6 +34,26 @@ $roundedIndicatorsRadius: $roundedIndicatorsHeight/2;
 
     .kyc-carousel-content {
       margin-top: -40px;
+      text-align: center;
+      position: relative;
+      .ost-kyc-play-btn {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin:auto;
+        width: 200px;
+      }
+      .embed-youtube-item {
+        /* 30px = 2 * col padding (15 px) */
+        width: calc(100% - 30px);
+        height: 100%;
+        position: absolute;
+        top: 0;
+        /* 15px = col padding (15 px) */
+        left: 15px;
+      }
     }
 
     .carousel-indicators {
@@ -55,19 +78,39 @@ $roundedIndicatorsRadius: $roundedIndicatorsHeight/2;
     }
 
     .carousel-indicators.topMenuIndicators {
-      margin: 30px 0 10px 0;
+      margin: 30px 0 $captionBottomMargin 0;
+
       li {
         width: auto;
-        height: auto;
+        height: $captionHeight;
         text-indent: 0px;
         margin: 1px 30px;
-        font-size: 9px;
+        font-size: 14px;
         font-weight: 500;
         letter-spacing: 0.1px;
         text-align: left;
         color: #597a84;
       }
+
+      li.active {
+        color: #c0993a;
+        font-weight: bold;
+        &:after {
+          content: '';
+          width: 0; 
+          height: 0; 
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-top: 8px solid #fff;
+          position: relative;
+          left: -50%;
+          top: $activeArrowTop;
+          z-index: 1;
+        }
+      }
     }
+
+
     
   }
 }
