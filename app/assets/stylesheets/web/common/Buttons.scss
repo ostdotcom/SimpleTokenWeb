@@ -59,6 +59,22 @@
   }
 }
 
+.btn-dark-grey{
+  border-color: #34445b;
+  color: #34445b;
+  &:focus{
+    color: #34445b;
+    outline: none;
+    text-decoration: none;
+  }
+  &:hover,&:active{
+    color: #fff;
+    text-decoration: none;
+    background-color: #34445b;
+    border-color: #34445b;
+  }
+}
+
 .btn-bronze{
   border-color: #c0993a;
   color: #c0993a;
