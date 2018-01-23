@@ -31,6 +31,14 @@ $activeArrowTop: $captionHeight + $captionBottomMargin;
       }
     }
 
+    @media (max-width: 768px) {
+      .kyc-carousel-content {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: calc(100% - 20px);
+      }      
+    }
+
     .kyc-carousel-content {
       margin-top: -40px;
       text-align: center;
