@@ -1,7 +1,10 @@
 (function (window, $) {
   $( function () {
-    $("#nav-products").hover( function () {
-      // $(this).trigger('click');
+    $("#nav-products").mouseenter( function () {
+      $(this).addClass('open');
+    });
+    $("#nav-products").mouseleave( function () {
+      $(this).removeClass('open');
     });
   })
 
