@@ -2,7 +2,7 @@ $roundedIndicatorsHeight: 6px;
 $roundedIndicatorsRadius: $roundedIndicatorsHeight/2;
 $captionHeight: 20px;
 $captionBottomMargin: 10px;
-$activeArrowTop: $captionHeight + $captionBottomMargin + 4px;
+$activeArrowTop: $captionHeight + $captionBottomMargin;
 #kyc-video-carousel-container {
   padding: 10px 0px;
 
@@ -91,20 +91,17 @@ $activeArrowTop: $captionHeight + $captionBottomMargin + 4px;
       margin: 30px 0 $captionBottomMargin 0;
 
       li {
-        width: auto;
+        width: 160px;
         height: $captionHeight;
         text-indent: 0px;
-        margin: 1px 30px;
+        margin: 1px 5px;
         font-size: 14px;
         font-weight: 500;
         letter-spacing: 0.1px;
-        text-align: left;
+        text-align: center;
         color: #597a84;
-      }
+        position: relative;
 
-      li.active {
-        color: #c0993a;
-        font-weight: bold;
         &:after {
           content: '';
           width: 0; 
@@ -112,10 +109,19 @@ $activeArrowTop: $captionHeight + $captionBottomMargin + 4px;
           border-left: 8px solid transparent;
           border-right: 8px solid transparent;
           border-top: 8px solid #fff;
-          position: relative;
-          left: -50%;
+          position: absolute;
+          left: calc(50% - 8px);
           top: $activeArrowTop;
           z-index: 1;
+          visibility: hidden;
+        }
+      }
+
+      li.active {
+        color: #c0993a;
+        font-weight: bold;
+        &:after {
+          visibility: visible;
         }
       }
     }
