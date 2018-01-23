@@ -60,7 +60,16 @@
               <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-responsive" />
               <iframe class="embed-youtube-item" data-src="<%= data[:iframe_src] %>" allowfullscreen style="border:0"></iframe>
               <button type="submit" class="btn btn-square-gold ost-kyc-play-btn btn-ost-kyc" title="<%= data[:play_btn_text] %>">
-                 <span class="ost-kyc-play-icon"></span><%= data[:play_btn_text] %>
+                <div class="btn-play" data-toggle="modal" data-target="#youtube-video-modal" data-src="https://www.youtube.com/embed/-SxJ8c1Xh_A?rel=0&autoplay=1" title="Watch Demo">
+                  <div class="play" style="vertical-align: middle;">
+                    <svg class="svg">
+                      <switch>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
+                      </switch>
+                    </svg>
+                  </div>
+                  <span title="Watch Demo"><%= data[:play_btn_text] %></span>
+                </div>
                </button>
             </div>
             <div class="col-xs-1 col-sm-1 col-lg-2"></div>

@@ -54,6 +54,29 @@ $activeArrowTop: $captionHeight + $captionBottomMargin;
         width: 200px;
         z-index: 2;
         font-size: 12px;
+        .btn-play{
+          .play{
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            svg{
+              width:100%;
+              height:100%;
+              fill: #fff;
+            }
+          }
+
+          &:hover{
+            .play{
+              .svg{
+                fill: #fff;
+              }
+            }
+            span{
+              color: #fff;
+            }
+          }
+        }
       }
       .embed-youtube-item {
         /* 30px = 2 * col padding (15 px) */
