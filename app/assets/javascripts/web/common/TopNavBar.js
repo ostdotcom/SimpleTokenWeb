@@ -1,7 +1,7 @@
 (function (window, $) {
   $( function () {
     $("#nav-products").hover( function () {
-      $(this).trigger('click');
+      // $(this).trigger('click');
     });
   })
 

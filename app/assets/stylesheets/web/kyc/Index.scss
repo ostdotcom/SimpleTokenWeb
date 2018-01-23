@@ -6,6 +6,17 @@ body{
   line-height: 1.43;
 }
 
+.desc{
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.btn, .btn-ost-kyc, .btn-square-gold {
+  font-size: 12px;
+  letter-spacing: 2.2px;
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -22,7 +33,3 @@ body{
   }
 }
 
-.desc{
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
