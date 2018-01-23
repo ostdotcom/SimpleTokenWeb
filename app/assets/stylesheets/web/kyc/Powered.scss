@@ -43,6 +43,7 @@
   .table{
     border-spacing: 3px 0px;
     border-collapse: unset;
+    table-layout: fixed;
     &.data-rows{
       margin: 15px 0;
     }
@@ -93,13 +94,15 @@
         padding: 14px 10px;
         color: #607c89;
         font-weight: 500;
+        @media (min-width: 667px) {
+          width: 20%;
+        }
         &:first-child{
           padding: 14px 20px;
           text-align: left;
-          width: 60%;
-        }
-        &:last-child{
-          width: 20%;
+          @media (min-width: 667px) {
+            width: 60%;
+          }
         }
       }
       &.active{
