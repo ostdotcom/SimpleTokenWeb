@@ -15,7 +15,6 @@ $activeArrowTop: $captionHeight + $captionBottomMargin + 4px;
   }
 
   #kyc-video-carousel {
-
     .kyc-carousel-caption {
       height: 110px;
       background-color: #ffd242;
@@ -36,6 +35,15 @@ $activeArrowTop: $captionHeight + $captionBottomMargin + 4px;
       margin-top: -40px;
       text-align: center;
       position: relative;
+      
+      img {
+        position: relative;
+        z-index: 1;
+      }
+
+      iframe {
+        background-color: #000;  
+      }
       .ost-kyc-play-btn {
         position: absolute;
         top: 0;
@@ -44,6 +52,7 @@ $activeArrowTop: $captionHeight + $captionBottomMargin + 4px;
         right: 0;
         margin:auto;
         width: 200px;
+        z-index: 2;
       }
       .embed-youtube-item {
         /* 30px = 2 * col padding (15 px) */
@@ -53,6 +62,7 @@ $activeArrowTop: $captionHeight + $captionBottomMargin + 4px;
         top: 0;
         /* 15px = col padding (15 px) */
         left: 15px;
+
       }
     }
 
