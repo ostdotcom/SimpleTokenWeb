@@ -11,6 +11,8 @@
       &.open{
         .dropdown-toggle{
           color: #c0993a;
+          border-color: transparent;
+          background-color: transparent;
         }
       }
 
@@ -22,13 +24,16 @@
       .dropdown-menu{
         padding: 8px 10px;
         width: 200px;
+        border: none;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
         li{
+          padding: 5px 8px;
           a{
-            padding: 5px 8px;
+            padding: 0;
             white-space: unset;
             color: #597a84;
             font-size: 12px;
+            margin-top: 5px;
           }
           &:first-child{
             margin-bottom: 8px;
