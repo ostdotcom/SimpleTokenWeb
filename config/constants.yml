@@ -6,6 +6,7 @@ constants:
   simple_token_web:
     root_url: <%= ENV['STW_ROOT_URL'] %>
     sale_root_url: <%= ENV['STW_SALE_ROOT_URL'] %>
+    kyc_root_url: <%= ENV['STW_KYC_ROOT_URL'] %>
 
   simple_token_api:
     root_url: <%= ENV['STW_API_INTERNAL_ROOT_URL'] %>

@@ -11,7 +11,7 @@
       uploadCount: 0,
       isResidencyProofNeeded: false,
       currentPercent: 0,
-      formNames: ['passport_file_path','selfie_file_path'],
+      formNames: ['document_id_file_path','selfie_file_path'],
       residencyProofMandatoryCountries: ['CHINESE', 'NEW ZEALANDER', 'AFGHANI', 'BOSNIAN', 'CENTRAL AFRICAN', 'CUBAN', 'CONGOLESE', 'ERITREAN', 'ETHIOPIAN', 'IRANIAN', 'IRAQI', 'LEBANESE', 'LIBYAN', 'NORTH KOREAN', 'SOMALI', 'SOUTH SUDANESE', 'SRI LANKAN', 'SUDANESE', 'SYRIAN', 'TUNISIAN', 'NI-VANUATU', 'YEMENI'],
       popoverPlacement: 'right',
       $kycForm: $('#kycForm'),
@@ -111,7 +111,7 @@
               oThis.popoverPlacement = 'bottom'
           }
 
-          oThis.$kycForm.find('label[for=passport_file_path] .badge').popover({
+          oThis.$kycForm.find('label[for=document_id_file_path] .badge').popover({
               placement: oThis.popoverPlacement,
               content: $('#passport-popover').text(),
               html: true,

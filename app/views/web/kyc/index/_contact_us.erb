@@ -1,14 +1,15 @@
-<div class="container-fluid" id="contactus">
+<section class="container-fluid" id="contactus">
   <div class="row container-contact-us">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
       <div class="row">
-        <div class="col-xs-12">
-          <h2 class="text-center">Contact Us</h2>
-          <p>Connect with us if you are interested in exploring how the Simple Token solution can apply to your business.</p>
+        <div class="col-xs-12 text-center">
+          <h2>Contact Us</h2>
+          <h3>Want to learn more about OST Infinity KYC?</h3>
+          <p>Please provide us with the info below and we will get in touch shortly.</p>
         </div>
       </div>
       <div class="row">
-        <form action="/api/home/contact-us-partners" class="custom-form" id="partners-contact-us-form">
+        <form action="/api/home/contact-us-kyc" class="custom-form" id="partners-contact-us-form">
           <div class="input-container">
             <label>FULL NAME</label>
             <input class="input" id="full_name" type="text" name="full_name" value="" title="full name" required autocomplete="off" />
@@ -34,7 +35,7 @@
           </div>
           <div class="error" data-for="contact_number"></div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-          <button type="submit" class="btn btn-square-gold" id="partners-contact-us-submit" style="margin: 20px auto 0;display: block;" title="Submit">SUBMIT</button>
+          <button type="submit" class="btn btn-square-gold btn-gold" id="partners-contact-us-submit" style="margin: 20px auto 0;display: block;" title="Submit">SUBMIT</button>
           <div class="error" data-for="general_error"></div>
         </form>
         <div id="send-message-success" style="display: none">
@@ -46,6 +47,6 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 

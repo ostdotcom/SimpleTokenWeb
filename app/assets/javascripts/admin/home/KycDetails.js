@@ -97,6 +97,21 @@
     },
 
     formSubmit: function ($dataAction) {
+      if ($dataAction == '/api/admin/kyc/data-mismatch') {
+       var fields_selected =  $('#modal_form input[type="checkbox"]:checked').length;
+       if (fields_selected == 0)
+       {
+         alert("please select atleast one reason");
+         return false;
+
+       }
+      }
+      else
+        if (($('#message_type_custom').is(':checked')) &&  ($('#custom_message_text').val() == "" )){
+          alert("please enter a custom message");
+          return false;
+        }
+
       var $form = $('#modal_form');
       $.ajax({
         url: $dataAction,
@@ -187,7 +202,27 @@
     },
 
     changeAddressAndOpenCase: function () {
-      if(!confirm("Please confirm that you want to Change Address / Open Case ?")){
+
+      var ethereum_address = $("#openCaseInput").val();
+      var is_case_closed = $("#openCase").data("iscaseclosed");
+
+      if (!is_case_closed && !ethereum_address) {
+        alert('please enter the new ETH address');
+        return false;
+      }
+
+      var text_message = "";
+
+
+
+      if (is_case_closed) {
+        text_message = "By confirming this case will be reopened in approx 10 minutes, and if a new ETH address was provided it will be updated.";
+      }
+      else {
+        text_message = "By confirming the ETH address provided will be updated.";
+      }
+
+      if (!confirm(text_message)) {
         return false;
       }
 

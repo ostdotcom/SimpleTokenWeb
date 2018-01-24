@@ -155,8 +155,8 @@ module GlobalConstant
         'data_mismatch'
       end
 
-      def passport_issue_admin_action_type
-        'passport_issue'
+      def document_id_issue_admin_action_type
+        'document_id_issue'
       end
 
       def selfie_issue_admin_action_type
@@ -172,7 +172,7 @@ module GlobalConstant
             no_admin_action_type => 'No Review Action',
             any_admin_action_type => 'Any Review Action',
             data_mismatch_admin_action_type => 'Data Mismatch',
-            passport_issue_admin_action_type => 'Passport Image Issue',
+            document_id_issue_admin_action_type => 'Document Id Issue',
             selfie_issue_admin_action_type => 'Selfie Image Issue',
             residency_issue_admin_action_type => 'Proof of Residence Issue'
         }
@@ -182,7 +182,7 @@ module GlobalConstant
       def admin_action_type
         {
             data_mismatch_admin_action_type => 'Data Mismatch Email Sent',
-            passport_issue_admin_action_type => 'Passport Image Issue Email Sent',
+            document_id_issue_admin_action_type => 'Document ID Image Issue Email Sent',
             selfie_issue_admin_action_type => 'Selfie Image Issue Email Sent',
             residency_issue_admin_action_type => 'Residency Image Issue Email Sent'
         }
