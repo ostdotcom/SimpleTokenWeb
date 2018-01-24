@@ -18,7 +18,7 @@
         <% if "#{params[:controller]}::#{params[:action]}" == 'web/home::index' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/" title="Home"
         <% end %> >Home</a></li>
-        <li id="nav-products" class="dropdown">
+        <li id="nav-products" class="dropdown hidden-xs">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Products</a>
           <div class="nav-dropdown-spacer"></div>
           <ul class="dropdown-menu mega-dropdown-menu">
@@ -34,6 +34,12 @@
                 The one place for your team to quickly review and process the KYC applications.</a>
             </li>
           </ul>
+        </li>
+        <li class="hidden-sm hidden-md hidden-lg hidden-xl">
+          <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT">PRODUCTS - ostKIT</a>
+        </li>
+        <li class="hidden-sm hidden-md hidden-lg hidden-xl">
+          <a href="<%= GlobalConstant::Base.simple_token_web['kyc_root_url'] %>" title="ostKYC">PRODUCTS - ostKYC</a>
         </li>
         <li><a
         <% if params[:action] == 'partners' %> class="selected-nav" href="javascript:void(0)"
