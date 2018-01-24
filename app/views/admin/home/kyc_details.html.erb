@@ -240,7 +240,7 @@
 
         <div class="row">
 
-          <% if user_detail['passport_file_url'].present? %>
+          <% if user_detail['document_id_file_url'].present? %>
               <div class="col-sm-6 kyc-img-block">
                 <div>
                   <span class="img-label">Document ID Image</span>
@@ -248,10 +248,10 @@
                 </div>
                 <div class="kyc-img-container">
                   <div class="kyc-image">
-                    <% if user_detail['passport_file_url'].match('\/i\/') %>
-                        <a href="<%= user_detail['passport_file_url'] %>" target="_blank"><img src="<%= user_detail['passport_file_url'] %>"></a>
+                    <% if user_detail['document_id_file_url'].match('\/i\/') %>
+                        <a href="<%= user_detail['document_id_file_url'] %>" target="_blank"><img src="<%= user_detail['document_id_file_url'] %>"></a>
                     <% else %>
-                        <iframe src="<%= user_detail['passport_file_url'] %>" frameborder="0"></iframe>
+                        <iframe src="<%= user_detail['document_id_file_url'] %>" frameborder="0"></iframe>
                     <% end %>
                   </div>
                 </div>
@@ -308,7 +308,7 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
     <input type="hidden" value="<%= @case_id %>" name="case_id">
     <input type="text" id="openCaseInput" placeholder="Ethereum address" name="ethereum_address" pattern="(0x|0X)?[0-9a-fA-F]{40}" value="" autocomplete="off" style="width:400px"/>
-    <input type="button" id="openCase" value="Change Address<%= ' & Open Case' if is_case_closed %>"/>
+    <input type="button" id="openCase" data-iscaseclosed="<%= is_case_closed %>" value="<%= is_case_closed ? "Reopen Case / Update ETH Address" : "Update ETH Address" %>"/>
     <div class="error" data-for="action_error" style="display: none;"></div>
     <div class="success" data-for="action_success" style="display: none;"></div>
   </form>
