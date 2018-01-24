@@ -18,7 +18,16 @@
   }
 
   .btn-wrap{
-    margin: 20px 0;
+    a{
+      display: inline-block;
+      margin: 0 0 20px;
+      vertical-align: top;
+      @media(min-width: 321px){
+        &:last-child{
+          margin-left: 10px;
+        }
+      }
+    }
   }
   .btn-ost-kyc{
     letter-spacing: 1px;

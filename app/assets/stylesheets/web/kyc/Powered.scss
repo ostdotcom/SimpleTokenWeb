@@ -23,6 +23,16 @@
       text-align: center;
     }
   }
+  .read-more{
+    letter-spacing: 1px;
+    line-height: 30px;
+    color: #c0993a;
+    border-bottom: 1px solid #c0993a;
+    &:hover, &:focus{
+      outline: none;
+      text-decoration: none;
+    }
+  }
   .square-btn{
     margin: 15px auto 0;
     line-height: 40px;
