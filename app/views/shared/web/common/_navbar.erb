@@ -19,12 +19,19 @@
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/" title="Home"
         <% end %> >Home</a></li>
         <li id="nav-products" class="dropdown hidden-xs">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Products</a>
+          <a href="#"
+             <% if params[:action] == 'product' || "#{params[:controller]}::#{params[:action]}" == 'web/kyc::index' %>
+             class="dropdown-toggle selected-nav"
+             <% else %>
+             class="dropdown-toggle"
+             <% end %>
+             data-toggle="dropdown">Products</a>
+
           <div class="nav-dropdown-spacer"></div>
           <ul class="dropdown-menu mega-dropdown-menu">
             <li>
               <a
-              <% if params[:action] == 'product' %> class="selected-nav" href="javascript:void(0)"
+              <% if params[:action] == 'product' %> class="bg-selected-nav" href="javascript:void(0)"
               <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT"
               <% end %> >
                 <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kit-brand-nav-menu.svg" width="80"/>
@@ -33,7 +40,7 @@
             </li>
             <li>
               <a
-              <% if "#{params[:controller]}::#{params[:action]}" == 'web/kyc::index' %> class="selected-nav" href="javascript:void(0)"
+              <% if "#{params[:controller]}::#{params[:action]}" == 'web/kyc::index' %> class="bg-selected-nav" href="javascript:void(0)"
               <% else %> href="<%= GlobalConstant::Base.simple_token_web['kyc_root_url'] %>" title="ostKYC"
               <% end %> >
                 <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
@@ -77,9 +84,9 @@
         <% end %> >careers</a></li>
         <li><a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/login" title="Login">Login</a></li>
         <% if !GlobalConstant::StTokenSale.has_sale_ended? %>
-            <li>
-              <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/sign-up" title="Register">Register</a>
-            </li>
+          <li>
+            <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/sign-up" title="Register">Register</a>
+          </li>
         <% end %>
       </ul>
     </div>
