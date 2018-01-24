@@ -31,7 +31,7 @@
 
     bindButtonActions: function () {
 
-      $(".carousel-inner .item").on("click",  function () {
+      $(".carousel-inner .item .kyc-carousel-content").on("click", function () {
         oThis.showVideo( $(this) );
       });
 
