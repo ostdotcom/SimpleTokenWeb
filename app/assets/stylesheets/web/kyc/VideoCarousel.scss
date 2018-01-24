@@ -48,12 +48,10 @@ $activeArrowTop: $captionHeight + $captionBottomMargin;
       
       img {
         position: relative;
+        width: 100%;
         z-index: 1;
       }
 
-      iframe {
-        background-color: #000;  
-      }
       .ost-kyc-play-btn {
         position: absolute;
         top: 0;
