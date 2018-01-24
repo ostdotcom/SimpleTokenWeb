@@ -95,7 +95,7 @@
         },
 
         complete: function (response) {
-          $("#partners-contact-us-submit").prop('disabled', false);
+          $("#partners-contact-us-submit").text('SUBMIT').prop('disabled', false);
         }
 
       });
