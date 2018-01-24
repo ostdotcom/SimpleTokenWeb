@@ -13,13 +13,20 @@
       oThis.jContactForm = $('#partners-contact-us-form');
       oThis.jContactForm.setCustomValidity();
       oThis.jVideoCarousal = $("#kyc-video-carousel");
+
       oThis.bindEventListeners();
       oThis.bindButtonActions();
     },
 
     bindEventListeners: function () {
       var oThis = this;
-      $("#kyc-video-carousel").on('slide.bs.carousel slid.bs.carousel', function ( event ) {
+      oThis.jVideoCarousal.swipe({
+        swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction == 'left') $(this).carousel('next');
+          if (direction == 'right') $(this).carousel('prev');
+        }
+      });
+      oThis.jVideoCarousal.on('slide.bs.carousel slid.bs.carousel', function ( event ) {
         var relatedTarget = event.relatedTarget
           , jEl          = $( relatedTarget )
           , indx         = jEl.data("indx")
