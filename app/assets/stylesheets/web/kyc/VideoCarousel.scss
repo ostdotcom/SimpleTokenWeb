@@ -4,15 +4,16 @@ $captionHeight: 20px;
 $captionBottomMargin: 10px;
 $activeArrowTop: $captionHeight + $captionBottomMargin;
 #kyc-demo-section {
-  padding-top: 10px;
-  padding-bottom: 30px;
+  padding: 10px 0 0 0;
 
   .section-header {
-    font-size: 40px;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-align: center;
     color: #438cad;
+    font-size: 38px;
+    line-height: 1.4;
+    margin-top: 30px;
   }
 
   #kyc-video-carousel {
