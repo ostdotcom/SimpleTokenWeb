@@ -21,7 +21,7 @@
     bindButtonActions: function (config) {
 
       $("#searchCase").on('keyup', function (e) {
-        if(!oThis.fireGetCases){
+        if (!oThis.fireGetCases) {
           oThis.fireGetCases = setTimeout(function () {
             oThis.getRelatedCases();
             oThis.fireGetCases = null
@@ -33,10 +33,13 @@
     },
 
     getRelatedCases: function () {
+      $caseSearchResults = $('#caseSearchResults');
       var query_term = $("#searchCase").val();
-      if(query_term.length <= 3){
+      if (query_term.length <= 3) {
         return false;
       }
+      $caseSearchResults.hide();
+
       $.ajax({
         url: '/api/admin/kyc/get-cases-by-email',
         dataType: 'json',
@@ -47,11 +50,17 @@
         success: function (response) {
           if (response.success == true) {
             //Fill values in search box and show.
-            $caseSearchResults = $('#caseSearchResults');
+
             resultData = '';
-            for(var case_id in response.data){
-              resultData += '<a class="searchResultElement" href="/admin/get-kyc-details/?case_id='+case_id+'"> CASE '+case_id+'( '+response.data[case_id]+' )</a>';
+            if (!response.data) {
+              resultData += '<span class="searchResultElement" style="text-align:center" > No User Found</span>';
             }
+            else {
+              for (var case_id in response.data) {
+                resultData += '<a class="searchResultElement" href="/admin/get-kyc-details/?case_id=' + case_id + '"> CASE ' + case_id + '( ' + response.data[case_id] + ' )</a>';
+              }
+            }
+
             $caseSearchResults.html(resultData);
             $caseSearchResults.show();
           } else {
