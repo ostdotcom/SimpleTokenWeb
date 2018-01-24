@@ -23,13 +23,19 @@
           <div class="nav-dropdown-spacer"></div>
           <ul class="dropdown-menu mega-dropdown-menu">
             <li>
-              <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT">
+              <a
+              <% if params[:action] == 'product' %> class="selected-nav" href="javascript:void(0)"
+              <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT"
+              <% end %> >
                 <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kit-brand-nav-menu.svg" width="80"/>
                 The complete blockchain toolkit for business
               </a>
             </li>
             <li>
-              <a href="<%= GlobalConstant::Base.simple_token_web['kyc_root_url'] %>" title="ostKYC">
+              <a
+              <% if "#{params[:controller]}::#{params[:action]}" == 'web/kyc::index' %> class="selected-nav" href="javascript:void(0)"
+              <% else %> href="<%= GlobalConstant::Base.simple_token_web['kyc_root_url'] %>" title="ostKYC"
+              <% end %> >
                 <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
                 KYC/AML & ICO whitelisting management solution
               </a>
@@ -37,11 +43,15 @@
           </ul>
         </li>
         <li class="hidden-sm hidden-md hidden-lg hidden-xl">
-          <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT">PRODUCTS - ostKIT</a>
-        </li>
+          <a
+          <% if params[:action] == 'product' %> class="selected-nav" href="javascript:void(0)"
+          <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT"
+          <% end %> >PRODUCTS - ostKIT</a></li>
         <li class="hidden-sm hidden-md hidden-lg hidden-xl">
-          <a href="<%= GlobalConstant::Base.simple_token_web['kyc_root_url'] %>" title="ostKYC">PRODUCTS - ostKYC</a>
-        </li>
+          <a
+          <% if "#{params[:controller]}::#{params[:action]}" == 'web/kyc::index' %> class="selected-nav" href="javascript:void(0)"
+          <% else %> href="<%= GlobalConstant::Base.simple_token_web['kyc_root_url'] %>" title="ostKYC"
+          <% end %> >PRODUCTS - ostKYC</a></li>
         <li><a
         <% if params[:action] == 'partners' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/partners" title="Partners"
