@@ -4,10 +4,11 @@ $captionHeight: 20px;
 $captionBottomMargin: 10px;
 $activeArrowTop: $captionHeight + $captionBottomMargin;
 #kyc-demo-section {
-  padding: 10px 0px;
+  padding-top: 10px;
+  padding-bottom: 30px;
 
   .section-header {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-align: center;
@@ -16,18 +17,19 @@ $activeArrowTop: $captionHeight + $captionBottomMargin;
 
   #kyc-video-carousel {
     .kyc-carousel-caption {
-      height: 110px;
+      height: 120px;
       background-color: #ffd242;
       box-shadow: inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.16);
 
       h3 {
+        color: #736844;
         text-align: center;
         padding: 24px;
         margin: 0;
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 300;
         line-height: 1.67;
-        letter-spacing: 0.2px;
+        letter-spacing: 0.4px;
       }
     }
 

@@ -37,54 +37,56 @@
 
 
 <section class="container-fluid" id="kyc-demo-section">
-  <h2 class="section-header">Fits All Your ICO Process Needs</h2>
+  <div class="row">
+    <h2 class="section-header">Fits All Your ICO Process Needs</h2>
 
-  <div id="kyc-video-carousel" class="carousel slide featuresSection carouselMobile" data-ride="carousel">
-    <!-- data-ride="carousel" -->
-    <ol class="carousel-indicators topMenuIndicators hidden-xs">
-      <% data_set.each_with_index do |data, indx| %>
-        <li data-target="#kyc-video-carousel" 
-          data-slide-to="<%= indx %>" 
-          class="<%= indx == 0 ? 'active' : '' %>"><%= data[:heading] %></li>
-      <% end %>
-    </ol>
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <% data_set.each_with_index do |data, indx| %>
-        <div class="item <%= indx == 0 ? 'active' : '' %>" data-indx="<%= indx %>">
-          <div class="kyc-carousel-caption">
-            <h3><%= data[:caption] %></h3>
-          </div>
-          <div class="row">
-            <div class="xs-hidden col-sm-1 col-lg-2"></div>
-            <div class="kyc-carousel-content col-xs-12 col-sm-10 col-lg-8">
-              <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-responsive" />
-              <iframe class="embed-youtube-item" data-src="<%= data[:iframe_src] %>" allowfullscreen style="border:0"></iframe>
-              <button type="submit" class="btn btn-square-gold ost-kyc-play-btn btn-ost-kyc" title="<%= data[:play_btn_text] %>">
-                <div class="btn-play">
-                  <div class="play" style="vertical-align: middle;">
-                    <svg class="svg">
-                      <switch>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
-                      </switch>
-                    </svg>
-                  </div>
-                  <span title="Watch Demo"><%= data[:play_btn_text] %></span>
-                </div>
-               </button>
+    <div id="kyc-video-carousel" class="carousel slide featuresSection carouselMobile" data-ride="carousel">
+      <!-- data-ride="carousel" -->
+      <ol class="carousel-indicators topMenuIndicators hidden-xs">
+        <% data_set.each_with_index do |data, indx| %>
+          <li data-target="#kyc-video-carousel"
+              data-slide-to="<%= indx %>"
+              class="<%= indx == 0 ? 'active' : '' %>"><%= data[:heading] %></li>
+        <% end %>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <% data_set.each_with_index do |data, indx| %>
+          <div class="item <%= indx == 0 ? 'active' : '' %>" data-indx="<%= indx %>">
+            <div class="kyc-carousel-caption">
+              <h3><%= data[:caption] %></h3>
             </div>
-            <div class="xs-hidden col-sm-1 col-lg-2"></div>
+            <div class="row">
+              <div class="xs-hidden col-sm-1 col-lg-2"></div>
+              <div class="kyc-carousel-content col-xs-12 col-sm-10 col-lg-8">
+                <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-responsive" />
+                <iframe class="embed-youtube-item" data-src="<%= data[:iframe_src] %>" allowfullscreen style="border:0"></iframe>
+                <button type="submit" class="btn btn-square-gold ost-kyc-play-btn btn-ost-kyc" title="<%= data[:play_btn_text] %>">
+                  <div class="btn-play">
+                    <div class="play" style="vertical-align: middle;">
+                      <svg class="svg">
+                        <switch>
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
+                        </switch>
+                      </svg>
+                    </div>
+                    <span title="Watch Demo"><%= data[:play_btn_text] %></span>
+                  </div>
+                </button>
+              </div>
+              <div class="xs-hidden col-sm-1 col-lg-2"></div>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+      <!-- roundedIndicators Indicators -->
+      <ol class="carousel-indicators roundedIndicators hidden-sm hidden-md hidden-lg hidden-xl">
+        <% data_set.each_with_index do |data, indx| %>
+          <li data-target="#kyc-video-carousel"
+              data-slide-to="<%= indx %>"
+              class="<%= indx == 0 ? 'active' : '' %>"></li>
+        <% end %>
+      </ol>
     </div>
-    <!-- roundedIndicators Indicators -->
-    <ol class="carousel-indicators roundedIndicators hidden-sm hidden-md hidden-lg hidden-xl">
-      <% data_set.each_with_index do |data, indx| %>
-        <li data-target="#kyc-video-carousel" 
-          data-slide-to="<%= indx %>" 
-          class="<%= indx == 0 ? 'active' : '' %>"></li>
-      <% end %>
-    </ol>
   </div>
 </section>

@@ -2,7 +2,7 @@
   padding-bottom: 50px;
   .powered-desc {
     background-color: #a4dee0;
-    padding-top: 50px;
+    padding-top: 35px;
     h2{
       font-size: 44px;
       font-weight: 300;
@@ -10,17 +10,14 @@
       text-align: center;
       margin: 0;
       letter-spacing: 2px;
-      img{
-        width: 100px;
-        vertical-align: text-bottom;
-      }
     }
     p{
       color: #597a84;
       font-weight: 300;
-      margin: 15px 0 30px;
-      letter-spacing: 1px;
+      margin: 20px 0 30px;
+      letter-spacing: 0.4px;
       text-align: center;
+      font-size: 16px;
     }
   }
   .read-more{
