@@ -10,7 +10,8 @@
        title: "How does ostKYC protect personal data?",
        description: "ostKYC APIs and tools are SSL protected and the infrastructure is hosted on AWS VPC (virtual private cloud). Traffic to and from VPC stays within the company's firewall without crossing the Internet.",
        readmore: "Read More",
-       readmoreurl: "https://docs.google.com/document/d/1ZZJksQkK3c4Qa6ad8zaDRuL0gIha2Ecmdlsl0dtxejo/edit#heading=h.gwn7zthvlc2w"
+       readmoreurl: "https://docs.google.com/document/d/1ZZJksQkK3c4Qa6ad8zaDRuL0gIha2Ecmdlsl0dtxejo/edit#heading=h.gwn7zthvlc2w",
+       bg_class: "bg-image"
      },
    ]
 %>
@@ -20,10 +21,10 @@
     <div class="row">
       <div class="col-xs-12">
         <h2>FAQs</h2>
-        <div class="bg-image">
+        <div class="">
           <% faqs.each_with_index do|data, index| %>
             <% if (index % 3) == 0 %><div class="row"><% end %>
-            <div class="col-xs-12 col-sm-6 col-sm-offset-0">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-0 <%= raw data[:bg_class] %>">
               <h3><%= raw data[:title] %></h3>
               <p class="companies-desc"><%= raw data[:description] %></p>
               <a href="<%= raw data[:readmoreurl] %>" class="read-more" target="_blank"><%= raw data[:readmore] %></a>
