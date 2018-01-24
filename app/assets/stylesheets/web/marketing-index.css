@@ -3,6 +3,7 @@
  *= require web/common/Body
  *= require web/common/Buttons
  *= require web/common/Icons
+ *= require web/common/NavBar
  *= require web/marketing/Index
  *= require web/common/NewTimer
  *= require web/common/Telegram

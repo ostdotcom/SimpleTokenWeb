@@ -18,10 +18,23 @@
         <% if "#{params[:controller]}::#{params[:action]}" == 'web/home::index' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/" title="Home"
         <% end %> >Home</a></li>
-        <li><a
-        <% if params[:action] == 'product' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="Product"
-        <% end %> >Product</a></li>
+        <li id="nav-products" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Products</a>
+          <div class="nav-dropdown-spacer"></div>
+          <ul class="dropdown-menu mega-dropdown-menu">
+            <li>
+              <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT">
+                <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kit-brand-nav-menu.svg" width="80"/>
+                Launch your own Branded Tokens and turn your business into a dynamic ecosystem.
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" title="ostKYC">
+                <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
+                The one place for your team to quickly review and process the KYC applications.</a>
+            </li>
+          </ul>
+        </li>
         <li><a
         <% if params[:action] == 'partners' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/partners" title="Partners"
@@ -35,10 +48,6 @@
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" title="Documents"
         <% end %> >Documents</a></li>
         <li><a href="https://medium.com/simple-token" title="BLOG" target="_blank">BLOG</a></li>
-        <li><a
-        <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/faq/" title="FAQ"
-        <% end %> >FAQ</a></li>
         <li><a
         <% if "#{params[:controller]}::#{params[:action]}" == 'web/token_sale::index' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Token Sale"
