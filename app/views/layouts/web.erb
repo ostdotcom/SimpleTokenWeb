@@ -110,7 +110,7 @@
   <script src="https://cdn.optimizely.com/js/9103640545.js"></script>
   <% end %>
 
-  <% if (params[:controller] == "web/user")  && ['update_kyc_form','add_kyc_form','login','sign_up'].include?(params[:action]) %>
+  <% if ['web/user::update_kyc_form','web/user::add_kyc_form','web/user::login','web/user::sign_up','web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
     <script src="https://www.google.com/recaptcha/api.js"></script>
   <% end %>
 

@@ -50,6 +50,11 @@
       isContactFormValid: function () {
         simpletoken.utils.errorHandling.clearFormErrors();
         oThis.jContactForm.find('input').trigger('change');
+        if(typeof oThis.jContactForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+          if(grecaptcha.getResponse() == ''){
+            oThis.jContactForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+          }
+        }
         return oThis.jContactForm.find('.error:not(:empty)').length == 0;
       },
 
@@ -70,6 +75,9 @@
               $('#send-message-success').show().height($formHeight);
             } else {
               simpletoken.utils.errorHandling.displayFormErrors(response);
+              if(typeof grecaptcha  != 'undefined'){
+                grecaptcha.reset();
+              }
             }
           },
           error: function (jqXHR, exception) {
@@ -78,6 +86,9 @@
 
           complete: function (response) {
             $("#partners-contact-us-submit").prop('disabled', false);
+            if(typeof grecaptcha  != 'undefined'){
+              grecaptcha.reset();
+            }
           }
 
         });

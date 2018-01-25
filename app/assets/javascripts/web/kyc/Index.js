@@ -85,7 +85,7 @@
 
     onSendMessage: function () {
       console.log("onSendMessage :: triggered!");
-      var $contactusform = $('#partners-contact-us-form');
+      var $contactusform = $('#ost-kyc-contact-us-form');
       var $contactusformurl = $contactusform.prop('action');
       var $formHeight = $contactusform.height();
       $('#send-message-success').hide();

@@ -89,7 +89,9 @@
 
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
-  <script src="https://www.google.com/recaptcha/api.js"></script>
+  <% if (params[:controller] == "web/kyc")  && ['index'].include?(params[:action]) %>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+  <% end %>
 </head>
 
 <body contenteditable="false">
