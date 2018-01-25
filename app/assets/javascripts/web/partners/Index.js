@@ -85,7 +85,10 @@
           },
 
           complete: function (response) {
-            $("#partners-contact-us-submit").prop('disabled', false);
+            $("#partners-contact-us-submit")
+              .text('submit')
+              .prop( "disabled", false );
+
             if(typeof grecaptcha  != 'undefined'){
               grecaptcha.reset();
             }

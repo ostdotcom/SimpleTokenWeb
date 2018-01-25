@@ -42,7 +42,7 @@
         oThis.showVideo( $(this) );
       });
 
-      $("#partners-contact-us-submit").on("click", function (event) {
+      $("#ost-kyc-contact-us-submit").on("click", function (event) {
         event.preventDefault();
         oThis.onContactFormSubmit( event );
       });
@@ -66,7 +66,7 @@
         console.log("Validation failed!");
         return;
       }
-      $("#partners-contact-us-submit")
+      $("#ost-kyc-contact-us-submit")
         .text('sending ...')
         .prop( "disabled", true );
       oThis.onSendMessage();
@@ -110,7 +110,10 @@
         },
 
         complete: function (response) {
-          $("#partners-contact-us-submit").text('SUBMIT').prop('disabled', false);
+          $("#ost-kyc-contact-us-submit")
+            .text('SUBMIT')
+            .prop('disabled', false);
+
           if(typeof grecaptcha  != 'undefined'){
             grecaptcha.reset();
           }
