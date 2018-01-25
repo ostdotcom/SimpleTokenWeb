@@ -8,6 +8,7 @@
   KycNs.index = oThis = {
     jContactForm: null,
     jVideoCarousal: null,
+    $contactForm: $('#partners-contact-us-form'),
 
     init: function (config) {
       oThis.jContactForm = $('#partners-contact-us-form');
@@ -75,6 +76,11 @@
     isContactFormValid: function () {
       simpletoken.utils.errorHandling.clearFormErrors();
       oThis.jContactForm.find('input').trigger('change');
+      if(typeof oThis.$contactForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+        if(grecaptcha.getResponse() == ''){
+          oThis.$contactForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+        }
+      }
       return oThis.jContactForm.find('.error:not(:empty)').length == 0;
     },
 
