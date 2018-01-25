@@ -34,11 +34,12 @@
 
     getRelatedCases: function () {
       $caseSearchResults = $('#caseSearchResults');
+      $caseSearchResults.hide();
+
       var query_term = $("#searchCase").val();
       if (query_term.length <= 3) {
         return false;
       }
-      $caseSearchResults.hide();
 
       $.ajax({
         url: '/api/admin/kyc/get-cases-by-email',
