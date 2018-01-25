@@ -1,0 +1,95 @@
+<%
+
+  image_path= "//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/";
+  youtube_url_params="?loop=1&showinfo=0&enablejsapi=1&autoplay=1";
+  data_set = [
+    {
+      :heading => "Architecture",
+      :caption => "Explore the ostKYC system architecture and modules.",
+      :img_src => image_path + "ost-kyc-architecture-overview-cover.png",
+      :iframe_src => "https://www.youtube.com/embed/_sGZJkGHo9s" + youtube_url_params,
+      :play_btn_text => "WATCH DEMO"
+    },
+    {
+      :heading => "Review Process",
+      :caption => "Learn how to utilize the ostKYC dashboard to review your clients' applications.",
+      :img_src => image_path + "ost-kyc-review-process-cover.png",
+      :iframe_src => "https://www.youtube.com/embed/Md7sbbYXRmQ" + youtube_url_params,
+      :play_btn_text => "WATCH DEMO"
+    },
+    {
+      :heading => "Issues Resolution",
+      :caption => "Learn how to handle issue resolution and enable your clients to successfully register.",
+      :img_src => image_path + "ost-kyc-issue-resolution-cover.png",
+      :iframe_src => "https://www.youtube.com/embed/0d54dxFKjA4" + youtube_url_params,
+      :play_btn_text => "WATCH DEMO"
+    },
+    {
+      :heading => "Whitelisting",
+      :caption => "Discover how the ETH Address Whitelist process functions.",
+      :img_src => image_path + "ost-kyc-whitelist-eth-cover-1.png",
+      :iframe_src => "https://www.youtube.com/embed/Bn4dReP3xHs" + youtube_url_params,
+      :play_btn_text => "WATCH DEMO"
+    }
+  ];
+  
+%>
+
+
+<section class="container-fluid" id="kyc-demo-section">
+  <!-- div class="row" -->
+    <!-- div class="col-xs-12" -->
+      <div>
+        <h2 class="section-header">Fits All Your ICO Process Needs</h2>
+
+        <div id="kyc-video-carousel" class="carousel slide featuresSection carouselMobile" data-ride="carousel" data-ride="carousel"><!-- data-ride="carousel" -->
+          <ol class="carousel-indicators topMenuIndicators hidden-xs">
+            <% data_set.each_with_index do |data, indx| %>
+                <li data-target="#kyc-video-carousel"
+                    data-slide-to="<%= indx %>"
+                    class="<%= indx == 0 ? 'active' : '' %>"><%= data[:heading] %></li>
+            <% end %>
+          </ol>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <% data_set.each_with_index do |data, indx| %>
+                <div class="item <%= indx == 0 ? 'active' : '' %>" data-indx="<%= indx %>">
+                  <div class="kyc-carousel-caption">
+                    <h3><%= data[:caption] %></h3>
+                  </div>
+                  <div class="row">
+                    <div class="xs-hidden col-sm-1 col-lg-2"></div>
+                    <div class="kyc-carousel-content col-xs-12 col-sm-10 col-lg-8">
+                      <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-responsive" />
+                      <iframe class="embed-youtube-item" data-src="<%= data[:iframe_src] %>" allowfullscreen style="border:0"></iframe>
+                      <button type="submit" class="btn btn-square-gold ost-kyc-play-btn btn-ost-kyc" title="<%= data[:play_btn_text] %>">
+                        <div class="btn-play">
+                          <div class="play" style="vertical-align: middle;">
+                            <svg class="svg">
+                              <switch>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play"></use>
+                              </switch>
+                            </svg>
+                          </div>
+                          <span title="Watch Demo"><%= data[:play_btn_text] %></span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="xs-hidden col-sm-1 col-lg-2"></div>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <!-- roundedIndicators Indicators -->
+          <ol class="carousel-indicators roundedIndicators hidden-sm hidden-md hidden-lg hidden-xl">
+            <% data_set.each_with_index do |data, indx| %>
+                <li data-target="#kyc-video-carousel"
+                    data-slide-to="<%= indx %>"
+                    class="<%= indx == 0 ? 'active' : '' %>"></li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+    <!-- /div -->
+  <!-- /div -->
+</section>

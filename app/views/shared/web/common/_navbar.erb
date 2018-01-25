@@ -18,10 +18,47 @@
         <% if "#{params[:controller]}::#{params[:action]}" == 'web/home::index' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/" title="Home"
         <% end %> >Home</a></li>
-        <li><a
-        <% if params[:action] == 'product' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="Product"
-        <% end %> >Product</a></li>
+        <li id="nav-products" class="dropdown hidden-xs">
+          <a href="#"
+             <% if params[:action] == 'product' || "#{params[:controller]}::#{params[:action]}" == 'web/kyc::index' %>
+             class="dropdown-toggle selected-nav"
+             <% else %>
+             class="dropdown-toggle"
+             <% end %>
+             data-toggle="dropdown">Products</a>
+
+          <div class="nav-dropdown-spacer"></div>
+          <ul class="dropdown-menu mega-dropdown-menu">
+            <li>
+              <a
+              <% if params[:action] == 'product' %> class="bg-selected-nav" href="javascript:void(0)"
+              <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT"
+              <% end %> >
+                <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kit-brand-nav-menu.svg" width="80"/>
+                The complete blockchain toolkit for business
+              </a>
+            </li>
+            <li>
+              <a
+              <% if "#{params[:controller]}::#{params[:action]}" == 'web/kyc::index' %> class="bg-selected-nav" href="javascript:void(0)"
+              <% else %> href="<%= GlobalConstant::Base.simple_token_web['kyc_root_url'] %>" title="ostKYC"
+              <% end %> >
+                <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
+                KYC/AML & ICO whitelisting management solution
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="hidden-sm hidden-md hidden-lg hidden-xl">
+          <a
+          <% if params[:action] == 'product' %> class="selected-nav" href="javascript:void(0)"
+          <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT"
+          <% end %> >PRODUCTS - ostKIT</a></li>
+        <li class="hidden-sm hidden-md hidden-lg hidden-xl">
+          <a
+          <% if "#{params[:controller]}::#{params[:action]}" == 'web/kyc::index' %> class="selected-nav" href="javascript:void(0)"
+          <% else %> href="<%= GlobalConstant::Base.simple_token_web['kyc_root_url'] %>" title="ostKYC"
+          <% end %> >PRODUCTS - ostKYC</a></li>
         <li><a
         <% if params[:action] == 'partners' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/partners" title="Partners"
@@ -36,10 +73,6 @@
         <% end %> >Documents</a></li>
         <li><a href="https://medium.com/simple-token" title="BLOG" target="_blank">BLOG</a></li>
         <li><a
-        <% if params[:action] == 'faq' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/faq/" title="FAQ"
-        <% end %> >FAQ</a></li>
-        <li><a
         <% if "#{params[:controller]}::#{params[:action]}" == 'web/token_sale::index' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Token Sale"
         <% end %> >Token Sale</a></li>
@@ -51,9 +84,9 @@
         <% end %> >careers</a></li>
         <li><a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/login" title="Login">Login</a></li>
         <% if !GlobalConstant::StTokenSale.has_sale_ended? %>
-            <li>
-              <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/sign-up" title="Register">Register</a>
-            </li>
+          <li>
+            <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/sign-up" title="Register">Register</a>
+          </li>
         <% end %>
       </ul>
     </div>

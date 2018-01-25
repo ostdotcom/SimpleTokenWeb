@@ -1,0 +1,49 @@
+.container-faqs {
+  background-color: #eff9fa;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  .bg-image{
+    background: url(//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-bg-faq-icon.svg) no-repeat;
+    background-size: auto 70%;
+    background-position: 0px bottom;
+    padding-bottom: 30px;
+  }
+  h2{
+    font-size: 44px;
+    font-weight: 500;
+    color: #438cad;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 2px;
+  }
+  h3{
+    font-size: 20px;
+    font-weight: 500;
+    color: #597a84;
+    margin: 50px 0 10px;
+    letter-spacing: 1px;
+  }
+  p{
+    color: #597a84;
+    font-weight: 300;
+    margin: 0 0 40px;
+    letter-spacing: 1px;
+  }
+  .read-more{
+    margin: 0 auto;
+    letter-spacing: 1px;
+    line-height: 40px;
+    color: #c0993a;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #c0993a;
+    &:hover, &:focus{
+      outline: none;
+      text-decoration: none;
+    }
+  }
+  .square-btn{
+    margin: 0 auto;
+    line-height: 40px;
+    padding: 0 20px;
+  }
+}
