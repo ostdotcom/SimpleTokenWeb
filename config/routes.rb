@@ -38,6 +38,27 @@ Rails.application.routes.draw do
     scope '', controller: 'web/kyc' do
       get '/' => :index
     end
+
+    scope 'admin/', controller: 'admin/home' do
+      get '/login' => :login
+      get '/logout' => :logout
+      get '/authentication' => :authentication
+      get '/change-password' => :change_password
+      get '/dashboard' => :dashboard
+      get '/get-kyc-dashboard' => :get_kyc_dashboard
+      get '/get-kyc-details' => :kyc_details
+      get '/kyc-action-logs' => :kyc_action_logs
+      get '/whitelist-dashboard' => :whitelist_dashboard
+      get '/get-kyc-whitelist-dashboard' => :get_kyc_whitelist_dashboard
+      # get '/sale-all-dashboard' => :sale_all_dashboard
+      # get '/get-sale-all-dashboard' => :get_sale_all_dashboard
+      # get '/sale-daily-dashboard' => :sale_daily_dashboard
+      # get '/get-sale-daily-dashboard' => :get_sale_daily_dashboard
+      # get '/contract-events-dashboard' => :contract_events_dashboard
+      # get '/get-contract-events-dashboard' => :get_contract_events_dashboard
+      # get '/pos-dashboard' => :pos_dashboard
+    end
+
     # Route not found handler. Should be the last entry here
     match '*permalink', to: 'application#not_found', via: :all
   end
@@ -65,25 +86,7 @@ Rails.application.routes.draw do
     get '/product-hunt' => :index
   end
 
-  scope 'admin/', controller: 'admin/home' do
-    get '/login' => :login
-    get '/logout' => :logout
-    get '/authentication' => :authentication
-    get '/change-password' => :change_password
-    get '/dashboard' => :dashboard
-    get '/get-kyc-dashboard' => :get_kyc_dashboard
-    get '/get-kyc-details' => :kyc_details
-    get '/kyc-action-logs' => :kyc_action_logs
-    get '/whitelist-dashboard' => :whitelist_dashboard
-    get '/get-kyc-whitelist-dashboard' => :get_kyc_whitelist_dashboard
-    # get '/sale-all-dashboard' => :sale_all_dashboard
-    # get '/get-sale-all-dashboard' => :get_sale_all_dashboard
-    # get '/sale-daily-dashboard' => :sale_daily_dashboard
-    # get '/get-sale-daily-dashboard' => :get_sale_daily_dashboard
-    # get '/contract-events-dashboard' => :contract_events_dashboard
-    # get '/get-contract-events-dashboard' => :get_contract_events_dashboard
-    # get '/pos-dashboard' => :pos_dashboard
-  end
+
 
   namespace 'admin' do
     # ST Api sidekiq web interface endpoint
