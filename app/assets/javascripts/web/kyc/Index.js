@@ -101,6 +101,9 @@
             $('#send-message-success').show().height($formHeight);
           } else {
             simpletoken.utils.errorHandling.displayFormErrors(response);
+            if(typeof grecaptcha  != 'undefined'){
+              grecaptcha.reset();
+            }
           }
         },
         error: function (jqXHR, exception) {
@@ -109,6 +112,9 @@
 
         complete: function (response) {
           $("#partners-contact-us-submit").text('SUBMIT').prop('disabled', false);
+          if(typeof grecaptcha  != 'undefined'){
+            grecaptcha.reset();
+          }
         }
 
       });
