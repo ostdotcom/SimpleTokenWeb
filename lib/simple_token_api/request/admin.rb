@@ -167,6 +167,20 @@ module SimpleTokenApi
         get("kyc/contract-events-dashboard", request_params)
       end
 
+      private
+
+      # Base kyc API URL for Admin Apis
+      #
+      # * Author: Aman
+      # * Date: 25/01/2018
+      # * Reviewed By:
+      #
+      # @return [String] returns BASE API URL
+      #
+      def base_url
+        "#{GlobalConstant::Base.kyc_api_root_url}/api/"
+      end
+
     end
   end
 end

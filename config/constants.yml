@@ -10,6 +10,7 @@ constants:
 
   simple_token_api:
     root_url: <%= ENV['STW_API_INTERNAL_ROOT_URL'] %>
+    kyc_root_url: <%= ENV['STW_KYC_API_INTERNAL_ROOT_URL'] %>
     open_timeout: 50
     read_timeout: 50
 

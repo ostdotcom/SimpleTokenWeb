@@ -32,6 +32,20 @@ module SimpleTokenApi
         get("details")
       end
 
+      private
+
+      # Base Simple Token API URL
+      #
+      # * Author: Aman
+      # * Date: 18/04/2017
+      # * Reviewed By: Sunil
+      #
+      # @return [String] returns BASE API URL
+      #
+      def base_url
+        "#{GlobalConstant::Base.api_root_url}/api/"
+      end
+
     end
   end
 end

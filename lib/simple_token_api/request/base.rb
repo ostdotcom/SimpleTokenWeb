@@ -80,7 +80,7 @@ module SimpleTokenApi
       # @return [String] returns BASE API URL
       #
       def base_url
-        "#{GlobalConstant::Base.api_root_url}/api/"
+        fail 'api base url undefined'
       end
 
       # make API Request
