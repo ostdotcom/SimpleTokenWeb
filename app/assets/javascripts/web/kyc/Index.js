@@ -132,8 +132,8 @@
       jItem.find("button").hide();
     },
 
-    hideVideo: function(){
-      if( oThis.isVideoPlaying ) {
+    hideVideo: function(force){
+      if( oThis.isVideoPlaying || force === true) {
         oThis.jVideoCarousal.carousel('cycle');
         oThis.jVideoCarousal.find('img').css({
           visibility: "visible"
@@ -150,6 +150,10 @@
 
   $(document).ready(function () {
     oThis.init({i18n: {}});
+  });
+
+  $(window).on('load', function() {
+    oThis.hideVideo(true);
   });
 
 })(window);
