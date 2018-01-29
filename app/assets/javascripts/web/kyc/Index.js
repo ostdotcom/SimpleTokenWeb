@@ -10,7 +10,7 @@
     jVideoCarousal: null,
 
     init: function (config) {
-      oThis.jContactForm = $('#partners-contact-us-form');
+      oThis.jContactForm = $('#ost-kyc-contact-us-form');
       oThis.jContactForm.setCustomValidity();
       oThis.jVideoCarousal = $("#kyc-video-carousel");
 
@@ -42,7 +42,7 @@
         oThis.showVideo( $(this) );
       });
 
-      $("#partners-contact-us-submit").on("click", function (event) {
+      $("#ost-kyc-contact-us-submit").on("click", function (event) {
         event.preventDefault();
         oThis.onContactFormSubmit( event );
       });
@@ -66,7 +66,7 @@
         console.log("Validation failed!");
         return;
       }
-      $("#partners-contact-us-submit")
+      $("#ost-kyc-contact-us-submit")
         .text('sending ...')
         .prop( "disabled", true );
       oThis.onSendMessage();
@@ -75,12 +75,17 @@
     isContactFormValid: function () {
       simpletoken.utils.errorHandling.clearFormErrors();
       oThis.jContactForm.find('input').trigger('change');
+      if(typeof oThis.jContactForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+        if(grecaptcha.getResponse() == ''){
+          oThis.jContactForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+        }
+      }
       return oThis.jContactForm.find('.error:not(:empty)').length == 0;
     },
 
     onSendMessage: function () {
       console.log("onSendMessage :: triggered!");
-      var $contactusform = $('#partners-contact-us-form');
+      var $contactusform = $('#ost-kyc-contact-us-form');
       var $contactusformurl = $contactusform.prop('action');
       var $formHeight = $contactusform.height();
       $('#send-message-success').hide();
@@ -95,6 +100,9 @@
             $('#send-message-success').show().height($formHeight);
           } else {
             simpletoken.utils.errorHandling.displayFormErrors(response);
+            if(typeof grecaptcha  != 'undefined'){
+              grecaptcha.reset();
+            }
           }
         },
         error: function (jqXHR, exception) {
@@ -102,7 +110,13 @@
         },
 
         complete: function (response) {
-          $("#partners-contact-us-submit").text('SUBMIT').prop('disabled', false);
+          $("#ost-kyc-contact-us-submit")
+            .text('SUBMIT')
+            .prop('disabled', false);
+
+          if(typeof grecaptcha  != 'undefined'){
+            grecaptcha.reset();
+          }
         }
 
       });
@@ -132,8 +146,8 @@
       jItem.find("button").hide();
     },
 
-    hideVideo: function(){
-      if( oThis.isVideoPlaying ) {
+    hideVideo: function(force){
+      if( oThis.isVideoPlaying || force === true) {
         oThis.jVideoCarousal.carousel('cycle');
         oThis.jVideoCarousal.find('img').css({
           visibility: "visible"
@@ -150,6 +164,10 @@
 
   $(document).ready(function () {
     oThis.init({i18n: {}});
+  });
+
+  $(window).on('load', function() {
+    oThis.hideVideo(true);
   });
 
 })(window);
