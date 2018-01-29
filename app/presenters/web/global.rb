@@ -17,7 +17,7 @@ module Presenters
       end
 
       def sale_details
-        @sale_details ||= GlobalConstant::StTokenSale.token_sale_details(host)
+        @sale_details ||= GlobalConstant::StTokenSale.token_sale_details(@host)
       end
 
       def has_sale_ended_before_time?
