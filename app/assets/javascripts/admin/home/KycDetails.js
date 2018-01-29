@@ -65,7 +65,7 @@
 
         var copyMap = {};
         copyMap['/api/admin/kyc/data-mismatch'] = 'Data Mismatch';
-        copyMap['/api/admin/kyc/passport-issue'] = 'Document ID Issue';
+        copyMap['/api/admin/kyc/document-id-issue'] = 'Document ID Issue';
         copyMap['/api/admin/kyc/selfie-img-issue'] = 'Selfie Issue';
         copyMap['/api/admin/kyc/residency-img-issue'] = 'Residency Image Issue';
         copyMap['/api/admin/kyc/deny-kyc'] = 'Deny KYC';
@@ -75,7 +75,7 @@
           $kycCaseActionModal.find('.form-fields').html($('#data_mismatch_form').text());
         }
 
-        if ($dataAction == '/api/admin/kyc/passport-issue' || $dataAction == '/api/admin/kyc/selfie-img-issue' || $dataAction == '/api/admin/kyc/residency-img-issue') {
+        if ($dataAction == '/api/admin/kyc/document-id-issue' || $dataAction == '/api/admin/kyc/selfie-img-issue' || $dataAction == '/api/admin/kyc/residency-img-issue') {
           $kycCaseActionModal.find('.form-fields').html($('#image_mismatch_form').text());
         }
 
