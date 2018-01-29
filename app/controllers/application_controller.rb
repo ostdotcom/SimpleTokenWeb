@@ -40,6 +40,16 @@ class ApplicationController < ActionController::Base
     request.env['HTTP_USER_AGENT'].to_s
   end
 
+  # Get host_url_with_protocol
+  #
+  # * Author: Aman
+  # * Date: 29/01/2018
+  # * Reviewed By:
+  #
+  def host_url_with_protocol
+    "#{request.protocol}#{request.host}"
+  end
+
   # Get Ip Address
   #
   # * Author: Aman
