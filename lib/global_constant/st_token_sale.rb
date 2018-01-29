@@ -49,9 +49,9 @@ module GlobalConstant
         @hard_cap_st_tokens_milestone ||= config['sale_milestones']['hard_cap']
       end
 
-      def token_sale_details
+      def token_sale_details(host_url)
         data = get_token_sale_details_from_memcache
-        res = data.present? ? data[:sale_details] : get_token_sale_details_from_api
+        res = data.present? ? data[:sale_details] : get_token_sale_details_from_api(host_url)
         HashWithIndifferentAccess.new(res)
       end
 
@@ -62,8 +62,8 @@ module GlobalConstant
         Memcache.read(memcache_key_object.key_template)
       end
 
-      def get_token_sale_details_from_api
-        response = SimpleTokenApi::Request::Sale.new.get_sale_stat
+      def get_token_sale_details_from_api(host_url)
+        response = SimpleTokenApi::Request::Sale.new(host_url).get_sale_stat
         return {} unless response.success?
         response.data["sale_details"]
       end

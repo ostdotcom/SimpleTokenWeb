@@ -11,7 +11,7 @@ class Web::TokenSaleController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def index
-    @presenter_obj = ::Presenters::Web::Global.new(params)
+    @presenter_obj = ::Presenters::Web::Global.new(request.host, params)
   end
 
 end

@@ -8,8 +8,6 @@ export STW_CLOUDFRONT_DOMAIN="da3bndq04bonc.cloudfront.net"
 export STW_ROOT_URL="http://developmentsimpletoken.org:8080"
 export STW_SALE_ROOT_URL="http://sale.developmentsimpletoken.org:8080"
 export STW_KYC_ROOT_URL="http://kyc.developmentost.com:8080"
-export STW_API_INTERNAL_ROOT_URL="http://sale.developmentsimpletoken.org:4000"
-export STW_KYC_API_INTERNAL_ROOT_URL="http://kyc.developmentost.com:4000"
 
 export STW_CAMPAIGN_ENCRYPTED_CLIENT_ID="118e1817b0fa6360e19933fe8af41a34"
 export STW_CAMPAIGN_ENCRYPTED_LIST_ID="275467b8adfdf751"

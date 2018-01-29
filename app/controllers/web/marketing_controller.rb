@@ -13,7 +13,7 @@ class Web::MarketingController < Web::BaseController
     if (Time.zone.now >= GlobalConstant::StTokenSale.early_access_register_start_date)
       redirect_to GlobalConstant::Base.simple_token_web['sale_root_url'], status: GlobalConstant::ErrorCode.temporary_redirect and return
     end
-    @presenter_obj = ::Presenters::Web::Global.new(params)
+    @presenter_obj = ::Presenters::Web::Global.new(request.host, params)
   end
 
 end

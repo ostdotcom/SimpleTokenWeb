@@ -8,12 +8,13 @@ module SimpleTokenApi
       # * Date: 12/10/2017
       # * Reviewed By: Sunil
       #
+      # @param [String] host (mandatory) - host url request
       # @param [Hash] cookies (optional) - cookies that need to be sent to API
       # @param [Hash] headers (optional) - headers that need to be sent to API
       #
       # @return [SimpleTokenApi::Request::User] returns an object of SimpleTokenApi::Request::User class
       #
-      def initialize(cookies = {}, headers = {})
+      def initialize(host, cookies = {}, headers = {})
         super
         @service_base_route = 'admin/'
       end
@@ -165,20 +166,6 @@ module SimpleTokenApi
         }
 
         get("kyc/contract-events-dashboard", request_params)
-      end
-
-      private
-
-      # Base kyc API URL for Admin Apis
-      #
-      # * Author: Aman
-      # * Date: 25/01/2018
-      # * Reviewed By:
-      #
-      # @return [String] returns BASE API URL
-      #
-      def base_url
-        "#{GlobalConstant::Base.kyc_api_root_url}/api/"
       end
 
     end
