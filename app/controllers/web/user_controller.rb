@@ -81,7 +81,7 @@ class Web::UserController < Web::BaseController
       redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
     end
 
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
+    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
     unless service_response.success?
@@ -107,7 +107,7 @@ class Web::UserController < Web::BaseController
       redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
     end
 
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
+    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
     unless service_response.success?
@@ -132,7 +132,7 @@ class Web::UserController < Web::BaseController
       redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
     end
 
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
+    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
     unless service_response.success?
@@ -151,7 +151,7 @@ class Web::UserController < Web::BaseController
   # * Reviewed By:
   #
   def update_branded_token
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
+    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
     unless service_response.success?
@@ -174,7 +174,7 @@ class Web::UserController < Web::BaseController
       redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
     end
 
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).basic_detail
+    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
     unless service_response.success?
@@ -193,7 +193,7 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def dashboard_home
-    service_response = SimpleTokenApi::Request::User.new(request.cookies, {"User-Agent" => http_user_agent}).profile_detail(t: params[:t])
+    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).profile_detail(t: params[:t])
 
     # Check if error present or not?
     unless service_response.success?

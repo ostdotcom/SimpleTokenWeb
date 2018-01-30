@@ -13,12 +13,14 @@ module SimpleTokenApi
       # * Date: 12/10/2017
       # * Reviewed By: Sunil
       #
+      # @param [String] host (mandatory) - host url request
       # @param [Hash] cookies (optional) - cookies that need to be sent to API
       # @param [Hash] headers (optional) - headers that need to be sent to API
       #
       # @return [SimpleTokenApi::Request::Base] returns an object of SimpleTokenApi::Request::Base class
       #
-      def initialize(cookies, headers)
+      def initialize(host, cookies, headers)
+        @host = host
         @cookies = cookies
         @headers = headers
         @request_class = nil
@@ -71,16 +73,16 @@ module SimpleTokenApi
         url_params_hash.present? ? ('?' + url_params_hash.to_query) : ''
       end
 
-      # Base Simple Token API URL
+      # Base kyc API URL for Admin Apis
       #
       # * Author: Aman
-      # * Date: 18/04/2017
-      # * Reviewed By: Sunil
+      # * Date: 25/01/2018
+      # * Reviewed By:
       #
       # @return [String] returns BASE API URL
       #
       def base_url
-        "#{GlobalConstant::Base.api_root_url}/api/"
+        Rails.env.development? ? "#{@host}:4000/api/" : "#{@host}/api/"
       end
 
       # make API Request

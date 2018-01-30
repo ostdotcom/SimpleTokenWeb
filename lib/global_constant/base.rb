@@ -29,16 +29,6 @@ module GlobalConstant
       # * Date: 09/10/2017
       # * Reviewed By: Sunil Khedar
       #
-      def api_root_url
-        simple_token_api['root_url']
-      end
-
-      # Root URL
-      #
-      # * Author: Kedar
-      # * Date: 09/10/2017
-      # * Reviewed By: Sunil Khedar
-      #
       def root_url
         simple_token_web['root_url']
       end

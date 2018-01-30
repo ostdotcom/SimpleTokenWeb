@@ -2,11 +2,11 @@ class InitKyc
 
   def self.matches?(request)
     if Rails.env.production?
-      request.host == 'kyc.simpletoken.org'
+      request.host == 'kyc.ost.com'
     elsif Rails.env.staging?
-      request.host == 'kyc.stagingsimpletoken.org'
+      request.host == 'kyc.sandboxost.com'
     else
-      request.host == 'kyc.developmentsimpletoken.org'
+      request.host == 'kyc.developmentost.com'
     end
   end
 

@@ -22,7 +22,7 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def authentication
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_ga_url
     unless service_response.success?
       render_error_response(service_response)
@@ -48,7 +48,7 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def dashboard
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_client_detail
 
     # Check if error present or not?
@@ -73,7 +73,7 @@ class Admin::HomeController < Admin::BaseController
   #
   def get_kyc_dashboard
 
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .dashboard_detail(params)
 
     # Check if error present or not?
@@ -118,7 +118,7 @@ class Admin::HomeController < Admin::BaseController
   def kyc_details
 
     @case_id = params[:case_id]
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_kyc_details(params)
 
     # Check if error present or not?
@@ -143,8 +143,8 @@ class Admin::HomeController < Admin::BaseController
   #
   def kyc_action_logs
 
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
-                         .get_kyc_action_logs(params)
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_kyc_action_logs(params)
 
     # Check if error present or not?
     unless service_response.success?
@@ -195,7 +195,7 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def whitelist_dashboard
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_client_detail
 
     # Check if error present or not?
@@ -218,7 +218,7 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def get_kyc_whitelist_dashboard
-    service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .whitelist_dashboard_detail(params)
 
     # Check if error present or not?
@@ -279,7 +279,7 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   # def get_sale_all_dashboard
-  #   service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+  #   service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
   #                          .sale_all_dashboard_detail(params)
   #   # Check if error present or not?
   #   unless service_response.success?
@@ -326,7 +326,7 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   # def get_sale_daily_dashboard
-  #   service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+  #   service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
   #                          .sale_daily_dashboard_detail(params)
   #   # Check if error present or not?
   #   unless service_response.success?
@@ -377,7 +377,7 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By:
   #
   # def get_contract_events_dashboard
-  #   service_response = SimpleTokenApi::Request::Admin.new(request.cookies, {"USER-AGENT" => http_user_agent})
+  #   service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
   #                          .contract_events_dashboard_detail(params)
   #   # Check if error present or not?
   #   unless service_response.success?

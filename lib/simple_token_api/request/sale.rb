@@ -8,12 +8,13 @@ module SimpleTokenApi
       # * Date: 31/10/2017
       # * Reviewed By: Sunil
       #
+      # @param [String] host (mandatory) - host url request
       # @param [Hash] cookies (optional) - cookies that need to be sent to API
       # @param [Hash] headers (optional) - headers that need to be sent to API
       #
       # @return [SimpleTokenApi::Request::Sale] returns an object of SimpleTokenApi::Request::Sale class
       #
-      def initialize(cookies = {}, headers = {})
+      def initialize(host, cookies = {}, headers = {})
         super
         @service_base_route = 'sale/'
       end

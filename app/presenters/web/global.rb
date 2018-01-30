@@ -6,16 +6,18 @@ module Presenters
 
       # Init
       #
+      # @param [String] host (mandatory) - host url
       # @param [Hash] params (optional) - Page params
       #
       # @return [Presenters::Web::Global] returns an object of Presenters::Web::Global class
       #
-      def initialize(params = {})
+      def initialize(host, params = {})
+        @host = host
         @params = params
       end
 
       def sale_details
-        @sale_details ||= GlobalConstant::StTokenSale.token_sale_details
+        @sale_details ||= GlobalConstant::StTokenSale.token_sale_details(@host)
       end
 
       def has_sale_ended_before_time?
