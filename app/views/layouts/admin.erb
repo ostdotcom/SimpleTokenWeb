@@ -24,6 +24,10 @@
 
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
+  <% if ['admin/home::login'].include?("#{params[:controller]}::#{params[:action]}") %>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+  <% end %>
+
 </head>
 <body contenteditable="false">
 
