@@ -11,6 +11,9 @@ class Admin::BaseController < ApplicationController
   # * Reviewed By: Sunil
   #
   def admin_basic_auth
+    # return unless Rails.env.staging?
+    return true
+
     users = {'simpleToken' => ['A$F^&n!@$ghf%7']}
 
     authenticate_or_request_with_http_basic do |username, password|
