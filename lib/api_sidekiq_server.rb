@@ -12,7 +12,7 @@ class ApiSidekiqServer < Sidekiq::Web
 
 end
 
-if Rails.env.production? || Rails.env.staging? || Rails.env.development?
+if Rails.env.production? || Rails.env.staging? || Rails.env.development? || Rails.env.sandbox?
   Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
     user == GlobalConstant::ApiSidekiq.admin_user
     password == GlobalConstant::ApiSidekiq.admin_pw
