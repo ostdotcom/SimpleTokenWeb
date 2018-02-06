@@ -4,7 +4,7 @@ class InitTokenSale
     if Rails.env.production?
       request.host == 'sale.simpletoken.org'
     elsif Rails.env.sandbox?
-      request.host == 'sandboxsale.simpletoken.org'
+      false && request.host == 'sale.sandboxost.com'
     elsif Rails.env.staging?
       request.host == 'sale.stagingsimpletoken.org'
     else
