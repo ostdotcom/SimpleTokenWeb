@@ -159,7 +159,8 @@ class ApplicationController < ActionController::Base
   # * Reviewed By: Sunil
   #
   def delete_cookie(cookie_name)
-    cookies.delete(cookie_name.to_sym, domain: :all, secure: !Rails.env.development?, same_site: :strict)
+    # cookies.delete(cookie_name.to_sym, domain: :all, secure: !Rails.env.development?, same_site: :strict)
+    cookies.delete(cookie_name.to_sym, domain: request.host, secure: !Rails.env.development?, same_site: :strict)
   end
 
   # Set the given cookie
@@ -168,14 +169,14 @@ class ApplicationController < ActionController::Base
   # * Date: 23/10/2017
   # * Reviewed By: Sunil
   #
-  def set_cookie(cookie_name, value, expires, options={})
-    http_only_val = options[:http_only].nil? ?  true :options[:http_only]
+  def set_cookie(cookie_name, value, expires, options = {})
+    http_only_val = options[:http_only].nil? ? true : options[:http_only]
     secure_val = options[:secure].nil? ? !Rails.env.development? : options[:secure]
 
     cookies[cookie_name.to_sym] = {
         value: value,
         expires: expires,
-        domain: :all,
+        domain: request.host,
         http_only: http_only_val,
         secure: secure_val,
         same_site: :strict

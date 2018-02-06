@@ -23,6 +23,35 @@ module Presenters
           @params[:t].present?
         end
 
+        def client_setting
+          @client_setting ||= result['client_setting']
+        end
+
+        def is_st_token_sale_client?
+          client_setting['is_st_token_sale_client']
+        end
+
+        def is_whitelist_setup_done?
+          client_setting['is_whitelist_setup_done']
+        end
+
+        def token_sale_details
+          client_setting['token_sale_details']
+        end
+
+        def sale_start_timestamp
+          token_sale_details['sale_start_timestamp']
+        end
+
+        def sale_end_timestamp
+          token_sale_details['sale_end_timestamp']
+        end
+
+        def has_ethereum_deposit_address?
+          token_sale_details['has_ethereum_deposit_address']
+        end
+
+
         def user
           @user ||= result['user']
         end
@@ -42,9 +71,9 @@ module Presenters
         def user_kyc_status
           @user_kyc_status ||= begin
             if [
-              GlobalConstant::TokenSaleUserState.kyc_status_pending,
-              GlobalConstant::TokenSaleUserState.kyc_status_approved,
-              GlobalConstant::TokenSaleUserState.kyc_status_denied
+                GlobalConstant::TokenSaleUserState.kyc_status_pending,
+                GlobalConstant::TokenSaleUserState.kyc_status_approved,
+                GlobalConstant::TokenSaleUserState.kyc_status_denied
             ].include?(user_kyc_data['kyc_status'])
               user_kyc_data['kyc_status']
             else
@@ -74,30 +103,30 @@ module Presenters
         end
 
         def sale_ended_before_time_state
-          sale_details['sale_ended_before_time']
+          false && sale_details['sale_ended_before_time']
         end
 
         def token_sale_active_status
-          sale_details['token_sale_active_status']
+          true || sale_details['token_sale_active_status']
         end
 
         ###########################################
 
 
         def is_early_access_user?
-          GlobalConstant::TokenSaleUserState.early_access_token_sale_phase == user_kyc_data['token_sale_participation_phase']
+          false && GlobalConstant::TokenSaleUserState.early_access_token_sale_phase == user_kyc_data['token_sale_participation_phase']
         end
 
         def sale_start_time_for_user
-          is_early_access_user? ? GlobalConstant::StTokenSale.early_access_sale_start_date : GlobalConstant::StTokenSale.general_access_sale_start_date
+          is_early_access_user? ? sale_start_timestamp : sale_start_timestamp
         end
 
         def is_sale_live_for_user?
-          current_time >= sale_start_time_for_user
+          current_timestamp >= sale_start_timestamp
         end
 
         def is_early_access_mode_on_for_user?
-          (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date) && is_early_access_user?
+          false && (current_timestamp < sale_start_timestamp) && is_early_access_user?
         end
 
         def countdown_timestamp
@@ -106,10 +135,10 @@ module Presenters
             sale_start_time_for_user
           elsif is_early_access_mode_on_for_user?
             # When is early sale going to end
-            GlobalConstant::StTokenSale.general_access_sale_start_date
+            sale_start_time_for_user
           else
             # When is general sale going to end
-            GlobalConstant::StTokenSale.general_access_sale_end_date
+            sale_end_timestamp
           end
         end
 
@@ -126,19 +155,19 @@ module Presenters
         end
 
         def has_sale_ended?
-          has_early_access_sale_start_date_passed? && ((current_time >= GlobalConstant::StTokenSale.general_access_sale_end_date) || has_sale_ended_before_time?)
+          (current_timestamp >= sale_start_time_for_user) && ((current_timestamp >= sale_end_timestamp) || has_sale_ended_before_time?)
         end
 
         def has_sale_paused?
-          (token_sale_active_status.to_i != 1) && has_early_access_sale_start_date_passed?
+          false && (token_sale_active_status.to_i != 1) && has_early_access_sale_start_date_passed?
         end
 
         def has_sale_ended_before_time?
-          sale_ended_before_time_state.to_i == 1
+          false && sale_ended_before_time_state.to_i == 1
         end
 
         def has_early_access_sale_start_date_passed?
-          (current_time >= GlobalConstant::StTokenSale.early_access_sale_start_date)
+          true && (current_timestamp >= GlobalConstant::StTokenSale.early_access_sale_start_date)
         end
 
         ###########################################
@@ -206,11 +235,11 @@ module Presenters
         end
 
         def show_ethereum_address_whitelist_status_box?
-          is_kyc_approved?
+          is_kyc_approved? && is_whitelist_setup_done?
         end
 
         def ethereum_address_whitelist_done?
-          (GlobalConstant::TokenSaleUserState.ethereum_address_whitelist_done == whitelist_status)
+          !is_whitelist_setup_done? || (GlobalConstant::TokenSaleUserState.ethereum_address_whitelist_done == whitelist_status)
         end
 
         def ethereum_address_whitelist_icon_class
@@ -260,15 +289,15 @@ module Presenters
         end
 
         def is_bonus_approval_date_over?
-          current_time > GlobalConstant::StTokenSale.general_access_sale_start_date
+          current_timestamp >= sale_start_timestamp
         end
 
         def show_bonus_box?
-          !is_kyc_denied? && is_early_access_user? && (is_bonus_confirmed? || !is_bonus_approval_date_over?)
+          is_st_token_sale_client? && !is_kyc_denied? && is_early_access_user? && (is_bonus_confirmed? || !is_bonus_approval_date_over?)
         end
 
         def show_community_bonus_box?
-          community_bonus > 0
+          is_st_token_sale_client? && community_bonus > 0
         end
 
         def bonus_icon_class
@@ -277,7 +306,7 @@ module Presenters
 
         def show_unable_for_early_purchase_text?
           # General access users, on 14th while early sale is going on
-          (!is_early_access_user? && has_early_access_sale_start_date_passed? && (current_time < GlobalConstant::StTokenSale.general_access_sale_start_date))
+          is_st_token_sale_client? && (!is_early_access_user? && has_early_access_sale_start_date_passed? && (current_timestamp < sale_start_timestamp))
         end
 
         def show_max_limit_for_early_purchase_text?
@@ -307,8 +336,8 @@ module Presenters
 
         private
 
-        def current_time
-          @current_time ||= Time.zone.now
+        def current_timestamp
+          @current_timestamp ||= Time.now.to_i
         end
 
       end

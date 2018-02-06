@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # Simple Token Routes
-  constraints(InitTokenSale) do
+  # constraints(InitTokenSale) do
     scope '', controller: 'web/token_sale' do
       get '/' => :index
     end
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
     # Route not found handler. Should be the last entry here
     match '*permalink', to: 'application#not_found', via: :all
-  end
+  # end
 
   # openst.org Routes
   constraints(InitOpenST) do
@@ -85,7 +85,6 @@ Rails.application.routes.draw do
   scope '', controller: 'web/producthunt' do
     get '/product-hunt' => :index
   end
-
 
 
   namespace 'admin' do

@@ -151,6 +151,8 @@ class Web::UserController < Web::BaseController
   # * Reviewed By:
   #
   def update_branded_token
+    # allowed?
+    # redirect if not token sale client
     service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
     # Check if error present or not?
@@ -193,7 +195,7 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def dashboard_home
-    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).profile_detail(t: params[:t])
+    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).profile_detail
 
     # Check if error present or not?
     unless service_response.success?
@@ -201,14 +203,15 @@ class Web::UserController < Web::BaseController
       user_token_sale_state = error_data['user_token_sale_state']
 
       if user_token_sale_state.present? && user_token_sale_state != GlobalConstant::TokenSaleUserState.profile_page
-        extra_param = params[:t].present? ? "?e_t=1" : ""
-        redirect_if_step_not_reachable(user_token_sale_state, GlobalConstant::TokenSaleUserState.profile_page_allowed_states, extra_param)
+        # extra_param = params[:t].present? ? "?e_t=1" : ""
+        redirect_if_step_not_reachable(user_token_sale_state, GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
       else
         render_error_response(service_response)
       end
 
       return
     end
+
 
     @presenter_obj = ::Presenters::Web::User::Profile.new(service_response, params)
   end

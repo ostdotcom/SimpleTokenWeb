@@ -10,7 +10,7 @@
           <%=
               render partial: '/shared/web/common/marketing_countdown_timer',
                      locals: {
-                             timestamp: (@presenter_obj.countdown_timestamp - Time.now).to_i * 1000
+                             timestamp: (@presenter_obj.countdown_timestamp - Time.now.to_i) * 1000
                      }
           %>
           <% if @presenter_obj.is_sale_live_for_user? && !@presenter_obj.is_early_access_mode_on_for_user? %>
