@@ -59,6 +59,11 @@ Rails.application.routes.draw do
       # get '/pos-dashboard' => :pos_dashboard
     end
 
+    namespace 'devadmin' do
+      # ST Api sidekiq web interface endpoint
+      mount ApiSidekiqServer => '/api-sidekiq'
+    end
+
     # Route not found handler. Should be the last entry here
     match '*permalink', to: 'application#not_found', via: :all
   end
@@ -84,12 +89,6 @@ Rails.application.routes.draw do
 
   scope '', controller: 'web/producthunt' do
     get '/product-hunt' => :index
-  end
-
-
-  namespace 'admin' do
-    # ST Api sidekiq web interface endpoint
-    mount ApiSidekiqServer => '/api-sidekiq'
   end
 
   match '*permalink', to: 'application#not_found', via: :all
