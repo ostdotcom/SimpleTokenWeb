@@ -1,56 +1,21 @@
 module Presenters
   module Web
-    module User
-
-      class Profile
+    module Client
+      class Profile < Presenters::Web::Setup
 
         include Util::SaleMilestone
 
         # Init
         # @param [Result::Base] response_data_obj (mandatory) - Page data
         # @param [Hash] params (optional) - Page params
-        # @return [Presenters::Web::User::Profile] returns an object of Presenters::Web::User::Profile class
+        # @return [Presenters::Web::Client::Profile] returns an object of Presenters::Web::Client::Profile class
         def initialize(response_data_obj, params = {})
-          @params = params
-          @response_data_obj = response_data_obj
-        end
-
-        def result
-          @result ||= @response_data_obj.data
+          super
         end
 
         def is_double_optin_token_present?
           @params[:t].present?
         end
-
-        def client_setting
-          @client_setting ||= result['client_setting']
-        end
-
-        def is_st_token_sale_client?
-          client_setting['is_st_token_sale_client']
-        end
-
-        def is_whitelist_setup_done?
-          client_setting['is_whitelist_setup_done']
-        end
-
-        def token_sale_details
-          client_setting['token_sale_details']
-        end
-
-        def sale_start_timestamp
-          token_sale_details['sale_start_timestamp']
-        end
-
-        def sale_end_timestamp
-          token_sale_details['sale_end_timestamp']
-        end
-
-        def has_ethereum_deposit_address?
-          token_sale_details['has_ethereum_deposit_address']
-        end
-
 
         def user
           @user ||= result['user']

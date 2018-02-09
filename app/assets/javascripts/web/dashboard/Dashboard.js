@@ -109,7 +109,7 @@
                         if (response.success == true) {
 
                             var data = response.data;
-                            if ((data.user_kyc_data.kyc_status == 'approved') && (data.user_kyc_data.whitelist_status == 'done')) {
+                            if ((data.user_kyc_data.kyc_status == 'approved') && (data.client_setting.is_whitelist_setup_done == 'false' || (data.user_kyc_data.whitelist_status == 'done'))) {
                                 location.reload();
                             }
                             return false;

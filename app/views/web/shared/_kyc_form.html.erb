@@ -1,16 +1,15 @@
 <%
-
   if is_update
-    kyc_checkbox_points_html = @client_setup_presenter_obj.page_data['verify_modal']['update_kyc_checkbox_points_html']
+    kyc_checkbox_points_html = @presenter_obj.page_data['verify_modal']['update_kyc_checkbox_points_html']
   else
-    kyc_checkbox_points_html = @client_setup_presenter_obj.page_data['verify_modal']['add_kyc_checkbox_points_html']
+    kyc_checkbox_points_html = @presenter_obj.page_data['verify_modal']['add_kyc_checkbox_points_html']
   end
 
   show_verify_modal = kyc_checkbox_points_html.present?
 
 %>
 
-<% if @client_setup_presenter_obj.is_st_token_sale_client? %>
+<% if @presenter_obj.is_st_token_sale_client? %>
   <%= render :partial => "/shared/web/common/loggedin_header", locals: {user: user} %>
 <% end %>
 
@@ -29,7 +28,7 @@
                 Sale</h1>
             <% end %>
             <div class="kyc-instructions-title">You will need the following items to complete the registration</div>
-            <% if @client_setup_presenter_obj.is_st_token_sale_client? %>
+            <% if @presenter_obj.is_st_token_sale_client? %>
               <ul class="kyc-instructions text-center">
                 <li class="text-center">
                 <span class="instructions-icon">
@@ -90,7 +89,7 @@
 
 
             <div class="row">
-              <% if @client_setup_presenter_obj.page_data['kyc_fields'].include?('stree_address') %>
+              <% if @presenter_obj.page_data['kyc_fields'].include?('stree_address') %>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="street_address">Street address</label>
@@ -100,7 +99,7 @@
                   </div>
                 </div>
               <% end %>
-              <% if @client_setup_presenter_obj.page_data['kyc_fields'].include?('city') %>
+              <% if @presenter_obj.page_data['kyc_fields'].include?('city') %>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="">City</label>
@@ -113,7 +112,7 @@
             </div>
 
             <div class="row">
-              <% if @client_setup_presenter_obj.page_data['kyc_fields'].include?('state') %>
+              <% if @presenter_obj.page_data['kyc_fields'].include?('state') %>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <label for="state">State / region</label>
@@ -137,7 +136,7 @@
               </div>
             </div>
 
-            <% if @client_setup_presenter_obj.page_data['kyc_fields'].include?('postal_code') %>
+            <% if @presenter_obj.page_data['kyc_fields'].include?('postal_code') %>
               <div class="row">
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
@@ -161,12 +160,12 @@
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-instructions">
-                  <%= raw @client_setup_presenter_obj.page_data['ethereum_address_info_html'] %>
+                  <%= raw @presenter_obj.page_data['ethereum_address_info_html'] %>
                 </div>
               </div>
             </div>
 
-            <% if @client_setup_presenter_obj.page_data['kyc_fields'].include?('estimated_participation_amount') %>
+            <% if @presenter_obj.page_data['kyc_fields'].include?('estimated_participation_amount') %>
               <div class="row">
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
@@ -189,7 +188,7 @@
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-instructions">
-                  <%= raw @client_setup_presenter_obj.page_data['document_info_html'] %>
+                  <%= raw @presenter_obj.page_data['document_info_html'] %>
                 </div>
               </div>
             </div>
@@ -315,7 +314,7 @@
       simpletoken.home.kyc.init(
         {
           show_verify_modal: <%= show_verify_modal %>,
-          residency_proof_nationalities: <%= raw @client_setup_presenter_obj.page_data['residency_proof_nationalities'] %>
+          residency_proof_nationalities: <%= raw @presenter_obj.page_data['residency_proof_nationalities'] %>
         }
       );
     });

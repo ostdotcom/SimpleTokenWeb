@@ -28,9 +28,9 @@ class Web::UserController < Web::BaseController
     end
 
 
-    @client_setup_presenter_obj = ::Presenters::Web::ClientSetup.new(service_response, params)
-    handle_blacklisted_ip(@client_setup_presenter_obj.blacklisted_countries)
-    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @client_setup_presenter_obj.has_sale_ended?
+    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
+    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
   end
 
   # Login
@@ -51,8 +51,8 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @client_setup_presenter_obj = ::Presenters::Web::ClientSetup.new(service_response, params)
-    handle_blacklisted_ip(@client_setup_presenter_obj.blacklisted_countries)
+    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
   end
 
   # Action for the blacklisted countries ip page
@@ -73,7 +73,7 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @client_setup_presenter_obj = ::Presenters::Web::ClientSetup.new(service_response, params)
+    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
   end
 
   # Logout
@@ -106,8 +106,8 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @client_setup_presenter_obj = ::Presenters::Web::ClientSetup.new(service_response, params)
-    handle_blacklisted_ip(@client_setup_presenter_obj.blacklisted_countries)
+    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
   end
 
   # Change password
@@ -128,8 +128,8 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @client_setup_presenter_obj = ::Presenters::Web::ClientSetup.new(service_response, params)
-    handle_blacklisted_ip(@client_setup_presenter_obj.blacklisted_countries)
+    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
   end
 
   # KYC form
@@ -150,9 +150,9 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @client_setup_presenter_obj = ::Presenters::Web::ClientSetup.new(service_response, params)
-    handle_blacklisted_ip(@client_setup_presenter_obj.blacklisted_countries)
-    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @client_setup_presenter_obj.has_sale_ended?
+    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
+    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
 
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.kyc_page_allowed_states)
@@ -178,9 +178,9 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @client_setup_presenter_obj = ::Presenters::Web::ClientSetup.new(service_response, params)
-    handle_blacklisted_ip(@client_setup_presenter_obj.blacklisted_countries)
-    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @client_setup_presenter_obj.has_sale_ended?
+    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
+    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
 
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
@@ -212,8 +212,7 @@ class Web::UserController < Web::BaseController
       return
     end
 
-
-    @presenter_obj = ::Presenters::Web::User::Profile.new(service_response, params)
+    @presenter_obj = ::Presenters::Web::Client::Profile.new(service_response, params)
   end
 
 
