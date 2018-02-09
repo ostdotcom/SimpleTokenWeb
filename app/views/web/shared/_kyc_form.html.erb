@@ -1,46 +1,62 @@
-<%= render :partial => "/shared/web/common/loggedin_header", locals: {user: user} %>
+<%
+
+  if is_update
+    kyc_checkbox_points_html = @client_setup_presenter_obj.page_data['verify_modal']['update_kyc_checkbox_points_html']
+  else
+    kyc_checkbox_points_html = @client_setup_presenter_obj.page_data['verify_modal']['add_kyc_checkbox_points_html']
+  end
+
+  show_verify_modal = kyc_checkbox_points_html.present?
+
+%>
+
+<% if @client_setup_presenter_obj.is_st_token_sale_client? %>
+  <%= render :partial => "/shared/web/common/loggedin_header", locals: {user: user} %>
+<% end %>
+
 <div class="container" style="padding-bottom: 80px">
   <div class="row">
     <div class="col-xs-12">
-      <div class="text-center">
-        <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
-      </div>
+      <%= render :partial => "/shared/web/common/kycaas_header" %>
+
       <div class="simple-token-form">
         <form class="simpletoken-form kyc-form" action="/api/user/kyc-submit" method="POST" id="kycForm">
           <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
             <% if is_update %>
-                <h1 class="text-center form-header" style="margin-bottom: 10px">Update Your Registration Details</h1>
+              <h1 class="text-center form-header" style="margin-bottom: 10px">Update Your Registration Details</h1>
             <% else %>
-                <h1 class="text-center form-header" style="margin-bottom: 10px">One Step Away to Access the Token
-                  Sale</h1>
+              <h1 class="text-center form-header" style="margin-bottom: 10px">One Step Away to Access the Token
+                Sale</h1>
             <% end %>
             <div class="kyc-instructions-title">You will need the following items to complete the registration</div>
-            <ul class="kyc-instructions text-center">
-              <li class="text-center">
+            <% if @client_setup_presenter_obj.is_st_token_sale_client? %>
+              <ul class="kyc-instructions text-center">
+                <li class="text-center">
                 <span class="instructions-icon">
                   <span class="kyc-instructions-passport-icon icon-pos"></span>
                 </span>
-                <span class="title-name">Your<br/>ID Document</span>
-                <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit?pli=1#heading=h.1fb4f8e93alc" class="learn-more ext-links" title="Learn More" target="_blank">Learn
-                  More</a>
-              </li>
-              <li class="text-center hidden-xs">
+                  <span class="title-name">Your<br/>ID Document</span>
+                  <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit?pli=1#heading=h.1fb4f8e93alc" class="learn-more ext-links" title="Learn More" target="_blank">Learn
+                    More</a>
+                </li>
+                <li class="text-center hidden-xs">
                 <span class="instructions-icon">
                   <span class="kyc-instructions-camera-icon icon-pos"></span>
                 </span>
-                <span class="title-name">Camera or<br/>smartphone</span>
-                <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit?pli=1#heading=h.1fb4f8e93alc" class="learn-more ext-links" title="Learn More" target="_blank">Learn
-                  More</a>
-              </li>
-              <li class=" text-center">
+                  <span class="title-name">Camera or<br/>smartphone</span>
+                  <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit?pli=1#heading=h.1fb4f8e93alc" class="learn-more ext-links" title="Learn More" target="_blank">Learn
+                    More</a>
+                </li>
+                <li class=" text-center">
                 <span class="instructions-icon">
                   <span class="kyc-instructions-public-ethereum-icon icon-pos"></span>
                 </span>
-                <span class="title-name">Your Public<br/>Ethereum address</span>
-                <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit?pli=1#bookmark=id.kcpwvfqta37k" class="learn-more ext-links" title="Learn More" target="_blank">Learn
-                  More</a>
-              </li>
-            </ul>
+                  <span class="title-name">Your Public<br/>Ethereum address</span>
+                  <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit?pli=1#bookmark=id.kcpwvfqta37k" class="learn-more ext-links" title="Learn More" target="_blank">Learn
+                    More</a>
+                </li>
+              </ul>
+            <% end %>
 
             <div class="row">
               <div class="col-xs-12 col-sm-6">
@@ -70,47 +86,49 @@
                   <div class="error" data-for="birthdate"></div>
                 </div>
               </div>
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-instructions">
-                  The minimum age required to participate in the <br/>token sale is 18
+            </div>
+
+
+            <div class="row">
+              <% if @client_setup_presenter_obj.page_data['kyc_fields'].include?('stree_address') %>
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label for="street_address">Street address</label>
+                    <input type="text" title="Street address" class="form-control" name="street_address" value="" tabindex="5" autocomplete="off" required/>
+
+                    <div class="error" data-for="street_address"></div>
+                  </div>
                 </div>
-              </div>
+              <% end %>
+              <% if @client_setup_presenter_obj.page_data['kyc_fields'].include?('city') %>
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label for="">City</label>
+                    <input type="text" title="City" class="form-control" name="city" value="" tabindex="6" autocomplete="off" required/>
+
+                    <div class="error" data-for="city"></div>
+                  </div>
+                </div>
+              <% end %>
             </div>
 
             <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <label for="street_address">Street address</label>
-                  <input type="text" title="Street address" class="form-control" name="street_address" value="" tabindex="5" autocomplete="off" required/>
+              <% if @client_setup_presenter_obj.page_data['kyc_fields'].include?('state') %>
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label for="state">State / region</label>
+                    <input type="text" title="State / region" class="form-control" name="state" value="" tabindex="7" autocomplete="off" required/>
 
-                  <div class="error" data-for="street_address"></div>
+                    <div class="error" data-for="state"></div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <label for="">City</label>
-                  <input type="text" title="City" class="form-control" name="city" value="" tabindex="6" autocomplete="off" required/>
-
-                  <div class="error" data-for="city"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <label for="state">State / region</label>
-                  <input type="text" title="State / region" class="form-control" name="state" value="" tabindex="7" autocomplete="off" required/>
-
-                  <div class="error" data-for="state"></div>
-                </div>
-              </div>
+              <% end %>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group st-selectpicker">
                   <label for="country">Country</label>
                   <select class="form-control selectpicker" name="country" title="Select Country" tabindex="8" required>
                     <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
-                        <option value="<%= country_name %>" <%= @ip_to_cynopsis_country.to_s.upcase == country_name ? 'selected' : '' %>><%= country_name.titleize %></option>
+                      <option value="<%= country_name %>" <%= @ip_to_cynopsis_country.to_s.upcase == country_name ? 'selected' : '' %>><%= country_name.titleize %></option>
                     <% end %>
                   </select>
 
@@ -119,16 +137,18 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <label for="postal_code">Zip / postal code</label>
-                  <input type="text" title="Zip / postal code" class="form-control" name="postal_code" value="" tabindex="9" autocomplete="off" required/>
+            <% if @client_setup_presenter_obj.page_data['kyc_fields'].include?('postal_code') %>
+              <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label for="postal_code">Zip / postal code</label>
+                    <input type="text" title="Zip / postal code" class="form-control" name="postal_code" value="" tabindex="9" autocomplete="off" required/>
 
-                  <div class="error" data-for="postal_code"></div>
+                    <div class="error" data-for="postal_code"></div>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
 
             <div class="row">
               <div class="col-xs-12 col-sm-6">
@@ -141,16 +161,22 @@
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-instructions">
-                  Make sure to use your Ethereum Wallet address and not addresses from exchanges like Coinbase,
-                  Poloniex, Kraken.
-                  <br/><a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit" title="Learn more" target="_blank">Learn
-                  more</a>
+                  <%= raw @client_setup_presenter_obj.page_data['ethereum_address_info_html'] %>
                 </div>
               </div>
             </div>
 
-            <input type="number" min="1" lang="en-150" title="Estimated amount ($)" class="form-control hidden" name="estimated_participation_amount" value="0" tabindex="11" autocomplete="off"/>
-
+            <% if @client_setup_presenter_obj.page_data['kyc_fields'].include?('estimated_participation_amount') %>
+              <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label for="postal_code">Estimated Participation Amount</label>
+                    <input type="number" min="1" lang="en-150" title="Estimated amount ($)" class="form-control" name="estimated_participation_amount" value="0" tabindex="11" autocomplete="off"/>
+                    <div class="error" data-for="postal_code"></div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
 
             <div class="row">
               <div class="col-xs-12 col-sm-6">
@@ -163,8 +189,7 @@
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-instructions">
-                  A valid ID Document is required for the verification <br/>process. In addition to Government Issued
-                  Passports, <br/>National IDs and Drivers License are also accepted.
+                  <%= raw @client_setup_presenter_obj.page_data['document_info_html'] %>
                 </div>
               </div>
             </div>
@@ -176,14 +201,14 @@
                   <select class="form-control selectpicker" name="nationality" title="Select Nationality" tabindex="13" required>
                     <% to_show_usa_nationality = true
                        GlobalConstant::CountryNationality.nationalities.each do |nationality_name|
-                         if to_show_usa_nationality && ("UNITED STATE OF AMERICA" < nationality_name) %>
+                         if to_show_usa_nationality && ("UNITED STATE OF AMERICA" < nationality_name)                     %>
 
-                            <option value="AMERICAN">United States Of America</option>
-                        <% to_show_usa_nationality = false
-                           end
-                        %>
+                      <option value="AMERICAN">United States Of America</option>
+                    <% to_show_usa_nationality = false
+                       end
+                    %>
 
-                        <option value="<%= nationality_name %>"><%= nationality_name.titleize %></option>
+                    <option value="<%= nationality_name %>"><%= nationality_name.titleize %></option>
                     <% end %>
                   </select>
 
@@ -264,7 +289,7 @@
                   <div>
                     <button id="kycSubmit" class="btn-common btn-gold upload-image-btn" title="submit" type="submit" tabindex="17" style="margin-top: 20px">Submit</button>
                     <% if is_update %>
-                        <a href="/dashboard" class="btn-common btn-grey upload-image-btn" title="back" tabindex="18" style="margin-right: 20px;margin-top: 20px">Back</a>
+                      <a href="/dashboard" class="btn-common btn-grey upload-image-btn" title="back" tabindex="18" style="margin-right: 20px;margin-top: 20px">Back</a>
                     <% end %>
                   </div>
                 </div>
@@ -285,17 +310,25 @@
 <%= render :partial => "/shared/web/common/kycaas_footer" %>
 
 <% content_for :end_js do %>
-    <script>
-        $(document).ready(function () {
-            simpletoken.home.kyc.init({is_update: <%= is_update %>});
-        });
-        function simpletoken_kyc_recaptcha_callback() {
-            simpletoken.home.kyc.$kycForm.find('.error[data-for="recaptcha"]').text('');
+  <script>
+    $(document).ready(function () {
+      simpletoken.home.kyc.init(
+        {
+          show_verify_modal: <%= show_verify_modal %>,
+          residency_proof_nationalities: <%= raw @client_setup_presenter_obj.page_data['residency_proof_nationalities'] %>
         }
-    </script>
+      );
+    });
+
+    function simpletoken_kyc_recaptcha_callback() {
+      simpletoken.home.kyc.$kycForm.find('.error[data-for="recaptcha"]').text('');
+    }
+  </script>
 <% end %>
 
-<%= render :partial => "/shared/web/modals/verify_modal" %>
+<% if show_verify_modal %>
+  <%= render :partial => "/shared/web/modals/verify_modal", locals: {kyc_checkbox_points_html: kyc_checkbox_points_html} %>
+<% end %>
 
 <script type="custom" id="selfie-popover">
   <div style="">
