@@ -1,14 +1,13 @@
-module Presenters
   module Web
     module Client
-      class Profile < Presenters::Web::Setup
+      class Profile < Web::Client::Setup
 
         include Util::SaleMilestone
 
         # Init
         # @param [Result::Base] response_data_obj (mandatory) - Page data
         # @param [Hash] params (optional) - Page params
-        # @return [Presenters::Web::Client::Profile] returns an object of Presenters::Web::Client::Profile class
+        # @return [Web::Client::Profile] returns an object of Web::Client::Profile class
         def initialize(response_data_obj, params = {})
           super
         end
@@ -305,7 +304,6 @@ module Presenters
           @current_timestamp ||= Time.now.to_i
         end
 
-      end
     end
   end
 end

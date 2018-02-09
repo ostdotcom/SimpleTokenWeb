@@ -1,4 +1,3 @@
-module Presenters
   module Web
     module Client
       class Setup
@@ -6,7 +5,7 @@ module Presenters
         # Init
         # @param [Result::Base] response_data_obj (mandatory) - Page data
         # @param [Hash] params (optional) - Page params
-        # @return [Presenters::Web::Client::Setup] returns an object of Presenters::Web::Client::Setup class
+        # @return [Web::Client::Setup] returns an object of Web::Client::Setup class
         def initialize(response_data_obj, params = {})
           @params = params
           @response_data_obj = response_data_obj
@@ -110,7 +109,6 @@ module Presenters
           @current_timestamp ||= Time.now.to_i
         end
 
-      end
     end
   end
 end

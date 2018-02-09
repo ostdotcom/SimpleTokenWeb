@@ -10,7 +10,7 @@ class Web::ProducthuntController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def index
-    @presenter_obj = ::Presenters::Web::Global.new(host_url_with_protocol, params)
+    @presenter_obj = ::Web::Global.new(host_url_with_protocol, params)
   end
 
 end

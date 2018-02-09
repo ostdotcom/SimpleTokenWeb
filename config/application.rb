@@ -41,7 +41,6 @@ module SimpleTokenWeb
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths << "#{config.root}/lib/"
-    # config.autoload_paths << "#{config.root}/app/"
     config.eager_load_paths << "#{config.root}/lib/"
 
     memcache_instance = GlobalConstant::Cache.memcached_instances

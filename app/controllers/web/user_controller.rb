@@ -28,7 +28,7 @@ class Web::UserController < Web::BaseController
     end
 
 
-    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
     handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
     redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
   end
@@ -51,7 +51,7 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
     handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
   end
 
@@ -73,7 +73,7 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
   end
 
   # Logout
@@ -106,7 +106,7 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
     handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
   end
 
@@ -128,7 +128,7 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
     handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
   end
 
@@ -150,7 +150,7 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
     handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
     redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
 
@@ -178,7 +178,7 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @presenter_obj = ::Presenters::Web::Client::Setup.new(service_response, params)
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
     handle_blacklisted_ip(@presenter_obj.blacklisted_countries)
     redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
 
@@ -212,7 +212,7 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @presenter_obj = ::Presenters::Web::Client::Profile.new(service_response, params)
+    @presenter_obj = Web::Client::Profile.new(service_response, params)
   end
 
 
