@@ -78,6 +78,13 @@ Rails.application.routes.draw do
     scope '', controller: 'web/token_sale' do
       get '/' => :index
     end
+
+    scope '', controller: 'web/user' do
+      get '/reserve-token' => :add_branded_token
+      get '/update-token' => :update_branded_token
+      get '/verification-link' => :verification_link
+    end
+
   end
 
   scope '', controller: 'web/user' do
@@ -89,9 +96,6 @@ Rails.application.routes.draw do
     get '/reset-password' => :reset_password
     get '/change-password' => :change_password
     get '/add-kyc' => :add_kyc_form
-    get '/reserve-token' => :add_branded_token
-    get '/update-token' => :update_branded_token
-    get '/verification-link' => :verification_link
     get '/token-sale-blocked-region' => :token_sale_blocked_region
   end
 

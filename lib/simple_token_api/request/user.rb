@@ -28,8 +28,23 @@ module SimpleTokenApi
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def basic_detail
-        get("basic-detail")
+      def client_detail(template_type)
+        extra_params = {template_type: template_type}
+        get("client-detail", extra_params)
+      end
+
+      # Get User info
+      #
+      # * Author: Aman
+      # * Date: 12/10/2017
+      # * Reviewed By:
+      #
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def basic_detail(template_type=nil)
+        extra_params = template_type.present? ? {template_type: template_type} : nil
+        get("basic-detail", extra_params)
       end
 
       # Get User profile page info

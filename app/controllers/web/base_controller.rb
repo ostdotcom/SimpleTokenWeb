@@ -78,8 +78,7 @@ class Web::BaseController < ApplicationController
   # * Date: 15/10/2017
   # * Reviewed By: Sunil
   #
-  def handle_blacklisted_ip
-    blacklisted_countries = GlobalConstant::GeoIp.blaclisted_ip_from_countries
+  def handle_blacklisted_ip(blacklisted_countries)
     return unless blacklisted_countries.include?(get_country_from_ip.downcase)
     redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return
   end

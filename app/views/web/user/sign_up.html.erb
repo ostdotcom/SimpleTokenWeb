@@ -2,23 +2,20 @@
 <div class="container sign-up-form">
   <div class="row">
     <div class="col-xs-12">
-      <div class="text-center">
-        <a href="/" title="Simple Token">
-          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/simple-token-dashboard-logo-1x.png" width="202" alt="Simple Token Logo"/>
-        </a>
-      </div>
+      <%= render :partial => "/shared/web/common/kycaas_header" %>
+
       <div class="simple-token-form">
         <h1 class="text-center form-header">Register for the Token Sale</h1>
         <form class="user-form" method="POST" action="/api/user/sign-up" id="userSignUpForm">
           <div class="form-group">
             <label for="email">email address</label>
-            <input type="text" name="email" value="" class="form-control" autofocus tabindex="1" autocomplete="off" />
+            <input type="text" name="email" value="" class="form-control" autofocus tabindex="1" autocomplete="off"/>
             <div class="error" data-for="email"></div>
           </div>
           <div class="form-group">
             <label for="password">password</label><span class="pull-right minimum-characters">Minimum 8 characters</span>
             <div style="position: relative">
-              <input type="password" name="password" id="password" value="" class="form-control" tabindex="2" autocomplete="off" />
+              <input type="password" name="password" id="password" value="" class="form-control" tabindex="2" autocomplete="off"/>
               <span class="input-group-addon showhide-addon" id="showhide-password"><span class="show-password-eye-icon"></span></span>
             </div>
             <div class="zxcvbn-group"></div>
@@ -31,7 +28,7 @@
           <div class="checkbox termsConditions">
             <input style="display:none;" name="terms_of_service" type="checkbox" class="list-item" value="agree" id="agree-and-acknowledge">
             <label for="agree-and-acknowledge" class="termsLinks" tabindex="4">
-              By checking this box, you agree to our <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/terms" title="Terms of Service" target="_blank">Terms of Service</a> and acknowledge and consent to our <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/privacy" title="Privacy Policy" target="_blank">Privacy Policy</a>.
+              <% raw @client_setup_presenter_obj.page_data['checkbox_html'] %>
             </label>
             <div class="error" data-for="terms_of_service"></div>
           </div>
@@ -51,3 +48,5 @@
     </div>
   </div>
 </div>
+
+<%= render :partial => "/shared/web/common/kycaas_footer" %>
