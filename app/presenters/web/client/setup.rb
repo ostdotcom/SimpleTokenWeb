@@ -89,6 +89,10 @@
           common_data['account_name']
         end
 
+        def account_name_short
+          common_data['account_name_short']
+        end
+
         #### common data ###
 
 

@@ -1,24 +1,34 @@
-<% if @presenter_obj.can_purchase? %>
-    <div class="container-fluid">
-      <div class="row eth-deposit-address">
-        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-          <div class="text-center">
-            <h1 class="header" id="eth-deposit-address-title">Ethereum Deposit Address for ST Public Sale</h1>
-            <h1 class="header" style="display: none" id="eth-gas-limit-title"><% if @presenter_obj.show_max_limit_for_early_purchase_text? %>Individual Max Cap is 40 ETH.<% end %> Set Gas Limit to 150,000.<br/><small>DO NOT use Coinbase, Kraken or any other exchange to purchase ST. Min Purchase 0.1 ETH</small></h1>
-            <fieldset id="ethereum-deposit-address" class="ethereum-deposit-address" style="display: none">
-              <div style="position:relative;">
-                <input type="text" id="ethereum-address-input" class="copy-address-input" placeholder="Ethereum Deposit Address" readonly value=""/>
-                <input type="button" id="ethereum-address-copy-btn" class="btn-gold copy-address-button hidden-xs" value="Copy">
-              </div>
-            </fieldset>
+<% if @presenter_obj.can_purchase? && @presenter_obj.has_ethereum_deposit_address? %>
+  <div class="container-fluid">
+    <div class="row eth-deposit-address">
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="text-center">
+          <h1 class="header" id="eth-deposit-address-title">Ethereum Deposit Address
+            for <%= @presenter_obj.account_name_short %> Public Sale</h1>
+          <h1 class="header" style="display: none" id="eth-gas-limit-title">
+            <% if @presenter_obj.page_data['early_purchase_ethereum_deposit_text'].present? && @presenter_obj.show_max_limit_for_early_purchase_text? %>
+              <%= raw @presenter_obj.page_data['early_purchase_ethereum_deposit_text'] %>
+            <% end %>
+            <%= raw @presenter_obj.page_data['ethereum_deposit_text_html'] %>
+          </h1>
+          <fieldset id="ethereum-deposit-address" class="ethereum-deposit-address" style="display: none">
+            <div style="position:relative;">
+              <input type="text" id="ethereum-address-input" class="copy-address-input" placeholder="Ethereum Deposit Address" readonly value=""/>
+              <input type="button" id="ethereum-address-copy-btn" class="client-primary-btn copy-address-button hidden-xs" value="Copy">
+            </div>
+          </fieldset>
 
-            <a href="javascript:void(0)" class="btn-common btn-gold btn" id="get-deposit-address">GET DEPOSIT
-              ADDRESS</a>
-          </div>
+          <a href="javascript:void(0)" class="btn-common client-primary-btn btn" id="get-deposit-address">GET DEPOSIT
+            ADDRESS</a>
+          <% if !@presenter_obj.show_ethereum_address_confirm_modal? %>
+            <img id="user-confirm-loader" class="gif-loader-img hide" src="//d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token_round_loader.gif"/>
+          <% end %>
         </div>
       </div>
     </div>
+  </div>
 
+  <% if @presenter_obj.is_st_token_sale_client? %>
     <div class="eth-address-links text-center" style="margin: 25px 0">
       <span class="jumbotron-links">
         <a href="https://docs.google.com/document/d/1eFv60FGP39XqkMrtZE5FZK49rQ2QSyH3_TCm0wO5FM0/edit?ts=5a06f473&pli=1" target="_blank" class="link" title="How to Purchase">
@@ -39,8 +49,10 @@
         </a>
       </span>
     </div>
+  <% end %>
 
 <% end %>
 
-
-<%= render :partial => "/shared/web/modals/ethereum_confirm_modal" %>
+<% if @presenter_obj.show_ethereum_address_confirm_modal? %>
+  <%= render :partial => "/shared/web/modals/ethereum_confirm_modal" %>
+<% end %>
