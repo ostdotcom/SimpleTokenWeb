@@ -224,16 +224,14 @@
       simpletoken.utils.errorHandling.clearFormErrors();
 
       if (oThis.config.show_verify_modal === true) {
-        // Show verify modal only for progress and start upload process
-        oThis.verifyModal();
-        oThis.getSignedUrls();
-
-      } else {
-
         // Show verify modal with checkboxes
         oThis.verifyModal();
         oThis.verifyModal('verify');
+      } else {
 
+        // Show verify modal only for progress and start upload process
+        oThis.verifyModal();
+        oThis.getSignedUrls();
       }
     },
     onFormError: function () {
