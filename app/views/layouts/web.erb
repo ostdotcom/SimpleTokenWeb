@@ -9,49 +9,49 @@
   <meta name="keywords" content="<%= @page_meta_data[:keywords] %>">
   <meta name="robots" content="<%= @page_meta_data[:robots] %>">
   <% if @page_meta_data[:canonical].present? %>
-      <link rel="canonical" href="<%= @page_meta_data[:canonical] %>" />
+    <link rel="canonical" href="<%= @page_meta_data[:canonical] %>"/>
   <% end %>
 
   <%
     og_meta = @page_meta_data[:og]
     if og_meta.present?
   %>
-      <% if og_meta[:title].present? %>
-          <meta property="og:title" content="<%= og_meta[:title] %>"/>
-          <meta property="og:description" content="<%= og_meta[:description] %>"/>
-          <meta property="og:type" content="<%= og_meta[:type] %>"/>
-          <meta property="og:url" content="<%= og_meta[:url] %>"/>
-          <meta property="og:site_name" content="simpletoken.org"/>
-          <meta property="og:image" content="<%= og_meta[:image] %>"/>
-      <% end %>
+    <% if og_meta[:title].present? %>
+      <meta property="og:title" content="<%= og_meta[:title] %>"/>
+      <meta property="og:description" content="<%= og_meta[:description] %>"/>
+      <meta property="og:type" content="<%= og_meta[:type] %>"/>
+      <meta property="og:url" content="<%= og_meta[:url] %>"/>
+      <meta property="og:site_name" content="simpletoken.org"/>
+      <meta property="og:image" content="<%= og_meta[:image] %>"/>
+    <% end %>
   <% end %>
 
   <%
     tw_meta = @page_meta_data[:twitter]
     if tw_meta.present?
   %>
-      <meta name="twitter:card" content="<%= tw_meta[:card] %>" />
-      <% if tw_meta[:site].present? %>
-          <meta name="twitter:site" content="<%= tw_meta[:site] %>" />
-      <% end %>
-      <% if tw_meta[:title].present? %>
-          <meta name="twitter:title" content="<%= tw_meta[:title] %>" />
-      <% end %>
-      <% if tw_meta[:description].present? %>
-          <meta name="twitter:description" content="<%= tw_meta[:description] %>" />
-      <% end %>
-      <% if tw_meta[:creator].present? %>
-          <meta name="twitter:creator" content="<%= tw_meta[:creator] %>" />
-      <% end %>
-      <% if tw_meta[:image].present? %>
-          <meta name="twitter:image" content="<%= tw_meta[:image] %>" />
-      <% end %>
-      <% if tw_meta[:image_alt].present? %>
-          <meta name="twitter:image:alt" content="<%= tw_meta[:image_alt] %>" />
-      <% end %>
+    <meta name="twitter:card" content="<%= tw_meta[:card] %>"/>
+    <% if tw_meta[:site].present? %>
+      <meta name="twitter:site" content="<%= tw_meta[:site] %>"/>
+    <% end %>
+    <% if tw_meta[:title].present? %>
+      <meta name="twitter:title" content="<%= tw_meta[:title] %>"/>
+    <% end %>
+    <% if tw_meta[:description].present? %>
+      <meta name="twitter:description" content="<%= tw_meta[:description] %>"/>
+    <% end %>
+    <% if tw_meta[:creator].present? %>
+      <meta name="twitter:creator" content="<%= tw_meta[:creator] %>"/>
+    <% end %>
+    <% if tw_meta[:image].present? %>
+      <meta name="twitter:image" content="<%= tw_meta[:image] %>"/>
+    <% end %>
+    <% if tw_meta[:image_alt].present? %>
+      <meta name="twitter:image:alt" content="<%= tw_meta[:image_alt] %>"/>
+    <% end %>
   <% end %>
 
-<script type="application/ld+json">
+  <script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "WebSite",
@@ -59,8 +59,12 @@
   "url": "<%= og_meta[:url] %>",
   "image": "<%= og_meta[:image] %>",
 }
-</script>
-<script type="application/ld+json">
+
+
+
+
+  </script>
+  <script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "Organization",
@@ -74,21 +78,29 @@
     "https://twitter.com/TheSimpleToken"
   ]
 }
-</script>
+
+
+
+
+  </script>
 
   <%= csrf_meta_tags %>
 
   <script src="https://use.typekit.net/uly4fdh.js"></script>
   <script>
     window.name = "<%= [*('A'..'Z')].sample(8).join %>";
-    try{Typekit.load({
-      async: true
-    });}catch(e){
+    try {
+      Typekit.load({
+        async: true
+      });
+    } catch (e) {
     }
   </script>
-  <!--<% if Rails.env.production? %>-->
-      <!--<%= render :partial => 'shared/web/thirdparty/gtm_config' %>-->
-  <!--<% end %>-->
+  <!--
+  <% if Rails.env.production? %>-->
+    <!--<%= render :partial => 'shared/web/thirdparty/gtm_config' %>-->
+    <!--
+  <% end %>-->
 
   <link rel="icon" type="image/png" sizes="64x64" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/64.png"/>
   <link rel="apple-touch-icon" sizes="57x57" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/57.png">
@@ -106,12 +118,22 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/16.png">
 
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
-  <!--<% if !Rails.env.development? %>-->
-  <!--<script src="https://cdn.optimizely.com/js/9103640545.js"></script>-->
-  <!--<% end %>-->
+  <!--
+  <% if !Rails.env.development? %>-->
+    <!--<script src="https://cdn.optimizely.com/js/9103640545.js"></script>-->
+    <!--
+  <% end %>-->
 
-  <% if ['web/user::update_kyc_form','web/user::add_kyc_form','web/user::login','web/user::sign_up','web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
+  <% if ['web/user::update_kyc_form', 'web/user::add_kyc_form', 'web/user::login', 'web/user::sign_up', 'web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
     <script src="https://www.google.com/recaptcha/api.js"></script>
+  <% end %>
+
+
+  <% if !is_simple_token_specific_page? %>
+    <style>
+      <%= raw @presenter_obj.primary_button_style %>
+      <%= raw @presenter_obj.secondary_button_style %>
+    </style>
   <% end %>
 
 </head>
@@ -128,9 +150,11 @@
 
 <%= javascript_include_tag "web/common" %>
 <%= javascript_include_tag "#{specific_manifest_file_path}" if has_specific_js_manifest_file? %>
-<!--<% if !Rails.env.development? && request.subdomain == "sale" %>-->
-<!--<%= render :partial => "/shared/web/thirdparty/tawk_to"  %>-->
-<!--<% end %>-->
+<!--
+<% if !Rails.env.development? && request.subdomain == "sale" %>-->
+  <!--<%= render :partial => "/shared/web/thirdparty/tawk_to" %>-->
+  <!--
+<% end %>-->
 
 <%= yield(:end_js) %>
 

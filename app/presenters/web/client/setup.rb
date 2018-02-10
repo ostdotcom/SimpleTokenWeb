@@ -73,12 +73,12 @@
           common_data['header']['logo']
         end
 
-        def primary_button_color
-          common_data['primary_button_color']
+        def primary_button_style
+          common_data['primary_button_style']
         end
 
-        def secondary_button_color
-          common_data['secondary_button_color']
+        def secondary_button_style
+          common_data['secondary_button_style']
         end
 
         def footer_html

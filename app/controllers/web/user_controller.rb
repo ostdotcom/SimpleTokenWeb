@@ -226,9 +226,9 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def add_branded_token
-    if GlobalConstant::StTokenSale.has_sale_ended?
-      redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
-    end
+    # if GlobalConstant::StTokenSale.has_sale_ended?
+    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
+    # end
 
     service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 
@@ -259,6 +259,9 @@ class Web::UserController < Web::BaseController
       return
     end
 
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
+    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if !@presenter_obj.is_st_token_sale_client?
+
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
   end
@@ -270,9 +273,9 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def verification_link
-    if GlobalConstant::StTokenSale.has_sale_ended?
+    # if GlobalConstant::StTokenSale.has_sale_ended?
       redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
-    end
+    # end
 
     service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
 

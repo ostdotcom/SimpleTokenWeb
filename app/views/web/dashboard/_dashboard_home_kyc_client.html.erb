@@ -1,9 +1,7 @@
 <div id="banner-content"></div>
 
-<% if @presenter_obj.is_st_token_sale_client? %>
-  <%= render :partial => "/shared/web/common/loggedin_header", locals: {user: @presenter_obj.user} %>
-<% end %>
-<%= render :partial => "/shared/web/common/kycaas_header" %>
+<%= render :partial => "/shared/web/common/loggedin_kycaas_header", locals: {user: user} %>
+<%= render :partial => "/shared/web/common/kycaas_logo_header" %>
 
 
 <% if @presenter_obj.has_sale_ended? %>

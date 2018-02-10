@@ -2,7 +2,7 @@
 <div class="container-fluid sign-up-form">
   <div class="row">
     <div class="col-xs-12">
-      <%= render :partial => "/shared/web/common/kycaas_header" %>
+      <%= render :partial => "/shared/web/common/kycaas_logo_header" %>
       <div class="simple-token-form">
         <h1 class="text-center form-header">Login to Simple Token</h1>
 
@@ -31,13 +31,13 @@
           <div class="user-form-footer">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
-            <button type="submit" class="btn btn-gold form-btn-gold" id="userLogin" title="LOGIN" tabindex="4">login</button>
+            <button type="submit" class="btn client-primary-btn form-btn-gold" id="userLogin" title="LOGIN" tabindex="4">login</button>
             <div class="error" data-for="general_error" style="text-align: center"></div>
           </div>
           <% if !@presenter_obj.has_sale_ended? %>
               <div class="user-form-footer login-page-footer">
                 <div class="create-account" tabindex="5">Don’t Have an Account Yet?</div>
-                <a href="/sign-up" class="btn-common btn-grey form-btn-transparent" id="" title="Register To Participate" tabindex="5">register
+                <a href="/sign-up" class="btn-common client-secondary-btn form-btn-transparent" id="" title="Register To Participate" tabindex="5">register
                   to participate</a>
               </div>
           <% end %>
