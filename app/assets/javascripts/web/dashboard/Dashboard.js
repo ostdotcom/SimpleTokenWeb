@@ -156,7 +156,6 @@
         $("#user-confirm-loader").removeClass("hide");
       }
       else {
-        $("#get-deposit-address").hide();
         $("#user-confirm-loader").removeClass("hide");
       }
 

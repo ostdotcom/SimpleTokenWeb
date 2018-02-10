@@ -21,6 +21,7 @@
           <a href="javascript:void(0)" class="btn-common client-primary-btn btn" id="get-deposit-address">GET DEPOSIT
             ADDRESS</a>
           <% if !@presenter_obj.show_ethereum_address_confirm_modal? %>
+            <div class="error" data-for="general_error" style="text-align: center; font-size: 17px;padding-top: 10px;" ></div>
             <img id="user-confirm-loader" class="gif-loader-img hide" src="//d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token_round_loader.gif"/>
           <% end %>
         </div>
