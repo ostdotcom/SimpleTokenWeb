@@ -1,6 +1,6 @@
 <% if @presenter_obj.can_purchase? && @presenter_obj.has_ethereum_deposit_address? %>
   <div class="container-fluid">
-    <div class="row eth-deposit-address">
+    <div class="row eth-deposit-address" style="background-color: <%= @presenter_obj.page_data['container_background_color'] %>;">
       <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <div class="text-center">
           <h1 class="header" id="eth-deposit-address-title">Ethereum Deposit Address
