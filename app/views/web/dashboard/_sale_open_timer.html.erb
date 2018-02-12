@@ -8,7 +8,7 @@
           <% end %>
 
           <%=
-              render partial: '/shared/web/common/marketing_countdown_timer',
+              render partial: '/shared/web/common/kycaas_countdown_timer',
                      locals: {
                              timestamp: (@presenter_obj.countdown_timestamp - Time.now.to_i) * 1000
                      }
