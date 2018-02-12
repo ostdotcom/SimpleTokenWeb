@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="registration-timer" style="color: <%= @presenter_obj.page_data['timer_element_color']%>">
-        <h2><%= @presenter_obj.is_early_access_mode_on_for_user? ? 'early access sale' : 'public sale' %> <%= @presenter_obj.is_sale_live_for_user? ? 'is live' : 'starts in' %></h2>
+        <h2><%= @presenter_obj.is_early_access_mode_on_for_user? ? 'early access sale' : 'sale' %> <%= @presenter_obj.is_sale_live_for_user? ? 'is live' : 'starts in' %></h2>
         <% if @presenter_obj.is_sale_live_for_user? %>
           <div class="time-remain text-center" style="margin-bottom: 20px">&mdash;&nbsp;Time Remaining&nbsp;&mdash;
           </div>

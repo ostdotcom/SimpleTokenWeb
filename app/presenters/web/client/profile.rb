@@ -325,13 +325,6 @@ module Web
 
       ###############################################
 
-
-      private
-
-      def current_timestamp
-        @current_timestamp ||= Time.now.to_i
-      end
-
     end
   end
 end
