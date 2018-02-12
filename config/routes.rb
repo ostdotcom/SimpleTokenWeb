@@ -98,6 +98,7 @@ Rails.application.routes.draw do
     get '/add-kyc' => :add_kyc_form
     get '/token-sale-blocked-region' => :token_sale_blocked_region
   end
+  match '/', to: 'application#not_found', via: :all
 
   match '*permalink', to: 'application#not_found', via: :all
 
