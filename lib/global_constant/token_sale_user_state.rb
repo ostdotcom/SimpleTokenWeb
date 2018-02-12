@@ -10,8 +10,8 @@ module GlobalConstant
       def api_token_sale_state_page_names
         @api_token_sale_state_page_names ||= {
             profile_page: {p: 'dashboard'},
-            verification_page: {p: 'verification-link'},
-            bt_page: {p: 'reserve-token'},
+            # verification_page: {p: 'verification-link'},
+            # bt_page: {p: 'reserve-token'},
             kyc_page: {p: 'add-kyc'}
         }
       end
