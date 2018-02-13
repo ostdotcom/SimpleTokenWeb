@@ -12,7 +12,7 @@
 
 <% if @presenter_obj.is_st_token_sale_client? %>
   <%= render :partial => "/shared/web/common/loggedin_header", locals: {user: user} %>
-  <% else %>
+<% else %>
   <%= render :partial => "/shared/web/common/loggedin_kycaas_header", locals: {user: user} %>
 <% end %>
 
@@ -206,7 +206,7 @@
                     <% tabindex_val += 1 %>
                     <% to_show_usa_nationality = true
                        GlobalConstant::CountryNationality.nationalities.each do |nationality_name|
-                         if to_show_usa_nationality && ("UNITED STATE OF AMERICA" < nationality_name)                     %>
+                         if to_show_usa_nationality && ("UNITED STATE OF AMERICA" < nationality_name)                      %>
 
                       <option value="AMERICAN">United States Of America</option>
                     <% to_show_usa_nationality = false
@@ -337,9 +337,7 @@
   </script>
 <% end %>
 
-<% if show_verify_modal %>
-  <%= render :partial => "/shared/web/modals/verify_modal", locals: {kyc_checkbox_points_html: kyc_checkbox_points_html} %>
-<% end %>
+<%= render :partial => "/shared/web/modals/verify_modal", locals: {kyc_checkbox_points_html: kyc_checkbox_points_html} %>
 
 <script type="custom" id="selfie-popover">
   <div style="">
@@ -357,6 +355,7 @@
         </div>
       </div>
   </div>
+
 
 
 </script>
@@ -377,6 +376,7 @@
         </div>
       </div>
   </div>
+
 
 
 </script>
