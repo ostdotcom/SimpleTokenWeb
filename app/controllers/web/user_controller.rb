@@ -156,6 +156,7 @@ class Web::UserController < Web::BaseController
 
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.kyc_page_allowed_states)
+    return if has_performed?
 
     get_ip_to_cynopsis_country
   end
@@ -184,7 +185,8 @@ class Web::UserController < Web::BaseController
 
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
-
+    return if has_performed?
+    
     get_ip_to_cynopsis_country
   end
 
@@ -205,6 +207,7 @@ class Web::UserController < Web::BaseController
       if user_token_sale_state.present? && user_token_sale_state != GlobalConstant::TokenSaleUserState.profile_page
         # extra_param = params[:t].present? ? "?e_t=1" : ""
         redirect_if_step_not_reachable(user_token_sale_state, GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
+        return if has_performed?
       else
         render_error_response(service_response)
       end
@@ -240,6 +243,7 @@ class Web::UserController < Web::BaseController
 
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.bt_page_allowed_states)
+    return if has_performed?
   end
 
   # update Branded token form
@@ -264,6 +268,7 @@ class Web::UserController < Web::BaseController
 
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
+    return if has_performed?
   end
 
   # Branded token form
@@ -287,6 +292,7 @@ class Web::UserController < Web::BaseController
 
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.verification_page_allowed_states)
+    return if has_performed?
   end
 
   private

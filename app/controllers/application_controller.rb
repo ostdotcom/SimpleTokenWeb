@@ -30,6 +30,16 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # Check if redirect or render has been performed
+  #
+  # * Author: Aman
+  # * Date: 15/02/2018
+  # * Reviewed By:
+  #
+  def has_performed?
+    performed?
+  end
+
   # Get user agent
   #
   # * Author: Kedar
