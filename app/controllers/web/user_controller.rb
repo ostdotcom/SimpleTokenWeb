@@ -263,9 +263,6 @@ class Web::UserController < Web::BaseController
       return
     end
 
-    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
-    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if !@presenter_obj.is_st_token_sale_client?
-
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
     return if has_performed?
