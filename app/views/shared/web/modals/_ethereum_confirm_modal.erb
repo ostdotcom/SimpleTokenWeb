@@ -7,39 +7,17 @@
       <div class="modal-body">
         <div class="verify-content">
           <div class="heading text-center">Simple Tokens are not for everyone.<br/>I confirm the following:</div>
-          <div class="checkbox">
-            <input type="checkbox" value="" id="i_understand_tokens_risks" name="i_understand_tokens_risks" >
-            <label for="i_understand_tokens_risks">
-              I understand what Simple Tokens are. I also understand the risks.
-            </label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" value="" id="i_sophisticated_purchaser" name="i_sophisticated_purchaser" >
-            <label for="i_sophisticated_purchaser">
-              I am a sophisticated purchaser and I am not restricted under any law from purchasing Simple Tokens.
-            </label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" value="" id="english_version_terms_and_Conditions" name="english_version_terms_and_Conditions" >
-            <label for="english_version_terms_and_Conditions">
-              I have read the English version of the <a href="https://drive.google.com/file/d/0B1E_xJPbELBKeU9pUk5uSnNqWFU/view" title="Terms and Condition" target="_blank" class="modal-ext-link">Terms and Conditions</a> cover to cover and I have understood and agree to them. I agree to monitor the <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" class="modal-ext-link" target="_blank">website</a> for any updates.
-            </label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" value="" id="i_have_obtained_professional_advice" name="i_have_obtained_professional_advice" >
-            <label for="i_have_obtained_professional_advice">
-              I have obtained all the professional advice I need.
-            </label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" value="" id="i_agree_that_i_will_send_payment" name="i_agree_that_i_will_send_payment" >
-            <label for="i_agree_that_i_will_send_payment" style="font-weight: bold">
-              I agree that I will send payment from, and receive any Simple Tokens to, the Ethereum address I provided during registration.
-            </label>
-          </div>
+          <% @presenter_obj.ethereum_confirm_checkbox_points_html.each_with_index do |line, index| %>
+            <div class="checkbox">
+              <input type="checkbox" value="" id="check<%= index%>" name="check<%= index%>">
+              <label for="check<%= index%>">
+               <%= raw line %>
+              </label>
+            </div>
+          <% end %>
           <div class="error" data-for="general_error"></div>
-          <button id="userConfirm" class="btn-common btn-gold verify-btn" title="Verify" >CONFIRM</button>
-          <img id="user-confirm-loader" class="gif-loader-img hide" src="//d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token_round_loader.gif" />
+          <button id="userConfirm" class="btn-common client-primary-btn verify-btn" title="Verify">CONFIRM</button>
+          <img id="user-confirm-loader" class="gif-loader-img hide" src="//d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token_round_loader.gif"/>
         </div>
       </div>
     </div>

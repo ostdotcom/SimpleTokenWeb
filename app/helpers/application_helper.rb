@@ -47,7 +47,19 @@ module ApplicationHelper
   # * Reviewed By: Sunil Khedar
   #
   def get_formatted_action_name
-    params[:action].gsub('_','-')
+    params[:action].gsub('_', '-')
+  end
+
+  # All pages used only by simple token and not kyc clients
+  #
+  # * Author: Aman
+  # * Date: 09/02/2018
+  # * Reviewed By:
+  #
+  def is_simple_token_specific_page?
+    ['web/home', 'web/token_sale'].include?(params[:controller]) ||
+        (params[:controller] == 'web/user' &&
+            ['add_branded_token', 'update_branded_token', 'verification_link'].include?(params[:action]))
   end
 
 end

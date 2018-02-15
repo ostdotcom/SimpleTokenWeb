@@ -1,4 +1,3 @@
-module Presenters
   module Web
     class Global
 
@@ -9,7 +8,7 @@ module Presenters
       # @param [String] host (mandatory) - host url
       # @param [Hash] params (optional) - Page params
       #
-      # @return [Presenters::Web::Global] returns an object of Presenters::Web::Global class
+      # @return [Web::Global] returns an object of Web::Global class
       #
       def initialize(host, params = {})
         @host = host
@@ -63,5 +62,4 @@ module Presenters
       end
 
     end
-  end
 end

@@ -7,38 +7,16 @@
       <div class="modal-body">
         <div class="verify-content">
           <div class="heading text-center">I confirm the following</div>
-          <div class="checkbox">
-            <input type="checkbox" id="p1" name="p1" >
-            <label for="p1">
-              All the information I have entered is true and complete.
-            </label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" id="p2" name="p2" >
-            <label for="p2">
-              I am not restricted under any law from providing this information or purchasing Simple Tokens.
-            </label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" id="p3" name="p3" >
-            <label for="p3">
-              I act on my own behalf, unless I have notified you in writing.
-            </label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" id="p4" name="p4" >
-            <label for="p4">
-              I have read, understood and agree to <a href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/privacy" target="_blank" class="modal-ext-link">OpenST Limited's Privacy Policy</a>. I acknowledge this may change.  I also understand that any purchase of Simple Tokens will be subject to additional terms and conditions.
-            </label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" id="p5" name="p5" >
-            <label for="p5">
-              I agree that I will send payment from, and receive any Simple Tokens to, the digital wallet address I have entered on this website.
-            </label>
-          </div>
+          <% kyc_checkbox_points_html.each_with_index do |line, index| %>
+            <div class="checkbox">
+              <input type="checkbox" id="p<%= index %>" name="p<%= index %>">
+              <label for="p<%= index %>">
+                <%= raw line%>
+              </label>
+            </div>
+          <% end %>
           <div class="error" data-for="verify_error"></div>
-          <button class="btn-common btn-gold verify-btn" title="Verify" id="kycVerify">I Agree</button>
+          <button class="btn-common client-primary-btn verify-btn" title="Verify" id="kycVerify">I Agree</button>
         </div>
         <div class="loader-content" style="display: none">
           <p class="status">Encrypting your data...</p>

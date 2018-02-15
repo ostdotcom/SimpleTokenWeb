@@ -73,10 +73,10 @@ class Web::HomeController < Web::BaseController
   # * Date: 28/10/2017
   # * Reviewed By: Sunil
   #
-  def check
-    @country = get_country_from_ip.upcase
-    @ip_address = ip_address
-  end
+  # def check
+  #   @country = get_country_from_ip.upcase
+  #   @ip_address = ip_address
+  # end
 
   # Action to show ost in circulation,
   # for now its hard-coded, will call api in future.

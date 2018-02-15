@@ -1,7 +1,8 @@
-<div class="container-fluid container-telegram token-sale-telegram">
+<% if @presenter_obj.page_data['telegram_href'].present? %>
+<div class="container-fluid container-telegram token-sale-telegram" style="background-color: <%= @presenter_obj.page_data['container_background_color'] %>;">
   <div class="content">
     <p>Live Updates & News on the Public Token Sale</p>
-    <a href="https://www.t.me/simpletoken" title="Simple Token Telegram" class="telegram-link" target="_blank">
+    <a href="<%= @presenter_obj.page_data['telegram_href'] %>" title="<%= @presenter_obj.account_name %> Telegram" class="telegram-link" target="_blank">
       <div class="telegram-connect token-sale-telegram-connect">
         <div class="left-comp">Learn More</div>
         <div class="right-comp">on telegram</div>
@@ -10,3 +11,4 @@
     </a>
   </div>
 </div>
+<% end %>
