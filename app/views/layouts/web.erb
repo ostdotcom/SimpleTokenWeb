@@ -61,9 +61,8 @@
 }
 
 
-
-
   </script>
+
   <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -80,8 +79,6 @@
 }
 
 
-
-
   </script>
 
   <%= csrf_meta_tags %>
@@ -96,11 +93,6 @@
     } catch (e) {
     }
   </script>
-  <!--
-  <% if Rails.env.production? %>-->
-    <!--<%= render :partial => 'shared/web/thirdparty/gtm_config' %>-->
-    <!--
-  <% end %>-->
 
   <link rel="icon" type="image/png" sizes="64x64" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/64.png"/>
   <link rel="apple-touch-icon" sizes="57x57" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/57.png">
@@ -118,11 +110,6 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/16.png">
 
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
-  <!--
-  <% if !Rails.env.development? %>-->
-    <!--<script src="https://cdn.optimizely.com/js/9103640545.js"></script>-->
-    <!--
-  <% end %>-->
 
   <% if ['web/user::update_kyc_form', 'web/user::add_kyc_form', 'web/user::login', 'web/user::sign_up', 'web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
     <script src="https://www.google.com/recaptcha/api.js"></script>
