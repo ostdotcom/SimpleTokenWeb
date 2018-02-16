@@ -1,5 +1,6 @@
 class Web::BaseController < ApplicationController
 
+  before_action :browser_basic_auth
   before_action :set_utm_cookies
 
   private

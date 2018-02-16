@@ -99,6 +99,27 @@ class ApplicationController < ActionController::Base
     sanitize_params_recursively(params)
   end
 
+  # tmp basic auth
+  #
+  # * Author: Aman
+  # * Date: 15/10/2017
+  # * Reviewed By: Sunil
+  #
+  def browser_basic_auth
+    return if !Rails.env.staging?
+
+    users = {'simpleToken' => ['A$F^&n!@$ghf%7']}
+
+    authenticate_or_request_with_http_basic do |username, password|
+      if users[username].present? && users[username][0] == password
+        true
+      else
+        false
+      end
+    end
+
+  end
+
   # Set page meta info
   #
   # * Author: Kedar

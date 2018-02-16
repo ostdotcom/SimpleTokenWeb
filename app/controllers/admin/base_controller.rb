@@ -1,29 +1,8 @@
 class Admin::BaseController < ApplicationController
 
-  before_action :admin_basic_auth
+  before_action :browser_basic_auth
 
   private
-
-  # tmp basic auth
-  #
-  # * Author: Aman
-  # * Date: 15/10/2017
-  # * Reviewed By: Sunil
-  #
-  def admin_basic_auth
-    return if !Rails.env.staging?
-
-    users = {'simpleToken' => ['A$F^&n!@$ghf%7']}
-
-    authenticate_or_request_with_http_basic do |username, password|
-      if users[username].present? && users[username][0] == password
-        true
-      else
-        false
-      end
-    end
-
-  end
 
   # Delete admin cookies
   #
