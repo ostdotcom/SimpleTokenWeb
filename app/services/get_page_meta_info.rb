@@ -68,7 +68,7 @@ class GetPageMetaInfo < ServicesBase
       if v.is_a?(Array)
         v = @custom_meta[k.to_s]
       else
-        v =  v % @custom_meta
+        v =  v % @custom_meta.symbolize_keys
       end
 
       @meta_data[k] = v
@@ -80,7 +80,7 @@ class GetPageMetaInfo < ServicesBase
         if v.is_a?(Array)
           v = @custom_meta["#{level2.to_s}_#{k.to_s}"]
         else
-          v =  v % @custom_meta
+          v =  v % @custom_meta.symbolize_keys
         end
         @meta_data[level2][k] = v
       end

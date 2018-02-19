@@ -117,6 +117,14 @@ module Web
         blacklisted_countries.include?(country_from_ip.downcase)
       end
 
+      def custom_meta_tags
+        {
+            meta: {
+              account_name: account_name
+            }
+        }
+      end
+
       private
 
       def current_timestamp

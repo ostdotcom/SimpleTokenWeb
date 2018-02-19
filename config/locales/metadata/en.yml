@@ -4,111 +4,56 @@ en:
 
     login:
       :meta:
-        :title: 'Log into the Simple Token Project for the Token Sale'
-        :description: 'Log into your Simple Token Project Account for the Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
+        :title: 'Log into %{account_name} ICO'
+        :description: 'Log into your %{account_name} Account'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'ICO'
+        :name: '%{account_name} '
         :robots: 'index, follow'
-        :og:
-          :title: 'Log into the Simple Token Project for the Token Sale'
-          :description: 'Log into your Simple Token Project Account for the Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Log into the Simple Token Project for the Token Sale'
-          :description: 'Log into your Simple Token Project Account for the Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     token_sale_blocked_region:
       :meta:
-        :title: 'Simple Token | Token Sale blocked page'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: '%{account_name} | ICO Blocked'
+        :description: '%{account_name} | ICO Blocked'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'ICO'
+        :name: '%{account_name}'
         :robots: 'noindex, nofollow'
-        :og:
-          :title: 'Simple Token | Token Sale blocked page'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Simple Token | Token Sale blocked page'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 0
 
     sign_up:
       :meta:
-        :title: 'Register for the Simple Token Project Token Sale'
-        :description: 'Register for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
+        :title: 'Register for the %{account_name} ICO'
+        :description: 'Register for the %{account_name} ICO.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'ICO'
+        :name: '%{account_name}'
         :robots: 'index, follow'
-        :og:
-          :title: 'Register for the Simple Token Project Token Sale'
-          :description: 'Register for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Register for the Simple Token Project Token Sale'
-          :description: 'Register for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     reset_password:
       :meta:
-        :title: 'Reset your password for the Simple Token Project Token Sale'
-        :description: 'Reset your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
+        :title: 'Reset your password for the %{account_name} ICO'
+        :description: 'Reset your password for the %{account_name} ICO.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'ICO'
+        :name: '%{account_name}'
         :robots: 'index, follow'
-        :og:
-          :title: 'Reset your password for the Simple Token Project Token Sale'
-          :description: 'Reset your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Reset your password for the Simple Token Project Token Sale'
-          :description: 'Reset your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     add_kyc_form:
       :meta:
-        :title: 'Verify your Identity for the Simple Token Project Token Sale'
-        :description: 'Verify your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
+        :title: 'Verify your Identity for the %{account_name} ICO'
+        :description: 'Verify your Identity for the %{account_name} ICO.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'ICO'
+        :name: '%{account_name}'
         :robots: 'index, follow'
-        :og:
-          :title: 'Verify your Identity for the Simple Token Project Token Sale'
-          :description: 'Verify your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Verify your Identity for the Simple Token Project Token Sale'
-          :description: 'Verify your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
@@ -120,61 +65,28 @@ en:
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
-        :og:
-          :title: 'Reserve your Branded Token Name for the Simple Token Sale'
-          :description: 'Reserve your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Reserve your Branded Token Name for the Simple Token Sale'
-          :description: 'Reserve your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     dashboard_home:
      :meta:
-       :title: 'Your Dashboard for the Simple Token Project Token Sale'
-       :description: 'Your Dashboard for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
+       :title: 'Your Dashboard for the %{account_name} ICO'
+       :description: 'Your Dashboard for the %{account_name} ICO.'
        :canonical: '%{canonical}'
-       :keywords: 'Simple Token'
-       :name: 'Simple Token'
+       :keywords: 'ICO'
+       :name: '%{account_name}'
        :robots: 'index, follow'
-       :og:
-         :title: 'Your Dashboard for the Simple Token Project Token Sale'
-         :description: 'Your Dashboard for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-         :type: 'website'
-         :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-         :url: '%{og_url}'
-       :twitter:
-         :card: 'summary_large_image'
-         :title: 'Your Dashboard for the Simple Token Project Token Sale'
-         :description: 'Your Dashboard for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-         :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
      :assets:
        :specific_js_required: 1
 
     update_kyc_form:
        :meta:
-         :title: 'Update your Identity for the Simple Token Project Token Sale'
-         :description: 'Update your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
+         :title: 'Update your Identity for the %{account_name} ICO'
+         :description: 'Update your Identity for the %{account_name} ICO.'
          :canonical: '%{canonical}'
-         :keywords: 'Simple Token'
-         :name: 'Simple Token'
+         :keywords: 'ICO'
+         :name: '%{account_name}'
          :robots: 'index, follow'
-         :og:
-           :title: 'Update your Identity for the Simple Token Project Token Sale'
-           :description: 'Update your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-           :type: 'website'
-           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-           :url: '%{og_url}'
-         :twitter:
-           :card: 'summary_large_image'
-           :title: 'Update your Identity for the Simple Token Project Token Sale'
-           :description: 'Update your Identity for the Simple Token Project Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
        :assets:
          :specific_js_required: 1
 
@@ -186,39 +98,17 @@ en:
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
-        :og:
-          :title: 'Update your Branded Token Name for the Simple Token Sale'
-          :description: 'Update your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Update your Branded Token Name for the Simple Token Sale'
-          :description: 'Update your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     change_password:
       :meta:
-        :title: 'Change your password for the Simple Token Project Token Sale'
-        :description: 'Change your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
+        :title: 'Change your password for the %{account_name} ICO'
+        :description: 'Change your password for the %{account_name} ICO.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'ICO'
+        :name: '%{account_name}'
         :robots: 'index, follow'
-        :og:
-          :title: 'Change your password for the Simple Token Project Token Sale'
-          :description: 'Change your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Change your password for the Simple Token Project Token Sale'
-          :description: 'Change your password for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
@@ -230,17 +120,6 @@ en:
         :keywords: 'Simple Token'
         :name: 'Simple Token'
         :robots: 'index, follow'
-        :og:
-          :title: 'Verify your email for the Simple Token Project Token Sale'
-          :description: 'Verify your email for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Verify your email for the Simple Token Project Token Sale'
-          :description: 'Verify your email for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 

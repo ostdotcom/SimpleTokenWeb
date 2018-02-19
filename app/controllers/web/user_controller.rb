@@ -5,7 +5,7 @@ class Web::UserController < Web::BaseController
   before_action :delete_user_cookie, only: [:sign_up, :login, :reset_password, :change_password]
   before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
 
-  before_action :set_page_meta_info, except: [:logout]
+  before_action :set_page_meta_info, only: [:update_branded_token, :add_branded_token, :verification_link]
 
   after_action :remove_browser_caching
 
@@ -31,6 +31,7 @@ class Web::UserController < Web::BaseController
 
     redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_country_from_ip)
     redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
   # Login
@@ -53,6 +54,7 @@ class Web::UserController < Web::BaseController
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
     redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_country_from_ip)
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
   # Action for the blacklisted countries ip page
@@ -74,6 +76,7 @@ class Web::UserController < Web::BaseController
     end
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
   # Logout
@@ -108,6 +111,7 @@ class Web::UserController < Web::BaseController
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
     redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_country_from_ip)
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
   # Change password
@@ -130,6 +134,7 @@ class Web::UserController < Web::BaseController
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
     redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_country_from_ip)
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
   # KYC form
@@ -159,6 +164,7 @@ class Web::UserController < Web::BaseController
     return if has_performed?
 
     get_ip_to_cynopsis_country
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
   # KYC update form after double opt in
@@ -186,8 +192,9 @@ class Web::UserController < Web::BaseController
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
     return if has_performed?
-    
+
     get_ip_to_cynopsis_country
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
   # Branded token form
@@ -216,6 +223,7 @@ class Web::UserController < Web::BaseController
     end
 
     @presenter_obj = ::Web::Client::Profile.new(service_response, params)
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
 
