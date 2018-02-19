@@ -51,10 +51,37 @@
     <% end %>
   <% end %>
 
+  <% if og_meta[:url].present? %>
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "<%= @page_meta_data[:name] %>",
+  "url": "<%= og_meta[:url] %>",
+  "image": "<%= og_meta[:image] %>",
+}
 
 
+    </script>
 
-  </script>
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "<%= @page_meta_data[:name] %>",
+  "url": "<%= og_meta[:url] %>",
+  "logo": "<%= og_meta[:image] %>",
+  "sameAs": [
+    "https://www.facebook.com/simpletoken/",
+    "https://medium.com/@SimpleToken",
+    "https://www.linkedin.com/company/18209852/",
+    "https://twitter.com/TheSimpleToken"
+  ]
+}
+
+
+    </script>
+  <% end %>
 
   <%= csrf_meta_tags %>
 
