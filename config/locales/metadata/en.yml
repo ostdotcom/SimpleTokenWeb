@@ -147,88 +147,88 @@ en:
 
     about:
       :meta:
-        :title: 'Simple Token | Team'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'OST | Team'
+        :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'OST, Simple Token, Utility Chain, Blockchain'
+        :name: 'OST'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Team'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'OST | Team'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Team'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'OST | Team'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
 
     privacy:
       :meta:
-        :title: 'Simple Token | Privacy Policy'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'OST | Privacy Policy'
+        :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'OST, Simple Token, Utility Chain, Blockchain'
+        :name: 'OST'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Privacy Policy'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'OST | Privacy Policy'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Privacy Policy'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'OST | Privacy Policy'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 0
 
     terms:
       :meta:
-        :title: 'Simple Token | Website Terms of Use'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'OST | Terms of Use'
+        :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'OST, Simple Token, Utility Chain, Blockchain'
+        :name: 'OST'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Website Terms of Use'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'OST | Terms of Use'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Website Terms of Use'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'OST | Terms of Use'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 0
 
     news:
       :meta:
-        :title: 'Simple Token News'
-        :description: 'Press releases, Medium posts and all news related to the Simple Token Project'
+        :title: 'OST | News'
+        :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'OST, Simple Token, Utility Chain, Blockchain'
+        :name: 'OST'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token News'
-          :description: 'Press releases, Medium posts and all news related to the Simple Token Project'
+          :title: 'OST | News'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token News'
-          :description: 'Press releases, Medium posts and all news related to the Simple Token Project'
+          :title: 'OST | News'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 0
@@ -257,22 +257,22 @@ en:
 
     documents:
       :meta:
-        :title: 'Simple Token | Documents'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+        :title: 'OST | Documents'
+        :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'OST, Simple Token, Utility Chain, Blockchain'
+        :name: 'OST'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Documents'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'OST | Documents'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Documents'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
+          :title: 'OST | Documents'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 0
@@ -299,22 +299,22 @@ en:
 
     careers:
       :meta:
-        :title: 'Simple Token | Careers'
-        :description: 'Join the Simple Token Team and its mandate to build a network for consumer apps tokenization.'
+        :title: 'OST | Careers'
+        :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'OST, Simple Token, Utility Chain, Blockchain'
+        :name: 'OST'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Careers'
-          :description: 'Join the Simple Token Team and its mandate to build a network for consumer apps tokenization.'
+          :title: 'OST | Careers'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Careers'
-          :description: 'Join the Simple Token Team and its mandate to build a network for consumer apps tokenization.'
+          :title: 'OST | Careers'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 0
@@ -529,21 +529,21 @@ en:
   web/kyc:
     index:
       :meta:
-        :title: 'Simple Token | ostKYC'
+        :title: 'OST KYC'
         :description: 'Easily run your ICO with our complete KYC/AML management solution. Leverage ostKYC back-end tools to manage applicants and comply with legal requirements.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'OST, Simple Token, Utility Chain, Blockchain, KYC'
+        :name: 'OST'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | ostKYC'
+          :title: 'OST KYC'
           :description: 'Easily run your ICO with our complete KYC/AML management solution. Leverage ostKYC back-end tools to manage applicants and comply with legal requirements.'
           :type: 'website'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | ostKYC'
+          :title: 'OST KYC'
           :description: 'Easily run your ICO with our complete KYC/AML management solution. Leverage ostKYC back-end tools to manage applicants and comply with legal requirements.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
