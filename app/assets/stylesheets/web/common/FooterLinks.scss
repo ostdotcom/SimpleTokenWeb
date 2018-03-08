@@ -1,0 +1,35 @@
+.footer-nav-wrap{
+  background-color: #f4f8f9;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  h5{
+    color: #597a84;
+    font-weight: 700;
+  }
+  ul{
+    margin-bottom: 20px;
+  }
+  li{
+    margin: 12px 0;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    a{
+      color: #597a84;
+      &:hover{
+        color: #E4B030;
+        text-decoration: none;
+      }
+      &:focus{
+        outline: none;
+        text-decoration: none;
+      }
+    }
+  }
+  .social-links{
+    li{
+      margin: 5px;
+      display: inline-block;
+    }
+  }
+}
