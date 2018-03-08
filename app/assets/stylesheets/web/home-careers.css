@@ -4,4 +4,7 @@
  *= require web/common/Icons
  *= require web/common/NavBar
  *= require web/home/Documents
+ *= require web/common/FooterLinks
+ *= require web/common/SocialIcons
+ *= require web/common/NewNavBar
  */

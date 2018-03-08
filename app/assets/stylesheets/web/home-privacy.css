@@ -2,4 +2,7 @@
  *= require plugins/bootstrap/bootstrap
  *= require web/common/Body
  *= require web/common/NavBar
+ *= require web/common/FooterLinks
+ *= require web/common/SocialIcons
+ *= require web/common/NewNavBar
  */

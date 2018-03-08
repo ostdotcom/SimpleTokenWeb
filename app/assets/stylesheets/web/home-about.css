@@ -7,4 +7,7 @@
  *= require web/common/Social
  *= require web/common/NavBar
  *= require web/home/About
+ *= require web/common/FooterLinks
+ *= require web/common/SocialIcons
+ *= require web/common/NewNavBar
  */
