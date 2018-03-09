@@ -277,26 +277,6 @@ en:
       :assets:
         :specific_js_required: 0
 
-    product:
-      :meta:
-        :title: 'Simple Token | ostKIT'
-        :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-        :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
-        :robots: 'index, follow'
-        :og:
-          :title: 'Simple Token | ostKIT'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Simple Token | ostKIT'
-          :description: 'Simple Token is a protocol for consumer-app tokenization and an ERC-20 utility token that enables any app to launch branded tokens on open scalable side-chains'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-
     careers:
       :meta:
         :title: 'OST | Careers'
@@ -434,52 +414,6 @@ en:
           :description: 'Participate in the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
 
-  web/marketing:
-    index:
-      :meta:
-        :title: 'Discover The Simple Token Project Token Sale'
-        :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
-        :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
-        :robots: 'index, follow'
-        :og:
-          :title: 'Discover The Simple Token Project Token Sale'
-          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Discover The Simple Token Project Token Sale'
-          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-      :assets:
-        :specific_js_required: 1
-
-  web/producthunt:
-    index:
-      :meta:
-        :title: 'Discover The Simple Token Project Token Sale'
-        :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
-        :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
-        :robots: 'index, follow'
-        :og:
-          :title: 'Discover The Simple Token Project Token Sale'
-          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
-          :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-          :url: '%{og_url}'
-        :twitter:
-          :card: 'summary_large_image'
-          :title: 'Discover The Simple Token Project Token Sale'
-          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
-      :assets:
-        :specific_js_required: 1
-
   web/st_company:
     index:
       :meta:
@@ -539,13 +473,13 @@ en:
           :title: 'OST KYC'
           :description: 'Easily run your ICO with our complete KYC/AML management solution. Leverage ostKYC back-end tools to manage applicants and comply with legal requirements.'
           :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-og-image-1.jpg'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
           :title: 'OST KYC'
           :description: 'Easily run your ICO with our complete KYC/AML management solution. Leverage ostKYC back-end tools to manage applicants and comply with legal requirements.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-og-image-1.jpg'
       :assets:
         :specific_js_required: 1
 

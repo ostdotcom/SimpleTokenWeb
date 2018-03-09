@@ -65,6 +65,7 @@ class Web::HomeController < Web::BaseController
   # * Reviewed By:
   #
   def product
+    redirect_to '/', status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
   # Action for the check page
