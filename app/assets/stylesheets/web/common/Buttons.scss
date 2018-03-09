@@ -1,14 +1,17 @@
 .btn-common{
-  border-radius: 50px;
+  border-radius: 3px;
   border: solid 2px #7f9183;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
-  padding: 20px 40px;
+  padding: 12px 25px;
   min-width: 200px;
   text-align: center;
   letter-spacing: 3px;
   display: inline-block;
+  -webkit-transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
+  -moz-transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
+  transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
   &:active{
     -webkit-transform: translateY(1px);
     -moz-transform: translateY(1px);
@@ -44,18 +47,25 @@
 }
 
 .btn-grey{
-  border-color: #7f9183;
-  color: #7f9183;
+  border: 2px solid #34445b;
+  background-color: #ffffff;
+  color: #34445b;
   &:focus{
-    color: #7f9183;
+    color: #34445b;
     outline: none;
     text-decoration: none;
+    box-shadow: none;
   }
-  &:hover,&:active{
+  &:active{
+    color: #34445b!important;
+    border-color:#34445b!important;
+    background-color: #ffffff!important;
+  }
+  &:hover{
     color: #fff;
     text-decoration: none;
-    background-color: #7f9183;
-    border-color: #7f9183;
+    background-color: #34445b;
+    border-color: #34445b;
   }
 }
 
