@@ -1,7 +1,7 @@
 class Web::ProducthuntController < Web::BaseController
-  layout "producthunt"
+  # layout "producthunt"
 
-  before_action :set_page_meta_info
+  # before_action :set_page_meta_info
 
   # Producthunt landing page
   #

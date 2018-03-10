@@ -1,7 +1,7 @@
 class Web::MarketingController < Web::BaseController
-  layout "marketing"
+  # layout "marketing"
 
-  before_action :set_page_meta_info
+  # before_action :set_page_meta_info
 
   # Marketing landing page
   #
