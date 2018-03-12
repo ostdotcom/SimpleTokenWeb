@@ -28,7 +28,16 @@ class Web::HomeController < Web::BaseController
   # * Reviewed By:
   #
   def redirect_to_team
-    redirect_to '/team', status: GlobalConstant::ErrorCode.permanent_redirect and return
+    if Rails.env.production?
+      redirect_host = 'https://ost.com/'
+    elsif Rails.env.sandbox?
+      redirect_host = 'https://stagingost.com/'
+    elsif Rails.env.staging?
+      redirect_host = 'https://stagingost.com/'
+    else
+      redirect_host = 'https://stagingost.com/'
+    end
+    redirect_to "#{redirect_host}team", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
   # Action for the privacy page
