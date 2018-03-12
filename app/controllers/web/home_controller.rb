@@ -23,12 +23,12 @@ class Web::HomeController < Web::BaseController
 
   # Redirect to /team page
   #
-  # * Author: Akshay
-  # * Date: 26/10/2017
+  # * Author: Sunil
+  # * Date: 12/03/2018
   # * Reviewed By:
   #
   def redirect_to_team
-    redirect_to '/team', status: GlobalConstant::ErrorCode.permanent_redirect and return
+    redirect_to "#{GlobalConstant::Base.company_other_product_urls['root_url']}team", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
   # Action for the privacy page
