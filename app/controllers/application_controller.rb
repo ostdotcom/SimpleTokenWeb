@@ -106,7 +106,7 @@ class ApplicationController < ActionController::Base
   # * Reviewed By: Sunil
   #
   def browser_basic_auth
-    return if true #!Rails.env.staging?
+    return if !Rails.env.staging?
 
     users = {'simpleToken' => ['A$F^&n!@$ghf%7']}
 
