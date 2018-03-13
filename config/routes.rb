@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  constraints(InitSimpleToken) do
+  constraints(InitStaticOst) do
 
     scope '', controller: 'web/home' do
-      get '/' => :index
+      #get '/' => :index # served from company-web repository
       get '/team' => :about
       get '/about' => :redirect_to_team
       get '/product' => :product

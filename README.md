@@ -25,3 +25,8 @@ export STW_EARLY_ACCESS_REGISTER_END_DATE='2017-11-13 20:00:00 UTC'
 export STW_EARLY_ACCESS_SALE_START_DATE='2017-11-14 13:00:00 UTC'
 export STW_GENERAL_ACCESS_SALE_START_DATE='2017-11-15 13:00:00 UTC'
 export STW_GENERAL_ACCESS_SALE_END_DATE='2017-12-01 13:00:00 UTC'
+
+# OST Other Product Urls
+export COMPANY_ROOT_URL='http://developmentost.com:8080/'
+export COMPANY_KIT_ROOT_URL='http://kit.developmentost.com:8080/'
+export COMPANY_VIEW_ROOT_URL='http://view.developmentost.com:8080/'

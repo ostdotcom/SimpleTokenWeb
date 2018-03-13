@@ -17,4 +17,7 @@
  *= require web/common/PressVideos
  *= require web/common/SaleStats
  *= require web/common/Placeholder
+ *= require web/common/FooterLinks
+ *= require web/common/SocialIcons
+ *= require web/common/NewNavBar
  */

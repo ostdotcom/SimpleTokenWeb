@@ -14,4 +14,7 @@
  *= require web/kyc/VideoCarousel
  *= require web/common/Body
  *= require web/common/Social
+ *= require web/common/NewNavBar
+ *= require web/common/FooterLinks
+ *= require web/common/SocialIcons
  */

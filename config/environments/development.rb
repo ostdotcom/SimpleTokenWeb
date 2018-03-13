@@ -15,6 +15,10 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+  config.action_controller.asset_host = "http://kyc.developmentost.com:8080/"
+
   # Incase we want to test asset precompile in development
   config.assets.prefix = "/js-css/dev"
 

@@ -3,12 +3,10 @@
     max-width: 288px;
   }
   .desc{
-    color: #97c2b7;
+    color: #438cad;
     font-weight: 500;
     letter-spacing: 1.7px;
     margin: 15px 0 30px;
-    font-size: 20px;
-    line-height: 24px;
   }
 }
 
@@ -27,12 +25,12 @@
     padding: 15px 0;
     &.active{
       a{
-        color: #91C0AD;
+        color: #84d1d4;
       }
       &:before{
         content: '';
         display: inline-block;
-        border-bottom: solid 4px #91c0ad;
+        border-bottom: solid 4px #84d1d4;
         width: 100%;
         bottom: -1px;
         position: absolute;
@@ -45,7 +43,7 @@
   }
 
   .nav-gradient{
-    border-bottom: solid 2px #bbdfd0;
+    border-bottom: solid 2px #84d1d4;
   }
   ul{
     li{
@@ -59,8 +57,8 @@
     background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 100px, #ffffff 100%);
   }
   .heading{
-    color: #6da4a9;
-    font-weight: 300;
+    color: #438cad;
+    font-weight: 600;
     margin-bottom: 40px;
     margin-top: 0;
     font-size: 38px;
@@ -186,7 +184,7 @@
 */
 
 .early-investors{
-  background: #6ca3a9;
+  background: #34445b;
   padding: 40px 0;
   margin-top: 0;
   margin-bottom: 40px;
@@ -198,7 +196,7 @@
   }
   .heading{
     color: #fff;
-    font-weight: 300;
+    font-weight: 600;
     margin-bottom: 40px;
     font-size: 38px;
     margin-top: 0;
@@ -224,8 +222,8 @@
     }
   }
   .heading{
-    color: #6da4a9;
-    font-weight: 300;
+    color: #438cad;
+    font-weight: 600;
     margin-bottom: 40px;
     margin-top: 0;
     font-size: 38px;
@@ -298,8 +296,8 @@
 
 .container-work-with-us{
   .heading{
-    color: #6da4a9;
-    font-weight: 300;
+    color: #438cad;
+    font-weight: 600;
     margin-bottom: 30px;
     margin-top: 30px;
     font-size: 38px;

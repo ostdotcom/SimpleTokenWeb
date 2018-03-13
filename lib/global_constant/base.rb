@@ -23,6 +23,16 @@ module GlobalConstant
         @st_token_sale ||= env_config['st_token_sale']
       end
 
+      # Company other product urls
+      #
+      # * Author: Sunil
+      # * Date: 12/03/2018
+      # * Reviewed By: Sunil Khedar
+      #
+      def company_other_product_urls
+        @company_other_product_urls ||= (env_config['company_other_product_urls'] || {}).with_indifferent_access
+      end
+
       # Root URL
       #
       # * Author: Kedar
