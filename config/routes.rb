@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  constraints(InitSimpleToken) do
+    match '*permalink', to: 'application#handle_redirects_from_simple_token_domain', via: :all
+  end
+
   constraints(InitStaticOst) do
 
     scope '', controller: 'web/home' do
