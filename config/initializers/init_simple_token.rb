@@ -2,8 +2,7 @@ class InitSimpleToken
 
   def self.matches?(request)
     if Rails.env.production?
-      #TODO: remove this after public launch
-      ['simpletoken.org', 'static.ost.com'].include?(request.host)
+      request.host == 'simpletoken.org'
     elsif Rails.env.sandbox?
       false #&& request.host == 'sale.sandboxost.com'
     elsif Rails.env.staging?

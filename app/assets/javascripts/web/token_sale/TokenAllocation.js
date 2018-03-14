@@ -59,7 +59,7 @@
 
       var checkForPartialVisibility = true;
 
-      if ( oThis.jRoot.visible( checkForPartialVisibility ) ) {
+      if ( oThis.jRoot && oThis.jRoot.visible( checkForPartialVisibility ) ) {
         setTimeout(oThis.animateAllRadials, 500);
         oThis.isAnimateDone = true;
         $(window).off("scroll", oThis.animateIfRequired);
