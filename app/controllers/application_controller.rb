@@ -35,7 +35,9 @@ class ApplicationController < ActionController::Base
   # * Reviewed By:
   #
   def handle_redirects_from_simple_token_domain
-    redirect_to "#{GlobalConstant::Base.company_other_product_urls['root_url']}#{request.fullpath}", status: GlobalConstant::ErrorCode.permanent_redirect and return
+    # replace first '/' with ''
+    path = request.fullpath.sub('/', '')
+    redirect_to "#{GlobalConstant::Base.company_other_product_urls['root_url']}#{path}", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
   private
