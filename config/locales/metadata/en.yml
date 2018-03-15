@@ -157,13 +157,13 @@ en:
           :title: 'OST | Team'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
           :title: 'OST | Team'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
       :assets:
         :specific_js_required: 1
 
@@ -179,13 +179,13 @@ en:
           :title: 'OST | Privacy Policy'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
           :title: 'OST | Privacy Policy'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
       :assets:
         :specific_js_required: 0
 
@@ -201,13 +201,13 @@ en:
           :title: 'OST | Terms of Use'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
           :title: 'OST | Terms of Use'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
       :assets:
         :specific_js_required: 0
 
@@ -223,13 +223,13 @@ en:
           :title: 'OST | News'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
           :title: 'OST | News'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
       :assets:
         :specific_js_required: 0
 
@@ -267,13 +267,13 @@ en:
           :title: 'OST | Documents'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
           :title: 'OST | Documents'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
       :assets:
         :specific_js_required: 0
 
@@ -289,35 +289,35 @@ en:
           :title: 'OST | Careers'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
           :title: 'OST | Careers'
           :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
       :assets:
         :specific_js_required: 0
 
     partners:
       :meta:
-        :title: 'Simple Token | Partner Companies'
-        :description: 'Simple Token business and technical challenge is to enable mainstream applications to benefit from deploying their own branded crypto-backed token economies.'
+        :title: 'OST | Partner Companies'
+        :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'OST, Simple Token, Utility Chain, Blockchain'
+        :name: 'OST'
         :robots: 'index, follow'
         :og:
-          :title: 'Simple Token | Partner Companies'
-          :description: 'Simple Token business and technical challenge is to enable mainstream applications to benefit from deploying their own branded crypto-backed token economies.'
+          :title: 'OST | Partner Companies'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
           :type: 'website'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
           :url: '%{og_url}'
         :twitter:
           :card: 'summary_large_image'
-          :title: 'Simple Token | Partner Companies'
-          :description: 'Simple Token business and technical challenge is to enable mainstream applications to benefit from deploying their own branded crypto-backed token economies.'
-          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :title: 'OST | Partner Companies'
+          :description: 'The OST software platform helps businesses gain competitive advantage from blockchain and turn the potential of decentralization into reality.'
+          :image: 'https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-og-image-1.jpg'
       :assets:
         :specific_js_required: 1
 
