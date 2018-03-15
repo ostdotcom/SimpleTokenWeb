@@ -8,4 +8,7 @@
  *= require web/home/Partners
  *= require web/common/Placeholder
  *= require web/common/NavBar
+ *= require web/common/FooterLinks
+ *= require web/common/SocialIcons
+ *= require web/common/NewNavBar
  */

@@ -28,6 +28,20 @@ class ApplicationController < ActionController::Base
     render_error_response_for(@response)
   end
 
+  # redirect all requests on Simple Token Domain to OST Domain
+  #
+  # * Author: Puneet
+  # * Date: 12/03/2017
+  # * Reviewed By:
+  #
+  def handle_redirects_from_simple_token_domain
+    query_param_to_append = 'onw=1'
+    # replace first '/' with ''
+    path = request.fullpath.sub('/', '')
+    path = path.include?('?') ? "#{path}&#{query_param_to_append}" : "#{path}?#{query_param_to_append}"
+    redirect_to "#{GlobalConstant::Base.company_other_product_urls['root_url']}#{path}", status: GlobalConstant::ErrorCode.permanent_redirect and return
+  end
+
   private
 
   # Check if redirect or render has been performed

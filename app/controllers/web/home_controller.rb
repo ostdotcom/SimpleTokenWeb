@@ -23,21 +23,12 @@ class Web::HomeController < Web::BaseController
 
   # Redirect to /team page
   #
-  # * Author: Akshay
-  # * Date: 26/10/2017
+  # * Author: Sunil
+  # * Date: 12/03/2018
   # * Reviewed By:
   #
   def redirect_to_team
-    if Rails.env.production?
-      redirect_host = 'https://ost.com/'
-    elsif Rails.env.sandbox?
-      redirect_host = 'https://stagingost.com/'
-    elsif Rails.env.staging?
-      redirect_host = 'https://stagingost.com/'
-    else
-      redirect_host = 'https://stagingost.com/'
-    end
-    redirect_to "#{redirect_host}team", status: GlobalConstant::ErrorCode.permanent_redirect and return
+    redirect_to "#{GlobalConstant::Base.company_other_product_urls['root_url']}team", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
   # Action for the privacy page
@@ -74,6 +65,7 @@ class Web::HomeController < Web::BaseController
   # * Reviewed By:
   #
   def product
+    redirect_to '/', status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
   # Action for the check page

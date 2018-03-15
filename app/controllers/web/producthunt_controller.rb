@@ -1,7 +1,7 @@
 class Web::ProducthuntController < Web::BaseController
-  layout "producthunt"
+  # layout "producthunt"
 
-  before_action :set_page_meta_info
+  # before_action :set_page_meta_info
 
   # Producthunt landing page
   #
@@ -10,7 +10,7 @@ class Web::ProducthuntController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def index
-    @presenter_obj = ::Web::Global.new(host_url_with_protocol, params)
+    redirect_to '/', status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
 end

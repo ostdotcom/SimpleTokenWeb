@@ -1,14 +1,14 @@
-class InitSimpleToken
+class InitStaticOst
 
   def self.matches?(request)
     if Rails.env.production?
-      request.host == 'simpletoken.org'
+      request.host == 'static.ost.com'
     elsif Rails.env.sandbox?
       false #&& request.host == 'sale.sandboxost.com'
     elsif Rails.env.staging?
-      request.host == 'stagingsimpletoken.org'
+      request.host == 'static.stagingost.com'
     else
-      request.host == 'developmentsimpletoken.org'
+      request.host == 'static.developmentost.com'
     end
   end
 

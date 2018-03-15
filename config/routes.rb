@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
   constraints(InitSimpleToken) do
+    get '/' => 'application#handle_redirects_from_simple_token_domain'
+    match '*permalink', to: 'application#handle_redirects_from_simple_token_domain', via: :all
+  end
+
+  constraints(InitStaticOst) do
 
     scope '', controller: 'web/home' do
-      get '/' => :index
+      #get '/' => :index # served from company-web repository
       get '/team' => :about
       get '/about' => :redirect_to_team
       get '/product' => :product

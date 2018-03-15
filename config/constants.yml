@@ -44,3 +44,8 @@ constants:
 
   memcached:
     instances: <%= ENV['STW_MEMCACHED_INSTANCES'] %>
+
+  company_other_product_urls:
+    root_url: <%= ENV['COMPANY_ROOT_URL'] %>
+    kit_root_url: <%= ENV['COMPANY_KIT_ROOT_URL'] %>
+    view_root_url: <%= ENV['COMPANY_VIEW_ROOT_URL'] %>
