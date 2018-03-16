@@ -35,10 +35,8 @@ class ApplicationController < ActionController::Base
   # * Reviewed By:
   #
   def handle_redirects_from_simple_token_domain
-    query_param_to_append = 'onw=1'
     # replace first '/' with ''
     path = request.fullpath.sub('/', '')
-    path = path.include?('?') ? "#{path}&#{query_param_to_append}" : "#{path}?#{query_param_to_append}"
     redirect_to "#{GlobalConstant::Base.company_other_product_urls['root_url']}#{path}", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
