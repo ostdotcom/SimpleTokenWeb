@@ -71,7 +71,7 @@
         <% if params[:action] == 'documents' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" title="Documents"
         <% end %> >Documents</a></li>
-        <li><a href="https://medium.com/simple-token" title="BLOG" target="_blank">BLOG</a></li>
+        <li><a href="https://medium.com/ostdotcom" title="BLOG" target="_blank">BLOG</a></li>
         <li><a
         <% if "#{params[:controller]}::#{params[:action]}" == 'web/token_sale::index' %> class="selected-nav" href="javascript:void(0)"
         <% else %> href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/" title="Token Sale"
