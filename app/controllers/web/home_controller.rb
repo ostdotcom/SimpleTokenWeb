@@ -1,7 +1,7 @@
 class Web::HomeController < Web::BaseController
   layout "web"
 
-  before_action :set_page_meta_info, except: [:redirect_to_team, :ost_circulation]
+  before_action :set_page_meta_info, except: [:redirect_to_team, :ost_circulation, :product]
 
   # Action for the home page index
   #
@@ -65,7 +65,7 @@ class Web::HomeController < Web::BaseController
   # * Reviewed By:
   #
   def product
-    redirect_to '/', status: GlobalConstant::ErrorCode.permanent_redirect and return
+    redirect_to "#{GlobalConstant::Base.company_other_product_urls['root_url']}", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
   # Action for the check page
