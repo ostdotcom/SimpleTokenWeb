@@ -138,7 +138,7 @@ class GetPageMetaInfo < ServicesBase
   # * Reviewed By: Sunil Khedar
   #
   def canonical_url
-    @canonical_url ||= url_without_params.chomp('/')
+    @canonical_url ||= url_without_params.chomp('/').sub('https://static.ost.com/', 'https://ost.com/')
   end
 
   # Remove url parameters
