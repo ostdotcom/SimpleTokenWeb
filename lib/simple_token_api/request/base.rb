@@ -82,7 +82,7 @@ module SimpleTokenApi
       # @return [String] returns BASE API URL
       #
       def base_url
-        Rails.env.development? ? "#{@host}:4000/api/" : "#{@host}/api/"
+        Rails.env.development? ? "#{@host}:8080/api/" : "#{@host}/api/"
       end
 
       # make API Request
