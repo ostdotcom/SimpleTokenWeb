@@ -112,6 +112,7 @@
   <link rel="icon" type="image/png" sizes="96x96" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/16x16.png">
 
+  <%= stylesheet_link_tag 'web/default_simple_token' %>
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
   <% if ['web/user::update_kyc_form', 'web/user::add_kyc_form', 'web/user::login', 'web/user::sign_up', 'web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
