@@ -1,6 +1,6 @@
 class Web::UserController < Web::BaseController
 
-  layout "web"
+  layout "user"
 
   before_action :delete_user_cookie, only: [:sign_up, :login, :reset_password, :change_password]
   before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
