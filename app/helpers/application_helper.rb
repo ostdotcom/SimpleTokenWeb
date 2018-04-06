@@ -62,4 +62,14 @@ module ApplicationHelper
             ['add_branded_token', 'update_branded_token', 'verification_link'].include?(params[:action]))
   end
 
+  # All static pages used in simple token but not a part of kyc
+  #
+  # * Author: Aman
+  # * Date: 06/02/2018
+  # * Reviewed By:
+  #
+  def is_not_a_kyc_page?
+    ['web/home', 'web/token_sale'].include?(params[:controller])
+  end
+
 end
