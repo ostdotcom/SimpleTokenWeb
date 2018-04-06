@@ -49,6 +49,11 @@ $teal:    #84D1D4 !default; // customized
 $cyan:    #438BAD !default; // customized
 $mystic:  #DADFDC !default; // customized
 
+//Custom spaces gray
+$custom-gray-1: #f3f9f4 !default; // customized
+$custom-gray-2: #e5efe8 !default; // customized
+$custom-gray-6: #9ea9a7 !default; // customized
+
 // Theme background colors
 $yellow-bg:   #F9F8E6 !default;
 $grey-bg:     #F6F8FA !default;
@@ -259,8 +264,10 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
-//Custom bottom fotter height
+//Custom sizes
 $bottom-footer-height : 60px !default;
+$checkbox-size        : 22px !default;
+$checkbox-bg-image    : 'https://d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token-sprite1x-v18.png' !default;
 
 
 // Fonts
