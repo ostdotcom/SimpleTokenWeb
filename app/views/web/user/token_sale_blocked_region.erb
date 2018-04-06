@@ -16,32 +16,21 @@
 
     .errorPageContent{
       min-height: calc(100vh - 60px);
+      max-width: 640px;
       padding: 30px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin: 0 auto;
+    }
+
+    img {
+      width: 20%;
+      padding-top: 50px;
+      margin: 0 auto;
     }
 
     @media only screen and (max-width: 767px) {
       img {
-        width: 80%;
+        width: 50%;
       }
-    }
-
-    @media only screen and (min-width: 768px) {
-      img {
-        width: 20%;
-        padding-top: 50px;
-      }
-    }
-
-    .desc2 {
-      letter-spacing: 0.4px;
-      color: #435353;
-      font-size: 20px;
-      font-weight: 300;
-      padding: 10px 300px 20px 300px;
-      margin: 30px 0 20px;
     }
 
     .desc1 {
@@ -49,7 +38,15 @@
       color: #435353;
       font-size: 32px;
       font-weight: 300;
-      margin: 30px 0 20px;
+      padding: 40px 20px 0;
+    }
+
+    .desc2 {
+      letter-spacing: 0.4px;
+      color: #435353;
+      font-size: 20px;
+      font-weight: 300;
+      padding: 10px 20px 40px;
     }
 
     .homeBtn {
@@ -71,7 +68,10 @@
 <div class="errorPageContent">
   <div class="errorPageContentInner">
     <div>
-      <a href="<%= @presenter_obj.header_logo['href'] %>"><img src="<%= @presenter_obj.header_logo['src'] %>" alt="simpletoken" width="<%= @presenter_obj.header_logo['width'] %>" class="simpletoken-logo"/></a>
+      <a href="<%= @presenter_obj.header_logo['href'] %>">
+        <img src="<%= @presenter_obj.header_logo['src'] %>" alt="simpletoken" width="<%= @presenter_obj.header_logo['width'] %>"
+             class="simpletoken-logo"/>
+      </a>
     </div>
 
     <div class="desc1">THE IP YOU ARE TRYING TO CONNECT IS BLOCKED</div>
