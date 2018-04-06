@@ -12,7 +12,7 @@
 //
 
 // stylelint-disable
-$white:    #fff !default;
+$white:    #ffffff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
@@ -22,7 +22,7 @@ $gray-600: #6c757d !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
-$black:    #000 !default;
+$black:    #000000 !default;
 
 $grays: () !default;
 $grays: map-merge((
@@ -41,12 +41,45 @@ $blue:    #007bff !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #28a745 !default;
-$teal:    #20c997 !default;
-$cyan:    #17a2b8 !default;
+$red:     #eb4d4a !default; // customized
+$orange:  #F18543 !default; // customized
+$yellow:  #F6C62B !default; // customized
+$green:   #28a745 !default; // customized
+$teal:    #84D1D4 !default; // customized
+$cyan:    #438BAD !default; // customized
+$mystic:  #DADFDC !default; // customized
+
+// Theme background colors
+$yellow-bg:   #F9F8E6 !default;
+$grey-bg:     #F6F8FA !default;
+$blue-bg:     #F9FDFD !default;
+$teal-bg:     #f9fafa !default;
+$alice-blue:  #f1f5f8 !default; // customized
+
+// Theme blue shades
+$blue-100:  #D9E8EF !default;
+$blue-200:  #D2E3E5 !default;
+$blue-300:  #bfe6e8 !default;
+$blue-400:  #84d1d4 !default;
+$blue-500:  #8EB9CE !default;
+$blue-600:  #819AA1 !default;
+$blue-700:  #6da4a9  !default;
+$blue-800:  #597A84 !default; // font-primary
+$blue-900:  #34445b !default;
+$blue-1000: #595b5e !default;
+
+//Theme green color
+$green-400: #438cad !default;
+$green-500: #5a768c !default;
+
+// Theme yellow shades
+$yellow-300:  #E4B030 !default;
+$yellow-400:  #D9A025 !default;
+$yellow-500:  #c0993a !default;
+$yellow-600:  #af7f19 !default;
+
+$neptune: #6CA3A9 !default;
+
 
 $colors: () !default;
 $colors: map-merge((
@@ -65,8 +98,8 @@ $colors: map-merge((
   "gray-dark":  $gray-800
 ), $colors);
 
-$primary:       $blue !default;
-$secondary:     $gray-600 !default;
+$primary:       $yellow-300 !default;
+$secondary:     $white !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
@@ -144,16 +177,16 @@ $sizes: map-merge((
 // Settings for the `<body>` element.
 
 $body-bg:                   $white !default;
-$body-color:                $gray-900 !default;
+$body-color:                $blue-800 !default;
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                theme-color("primary") !default;
+$link-color:                $blue-800 !default;
 $link-decoration:           none !default;
-$link-hover-color:          darken($link-color, 15%) !default;
-$link-hover-decoration:     underline !default;
+$link-hover-color:          $yellow-500 !default;
+$link-hover-decoration:     none !default;
 
 // Paragraphs
 //
@@ -223,13 +256,16 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
+//Custom bottom fotter height
+$bottom-footer-height : 60px !default;
+
 
 // Fonts
 //
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-sans-serif:      'Quasimoda', Source Sans Pro, sans-serif !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
@@ -242,7 +278,13 @@ $font-weight-light:           300 !default;
 $font-weight-normal:          400 !default;
 $font-weight-bold:            700 !default;
 
-$font-weight-base:            $font-weight-normal !default;
+$font-weight-100:             100 !default;
+$font-weight-200:             200 !default;
+$font-weight-500:             500 !default;
+$font-weight-600:             600 !default;
+
+
+$font-weight-base:            $font-weight-100 !default;
 $line-height-base:            1.5 !default;
 
 $h1-font-size:                $font-size-base * 2.5 !default;

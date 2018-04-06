@@ -4,3 +4,8 @@
 
 // As of now, only variables are overrided
 @import "../../plugins/bootstrap-4/scss/bootstrap";
+
+//Custom overrides for components
+@import "body";
+@import "components/buttons";
+@import "components/forms";

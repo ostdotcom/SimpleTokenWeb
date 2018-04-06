@@ -1,0 +1,84 @@
+.form-group {
+
+  .form-title{
+    color: color('blue-700');
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: $font-weight-normal;
+  }
+
+  .form-label {
+    color: $blue-500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin: 0 0 5px 0;
+    font-weight: $font-weight-600;
+    letter-spacing: 1px;
+  }
+
+  .form-label.disabled {
+    color: $mystic;
+  }
+
+  .form-link{
+    color: $cyan;
+    display: inline-block;
+    border-bottom: 1px solid $cyan;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
+  .form-check-label{
+    color: $gray-600;
+  }
+
+  .form-control{
+    border: 1px solid $gray-400;
+  }
+
+  input::placeholder {
+    color: #cdd7da;
+  }
+
+
+  .general_error {
+    text-align: center;
+  }
+
+  .error{
+    color: color('red');
+    font-size: 0.8rem;
+    height: 0.8rem;
+  }
+
+}
+
+.zxcvbn-group {
+  overflow: hidden;
+
+  .zxcvbn {
+    height: 8px;
+    background: #f2f2f2;
+    float: left;
+    width: 19%;
+    margin: 8px 1% 0 0;
+  }
+  .zxcvbn-0 {
+    background-color: #e7003b;
+  }
+  .zxcvbn-1 {
+    background-color: #ff7a00;
+  }
+  .zxcvbn-2 {
+    background-color: #e6e664;
+  }
+  .zxcvbn-3 {
+    background-color: #a7d646;
+  }
+  .zxcvbn-4 {
+    background-color: #30b3c5;
+  }
+}
+
+

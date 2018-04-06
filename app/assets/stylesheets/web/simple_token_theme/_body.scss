@@ -1,0 +1,13 @@
+@import "variables";
+
+
+// HTML and Body styling
+html ,  body {
+  position: relative;
+  min-height: 100%;
+}
+
+
+body {
+  margin-bottom: $bottom-footer-height;
+}
