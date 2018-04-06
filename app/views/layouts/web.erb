@@ -135,8 +135,11 @@
   <%= yield %>
 </main>
 
-<% if is_simple_token_specific_page? %>
+<% if is_not_a_kyc_page? %>
   <%= render :partial => "/shared/web/common/footer_links" %>
+<% end %>
+
+<% if is_simple_token_specific_page? %>
   <%= render :partial => "/shared/web/common/footer" %>
 <% end %>
 
