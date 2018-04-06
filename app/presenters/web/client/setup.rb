@@ -81,6 +81,10 @@ module Web
         common_data['secondary_button_style']
       end
 
+      def background_gradient_style
+        common_data['background_gradient_style']
+      end
+
       def footer_html
         common_data['footer_html']
       end

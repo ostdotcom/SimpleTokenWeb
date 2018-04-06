@@ -4,7 +4,7 @@
     <div class="col-xs-12">
       <%= render :partial => "/shared/web/common/kycaas_logo_header" %>
       <div class="simple-token-form">
-        <h1 class="text-center form-header">Login to <%= @presenter_obj.account_name.titleize %></h1>
+        <h1 class="text-center form-header">Login to <%= @presenter_obj.account_name %></h1>
 
         <form class="user-form" method="POST" action="/api/user/login" id="userLoginForm">
           <div class="form-group">
