@@ -45,4 +45,20 @@ body {
     }
   }
 
+  .instructions-icon{
+    background: $green-500;
+    text-transform: none;
+    cursor: pointer;
+    color: $white;
+    display: inline-block;
+    padding: 0;
+    height: 18px;
+    width: 18px;
+    vertical-align: middle;
+    span{
+      font-size: 0.85rem;
+      line-height: 18px;
+    }
+  }
+
 }
