@@ -34,8 +34,10 @@
     color: $gray-600;
   }
 
-  .form-control{
+  //TODO Dropdown theming.
+  .form-control .dropdown-toggle {
     border: 1px solid $gray-400;
+    padding-bottom: 5px;
   }
 
   input::placeholder {
@@ -63,6 +65,31 @@
     font-size: 0
   }
 
+  label.upload-file input[type="file"] {
+    position: fixed;
+    top: -1000px;
+  }
+
+  //TODO check for bootstrap default theme
+  .form-instructions {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 25px;
+    padding-left: 15px;
+
+    a {
+      border-bottom: 1px solid $blue-800;
+      &:hover, &:active {
+        border-bottom: 1px solid $yellow-500;
+      }
+    }
+  }
+
+  .badge {
+    background: #6c9ba9;
+    text-transform: none;
+    cursor: pointer;
+  }
 }
 
 .zxcvbn-group {
