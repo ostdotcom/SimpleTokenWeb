@@ -39,6 +39,7 @@
 
   .error {
     font-size: $display4-size;
+    text-transform: uppercase;
     color: color('red');
     padding: 3px 0 0;
     display: block;
