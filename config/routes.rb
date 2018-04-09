@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   constraints(InitSimpleToken) do
     get '/' => 'application#handle_redirects_from_simple_token_domain'
+    get '/ost-in-circulation' => "web/home#ost_circulation"
     match '*permalink', to: 'application#handle_redirects_from_simple_token_domain', via: :all
   end
 
