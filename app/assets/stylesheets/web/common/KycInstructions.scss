@@ -1,3 +1,5 @@
+@import "../../web/simple_token_theme/variables";
+
 .kyc-form{
   .kyc-instructions-title{
     margin-bottom: 25px;
@@ -10,7 +12,7 @@
       display: inline-block;
       margin: 0 0 30px;
       min-width: 125px;
-      @media(min-width: 768px){
+      @media(min-width: 768px){  //TODO map get
         min-width: 155px;
       }
       .instructions-icon{
@@ -20,7 +22,7 @@
         display: inline-block;
         list-style-type: none;
         position: relative;
-        border: dotted 1.5px #6ca3a9;
+        border: dotted 1.5px $green-500;
         .icon-pos{
           position: absolute;
           top: 0;
@@ -31,7 +33,7 @@
         }
       }
       .title-name{
-        color: #6ca3a9;
+        color: $green-500;
         font-size: 14px;
         display: block;
         font-weight: 500;
@@ -44,14 +46,15 @@
       }
     }
   }
+
   .form-instructions{
     padding: 0 0 25px 0;
-    @media(min-width: 737px){
+    @media(min-width: 737px){ //TODO map get
       padding: 20px 0 10px 0;
     }
     &.choose-file-instructions{
       padding: 0 0 0 5px;
-      @media(min-width: 737px){
+      @media(min-width: 737px){ //TODO map get
         padding: 0 0 0 15px;
       }
     }

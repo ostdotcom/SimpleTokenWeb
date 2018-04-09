@@ -1,13 +1,6 @@
 .form-group {
   margin-bottom: 0;
 
-  .form-title{
-    color: color('blue-700');
-    font-size: 1.5rem;
-    text-align: center;
-    font-weight: $font-weight-normal;
-  }
-
   .form-label {
     color: $cyanish-gray;
     text-transform: uppercase;
@@ -41,7 +34,7 @@
   }
 
   input::placeholder {
-    color: #cdd7da;
+    color: $custom-gray-3;
   }
 
   .error {
@@ -74,9 +67,6 @@
   .form-instructions {
     display: inline-block;
     vertical-align: top;
-    padding-top: 25px;
-    padding-left: 15px;
-
     a {
       border-bottom: 1px solid $blue-800;
       &:hover, &:active {
@@ -86,7 +76,7 @@
   }
 
   .badge {
-    background: #6c9ba9;
+    background: $green-500;
     text-transform: none;
     cursor: pointer;
   }

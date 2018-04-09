@@ -6,7 +6,7 @@
       </button>
       <div class="modal-body">
         <div class="verify-content">
-          <div class="heading text-center">I confirm the following</div>
+          <h4 class="mt-4 mb-4 text-center">I confirm the following</h4>
           <% kyc_checkbox_points_html.each_with_index do |line, index| %>
             <div class="checkbox">
               <input type="checkbox" id="p<%= index %>" name="p<%= index %>">
@@ -16,7 +16,9 @@
             </div>
           <% end %>
           <div class="error" data-for="verify_error"></div>
-          <button class="btn-common client-primary-btn verify-btn" title="Verify" id="kycVerify">I Agree</button>
+          <div class="col-12 text-center">
+            <button class="btn btn-primary verify-btn mt-4" title="Verify" id="kycVerify">I Agree</button>
+          </div>
         </div>
         <div class="loader-content" style="display: none">
           <p class="status">Encrypting your data...</p>

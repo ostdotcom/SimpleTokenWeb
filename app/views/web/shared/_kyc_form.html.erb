@@ -269,19 +269,19 @@
 
             <div class="row residence-proof" style="display:none">
               <div class="col-12 col-sm-12">
-                <div class="row form-group mt-4">
+                <div class="row form-group ">
                   <div class="col-12">
                     <label class="form-label" for="residence_proof_file_path">Proof of Residence
                     </label>
                     <div class="file-name"></div>
                   </div>
-                  <div class="col-12">
+                  <div class="col-12 mt-2">
                     <label class="upload-file btn btn-secondary upload-image-btn">
                       <input type="file" title="Residence proof" name="residence_proof_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>
                       <span>choose file</span>
                       <% tabindex_val += 1 %>
                     </label>
-                    <span class="form-instructions display-4 thumbnail-upload-instructions">Please upload a high quality <br/>scan of your proof of residence.<br/> (Min 200kb, JPG/PNG/PDF only)</span>
+                    <span class="form-instructions display-4 thumbnail-upload-instructions choose-file-instructions">Please upload a high quality <br/>scan of your proof of residence.<br/> (Min 200kb, JPG/PNG/PDF only)</span>
                   </div>
                   <div class="error" data-for="residence_proof_file_path"></div>
                 </div>
