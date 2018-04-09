@@ -10,7 +10,7 @@
       <% end %>
 
       <% if !@presenter_obj.has_sale_ended? %>
-        <div class="card  kyc-panel <%= @presenter_obj.kyc_verification_class %>">
+        <div class="card mb-3  kyc-panel <%= @presenter_obj.kyc_verification_class %>">
           <div class="card-body">
             <table>
               <tr>
@@ -32,7 +32,7 @@
         </div>
 
         <% if @presenter_obj.show_ethereum_address_whitelist_status_box? %>
-          <div class="card  kyc-panel approved">
+          <div class="card mb-3 kyc-panel approved">
             <div class="card-body">
               <table>
                 <tr>
@@ -52,7 +52,7 @@
       <% if @presenter_obj.is_st_token_sale_client? %>
 
         <% if !@presenter_obj.is_kyc_denied? %>
-          <div class="card  kyc-panel approved">
+          <div class="card mb-3 kyc-panel approved">
             <div class="card-body">
               <table>
                 <tr>
@@ -69,7 +69,7 @@
           </div>
 
           <% if @presenter_obj.show_bonus_box? %>
-            <div class="card  kyc-panel approved">
+            <div class="card mb-3 kyc-panel approved">
               <div class="card-body">
                 <div style="overflow: hidden">
                   <span class="pull-left">
@@ -129,7 +129,7 @@
 
 
           <% if @presenter_obj.show_community_bonus_box? %>
-            <div class="card  kyc-panel approved">
+            <div class="card mb-3 kyc-panel approved">
               <div class="card-body">
                 <div style="overflow: hidden">
                     <span class="pull-left">
@@ -166,7 +166,7 @@
             <!--community bonus end-->
           <% end %>
 
-          <div class="card  kyc-panel approved">
+          <div class="card mb-3 kyc-panel approved">
             <div class="card-body">
               <div style="overflow: hidden">
                     <span class="pull-left">
@@ -181,7 +181,7 @@
 
           <% if @presenter_obj.no_of_bonus > 1 %>
             <div style="border-top: solid 1px #6c9ba9;margin-bottom: 15px;"></div>
-            <div class="card  kyc-panel approved">
+            <div class="card mb-3 kyc-panel approved">
               <div class="card-body text-center">
                 <div style="font-weight: 500;padding-bottom: 10px">TOTAL BONUSES</div>
                 <div>You will
