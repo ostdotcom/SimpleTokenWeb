@@ -3,5 +3,5 @@
  *= require web/common/Body
  *= require web/common/Buttons
  *= require web/common/Forms
- *= require web/user/Login
+ *= require admin/user/Login
  */

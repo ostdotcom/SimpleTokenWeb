@@ -48,6 +48,7 @@ $green:   #28a745 !default; // customized
 $teal:    #84D1D4 !default; // customized
 $cyan:    #438BAD !default; // customized
 $mystic:  #DADFDC !default; // customized
+$cyanish-gray: #9BAFB5 !default; // customized
 
 //Custom spaces gray
 $custom-gray-1: #f3f9f4 !default; // customized
@@ -73,11 +74,6 @@ $blue-800:  #597A84 !default; // font-primary
 $blue-900:  #34445b !default;
 $blue-1000: #595b5e !default;
 $blue-chill: #6ca3a9 !default;
-
-//Theme green color
-$green-400: #438cad !default;
-$green-500: #5a768c !default;
-$green-600: #9aaaaa !default;
 
 // Theme yellow shades
 $yellow-300:  #E4B030 !default;
@@ -297,10 +293,10 @@ $font-weight-600:             600 !default;
 $font-weight-base:            $font-weight-100 !default;
 $line-height-base:            1.5 !default;
 
-$h1-font-size:                $font-size-base * 2.5 !default;
-$h2-font-size:                $font-size-base * 2 !default;
-$h3-font-size:                $font-size-base * 1.75 !default;
-$h4-font-size:                $font-size-base * 1.5 !default;
+$h1-font-size:                $font-size-base * 2.75 !default;
+$h2-font-size:                $font-size-base * 2.5 !default;
+$h3-font-size:                $font-size-base * 2.25 !default;
+$h4-font-size:                $font-size-base * 1.75 !default;
 $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
 
@@ -308,12 +304,12 @@ $headings-margin-bottom:      ($spacer / 2) !default;
 $headings-font-family:        inherit !default;
 $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
-$headings-color:              inherit !default;
+$headings-color:              $blue-800 !default;
 
-$display1-size:               6rem !default;
-$display2-size:               5.5rem !default;
-$display3-size:               4.5rem !default;
-$display4-size:               3.5rem !default;
+$display1-size:               1.25 !default;       //Customized
+$display2-size:               1.125rem !default;   //Customized
+$display3-size:               0.875rem !default;   //Customized
+$display4-size:               0.75rem !default;    //Customized
 
 $display1-weight:             300 !default;
 $display2-weight:             300 !default;

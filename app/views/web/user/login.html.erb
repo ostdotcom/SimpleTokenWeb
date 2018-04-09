@@ -4,7 +4,7 @@
     <div class="col-12">
       <%= render :partial => "/shared/web/common/kycaas_logo_header" %>
       <div class="simple-token-form">
-        <h2 class="text-center">Login to <%= @presenter_obj.account_name.titleize %></h2>
+        <h3 class="text-center mt-4">Login to <%= @presenter_obj.account_name.titleize %></h3>
 
         <form class="user-form" method="POST" action="/api/user/login" id="userLoginForm">
           <div class="form-group">
@@ -20,7 +20,7 @@
               <input type="password" name="password" id="password" value="" class="form-control" tabindex="2" autocomplete="off">
               <span class="input-group-addon showhide-addon" id="showhide-password"><span class="show-password-eye-icon"></span></span>
             </div>
-            <a href="/reset-password" title="Forgot password?" class="forgot-password" tabindex="3">Forgot password?</a>
+            <a href="/reset-password" title="Forgot password?" class="forgot-password display-4" tabindex="3">Forgot password?</a>
 
             <div class="error" data-for="password"></div>
           </div>
@@ -28,7 +28,7 @@
             <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="3"></div>
             <div class="error text-center" data-for="recaptcha"></div>
           </div>
-          <div class="user-form-footer text-center">
+          <div class="user-form-footer text-center form-group">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
             <button type="submit" class="btn btn-primary" id="userLogin" title="LOGIN" tabindex="4">login</button>
@@ -36,9 +36,10 @@
           </div>
           <% if !@presenter_obj.has_sale_ended? %>
               <div class="user-form-footer login-page-footer text-center">
-                <div class="create-account" tabindex="5">Don’t Have an Account Yet?</div>
-                <a href="/sign-up" class="btn btn-secondary" id="" title="Register To Participate" tabindex="5">register
-                  to participate</a>
+                <div class="create-account mt-2 mb-2" tabindex="5">Don’t Have an Account Yet?</div>
+                <a href="/sign-up" class="btn btn-secondary" id="register-to-participate" title="Register To Participate" tabindex="5">
+                  register to participate
+                </a>
               </div>
           <% end %>
         </form>
