@@ -2,7 +2,6 @@
 
 .sign-up-form {
   min-height: calc(100vh - #{$bottom-footer-height});
-  padding: 30px 0;
   .user-form{
     @media (min-width: 768px) {
       width: 350px;
