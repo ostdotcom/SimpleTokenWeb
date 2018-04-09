@@ -23,7 +23,7 @@
 
         if ($(this).hasClass('openModal')) {
           var jModal = $('#update-warning-modal');
-          //Clear the errors.
+          // Clear the errors.
           simpletoken.utils.errorHandling.clearFormErrors(jModal);
           jModal.modal('show');
         }
@@ -47,6 +47,8 @@
 
       $("#get-deposit-address").click(function (event) {
         if (oThis.showEthereumAddressConfirmModal == 'true') {
+          // Hide loader.
+          $("#user-confirm-loader").hide();
           $('#ethereum-confirm-modal').modal('show');
         }
         else {
@@ -153,10 +155,10 @@
       if (oThis.showEthereumAddressConfirmModal == 'true') {
         var jModal = $('#ethereum-confirm-modal');
         $("#userConfirm").hide();
-        $("#user-confirm-loader").removeClass("hide");
+        $("#user-confirm-loader").show();
       }
       else {
-        $("#user-confirm-loader").removeClass("hide");
+        $("#user-confirm-loader").show();
       }
 
       $.ajax({
@@ -182,7 +184,7 @@
         },
         complete: function () {
           $("#userConfirm").show();
-          $("#user-confirm-loader").addClass("hide");
+          $("#user-confirm-loader").hide();
         }
       });
     },
