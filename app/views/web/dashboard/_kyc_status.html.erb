@@ -1,7 +1,7 @@
 <div class="container-fluid dashboard-page margin35auto">
   <div class="row">
 
-    <div class="col-xs-12">
+    <div class="col-12">
 
       <% if @presenter_obj.show_unable_for_early_purchase_text? %>
         <div class="text-center early-access-purchase">Only users that have preregistered are able to purchase during
@@ -10,37 +10,41 @@
       <% end %>
 
       <% if !@presenter_obj.has_sale_ended? %>
-        <div class="panel panel-default kyc-panel <%= @presenter_obj.kyc_verification_class %>">
-          <table class="panel-body">
-            <tr>
-              <td>
-                <span class="kyc-status-icon-<%= @presenter_obj.kyc_verification_icon_class %> ver-middle"></span>
-                <span class="ver-middle"><%= @presenter_obj.kyc_verification_text %></span>
-              </td>
+        <div class="card  kyc-panel <%= @presenter_obj.kyc_verification_class %>">
+          <div class="card-body">
+            <table>
+              <tr>
+                <td>
+                  <span class="kyc-status-icon-<%= @presenter_obj.kyc_verification_icon_class %> ver-middle"></span>
+                  <span class="ver-middle"><%= @presenter_obj.kyc_verification_text %></span>
+                </td>
 
-              <td>
-                <% if @presenter_obj.is_kyc_pending? %>
-                  <a href="javascript:void(0)" <%= raw 'class="openModal"' if @presenter_obj.show_kyc_update_modal? %> id="kycUpdate">update
-                    kyc</a>
-                <% end %>
-              </td>
+                <td>
+                  <% if @presenter_obj.is_kyc_pending? %>
+                    <a href="javascript:void(0)" <%= raw 'class="openModal"' if @presenter_obj.show_kyc_update_modal? %> id="kycUpdate">update
+                      kyc</a>
+                  <% end %>
+                </td>
 
-            </tr>
-          </table>
+              </tr>
+            </table>
+          </div>
         </div>
 
         <% if @presenter_obj.show_ethereum_address_whitelist_status_box? %>
-          <div class="panel panel-default kyc-panel approved">
-            <table class="panel-body">
-              <tr>
-                <td>
-                  <span class="kyc-status-icon-<%= @presenter_obj.ethereum_address_whitelist_icon_class %> ver-middle"></span>
-                  <span class="ver-middle"><%= @presenter_obj.ethereum_address_whitelist_done? ? 'Ethereum Address Whitelisted' : 'Ethereum Address Whitelisting in Progress' %></span>
-                </td>
-                <td>
-                </td>
-              </tr>
-            </table>
+          <div class="card  kyc-panel approved">
+            <div class="card-body">
+              <table>
+                <tr>
+                  <td>
+                    <span class="kyc-status-icon-<%= @presenter_obj.ethereum_address_whitelist_icon_class %> ver-middle"></span>
+                    <span class="ver-middle"><%= @presenter_obj.ethereum_address_whitelist_done? ? 'Ethereum Address Whitelisted' : 'Ethereum Address Whitelisting in Progress' %></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
         <% end %>
       <% end %>
@@ -48,23 +52,25 @@
       <% if @presenter_obj.is_st_token_sale_client? %>
 
         <% if !@presenter_obj.is_kyc_denied? %>
-          <div class="panel panel-default kyc-panel approved">
-            <table class="panel-body">
-              <tr>
-                <td>
-                  <span class="kyc-status-icon-<%= @presenter_obj.token_name_icon_class %> ver-middle"></span>
-                  <span class="ver-middle"><%= @presenter_obj.token_name_pending? ? 'BT reservation (Optional)' : 'Token Name Reserved' %></span>
-                </td>
-                <td>
-                  <a href="/update-token"><%= @presenter_obj.token_name_pending? ? 'learn more' : 'change name' %></a>
-                </td>
-              </tr>
-            </table>
+          <div class="card  kyc-panel approved">
+            <div class="card-body">
+              <table>
+                <tr>
+                  <td>
+                    <span class="kyc-status-icon-<%= @presenter_obj.token_name_icon_class %> ver-middle"></span>
+                    <span class="ver-middle"><%= @presenter_obj.token_name_pending? ? 'BT reservation (Optional)' : 'Token Name Reserved' %></span>
+                  </td>
+                  <td>
+                    <a href="/update-token"><%= @presenter_obj.token_name_pending? ? 'learn more' : 'change name' %></a>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
 
           <% if @presenter_obj.show_bonus_box? %>
-            <div class="panel panel-default kyc-panel approved">
-              <div class="panel-body">
+            <div class="card  kyc-panel approved">
+              <div class="card-body">
                 <div style="overflow: hidden">
                   <span class="pull-left">
                   <span class="kyc-status-icon-<%= @presenter_obj.bonus_icon_class %> ver-middle"></span>
@@ -123,8 +129,8 @@
 
 
           <% if @presenter_obj.show_community_bonus_box? %>
-            <div class="panel panel-default kyc-panel approved">
-              <div class="panel-body">
+            <div class="card  kyc-panel approved">
+              <div class="card-body">
                 <div style="overflow: hidden">
                     <span class="pull-left">
                     <span class="kyc-status-icon-approved ver-middle"></span>
@@ -160,8 +166,8 @@
             <!--community bonus end-->
           <% end %>
 
-          <div class="panel panel-default kyc-panel approved">
-            <div class="panel-body">
+          <div class="card  kyc-panel approved">
+            <div class="card-body">
               <div style="overflow: hidden">
                     <span class="pull-left">
                     <span class="kyc-status-icon-approved ver-middle"></span>
@@ -175,8 +181,8 @@
 
           <% if @presenter_obj.no_of_bonus > 1 %>
             <div style="border-top: solid 1px #6c9ba9;margin-bottom: 15px;"></div>
-            <div class="panel panel-default kyc-panel approved">
-              <div class="panel-body text-center">
+            <div class="card  kyc-panel approved">
+              <div class="card-body text-center">
                 <div style="font-weight: 500;padding-bottom: 10px">TOTAL BONUSES</div>
                 <div>You will
                   <span style="font-weight: 500">receive <%= @presenter_obj.total_bonus %>% ST bonus</span>

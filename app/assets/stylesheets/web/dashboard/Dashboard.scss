@@ -33,10 +33,9 @@
   .kyc-panel{
     color: #597a84;
     font-weight: 300;
-    .panel-body{
+    table{
       width: 100%;
       td{
-        padding: 15px;
         &:first-child{
           text-align: left;
           padding-right: 0;
@@ -133,7 +132,7 @@
     letter-spacing: 1px;
     font-size: 16px;
     text-transform: uppercase;
-    .panel-body{
+    .card-body{
       padding: 8px 10px;
       text-transform: uppercase;
       background-color: rgba(145, 192, 173, 0.15);
