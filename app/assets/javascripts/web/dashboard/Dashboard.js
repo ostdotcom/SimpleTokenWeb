@@ -23,7 +23,7 @@
 
         if ($(this).hasClass('openModal')) {
           var jModal = $('#update-warning-modal');
-          // Clear the errors.
+          //Clear the errors.
           simpletoken.utils.errorHandling.clearFormErrors(jModal);
           jModal.modal('show');
         }

@@ -222,17 +222,6 @@ class Web::UserController < Web::BaseController
       return
     end
 
-
-    a = {
-       "user_id"=>11043,
-       "kyc_status"=>"approved", #["approved", "denied", "pending"]
-       "admin_action_type"=>"no", # "yes", "no"
-       "token_sale_participation_phase"=>"general_access", #"early_access", "general_access"
-       "whitelist_status"=>"done" # "started", "done", "failed", "unprocessed"
-    }
-
-    service_response.data['user_kyc_data'] = a
-
     @presenter_obj = ::Web::Client::Profile.new(service_response, params)
     set_page_meta_info(@presenter_obj.custom_meta_tags)
   end

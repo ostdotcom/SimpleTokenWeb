@@ -42,9 +42,6 @@ module Web
       end
 
       def user_kyc_data
-        puts
-
-        puts result['user_kyc_data']
         @user_kyc_data ||= result['user_kyc_data']
       end
 
@@ -97,7 +94,7 @@ module Web
       end
 
       def general_access_sale_start_timestamp
-         sale_start_timestamp
+        sale_start_timestamp
       end
 
       def general_access_sale_end_timestamp
@@ -138,8 +135,7 @@ module Web
       end
 
       def can_purchase?
-        # is_kyc_approved? && ethereum_address_whitelist_done? && is_sale_ongoing_for_user?
-        true
+        is_kyc_approved? && ethereum_address_whitelist_done? && is_sale_ongoing_for_user?
       end
 
       def had_sale_begun_for_user?
