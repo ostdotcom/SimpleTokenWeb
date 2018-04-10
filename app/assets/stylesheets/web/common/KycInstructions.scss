@@ -42,6 +42,7 @@
   }
 
   .form-instructions{
+    color: $cyanish-gray;
     padding: 0 0 25px 0;
     @media(min-width:  map-get($grid-breakpoints, "md")){
       padding: 20px 0 10px 0;

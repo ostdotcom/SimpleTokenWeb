@@ -8,10 +8,12 @@
         <div class="verify-content">
           <h4 class="mt-4 mb-4 text-center">I confirm the following</h4>
           <% kyc_checkbox_points_html.each_with_index do |line, index| %>
-            <div class="checkbox">
+            <div class="checkbox mt-2">
               <input type="checkbox" id="p<%= index %>" name="p<%= index %>">
               <label for="p<%= index %>">
-                <%= raw line%>
+                <span class="">
+                  <%= raw line%>
+                </span>
               </label>
             </div>
           <% end %>
