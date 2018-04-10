@@ -14,8 +14,13 @@
     color: $mystic;
   }
 
-  input::placeholder {
-    color: $custom-gray-3;
+  input {
+    &::placeholder,
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder{
+      color: $custom-gray-3;
+    }
   }
 
   .error {
