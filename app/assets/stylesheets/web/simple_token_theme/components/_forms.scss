@@ -4,22 +4,27 @@
   .form-label {
     color: $cyanish-gray;
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: $text4-size;
     margin: 0 0 5px 0;
     font-weight: $font-weight-600;
-    letter-spacing: 2px;
+    letter-spacing: $letter-spacing * 2;
   }
 
   .form-label.disabled {
     color: $mystic;
   }
 
-  input::placeholder {
-    color: $custom-gray-3;
+  input {
+    &::placeholder,
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder{
+      color: $custom-gray-3;
+    }
   }
 
   .error {
-    font-size: $display4-size;
+    font-size: $text4-size;
     color: color('red');
     padding: 3px 0 0;
     display: block;

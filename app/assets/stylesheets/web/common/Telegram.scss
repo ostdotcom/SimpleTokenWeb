@@ -1,39 +1,35 @@
+@import "../../web/simple_token_theme/variables";
+
 .container-telegram{
-  background-color: #91c0ad;
+  background-color: $green-300;
   padding: 20px 0;
   &.token-sale-telegram{
-    background-color: #6c9ba9;
+    background-color: $green-500;
   }
   .content{
-    color: #fff;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.5;
-    text-align: center;
-    margin: 0 auto;
+    color: $white;
     max-width: 500px;
 
     .telegram-connect{
+      font-size: 0;
       min-width: 300px;
       width: 80%;
-      background: #fff;
+      background: $white;
       border-radius: 5px;
-      color: #91c0ad;
+      color: $green-300;
       text-transform: uppercase;
       line-height: 2;
-      font-weight: 600;
+      font-weight: $font-weight-600;
       margin: 30px auto 20px auto;
       position: relative;
-      font-size: 0;
       &.token-sale-telegram-connect{
-        color: #6ca3a9;
+        color: $neptune;
       }
       .left-comp, .right-comp{
-        letter-spacing: 1px;
+        letter-spacing: $letter-spacing;
         display: inline-block;
         width: 125px;
-        font-size: 14px;
-        text-align: center;
+        font-size: $text3-size;
       }
       .left-comp{
         margin-right: 25px;
@@ -49,11 +45,6 @@
       margin-left: -25px;
       margin-top: -25px;
       font-size: 0;
-    }
-  }
-  .telegram-link{
-    &:hover, &:focus{
-      text-decoration: none;
     }
   }
 }
