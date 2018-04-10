@@ -131,7 +131,7 @@
   .time-remain{
     text-transform: uppercase;
     font-weight: $font-weight-500;
-    letter-spacing: 1px;
+    letter-spacing: $letter-spacing;
     .card-body{
       padding: 8px 10px;
       text-transform: uppercase;
