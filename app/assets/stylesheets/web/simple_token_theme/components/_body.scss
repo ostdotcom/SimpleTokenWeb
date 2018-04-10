@@ -19,18 +19,12 @@ body {
     display: none;
   }
 
-  .instructions-icon{
-    background: $green-500;
+  .info-icon{
     cursor: pointer;
-    color: $white;
     padding: 0;
     height: 18px;
     width: 18px;
     vertical-align: middle;
-    span{
-      font-size: 0.85rem;
-      line-height: 18px;
-    }
   }
 
   .navbar-simpletoken{

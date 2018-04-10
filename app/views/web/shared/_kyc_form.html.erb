@@ -228,8 +228,12 @@
                 <div class="row form-group">
                   <div class="col-12">
                     <label class="form-label" for="document_id_file_path">Upload an image of your ID Document
-                      <span class="instructions-icon badge badge-pill badge-secondary">
-                        <span>&#8505;</span>
+                      <span class="badge badge-pill badge-secondary align-middle p-0">
+                        <svg class="info-icon">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                          </switch>
+                        </svg>
                       </span>
                     </label>
                     <div class="file-name display-4 my-1"></div>
@@ -252,8 +256,12 @@
                 <div class="row form-group">
                   <div class="col-12">
                     <label class="form-label" for="selfie_file_path">Upload a picture of you holding your ID Document
-                      <span class="instructions-icon badge badge-pill badge-secondary">
-                        <span>&#8505;</span>
+                      <span class="badge badge-pill badge-secondary align-middle p-0">
+                        <svg class="info-icon">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                          </switch>
+                        </svg>
                       </span>
                     </label>
                     <div class="file-name display-4 my-1"></div>
@@ -389,3 +397,5 @@
 
 
 </script>
+
+<%= render :partial => "/shared/web/common/index_svg_sprite" %>
