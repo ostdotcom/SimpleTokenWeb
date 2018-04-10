@@ -1,4 +1,4 @@
-<% if !@presenter_obj.is_kyc_denied? %>
+<% if true ||  !@presenter_obj.is_kyc_denied? %>
   <div class="container-fluid forgot-eth margin35auto" id="eth-address">
     <div class="row">
       <div class="col-12">
@@ -13,7 +13,7 @@
             <fieldset id="user-eth-address-fieldset" class="user-eth-address">
               <input type="text" name="user_etherenum_address" id="user-eth-address-input" class="user-eth-address-input" 
                       placeholder="Enter the ETH Address you submitted" value="" />
-              <input type="button" id="user-eth-address-validate-btn" class="btn-gold user-eth-address-validate-btn" value="CHECK">
+              <input type="button" id="user-eth-address-validate-btn" class="btn btn-primary user-eth-address-validate-btn" value="CHECK">
             </fieldset>
             <div class="errors-wrap">
               <div class="error" data-for="user_etherenum_address"></div>
