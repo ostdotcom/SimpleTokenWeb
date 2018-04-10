@@ -14,12 +14,6 @@
     color: $mystic;
   }
 
-  //TODO Dropdown theming.
-  .form-control .dropdown-toggle {
-    border: 1px solid $gray-400;
-    padding-bottom: 5px;
-  }
-
   input::placeholder {
     color: $custom-gray-3;
   }

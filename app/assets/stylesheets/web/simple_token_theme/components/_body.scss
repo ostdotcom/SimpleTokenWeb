@@ -27,29 +27,38 @@ body {
     vertical-align: middle;
   }
 
-  .navbar-simpletoken{
-    .navbar-toggler{
-      background-color: #f4f8f9;
-      margin: 0;
-      border: 0;
-      border-radius: 0;
-      padding: 17px;
-      &:focus{
-        outline: none;
-      }
-      .icon-bar{
-        display: block;
-        width: 26px;
-        height: 2px;
-        border-radius: 1px;
-        margin: 5px 0;
-        background-color: #34445b;
+  .content-with-link {
+    a {
+      border-bottom: 1px solid $blue-800;
+      &:hover {
+        border-bottom: 1px solid $yellow-500;
       }
     }
-    @media (max-width: 767px){
-      .navbar-collapse {
-        background-color: #f4f8f9;
-      }
+  }
+
+  .container-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $bottom-footer-height;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1.3px;
+    text-align: center;
+    padding: 20px 10px;
+    color: $custom-gray-6;
+    background: $custom-gray-2;
+
+    @media (max-width: map-get($grid-breakpoints, "md")) {
+      font-size: 10px;
+    }
+
+    a,
+    a:hover,
+    a:active{
+      color: $custom-gray-6;
+      border-bottom: 1px solid $custom-gray-6;
+      text-decoration: none;
     }
   }
 

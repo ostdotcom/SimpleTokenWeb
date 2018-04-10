@@ -1,0 +1,27 @@
+/*****Select picker namespace styling start*****/
+
+.st-selectpicker {
+
+  .dropdown-toggle {
+    border: 1px solid $gray-400;
+    padding: 7px 10px;
+  }
+
+  .dropdown-toggle::after {
+    vertical-align: middle;
+  }
+
+  .bootstrap-select {
+    &> .dropdown-toggle.bs-placeholder {
+      color: $custom-gray-3;
+    }
+  }
+
+  .filter-option {
+    font-size: 14px;
+    vertical-align: middle;
+  }
+
+}
+
+/*****Select picker namespace styling end*****/

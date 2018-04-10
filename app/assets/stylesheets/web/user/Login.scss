@@ -3,7 +3,7 @@
 .sign-up-form {
   min-height: calc(100vh - #{$bottom-footer-height});
   .user-form{
-    @media (min-width: 768px) {
+    @media (min-width: map-get($grid-breakpoints, "md")) {
       width: 350px;
     }
     margin: 25px auto 0;
@@ -54,12 +54,6 @@
     text-align: left;
     &:focus {
       outline: none;
-    }
-  }
-  a{
-    font-weight: $font-weight-500;
-    &:hover , &:focus , &:active {
-      text-decoration: none;
     }
   }
 }
