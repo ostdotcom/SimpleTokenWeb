@@ -2,7 +2,7 @@
   <div class="content">
     <% if !@presenter_obj.has_sale_ended? && !@presenter_obj.has_sale_paused? %>
         <h2 class="header">Token Sale Community Bonus</h2>
-        <p class="lead">When Target is hit, everyone gets 20% ST bonus!</p>
+        <h5 class="lead text-center mt-0">When Target is hit, everyone gets 20% ST bonus!</h5>
     <% end %>
     <%= render :partial => "/shared/web/common/progress" %>
   </div>
