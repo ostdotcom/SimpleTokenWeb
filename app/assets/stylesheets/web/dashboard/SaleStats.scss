@@ -1,17 +1,18 @@
+@import "../../web/simple_token_theme/variables";
 .token-sale-progress{
   padding: 30px 0 0;
   font-size: 0;
   &.signup{
-    background-color: #6c99a6;
+    background-color: $green-600;
   }
   &.dashboard{
    background-color: transparent;
     .header{
-      color: #91c0ad;
+      color: $teal;
     }
     .item{
       margin: 0 0 10px;
-      border: 1px solid #D2D8D3;
+      border: 1px solid $blue-200;
     }
   }
   &.paused-ended{
@@ -33,7 +34,7 @@
   .item{
     padding: 20px 15px;
     border-radius: 5px;
-    background-color: #ffffff;
+    background-color: $white;
     margin: 0 0 30px;
     min-height: 100px;
     display: flex;
@@ -52,7 +53,7 @@
     }
   }
   .item-stats{
-    color: #7f9183;
+    color: $green-700;
     margin-left: 10px;
     text-align: left;
     letter-spacing: 1px;
