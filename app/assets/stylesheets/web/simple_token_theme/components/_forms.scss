@@ -14,19 +14,6 @@
     color: $mystic;
   }
 
-  .form-link{
-    color: $cyan;
-    display: inline-block;
-    border-bottom: 1px solid $cyan;
-    &:hover{
-      text-decoration: none;
-    }
-  }
-
-  .form-check-label{
-    color: $gray-600;
-  }
-
   //TODO Dropdown theming.
   .form-control .dropdown-toggle {
     border: 1px solid $gray-400;
@@ -39,7 +26,6 @@
 
   .error {
     font-size: $display4-size;
-    text-transform: uppercase;
     color: color('red');
     padding: 3px 0 0;
     display: block;
@@ -64,7 +50,6 @@
     top: -1000px;
   }
 
-  //TODO check for bootstrap default theme
   .form-instructions {
     display: inline-block;
     vertical-align: top;

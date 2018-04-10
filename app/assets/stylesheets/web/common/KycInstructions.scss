@@ -12,7 +12,7 @@
       display: inline-block;
       margin: 0 0 30px;
       min-width: 125px;
-      @media(min-width: 768px){  //TODO map get
+      @media(min-width: map-get($grid-breakpoints, "md")){
         min-width: 155px;
       }
       .instructions-icon{
@@ -33,13 +33,7 @@
         }
       }
       .title-name{
-        color: $green-500;
-        font-size: 14px;
-        display: block;
-        font-weight: 500;
-        line-height: 1.2;
-        margin: 10px 0;
-        letter-spacing: 0.6px;
+        font-weight: $font-weight-500;
       }
       .learn-more{
         text-transform: uppercase;
@@ -49,12 +43,12 @@
 
   .form-instructions{
     padding: 0 0 25px 0;
-    @media(min-width: 737px){ //TODO map get
+    @media(min-width:  map-get($grid-breakpoints, "md")){
       padding: 20px 0 10px 0;
     }
     &.choose-file-instructions{
       padding: 0 0 0 5px;
-      @media(min-width: 737px){ //TODO map get
+      @media(min-width: map-get($grid-breakpoints, "md")){
         padding: 0 0 0 15px;
       }
     }

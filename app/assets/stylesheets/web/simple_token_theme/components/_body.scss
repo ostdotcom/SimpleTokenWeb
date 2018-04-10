@@ -2,7 +2,7 @@
 
 
 // HTML and Body styling
-html ,  body {
+html {
   position: relative;
   min-height: 100%;
 }
@@ -17,32 +17,6 @@ body {
 
   .display-none {
     display: none;
-  }
-
-
-  .container-footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: $bottom-footer-height;
-    font-size: 14px;
-    @media (max-width: 767px) {
-      font-size: 10px;
-    }
-    font-weight: $font-weight-light;
-    letter-spacing: 1.3px;
-    text-align: center;
-    padding: 20px 10px;
-    color: $custom-gray-6;
-    background: $custom-gray-2 ;
-    a,
-    a:hover,
-    a:active{
-      color: $custom-gray-6;
-      border-bottom: 1px solid $custom-gray-6;
-      text-decoration: none;
-    }
   }
 
   .instructions-icon{
