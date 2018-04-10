@@ -1,5 +1,7 @@
 @import "../variables";
 
+$icon-dimension : 18px !default;
+
 
 // HTML and Body styling
 html {
@@ -20,11 +22,11 @@ body {
   }
 
   .info-icon{
+    height: $icon-dimension;
+    width: $icon-dimension;
+    vertical-align: middle;
     cursor: pointer;
     padding: 0;
-    height: 18px;
-    width: 18px;
-    vertical-align: middle;
   }
 
   .container-footer{
@@ -32,9 +34,9 @@ body {
     bottom: 0;
     width: 100%;
     height: $bottom-footer-height;
-    font-size: 14px;
-    font-weight: 300;
-    letter-spacing: 1.3px;
+    font-size: $text3-size;
+    font-weight: $font-weight-light;
+    letter-spacing: $letter-spacing * 1.3;
     text-align: center;
     padding: 20px 10px;
     color: $custom-gray-6;
