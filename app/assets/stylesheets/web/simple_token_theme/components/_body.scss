@@ -33,4 +33,30 @@ body {
     }
   }
 
+  .navbar-simpletoken{
+    .navbar-toggler{
+      background-color: #f4f8f9;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      padding: 17px;
+      &:focus{
+        outline: none;
+      }
+      .icon-bar{
+        display: block;
+        width: 26px;
+        height: 2px;
+        border-radius: 1px;
+        margin: 5px 0;
+        background-color: #34445b;
+      }
+    }
+    @media (max-width: 767px){
+      .navbar-collapse {
+        background-color: #f4f8f9;
+      }
+    }
+  }
+
 }
