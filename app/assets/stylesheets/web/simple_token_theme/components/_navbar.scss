@@ -24,5 +24,12 @@
       background-color: $custom-gray-4;
     }
   }
+
+  .nav-link {
+    border-bottom: none;
+    &:hover {
+      border-bottom: none;
+    }
+  }
 }
 /*****Simple token custom nav end*****/

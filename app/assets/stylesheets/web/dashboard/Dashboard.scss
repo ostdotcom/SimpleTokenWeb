@@ -2,9 +2,6 @@
 
 .pause-status{
   margin-top: 20px;
-  a{
-    border-bottom: solid 1px $blue-800;
-  }
 }
 .dashboard-page{
   @media (min-width: map-get($grid-breakpoints, "md")) {
@@ -43,7 +40,6 @@
       border: solid 1px $yellow-300;
     }
     a{
-      border-bottom: 1px solid $blue-800;
       margin-top: 2px;
     }
     .ver-middle{
@@ -103,14 +99,19 @@
     margin: 0px 0 10px;
     font-weight: $font-weight-500;
   }
+
+  .separator-block {
+    border-top: solid 1px $green-500;
+  }
+
+  .font500 {
+    font-weight: $font-weight-500;
+  }
 }
 
 .forgot-eth{
   a{
     padding: 15px 0;
-  }
-  border-bottom-blue-800{
-    border-bottom: solid 1px $blue-800;
   }
 }
 
@@ -137,7 +138,6 @@
     font-weight: $font-weight-500;
     display: inline-block;
     margin-top: 10px;
-    border-bottom: 1px solid $blue-800;
   }
 }
 
@@ -301,3 +301,4 @@
     text-align: center;
   }
 }
+

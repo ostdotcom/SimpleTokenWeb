@@ -27,15 +27,6 @@ body {
     vertical-align: middle;
   }
 
-  .content-with-link {
-    a {
-      border-bottom: 1px solid $blue-800;
-      &:hover {
-        border-bottom: 1px solid $yellow-500;
-      }
-    }
-  }
-
   .container-footer{
     position: absolute;
     bottom: 0;
