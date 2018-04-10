@@ -1,3 +1,5 @@
+@import "../../web/simple_token_theme/variables";
+
 .header{
   color: #6ca3a9;
   font-size: 24px;
@@ -127,12 +129,9 @@
     padding: 20px 0 0;
   }
   .time-remain{
-    border: none;
-    //color: #91c0ad;
-    font-weight: 500;
-    letter-spacing: 1px;
-    font-size: 16px;
     text-transform: uppercase;
+    font-weight: $font-weight-500;
+    letter-spacing: 1px;
     .card-body{
       padding: 8px 10px;
       text-transform: uppercase;

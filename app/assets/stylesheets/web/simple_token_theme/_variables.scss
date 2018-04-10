@@ -79,6 +79,7 @@ $blue-1000: #595b5e !default;
 $blue-chill: #6ca3a9 !default;
 
 //Theme green shades
+$green-300 : #91c0ad!default;
 $green-500 : #6c9ba9!default;
 
 // Theme yellow shades
@@ -306,22 +307,29 @@ $h4-font-size:                $font-size-base * 1.75 !default;
 $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
 
+$text1-size:                  $font-size-base * 1.25  !default;
+$text2-size:                  $font-size-base * 1.125 !default;
+$text3-size:                  $font-size-base * 0.875 !default;
+$text4-size:                  $font-size-base * 0.75  !default;
+
 $headings-margin-bottom:      ($spacer / 2) !default;
 $headings-font-family:        inherit !default;
 $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              $blue-800 !default;
 
-$display1-size:               1.25 !default;       //Customized
-$display2-size:               1.125rem !default;   //Customized
-$display3-size:               0.875rem !default;   //Customized
-$display4-size:               0.75rem !default;    //Customized
+$display1-size:               1.25rem   !default;       //Customized
+$display2-size:               1.125rem  !default;   //Customized
+$display3-size:               0.875rem  !default;   //Customized
+$display4-size:               0.75rem   !default;    //Customized
 
 $display1-weight:             300 !default;
 $display2-weight:             300 !default;
 $display3-weight:             300 !default;
 $display4-weight:             300 !default;
 $display-line-height:         $headings-line-height !default;
+
+$letter-spacing:              1px!default;
 
 $lead-font-size:              ($font-size-base * 1.25) !default;
 $lead-font-weight:            300 !default;
