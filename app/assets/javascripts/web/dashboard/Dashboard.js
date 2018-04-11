@@ -47,8 +47,6 @@
 
       $("#get-deposit-address").click(function (event) {
         if (oThis.showEthereumAddressConfirmModal == 'true') {
-          // Hide loader.
-          $("#user-confirm-loader").hide();
           $('#ethereum-confirm-modal').modal('show');
         }
         else {
