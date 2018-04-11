@@ -62,6 +62,16 @@
 
 }
 
+[data-for="general_error"].error {
+  font-weight: $font-weight-500;
+  font-size: $text4-size;
+  text-align: center;
+  color: color('red');
+  padding: 3px 0 0;
+  display: block;
+  min-height: 25px;
+}
+
 .zxcvbn-group {
   overflow: hidden;
 

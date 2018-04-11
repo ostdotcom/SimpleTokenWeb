@@ -26,7 +26,7 @@
             <div class="error text-center" data-for="recaptcha" ></div>
           </div>
           <div class="checkbox termsConditions form-group">
-            <input style="display:none;" name="terms_of_service" type="checkbox" class="list-item" value="agree" id="agree-and-acknowledge">
+            <input name="terms_of_service" type="checkbox" class="list-item display-none" value="agree" id="agree-and-acknowledge">
             <label for="agree-and-acknowledge" class="termsLinks " tabindex="4">
               <%= raw @presenter_obj.page_data['checkbox_html'] %>
             </label>
@@ -36,7 +36,7 @@
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
             <button type="submit" class="btn btn-primary" id="userSignUp" title="Register" tabindex="5">register</button>
-            <div class="error text-center" data-for="general_error" style="text-align: center"></div>
+            <div class="error text-center" data-for="general_error"></div>
           </div>
           <div class="user-form-footer login-page-footer">
             <div class="create-account mt-2 mb-2" tabindex="5" >Have an Account Already?</div>

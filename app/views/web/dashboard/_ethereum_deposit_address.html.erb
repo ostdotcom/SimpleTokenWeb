@@ -3,25 +3,25 @@
     <div class="row eth-deposit-address" style="background-color: <%= @presenter_obj.page_data['container_background_color'] %>;">
       <div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
         <div class="text-center">
-          <h4 class="header mb-3" id="eth-deposit-address-title">Ethereum Deposit Address
+          <h4 class="header my-3" id="eth-deposit-address-title">Ethereum Deposit Address
             for <%= @presenter_obj.account_name_short %> Public Sale</h4>
-          <h4 class="header mb-3" style="display: none" id="eth-gas-limit-title">
+          <h4 class="header my-3 display-none" id="eth-gas-limit-title">
             <% if @presenter_obj.page_data['early_purchase_ethereum_deposit_text'].present? && @presenter_obj.show_max_limit_for_early_purchase_text? %>
               <%= raw @presenter_obj.page_data['early_purchase_ethereum_deposit_text'] %>
             <% end %>
             <%= raw @presenter_obj.page_data['ethereum_deposit_text_html'] %>
           </h4>
-          <fieldset id="ethereum-deposit-address" class="ethereum-deposit-address" style="display: none">
-            <div style="position:relative;">
+          <fieldset id="ethereum-deposit-address" class="ethereum-deposit-address mt-2 display-none">
+            <div class="position-relative">
               <input type="text" id="ethereum-address-input" class="copy-address-input" placeholder="Ethereum Deposit Address" readonly value=""/>
               <input type="button" id="ethereum-address-copy-btn" class="btn btn-primary copy-address-button hidden-xs" value="Copy">
             </div>
           </fieldset>
 
-          <a href="javascript:void(0)" class="btn btn-primary btn" id="get-deposit-address">GET DEPOSIT
+          <a href="javascript:void(0)" class="btn btn-primary btn mt-2" id="get-deposit-address">GET DEPOSIT
             ADDRESS</a>
           <% if !@presenter_obj.show_ethereum_address_confirm_modal? %>
-            <div class="error" data-for="general_error" style="text-align: center; font-size: 17px;padding-top: 10px;" ></div>
+            <div class="error pt-2" data-for="general_error"></div>
             <img id="user-confirm-loader" class="gif-loader-img hide" src="//d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token_round_loader.gif"/>
           <% end %>
         </div>
@@ -30,7 +30,7 @@
   </div>
 
   <% if @presenter_obj.is_st_token_sale_client? %>
-    <div class="eth-address-links text-center" style="margin: 25px 0">
+    <div class="eth-address-links text-center my-3 py-2">
       <span class="jumbotron-links">
         <a href="https://docs.google.com/document/d/1eFv60FGP39XqkMrtZE5FZK49rQ2QSyH3_TCm0wO5FM0/edit?ts=5a06f473&pli=1" target="_blank" class="link" title="How to Purchase">
           <span class="faq-link-icon icon-pos"></span>
