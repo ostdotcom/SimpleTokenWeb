@@ -9,6 +9,9 @@
   }
   .registration-timer{
     padding: 0 30px;
+    @media (max-width : map-get($grid-breakpoints ,  'sm')) {
+      padding: 0 10px;
+    }
   }
   .kyc-panel{
     margin-bottom: 15px;
