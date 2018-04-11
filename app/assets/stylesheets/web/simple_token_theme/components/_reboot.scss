@@ -5,3 +5,10 @@ a {
     border-bottom: 1px solid $yellow-500;
   }
 }
+
+.border-bottom-none {
+  border-bottom: none;
+  &:hover, &:active {
+    border-bottom: none;
+  }
+}
