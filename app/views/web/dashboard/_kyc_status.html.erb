@@ -21,7 +21,7 @@
 
                 <td>
                   <% if @presenter_obj.is_kyc_pending? %>
-                    <a href="javascript:void(0)" <%= raw 'class="openModal"' if @presenter_obj.show_kyc_update_modal? %> id="kycUpdate">update
+                    <a href="javascript:void(0)" <%= raw 'class="openModal display-3"' if @presenter_obj.show_kyc_update_modal? %> id="kycUpdate">update
                       kyc</a>
                   <% end %>
                 </td>
@@ -61,7 +61,7 @@
                     <span class="ver-middle"><%= @presenter_obj.token_name_pending? ? 'BT reservation (Optional)' : 'Token Name Reserved' %></span>
                   </td>
                   <td>
-                    <a href="/update-token"><%= @presenter_obj.token_name_pending? ? 'learn more' : 'change name' %></a>
+                    <a class="display-3" href="/update-token"><%= @presenter_obj.token_name_pending? ? 'learn more' : 'change name' %></a>
                   </td>
                 </tr>
               </table>
@@ -77,30 +77,30 @@
                     <span class="ver-middle"><%= @presenter_obj.bonus_text %></span>
                 </span>
                   <% if !@presenter_obj.is_bonus_confirmed? || @presenter_obj.multple_bonus_confirmed? %>
-                    <a href="javascript:void(0)" id="prove-support-link" class="collapsed float-right" data-toggle="collapse" data-target="#prove-support-content"><%= @presenter_obj.multple_bonus_confirmed? ? 'DETAILS' : 'LEARN MORE' %></a>
+                    <a href="javascript:void(0)" id="prove-support-link" class="collapsed float-right display-3" data-toggle="collapse" data-target="#prove-support-content"><%= @presenter_obj.multple_bonus_confirmed? ? 'DETAILS' : 'LEARN MORE' %></a>
                   <% end %>
                 </div>
 
                 <% if !@presenter_obj.is_bonus_confirmed? %>
                   <div id="prove-support-content" class="panel-collapse collapse">
                     <div class="prove-support-content">
-                      <h5 class="header">Earn Your 10% Early Access Bonus</h5>
-                      <div class="desc">Join our Telegram Channel and send us a Proof of Support at
+                      <h6 class="header">Earn Your 10% Early Access Bonus</h6>
+                      <div class="desc display-3">Join our Telegram Channel and send us a Proof of Support at
                         community@simpletoken.org
                         to get 10% Bonus on your Early Access purchase.
                       </div>
                       <div class="text-center">
-                        <a href="https://docs.google.com/document/d/1mOQBspEmW3hDLSfu8eG4bmWML79d5yIKIE1yZjsyDRc/edit" target="_blank" title="Learn More">LEARN
+                        <a class="display-3" href="https://docs.google.com/document/d/1mOQBspEmW3hDLSfu8eG4bmWML79d5yIKIE1yZjsyDRc/edit" target="_blank" title="Learn More">LEARN
                           MORE</a>
                       </div>
                     </div>
                     <div class="prove-support-content drop-bonus">
-                      <h5 class="header">Get 10% Altcoin Drop Bonus</h5>
-                      <div class="desc">Earn a 10% Bonus in Altcoin of your choice by purchasing a minimum of 1 ETH
+                      <h6 class="header">Get 10% Altcoin Drop Bonus</h6>
+                      <div class="desc display-3">Earn a 10% Bonus in Altcoin of your choice by purchasing a minimum of 1 ETH
                         in the ST Early Access token sale.
                       </div>
                       <div class="text-center">
-                        <a href="https://docs.google.com/forms/d/1I2mGKs91_HZxIZUNNeO4nqCYDaWmIqE1weazwC7hnvI/viewform?edit_requested=true" target="_blank" title="Learn More">LEARN
+                        <a class="display-3" href="https://docs.google.com/forms/d/1I2mGKs91_HZxIZUNNeO4nqCYDaWmIqE1weazwC7hnvI/viewform?edit_requested=true" target="_blank" title="Learn More">LEARN
                           MORE</a>
                       </div>
                       <div class="text-center mt-3 display-4">*Only one of the bonus
@@ -112,8 +112,8 @@
 
                   <div id="prove-support-content" class="panel-collapse collapse">
                     <div class="prove-support-content">
-                      <h5 class="header">10% Early Access Bonus</h5>
-                      <div class="desc">The #altdrop bonus and the Simple Token Proof of Support bonus cannot be
+                      <h6 class="header">10% Early Access Bonus</h6>
+                      <div class="desc display-3">The #altdrop bonus and the Simple Token Proof of Support bonus cannot be
                         combined.
                         As you qualify for both #altdrop and ST Proof of Support, you can choose which bonus you
                         prefer. We will contact you after the ST token sale ends to clarify your preference.
@@ -136,15 +136,15 @@
                     <span class="kyc-status-icon-approved ver-middle"></span>
                         <span class="ver-middle"><%= @presenter_obj.community_bonus %>% Community Bonus </span>
                     </span>
-                  <a href="javascript:void(0)" id="community-bonus-link" class="collapsed float-right" data-toggle="collapse" data-target="#community-bonus-content">LEARN
+                  <a href="javascript:void(0)" id="community-bonus-link" class="collapsed float-right display-3" data-toggle="collapse" data-target="#community-bonus-content">LEARN
                     MORE</a>
                 </div>
 
 
                 <div id="community-bonus-content" class="panel-collapse collapse">
                   <div class="prove-support-content">
-                    <h5 class="header"></h5>
-                    <div class="desc">When a total of 100M ST have been sold, all purchasers will receive a 20% ST
+                    <h6 class="header"></h6>
+                    <div class="desc display-3">When a total of 100M ST have been sold, all purchasers will receive a 20% ST
                       Target Bonus. The ST Target bonus is on top of all other bonuses that participants have earned.
                     </div>
                     <div class="desc pt-3" >When a total of 120M ST have been sold, all purchasers
@@ -154,7 +154,7 @@
                       will receive a 30% Power Bonus on their purchases. The ST Power bonus replaces the Kicker bonus.
                     </div>
                     <div class="text-center">
-                      <a href="https://medium.com/ostdotcom/simple-token-st-sale-details-important-updates-new-developments-9-november-2017-6fe4aab74831" target="_blank" title="Learn More">LEARN
+                      <a class="display-3" href="https://medium.com/ostdotcom/simple-token-st-sale-details-important-updates-new-developments-9-november-2017-6fe4aab74831" target="_blank" title="Learn More">LEARN
                         MORE</a>
                     </div>
                   </div>
@@ -173,7 +173,7 @@
                     <span class="kyc-status-icon-approved ver-middle"></span>
                         <span class="ver-middle">15% ETH Price Bonus</span>
                     </span>
-                <a href="https://medium.com/ostdotcom/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank" class="float-right">LEARN
+                <a  href="https://medium.com/ostdotcom/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank" class="float-right display-3">LEARN
                   MORE</a>
               </div>
             </div>
