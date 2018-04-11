@@ -130,6 +130,32 @@
   }
 }
 
+.jumbotron-links{
+  a.link{
+    font-weight: $font-weight-500;
+    letter-spacing: 1px;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: none;
+
+
+  }
+  .icon-pos{
+    vertical-align: middle;
+  }
+  .border-btm{
+    vertical-align: middle;
+    border-bottom: solid 1px #597a84;
+    &:hover {
+      border-bottom-color: #c0993a;
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+
 
 .instructions{
   padding: 20px 0 30px;
@@ -204,7 +230,7 @@
     border: none;
     padding: 0 15px;
     font-weight: $font-weight-500;
-    width: 80px;
+    width: 85px;
   }
 }
 
