@@ -15,7 +15,7 @@
         <li class="nav-item mx-2 mx-lg-0"><a <% if params[:action] == 'faq' %> class="selected-nav nav-link" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/faq/" class="nav-link" title="FAQ" target="_blank" <% end %> >FAQ</a></li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item mx-2 mx-lg-0"><a href="javascript:void(0)" class="nav-link"><%= user["email"] %></a></li>
+        <li class="nav-item mx-2 mx-lg-0"><a href="javascript:void(0)" class="nav-link" style="cursor: default"><%= user["email"] %></a></li>
         <li class="nav-item mx-2 mx-lg-0"><a href="/logout" class="nav-link" title="Log out">Log out</a></li>
       </ul>
     </div>
@@ -24,7 +24,7 @@
 
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item mx-2 mx-lg-0"><a href="javascript:void(0)" class="nav-link"><%= user["email"] %></a></li>
+        <li class="nav-item mx-2 mx-lg-0"><a href="javascript:void(0)" class="nav-link" style="cursor: default"><%= user["email"] %></a></li>
         <li class="nav-item mx-2 mx-lg-0"><a href="/logout" class="nav-link" title="Log out">Log out</a></li>
       </ul>
     </div>
