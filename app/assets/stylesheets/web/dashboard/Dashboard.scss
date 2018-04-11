@@ -1,5 +1,7 @@
 @import "../../web/simple_token_theme/variables";
-
+section.dashboard-content{
+  min-height: calc(100vh - 60px);
+}
 .pause-status{
   margin-top: 20px;
 }

@@ -1,3 +1,4 @@
+<section class="dashboard-content">
 <div id="banner-content"></div>
 
 <%= render :partial => "/shared/web/common/loggedin_kycaas_header", locals: {user: @presenter_obj.user} %>
@@ -26,9 +27,10 @@
   <!--<img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 35px auto 30px;display: block;">-->
   <%= render :partial => "/web/dashboard/telegram" %>
 <% end %>
-
+</section>
+<footer class="dashboard-footer">
 <%= render :partial => "/shared/web/common/kycaas_footer" %>
-
+</footer>
 
 <% content_for :end_js do %>
   <script type="text/javascript">
