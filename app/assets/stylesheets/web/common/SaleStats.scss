@@ -1,6 +1,4 @@
 .token-sale-progress{
-  padding: 30px 0 0;
-  font-size: 0;
   &.signup{
     background-color: #6c99a6;
   }
@@ -34,22 +32,21 @@
     padding: 20px 15px;
     border-radius: 5px;
     background-color: #ffffff;
-    margin: 0 0 30px;
     min-height: 100px;
     display: flex;
     align-items: center;
   }
   .item-parent{
-    display: inline-block;
+//    display: inline-block;
     vertical-align: top;
     min-width: 235px;
     font-size: 14px;
-    @media(min-width: 736px){
-      margin-left: 20px;
-      &:first-child{
-        margin-left: 0;
-      }
-    }
+//    @media(min-width: 736px){
+//      margin-left: 20px;
+//      &:first-child{
+//        margin-left: 0;
+//      }
+//    }
   }
   .item-stats{
     color: #7f9183;
