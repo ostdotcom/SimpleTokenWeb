@@ -124,6 +124,7 @@
     <style>
       <%= raw @presenter_obj.primary_button_style %>
       <%= raw @presenter_obj.secondary_button_style %>
+      <%= raw @presenter_obj.background_gradient_style %>
     </style>
   <% end %>
 
@@ -139,7 +140,9 @@
   <%= render :partial => "/shared/web/common/footer_links" %>
 <% end %>
 
-<% if is_simple_token_specific_page? %>
+<% if !is_simple_token_specific_page? %>
+  <%= render :partial => "/shared/web/common/kycaas_footer" %>
+<% else %>
   <%= render :partial => "/shared/web/common/footer" %>
 <% end %>
 

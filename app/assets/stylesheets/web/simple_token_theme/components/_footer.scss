@@ -1,0 +1,41 @@
+/** Footer Default position styling start  **/
+/** IMPORTANT : Nothing more to be added in default-footer-positioning **/
+.default-footer-positioning {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: $bottom-footer-height;
+}
+/** Footer Default position styling end  **/
+
+/** Footer phantom element styling start **/
+.footer-phantom-el {
+  min-height: $bottom-footer-height;
+  @media  (max-width: map-get($grid-breakpoints, "sm")){
+    min-height: $bottom-footer-height * 2;
+  }
+}
+/** Footer phantom element styling end **/
+
+/** Default application footer start  **/
+.container-footer {
+  letter-spacing: $letter-spacing;
+  padding: 20px 10px;
+  font-weight: $font-weight-light;
+  font-size: $text3-size;
+  background: $custom-gray-2;
+  color: $custom-gray-6;
+  text-align: center;
+
+  @media (max-width: map-get($grid-breakpoints, "md")) {
+    font-size: 10px;
+  }
+
+  a, a:hover, a:active{
+    color: $custom-gray-6;
+    border-bottom: 1px solid $custom-gray-6;
+    text-decoration: none;
+  }
+}
+/** Default application footer end **/
