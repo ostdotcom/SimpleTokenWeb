@@ -23,16 +23,15 @@
 /** Default application footer start  **/
 .container-footer {
   letter-spacing: $letter-spacing;
-  padding: 20px 10px;
   font-weight: $font-weight-light;
   background: $custom-gray-2;
   color: $custom-gray-6;
+  padding: 20px 10px;
   text-align: center;
 
-  a, a:hover, a:active{
-    color: $custom-gray-6;
+  a, a:hover, a:active {
     border-bottom: 1px solid $custom-gray-6;
-    text-decoration: none;
+    color: $custom-gray-6;
   }
 }
 /** Default application footer end **/
