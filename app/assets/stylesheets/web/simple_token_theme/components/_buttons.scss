@@ -2,7 +2,7 @@
 .btn{
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: .75rem 1.6rem;
+  padding: .5rem 1.5rem;
   -webkit-transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
   -moz-transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
   transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
@@ -43,6 +43,27 @@
       color: $white;
       border-color: $blue-900;
       background-color: $blue-900;
+    }
+  }
+
+  &.btn-success {
+    border: $btn-border-width solid $green-500;
+    color: $green-500;
+    background-color: $white;
+    &:focus{
+      border: $btn-border-width solid $green-500;
+      background-color: $white;
+      color: $green-500;
+    }
+    &:active{
+      color: $white;
+      border-color: $green-500;
+      background-color: $green-500;
+    }
+    &:hover{
+      color: $white;
+      border-color: $green-500;
+      background-color: $green-500;
     }
   }
 

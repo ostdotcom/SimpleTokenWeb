@@ -15,9 +15,15 @@
   }
 
   input {
-    &::placeholder,
-    &::-webkit-input-placeholder,
-    &::-moz-placeholder,
+    &::placeholder{
+      color: $custom-gray-3;
+    }
+    &::-webkit-input-placeholder{
+      color: $custom-gray-3;
+    }
+    &::-moz-placeholder{
+      color: $custom-gray-3;
+    }
     &:-ms-input-placeholder{
       color: $custom-gray-3;
     }
