@@ -83,14 +83,14 @@
 <section class="container container-sale-details pt-5" id="saledetails">
   <div class="row">
     <div class="col-12 col-lg-10 mx-auto">
-      <h2 class="header text-center mb-5">Sale Details</h2>
+      <h2 class="text-center mb-5">Sale Details</h2>
 
       <div class="row">
         <% sale_details_data.each_with_index do | data, indx | %>
           <div class="col-12 col-sm-6">
             <div class="well">
               <div class="d-inline-block">
-                <h3 class="header-title"><%= data[:heading] %></h3>
+                <h6 class="header-title"><%= data[:heading] %></h6>
                 <div class="desc"><%= data[:description] %></div>
               </div>
               <% if data[:link].present? %>
