@@ -103,6 +103,7 @@ Rails.application.routes.draw do
     get '/change-password' => :change_password
     get '/add-kyc' => :add_kyc_form
     get '/token-sale-blocked-region' => :token_sale_blocked_region
+    get '/' => redirect('/login')
   end
   match '/', to: 'application#not_found', via: :all
 
