@@ -14,10 +14,11 @@
   }
 
   &.navbar{
+    padding: 0 0;
     .nav-item{
-      margin: 0 10px;
+      margin: 0 0.8rem;
       a{
-        padding: 0;
+        padding: .8rem 0 !important;
       }
     }
   }
@@ -56,10 +57,13 @@
       a.nav-link{
         color: #34445b;
         font-weight: 300;
-        font-size: 16px;
+        font-size: 0.8rem;
         letter-spacing: 0.4px;
         text-transform: uppercase;
         padding: 17px 0;
+        @media(min-width: 991px){
+          font-size: 1rem;
+        }
         &:hover, &:focus{
           background-color: transparent;
         }
@@ -166,7 +170,9 @@
       height: 18px;
       width: 18px;
       position: relative;
-      top: 3px;
+      @media(min-width: 991px){
+        top: 3px;
+      }
     }
   }
 }
