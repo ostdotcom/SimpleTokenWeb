@@ -21,19 +21,19 @@
           </a>
           <ul class="dropdown-menu mega-dropdown-menu">
             <li>
-              <a href="<%= GlobalConstant::CompanyOtherProductUrls.kit_root_url %>" class="p-0" title="OST - KIT">
+              <a href="<%= GlobalConstant::Base.company_other_product_urls['kit_root_url'] %>" class="p-0" title="OST - KIT">
                 <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kit-brand-nav-menu.svg" width="80"/>
                 Launch your own Branded Tokens and turn your business into a dynamic ecosystem.
               </a>
             </li>
             <li>
-              <a href="<%= GlobalConstant::CompanyOtherProductUrls.view_root_url %>" class="p-0" title="OST - VIEW" target="_blank">
+              <a href="<%= GlobalConstant::Base.company_other_product_urls['view_root_url'] %>" class="p-0" title="OST - VIEW" target="_blank">
                 <img src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/ost-view-brand-nav-menu.svg" width="86"/>
                 View and analyze transactions across the OpenST side blockchains for a macro view of the OpenST ecosystem.
               </a>
             </li>
             <li>
-              <a href="<%= GlobalConstant::CompanyOtherProductUrls.kyc_root_url %>" class="p-0" title="OST - KYC">
+              <a href="<%= GlobalConstant::Base.company_other_product_urls['kyc'] %>" class="p-0" title="OST - KYC">
                 <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
                 The one place for your team to quickly review and process the KYC applications.
               </a>
@@ -163,7 +163,7 @@
               </a>
             </li>
             <li>
-              <a href="<%= GlobalConstant::CompanyOtherProductUrls.token_sale_url %>" class="nav-svg-link d-flex" title="Token Sale">
+              <a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>" class="nav-svg-link d-flex" title="Token Sale">
                 <svg class="nav-svg">
                   <switch>
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#dropdown-token-sale-icon"></use>
