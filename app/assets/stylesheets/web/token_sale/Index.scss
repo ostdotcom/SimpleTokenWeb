@@ -1,8 +1,4 @@
 .container-jumbotron{
-  @media(min-width: 768px){
-    padding-top: 40px;
-  }
-  padding-bottom: 40px;
   .desc{
     color: #597a84;
     font-size: 16px;
@@ -22,6 +18,26 @@
       letter-spacing: 0.8px;
     }
   }
+
+  .illustration{
+    img{
+      max-width: 490px;
+      margin: 0 auto;
+      display: block;
+      @media (min-width: 768px) and (max-width: 1200px){
+        max-width: 100%;
+      }
+      @media (min-width: 768px) and (max-width: 1000px){
+        max-width: 490px;
+        margin: 0 auto;
+      }
+      @media (max-width: 767px){
+        max-width: 300px;
+        margin: 0 auto;
+      }
+    }
+  }
+
   .logo-desktop{
     max-width: 60%;
   }
@@ -30,8 +46,6 @@
   }
 
   .time-remaining{
-//    background-color: rgba(145, 192, 173, 0.1);
-//    padding: 5px;
     margin: 5px 0 20px 0;
     text-align: center;
     color: #91c0ad;
@@ -60,6 +74,13 @@
   .btn-top-bottom-15{
     margin: 15px 10px;
   }
+}
+
+.container-jumbotron-desc {
+  background: #6C99A6;
+  padding-top: 90px;
+  padding-bottom: 30px;
+  margin-top: -50px;
 }
 
 .container-progress {
