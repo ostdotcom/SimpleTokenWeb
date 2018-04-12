@@ -7,7 +7,7 @@ html {
 body {
 
   #site-content {
-    min-height: 100vh #{$bottom-footer-height};
+    min-height: calc(100vh - #{$bottom-footer-height});
   }
 
   .display-none {
@@ -20,6 +20,27 @@ body {
     vertical-align: middle;
     cursor: pointer;
     padding: 0;
+  }
+
+  .container-footer {
+    font-size: $text3-size;
+    font-weight: $font-weight-light;
+    letter-spacing: $letter-spacing;
+    text-align: center;
+    padding: 20px 10px;
+    color: $custom-gray-6;
+    background: $custom-gray-2;
+
+    @media (max-width: map-get($grid-breakpoints, "md")) {
+      font-size: $text4-size;
+    }
+
+    a,
+    a:hover,
+    a:active{
+      color: $custom-gray-6;
+      border-bottom: 1px solid $custom-gray-6;
+    }
   }
 
 }
