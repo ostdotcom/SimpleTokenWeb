@@ -1,6 +1,22 @@
 @import "../../web/simple_token_theme/variables";
 .container-jumbotron{
 
+  .desc{
+    color: $blue-800;
+    font-size: $font-size-base;
+    font-weight: $font-weight-light;
+    padding: 10px 0 15px 0;
+    line-height: 1.5;
+    letter-spacing: $letter-spacing * 0.8;
+    h1{
+      font-weight: $font-weight-600;
+      color: $blue-800;
+      font-size: $text2-size;
+      line-height: 1.5;
+      letter-spacing: $letter-spacing * 0.8;
+    }
+  }
+
   .links-box{
     border: solid 1px #f1f8f5;
   }
@@ -31,25 +47,63 @@
     display: none;
   }
 
+  .time-remaining{
+    margin: 5px 0 20px 0;
+    text-align: center;
+    color: $green-300;
+    font-weight: $font-weight-600;
+    letter-spacing: $letter-spacing  * 2;
+    text-transform: uppercase;
+  }
+
+  .registration-timer{
+    padding: 30px 0;
+    border-radius: 5px;
+    background-color: #f1f8f5;
+    h2{
+      margin-top: 0;
+      font-size: $text3-size;
+      color: $green-700;
+      padding-bottom: 0;
+    }
+    .countdown{
+      @media (min-width: 768px) {
+        width: 75%;
+        margin: 0 auto;
+      }
+    }
+  }
+  .btn-top-bottom-15{
+    margin: 15px 10px;
+  }
+
 }
 
 a.link{
-  font-weight: $font-weight-500;
-  letter-spacing: $letter-spacing;
-  font-size: $text4-size;
+  color: #597a84;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 12px;
   display: inline-block;
   text-transform: uppercase;
   &:hover{
+    color: #c0993a;
+    text-decoration: none;
     .border-btm{
-      border-bottom: 1px solid $yellow-500;
+      border-bottom: 1px solid #c0993a;
     }
+  }
+  &:focus{
+    color: #597a84;
+    text-decoration: none;
+    border-bottom: none;
   }
   .icon-pos{
     vertical-align: middle;
   }
   .border-btm{
     vertical-align: middle;
-    border-bottom: solid 1px $blue-800;
+    border-bottom: solid 1px #597a84;
   }
 }
 
@@ -60,8 +114,38 @@ a.link{
   margin-top: -50px;
 }
 
+.container-progress {
+  text-align: center;
+  margin: 0 auto;
+  &.gradient{
+    background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 50px, #ffffff 100%);
+  }
+  h2.header {
+    color: $neptune;
+    font-weight: $font-weight-light;
+    line-height: 1.5;
+    margin-top: 50px;
+    font-size: 38px;
+    letter-spacing: $letter-spacing * 1.3;
+    text-align: center;
+  }
+  p.lead {
+    color: $neptune;
+    font-weight: $font-weight-500;
+    line-height: 1.5;
+    margin-top: 0;
+    font-size: $text1-size;
+    letter-spacing: $letter-spacing * 1.3;
+    text-align: center;
+    a{
+      color: $neptune;
+      border-bottom: 1px solid $neptune;
+    }
+  }
+}
+
 // Mobile portrait, landscape
-@media (max-width: 991px) {
+@media (max-width: map-get($grid-breakpoints , 'lg')) {
 
   .container-jumbotron{
 
@@ -90,6 +174,19 @@ a.link{
 
 
 .container-sale-details{
+  .header{
+    color: $neptune;
+    margin-top: 0;
+    letter-spacing: $letter-spacing * 1.3;
+    font-weight: $font-weight-light;
+  }
+  .desc{
+    font-size: $font-size-base;
+    line-height: 1.4;
+    letter-spacing: $letter-spacing * 0.2;
+    color: $blue-800;
+    font-weight: $font-weight-light;
+  }
   .well{
     padding: 15px;
     border: none;
@@ -99,23 +196,23 @@ a.link{
     position: relative;
     background-color: rgba(244, 248, 246, 0.8);
     .header-title{
-      font-weight: 300;
+      font-weight: $font-weight-light;
       text-transform: uppercase;
     }
     .desc{
-      font-size: 18px;
-      font-weight: 500;
-      color: #597a84;
+      font-size: $text2-size;
+      font-weight: $font-weight-500;
+      color: $blue-800;
     }
     .setdate{
-      color: #597a84;
-      font-weight: 300;
+      color: $blue-800;
+      font-weight: $font-weight-light;
       text-align: right;
       padding-bottom: 8px;
     }
     .soft-cap-status{
-      color: #597a84;
-      font-weight: 500;
+      color: $blue-800;
+      font-weight: $font-weight-500;
       font-size: 16px;
       position: absolute;
       top: 15px;
@@ -126,11 +223,11 @@ a.link{
     }
   }
   .details-link{
-    color: #597a84;
+    color: $blue-800;
     margin-left: 10px;
     font-weight: 300;
     display: inline-block;
-    border-bottom: 1px solid #597a84;
+    border-bottom: 1px solid $blue-800;
     &:hover, &:focus{
       text-decoration: none;
     }
@@ -138,12 +235,12 @@ a.link{
   &.container-faqs{
     .header-title{
       text-transform: none;
-      font-size: 20px;
-      font-weight: 500;
+      font-size: $text1-size;
+      font-weight: $font-weight-500;
     }
     .desc{
-      font-weight: 300;
-      font-size: 16px;
+      font-weight: $font-weight-light;
+      font-size: $font-size-base;
       line-height: 1.5;
     }
   }
@@ -151,22 +248,22 @@ a.link{
 
 .container-bonus-details{
   .header{
-    color: #6ca3a9;
+    color: $neptune;
     margin-top: 0;
     margin-bottom: 30px;
     font-size: 38px;
-    letter-spacing: 1.3px;
-    font-weight: 300;
+    letter-spacing: $letter-spacing * 1.3;
+    font-weight: $font-weight-light;
   }
   .sub-title{
-    font-size: 18px;
-    font-weight: 500;
-    color: #597a84;
+    font-size: $text2-size;
+    font-weight: $font-weight-500;
+    color: $blue-800;
   }
   .desc{
-    font-weight: 300;
-    color: #597a84;
-    font-size: 16px;
+    font-weight: $font-weight-light;
+    color: $blue-800;
+    font-size: $font-size-base;
     margin: 10px 0 30px;
   }
   .well{
@@ -177,12 +274,12 @@ a.link{
     margin-bottom: 15px;
     background-color: rgba(244, 248, 246, 0.8);
     .text-line{
-      color: #597a84;
-      font-weight: 300;
-      font-size: 16px;
-      letter-spacing: 0.6px;
+      color: $blue-800;
+      font-weight: $font-weight-light;
+      font-size: $font-size-base;
+      letter-spacing: $letter-spacing * 0.6;
       .text-bold{
-        font-weight: 500;
+        font-weight: $font-weight-500;
       }
     }
   }
@@ -190,11 +287,11 @@ a.link{
 
 .container-why, .container-token-key-dates{
   .header{
-    color: #6ca3a9;
+    color: $neptune;
     line-height: 1.5;
     font-size: 38px;
-    font-weight: 300;
-    letter-spacing: 1.3px;
+    font-weight: $font-weight-light;
+    letter-spacing: $letter-spacing * 1.3;
   }
 
   .illustration{
@@ -202,7 +299,7 @@ a.link{
       border: none;
       background: rgba(255, 255, 255, 0.9);
       box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
-      color: #34445b;
+      color: $blue-900;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -219,18 +316,18 @@ a.link{
         svg{
           width:100%;
           height:100%;
-          fill: #34445b;
+          fill: $blue-900;
         }
       }
 
       &:hover{
         .play{
           .svg{
-            fill: #e4b030;
+            fill: $yellow-300;
           }
         }
         span{
-          color: #e4b030;
+          color: $yellow-300;
         }
       }
     }
@@ -245,8 +342,8 @@ a.link{
 
   .copy{
     h3{
-      font-size: 20px;
-      color: #6ca3a9;
+      font-size: $text1-size;
+      color: $neptune;
       line-height: 1.2;
     }
   }
@@ -260,7 +357,7 @@ a.link{
       vertical-align: top;
       &:last-child{
         padding: 13px 20px;
-        @media (min-width: 768px) {
+        @media (min-width: map-get($grid-breakpoints , "md")) {
           margin-left: 30px;
         }
       }
@@ -271,11 +368,11 @@ a.link{
   }
 
   .desc{
-    font-size: 16px;
+    font-size: $font-size-base;
     line-height: 1.4;
-    letter-spacing: 0.2px;
-    color: #597a84;
-    font-weight: 300;
+    letter-spacing: $letter-spacing * 0.2;
+    color: $blue-800;
+    font-weight: $font-weight-light;
   }
 }
 
@@ -284,7 +381,7 @@ a.link{
   margin-top: -80px;
   .ribbon{
     background: #1b95e0;
-    color: #ffffff;
+    color: $white;
     border-radius: 5px 0 0 5px;
     box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.15);
     padding: 5px 10px 0px 10px;
@@ -300,7 +397,7 @@ a.link{
   left: 0;
   top: 0;
   z-index: 100;
-  background-color: #ffffff;
+  background-color: $white;
 }
 
 .paddingTop57{
@@ -315,7 +412,7 @@ a.link{
 }
 
 // Mobile portrait, landscape
-@media (max-width: 767px) {
+@media (max-width: map-get($grid-breakpoints , "md")) {
   .no-mobile{
     display: none !important;
   }
@@ -335,7 +432,7 @@ a.link{
 }
 
 .side-by-side-content{
-  @media (min-width: 768px) {
+  @media (min-width: map-get($grid-breakpoints , "md")) {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -349,7 +446,7 @@ a.link{
 }
 
 .kyc-process-time{
-  color: #fff;
+  color: $white;
   background-color: #F5A623;
   padding: 5px;
   display: inline-block;
