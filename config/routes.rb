@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       get '/documents' => :documents
       get '/partners' => :partners
       # get '/ip-checker' => :check
-      get '/ost-in-circulation' => :ost_circulation
+      # get '/ost-in-circulation' => :ost_circulation
     end
 
     scope '', controller: 'web/marketing' do
