@@ -6,6 +6,10 @@ html {
 
 body {
 
+  #site-content {
+    min-height: 100vh #{$bottom-footer-height};
+  }
+
   .display-none {
     display: none;
   }
