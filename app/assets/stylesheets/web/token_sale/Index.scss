@@ -17,7 +17,17 @@
     }
   }
 
-  .links-box{
+  .btn-jumbotron{
+    border-width: 2px;
+    min-width: 200px;
+    line-height: 100%;
+    padding: 0.85rem 1.6rem;
+    &:focus{
+      border-width: 2px;
+    }
+  }
+
+  .links-box {
     border: solid 1px #f1f8f5;
   }
 
