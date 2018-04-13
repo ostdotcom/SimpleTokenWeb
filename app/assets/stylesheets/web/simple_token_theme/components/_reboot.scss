@@ -7,8 +7,8 @@ a {
 }
 
 .border-none {
-  border-bottom: none;
+  border: none;
   &:hover, &:active {
-    border-bottom: none;
+    border: none;
   }
 }
