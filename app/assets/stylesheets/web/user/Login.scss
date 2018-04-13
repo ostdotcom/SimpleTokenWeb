@@ -1,7 +1,6 @@
 @import "../../web/simple_token_theme/variables";
 
 .sign-up-form {
-  min-height: calc(100vh - #{$bottom-footer-height});
   .user-form{
     @media (min-width: map-get($grid-breakpoints, "md")) {
       width: 350px;

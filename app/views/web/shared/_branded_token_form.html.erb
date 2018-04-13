@@ -4,13 +4,13 @@
     <div class="col-12 col-md-8 col-lg-5 mx-auto">
       <div class="simple-token-form text-center">
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
-        <h2 class="my-4">Reserve your branded token name</h2>
-        <p class="my-4">The OpenST protocol enables companies to launch their own branded tokens powered by ST. You can reserve a branded token name now for future use. This step is optional.</p>
+        <h4 class="mt-4 mb-2">Reserve your branded token name</h4>
+        <p class="mb-4">The OpenST protocol enables companies to launch their own branded tokens powered by ST. You can reserve a branded token name now for future use. This step is optional.</p>
         <form class="user-form" method="POST" action="/api/user/bt-submit" id="userBtForm">
           <div class="form-group">
-            <label class="form-label" for="token_name">desired bt name</label>
+            <label class="form-label float-left" for="token_name">desired bt name</label>
             <input type="text" name="bt_name" id="token_name" class="form-control" autofocus tabindex="1" value="<%= user['bt_name'] %>" autocomplete="off">
-            <div class="error" data-for="bt_name"></div>
+            <div class="error" style="text-align: left;" data-for="bt_name"></div>
           </div>
           <p class="mb-4">All name reservations are
             subject to approval from the OpenST Foundation and Trademark rights. For more details refer to
@@ -24,7 +24,7 @@
           <% if is_update %>
             <a href="/dashboard" class="btn btn-secondary upload-image-btn mb-3" title="back" tabindex="3">back</a>
           <% else %>
-            <button id="btSkip" class=" btn btn-secondary upload-image-btn done-btn mb-3" title="skip" tabindex="3">skip</button>
+            <button id="btSkip" class=" btn btn-secondary upload-image-btn mb-3" title="skip" tabindex="3">skip</button>
           <% end %>
           <div class="error" data-for="general_error"></div>
         </form>

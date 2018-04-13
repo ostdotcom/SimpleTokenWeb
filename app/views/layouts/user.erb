@@ -97,20 +97,25 @@
   </script>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="64x64" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/64x64.png"/>
-  <link rel="apple-touch-icon" sizes="57x57" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/16x16.png">
+
+  <% if !is_simple_token_specific_page? && !@presenter_obj.is_st_token_sale_client? %>
+    <link rel="icon" href="<%= @presenter_obj.header_logo['src'] %>"/>
+  <% else %>
+    <link rel="icon" type="image/png" sizes="64x64" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/64x64.png"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/16x16.png">
+  <% end %>
 
   <%= stylesheet_link_tag 'web/default_simple_token' %>
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
@@ -124,6 +129,7 @@
     <style>
       <%= raw @presenter_obj.primary_button_style %>
       <%= raw @presenter_obj.secondary_button_style %>
+      <%= raw @presenter_obj.background_gradient_style %>
     </style>
   <% end %>
 
@@ -131,17 +137,25 @@
 
 <body contenteditable="false">
 
-<main id="site-content" class="<%= yield (:gradient_class) %>">
-  <%= yield %>
+<main id="site-content" >
+
+  <div class="main-content <%= yield (:gradient_class) %>">
+    <%= yield %>
+  </div>
+
+  <% if is_not_a_kyc_page? %>
+    <%= render :partial => "/shared/web/common/footer_links" %>
+  <% end %>
+
 </main>
 
-<% if is_not_a_kyc_page? %>
-  <%= render :partial => "/shared/web/common/footer_links" %>
-<% end %>
-
-<% if is_simple_token_specific_page? %>
+<!--IMPORTANT Footer should always be outside site content start-->
+<% if !is_simple_token_specific_page? %>
+  <%= render :partial => "/shared/web/common/kycaas_footer" %>
+<% else %>
   <%= render :partial => "/shared/web/common/footer" %>
 <% end %>
+<!--IMPORTANT Footer should always be outside site content start-->
 
 <%= javascript_include_tag "web/common-user" %>
 <%= javascript_include_tag "#{specific_manifest_file_path}" if has_specific_js_manifest_file? %>
