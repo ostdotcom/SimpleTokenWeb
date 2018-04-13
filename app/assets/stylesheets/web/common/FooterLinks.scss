@@ -2,7 +2,7 @@
   background-color: #f4f8f9;
   padding-top: 20px;
   padding-bottom: 20px;
-  h5{
+  h6{
     color: #597a84;
     font-weight: 700;
   }
@@ -16,6 +16,7 @@
     font-size: 14px;
     a{
       color: #597a84;
+      border-bottom: none;
       &:hover{
         color: #E4B030;
         text-decoration: none;

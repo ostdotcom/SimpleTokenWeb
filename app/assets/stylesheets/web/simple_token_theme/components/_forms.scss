@@ -1,6 +1,13 @@
 .form-group {
   margin-bottom: 0;
 
+  .form-control{
+    &:focus{
+      border-color: $cyanish-gray;
+      box-shadow: none;
+    }
+  }
+
   .form-label {
     color: $cyanish-gray;
     text-transform: uppercase;

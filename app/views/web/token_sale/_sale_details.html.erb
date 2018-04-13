@@ -80,16 +80,17 @@
      ]
   %>
 <% end %>
-<div class="container container-sale-details paddingTop57" id="saledetails">
+<section class="container container-sale-details pt-5" id="saledetails">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+    <div class="col-12 col-lg-10 mx-auto">
+      <h2 class="header text-center mb-5">Sale Details</h2>
+
       <div class="row">
-        <h2 class="header text-center">Sale Details</h2>
         <% sale_details_data.each_with_index do | data, indx | %>
-          <div class="col-xs-12 col-sm-6">
+          <div class="col-12 col-sm-6">
             <div class="well">
-              <div style="display: inline-block">
-                <h3 class="header-title"><%= data[:heading] %></h3>
+              <div class="d-inline-block">
+                <h6 class="header-title"><%= data[:heading] %></h6>
                 <div class="desc"><%= data[:description] %></div>
               </div>
               <% if data[:link].present? %>
@@ -115,21 +116,21 @@
       </div>
     </div>
   </div>
-  <div class="desc text-center" style="margin: 20px 0 0">
-    * Public sale 15% discretionary bonus based on ETH fluctuations.<a href="https://medium.com/ostdotcom/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" class="details-link" target="_blank" title="Learn more">Learn more</a>.
+  <div class="desc text-center mt-4">
+    * Public sale 15% discretionary bonus based on ETH fluctuations.<a href="https://medium.com/ostdotcom/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" class="link ml-2" target="_blank" title="Learn more">Learn more</a>.
   </div>
-  <div class="row text-center" style="margin-top: 30px">
+  <div class="text-center mt-3">
     <span class="jumbotron-links">
-      <a href="https://drive.google.com/file/d/0B1E_xJPbELBKblpNak8xQS1WelU/view" target="_blank" title="Datasheet" class="link">
+      <a href="https://drive.google.com/file/d/0B1E_xJPbELBKblpNak8xQS1WelU/view" target="_blank" title="Datasheet" class="link border-none mt-2">
         <span class="data-sheet-link-icon icon-pos"></span>
         <span class="border-btm">Datasheet</span>
       </a>
     </span>
     <span class="jumbotron-links">
-      <a href="https://drive.google.com/file/d/0B1E_xJPbELBKeU9pUk5uSnNqWFU/view" target="_blank" title="Terms And Conditions" class="link">
+      <a href="https://drive.google.com/file/d/0B1E_xJPbELBKeU9pUk5uSnNqWFU/view" target="_blank" title="Terms And Conditions" class="link border-none mt-2 ml-3">
         <span class="terms-conditions-link-icon icon-pos"></span>
         <span class="border-btm">Terms And Conditions</span>
       </a>
     </span>
   </div>
-</div>
+</section>
