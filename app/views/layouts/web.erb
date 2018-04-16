@@ -130,11 +130,28 @@
       <%= raw @presenter_obj.secondary_button_style %>
       <%= raw @presenter_obj.background_gradient_style %>
     </style>
+
+    <% if @presenter_obj.gtm_pixel.present? %>
+      <%= render :partial => "/shared/web/thirdparty/gtm_config.erb" %>
+    <% end %>
+
+    <% if @presenter_obj.fb_pixel.present? %>
+      <%= render :partial => "/shared/web/thirdparty/fb_config.erb" %>
+    <% end %>
+
   <% end %>
 
 </head>
 
 <body contenteditable="false">
+
+<% if !is_simple_token_specific_page? && @presenter_obj.gtm_pixel.present? %>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<%= @presenter_obj.gtm_pixel['id'] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+<% end %>
 
 <main id="site-content" class="<%= yield (:gradient_class) %>">
   <%= yield %>

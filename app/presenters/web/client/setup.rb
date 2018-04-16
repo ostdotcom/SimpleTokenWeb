@@ -69,6 +69,14 @@ module Web
         common_data['blacklisted_countries'] || []
       end
 
+      def gtm_pixel
+        common_data['gtm_pixel']
+      end
+
+      def fb_pixel
+        common_data['fb_pixel']
+      end
+
       def header_logo
         common_data['header']['logo']
       end
