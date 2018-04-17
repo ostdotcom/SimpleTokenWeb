@@ -2,6 +2,10 @@
 
 .st-selectpicker {
 
+  .bootstrap-select .dropdown-toggle:focus {
+    outline: none!important;
+  }
+
   .dropdown-toggle {
     background-color: inherit;
     border: 1px solid $gray-400;
