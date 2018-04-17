@@ -7,7 +7,7 @@
   -moz-transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
   transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
 
-  &:focus {
+  &:focus , &:not(:disabled):not(.disabled):active:focus {
     outline: none;
     text-decoration: none;
     box-shadow: none;
@@ -48,7 +48,7 @@
   }
 }
 
-.btn-success {
+&.btn-success {
   border: $btn-border-width solid $green-500;
   color: $green-500;
   background-color: $white;
