@@ -18,26 +18,26 @@
 
 <div class="container" style="padding-bottom: 80px">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
       <%= render :partial => "/shared/web/common/kycaas_logo_header" %>
 
       <div class="simple-token-form">
         <form class="simpletoken-form kyc-form" action="/api/user/kyc-submit" method="POST" id="kycForm">
-          <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+          <div class="col-12 col-sm-12 col-lg-8 mx-auto">
             <% if is_update %>
-              <h1 class="text-center form-header" style="margin-bottom: 10px">Update Your Registration Details</h1>
+              <h4 class="text-center mt-4 mb-2" >Update Your Registration Details</h4>
             <% else %>
-              <h1 class="text-center form-header" style="margin-bottom: 10px">One Step Away to Access the Token
-                Sale</h1>
+              <h4 class="text-center mt-4 mb-2" >One Step Away to Access the Token
+                Sale</h4>
             <% end %>
-            <div class="kyc-instructions-title">You will need the following items to complete the registration</div>
+            <h6 class="kyc-instructions-title text-center mt-2">You will need the following items to complete the registration</h6>
             <% if @presenter_obj.is_st_token_sale_client? %>
               <ul class="kyc-instructions text-center">
                 <li class="text-center">
                 <span class="instructions-icon">
                   <span class="kyc-instructions-passport-icon icon-pos"></span>
                 </span>
-                  <span class="title-name">Your<br/>ID Document</span>
+                  <div class="title-name display-3 my-2">Your<br/>ID Document</div>
                   <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit?pli=1#heading=h.1fb4f8e93alc" class="learn-more ext-links" title="Learn More" target="_blank">Learn
                     More</a>
                 </li>
@@ -45,7 +45,7 @@
                 <span class="instructions-icon">
                   <span class="kyc-instructions-camera-icon icon-pos"></span>
                 </span>
-                  <span class="title-name">Camera or<br/>smartphone</span>
+                  <div class="title-name display-3 my-2">Camera or<br/>smartphone</div>
                   <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit?pli=1#heading=h.1fb4f8e93alc" class="learn-more ext-links" title="Learn More" target="_blank">Learn
                     More</a>
                 </li>
@@ -53,7 +53,7 @@
                 <span class="instructions-icon">
                   <span class="kyc-instructions-public-ethereum-icon icon-pos"></span>
                 </span>
-                  <span class="title-name">Your Public<br/>Ethereum address</span>
+                  <div class="title-name display-3 my-2">Your Public<br/>Ethereum address</div>
                   <a href="https://docs.google.com/document/d/1WVPQyUZgul81MoF2DkmsAeA6vPpKJ8vtjS53GWeSov4/edit?pli=1#bookmark=id.kcpwvfqta37k" class="learn-more ext-links" title="Learn More" target="_blank">Learn
                     More</a>
                 </li>
@@ -61,17 +61,17 @@
             <% end %>
 
             <div class="row">
-              <div class="col-xs-12 col-sm-6">
+              <div class="col-12 col-sm-6">
                 <div class="form-group">
-                  <label for="first_name">First name</label>
+                  <label class="form-label" for="first_name">First name</label>
                   <input type="text" title="First name" class="form-control" name="first_name" value="" tabindex="<%= tabindex_val %>" autofocus="" autocomplete="off" required/>
                   <% tabindex_val += 1 %>
                   <div class="error" data-for="first_name"></div>
                 </div>
               </div>
-              <div class="col-xs-12 col-sm-6">
+              <div class="col-12 col-sm-6">
                 <div class="form-group">
-                  <label for="last_name">Last name</label>
+                  <label class="form-label" for="last_name">Last name</label>
                   <input type="text" title="Last name" class="form-control" name="last_name" value="" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                   <% tabindex_val += 1 %>
                   <div class="error" data-for="last_name"></div>
@@ -80,9 +80,9 @@
             </div>
 
             <div class="row">
-              <div class="col-xs-12 col-sm-6">
+              <div class="col-12 col-sm-6">
                 <div class="form-group">
-                  <label for="birthdate">Date of Birth</label>
+                  <label class="form-label" for="birthdate">Date of Birth</label>
                   <input type="text" title="Birth date" class="form-control" name="birthdate" placeholder="dd/mm/yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1[012])[- /.][0-9]{4}" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                   <% tabindex_val += 1 %>
                   <div class="error" data-for="birthdate"></div>
@@ -93,9 +93,9 @@
 
             <div class="row">
               <% if @presenter_obj.page_data['kyc_fields'].include?('stree_address') %>
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-12 col-sm-6">
                   <div class="form-group">
-                    <label for="street_address">Street address</label>
+                    <label class="form-label" for="street_address">Street address</label>
                     <input type="text" title="Street address" class="form-control" name="street_address" value="" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                     <% tabindex_val += 1 %>
                     <div class="error" data-for="street_address"></div>
@@ -103,9 +103,9 @@
                 </div>
               <% end %>
               <% if @presenter_obj.page_data['kyc_fields'].include?('city') %>
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-12 col-sm-6">
                   <div class="form-group">
-                    <label for="">City</label>
+                    <label class="form-label" for="">City</label>
                     <input type="text" title="City" class="form-control" name="city" value="" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                     <% tabindex_val += 1 %>
                     <div class="error" data-for="city"></div>
@@ -116,18 +116,18 @@
 
             <div class="row">
               <% if @presenter_obj.page_data['kyc_fields'].include?('state') %>
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-12 col-sm-6">
                   <div class="form-group">
-                    <label for="state">State / region</label>
+                    <label class="form-label" for="state">State / region</label>
                     <input type="text" title="State / region" class="form-control" name="state" value="" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                     <% tabindex_val += 1 %>
                     <div class="error" data-for="state"></div>
                   </div>
                 </div>
               <% end %>
-              <div class="col-xs-12 col-sm-6">
+              <div class="col-12 col-sm-6">
                 <div class="form-group st-selectpicker">
-                  <label for="country">Country</label>
+                  <label class="form-label" for="country">Country</label>
                   <select class="form-control selectpicker" name="country" title="Select Country" tabindex="<%= tabindex_val %>" required>
                     <% tabindex_val += 1 %>
                     <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
@@ -142,9 +142,9 @@
 
             <% if @presenter_obj.page_data['kyc_fields'].include?('postal_code') %>
               <div class="row">
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-12 col-sm-6">
                   <div class="form-group">
-                    <label for="postal_code">Zip / postal code</label>
+                    <label class="form-label" for="postal_code">Zip / postal code</label>
                     <input type="text" title="Zip / postal code" class="form-control" name="postal_code" value="" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                     <% tabindex_val += 1 %>
                     <div class="error" data-for="postal_code"></div>
@@ -153,17 +153,17 @@
               </div>
             <% end %>
 
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <label for="ethereum_address">Ethereum address</label>
+            <div class="row form-group">
+              <div class="col-12 col-sm-6">
+                <div>
+                  <label class="form-label" for="ethereum_address">Ethereum address</label>
                   <input type="text" title="Ethereum address" class="form-control" name="ethereum_address" pattern="(0x|0X)?[0-9a-fA-F]{40}" value="" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                   <% tabindex_val += 1 %>
                   <div class="error" data-for="ethereum_address"></div>
                 </div>
               </div>
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-instructions">
+              <div class="col-12 col-sm-6">
+                <div class="form-instructions display-4">
                   <%= raw @presenter_obj.page_data['ethereum_address_info_html'] %>
                 </div>
               </div>
@@ -171,9 +171,9 @@
 
             <% if @presenter_obj.page_data['kyc_fields'].include?('estimated_participation_amount') %>
               <div class="row">
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-12 col-sm-6">
                   <div class="form-group">
-                    <label for="postal_code">Estimated Participation Amount</label>
+                    <label class="form-label" for="postal_code">Estimated Participation Amount</label>
                     <input type="number" min="1" lang="en-150" title="Estimated amount ($)" class="form-control" name="estimated_participation_amount" value="0" tabindex="<%= tabindex_val %>" autocomplete="off"/>
                     <% tabindex_val += 1 %>
                     <div class="error" data-for="estimated_participation_amount"></div>
@@ -182,26 +182,26 @@
               </div>
             <% end %>
 
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <label for="document_id_number">Identification Document Number</label>
+            <div class="row form-group ">
+              <div class="col-12 col-sm-6">
+                <div >
+                  <label class="form-label" for="document_id_number">Identification Document Number</label>
                   <input type="text" title="Identification Document Number" class="form-control" name="document_id_number" value="" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                   <% tabindex_val += 1 %>
                   <div class="error" data-for="document_id_number"></div>
                 </div>
               </div>
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-instructions">
+              <div class="col-12 col-sm-6">
+                <div class="form-instructions display-4">
                   <%= raw @presenter_obj.page_data['document_info_html'] %>
                 </div>
               </div>
             </div>
 
             <div class="row">
-              <div class="col-xs-12 col-sm-6">
+              <div class="col-12 col-sm-6">
                 <div class="form-group st-selectpicker">
-                  <label for="nationality">Nationality</label>
+                  <label class="form-label" for="nationality">Nationality</label>
                   <select class="form-control selectpicker" name="nationality" title="Select Nationality" tabindex="<%= tabindex_val %>" required>
                     <% tabindex_val += 1 %>
                     <% to_show_usa_nationality = true
@@ -223,86 +223,103 @@
             </div>
 
             <div class="row">
-              <div class="col-xs-12 col-sm-12">
+              <div class="col-12 col-sm-12">
 
-                <div class="form-group">
-                  <label for="document_id_file_path">Upload an image of your ID Document
-                    <span class="badge">i</span></label>
-
-                  <div class="file-name"></div>
-                  <div>
-                    <label class="upload-file btn-common client-secondary-btn upload-image-btn">
+                <div class="row form-group">
+                  <div class="col-12">
+                    <label class="form-label" for="document_id_file_path">Upload an image of your ID Document
+                      <span class="badge badge-pill badge-secondary align-middle p-0">
+                        <svg class="info-icon">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                          </switch>
+                        </svg>
+                      </span>
+                    </label>
+                    <div class="file-name display-4 my-1"></div>
+                  </div>
+                  <div class="col-12 mt-2">
+                    <label class="upload-file btn btn-secondary upload-image-btn">
                       <input type="file" title="Identification Document" name="document_id_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>
                       <% tabindex_val += 1 %>
                       <span>choose file</span>
                     </label>
-                    <span class="form-instructions choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200kb, JPG/PNG/PDF only)</span>
+                    <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200kb, JPG/PNG/PDF only)</span>
+                    <div class="error" data-for="document_id_file_path"></div>
                   </div>
-                  <div class="error" data-for="document_id_file_path"></div>
                 </div>
               </div>
             </div>
 
             <div class="row">
-              <div class="col-xs-12 col-sm-12">
-                <div class="form-group">
-                  <label for="selfie_file_path">Upload a picture of you holding your ID Document
-                    <span class="badge">i</span></label>
-
-                  <div class="file-name"></div>
-                  <div>
-                    <label class="upload-file btn-common client-secondary-btn upload-image-btn">
+              <div class="col-12 col-sm-12">
+                <div class="row form-group">
+                  <div class="col-12">
+                    <label class="form-label" for="selfie_file_path">Upload a picture of you holding your ID Document
+                      <span class="badge badge-pill badge-secondary align-middle p-0">
+                        <svg class="info-icon">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                          </switch>
+                        </svg>
+                      </span>
+                    </label>
+                    <div class="file-name display-4 my-1"></div>
+                  </div>
+                  <div class="col-12 mt-2">
+                    <label class="upload-file btn btn-secondary upload-image-btn">
                       <input type="file" title="Selfie with your identification document" name="selfie_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required>
                       <% tabindex_val += 1 %>
                       <span>choose file</span>
                     </label>
-                    <span class="form-instructions choose-file-instructions thumbnail-upload-instructions">Please upload a high quality picture<br/> of you holding your ID Document <br/>next to your face. <br/>(Min 200kb, JPG/PNG/PDF only)</span>
+                    <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality picture<br/> of you holding your ID Document <br/>next to your face. <br/>(Min 200kb, JPG/PNG/PDF only)</span>
+                    <div class="error" data-for="selfie_file_path"></div>
                   </div>
-                  <div class="error" data-for="selfie_file_path"></div>
                 </div>
               </div>
             </div>
 
-            <div class="row residence-proof" style="display:none">
-              <div class="col-xs-12 col-sm-12">
-                <div class="form-group">
-                  <label for="residence_proof_file_path">Proof of Residence</label>
-
-                  <div class="file-name"></div>
-                  <div>
-                    <label class="upload-file btn-common client-secondary-btn upload-image-btn">
+            <div class="row residence-proof display-none" >
+              <div class="col-12 col-sm-12">
+                <div class="row form-group ">
+                  <div class="col-12">
+                    <label class="form-label" for="residence_proof_file_path">Proof of Residence
+                    </label>
+                    <div class="file-name display-4 my-1"></div>
+                  </div>
+                  <div class="col-12 mt-2">
+                    <label class="upload-file btn btn-secondary upload-image-btn">
                       <input type="file" title="Residence proof" name="residence_proof_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>
                       <span>choose file</span>
                       <% tabindex_val += 1 %>
                     </label>
-                    <span class="form-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan of your proof of residence.<br/> (Min 200kb, JPG/PNG/PDF only)</span>
+                    <span class="form-instructions display-4 thumbnail-upload-instructions choose-file-instructions">Please upload a high quality <br/>scan of your proof of residence.<br/> (Min 200kb, JPG/PNG/PDF only)</span>
                   </div>
                   <div class="error" data-for="residence_proof_file_path"></div>
                 </div>
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
+            <div class="row mt-2 form-group">
+              <div class="col-12 col-sm-6">
                 <div class="g-recaptcha" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="<%= tabindex_val %>" data-callback="simpletoken_kyc_recaptcha_callback"></div>
                 <% tabindex_val += 1 %>
                 <div class="error" data-for="recaptcha"></div>
               </div>
             </div>
 
-            <div class="error" data-for="general_error"></div>
-
             <div class="row">
-              <div class="col-xs-12 col-sm-12">
+              <div class="col-12 col-sm-12">
                 <div class="form-group">
                   <div>
-                    <button id="kycSubmit" class="btn-common client-primary-btn upload-image-btn" title="submit" type="submit" tabindex="<%= tabindex_val %>" style="margin-top: 20px">Submit</button>
+                    <button id="kycSubmit" class="btn btn-primary upload-image-btn" title="submit" type="submit" tabindex="<%= tabindex_val %>">Submit</button>
                     <% tabindex_val += 1 %>
                     <% if is_update %>
-                      <a href="/dashboard" class="btn-common client-secondary-btn upload-image-btn" title="back" tabindex="<%= tabindex_val %>" style="margin-right: 20px;margin-top: 20px">Back</a>
+                      <a href="/dashboard" class="btn btn-secondary upload-image-btn ml-3" title="back" tabindex="<%= tabindex_val %>">Back</a>
                       <% tabindex_val += 1 %>
                     <% end %>
                   </div>
+                  <div class="error" data-for="general_error"></div>
                 </div>
               </div>
             </div>
@@ -317,8 +334,6 @@
     </div>
   </div>
 </div>
-
-<%= render :partial => "/shared/web/common/kycaas_footer" %>
 
 <% content_for :end_js do %>
   <script>
@@ -342,15 +357,15 @@
 <script type="custom" id="selfie-popover">
   <div style="">
       <div class="row">
-        <div class="col-xs-5">
+        <div class="col-5">
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/kyc-passport-selfie-right-image@2x-v2.png" style="max-width:100%" />
         </div>
-        <div class="col-xs-7">
+        <div class="col-7">
           <p style="font-size:10px; color:#9aaaaa">Please hold the ID Document in your hand next to your face. Both your face and the ID Document must be clearly visible and any text, numbers or photos on the ID Document must be readable and not be covered by your fingers.</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/kyc-passport-selfie-wrong-image@2x-v2.png" style="max-width:100%" />
         </div>
       </div>
@@ -363,15 +378,15 @@
 <script type="custom" id="passport-popover">
   <div style="">
       <div class="row">
-        <div class="col-xs-5">
+        <div class="col-5">
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/kyc-passport-right-image@2x.png" style="max-width:100%" />
         </div>
-        <div class="col-xs-7">
+        <div class="col-7">
           <p style="font-size:10px; color:#9aaaaa">Please upload a scan or picture of your ID Document so that the entire page is visible, the image is not blurry and the camera flash is not affecting the readability. All text, numbers and photos on the ID Document must be readable.</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/kyc-passport-wrong-image@2x.png" style="max-width:100%" />
         </div>
       </div>
@@ -380,3 +395,5 @@
 
 
 </script>
+
+<%= render :partial => "/shared/web/common/index_svg_sprite" %>

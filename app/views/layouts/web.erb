@@ -117,6 +117,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/16x16.png">
   <% end %>
 
+  <%= stylesheet_link_tag 'web/default_simple_token' %>
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
   <% if ['web/user::update_kyc_form', 'web/user::add_kyc_form', 'web/user::login', 'web/user::sign_up', 'web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
@@ -153,19 +154,27 @@
   <!-- End Google Tag Manager (noscript) -->
 <% end %>
 
-<main id="site-content" class="<%= yield (:gradient_class) %>">
-  <%= yield %>
+<main id="site-content" >
+
+  <div class="main-content <%= yield (:gradient_class) %>">
+    <%= yield %>
+  </div>
+
+  <% if is_not_a_kyc_page? %>
+    <%= render :partial => "/shared/web/common/footer_links" %>
+  <% end %>
+
 </main>
 
-<% if is_not_a_kyc_page? %>
-  <%= render :partial => "/shared/web/common/footer_links" %>
-<% end %>
-
-<% if is_simple_token_specific_page? %>
+<!--IMPORTANT Footer should always be outside site content start-->
+<% if !is_simple_token_specific_page? %>
+  <%= render :partial => "/shared/web/common/kycaas_footer" %>
+<% else %>
   <%= render :partial => "/shared/web/common/footer" %>
 <% end %>
+<!--IMPORTANT Footer should always be outside site content start-->
 
-<%= javascript_include_tag "web/common" %>
+<%= javascript_include_tag "web/common-user" %>
 <%= javascript_include_tag "#{specific_manifest_file_path}" if has_specific_js_manifest_file? %>
 
 <%= yield(:end_js) %>

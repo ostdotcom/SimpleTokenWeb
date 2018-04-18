@@ -153,10 +153,10 @@
       if (oThis.showEthereumAddressConfirmModal == 'true') {
         var jModal = $('#ethereum-confirm-modal');
         $("#userConfirm").hide();
-        $("#user-confirm-loader").removeClass("hide");
+        $("#user-confirm-loader").show();
       }
       else {
-        $("#user-confirm-loader").removeClass("hide");
+        $("#user-confirm-loader").show();
       }
 
       $.ajax({
@@ -182,7 +182,7 @@
         },
         complete: function () {
           $("#userConfirm").show();
-          $("#user-confirm-loader").addClass("hide");
+          $("#user-confirm-loader").hide();
         }
       });
     },

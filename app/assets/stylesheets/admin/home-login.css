@@ -2,6 +2,6 @@
  *= require plugins/bootstrap/bootstrap
  *= require web/common/Body
  *= require web/common/Forms
- *= require web/user/Login
+ *= require admin/user/Login
  *= require web/common/Buttons
  */

@@ -1,0 +1,68 @@
+@import "../../web/simple_token_theme/variables";
+.token-sale-progress{
+  padding: 30px 0 0;
+  font-size: 0;
+  &.signup{
+    background-color: $green-600;
+  }
+  &.dashboard{
+   background-color: transparent;
+    .header{
+      color: $teal;
+    }
+    .item{
+      margin: 0 0 10px;
+      border: 1px solid $blue-200;
+    }
+  }
+  &.paused-ended{
+    @media(min-width: 992px){
+      text-align: left;
+    }
+    padding: 0;
+    .item{
+      padding: 30px;
+      margin: 0 0 15px;
+    }
+    .item-parent{
+      min-width: 290px;
+      @media(min-width: 736px){
+        margin-left: 0;
+      }
+    }
+  }
+  .item{
+    padding: 20px 15px;
+    border-radius: 5px;
+    background-color: $white;
+    margin: 0 0 30px;
+    min-height: 105px;
+    display: flex;
+    align-items: center;
+  }
+  .item-parent{
+    display: inline-block;
+    vertical-align: top;
+    min-width: 235px;
+    font-size: 14px;
+    @media(min-width: 736px){
+      margin-left: 20px;
+      &:first-child{
+        margin-left: 0;
+      }
+    }
+  }
+  .item-stats{
+    color: $green-700;
+    margin-left: 10px;
+    text-align: left;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    .total-header{
+      font-weight: 300;
+    }
+    .total-value{
+      font-weight: 500;
+    }
+  }
+}

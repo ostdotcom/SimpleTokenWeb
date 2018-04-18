@@ -1,7 +1,7 @@
 <div class="container-fluid dashboard-page margin35auto">
   <div class="row">
 
-    <div class="col-xs-12">
+    <div class="col-12">
 
       <% if @presenter_obj.show_unable_for_early_purchase_text? %>
         <div class="text-center early-access-purchase">Only users that have preregistered are able to purchase during
@@ -10,37 +10,41 @@
       <% end %>
 
       <% if !@presenter_obj.has_sale_ended? %>
-        <div class="panel panel-default kyc-panel <%= @presenter_obj.kyc_verification_class %>">
-          <table class="panel-body">
-            <tr>
-              <td>
-                <span class="kyc-status-icon-<%= @presenter_obj.kyc_verification_icon_class %> ver-middle"></span>
-                <span class="ver-middle"><%= @presenter_obj.kyc_verification_text %></span>
-              </td>
+        <div class="card mb-3  kyc-panel <%= @presenter_obj.kyc_verification_class %>">
+          <div class="card-body">
+            <table>
+              <tr>
+                <td>
+                  <span class="kyc-status-icon-<%= @presenter_obj.kyc_verification_icon_class %> ver-middle"></span>
+                  <span class="ver-middle"><%= @presenter_obj.kyc_verification_text %></span>
+                </td>
 
-              <td>
-                <% if @presenter_obj.is_kyc_pending? %>
-                  <a href="javascript:void(0)" <%= raw 'class="openModal"' if @presenter_obj.show_kyc_update_modal? %> id="kycUpdate">update
-                    kyc</a>
-                <% end %>
-              </td>
+                <td>
+                  <% if @presenter_obj.is_kyc_pending? %>
+                    <a href="javascript:void(0)" <%= raw 'class="openModal display-3"' if @presenter_obj.show_kyc_update_modal? %> id="kycUpdate">update
+                      kyc</a>
+                  <% end %>
+                </td>
 
-            </tr>
-          </table>
+              </tr>
+            </table>
+          </div>
         </div>
 
         <% if @presenter_obj.show_ethereum_address_whitelist_status_box? %>
-          <div class="panel panel-default kyc-panel approved">
-            <table class="panel-body">
-              <tr>
-                <td>
-                  <span class="kyc-status-icon-<%= @presenter_obj.ethereum_address_whitelist_icon_class %> ver-middle"></span>
-                  <span class="ver-middle"><%= @presenter_obj.ethereum_address_whitelist_done? ? 'Ethereum Address Whitelisted' : 'Ethereum Address Whitelisting in Progress' %></span>
-                </td>
-                <td>
-                </td>
-              </tr>
-            </table>
+          <div class="card mb-3 kyc-panel approved">
+            <div class="card-body">
+              <table>
+                <tr>
+                  <td>
+                    <span class="kyc-status-icon-<%= @presenter_obj.ethereum_address_whitelist_icon_class %> ver-middle"></span>
+                    <span class="ver-middle"><%= @presenter_obj.ethereum_address_whitelist_done? ? 'Ethereum Address Whitelisted' : 'Ethereum Address Whitelisting in Progress' %></span>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
         <% end %>
       <% end %>
@@ -48,56 +52,58 @@
       <% if @presenter_obj.is_st_token_sale_client? %>
 
         <% if !@presenter_obj.is_kyc_denied? %>
-          <div class="panel panel-default kyc-panel approved">
-            <table class="panel-body">
-              <tr>
-                <td>
-                  <span class="kyc-status-icon-<%= @presenter_obj.token_name_icon_class %> ver-middle"></span>
-                  <span class="ver-middle"><%= @presenter_obj.token_name_pending? ? 'BT reservation (Optional)' : 'Token Name Reserved' %></span>
-                </td>
-                <td>
-                  <a href="/update-token"><%= @presenter_obj.token_name_pending? ? 'learn more' : 'change name' %></a>
-                </td>
-              </tr>
-            </table>
+          <div class="card mb-3 kyc-panel approved">
+            <div class="card-body">
+              <table>
+                <tr>
+                  <td>
+                    <span class="kyc-status-icon-<%= @presenter_obj.token_name_icon_class %> ver-middle"></span>
+                    <span class="ver-middle"><%= @presenter_obj.token_name_pending? ? 'BT reservation (Optional)' : 'Token Name Reserved' %></span>
+                  </td>
+                  <td>
+                    <a class="display-3" href="/update-token"><%= @presenter_obj.token_name_pending? ? 'learn more' : 'change name' %></a>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
 
           <% if @presenter_obj.show_bonus_box? %>
-            <div class="panel panel-default kyc-panel approved">
-              <div class="panel-body">
+            <div class="card mb-3 kyc-panel approved">
+              <div class="card-body">
                 <div style="overflow: hidden">
-                  <span class="pull-left">
+                  <span class="float-left">
                   <span class="kyc-status-icon-<%= @presenter_obj.bonus_icon_class %> ver-middle"></span>
                     <span class="ver-middle"><%= @presenter_obj.bonus_text %></span>
                 </span>
                   <% if !@presenter_obj.is_bonus_confirmed? || @presenter_obj.multple_bonus_confirmed? %>
-                    <a href="javascript:void(0)" id="prove-support-link" class="collapsed pull-right" data-toggle="collapse" data-target="#prove-support-content"><%= @presenter_obj.multple_bonus_confirmed? ? 'DETAILS' : 'LEARN MORE' %></a>
+                    <a href="javascript:void(0)" id="prove-support-link" class="collapsed float-right display-3" data-toggle="collapse" data-target="#prove-support-content"><%= @presenter_obj.multple_bonus_confirmed? ? 'DETAILS' : 'LEARN MORE' %></a>
                   <% end %>
                 </div>
 
                 <% if !@presenter_obj.is_bonus_confirmed? %>
                   <div id="prove-support-content" class="panel-collapse collapse">
                     <div class="prove-support-content">
-                      <div class="header">Earn Your 10% Early Access Bonus</div>
-                      <div class="desc">Join our Telegram Channel and send us a Proof of Support at
+                      <h6 class="header">Earn Your 10% Early Access Bonus</h6>
+                      <div class="desc display-3">Join our Telegram Channel and send us a Proof of Support at
                         community@simpletoken.org
                         to get 10% Bonus on your Early Access purchase.
                       </div>
                       <div class="text-center">
-                        <a href="https://docs.google.com/document/d/1mOQBspEmW3hDLSfu8eG4bmWML79d5yIKIE1yZjsyDRc/edit" target="_blank" title="Learn More">LEARN
+                        <a class="display-3" href="https://docs.google.com/document/d/1mOQBspEmW3hDLSfu8eG4bmWML79d5yIKIE1yZjsyDRc/edit" target="_blank" title="Learn More">LEARN
                           MORE</a>
                       </div>
                     </div>
                     <div class="prove-support-content drop-bonus">
-                      <div class="header">Get 10% Altcoin Drop Bonus</div>
-                      <div class="desc">Earn a 10% Bonus in Altcoin of your choice by purchasing a minimum of 1 ETH
+                      <h6 class="header">Get 10% Altcoin Drop Bonus</h6>
+                      <div class="desc display-3">Earn a 10% Bonus in Altcoin of your choice by purchasing a minimum of 1 ETH
                         in the ST Early Access token sale.
                       </div>
                       <div class="text-center">
-                        <a href="https://docs.google.com/forms/d/1I2mGKs91_HZxIZUNNeO4nqCYDaWmIqE1weazwC7hnvI/viewform?edit_requested=true" target="_blank" title="Learn More">LEARN
+                        <a class="display-3" href="https://docs.google.com/forms/d/1I2mGKs91_HZxIZUNNeO4nqCYDaWmIqE1weazwC7hnvI/viewform?edit_requested=true" target="_blank" title="Learn More">LEARN
                           MORE</a>
                       </div>
-                      <div class="text-center" style="font-size: 11px;margin: 15px 0 0;">*Only one of the bonus
+                      <div class="text-center mt-3 display-4">*Only one of the bonus
                         offers can apply during the Early Access token sale
                       </div>
                     </div>
@@ -106,8 +112,8 @@
 
                   <div id="prove-support-content" class="panel-collapse collapse">
                     <div class="prove-support-content">
-                      <div class="header">10% Early Access Bonus</div>
-                      <div class="desc">The #altdrop bonus and the Simple Token Proof of Support bonus cannot be
+                      <h6 class="header">10% Early Access Bonus</h6>
+                      <div class="desc display-3">The #altdrop bonus and the Simple Token Proof of Support bonus cannot be
                         combined.
                         As you qualify for both #altdrop and ST Proof of Support, you can choose which bonus you
                         prefer. We will contact you after the ST token sale ends to clarify your preference.
@@ -123,32 +129,32 @@
 
 
           <% if @presenter_obj.show_community_bonus_box? %>
-            <div class="panel panel-default kyc-panel approved">
-              <div class="panel-body">
+            <div class="card mb-3 kyc-panel approved">
+              <div class="card-body">
                 <div style="overflow: hidden">
-                    <span class="pull-left">
+                    <span class="float-left">
                     <span class="kyc-status-icon-approved ver-middle"></span>
                         <span class="ver-middle"><%= @presenter_obj.community_bonus %>% Community Bonus </span>
                     </span>
-                  <a href="javascript:void(0)" id="community-bonus-link" class="collapsed pull-right" data-toggle="collapse" data-target="#community-bonus-content">LEARN
+                  <a href="javascript:void(0)" id="community-bonus-link" class="collapsed float-right display-3" data-toggle="collapse" data-target="#community-bonus-content">LEARN
                     MORE</a>
                 </div>
 
 
                 <div id="community-bonus-content" class="panel-collapse collapse">
                   <div class="prove-support-content">
-                    <div class="header"></div>
-                    <div class="desc">When a total of 100M ST have been sold, all purchasers will receive a 20% ST
+                    <h6 class="header"></h6>
+                    <div class="desc display-3">When a total of 100M ST have been sold, all purchasers will receive a 20% ST
                       Target Bonus. The ST Target bonus is on top of all other bonuses that participants have earned.
                     </div>
-                    <div class="desc" style="padding-top: 20px">When a total of 120M ST have been sold, all purchasers
+                    <div class="desc pt-3" >When a total of 120M ST have been sold, all purchasers
                       will receive a 25% Kicker Bonus. The ST Kicker bonus replaces the Target bonus.
                     </div>
-                    <div class="desc" style="padding-top: 20px">When a total of 180M ST have been sold, all purchasers
+                    <div class="desc pt-3" >When a total of 180M ST have been sold, all purchasers
                       will receive a 30% Power Bonus on their purchases. The ST Power bonus replaces the Kicker bonus.
                     </div>
                     <div class="text-center">
-                      <a href="https://medium.com/ostdotcom/simple-token-st-sale-details-important-updates-new-developments-9-november-2017-6fe4aab74831" target="_blank" title="Learn More">LEARN
+                      <a class="display-3" href="https://medium.com/ostdotcom/simple-token-st-sale-details-important-updates-new-developments-9-november-2017-6fe4aab74831" target="_blank" title="Learn More">LEARN
                         MORE</a>
                     </div>
                   </div>
@@ -160,35 +166,35 @@
             <!--community bonus end-->
           <% end %>
 
-          <div class="panel panel-default kyc-panel approved">
-            <div class="panel-body">
+          <div class="card mb-3 kyc-panel approved">
+            <div class="card-body">
               <div style="overflow: hidden">
-                    <span class="pull-left">
+                    <span class="float-left">
                     <span class="kyc-status-icon-approved ver-middle"></span>
                         <span class="ver-middle">15% ETH Price Bonus</span>
                     </span>
-                <a href="https://medium.com/ostdotcom/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank" class="pull-right">LEARN
+                <a  href="https://medium.com/ostdotcom/important-update-price-adjustments-based-on-eth-during-st-token-sale-893fa99531cd" target="_blank" class="float-right display-3">LEARN
                   MORE</a>
               </div>
             </div>
           </div>
 
-          <% if @presenter_obj.no_of_bonus > 1 %>
-            <div style="border-top: solid 1px #6c9ba9;margin-bottom: 15px;"></div>
-            <div class="panel panel-default kyc-panel approved">
-              <div class="panel-body text-center">
-                <div style="font-weight: 500;padding-bottom: 10px">TOTAL BONUSES</div>
+          <% if  @presenter_obj.no_of_bonus > 1 %>
+            <div class="separator-block mb-3"></div>
+            <div class="card mb-3 kyc-panel approved">
+              <div class="card-body text-center">
+                <div class="pb-2 font500" >TOTAL BONUSES</div>
                 <div>You will
-                  <span style="font-weight: 500">receive <%= @presenter_obj.total_bonus %>% ST bonus</span>
+                  <span class="font500">receive <%= @presenter_obj.total_bonus %>% ST bonus</span>
                   on each of your purchases. Bonuses will be distributed on 15 January.
                   <%= !@presenter_obj.is_alternate_token_bonus_confirmed? ? '' : (@presenter_obj.multple_bonus_confirmed? ? 'At end of sale, you may choose to receive 10% of your bonus as altdrop instead of ST.' : 'You will also receive 10% bonus in your altdrop of choice.') %>
                 </div>
               </div>
             </div>
           <% else %>
-            <div class="text-center" style="color: #597a84;font-weight: 500;">Bonuses will be distributed within 45
+            <h6 class="text-center">Bonuses will be distributed within 45
               days of the sale end.
-            </div>
+            </h6>
           <% end %>
 
           <!--kyc denied condition end-->

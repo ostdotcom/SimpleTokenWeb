@@ -39,6 +39,33 @@ select.selectpicker {
 .bootstrap-select {
   width: 220px \0; /*IE9 and below*/
 
+  /* For BS4 migration */
+  &.show>.dropdown-menu>.dropdown-menu {
+    display: block;
+  }
+
+  > .dropdown-menu > .dropdown-menu li.hidden{
+    display:none;
+  }
+
+  > .dropdown-menu > .dropdown-menu li a{
+    display: block;
+    width: 100%;
+    padding: 3px 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #292b2c;
+    text-align: inherit;
+    white-space: nowrap;
+    background: 0 0;
+    border: 0;
+
+    &:hover{
+      background-color: #f8f9fa;
+    }
+  }
+  /* End of BS4 migration CSS */
+
   // The selectpicker button
   > .dropdown-toggle {
     width: 100%;

@@ -1,42 +1,25 @@
-.header{
-  color: #6ca3a9;
-  font-size: 24px;
-  font-weight: 300;
-  margin: 25px 0 0;
-  line-height: 30px;
-}
-.kyc-status-msg{
-  color: #597a84;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin: 10px 0 25px;
+@import "../../web/simple_token_theme/variables";
+section.dashboard-content{
+  min-height: calc(100vh - 60px);
 }
 .pause-status{
-  color: #597a84;
   margin-top: 20px;
-  font-size: 20px;
-  a{
-    color: #597a84;
-    border-bottom: solid 1px #597a84;
-    &:hover, &:focus{
-      text-decoration: none;
-    }
-  }
 }
 .dashboard-page{
-  @media (min-width: 736px) {
+  @media (min-width: map-get($grid-breakpoints, "md")) {
     width: 450px;
   }
   .registration-timer{
     padding: 0 30px;
+    @media (max-width : map-get($grid-breakpoints ,  'sm')) {
+      padding: 0 10px;
+    }
   }
   .kyc-panel{
-    color: #597a84;
-    font-weight: 300;
-    .panel-body{
+    margin-bottom: 15px;
+    table{
       width: 100%;
       td{
-        padding: 15px;
         &:first-child{
           text-align: left;
           padding-right: 0;
@@ -50,32 +33,24 @@
       }
     }
     &.approved{
-      background-color: #fbfdfd;
-      border: solid 1px #6c9ba9;
+      background-color: $space-white-1;
+      border: solid 1px $green-500;
     }
     &.denied{
       background-color: rgba(231, 0, 59, 0.05);
-      border: solid 1px #e7003b;
+      border: solid 1px $red;
     }
     &.pending-issue{
-      background-color: #fffdf9;
-      border: solid 1px #e4b030;
+      background-color: $space-white-2;
+      border: solid 1px $yellow-300;
     }
     a{
-      color: #597a84;
-      border-bottom: 1px solid #597a84;
       margin-top: 2px;
-      &:hover, &:focus{
-        text-decoration: none;
-      }
     }
     .ver-middle{
       vertical-align: middle;
     }
     #prove-support-link, #community-bonus-link{
-      &:focus{
-        text-decoration: none;
-      }
       &.close-accordian-icon {
         border-bottom: none;
         margin-top: 6px;
@@ -83,29 +58,22 @@
       }
     }
     .prove-support-content{
-      color: #597a84;
       &.drop-bonus{
         .header{
           border-top: solid 2px #e0eaed;
         }
       }
       .header{
-        font-size: 18px;
         margin: 15px 0 0;
-        font-weight: 400;
         padding: 15px 0 5px;
-        color: #6ca3a9;
-        border-top: solid 1px #597a84;
+        border-top: solid 1px $blue-800;
       }
       .desc{
-        color: #6ca3a9;
+        color: $neptune;
       }
       a{
         display: inline-block;
         margin-top: 20px;
-        &:focus{
-          text-decoration: none;
-        }
       }
     }
     &:last-child{
@@ -113,66 +81,53 @@
     }
   }
   .progress-stats{
-    font-weight: 300;
-    color: #597a84;
     margin-bottom: 10px;
-    letter-spacing: 1px;
-    font-size: 16px;
+    letter-spacing: $letter-spacing;
     .stats-number{
-      font-weight: 500;
+      font-weight: $font-weight-500;
     }
   }
   .stats-note-desc{
-    font-size: 12px;
     padding: 20px 0 0;
   }
   .time-remain{
-    border: none;
-    //color: #91c0ad;
-    font-weight: 500;
-    letter-spacing: 1px;
-    font-size: 16px;
     text-transform: uppercase;
-    .panel-body{
+    font-weight: $font-weight-500;
+    letter-spacing: $letter-spacing;
+    .card-body{
       padding: 8px 10px;
       text-transform: uppercase;
       background-color: rgba(145, 192, 173, 0.15);
     }
   }
   .early-access-purchase{
-    color: #597a84;
     margin: 0px 0 10px;
-    font-weight: 500;
+    font-weight: $font-weight-500;
+  }
+
+  .separator-block {
+    border-top: solid 1px $green-500;
+  }
+
+  .font500 {
+    font-weight: $font-weight-500;
   }
 }
 
 .forgot-eth{
-//  margin-bottom: 40px;
-  .header{
-    font-size: 18px;
-    font-weight: 500;
-    color: #597a84;
-    margin-bottom: 20px;
-    margin-top: 0;
-  }
   a{
     padding: 15px 0;
   }
 }
 
 .eth-deposit-address{
-  //background-color: #6c99a6;
   padding: 30px 0;
   .header{
-    font-size: 24px;
-    font-weight: 300;
-    color: #fff;
-    margin-bottom: 20px;
-    margin-top: 0;
-    line-height: 26px;
+    color: $white;
+//    line-height: 26px;
     small{
-      color: #fff;
-      font-weight: 300;
+      color: $white;
+      font-weight: $font-weight-light;
     }
   }
   .btn{
@@ -180,64 +135,42 @@
   }
 }
 
-//.eth-address-links{
-//  a{
-//    font-size: 12px;
-//    font-weight: 500;
-//    color: #597a84;
-//    display: inline-block;
-//    margin: 0 10px;
-//    text-transform: uppercase;
-//    letter-spacing: 1px;
-//    border-bottom: 1px solid #597a84;
-//    &:hover, &:focus{
-//      text-decoration: none;
-//    }
-//  }
-//}
+.jumbotron-links{
+  a.link{
+    font-weight: $font-weight-500;
+    letter-spacing: 1px;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: none;
 
-.instructions{
-  color: #597a84;
-  font-weight: 300;
-  padding: 20px 0 30px;
-  .font500{
-    font-weight: 500;
+
   }
-  a{
-    font-size: 14px;
-    font-weight: 500;
-    color: #597a84;
-    display: inline-block;
-    margin-top: 10px;
-    border-bottom: 1px solid #597a84;
-    &:hover, &:focus{
+  .icon-pos{
+    vertical-align: middle;
+  }
+  .border-btm{
+    vertical-align: middle;
+    border-bottom: solid 1px #597a84;
+    &:hover {
+      border-bottom-color: #c0993a;
       text-decoration: none;
     }
   }
 }
 
-.have-question{
-//  margin: 40px 0;
-  .question-txt{
-    color: #597a84;
-    font-weight: 500;
-    font-size: 18px;
-    padding-bottom: 10px;
-  }
-//  a{
-//    font-size: 12px;
-//    font-weight: 500;
-//    color: #597a84;
-//    display: inline-block;
-//    margin: 0 15px;
-//    text-transform: uppercase;
-//    border-bottom: 1px solid #597a84;
-//    &:hover, &:focus{
-//      text-decoration: none;
-//    }
-//  }
-}
 
+
+
+
+.instructions{
+  padding: 20px 0 30px;
+  a{
+    font-size: $text2-size;
+    font-weight: $font-weight-500;
+    display: inline-block;
+    margin-top: 10px;
+  }
+}
 
 .ethereum-deposit-address{
   border: 0;
@@ -248,19 +181,17 @@
   .copy-address-input{
     width: 100%;
     height: 50px;
-    font-size: 14px;
-    @media(min-width: 415px){
-      font-size: 16px;
+    @media(max-width: map-get($grid-breakpoints, "xs")){
+      font-size: 14px;
     }
-    color: #435353;
+    color: $green-800;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
     box-shadow: none;
     -webkit-appearance: none;
-    border: solid 1px #cdd7da;
+    border: solid 1px $custom-gray-3;
     padding: 15px;
-    font-weight: 300;
   }
 
   .copy-address-button {
@@ -271,7 +202,7 @@
     height: 50px;
     border: none;
     padding: 0 15px;
-    font-weight: 500;
+    font-weight: $font-weight-500;
     text-transform: uppercase;
   }
 }
@@ -285,27 +216,14 @@
     width: 100%;
     height: 50px;
     font-size: 16px;
-    color: #435353;
+    color: $green-800;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    box-shadow: 0 0 0 1px #fff;
+    box-shadow: 0 0 0 1px $white;
     -webkit-appearance: none;
-    border: solid 1px #cdd7da;
+    border: solid 1px $custom-gray-3;
     padding: 15px 80px 15px 15px;
-    font-weight: 300;
-    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-      color: #cdd7da;
-    }
-    &::-moz-placeholder { /* Firefox 19+ */
-      color: #cdd7da;
-    }
-    :-ms-input-placeholder { /* IE 10+ */
-      color: #cdd7da;
-    }
-    :-moz-placeholder { /* Firefox 18- */
-      color: #cdd7da;
-    }
   }
 
   .user-eth-address-validate-btn {
@@ -316,22 +234,11 @@
     height: 50px;
     border: none;
     padding: 0 15px;
-    font-weight: 500;
-    width: 80px;
-    letter-spacing: 0.4px;
+    font-weight: $font-weight-500;
+    width: 85px;
   }
 }
 
-
-
-.token-header{
-  font-size: 18px;
-  color: #597a84;
-  text-transform: uppercase;
-  font-weight: 500;
-  padding: 20px 0;
-  letter-spacing: 0.4px;
-}
 
 
 .simpletoken-alert{
@@ -339,20 +246,19 @@
   top: 0px;
   width:100%;
   opacity: 0;
-  font-size: 20px;
-  letter-spacing: 1.1px;
-  color: #ffffff;
+  font-size: $text1-size;
+  letter-spacing: $letter-spacing;
+  color: $white;
   padding: 20px 0;
-  font-weight: 300;
   margin: 0;
   z-index: 999;
 
   &.success{
-    background-color: #91c0ad;
+    background-color: $green-300;
   }
 
   &.error{
-    background-color: #e7003b;
+    background-color: $red;
   }
 
   .icon{
@@ -373,11 +279,11 @@
   text-align: center;
   margin: 0 auto;
   &.gradient{
-    background: linear-gradient(to bottom, #f3f9f4 0%, #ffffff 100px, #ffffff 100%);
+    background: linear-gradient(to bottom, $custom-gray-1 0%, $white 100px, $white 100%);
   }
   h2.header {
-    color: #6ca3a9;
-    font-weight: 300;
+    color: $neptune;
+    font-weight: $font-weight-light;
     line-height: 1.5;
     margin-top: 20px;
     font-size: 38px;
@@ -385,14 +291,17 @@
     text-align: center;
   }
   p.lead {
-    color: #6ca3a9;
-    font-weight: 500;
-    line-height: 1.5;
-    margin-top: 0;
-    font-size: 20px;
-    letter-spacing: 1.3px;
-    text-align: center;
+    color: $neptune;
+    letter-spacing: $letter-spacing * 1.3;
   }
+}
+
+.eth-deposit-address {
+  background-color: $neptune;
+}
+
+.forget-eth-address-header {
+  border-bottom: 1px solid $blue-800;
 }
 
 .container-ribbon{
@@ -402,21 +311,18 @@
   overflow-x: hidden;
   .ribbon{
     background: #d4111c;
-    color: #ffffff;
+    color: $white;
     border-radius: 5px 0 0 5px;
     box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.15);
     .text{
-      padding: 10px 10px;
-      font-size: 12px;
       a,
       a:hover,
       a:active{
-        text-decoration: none;
-        color: #ffffff;
+        color: $white;
       }
       u{
         text-decoration: none;
-        border-bottom: 1px solid #ffffff;
+        border-bottom: 1px solid $white;
       }
     }
   }
@@ -434,3 +340,4 @@
     text-align: center;
   }
 }
+

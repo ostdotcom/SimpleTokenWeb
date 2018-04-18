@@ -1,48 +1,34 @@
-<div style="position: absolute;width: 100%;z-index: 1">
-  <%= render :partial => "/shared/web/common/loggedin_header", locals: {user: user} %>
-</div>
+<%= render :partial => "/shared/web/common/loggedin_header", locals: {user: user} %>
 <div class="container">
-  <div class="row sign-up-form">
-    <div class="col-xs-12">
-      <div class="text-center">
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-5 mx-auto">
+      <div class="simple-token-form text-center">
         <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/logo-with-tagline-mobile.png" width="211"/>
-      </div>
-      <div class="simple-token-form">
-        <h1 class="text-center form-header">Reserve your branded token name</h1>
-        <div class="row">
-          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-            <div class="desc text-center" style="color: #6ca3a9;font-weight: 300;font-size: 16px;margin: 20px 0 0;">
-              The OpenST protocol enables companies to launch their own branded tokens powered by ST. You can reserve a branded token name now for future use. This step is optional.
-            </div>
-          </div>
-        </div>
+        <h4 class="mt-4 mb-2">Reserve your branded token name</h4>
+        <p class="mb-4">The OpenST protocol enables companies to launch their own branded tokens powered by ST. You can reserve a branded token name now for future use. This step is optional.</p>
         <form class="user-form" method="POST" action="/api/user/bt-submit" id="userBtForm">
           <div class="form-group">
-            <label for="token_name">desired bt name</label>
+            <label class="form-label float-left" for="token_name">desired bt name</label>
             <input type="text" name="bt_name" id="token_name" class="form-control" autofocus tabindex="1" value="<%= user['bt_name'] %>" autocomplete="off">
-            <div class="error" data-for="bt_name"></div>
+            <div class="error" style="text-align: left;" data-for="bt_name"></div>
           </div>
-          <div class="form-instructions text-center" style="max-width: 350px;font-size: 14px;padding: 10px 0">All name reservations are
+          <p class="mb-4">All name reservations are
             subject to approval from the OpenST Foundation and Trademark rights. For more details refer to
-            <a href="https://drive.google.com/file/d/0B1E_xJPbELBKeU9pUk5uSnNqWFU/view" title="Terms and Conditions" target="_blank">Terms and Conditions</a>.
-          </div>
+            <strong>
+              <a href="https://drive.google.com/file/d/0B1E_xJPbELBKeU9pUk5uSnNqWFU/view" title="Terms and Conditions" target="_blank">Terms and Conditions</a>.
+            </strong>
+          </p>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
-          <div class="user-form-footer login-page-footer">
-            <button type="" id="btSubmit" class="btn-common btn-gold upload-image-btn" style="margin-top: 20px" title="<%= is_update ? 'update' : 'done' %>" tabindex="2"><%= is_update ? 'update' : 'done' %></button>
-            <% if is_update %>
-            <a href="/dashboard" class="btn-common btn-grey upload-image-btn" title="back" tabindex="3" style="margin-top: 20px">back</a>
-            <% else %>
-            <button id="btSkip" class="btn-common btn-grey upload-image-btn done-btn" title="skip" tabindex="3" style="margin-top: 20px">skip</button>
-            <% end %>
-          </div>
-          <div class="col-sm-12" >
-            <div class="error" style="text-align: center;" data-for="general_error"></div>
-          </div>
+          <button id="btSubmit" class="btn btn-primary upload-image-btn mb-3 mr-md-3" title="<%= is_update ? 'update' : 'done' %>" tabindex="2"><%= is_update ? 'update' : 'done' %></button>
+          <% if is_update %>
+            <a href="/dashboard" class="btn btn-secondary upload-image-btn mb-3" title="back" tabindex="3">back</a>
+          <% else %>
+            <button id="btSkip" class=" btn btn-secondary upload-image-btn mb-3" title="skip" tabindex="3">skip</button>
+          <% end %>
+          <div class="error" data-for="general_error"></div>
         </form>
-
       </div>
-
     </div>
   </div>
 </div>

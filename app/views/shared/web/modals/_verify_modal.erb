@@ -5,18 +5,22 @@
         <span aria-hidden="true" class="modal-close-black-icon" title="close"></span>
       </button>
       <div class="modal-body">
-        <div class="verify-content">
-          <div class="heading text-center">I confirm the following</div>
+        <div class="verify-content form-group">
+          <h4 class="mt-4 mb-4 text-center">I confirm the following</h4>
           <% kyc_checkbox_points_html.each_with_index do |line, index| %>
-            <div class="checkbox">
+            <div class="checkbox mt-2">
               <input type="checkbox" id="p<%= index %>" name="p<%= index %>">
               <label for="p<%= index %>">
-                <%= raw line%>
+                <span class="">
+                  <%= raw line%>
+                </span>
               </label>
             </div>
           <% end %>
           <div class="error" data-for="verify_error"></div>
-          <button class="btn-common client-primary-btn verify-btn" title="Verify" id="kycVerify">I Agree</button>
+          <div class="col-12 text-center">
+            <button class="btn btn-primary verify-btn mt-4" title="Verify" id="kycVerify">I Agree</button>
+          </div>
         </div>
         <div class="loader-content" style="display: none">
           <p class="status">Encrypting your data...</p>
