@@ -1,0 +1,28 @@
+
+<div  class="desktop row d-none d-md-flex p-2" [routerLink]="['/row', row.id]">
+    <div class="col">{{row.id}}</div>
+    <div class="col">{{row.first_name}} {{row.last_name}}</div>
+    <div class="col">{{row.email}}</div>
+
+  <div class="col">
+        <div *ngIf="row.admin_status === 1; else elseBlock" class="badge badge-success">Approved</div>
+        <ng-template #elseBlock><div class="badge badge-warning">Not approved</div></ng-template>
+    </div>
+
+
+</div>
+
+<div class="mobile row d-md-none">
+    <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{row.first_name}} {{row.last_name}}</h5>
+            <div class="card-text">{{row.email}}</div>
+            <div class="card-text">
+                <div *ngIf="row.admin_status === 1; else elseBlock" class="badge badge-success">Approved</div>
+                <ng-template #elseBlock><div class="badge badge-warning">Not approved</div></ng-template>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
