@@ -28,11 +28,13 @@
     <script src="https://www.google.com/recaptcha/api.js"></script>
   <% end %>
 
+  <base href="/">
 </head>
 <body contenteditable="false">
 
 <main id="site-content">
-  <%= yield %>
+  <%#= yield %>
+  <app-root></app-root>
 </main>
 
 <%= javascript_include_tag "admin/common" %>

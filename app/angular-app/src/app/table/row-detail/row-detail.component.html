@@ -1,0 +1,14 @@
+<div *ngIf="row">
+  <h2>{{row.first_name}} {{row.last_name}} details!</h2>
+  <div>
+    <label>id: </label>{{row.id}}
+  </div>
+  <div>
+    <label>First name: </label>
+    <input [(ngModel)]="row.first_name" placeholder="First name"/>
+    <label>Last name: </label>
+    <input [(ngModel)]="row.last_name" placeholder="Last name"/>
+  </div>
+  <button (click)="save()" class="btn btn-primary">Save</button>
+
+</div>
