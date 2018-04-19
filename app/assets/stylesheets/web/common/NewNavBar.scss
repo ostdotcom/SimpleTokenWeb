@@ -27,7 +27,8 @@
     margin-right: 1rem;
   }
 
-  .navbar-toggler {
+  .navbar-toggler,
+  .navbar-toggle{
     background-color: #f4f8f9;
     margin: 0;
     border: 0;
@@ -183,3 +184,18 @@
   fill: #34445b;
 }
 
+
+//Old Navbar
+.kyc_old_nav_bar {
+  .navbar-nav{
+    margin: 10px 0;
+    .dropdown{
+      a.nav-link{
+        font-size: 13px;
+        @media(min-width: 991px){
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
