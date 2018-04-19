@@ -37,6 +37,7 @@
   filters = {cynopsis_status: @cynopsis_status, admin_status: @admin_status, admin_action_type: @admin_action_type}
   sortings = {sort_order: @sort_order}
   client_setup = @resp_data['client_setup']
+  is_super_admin_role = (@resp_data['admin']['role'].to_s == GlobalConstant::Admin.super_admin_role)
 
 %>
 
@@ -61,21 +62,27 @@
     </div>
     <div class="row" style="margin-bottom: 10px;">
 
+      <% if is_super_admin_role %>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="download_kyc_report">Download Csv</button>
+        </div>
+      <% end %>
+
       <div class="col-sm-2">
 
         <div class="kyc-filter-label">ADMIN STATUS</div>
         <form class="form-inline">
           <select id="admin-status" class="form-control selectpicker" style="width: 100%;">
-            <option value="<%= GlobalConstant::UserKycDetail.all_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.all_admin_status %> >
+            <option value="<%= GlobalConstant::UserKycDetail.all_admin_status %>" <%= 'selected' if @admin_status == GlobalConstant::UserKycDetail.all_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.all_admin_status] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.un_processed_admin_status %>" <%= 'selected' if @admin_status.blank? ||@admin_status==GlobalConstant::UserKycDetail.un_processed_admin_status %> >
+            <option value="<%= GlobalConstant::UserKycDetail.un_processed_admin_status %>" <%= 'selected' if @admin_status.blank? || @admin_status == GlobalConstant::UserKycDetail.un_processed_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.un_processed_admin_status] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.qualified_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.qualified_admin_status %> >
+            <option value="<%= GlobalConstant::UserKycDetail.qualified_admin_status %>" <%= 'selected' if @admin_status == GlobalConstant::UserKycDetail.qualified_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.qualified_admin_status] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.denied_admin_status %>" <%= 'selected' if @admin_status==GlobalConstant::UserKycDetail.denied_admin_status %> >
+            <option value="<%= GlobalConstant::UserKycDetail.denied_admin_status %>" <%= 'selected' if @admin_status == GlobalConstant::UserKycDetail.denied_admin_status %> >
               <%= GlobalConstant::UserKycDetail.admin_kyc_statuses[GlobalConstant::UserKycDetail.denied_admin_status] %>
             </option>
           </select>
@@ -91,22 +98,22 @@
             <option value="">
               Select
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.no_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.no_admin_action_type %> >
+            <option value="<%= GlobalConstant::UserKycDetail.no_admin_action_type %>"<%= 'selected' if @admin_action_type == GlobalConstant::UserKycDetail.no_admin_action_type %> >
               <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.no_admin_action_type] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.any_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.any_admin_action_type %> >
+            <option value="<%= GlobalConstant::UserKycDetail.any_admin_action_type %>"<%= 'selected' if @admin_action_type == GlobalConstant::UserKycDetail.any_admin_action_type %> >
               <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.any_admin_action_type] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.data_mismatch_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.data_mismatch_admin_action_type %> >
+            <option value="<%= GlobalConstant::UserKycDetail.data_mismatch_admin_action_type %>"<%= 'selected' if @admin_action_type == GlobalConstant::UserKycDetail.data_mismatch_admin_action_type %> >
               <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.data_mismatch_admin_action_type] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.document_id_issue_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.document_id_issue_admin_action_type %> >
+            <option value="<%= GlobalConstant::UserKycDetail.document_id_issue_admin_action_type %>"<%= 'selected' if @admin_action_type == GlobalConstant::UserKycDetail.document_id_issue_admin_action_type %> >
               <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.document_id_issue_admin_action_type] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.selfie_issue_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.selfie_issue_admin_action_type %> >
+            <option value="<%= GlobalConstant::UserKycDetail.selfie_issue_admin_action_type %>"<%= 'selected' if @admin_action_type == GlobalConstant::UserKycDetail.selfie_issue_admin_action_type %> >
               <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.selfie_issue_admin_action_type] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.residency_issue_admin_action_type %>"<%= 'selected' if @admin_action_type==GlobalConstant::UserKycDetail.residency_issue_admin_action_type %> >
+            <option value="<%= GlobalConstant::UserKycDetail.residency_issue_admin_action_type %>"<%= 'selected' if @admin_action_type == GlobalConstant::UserKycDetail.residency_issue_admin_action_type %> >
               <%= GlobalConstant::UserKycDetail.admin_action_type_names[GlobalConstant::UserKycDetail.residency_issue_admin_action_type] %>
             </option>
           </select>
@@ -119,29 +126,29 @@
         <div class="kyc-filter-label">CYNOPSIS STATUS</div>
         <form class="form-inline">
           <select id="cynopsis-status" class="form-control selectpicker sort-filter-selecter" style="width: 100%;">
-            <option value="<%= GlobalConstant::UserKycDetail.all_cynopsis_status %>"<%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.all_cynopsis_status %> >
+            <option value="<%= GlobalConstant::UserKycDetail.all_cynopsis_status %>"<%= 'selected' if @cynopsis_status == GlobalConstant::UserKycDetail.all_cynopsis_status %> >
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.all_cynopsis_status] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.un_processed_cynopsis_status %>"<%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.un_processed_cynopsis_status %> >
+            <option value="<%= GlobalConstant::UserKycDetail.un_processed_cynopsis_status %>"<%= 'selected' if @cynopsis_status == GlobalConstant::UserKycDetail.un_processed_cynopsis_status %> >
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.un_processed_cynopsis_status] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.cleared_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.cleared_cynopsis_status %> >
+            <option value="<%= GlobalConstant::UserKycDetail.cleared_cynopsis_status %>" <%= 'selected' if @cynopsis_status == GlobalConstant::UserKycDetail.cleared_cynopsis_status %> >
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.cleared_cynopsis_status] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.pending_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.pending_cynopsis_status %> >
+            <option value="<%= GlobalConstant::UserKycDetail.pending_cynopsis_status %>" <%= 'selected' if @cynopsis_status == GlobalConstant::UserKycDetail.pending_cynopsis_status %> >
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.pending_cynopsis_status] %>
             </option>
-            <option value="<%= GlobalConstant::UserKycDetail.approved_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.approved_cynopsis_status %> >
+            <option value="<%= GlobalConstant::UserKycDetail.approved_cynopsis_status %>" <%= 'selected' if @cynopsis_status == GlobalConstant::UserKycDetail.approved_cynopsis_status %> >
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.approved_cynopsis_status] %>
             </option>
             <option value="<%= GlobalConstant::UserKycDetail.cleared_cynopsis_status %>:<%= GlobalConstant::UserKycDetail.approved_cynopsis_status %>"
-                    <%= 'selected' if @cynopsis_status=="#{GlobalConstant::UserKycDetail.cleared_cynopsis_status}:#{GlobalConstant::UserKycDetail.approved_cynopsis_status}" %> >
+                    <%= 'selected' if @cynopsis_status == "#{GlobalConstant::UserKycDetail.cleared_cynopsis_status}:#{GlobalConstant::UserKycDetail.approved_cynopsis_status}" %> >
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.cleared_cynopsis_status] %>
               |
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.approved_cynopsis_status] %>
             </option>
 
-            <option value="<%= GlobalConstant::UserKycDetail.rejected_cynopsis_status %>" <%= 'selected' if @cynopsis_status==GlobalConstant::UserKycDetail.rejected_cynopsis_status %> >
+            <option value="<%= GlobalConstant::UserKycDetail.rejected_cynopsis_status %>" <%= 'selected' if @cynopsis_status == GlobalConstant::UserKycDetail.rejected_cynopsis_status %> >
               <%= GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[GlobalConstant::UserKycDetail.rejected_cynopsis_status] %>
             </option>
           </select>
@@ -154,8 +161,8 @@
         <div class="kyc-filter-label">SORT BY</div>
         <form class="form-inline">
           <select id="sort-order" class="form-control selectpicker" style="width: 100%;">
-            <option value="desc" <%= 'selected' if @sort_order=='desc' %> > Newest</option>
-            <option value="inc" <%= 'selected' if @sort_order=='inc' %> > Oldest</option>
+            <option value="desc" <%= 'selected' if @sort_order == 'desc' %> > Newest</option>
+            <option value="inc" <%= 'selected' if @sort_order == 'inc' %> > Oldest</option>
           </select>
         </form>
 
@@ -175,14 +182,14 @@
 
 
 <% content_for :javascript do %>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script text="text/javascript">
-      $(document).ready(function () {
-        simpletokenadmin.home.dashboard.init({
-          kyc_table_config: <%= raw kyc_table_config.to_json %>,
-          filters: <%= raw filters.to_json %>,
-          sortings: <%= raw sortings.to_json %>
-        });
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+  <script text="text/javascript">
+    $(document).ready(function () {
+      simpletokenadmin.home.dashboard.init({
+        kyc_table_config: <%= raw kyc_table_config.to_json %>,
+        filters: <%= raw filters.to_json %>,
+        sortings: <%= raw sortings.to_json %>
       });
-    </script>
+    });
+  </script>
 <% end %>
