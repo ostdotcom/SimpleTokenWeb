@@ -28,7 +28,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     HttpModule,
     RouterModule.forRoot([
       {
-        path: 'admin/dashboard',
+        path: 'admin/new-dashboard',
         component: TableComponent
       },
       {

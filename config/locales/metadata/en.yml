@@ -351,6 +351,14 @@ en:
       :assets:
         :specific_css_required: 1
 
+    new_dashboard:
+      :meta:
+        :title: New Simple Token Dashboard
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 1
+        :specific_js_required: 1
+
     whitelist_dashboard:
       :meta:
         :title: Simple Token Whitelist Dashboard

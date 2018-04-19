@@ -65,6 +65,24 @@ class Admin::HomeController < Admin::BaseController
     @display_start = params[:display_start]
   end
 
+  def new_dashboard
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_client_detail
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
+    @admin_status = params[:filters][:admin_status] if params[:filters].present?
+    @cynopsis_status = params[:filters][:cynopsis_status] if params[:filters].present?
+    @admin_action_type = params[:filters][:admin_action_type] if params[:filters].present?
+    @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
+    @display_start = params[:display_start]
+  end
+
   # Admin dashboard
   #
   # * Author: Alpesh

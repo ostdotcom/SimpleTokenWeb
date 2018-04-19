@@ -56,6 +56,7 @@ Rails.application.routes.draw do
       get '/authentication' => :authentication
       get '/change-password' => :change_password
       get '/dashboard' => :dashboard
+      get '/new-dashboard' => :new_dashboard
       get '/get-kyc-dashboard' => :get_kyc_dashboard
       get '/get-kyc-details' => :kyc_details
       get '/kyc-action-logs' => :kyc_action_logs
