@@ -120,12 +120,16 @@
   <%= stylesheet_link_tag 'web/default_simple_token' %>
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
-  <% if @presenter_obj.gtm_pixel.present? %>
-    <%= render :partial => "/shared/web/thirdparty/gtm_config.erb" %>
-  <% end %>
+  <% if !is_simple_token_specific_page? %>
 
-  <% if @presenter_obj.fb_pixel.present? %>
-    <%= render :partial => "/shared/web/thirdparty/fb_config.erb" %>
+    <% if @presenter_obj.gtm_pixel.present? %>
+      <%= render :partial => "/shared/web/thirdparty/gtm_config.erb" %>
+    <% end %>
+
+    <% if @presenter_obj.fb_pixel.present? %>
+      <%= render :partial => "/shared/web/thirdparty/fb_config.erb" %>
+    <% end %>
+
   <% end %>
 
   <% if ['web/user::update_kyc_form', 'web/user::add_kyc_form', 'web/user::login', 'web/user::sign_up', 'web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
