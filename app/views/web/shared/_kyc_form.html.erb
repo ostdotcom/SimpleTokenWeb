@@ -163,7 +163,7 @@
                 </div>
               </div>
               <div class="col-12 col-sm-6">
-                <div class="form-instructions display-4">
+                <div class="form-instructions display-4 pt-md-4 pb-3 pb-md-0">
                   <%= raw @presenter_obj.page_data['ethereum_address_info_html'] %>
                 </div>
               </div>
@@ -192,7 +192,7 @@
                 </div>
               </div>
               <div class="col-12 col-sm-6">
-                <div class="form-instructions display-4">
+                <div class="form-instructions display-4 pt-md-4 pb-3 pb-md-0">
                   <%= raw @presenter_obj.page_data['document_info_html'] %>
                 </div>
               </div>
@@ -244,7 +244,7 @@
                       <% tabindex_val += 1 %>
                       <span>choose file</span>
                     </label>
-                    <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200kb, JPG/PNG/PDF only)</span>
+                    <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200kb - Max 15mb, JPG/PNG/PDF only)</span>
                     <div class="error" data-for="document_id_file_path"></div>
                   </div>
                 </div>
@@ -272,7 +272,7 @@
                       <% tabindex_val += 1 %>
                       <span>choose file</span>
                     </label>
-                    <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality picture<br/> of you holding your ID Document <br/>next to your face. <br/>(Min 200kb, JPG/PNG/PDF only)</span>
+                    <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality picture<br/> of you holding your ID Document <br/>next to your face. <br/>(Min 200kb - Max 15mb, JPG/PNG/PDF only)</span>
                     <div class="error" data-for="selfie_file_path"></div>
                   </div>
                 </div>
@@ -293,7 +293,7 @@
                       <span>choose file</span>
                       <% tabindex_val += 1 %>
                     </label>
-                    <span class="form-instructions display-4 thumbnail-upload-instructions choose-file-instructions">Please upload a high quality <br/>scan of your proof of residence.<br/> (Min 200kb, JPG/PNG/PDF only)</span>
+                    <span class="form-instructions display-4 thumbnail-upload-instructions choose-file-instructions">Please upload a high quality <br/>scan of your proof of residence.<br/> (Min 200kb - Max 15mb, JPG/PNG/PDF only)</span>
                   </div>
                   <div class="error" data-for="residence_proof_file_path"></div>
                 </div>

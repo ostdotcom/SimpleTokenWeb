@@ -44,8 +44,8 @@
   .form-instructions{
     color: $cyanish-gray;
     padding: 0 0 25px 0;
-    @media(min-width:  map-get($grid-breakpoints, "md")){
-      padding: 20px 0 10px 0;
+    @media(min-width:  map-get($grid-breakpoints, "lg")){
+      padding: 25px 0 10px 0;
     }
     &.choose-file-instructions{
       padding: 0 0 0 5px;
