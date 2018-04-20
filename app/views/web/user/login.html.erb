@@ -53,7 +53,7 @@
         $(document).ready(function () {
             simpletoken.home.login.init({
                 api_token_sale_state_page_names: <%= raw GlobalConstant::TokenSaleUserState.api_token_sale_state_page_names.to_json %>,
-                d_token: '<%= raw params[:t] %>'
+                d_token: '<%= params[:t] %>'
             });
         });
     </script>
