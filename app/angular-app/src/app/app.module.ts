@@ -12,6 +12,8 @@ import { RowComponent } from './table/row/row.component';
 import { TabledataService } from './tabledata.service';
 import { RowDetailComponent } from './table/row-detail/row-detail.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FilterComponent } from './filter/filter.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { PaginationComponent } from './pagination/pagination.component';
     TableComponent,
     RowComponent,
     RowDetailComponent,
-    PaginationComponent
+    PaginationComponent,
+    DashboardComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     RouterModule.forRoot([
       {
         path: 'admin/new-dashboard',
-        component: TableComponent
+        component: DashboardComponent
       },
       {
         path: 'row/:id',

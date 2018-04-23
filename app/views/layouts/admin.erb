@@ -22,6 +22,7 @@
   <link rel="icon" type="image/png" sizes="96x96" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/16.png">
 
+  <%= stylesheet_link_tag 'web/default_simple_token' %>
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
   <% if ['admin/home::login'].include?("#{params[:controller]}::#{params[:action]}") %>

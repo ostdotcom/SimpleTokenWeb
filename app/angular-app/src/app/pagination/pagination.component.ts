@@ -31,7 +31,7 @@ export class PaginationComponent {
   }
 
   onPage(n: number): void {
-    this.goPage.emit(n);
+    this.goPage.emit(1);
   }
 
   onPrev(): void {

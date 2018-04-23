@@ -1,0 +1,7 @@
+<div class="row">
+    <app-filter (changeFilter)="handleFilterChange($event)" class="col-2" [dynamicVar]="status" [filterInfo]="statusFilter"></app-filter>
+    <app-filter (changeFilter)="handleFilterChange($event)" class="col-2" [filterInfo]="nameFilter" [dynamicVar]="name"></app-filter>
+</div>
+<app-table>
+  
+</app-table>
