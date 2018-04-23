@@ -38,7 +38,7 @@
 
 <section class="container-fluid" id="kyc-demo-section">
   <!-- div class="row" -->
-    <!-- div class="col-xs-12" -->
+    <!-- div class="col-12" -->
       <div>
         <h2 class="section-header">Fits All Your ICO Process Needs</h2>
 
@@ -53,13 +53,13 @@
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
             <% data_set.each_with_index do |data, indx| %>
-                <div class="item <%= indx == 0 ? 'active' : '' %>" data-indx="<%= indx %>">
+                <div class="carousel-item <%= indx == 0 ? 'active' : '' %>" data-indx="<%= indx %>">
                   <div class="kyc-carousel-caption">
                     <h3><%= data[:caption] %></h3>
                   </div>
                   <div class="row">
                     <div class="xs-hidden col-sm-1 col-lg-2"></div>
-                    <div class="kyc-carousel-content col-xs-12 col-sm-10 col-lg-8">
+                    <div class="kyc-carousel-content col-12 col-sm-10 col-lg-8">
                       <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-responsive" />
                       <iframe class="embed-youtube-item" data-src="<%= data[:iframe_src] %>" allowfullscreen style="border:0"></iframe>
                       <button type="submit" class="btn btn-square-gold ost-kyc-play-btn btn-ost-kyc" title="<%= data[:play_btn_text] %>">
