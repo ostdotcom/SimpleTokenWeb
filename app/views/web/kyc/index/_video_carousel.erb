@@ -79,15 +79,20 @@
                   </div>
                 </div>
             <% end %>
+            
+
           </div>
           <!-- roundedIndicators Indicators -->
-          <ol class="carousel-indicators roundedIndicators hidden-sm hidden-md hidden-lg hidden-xl">
-            <% data_set.each_with_index do |data, indx| %>
-                <li data-target="#kyc-video-carousel"
-                    data-slide-to="<%= indx %>"
-                    class="<%= indx == 0 ? 'active' : '' %>"></li>
-            <% end %>
-          </ol>
+          <ol class="carousel-indicators roundedIndicators d-sm-none">
+          <% data_set.each_with_index do |data, indx| %>
+              <li data-target="#kyc-video-carousel"
+                  data-slide-to="<%= indx %>"
+                  class="<%= indx == 0 ? 'active' : '' %>"></li>
+          <% end %>
+          </ol>   
+                     
+
+
         </div>
       </div>
     <!-- /div -->
