@@ -11,4 +11,25 @@
     </a>
   </div>
 </div>
+<div class="text-center my-5">
+  <h5 class="mb-3">Live Updates & News on the Public Token Sale</h5>
+  <a href="<%= @presenter_obj.page_data['telegram_href'] %>" title="<%= @presenter_obj.account_name %> Telegram" class="telegram-link btn btn-primary" target="_blank">
+    <div class="telegram-connect token-sale-telegram-connect">
+      <span class="left-comp text-center">Learn More</span><svg class="svg align-middle mx-2" style="height: 18px;width: 18px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play" fill="#34445B"></use>
+        </switch>
+      </svg><span class="right-comp text-center">on telegram</span>
+    </div>
+  </a>
+</div>
 <% end %>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" display="none">
+  <symbol id="icon-play" viewBox="0 0 24 20">
+    <path d="M8.3784,18.3285714 C7.61472,18.3580952 7.81584,18.0971429 7.56096,17.4319048 L5.48592,10.67 L18.3744,2.72142857 L19.88592,3.11761905 L18.62928,6.49857143 L8.3784,18.3285714 Z" id="Shape" fill="#E1E6EC"></path>
+    <path d="M7.84032,18.2333333 C8.46048,18.6166667 8.66688,17.9952381 8.97168,17.7161905 C9.4392,17.2819048 16.45728,11.0733333 16.45728,11.0733333 L12.77568,10.2042857 L9.4728,13.0195238 L7.89456,18.0642857 L7.84032,18.2333333 Z" id="Shape" fill-opacity="0.5" fill="#34445B"></path>
+    <path d="M9.39168,13.0242857 L18.29184,19.4609524 C19.3032,20.002381 20.03904,19.7319048 20.29632,18.5419048 L23.9184,1.80952381 C24.28608,0.348571429 23.34864,-0.3 22.37424,0.132380952 L1.11648,8.17428571 C-0.33552,8.75047619 -0.31776,9.54428571 0.8592,9.88666667 L6.32016,11.5638095 L18.95376,3.75619048 C19.54224,3.39571429 20.09376,3.59428571 19.65216,3.99095238 L9.39168,13.0238095 L9.39168,13.0242857 Z" id="Shape" fill="#34445B"></path>
+  </symbol>
+</svg>
