@@ -134,6 +134,7 @@ $activeArrowTop: $captionHeight + $captionBottomMargin;
         text-align: center;
         color: #597a84;
         position: relative;
+        cursor: pointer;
 
         &:after {
           content: '';
