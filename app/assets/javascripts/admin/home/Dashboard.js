@@ -3,6 +3,7 @@
 
   var homeNs = ns("simpletokenadmin.home"),
     adminUtilsNs = ns("simpletokenadmin.utils"),
+    webUtilsNs = ns("simpletoken.utils"),
     oThis;
 
   homeNs.dashboard = oThis = {
@@ -122,6 +123,29 @@
         oThis.changePageUrl();
       });
 
+      $('#download_kyc_report').on('click', function () {
+        oThis.downloadCsv();
+      });
+
+    },
+
+    downloadCsv: function () {
+      $.ajax({
+        url: '/api/admin/kyc/get-kyc-report',
+        dataType: 'json',
+        method: 'GET',
+        success: function (response) {
+          if (response.success == true) {
+            alert("You Will receive an email with the csv.");
+            return false;
+          } else {
+            webUtilsNs.errorHandling.displayFormErrors(response);
+          }
+        },
+        error: function (jqXHR, exception) {
+          adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+        }
+      });
     },
 
     changePageUrl: function () {
