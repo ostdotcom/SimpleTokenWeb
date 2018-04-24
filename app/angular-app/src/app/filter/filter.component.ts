@@ -17,6 +17,7 @@ export class FilterComponent implements OnInit {
   @Output() changeFilter = new EventEmitter<any>();
 
   constructor(http : Http) { 
+
   }
 
   handleChange($event) {

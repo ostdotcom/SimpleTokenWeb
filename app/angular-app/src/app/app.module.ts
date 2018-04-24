@@ -14,6 +14,7 @@ import { RowDetailComponent } from './table/row-detail/row-detail.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FilterComponent } from './filter/filter.component';
+import { OstHttp } from './ost-http.service';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { FilterComponent } from './filter/filter.component';
       },
     ])
   ],
-  providers: [TabledataService],
+  providers: [TabledataService ,  OstHttp],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
