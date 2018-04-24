@@ -38,12 +38,12 @@
 
 <section class="container-fluid" id="kyc-demo-section">
   <!-- div class="row" -->
-    <!-- div class="col-xs-12" -->
+    <!-- div class="col-12" -->
       <div>
         <h2 class="section-header">Fits All Your ICO Process Needs</h2>
 
-        <div id="kyc-video-carousel" class="carousel slide featuresSection carouselMobile" data-ride="carousel" data-ride="carousel"><!-- data-ride="carousel" -->
-          <ol class="carousel-indicators topMenuIndicators hidden-xs">
+        <div id="kyc-video-carousel" class="carousel slide featuresSection carouselMobile" data-ride="carousel"><!-- data-ride="carousel" -->
+          <ol class="carousel-indicators topMenuIndicators d-none d-sm-flex">
             <% data_set.each_with_index do |data, indx| %>
                 <li data-target="#kyc-video-carousel"
                     data-slide-to="<%= indx %>"
@@ -53,13 +53,14 @@
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
             <% data_set.each_with_index do |data, indx| %>
-                <div class="item <%= indx == 0 ? 'active' : '' %>" data-indx="<%= indx %>">
+                <div class="carousel-item <%= indx == 0 ? 'active' : '' %>" data-indx="<%= indx %>">
                   <div class="kyc-carousel-caption">
                     <h3><%= data[:caption] %></h3>
                   </div>
+
                   <div class="row">
-                    <div class="xs-hidden col-sm-1 col-lg-2"></div>
-                    <div class="kyc-carousel-content col-xs-12 col-sm-10 col-lg-8">
+                    <div class="d-none d-sm-inline col-sm-1 col-lg-2"></div>
+                    <div class="kyc-carousel-content col-12 col-sm-10 col-lg-8 mx-auto">
                       <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-responsive" />
                       <iframe class="embed-youtube-item" data-src="<%= data[:iframe_src] %>" allowfullscreen style="border:0"></iframe>
                       <button type="submit" class="btn btn-square-gold ost-kyc-play-btn btn-ost-kyc" title="<%= data[:play_btn_text] %>">
@@ -75,19 +76,24 @@
                         </div>
                       </button>
                     </div>
-                    <div class="xs-hidden col-sm-1 col-lg-2"></div>
+                    <div class="d-none d-sm-block col-sm-1 col-lg-2"></div>
                   </div>
                 </div>
             <% end %>
+            
+
           </div>
           <!-- roundedIndicators Indicators -->
-          <ol class="carousel-indicators roundedIndicators hidden-sm hidden-md hidden-lg hidden-xl">
-            <% data_set.each_with_index do |data, indx| %>
-                <li data-target="#kyc-video-carousel"
-                    data-slide-to="<%= indx %>"
-                    class="<%= indx == 0 ? 'active' : '' %>"></li>
-            <% end %>
-          </ol>
+          <ol class="carousel-indicators roundedIndicators d-sm-none">
+          <% data_set.each_with_index do |data, indx| %>
+              <li data-target="#kyc-video-carousel"
+                  data-slide-to="<%= indx %>"
+                  class="<%= indx == 0 ? 'active' : '' %>"></li>
+          <% end %>
+          </ol>   
+                     
+
+
         </div>
       </div>
     <!-- /div -->

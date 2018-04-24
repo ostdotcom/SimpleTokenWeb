@@ -45,10 +45,6 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page
 }
 
 .security-auditors{
-  padding: 40px 0;
-  ul.row {
-    padding: 0;
-  }
   .heading{
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -56,10 +52,8 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page
     color: #438cad;
     font-size: 38px;
     line-height: 1.4;
-    margin-top: 30px;
   }
   .col-md-4{
-    margin-bottom: 25px;
     text-align: center;
     display: -webkit-flex;
     display: flex;
