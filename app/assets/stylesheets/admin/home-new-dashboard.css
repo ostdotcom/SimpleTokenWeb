@@ -1,4 +1,3 @@
 /*
-*= require web/default_simple_token
-*= require web/angular-common
+ //TODO require angular-common.css,  it should always be loaded after default_simple_token
 */
