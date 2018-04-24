@@ -19,6 +19,7 @@
     },
 
     bindEventListeners: function () {
+     
       var oThis = this;
       oThis.jVideoCarousal.swipe({
         swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
@@ -38,7 +39,7 @@
 
     bindButtonActions: function () {
 
-      $(".carousel-inner .item .kyc-carousel-content").on("click", function () {
+      $(".carousel-inner .carousel-item .kyc-carousel-content").on("click", function () {
         oThis.showVideo( $(this) );
       });
 
