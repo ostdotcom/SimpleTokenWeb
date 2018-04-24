@@ -10,27 +10,27 @@
       :iframe_src => "https://www.youtube.com/embed/_sGZJkGHo9s" + youtube_url_params,
       :play_btn_text => "WATCH DEMO"
     },
-    {
-      :heading => "Review Process",
-      :caption => "Learn how to utilize the ostKYC dashboard to review your clients' applications.",
-      :img_src => image_path + "ost-kyc-review-process-cover.png",
-      :iframe_src => "https://www.youtube.com/embed/Md7sbbYXRmQ" + youtube_url_params,
-      :play_btn_text => "WATCH DEMO"
-    },
-    {
-      :heading => "Issues Resolution",
-      :caption => "Learn how to handle issue resolution and enable your clients to successfully register.",
-      :img_src => image_path + "ost-kyc-issue-resolution-cover.png",
-      :iframe_src => "https://www.youtube.com/embed/0d54dxFKjA4" + youtube_url_params,
-      :play_btn_text => "WATCH DEMO"
-    },
-    {
-      :heading => "Whitelisting",
-      :caption => "Discover how the ETH Address Whitelist process functions.",
-      :img_src => image_path + "ost-kyc-whitelist-eth-cover-1.png",
-      :iframe_src => "https://www.youtube.com/embed/Bn4dReP3xHs" + youtube_url_params,
-      :play_btn_text => "WATCH DEMO"
-    }
+    # {
+    #   :heading => "Review Process",
+    #   :caption => "Learn how to utilize the ostKYC dashboard to review your clients' applications.",
+    #   :img_src => image_path + "ost-kyc-review-process-cover.png",
+    #   :iframe_src => "https://www.youtube.com/embed/Md7sbbYXRmQ" + youtube_url_params,
+    #   :play_btn_text => "WATCH DEMO"
+    # },
+    # {
+    #   :heading => "Issues Resolution",
+    #   :caption => "Learn how to handle issue resolution and enable your clients to successfully register.",
+    #   :img_src => image_path + "ost-kyc-issue-resolution-cover.png",
+    #   :iframe_src => "https://www.youtube.com/embed/0d54dxFKjA4" + youtube_url_params,
+    #   :play_btn_text => "WATCH DEMO"
+    # },
+    # {
+    #   :heading => "Whitelisting",
+    #   :caption => "Discover how the ETH Address Whitelist process functions.",
+    #   :img_src => image_path + "ost-kyc-whitelist-eth-cover-1.png",
+    #   :iframe_src => "https://www.youtube.com/embed/Bn4dReP3xHs" + youtube_url_params,
+    #   :play_btn_text => "WATCH DEMO"
+    # }
   ];
   
 %>
@@ -60,8 +60,8 @@
 
                   <div class="row">
                     <div class="d-none d-sm-inline col-sm-1 col-lg-2"></div>
-                    <div class="kyc-carousel-content col-12 col-sm-10 col-lg-8 mx-auto">
-                      <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-responsive" />
+                    <div class="kyc-carousel-content col-11 col-sm-10 col-lg-8 mx-auto">
+                      <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-fluid" />
                       <iframe class="embed-youtube-item" data-src="<%= data[:iframe_src] %>" allowfullscreen style="border:0"></iframe>
                       <button type="submit" class="btn btn-square-gold ost-kyc-play-btn btn-ost-kyc" title="<%= data[:play_btn_text] %>">
                         <div class="btn-play">
