@@ -61,11 +61,11 @@
 <section class="container-more-benefits">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-12">
         <h2 class="text-center">More Benefits</h2>
         <% more_benefits.each_with_index do|member, index| %>
           <% if (index % 3) == 0 %><div class="row"><% end %>
-          <div class="col-xs-12 col-sm-4 col-sm-offset-0" itemprop="member" itemscope itemtype="http://schema.org/Person">
+          <div class="col-12 col-md-4" itemprop="member" itemscope itemtype="http://schema.org/Person">
             <img itemprop="photo" src="<%=member[:image][:src] %>" alt="<%=member[:image][:alt] %>" height="<%=member[:image][:height] %>">
             <h3><%= raw member[:title] %></h3>
             <p class="companies-desc"><%= raw member[:description] %></p>

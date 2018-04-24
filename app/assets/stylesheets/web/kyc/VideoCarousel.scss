@@ -53,6 +53,28 @@ $activeArrowTop: $captionHeight + $captionBottomMargin;
         z-index: 1;
       }
 
+      .btn-square-gold{
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 14px;
+        height: 40px;
+        padding: 0 30px;
+        margin: 0 20px;
+        text-align: center;
+        display: inline-block;
+        border-color: #e4b030;
+        background: #e4b030;
+        color: #fff;
+        &:hover,
+        &:active,
+        &:focus{
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+
+
       .ost-kyc-play-btn {
         position: absolute;
         top: 0;
@@ -63,6 +85,7 @@ $activeArrowTop: $captionHeight + $captionBottomMargin;
         width: 200px;
         z-index: 2;
         font-size: 12px;
+        letter-spacing: 2.2px;
         .btn-play{
           .play{
             width: 16px;
@@ -109,11 +132,11 @@ $activeArrowTop: $captionHeight + $captionBottomMargin;
       
 
       li, .active {
-        border-color: #597a84;
-        border-radius: $roundedIndicatorsHeight;
-        height: $roundedIndicatorsHeight;
-        width: $roundedIndicatorsHeight;
-        margin: 1px;
+        margin: 1px 3px;
+        border: 1px solid #597a84;
+        border-radius: 6px;
+        height: 6px;
+        width: 6px;
       }
       .active {
         background-color: #597a84;
