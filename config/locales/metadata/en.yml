@@ -330,6 +330,13 @@ en:
       :assets:
         :specific_css_required: 1
 
+    reset_password:
+      :meta:
+        :title: Simple Token Reset Password
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 0
+
     authentication:
       :meta:
         :title: Simple Token Admin Login Authentication
