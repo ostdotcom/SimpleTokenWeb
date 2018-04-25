@@ -1,3 +1,13 @@
+
+.kyc-marketing-page-wrapper {
+  .btn-primary , .btn-secondary {
+    border-width: 2px;
+    padding: .75rem 1.6rem;
+    font-size: 14.4px;
+    font-weight: 500;
+  }
+}
+
 .container-jumbotron{
 
   .ost-kyc-logo{
@@ -5,12 +15,14 @@
   }
 
   h2{
-    font-size: 28px;
-    font-weight: 100;
-    line-height: 1.4;
-    @media (max-width: 1200px) {
-      font-size: 20px;
-    }
+    font-weight: 700;
+    color: #438BAD;
+  }
+
+  .display-text-p{
+    font-weight: 300;
+    line-height: 1.6rem;
+    color: #597a84;
   }
 
   .ost-kyc-hero{
