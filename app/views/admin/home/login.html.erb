@@ -1,37 +1,37 @@
 <div class="container sign-up-form py-5">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
       <div class="text-center">
         <a href="/" title="OST KYC" class="border-none d-inline-block">
           <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-jumbotron-logo.svg" width="211"/>
         </a>
       </div>
       <div class="simple-token-form">
-        <h1 class="text-center form-header">Login to the Admin Portal</h1>
-        <form class="user-form" method="POST" action="/api/admin/login" id="adminLoginForm">
+        <h4 class="text-center form-header my-4">Login to the Admin Portal</h4>
+        <form class="user-form col-12 col-md-6 col-lg-5 col-xl-4 mx-auto" method="POST" action="/api/admin/login" id="adminLoginForm">
           <div class="form-group">
-            <label for="email">email address</label>
+            <label class="form-label" for="email">email address</label>
             <input type="text" name="email" id="email" value="" class="form-control" autofocus tabindex="1">
             <div class="error" data-for="email"></div>
           </div>
           <div class="form-group">
-            <label for="password">password</label>
+            <label class="form-label" for="password">password</label>
             <div class="position-relative">
               <input type="password" class="form-control" name="password" id="password" tabindex="2" />
               <span class="input-group-addon showhide-addon" id="showhide-password"><span class="show-password-eye-icon"></span></span>
             </div>
-            <a href="/admin/reset-password" title="Forgot password?" class="forgot-password display-4" tabindex="3">Forgot password?</a>
+            <a href="/admin/reset-password" title="Forgot password?" class="forgot-password display-4 border-none" tabindex="3">Forgot password?</a>
 
             <div class="error" data-for="password"></div>
           </div>
-          <div class="form-group user-form-footer">
+          <div class="form-group user-form-footer text-center">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-            <div class="form-group form-recapcha">
-              <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>"></div>
+            <div class="form-group form-recapcha text-xs-center">
+              <div class="g-recaptcha form-recapcha-wrap d-inline-block" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>"></div>
               <div class="error" data-for="recaptcha" style="text-align: center"></div>
             </div>
-            <button type="submit" class="btn btn-gold form-btn-gold" id="adminLogin" tabindex="3" title="LOGIN">login</button>
-            <div class="error" data-for="general_error" style="text-align: center"></div>
+            <button type="submit" class="btn btn-primary" id="adminLogin" tabindex="3" title="LOGIN">login</button>
+            <div class="error text-center" data-for="general_error"></div>
           </div>
         </form>
       </div>

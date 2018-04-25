@@ -1,0 +1,37 @@
+
+/*****Simple token custom nav start*****/
+.navbar-simpletoken{
+  .navbar-toggler{
+    background-color: $custom-gray-4;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    padding: 17px;
+    &:focus{
+      outline: none;
+    }
+    .icon-bar{
+      display: block;
+      width: 26px;
+      height: 2px;
+      border-radius: 1px;
+      margin: 5px 0;
+      background-color: $blue-900;
+    }
+  }
+  @media ( max-width: map-get($grid-breakpoints, "md") ){
+    .navbar-collapse {
+      background-color: $custom-gray-4;
+    }
+  }
+
+  .nav-link {
+    border-bottom: none;
+    &:hover , &:active {
+      @media (min-width: map-get($grid-breakpoints, "md")) {
+        border-bottom: 1px solid $yellow-500;
+      }
+    }
+  }
+}
+/*****Simple token custom nav end*****/
