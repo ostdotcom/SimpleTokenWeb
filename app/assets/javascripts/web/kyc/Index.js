@@ -19,6 +19,7 @@
     },
 
     bindEventListeners: function () {
+     
       var oThis = this;
       oThis.jVideoCarousal.swipe({
         swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
@@ -31,6 +32,7 @@
           , jEl          = $( relatedTarget )
           , indx         = jEl.data("indx")
         ;
+        $('.carousel-indicators li').removeClass('active');
         $("[data-slide-to=" + indx + "]").addClass("active");
         oThis.hideVideo();
       });
@@ -38,7 +40,7 @@
 
     bindButtonActions: function () {
 
-      $(".carousel-inner .item .kyc-carousel-content").on("click", function () {
+      $(".carousel-inner .carousel-item .kyc-carousel-content").on("click", function () {
         oThis.showVideo( $(this) );
       });
 
@@ -154,8 +156,8 @@
         });
         oThis.jVideoCarousal.find("button").show();
         oThis.jVideoCarousal.find('iframe').removeAttr('src');
-        oThis.jVideoCarousal.find('iframe').hide();     
-        oThis.isVideoPlaying = false;   
+        oThis.jVideoCarousal.find('iframe').hide();
+        oThis.isVideoPlaying = false;
       }
     }
 

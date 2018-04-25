@@ -60,16 +60,16 @@
     border-bottom: 1px solid #3c5056;
   }
 
-  .input ~ .border {
+  .input ~ .border-line {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #6ca3a9;
+    background-color: #6ca3a9!important;
   }
 
-  .input:focus ~ .border {
+  .input:focus ~ .border-line {
     width: 100%;
     transition: 0.5s;
   }
