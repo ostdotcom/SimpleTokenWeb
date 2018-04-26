@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RowComponent } from '../table/row/row.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,16 +9,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  tableType = 'dashboard';
+
   config = {
-    tableDataUrl : "api/admin/kyc/dashboard/"
-  }
+    tableDataUrl : 'api/admin/kyc/dashboard/',
+    header: ['Name / Date', 'Admin status', 'Cynopsis', 'Whitelist', 'Residence country',
+             'Natinality', 'Submission', 'duplicate status', 'Admin']
+  };
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    console.log("config" ,  this.config );
-   };
+    console.log('config' ,  this.config );
+   }
 
 }

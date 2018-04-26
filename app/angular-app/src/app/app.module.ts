@@ -15,6 +15,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FilterComponent } from './filter/filter.component';
 import { OstHttp } from './ost-http.service';
+import { HeaderComponent } from './table/header/header.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { OstHttp } from './ost-http.service';
     RowDetailComponent,
     PaginationComponent,
     DashboardComponent,
-    FilterComponent
+    FilterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

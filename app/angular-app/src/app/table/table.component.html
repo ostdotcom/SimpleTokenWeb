@@ -1,3 +1,8 @@
-<div class="rows-container">  
+<div class="rows-container">
+<ng-container
+   *ngTemplateOutlet="headerTemplate">
+</ng-container>
+<ng-container *ngIf="tableType==='dashboard'">
   <app-row *ngFor="let row of rows"  [row]='row'></app-row>
-</div>  
+</ng-container>
+</div>
