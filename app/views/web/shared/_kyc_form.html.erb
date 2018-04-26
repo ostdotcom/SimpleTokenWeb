@@ -236,15 +236,20 @@
                         </svg>
                       </span>
                     </label>
-                    <div class="file-name display-4 my-1"></div>
+                    <div class="file-name display-4 my-1 col-6">
+                      <span class="upload-file-close-btn d-none"></span>
+                    </div>
                   </div>
                   <div class="col-12 mt-2">
-                    <label class="upload-file btn btn-secondary upload-image-btn">
-                      <input type="file" title="Identification Document" name="document_id_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>
-                      <% tabindex_val += 1 %>
-                      <span>choose file</span>
-                    </label>
-                    <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200kb - Max 15mb, JPG/PNG/PDF only)</span>
+                    <!--<label class="upload-file btn btn-secondary upload-image-btn">-->
+                      <!--<input type="file" title="Identification Document" name="document_id_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>-->
+                      <!--<% tabindex_val += 1 %>-->
+                      <!--<span>choose file</span>-->
+                    <!--</label>-->
+
+                    <input type="button" title="Identification Document" class="single-upload-file btn btn-secondary upload-image-btn" value="Choose file"  data-max-length="3" name="document_id_file_path" tabindex="<%= tabindex_val %>">
+                    <% tabindex_val += 1 %>
+                    <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200kb, JPG/PNG/PDF only)</span>
                     <div class="error" data-for="document_id_file_path"></div>
                   </div>
                 </div>
@@ -264,12 +269,14 @@
                         </svg>
                       </span>
                     </label>
-                    <div class="file-name display-4 my-1"></div>
+                    <div class="file-name display-4 my-1 col-6"></div>
                   </div>
                   <div class="col-12 mt-2">
                     <label class="upload-file btn btn-secondary upload-image-btn">
-                      <input type="file" title="Selfie with your identification document" name="selfie_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required>
-                      <% tabindex_val += 1 %>
+                      <input type="file" title="Selfie with your identification document" name="selfie_file_path"
+                             class="upload btn btn-orange" accept="image/*,application/pdf"
+                             data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>"
+                             required> <% tabindex_val += 1 %>
                       <span>choose file</span>
                     </label>
                     <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality picture<br/> of you holding your ID Document <br/>next to your face. <br/>(Min 200kb - Max 15mb, JPG/PNG/PDF only)</span>
@@ -285,7 +292,7 @@
                   <div class="col-12">
                     <label class="form-label" for="residence_proof_file_path">Proof of Residence
                     </label>
-                    <div class="file-name display-4 my-1"></div>
+                    <div class="file-name display-4 my-1 col-6"></div>
                   </div>
                   <div class="col-12 mt-2">
                     <label class="upload-file btn btn-secondary upload-image-btn">
@@ -299,6 +306,59 @@
                 </div>
               </div>
             </div>
+
+            <div class="row form-group">
+              <div class="col-12 col-sm-12">
+                <label class="form-label">ARE YOU AN ACCREDITED INVESTOR?</label>
+                <div class="row">
+                  <div class="col-12 col-sm-12">
+                    <div class="form-check form-check-inline">
+                      <input type="radio"  class="form-check-input radio-button radio-button-yes" name="ACCREDITEDRadio" id="yesRadios" value="option1" checked />
+                      <label class="radio-button-label" for="yesRadios">
+                        <span class="radio-button-circle"></span>Yes
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input radio-button radio-button-no" type="radio" name="ACCREDITEDRadio" id="noRadios" value="option2" />
+                      <label class="radio-button-label" for="noRadios">
+                        <span class="radio-button-circle"></span>No
+                      </label>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row upload-proof-invester">
+              <div class="col-12 col-sm-12">
+                <div class="multi-file-wrapper ">
+
+                </div>
+              </div>
+              <div class="col-12 col-sm-12">
+                <div class="row form-group">
+                  <div class="col-12">
+                    <label class="form-label mt-2" for="selfie_file_path">UPLOADS PROOF
+                    </label>
+                  </div>
+                  <div class="col-12 mt-2">
+                    <div class="file-wrapper" style="position:absolute; top:-1000px; left:-1000px">
+
+                    </div>
+
+                    <input type="button" class="multi-upload-file btn btn-secondary upload-image-btn" value="Choose file"  data-max-length="3" name="investor-proof" tabindex="<%= tabindex_val %>">
+                    <% tabindex_val += 1 %>
+
+                    </input>
+                    <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality scan or<br/> picture of your passport photo page. <br/>(Min 200kb, JPG/PNG/PDF only)</span>
+                    <div class="error" data-for="selfie_file_path"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
             <div class="row mt-2 form-group">
               <div class="col-12 col-sm-6">
