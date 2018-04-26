@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     scope 'admin/', controller: 'admin/home' do
       get '/login' => :login
       get '/forgot-password' => :forgot_password
+      get '/reset-password' => :reset_password
       get '/logout' => :logout
       get '/authentication' => :authentication
       get '/change-password' => :change_password

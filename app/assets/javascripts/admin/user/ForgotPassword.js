@@ -5,7 +5,7 @@
         utilsNs = ns("simpletoken.utils"),
         oThis;
 
-    homeNs.reset = oThis = {
+    homeNs.forgot = oThis = {
 
         init: function (config) {
             oThis.bindButtonActions();
