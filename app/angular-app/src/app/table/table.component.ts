@@ -2,94 +2,120 @@ import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OstHttp } from '../ost-http.service';
 import { Http, RequestOptionsArgs, ResponseContentType } from '@angular/http';
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+
+export class TableComponent  implements OnInit {
+
   @Input() headerTemplate: TemplateRef<any>;
   @Input() tableType: string;
   @Input() config: Object ;
 
    //TODO confrim default message from UX/UI
-   defaultErrorMsg: String =  "Something went wrong, please try again!"
-   requestPageNumber:Number = 1;
-   isLoading: Boolean = false;
+   errMsg: String =  "Something went wrong, please try again!"
+   isProcessing: Boolean = false;
    isGetDataOnLoad: Boolean =  true;
    hasError: Boolean = false;
    rows: Array<any> = [];
    tableDataUrl:any ;
    deleteRowUrl:any ;
-   errorMessage: String ;
+   metaData: Object; 
 
    constructor(private activatedRoute: ActivatedRoute , private http: OstHttp) { }
+
    ngOnInit() {
      this.configOverWrites();
       if( this.isGetDataOnLoad ){
-          this.getTableData();
+          let params = this.getParams(); 
+          this.getTableData( params );
       }
    }
+
    configOverWrites() {
       let oThis  = this ,
       config = this.config
       ;
       Object.assign( oThis , config );
    }
-   public getTableData() {
-    let params:RequestOptionsArgs =  this.getParams();
-    this.isLoading =  true;
-    this.hasError = false;
+
+   getTableDataOnPageChange( pageNumber ){
+     console.log("getTableDataOnPageChange" , pageNumber);
+    let params:RequestOptionsArgs =  this.getParams( pageNumber );
+    this.getTableData( params );
+   }
+
+   getParams(pageNumber? , filters? , sorting? ): RequestOptionsArgs {
+    return {
+      params : {
+        page_number : pageNumber || 1,
+        filters: filters,
+        sortings: sorting,
+        page_size : 2
+      },
+    }
+  }
+
+   getTableData( params ) {
+    this.updateDataProcessingStatus(this , true , false );
     this.http.get( this.tableDataUrl , params).subscribe(
       response => {
         let res = response.json();
-        this.isLoading = false;
-        this.hasError = false;
+        this.updateDataProcessingStatus(this , false , false );
         this.onTableDataSuccess( res );
       },
       error => {
         let err = error.json();
-        this.isLoading =  false;
-        this.hasError = true;
-        this.errorMessage = err['display_text'];
+        this.updateDataProcessingStatus(this , false , true,  err['display_text']);
         this.onTableDataError( err );
       })
    }
-   public onTableDataSuccess( res ) {
+
+   onTableDataSuccess( res ) {
     let data      = res['data'],
         dataKey   = data && data['result_set'],
         tableData = dataKey && data[dataKey]
     ;
     this.rows = tableData;
+    this.metaData = data['meta']; 
    }
-   public onTableDataError( errorResponse ) {
+
+   onTableDataError( errorResponse ) {
     let err = errorResponse['err']
     if( err ){
-      this.errorMessage = err['display_text'] || this.defaultErrorMsg
+      this.updateDataProcessingStatus(this , false , true,  err['display_text']);
     }
    }
-   public deleteRow( data ) {
+
+   deleteRow( data ) {
     if( !this.deleteRowUrl ) return false ;
     let row = data['row'],
         status = data['status']
     ;
-    status.isProcessing = true;
-    status.hasError = false;
+    this.updateDataProcessingStatus(status ,  true, false );
     this.http.post( this.deleteRowUrl , row ).subscribe(
       response => {
         let res = response.json()
         this.onDeleteRow( res , row );
-
+        this.updateDataProcessingStatus(status ,  false, false );
       },
       error => {
-        let err = error.json()
-        status.isProcessing = false ;
-        status.hasError = true;
-        status.errMsg = err['display_text'];
+        let err = error.json();
+        this.updateDataProcessingStatus(status ,  false, true , err['display_text']);
       }
     )
    }
-   public onDeleteRow( res , row ){
+
+   updateDataProcessingStatus( context , isProcessing:boolean , hasError:boolean , errMsg?){
+    context['isProcessing'] = isProcessing; 
+    context['hasError']     = hasError; 
+    context['errMsg']       = errMsg || context['errMsg'] ; 
+   }
+
+   onDeleteRow( res , row ){
     if( res.success ){
       let rowIndex = this.getRowIndex( row );
       if( rowIndex ){
@@ -97,10 +123,12 @@ export class TableComponent implements OnInit {
       }
     }
    }
-   public insertRow( row ) {
+
+   insertRow( row ) {
      this.rows.unshift( row );
    }
-   public updateRow( updatedRow , updateRowId? , mapKey? ){
+
+   updateRow( updatedRow , updateRowId? , mapKey? ){
      let popertyKey = mapKey || 'id' ,
          id = updateRowId || updatedRow[popertyKey],
          existingRow = this.getRowFromRows( id )
@@ -109,16 +137,7 @@ export class TableComponent implements OnInit {
       existingRow = updatedRow;
     }
    }
-  /*Private function start*/
-  getParams(): RequestOptionsArgs {
-    return {
-      params : {
-        page_number : this.requestPageNumber,
-        filters: {},
-        sortings: {}
-      },
-    }
-  }
+
   getRowIndex( row ,  key? ) {
     let propertyKey = key || "id",
         id = (row[propertyKey]),
@@ -132,6 +151,7 @@ export class TableComponent implements OnInit {
     }
     return index;
   }
+
   getRowFromRows( id ) {
     for (var i = 0; i < this.rows.length; i++) {
         if (this.rows[i] == id) {
@@ -140,5 +160,17 @@ export class TableComponent implements OnInit {
     }
     return null;
   }
-  /*Private function end*/
+
+  isPagination(): Boolean {
+    return this.getTotalPageCount() > 0 ? true : false ; 
+  }
+
+  getTotalPageCount(): Number {
+    if( !this.metaData ) return 0; 
+    let pageSize      =  Number(this.metaData['page_size']),
+        totalRecords  =  Number(this.metaData['total_records']),
+        totalPageCount=  Math.ceil( totalRecords / pageSize)
+    ; 
+    return totalPageCount; 
+  }
 }

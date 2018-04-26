@@ -1,11 +1,20 @@
+
 <div class="rows-container">
 <ng-container
    *ngTemplateOutlet="headerTemplate">
 </ng-container >
 <div *ngIf="isLoading==false; else loadingBlock">
 <ng-container *ngIf="tableType==='dashboard'">
+
     <app-row *ngFor="let row of rows" [row]='row' (deleteRowEvent)="deleteRow( $event )"></app-row>
   </ng-container>
+  <!-- check with ng-content end -->
+
+  <table-pagination *ngIf="isPagination()"
+                    (pageChangeEvent)="getTableDataOnPageChange( $event )"
+                    [totalPageCount]="getTotalPageCount()" >
+  </table-pagination>
+
 </div>
 <ng-template #loadingBlock>
 <div class="loading mx-auto mt-5" style="font-size:30px;">
