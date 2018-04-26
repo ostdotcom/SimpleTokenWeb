@@ -64,6 +64,68 @@
         },
       });
 
+
+      $(".multi-upload-file").click(function(e){
+
+          if ($(".file-wrapper .upload").length == 0) {
+            oThis.fileCount = 0;
+          }
+          else {
+            oThis.fileCount++;
+          }
+
+          $(".file-wrapper").append('<input type="file" name="multi-investor-file-upload" data-file-count="' + oThis.fileCount + '" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>');
+          $(".file-wrapper input[type='file'].upload:last-child").trigger("click");
+
+          $('.file-wrapper').find('input[type="file"]').change(function () {
+
+              // <div class="file-name display-4 my-1 col-6"></div>
+              $('.multi-file-wrapper').append($("<div class='col-7 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<span title="close" data-file-count="' + oThis.fileCount + '" class="upload-file-close-btn">X</span>'));
+              $('.upload-file-close-btn').click(function (e) {
+                var fileCount = $(e.target).data('file-count');
+                $(".file-wrapper").find("[data-file-count=" + fileCount + "]").remove();
+                $('.multi-file-wrapper').find("[data-file-count=" + fileCount + "]").remove();
+
+                oThis.updateMultiFileBtnStateForInvestor();
+              }).bind(oThis);
+              oThis.updateMultiFileBtnStateForInvestor();
+          });
+
+      });
+      
+
+      $('.single-upload-file').click(function () {
+
+        $(this).closest('.form-group').find('.file-name').append('<input type="file" style="position:absolute; top:-1000px; left:-1000px" name="single-file-upload" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" required/>');
+        $(this).closest('.form-group').find('.file-name').find("input[type='file']").trigger("click");
+        var chooseButtonObject = $(this).closest('.form-group').find("input[type='button']");
+
+        $(this).closest('.form-group').find('.file-name').find("input[type='file']").change(function () {
+
+         $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<span title="close" class="upload-file-close-btn" id="btnClose">X</span>');
+         chooseButtonObject.attr('disabled','disabled');
+
+         $(".upload-file-close-btn").click(function (event) {
+           $(this).closest('.form-group').find('input[type="button"]').removeAttr('disable');
+           $(this).closest('.form-group').find('.file-name').find("input[type='file']").remove();
+           chooseButtonObject.removeAttr('disabled');
+           console.log("chooseButtonObject : ",chooseButtonObject);
+           $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
+         });
+        });
+      });
+
+      $('.radio-button-yes').click(function () {
+        console.log("radio button yes clicked");
+        $('.upload-proof-invester').css('display','');
+
+      });
+
+      $('.radio-button-no').click(function () {
+        console.log("radio button no clicked");
+        $('.upload-proof-invester').css('display','none');
+      });
+
       oThis.$kycForm.find('input[name=birthdate]')
         .datepicker({
           format: 'dd/mm/yyyy',
@@ -101,9 +163,17 @@
         $(this).closest('.form-group').find('.error[data-for]').text('');
       });
 
-      oThis.$kycForm.find('input[type="file"]').change(function () {
-        $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop());
-      });
+      // oThis.$kycForm.find('input[type="file"]').change(function () {
+      //   console.log("****find  : ");
+      //   if ($(this).val())    {
+      //      $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<span title="close" class="upload-file-close-btn" id="btnClose">X</span>');
+      //      $(this).closest('.form-group').find('.upload-file').addClass('disable-upload-button');
+      //      $(".upload-file-close-btn").click(function (event) {
+      //        $(this).closest('.form-group').find('.upload-file').removeClass('disable-upload-button');
+      //        $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
+      //      });
+      //   }
+      // });
 
       $("#kycSubmit").click(function (event) {
         event.preventDefault();
@@ -140,7 +210,15 @@
       if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
         $('.selectpicker').selectpicker('mobile');
       }
+    },
 
+    updateMultiFileBtnStateForInvestor : function () {
+      console.log("updateMultiFileBtnStateForInvestor")
+      if ($(".file-wrapper .upload").length >= 3){
+        $(".multi-upload-file").attr("disabled","disabled");
+      } else{
+        $(".multi-upload-file").removeAttr("disabled");
+      }
     },
 
     refreshIndicator: function () {
@@ -299,6 +377,8 @@
       oThis.verifyModal('status-text', 'Uploading files via secured channel...');
 
       $.each(data, function (upload_key, upload_value) {
+        console.log("Upload key" , upload_key);
+        console.log("Upload value" , upload_value);
         $('#fileupload').fileupload('send', {
           files: [$('#kycForm input[name=' + upload_key + ']')[0].files[0]],
           paramName: ['file'],

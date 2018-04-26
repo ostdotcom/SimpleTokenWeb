@@ -3,4 +3,6 @@
  *= require plugins/bootstrap-datepicker/bootstrap-datepicker
  *= require web/common/KycInstructions
  *= require web/user/Login
+ *= require web/kyc/Background
+ *= require web/kyc/Radio-button
  */
