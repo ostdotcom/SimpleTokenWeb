@@ -3,6 +3,7 @@
    *ngTemplateOutlet="headerTemplate">
 </ng-container>
 <ng-container *ngIf="tableType==='dashboard'">
-  <app-row *ngFor="let row of rows"  [row]='row'></app-row>
-</ng-container>
+    <app-row *ngFor="let row of rows" [row]='row' (deleteRowEvent)="deleteRow( $event )"></app-row>
+  </ng-container>
 </div>
+
