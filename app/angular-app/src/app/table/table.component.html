@@ -1,9 +1,17 @@
 <div class="rows-container">
 <ng-container
    *ngTemplateOutlet="headerTemplate">
-</ng-container>
+</ng-container >
+<div *ngIf="isLoading==false; else loadingBlock">
 <ng-container *ngIf="tableType==='dashboard'">
     <app-row *ngFor="let row of rows" [row]='row' (deleteRowEvent)="deleteRow( $event )"></app-row>
   </ng-container>
 </div>
+<ng-template #loadingBlock>
+<div class="loading mx-auto mt-5" style="font-size:30px;">
+ <strong>Loading...</strong>
+</div>
+</ng-template>
 
+
+</div>
