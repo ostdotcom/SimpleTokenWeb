@@ -6,5 +6,5 @@
  *
  * Common CSS
  *= require web/common/Icons
-
+ *= require admin/user/Login
  */
