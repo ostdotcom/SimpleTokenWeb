@@ -16,14 +16,13 @@ export class TableComponent  implements OnInit {
   @Input() config: Object ;
 
    //TODO confrim default message from UX/UI
-   defaultErrorMsg: String =  "Something went wrong, please try again!"
-   isLoading: Boolean = false;
+   errMsg: String =  "Something went wrong, please try again!"
+   isProcessing: Boolean = false;
    isGetDataOnLoad: Boolean =  true;
    hasError: Boolean = false;
    rows: Array<any> = [];
    tableDataUrl:any ;
    deleteRowUrl:any ;
-   errorMessage: String ;
    metaData: Object; 
 
    constructor(private activatedRoute: ActivatedRoute , private http: OstHttp) { }
@@ -61,20 +60,16 @@ export class TableComponent  implements OnInit {
   }
 
    getTableData( params ) {
-    this.isLoading =  true;
-    this.hasError = false;
+    this.updateDataProcessingStatus(this , true , false );
     this.http.get( this.tableDataUrl , params).subscribe(
       response => {
         let res = response.json();
-        this.isLoading = false;
-        this.hasError = false;
+        this.updateDataProcessingStatus(this , false , false );
         this.onTableDataSuccess( res );
       },
       error => {
         let err = error.json();
-        this.isLoading =  false;
-        this.hasError = true;
-        this.errorMessage = err['display_text'];
+        this.updateDataProcessingStatus(this , false , true,  err['display_text']);
         this.onTableDataError( err );
       })
    }
@@ -91,7 +86,7 @@ export class TableComponent  implements OnInit {
    onTableDataError( errorResponse ) {
     let err = errorResponse['err']
     if( err ){
-      this.errorMessage = err['display_text'] || this.defaultErrorMsg
+      this.updateDataProcessingStatus(this , false , true,  err['display_text']);
     }
    }
 
@@ -100,21 +95,24 @@ export class TableComponent  implements OnInit {
     let row = data['row'],
         status = data['status']
     ;
-    status.isProcessing = true;
-    status.hasError = false;
+    this.updateDataProcessingStatus(status ,  true, false );
     this.http.post( this.deleteRowUrl , row ).subscribe(
       response => {
         let res = response.json()
         this.onDeleteRow( res , row );
-
+        this.updateDataProcessingStatus(status ,  false, false );
       },
       error => {
-        let err = error.json()
-        status.isProcessing = false ;
-        status.hasError = true;
-        status.errMsg = err['display_text'];
+        let err = error.json();
+        this.updateDataProcessingStatus(status ,  false, true , err['display_text']);
       }
     )
+   }
+
+   updateDataProcessingStatus( context , isProcessing:boolean , hasError:boolean , errMsg?){
+    context['isProcessing'] = isProcessing; 
+    context['hasError']     = hasError; 
+    context['errMsg']       = errMsg || context['errMsg'] ; 
    }
 
    onDeleteRow( res , row ){
