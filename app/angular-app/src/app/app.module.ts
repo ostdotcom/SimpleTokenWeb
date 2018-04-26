@@ -3,19 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
+import { OstHttp } from './ost-http.service';
 
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
-import { RowComponent } from './table/row/row.component';
+import { RowComponent } from './kyc_user_row/row.component';
 import { TabledataService } from './tabledata.service';
-import { RowDetailComponent } from './table/row-detail/row-detail.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FilterComponent } from './filter/filter.component';
-import { OstHttp } from './ost-http.service';
-import { HeaderComponent } from './table/header/header.component';
+import { HeaderComponent } from './kyc_user_header/header.component';
 
 
 @NgModule({
@@ -23,7 +21,6 @@ import { HeaderComponent } from './table/header/header.component';
     AppComponent,
     TableComponent,
     RowComponent,
-    RowDetailComponent,
     PaginationComponent,
     DashboardComponent,
     FilterComponent,
@@ -37,11 +34,7 @@ import { HeaderComponent } from './table/header/header.component';
       {
         path: 'admin/new-dashboard',
         component: DashboardComponent
-      },
-      {
-        path: 'row/:id',
-        component: RowDetailComponent
-      },
+      }
     ])
   ],
   providers: [TabledataService ,  OstHttp],

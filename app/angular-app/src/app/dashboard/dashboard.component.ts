@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RowComponent } from '../table/row/row.component';
+import { RowComponent } from '../kyc_user_row/row.component';
 
 @Component({
   selector: 'app-dashboard',
