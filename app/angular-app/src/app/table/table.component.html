@@ -1,27 +1,3 @@
-
-
-
-
-<ul>
-
-  <li class="row p-2 d-none d-md-flex">
-
-    <div *ngFor="let h of header" class="col">{{h}}</div>
-
-  </li>
-    <li *ngFor="let row of rows">
-        <app-row [row]="row"></app-row>
-    </li>
-</ul>
-
-
-
-<app-pagination
-  (goPage)="goToPage($event)"
-  (goNext)="onNext()"
-  (goPrev)="onPrev()"
-  [pagesToShow]="3"
-  [page]="page"
-  [perPage]="limit"
-  [count]="total"></app-pagination>
-
+<div class="rows-container">  
+  <app-row *ngFor="let row of rows"  [row]='row'></app-row>
+</div>  

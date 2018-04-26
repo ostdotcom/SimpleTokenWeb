@@ -21,7 +21,7 @@ export class OstHttp extends Http {
     ) {
         super(backend, options);
         let csrf_token = meta.getTag('name=csrf-token').content;
-        this._defaultOptions.headers.set( 'X-CSRF-Token', csrf_token ); 
+       // this._defaultOptions.headers.set( 'X-CSRF-Token', csrf_token );
     }
 
     public request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
@@ -32,15 +32,15 @@ export class OstHttp extends Http {
     public handleError = (error: Response) => {
       let msg  = ''
       ;
-      console.log("i am in overwritter", error); 
+      console.log("i am in overwritter", error);
       if (error.status === 0) {
         msg = 'Not able to connect to server. Please verify your internet connection.';
       } else if (error.status == 404) {
         msg = 'Requested page not found.';
       } else if (error.status == 500) {
         msg = 'Internal Server Error.';
-      } else if (error.status == 401) { 
-        window.location.href = "/login"; 
+      } else if (error.status == 401) {
+        window.location.href = "/login";
       } else if (error.status == 408){
         msg = 'Time out error.';
       } else {
