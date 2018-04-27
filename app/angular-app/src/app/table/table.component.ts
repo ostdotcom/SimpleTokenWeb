@@ -10,8 +10,6 @@ import { Http, RequestOptionsArgs, ResponseContentType } from '@angular/http';
 })
 
 export class TableComponent  implements OnInit {
-
-  @Input() headerTemplate: TemplateRef<any>;
   @Input() tableType: string;
   @Input() config: Object ;
 
@@ -23,14 +21,14 @@ export class TableComponent  implements OnInit {
    rows: Array<any> = [];
    tableDataUrl:any ;
    deleteRowUrl:any ;
-   metaData: Object; 
+   metaData: Object;
 
    constructor(private activatedRoute: ActivatedRoute , private http: OstHttp) { }
 
    ngOnInit() {
      this.configOverWrites();
       if( this.isGetDataOnLoad ){
-          let params = this.getParams(); 
+          let params = this.getParams();
           this.getTableData( params );
       }
    }
@@ -80,7 +78,7 @@ export class TableComponent  implements OnInit {
         tableData = dataKey && data[dataKey]
     ;
     this.rows = tableData;
-    this.metaData = data['meta']; 
+    this.metaData = data['meta'];
    }
 
    onTableDataError( errorResponse ) {
@@ -110,9 +108,9 @@ export class TableComponent  implements OnInit {
    }
 
    updateDataProcessingStatus( context , isProcessing:boolean , hasError:boolean , errMsg?){
-    context['isProcessing'] = isProcessing; 
-    context['hasError']     = hasError; 
-    context['errMsg']       = errMsg || context['errMsg'] ; 
+    context['isProcessing'] = isProcessing;
+    context['hasError']     = hasError;
+    context['errMsg']       = errMsg || context['errMsg'] ;
    }
 
    onDeleteRow( res , row ){
@@ -162,15 +160,15 @@ export class TableComponent  implements OnInit {
   }
 
   isPagination(): Boolean {
-    return this.getTotalPageCount() > 0 ? true : false ; 
+    return this.getTotalPageCount() > 0 ? true : false ;
   }
 
   getTotalPageCount(): Number {
-    if( !this.metaData ) return 0; 
+    if( !this.metaData ) return 0;
     let pageSize      =  Number(this.metaData['page_size']),
         totalRecords  =  Number(this.metaData['total_records']),
         totalPageCount=  Math.ceil( totalRecords / pageSize)
-    ; 
-    return totalPageCount; 
+    ;
+    return totalPageCount;
   }
 }

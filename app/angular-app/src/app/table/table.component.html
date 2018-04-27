@@ -1,7 +1,7 @@
 
 <div class="rows-container mt-5 p-5">
 
-  <ng-container *ngTemplateOutlet="headerTemplate"></ng-container >
+  <ng-content select=".header"></ng-content>
 
   <div *ngIf="isProcessing==false; else loadingBlock">
     <ng-container *ngIf="tableType==='dashboard'">
