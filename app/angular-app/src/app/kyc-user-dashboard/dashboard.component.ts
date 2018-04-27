@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RowComponent } from '../kyc_user_row/row.component';
+import { RowComponent } from '../kyc-user-row/row.component';
+
 @Component({
-  selector: 'app-dashboard',
+  selector: 'kyc-user-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class KycUserDashboardComponent implements OnInit {
 
   tableType = 'dashboard';
 
@@ -17,6 +18,7 @@ export class DashboardComponent implements OnInit {
   };
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+
 
     }
 

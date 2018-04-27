@@ -1,7 +1,0 @@
-{{filterInfo.selected}}
-
-<select id="{{filterInfo.id}}" [(ngModel)]="selectedValue"  (change)="handleChange($event)" class="form-control selectpicker" style="width: 100%;">
-  <option *ngFor="let option of filterInfo.list" value="{{option.value}}" [selected]="filterInfo.selected === option.value"  >
-    {{option.text}}
-  </option>
-</select>

@@ -1,0 +1,39 @@
+<div class="row my-2">
+    <div class="col">
+        {{row.name}}
+    </div>
+    <div class="col">
+      {{row.admin_status}}
+    </div>
+    <div class="col">
+      {{row.cynopsis_status}}
+    </div>
+    <div class="col">
+       {{row.whitelist_status}}
+    </div>
+    <div class="col">
+       {{row.country}}
+    </div>
+    <div class="col">
+        {{row.nationality}}
+    </div>
+    <div class="col">
+        {{row.submission_count}}
+    </div>
+    <div class="col">
+      {{row.is_duplicate}}
+    </div>
+    <div class="col">
+        <div *ngIf="row.last_acted_by; else elseBlock">
+            {{row.last_acted_by}}
+
+         </div>
+         <ng-template #elseBlock>
+           <div>
+            --
+           </div>
+         </ng-template>
+
+      </div>
+</div>
+

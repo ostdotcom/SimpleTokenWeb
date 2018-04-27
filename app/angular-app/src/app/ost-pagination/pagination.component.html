@@ -1,0 +1,18 @@
+
+<div class="pagination mt-5">
+
+  <div class="numbers mx-auto p-2">
+    <button class="link" (click)="onPrev()" [disabled]="!isPrev()" [ngClass]="{ 'disabled': !isPrev() || loading }">
+      &lt; Previous</button>
+    
+    <button *ngFor="let pageNum of getPages()"
+      (click)="changePage(pageNum)"
+      [ngClass]="{'active': isActive(pageNum)}">
+      {{ pageNum }}
+    </button>
+
+    <button class="link" (click)="onNext()" [disabled]="!isNext()" [ngClass]="{ 'disabled': !isNext() || loading }">
+      Next &gt;
+    </button>
+  </div>
+</div>
