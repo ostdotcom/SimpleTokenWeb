@@ -159,11 +159,7 @@ export class TableComponent  implements OnInit {
   }
 
   isPagination(): Boolean {
-<<<<<<< HEAD
-    return this.getTotalPageCount() > 0 ? true : false ;
-=======
     return this.getTotalPageCount() > 1 ? true : false ;
->>>>>>> window config
   }
 
   getTotalPageCount(): Number {
