@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input , TemplateRef} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OstHttp } from '../ost-http.service';
 import { Http, RequestOptionsArgs, ResponseContentType } from '@angular/http';
@@ -51,8 +51,7 @@ export class TableComponent  implements OnInit {
       params : {
         page_number : pageNumber || 1,
         filters: filters,
-        sortings: sorting,
-        page_size : 2
+        sortings: sorting
       },
     }
   }
@@ -82,7 +81,7 @@ export class TableComponent  implements OnInit {
    }
 
    onTableDataError( errorResponse ) {
-    let err = errorResponse['err']
+    let err = errorResponse['err'];
     if( err ){
       this.updateDataProcessingStatus(this , false , true,  err['display_text']);
     }
@@ -96,7 +95,7 @@ export class TableComponent  implements OnInit {
     this.updateDataProcessingStatus(status ,  true, false );
     this.http.post( this.deleteRowUrl , row ).subscribe(
       response => {
-        let res = response.json()
+        let res = response.json();
         this.onDeleteRow( res , row );
         this.updateDataProcessingStatus(status ,  false, false );
       },
@@ -160,7 +159,7 @@ export class TableComponent  implements OnInit {
   }
 
   isPagination(): Boolean {
-    return this.getTotalPageCount() > 0 ? true : false ;
+    return this.getTotalPageCount() > 1 ? true : false ;
   }
 
   getTotalPageCount(): Number {

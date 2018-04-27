@@ -14,6 +14,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FilterComponent } from './filter/filter.component';
 import { HeaderComponent } from './kyc_user_header/header.component';
+import { AppConfigService } from './app-config.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { HeaderComponent } from './kyc_user_header/header.component';
       }
     ])
   ],
-  providers: [TabledataService ,  OstHttp],
+  providers: [TabledataService ,  OstHttp, AppConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-
-import { OstHttp } from './ost-http.service';
+import { Component  } from '@angular/core';
+import { AppConfigService } from './app-config.service';
 
 @Component({
   selector: 'app-root',
@@ -8,30 +7,10 @@ import { OstHttp } from './ost-http.service';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent{
 
-    constructor(http : OstHttp){
-     // testCsrfAddition(http);
-    }
-    
+  // constructor( private appConfigService : AppConfigService ){
+  //   appConfigService.setAppConfigs( {} ); 
+  // }
+
 }
-
-
-
-
-
-
-
-//Test code start
-function testCsrfAddition( http ){
-  
-  let request = http.get("api/admin/kyc/dashboard/").subscribe( 
-    response => {
-      console.log("response"  , response); 
-    },  
-    error => {
-      console.log("error" , error); 
-    })
-  
-}
-//Test code end
