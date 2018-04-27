@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FilterComponent } from './filter/filter.component';
 import { HeaderComponent } from './kyc_user_header/header.component';
 import { AppConfigService } from './app-config.service';
+import { EntityConfigService } from './entity-config-service.service';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { AppConfigService } from './app-config.service';
       }
     ])
   ],
-  providers: [TabledataService ,  OstHttp, AppConfigService],
+  providers: [TabledataService ,  OstHttp, AppConfigService, EntityConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
