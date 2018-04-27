@@ -85,15 +85,6 @@ module GlobalConstant
 
       ### Token sale user kyc status  ####
 
-
-      ### Token sale admin_action_type  ####
-
-      def no_admin_action_type
-        "no"
-      end
-
-      ### Token sale admin_action_type  ####
-
       ### ethereum_address_whitelist status  ####
 
       def ethereum_address_whitelist_done
