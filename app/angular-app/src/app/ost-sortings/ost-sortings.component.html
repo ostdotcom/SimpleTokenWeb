@@ -1,1 +1,7 @@
-<ost-select [entity]="enity_configs.kyc_user_details.admin_status" [name]="'filters[admin_status]'"></ost-select>
+<form #sortings [name]='entityName'>
+    <ost-select [entityName]='"sortings[sort_by]"'
+                [entity]='"entity_configs.kyc_user_details.sort_by"'
+                class="float-right m-5">
+    </ost-select>
+</form>
+

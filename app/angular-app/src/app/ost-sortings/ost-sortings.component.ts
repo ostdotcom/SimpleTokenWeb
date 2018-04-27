@@ -9,9 +9,8 @@ import { EventEmitter } from 'events';
 export class OstSortingsComponent implements OnInit {
 
   constructor() { }
-
-  @Input('entityName') entityName? ; 
-  @Output('onSortingChangeEvent') onSortingChangeEvent? = new EventEmitter; 
+  
+  @Input('entityName') entityName ;
 
   ngOnInit() {
   }

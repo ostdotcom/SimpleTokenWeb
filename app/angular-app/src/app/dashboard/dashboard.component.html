@@ -1,11 +1,16 @@
 
-<div class="row">
-  <ost-filters  #kycUserFilters  (onFilterChangeEvent)="onFilterChange( $event )"></ost-filters>
-  <ost-sortings #kycUserSortings (onSortingChangeEvent)="onSortingChange( $event )"></ost-sortings>
-</div>  
+<div class="row p-5">
+  <div class="col-9">
+    <ost-filters [entityName]='"kyc-user-filters"'></ost-filters>
+  </div>
+  <div class="col-3">
+    <ost-sortings [entityName]='"kyc-user-sortings"'></ost-sortings>
+  </div>
+</div>
 
 <div class="row">
-  <app-table [filters]='kycUserFilters' [sortings]='kycUserSortings'  [config]='config' [tableType]="'dashboard'">
+  <app-table class="w-100" [filters]='kycUserFilters' [sortings]='kycUserSortings'  [config]='config' [tableType]="'dashboard'">
     <app-header class='header'></app-header>
   </app-table>
-</div>  
+</div>
+

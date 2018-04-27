@@ -12,10 +12,12 @@ import { RowComponent } from './kyc_user_row/row.component';
 import { TabledataService } from './tabledata.service';
 import { PaginationComponent } from './pagination/pagination.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FilterComponent } from './filter/filter.component';
 import { HeaderComponent } from './kyc_user_header/header.component';
 import { AppConfigService } from './app-config.service';
-import { EntityConfigService } from './entity-config-service.service';
+import { EntityConfigService } from './entity-config.service';
+import { OstFiltersComponent } from './ost-filters/ost-filters.component';
+import { OstSelectComponent } from './ost-select/ost-select.component';
+import { OstSortingsComponent } from './ost-sortings/ost-sortings.component';
 
 
 @NgModule({
@@ -25,8 +27,10 @@ import { EntityConfigService } from './entity-config-service.service';
     RowComponent,
     PaginationComponent,
     DashboardComponent,
-    FilterComponent,
-    HeaderComponent
+    HeaderComponent,
+    OstFiltersComponent,
+    OstSortingsComponent,
+    OstSelectComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,7 @@ import { EntityConfigService } from './entity-config-service.service';
       }
     ])
   ],
-  providers: [TabledataService ,  OstHttp, AppConfigService, EntityConfigService],
+  providers: [TabledataService, OstHttp, AppConfigService, EntityConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

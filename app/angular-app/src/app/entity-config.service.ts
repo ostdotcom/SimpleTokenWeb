@@ -14,13 +14,12 @@ export class EntityConfigService {
 
   }
 
-  getConfiguration(path) {
+  getEntityConfig(path) {
     let paths = path.split('.')
     , current = entityConfig
-    , i;
-
+    , i
+    ;
     for (i = 0; i < paths.length; ++i) {
-      console.log(current);
       if (current[paths[i]] == undefined) {
         return undefined;
       } else {

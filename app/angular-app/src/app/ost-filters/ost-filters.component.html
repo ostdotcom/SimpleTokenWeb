@@ -1,5 +1,18 @@
+<form #filters [name]='entityName'>
 
+    <ost-select [entityName]='"filters[admin_status]"'
+                [entity]='"entity_configs.kyc_user_details.admin_status"'
+                class="float-left m-5">
+    </ost-select>
 
-<ost-select [entity]="enity_configs.kyc_user_details.admin_status" [name]="'filters[admin_status]'"></ost-select>
-<ost-select [entity]="enity_configs.kyc_user_details.admin_status" [name]="'filters[admin_status]'"></ost-select>
-<ost-select [entity]="enity_configs.kyc_user_details.admin_status" [name]="'filters[admin_status]'"></ost-select>
+    <ost-select [entityName]='"filters[admin_review_status]"'
+                [entity]='"entity_configs.kyc_user_details.admin_review_status"'
+                class="float-left m-5">
+    </ost-select>
+
+    <ost-select [entityName]='"filters[cynopsis_status]"'
+                [entity]='"entity_configs.kyc_user_details.cynopsis_status"'
+                class="float-left m-5">
+    </ost-select>
+
+</form>
