@@ -73,6 +73,10 @@ module GlobalConstant
         'rejected_cynopsis_status'
       end
 
+      def failed_cynopsis_status
+        'failed'
+      end
+
       def cynopsis_kyc_statuses
         {
             all_cynopsis_status => 'All',
@@ -80,7 +84,8 @@ module GlobalConstant
             cleared_cynopsis_status => 'Cleared',
             pending_cynopsis_status => 'Pending',
             approved_cynopsis_status => 'Approved',
-            rejected_cynopsis_status => 'Rejected'
+            rejected_cynopsis_status => 'Rejected',
+            failed_cynopsis_status => 'Failed'
         }
       end
       def cynopsis_kyc_status_class
@@ -89,7 +94,8 @@ module GlobalConstant
             cleared_cynopsis_status => 'green',
             pending_cynopsis_status => 'yello',
             approved_cynopsis_status => 'green',
-            rejected_cynopsis_status => 'red'
+            rejected_cynopsis_status => 'red',
+            failed_cynopsis_status => 'red'
         }
       end
 
@@ -143,50 +149,50 @@ module GlobalConstant
 
       ### admin action type ####
 
-      def no_admin_action_type
-        'no'
-      end
+      # def no_admin_action_type
+      #   'no'
+      # end
+      #
+      # def any_admin_action_type
+      #   'any'
+      # end
+      #
+      # def data_mismatch_admin_action_type
+      #   'data_mismatch'
+      # end
+      #
+      # def document_id_issue_admin_action_type
+      #   'document_id_issue'
+      # end
+      #
+      # def selfie_issue_admin_action_type
+      #   'selfie_issue'
+      # end
+      #
+      # def residency_issue_admin_action_type
+      #   'residency_issue'
+      # end
 
-      def any_admin_action_type
-        'any'
-      end
-
-      def data_mismatch_admin_action_type
-        'data_mismatch'
-      end
-
-      def document_id_issue_admin_action_type
-        'document_id_issue'
-      end
-
-      def selfie_issue_admin_action_type
-        'selfie_issue'
-      end
-
-      def residency_issue_admin_action_type
-        'residency_issue'
-      end
-
-      def admin_action_type_names
-        {
-            no_admin_action_type => 'No Review Action',
-            any_admin_action_type => 'Any Review Action',
-            data_mismatch_admin_action_type => 'Data Mismatch',
-            document_id_issue_admin_action_type => 'Document Id Issue',
-            selfie_issue_admin_action_type => 'Selfie Image Issue',
-            residency_issue_admin_action_type => 'Proof of Residence Issue'
-        }
-      end
+      # def admin_action_type_names
+      #   {
+      #       no_admin_action_type => 'No Review Action',
+      #       any_admin_action_type => 'Any Review Action',
+      #       data_mismatch_admin_action_type => 'Data Mismatch',
+      #       document_id_issue_admin_action_type => 'Document Id Issue',
+      #       selfie_issue_admin_action_type => 'Selfie Image Issue',
+      #       residency_issue_admin_action_type => 'Proof of Residence Issue'
+      #   }
+      # end
 
 
-      def admin_action_type
-        {
-            data_mismatch_admin_action_type => 'Data Mismatch Email Sent',
-            document_id_issue_admin_action_type => 'Document ID Image Issue Email Sent',
-            selfie_issue_admin_action_type => 'Selfie Image Issue Email Sent',
-            residency_issue_admin_action_type => 'Residency Image Issue Email Sent'
-        }
-      end
+      # def admin_action_type
+      #   {
+      #       data_mismatch_admin_action_type => 'Data Mismatch Email Sent',
+      #       document_id_issue_admin_action_type => 'Document ID Image Issue Email Sent',
+      #       selfie_issue_admin_action_type => 'Selfie Image Issue Email Sent',
+      #       residency_issue_admin_action_type => 'Residency Image Issue Email Sent'
+      #   }
+      # end
 
       ### admin action type End ####
 
