@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RowComponent } from '../kyc_user_row/row.component';
-import {EntityConfigService} from '../entity-config-service.service';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,13 +16,10 @@ export class DashboardComponent implements OnInit {
              'Natinality', 'Submission', 'duplicate status', 'Admin']
   };
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private entityConfig: EntityConfigService) {
-    this.getEntityConfig('entity_configs.kyc_user_details.admin_status.value');
-  }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
 
-  getEntityConfig(path) {
-  console.log(this.entityConfig.getConfiguration(path));
-  }
+    }
+
 
   ngOnInit() {
     console.log('config' ,  this.config );
