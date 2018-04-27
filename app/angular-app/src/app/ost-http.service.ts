@@ -26,7 +26,7 @@ export class OstHttp extends Http {
 
     public request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
         return super.request(url, options)
-            .catch(this.handleError)
+            .catch(this.handleError);
     }
 
     public handleError = (error: Response) => {
@@ -47,6 +47,6 @@ export class OstHttp extends Http {
         msg = 'Unable to connect to server.';
       }
 
-      return Observable.throw(error)
+      return Observable.throw(error);
     }
 }
