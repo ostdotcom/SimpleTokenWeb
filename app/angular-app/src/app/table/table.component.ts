@@ -10,8 +10,11 @@ import { Http, RequestOptionsArgs, ResponseContentType } from '@angular/http';
 })
 
 export class TableComponent  implements OnInit {
-  @Input() tableType: string;
-  @Input() config: Object ;
+  @Input('tableType') tableType? : string;
+  @Input('filters') filters?   : any;
+  @Input('sortings') sortings?  : any;
+  @Input('config') config?     : Object;
+
 
    //TODO confrim default message from UX/UI
    errMsg: String =  "Something went wrong, please try again!"

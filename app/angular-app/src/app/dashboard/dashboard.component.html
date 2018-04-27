@@ -1,4 +1,11 @@
 
-<app-table  [config]='config' [tableType]="'dashboard'">
-  <app-header class='header'></app-header>
-</app-table>
+<div class="row">
+  <ost-filters  #kycUserFilters  (onFilterChangeEvent)="onFilterChange( $event )"></ost-filters>
+  <ost-sortings #kycUserSortings (onSortingChangeEvent)="onSortingChange( $event )"></ost-sortings>
+</div>  
+
+<div class="row">
+  <app-table [filters]='kycUserFilters' [sortings]='kycUserSortings'  [config]='config' [tableType]="'dashboard'">
+    <app-header class='header'></app-header>
+  </app-table>
+</div>  

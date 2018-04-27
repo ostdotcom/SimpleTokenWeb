@@ -1,0 +1,8 @@
+<div class="select-wrapper">
+  <select class="select" name="entityName" ([ngModel])="selectedValue">
+    <options *ngFor="option of getOptions()" 
+            value="{{option.value}}"  >
+      {{option.display_text}}
+    </options>
+  </select>  
+</div>  
