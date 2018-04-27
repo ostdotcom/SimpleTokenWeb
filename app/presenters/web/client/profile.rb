@@ -59,8 +59,12 @@ module Web
         end
       end
 
-      def admin_action_type
-        user_kyc_data['admin_action_type']
+      def admin_action_types
+        user_kyc_data['admin_action_types']
+      end
+
+      def is_admin_action_taken?
+        admin_action_types.present?
       end
 
       def whitelist_status
@@ -168,7 +172,7 @@ module Web
       end
 
       def is_kyc_pending_and_upload_needed?
-        is_kyc_pending? && (admin_action_type != GlobalConstant::TokenSaleUserState.no_admin_action_type)
+        is_kyc_pending? && is_admin_action_taken?
       end
 
       def is_kyc_approved?
@@ -318,7 +322,7 @@ module Web
       end
 
       def try_reload
-        ((is_kyc_pending? && admin_action_type == GlobalConstant::TokenSaleUserState.no_admin_action_type) ||
+        ((is_kyc_pending? && !is_admin_action_taken?) ||
             (is_kyc_approved? && is_whitelist_setup_done? && !ethereum_address_whitelist_done?)) &&
             !has_sale_ended? && !has_sale_paused?
       end
