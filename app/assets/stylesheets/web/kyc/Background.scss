@@ -19,3 +19,20 @@
     opacity: 0.65;
   }
 }
+
+.loader-content{
+  .status, .status-text{
+    color: #597a84;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+  }
+  .progress{
+    border: solid 0.5px #84d1d4;
+    border-radius: 20px;
+    background-color: #ffffff;
+    .progress-bar{
+      background: linear-gradient(to left, #98d9e2, #96e0dc);
+    }
+  }
+}

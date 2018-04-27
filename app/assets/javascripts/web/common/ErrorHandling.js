@@ -169,7 +169,7 @@ jQuery.fn.extend({
         if ( !targetEl ) {
           console.log("Aniket, please change above line");
         } else {
-          console.log("All is well Aniket");
+          //console.log("All is well Aniket");
         }
 
         if (targetEl.required && targetEl.value == '') {
