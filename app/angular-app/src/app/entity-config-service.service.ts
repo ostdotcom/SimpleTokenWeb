@@ -10,12 +10,24 @@ export class EntityConfigService {
   errorOccured: Boolean;
 
   constructor(private http: OstHttp) {
-    this.entityConfig = this.getConfiguration();
+   // this.entityConfig = this.getConfiguration();
 
   }
 
-  getConfiguration() {
-    return entityConfig;
+  getConfiguration(path) {
+    let paths = path.split('.')
+    , current = entityConfig
+    , i;
+
+    for (i = 0; i < paths.length; ++i) {
+      console.log(current);
+      if (current[paths[i]] == undefined) {
+        return undefined;
+      } else {
+        current = current[paths[i]];
+      }
+    }
+    return current;
   }
 
 

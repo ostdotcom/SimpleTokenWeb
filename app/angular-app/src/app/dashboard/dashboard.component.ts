@@ -19,11 +19,11 @@ export class DashboardComponent implements OnInit {
   };
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private entityConfig: EntityConfigService) {
-    this.getEntityConfig();
+    this.getEntityConfig('entity_configs.kyc_user_details.admin_status.value');
   }
 
-  getEntityConfig() {
-    console.log(this.entityConfig.getConfiguration());
+  getEntityConfig(path) {
+  console.log(this.entityConfig.getConfiguration(path));
   }
 
   ngOnInit() {
