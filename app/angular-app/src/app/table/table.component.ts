@@ -81,7 +81,7 @@ export class TableComponent  implements OnInit {
    }
 
    onTableDataError( errorResponse ) {
-    let err = errorResponse['err']
+    let err = errorResponse['err'];
     if( err ){
       this.updateDataProcessingStatus(this , false , true,  err['display_text']);
     }
@@ -95,7 +95,7 @@ export class TableComponent  implements OnInit {
     this.updateDataProcessingStatus(status ,  true, false );
     this.http.post( this.deleteRowUrl , row ).subscribe(
       response => {
-        let res = response.json()
+        let res = response.json();
         this.onDeleteRow( res , row );
         this.updateDataProcessingStatus(status ,  false, false );
       },
