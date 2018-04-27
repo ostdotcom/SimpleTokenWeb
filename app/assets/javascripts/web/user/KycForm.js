@@ -326,7 +326,6 @@
         grecaptcha.reset();
       }
       oThis.$kycForm.find('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
-      oThis.showKycSuccessDialog();
     },
 
     makeFileParams: function () {
