@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input , TemplateRef} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OstHttp } from '../ost-http.service';
 import { Http, RequestOptionsArgs, ResponseContentType } from '@angular/http';
@@ -51,8 +51,7 @@ export class TableComponent  implements OnInit {
       params : {
         page_number : pageNumber || 1,
         filters: filters,
-        sortings: sorting,
-        page_size : 2
+        sortings: sorting
       },
     }
   }
@@ -160,7 +159,11 @@ export class TableComponent  implements OnInit {
   }
 
   isPagination(): Boolean {
+<<<<<<< HEAD
     return this.getTotalPageCount() > 0 ? true : false ;
+=======
+    return this.getTotalPageCount() > 1 ? true : false ;
+>>>>>>> window config
   }
 
   getTotalPageCount(): Number {

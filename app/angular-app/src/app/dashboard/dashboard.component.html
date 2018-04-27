@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 
 <app-table  [config]='config' [tableType]="'dashboard'">
   <app-header class='header'></app-header>
+=======
+<ng-template #dashboardHeader>
+    <app-header></app-header>
+</ng-template>
+<app-table  [config]='config'
+            [headerTemplate]='dashboardHeader'
+            [tableType]="'dashboard'">
+>>>>>>> window config
 </app-table>
