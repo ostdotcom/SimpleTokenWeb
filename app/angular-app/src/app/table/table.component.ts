@@ -1,5 +1,4 @@
 import { Component, OnInit, Input , TemplateRef} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { OstHttp } from '../ost-http.service';
 import { Http, RequestOptionsArgs, ResponseContentType } from '@angular/http';
 
@@ -26,7 +25,7 @@ export class TableComponent  implements OnInit {
    deleteRowUrl:any ;
    metaData: Object;
 
-   constructor(private activatedRoute: ActivatedRoute , private http: OstHttp) { }
+   constructor(private http: OstHttp) {}
 
    ngOnInit() {
      this.configOverWrites();
@@ -34,7 +33,16 @@ export class TableComponent  implements OnInit {
           let params = this.getParams();
           this.getTableData( params );
       }
+      
+      this.sortings.valueChanges.subscribe( data => {
+        console.log("Sorting values has been changed");
+      });
+
+      this.filters.valueChanges.subscribe( data => {
+        console.log("Filters values has been changed");
+      });
    }
+
 
    configOverWrites() {
       let oThis  = this ,

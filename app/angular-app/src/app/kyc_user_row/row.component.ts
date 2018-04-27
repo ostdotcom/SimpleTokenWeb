@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Pipe } from '@angular/core';
-import { RowBaseComponent } from '../ost-table/row-base.component';
+import { RowBaseComponent } from '../table/row-base.component';
 
 @Component({
   selector: 'app-row',

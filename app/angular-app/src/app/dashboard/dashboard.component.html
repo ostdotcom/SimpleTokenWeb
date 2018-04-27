@@ -1,0 +1,49 @@
+
+<div class="row p-5">
+  <div class="col-9">
+    <form #filters="ngForm" name='filters' (change)="onFilterChange(filters.value)">
+
+        <select class="select form-control" name="filters[admin_status]" ngModel>
+            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_status')" 
+                    value="{{option.value}}"  >
+              {{option.display_text}}
+            </option>
+        </select> 
+
+        <select class="select form-control" name="filters[admin_review_status]" ngModel>
+            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_review_status')" 
+                    value="{{option.value}}"  >
+              {{option.display_text}}
+            </option>
+        </select> 
+
+        <select class="select form-control" name="filters[cynopsis_status]" ngModel>
+            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.cynopsis_status')" 
+                    value="{{option.value}}" >
+              {{option.display_text}}
+            </option>
+        </select> 
+
+    </form>
+  </div>
+  
+  <div class="col-3">
+    <form #sortings="ngForm" name='sorting' (change)="onSortChange(sortings.value)">
+
+      <select class="select form-control" name="sortings[sort_by]" ngModel>
+          <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.sort_by')" 
+                  value="{{option.value}}"  >
+            {{option.display_text}}
+          </option>
+      </select> 
+
+    </form>  
+  </div>
+</div>
+
+<div class="row" >
+  <app-table class="w-100" [filters]='filters' [sortings]='sortings' [config]='config' [tableType]="'dashboard'">
+    <app-header class='header'></app-header>
+  </app-table>
+</div>
+

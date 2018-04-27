@@ -7,17 +7,14 @@ import { OstHttp } from './ost-http.service';
 
 
 import { AppComponent } from './app.component';
-import { TableComponent } from './ost-table/table.component';
-import { RowComponent } from './kyc-user-row/row.component';
+import { TableComponent } from './table/table.component';
+import { RowComponent } from './kyc_user_row/row.component';
 import { TabledataService } from './tabledata.service';
-import { OstPaginationComponent } from './ost-pagination/pagination.component';
-import { KycUserDashboardComponent } from './kyc-user-dashboard/dashboard.component';
-import { HeaderComponent } from './kyc-user-header/kyc-user-header.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from './kyc_user_header/header.component';
 import { AppConfigService } from './app-config.service';
 import { EntityConfigService } from './entity-config.service';
-import { OstFiltersComponent } from './ost-filters/ost-filters.component';
-import { OstSelectComponent } from './ost-select/ost-select.component';
-import { OstSortingsComponent } from './ost-sortings/ost-sortings.component';
 
 
 @NgModule({
@@ -25,12 +22,9 @@ import { OstSortingsComponent } from './ost-sortings/ost-sortings.component';
     AppComponent,
     TableComponent,
     RowComponent,
-    OstPaginationComponent,
-    KycUserDashboardComponent,
-    HeaderComponent,
-    OstFiltersComponent,
-    OstSortingsComponent,
-    OstSelectComponent
+    PaginationComponent,
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +33,7 @@ import { OstSortingsComponent } from './ost-sortings/ost-sortings.component';
     RouterModule.forRoot([
       {
         path: 'admin/new-dashboard',
-        component: KycUserDashboardComponent
+        component: DashboardComponent
       }
     ])
   ],

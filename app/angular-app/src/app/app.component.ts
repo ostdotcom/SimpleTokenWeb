@@ -1,6 +1,5 @@
 import { Component  } from '@angular/core';
 import { AppConfigService } from './app-config.service';
-import {EntityConfigService} from './entity-config.service';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +7,10 @@ import {EntityConfigService} from './entity-config.service';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
-
-  constructor( private entityConfig: EntityConfigService){
-   this.getEntityConfig();
-  }
-
-  getEntityConfig(){
-  }
+export class AppComponent{
 
   // constructor( private appConfigService : AppConfigService ){
-  //   appConfigService.setAppConfigs( {} );
+  //   appConfigService.setAppConfigs( {} ); 
   // }
 
 }
