@@ -5,4 +5,5 @@
  *= require web/user/Login
  *= require web/kyc/Background
  *= require web/kyc/Radio-button
+ *= require web/kyc/KycUpdate
  */

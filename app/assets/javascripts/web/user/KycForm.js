@@ -11,7 +11,7 @@
     uploadCount: 0,
     isResidencyProofNeeded: false,
     currentPercent: 0,
-    formNames: ['document_id_file_path', 'selfie_file_path'],
+    formNames: ['document_id_file_path', 'selfie_file_path', 'investor_file_path'],
     residencyProofMandatoryCountries: [],
     popoverPlacement: 'right',
     $kycForm: $('#kycForm'),
@@ -22,6 +22,7 @@
       oThis.bindButtonActions();
       oThis.refreshIndicator();
       oThis.$kycForm.setCustomValidity();
+
     },
 
     bindButtonActions: function () {
@@ -47,8 +48,8 @@
           if (oThis.currentPercent < percent) {
             oThis.currentPercent = percent;
             $('#verifyModal .loader-content .progress .progress-bar')
-              .css('width', percent + '%')
-              .text(percent + '%');
+              .css('width', percent + '%');
+              //.text(percent + '%');
           }
         },
         error: function (jqXHR, exception) {
@@ -66,7 +67,7 @@
 
 
       $(".multi-upload-file").click(function(e){
-
+  console.log("hehre");
           if ($(".file-wrapper .upload").length == 0) {
             oThis.fileCount = 0;
           }
@@ -74,13 +75,13 @@
             oThis.fileCount++;
           }
 
-          $(".file-wrapper").append('<input type="file" name="multi-investor-file-upload" data-file-count="' + oThis.fileCount + '" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>');
+          $(".file-wrapper").append('<input type="file" name="investor_file_path" data-file-count="' + oThis.fileCount + '" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>');
           $(".file-wrapper input[type='file'].upload:last-child").trigger("click");
 
           $('.file-wrapper').find('input[type="file"]').change(function () {
 
               // <div class="file-name display-4 my-1 col-6"></div>
-              $('.multi-file-wrapper').append($("<div class='col-7 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<span title="close" data-file-count="' + oThis.fileCount + '" class="upload-file-close-btn">X</span>'));
+              $('.multi-file-wrapper').append($("<div class='col-7 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<img title="close" data-file-count="' + oThis.fileCount + '" class="upload-file-close-btn mt-1" src="close.svg"</img>'));
               $('.upload-file-close-btn').click(function (e) {
                 var fileCount = $(e.target).data('file-count');
                 $(".file-wrapper").find("[data-file-count=" + fileCount + "]").remove();
@@ -102,7 +103,7 @@
 
         $(this).closest('.form-group').find('.file-name').find("input[type='file']").change(function () {
 
-         $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<span title="close" class="upload-file-close-btn" id="btnClose">X</span>');
+         $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<img class="upload-file-close-btn"src="close.svg"  alt="Image"/>');
          chooseButtonObject.attr('disabled','disabled');
 
          $(".upload-file-close-btn").click(function (event) {
@@ -163,17 +164,16 @@
         $(this).closest('.form-group').find('.error[data-for]').text('');
       });
 
-      // oThis.$kycForm.find('input[type="file"]').change(function () {
-      //   console.log("****find  : ");
-      //   if ($(this).val())    {
-      //      $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<span title="close" class="upload-file-close-btn" id="btnClose">X</span>');
-      //      $(this).closest('.form-group').find('.upload-file').addClass('disable-upload-button');
-      //      $(".upload-file-close-btn").click(function (event) {
-      //        $(this).closest('.form-group').find('.upload-file').removeClass('disable-upload-button');
-      //        $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
-      //      });
-      //   }
-      // });
+      oThis.$kycForm.find('input[type="file"]').change(function () {
+        if ($(this).val())    {
+           $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<img class="upload-file-close-btn"src="close.svg"  alt="Image"/>');
+           $(this).closest('.form-group').find('.upload-file').addClass('disable-upload-button');
+           $(".upload-file-close-btn").click(function (event) {
+             $(this).closest('.form-group').find('.upload-file').removeClass('disable-upload-button');
+             $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
+           });
+        }
+      });
 
       $("#kycSubmit").click(function (event) {
         event.preventDefault();
@@ -210,6 +210,15 @@
       if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
         $('.selectpicker').selectpicker('mobile');
       }
+
+
+      $('#redictToDashboard').click(function () {
+        window.location = '/dashboard';
+      });
+
+      $('#kycUpdateFailed').click(function () {
+        oThis.hideKycUpdateFailedDialog();
+      });
     },
 
     updateMultiFileBtnStateForInvestor : function () {
@@ -317,6 +326,7 @@
         grecaptcha.reset();
       }
       oThis.$kycForm.find('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
+      oThis.showKycSuccessDialog();
     },
 
     makeFileParams: function () {
@@ -324,7 +334,11 @@
       var formSelectors = [];
 
       oThis.formNames.forEach(function (value) {
+
+        if (value === 'investor_file_path')
+
         formSelectors.push('#kycForm input[name="' + value + '"]');
+        console.log("formSelectors.push : ", '#kycForm input[name="' + value + '"]');
       });
 
       $.each($(formSelectors.join(',')), function (key, value) {
@@ -357,6 +371,7 @@
         success: function (response) {
           if (response.success === true) {
             oThis.uploadParamsResponse = response.data;
+            console.log("response.data : ",response.data);
             oThis.uploadFiles(oThis.uploadParamsResponse);
           } else {
             grecaptcha.reset();
@@ -374,11 +389,9 @@
     uploadFiles: function (data) {
 
       oThis.verifyModal('show-progress');
-      oThis.verifyModal('status-text', 'Uploading files via secured channel...');
+      oThis.verifyModal('status-text', 'We are uploading the file via a secure channel.<br /> This might take sometime, please do not refresh the page.');
 
       $.each(data, function (upload_key, upload_value) {
-        console.log("Upload key" , upload_key);
-        console.log("Upload value" , upload_value);
         $('#fileupload').fileupload('send', {
           files: [$('#kycForm input[name=' + upload_key + ']')[0].files[0]],
           paramName: ['file'],
@@ -410,19 +423,23 @@
         data: $data,
         success: function (response) {
           if (response.success == true) {
-            window.location = '/dashboard';
+            //window.location = '/dashboard';
+            oThis.showKycSuccessDialog();
             return false;
           } else {
             grecaptcha.reset();
             oThis.verifyModal('show-close');
-            oThis.verifyModal('status-text', response.err.display_text);
+            //oThis.verifyModal('status-text', response.err.display_text);
+            oThis.showKycUpdateFailedDialog();
             simpletoken.utils.errorHandling.displayFormErrors(response);
           }
         },
         error: function (jqXHR, exception) {
           grecaptcha.reset();
           oThis.verifyModal('show-close');
-          oThis.verifyModal('status-text', utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+          //oThis.verifyModal('status-text', utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+
+          oThis.showKycUpdateFailedDialog();
         }
       });
     },
@@ -473,7 +490,35 @@
         $verifyModal.find('.loader-content .status').text(message);
       }
 
+    },
+    
+    showKycSuccessDialog:function () {
+      $kycSuccessModel = $('#kycSuccessModel');
+
+      $kycSuccessModel.modal({
+        backdrop: 'static',
+        keyboard: false
+      }).modal('show');
+    },
+
+    showKycUpdateFailedDialog:function () {
+      $kycUpdateFailedModel = $('#kycUpdateFailedModel');
+
+      $kycUpdateFailedModel.modal({
+        backdrop: 'static',
+        keyboard: false
+      }).modal('show');
+    },
+
+    hideKycUpdateFailedDialog:function () {
+      $kycUpdateFailedModel = $('#kycUpdateFailedModel');
+
+      $kycUpdateFailedModel.modal({
+        backdrop: 'static',
+        keyboard: false
+      }).modal('hide');
     }
+
 
   };
 

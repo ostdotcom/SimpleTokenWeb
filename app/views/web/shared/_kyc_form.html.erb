@@ -163,7 +163,7 @@
                 </div>
               </div>
               <div class="col-12 col-sm-6">
-                <div class="form-instructions display-4 pt-md-4 pb-3 pb-md-0">
+                <div class="form-instructions display-4 mt-1 pt-md-4 pb-3 pb-md-0">
                   <%= raw @presenter_obj.page_data['ethereum_address_info_html'] %>
                 </div>
               </div>
@@ -192,7 +192,7 @@
                 </div>
               </div>
               <div class="col-12 col-sm-6">
-                <div class="form-instructions display-4 pt-md-4 pb-3 pb-md-0">
+                <div class="form-instructions display-4 mt-1 pt-md-4 pb-3 pb-md-0">
                   <%= raw @presenter_obj.page_data['document_info_html'] %>
                 </div>
               </div>
@@ -340,7 +340,7 @@
               <div class="col-12 col-sm-12">
                 <div class="row form-group">
                   <div class="col-12">
-                    <label class="form-label mt-2" for="selfie_file_path">UPLOADS PROOF
+                    <label class="form-label mt-2" for="investor_file_path">UPLOADS PROOF
                     </label>
                   </div>
                   <div class="col-12 mt-2">
@@ -348,12 +348,12 @@
 
                     </div>
 
-                    <input type="button" class="multi-upload-file btn btn-secondary upload-image-btn" value="Choose file"  data-max-length="3" name="investor-proof" tabindex="<%= tabindex_val %>">
+                    <input type="button" class="multi-upload-file btn btn-secondary upload-image-btn" value="Choose file"  data-max-length="3" name="investor_file_path_button" tabindex="<%= tabindex_val %>">
                     <% tabindex_val += 1 %>
 
                     </input>
                     <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality scan or<br/> picture of your passport photo page. <br/>(Min 200kb, JPG/PNG/PDF only)</span>
-                    <div class="error" data-for="selfie_file_path"></div>
+                    <div class="error" data-for="investor_file_path"></div>
                   </div>
                 </div>
               </div>
@@ -413,6 +413,9 @@
 <% end %>
 
 <%= render :partial => "/shared/web/modals/verify_modal", locals: {kyc_checkbox_points_html: kyc_checkbox_points_html} %>
+<%= render :partial => "/shared/web/modals/kyc_success" %>
+<%= render :partial => "/shared/web/modals/kyc_update_failed" %>
+
 
 <script type="custom" id="selfie-popover">
   <div style="">
