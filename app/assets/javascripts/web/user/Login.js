@@ -49,8 +49,8 @@
                 success: function (response) {
                     if (response.success == true) {
 
-                        if (oThis.d_token && (['verification_page', 'profile_page'].indexOf(response.data.user_token_sale_state) > -1) ) {
-                            window.location = '/dashboard?t=' + oThis.d_token;
+                        if (oThis.d_token && (['verification_page', 'kyc_page'].indexOf(response.data.user_token_sale_state) > -1) ) {
+                            window.location = '/add-kyc?t=' + oThis.d_token;
                             return false;
                         }
 
