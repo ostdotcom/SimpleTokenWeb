@@ -114,6 +114,29 @@ class Web::UserController < Web::BaseController
     set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
+  # Send Email Verification Link
+  #
+  # * Author: Pankaj
+  # * Date: 30/04/2018
+  # * Reviewed By:
+  #
+  def send_email_verification_link
+    service_response = SimpleTokenApi::Request::User.new(
+        host_url_with_protocol,
+        request.cookies,
+        {"User-Agent" => http_user_agent}).client_detail(GlobalConstant::TemplateType.reset_password_template_type)
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
+    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_country_from_ip)
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
+  end
+
   # Change password
   #
   # * Author: Tahir
