@@ -1,15 +1,12 @@
-<div style="position: absolute;width: 100%;z-index: 1">
+<div>
   <%= render :partial => "/shared/web/common/loggedin_header", locals: {user: @user} %>
 </div>
 <%= "Invalid token url " if params["e_t"] == 1 %>
 <div class="container sign-up-form py-5">
   <div class="row">
-    <div class="col-xs-12">
-      <div class="text-center">
-        <a class="border-none" href="/" title="Simple Token">
-          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/logo/simple-token-dashboard-logo-1x.png" width="202" alt="Simple Token Logo"/>
-        </a>
-      </div>
+    <div class="col-12">
+           <%= render :partial => "/shared/web/common/kycaas_logo_header" %>
+
       <div class="simple-token-form">
         <h1 class="text-center form-header">Thank you for registering</h1>
         <div class="form-sub-header text-center" style="font-weight: 500;font-size: 18px;margin-top: 25px">Check your inbox to activate your account</div>
