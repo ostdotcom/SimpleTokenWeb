@@ -1,43 +1,59 @@
+<div class="row">
+ <h2 class="mt-4 kyc-header">KYC DASHBOARD</h2>
 
-<div class="row p-5">
-  <div class="col-9">
+</div>
+
+
+<div class="row  p-3 filters">
+  <div class="col-12 col-md-9">
     <form #filters="ngForm" name='filters' (change)="onFilterChange(filters.value)">
-
-        <select class="select form-control" name="filters[admin_status]" ngModel>
-            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_status')" 
+     <div class="row">
+      <div class="col-12 col-md-3">
+        <span class='filter-label'>ADMIN STATUS</span>
+        <select class="select" name="filters[admin_status]" ngModel>
+            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_status')"
                     value="{{option.value}}"  >
               {{option.display_text}}
             </option>
-        </select> 
-
-        <select class="select form-control" name="filters[admin_review_status]" ngModel>
-            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_review_status')" 
+        </select>
+       </div>
+      <div class="col-12 col-md-3">
+        <span class='filter-label'>ADMIN REVIEW STATUS</span>
+        <select class="select" name="filters[admin_review_status]" ngModel>
+            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_review_status')"
                     value="{{option.value}}"  >
               {{option.display_text}}
             </option>
-        </select> 
+        </select>
+      </div>
+      <div class="col-12 col-md-3">
+        <span class='filter-label'>CYNOPSIS STATUS</span>
 
-        <select class="select form-control" name="filters[cynopsis_status]" ngModel>
-            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.cynopsis_status')" 
+        <select class="select" name="filters[cynopsis_status]" ngModel>
+            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.cynopsis_status')"
                     value="{{option.value}}" >
               {{option.display_text}}
             </option>
-        </select> 
+        </select>
+      </div>
+    </div>
 
     </form>
   </div>
-  
-  <div class="col-3">
-    <form #sortings="ngForm" name='sorting' (change)="onSortChange(sortings.value)">
 
-      <select class="select form-control" name="sortings[sort_by]" ngModel>
-          <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.sort_by')" 
+  <div class="col-12 col-md-3">
+    <form #sortings="ngForm" name='sorting' (change)="onSortChange(sortings.value)">
+      <div class="col-12">
+        <span class='filter-label'>SORT BY</span>
+
+        <select class="select" name="sortings[sort_by]" ngModel>
+          <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.sort_by')"
                   value="{{option.value}}"  >
             {{option.display_text}}
           </option>
-      </select> 
-
-    </form>  
+       </select>
+    </div>
+    </form>
   </div>
 </div>
 

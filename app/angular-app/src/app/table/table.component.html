@@ -1,14 +1,14 @@
 
-<div class="rows-container mt-5 p-5">
+<div class="rows-container">
 
   <ng-content select=".header"></ng-content>
 
-  <div *ngIf="isProcessing==false; else loadingBlock">
+  <div class="row-wrapper" *ngIf="isProcessing==false; else loadingBlock">
     <ng-container *ngIf="tableType==='dashboard'">
-      <app-row *ngFor="let row of rows" [row]='row' (deleteRowEvent)="deleteRow( $event )"></app-row>
+      <app-row *ngFor="let row of rows" [row]='row' (deleteRowEvent)="deleteRow( $event )" class="row-record"></app-row>
     </ng-container>
   </div>
-
+<!-- TODO: Naming should be custom -->
   <table-pagination *ngIf="isPagination()"
                       (pageChangeEvent)="getTableDataOnPageChange( $event )"
                       [totalPageCount]="getTotalPageCount()" >

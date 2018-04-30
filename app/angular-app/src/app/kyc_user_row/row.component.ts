@@ -4,7 +4,7 @@ import { RowBaseComponent } from '../table/row-base.component';
 @Component({
   selector: 'app-row',
   templateUrl: './row.component.html',
-  styleUrls: ['./row.component.css']
+  styleUrls: ['./row.component.scss']
 })
 
 export class RowComponent extends RowBaseComponent implements OnInit {

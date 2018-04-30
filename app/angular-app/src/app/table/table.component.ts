@@ -5,7 +5,7 @@ import { Http, RequestOptionsArgs, ResponseContentType } from '@angular/http';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.scss']
 })
 
 export class TableComponent  implements OnInit {
@@ -15,8 +15,8 @@ export class TableComponent  implements OnInit {
   @Input('config') config?     : Object;
 
 
-   //TODO confrim default message from UX/UI
-   errMsg: String =  "Something went wrong, please try again!"
+   // TODO confrim default message from UX/UI
+   errMsg: String =  'Something went wrong, please try again!';
    isProcessing: Boolean = false;
    isGetDataOnLoad: Boolean =  true;
    hasError: Boolean = false;
@@ -33,7 +33,7 @@ export class TableComponent  implements OnInit {
           let params = this.getParams();
           this.getTableData( params );
       }
-      
+
       this.sortings.valueChanges.subscribe( data => {
         console.log("Sorting values has been changed");
       });

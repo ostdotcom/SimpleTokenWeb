@@ -1,0 +1,45 @@
+.row{
+  background-color: inherit;
+
+  .col{
+    padding: 0px 15px 0px 0px;
+    font-size: 14px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: #597a84;
+
+
+  }
+
+  .name-date{
+    .name{
+      font-size: 12px;
+      font-weight: 600;
+      line-height: normal;
+      letter-spacing: 0.5px;
+      text-align: left;
+      color: #597a84;
+    }
+    .date{
+      font-size: 12px;
+      color: #597a84;
+      padding-top: 4px;
+
+    }
+  }
+
+  .duplicate-status{
+
+    .original-span{
+      width: 2px;
+      height: 11px;
+      border-radius: 0.5px;
+      background-color: #91c0ad;
+      display: inline-block;
+
+    }
+
+  }
+}

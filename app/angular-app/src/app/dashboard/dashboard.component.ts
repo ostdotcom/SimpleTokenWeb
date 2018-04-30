@@ -4,7 +4,7 @@ import { EntityConfigService } from '../entity-config.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
    }
 
    getOptionValues( entity ){
-     return this.entityConfigService.getEntityConfig(entity)['values']; 
+     return this.entityConfigService.getEntityConfig(entity)['values'];
    }
 
 }
