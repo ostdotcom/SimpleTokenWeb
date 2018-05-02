@@ -48,3 +48,14 @@
     </div>
   </div>
 </div>
+
+<% content_for :end_js do %>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          simpletoken.home.signup.init({
+              api_token_sale_state_page_names: <%= raw GlobalConstant::TokenSaleUserState.api_token_sale_state_page_names.to_json %>,
+              d_token: '<%= params[:t] %>'
+          });
+      });
+  </script>
+<% end %>

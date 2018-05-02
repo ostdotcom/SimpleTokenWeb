@@ -1,6 +1,5 @@
 ;
 (function (window) {
-
     var homeNs = ns("simpletoken.home"),
         utilsNs = ns("simpletoken.utils"),
         oThis;
@@ -8,6 +7,8 @@
     homeNs.signup = oThis = {
 
         init: function (config) {
+            oThis.api_token_sale_state_page_names = config.api_token_sale_state_page_names;
+            oThis.d_token = config.d_token;
             oThis.bindButtonActions();
         },
 
@@ -47,7 +48,9 @@
                 data: $form.serialize(),
                 success: function (response) {
                     if (response.success == true) {
-                        window.location = '/add-kyc';
+
+                        var path = oThis.get_redirect_path(response.data.user_token_sale_state);
+                        window.location = '/' + path;
                         return false;
                     } else {
                         utilsNs.errorHandling.displayFormErrors(response);
@@ -68,6 +71,19 @@
                         .prop( "disabled", false );
                 }
             });
+        },
+
+
+        get_redirect_path: function (user_token_sale_state) {
+            var path = '';
+
+            var data = oThis.api_token_sale_state_page_names[user_token_sale_state];
+
+            if (typeof(data) == 'undefined') {
+                alert("Invalid user token sale state");
+                return '';
+            }
+            return data.p;
         }
     };
 
