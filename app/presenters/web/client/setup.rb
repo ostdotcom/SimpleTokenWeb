@@ -47,7 +47,7 @@ module Web
       end
 
       def is_account_activated?
-        @params[:t].present? && @params[:action] == 'add_kyc_form' && result['account_activated'].to_i == 1
+        @params[:t].present? && @params[:action] == 'add_kyc_form' #&& result['account_activated'].to_i == 1
       end
 
       #### client settings ####
