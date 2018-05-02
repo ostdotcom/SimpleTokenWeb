@@ -349,7 +349,7 @@
       );
     });
 
-    <% if params[:t].present? && params[:action] == 'add_kyc_form'%>
+    <% if @presenter_obj.is_account_activated? %>
     simpletoken.utils.errorHandling.showSuccessAlert("Your Account is Activated");
     <% end %>
 
