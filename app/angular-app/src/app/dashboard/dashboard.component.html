@@ -6,7 +6,7 @@
 
 <div class="row  p-3 filters">
   <div class="col-12 col-md-9">
-    <form #filters="ngForm" name='filters' (change)="onFilterChange(filters.value)">
+    <form #filterForm="ngForm" name='filters' (change)="onFilterChange()">
      <div class="row">
       <div class="col-12 col-md-3">
         <span class='filter-label'>ADMIN STATUS</span>
@@ -37,12 +37,11 @@
         </select>
       </div>
     </div>
-
     </form>
   </div>
 
   <div class="col-12 col-md-3">
-    <form #sortings="ngForm" name='sorting' (change)="onSortChange(sortings.value)">
+    <form #sortForm="ngForm" name='sorting' (change)="onSortChange()">
       <div class="col-12">
         <span class='filter-label'>SORT BY</span>
 
@@ -58,7 +57,11 @@
 </div>
 
 <div class="row" >
-  <app-table class="w-100" [filters]='filters' [sortings]='sortings' [config]='config' [tableType]="'dashboard'">
+  <app-table class="w-100" 
+            [filterForm]='filterForm' 
+            [sortForm]='sortForm' 
+            [dataUrl]="'api/admin/kyc/dashboard/'"
+            [tableType]="'dashboard'">
     <app-header class='header'></app-header>
   </app-table>
 </div>

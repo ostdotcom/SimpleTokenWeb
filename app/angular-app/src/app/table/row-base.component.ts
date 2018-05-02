@@ -75,7 +75,7 @@ export class RowBaseComponent {
      **/
     onDelete( row ) {
         this.deleteRowEvent.emit( {
-            "row" : row ,
+            "id" : row['id'] ,
             "status" : this.deleteStatusConfig
         } );
     }

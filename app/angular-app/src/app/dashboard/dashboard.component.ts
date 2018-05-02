@@ -12,20 +12,20 @@ export class DashboardComponent implements OnInit {
 
   tableType = 'dashboard';
 
-  config = {
-    tableDataUrl : 'api/admin/kyc/dashboard/'
-  };
-
   ngOnInit() {}
 
-   onFilterChange( values ) {
-    console.log("Filter Values",  values);
+   onFilterChange(  ) {
+   
    }
 
-   onSortChange( values ){
-    console.log("Sorting Values",  values);
+   onSortChange(  ){
+   
    }
 
+   onPageChange ( ){
+
+   }
+   
    getOptionValues( entity ){
      return this.entityConfigService.getEntityConfig(entity)['values'];
    }

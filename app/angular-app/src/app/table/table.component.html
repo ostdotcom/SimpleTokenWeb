@@ -8,9 +8,9 @@
       <app-row *ngFor="let row of rows" [row]='row' (deleteRowEvent)="deleteRow( $event )" class="row-record"></app-row>
     </ng-container>
   </div>
-<!-- TODO: Naming should be custom -->
+
   <table-pagination *ngIf="isPagination()"
-                      (pageChangeEvent)="getTableDataOnPageChange( $event )"
+                      (pageChangeEvent)="onPageChange( $event )"
                       [totalPageCount]="getTotalPageCount()" >
   </table-pagination>
 
