@@ -20,8 +20,10 @@
   &:active{
     border-color: $yellow-400;
     background-color: $yellow-400;
+    color: $white
   }
   &:hover{
+    color: $white;
     text-decoration: none;
     border-color: $yellow-400;
     background-color: $yellow-400;

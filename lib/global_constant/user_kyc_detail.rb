@@ -11,16 +11,16 @@ module GlobalConstant
         'all'
       end
 
-      def un_processed_admin_status
-        'un_processed_admin_status'
+      def unprocessed_admin_status
+        'unprocessed'
       end
 
       def qualified_admin_status
-        'qualified_admin_status'
+        'qualified'
       end
 
       def denied_admin_status
-        'denied_admin_status'
+        'denied'
       end
 
       def whitelisted_admin_status
@@ -30,7 +30,7 @@ module GlobalConstant
       def admin_kyc_statuses
         {
             all_admin_status => 'All',
-            un_processed_admin_status => 'Unprocessed',
+            unprocessed_admin_status => 'Unprocessed',
             qualified_admin_status => 'Qualified',
             denied_admin_status => 'Denied',
             whitelisted_admin_status => 'Whitelisted'
@@ -38,7 +38,7 @@ module GlobalConstant
       end
       def admin_kyc_status_class
         {
-            un_processed_admin_status => 'yello',
+            unprocessed_admin_status => 'yello',
             qualified_admin_status => 'green',
             denied_admin_status => 'red',
             whitelisted_admin_status => 'green'
@@ -53,24 +53,24 @@ module GlobalConstant
         'all'
       end
 
-      def un_processed_cynopsis_status
-        'un_processed_cynopsis_status'
+      def unprocessed_cynopsis_status
+        'unprocessed'
       end
 
       def cleared_cynopsis_status
-        'cleared_cynopsis_status'
+        'cleared'
       end
 
       def pending_cynopsis_status
-        'pending_cynopsis_status'
+        'pending'
       end
 
       def approved_cynopsis_status
-        'approved_cynopsis_status'
+        'approved'
       end
 
       def rejected_cynopsis_status
-        'rejected_cynopsis_status'
+        'rejected'
       end
 
       def failed_cynopsis_status
@@ -80,7 +80,7 @@ module GlobalConstant
       def cynopsis_kyc_statuses
         {
             all_cynopsis_status => 'All',
-            un_processed_cynopsis_status => 'Unprocessed',
+            unprocessed_cynopsis_status => 'Unprocessed',
             cleared_cynopsis_status => 'Cleared',
             pending_cynopsis_status => 'Pending',
             approved_cynopsis_status => 'Approved',
@@ -90,7 +90,7 @@ module GlobalConstant
       end
       def cynopsis_kyc_status_class
         {
-            un_processed_cynopsis_status => 'yello',
+            unprocessed_cynopsis_status => 'yello',
             cleared_cynopsis_status => 'green',
             pending_cynopsis_status => 'yello',
             approved_cynopsis_status => 'green',

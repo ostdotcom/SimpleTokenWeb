@@ -1,37 +1,37 @@
 <section class="container-fluid" id="contactus">
   <div class="row container-contact-us">
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+    <div class="col-12 col-sm-8 col-md-6 mx-auto">
       <div class="row">
-        <div class="col-xs-12 text-center">
+        <div class="col-12 text-center">
           <h2>Contact Us</h2>
           <h3>Want to learn more about OST Infinity KYC?</h3>
           <p>Please provide us with the info below and we will get in touch shortly.</p>
         </div>
       </div>
       <div class="row">
-        <form action="/api/home/contact-us-kyc" class="custom-form" id="ost-kyc-contact-us-form">
+        <form action="/api/home/contact-us-kyc" class="custom-form form-group" id="ost-kyc-contact-us-form">
           <div class="input-container">
-            <label>FULL NAME</label>
+            <label class="mb-1">FULL NAME</label>
             <input class="input" id="full_name" type="text" name="full_name" value="" title="full name" required autocomplete="off" />
-            <span class="border"></span>
+            <span class="border-line"></span>
           </div>
           <div class="error" data-for="full_name"></div>
           <div class="input-container">
-            <label>COMPANY WEBSITE</label>
+            <label class="mb-1">COMPANY WEBSITE</label>
             <input class="input" id="company" type="text" name="company" value="" title="company name" required autocomplete="off" />
-            <span class="border"></span>
+            <span class="border-line"></span>
           </div>
           <div class="error" data-for="company"></div>
           <div class="input-container">
-            <label>EMAIL ADDRESS</label>
+            <label class="mb-1">EMAIL ADDRESS</label>
             <input class="input" id="email" type="email" name="email" value="" title="email address" required autocomplete="off" />
-            <span class="border"></span>
+            <span class="border-line"></span>
           </div>
           <div class="error" data-for="email"></div>
           <div class="input-container">
-            <label>CONTACT NUMBER</label>
+            <label class="mb-1">CONTACT NUMBER</label>
             <input class="input" id="contact_number" type="text" name="contact_number" value="" title="contact number" required autocomplete="off" />
-            <span class="border"></span>
+            <span class="border-line"></span>
           </div>
           <div class="error" data-for="contact_number"></div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
@@ -39,10 +39,10 @@
             <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>"></div>
             <div class="error" data-for="recaptcha" style="text-align: center"></div>
           </div>
-          <button type="submit" class="btn btn-square-gold btn-gold" id="ost-kyc-contact-us-submit" style="margin: 0 auto;display: block;" title="Submit">SUBMIT</button>
+          <button type="submit" class="btn btn-primary mx-auto d-block" id="ost-kyc-contact-us-submit" style="margin: 0 auto;display: block;" title="Submit">SUBMIT</button>
           <div class="error" data-for="general_error"></div>
         </form>
-        <div id="send-message-success" style="display: none">
+        <div id="send-message-success" style="display: none" class="w-100">
           <div class="send-message-success">
             <span class="small-title">Thank you for contacting us</span>
             <span class="small-desc">We have received your request and our team we’ll get back to you very soon.</span>

@@ -19,20 +19,20 @@
 <section class="container-faqs">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-12">
         <h2>FAQs</h2>
         <div class="">
           <% faqs.each_with_index do|data, index| %>
             <% if (index % 3) == 0 %><div class="row"><% end %>
-            <div class="col-xs-12 col-sm-6 col-sm-offset-0 <%= raw data[:bg_class] %>">
+            <div class="col-12 col-sm-6 offset-sm-0 <%= raw data[:bg_class] %>">
               <h3><%= raw data[:title] %></h3>
               <p class="companies-desc"><%= raw data[:description] %></p>
               <a href="<%= raw data[:readmoreurl] %>" class="read-more" target="_blank"><%= raw data[:readmore] %></a>
             </div>
             <% if ((index % 3) == 2) || ((index + 1) == faqs.length) %></div><% end %>
           <% end %>
-          <div class="text-center col-xs-12">
-            <a href="https://docs.google.com/document/d/1ZZJksQkK3c4Qa6ad8zaDRuL0gIha2Ecmdlsl0dtxejo/edit?usp=sharing" target="_blank" class="btn btn-square-gold btn-gold square-btn" title="Read Documentation">Read Documentation</a>
+          <div class="text-center col-12">
+            <a href="https://docs.google.com/document/d/1ZZJksQkK3c4Qa6ad8zaDRuL0gIha2Ecmdlsl0dtxejo/edit?usp=sharing" target="_blank" class="btn btn-primary" title="Read Documentation">Read Documentation</a>
           </div>
         </div>
       </div>
