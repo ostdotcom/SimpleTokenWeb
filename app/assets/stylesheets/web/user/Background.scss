@@ -1,13 +1,14 @@
 .display-background{
   padding: 0.5rem;
   background-color: #d3e3e5;
+  max-width: 350px;
 }
 
 .upload-file-close-btn {
   height: 15px;
   width: 15px;
   display: inline-block;
-  background-color: red;
+  background-color: transparent;
   border-radius: 50%;
   float: right;
 }
