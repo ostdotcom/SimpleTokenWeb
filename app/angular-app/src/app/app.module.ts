@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './kyc_user_header/header.component';
 import { AppConfigService } from './app-config.service';
 import { EntityConfigService } from './entity-config.service';
+import { KycHeaderComponent } from './kyc-header/kyc-header.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { EntityConfigService } from './entity-config.service';
     RowComponent,
     PaginationComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    KycHeaderComponent
   ],
   imports: [
     BrowserModule,

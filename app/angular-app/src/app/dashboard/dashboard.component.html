@@ -10,7 +10,7 @@
      <div class="row">
       <div class="col-12 col-md-3">
         <span class='filter-label'>ADMIN STATUS</span>
-        <select class="select" name="filters[admin_status]" ngModel>
+        <select class="select" name="filters[admin_status]" [(ngModel)]='adminStatus'>
             <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_status')"
                     value="{{option.value}}"  >
               {{option.display_text}}
@@ -19,7 +19,7 @@
        </div>
       <div class="col-12 col-md-3">
         <span class='filter-label'>ADMIN REVIEW STATUS</span>
-        <select class="select" name="filters[admin_review_status]" ngModel>
+        <select class="select" name="filters[admin_review_status]" [(ngModel)]='admimReviewStatus'>
             <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_review_status')"
                     value="{{option.value}}"  >
               {{option.display_text}}
@@ -29,7 +29,7 @@
       <div class="col-12 col-md-3">
         <span class='filter-label'>CYNOPSIS STATUS</span>
 
-        <select class="select" name="filters[cynopsis_status]" ngModel>
+        <select class="select" name="filters[cynopsis_status]" [(ngModel)]='cynopsisStatus'>
             <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.cynopsis_status')"
                     value="{{option.value}}" >
               {{option.display_text}}
@@ -45,7 +45,7 @@
       <div class="col-12">
         <span class='filter-label'>SORT BY</span>
 
-        <select class="select" name="sortings[sort_by]" ngModel>
+        <select class="select" name="sortings[sort_by]" [(ngModel)]='sortBy'>
           <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.sort_by')"
                   value="{{option.value}}"  >
             {{option.display_text}}
@@ -58,6 +58,7 @@
 
 <div class="row" >
   <app-table class="w-100" 
+            [pageCnt]='pageCnt'
             [filterForm]='filterForm' 
             [sortForm]='sortForm' 
             [dataUrl]="'api/admin/kyc/dashboard/'"

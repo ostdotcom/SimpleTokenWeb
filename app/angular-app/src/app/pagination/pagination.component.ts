@@ -8,12 +8,11 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 export class PaginationComponent {
   @Input() totalPageCount: number;
+  @Input() currentPageNumber: number
   @Output('pageChangeEvent') pageChangeEvent = new EventEmitter<number>();
 
-  currentPageNumber:number = 1; 
   constructor() { }
-
-
+  
   changePage(pageCount: number): void {
     console.log("changePage" , pageCount ); 
     this.currentPageNumber  = pageCount ; 

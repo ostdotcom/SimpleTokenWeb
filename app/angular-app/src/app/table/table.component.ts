@@ -14,6 +14,7 @@ export class TableComponent  implements OnInit {
   @Input('dataUrl')     dataUrl   : string ; 
 
   //Optional input options 
+  @Input('pageCnt')       pageCnt?      : number  = this.pageCnt; 
   @Input('tableType')     tableType?    : string  = null;
   @Input('filterForm')    filterForm?   : any     = null ;
   @Input('sortForm')      sortForm?     : any     = null;
@@ -27,7 +28,6 @@ export class TableComponent  implements OnInit {
    getDataOnLoad: boolean =  true;
    hasError: boolean = false;
    metaData: object;
-   pageCnt: number = 1; 
    filterOptions: any; 
    sortingOptions: any; 
 
@@ -68,13 +68,13 @@ export class TableComponent  implements OnInit {
    }
 
    onFilter(data){
-    this.resetPageCount();
+    this.resetPageNumber();
     this.setFilter( data ); 
     this.getTableData( );
    }
 
    onSorting(data){
-    this.resetPageCount();
+    this.resetPageNumber();
     this.setSorting( data ); 
     this.getTableData( );
    }
@@ -96,27 +96,26 @@ export class TableComponent  implements OnInit {
   }
 
   onPageChange( pageNumber: number){
-  this.setPageCount(pageNumber)
+  this.setPageNumber(pageNumber)
     this.getTableData( );
   }
 
-
-  setPageCount( pageNumber : number ){
+  setPageNumber( pageNumber : number ){
    this.pageCnt = pageNumber; 
   }
 
-  resetPageCount(){
+  resetPageNumber(){
     this.pageCnt =  1; 
   }
 
-  getPageCount(): number {
-    return this.pageCnt
+  getPageNumber(): number {
+    return this.pageCnt || 1; 
   }
 
   getParams( ): RequestOptionsArgs {
      let requestParams =  {
       params : {
-        page_number : this.getPageCount()
+        page_number : this.getPageNumber()
       }
     }
     if(this.filterOptions){
@@ -174,7 +173,7 @@ export class TableComponent  implements OnInit {
   }
 
   getTotalPageCount(): Number {
-    if( !this.metaData ) return 0;
+    if( !this.metaData ) return 1;
     let pageSize      =  Number(this.metaData['page_size']),
         totalRecords  =  Number(this.metaData['total_records']),
         totalPageCount=  Math.ceil( totalRecords / pageSize)

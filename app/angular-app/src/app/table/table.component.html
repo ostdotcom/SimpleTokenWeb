@@ -10,6 +10,7 @@
   </div>
 
   <table-pagination *ngIf="isPagination()"
+                      [currentPageNumber]="getPageNumber()"
                       (pageChangeEvent)="onPageChange( $event )"
                       [totalPageCount]="getTotalPageCount()" >
   </table-pagination>
