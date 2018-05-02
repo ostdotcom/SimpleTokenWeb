@@ -2,5 +2,6 @@
  *= require plugins/bootstrap_select/bootstrap-select
  *= require plugins/bootstrap-datepicker/bootstrap-datepicker
  *= require web/common/KycInstructions
+ *= require web/common/Alert
  *= require web/user/Login
  */
