@@ -9,7 +9,7 @@
     </ng-container>
   </div>
 
-  <table-pagination *ngIf="isPagination()"
+  <table-pagination   *ngIf="isPagination()"
                       [currentPageNumber]="getPageNumber()"
                       (pageChangeEvent)="onPageChange( $event )"
                       [totalPageCount]="getTotalPageCount()" >

@@ -9,26 +9,24 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 export class PaginationComponent {
   @Input() totalPageCount: number;
   @Input() currentPageNumber: number
+
   @Output('pageChangeEvent') pageChangeEvent = new EventEmitter<number>();
 
   constructor() { }
-  
-  changePage(pageCount: number): void {
-    console.log("changePage" , pageCount ); 
-    this.currentPageNumber  = pageCount ; 
+
+  changePage(pageNumber: number): void {
+    this.currentPageNumber  = pageNumber ; 
     this.pageChangeEvent.emit( this.currentPageNumber );
   }
 
   onPrev(): void {
     --this.currentPageNumber; 
     this.pageChangeEvent.emit( this.currentPageNumber );
-    console.log("onPrev" , this.currentPageNumber ); 
   }
 
   onNext(): void {
     ++this.currentPageNumber;
     this.pageChangeEvent.emit( this.currentPageNumber );
-    console.log("onNext" , this.currentPageNumber ); 
   }
 
   isNext(): boolean{
@@ -40,7 +38,7 @@ export class PaginationComponent {
   }
 
   isActive( index ):boolean{
-   return this.changePage == index; 
+   return this.currentPageNumber == index; 
   }
 
   getPages() {

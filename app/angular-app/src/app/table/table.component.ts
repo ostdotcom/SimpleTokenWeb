@@ -14,7 +14,7 @@ export class TableComponent  implements OnInit {
   @Input('dataUrl')     dataUrl   : string ; 
 
   //Optional input options 
-  @Input('pageCnt')       pageCnt?      : number  = this.pageCnt; 
+  @Input('pageNumber')    pageNumber?      : number  = this.pageNumber; 
   @Input('tableType')     tableType?    : string  = null;
   @Input('filterForm')    filterForm?   : any     = null ;
   @Input('sortForm')      sortForm?     : any     = null;
@@ -101,15 +101,15 @@ export class TableComponent  implements OnInit {
   }
 
   setPageNumber( pageNumber : number ){
-   this.pageCnt = pageNumber; 
+   this.pageNumber = pageNumber; 
   }
 
   resetPageNumber(){
-    this.pageCnt =  1; 
+    this.pageNumber =  1; 
   }
 
   getPageNumber(): number {
-    return this.pageCnt || 1; 
+    return this.pageNumber || 1; 
   }
 
   getParams( ): RequestOptionsArgs {

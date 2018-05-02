@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   cynopsisStatus: any;
   whiteListStatus: any; 
   sortBy : any;
-  pageCnt: number; 
+  pageNumber: number; 
 
   tableType = 'dashboard';
 
@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
   }
 
   initPagination(){
-    this.pageCnt = 1 ; 
+    this.pageNumber = 1 ; 
   }
   
   onFilterChange(  ) {
