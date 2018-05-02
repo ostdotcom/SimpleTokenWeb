@@ -21,6 +21,7 @@ import { KycHeaderComponent } from './kyc-header/kyc-header.component';
 @NgModule({
   declarations: [
     AppComponent,
+    KycHeaderComponent,
     TableComponent,
     RowComponent,
     PaginationComponent,
