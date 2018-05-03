@@ -10,6 +10,9 @@ import {Http, RequestOptionsArgs, ResponseContentType} from '@angular/http';
 
 export class TableComponent implements OnInit {
 
+  // Decide row template according to parent
+  @ContentChild('rowData') rowTemplate: TemplateRef<any>;
+
   //Mandatory input options
   @Input('dataUrl') dataUrl: string;
 
@@ -21,16 +24,13 @@ export class TableComponent implements OnInit {
   @Input('config') config?: object = null;
   @Input('deleteRowUrl') deleteRowUrl?: string = null;
 
-  // Decide row template according to parent
-  @ContentChild('rowData') rowTemplate: TemplateRef<any>;
-
-
   // TODO confrim default message from UX/UI
   rows: Array<any> = [];
   errMsg: string = 'Something went wrong, please try again!';
   isProcessing: boolean = false;
-  getDataOnLoad: boolean = true;
   hasError: boolean = false;
+  noResultFound: boolean =false; 
+  getDataOnLoad: boolean = true;
   metaData: object;
 
   constructor(private http: OstHttp) {
@@ -113,6 +113,7 @@ export class TableComponent implements OnInit {
 
   getTableData() {
     let params: RequestOptionsArgs = this.getParams();
+    this.clearTableData();
     this.updateDataProcessingStatus(this, true, false);
     this.http.get(this.dataUrl, params).subscribe(
       response => {
@@ -123,6 +124,10 @@ export class TableComponent implements OnInit {
         let err = error.json();
         this.onTableDataError( err );
       })
+  }
+
+  clearTableData(){
+    this.rows = []; 
   }
 
   getParams(): RequestOptionsArgs {
@@ -148,6 +153,9 @@ export class TableComponent implements OnInit {
       ;
       this.rows = tableData;
       this.metaData = data['meta'];
+      if( this.rows.length == 0 ){
+        this.noResultFound = true ;  
+      }
       this.updateDataProcessingStatus(this, false, false);
     }else{
       this.updateDataProcessingStatus(this, false, true, response );
@@ -178,6 +186,10 @@ export class TableComponent implements OnInit {
     if( error ) {
       context['errMsg'] =  error['err'] && error['err']['display_text']; 
     }
+  }
+
+  isTableResponse(){
+    return  !!this.rows.length || this.isProcessing || this.hasError || this.noResultFound ; 
   }
 
   /*========UN-tested code start=====*/

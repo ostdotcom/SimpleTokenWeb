@@ -22,7 +22,8 @@ export class KycSearchComponent implements OnInit {
   searchValue: string = null; 
   isSearching: boolean = false;
   hasError: boolean = false; 
-  errMsg: string = "Sorry no results found!"
+  noResultFound: boolean = false; 
+  errMsg: string = "Sorry no results found!";
   searchTimeOut; 
 
   ngOnInit() {
@@ -30,7 +31,9 @@ export class KycSearchComponent implements OnInit {
   }
 
   onSearch( searchForm ){
+    this.clearItems(); 
     this.updateRequestProcessingStatus( true , false );
+    this.noResultFound = false; 
     clearTimeout( this.searchTimeOut ); 
     this.searchTimeOut = setTimeout(() => {
       this.http.get( this.searchApi ,  {params : searchForm.value } ).subscribe(
@@ -48,6 +51,10 @@ export class KycSearchComponent implements OnInit {
     } , 300) ;
   }
 
+  clearItems(){
+    this.items = []; 
+  }
+
   onSuccess( response ) {
     if( response.success ){
       let data =response['data'],
@@ -55,6 +62,9 @@ export class KycSearchComponent implements OnInit {
       searchData = dataKey && data[dataKey]
       ;
       this.items = searchData;
+      if( this.items.length == 0 ){
+        this.noResultFound = true; 
+      }
       this.updateRequestProcessingStatus( false , false ); 
     }else{
       this.updateRequestProcessingStatus( false , true , response ); 
@@ -72,5 +82,10 @@ export class KycSearchComponent implements OnInit {
       this.errMsg =  error['err'] && error['err']['display_text'] ; 
     }
   } 
+
+  isSearchResponse():boolean{
+   return  !!this.items.length || this.isSearching || this.hasError || this.noResultFound ; 
+  }
+  
 
 }
