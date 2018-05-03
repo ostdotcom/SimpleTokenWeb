@@ -19,7 +19,7 @@
        </div>
       <div class="col-12 col-md-3">
         <span class='filter-label'>ADMIN REVIEW STATUS</span>
-        <select class="select" name="filters[admin_review_status]" [(ngModel)]='admimReviewStatus'>
+        <select class="select" name="filters[admin_action_types]" [(ngModel)]='admimReviewStatus'>
             <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_action_types')"
                     value="{{option.value}}"  >
               {{option.display_text}}
