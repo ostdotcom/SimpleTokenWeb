@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
 
   initFilters(){
     this.adminStatus = "all";
-    this.admimReviewStatus = "no";
+    this.admimReviewStatus = "all";
     this.cynopsisStatus = "all";
     this.whiteListStatus = "all";
   }

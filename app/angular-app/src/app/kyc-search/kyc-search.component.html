@@ -1,0 +1,23 @@
+<div class="kyc-search-wrapper">
+  <div class="search-input-wrapper">
+    <form class="form-group" #searchForm="ngForm" (input)="onSearch( searchForm )">
+      <input [name]="entityName" 
+             [placeholder]="placeholder" 
+             [(ngModel)]="searchValue"
+             class="form-control" />
+    </form>  
+  </div>
+  <div class="search-result-wrapper p-3" *ngIf="items.length || isSearching || hasError">
+    <div *ngIf="items.length > 0 && !hasError">
+      <div class="search-item"  *ngFor="let item of items"> 
+          <a [routerLink]="['/case-id', item.id]">{{item.email}}</a>
+      </div>
+    </div>  
+    <div class="errro-wrapper" *ngIf="hasError">
+      {{errMsg}}
+    </div>  
+    <div class="searching-loader" *ngIf="isSearching">
+        Loading.....
+    </div>  
+  </div>  
+</div>  
