@@ -20,7 +20,7 @@
       <div class="col-12 col-md-3">
         <span class='filter-label'>ADMIN REVIEW STATUS</span>
         <select class="select" name="filters[admin_review_status]" [(ngModel)]='admimReviewStatus'>
-            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_review_status')"
+            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_action_types')"
                     value="{{option.value}}"  >
               {{option.display_text}}
             </option>
@@ -57,13 +57,17 @@
 </div>
 
 <div class="row" >
-  <app-table class="w-100" 
+  <app-table class="w-100"
             [pageNumber]='pageNumber'
-            [filterForm]='filterForm' 
-            [sortForm]='sortForm' 
+            [filterForm]='filterForm'
+            [sortForm]='sortForm'
             [dataUrl]="'api/admin/kyc/dashboard/'"
             [tableType]="'dashboard'">
     <app-header class='header'></app-header>
+
+    <ng-template #rowData let-row>
+        <app-row [row]='row'></app-row>
+      </ng-template>
   </app-table>
 </div>
 

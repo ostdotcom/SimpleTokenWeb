@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, TemplateRef} from '@angular/core';
+import {Component, OnInit, Input, TemplateRef, ContentChild} from '@angular/core';
 import {OstHttp} from '../ost-http.service';
 import {Http, RequestOptionsArgs, ResponseContentType} from '@angular/http';
 
@@ -20,6 +20,10 @@ export class TableComponent implements OnInit {
   @Input('sortForm') sortForm?: any = null;
   @Input('config') config?: object = null;
   @Input('deleteRowUrl') deleteRowUrl?: string = null;
+
+  // Decide row template according to parent
+  @ContentChild('rowData') rowTemplate: TemplateRef<any>;
+
 
   // TODO confrim default message from UX/UI
   rows: Array<any> = [];

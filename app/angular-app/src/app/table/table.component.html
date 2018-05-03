@@ -4,9 +4,15 @@
   <ng-content select=".header"></ng-content>
 
   <div class="row-wrapper" *ngIf="isProcessing==false; else loadingBlock">
-    <ng-container *ngIf="tableType==='dashboard'">
-      <app-row *ngFor="let row of rows" [row]='row' (deleteRowEvent)="deleteRow( $event )" class="row-record"></app-row>
-    </ng-container>
+
+    <div *ngFor="let row of rows">
+      <ng-container *ngTemplateOutlet="rowTemplate,
+        context: { $implicit: row }">
+      </ng-container>
+    </div>
+
+
+
   </div>
 
   <table-pagination   *ngIf="isPagination()"
