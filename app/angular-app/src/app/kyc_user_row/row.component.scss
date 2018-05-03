@@ -1,4 +1,25 @@
-.row{
+.green-span{
+  width: 3px;
+  height: 18px;
+  border-radius: 0.5px;
+  background-color: #91c0ad;
+  display: inline-block;
+}
+.green-left-border{
+  border-left: 4px solid #91c0ad;
+  padding-left: 5px;
+}
+.red-left-border{
+  border-left: 4px solid #e82053;
+  padding-left: 5px;
+}
+.yellow-left-border{
+  border-left: 4px solid #f5a623;
+  padding-left: 5px;
+}
+
+
+.row-body{
   background-color: inherit;
 
   .col{
@@ -31,15 +52,62 @@
   }
 
   .duplicate-status{
+    .duplicate-reason{
+      font-size: 12px;
 
-    .original-span{
-      width: 2px;
-      height: 11px;
-      border-radius: 0.5px;
-      background-color: #91c0ad;
-      display: inline-block;
 
     }
 
   }
+}
+.mobile{
+
+  .row:nth-child(odd) {
+    background-color: #f3fbfb;
+  }
+  .card{
+    border-color: #d3e3e5;
+    .card-body{
+      padding:0px;
+      .mobile-name-div{
+        background-color: #b1e0e1;
+        .mobile-name{
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 1.35;
+          text-align: left;
+          color: #597a84;
+        }
+        .mobile-confirmed-at{
+          font-size: 14px;
+          font-weight: 500;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 0.88;
+          letter-spacing: 1px;
+          text-align: left;
+          color: #597a84;
+
+        }
+      }
+
+      .mobile-sub-heading{
+        font-size: 13px;
+        font-weight: 500;
+        color: #597a84;
+        letter-spacing: 1px;
+
+      }
+      .mobile-text{
+        font-size: 14px;
+        line-height: normal;
+        letter-spacing: 1px;
+        text-align: left;
+        color: #597a84;
+
+      }
+    }
+
+  }
+
 }

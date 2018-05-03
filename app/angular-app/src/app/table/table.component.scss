@@ -9,9 +9,12 @@ ul {
   width: 100px;
 
 }
+@media (min-width: 780px){
+  .row-record:nth-child(odd) {
+    background-color: #f3fbfb;
+  }
 
-.row-record:nth-child(odd) {
-  background-color: #f3fbfb;
 }
+
 
 

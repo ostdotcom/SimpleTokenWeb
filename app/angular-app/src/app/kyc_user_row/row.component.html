@@ -1,50 +1,151 @@
-
-<div class="row py-4">
-    <div class="col pl-5 name-date">
-        <div class="name">
-        {{row.name}}
-        </div>
-        <div class="date">
-         {{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}
-        </div>
+<div class="row-body desktop d-none d-lg-flex py-4">
+  <div class="col pl-3 name-date">
+    <div class="name">
+      {{row.name}}
     </div>
-    <div class="col">
-      {{row.admin_status}}
+    <div class="date">
+      {{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}
     </div>
-    <div class="col">
-      {{row.cynopsis_status}}
-    </div>
-    <div class="col">
-       {{row.whitelist_status}}
-    </div>
-    <div class="col">
-       {{row.country}}
-    </div>
-    <div class="col">
-        {{row.nationality}}
-    </div>
-    <div class="col">
-        {{row.submission_count}}
-    </div>
-    <div class="col duplicate-status">
-        <div *ngIf="row.is_duplicate;else original">
-            Duplicate
-        </div>
-
-        <ng-template #original><div class="original-span"></div> <div>Original</div></ng-template>
-
-    </div>
-    <div class="col">
-        <div *ngIf="row.last_acted_by; else elseBlock">
-            {{row.last_acted_by}}
-
-         </div>
-         <ng-template #elseBlock>
-           <div>
-            --
-           </div>
-         </ng-template>
-
+  </div>
+  <div class="col">
+    {{row.admin_status}}
+  </div>
+  <div class="col">
+    {{row.cynopsis_status}}
+  </div>
+  <div class="col">
+    {{row.whitelist_status}}
+  </div>
+  <div class="col">
+    {{row.country}}
+  </div>
+  <div class="col">
+    {{row.nationality}}
+  </div>
+  <div class="col">
+    <div *ngIf="row.is_re_submitted; else newSubmission">
+      <div class="yellow-left-border">
+        Re-submitted
+        <span class='d-block'>
+          {{row.submission_count}} submission
+        </span>
       </div>
+    </div>
+    <ng-template #newSubmission>
+      <div>
+        <div class='mobile-text green-left-border'>New Submission</div>
+      </div>
+
+    </ng-template>
+  </div>
+  <div class="col duplicate-status">
+    <div *ngIf="row.is_duplicate;else original">
+      <div class='red-left-border'>
+        <span>Duplicate</span>
+        <span class='duplicate-reason d-block'>Same {{row.duplicate_type}}</span>
+      </div>
+    </div>
+
+    <ng-template #original>
+      <div class='green-left-border'>Original</div>
+    </ng-template>
+
+  </div>
+  <div class="col">
+    <div *ngIf="row.last_acted_by; else elseBlock">
+      {{row.last_acted_by}}
+
+    </div>
+    <ng-template #elseBlock>
+      <div>
+        --
+      </div>
+    </ng-template>
+
+  </div>
 </div>
 
+<div class="mobile d-lg-none m-3">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="mobile-name-div py-4 px-2 ">
+          <span class='mobile-name'> {{row.name}} </span>
+          <div class='mobile-confirmed-at d-inline-block'>{{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}</div>
+          <div class='mobile-admin-status mt-2'>
+            <span class='mobile-sub-heading'> ADMIN STATUS </span>
+            <div class='d-inline-block mobile-text'>{{row.admin_status}}</div>
+
+          </div>
+        </div>
+        <div class="row py-4 mx-0">
+          <div class="col-6">
+            <span class='mobile-sub-heading'>CYPONSIS </span>
+            <div class='mobile-text'>{{row.cynopsis_status}}</div>
+
+          </div>
+          <div class="col-6">
+            <span class='mobile-sub-heading'>WHITELIST </span>
+            <div class='mobile-text'>{{row.whitelist_status}}</div>
+
+          </div>
+
+        </div>
+
+        <div class="row py-4 mx-0">
+          <div class="col-6">
+            <span class='mobile-sub-heading'>SUBMISSION </span>
+            <div *ngIf="row.is_re_submitted; else newSubmission">
+              <span class='mobile-text'> Re-submitted </span>
+            </div>
+
+          </div>
+          <div class="col-6">
+            <span class='mobile-sub-heading'>DUPLICATE STATUS </span>
+
+            <div *ngIf="row.is_duplicate;else original">
+              <div class="red-left-border">
+                <span class='mobile-text'>Duplicate</span>
+                <span class='duplicate-reason d-block'>Same {{row.duplicate_type}}</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row py-4 mx-0">
+          <div class="col-6">
+            <span class='mobile-sub-heading'>RESIDENCE COUNTRY </span>
+            <div class='mobile-text'>{{row.country}}</div>
+
+          </div>
+          <div class="col-6">
+            <span class='mobile-sub-heading'>NATIONALITY </span>
+            <div class='mobile-text'>{{row.nationality}}</div>
+
+          </div>
+
+        </div>
+
+        <div class="row py-4 mx-0">
+          <div class="col-12">
+            <span class='mobile-sub-heading'>ADMIN </span>
+            <div *ngIf="row.last_acted_by; else elseBlock">
+              <span class='mobile-text'> {{row.last_acted_by}} </span>
+
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

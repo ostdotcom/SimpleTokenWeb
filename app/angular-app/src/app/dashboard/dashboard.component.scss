@@ -8,15 +8,13 @@
 
 .filters{
 
+
+
   select {
     height: 30px;
     width: 100%;
     background-color: #ffffff;
     border: solid 0.8px #d3e3e5;
-
-
-
-
     font-family: Quasimoda;
     font-size: 12px;
     letter-spacing: 1px;
@@ -36,7 +34,12 @@
     display:block;
     padding-bottom: 5px;
   }
+  @media screen and (max-width: 1070px) and (min-width: 760px)  {
+    .filter-label{
+      min-height: 35px;
+    }
 
+  }
 }
 
 
