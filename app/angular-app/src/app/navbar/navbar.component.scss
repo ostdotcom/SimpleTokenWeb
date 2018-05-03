@@ -1,8 +1,11 @@
 @import "../../../../assets/stylesheets/web/simple_token_theme/_variables";
 
+.navbar{
+  box-shadow: 0 0.5px 3px 2px rgba(237, 242, 246, 0.89);
+}
 
 .kyc-header-wrap {
-    border-bottom: 1px solid $gray-200; 
+    border-bottom: 1px solid $gray-200;
 }
 
 .dropdown-menu {
