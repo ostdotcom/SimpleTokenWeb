@@ -40,6 +40,10 @@ export class TableComponent implements OnInit {
     this.configOverWrites();
   }
 
+  ngOnDestroy() {
+    this.unBindTableChangeEvents();
+  }
+
   ngAfterContentInit() {
     setTimeout(() => {
       if (this.getDataOnLoad) {
@@ -62,6 +66,11 @@ export class TableComponent implements OnInit {
     this.bindSorting();
   }
 
+  unBindTableChangeEvents() {
+    this.unBindFilters();
+    this.unBindSorting();
+  }
+
   bindFilters() {
     if (!this.filterForm) return;
     this.filterForm.valueChanges.subscribe(() => {
@@ -74,6 +83,16 @@ export class TableComponent implements OnInit {
     this.sortForm.valueChanges.subscribe(() => {
       this.onSorting();
     });
+  }
+
+  unBindFilters(){
+    if (!this.filterForm) return;
+    this.filterForm.valueChanges.unsubscribe(); 
+  }
+
+  unBindSorting(){
+    if (!this.sortForm) return;
+    this.sortForm.valueChanges.unsubscribe(); 
   }
 
   onFilter() {
