@@ -1,4 +1,4 @@
-import { Component  } from '@angular/core';
+import { Component, ElementRef  } from '@angular/core';
 import { AppConfigService } from './app-config.service';
 
 @Component({
@@ -7,10 +7,15 @@ import { AppConfigService } from './app-config.service';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent{
-
-  // constructor( private appConfigService : AppConfigService ){
-  //   appConfigService.setAppConfigs( {} ); 
-  // }
+export class AppComponent {
+ 
+  constructor(private elementRef : ElementRef ,  private appConfigService : AppConfigService){
+    let dataset = elementRef.nativeElement.dataset , 
+        initDataJson = dataset && dataset.initDataJson || "{}", 
+        initData = initDataJson && JSON.parse( initDataJson )
+        ;
+    appConfigService.setAppInitData( initData ); 
+    console.log( appConfigService.getAppInitData( initData )  ); 
+  }
 
 }
