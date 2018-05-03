@@ -54,11 +54,13 @@ Rails.application.routes.draw do
       get '/login' => :login
       get '/forgot-password' => :forgot_password
       get '/reset-password' => :reset_password
+      get '/activate-account-password' => :activate_account_password
       get '/logout' => :logout
       get '/authentication' => :authentication
       get '/change-password' => :change_password
       get '/dashboard' => :dashboard
-      get '/new-dashboard' => :new_dashboard
+      get '/new-dashboard' => :angular_app
+      get '/case-id/:id' => :angular_app
       get '/get-kyc-dashboard' => :get_kyc_dashboard
       get '/get-kyc-details' => :kyc_details
       get '/kyc-action-logs' => :kyc_action_logs

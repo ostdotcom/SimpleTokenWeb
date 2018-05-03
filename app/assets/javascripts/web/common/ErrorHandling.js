@@ -162,30 +162,62 @@
 jQuery.fn.extend({
     setCustomValidity: function() {
         var $form = $(this);
-        $form.find('input, select, textarea').each(function(){
-            $(this).on('change', function(){
-                if (this.required && this.value == '') {
-                    simpletoken.utils.errorHandling.addFormError(this.name, this.title+' is required');
-                }
-                else if(this.validity.typeMismatch || this.validity.patternMismatch){
-                    simpletoken.utils.errorHandling.addFormError(this.name, 'Please enter a valid '+this.title);
-                }
-                else if(this.validity.rangeUnderflow){
-                    simpletoken.utils.errorHandling.addFormError(this.name, this.title+' cannot be less than '+this.min);
-                }
-                else if(this.type == 'file' && this.files.length > 0){
-                    if(this.files[0].size < $(this).data('min-bytes')){
-                        simpletoken.utils.errorHandling.addFormError(this.name, this.title+' file size too small');
-                    }
-                    if(this.files[0].size > $(this).data('max-bytes')){
-                        var maxMb = $(this).data('max-bytes') / (1024*1024);
-                        simpletoken.utils.errorHandling.addFormError(this.name, this.title+' file size too large. Max allowed '+maxMb+' Mb');
-                    }
-                }
-                else {
-                    this.setCustomValidity("");
-                }
-            });
-        });
+
+      $form.on('change', 'input, select, textarea', function( event ){
+        var targetEl = event.currentTarget;
+
+        if ( !targetEl ) {
+          console.log("Aniket, please change above line");
+        } else {
+          //console.log("All is well Aniket");
+        }
+
+        if (targetEl.required && targetEl.value == '') {
+          simpletoken.utils.errorHandling.addFormError(targetEl.name, targetEl.title+' is required');
+        }
+        else if(targetEl.validity.typeMismatch || targetEl.validity.patternMismatch){
+          simpletoken.utils.errorHandling.addFormError(targetEl.name, 'Please enter a valid '+targetEl.title);
+        }
+        else if(targetEl.validity.rangeUnderflow){
+          simpletoken.utils.errorHandling.addFormError(targetEl.name, targetEl.title+' cannot be less than '+ targetEl.min);
+        }
+        else if( targetEl.type == 'file' && targetEl.files.length > 0){
+          if(targetEl.files[0].size < $(targetEl).data('min-bytes')){
+            simpletoken.utils.errorHandling.addFormError(targetEl.name, targetEl.title+' file size too small');
+          }
+          if( targetEl.files[0].size > $(targetEl).data('max-bytes')){
+            var maxMb = $(targetEl).data('max-bytes') / (1024*1024);
+            simpletoken.utils.errorHandling.addFormError( targetEl.name, targetEl.title+' file size too large. Max allowed '+maxMb+' Mb');
+          }
+        }
+        else {
+          targetEl.setCustomValidity("");
+        }
+      });
+        // $form.find('input, select, textarea').each(function(){
+        //     $(this).on('change', function(){
+        //         if (this.required && this.value == '') {
+        //             simpletoken.utils.errorHandling.addFormError(this.name, this.title+' is required');
+        //         }
+        //         else if(this.validity.typeMismatch || this.validity.patternMismatch){
+        //             simpletoken.utils.errorHandling.addFormError(this.name, 'Please enter a valid '+this.title);
+        //         }
+        //         else if(this.validity.rangeUnderflow){
+        //             simpletoken.utils.errorHandling.addFormError(this.name, this.title+' cannot be less than '+this.min);
+        //         }
+        //         else if(this.type == 'file' && this.files.length > 0){
+        //             if(this.files[0].size < $(this).data('min-bytes')){
+        //                 simpletoken.utils.errorHandling.addFormError(this.name, this.title+' file size too small');
+        //             }
+        //             if(this.files[0].size > $(this).data('max-bytes')){
+        //                 var maxMb = $(this).data('max-bytes') / (1024*1024);
+        //                 simpletoken.utils.errorHandling.addFormError(this.name, this.title+' file size too large. Max allowed '+maxMb+' Mb');
+        //             }
+        //         }
+        //         else {
+        //             this.setCustomValidity("");
+        //         }
+        //     });
+        // });
     },
 });

@@ -344,6 +344,13 @@ en:
       :assets:
         :specific_css_required: 0
 
+    activate_account_password:
+      :meta:
+        :title: Simple Token Activate Account Password
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 0
+
     authentication:
       :meta:
         :title: Simple Token Admin Login Authentication
@@ -365,9 +372,9 @@ en:
       :assets:
         :specific_css_required: 1
 
-    new_dashboard:
+    angular_app:
       :meta:
-        :title: New Simple Token Dashboard
+        :title: Simple Token Admin Dashboard
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 1

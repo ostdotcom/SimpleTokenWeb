@@ -3,6 +3,10 @@
 .kyc-search-wrapper{
     position: relative; 
 
+    .search-input-wrapper {
+        min-width: 320px;
+    }
+
     .search-result-wrapper {
         position: absolute;
         width: 100%;

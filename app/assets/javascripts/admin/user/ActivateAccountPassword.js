@@ -5,7 +5,7 @@
     utilsNs = ns("simpletoken.utils"),
     oThis;
 
-  homeNs.reset = oThis = {
+  homeNs.activate = oThis = {
 
       init: function (config) {
           oThis.bindButtonActions();
@@ -15,7 +15,7 @@
 
           $("#resetBtn").click(function (event) {
               event.preventDefault();
-              var v = utilsNs.errorHandling.validationGeneric($('#resetPasswordForm input[type="text"], #resetPasswordForm input[type="password"]'));
+              var v = utilsNs.errorHandling.validationGeneric($('#activateAccountPasswordForm input[type="text"], #activateAccountPasswordForm input[type="password"]'));
               if (v === true) {
                   $("#resetBtn")
                       .text('setting password...')
@@ -27,7 +27,7 @@
       },
 
       change_password: function () {
-          var $form = $('#resetPasswordForm');
+          var $form = $('#activateAccountPasswordForm');
           $.ajax({
               url: $form.attr('action'),
               dataType: 'json',
@@ -46,15 +46,15 @@
               },
               complete: function(){
                   $("#resetBtn")
-                      .text('update password')
+                      .text('set password')
                       .prop( "disabled", false );
               }
           });
       },
 
       showSuccess: function () {
-          $('#resetPassword').hide();
-          $('#resetPasswordSuccess').show();
+          $('#activateAccountPassword').hide();
+          $('#activateAccountPasswordSuccess').show();
       }
   };
 

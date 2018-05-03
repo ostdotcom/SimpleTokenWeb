@@ -1,0 +1,155 @@
+<kyc-navbar class="d-block "></kyc-navbar>
+
+<div class="container mt-3" *ngIf="!isProcessing">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin/new-dashboard">KYC Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">KYC Details</li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <div class="col-12 col-md-4 mb-3">
+      <div class="card box-border">
+        <div class="card-body">
+          <div><span class="key">Admin Status : </span><span class="value">{{caseDetails.admin_status}}</span></div>
+          <div class="mt-3 d-flex justify-content-between align-items-center">
+
+            <div>
+              <span class="key">Cynopsis Status : </span>
+              <span class="value">{{caseDetails.cynopsis_status}}</span>
+            </div>
+
+            <span class="button-UI text-uppercase">Retry cynopsis</span>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-3">
+      <div class="card box-border">
+        <div class="card-body">
+
+          <div>
+
+            <span class="key">Submission : </span>
+            <span *ngIf="caseDetails.is_re_submitted == 1;then newSubmission else reSubmitted"></span>
+            <ng-template #newSubmission><span class="value blue-bar">New Submission</span></ng-template>
+            <ng-template #reSubmitted><span class="value red-bar">Re-Submitted</span></ng-template>
+
+          </div>
+
+          <div class="mt-3 d-flex justify-content-between align-items-center">
+
+            <div class="d-inline-block">
+              <span class="key">Duplicate Status : </span>
+              <span *ngIf="caseDetails.is_duplicate == 1;then original else duplicate"></span>
+              <ng-template #original><span class="value blue-bar">Original</span></ng-template>
+              <ng-template #duplicate><span class="value red-bar">Duplicate</span></ng-template>
+            </div>
+
+            <span class="button-UI text-uppercase">view details</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-3">
+      <div class="card box-border">
+        <div class="card-body">
+
+          <div><span class="key">Reg IP/Country : </span><span class="value">{{userDetails.geoip_data.ip_address}} / {{userDetails.geoip_data.country}}</span></div>
+          <div class="mt-3 d-flex justify-content-between align-items-center">
+
+            <span class="key">Agent : </span><span class="value"> </span>
+
+            <span class="button-UI text-uppercase">view logs</span>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h5 class="mt-4">Submitted details Vs ID Image</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card-group">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title text-uppercase">Submitted Details</h6>
+          </div>
+          <img class="card-img-top" alt="Card image cap">
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title text-uppercase">ID Image</h6>
+          </div>
+          <img class="card-img-top" src="{{userDetails.document_id_file_url}}" alt="Card image cap">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h5 class="mt-4">ID Image Vs Selfie Image</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card-group">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title text-uppercase">ID image</h6>
+          </div>
+          <img class="card-img-top" alt="Card image cap">
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title text-uppercase">Selfie image</h6>
+          </div>
+          <img class="card-img-top" src="{{userDetails.selfie_file_url}}" alt="Card image cap">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h5 class="mt-4">Other Uploaded Documents</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card-group">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title text-uppercase">ID image</h6>
+          </div>
+          <img class="card-img-top" alt="Card image cap">
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title text-uppercase">Selfie image</h6>
+          </div>
+          <img class="card-img-top" src="{{userDetails.selfie_file_url}}" alt="Card image cap">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+

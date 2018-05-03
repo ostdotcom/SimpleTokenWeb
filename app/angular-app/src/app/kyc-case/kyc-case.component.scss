@@ -1,0 +1,55 @@
+.container{
+
+  .breadcrumb{
+    background-color: transparent;
+    padding: 0.75rem 0;
+    .breadcrumb-item + .breadcrumb-item::before{
+      content: '>'
+    }
+  }
+
+  .card-group{
+    .card{
+      border: solid 0.8px #84d1d4;
+    }
+  }
+
+  .box-border{
+    border-radius: 2.5px;
+    background-color: #ffffff;
+    border: solid 0.8px #84d1d4;
+    color: #597a84;
+    font-size: 14px;
+
+    .key{
+      font-weight: 300;
+    }
+    .value{
+      font-weight: 500;
+      padding-left: 5px;
+      &.blue-bar{
+        border-left: 2px solid #91c0ad;
+      }
+
+      &.red-bar{
+        border-left: 2px solid #e82053;
+      }
+    }
+
+    .button-UI{
+      background-color: transparent;
+      border: none;
+      float: right;
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+  .title{
+    color: #597a84;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+

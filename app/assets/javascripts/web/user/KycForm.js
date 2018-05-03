@@ -22,6 +22,9 @@
       oThis.bindButtonActions();
       oThis.refreshIndicator();
       oThis.$kycForm.setCustomValidity();
+      if($('#investor_proofs').length > 0 ){
+        oThis.addFormName('investor_proof_files_path');
+      }
     },
 
     bindButtonActions: function () {
@@ -47,8 +50,8 @@
           if (oThis.currentPercent < percent) {
             oThis.currentPercent = percent;
             $('#verifyModal .loader-content .progress .progress-bar')
-              .css('width', percent + '%')
-              .text(percent + '%');
+              .css('width', percent + '%');
+              //.text(percent + '%');
           }
         },
         error: function (jqXHR, exception) {
@@ -62,6 +65,107 @@
           oThis.verifyModal('hide-progress');
           oThis.verifyModal('status-text', 'Upload Error: ' + xmlResponse.find('Code').text() + '. Please contact support.');
         },
+      });
+
+
+      $(".file-upload .upload-image-btn").click(function(e){
+
+        var fileUpload = $(this).closest('.file-upload');
+
+        if (fileUpload.find(".file-wrapper .upload").length == 0) {
+          oThis.fileCount = 0;
+        }
+        else {
+          oThis.fileCount++;
+        }
+
+        var file_attrs = {
+          title: fileUpload.data('title'),
+          name: fileUpload.data('name'),
+          accept: fileUpload.data('accept'),
+          minBytes: fileUpload.data('min-bytes'),
+          maxBytes: fileUpload.data('max-bytes')
+        };
+
+        fileUpload.find(".file-wrapper").append('<input type="file" title="'+ file_attrs.title +'" name="'+ file_attrs.name +'" data-file-count="' + oThis.fileCount + '" class="upload btn btn-orange" accept="'+ file_attrs.accept +'" data-min-bytes="'+ file_attrs.minBytes +'" data-max-bytes="'+ file_attrs.maxBytes +'" required/>');
+        fileUpload.find(".file-wrapper input[type='file'].upload:last-child").trigger("click");
+
+        fileUpload.find('.file-wrapper input[type="file"]').change(function () {
+
+          var inputDataCount = fileUpload.find(".file-wrapper-view [data-file-count=" + oThis.fileCount + "]");
+          if($(this).val() && inputDataCount.length === 0){
+            fileUpload.find('.file-wrapper-view').append($("<div class='file-name display-4 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<svg class="icon upload-file-close-btn" data-file-count="' + oThis.fileCount + '"> <switch><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use> </switch> </svg>'));
+            fileUpload.find('.upload-file-close-btn').click(function (e) {
+              var fileCount = $(e.target).closest('.file-name').data('file-count');
+              fileUpload.find(".file-wrapper [data-file-count=" + fileCount + "]").remove();
+              fileUpload.find('.file-wrapper-view [data-file-count=' + fileCount + ']').remove();
+
+              oThis.updateMultiFileBtnStateForInvestor(fileUpload);
+            }).bind(oThis);
+
+            oThis.updateMultiFileBtnStateForInvestor(fileUpload);
+          }
+        });
+
+      });
+
+      $(".multi-upload-file").click(function(e){
+          if ($(".file-wrapper .upload").length == 0) {
+            oThis.fileCount = 0;
+          }
+          else {
+            oThis.fileCount++;
+          }
+
+          $(".file-wrapper").append('<input type="file" name="investor_file_path" data-file-count="' + oThis.fileCount + '" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>');
+          $(".file-wrapper input[type='file'].upload:last-child").trigger("click");
+
+          $('.file-wrapper').find('input[type="file"]').change(function () {
+
+            $('.multi-file-wrapper').append($("<div class='file-name display-4 col-6 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<svg class="icon upload-file-close-btn" data-file-count="' + oThis.fileCount + '"> <switch><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use> </switch> </svg>'));
+            $('.upload-file-close-btn').click(function (e) {
+                var fileCount = $(e.target).closest('.file-name').data('file-count');
+                $(".file-wrapper").find("[data-file-count=" + fileCount + "]").remove();
+                $('.multi-file-wrapper').find("[data-file-count=" + fileCount + "]").remove();
+
+                oThis.updateMultiFileBtnStateForInvestor();
+              }).bind(oThis);
+              oThis.updateMultiFileBtnStateForInvestor();
+          });
+
+      });
+      
+
+      $('.single-upload-file').click(function () {
+
+        $(this).closest('.form-group').find('.file-name').append('<input type="file" style="position:absolute; top:-1000px; left:-1000px" name="single-file-upload" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" required/>');
+        $(this).closest('.form-group').find('.file-name').find("input[type='file']").trigger("click");
+        var chooseButtonObject = $(this).closest('.form-group').find("input[type='button']");
+
+        $(this).closest('.form-group').find('.file-name').find("input[type='file']").change(function () {
+
+         $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<img class="upload-file-close-btn"src="close.svg"  alt="Image"/>');
+         chooseButtonObject.attr('disabled','disabled');
+
+         $(".upload-file-close-btn").click(function (event) {
+           $(this).closest('.form-group').find('input[type="button"]').removeAttr('disable');
+           $(this).closest('.form-group').find('.file-name').find("input[type='file']").remove();
+           chooseButtonObject.removeAttr('disabled');
+           $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
+         });
+        });
+      });
+
+      $('.radio-button-yes').click(function () {
+        console.log("radio button yes clicked");
+        $('.upload-proof-invester').css('display','');
+        oThis.addFormName('investor_proof_files_path');
+      });
+
+      $('.radio-button-no').click(function () {
+        console.log("radio button no clicked");
+        $('.upload-proof-invester').css('display','none');
+        oThis.removeFormName('investor_proof_files_path');
       });
 
       oThis.$kycForm.find('input[name=birthdate]')
@@ -83,16 +187,17 @@
           }
           oThis.isResidencyProofNeeded = true;
           $('.residence-proof').show();
-          oThis.formNames.push('residence_proof_file_path');
+
+          oThis.addFormName('residence_proof_file_path');
+
         } else {
           if (oThis.isResidencyProofNeeded === false) {
             return;
           }
           oThis.isResidencyProofNeeded = false;
           $('.residence-proof').hide();
-          if (oThis.formNames.length == 3) {
-            oThis.formNames.pop()
-          }
+
+          oThis.removeFormName('residence_proof_file_path');
         }
       });
 
@@ -102,7 +207,14 @@
       });
 
       oThis.$kycForm.find('input[type="file"]').change(function () {
-        $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop());
+        if ($(this).val())    {
+           $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<img class="upload-file-close-btn"src="close.svg"  alt="Image"/>');
+           $(this).closest('.form-group').find('.upload-file').addClass('disable-upload-button');
+           $(".upload-file-close-btn").click(function (event) {
+             $(this).closest('.form-group').find('.upload-file').removeClass('disable-upload-button');
+             $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
+           });
+        }
       });
 
       $("#kycSubmit").click(function (event) {
@@ -141,6 +253,25 @@
         $('.selectpicker').selectpicker('mobile');
       }
 
+
+      $('#redictToDashboard').click(function () {
+        window.location = '/dashboard';
+      });
+
+      $('#kycUpdateFailed').click(function () {
+        oThis.hideKycUpdateFailedDialog();
+      });
+    },
+
+    updateMultiFileBtnStateForInvestor : function (ref) {
+      if (ref.find(".file-wrapper .upload").length >= ref.data('max-length')){
+        ref.find(".upload-image-btn").attr("disabled","disabled");
+        ref.find(".reached-max-limit").css('display','');
+
+      } else{
+        ref.find(".upload-image-btn").removeAttr("disabled");
+        ref.find(".reached-max-limit").css('display','none');
+      }
     },
 
     refreshIndicator: function () {
@@ -182,6 +313,13 @@
 
       oThis.$kycForm.find('input, select, textarea').each(function () {
         $(this).trigger('change');
+      });
+
+      oThis.formNames.forEach(function (value) {
+        oThis.$kycForm.find('input[name="' + value + '"]').trigger('change');
+        if(oThis.$kycForm.find('input[name="' + value + '"]').length == 0){
+          simpletoken.utils.errorHandling.addFormError(value, oThis.$kycForm.find('[data-name="' + value + '"]').data('title')+' is required');
+        }
       });
 
       if (typeof oThis.$kycForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha != 'undefined') {
@@ -239,6 +377,7 @@
         grecaptcha.reset();
       }
       oThis.$kycForm.find('.error[data-for="general_error"]').text('We found some errors in your KYC form. Please scroll up to review');
+
     },
 
     makeFileParams: function () {
@@ -246,7 +385,9 @@
       var formSelectors = [];
 
       oThis.formNames.forEach(function (value) {
+
         formSelectors.push('#kycForm input[name="' + value + '"]');
+        console.log("formSelectors.push : ", '#kycForm input[name="' + value + '"]');
       });
 
       $.each($(formSelectors.join(',')), function (key, value) {
@@ -296,16 +437,20 @@
     uploadFiles: function (data) {
 
       oThis.verifyModal('show-progress');
-      oThis.verifyModal('status-text', 'Uploading files via secured channel...');
+      oThis.verifyModal('status-text', 'We are uploading the file via a secure channel.<br /> This might take sometime, please do not refresh the page.');
 
       $.each(data, function (upload_key, upload_value) {
-        $('#fileupload').fileupload('send', {
-          files: [$('#kycForm input[name=' + upload_key + ']')[0].files[0]],
-          paramName: ['file'],
-          url: upload_value.url,
-          formData: upload_value.fields
-        });
-        oThis.uploadCount++;
+        var uploadKeyCount = $('#kycForm input[name=' + upload_key + ']').length;
+
+        for(var i = 0; i < uploadKeyCount; i++){
+          $('#fileupload').fileupload('send', {
+            files: [$('#kycForm input[name=' + upload_key + ']')[i].files[0]],
+            paramName: ['file'],
+            url: upload_value.url,
+            formData: upload_value.fields
+          });
+          oThis.uploadCount++;
+        }
       });
     },
 
@@ -330,19 +475,24 @@
         data: $data,
         success: function (response) {
           if (response.success == true) {
-            window.location = '/dashboard';
+            //window.location = '/dashboard';
+            oThis.verifyModal('hide-verifyModal');
+            oThis.showKycSuccessDialog();
             return false;
           } else {
             grecaptcha.reset();
-            oThis.verifyModal('show-close');
-            oThis.verifyModal('status-text', response.err.display_text);
+            oThis.verifyModal('hide-verifyModal');
+            //oThis.verifyModal('status-text', response.err.display_text);
+            oThis.showKycUpdateFailedDialog();
             simpletoken.utils.errorHandling.displayFormErrors(response);
           }
         },
         error: function (jqXHR, exception) {
           grecaptcha.reset();
-          oThis.verifyModal('show-close');
-          oThis.verifyModal('status-text', utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+          oThis.verifyModal('hide-verifyModal');
+          //oThis.verifyModal('status-text', utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
+
+          oThis.showKycUpdateFailedDialog();
         }
       });
     },
@@ -356,6 +506,13 @@
           backdrop: 'static',
           keyboard: false
         }).modal('show');
+      }
+
+      if (mode == 'hide-verifyModal') {
+        $verifyModal.modal({
+          backdrop: 'static',
+          keyboard: false
+        }).modal('hide');
       }
 
       if (mode == 'verify') {
@@ -390,10 +547,53 @@
       }
 
       if (mode == 'status-text') {
-        $verifyModal.find('.loader-content .status').text(message);
+        $verifyModal.find('.loader-content .status').html(message);
       }
 
+    },
+    
+    showKycSuccessDialog:function () {
+      $kycSuccessModel = $('#kycSuccessModel');
+
+      $kycSuccessModel.modal({
+        backdrop: 'static',
+        keyboard: false
+      }).modal('show');
+    },
+
+    showKycUpdateFailedDialog:function () {
+      $kycUpdateFailedModel = $('#kycUpdateFailedModel');
+
+      $kycUpdateFailedModel.modal({
+        backdrop: 'static',
+        keyboard: false
+      }).modal('show');
+    },
+
+    hideKycUpdateFailedDialog:function () {
+      $kycUpdateFailedModel = $('#kycUpdateFailedModel');
+
+      $kycUpdateFailedModel.modal({
+        backdrop: 'static',
+        keyboard: false
+      }).modal('hide');
+    },
+    
+    addFormName: function (formName) {
+      var formNameIndex = oThis.formNames.indexOf(formName);
+      if (formNameIndex === -1){
+        oThis.formNames.push(formName);
+      }
+      console.log("addFormName : ",formName," formNameIndex : ",formNameIndex, oThis.formNames);
+    },
+    
+    removeFormName: function (formName) {
+      var formNameIndex = oThis.formNames.indexOf(formName);
+      oThis.formNames.splice(formNameIndex,1)
+      console.log("removeFormName : ",formName, " formNameIndex : ",formNameIndex, oThis.formNames);
+
     }
+
 
   };
 

@@ -1,12 +1,15 @@
-<div class="row-body desktop d-none d-lg-flex py-4">
-  <div class="col pl-3 name-date">
-    <div class="name">
-      {{row.name}}
+<div class="row-body desktop d-none d-lg-flex py-4" routerLink="/admin/case-id/{{row.id}}">
+    <div class="col pl-3 name-date">
+        <div class="name">
+        {{row.name}}
+        </div>
+        <div class="date">
+         {{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}
+        </div>
+
+
     </div>
-    <div class="date">
-      {{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}
-    </div>
-  </div>
+
   <div class="col">
     {{row.admin_status}}
   </div>

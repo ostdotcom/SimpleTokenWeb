@@ -14,7 +14,6 @@ export class EntityConfigService {
     this.entityConfig = null;
     return this.http
         .get(this.entityConfigUrl)
-
         .toPromise()
         .then((data: any) => this.entityConfig = data.json())
         .catch((err: any) => Promise.resolve());
