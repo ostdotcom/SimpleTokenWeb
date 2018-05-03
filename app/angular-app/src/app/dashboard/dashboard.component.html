@@ -36,6 +36,17 @@
             </option>
         </select>
       </div>
+      <div class="col-12 col-md-3">
+          <span class='filter-label'>WHITELIST STATUS</span>
+
+          <select class="select" name="filters[whitelist_status]" [(ngModel)]='whiteListStatus'>
+              <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.whitelist_status')"
+                      value="{{option.value}}" >
+                {{option.display_text}}
+              </option>
+          </select>
+        </div>
+
     </div>
     </form>
   </div>
