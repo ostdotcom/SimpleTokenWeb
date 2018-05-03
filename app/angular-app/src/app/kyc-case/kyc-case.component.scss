@@ -21,6 +21,23 @@
     }
     .value{
       font-weight: 500;
+      padding-left: 5px;
+      &.blue-bar{
+        border-left: 2px solid #91c0ad;
+      }
+
+      &.red-bar{
+        border-left: 2px solid #e82053;
+      }
+    }
+
+    .button-UI{
+      background-color: transparent;
+      border: none;
+      float: right;
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
     }
   }
   .title{
