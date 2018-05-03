@@ -9,14 +9,13 @@ import { OstHttp } from './ost-http.service';
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { RowComponent } from './kyc_user_row/row.component';
-import { TabledataService } from './tabledata.service';
 import { PaginationComponent } from './pagination/pagination.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './kyc_user_header/header.component';
 import { AppConfigService } from './app-config.service';
 import { EntityConfigService } from './entity-config.service';
-import { KycHeaderComponent } from './kyc-header/kyc-header.component';
-import { KycSearchComponent } from './kyc-search/kyc-search.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarSearchComponent } from './navbar-search/navbar-search.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -27,14 +26,13 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
 @NgModule({
   declarations: [
     AppComponent,
-    KycHeaderComponent,
     TableComponent,
     RowComponent,
     PaginationComponent,
     DashboardComponent,
     HeaderComponent,
-    KycHeaderComponent,
-    KycSearchComponent
+    NavbarComponent,
+    NavbarSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +57,6 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                   deps: [EntityConfigService],
                   multi: true
                 },
-                TabledataService,
                 OstHttp,
                 AppConfigService,
             ],

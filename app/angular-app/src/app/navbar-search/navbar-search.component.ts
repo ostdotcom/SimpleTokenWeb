@@ -2,57 +2,57 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { OstHttp } from '../ost-http.service';
 
 @Component({
-  selector: 'kyc-search',
-  templateUrl: './kyc-search.component.html',
-  styleUrls: ['./kyc-search.component.scss']
+  selector: 'kyc-navbar-search',
+  templateUrl: './navbar-search.component.html',
+  styleUrls: ['./navbar-search.component.scss']
 })
-export class KycSearchComponent implements OnInit {
+export class NavbarSearchComponent implements OnInit {
 
   constructor(private http : OstHttp) { }
 
-  //Mandatory options to pass 
-  @Input('searchApi')  searchApi      : string; 
+  //Mandatory options to pass
+  @Input('searchApi')  searchApi      : string;
   @Input('entityName') entityName     : string;
   @Input('placeholder') placeholder?  : string;
 
   //Optional options to pass
   @Input('config') config?: string;
 
-  items : Array<any> = []; 
-  searchValue: string = null; 
+  items : Array<any> = [];
+  searchValue: string = null;
   isSearching: boolean = false;
-  hasError: boolean = false; 
-  noResultFound: boolean = false; 
+  hasError: boolean = false;
+  noResultFound: boolean = false;
   errMsg: string = "Sorry no results found!";
-  searchTimeOut; 
+  searchTimeOut;
 
   ngOnInit() {
     this.placeholder = this.placeholder || "Search"
   }
 
   onSearch( searchForm ){
-    this.clearItems(); 
+    this.clearItems();
     this.updateRequestProcessingStatus( true , false );
-    this.noResultFound = false; 
-    clearTimeout( this.searchTimeOut ); 
+    this.noResultFound = false;
+    clearTimeout( this.searchTimeOut );
     this.searchTimeOut = setTimeout(() => {
       this.http.get( this.searchApi ,  {params : searchForm.value } ).subscribe(
         response => {
-          console.log("has success", response); 
-          let res = response.json(); 
-          this.onSuccess( res ); 
+          console.log("has success", response);
+          let res = response.json();
+          this.onSuccess( res );
         },
         error => {
-          console.log("has error", error); 
-          let err = error.json(); 
-          this.onError( err ); 
+          console.log("has error", error);
+          let err = error.json();
+          this.onError( err );
         }
       )
     } , 300) ;
   }
 
   clearItems(){
-    this.items = []; 
+    this.items = [];
   }
 
   onSuccess( response ) {
@@ -63,29 +63,29 @@ export class KycSearchComponent implements OnInit {
       ;
       this.items = searchData;
       if( this.items.length == 0 ){
-        this.noResultFound = true; 
+        this.noResultFound = true;
       }
-      this.updateRequestProcessingStatus( false , false ); 
+      this.updateRequestProcessingStatus( false , false );
     }else{
-      this.updateRequestProcessingStatus( false , true , response ); 
+      this.updateRequestProcessingStatus( false , true , response );
     }
   }
 
   onError(error) {
-    this.updateRequestProcessingStatus( false , true ,  error ); 
+    this.updateRequestProcessingStatus( false , true ,  error );
   }
 
   updateRequestProcessingStatus( isSearching: boolean ,  hasError: boolean , error?: object ){
-    this.isSearching = isSearching ; 
-    this.hasError = hasError; 
+    this.isSearching = isSearching ;
+    this.hasError = hasError;
     if( error ){
-      this.errMsg =  error['err'] && error['err']['display_text'] ; 
+      this.errMsg =  error['err'] && error['err']['display_text'] ;
     }
-  } 
+  }
 
   isSearchResponse():boolean{
-   return  !!this.items.length || this.isSearching || this.hasError || this.noResultFound ; 
+   return  !!this.items.length || this.isSearching || this.hasError || this.noResultFound ;
   }
-  
+
 
 }

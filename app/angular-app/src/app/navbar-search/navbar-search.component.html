@@ -10,7 +10,7 @@
   <div class="search-result-wrapper p-3" *ngIf="isSearchResponse()">
     <div *ngIf="items.length > 0">
       <div class="search-item"  *ngFor="let item of items"> 
-          <a [routerLink]="['/case-id', item.id]">{{item.email}}</a>
+          <a [routerLink]="['admin/case-id', item.id]">{{item.email}}</a>
       </div>
     </div>  
     <div class="no-result-fount-wrapper" *ngIf="noResultFound">
