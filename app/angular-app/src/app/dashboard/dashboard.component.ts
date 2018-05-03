@@ -11,48 +11,48 @@ export class DashboardComponent implements OnInit {
   constructor( private entityConfigService : EntityConfigService ) {}
 
   //Default parameters
-  adminStatus : any ; 
-  admimReviewStatus : any; 
+  adminStatus : any ;
+  admimReviewStatus : any;
   cynopsisStatus: any;
-  whiteListStatus: any; 
+  whiteListStatus: any;
   sortBy : any;
-  pageNumber: number; 
+  pageNumber: number;
 
   tableType = 'dashboard';
 
   ngOnInit() {
-    this.initFilters(); 
+    this.initFilters();
     this.initSort();
     this.initPagination();
   }
-  
+
   initFilters(){
-    this.adminStatus = "all"; 
-    this.admimReviewStatus = "no"; 
-    this.cynopsisStatus = "all"; 
-    this.whiteListStatus = "all"; 
+    this.adminStatus = "all";
+    this.admimReviewStatus = "no";
+    this.cynopsisStatus = "all";
+    this.whiteListStatus = "all";
   }
 
   initSort(){
-    this.sortBy = "desc"; 
+    this.sortBy = "desc";
   }
 
   initPagination(){
-    this.pageNumber = 1 ; 
+    this.pageNumber = 1 ;
   }
-  
+
   onFilterChange(  ) {
-   
+
   }
 
   onSortChange(  ){
-   
+
   }
 
   onPageChange ( ){
 
   }
-   
+
   getOptionValues( entity ){
      return this.entityConfigService.getEntityConfig(entity)['values'];
   }

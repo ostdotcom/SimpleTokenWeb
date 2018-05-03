@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
 import { OstHttp } from './ost-http.service';
-import {entityConfig} from './entity_config';
-
+import { Response } from '@angular/http';
 
 @Injectable()
 export class EntityConfigService {
-  entityConfig;
+  entityConfig= {};
   entityConfigUrl = 'entity_config.json';
   errorOccured: Boolean;
 
-  constructor(private http: OstHttp) {
-   // this.entityConfig = this.getConfiguration();
+  constructor(private http: OstHttp) {}
 
+  load(): Promise<any> {
+    this.entityConfig = null;
+    return this.http
+        .get(this.entityConfigUrl)
+
+        .toPromise()
+        .then((data: any) => this.entityConfig = data.json())
+        .catch((err: any) => Promise.resolve());
   }
 
   getEntityConfig(path) {
     let paths = path.split('.')
-    , current = entityConfig
+    , current = this.entityConfig
     , i
     ;
     for (i = 0; i < paths.length; ++i) {
@@ -28,7 +34,4 @@ export class EntityConfigService {
     }
     return current;
   }
-
-
-
 }

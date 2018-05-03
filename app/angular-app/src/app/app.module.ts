@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -16,6 +16,11 @@ import { HeaderComponent } from './kyc_user_header/header.component';
 import { AppConfigService } from './app-config.service';
 import { EntityConfigService } from './entity-config.service';
 import { KycHeaderComponent } from './kyc-header/kyc-header.component';
+
+
+export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
+  return () => entityConfigService.load();
+}
 
 
 @NgModule({
@@ -40,7 +45,18 @@ import { KycHeaderComponent } from './kyc-header/kyc-header.component';
       }
     ])
   ],
-  providers: [TabledataService, OstHttp, AppConfigService, EntityConfigService],
+  providers: [  EntityConfigService,
+                {
+                  // Provider for APP_INITIALIZER
+                  provide: APP_INITIALIZER,
+                  useFactory: entityServiceFactory,
+                  deps: [EntityConfigService],
+                  multi: true
+                },
+                TabledataService,
+                OstHttp,
+                AppConfigService,
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
