@@ -1,0 +1,21 @@
+@import "../../../../assets/stylesheets/web/simple_token_theme/_variables";
+
+.kyc-search-wrapper{
+    position: relative; 
+
+    .search-result-wrapper {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        z-index: 10;
+        background: $white; 
+        border-top: none;  
+        border: 1px solid $gray-400;
+    }
+}
+
+
+
+
+
+

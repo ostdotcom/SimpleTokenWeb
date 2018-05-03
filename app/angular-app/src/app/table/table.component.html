@@ -11,19 +11,16 @@
       </ng-container>
     </div>
 
+    <table-pagination   *ngIf="isPagination()"
+                        [currentPageNumber]="getPageNumber()"
+                        (pageChangeEvent)="onPageChange( $event )"
+                        [totalPageCount]="getTotalPageCount()" >
+    </table-pagination>
 
-
-
-  <table-pagination   *ngIf="isPagination()"
-                      [currentPageNumber]="getPageNumber()"
-                      (pageChangeEvent)="onPageChange( $event )"
-                      [totalPageCount]="getTotalPageCount()" >
-  </table-pagination>
-
-  <ng-template #loadingBlock>
-    <div class="loading mx-auto mt-5" style="font-size:30px;">
-    <strong>Loading...</strong>
-    </div>
-  </ng-template>
+    <ng-template #loadingBlock>
+      <div class="loading mx-auto mt-5" style="font-size:30px;">
+      <strong>Loading...</strong>
+      </div>
+    </ng-template>
 
 </div>

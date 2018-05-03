@@ -16,6 +16,7 @@ import { HeaderComponent } from './kyc_user_header/header.component';
 import { AppConfigService } from './app-config.service';
 import { EntityConfigService } from './entity-config.service';
 import { KycHeaderComponent } from './kyc-header/kyc-header.component';
+import { KycSearchComponent } from './kyc-search/kyc-search.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -32,7 +33,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     PaginationComponent,
     DashboardComponent,
     HeaderComponent,
-    KycHeaderComponent
+    KycHeaderComponent,
+    KycSearchComponent
   ],
   imports: [
     BrowserModule,

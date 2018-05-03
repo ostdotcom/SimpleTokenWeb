@@ -121,7 +121,7 @@ export class TableComponent implements OnInit {
       },
       error => {
         let err = error.json();
-        this.onTableDataError(err);
+        this.onTableDataError( err );
       })
   }
 
@@ -140,21 +140,22 @@ export class TableComponent implements OnInit {
     return requestParams;
   }
 
-  onTableDataSuccess(res) {
-    let data = res['data'],
+  onTableDataSuccess(response) {
+    if( response.success ){
+      let data = response['data'],
       dataKey = data && data['result_set'],
       tableData = dataKey && data[dataKey]
-    ;
-    this.rows = tableData;
-    this.metaData = data['meta'];
-    this.updateDataProcessingStatus(this, false, false);
+      ;
+      this.rows = tableData;
+      this.metaData = data['meta'];
+      this.updateDataProcessingStatus(this, false, false);
+    }else{
+      this.updateDataProcessingStatus(this, false, true, response );
+    }
   }
 
-  onTableDataError(errorResponse) {
-    let err = errorResponse['err'];
-    if (err) {
-      this.updateDataProcessingStatus(this, false, true, err['display_text']);
-    }
+  onTableDataError(error) {
+    this.updateDataProcessingStatus(this, false, true, error);
   }
 
   isPagination(): Boolean {
@@ -170,11 +171,13 @@ export class TableComponent implements OnInit {
     return totalPageCount;
   }
 
-  updateDataProcessingStatus(context, isProcessing: boolean, hasError: boolean, errMsg?) {
+  updateDataProcessingStatus(context, isProcessing: boolean, hasError: boolean, error?: object) {
     if (!context) return;
     context['isProcessing'] = isProcessing;
     context['hasError'] = hasError;
-    context['errMsg'] = errMsg || context['errMsg'];
+    if( error ) {
+      context['errMsg'] =  error['err'] && error['err']['display_text']; 
+    }
   }
 
   /*========UN-tested code start=====*/
@@ -194,7 +197,7 @@ export class TableComponent implements OnInit {
       error => {
         let err = error.json();
         this.onDeleteRowFailure(err);
-        this.updateDataProcessingStatus(status, false, true, err['display_text']);
+        this.updateDataProcessingStatus(status, false, true, err);
       }
     )
   }
