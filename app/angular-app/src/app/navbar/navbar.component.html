@@ -4,28 +4,55 @@
      <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="150"/>
   </a>
 
-  <kyc-navbar-search class="d-none d-md-block" [searchApi]="'api/admin/kyc/get-cases-by-email'"
-                     [entityName]="'email'"
-                     [placeholder]="'Search by Email'">
-  </kyc-navbar-search>
+	<div class="d-flex justify-content-between align-items-center">
+	  <kyc-navbar-search class="d-none d-md-block mr-5" [searchApi]="'api/admin/kyc/get-cases-by-email'"
+	                     [entityName]="'email'"
+	                     [placeholder]="'Search by Email'">
+	  </kyc-navbar-search>
 
-  <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle border-none"
-           href="javascript:void(0)" id="navbarDropdown"
-           role="button"
-           data-toggle="dropdown"
-           aria-haspopup="true"
-           aria-expanded="false">
-          User Name
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item border-none" [routerLink]="['admin/manage-admin']">MANAGE ADMIN</a>
-          <a class="dropdown-item border-none" href="">CHANGE PASSWORD</a>
-          <a class="dropdown-item border-none" href="admin/logout">LOGOUT </a>
-        </div>
-      </li>
-  </ul>
+	  <!--<ul class="navbar-nav">-->
+	      <!--<li class="nav-item dropdown">-->
+	        <!--<a class="nav-link dropdown-toggle border-none"-->
+	           <!--href="javascript:void(0)" id="navbarDropdown"-->
+	           <!--role="button"-->
+	           <!--data-toggle="dropdown"-->
+	           <!--aria-haspopup="true"-->
+	           <!--aria-expanded="false">-->
+	          <!--User Name-->
+	        <!--</a>-->
+	        <!--<div class="dropdown-menu" aria-labelledby="Preview">-->
+	          <!--<a class="dropdown-item border-none" [routerLink]="['admin/manage-admin']">MANAGE ADMIN</a>-->
+	          <!--<a class="dropdown-item border-none" href="">CHANGE PASSWORD</a>-->
+	          <!--<a class="dropdown-item border-none" href="admin/logout">LOGOUT </a>-->
+	        <!--</div>-->
+	      <!--</li>-->
+	  <!--</ul>-->
+
+		<div class="dropdown">
+
+			<a class="dropdown-toggle border-none" data-toggle="dropdown">
+				Select a Country <span class="caret"></span>
+			</a>
+			<div class="dropdown-menu dropdown-menu-right">
+				<a class="dropdown-item border-none" [routerLink]="['admin/manage-admin']">MANAGE ADMIN</a>
+				<a href="#" class="dropdown-item border-none">CHANGE PASSWORD</a>
+				<a href="admin/logout" class="dropdown-item border-none">LOGOUT</a>
+			</div>
+		</div>
+
+			<!--<a class="dropdown-toggle border-none" data-toggle="dropdown" href="#">Select a Country <span class="caret"></span></a>-->
+			<!--<ul class="dropdown-menu dropdown-menu-left">-->
+				<!--<li class="dropdown-item">-->
+					<!--<a class="border-none" [routerLink]="['admin/manage-admin']">MANAGE ADMIN</a>-->
+				<!--</li>-->
+				<!--<li class="dropdown-item">-->
+					<!--<a href="#" class="border-none">CHANGE PASSWORD</a>-->
+				<!--</li>-->
+				<!--<li class="dropdown-item">-->
+					<!--<a href="admin/logout" class="border-none">LOGOUT</a>-->
+				<!--</li>-->
+			<!--</ul>-->
+	</div>
 
 </nav>
 

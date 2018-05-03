@@ -35,7 +35,6 @@
             $("#recoverPassword")
                 .text('Recovering...')
                 .prop( "disabled", true );
-            $('#successMessage').hide().text('');
             var $form = $('#forgotPasswordForm');
             $.ajax({
                 url: $form.attr('action'),
@@ -71,13 +70,8 @@
             var userEmail = $('#email').val();
             $('#emailSuccess').text(userEmail);
             $('#resetPassword').hide();
-            $('#resetPasswordSuccess').show();
-        },
-
-        showSuccessMsg: function () {
-            $('#successMessage').show().text('Reset Link has been sent!');
+            $('#forgotPasswordSuccess').show();
         }
-
 
     };
 

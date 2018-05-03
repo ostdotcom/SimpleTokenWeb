@@ -15,7 +15,7 @@
 
           $("#resetBtn").click(function (event) {
               event.preventDefault();
-              var v = utilsNs.errorHandling.validationGeneric($('#changePasswordForm input[type="text"], #changePasswordForm input[type="password"]'));
+              var v = utilsNs.errorHandling.validationGeneric($('#resetPasswordForm input[type="text"], #resetPasswordForm input[type="password"]'));
               if (v === true) {
                   $("#resetBtn")
                       .text('setting password...')
@@ -27,7 +27,7 @@
       },
 
       change_password: function () {
-          var $form = $('#changePasswordForm');
+          var $form = $('#resetPasswordForm');
           $.ajax({
               url: $form.attr('action'),
               dataType: 'json',
@@ -46,15 +46,15 @@
               },
               complete: function(){
                   $("#resetBtn")
-                      .text('set password')
+                      .text('update password')
                       .prop( "disabled", false );
               }
           });
       },
 
       showSuccess: function () {
-          $('#changePassword').hide();
-          $('#changePasswordSuccess').show();
+          $('#resetPassword').hide();
+          $('#resetPasswordSuccess').show();
       }
   };
 
