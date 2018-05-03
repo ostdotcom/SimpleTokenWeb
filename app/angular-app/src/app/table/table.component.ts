@@ -29,8 +29,10 @@ export class TableComponent implements OnInit {
   errMsg: string = 'Something went wrong, please try again!';
   isProcessing: boolean = false;
   hasError: boolean = false;
-  noResultFound: boolean =false; 
+  noResultFound: boolean =false;
   getDataOnLoad: boolean = true;
+  filtersObserver: any; 
+  sortObserver: any; 
   metaData: object;
 
   constructor(private http: OstHttp) {
@@ -73,26 +75,26 @@ export class TableComponent implements OnInit {
 
   bindFilters() {
     if (!this.filterForm) return;
-    this.filterForm.valueChanges.subscribe(() => {
+    this.filtersObserver = this.filterForm.valueChanges.subscribe(() => {
       this.onFilter();
     });
   }
 
   bindSorting() {
     if (!this.sortForm) return;
-    this.sortForm.valueChanges.subscribe(() => {
+    this.sortObserver = this.sortForm.valueChanges.subscribe(() => {
       this.onSorting();
     });
   }
 
   unBindFilters(){
-    if (!this.filterForm) return;
-    this.filterForm.valueChanges.unsubscribe(); 
+    if (!this.filtersObserver) return;
+    this.filtersObserver.unsubscribe();
   }
 
   unBindSorting(){
-    if (!this.sortForm) return;
-    this.sortForm.valueChanges.unsubscribe(); 
+    if (!this.sortObserver) return;
+    this.sortObserver.unsubscribe();
   }
 
   onFilter() {
@@ -146,7 +148,7 @@ export class TableComponent implements OnInit {
   }
 
   clearTableData(){
-    this.rows = []; 
+    this.rows = [];
   }
 
   getParams(): RequestOptionsArgs {
@@ -173,7 +175,7 @@ export class TableComponent implements OnInit {
       this.rows = tableData;
       this.metaData = data['meta'];
       if( this.rows.length == 0 ){
-        this.noResultFound = true ;  
+        this.noResultFound = true ;
       }
       this.updateDataProcessingStatus(this, false, false);
     }else{
@@ -203,12 +205,12 @@ export class TableComponent implements OnInit {
     context['isProcessing'] = isProcessing;
     context['hasError'] = hasError;
     if( error ) {
-      context['errMsg'] =  error['err'] && error['err']['display_text']; 
+      context['errMsg'] =  error['err'] && error['err']['display_text'];
     }
   }
 
   isTableResponse(){
-    return  !!this.rows.length || this.isProcessing || this.hasError || this.noResultFound ; 
+    return  !!this.rows.length || this.isProcessing || this.hasError || this.noResultFound ;
   }
 
   /*========UN-tested code start=====*/
