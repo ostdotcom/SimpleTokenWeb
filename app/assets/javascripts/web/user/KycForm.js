@@ -11,7 +11,7 @@
     uploadCount: 0,
     isResidencyProofNeeded: false,
     currentPercent: 0,
-    formNames: ['document_id_file_path', 'selfie_file_path', 'investor_file_path'],
+    formNames: ['document_id_file_path', 'selfie_file_path'],
     residencyProofMandatoryCountries: [],
     popoverPlacement: 'right',
     $kycForm: $('#kycForm'),
@@ -22,7 +22,9 @@
       oThis.bindButtonActions();
       oThis.refreshIndicator();
       oThis.$kycForm.setCustomValidity();
-
+      if($('#investor_proofs').length > 0 ){
+        oThis.addFormName('investor_proof_files_path');
+      }
     },
 
     bindButtonActions: function () {
@@ -157,13 +159,13 @@
       $('.radio-button-yes').click(function () {
         console.log("radio button yes clicked");
         $('.upload-proof-invester').css('display','');
-        oThis.addFormName('investor_file_path');
+        oThis.addFormName('investor_proof_files_path');
       });
 
       $('.radio-button-no').click(function () {
         console.log("radio button no clicked");
         $('.upload-proof-invester').css('display','none');
-        oThis.removeFormName('investor_file_path');
+        oThis.removeFormName('investor_proof_files_path');
       });
 
       oThis.$kycForm.find('input[name=birthdate]')
@@ -384,8 +386,6 @@
 
       oThis.formNames.forEach(function (value) {
 
-        if (value === 'investor_file_path')
-
         formSelectors.push('#kycForm input[name="' + value + '"]');
         console.log("formSelectors.push : ", '#kycForm input[name="' + value + '"]');
       });
@@ -440,13 +440,17 @@
       oThis.verifyModal('status-text', 'We are uploading the file via a secure channel.<br /> This might take sometime, please do not refresh the page.');
 
       $.each(data, function (upload_key, upload_value) {
-        $('#fileupload').fileupload('send', {
-          files: [$('#kycForm input[name=' + upload_key + ']')[0].files[0]],
-          paramName: ['file'],
-          url: upload_value.url,
-          formData: upload_value.fields
-        });
-        oThis.uploadCount++;
+        var uploadKeyCount = $('#kycForm input[name=' + upload_key + ']').length;
+
+        for(var i = 0; i < uploadKeyCount; i++){
+          $('#fileupload').fileupload('send', {
+            files: [$('#kycForm input[name=' + upload_key + ']')[i].files[0]],
+            paramName: ['file'],
+            url: upload_value.url,
+            formData: upload_value.fields
+          });
+          oThis.uploadCount++;
+        }
       });
     },
 
@@ -472,11 +476,12 @@
         success: function (response) {
           if (response.success == true) {
             //window.location = '/dashboard';
+            oThis.verifyModal('hide-verifyModal');
             oThis.showKycSuccessDialog();
             return false;
           } else {
             grecaptcha.reset();
-            oThis.verifyModal('show-close');
+            oThis.verifyModal('hide-verifyModal');
             //oThis.verifyModal('status-text', response.err.display_text);
             oThis.showKycUpdateFailedDialog();
             simpletoken.utils.errorHandling.displayFormErrors(response);
@@ -484,7 +489,7 @@
         },
         error: function (jqXHR, exception) {
           grecaptcha.reset();
-          oThis.verifyModal('show-close');
+          oThis.verifyModal('hide-verifyModal');
           //oThis.verifyModal('status-text', utilsNs.errorHandling.xhrErrResponse(jqXHR, exception));
 
           oThis.showKycUpdateFailedDialog();
@@ -501,6 +506,13 @@
           backdrop: 'static',
           keyboard: false
         }).modal('show');
+      }
+
+      if (mode == 'hide-verifyModal') {
+        $verifyModal.modal({
+          backdrop: 'static',
+          keyboard: false
+        }).modal('hide');
       }
 
       if (mode == 'verify') {
@@ -535,7 +547,7 @@
       }
 
       if (mode == 'status-text') {
-        $verifyModal.find('.loader-content .status').text(message);
+        $verifyModal.find('.loader-content .status').html(message);
       }
 
     },
