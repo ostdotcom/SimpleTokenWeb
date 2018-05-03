@@ -1,41 +1,127 @@
 {
-"entity_configs" : {
-
+  "entity_configs": {
     "kyc_user_details": {
-        "admin_status": {
-                        "values": [{"value": "all", "display_text": "All"},
-                                 {"value":"un_processed_admin_status", "display_text": "Unprocessed"},
-                                 {"value":"qualified_admin_status" , "display_text": "Qualified" },
-                                 {"value":"denied_admin_status" , "display_text":"Denied"  } ],
-                        "data_type": "array"
-                    } ,
-        "admin_review_status": {
-                        "values": [{"value": "no", "display_text": "No Review Action"},
-                                 {"value": "any", "display_text": "Any Review Action"},
-                                 {"value": "data_mismatch", "display_text": "Data Mismatch"},
-                                 {"value": "document_id_issue", "display_text": "Document Id Issue"},
-                                 {"value": "selfie_issue", "display_text": "Selfie Image Issue"},
-                                 {"value": "residency_issue", "display_text": "Proof of Residence Issue"}],
-                        "data_type": "array"
-                        } ,
-        "cynopsis_status": {
-                       "values": [
-                         {"value": "all", "display_text": "All"},
-                         {"value": "un_processed_cynopsis_status", "display_text": "Unprocessed"},
-                         {"value": "cleared_cynopsis_status", "display_text": "Cleared"},
-                         {"value": "pending_cynopsis_status", "display_text": "Pending"},
-                         {"value": "approved_cynopsis_status", "display_text": "Approved"},
-                         {"value": "cleared_cynopsis_status:approved_cynopsis_status", "display_text": "Cleared | Approved"},
-                         {"value": "rejected_cynopsis_status", "display_text": "Rejected"}],
-                         "data_type": "array"
-
-        },
-
-        "sort_by" :  	{
-                        "values": [{"value": "desc", "display_text": "Newest"},
-                                 {"value": "asc", "display_text": "Oldest"}],
-                        "data_type": "array"
-                    }
+      "admin_status": {
+        "values": [
+          {
+            "value": "all",
+            "display_text": "All"
+          },
+          {
+            "value": "unprocessed",
+            "display_text": "Unprocessed"
+          },
+          {
+            "value": "qualified",
+            "display_text": "Qualified"
+          },
+          {
+            "value": "denied",
+            "display_text": "Denied"
+          }
+        ],
+        "data_type": "array"
+      },
+      "admin_action_types": {
+        "values": [
+          {
+            "value": "all",
+            "display_text": "Any Review Action"
+          },
+          {
+            "value": "no_admin_action",
+            "display_text": "No Review Action"
+          },
+          {
+            "value": "data_mismatch",
+            "display_text": "Data Mismatch"
+          },
+          {
+            "value": "document_issue",
+            "display_text": "Document Issue"
+          },
+          {
+            "value": "other_issue",
+            "display_text": "Other Issue"
+          }
+        ],
+        "data_type": "array"
+      },
+      "cynopsis_status": {
+        "values": [
+          {
+            "value": "all",
+            "display_text": "All"
+          },
+          {
+            "value": "unprocessed",
+            "display_text": "Unprocessed"
+          },
+          {
+            "value": "cleared",
+            "display_text": "Cleared"
+          },
+          {
+            "value": "pending",
+            "display_text": "Pending"
+          },
+          {
+            "value": "approved",
+            "display_text": "Approved"
+          },
+          {
+            "value": "cleared:approved",
+            "display_text": "Cleared | Approved"
+          },
+          {
+            "value": "rejected",
+            "display_text": "Rejected"
+          },
+          {
+            "value": "failed",
+            "display_text": "Failed"
+          }
+        ],
+        "data_type": "array"
+      },
+      "whitelist_status": {
+        "values": [
+          {
+            "value": "all",
+            "display_text": "All"
+          },
+          {
+            "value": "unprocessed",
+            "display_text": "Unprocessed"
+          },
+          {
+            "value": "started",
+            "display_text": "Started"
+          },
+          {
+            "value": "done",
+            "display_text": "Done"
+          },
+          {
+            "value": "failed",
+            "display_text": "Failed"
+          }
+        ],
+        "data_type": "array"
+      },
+      "sort_by": {
+        "values": [
+          {
+            "value": "desc",
+            "display_text": "Newest"
+          },
+          {
+            "value": "asc",
+            "display_text": "Oldest"
+          }
+        ],
+        "data_type": "array"
+      }
     }
   }
 }
