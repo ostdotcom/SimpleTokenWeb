@@ -1,0 +1,33 @@
+.container{
+
+  .breadcrumb{
+    background-color: transparent;
+    padding: 0.75rem 0;
+    .breadcrumb-item + .breadcrumb-item::before{
+      content: '>'
+    }
+  }
+
+
+  .box-border{
+    border-radius: 2.5px;
+    background-color: #ffffff;
+    border: solid 0.8px #84d1d4;
+    color: #597a84;
+    font-size: 14px;
+
+    .key{
+      font-weight: 300;
+    }
+    .value{
+      font-weight: 500;
+    }
+  }
+  .title{
+    color: #597a84;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+

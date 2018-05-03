@@ -1,5 +1,39 @@
-<kyc-navbar class="d-block "></kyc-navbar>
+<div class="container mt-3">
 
-<p>
- {{ caseDetails.admin_status }}
-</p>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin/new-dashboard">KYC Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">KYC Details</li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <div class="card box-border">
+        <div class="card-body">
+          <div><span class="key">Admin Status : </span><span class="value">{{ caseDetails.admin_status }}</span></div>
+          <div class="mt-3"><span class="key">Cynopsis Status : </span><span class="value"> {{ caseDetails.cynopsis_status }}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card box-border">
+        <div class="card-body">
+          <div><span class="key">Submission : </span><span class="value">{{ caseDetails.admin_status }}</span></div>
+          <div class="mt-3"><span class="key">Duplicate Status : </span><span class="value"> {{ caseDetails.cynopsis_status }}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card box-border">
+        <div class="card-body">
+          <div><span class="key">Reg IP/Country : </span><span class="value">{{ caseDetails.admin_status }}</span></div>
+          <div class="mt-3"><span class="key">Agent : </span><span class="value"> {{ caseDetails.cynopsis_status }}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
