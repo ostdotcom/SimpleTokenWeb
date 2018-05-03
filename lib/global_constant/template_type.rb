@@ -5,6 +5,11 @@ module GlobalConstant
 
     class << self
 
+
+      def verification_template_type
+        'verification'
+      end
+
       def kyc_template_type
         'kyc'
       end

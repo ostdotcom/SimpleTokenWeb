@@ -1,13 +1,14 @@
 ;
 (function (window) {
-
     var homeNs = ns("simpletoken.home"),
         utilsNs = ns("simpletoken.utils"),
         oThis;
 
     homeNs.signup = oThis = {
+        api_token_sale_state_page_names : null ,
 
         init: function (config) {
+            $.extend(oThis , config);
             oThis.bindButtonActions();
         },
 
@@ -47,8 +48,8 @@
                 data: $form.serialize(),
                 success: function (response) {
                     if (response.success == true) {
-                        window.location = '/add-kyc';
-                        return false;
+                        var path = oThis.get_redirect_path(response.data.user_token_sale_state);
+                        window.location = '/' + path;
                     } else {
                         utilsNs.errorHandling.displayFormErrors(response);
                         if(typeof grecaptcha  != 'undefined'){
@@ -68,11 +69,21 @@
                         .prop( "disabled", false );
                 }
             });
+        },
+
+
+        get_redirect_path: function (user_token_sale_state) {
+
+            var data = oThis.api_token_sale_state_page_names &&
+                       oThis.api_token_sale_state_page_names[user_token_sale_state];
+
+            if (typeof(data) == 'undefined') {
+                alert("Invalid user token sale state");
+                return '';
+            }
+            return data.p;
         }
     };
 
-    $(document).ready(function () {
-        oThis.init({i18n: {}});
-    });
 
 })(window);

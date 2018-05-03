@@ -114,11 +114,11 @@ en:
 
     verification_link:
       :meta:
-        :title: 'Verify your email for the Simple Token Project Token Sale'
-        :description: 'Verify your email for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
+        :title: 'Verify your email for the %{account_name} ICO'
+        :description: 'Verify your email for the %{account_name} ICO'
         :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
+        :keywords: 'ICO'
+        :name: '%{account_name}'
         :robots: 'index, follow'
       :assets:
         :specific_js_required: 1

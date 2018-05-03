@@ -42,8 +42,10 @@ module SimpleTokenApi
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def basic_detail(template_type=nil)
-        extra_params = template_type.present? ? {template_type: template_type} : nil
+      def basic_detail(template_type=nil, token=nil)
+        extra_params = {}
+        extra_params.merge!(template_type: template_type) if template_type.present?
+        extra_params.merge!(token: token) if token.present?
         get("basic-detail", extra_params)
       end
 
