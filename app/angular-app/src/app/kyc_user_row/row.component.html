@@ -1,5 +1,5 @@
 
-<div class="row py-4">
+<div class="row py-4" routerLink="/admin/case-id/{{row.id}}">
     <div class="col pl-5 name-date">
         <div class="name">
         {{row.name}}
@@ -7,7 +7,7 @@
         <div class="date">
          {{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}
         </div>
-    </div>
+      </div>
     <div class="col">
       {{row.admin_status}}
     </div>

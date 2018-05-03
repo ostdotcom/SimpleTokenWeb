@@ -16,6 +16,7 @@ import { AppConfigService } from './app-config.service';
 import { EntityConfigService } from './entity-config.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarSearchComponent } from './navbar-search/navbar-search.component';
+import { KycCaseComponent } from './kyc-case/kyc-case.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -32,7 +33,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     DashboardComponent,
     HeaderComponent,
     NavbarComponent,
-    NavbarSearchComponent
+    NavbarSearchComponent,
+    KycCaseComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
       },
       {
         path: 'admin/case-id/:id',
-        component: DashboardComponent
+        component: KycCaseComponent
       },
     ])
   ],
