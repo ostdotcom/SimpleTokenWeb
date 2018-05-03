@@ -44,7 +44,11 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
       {
         path: 'admin/new-dashboard',
         component: DashboardComponent
-      }
+      },
+      {
+        path: 'admin/case-id/:id',
+        component: DashboardComponent
+      },
     ])
   ],
   providers: [  EntityConfigService,

@@ -83,7 +83,7 @@ class Admin::HomeController < Admin::BaseController
     @display_start = params[:display_start]
   end
 
-  def new_dashboard
+  def angular_app
     service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_client_detail
 
