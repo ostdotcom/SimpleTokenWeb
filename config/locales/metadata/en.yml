@@ -344,7 +344,7 @@ en:
       :assets:
         :specific_css_required: 0
 
-    activate_account_password:
+    activate_account:
       :meta:
         :title: Simple Token Activate Account Password
         :robots: 'noindex, nofollow'

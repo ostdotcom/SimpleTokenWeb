@@ -1,8 +1,8 @@
 class Admin::HomeController < Admin::BaseController
   layout "admin"
 
-  before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account_password]
-  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account_password]
+  before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
+  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account]
 
   before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard]
 
@@ -39,7 +39,15 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 03/05/2018
   # * Reviewed By:
   #
-  def activate_account_password
+  def activate_account
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_invite_detail(params[:i_t])
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
   end
 
   # Admin login mfa

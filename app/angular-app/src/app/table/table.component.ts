@@ -18,11 +18,11 @@ export class TableComponent implements OnInit {
 
   //Optional input options
   @Input('pageNumber') pageNumber?: number ;
-  @Input('tableType') tableType?: string = null;
   @Input('filterForm') filterForm?: any = null;
   @Input('sortForm') sortForm?: any = null;
   @Input('config') config?: object = null;
   @Input('deleteRowUrl') deleteRowUrl?: string = null;
+  @Input('getDataOnInit') getDataOnInit?: boolean = true;
 
   // TODO confrim default message from UX/UI
   rows: Array<any> = [];
@@ -30,7 +30,7 @@ export class TableComponent implements OnInit {
   isProcessing: boolean = false;
   hasError: boolean = false;
   noResultFound: boolean =false;
-  getDataOnLoad: boolean = true;
+  //getDataOnLoad: boolean = true;
   filtersObserver: any; 
   sortObserver: any; 
   metaData: object;
@@ -48,7 +48,7 @@ export class TableComponent implements OnInit {
 
   ngAfterContentInit() {
     setTimeout(() => {
-      if (this.getDataOnLoad) {
+      if (this.getDataOnInit) {
         this.getTableData();
       }
       this.bindTableChangeEvents();

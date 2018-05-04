@@ -1,60 +1,56 @@
-<kyc-navbar class="d-block "></kyc-navbar>
-
-<div class="row">
- <h2 class="mt-4 kyc-header">KYC DASHBOARD</h2>
-
+<div class="row mt-4">
+    <h2 class="kyc-header">KYC DASHBOARD</h2>
 </div>
 
-
 <div class="row  p-3 filters">
-  <div class="col-12 col-lg-8">
-    <form #filterForm="ngForm" name='filters' (change)="onFilterChange()">
-     <div class="row">
-      <div class="col-12 col-lg pr-lg-0 mt-3">
-        <span class='filter-label'>ADMIN STATUS</span>
-        <select class="select" name="filters[admin_status]" [(ngModel)]='adminStatus'>
-            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_status')"
-                    value="{{option.value}}"  >
-              {{option.display_text}}
-            </option>
-        </select>
-       </div>
-      <div class="col-12 col-lg pr-lg-0 mt-3">
-        <span class='filter-label'>ADMIN REVIEW STATUS</span>
-        <select class="select" name="filters[admin_action_types]" [(ngModel)]='admimReviewStatus'>
-            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_action_types')"
-                    value="{{option.value}}"  >
-              {{option.display_text}}
-            </option>
-        </select>
-      </div>
-      <div class="col-12 col-lg pr-lg-0 mt-3">
-        <span class='filter-label'>CYNOPSIS STATUS</span>
+    <div class="col-12 col-lg-8">
+      <form #filterForm="ngForm" name='filters' (change)="onFilterChange()">
+        <div class="row">
+          <div class="col-12 col-lg pr-lg-0 mt-3">
+            <span class='filter-label'>ADMIN STATUS</span>
+            <select class="select" name="filters[admin_status]" [(ngModel)]='adminStatus'>
+              <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_status')"
+                      value="{{option.value}}"  >
+                {{option.display_text}}
+              </option>
+            </select>
+          </div>
+          <div class="col-12 col-lg pr-lg-0 mt-3">
+            <span class='filter-label'>ADMIN REVIEW STATUS</span>
+            <select class="select" name="filters[admin_action_types]" [(ngModel)]='admimReviewStatus'>
+              <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.admin_action_types')"
+                      value="{{option.value}}"  >
+                {{option.display_text}}
+              </option>
+            </select>
+          </div>
+          <div class="col-12 col-lg pr-lg-0 mt-3">
+            <span class='filter-label'>CYNOPSIS STATUS</span>
 
-        <select class="select" name="filters[cynopsis_status]" [(ngModel)]='cynopsisStatus'>
-            <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.cynopsis_status')"
-                    value="{{option.value}}" >
-              {{option.display_text}}
-            </option>
-        </select>
-      </div>
-      <div class="col-12 col-lg pr-lg-0 mt-3">
-          <span class='filter-label'>WHITELIST STATUS</span>
+            <select class="select" name="filters[cynopsis_status]" [(ngModel)]='cynopsisStatus'>
+              <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.cynopsis_status')"
+                      value="{{option.value}}" >
+                {{option.display_text}}
+              </option>
+            </select>
+          </div>
+          <div class="col-12 col-lg pr-lg-0 mt-3">
+            <span class='filter-label'>WHITELIST STATUS</span>
 
-          <select class="select" name="filters[whitelist_status]" [(ngModel)]='whiteListStatus'>
+            <select class="select" name="filters[whitelist_status]" [(ngModel)]='whiteListStatus'>
               <option *ngFor="let option of getOptionValues('entity_configs.kyc_user_details.whitelist_status')"
                       value="{{option.value}}" >
                 {{option.display_text}}
               </option>
-          </select>
+            </select>
+          </div>
+
         </div>
-
+      </form>
     </div>
-    </form>
-  </div>
 
-  <div class="col-12 col-lg-4 px-0 ml-auto mt-3">
-    <form #sortForm="ngForm" name='sorting' class='col-lg-7 ml-auto pr-lg-0' (change)="onSortChange()">
+    <div class="col-12 col-lg-4 px-0 ml-auto mt-3">
+      <form #sortForm="ngForm" name='sorting' class='col-lg-7 ml-auto pr-lg-0' (change)="onSortChange()">
 
         <span class='filter-label'>SORT BY</span>
 
@@ -63,23 +59,25 @@
                   value="{{option.value}}"  >
             {{option.display_text}}
           </option>
-       </select>
+        </select>
 
-    </form>
+      </form>
+    </div>
   </div>
-</div>
 
 <div class="row" >
   <app-table class="w-100"
             [pageNumber]='pageNumber'
             [filterForm]='filterForm'
             [sortForm]='sortForm'
-            [dataUrl]="'api/admin/kyc/dashboard/'"
-            [tableType]="'dashboard'">
+            [dataUrl]="'api/admin/kyc/dashboard/'">
     <app-header class='header'></app-header>
 
-    <ng-template #rowData let-row >
+      <ng-template #rowData let-row >
         <app-row [row]='row'></app-row>
-    </ng-template>
-  </app-table>
-</div>
+      </ng-template>
+    </app-table>
+  </div>
+
+
+

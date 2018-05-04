@@ -21,7 +21,7 @@ export class OstHttp extends Http {
     ) {
         super(backend, options);
         let csrf_token = meta.getTag('name=csrf-token').content;
-       // this._defaultOptions.headers.set( 'X-CSRF-Token', csrf_token );
+        this._defaultOptions.headers.set( 'X-CSRF-Token', csrf_token );
     }
 
     public request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
@@ -29,6 +29,8 @@ export class OstHttp extends Http {
             .catch(this.handleError);
     }
 
+    //TODO where to append global error
+    
     public handleError = (error: Response) => {
       let msg  = ''
       ;

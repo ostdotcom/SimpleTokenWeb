@@ -1,15 +1,19 @@
 <%
-    client_setup = @resp_data['client_setup']
+    initialConfig = {
+        client_setup: @resp_data['client_setup'],
+        admin: @resp_data['admin']
+    }.to_json
+
 %>
 
 <app-root id="main_app_root"></app-root>
 <script text="text/javascript">
   (function () {
-    var initData = {
-      p1: "I have p1"
-      , p2: "I have p2"
-    };
+
+    var initData = <%= raw initialConfig %> ;
+    console.log("initData ====" , initData);
     var main_app_root = document.getElementById("main_app_root");
     main_app_root.dataset.initDataJson = JSON.stringify( initData );
   })();
 </script>
+

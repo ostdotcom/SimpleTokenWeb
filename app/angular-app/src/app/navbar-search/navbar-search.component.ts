@@ -1,14 +1,17 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, ElementRef } from '@angular/core';
 import { OstHttp } from '../ost-http.service';
 
 @Component({
   selector: 'kyc-navbar-search',
   templateUrl: './navbar-search.component.html',
-  styleUrls: ['./navbar-search.component.scss']
+  styleUrls: ['./navbar-search.component.scss'],
+  host: {
+    '(document:click)': 'handleClickEvent($event)'
+  }
 })
 export class NavbarSearchComponent implements OnInit {
 
-  constructor(private http : OstHttp) { }
+  constructor(private http : OstHttp, private _eref: ElementRef) { }
 
   //Mandatory options to pass
   @Input('searchApi')  searchApi      : string;
@@ -23,6 +26,7 @@ export class NavbarSearchComponent implements OnInit {
   isSearching: boolean = false;
   hasError: boolean = false;
   noResultFound: boolean = false;
+  hideResponse: boolean= false; 
   errMsg: string = "Sorry no results found!";
   searchTimeOut;
 
@@ -31,10 +35,23 @@ export class NavbarSearchComponent implements OnInit {
   }
 
   onSearch( searchForm ){
-    this.clearItems();
-    this.updateRequestProcessingStatus( true , false );
+    this.preSearch(); 
+    if( this.searchValue ){
+      this.sendSearchRequest(searchForm) ; 
+    }else{
+      this.updateRequestProcessingStatus(false , false); 
+    }
+  }
+
+  preSearch(){
+    this.items = [];
     this.noResultFound = false;
+    this.hideResponse = false ; 
     clearTimeout( this.searchTimeOut );
+  }
+
+  sendSearchRequest(searchForm){
+    this.updateRequestProcessingStatus(true , false); 
     this.searchTimeOut = setTimeout(() => {
       this.http.get( this.searchApi ,  {params : searchForm.value } ).subscribe(
         response => {
@@ -49,10 +66,6 @@ export class NavbarSearchComponent implements OnInit {
         }
       )
     } , 300) ;
-  }
-
-  clearItems(){
-    this.items = [];
   }
 
   onSuccess( response ) {
@@ -87,5 +100,17 @@ export class NavbarSearchComponent implements OnInit {
    return  !!this.items.length || this.isSearching || this.hasError || this.noResultFound ;
   }
 
+
+  handleClickEvent( event ){
+    if (this._eref.nativeElement.contains(event.target)){
+        this.hideResponse = false; 
+    }else{
+        this.hideResponse = true; 
+    }
+  }
+
+  onSearchItemClick(){
+    this.hideResponse = true; 
+  }
 
 }

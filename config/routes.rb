@@ -54,10 +54,11 @@ Rails.application.routes.draw do
       get '/login' => :login
       get '/forgot-password' => :forgot_password
       get '/reset-password' => :reset_password
-      get '/activate-account-password' => :activate_account_password
+      get '/activate-account' => :activate_account
       get '/logout' => :logout
       get '/authentication' => :authentication
       get '/change-password' => :change_password
+
       get '/dashboard' => :dashboard
       get '/new-dashboard' => :angular_app
       get '/case-id/:id' => :angular_app

@@ -18,8 +18,6 @@ export class DashboardComponent implements OnInit {
   sortBy : any;
   pageNumber: number;
 
-  tableType = 'dashboard';
-
   ngOnInit() {
     this.initFilters();
     this.initSort();

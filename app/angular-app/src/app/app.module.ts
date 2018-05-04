@@ -19,6 +19,8 @@ import { NavbarSearchComponent } from './navbar-search/navbar-search.component';
 import { KycCaseComponent } from './kyc-case/kyc-case.component';
 import { KycLogRowComponent } from './kyc-log-row/kyc-log-row.component';
 import { KycLogHeaderComponent } from './kyc-log-header/kyc-log-header.component';
+import { OstSelectComponent } from './ost-select/ost-select.component';
+
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -38,7 +40,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     NavbarSearchComponent,
     KycCaseComponent,
     KycLogRowComponent,
-    KycLogHeaderComponent
+    KycLogHeaderComponent,
+    OstSelectComponent
   ],
   imports: [
     BrowserModule,
