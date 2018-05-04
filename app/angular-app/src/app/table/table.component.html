@@ -3,24 +3,30 @@
 
   <ng-content select=".header"></ng-content>
 
-  <div class="row-wrapper" *ngIf="isProcessing==false; else loadingBlock">
-
+  <div class="row-wrapper" *ngIf="rows.length > 0;">
     <div class='row-record' *ngFor="let row of rows">
       <ng-container *ngTemplateOutlet="rowTemplate,
         context: { $implicit: row }">
       </ng-container>
     </div>
-
     <table-pagination   *ngIf="isPagination()"
                         [currentPageNumber]="getPageNumber()"
                         (pageChangeEvent)="onPageChange( $event )"
                         [totalPageCount]="getTotalPageCount()" >
     </table-pagination>
+  </div>  
 
-    <ng-template #loadingBlock>
-      <div class="loading mx-auto mt-5" style="font-size:30px;">
-      <strong>Loading...</strong>
-      </div>
-    </ng-template>
+  <request-state-handler class="d-block w-100 p-5"
+                         [isProcessing]="isProcessing" 
+                         [hasError]="hasError" 
+                         [noResult]="noResultFound">
+    <div class="error-content p-5 pt-3">
+        Something went wrong, we couldnot load the dashboard, please refresh the page or try updating the filters. 
+    </div>
+    <div class="noresult-content p-5 pt-3">
+      We could not find any results, please try changing the filters or refresh the page.
+    </div>            
+  </request-state-handler>
+
 
 </div>

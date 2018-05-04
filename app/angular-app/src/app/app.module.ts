@@ -20,6 +20,8 @@ import { KycCaseComponent } from './kyc-case/kyc-case.component';
 import { KycLogRowComponent } from './kyc-log-row/kyc-log-row.component';
 import { KycLogHeaderComponent } from './kyc-log-header/kyc-log-header.component';
 import { OstSelectComponent } from './ost-select/ost-select.component';
+import { RequestStateHandlerComponent } from './request-state-handler/request-state-handler.component';
+import { RequestStateHandlerService } from './request-state-handler.service';
 
 
 
@@ -41,7 +43,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     KycCaseComponent,
     KycLogRowComponent,
     KycLogHeaderComponent,
-    OstSelectComponent
+    OstSelectComponent,
+    OstSelectComponent,
+    RequestStateHandlerComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 },
                 OstHttp,
                 AppConfigService,
+                RequestStateHandlerService
             ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, TemplateRef, ContentChild} from '@angular/core';
 import {OstHttp} from '../ost-http.service';
 import {Http, RequestOptionsArgs, ResponseContentType} from '@angular/http';
+import { RequestStateHandlerService } from '../request-state-handler.service';
 
 @Component({
   selector: 'app-table',
@@ -9,6 +10,9 @@ import {Http, RequestOptionsArgs, ResponseContentType} from '@angular/http';
 })
 
 export class TableComponent implements OnInit {
+
+  constructor(private http: OstHttp, private stateHandler: RequestStateHandlerService) {
+  }
 
   // Decide row template according to parent
   @ContentChild('rowData') rowTemplate: TemplateRef<any>;
@@ -24,19 +28,14 @@ export class TableComponent implements OnInit {
   @Input('deleteRowUrl') deleteRowUrl?: string = null;
   @Input('getDataOnInit') getDataOnInit?: boolean = true;
 
-  // TODO confrim default message from UX/UI
   rows: Array<any> = [];
-  errMsg: string = 'Something went wrong, please try again!';
+  errMsg: string ;
   isProcessing: boolean = false;
   hasError: boolean = false;
   noResultFound: boolean =false;
-  //getDataOnLoad: boolean = true;
   filtersObserver: any; 
   sortObserver: any; 
   metaData: object;
-
-  constructor(private http: OstHttp) {
-  }
 
   ngOnInit() {
     this.configOverWrites();
@@ -135,7 +134,7 @@ export class TableComponent implements OnInit {
   getTableData() {
     let params: RequestOptionsArgs = this.getParams();
     this.clearTableData();
-    this.updateDataProcessingStatus(this, true, false);
+    this.stateHandler.updateRequestStatus(this, true, false , false);
     this.http.get(this.dataUrl, params).subscribe(
       response => {
         let res = response.json();
@@ -170,21 +169,22 @@ export class TableComponent implements OnInit {
     if( response.success ){
       let data = response['data'],
       dataKey = data && data['result_set'],
-      tableData = dataKey && data[dataKey]
+      tableData = dataKey && data[dataKey],
+      noResultFound = false
       ;
       this.rows = tableData;
       this.metaData = data['meta'];
       if( this.rows.length == 0 ){
-        this.noResultFound = true ;
+        noResultFound = true ;
       }
-      this.updateDataProcessingStatus(this, false, false);
+      this.stateHandler.updateRequestStatus(this, false, false , noResultFound);
     }else{
-      this.updateDataProcessingStatus(this, false, true, response );
+      this.stateHandler.updateRequestStatus(this, false, true, false , response );
     }
   }
 
   onTableDataError(error) {
-    this.updateDataProcessingStatus(this, false, true, error);
+    this.stateHandler.updateRequestStatus(this, false, true, false, error);
   }
 
   isPagination(): Boolean {
@@ -200,19 +200,6 @@ export class TableComponent implements OnInit {
     return totalPageCount;
   }
 
-  updateDataProcessingStatus(context, isProcessing: boolean, hasError: boolean, error?: object) {
-    if (!context) return;
-    context['isProcessing'] = isProcessing;
-    context['hasError'] = hasError;
-    if( error ) {
-      context['errMsg'] =  error['err'] && error['err']['display_text'];
-    }
-  }
-
-  isTableResponse(){
-    return  !!this.rows.length || this.isProcessing || this.hasError || this.noResultFound ;
-  }
-
   /*========UN-tested code start=====*/
 
   deleteRow(data) {
@@ -220,17 +207,14 @@ export class TableComponent implements OnInit {
     let id = data['id'],
       status = data['status']
     ;
-    this.updateDataProcessingStatus(status, true, false);
     this.http.post(this.deleteRowUrl, id).subscribe(
       response => {
         let res = response.json();
         this.onDeleteRowSuccess(res, id);
-        this.updateDataProcessingStatus(status, false, false);
       },
       error => {
         let err = error.json();
         this.onDeleteRowFailure(err);
-        this.updateDataProcessingStatus(status, false, true, err);
       }
     )
   }
