@@ -1,61 +1,43 @@
+<div id="activateAccountPassword">
 <%= render :partial => "admin/shared/kyc_loggedin_header" %>
-<% if !(@resp_data['invalid_token'].to_i == 1 || @resp_data['is_expired'].to_i == 1) %>
-  <div class="container sign-up-form py-5">
-    <div class="row">
-      <div class="col-12">
-        <div class="simple-token-form" id="activateAccountPassword">
-          <h3 class="text-center mt-4 mb-2">Hi, <%= @resp_data['admin']['name'].to_s %>!</h3>
-          <p class="text-center">Please select a password to activate your account</p>
-          <form class="user-form col-12 col-md-6 col-lg-5 col-xl-5 mx-auto" method="POST" action="/api/admin/activate-invite" id="activateAccountPasswordForm">
-            <div class="form-group">
-              <label class="form-label" for="password">password</label>
+<div class="container sign-up-form py-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="simple-token-form">
+        <h3 class="text-center mt-4 mb-2">Hi, <%= @resp_data['name'].to_s %>!</h3>
+        <p class="text-center">Please select a password to activate your account</p>
+        <form class="user-form col-12 col-md-6 col-lg-5 col-xl-5 mx-auto" method="POST" action="/api/admin/activate-invite" id="activateAccountPasswordForm">
+          <div class="form-group">
+            <label class="form-label" for="password">password</label>
 
-              <div class="position-relative">
-                <input type="password" name="password" id="password" value="" class="form-control" tabindex="1" autocomplete="off"/>
-                <span class="input-group-addon showhide-addon" id="showhide-password"><span class="show-password-eye-icon"></span></span>
-              </div>
-              <div class="zxcvbn-group"></div>
-              <div class="error" data-for="password"></div>
+            <div class="position-relative">
+              <input type="password" name="password" id="password" value="" class="form-control" tabindex="1" autocomplete="off"/>
+              <span class="input-group-addon showhide-addon" id="showhide-password"><span class="show-password-eye-icon"></span></span>
             </div>
-            <input hidden name="i_t" value="<%= params[:i_t] %>"/>
+            <div class="zxcvbn-group"></div>
+            <div class="error" data-for="password"></div>
+          </div>
+          <input hidden name="i_t" value="<%= params[:i_t] %>"/>
 
-            <div class="form-group">
-              <label class="form-label" for="confirm_password">confirm password</label>
-              <input type="password" name="confirm_password" id="confirm_password" value="" class="form-control" tabindex="2" autocomplete="off"/>
-              <div class="error" data-for="confirm_password"></div>
-            </div>
-            <div class="user-form-footer form-group text-center">
-              <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-              <button type="submit" class="btn btn-primary" id="resetBtn" title="Set Password" tabindex="3">set
-                password
-              </button>
-              <div class="error" data-for="general_error"></div>
-            </div>
-          </form>
-        </div>
-
-        <div id="activateAccountPasswordSuccess" class="display-none">
-          <%= render :partial => "/admin/home/activate_account_success", locals: {display_text: 'Your account is activated Successfully', is_error: false} %>
-        </div>
-
+          <div class="form-group">
+            <label class="form-label" for="confirm_password">confirm password</label>
+            <input type="password" name="confirm_password" id="confirm_password" value="" class="form-control" tabindex="2" autocomplete="off"/>
+            <div class="error" data-for="confirm_password"></div>
+          </div>
+          <div class="user-form-footer form-group text-center">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+            <button type="submit" class="btn btn-primary" id="resetBtn" title="Set Password" tabindex="3">set
+              password
+            </button>
+            <div class="error" data-for="general_error"></div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-<% else
-     display_text = 'invalid'
+</div>
+</div>
 
-     if @resp_data['invalid_token'].to_i == 1
-       display_text = 'Your Invite token is invalid'
-     elsif @resp_data['is_expired'].to_i == 1
-       display_text = 'Your Invite token has expired'
-     end
-
-%>
-  <div class="container sign-up-form py-5">
-    <div class="row">
-      <div class="col-12">
-        <%= render :partial => "/admin/home/activate_account_success", locals: {display_text: display_text, is_error: true} %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<div id="activateAccountPasswordSuccess" class="display-none">
+  <%= render :partial => "/admin/home/activate_account_success", locals: {display_text: 'Your account is activated Successfully', is_error: false} %>
+</div>
