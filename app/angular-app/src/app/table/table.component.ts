@@ -28,8 +28,8 @@ export class TableComponent implements OnInit {
   @Input('deleteRowUrl') deleteRowUrl?: string = null;
   @Input('getDataOnInit') getDataOnInit?: boolean = true;
 
+  errMsg: string;
   rows: Array<any> = [];
-  errMsg: string ;
   isProcessing: boolean = false;
   hasError: boolean = false;
   noResultFound: boolean =false;
