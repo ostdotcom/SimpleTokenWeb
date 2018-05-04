@@ -40,6 +40,14 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By:
   #
   def activate_account
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_invite_detail(params[:i_t])
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
   end
 
   # Admin login mfa

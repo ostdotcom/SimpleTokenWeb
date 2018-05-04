@@ -58,6 +58,7 @@ Rails.application.routes.draw do
       get '/logout' => :logout
       get '/authentication' => :authentication
       get '/change-password' => :change_password
+
       get '/dashboard' => :dashboard
       get '/new-dashboard' => :angular_app
       get '/case-id/:id' => :angular_app

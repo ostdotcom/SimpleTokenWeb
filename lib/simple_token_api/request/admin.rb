@@ -31,6 +31,18 @@ module SimpleTokenApi
         get("profile/detail")
       end
 
+      # Get invite details for client user
+      #
+      # * Author: Aman
+      # * Date: 09/01/2017
+      # * Reviewed By:
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def get_invite_detail(invite_token)
+        get("invite-detail", {invite_token: invite_token.to_s})
+      end
+
       # Get details for admin mfa authentication
       #
       # * Author: Aman
