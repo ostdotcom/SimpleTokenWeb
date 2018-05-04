@@ -1,3 +1,21 @@
+.alert{
+
+  color: #597a84;
+  font-size: 12px;
+
+  &.alert-warning{
+    border-radius: 2.5px;
+    background-color: rgba(245, 166, 35, 0.05);
+    border: solid 0.5px #f5a623;
+  }
+
+  &.alert-danger{
+    border-radius: 2.5px;
+    background-color: rgba(231, 0, 59, 0.05);
+    border: solid 0.5px #e82053;
+  }
+}
+
 .breadcrumb{
   background-color: transparent;
   padding: 0.75rem 0;
@@ -114,8 +132,9 @@ h5{
       width: 180px;
     }
   }
-
 }
+
+
 #logsModal{
   .modal-dialog{
     margin-top: auto;

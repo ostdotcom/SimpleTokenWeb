@@ -10,6 +10,34 @@
       </ol>
     </nav>
 
+    <div *ngIf="1!=1">
+      <div class="alert alert-danger" role="alert">
+        <div class="d-flex justify-content-center align-items-center">
+          <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
+          <span class="ml-2">AML/CTF status denied, this case cannot be reopned</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="2!=2">
+      <div class="alert alert-warning" role="alert">
+        <div class="d-flex justify-content-center align-items-center">
+          <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
+          <span class="ml-2">Issue reported, data mismatch email sent.</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="3!=3">
+      <div class="alert alert-warning" role="alert">
+        <div class="d-flex justify-content-center align-items-center">
+          <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
+          <span class="ml-2">Case approved, whitelisting in Progress</span>
+        </div>
+      </div>
+    </div>
+
+
     <div class="row">
       <div class="col-12 col-md-4 mb-3">
         <div class="card box-border">
@@ -212,24 +240,35 @@
     <div class="container-fluid button-container">
       <div class="container">
 
-        <div class="mt-2 mb-2">
+        <div class="mt-2">
 
-          <button type="button" class="btn btn-light">UPDATE ETH ADDRESS</button>
+          <div *ngIf="1!=1; then caseClose else caseOpen"></div>
 
-          <div class="float-right">
-            <button type="button" class="btn btn-danger mr-2">DENY</button>
-            <button type="button" class="btn btn-light mr-2">REPORT ISSUE</button>
-            <button type="button" class="btn btn-success">QUALIFY</button>
-          </div>
+          <ng-template #caseClose>
+
+            <div id="caseClose" class="d-flex justify-content-center align-items-center mb-2">
+              <span class="mr-2 font-weight-normal">This case has been Approved and closed</span>
+              <button type="button" class="btn btn-light text-uppercase">RE-OPEN</button>
+            </div>
+
+          </ng-template>
+
+          <ng-template #caseOpen>
+
+            <button type="button" class="btn btn-light text-uppercase mb-2">Update eth address</button>
+
+            <div class="float-right">
+              <button type="button" class="btn btn-danger mr-2 mb-2">DENY</button>
+              <button type="button" class="btn btn-light mr-2 mb-2">REPORT ISSUE</button>
+              <button type="button" class="btn btn-success mb-2">QUALIFY</button>
+            </div>
+
+          </ng-template>
 
         </div>
-
       </div>
     </div>
   </div>
-
-
-</div>
 
 <div class="modal fade" id="logsModal">
     <div class="modal-dialog">
