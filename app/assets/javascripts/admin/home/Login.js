@@ -47,7 +47,7 @@
             window.location = '/admin/authentication';
             return false;
           } else {
-            if (response.data.is_deleted == 1){
+            if (response.data && response.data.is_deleted == 1){
               oThis.showDeactivated();
             }else{
               utilsNs.errorHandling.displayFormErrors(response);
