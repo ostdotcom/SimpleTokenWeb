@@ -1,8 +1,8 @@
 class Admin::HomeController < Admin::BaseController
   layout "admin"
 
-  before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account_password]
-  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account_password]
+  before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
+  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account]
 
   before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard]
 
@@ -39,7 +39,7 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 03/05/2018
   # * Reviewed By:
   #
-  def activate_account_password
+  def activate_account
   end
 
   # Admin login mfa

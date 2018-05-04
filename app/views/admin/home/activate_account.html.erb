@@ -33,7 +33,7 @@
       </div>
 
       <div id="activateAccountPasswordSuccess" class="display-none">
-        <%= render :partial => "/admin/home/activate_account_password_success" ,locals: {display_text: 'Your account is activated Successfully', is_error: false}%>
+        <%= render :partial => "/admin/home/activate_account_success" ,locals: {display_text: 'Your account is activated Successfully', is_error: false}%>
       </div>
 
     </div>
@@ -43,7 +43,7 @@
   <div class="container sign-up-form py-5">
     <div class="row">
       <div class="col-12">
-          <%= render :partial => "/admin/home/activate_account_password_success" ,locals: {display_text: 'invalid', is_error: true} %>
+          <%= render :partial => "/admin/home/activate_account_success" ,locals: {display_text: 'invalid', is_error: true} %>
       </div>
     </div>
   </div>
