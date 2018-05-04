@@ -47,9 +47,13 @@
             window.location = '/admin/authentication';
             return false;
           } else {
-            utilsNs.errorHandling.displayFormErrors(response);
-            if(typeof grecaptcha  != 'undefined'){
-              grecaptcha.reset();
+            if (response.data.is_deleted == 1){
+              oThis.showDeactivated();
+            }else{
+              utilsNs.errorHandling.displayFormErrors(response);
+              if(typeof grecaptcha  != 'undefined'){
+                grecaptcha.reset();
+              }
             }
           }
         },
@@ -60,7 +64,13 @@
           }
         }
       });
+    },
+
+    showDeactivated: function () {
+      $('#loginForm').hide();
+      $('#accountDeactivated').show();
     }
+
   };
 
   $(document).ready(function () {
