@@ -17,6 +17,7 @@ import { EntityConfigService } from './entity-config.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarSearchComponent } from './navbar-search/navbar-search.component';
 import { KycCaseComponent } from './kyc-case/kyc-case.component';
+import { OstSelectComponent } from './ost-select/ost-select.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -34,7 +35,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     HeaderComponent,
     NavbarComponent,
     NavbarSearchComponent,
-    KycCaseComponent
+    KycCaseComponent,
+    OstSelectComponent
   ],
   imports: [
     BrowserModule,
