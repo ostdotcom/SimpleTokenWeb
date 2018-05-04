@@ -52,7 +52,7 @@ class Admin::HomeController < Admin::BaseController
         end
 
         respond_to do |format|
-          format.html {render "/admin/home/_activate_account_success.html.erb", locals: {display_text: display_text, is_error: true}}
+          format.html {render "/admin/home/_activate_account_error.html.erb", locals: {display_text: display_text}}
         end
 
         return
