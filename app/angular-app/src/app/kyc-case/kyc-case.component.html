@@ -50,7 +50,7 @@
                 <span class="value">{{caseDetails.cynopsis_status}}</span>
               </div>
 
-              <span class="button-UI text-uppercase">Retry cynopsis</span>
+              <button class="button-UI text-uppercase" data-toggle="modal" data-target="#retrySending">Retry cynopsis</button>
 
             </div>
 
@@ -248,7 +248,7 @@
 
             <div id="caseClose" class="d-flex justify-content-center align-items-center mb-2">
               <span class="mr-2 font-weight-normal">This case has been Approved and closed</span>
-              <button type="button" class="btn btn-light text-uppercase">RE-OPEN</button>
+              <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reOpenModal">Re-open</button>
             </div>
 
           </ng-template>
@@ -258,9 +258,9 @@
             <button type="button" class="btn btn-light text-uppercase mb-2">Update eth address</button>
 
             <div class="float-right">
-              <button type="button" class="btn btn-danger mr-2 mb-2">DENY</button>
-              <button type="button" class="btn btn-light mr-2 mb-2">REPORT ISSUE</button>
-              <button type="button" class="btn btn-success mb-2">QUALIFY</button>
+              <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyAction">Deny</button>
+              <button type="button" class="btn btn-light mr-2 mb-2 text-uppercase">Report Issue</button>
+              <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyAction">Qualify</button>
             </div>
 
           </ng-template>
@@ -303,5 +303,96 @@
 
 
 
+  <div class="modal fade" id="reOpenModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header d-flex justify-content-center align-items-center">
+          <h5 class="modal-title">Are you sure you want to reopen this case?</h5>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body text-center mx-5">
+          <div>When a case is reopened, User is unwhitelisted.</div>
+          <div class="mt-2">Once the user is qualified, the user will be whitelisted again
+            The user will not be able to take part in the ICO, until the case is closed again.</div>
+        </div>
+
+
+        <!-- Modal footer -->
+        <div class="modal-footer mt-3 mb-3">
+          <div class="d-flex justify-content-center align-items-center">
+            <button type="button" class="btn primary text-uppercase">Re-open</button>
+            <button type="button" class="btn cancel ml-3" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="retrySending">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header d-flex justify-content-center align-items-center">
+          <h5 class="modal-title text-center">Are you sure you want to Retry sending this users request to cynopsis?</h5>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer mt-3 mb-3">
+          <div class="d-flex justify-content-center align-items-center">
+            <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
+            <button type="button" class="btn primary ml-3 text-uppercase" >RETRY</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="qualifyAction">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header d-flex justify-content-center align-items-center">
+          <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer mt-3 mb-3">
+          <div class="d-flex justify-content-center align-items-center">
+            <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
+            <button type="button" class="btn primary ml-3 text-uppercase" >QUALIFY KYC</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="denyAction">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header d-flex justify-content-center align-items-center">
+          <h5 class="modal-title text-center">Are you sure you want to Deny this user?</h5>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer mt-3 mb-3">
+          <div class="d-flex justify-content-center align-items-center">
+            <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
+            <button type="button" class="btn primary ml-3 text-uppercase" >DENY KYC</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
