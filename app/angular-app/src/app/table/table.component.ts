@@ -23,6 +23,7 @@ export class TableComponent implements OnInit {
   @Input('config') config?: object = null;
   @Input('deleteRowUrl') deleteRowUrl?: string = null;
   @Input('getDataOnInit') getDataOnInit?: boolean = true;
+  @Input('isPaginated') isPaginated: boolean = true;
 
   // TODO confrim default message from UX/UI
   rows: Array<any> = [];
@@ -31,8 +32,8 @@ export class TableComponent implements OnInit {
   hasError: boolean = false;
   noResultFound: boolean =false;
   //getDataOnLoad: boolean = true;
-  filtersObserver: any; 
-  sortObserver: any; 
+  filtersObserver: any;
+  sortObserver: any;
   metaData: object;
 
   constructor(private http: OstHttp) {
@@ -156,6 +157,9 @@ export class TableComponent implements OnInit {
       params: {
         page_number: this.getPageNumber()
       }
+    }
+    if (this.isPaginated) {
+      requestParams.params['page_size'] = 2;
     }
     if (this.filterForm) {
       Object.assign(requestParams['params'], this.getFilter());

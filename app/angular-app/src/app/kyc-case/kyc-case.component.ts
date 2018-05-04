@@ -13,7 +13,7 @@ export class KycCaseComponent implements OnInit {
   caseDetails: object = {};
   userDetails: object = {};
   meta: object = {};
-
+  logUrl: string = '';
   constructor(
     private route: ActivatedRoute,
     private http: OstHttp
@@ -21,7 +21,8 @@ export class KycCaseComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.fetchCase(params.get('id'))
+    this.logUrl = 'api/admin/kyc/kyc-action-logs/?id=' + params.get('id');
+    this.fetchCase(params.get('id'));
     });
   }
 

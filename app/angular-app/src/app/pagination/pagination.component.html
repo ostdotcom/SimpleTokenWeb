@@ -2,17 +2,17 @@
 <div class="pagination mt-5">
 
   <div class="numbers mx-auto p-2">
-    <button class="link" (click)="onPrev()" [disabled]="!isPrev()" [ngClass]="{ 'disabled': !isPrev() || loading }">
-      &lt; Previous</button>
-    
-    <button *ngFor="let pageNum of getPages()"
+    <button class="btn px-2 arrow-btn" (click)="onPrev()" [disabled]="!isPrev()" [ngClass]="{ 'disabled': !isPrev() || loading }">
+      &lang;</button>
+
+    <button  class='btn px-2' *ngFor="let pageNum of getPages()"
       (click)="changePage(pageNum)"
       [ngClass]="{'active': isActive(pageNum)}">
       {{ pageNum }}
     </button>
 
-    <button class="link" (click)="onNext()" [disabled]="!isNext()" [ngClass]="{ 'disabled': !isNext() || loading }">
-      Next &gt;
+    <button class="btn px-2 arrow-btn" (click)="onNext()" [disabled]="!isNext()" [ngClass]="{ 'disabled': !isNext() || loading }">
+      <span> &rang; </span>
     </button>
   </div>
 </div>

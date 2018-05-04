@@ -1,0 +1,13 @@
+.pagination{
+
+  .btn{
+    color: #597a84;
+    font-size: 18px;
+    &.active{
+      background-color: #d3e3e5;
+    }
+  }
+  .arrow-btn{
+    background-color: #f3fbfb;
+  }
+}

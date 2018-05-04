@@ -3,7 +3,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'table-pagination',
   templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.css']
+  styleUrls: ['./pagination.component.scss']
 })
 
 export class PaginationComponent {
@@ -15,12 +15,12 @@ export class PaginationComponent {
   constructor() { }
 
   changePage(pageNumber: number): void {
-    this.currentPageNumber  = pageNumber ; 
+    this.currentPageNumber  = pageNumber ;
     this.pageChangeEvent.emit( this.currentPageNumber );
   }
 
   onPrev(): void {
-    --this.currentPageNumber; 
+    --this.currentPageNumber;
     this.pageChangeEvent.emit( this.currentPageNumber );
   }
 
@@ -30,24 +30,25 @@ export class PaginationComponent {
   }
 
   isNext(): boolean{
-    return this.currentPageNumber < this.totalPageCount; 
+    return this.currentPageNumber < this.totalPageCount;
   }
 
   isPrev(): boolean{
-    return this.currentPageNumber > 2; 
+    return this.currentPageNumber > 2;
   }
 
   isActive( index ):boolean{
-   return this.currentPageNumber == index; 
+   console.log(index, this.currentPageNumber == index);
+   return this.currentPageNumber == index;
   }
 
   getPages() {
     let pages = [];
     for(let i = 1 ; i <= this.totalPageCount ;  i++){
-      pages.push(i); 
+      pages.push(i);
     }
-    return pages; 
+    return pages;
   }
 
- 
+
 }
