@@ -21,10 +21,25 @@ h5{
     .card-row{
       margin-right: -1.25rem;
       margin-left: -1.25rem;
+      &:nth-child(even) {
+        background: #f3fbfb
+      }
+      &:nth-child(odd) {
+        background: #FFF
+      }
     }
     .card-col{
-      padding-right: 1.25rem;
-      padding-left: 1.25rem;
+      padding: 0.5rem 1.25rem;
+      .label{
+        color: #9bafb5;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      .value{
+        color: #597a84;
+        font-size: 0.9rem;
+      }
     }
   }
 }

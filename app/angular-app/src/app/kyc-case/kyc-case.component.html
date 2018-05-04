@@ -85,12 +85,70 @@
             <div class="card-body">
               <h6 class="card-title">Submitted Details</h6>
               <div class="row card-row">
-                <div class="card-col col-12 col-sm-6">First Name</div>
-                <div class="card-col col-12 col-sm-6">Last Name</div>
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">First Name</div>
+                  <div class="value">{{userDetails.first_name}}</div>
+                </div>
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">Last Name</div>
+                  <div class="value">{{userDetails.last_name}}</div>
+                </div>
               </div>
               <div class="row card-row">
-                <div class="card-col col-12 col-sm-6">Birth Date</div>
-                <div class="card-col col-12 col-sm-6">Residence Country</div>
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">Birth Date</div>
+                  <div class="value">{{userDetails.birthdate}}</div>
+                </div>
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">Residence Country</div>
+                  <div class="value">{{userDetails.country}}</div>
+                </div>
+              </div>
+              <div class="row card-row">
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">Document ID Number</div>
+                  <div class="value">{{userDetails.document_id_number}}</div>
+                </div>
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">Passport Number</div>
+                  <div class="value">??</div>
+                </div>
+              </div>
+              <div class="row card-row">
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">Nationality</div>
+                  <div class="value">{{userDetails.nationality}}</div>
+                </div>
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">Email Address</div>
+                  <div class="value">{{userDetails.email}}</div>
+                </div>
+              </div>
+              <div class="row card-row">
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">Date & Time</div>
+                  <div class="value">{{userDetails.submitted_at}}</div>
+                </div>
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">Street Address</div>
+                  <div class="value">{{userDetails.street_address}}</div>
+                </div>
+              </div>
+              <div class="row card-row">
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">City</div>
+                  <div class="value">{{userDetails.city}}</div>
+                </div>
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">Zip Code</div>
+                  <div class="value">{{userDetails.postal_code}}</div>
+                </div>
+              </div>
+              <div class="row card-row">
+                <div class="card-col col-12 col-sm-6">
+                  <div class="label">State / Region</div>
+                  <div class="value">{{userDetails.state}}</div>
+                </div>
               </div>
             </div>
           </div>
