@@ -1,13 +1,8 @@
-<kyc-navbar></kyc-navbar>
-
-<div class="container-fluid mt-4">
-
-  <div class="row">
+<div class="row mt-4">
     <h2 class="kyc-header">KYC DASHBOARD</h2>
-  </div>
+</div>
 
-
-  <div class="row  p-3 filters">
+<div class="row  p-3 filters">
     <div class="col-12 col-lg-8">
       <form #filterForm="ngForm" name='filters' (change)="onFilterChange()">
         <div class="row">
@@ -70,14 +65,13 @@
     </div>
   </div>
 
-  <div class="row" >
-    <app-table class="w-100"
-               [pageNumber]='pageNumber'
-               [filterForm]='filterForm'
-               [sortForm]='sortForm'
-               [dataUrl]="'api/admin/kyc/dashboard/'"
-               [tableType]="'dashboard'">
-      <app-header class='header'></app-header>
+<div class="row" >
+  <app-table class="w-100"
+            [pageNumber]='pageNumber'
+            [filterForm]='filterForm'
+            [sortForm]='sortForm'
+            [dataUrl]="'api/admin/kyc/dashboard/'">
+    <app-header class='header'></app-header>
 
       <ng-template #rowData let-row >
         <app-row [row]='row'></app-row>
@@ -85,6 +79,5 @@
     </app-table>
   </div>
 
-</div>
 
 
