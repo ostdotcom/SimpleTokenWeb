@@ -26,29 +26,34 @@ export class OstHttp extends Http {
 
     public request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
         return super.request(url, options)
-            .catch(this.handleError);
+               .catch(this.handleError);
     }
-
-    //TODO where to append global error
     
     public handleError = (error: Response) => {
-      let msg  = ''
-      ;
-      console.log("i am in overwritter", error);
+      let  erroMsg = null ;
+
       if (error.status === 0) {
-        msg = 'Not able to connect to server. Please verify your internet connection.';
+        erroMsg = 'Not able to connect to server. Please verify your internet connection.';
       } else if (error.status == 404) {
-        msg = 'Requested page not found.';
+        erroMsg = 'Requested page not found.';
       } else if (error.status == 500) {
-        msg = 'Internal Server Error.';
+        erroMsg = 'Internal Server Error.';
       } else if (error.status == 401) {
         window.location.href = "/login";
       } else if (error.status == 408){
-        msg = 'Time out error.';
-      } else {
-        msg = 'Unable to connect to server.';
-      }
+        erroMsg = 'Time out error.';
+      } 
 
+      if( erroMsg ) {
+        let _body =  error['_body'] || {};
+        _body =  JSON.parse(_body); 
+        if( !_body['err'] ){
+          _body['err'] = {}; 
+        }
+        _body['err']['display_text'] = erroMsg;
+        error['_body'] = JSON.stringify(_body); 
+      }
+     
       return Observable.throw(error);
     }
 }

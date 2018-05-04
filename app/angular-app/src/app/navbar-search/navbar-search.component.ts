@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, ElementRef } from '@angular/core';
 import { OstHttp } from '../ost-http.service';
+import { RequestStateHandlerService } from '../request-state-handler.service';
 
 @Component({
   selector: 'kyc-navbar-search',
@@ -11,7 +12,7 @@ import { OstHttp } from '../ost-http.service';
 })
 export class NavbarSearchComponent implements OnInit {
 
-  constructor(private http : OstHttp, private _eref: ElementRef) { }
+  constructor(private http : OstHttp, private _eref: ElementRef , private stateHandler: RequestStateHandlerService) { }
 
   //Mandatory options to pass
   @Input('searchApi')  searchApi      : string;
@@ -23,10 +24,10 @@ export class NavbarSearchComponent implements OnInit {
 
   items : Array<any> = [];
   searchValue: string = null;
-  isSearching: boolean = false;
+  isProcessing: boolean = false;
   hasError: boolean = false;
   noResultFound: boolean = false;
-  hideResponse: boolean= false; 
+  hideResponse: boolean= true; 
   errMsg: string = "Sorry no results found!";
   searchTimeOut;
 
@@ -39,19 +40,18 @@ export class NavbarSearchComponent implements OnInit {
     if( this.searchValue ){
       this.sendSearchRequest(searchForm) ; 
     }else{
-      this.updateRequestProcessingStatus(false , false); 
+      this.stateHandler.updateRequestStatus(this, false , false , false); 
     }
   }
 
   preSearch(){
     this.items = [];
-    this.noResultFound = false;
     this.hideResponse = false ; 
     clearTimeout( this.searchTimeOut );
   }
 
   sendSearchRequest(searchForm){
-    this.updateRequestProcessingStatus(true , false); 
+    this.stateHandler.updateRequestStatus(this, true , false , false); 
     this.searchTimeOut = setTimeout(() => {
       this.http.get( this.searchApi ,  {params : searchForm.value } ).subscribe(
         response => {
@@ -72,34 +72,22 @@ export class NavbarSearchComponent implements OnInit {
     if( response.success ){
       let data =response['data'],
       dataKey = data && data['result_set'],
-      searchData = dataKey && data[dataKey]
+      searchData = dataKey && data[dataKey],
+      noResultFound = false
       ;
       this.items = searchData;
       if( this.items.length == 0 ){
-        this.noResultFound = true;
+        noResultFound =  true;
       }
-      this.updateRequestProcessingStatus( false , false );
+      this.stateHandler.updateRequestStatus(this, false , false , noResultFound);
     }else{
-      this.updateRequestProcessingStatus( false , true , response );
+      this.stateHandler.updateRequestStatus(this, false , true , false, response );
     }
   }
 
   onError(error) {
-    this.updateRequestProcessingStatus( false , true ,  error );
+    this.stateHandler.updateRequestStatus(this, false , true ,  error );
   }
-
-  updateRequestProcessingStatus( isSearching: boolean ,  hasError: boolean , error?: object ){
-    this.isSearching = isSearching ;
-    this.hasError = hasError;
-    if( error ){
-      this.errMsg =  error['err'] && error['err']['display_text'] ;
-    }
-  }
-
-  isSearchResponse():boolean{
-   return  !!this.items.length || this.isSearching || this.hasError || this.noResultFound ;
-  }
-
 
   handleClickEvent( event ){
     if (this._eref.nativeElement.contains(event.target)){

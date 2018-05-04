@@ -43,6 +43,21 @@ class Admin::HomeController < Admin::BaseController
     service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_invite_detail(params[:i_t])
     unless service_response.success?
+      if (["invalid_token", "expired_token"].include?(service_response.error))
+
+        if service_response.error == "invalid_token"
+          display_text = 'Your Invite token is invalid'
+        elsif service_response.error == "expired_token"
+          display_text = 'Your Invite token has expired'
+        end
+
+        respond_to do |format|
+          format.html {render "/admin/home/_activate_account_error.html.erb", locals: {display_text: display_text}}
+        end
+
+        return
+      end
+
       render_error_response(service_response)
       return
     end
