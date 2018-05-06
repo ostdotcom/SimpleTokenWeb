@@ -1,7 +1,7 @@
-@import "../../../../assets/stylesheets/web/simple_token_theme/_variables";
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
 .kyc-search-wrapper{
-    position: relative; 
+    position: relative;
 
     .search-input-wrapper {
         min-width: 320px;
@@ -12,8 +12,8 @@
         width: 100%;
         left: 0;
         z-index: 10;
-        background: $white; 
-        border-top: none;  
+        background: $white;
+        border-top: none;
         border: 1px solid $gray-400;
     }
 

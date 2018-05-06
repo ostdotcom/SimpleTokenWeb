@@ -51,8 +51,4 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  getOptionValues( entity ){
-     return this.entityConfigService.getEntityConfig(entity)['values'];
-  }
-
 }

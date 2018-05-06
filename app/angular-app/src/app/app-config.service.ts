@@ -5,6 +5,7 @@ export class AppConfigService {
     data:object = {}; 
 
     setAppInitData( data:object ){
+        console.log("data====", data);
         this.data = data; 
     }
 
@@ -12,5 +13,9 @@ export class AppConfigService {
        return this.data ; 
     }
 
+    getLoggedInUserName() {
+        let admin = this.data && this.data['admin']; 
+        return admin && admin['email'] || "";   
+    }
 
 }

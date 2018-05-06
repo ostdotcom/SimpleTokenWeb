@@ -1,20 +1,11 @@
-ul {
-  list-style-type: none;
-  padding-left:0;
-  padding: 10px;
-}
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
-.loading {
-  height: 35px;
-  width: 100px;
-
-}
 @media (min-width: 780px){
   .row-record:nth-child(odd) {
     background-color: #f3fbfb;
   }
-
 }
+
 
 
 

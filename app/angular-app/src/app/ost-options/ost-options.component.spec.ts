@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OstSelectComponent } from './ost-select.component';
+import { OstOptionsComponent } from './ost-options.component';
 
-describe('OstSelectComponent', () => {
-  let component: OstSelectComponent;
-  let fixture: ComponentFixture<OstSelectComponent>;
+describe('OstOptionsComponent', () => {
+  let component: OstOptionsComponent;
+  let fixture: ComponentFixture<OstOptionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OstSelectComponent ]
+      declarations: [ OstOptionsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OstSelectComponent);
+    fixture = TestBed.createComponent(OstOptionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

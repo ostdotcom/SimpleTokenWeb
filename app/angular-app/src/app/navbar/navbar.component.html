@@ -10,14 +10,15 @@
 											[placeholder]="'Search by Email'">
 		</kyc-navbar-search>
 
-		<div class="dropdown">
+		<div class="dropdown mr-3">
 			<a class="dropdown-toggle border-none" data-toggle="dropdown">
-				User Name  <span class="caret"></span>
+				{{appConfig.getLoggedInUserName()}}  <span class="caret"></span>
 			</a>
 			<div class="dropdown-menu dropdown-menu-right">
 				<a class="dropdown-item border-none" [routerLink]="['/admin/manage-admin']">MANAGE ADMIN</a>
 				<a href="/admin/change-password" class="dropdown-item border-none">CHANGE PASSWORD</a>
 				<a href="/admin/logout" class="dropdown-item border-none">LOGOUT</a>
+				<div class="arrow-up"></div>
 			</div>
 		</div>
 

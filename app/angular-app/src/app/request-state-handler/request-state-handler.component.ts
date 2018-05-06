@@ -12,21 +12,21 @@ export class RequestStateHandlerComponent implements OnInit {
   //State handler inputs 
   @Input('isProcessing') isProcessing: boolean = false; 
   @Input('hasError') hasError: boolean = false; 
-  @Input('noResult') noResult?: boolean = false; 
+  @Input('hasWarning') hasWarning?: boolean = false; 
 
-  //Data show inputs and defaults
-  @Input('errorMessage') errorMessage?: string; 
-  @Input('noResultMessage') noResultMessage?: string; 
- 
   //Icons show flags
   @Input('isErrorIcon') isErrorIcon?: boolean = true; 
-  @Input('isNoResultIcon') isNoResultIcon?: boolean = true;
+  @Input('isWarningIcon') isWarningIcon?: boolean = true;
+
+  //Data inputs 
+  @Input('errorMessage') errorMessage?: string; 
+  @Input('warningMessage') warningMessage?: string; 
 
   ngOnInit() {
   }
 
   isRequestStatus(){
-    return this.isProcessing || this.hasError || this.noResult ; 
+    return this.isProcessing || this.hasError || this.hasWarning ; 
   }
 
 }
