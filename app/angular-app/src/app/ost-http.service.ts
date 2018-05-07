@@ -53,6 +53,8 @@ export class OstHttp extends Http {
         _body['err']['display_text'] = erroMsg;
         error['_body'] = JSON.stringify(_body); 
       }
+
+      console.log("error------",  error.json());
      
       return Observable.throw(error);
     }

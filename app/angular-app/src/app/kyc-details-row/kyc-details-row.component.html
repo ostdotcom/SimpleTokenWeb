@@ -12,7 +12,15 @@
     {{row.active}}
   </div>
   <div class="col">
-    {{row.inactive}}
+    <div *ngIf="(row.inactive | json) == '{}'; else default">
+        {{row.inactive }}
+    </div>
+    <ng-template #default>
+      --
+    </ng-template>
+
+
+
   </div>
 </div>
 
@@ -20,18 +28,38 @@
   <div class="card m-3">
     <div class="card-body">
         <div class="col-12 mobile-name-div py-4">
-            <span class='mobile-name'>Date/Time </span>
-            <span class="mobile-confirmed-at">  {{row.created_at_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}</span>
+            <span class='mobile-name'>Case Id</span>
+            <span class="mobile-confirmed-at">{{row.id}}</span>
         </div>
         <div class="row py-4 mx-0">
           <div class="col-6">
-              <div class='mobile-sub-heading'>AGENT </div>
-              <span class="mobile-text">  {{row.agent}}</span>
+              <div class='mobile-sub-heading'>ADMIN STATUS</div>
+              <span class="mobile-text">  {{row.admin_status}}</span>
           </div>
 
           <div class="col-6">
-              <div class='mobile-sub-heading'>ACTIVITY </div>
-              <span [innerHTML]='row.action' class='mobile-text'></span>
+              <div class='mobile-sub-heading'>CYNOPSIS STATUS</div>
+              <span class="mobile-text">  {{row.cynopsis_status}}</span>
+
+          </div>
+
+        </div>
+
+
+        <div class="row py-4 mx-0">
+          <div class="col-6">
+              <div class='mobile-sub-heading'>CURRENT MATCHES</div>
+              <span class="mobile-text">  {{row.active}}</span>
+          </div>
+
+          <div class="col-6">
+              <div class='mobile-sub-heading'>PREVIOUS STATUS</div>
+              <span class="mobile-text">
+                  <div *ngIf="(row.inactive | json) == '{}'; else default">
+                      {{row.inactive }}
+                  </div>
+
+              </span>
 
           </div>
 

@@ -14,12 +14,27 @@
   border: none;
   text-transform: uppercase;
   box-shadow: 0 0.5px 3px 2px rgba(50, 50, 50, 0.09);
-  a{
-    color: $blue-800;
-  }
   .dropdown-item{
+    color: $blue-800;
     font-size: 0.75rem;
     padding: 0.5rem 0.5rem;
+    letter-spacing: $letter-spacing;
+  }
+}
+
+.dropdown-toggle{
+  .caret{
+    border: 0;
+    content: "";
+    display: inline-block;
+    background: url(https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/drop-down-arrow.svg) no-repeat center;
+    height: 12px;
+    width: 12px;
+    position: relative;
+    top: 1px;
+  }
+  &:after{
+    display: none;
   }
 }
 
@@ -31,7 +46,7 @@
     width: 0;
     height: 0;
     top: -8px;
-    right: 16px;
+    right: 0;
     border: 8px solid;
     border-color: transparent transparent #ffffff #ffffff;
     transform-origin: 0 0;
@@ -39,3 +54,4 @@
     box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.1);
   }
 }
+

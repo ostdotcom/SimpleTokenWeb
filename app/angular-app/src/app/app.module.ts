@@ -8,10 +8,10 @@ import { OstHttp } from './ost-http.service';
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
-import { RowComponent } from './kyc_user_row/row.component';
+import { RowComponent } from './kyc-user-row/row.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeaderComponent } from './kyc_user_header/header.component';
+import { HeaderComponent } from './kyc-user-header/header.component';
 import { AppConfigService } from './app-config.service';
 import { EntityConfigService } from './entity-config.service';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -29,6 +29,8 @@ import { KycDetailsRowComponent } from './kyc-details-row/kyc-details-row.compon
 import { BaseModalComponent } from './base-modal/base-modal.component';
 import { LogModalComponent } from './log-modal/log-modal.component';
 import { DuplicateDetailsModalComponent } from './duplicate-details-modal/duplicate-details-modal.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+
 
 
 
@@ -58,7 +60,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     KycDetailsRowComponent,
     BaseModalComponent,
     LogModalComponent,
-    DuplicateDetailsModalComponent
+    DuplicateDetailsModalComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
       {
         path: 'admin/case-id/:id',
         component: KycCaseComponent
+      },
+      {
+        path: 'admin/admin-user/dashboard',
+        component: AdminDashboardComponent
       },
     ])
   ],

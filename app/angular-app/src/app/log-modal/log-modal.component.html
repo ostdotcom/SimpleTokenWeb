@@ -14,10 +14,10 @@
         <div class='row'>
           <app-table class="w-100" [dataUrl]="logUrl" [isPaginated]="false">
 
-            <app-kyc-log-header class='header'></app-kyc-log-header>
+            <kyc-log-header class='header'></kyc-log-header>
 
             <ng-template #rowData let-row>
-              <app-kyc-log-row [row]='row'></app-kyc-log-row>
+              <kyc-log-row [row]='row'></kyc-log-row>
             </ng-template>
           </app-table>
         </div>
