@@ -366,18 +366,7 @@
       </ng-container>
 
       <ng-container *ngIf="showUpdateEth">
-        <h4>Update Eth Address</h4>
-        <hr />
-        <div class="row">
-            <div class="col-12 col-sm-6">
-                <form>
-                    <div class="form-group">
-                        <label for="">Enter Eth address</label>
-                        <input type="text" class="form-control" id="">
-                      </div>         
-                </form>
-            </div>
-          </div>        
+       <update-ethaddress (closeEthAddressEvent)="showPageState()"></update-ethaddress>     
       </ng-container>
 
     </div>
@@ -411,11 +400,6 @@
 
             </ng-template>
 
-          </ng-container>
-
-          <ng-container *ngIf="showUpdateEth">
-            <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2">Update Eth Address</button>
-            <button type="button" class="btn btn-light text-uppercase mb-2" (click)="showPageState()">Cancel</button>
           </ng-container>
 
         </div>
