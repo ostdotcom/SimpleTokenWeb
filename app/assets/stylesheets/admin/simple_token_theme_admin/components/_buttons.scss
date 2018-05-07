@@ -52,8 +52,8 @@
 
 .btn-success {
   border: $btn-border-width solid $green-500;
-  color: $green-500;
-  background-color: $white;
+  color: $white;
+  background-color: $green-400;
   &:focus{
     border: $btn-border-width solid $green-500;
     background-color: $white;
@@ -69,4 +69,15 @@
     border-color: $green-500;
     background-color: $green-500;
   }
+}
+
+.btn-light{
+  border: solid 0.8px $blue-900;
+  background-color: transparent;
+  color: $blue-900;
+}
+
+.btn-danger{
+  background-color: $red;
+  color: $white;
 }

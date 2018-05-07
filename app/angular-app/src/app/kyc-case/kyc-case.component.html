@@ -14,29 +14,51 @@
       </ol>
     </nav>
 
-    <div *ngIf="1!=1">
+    <div *ngIf="true">
       <div class="alert alert-danger" role="alert">
         <div class="d-flex justify-content-center align-items-center">
-          <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
+
+
+          <svg class="svg alert-error-svg">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon"></use>
+            </switch>
+          </svg>
+
           <span class="ml-2">AML/CTF status denied, this case cannot be reopned</span>
+
         </div>
       </div>
     </div>
 
-    <div *ngIf="2!=2">
+    <div *ngIf="true">
       <div class="alert alert-warning" role="alert">
         <div class="d-flex justify-content-center align-items-center">
-          <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
+
+          <svg class="svg alert-warning-svg">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+            </switch>
+          </svg>
+
           <span class="ml-2">Issue reported, data mismatch email sent.</span>
+
         </div>
       </div>
     </div>
 
-    <div *ngIf="3!=3">
+    <div *ngIf="true">
       <div class="alert alert-warning" role="alert">
         <div class="d-flex justify-content-center align-items-center">
-          <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="80"/>
+
+          <svg class="svg alert-warning-svg">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+            </switch>
+          </svg>
+
           <span class="ml-2">Case approved, whitelisting in Progress</span>
+
         </div>
       </div>
     </div>
@@ -56,9 +78,7 @@
                 <span class="key">Cynopsis Status : </span>
                 <span class="value">{{caseDetails.cynopsis_status}}</span>
               </div>
-
-              <button class="button-UI text-uppercase" data-toggle="modal" data-target="#retrySending">Retry cynopsis</button>
-
+              <span class="button-UI text-uppercase" data-toggle="modal" data-target="#retrySending">Retry cynopsis</span>
             </div>
 
           </div>
