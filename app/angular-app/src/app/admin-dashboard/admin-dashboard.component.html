@@ -1,0 +1,7 @@
+<div class="container"> 
+    <button class="btn btn-primary" (click)="showInviteUserSection()">Invite Users</button>
+
+    <ng-container *ngIf="showInviteUser"> 
+        <invite-user (closeInviteUser)="hideInviteUserSection( $event )"></invite-user>
+    </ng-container>
+</div>

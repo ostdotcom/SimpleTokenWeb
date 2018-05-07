@@ -1,22 +1,50 @@
-<div class="invite-user-wrapper">
 
-  <h4>Invite Users</h4>
-
-  <div class="invite-user-form-wrapper">
-    <form #inviteUser="ngForm" name="invite-user">
+<div class="invite-user-wrapper row">
+  <div class="col-12"><h4>Invite Users</h4></div>
+  <div class="invite-user-form-wrapper col-12 col-sm-8 col-md-6  col-lg-4 ">
+    <form #inviteUserForm="ngForm" name="invite-user">
       <div class="form-group">
         <label class="form-lable">email address</label>
-        <input class="form-control" type="email" [(ngModel)]="email" placeholder="" />
+        <input class="form-control" name="email" type="email" [(ngModel)]="email" #userEmail="ngModel" required/>
+        <div class="error">
+          <span *ngIf="userEmail.touched && userEmail.invalid">
+             Email is required.
+          </span>
+        </div>  
       </div>  
       <div class="form-group">
           <label class="form-lable">full name</label>
-          <input class="form-control" type="text" [(ngModel)]="name" placeholder="" />
+          <input class="form-control" name="name" type="text" [(ngModel)]="name" required #userName="ngModel" />
+          <div class="error" >
+            <span *ngIf="userName.touched && userName.invalid">
+              Name is required.
+            </span>
+          </div>
       </div> 
-      <div class="form-group">
-        <button class="btn btn-primary">INVITE</button>
-        <a [routerLink]="['/admin/admin-dashboard', item.id]" class="btn btn-secondary" >CANCLE</a>
-      </div>
     </form>  
+    <div class="invite-user-btn-wrap">
+        <button [disabled]="!inviteUserForm.valid" data-toggle="modal" data-target="#inviteUser" class="btn btn-primary">INVITE</button>
+        <button class="btn btn-secondary" (click)="hideInviteUser()">CANCLE</button>
+    </div>
   </div>  
+</div> 
 
-</div>  
+
+<div class="modal fade" id="inviteUser">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body p-5">
+          <div class='row'>
+            <div class="col-12">
+              <h4>Please confrim to invite {{email}}</h4>
+            </div>
+            <div class="col-12 form-group">
+               <button class="btn btn-primary" (click)="sendInvite(inviteUserForm)">INVITE USER</button>  
+               <button class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+               <div class="error">{{errMsg}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
