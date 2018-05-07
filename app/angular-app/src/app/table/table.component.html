@@ -19,13 +19,9 @@
   <request-state-handler class="d-block w-100 p-5"
                          [isProcessing]="isProcessing"
                          [hasError]="hasError"
-                         [hasWarning]="noResultFound">
-    <div class="error-content mt-3">
-        Something went wrong, we couldnot load the dashboard, please refresh the page or try updating the filters.
-    </div>
-    <div class="warning-content mt-3">
-      We could not find any results, please try changing the filters or refresh the page.
-    </div>
+                         [hasWarning]="noResultFound"
+                         [errorMessage]="customErrorMsg || errMsg"
+                         [warningMessage]="warningMsg">
   </request-state-handler>
 
 

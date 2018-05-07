@@ -36,9 +36,9 @@
 
     <div class="col-12 col-lg-4 px-0 ml-auto mt-3">
       <form #sortForm="ngForm" name='sorting' class='col-lg-7 ml-auto pr-lg-0 form-group' (change)="onSortChange()">
-        <label class='form-label mb-2'>SORT BY</label>
-        <select class="form-control" name="sortings[sort_by]" [(ngModel)]='sortBy'
-                ostOptions [entityPath]="'entity_configs.kyc_user_details.sort_by'">
+        <span class='filter-label'>SORT BY</span>
+        <select class="select" name="sortings[sort_by]" [(ngModel)]='sortBy'
+                ostOptions  [entityPath]="'entity_configs.kyc_user_details.sort_by'">
         </select>
       </form>
     </div>
@@ -46,15 +46,16 @@
 
 <div class="row" >
   <app-table class="w-100"
+            [dataUrl]="'api/admin/kyc/dashboard/'"
             [pageNumber]='pageNumber'
             [filterForm]='filterForm'
             [sortForm]='sortForm'
-            [dataUrl]="'api/admin/kyc/dashboard/'">
-    <app-header class='header'></app-header>
-
-      <ng-template #rowData let-row >
-        <app-row [row]='row'></app-row>
-      </ng-template>
+            [warningMsg]="'We could not find any results, please try changing the filters or refresh the page.'"
+            [customErrorMsg]="'Something went wrong, we couldnot load the dashboard, please refresh the page or try updating the filters'">
+    <dashboard-table-header class='header'></dashboard-table-header>
+    <ng-template #rowData let-row >
+      <app-row [row]='row'></app-row>
+    </ng-template>
     </app-table>
 </div>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
+  selector: 'dashboard-table-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

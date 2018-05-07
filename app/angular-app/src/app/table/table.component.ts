@@ -27,9 +27,11 @@ export class TableComponent implements OnInit {
   @Input('config') config?: object = null;
   @Input('deleteRowUrl') deleteRowUrl?: string = null;
   @Input('getDataOnInit') getDataOnInit?: boolean = true;
-  @Input('isPaginated') isPaginated: boolean = true;
+  @Input('isPaginated') isPaginated?: boolean = true;
+  @Input('requestParams') requestParams?: object = {}; 
+  @Input('customErrorMsg') customErrorMsg?: string = ""; 
+  @Input('warningMsg') warningMsg?: string = ""; 
 
-  errMsg: string;
   rows: Array<any> = [];
   isProcessing: boolean = false;
   hasError: boolean = false;
@@ -37,6 +39,7 @@ export class TableComponent implements OnInit {
   filtersObserver: any;
   sortObserver: any;
   metaData: object;
+  errMsg: string=""; 
 
   ngOnInit() {
     this.configOverWrites();
@@ -152,21 +155,16 @@ export class TableComponent implements OnInit {
   }
 
   getParams(): RequestOptionsArgs {
-    let requestParams = {
-      params: {
-        page_number: this.getPageNumber()
-      }
-    }
-    if (this.isPaginated) {
-      requestParams.params['page_size'] = 2;
-    }
+    let requestParams =  this.requestParams; 
+    requestParams['page_number'] = this.getPageNumber();
     if (this.filterForm) {
-      Object.assign(requestParams['params'], this.getFilter());
+      Object.assign(requestParams, this.getFilter());
     }
     if (this.sortForm) {
-      Object.assign(requestParams['params'], this.getSorting());
+      Object.assign(requestParams, this.getSorting());
     }
-    return requestParams;
+    //TODO meta data to append
+    return { params : requestParams };
   }
 
   onTableDataSuccess(response) {
