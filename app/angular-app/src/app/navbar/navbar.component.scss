@@ -14,12 +14,11 @@
   border: none;
   text-transform: uppercase;
   box-shadow: 0 0.5px 3px 2px rgba(50, 50, 50, 0.09);
-  a{
-    color: $blue-800;
-  }
   .dropdown-item{
+    color: $blue-800;
     font-size: 0.75rem;
     padding: 0.5rem 0.5rem;
+    letter-spacing: $letter-spacing;
   }
 }
 
