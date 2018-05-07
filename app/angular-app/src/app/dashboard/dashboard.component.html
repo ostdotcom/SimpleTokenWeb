@@ -14,7 +14,7 @@
         <div class="row">
           <div class="col-12 col-lg pr-lg-0 mt-3">
             <label class='form-label mb-2'>ADMIN STATUS</label>
-            <select class="form-control" name="filters[admin_status]" [(ngModel)]='adminStatus'
+            <select id="sp" class="form-control selectpicker" name="filters[admin_status]" [(ngModel)]='adminStatus'
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.admin_status'">
             </select>
           </div>
