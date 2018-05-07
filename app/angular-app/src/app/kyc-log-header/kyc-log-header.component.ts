@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { OstHeaderComponent } from '../ost-header/ost-header.component';
 
 @Component({
   selector: 'app-kyc-log-header',
   templateUrl: './kyc-log-header.component.html',
-  styleUrls: ['./kyc-log-header.component.scss']
+  styleUrls: ['../ost-header/ost-header.component.scss', './kyc-log-header.component.scss']
 })
-export class KycLogHeaderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class KycLogHeaderComponent {
 }

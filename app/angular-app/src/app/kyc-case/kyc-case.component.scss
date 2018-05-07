@@ -137,7 +137,8 @@ h5{
 
 #logsModal{
   .modal-dialog{
-    margin-top: auto;
+    margin: auto;
+    //margin-top: auto;
     float: right;
     width: 50%;
     height: 100vh;
@@ -147,6 +148,7 @@ h5{
 
       border: none;
       border-radius: 0px;
+      min-height: 100%;
 
       .modal-body{
         padding-top:0px;
@@ -156,13 +158,12 @@ h5{
   @media screen and (max-width: 1076px) {
     .modal-dialog{
       width:80%;
-      float: none;
-      margin: 0 auto;
+
     }
   }
   @media screen and (max-width: 400px) {
     .modal-dialog{
-      width:95%;
+      width:100%;
     }
   }
 }
@@ -297,3 +298,18 @@ h5{
     }
   }
 }
+
+.modal.fade:not(.show)  {
+  .modal-dialog{
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+  }
+}
+.modal.show  {
+  .modal-dialog{
+    -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+
+  }
+}
+
