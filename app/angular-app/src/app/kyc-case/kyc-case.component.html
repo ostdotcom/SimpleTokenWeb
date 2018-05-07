@@ -1,437 +1,486 @@
+<request-state-handler [isProcessing]="isProcessing" [hasError]="hasError"></request-state-handler>
 
+<ng-container *ngIf="!isProcessing && !hasError">
 
+  <div class="mt-3">
 
-<div class="mt-3" *ngIf="!isProcessing">
-  <div class="container mb-4" >
-
-
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a routerLink="/admin/new-dashboard">KYC Dashboard</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">KYC Details</li>
-      </ol>
-    </nav>
-
-    <div *ngIf="true">
-      <div class="alert alert-danger" role="alert">
-        <div class="d-flex justify-content-center align-items-center">
-
-
-          <svg class="svg alert-error-svg">
-            <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon"></use>
-            </switch>
-          </svg>
-
-          <span class="ml-2">AML/CTF status denied, this case cannot be reopned</span>
-
+    <div class="container mb-4">
+  
+      <ng-container *ngIf="showCase">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a routerLink="/admin/new-dashboard">KYC Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">KYC Details</li>
+          </ol>
+        </nav>
+    
+        <div *ngIf="true">
+            <div class="alert alert-danger" role="alert">
+              <div class="d-flex justify-content-center align-items-center">
+                <svg class="svg alert-error-svg">
+                  <switch>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon"></use>
+                  </switch>
+                </svg>
+                <span class="ml-2">AML/CTF status denied, this case cannot be reopned</span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="true">
+            <div class="alert alert-warning" role="alert">
+              <div class="d-flex justify-content-center align-items-center">
+                <svg class="svg alert-warning-svg">
+                  <switch>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                  </switch>
+                </svg>
+                <span class="ml-2">Issue reported, data mismatch email sent.</span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="true">
+            <div class="alert alert-warning" role="alert">
+              <div class="d-flex justify-content-center align-items-center">
+                <svg class="svg alert-warning-svg">
+                  <switch>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                  </switch>
+                </svg>
+                <span class="ml-2">Case approved, whitelisting in Progress</span>
+              </div>
+            </div>
+          </div>
+    
+    
+        <div class="row">
+          <div class="col-12 col-md-4 mb-3">
+            <div class="card box-border">
+              <div class="card-body">
+                <div>
+                  <span class="key">Admin Status : </span>
+                  <span class="value">{{caseDetails.admin_status}}</span>
+                </div>
+                <div class="mt-3 d-flex justify-content-between align-items-center">
+    
+                  <div>
+                    <span class="key">Cynopsis Status : </span>
+                    <span class="value">{{caseDetails.cynopsis_status}}</span>
+                  </div>
+    
+                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#retrySending">Retry cynopsis</span>
+    
+                </div>
+    
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mb-3">
+            <div class="card box-border">
+              <div class="card-body">
+    
+                <div>
+    
+                  <span class="key">Submission : </span>
+                  <span *ngIf="caseDetails.is_re_submitted == 1;then newSubmission else reSubmitted"></span>
+                  <ng-template #newSubmission>
+                    <span class="value blue-bar">New Submission</span>
+                  </ng-template>
+                  <ng-template #reSubmitted>
+                    <span class="value red-bar">Re-Submitted</span>
+                  </ng-template>
+    
+                </div>
+    
+                <div class="mt-3 d-flex justify-content-between align-items-center">
+    
+                  <div class="d-inline-block">
+                    <span class="key">Duplicate Status : </span>
+                    <span *ngIf="caseDetails.is_duplicate == 1;then original else duplicate"></span>
+                    <ng-template #original>
+                      <span class="value blue-bar">Original</span>
+                    </ng-template>
+                    <ng-template #duplicate>
+                      <span class="value red-bar">Duplicate</span>
+                    </ng-template>
+                  </div>
+    
+                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#detailsModal">view details</span>
+                </div>
+    
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mb-3">
+            <div class="card box-border">
+              <div class="card-body">
+    
+                <div>
+                  <span class="key">Reg IP/Country : </span>
+                  <span class="value">{{userDetails.geoip_data.ip_address}} / {{userDetails.geoip_data.country}}</span>
+                </div>
+                <div class="mt-3 d-flex justify-content-between align-items-center">
+                  <span class="key">Agent : </span>
+                  <span class="value"> </span>
+    
+                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#logsModal">view logs</span>
+    
+                </div>
+    
+  
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div *ngIf="true">
-      <div class="alert alert-warning" role="alert">
-        <div class="d-flex justify-content-center align-items-center">
-
-          <svg class="svg alert-warning-svg">
-            <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
-            </switch>
-          </svg>
-
-          <span class="ml-2">Issue reported, data mismatch email sent.</span>
-
+    
+        <div class="row">
+          <div class="col-12">
+            <h5>Submitted details Vs ID Image</h5>
+          </div>
+          <div class="col-12 mb-3">
+            <div class="card-group">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">Submitted Details</h6>
+                  <div class="row card-row">
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">First Name</div>
+                      <div class="value">{{userDetails.first_name}}</div>
+                    </div>
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">Last Name</div>
+                      <div class="value">{{userDetails.last_name}}</div>
+                    </div>
+                  </div>
+                  <div class="row card-row">
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">Birth Date</div>
+                      <div class="value">{{userDetails.birthdate}}</div>
+                    </div>
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">Residence Country</div>
+                      <div class="value">{{userDetails.country}}</div>
+                    </div>
+                  </div>
+                  <div class="row card-row">
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">Document ID Number</div>
+                      <div class="value">{{userDetails.document_id_number}}</div>
+                    </div>
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">Passport Number</div>
+                      <div class="value">??</div>
+                    </div>
+                  </div>
+                  <div class="row card-row">
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">Nationality</div>
+                      <div class="value">{{userDetails.nationality}}</div>
+                    </div>
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">Email Address</div>
+                      <div class="value">{{userDetails.email}}</div>
+                    </div>
+                  </div>
+                  <div class="row card-row">
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">Date & Time</div>
+                      <div class="value">{{userDetails.submitted_at}}</div>
+                    </div>
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">Street Address</div>
+                      <div class="value">{{userDetails.street_address}}</div>
+                    </div>
+                  </div>
+                  <div class="row card-row">
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">City</div>
+                      <div class="value">{{userDetails.city}}</div>
+                    </div>
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">Zip Code</div>
+                      <div class="value">{{userDetails.postal_code}}</div>
+                    </div>
+                  </div>
+                  <div class="row card-row">
+                    <div class="card-col col-12 col-sm-6">
+                      <div class="label">State / Region</div>
+                      <div class="value">{{userDetails.state}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">ID Image</h6>
+                </div>
+                <img class="card-img-top" src="{{userDetails.document_id_file_url}}" alt="Card image cap">
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div *ngIf="true">
-      <div class="alert alert-warning" role="alert">
-        <div class="d-flex justify-content-center align-items-center">
-
-          <svg class="svg alert-warning-svg">
-            <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
-            </switch>
-          </svg>
-
-          <span class="ml-2">Case approved, whitelisting in Progress</span>
-
+    
+        <div class="row">
+          <div class="col-12">
+            <h5>ID Image Vs Selfie Image</h5>
+          </div>
+          <div class="col-12 mb-3">
+            <div class="card-group">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">Id image</h6>
+                </div>
+                <img class="card-img-top" src="{{userDetails.document_id_file_url}}" alt="Card image cap">
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">Selfie image</h6>
+                </div>
+                <img class="card-img-top" src="{{userDetails.selfie_file_url}}" alt="Card image cap">
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+    
+        <div class="row">
+          <div class="col-12">
+            <h5>Other Uploaded Documents</h5>
+          </div>
+          <div class="col-12 mb-3">
+            <div class="card-group">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">Id image</h6>
+                </div>
+                <img class="card-img-top" src="{{userDetails.document_id_file_url}}" alt="Card image cap">
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">Selfie image</h6>
+                </div>
+                <img class="card-img-top" src="{{userDetails.selfie_file_url}}" alt="Card image cap">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade right" id="logsModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4>Logs</h4>
+        
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class='row'>
+                    <app-table class="w-100" [dataUrl]="logUrl" [isPaginated]="false">
+        
+                      <app-kyc-log-header class='header'></app-kyc-log-header>
+        
+                      <ng-template #rowData let-row>
+                        <app-kyc-log-row [row]='row'></app-kyc-log-row>
+                      </ng-template>
+                    </app-table>
+                  </div>
+                </div>
+        
+                <!-- Modal footer -->
+        
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="detailsModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+            
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4>Duplicate Details</h4>
+            
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+            
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <div class='row'>
+                    <app-table class="w-100" [dataUrl]="duplicateDataUrl"
+                                             [isPaginated]="false" >
+            
+                      <kyc-details-header class='header'></kyc-details-header>
+            
+                      <ng-template #rowData let-row>
+                        <kyc-details-row [row]='row'></kyc-details-row>
+                      </ng-template>
+                    </app-table>
+                  </div>
+                  </div>
+            
+                  <!-- Modal footer -->
+            
+                </div>
+              </div>
+            </div>
+        
+          <div class="modal fade" id="reOpenModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header d-flex justify-content-center align-items-center">
+                  <h5 class="modal-title">Are you sure you want to reopen this case?</h5>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body text-center mx-5">
+                  <div>When a case is reopened, User is unwhitelisted.</div>
+                  <div class="mt-2">Once the user is qualified, the user will be whitelisted again The user will not be able to take part in the ICO,
+                    until the case is closed again.</div>
+                </div>
+        
+        
+                <!-- Modal footer -->
+                <div class="modal-footer mt-3 mb-3">
+                  <div class="d-flex justify-content-center align-items-center">
+                    <button type="button" class="btn primary text-uppercase">Re-open</button>
+                    <button type="button" class="btn cancel ml-3" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+        
+              </div>
+            </div>
+          </div>
+        
+          <div class="modal fade" id="retrySending">
+            <div class="modal-dialog">
+              <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header d-flex justify-content-center align-items-center">
+                  <h5 class="modal-title text-center">Are you sure you want to Retry sending this users request to cynopsis?</h5>
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer mt-3 mb-3">
+                  <div class="d-flex justify-content-center align-items-center">
+                    <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
+                    <button type="button" class="btn primary ml-3 text-uppercase">RETRY</button>
+                  </div>
+                </div>
+        
+              </div>
+            </div>
+          </div>
+        
+          <div class="modal fade" id="qualifyAction">
+            <div class="modal-dialog">
+              <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header d-flex justify-content-center align-items-center">
+                  <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer mt-3 mb-3">
+                  <div class="d-flex justify-content-center align-items-center">
+                    <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
+                    <button type="button" class="btn primary ml-3 text-uppercase">QUALIFY KYC</button>
+                  </div>
+                </div>
+        
+              </div>
+            </div>
+          </div>
+        
+          <div class="modal fade" id="denyAction">
+            <div class="modal-dialog">
+              <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header d-flex justify-content-center align-items-center">
+                  <h5 class="modal-title text-center">Are you sure you want to Deny this user?</h5>
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer mt-3 mb-3">
+                  <div class="d-flex justify-content-center align-items-center">
+                    <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
+                    <button type="button" class="btn primary ml-3 text-uppercase">DENY KYC</button>
+                  </div>
+                </div>
+        
+              </div>
+            </div>
+          </div>
+
+      </ng-container>
+
+      <ng-container *ngIf="showReportIssue">
+        <div class="mt-3">
+            showReportIssue
+        </div>
+      </ng-container>
+
+      <ng-container  *ngIf="showUpdateEth">
+        <div class="mt-3">
+            showUpdateEth
+        </div>
+      </ng-container>
+
     </div>
-
-
+  
     <div class="row">
-      <div class="col-12 col-md-4 mb-3">
-        <div class="card box-border">
-          <div class="card-body">
-            <div>
-              <span class="key">Admin Status : </span>
-              <span class="value">{{caseDetails.admin_status}}</span>
-            </div>
-            <div class="mt-3 d-flex justify-content-between align-items-center">
+      <div class="container-fluid button-container">
+        <div class="container mt-2">
 
-              <div>
-                <span class="key">Cynopsis Status : </span>
-                <span class="value">{{caseDetails.cynopsis_status}}</span>
+          <ng-container *ngIf="showCase">
+  
+            <div *ngIf="1!=1; then caseClose else caseOpen"></div>
+  
+            <ng-template #caseClose>
+  
+              <div id="caseClose" class="d-flex justify-content-center align-items-center mb-2">
+                <span class="mr-2 font-weight-normal">This case has been Approved and closed</span>
+                <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reOpenModal">Re-open</button>
               </div>
-              <span class="button-UI text-uppercase" data-toggle="modal" data-target="#retrySending">Retry cynopsis</span>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 mb-3">
-        <div class="card box-border">
-          <div class="card-body">
-
-            <div>
-
-              <span class="key">Submission : </span>
-              <span *ngIf="caseDetails.is_re_submitted == 1;then newSubmission else reSubmitted"></span>
-              <ng-template #newSubmission>
-                <span class="value blue-bar">New Submission</span>
-              </ng-template>
-              <ng-template #reSubmitted>
-                <span class="value red-bar">Re-Submitted</span>
-              </ng-template>
-
-            </div>
-
-            <div class="mt-3 d-flex justify-content-between align-items-center">
-
-              <div class="d-inline-block">
-                <span class="key">Duplicate Status : </span>
-                <span *ngIf="caseDetails.is_duplicate == 1;then original else duplicate"></span>
-                <ng-template #original>
-                  <span class="value blue-bar">Original</span>
-                </ng-template>
-                <ng-template #duplicate>
-                  <span class="value red-bar">Duplicate</span>
-                </ng-template>
+  
+            </ng-template>
+  
+            <ng-template #caseOpen>
+  
+              <button type="button" class="btn btn-light text-uppercase mb-2" (click)="showPageState(false, false, true)">Update eth address</button>
+  
+              <div class="float-right">
+                <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyAction">Deny</button>
+                <button type="button" class="btn btn-light mr-2 mb-2 text-uppercase" (click)="showPageState(false, true, false)">Report Issue</button>
+                <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyAction">Qualify</button>
               </div>
+  
+            </ng-template>
+          
+          </ng-container>
 
-              <span class="button-UI text-uppercase">view details</span>
-            </div>
+          <ng-container *ngIf="showReportIssue">
+            <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2">Send email</button>
+            <button type="button" class="btn btn-light text-uppercase mb-2" (click)="showPageState()">Cancel</button>
+          </ng-container>
 
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 mb-3">
-        <div class="card box-border">
-          <div class="card-body">
-
-            <div>
-              <span class="key">Reg IP/Country : </span>
-              <span class="value">{{userDetails.geoip_data.ip_address}} / {{userDetails.geoip_data.country}}</span>
-            </div>
-            <div class="mt-3 d-flex justify-content-between align-items-center">
-              <span class="key">Agent : </span>
-              <span class="value"> </span>
-
-              <span class="button-UI text-uppercase" data-toggle="modal" data-target="#logsModal">view logs</span>
-
-            </div>
-
-
-          </div>
+          <ng-container  *ngIf="showUpdateEth">
+            <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2">Update Eth Address</button>
+            <button type="button" class="btn btn-light text-uppercase mb-2" (click)="showPageState()">Cancel</button>
+            </ng-container>
+  
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12">
-        <h5>Submitted details Vs ID Image</h5>
-      </div>
-      <div class="col-12 mb-3">
-        <div class="card-group">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title">Submitted Details</h6>
-              <div class="row card-row">
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">First Name</div>
-                  <div class="value">{{userDetails.first_name}}</div>
-                </div>
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">Last Name</div>
-                  <div class="value">{{userDetails.last_name}}</div>
-                </div>
-              </div>
-              <div class="row card-row">
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">Birth Date</div>
-                  <div class="value">{{userDetails.birthdate}}</div>
-                </div>
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">Residence Country</div>
-                  <div class="value">{{userDetails.country}}</div>
-                </div>
-              </div>
-              <div class="row card-row">
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">Document ID Number</div>
-                  <div class="value">{{userDetails.document_id_number}}</div>
-                </div>
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">Passport Number</div>
-                  <div class="value">??</div>
-                </div>
-              </div>
-              <div class="row card-row">
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">Nationality</div>
-                  <div class="value">{{userDetails.nationality}}</div>
-                </div>
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">Email Address</div>
-                  <div class="value">{{userDetails.email}}</div>
-                </div>
-              </div>
-              <div class="row card-row">
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">Date & Time</div>
-                  <div class="value">{{userDetails.submitted_at}}</div>
-                </div>
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">Street Address</div>
-                  <div class="value">{{userDetails.street_address}}</div>
-                </div>
-              </div>
-              <div class="row card-row">
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">City</div>
-                  <div class="value">{{userDetails.city}}</div>
-                </div>
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">Zip Code</div>
-                  <div class="value">{{userDetails.postal_code}}</div>
-                </div>
-              </div>
-              <div class="row card-row">
-                <div class="card-col col-12 col-sm-6">
-                  <div class="label">State / Region</div>
-                  <div class="value">{{userDetails.state}}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title">ID Image</h6>
-            </div>
-            <img class="card-img-top" src="{{userDetails.document_id_file_url}}" alt="Card image cap">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <h5>ID Image Vs Selfie Image</h5>
-      </div>
-      <div class="col-12 mb-3">
-        <div class="card-group">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title">Id image</h6>
-            </div>
-            <img class="card-img-top" src="{{userDetails.document_id_file_url}}" alt="Card image cap">
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title">Selfie image</h6>
-            </div>
-            <img class="card-img-top" src="{{userDetails.selfie_file_url}}" alt="Card image cap">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <h5>Other Uploaded Documents</h5>
-      </div>
-      <div class="col-12 mb-3">
-        <div class="card-group">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title">Id image</h6>
-            </div>
-            <img class="card-img-top" src="{{userDetails.document_id_file_url}}" alt="Card image cap">
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title">Selfie image</h6>
-            </div>
-            <img class="card-img-top" src="{{userDetails.selfie_file_url}}" alt="Card image cap">
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
-
-  <div class="row">
-    <div class="container-fluid button-container">
-      <div class="container">
-
-        <div class="mt-2">
-
-          <div *ngIf="1!=1; then caseClose else caseOpen"></div>
-
-          <ng-template #caseClose>
-
-            <div id="caseClose" class="d-flex justify-content-center align-items-center mb-2">
-              <span class="mr-2 font-weight-normal">This case has been Approved and closed</span>
-              <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reOpenModal">Re-open</button>
-            </div>
-
-          </ng-template>
-
-          <ng-template #caseOpen>
-
-            <button type="button" class="btn btn-light text-uppercase mb-2">Update eth address</button>
-
-            <div class="float-right">
-              <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyAction">Deny</button>
-              <button type="button" class="btn btn-light mr-2 mb-2 text-uppercase">Report Issue</button>
-              <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyAction">Qualify</button>
-            </div>
-
-          </ng-template>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-<div class="modal fade right" id="logsModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4>Logs</h4>
-
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <div class='row'>
-        <app-table class="w-100" [dataUrl]="logUrl"
-                                 [isPaginated]="false" >
-
-          <app-kyc-log-header class='header'></app-kyc-log-header>
-
-          <ng-template #rowData let-row>
-            <app-kyc-log-row [row]='row'></app-kyc-log-row>
-          </ng-template>
-        </app-table>
-      </div>
-      </div>
-
-      <!-- Modal footer -->
-
-    </div>
-  </div>
-</div>
-
-
-
-  <div class="modal fade" id="reOpenModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header d-flex justify-content-center align-items-center">
-          <h5 class="modal-title">Are you sure you want to reopen this case?</h5>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body text-center mx-5">
-          <div>When a case is reopened, User is unwhitelisted.</div>
-          <div class="mt-2">Once the user is qualified, the user will be whitelisted again
-            The user will not be able to take part in the ICO, until the case is closed again.</div>
-        </div>
-
-
-        <!-- Modal footer -->
-        <div class="modal-footer mt-3 mb-3">
-          <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn primary text-uppercase">Re-open</button>
-            <button type="button" class="btn cancel ml-3" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="retrySending">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header d-flex justify-content-center align-items-center">
-          <h5 class="modal-title text-center">Are you sure you want to Retry sending this users request to cynopsis?</h5>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer mt-3 mb-3">
-          <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
-            <button type="button" class="btn primary ml-3 text-uppercase" >RETRY</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="qualifyAction">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header d-flex justify-content-center align-items-center">
-          <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer mt-3 mb-3">
-          <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
-            <button type="button" class="btn primary ml-3 text-uppercase" >QUALIFY KYC</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="denyAction">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header d-flex justify-content-center align-items-center">
-          <h5 class="modal-title text-center">Are you sure you want to Deny this user?</h5>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer mt-3 mb-3">
-          <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
-            <button type="button" class="btn primary ml-3 text-uppercase" >DENY KYC</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
+</ng-container>
