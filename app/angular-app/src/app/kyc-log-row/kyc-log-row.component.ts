@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-kyc-log-row',
+  selector: 'kyc-log-row',
   templateUrl: './kyc-log-row.component.html',
   styleUrls: ['./kyc-log-row.component.scss']
 })
@@ -23,37 +23,27 @@ export class KycLogRowComponent implements OnInit {
     'kyc_whitelist_processor_error': 'kyc whitelist processor error',
     };
 
-    actionDara = {
-      'data_mismatch': ['first_name', 'last_name', 'document_id_number'],
-      'other_issue': 'higdigkjqjqfibejifbeifbiefbijebf'
-
-    };
-
   constructor() {
 
   }
 
   ngOnInit() {
     const actionData = this.row.action_data;
+    const humanizedActionData = this.row.humanized_action_data;
     if (this.row.action === 'kyc_issue_email_sent') {
-      for (let key in actionData) {
+      for (let key in humanizedActionData) {
         if ( key.toLowerCase() !== 'other issue') {
            this.actionData = '<b>' + key + '</b>: ';
-           console.log(actionData);
-           for (let value of actionData[key]){
-             this.actionData += value + ', ';
-           }
+           this.actionData += humanizedActionData[key];
+        }else {
+           this.actionData += '<br><b>' + key + '</b>';
         }
-
-      }
-      console.log(this.actionData);
-      this.row.action = this.actionData.slice(0, -2);
+     }
+     this.row.action = this.actionData;
 
     } else {
       this.row.action = this.messageHash[this.row.action];
     }
-
-
   }
 
 }
