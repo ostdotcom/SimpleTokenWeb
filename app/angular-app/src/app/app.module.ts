@@ -24,6 +24,8 @@ import { RequestStateHandlerService } from './request-state-handler.service';
 import { OstOptionsComponent } from './ost-options/ost-options.component';
 import { InviteUserComponent } from './invite-user/invite-user.component';
 import { OstHeaderComponent } from './ost-header/ost-header.component';
+import { KycDetailsHeaderComponent } from './kyc-details-header/kyc-details-header.component';
+import { KycDetailsRowComponent } from './kyc-details-row/kyc-details-row.component';
 
 
 
@@ -48,7 +50,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     RequestStateHandlerComponent,
     OstOptionsComponent,
     InviteUserComponent,
-    OstHeaderComponent
+    OstHeaderComponent,
+    KycDetailsHeaderComponent,
+    KycDetailsRowComponent
   ],
   imports: [
     BrowserModule,
