@@ -28,18 +28,18 @@ export class TableComponent implements OnInit {
   @Input('deleteRowUrl') deleteRowUrl?: string = null;
   @Input('getDataOnInit') getDataOnInit?: boolean = true;
   @Input('isPaginated') isPaginated?: boolean = true;
-  @Input('requestParams') requestParams?: object = {}; 
-  @Input('customErrorMsg') customErrorMsg?: string = ""; 
-  @Input('warningMsg') warningMsg?: string = ""; 
+  @Input('requestParams') requestParams?: object = {};
+  @Input('customErrorMsg') customErrorMsg?: string = "";
+  @Input('warningMsg') warningMsg?: string = "";
 
   rows: Array<any> = [];
   isProcessing: boolean = false;
   hasError: boolean = false;
-  noResultFound: boolean = false;
+  hasWarning: boolean = false;
   filtersObserver: any;
   sortObserver: any;
   metaData: object;
-  errMsg: string=""; 
+  errMsg: string="";
 
   ngOnInit() {
     this.configOverWrites();
@@ -155,7 +155,7 @@ export class TableComponent implements OnInit {
   }
 
   getParams(): RequestOptionsArgs {
-    let requestParams =  this.requestParams; 
+    let requestParams =  this.requestParams;
     requestParams['page_number'] = this.getPageNumber();
     if (this.filterForm) {
       Object.assign(requestParams, this.getFilter());
@@ -172,14 +172,14 @@ export class TableComponent implements OnInit {
       let data = response['data'],
       dataKey = data && data['result_set'],
       tableData = dataKey && data[dataKey],
-      noResultFound = false
+      hasWarning = false
       ;
       this.rows = tableData;
       this.metaData = data['meta'];
       if( this.rows.length == 0 ){
-        noResultFound = true ;
+        hasWarning = true ;
       }
-      this.stateHandler.updateRequestStatus(this, false, false , noResultFound);
+      this.stateHandler.updateRequestStatus(this, false, false , hasWarning);
     }else{
       this.stateHandler.updateRequestStatus(this, false, true, false , response );
     }

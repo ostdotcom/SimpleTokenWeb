@@ -26,8 +26,8 @@ export class NavbarSearchComponent implements OnInit {
   searchValue: string = null;
   isProcessing: boolean = false;
   hasError: boolean = false;
-  noResultFound: boolean = false;
-  hideResponse: boolean= true; 
+  hasWarning: boolean = false;
+  hideResponse: boolean= true;
   errMsg: string = "Sorry no results found!";
   searchTimeOut;
 
@@ -36,22 +36,22 @@ export class NavbarSearchComponent implements OnInit {
   }
 
   onSearch( searchForm ){
-    this.preSearch(); 
+    this.preSearch();
     if( this.searchValue ){
-      this.sendSearchRequest(searchForm) ; 
+      this.sendSearchRequest(searchForm) ;
     }else{
-      this.stateHandler.updateRequestStatus(this, false , false , false); 
+      this.stateHandler.updateRequestStatus(this, false , false , false);
     }
   }
 
   preSearch(){
     this.items = [];
-    this.hideResponse = false ; 
+    this.hideResponse = false ;
     clearTimeout( this.searchTimeOut );
   }
 
   sendSearchRequest(searchForm){
-    this.stateHandler.updateRequestStatus(this, true , false , false); 
+    this.stateHandler.updateRequestStatus(this, true , false , false);
     this.searchTimeOut = setTimeout(() => {
       this.http.get( this.searchApi ,  {params : searchForm.value } ).subscribe(
         response => {
@@ -73,13 +73,13 @@ export class NavbarSearchComponent implements OnInit {
       let data =response['data'],
       dataKey = data && data['result_set'],
       searchData = dataKey && data[dataKey],
-      noResultFound = false
+      hasWarning = false
       ;
       this.items = searchData;
       if( this.items.length == 0 ){
-        noResultFound =  true;
+        hasWarning =  true;
       }
-      this.stateHandler.updateRequestStatus(this, false , false , noResultFound);
+      this.stateHandler.updateRequestStatus(this, false , false , hasWarning);
     }else{
       this.stateHandler.updateRequestStatus(this, false , true , false, response );
     }
@@ -91,14 +91,14 @@ export class NavbarSearchComponent implements OnInit {
 
   handleClickEvent( event ){
     if (this._eref.nativeElement.contains(event.target)){
-        this.hideResponse = false; 
+        this.hideResponse = false;
     }else{
-        this.hideResponse = true; 
+        this.hideResponse = true;
     }
   }
 
   onSearchItemClick(){
-    this.hideResponse = true; 
+    this.hideResponse = true;
   }
 
 }
