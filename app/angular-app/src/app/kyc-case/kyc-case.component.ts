@@ -64,8 +64,4 @@ export class KycCaseComponent implements OnInit {
         this.showUpdateEth = showUpdateEth;
   }
 
-  hideReportIssue(){
-    this.showPageState();
-  }
-
 }

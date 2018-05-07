@@ -362,7 +362,7 @@
       </ng-container>
 
       <ng-container *ngIf="showReportIssue">
-       <report-issues (closeReportIssueEvent)="hideReportIssue()" ></report-issues>
+       <report-issues (closeReportIssueEvent)="showPageState()" ></report-issues>
       </ng-container>
 
       <ng-container *ngIf="showUpdateEth">

@@ -1,0 +1,15 @@
+.form-section{
+    margin: 1rem 0;
+    .form-section-label{
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+    .form-check{
+        font-size: 0.9rem;
+        padding-left: 0;
+        padding: 0.25rem 0;
+    }
+    textarea.form-control{
+        margin-top: 0.25rem;
+    }
+}
