@@ -29,6 +29,8 @@ import { KycDetailsRowComponent } from './kyc-details-row/kyc-details-row.compon
 import { BaseModalComponent } from './base-modal/base-modal.component';
 import { LogModalComponent } from './log-modal/log-modal.component';
 import { DuplicateDetailsModalComponent } from './duplicate-details-modal/duplicate-details-modal.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+
 
 
 
@@ -58,7 +60,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     KycDetailsRowComponent,
     BaseModalComponent,
     LogModalComponent,
-    DuplicateDetailsModalComponent
+    DuplicateDetailsModalComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
       {
         path: 'admin/case-id/:id',
         component: KycCaseComponent
+      },
+      {
+        path: 'admin/admin-user/dashboard',
+        component: AdminDashboardComponent
       },
     ])
   ],
