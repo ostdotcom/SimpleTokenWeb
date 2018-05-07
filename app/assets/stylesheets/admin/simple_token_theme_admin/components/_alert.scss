@@ -1,0 +1,17 @@
+
+.alert{
+
+}
+
+
+.alert-warning{
+  border-radius: 2.5px;
+  background-color: $yellow-700;
+  border: solid 0.5px $yellow-700;
+}
+
+.alert-danger{
+  border-radius: 2.5px;
+  background-color: $black-100;
+  border: solid 0.5px $red-100;
+}

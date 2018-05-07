@@ -77,9 +77,11 @@ $blue-700:  #6da4a9  !default;
 $blue-800:  #597A84 !default; // font-primary
 $blue-900:  #34445b !default;
 $blue-1000: #595b5e !default;
+$blue-1100: #597a84 !default;
 
 //Theme green shades
 $green-300 : #91c0ad!default;
+$green-400 : #5ebe55!default;
 $green-500 : #6c9ba9!default;
 $green-600: #6c99a6!default;
 $green-700: #7f9183!default;
@@ -90,6 +92,14 @@ $yellow-300:  #E4B030 !default;
 $yellow-400:  #D9A025 !default;
 $yellow-500:  #c0993a !default;
 $yellow-600:  #af7f19 !default;
+$yellow-700:  #f5a623 !default;
+$yellow-800:  #e4b030 !default;
+
+//theme red shades
+$red-100: #e82053 !default;
+
+//theme black shades
+$black-100: #3b3535 !default;
 
 $space-white-1 : #fbfdfd !default;
 $space-white-2 : #fffdf9 !default;
@@ -297,6 +307,7 @@ $font-weight-bold:            700 !default;
 
 $font-weight-100:             100 !default;
 $font-weight-200:             200 !default;
+$font-weight-400:             400 !default;
 $font-weight-500:             500 !default;
 $font-weight-600:             600 !default;
 
