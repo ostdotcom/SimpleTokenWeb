@@ -8,10 +8,10 @@
               class="form-control" />
     </form>
   </div>
-  <div class="search-result-wrapper p-3" *ngIf="!hideResponse && searchValue">
+  <div class="search-result-wrapper" *ngIf="!hideResponse && searchValue">
 
     <div *ngIf="items.length > 0">
-      <div class="search-item"  *ngFor="let item of items" (click)="onSearchItemClick()" >
+      <div class="search-item py-1 px-2"  *ngFor="let item of items" (click)="onSearchItemClick()" >
           <a class="border-none" [routerLink]="['/admin/case-id', item.id]">{{item.email}}</a>
       </div>
     </div>
