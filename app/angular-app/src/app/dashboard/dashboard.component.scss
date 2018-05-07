@@ -1,41 +1,23 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 .kyc-header{
-  margin-left:30px;
   font-size: 26px;
   font-weight: 600;
   letter-spacing: 2px;
-  color: #c0993a;
+  color: $yellow-500;
 }
 
 .filters{
 
 
 
-  select {
-    height: 30px;
-    width: 100%;
-    background-color: #ffffff;
-    border: solid 0.8px #d3e3e5;
-    font-family: Quasimoda;
+  .form-control {
     font-size: 12px;
     letter-spacing: 1px;
-    text-align: left;
     color: #597a84;
-
   }
 
-  .filter-label{
-
-    font-family: Quasimoda;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-align: left;
-    color: #9bafb5;
-    display:block;
-    padding-bottom: 5px;
-  }
   @media screen and (max-width: 1070px) and (min-width: 760px)  {
-    .filter-label{
+    .form-label{
       min-height: 35px;
     }
 

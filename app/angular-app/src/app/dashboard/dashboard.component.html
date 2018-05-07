@@ -1,32 +1,32 @@
 <div class="row mt-4">
-    <h2 class="kyc-header">KYC DASHBOARD</h2>
+    <h2 class="kyc-header ml-4">KYC DASHBOARD</h2>
 </div>
 
 <div class="row  p-3 filters">
     <div class="col-12 col-lg-8">
-      <form #filterForm="ngForm" name='filters' (change)="onFilterChange()">
+      <form class="form-group" #filterForm="ngForm" name='filters' (change)="onFilterChange()">
         <div class="row">
           <div class="col-12 col-lg pr-lg-0 mt-3">
-            <span class='filter-label'>ADMIN STATUS</span>
-            <select class="select" name="filters[admin_status]" [(ngModel)]='adminStatus' 
+            <label class='form-label'>ADMIN STATUS</label>
+            <select class="form-control" name="filters[admin_status]" [(ngModel)]='adminStatus'
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.admin_status'">
             </select>
           </div>
           <div class="col-12 col-lg pr-lg-0 mt-3">
-            <span class='filter-label'>ADMIN REVIEW STATUS</span>
-            <select class="select" name="filters[admin_action_types]" [(ngModel)]='admimReviewStatus' 
+            <label class='form-label mb-2'>ADMIN REVIEW STATUS</label>
+            <select class="form-control" name="filters[admin_action_types]" [(ngModel)]='admimReviewStatus'
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.admin_action_types'">
             </select>
           </div>
           <div class="col-12 col-lg pr-lg-0 mt-3">
-            <span class='filter-label'>CYNOPSIS STATUS</span>
-            <select class="select" name="filters[cynopsis_status]" [(ngModel)]='cynopsisStatus' 
+            <label class='form-label mb-2'>CYNOPSIS STATUS</label>
+            <select class="form-control" name="filters[cynopsis_status]" [(ngModel)]='cynopsisStatus'
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.cynopsis_status'">
             </select>
           </div>
           <div class="col-12 col-lg pr-lg-0 mt-3">
-            <span class='filter-label'>WHITELIST STATUS</span>
-            <select class="select" name="filters[whitelist_status]" [(ngModel)]='whiteListStatus' 
+            <label class='form-label mb-2'>WHITELIST STATUS</label>
+            <select class="form-control" name="filters[whitelist_status]" [(ngModel)]='whiteListStatus'
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.whitelist_status'">
             </select>
           </div>
@@ -35,9 +35,9 @@
     </div>
 
     <div class="col-12 col-lg-4 px-0 ml-auto mt-3">
-      <form #sortForm="ngForm" name='sorting' class='col-lg-7 ml-auto pr-lg-0' (change)="onSortChange()">
-        <span class='filter-label'>SORT BY</span>
-        <select class="select" name="sortings[sort_by]" [(ngModel)]='sortBy' 
+      <form #sortForm="ngForm" name='sorting' class='col-lg-7 ml-auto pr-lg-0 form-group' (change)="onSortChange()">
+        <label class='form-label mb-2'>SORT BY</label>
+        <select class="form-control" name="sortings[sort_by]" [(ngModel)]='sortBy'
                 ostOptions [entityPath]="'entity_configs.kyc_user_details.sort_by'">
         </select>
       </form>
