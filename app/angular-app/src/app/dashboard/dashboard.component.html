@@ -36,8 +36,8 @@
 
     <div class="col-12 col-lg-4 px-0 ml-auto mt-3">
       <form #sortForm="ngForm" name='sorting' class='col-lg-7 ml-auto pr-lg-0 form-group' (change)="onSortChange()">
-        <span class='filter-label'>SORT BY</span>
-        <select class="select" name="sortings[sort_by]" [(ngModel)]='sortBy'
+        <label class='form-label mb-2'>SORT BY</label>
+        <select class="form-control" name="sortings[sort_by]" [(ngModel)]='sortBy'
                 ostOptions  [entityPath]="'entity_configs.kyc_user_details.sort_by'">
         </select>
       </form>
