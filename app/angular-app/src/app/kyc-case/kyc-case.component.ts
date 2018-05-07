@@ -11,13 +11,14 @@ import { RequestStateHandlerService } from '../request-state-handler.service';
 export class KycCaseComponent implements OnInit {
 
   isProcessing: boolean = true;
-  hasError: boolean = false; 
+  hasError: boolean = false;
   showCase: boolean = true;
   showReportIssue: boolean = false;
   showUpdateEth: boolean = false;
   caseDetails: object = {};
   userDetails: object = {};
   meta: object = {};
+  caseId;
   logUrl: string = '';
   duplicateDataUrl: string = '';
   constructor(
@@ -28,6 +29,7 @@ export class KycCaseComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
+      this.caseId = params.get('id');
     this.logUrl = 'api/admin/kyc/kyc-action-logs/?id=' + params.get('id');
     this.duplicateDataUrl = 'api/admin/kyc/fetch-duplicate?id=' + params.get('id');
     this.fetchCase(params.get('id'));
@@ -43,7 +45,7 @@ export class KycCaseComponent implements OnInit {
     }).subscribe( response => {
       this.onSuccess( response.json());
     }, error => {
-      this.stateHandler.updateRequestStatus( this, false,  true , false ,  error.json()); 
+      this.stateHandler.updateRequestStatus( this, false,  true , false ,  error.json());
     })
   }
 

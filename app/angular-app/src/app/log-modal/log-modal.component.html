@@ -1,0 +1,30 @@
+<div class="modal fade right" id="logsModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4>Logs</h4>
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class='row'>
+          <app-table class="w-100" [dataUrl]="logUrl" [isPaginated]="false">
+
+            <app-kyc-log-header class='header'></app-kyc-log-header>
+
+            <ng-template #rowData let-row>
+              <app-kyc-log-row [row]='row'></app-kyc-log-row>
+            </ng-template>
+          </app-table>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+
+    </div>
+  </div>
+</div>

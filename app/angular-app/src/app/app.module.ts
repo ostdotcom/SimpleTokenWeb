@@ -26,6 +26,9 @@ import { InviteUserComponent } from './invite-user/invite-user.component';
 import { OstHeaderComponent } from './ost-header/ost-header.component';
 import { KycDetailsHeaderComponent } from './kyc-details-header/kyc-details-header.component';
 import { KycDetailsRowComponent } from './kyc-details-row/kyc-details-row.component';
+import { BaseModalComponent } from './base-modal/base-modal.component';
+import { LogModalComponent } from './log-modal/log-modal.component';
+import { DuplicateDetailsModalComponent } from './duplicate-details-modal/duplicate-details-modal.component';
 
 
 
@@ -52,7 +55,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     InviteUserComponent,
     OstHeaderComponent,
     KycDetailsHeaderComponent,
-    KycDetailsRowComponent
+    KycDetailsRowComponent,
+    BaseModalComponent,
+    LogModalComponent,
+    DuplicateDetailsModalComponent
   ],
   imports: [
     BrowserModule,
