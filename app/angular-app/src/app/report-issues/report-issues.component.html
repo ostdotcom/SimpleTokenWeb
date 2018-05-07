@@ -1,0 +1,60 @@
+<h4>Report Issue</h4>
+<p class="lead">Please select the issues you see in the uploaded documents and forms</p>
+<hr />
+<div class="row">
+  <div class="col-12 col-sm-6">
+      <form #reportIssue="ngForm">
+          <div class="form-group">
+            <label class="form-check-label">Data Mismatch</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="data_mismatch" value="first_name" id="data_mismatch_first_name" ngModel/>
+            <label class="form-check-label" for="data_mismatch_first_name">First Name</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="data_mismatch" value="last_name" id="data_mismatch_last_name" ngModel />
+            <label class="form-check-label" for="data_mismatch_last_name">Last Name</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="data_mismatch" value="birthdate" id="data_mismatch_birthdate" ngModel />
+            <label class="form-check-label" for="data_mismatch_birthdate">Date of Birth</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="data_mismatch" value="nationality" id="data_mismatch_nationality" ngModel />
+            <label class="form-check-label" for="data_mismatch_nationality">Nationality</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="data_mismatch" value="document_id_number" id="data_mismatch_document_id_number" ngModel />
+            <label class="form-check-label" for="data_mismatch_document_id_number">Document ID Number</label>
+          </div>
+          <div class="form-group">
+            <label class="form-check-label">Document Issue</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="document_issue" value="document_id_issue" id="document_issue_document_id_issue" ngModel />
+            <label class="form-check-label" for="document_issue_document_id_issue">Document ID Issue</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="document_issue" value="selfie_issue" id="document_issue_selfie_issue" ngModel />
+            <label class="form-check-label" for="document_issue_selfie_issue">Selfie Issue</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="document_issue" value="residency_proof_issue" id="document_issue_residency_proof_issue" ngModel />
+            <label class="form-check-label" for="document_issue_residency_proof_issue">Residency Proof Issue</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="document_issue" value="investor_proof_issue" id="document_issue_investor_proof_issue" ngModel />
+            <label class="form-check-label" for="document_issue_investor_proof_issue">Investor Proof Issue</label>
+          </div>
+          <div class="form-check form-group">
+            <input type="checkbox" class="form-check-input" id="other_issue_other_issue" />
+            <label class="form-check-label" for="other_issue_other_issue">Other Issue</label>
+            <textarea class="form-control" name="other_issue" id="other_issue" rows="5" ngModel></textarea>
+          </div>         
+      </form>
+      <div>
+          <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2" (click)="onReportIssue(reportIssue)">Send email</button>
+          <button type="button" class="btn btn-light text-uppercase mb-2" (click)="hideReportIssue()">Cancel</button>
+      </div>
+  </div>
+</div>
