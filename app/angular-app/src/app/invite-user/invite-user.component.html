@@ -1,0 +1,22 @@
+<div class="invite-user-wrapper">
+
+  <h4>Invite Users</h4>
+
+  <div class="invite-user-form-wrapper">
+    <form #inviteUser="ngForm" name="invite-user">
+      <div class="form-group">
+        <label class="form-lable">email address</label>
+        <input class="form-control" type="email" [(ngModel)]="email" placeholder="" />
+      </div>  
+      <div class="form-group">
+          <label class="form-lable">full name</label>
+          <input class="form-control" type="text" [(ngModel)]="name" placeholder="" />
+      </div> 
+      <div class="form-group">
+        <button class="btn btn-primary">INVITE</button>
+        <a [routerLink]="['/admin/admin-dashboard', item.id]" class="btn btn-secondary" >CANCLE</a>
+      </div>
+    </form>  
+  </div>  
+
+</div>  
