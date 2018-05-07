@@ -40,7 +40,7 @@ module SimpleTokenApi
       # @return [Result::Base] returns an object of Result::Base class
       #
       def get_invite_detail(invite_token)
-        get("invite-detail", {invite_token: invite_token.to_s})
+        get("invite-detail", {i_t: invite_token.to_s})
       end
 
       # Get details for admin mfa authentication
