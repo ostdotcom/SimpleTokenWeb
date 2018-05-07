@@ -8,10 +8,10 @@ import { OstHttp } from './ost-http.service';
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
-import { RowComponent } from './kyc_user_row/row.component';
+import { RowComponent } from './kyc-user-row/row.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeaderComponent } from './kyc_user_header/header.component';
+import { HeaderComponent } from './kyc-user-header/header.component';
 import { AppConfigService } from './app-config.service';
 import { EntityConfigService } from './entity-config.service';
 import { NavbarComponent } from './navbar/navbar.component';
