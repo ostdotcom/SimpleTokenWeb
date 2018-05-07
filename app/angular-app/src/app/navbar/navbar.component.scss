@@ -23,6 +23,22 @@
   }
 }
 
+.dropdown-toggle{
+  .caret{
+    border: 0;
+    content: "";
+    display: inline-block;
+    background: url(https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/drop-down-arrow.svg) no-repeat center;
+    height: 12px;
+    width: 12px;
+    position: relative;
+    top: 1px;
+  }
+  &:after{
+    display: none;
+  }
+}
+
 .triangle {
   position: relative;
   &:after{
@@ -31,7 +47,7 @@
     width: 0;
     height: 0;
     top: -8px;
-    right: 16px;
+    right: 0;
     border: 8px solid;
     border-color: transparent transparent #ffffff #ffffff;
     transform-origin: 0 0;
@@ -39,3 +55,4 @@
     box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.1);
   }
 }
+
