@@ -50,27 +50,6 @@
   }
 }
 
-.btn-success {
-  border: $btn-border-width solid $green-500;
-  color: $white;
-  background-color: $green-400;
-  &:focus{
-    border: $btn-border-width solid $green-500;
-    background-color: $white;
-    color: $green-500;
-  }
-  &:active{
-    color: $white;
-    border-color: $green-500;
-    background-color: $green-500;
-  }
-  &:hover{
-    color: $white;
-    border-color: $green-500;
-    background-color: $green-500;
-  }
-}
-
 .btn-light{
   border: solid 0.8px $blue-900;
   background-color: transparent;
