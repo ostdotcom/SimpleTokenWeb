@@ -49,10 +49,11 @@
           <div class="row">
               <request-state-handler class="d-block w-100" 
                                     [isProcessing]="isProcessing"
-                                    [hasError]="hasError"
-                                    [errorMessage]="errMsg" >
+                                    [hasError]="hasError">
               <div class="processing-content mt-3">Processing please wait ... </div>      
               <div class="error-content col-12 text-center">
+                <div *ngIf="errMsg">{{errMsg}}</div>
+                <div *ngIf="!errMsg">There was some issue while sending the invite.<br>Please Try Again.</div>
                 <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
               </div>            
               </request-state-handler>
