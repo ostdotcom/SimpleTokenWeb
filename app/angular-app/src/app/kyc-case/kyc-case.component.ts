@@ -63,4 +63,8 @@ export class KycCaseComponent implements OnInit {
         this.showUpdateEth = showUpdateEth;
   }
 
+  onReportIssue(reportIssueForm){
+    console.log(reportIssueForm);
+  }
+
 }
