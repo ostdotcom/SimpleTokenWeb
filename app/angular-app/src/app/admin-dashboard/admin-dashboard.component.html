@@ -1,7 +1,9 @@
-<div class="container"> 
-    <button class="btn btn-primary" (click)="showInviteUserSection()">Invite Users</button>
+<div class="container mt-4"> 
 
-    <ng-container *ngIf="showInviteUser"> 
-        <invite-user (closeInviteUser)="hideInviteUserSection( $event )"></invite-user>
-    </ng-container>
+    <div class="row" *ngIf="!showInviteUser" >
+        <button class="btn btn-primary" (click)="showInviteUserSection()">Invite Users</button>
+    </div>      
+
+    <invite-user *ngIf="showInviteUser" (closeInviteUser)="hideInviteUserSection( $event )"></invite-user>
+   
 </div>

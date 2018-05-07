@@ -1,10 +1,10 @@
 
 <div class="invite-user-wrapper row">
-  <div class="col-12"><h4>Invite Users</h4></div>
+  <div class="col-12 invite-user-header mb-3"><h4>Invite Users</h4></div>
   <div class="invite-user-form-wrapper col-12 col-sm-8 col-md-6  col-lg-4 ">
     <form #inviteUserForm="ngForm" name="invite-user">
       <div class="form-group">
-        <label class="form-lable">email address</label>
+        <label class="form-label">email address</label>
         <input class="form-control" name="email" type="email" [(ngModel)]="email" #userEmail="ngModel" required/>
         <div class="error">
           <span *ngIf="userEmail.touched && userEmail.invalid">
@@ -13,7 +13,7 @@
         </div>  
       </div>  
       <div class="form-group">
-          <label class="form-lable">full name</label>
+          <label class="form-label">full name</label>
           <input class="form-control" name="name" type="text" [(ngModel)]="name" required #userName="ngModel" />
           <div class="error" >
             <span *ngIf="userName.touched && userName.invalid">
@@ -23,8 +23,11 @@
       </div> 
     </form>  
     <div class="invite-user-btn-wrap">
-        <button [disabled]="!inviteUserForm.valid" data-toggle="modal" data-target="#inviteUser" class="btn btn-primary">INVITE</button>
-        <button class="btn btn-secondary" (click)="hideInviteUser()">CANCLE</button>
+        <button [disabled]="!inviteUserForm.valid" 
+                data-toggle="modal" 
+                data-target="#inviteUser" 
+                class="btn btn-primary">INVITE</button>
+        <button class="btn btn-secondary ml-3" (click)="hideInviteUser()">CANCLE</button>
     </div>
   </div>  
 </div> 
@@ -34,16 +37,27 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body p-5">
-          <div class='row'>
+          <div class='row' *ngIf="!isProcessing && !hasError">
             <div class="col-12">
-              <h4>Please confrim to invite {{email}}</h4>
+              <h4 class="text-center">Please confrim to invite {{email}}</h4>
             </div>
-            <div class="col-12 form-group">
+            <div class="col-12 form-group mt-4 text-center">
                <button class="btn btn-primary" (click)="sendInvite(inviteUserForm)">INVITE USER</button>  
-               <button class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-               <div class="error">{{errMsg}}</div>
+               <button class="btn btn-secondary ml-3" data-dismiss="modal">CANCEL</button>
             </div>
           </div>
+          <div class="row">
+              <request-state-handler class="d-block w-100" 
+                                    [isProcessing]="isProcessing"
+                                    [hasError]="hasError">
+              <div class="processing-content mt-3">Processing please wait ... </div>      
+              <div class="error-content col-12 text-center">
+                <div *ngIf="errMsg">{{errMsg}}</div>
+                <div *ngIf="!errMsg">There was some issue while sending the invite.<br>Please Try Again.</div>
+                <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
+              </div>            
+              </request-state-handler>
+          </div>  
         </div>
       </div>
     </div>
