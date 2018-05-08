@@ -11,7 +11,7 @@
     uploadCount: 0,
     isResidencyProofNeeded: false,
     currentPercent: 0,
-    formNames: ['document_id_file_path', 'selfie_file_path'],
+    formNames: ['document_id_file_path', 'selfie_file_path', 'investor_proof_files_path[]', 'residence_proof_file_path'],
     residencyProofMandatoryCountries: [],
     popoverPlacement: 'right',
     $kycForm: $('#kycForm'),
@@ -22,8 +22,8 @@
       oThis.bindButtonActions();
       oThis.refreshIndicator();
       oThis.$kycForm.setCustomValidity();
-      if($('#investor_proofs').length > 0 ){
-        oThis.addFormName('investor_proof_files_path');
+      if ($('#investor_proofs').length > 0) {
+        // oThis.addFormName('investor_proof_files_path[]');
       }
     },
 
@@ -51,7 +51,7 @@
             oThis.currentPercent = percent;
             $('#verifyModal .loader-content .progress .progress-bar')
               .css('width', percent + '%');
-              //.text(percent + '%');
+            //.text(percent + '%');
           }
         },
         error: function (jqXHR, exception) {
@@ -68,7 +68,7 @@
       });
 
 
-      $(".file-upload .upload-image-btn").click(function(e){
+      $(".file-upload .upload-image-btn").click(function (e) {
 
         var fileUpload = $(this).closest('.file-upload');
 
@@ -87,13 +87,15 @@
           maxBytes: fileUpload.data('max-bytes')
         };
 
-        fileUpload.find(".file-wrapper").append('<input type="file" title="'+ file_attrs.title +'" name="'+ file_attrs.name +'" data-file-count="' + oThis.fileCount + '" class="upload btn btn-orange" accept="'+ file_attrs.accept +'" data-min-bytes="'+ file_attrs.minBytes +'" data-max-bytes="'+ file_attrs.maxBytes +'" required/>');
+        var maxLength = fileUpload.data('max-length');
+
+        fileUpload.find(".file-wrapper").append('<input type="file" title="' + file_attrs.title + '" name="' + file_attrs.name + '" data-input-used-name="' + (file_attrs.name.replace("[]", "_") + oThis.fileCount) + '" data-file-count="' + oThis.fileCount + '" class="upload btn btn-orange" accept="' + file_attrs.accept + '" data-min-bytes="' + file_attrs.minBytes + '" data-max-bytes="' + file_attrs.maxBytes + '" required/>');
         fileUpload.find(".file-wrapper input[type='file'].upload:last-child").trigger("click");
 
         fileUpload.find('.file-wrapper input[type="file"]').change(function () {
 
           var inputDataCount = fileUpload.find(".file-wrapper-view [data-file-count=" + oThis.fileCount + "]");
-          if($(this).val() && inputDataCount.length === 0){
+          if ($(this).val() && inputDataCount.length === 0) {
             fileUpload.find('.file-wrapper-view').append($("<div class='file-name display-4 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<svg class="icon upload-file-close-btn" data-file-count="' + oThis.fileCount + '"> <switch><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use> </switch> </svg>'));
             fileUpload.find('.upload-file-close-btn').click(function (e) {
               var fileCount = $(e.target).closest('.file-name').data('file-count');
@@ -109,32 +111,32 @@
 
       });
 
-      $(".multi-upload-file").click(function(e){
-          if ($(".file-wrapper .upload").length == 0) {
-            oThis.fileCount = 0;
-          }
-          else {
-            oThis.fileCount++;
-          }
+      $(".multi-upload-file").click(function (e) {
+        if ($(".file-wrapper .upload").length == 0) {
+          oThis.fileCount = 0;
+        }
+        else {
+          oThis.fileCount++;
+        }
 
-          $(".file-wrapper").append('<input type="file" name="investor_file_path" data-file-count="' + oThis.fileCount + '" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>');
-          $(".file-wrapper input[type='file'].upload:last-child").trigger("click");
+        $(".file-wrapper").append('<input type="file" name="investor_file_path" data-file-count="' + oThis.fileCount + '" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>');
+        $(".file-wrapper input[type='file'].upload:last-child").trigger("click");
 
-          $('.file-wrapper').find('input[type="file"]').change(function () {
+        $('.file-wrapper').find('input[type="file"]').change(function () {
 
-            $('.multi-file-wrapper').append($("<div class='file-name display-4 col-6 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<svg class="icon upload-file-close-btn" data-file-count="' + oThis.fileCount + '"> <switch><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use> </switch> </svg>'));
-            $('.upload-file-close-btn').click(function (e) {
-                var fileCount = $(e.target).closest('.file-name').data('file-count');
-                $(".file-wrapper").find("[data-file-count=" + fileCount + "]").remove();
-                $('.multi-file-wrapper').find("[data-file-count=" + fileCount + "]").remove();
+          $('.multi-file-wrapper').append($("<div class='file-name display-4 col-6 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<svg class="icon upload-file-close-btn" data-file-count="' + oThis.fileCount + '"> <switch><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use> </switch> </svg>'));
+          $('.upload-file-close-btn').click(function (e) {
+            var fileCount = $(e.target).closest('.file-name').data('file-count');
+            $(".file-wrapper").find("[data-file-count=" + fileCount + "]").remove();
+            $('.multi-file-wrapper').find("[data-file-count=" + fileCount + "]").remove();
 
-                oThis.updateMultiFileBtnStateForInvestor();
-              }).bind(oThis);
-              oThis.updateMultiFileBtnStateForInvestor();
-          });
+            oThis.updateMultiFileBtnStateForInvestor();
+          }).bind(oThis);
+          oThis.updateMultiFileBtnStateForInvestor();
+        });
 
       });
-      
+
 
       $('.single-upload-file').click(function () {
 
@@ -144,28 +146,28 @@
 
         $(this).closest('.form-group').find('.file-name').find("input[type='file']").change(function () {
 
-         $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<img class="upload-file-close-btn"src="close.svg"  alt="Image"/>');
-         chooseButtonObject.attr('disabled','disabled');
+          $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<img class="upload-file-close-btn"src="close.svg"  alt="Image"/>');
+          chooseButtonObject.attr('disabled', 'disabled');
 
-         $(".upload-file-close-btn").click(function (event) {
-           $(this).closest('.form-group').find('input[type="button"]').removeAttr('disable');
-           $(this).closest('.form-group').find('.file-name').find("input[type='file']").remove();
-           chooseButtonObject.removeAttr('disabled');
-           $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
-         });
+          $(".upload-file-close-btn").click(function (event) {
+            $(this).closest('.form-group').find('input[type="button"]').removeAttr('disable');
+            $(this).closest('.form-group').find('.file-name').find("input[type='file']").remove();
+            chooseButtonObject.removeAttr('disabled');
+            $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
+          });
         });
       });
 
       $('.radio-button-yes').click(function () {
         console.log("radio button yes clicked");
-        $('.upload-proof-invester').css('display','');
-        oThis.addFormName('investor_proof_files_path');
+        $('.upload-proof-invester').css('display', '');
+        oThis.addFormName('investor_proof_files_path[]');
       });
 
       $('.radio-button-no').click(function () {
         console.log("radio button no clicked");
-        $('.upload-proof-invester').css('display','none');
-        oThis.removeFormName('investor_proof_files_path');
+        $('.upload-proof-invester').css('display', 'none');
+        oThis.removeFormName('investor_proof_files_path[]');
       });
 
       oThis.$kycForm.find('input[name=birthdate]')
@@ -188,7 +190,7 @@
           oThis.isResidencyProofNeeded = true;
           $('.residence-proof').show();
 
-          oThis.addFormName('residence_proof_file_path');
+          // oThis.addFormName('residence_proof_file_path');
 
         } else {
           if (oThis.isResidencyProofNeeded === false) {
@@ -197,7 +199,7 @@
           oThis.isResidencyProofNeeded = false;
           $('.residence-proof').hide();
 
-          oThis.removeFormName('residence_proof_file_path');
+          // oThis.removeFormName('residence_proof_file_path');
         }
       });
 
@@ -207,13 +209,13 @@
       });
 
       oThis.$kycForm.find('input[type="file"]').change(function () {
-        if ($(this).val())    {
-           $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<img class="upload-file-close-btn"src="close.svg"  alt="Image"/>');
-           $(this).closest('.form-group').find('.upload-file').addClass('disable-upload-button');
-           $(".upload-file-close-btn").click(function (event) {
-             $(this).closest('.form-group').find('.upload-file').removeClass('disable-upload-button');
-             $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
-           });
+        if ($(this).val()) {
+          $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<img class="upload-file-close-btn"src="close.svg"  alt="Image"/>');
+          $(this).closest('.form-group').find('.upload-file').addClass('disable-upload-button');
+          $(".upload-file-close-btn").click(function (event) {
+            $(this).closest('.form-group').find('.upload-file').removeClass('disable-upload-button');
+            $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
+          });
         }
       });
 
@@ -263,14 +265,14 @@
       });
     },
 
-    updateMultiFileBtnStateForInvestor : function (ref) {
-      if (ref.find(".file-wrapper .upload").length >= ref.data('max-length')){
-        ref.find(".upload-image-btn").attr("disabled","disabled");
-        ref.find(".reached-max-limit").css('display','');
+    updateMultiFileBtnStateForInvestor: function (ref) {
+      if (ref.find(".file-wrapper .upload").length >= ref.data('max-length')) {
+        ref.find(".upload-image-btn").attr("disabled", "disabled");
+        ref.find(".reached-max-limit").css('display', '');
 
-      } else{
+      } else {
         ref.find(".upload-image-btn").removeAttr("disabled");
-        ref.find(".reached-max-limit").css('display','none');
+        ref.find(".reached-max-limit").css('display', 'none');
       }
     },
 
@@ -317,8 +319,8 @@
 
       oThis.formNames.forEach(function (value) {
         oThis.$kycForm.find('input[name="' + value + '"]').trigger('change');
-        if(oThis.$kycForm.find('input[name="' + value + '"]').length == 0){
-          simpletoken.utils.errorHandling.addFormError(value, oThis.$kycForm.find('[data-name="' + value + '"]').data('title')+' is required');
+        if (oThis.$kycForm.find('input[name="' + value + '"]').length == 0) {
+          simpletoken.utils.errorHandling.addFormError(value, oThis.$kycForm.find('[data-name="' + value + '"]').data('title') + ' is required');
         }
       });
 
@@ -381,28 +383,38 @@
     },
 
     makeFileParams: function () {
-      var fileParams = '';
+
+      var fileParams = {images: {}, pdfs: {}};
       var formSelectors = [];
 
       oThis.formNames.forEach(function (value) {
-
-        formSelectors.push('#kycForm input[name="' + value + '"]');
-        console.log("formSelectors.push : ", '#kycForm input[name="' + value + '"]');
+        formSelectors.push($('#kycForm input[name="' + value + '"]'));
       });
 
-      $.each($(formSelectors.join(',')), function (key, value) {
+      $.each(formSelectors, function (index, v) {
+        $.each(v, function (index, value) {
 
-        var file_type = value.files[0].type;
-        var file_name = value.name;
+          var jqueryObj = $(value);
 
-        if (file_type.substr(0, 5) == 'image') {
-          var file_category = 'images';
-        } else if ("application/pdf".substr(-3) == 'pdf') {
-          var file_category = 'pdfs';
-        }
+          var file_type = jqueryObj[0].files[0].type;
+          var file_name = jqueryObj[0].name;
 
-        fileParams += file_category + '[' + file_name + ']=' + file_type + '&';
+          var sanitizedfileName = file_name.replace('[]', '');
+          var file_category = '';
 
+          if (file_type.substr(0, 5) == 'image') {
+            file_category = 'images';
+          } else if ("application/pdf".substr(-3) == 'pdf') {
+            file_category = 'pdfs';
+          }
+
+          if (sanitizedfileName === 'investor_proof_files_path') {
+            var usedInputName = jqueryObj.data('input-used-name');
+            fileParams[file_category][usedInputName] = file_type;
+          } else {
+            fileParams[file_category][sanitizedfileName] = file_type;
+          }
+        });
       });
 
       return fileParams;
@@ -416,7 +428,8 @@
       oThis.verifyModal('status-text', 'Encrypting your upload data...');
 
       $.ajax({
-        url: '/api/user/upload-params/?' + oThis.makeFileParams(),
+        url: '/api/user/upload-params',
+        data: oThis.makeFileParams(),
         success: function (response) {
           if (response.success === true) {
             oThis.uploadParamsResponse = response.data;
@@ -440,17 +453,20 @@
       oThis.verifyModal('status-text', 'We are uploading the file via a secure channel.<br /> This might take sometime, please do not refresh the page.');
 
       $.each(data, function (upload_key, upload_value) {
-        var uploadKeyCount = $('#kycForm input[name=' + upload_key + ']').length;
+        var inputObj;
 
-        for(var i = 0; i < uploadKeyCount; i++){
-          $('#fileupload').fileupload('send', {
-            files: [$('#kycForm input[name=' + upload_key + ']')[i].files[0]],
-            paramName: ['file'],
-            url: upload_value.url,
-            formData: upload_value.fields
-          });
-          oThis.uploadCount++;
+        if (upload_key.match("^investor_proof_files_path_")) {
+          inputObj = $('#kycForm input[data-input-used-name=' + upload_key + ']');
+        } else {
+          inputObj = $('#kycForm input[name=' + upload_key + ']');
         }
+        $('#fileupload').fileupload('send', {
+          files: [inputObj[0].files[0]],
+          paramName: ['file'],
+          url: upload_value.url,
+          formData: upload_value.fields
+        });
+        oThis.uploadCount++;
       });
     },
 
@@ -464,8 +480,16 @@
         obj[item.name] = item.value;
         return obj;
       }, {});
+
       $.each(oThis.uploadParamsResponse, function (upload_key, upload_value) {
-        $data[upload_key] = upload_value.fields.key;
+        if (upload_key.match("^investor_proof_files_path_")) {
+          if (!$data["investor_proof_files_path"]) {
+            $data["investor_proof_files_path"] = []
+          }
+          $data["investor_proof_files_path"].push(upload_value.fields.key);
+        } else {
+          $data[upload_key] = upload_value.fields.key;
+        }
       });
 
       $.ajax({
@@ -551,8 +575,8 @@
       }
 
     },
-    
-    showKycSuccessDialog:function () {
+
+    showKycSuccessDialog: function () {
       $kycSuccessModel = $('#kycSuccessModel');
 
       $kycSuccessModel.modal({
@@ -561,7 +585,7 @@
       }).modal('show');
     },
 
-    showKycUpdateFailedDialog:function () {
+    showKycUpdateFailedDialog: function () {
       $kycUpdateFailedModel = $('#kycUpdateFailedModel');
 
       $kycUpdateFailedModel.modal({
@@ -570,7 +594,7 @@
       }).modal('show');
     },
 
-    hideKycUpdateFailedDialog:function () {
+    hideKycUpdateFailedDialog: function () {
       $kycUpdateFailedModel = $('#kycUpdateFailedModel');
 
       $kycUpdateFailedModel.modal({
@@ -578,19 +602,19 @@
         keyboard: false
       }).modal('hide');
     },
-    
+
     addFormName: function (formName) {
       var formNameIndex = oThis.formNames.indexOf(formName);
-      if (formNameIndex === -1){
+      if (formNameIndex === -1) {
         oThis.formNames.push(formName);
       }
-      console.log("addFormName : ",formName," formNameIndex : ",formNameIndex, oThis.formNames);
+      console.log("addFormName : ", formName, " formNameIndex : ", formNameIndex, oThis.formNames);
     },
-    
+
     removeFormName: function (formName) {
       var formNameIndex = oThis.formNames.indexOf(formName);
-      oThis.formNames.splice(formNameIndex,1)
-      console.log("removeFormName : ",formName, " formNameIndex : ",formNameIndex, oThis.formNames);
+      oThis.formNames.splice(formNameIndex, 1)
+      console.log("removeFormName : ", formName, " formNameIndex : ", formNameIndex, oThis.formNames);
 
     }
 

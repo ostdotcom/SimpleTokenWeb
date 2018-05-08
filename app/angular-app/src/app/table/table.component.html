@@ -1,29 +1,36 @@
 
 <div class="rows-container">
-  
+
 
   <ng-content select=".header"></ng-content>
 
-  <div class="row-wrapper" *ngIf="rows.length > 0;">
-    <div class='row-record' *ngFor="let row of rows">
+  <div class="row-wrapper" *ngIf="rows.length > 0">
+    <div class='col-12 row-record' *ngFor="let row of rows">
       <ng-container *ngTemplateOutlet="rowTemplate,
         context: { $implicit: row }">
       </ng-container>
     </div>
-    <table-pagination   *ngIf="isPagination()"
-                        [currentPageNumber]="getPageNumber()"
-                        (pageChangeEvent)="onPageChange( $event )"
-                        [totalPageCount]="getTotalPageCount()" >
-    </table-pagination>
+    <div class="col-12">
+        <table-pagination   *ngIf="isPagination()"
+                            [metaData]="metaData"
+                            [currentPageNumber]="getPageNumber()"
+                            (pageChangeEvent)="onPageChange( $event )"
+                            [totalPageCount]="getTotalPageCount()" >
+        </table-pagination>
+    </div>
   </div>
 
-  <request-state-handler class="d-block w-100 p-5"
-                         [isProcessing]="isProcessing"
-                         [hasError]="hasError"
-                         [hasWarning]="hasWarning"
-                         [errorMessage]="customErrorMsg || errMsg"
-                         [warningMessage]="warningMsg">
-  </request-state-handler>
+  <div class="row" *ngIf="rows.length < 1">
+    <div class="col-12">
+        <request-state-handler class="d-block w-100 p-5"
+        [isProcessing]="isProcessing"
+        [hasError]="hasError"
+        [hasWarning]="hasWarning"
+        [errorMessage]="customErrorMsg || errMsg"
+        [warningMessage]="warningMsg">
+        </request-state-handler>
+    </div>
+  </div>
 
 
 </div>

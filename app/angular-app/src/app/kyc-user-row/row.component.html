@@ -1,4 +1,4 @@
-<div class="row-body desktop d-none d-lg-flex py-4" routerLink="/admin/case-id/{{row.id}}">
+<div class="row-body desktop d-none d-lg-flex py-4" [routerLink]="['/admin/case-id/', row.id]" [queryParams]="getQueryParams()">
     <div class="col name-date col p-0 px-3 display-3">
         <div class="font-weight-600">
         {{row.name}}
@@ -73,7 +73,7 @@
   </div>
 </div>
 
-<div class="mobile d-lg-none m-3">
+<div class="mobile d-lg-none m-3" [routerLink]="['/admin/case-id/', row.id]" [queryParams]="getQueryParams()">
   <div class="col">
     <div class="card">
       <div class="card-body p-0" >

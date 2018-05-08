@@ -43,6 +43,7 @@ export class DashboardComponent implements OnInit {
     this.initFilters();
     this.initSort();
     this.initPagination();
+    this.setQueryParams({});
   }
 
   initFilters(){

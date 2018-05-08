@@ -433,7 +433,7 @@
 
             <div class="row form-group upload-proof-invester">
 
-              <div class="file-upload" data-title="Accredited investor proof" data-name="investor_proof_files_path" data-max-length="<%= @presenter_obj.page_data['max_investor_proofs_allowed']%>" data-accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640">
+              <div class="file-upload" data-title="Accredited investor proof" data-name="investor_proof_files_path[]" data-max-length="<%= @presenter_obj.page_data['max_investor_proofs_allowed']%>" data-accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640">
                 <div class="col-12">
                   <label class="form-label mt-2" for="investor_file_path">UPLOADS PROOF</label>
                 </div>
@@ -447,10 +447,10 @@
                 <div class="col-12 mt-2">
                   <div class="file-wrapper" style="position:absolute; top:-1000px; left:-1000px"></div>
 
-                  <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"  data-max-length="3" tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
+                  <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"  data-max-length="<%= @presenter_obj.page_data['max_investor_proofs_allowed']%>" tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
                   </input>
                   <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality scan or<br/> picture of your passport photo page. <br/>(Min 200kb, JPG/PNG/PDF only)</span>
-                  <div class="error" data-for="investor_proof_files_path"></div>
+                  <div class="error" data-for="investor_proof_files_path[]"></div>
                 </div>
               </div>
 

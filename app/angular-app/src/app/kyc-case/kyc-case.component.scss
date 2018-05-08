@@ -95,14 +95,57 @@
     }
   }
 }
+
+#logsModal, #detailsModal{
+  .modal-dialog{
+    margin: auto;
+    float: right;
+    width: 50%;
+    height: 100vh;
+    max-width: 700px;
+
+    .modal-content{
+
+      border: none;
+      border-radius: 0px;
+      min-height: 100%;
+
+      .modal-body{
+        padding-top:0px;
+      }
+    }
+  }
+  @media screen and (max-width: 1076px) {
+    .modal-dialog{
+      width:80%;
+
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .modal-dialog{
+      width:100%;
+    }
+  }
+
+  &.modal.fade:not(.show)  {
+    .modal-dialog{
+      -webkit-transform: translate(100%, 0);
+      transform: translate(100%, 0);
+    }
+  }
+  &.modal.show  {
+    .modal-dialog{
+      -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+
+    }
+  }
+
+}
+
 #reOpenModal{
   .modal-header{
     border-bottom: none;
-
-    h5.modal-title{
-      font-size: $display2-size;
-      font-weight: $font-weight-600;
-    }
   }
 
   .modal-body{
@@ -137,11 +180,6 @@
 
   .modal-header{
     border-bottom: none;
-
-    h5.modal-title{
-      font-size: $display3-size;
-      font-weight: $font-weight-400;
-    }
   }
 
   .modal-footer{
@@ -166,11 +204,6 @@
 
   .modal-header{
     border-bottom: none;
-
-    h5.modal-title{
-      font-size: $display3-size;
-      font-weight: $font-weight-400;
-    }
   }
 
   .modal-footer{
@@ -194,11 +227,6 @@
 #denyAction{
   .modal-header{
     border-bottom: none;
-
-    h5.modal-title{
-      font-size: $display3-size;
-      font-weight: $font-weight-400;
-    }
   }
 
   .modal-footer{

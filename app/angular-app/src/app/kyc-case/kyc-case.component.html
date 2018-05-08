@@ -243,27 +243,54 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-12">
-            <h5>Other Uploaded Documents</h5>
-          </div>
-          <div class="col-12 mb-3">
-            <div class="card-group">
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title">Id image</h6>
-                </div>
-                <img class="card-img-top" src="{{userDetails.document_id_file_url}}" alt="Card image cap">
-              </div>
-              <div class="card">
-                <div class="card-body">
-                  <h6 class="card-title">Selfie image</h6>
-                </div>
-                <img class="card-img-top" src="{{userDetails.selfie_file_url}}" alt="Card image cap">
-              </div>
+
+
+        <div *ngIf="userDetails.investor_proof_files_url.length > 0">
+          <div class="row">
+            <div class="col-12">
+              <h5>Other Uploaded Documents</h5>
             </div>
+
+            <ng-container *ngFor="let userDetail of userDetails.investor_proof_files_url; let i = index">
+
+              <div class="col-12 col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title">Document_{{i+1}}</h6>
+                  </div>
+                  <div class="embed-responsive embed-responsive-1by1">
+                    <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.investor_proof_files_url[i])'></iframe>
+                  </div>
+                </div>
+              </div>
+
+            </ng-container>
+
           </div>
         </div>
+
+
+              <!--<span *ngIf="even">-->
+                <!--<div class="col-12 mb-3">-->
+                  <!--<div class="card-group">-->
+
+
+                    <!--<div *ngIf="userDetails.investor_proof_files_url.length>i+1">-->
+                      <!--<div class="card">-->
+                        <!--<div class="card-body">-->
+                          <!--<h6 class="card-title">Document_{{i+2}}</h6>-->
+                        <!--</div>-->
+                        <!--<iframe class="card-img-top" src="{{userDetails.investor_proof_files_url[i+1]}}" alt="Card image cap"></iframe>-->
+                      <!--</div>-->
+                    <!--</div>-->
+
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</span>-->
+
+
+
+
         <kyc-log-modal [caseId]='caseId'></kyc-log-modal>
         <kyc-duplicate-details-modal [caseId]='caseId'> </kyc-duplicate-details-modal>
 

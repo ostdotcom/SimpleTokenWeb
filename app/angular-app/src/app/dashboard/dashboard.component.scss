@@ -19,4 +19,55 @@
 }
 
 
+#downlaodCSV{
+  .modal-header{
+    border-bottom: none;
+  }
+
+  .modal-body{
+    font-size: $display3-size;
+  }
+
+  .modal-footer {
+    border-top: none;
+    display: inline;
+  }
+}
+
+#successCSV{
+  .modal-header{
+    border-bottom: none;
+    height: 60px;
+    .model-success-svg{
+      width: 50px;
+    }
+  }
+
+  .modal-body{
+    .success{
+      font-weight: $font-weight-400;
+    }
+  }
+
+  .modal-footer {
+    border-top: none;
+    display: inline;
+  }
+}
+
+#errorCSV{
+  .modal-header{
+    border-bottom: none;
+    height: 60px;
+    .model-warning-svg{
+      width: 50px;
+    }
+  }
+
+  .modal-footer {
+    border-top: none;
+    display: inline;
+  }
+}
+
 

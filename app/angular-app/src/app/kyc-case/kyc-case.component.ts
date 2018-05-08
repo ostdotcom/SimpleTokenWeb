@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 import { OstHttp } from '../ost-http.service';
 import { RequestStateHandlerService } from '../request-state-handler.service';
 
@@ -23,7 +24,8 @@ export class KycCaseComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: OstHttp,
-    private stateHandler : RequestStateHandlerService
+    private stateHandler : RequestStateHandlerService,
+    private domSanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -58,6 +60,10 @@ export class KycCaseComponent implements OnInit {
         this.showCase = showCase;
         this.showReportIssue = showReportIssue;
         this.showUpdateEth = showUpdateEth;
+  }
+
+  bypassSecurityTrustResourceUrl(url){
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }
