@@ -5,7 +5,7 @@ export class RequestStateHandlerService {
 
   constructor() { }
 
-  updateRequestStatus(context, isProcessing: boolean,  hasError: boolean, hasWarning?:boolean,  error?: object ){
+  updateRequestStatus(context, isProcessing: boolean = false,  hasError: boolean = false, hasWarning?:boolean,  error?: object ){
     if(!context) return;
     context.isProcessing = isProcessing ;
     context.hasError = hasError;
