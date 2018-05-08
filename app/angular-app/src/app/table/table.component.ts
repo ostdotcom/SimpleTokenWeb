@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, TemplateRef, ContentChild} from '@angular/core';
+import {Component, OnInit, Input, TemplateRef, ContentChild, Output, EventEmitter} from '@angular/core';
 import {OstHttp} from '../ost-http.service';
 import {Http, RequestOptionsArgs, ResponseContentType} from '@angular/http';
 import { RequestStateHandlerService } from '../request-state-handler.service';
@@ -25,12 +25,13 @@ export class TableComponent implements OnInit {
   @Input('filterForm') filterForm?: any = null;
   @Input('sortForm') sortForm?: any = null;
   @Input('config') config?: object = null;
-  @Input('deleteRowUrl') deleteRowUrl?: string = null;
   @Input('getDataOnInit') getDataOnInit?: boolean = true;
   @Input('isPaginated') isPaginated?: boolean = true;
   @Input('requestParams') requestParams?: object = {};
   @Input('customErrorMsg') customErrorMsg?: string = "";
   @Input('warningMsg') warningMsg?: string = "";
+
+  @Output('pageChangeEvent') pageChangeEvent? = new EventEmitter<number>();
 
   rows: Array<any> = [];
   isProcessing: boolean = false;
@@ -119,6 +120,7 @@ export class TableComponent implements OnInit {
   }
 
   onPageChange(pageNumber: number) {
+    this.pageChangeEvent.emit( pageNumber );
     this.setPageNumber(pageNumber)
     this.getTableData();
   }
@@ -157,6 +159,7 @@ export class TableComponent implements OnInit {
   getParams(): RequestOptionsArgs {
     let requestParams =  this.requestParams;
     requestParams['page_number'] = this.getPageNumber();
+    requestParams['page_size'] = 1;
     if (this.filterForm) {
       Object.assign(requestParams, this.getFilter());
     }
@@ -202,40 +205,19 @@ export class TableComponent implements OnInit {
     return totalPageCount;
   }
 
-  /*========UN-tested code start=====*/
-
-  deleteRow(data) {
-    if (!this.deleteRowUrl) return false;
-    let id = data['id'],
-      status = data['status']
-    ;
-    this.http.post(this.deleteRowUrl, id).subscribe(
-      response => {
-        let res = response.json();
-        this.onDeleteRowSuccess(res, id);
-      },
-      error => {
-        let err = error.json();
-        this.onDeleteRowFailure(err);
-      }
-    )
-  }
-
-  onDeleteRowSuccess(res, id) {
-    if (res.success) {
+  onDeleteRowSuccess(id) {
       let rowIndex = this.getRowIndex(id);
-      if (rowIndex) {
+      if (rowIndex > -1) {
         this.rows.splice(rowIndex, 1);
-      }
     }
-  }
-
-  onDeleteRowFailure(err) {
-    console.log("overwrite if needed from outside", err);
   }
 
   insertRow(row) {
     this.rows.unshift(row);
+  }
+
+  appendRow(row){
+    this.rows.push(row);
   }
 
   updateRow(updatedRow, updateRowId?, mapKey?) {
@@ -249,26 +231,23 @@ export class TableComponent implements OnInit {
   }
 
   getRowIndex(id): number {
-    let row,
-      index: number = -1;
+    let row, index: number = -1
+    ;
     for (var i = 0; i < this.rows.length; i++) {
-      row = this.rows[i]
-      if (row[id] == id) {
-        index = i;
-        break;
-      }
+      row = this.rows[i];
+      if (row['id'] == id) { return i ;  }
     }
     return index;
   }
 
   getRowFromRows(id) {
     for (var i = 0; i < this.rows.length; i++) {
-      if (this.rows[i] == id) {
-        return this.rows[i];
+      if (this.rows[i]['id'] == id) {
+       return this.rows[i];
       }
     }
     return null;
   }
 
-  /*========UN-tested code end*=====*/
+
 }

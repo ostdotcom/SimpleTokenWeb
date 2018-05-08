@@ -33,34 +33,5 @@
   </div> 
 </div>
 
-
-
-<div class="modal fade" id="inviteUser">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-body p-5">
-          <div class='row' *ngIf="!isProcessing && !hasError">
-            <div class="col-12">
-              <h4 class="text-center">Please confrim to invite {{email}}</h4>
-            </div>
-            <div class="col-12 form-group mt-4 text-center">
-               <button class="btn btn-primary" (click)="sendInvite(inviteUserForm)">INVITE USER</button>  
-               <button class="btn btn-secondary ml-3" data-dismiss="modal">CANCEL</button>
-            </div>
-          </div>
-          <div class="row">
-              <request-state-handler class="d-block w-100" 
-                                    [isProcessing]="isProcessing"
-                                    [hasError]="hasError">
-              <div class="processing-content mt-3">Processing please wait ... </div>      
-              <div class="error-content col-12 text-center">
-                <div *ngIf="errMsg">{{errMsg}}</div>
-                <div *ngIf="!errMsg">There was some issue while sending the invite.<br>Please Try Again.</div>
-                <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
-              </div>            
-              </request-state-handler>
-          </div>  
-        </div>
-      </div>
-    </div>
-</div>
+<invite-user-modal  (onInviteSuccessEvent)="hideInviteUser()"  [inviteUserForm]="inviteUserForm" >
+</invite-user-modal>
