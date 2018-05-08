@@ -19,5 +19,17 @@
             </app-table>
         </div>    
     </div>      
-    <invite-user *ngIf="showInviteUser" (closeInviteUser)="hideInviteUserSection( $event )"></invite-user>
+    <invite-user *ngIf="showInviteUser"  (closeInviteUser)="hideInviteUserSection( $event )"></invite-user>
 </div>
+
+<delete-user-modal  (deleteUserSuccessEvent)="onDeleteRowSucces( $event )" 
+                    [user]="user" [deleteUserApi]="'api/admin/admin-user/delete-admin'">
+</delete-user-modal>
+
+<resend-invite-modal  (resendInviteSuccessEvent)="onResendInviteSucces( $event )" 
+                      [user]="user" [resendInviteApi]="'api/admin/admin-user/resend-invite'">
+</resend-invite-modal>
+
+<reset-mfa-modal  (resetMfaSuccessEvent)="onResetMfaSucces( $event )" 
+                  [user]="user" [resetMfaApi]="'api/admin/admin-user/reset-mfa'">
+</reset-mfa-modal>

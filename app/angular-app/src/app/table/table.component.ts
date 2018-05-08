@@ -207,7 +207,7 @@ export class TableComponent implements OnInit {
 
   onDeleteRowSuccess(id) {
       let rowIndex = this.getRowIndex(id);
-      if (rowIndex) {
+      if (rowIndex > -1) {
         this.rows.splice(rowIndex, 1);
     }
   }
@@ -235,15 +235,15 @@ export class TableComponent implements OnInit {
     ;
     for (var i = 0; i < this.rows.length; i++) {
       row = this.rows[i];
-      if (row[id] == id) { return i ; }
+      if (row['id'] == id) { return i ;  }
     }
     return index;
   }
 
   getRowFromRows(id) {
     for (var i = 0; i < this.rows.length; i++) {
-      if (this.rows[i] == id) {
-        return this.rows[i];
+      if (this.rows[i]['id'] == id) {
+       return this.rows[i];
       }
     }
     return null;

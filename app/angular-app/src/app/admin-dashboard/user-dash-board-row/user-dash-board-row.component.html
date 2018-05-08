@@ -30,14 +30,12 @@
                     <div class="col-12">{{row.email}}</div>
                 </div>    
                 <div class="row form-group m-0 p-3">
-                    <div class="col-6">
-                        <select class="form-control selectpicker" ostOptions
-                                title="Action"
-                                [(ngModel)]="status"
-                                (change)="onStatusChange()"
-                                [entityPath]="entityPath">
-                        </select>
-                    </div>    
+                    <select class="form-control selectpicker" ostOptions
+                            title="Action"
+                            [(ngModel)]="status"
+                            (change)="onStatusChange()"
+                            [entityPath]="entityPath">
+                    </select>
                 </div>
           </div>  
       </div>    

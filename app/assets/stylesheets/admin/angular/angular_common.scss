@@ -46,3 +46,12 @@
     }
   }
 }
+
+user-dash-board-row {
+  .bootstrap-select {
+    max-width: 150px;
+    &.btn-group .dropdown-toggle {
+      background-color: $custom-grey-7;
+    }
+  }
+}

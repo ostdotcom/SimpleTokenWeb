@@ -1,6 +1,7 @@
 import { Component, AfterViewInit , ViewChild} from '@angular/core';
 import { TableComponent} from "../table/table.component";
 
+declare var $: any; 
 
 @Component({
   selector: 'admin-dashboard',
@@ -13,6 +14,7 @@ export class AdminDashboardComponent implements AfterViewInit {
   constructor() { }
 
   showInviteUser: boolean = false;
+  user:any; 
   @ViewChild(TableComponent) tableComponent;
 
   ngAfterViewInit() {
@@ -26,16 +28,34 @@ export class AdminDashboardComponent implements AfterViewInit {
     this.showInviteUser = true;
   }
 
-  onDeleteRow( data ){
- 
+  onDeleteRow( user ){
+    this.user = user; 
+    $('.modal').modal('hide'); 
+    $('#deleteAdminUserModal').modal('show'); 
   }
 
-  onResendInvite( data ){
-   
+  onResendInvite( user ){
+    this.user = user; 
+    $('.modal').modal('hide'); 
+    $('#resendInviteModal').modal('show'); 
   }
 
-  onResetMfa( data ){
-   
+  onResetMfa( user ){
+    this.user = user;
+    $('.modal').modal('hide'); 
+    $('#resetMfaModal').modal('show');  
+  }
+
+  onDeleteRowSucces( user ){
+    this.tableComponent.onDeleteRowSuccess( user['id']); 
+  }
+
+  onResendInviteSucces( user ){
+
+  }
+
+  onResetMfaSucces( user ) {
+
   }
 
 }
