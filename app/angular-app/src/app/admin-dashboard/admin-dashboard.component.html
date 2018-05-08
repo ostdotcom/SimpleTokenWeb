@@ -1,11 +1,19 @@
-<div class="container mt-4"> 
+<div class="mt-4"> 
     <div class="row" *ngIf="!showInviteUser" >
-     <div class="col-12 invite-btn-wrap">  
-        <button class="btn btn-primary float-rigth" (click)="showInviteUserSection()">Invite Users</button>
-     </div>   
-     <div class="col-12 user-table-wrap">
-        <app-table [dataUrl]="'api/admin/admin-user/dashboard'"></app-table>
-     </div>    
+        <div class="col-6 invite-btn-wrap text-left">  
+            <h4 class="text-transform-upper">USER DASHBOARD</h4>
+        </div> 
+        <div class="col-6" style="text-align: right;">
+            <button class="btn btn-primary" (click)="showInviteUserSection()">Invite Users</button>
+        </div>      
+        <div class="col-12 user-table-wrap p-0 mt-4">
+            <app-table [dataUrl]="'api/admin/admin-user/dashboard'">
+                <user-dash-board-header class="header"></user-dash-board-header>    
+                <ng-template #rowData let-row >
+                        <user-dash-board-row [row]='row'></user-dash-board-row>
+                    </ng-template>          
+            </app-table>
+        </div>    
     </div>      
     <invite-user *ngIf="showInviteUser" (closeInviteUser)="hideInviteUserSection( $event )"></invite-user>
 </div>
