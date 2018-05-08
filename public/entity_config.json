@@ -122,6 +122,32 @@
         ],
         "data_type": "array"
       }
+    },
+    "admin_dashboard" :{
+      "active" : {
+        "values" : [
+          {
+            "value": "reset",
+            "display_text": "RESET MFA"
+          },
+          {
+            "value": "delete",
+            "display_text": "DELETE ADMIN"
+          }
+      ]
+      },
+      "invited" : {
+        "values" : [
+          {
+            "value": "resend",
+            "display_text": "RESEND INVITE"
+          },
+          {
+            "value": "delete",
+            "display_text": "DELETE ADMIN"
+          }
+        ]
+      }
     }
   }
 }

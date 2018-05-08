@@ -10,8 +10,23 @@ export class UserDashBoardRowComponent implements OnInit {
   constructor() { }
 
   @Input('row') row: any ;
+  entityPath: string; 
+  status: any; 
+
+  statusMap = {
+    "active" : "Active", 
+    "invited" : "Invitation Send"
+  }
 
   ngOnInit() {
+    if(this.row){
+      this.entityPath = "entity_configs.admin_dashboard."+ this.row.status ; 
+    } 
   }
+
+  onStatusChange(){
+    console.log("status changed -----", this.status);
+  }
+
 
 }
