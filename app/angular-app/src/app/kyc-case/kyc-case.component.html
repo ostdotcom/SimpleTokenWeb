@@ -362,11 +362,11 @@
       </ng-container>
 
       <ng-container *ngIf="showReportIssue">
-       <report-issues (closeReportIssueEvent)="showPageState()" ></report-issues>
+       <report-issues (closeReportIssueEvent)="showPageState()" [caseId]='caseId'></report-issues>
       </ng-container>
 
       <ng-container *ngIf="showUpdateEth">
-       <update-ethaddress (closeEthAddressEvent)="showPageState()"></update-ethaddress>     
+       <update-ethaddress (closeEthAddressEvent)="showPageState()"></update-ethaddress>
       </ng-container>
 
     </div>

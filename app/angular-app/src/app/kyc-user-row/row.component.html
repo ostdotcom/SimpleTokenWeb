@@ -44,13 +44,13 @@
   <div class="col p-0 pr-3 duplicate-status display-3">
     <div *ngIf="row.is_duplicate;else original">
       <div class='red-left-border pl-2'>
-        <span class="font-weight-500">Duplicate</span>
-        <span class='duplicate-reason d-block display-4'>Same {{row.duplicate_type}}</span>
+        <span class="font-weight-500 display-3">Duplicate</span>
+        <span class='duplicate-reason d-block display-4 text-capitalize'>Same {{row.duplicate_type}}</span>
       </div>
     </div>
 
     <ng-template #original>
-      <div class='green-left-border pl-2 font-weight-500'>Original</div>
+      <div class='green-left-border pl-2 font-weight-500 display-3'>Original</div>
     </ng-template>
 
   </div>
@@ -113,8 +113,8 @@
 
             <div *ngIf="row.is_duplicate;else original">
               <div class="red-left-border pl-2">
-                <span class='display-3 text-capitalize'>Duplicate</span>
-                <span class='display-4 d-block'>Same {{row.duplicate_type}}</span>
+                <span class='display-3 text-capitalize font-weight-500'>Duplicate</span>
+                <span class='display-4 d-block text-capitalize'>Same {{row.duplicate_type}}</span>
               </div>
             </div>
 

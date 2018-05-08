@@ -3,60 +3,67 @@
 <hr />
 <div class="row">
   <div class="col-12 col-sm-6">
-      <form #reportIssue="ngForm">
-        <div class="form-section">
+
+          <div [formGroup]="form">
+          <div class="form-section">
           <label class="form-section-label">Data Mismatch</label>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="data_mismatch" value="first_name" id="data_mismatch_first_name" ngModel/>
-            <label class="form-check-label" for="data_mismatch_first_name">First Name</label>
+          <div *ngFor="let data of data_mismatch; let i = index" formArrayName="data_mismatch">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input"  [formControlName]="i" id="id-{{data.key}}" ngModel/>
+              <label class="form-check-label" for="id-{{data.key}}">{{data.value}}</label>
+            </div>
           </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="data_mismatch" value="last_name" id="data_mismatch_last_name" ngModel />
-            <label class="form-check-label" for="data_mismatch_last_name">Last Name</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="data_mismatch" value="birthdate" id="data_mismatch_birthdate" ngModel />
-            <label class="form-check-label" for="data_mismatch_birthdate">Date of Birth</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="data_mismatch" value="nationality" id="data_mismatch_nationality" ngModel />
-            <label class="form-check-label" for="data_mismatch_nationality">Nationality</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="data_mismatch" value="document_id_number" id="data_mismatch_document_id_number" ngModel />
-            <label class="form-check-label" for="data_mismatch_document_id_number">Document ID Number</label>
-          </div>
-        </div>  
-        <div class="form-section">
+
+        </div>
+          <div class="form-section">
           <label class="form-section-label">Document Issue</label>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="document_issue" value="document_id_issue" id="document_issue_document_id_issue" ngModel />
-            <label class="form-check-label" for="document_issue_document_id_issue">Document ID Issue</label>
+
+          <div *ngFor="let data of document_issue; let i = index" formArrayName="document_issue">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input"  [formControlName]="i" id="id-{{data.key}}" ngModel/>
+                <label class="form-check-label" for="id-{{data.key}}">{{data.value}}</label>
+              </div>
+            </div>
           </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="document_issue" value="selfie_issue" id="document_issue_selfie_issue" ngModel />
-            <label class="form-check-label" for="document_issue_selfie_issue">Selfie Issue</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="document_issue" value="residency_proof_issue" id="document_issue_residency_proof_issue" ngModel />
-            <label class="form-check-label" for="document_issue_residency_proof_issue">Residency Proof Issue</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="document_issue" value="investor_proof_issue" id="document_issue_investor_proof_issue" ngModel />
-            <label class="form-check-label" for="document_issue_investor_proof_issue">Investor Proof Issue</label>
-          </div>
-        </div>  
-        <div class="form-section">
-          <div class="form-check form-group">
-            <input type="checkbox" class="form-check-input" id="other_issue_other_issue" />
-            <label class="form-check-label" for="other_issue_other_issue">Other Issue</label>
-            <textarea class="form-control" name="other_issue" id="other_issue" rows="5" ngModel></textarea>
-          </div>  
-        </div>         
-      </form>
+
+          <div class="form-section">
+              <div class="form-check form-group">
+                <input type="checkbox" class="form-check-input" id="other_issue_other_issue" formControlName="other_issue"/>
+                <label class="form-check-label" for="other_issue_other_issue" >Other Issue</label>
+                <textarea class="form-control" name="other_issue" id="other_issue" rows="5" formControlName="other_issue_expln"></textarea>
+              </div>
+            </div>
+
+
+
+
+
+        </div>
       <div>
-          <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2" (click)="onReportIssue(reportIssue)">Send email</button>
+          <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2" data-toggle='modal' data-target='#confirmation'>Send email</button>
           <button type="button" class="btn btn-light text-uppercase mb-2" (click)="hideReportIssue()">Cancel</button>
       </div>
   </div>
 </div>
+<div class="modal fade" id="confirmation">
+    <div class="modal-dialog">
+      <div class="modal-content p-5">
+
+        <div *ngIf='isProcessing'>
+          cool
+        </div>
+        <div *ngIf= 'beforeSend'>
+            <h5 class="text-center">Are you sure you want to report this issue and send the email?</h5>
+
+            <div class="d-flex justify-content-center align-items-center mt-3">
+              <button type="button" class="btn btn-secondary cancel text-uppercase" data-dismiss="modal">CANCEL</button>
+              <button type="button" class="btn btn-primary ml-3 text-uppercase" (click)="onReportIssue(form)">send email</button>
+            </div>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { OstHttp } from './ost-http.service';
@@ -90,7 +90,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
         path: 'admin/admin-user/dashboard',
         component: AdminDashboardComponent
       },
-    ])
+    ]),
+    ReactiveFormsModule
   ],
   providers: [  EntityConfigService,
                 {

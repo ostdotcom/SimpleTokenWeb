@@ -20,8 +20,6 @@ export class KycCaseComponent implements OnInit {
   meta: object = {};
   rData
   caseId;
-  logUrl: string = '';
-  duplicateDataUrl: string = '';
   constructor(
     private route: ActivatedRoute,
     private http: OstHttp,
@@ -31,8 +29,6 @@ export class KycCaseComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.caseId = params.get('id');
-    this.logUrl = 'api/admin/kyc/kyc-action-logs/?id=' + params.get('id');
-    this.duplicateDataUrl = 'api/admin/kyc/fetch-duplicate?id=' + params.get('id');
     this.fetchCase(params.get('id'));
     });
   }
