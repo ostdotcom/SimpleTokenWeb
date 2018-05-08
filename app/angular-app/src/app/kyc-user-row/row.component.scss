@@ -15,8 +15,13 @@
   background-color: inherit;
 }
 
+.desktop{
+  cursor: pointer;
+}
+
 .mobile{
 
+  cursor: pointer;
   .row:nth-child(odd) {
     background-color: $green-1000;
   }

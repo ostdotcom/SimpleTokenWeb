@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Pipe } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-row',
@@ -6,12 +7,16 @@ import { Component, OnInit, Input, Pipe } from '@angular/core';
   styleUrls: ['./row.component.scss']
 })
 
-export class RowComponent implements OnInit {
+export class RowComponent {
 
-    @Input() row;
+  constructor( 
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-    ngOnInit() {
-    }
+  @Input() row;
 
-   
+  getQueryParams(){
+    return Object.assign({}, this.activatedRoute.snapshot.queryParams);
+  }
+  
 }
