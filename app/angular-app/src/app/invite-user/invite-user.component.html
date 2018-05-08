@@ -33,5 +33,5 @@
   </div> 
 </div>
 
-<invite-user-modal  [inviteUserForm]="inviteUserForm" >
+<invite-user-modal  (onInviteSuccessEvent)="hideInviteUser()"  [inviteUserForm]="inviteUserForm" >
 </invite-user-modal>

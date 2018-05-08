@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit , ViewChild} from '@angular/core';
+import { TableComponent} from "../table/table.component";
+
 
 @Component({
   selector: 'admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.scss']
 })
-export class AdminDashboardComponent implements OnInit {
+
+export class AdminDashboardComponent implements AfterViewInit {
 
   constructor() { }
 
   showInviteUser: boolean = false;
+  @ViewChild(TableComponent) tableComponent;
 
-  ngOnInit() {
+  ngAfterViewInit() {
   }
 
   hideInviteUserSection(){
@@ -21,4 +25,17 @@ export class AdminDashboardComponent implements OnInit {
   showInviteUserSection(){
     this.showInviteUser = true;
   }
+
+  onDeleteRow( data ){
+ 
+  }
+
+  onResendInvite( data ){
+   
+  }
+
+  onResetMfa( data ){
+   
+  }
+
 }

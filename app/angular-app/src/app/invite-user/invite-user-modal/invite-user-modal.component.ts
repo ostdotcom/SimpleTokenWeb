@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RequestStateHandlerService } from '../../request-state-handler.service';
 import { OstHttp } from '../../ost-http.service';
 declare var $:any;
@@ -13,6 +13,7 @@ export class InviteUserModalComponent implements OnInit {
   constructor(public stateHandler: RequestStateHandlerService ,  private http : OstHttp) { }
 
   @Input('inviteUserForm') inviteUserForm ; 
+  @Output('onInviteSuccessEvent') onInviteSuccessEvent = new EventEmitter(); 
 
   ngOnInit() {
     $("#inviteUser").on("hidden.bs.modal", () => {
@@ -29,6 +30,9 @@ export class InviteUserModalComponent implements OnInit {
         if( res.success ){
           this.stateHandler.updateRequestStatus(this);
           $('#inviteUser').modal('hide');
+          setTimeout(()=> {
+            this.onInviteSuccessEvent.emit( true ); 
+          } , 500 )
         }else{
           this.stateHandler.updateRequestStatus(this,  false,  true , false, res);
         }

@@ -10,8 +10,12 @@
             <app-table [dataUrl]="'api/admin/admin-user/dashboard'">
                 <user-dash-board-header class="header"></user-dash-board-header>    
                 <ng-template #rowData let-row >
-                        <user-dash-board-row [row]='row'></user-dash-board-row>
-                    </ng-template>          
+                    <user-dash-board-row [row]='row' 
+                                         (deleteRowEvent) = "onDeleteRow( $event )"
+                                         (resendInviteEvent) = "onResendInvite( $event )"
+                                         (resetMfaEvent) = "onResetMfa( $event)" >
+                    </user-dash-board-row>
+                </ng-template>          
             </app-table>
         </div>    
     </div>      

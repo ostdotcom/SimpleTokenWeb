@@ -36,6 +36,9 @@ import { UserDashBoardHeaderComponent } from './admin-dashboard/user-dash-board-
 import { UserDashBoardRowComponent } from './admin-dashboard/user-dash-board-row/user-dash-board-row.component';
 import { OstRowComponent } from './table/ost-row/ost-row.component';
 import { InviteUserModalComponent } from './invite-user/invite-user-modal/invite-user-modal.component';
+import { DeleteUserModalComponent } from './admin-dashboard/delete-user-modal/delete-user-modal.component';
+import { ResendInviteModalComponent } from './admin-dashboard/resend-invite-modal/resend-invite-modal.component';
+import { ResetMfaModalComponent } from './admin-dashboard/reset-mfa-modal/reset-mfa-modal.component';
 
 
 
@@ -73,7 +76,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     UserDashBoardHeaderComponent,
     UserDashBoardRowComponent,
     OstRowComponent,
-    InviteUserModalComponent
+    InviteUserModalComponent,
+    DeleteUserModalComponent,
+    ResendInviteModalComponent,
+    ResetMfaModalComponent
   ],
   imports: [
     BrowserModule,

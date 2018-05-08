@@ -25,7 +25,6 @@ export class TableComponent implements OnInit {
   @Input('filterForm') filterForm?: any = null;
   @Input('sortForm') sortForm?: any = null;
   @Input('config') config?: object = null;
-  @Input('deleteRowUrl') deleteRowUrl?: string = null;
   @Input('getDataOnInit') getDataOnInit?: boolean = true;
   @Input('isPaginated') isPaginated?: boolean = true;
   @Input('requestParams') requestParams?: object = {};
@@ -206,40 +205,19 @@ export class TableComponent implements OnInit {
     return totalPageCount;
   }
 
-  /*========UN-tested code start=====*/
-
-  deleteRow(data) {
-    if (!this.deleteRowUrl) return false;
-    let id = data['id'],
-      status = data['status']
-    ;
-    this.http.post(this.deleteRowUrl, id).subscribe(
-      response => {
-        let res = response.json();
-        this.onDeleteRowSuccess(res, id);
-      },
-      error => {
-        let err = error.json();
-        this.onDeleteRowFailure(err);
-      }
-    )
-  }
-
-  onDeleteRowSuccess(res, id) {
-    if (res.success) {
+  onDeleteRowSuccess(id) {
       let rowIndex = this.getRowIndex(id);
       if (rowIndex) {
         this.rows.splice(rowIndex, 1);
-      }
     }
-  }
-
-  onDeleteRowFailure(err) {
-    console.log("overwrite if needed from outside", err);
   }
 
   insertRow(row) {
     this.rows.unshift(row);
+  }
+
+  appendRow(row){
+    this.rows.push(row);
   }
 
   updateRow(updatedRow, updateRowId?, mapKey?) {
@@ -253,14 +231,11 @@ export class TableComponent implements OnInit {
   }
 
   getRowIndex(id): number {
-    let row,
-      index: number = -1;
+    let row, index: number = -1
+    ;
     for (var i = 0; i < this.rows.length; i++) {
-      row = this.rows[i]
-      if (row[id] == id) {
-        index = i;
-        break;
-      }
+      row = this.rows[i];
+      if (row[id] == id) { return i ; }
     }
     return index;
   }
@@ -274,5 +249,5 @@ export class TableComponent implements OnInit {
     return null;
   }
 
-  /*========UN-tested code end*=====*/
+
 }

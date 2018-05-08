@@ -1,13 +1,45 @@
-<div class="row py-4 px-3">
-    <div class="col">{{row.name}}</div>
-    <div class="col">{{row.email}}</div>
-    <div class="col">{{statusMap[row.status]}}</div>
-    <div class="col form-group">
-        <select class="form-control selectpicker" ostOptions
-                title="Action"
-                [(ngModel)]="status"
-                (change)="onStatusChange()"
-                [entityPath]="entityPath">
-        </select>
-    </div>
-</div>  
+<div class="row-body py-4 px-3 d-none d-lg-block">
+    <div class="row">
+        <div class="col">{{row.name}}</div>
+        <div class="col">{{row.email}}</div>
+        <div class="col">{{statusMap[row.status]}}</div>
+        <div class="col form-group">
+            <select class="form-control selectpicker" ostOptions
+                    title="Action"
+                    [(ngModel)]="status"
+                    (change)="onStatusChange()"
+                    [entityPath]="entityPath">
+            </select>
+        </div>
+    </div>  
+</div>
+
+<div class="row-body mobile py-4 px-3 d-lg-none">
+    <div class="col">
+      <div class="card">
+          <div class="card-body p-0">
+                <div class="mobile-name-div p-3">
+                  <div class="col-12 text-transform-upper display-1 font-weight-500">{{row.name}}</div>
+                  <div class="col-12 mt-2">
+                      <span class="display-1 font-weight-500 mr-2">STATUS</span>
+                      <span class="display-1">{{statusMap[row.status]}}</span>
+                  </div>
+                </div> 
+                <div class="row m-0 p-3"> 
+                    <div class="col-12 text-transform-upper display-1 font-weight-500">email address</div>
+                    <div class="col-12">{{row.email}}</div>
+                </div>    
+                <div class="row form-group m-0 p-3">
+                    <div class="col-6">
+                        <select class="form-control selectpicker" ostOptions
+                                title="Action"
+                                [(ngModel)]="status"
+                                (change)="onStatusChange()"
+                                [entityPath]="entityPath">
+                        </select>
+                    </div>    
+                </div>
+          </div>  
+      </div>    
+    </div>  
+</div>
