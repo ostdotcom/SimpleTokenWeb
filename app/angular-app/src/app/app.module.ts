@@ -32,6 +32,8 @@ import { DuplicateDetailsModalComponent } from './duplicate-details-modal/duplic
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ReportIssuesComponent } from './report-issues/report-issues.component';
 import { UpdateEthaddressComponent } from './update-ethaddress/update-ethaddress.component';
+import { UserDashBoardHeaderComponent } from './admin-dashboard/user-dash-board-header/user-dash-board-header.component';
+import { UserDashBoardRowComponent } from './admin-dashboard/user-dash-board-row/user-dash-board-row.component';
 
 
 
@@ -65,7 +67,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     DuplicateDetailsModalComponent,
     AdminDashboardComponent,
     ReportIssuesComponent,
-    UpdateEthaddressComponent
+    UpdateEthaddressComponent,
+    UserDashBoardHeaderComponent,
+    UserDashBoardRowComponent
   ],
   imports: [
     BrowserModule,
