@@ -1,17 +1,17 @@
 <div class="row py-3 mx-0 desktop d-none d-md-flex">
-  <div class="col">
+  <div class="col display-3">
   {{row.id}}
   </div>
-  <div class="col text-capitalize">
+  <div class="col text-capitalize display-3">
     {{row.admin_status}}
   </div>
-  <div class="col text-capitalize">
+  <div class="col text-capitalize display-3">
       {{row.cynopsis_status}}
   </div>
-  <div class="col">
+  <div class="col display-3">
     {{row.active}}
   </div>
-  <div class="col">
+  <div class="col display-3">
     <div *ngIf="(row.inactive | json) == '{}'; else default">
         {{row.inactive }}
     </div>
@@ -26,20 +26,20 @@
 
 <div class="mobile d-md-none">
   <div class="card m-3">
-    <div class="card-body">
+    <div class="card-body p-0">
         <div class="col-12 mobile-name-div py-4">
-            <span class='mobile-name'>Case Id</span>
-            <span class="mobile-confirmed-at">{{row.id}}</span>
+            <span class='display-1 mr-2'>Case Id</span>
+            <span class="display-3">{{row.id}}</span>
         </div>
         <div class="row py-4 mx-0">
           <div class="col-6">
-              <div class='mobile-sub-heading'>ADMIN STATUS</div>
-              <span class="mobile-text">  {{row.admin_status}}</span>
+              <div class='font-weight-500 display-4 text-transform-upper'>ADMIN STATUS</div>
+              <span class="display-3 text-capitalize">  {{row.admin_status}}</span>
           </div>
 
           <div class="col-6">
-              <div class='mobile-sub-heading'>CYNOPSIS STATUS</div>
-              <span class="mobile-text">  {{row.cynopsis_status}}</span>
+              <div class='font-weight-500 display-4 text-transform-upper'>CYNOPSIS STATUS</div>
+              <span class="display-3 text-capitalize">  {{row.cynopsis_status}}</span>
 
           </div>
 
@@ -48,13 +48,13 @@
 
         <div class="row py-4 mx-0">
           <div class="col-6">
-              <div class='mobile-sub-heading'>CURRENT MATCHES</div>
-              <span class="mobile-text">  {{row.active}}</span>
+              <div class='font-weight-500 display-4 text-transform-upper'>CURRENT MATCHES</div>
+              <span class="display-3">  {{row.active}}</span>
           </div>
 
           <div class="col-6">
-              <div class='mobile-sub-heading'>PREVIOUS STATUS</div>
-              <span class="mobile-text">
+              <div class='font-weight-500 display-4 text-transform-upper'>PREVIOUS STATUS</div>
+              <span class="display-3">
                   <div *ngIf="(row.inactive | json) == '{}'; else default">
                       {{row.inactive }}
                   </div>

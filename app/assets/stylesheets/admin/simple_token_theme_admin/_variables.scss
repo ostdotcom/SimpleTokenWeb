@@ -329,7 +329,7 @@ $text4-size:                  $font-size-base * 0.75  !default;
 
 $headings-margin-bottom:      ($spacer / 2) !default;
 $headings-font-family:        inherit !default;
-$headings-font-weight:        500 !default;
+$headings-font-weight:        $font-weight-600 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              $blue-800 !default;
 
