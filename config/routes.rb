@@ -95,7 +95,6 @@ Rails.application.routes.draw do
     scope '', controller: 'web/user' do
       get '/reserve-token' => :add_branded_token
       get '/update-token' => :update_branded_token
-      get '/verification-link' => :verification_link
     end
 
   end
@@ -110,6 +109,7 @@ Rails.application.routes.draw do
     get '/change-password' => :change_password
     get '/add-kyc' => :add_kyc_form
     get '/token-sale-blocked-region' => :token_sale_blocked_region
+    get '/verification-link' => :verification_link
     get '/' => redirect('/login')
   end
   match '/', to: 'application#not_found', via: :all

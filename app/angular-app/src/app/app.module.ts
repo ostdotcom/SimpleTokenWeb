@@ -34,6 +34,7 @@ import { ReportIssuesComponent } from './report-issues/report-issues.component';
 import { UpdateEthaddressComponent } from './update-ethaddress/update-ethaddress.component';
 import { UserDashBoardHeaderComponent } from './admin-dashboard/user-dash-board-header/user-dash-board-header.component';
 import { UserDashBoardRowComponent } from './admin-dashboard/user-dash-board-row/user-dash-board-row.component';
+import { OstRowComponent } from './table/ost-row/ost-row.component';
 
 
 
@@ -69,7 +70,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ReportIssuesComponent,
     UpdateEthaddressComponent,
     UserDashBoardHeaderComponent,
-    UserDashBoardRowComponent
+    UserDashBoardRowComponent,
+    OstRowComponent
   ],
   imports: [
     BrowserModule,

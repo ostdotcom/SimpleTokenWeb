@@ -46,6 +46,10 @@ module Web
         token_sale_details['has_ethereum_deposit_address']
       end
 
+      def is_account_activated?
+        @params[:t].present? && @params[:action] == 'add_kyc_form' #&& result['account_activated'].to_i == 1
+      end
+
       #### client settings ####
 
 

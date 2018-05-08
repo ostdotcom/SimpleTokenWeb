@@ -11,8 +11,7 @@
         d_token: null,
 
         init: function (config) {
-            oThis.api_token_sale_state_page_names = config.api_token_sale_state_page_names;
-            oThis.d_token = config.d_token;
+            $.extend(oThis , config) ;
             oThis.bindButtonActions();
         },
 
@@ -48,15 +47,15 @@
                 data: $form.serialize(),
                 success: function (response) {
                     if (response.success == true) {
+                        var data = response.data || {};
 
-                        if (oThis.d_token && (['verification_page', 'profile_page'].indexOf(response.data.user_token_sale_state) > -1) ) {
-                            window.location = '/dashboard?t=' + oThis.d_token;
-                            return false;
+                        if ( oThis.d_token && (['verification_page', 'kyc_page'].indexOf(data.user_token_sale_state) > -1) ) {
+                            window.location = '/add-kyc?t=' + oThis.d_token;
+                        } else {
+                            var path = oThis.get_redirect_path(data.user_token_sale_state);
+                            window.location = '/' + path;
                         }
 
-                        var path = oThis.get_redirect_path(response.data.user_token_sale_state);
-                        window.location = '/' + path;
-                        return false;
                     } else {
                         utilsNs.errorHandling.displayFormErrors(response);
                         if(typeof grecaptcha  != 'undefined'){
@@ -79,9 +78,8 @@
         },
 
         get_redirect_path: function (user_token_sale_state) {
-            var path = '';
-
-            var data = oThis.api_token_sale_state_page_names[user_token_sale_state];
+            var data = oThis.api_token_sale_state_page_names &&
+                       oThis.api_token_sale_state_page_names[user_token_sale_state];
 
             if (typeof(data) == 'undefined') {
                 alert("Invalid user token sale state");
