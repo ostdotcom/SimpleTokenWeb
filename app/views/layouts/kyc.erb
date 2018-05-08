@@ -73,7 +73,7 @@
   </script>
 
   <% if Rails.env.production? %>
-      <%= render :partial => 'shared/web/thirdparty/gtm_config' %>
+      <%= render :partial => 'shared/web/thirdparty/gtm_config', locals: {gtm_id: 'NQDJ46D'}  %>
   <% end %>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">

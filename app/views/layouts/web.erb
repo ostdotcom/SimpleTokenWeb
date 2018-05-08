@@ -123,7 +123,7 @@
   <% if !is_simple_token_specific_page? %>
 
     <% if @presenter_obj.gtm_pixel.present? %>
-      <%= render :partial => "/shared/web/thirdparty/gtm_config.erb" %>
+      <%= render :partial => "/shared/web/thirdparty/gtm_config.erb", locals: {gtm_id: @presenter_obj.gtm_pixel['id']} %>
     <% end %>
 
     <% if @presenter_obj.fb_pixel.present? %>
