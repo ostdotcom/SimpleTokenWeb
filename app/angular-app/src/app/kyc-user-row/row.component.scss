@@ -1,111 +1,33 @@
-.green-span{
-  width: 3px;
-  height: 18px;
-  border-radius: 0.5px;
-  background-color: #91c0ad;
-  display: inline-block;
-}
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
 .green-left-border{
-  border-left: 4px solid #91c0ad;
-  padding-left: 5px;
+  border-left: 4px solid $green-300;
 }
 .red-left-border{
-  border-left: 4px solid #e82053;
-  padding-left: 5px;
+  border-left: 4px solid $red-100;
 }
 .yellow-left-border{
-  border-left: 4px solid #f5a623;
-  padding-left: 5px;
+  border-left: 4px solid $yellow-700;
 }
 
 
 .row-body{
   background-color: inherit;
-
-  .col{
-    padding: 0px 15px 0px 0px;
-    font-size: 14px;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: 0.5px;
-    text-align: left;
-    color: #597a84;
-
-
-  }
-
-  .name-date{
-    .name{
-      font-size: 12px;
-      font-weight: 600;
-      line-height: normal;
-      letter-spacing: 0.5px;
-      text-align: left;
-      color: #597a84;
-    }
-    .date{
-      font-size: 12px;
-      color: #597a84;
-      padding-top: 4px;
-
-    }
-  }
-
-  .duplicate-status{
-    .duplicate-reason{
-      font-size: 12px;
-
-
-    }
-
-  }
 }
+
 .mobile{
 
   .row:nth-child(odd) {
     background-color: #f3fbfb;
   }
   .card{
-    border-color: #d3e3e5;
+    border-color: $custom-grey-7;
     .card-body{
-      padding:0px;
       .mobile-name-div{
         background-color: #b1e0e1;
-        .mobile-name{
-          font-size: 20px;
-          font-weight: 500;
-          line-height: 1.35;
-          text-align: left;
-          color: #597a84;
-        }
-        .mobile-confirmed-at{
-          font-size: 14px;
-          font-weight: 500;
-          font-style: normal;
-          font-stretch: normal;
-          line-height: 0.88;
-          letter-spacing: 1px;
-          text-align: left;
-          color: #597a84;
-
-        }
       }
 
-      .mobile-sub-heading{
-        font-size: 13px;
-        font-weight: 500;
-        color: #597a84;
-        letter-spacing: 1px;
 
-      }
-      .mobile-text{
-        font-size: 14px;
-        line-height: normal;
-        letter-spacing: 1px;
-        text-align: left;
-        color: #597a84;
-
-      }
     }
 
   }

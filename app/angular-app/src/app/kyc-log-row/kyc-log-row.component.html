@@ -1,31 +1,31 @@
 <div class="row py-3 mx-0 desktop d-none d-md-flex">
-  <div class="col">
+  <div class="col display-3">
   {{row.created_at_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}
   </div>
-  <div class="col">
+  <div class="col display-3 text-capitalize">
     {{row.agent}}
   </div>
-  <div class="col">
+  <div class="col display-3 text-capitalize">
       <span [innerHTML]='row.action'></span>
   </div>
 </div>
 
 <div class="mobile d-md-none">
   <div class="card m-3">
-    <div class="card-body">
+    <div class="card-body p-0">
         <div class="col-12 mobile-name-div py-4">
-            <span class='mobile-name'>Date/Time </span>
-            <span class="mobile-confirmed-at">  {{row.created_at_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}</span>
+            <span class='display-1 mr-2'>Date / Time </span>
+            <span class="display-3">  {{row.created_at_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}</span>
         </div>
         <div class="row py-4 mx-0">
           <div class="col-6">
-              <div class='mobile-sub-heading'>AGENT </div>
-              <span class="mobile-text">  {{row.agent}}</span>
+              <div class='font-weight-500 display-4 text-transform-upper'>AGENT </div>
+              <span class="display-3 text-capitalize">  {{row.agent}}</span>
           </div>
 
           <div class="col-6">
-              <div class='mobile-sub-heading'>ACTIVITY </div>
-              <span [innerHTML]='row.action' class='mobile-text'></span>
+              <div class='font-weight-500 display-4 text-transform-upper'>ACTIVITY </div>
+              <span [innerHTML]='row.action' class='display-3 text-capitalize'></span>
 
           </div>
 

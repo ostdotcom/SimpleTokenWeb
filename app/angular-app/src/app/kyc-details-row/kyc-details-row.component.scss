@@ -2,10 +2,10 @@
 
   .mobile{
     .card{
-      border-color: #d3e3e5;
+      border-color: $custom-grey-7;
       .card-body{
         .mobile-name-div{
-          background-color: #b1e0e1;
+          background-color: $green-900;
         }
       }
     }

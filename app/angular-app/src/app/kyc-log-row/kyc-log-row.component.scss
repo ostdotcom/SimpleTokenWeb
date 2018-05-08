@@ -1,51 +1,12 @@
-.row{
-font-size: 14px;
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
-}
-.mobile{
-  .card{
-    border-color: #d3e3e5;
-    .card-body{
-      padding:0px;
-      .mobile-name-div{
-        background-color: #b1e0e1;
-        .mobile-name{
-          font-size: 20px;
-          font-weight: 500;
-          line-height: 1.35;
-          text-align: left;
-          color: #597a84;
+  .mobile{
+    .card{
+      border-color: $custom-grey-7;
+      .card-body{
+        .mobile-name-div{
+          background-color: $green-900;
         }
-        .mobile-confirmed-at{
-          font-size: 14px;
-          font-weight: 500;
-          font-style: normal;
-          font-stretch: normal;
-          line-height: 0.88;
-          letter-spacing: 1px;
-          text-align: left;
-          color: #597a84;
-
-        }
-      }
-
-      .mobile-sub-heading{
-        font-size: 13px;
-        font-weight: 500;
-        color: #597a84;
-        letter-spacing: 1px;
-
-      }
-      .mobile-text{
-        font-size: 14px;
-        line-height: normal;
-        letter-spacing: 1px;
-        text-align: left;
-        color: #597a84;
-
       }
     }
-
   }
-
-}

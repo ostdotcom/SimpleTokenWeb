@@ -1,33 +1,33 @@
 <div class="row-body desktop d-none d-lg-flex py-4" routerLink="/admin/case-id/{{row.id}}">
-    <div class="col pl-3 name-date">
-        <div class="name">
+    <div class="col name-date col p-0 px-3 display-3">
+        <div class="font-weight-600">
         {{row.name}}
         </div>
-        <div class="date">
+        <div class="pt-2 display-4">
          {{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}
         </div>
 
 
     </div>
 
-  <div class="col">
+  <div class="col p-0 pr-3 display-3">
     {{row.admin_status}}
   </div>
-  <div class="col">
+  <div class="col p-0 pr-3 display-3">
     {{row.cynopsis_status}}
   </div>
-  <div class="col">
+  <div class="col p-0 pr-3 display-3">
     {{row.whitelist_status}}
   </div>
-  <div class="col">
+  <div class="col p-0 pr-3 display-3">
     {{row.country}}
   </div>
-  <div class="col">
+  <div class="col p-0 pr-3 display-3">
     {{row.nationality}}
   </div>
-  <div class="col">
+  <div class="col p-0 pr-3 display-3">
     <div *ngIf="row.is_re_submitted; else newSubmission">
-      <div class="yellow-left-border">
+      <div class="yellow-left-border pl-2 font-weight-500">
         Re-submitted
         <span class='d-block'>
           {{row.submission_count}} submission
@@ -36,27 +36,32 @@
     </div>
     <ng-template #newSubmission>
       <div>
-        <div class='mobile-text green-left-border'>New Submission</div>
+        <div class='display-3 text-capitalize green-left-border pl-2 font-weight-500'>New Submission</div>
       </div>
 
     </ng-template>
   </div>
-  <div class="col duplicate-status">
+  <div class="col p-0 pr-3 duplicate-status display-3">
     <div *ngIf="row.is_duplicate;else original">
-      <div class='red-left-border'>
-        <span>Duplicate</span>
-        <span class='duplicate-reason d-block'>Same {{row.duplicate_type}}</span>
+      <div class='red-left-border pl-2'>
+        <span class="font-weight-500">Duplicate</span>
+        <span class='duplicate-reason d-block display-4'>Same {{row.duplicate_type}}</span>
       </div>
     </div>
 
     <ng-template #original>
-      <div class='green-left-border'>Original</div>
+      <div class='green-left-border pl-2 font-weight-500'>Original</div>
     </ng-template>
 
   </div>
-  <div class="col">
+  <div class="col p-0 pr-3 display-3 text-capitalize">
     <div *ngIf="row.last_acted_by; else elseBlock">
       {{row.last_acted_by}}
+      <div *ngIf='row.last_acted_timestamp'>
+          <span class='display-3'>
+             Last edited {{row.last_acted_timestamp}}
+          </span>
+        </div>
 
     </div>
     <ng-template #elseBlock>
@@ -71,25 +76,25 @@
 <div class="mobile d-lg-none m-3">
   <div class="col">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body p-0" >
         <div class="mobile-name-div py-4 px-2 ">
-          <span class='mobile-name'> {{row.name}} </span>
-          <div class='mobile-confirmed-at d-inline-block'>{{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}</div>
+          <span class='display-1 mr-2 font-weight-500'> {{row.name}} </span>
+          <div class='display-3 font-weight-500 d-inline-block'>{{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}</div>
           <div class='mobile-admin-status mt-2'>
-            <span class='mobile-sub-heading'> ADMIN STATUS </span>
-            <div class='d-inline-block mobile-text'>{{row.admin_status}}</div>
+            <span class='font-weight-500 display-4 '> ADMIN STATUS </span>
+            <div class='d-inline-block display-3 text-capitalize'>{{row.admin_status}}</div>
 
           </div>
         </div>
         <div class="row py-4 mx-0">
           <div class="col-6">
-            <span class='mobile-sub-heading'>CYPONSIS </span>
-            <div class='mobile-text'>{{row.cynopsis_status}}</div>
+            <span class='font-weight-500 display-4 '>CYNOPSIS </span>
+            <div class='display-3 text-capitalize'>{{row.cynopsis_status}}</div>
 
           </div>
           <div class="col-6">
-            <span class='mobile-sub-heading'>WHITELIST </span>
-            <div class='mobile-text'>{{row.whitelist_status}}</div>
+            <span class='font-weight-500 display-4 '>WHITELIST </span>
+            <div class='display-3 text-capitalize'>{{row.whitelist_status}}</div>
 
           </div>
 
@@ -97,19 +102,19 @@
 
         <div class="row py-4 mx-0">
           <div class="col-6">
-            <span class='mobile-sub-heading'>SUBMISSION </span>
+            <span class='font-weight-500 display-4 '>SUBMISSION </span>
             <div *ngIf="row.is_re_submitted; else newSubmission">
-              <span class='mobile-text'> Re-submitted </span>
+              <span class='display-3 text-capitalize'> Re-submitted </span>
             </div>
 
           </div>
           <div class="col-6">
-            <span class='mobile-sub-heading'>DUPLICATE STATUS </span>
+            <span class='font-weight-500 display-4 '>DUPLICATE STATUS </span>
 
             <div *ngIf="row.is_duplicate;else original">
-              <div class="red-left-border">
-                <span class='mobile-text'>Duplicate</span>
-                <span class='duplicate-reason d-block'>Same {{row.duplicate_type}}</span>
+              <div class="red-left-border pl-2">
+                <span class='display-3 text-capitalize'>Duplicate</span>
+                <span class='display-4 d-block'>Same {{row.duplicate_type}}</span>
               </div>
             </div>
 
@@ -120,13 +125,13 @@
 
         <div class="row py-4 mx-0">
           <div class="col-6">
-            <span class='mobile-sub-heading'>RESIDENCE COUNTRY </span>
-            <div class='mobile-text'>{{row.country}}</div>
+            <span class='font-weight-500 display-4 '>RESIDENCE COUNTRY </span>
+            <div class='display-3 text-capitalize'>{{row.country}}</div>
 
           </div>
           <div class="col-6">
-            <span class='mobile-sub-heading'>NATIONALITY </span>
-            <div class='mobile-text'>{{row.nationality}}</div>
+            <span class='font-weight-500 display-4 '>NATIONALITY </span>
+            <div class='display-3 text-capitalize'>{{row.nationality}}</div>
 
           </div>
 
@@ -134,9 +139,15 @@
 
         <div class="row py-4 mx-0">
           <div class="col-12">
-            <span class='mobile-sub-heading'>ADMIN </span>
+            <span class='font-weight-500 display-4 '>ADMIN </span>
             <div *ngIf="row.last_acted_by; else elseBlock">
-              <span class='mobile-text'> {{row.last_acted_by}} </span>
+              <span class='display-3 text-capitalize'> {{row.last_acted_by}} </span>
+              <div *ngIf='row.last_acted_timestamp'>
+                <span class='display-3'>
+                   Last edited {{row.last_acted_timestamp}}
+                </span>
+              </div>
+
 
             </div>
 
