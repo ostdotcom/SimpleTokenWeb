@@ -1,18 +1,24 @@
 
-<div class="pagination mt-5">
+<div class="pagination-container mt-5">
 
-  <div class="numbers mx-auto p-2">
-    <button class="btn px-2 arrow-btn" (click)="onPrev()" [disabled]="!isPrev()" [ngClass]="{ 'disabled': !isPrev() || loading }">
-      &lang;</button>
+  <div class="numbers p-2 mr-3 float-right">
+      <button class="btn px-2 arrow-btn" (click)="onPrev()" [disabled]="!isPrev()" [ngClass]="{ 'disabled': !isPrev() || loading }">
+        &lang;</button>
 
-    <button  class='btn px-2' *ngFor="let pageNum of getPages()"
-      (click)="changePage(pageNum)"
-      [ngClass]="{'active': isActive(pageNum)}">
-      {{ pageNum }}
-    </button>
+      <button  class='btn px-2' *ngFor="let pageNum of getPages()"
+        (click)="changePage(pageNum)"
+        [ngClass]="{'active': isActive(pageNum)}">
+        {{ pageNum }}
+      </button>
 
-    <button class="btn px-2 arrow-btn" (click)="onNext()" [disabled]="!isNext()" [ngClass]="{ 'disabled': !isNext() || loading }">
-      <span> &rang; </span>
-    </button>
-  </div>
+      <button class="btn px-2 arrow-btn" (click)="onNext()" [disabled]="!isNext()" [ngClass]="{ 'disabled': !isNext() || loading }">
+        <span> &rang; </span>
+      </button>
+  </div>  
+
+  <div class="pagination-count-wrap float-right mt-3 mr-3" *ngIf="metaData">
+      <span>{{currentPageNumber}}&nbsp;-&nbsp;{{currentPageNumber * metaData.page_size}}&nbsp;of</span>
+      <span>{{metaData.total_records}}&nbsp;Entires</span>
+  </div>  
+
 </div>
