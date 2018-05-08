@@ -10,7 +10,7 @@
         </kyc-navbar-search>
     </div>
     <div class="col-12 col-lg-8">
-      <form class="form-group" #filterForm="ngForm" name='filters' (change)="onFilterChange()">
+      <form class="form-group" #filterForm="ngForm" name='filters' (change)="onFilterChange(filterForm)">
         <div class="row">
           <div class="col-12 col-lg pr-lg-0 mt-3">
             <label class='form-label mb-2'>ADMIN STATUS</label>
@@ -20,7 +20,7 @@
           </div>
           <div class="col-12 col-lg pr-lg-0 mt-3">
             <label class='form-label mb-2'>ADMIN REVIEW STATUS</label>
-            <select class="form-control selectpicker" name="filters[admin_action_types]" [(ngModel)]='admimReviewStatus'
+            <select class="form-control selectpicker" name="filters[admin_action_types]" [(ngModel)]='admimActionStatus'
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.admin_action_types'">
             </select>
           </div>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="col-12 col-lg-4 px-0 ml-auto mt-3">
-      <form #sortForm="ngForm" name='sorting' class='col-lg-7 ml-auto pr-lg-0 form-group' (change)="onSortChange()">
+      <form class="col-lg-7 ml-auto pr-lg-0 form-group" #sortForm="ngForm" name='sorting'  (change)="onSortChange(sortForm)">
         <label class='form-label mb-2'>SORT BY</label>
         <select class="form-control selectpicker" name="sortings[sort_by]" [(ngModel)]='sortBy'
                 ostOptions  [entityPath]="'entity_configs.kyc_user_details.sort_by'">
@@ -56,6 +56,7 @@
             [pageNumber]='pageNumber'
             [filterForm]='filterForm'
             [sortForm]='sortForm'
+            (pageChangeEvent)="onPageChange( $event )"
             [warningMsg]="'We could not find any results, please try changing the filters or refresh the page.'"
             [customErrorMsg]="'Something went wrong, we couldnot load the dashboard, please refresh the page or try updating the filters'">
     <dashboard-table-header class='header'></dashboard-table-header>
@@ -64,6 +65,3 @@
     </ng-template>
     </app-table>
 </div>
-
-
-

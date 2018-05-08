@@ -38,7 +38,6 @@ export class PaginationComponent {
   }
 
   isActive( index ):boolean{
-   console.log(index, this.currentPageNumber == index);
    return this.currentPageNumber == index;
   }
 

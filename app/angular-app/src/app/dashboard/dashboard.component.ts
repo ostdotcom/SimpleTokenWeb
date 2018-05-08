@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityConfigService } from '../entity-config.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,15 +9,35 @@ import { EntityConfigService } from '../entity-config.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor( private entityConfigService : EntityConfigService ) {}
+  constructor( 
+    private entityConfigService : EntityConfigService ,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+  ) {}
 
-  //Default parameters
+  // Default parameters
   adminStatus : any ;
-  admimReviewStatus : any;
+  admimActionStatus : any;
   cynopsisStatus: any;
   whiteListStatus: any;
   sortBy : any;
   pageNumber: number;
+
+  // Defaults and filtersMap
+  filtersMap: object = {
+    'filters[admin_status]': 'adminStatus',
+    'filters[admin_action_types]': 'admimActionStatus',
+    'filters[cynopsis_status]': 'cynopsisStatus',
+    'filters[whitelist_status]': 'whiteListStatus'
+  };
+  defaultQueryParams: object = {
+    adminStatus: 'all',
+    admimActionStatus: 'all',
+    cynopsisStatus: 'all',
+    whiteListStatus: 'all',
+    sortBy: 'desc',
+    pageNumber: 1
+  };
 
   ngOnInit() {
     this.initFilters();
@@ -25,30 +46,67 @@ export class DashboardComponent implements OnInit {
   }
 
   initFilters(){
-    this.adminStatus = "all";
-    this.admimReviewStatus = "all";
-    this.cynopsisStatus = "all";
-    this.whiteListStatus = "all";
+    var currentQueryParams = this.getQueryParams();
+    for (var key in this.filtersMap) {
+      this[this.filtersMap[key]] = 
+      currentQueryParams[this.filtersMap[key]] ? 
+      currentQueryParams[this.filtersMap[key]] : 
+      this.defaultQueryParams[this.filtersMap[key]]
+    }
   }
 
   initSort(){
-    this.sortBy = "desc";
+    var currentQueryParams = this.getQueryParams();
+    this.sortBy = 
+    currentQueryParams['sortBy'] ? 
+    currentQueryParams['sortBy'] : 
+    this.defaultQueryParams['sortBy'];
   }
 
   initPagination(){
-    this.pageNumber = 1 ;
+    var currentQueryParams = this.getQueryParams();
+    this.pageNumber = 
+    currentQueryParams['pageNumber'] ? 
+    currentQueryParams['pageNumber'] : 
+    this.defaultQueryParams['pageNumber'];
   }
 
-  onFilterChange(  ) {
-
+  onFilterChange( filtersForm ) {
+    var filters = {};
+    for (var key in this.filtersMap) {
+      filters[this.filtersMap[key]] = filtersForm.value[key];
+    }
+    filters['pageNumber'] = 1;
+    this.setQueryParams(filters);
   }
 
-  onSortChange(  ){
-
+  onSortChange( sortForm ){
+    var sort = {
+      sortBy: sortForm.value['sortings[sort_by]']
+    };
+    sort['pageNumber'] = 1;
+    this.setQueryParams(sort);
   }
 
-  onPageChange ( ){
+  onPageChange ( pageNumber ){
+    var page = {
+      pageNumber: pageNumber
+    };
+    this.setQueryParams(page);
+  }
 
+  getQueryParams(){
+    return Object.assign({}, this.activatedRoute.snapshot.queryParams);
+  }
+
+  setQueryParams(params){
+    var currentQueryParams = this.getQueryParams();
+    if(Object.keys(currentQueryParams).length === 0 && currentQueryParams.constructor === Object){
+      var newQueryParams = Object.assign(this.defaultQueryParams, params);
+    } else {
+      var newQueryParams = Object.assign(currentQueryParams, params);
+    }
+    this.router.navigate([], { queryParams: newQueryParams });
   }
 
 }

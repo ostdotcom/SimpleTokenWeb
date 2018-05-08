@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, TemplateRef, ContentChild} from '@angular/core';
+import {Component, OnInit, Input, TemplateRef, ContentChild, Output, EventEmitter} from '@angular/core';
 import {OstHttp} from '../ost-http.service';
 import {Http, RequestOptionsArgs, ResponseContentType} from '@angular/http';
 import { RequestStateHandlerService } from '../request-state-handler.service';
@@ -31,6 +31,8 @@ export class TableComponent implements OnInit {
   @Input('requestParams') requestParams?: object = {};
   @Input('customErrorMsg') customErrorMsg?: string = "";
   @Input('warningMsg') warningMsg?: string = "";
+
+  @Output('pageChangeEvent') pageChangeEvent? = new EventEmitter<number>();
 
   rows: Array<any> = [];
   isProcessing: boolean = false;
@@ -119,6 +121,7 @@ export class TableComponent implements OnInit {
   }
 
   onPageChange(pageNumber: number) {
+    this.pageChangeEvent.emit( pageNumber );
     this.setPageNumber(pageNumber)
     this.getTableData();
   }
@@ -157,6 +160,7 @@ export class TableComponent implements OnInit {
   getParams(): RequestOptionsArgs {
     let requestParams =  this.requestParams;
     requestParams['page_number'] = this.getPageNumber();
+    requestParams['page_size'] = 1;
     if (this.filterForm) {
       Object.assign(requestParams, this.getFilter());
     }
