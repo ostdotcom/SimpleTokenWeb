@@ -24,6 +24,9 @@
       &:after{
         display: none;
       }
+      .pull-left{
+        float: left!important;
+      }
     }
   }
   .dropdown-menu{
