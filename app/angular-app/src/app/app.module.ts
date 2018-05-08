@@ -30,6 +30,8 @@ import { BaseModalComponent } from './base-modal/base-modal.component';
 import { LogModalComponent } from './log-modal/log-modal.component';
 import { DuplicateDetailsModalComponent } from './duplicate-details-modal/duplicate-details-modal.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { ReportIssuesComponent } from './report-issues/report-issues.component';
+import { UpdateEthaddressComponent } from './update-ethaddress/update-ethaddress.component';
 
 
 
@@ -61,7 +63,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     BaseModalComponent,
     LogModalComponent,
     DuplicateDetailsModalComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    ReportIssuesComponent,
+    UpdateEthaddressComponent
   ],
   imports: [
     BrowserModule,

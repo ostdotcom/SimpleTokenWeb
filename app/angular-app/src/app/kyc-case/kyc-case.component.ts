@@ -18,6 +18,7 @@ export class KycCaseComponent implements OnInit {
   caseDetails: object = {};
   userDetails: object = {};
   meta: object = {};
+  rData
   caseId;
   logUrl: string = '';
   duplicateDataUrl: string = '';
@@ -61,10 +62,6 @@ export class KycCaseComponent implements OnInit {
         this.showCase = showCase;
         this.showReportIssue = showReportIssue;
         this.showUpdateEth = showUpdateEth;
-  }
-
-  onReportIssue(reportIssueForm){
-    console.log(reportIssueForm);
   }
 
 }

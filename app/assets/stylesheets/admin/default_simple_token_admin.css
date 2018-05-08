@@ -7,4 +7,5 @@
  * Common CSS
  *= require web/common/Icons
  *= require admin/user/Login
+ *= require plugins/bootstrap_select/bootstrap-select.scss
  */
