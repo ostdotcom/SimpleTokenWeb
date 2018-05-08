@@ -1,6 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup} from '@angular/forms';
 import {OstHttp} from '../ost-http.service';
+import { RequestStateHandlerService } from '../request-state-handler.service';
+declare var $: any;
+
+
 
 
 @Component({
@@ -13,6 +17,10 @@ export class ReportIssuesComponent implements OnInit {
   @Input() caseId: number;
   isProcessing = false;
   beforeSend = true;
+  isMailSent;
+  hasError;
+  errorMsg;
+
 
 
   form: FormGroup;
@@ -25,10 +33,15 @@ export class ReportIssuesComponent implements OnInit {
                      {key: 'selfie_issue', value: 'Selfie Issue'},
                      {key: 'residency_proof_issue', value: 'Residency Proof Issue' },
                      {key: 'investor_proof_issue', value: 'Investor Proof Issue'} ];
-  data = {};
+  data = {'email_temp_vars': {}};
   postUrl =  'api/admin/kyc/email-kyc-issue';
 
-  constructor(private formBuilder: FormBuilder, private http: OstHttp) {
+  constructor(private formBuilder: FormBuilder, private http: OstHttp, private stateHandler: RequestStateHandlerService ) {
+
+
+
+
+
     this.form = this.formBuilder.group({
       data_mismatch: this.formBuilder.array(this.data_mismatch.map(x => !1)),
       document_issue: this.formBuilder.array(this.document_issue.map(x => !1)),
@@ -41,10 +54,11 @@ export class ReportIssuesComponent implements OnInit {
 
   ngOnInit() {
 
-    setTimeout(function(){
-      this.isProcessing = false;
-      this.beforeSend = true;
-    }, 10000);
+    $('#confirmation').off('hidden.bs.modal').on('hidden.bs.modal', () => {
+      this.stateHandler.updateRequestStatus(this);
+      this.isMailSent = false;
+    });
+
   }
 
   onReportIssue( reportIssue ) {
@@ -52,6 +66,9 @@ export class ReportIssuesComponent implements OnInit {
     if (validate.isValidated) {
       this.createData();
       this.postData();
+    }else {
+      this.hasError = true;
+      this.errorMsg = validate.message;
     }
   }
 
@@ -60,13 +77,18 @@ export class ReportIssuesComponent implements OnInit {
   }
 
   postData(){
+    this.stateHandler.updateRequestStatus(this ,  true );
     this.data['id'] = this.caseId;
     this.http.post(this.postUrl, this.data).subscribe(
       response => {
         let res = response.json();
+        this.stateHandler.updateRequestStatus(this);
+        this.isMailSent = true;
       },
       error => {
         let err = error.json();
+        this.stateHandler.updateRequestStatus(this , false , true,  false  , err );
+
       })
 
   }
@@ -77,7 +99,7 @@ export class ReportIssuesComponent implements OnInit {
     for (const key in formValues) {
       if (formValues.hasOwnProperty(key)) {
         if (formValues[key] instanceof Array) {
-          this.data[key] = this.getArray(key, formValues[key]);
+          this.data['email_temp_vars'][key] = this.getArray(key, formValues[key]);
         } else if (key === 'other_issue') {
           this.data['other_issue'] = formValues['other_issue_expln'];
         }
@@ -102,7 +124,7 @@ export class ReportIssuesComponent implements OnInit {
     let formValues = this.form.value,
     atleastOneSelected = false;
     for (let ele in formValues ) {
-      if (  formValues[ele] === true  ||  (formValues[ele]).indexOf(true) > -1) {
+      if (  formValues[ele] === true  || (formValues[ele] instanceof Array &&  (formValues[ele]).indexOf(true) > -1)) {
         atleastOneSelected = true;
       }
     }
@@ -110,7 +132,7 @@ export class ReportIssuesComponent implements OnInit {
        return {isValidated: false, message: 'Please provide explanation for other issue'};
     }
     if (atleastOneSelected) {
-      return {isValidated: true};
+      return {isValidated: true, message: ''};
     }
     return {isValidated: false, message: 'Please select atleast one issue'};
   }

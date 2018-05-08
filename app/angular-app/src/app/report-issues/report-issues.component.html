@@ -47,21 +47,47 @@
 </div>
 <div class="modal fade" id="confirmation">
     <div class="modal-dialog">
-      <div class="modal-content p-5">
+      <div class="modal-content">
+          <div class="modal-body p-5">
+              <div class='row' *ngIf="!isProcessing && !hasError && !isMailSent">
+                <div class="col-12">
+                  <h4 class="text-center">Are you sure you want to report this issue and send the email?</h4>
+                </div>
+                <div class="col-12 form-group mt-4 text-center">
+                    <button class="btn btn-secondary ml-3" data-dismiss="modal">CANCEL</button>
+                   <button class="btn btn-primary" (click)="onReportIssue(form)">SEND EMAIL</button>
 
-        <div *ngIf='isProcessing'>
-          cool
-        </div>
-        <div *ngIf= 'beforeSend'>
-            <h5 class="text-center">Are you sure you want to report this issue and send the email?</h5>
+                </div>
+              </div>
 
-            <div class="d-flex justify-content-center align-items-center mt-3">
-              <button type="button" class="btn btn-secondary cancel text-uppercase" data-dismiss="modal">CANCEL</button>
-              <button type="button" class="btn btn-primary ml-3 text-uppercase" (click)="onReportIssue(form)">send email</button>
+              <div class="row">
+                  <request-state-handler class="d-block w-100"
+                                        [isProcessing]="isProcessing"
+                                        [hasError]="hasError">
+                  <div class="processing-content mt-3">Sending email, please wait ... </div>
+                  <div class="error-content col-12 text-center">
+                    <div *ngIf="errMsg">{{errMsg}}</div>
+                    <div *ngIf="!errMsg">There was some issue while sending mail.<br>Please Try Again.</div>
+                    <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
+                  </div>
+                  </request-state-handler>
+              </div>
+
+              <div class="row">
+                  <div class="col-12 success-hanlder-wrap text-center p-1" *ngIf="isMailSent">
+                      <div class="success-icon-wrap mb-3">
+                          <svg class="icon" style="width:50px; height: 50px">
+                              <switch>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                                </use>
+                              </switch>
+                          </svg>
+                      </div>
+                      <div class="mt-2 mb-3">Email sent</div>
+                      <button class="btn btn-primary" data-dismiss="modal">OK</button>
+                  </div>
+              </div>
             </div>
-
-        </div>
-
 
 
       </div>

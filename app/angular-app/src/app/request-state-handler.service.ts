@@ -11,7 +11,7 @@ export class RequestStateHandlerService {
     context.hasError = hasError;
     context.hasWarning = hasWarning;
     if( error ){
-      let err = error['err']; 
+      let err = error['err'];
       context.errMsg = err && err['display_text'] ;
     }
   }
