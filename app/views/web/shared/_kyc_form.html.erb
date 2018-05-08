@@ -10,6 +10,8 @@
   tabindex_val = 1
 %>
 
+<div id="banner-content"></div>
+
 <%= render :partial => "/web/shared/kyc_form_svg_sprite" %>
 
 <% if @presenter_obj.is_st_token_sale_client? %>
@@ -27,12 +29,13 @@
         <form class="simpletoken-form kyc-form" action="/api/user/kyc-submit" method="POST" id="kycForm">
           <div class="col-12 col-sm-12 col-lg-8 mx-auto">
             <% if is_update %>
-              <h4 class="text-center mt-4 mb-2" >Update Your Registration Details</h4>
+              <h4 class="text-center mt-4 mb-2">Update Your Registration Details</h4>
             <% else %>
-              <h4 class="text-center mt-4 mb-2" >One Step Away to Access the Token
+              <h4 class="text-center mt-4 mb-2">One Step Away to Access the Token
                 Sale</h4>
             <% end %>
-            <h6 class="kyc-instructions-title text-center mt-2">You will need the following items to complete the registration</h6>
+            <h6 class="kyc-instructions-title text-center mt-2">You will need the following items to complete the
+              registration</h6>
             <% if @presenter_obj.is_st_token_sale_client? %>
               <ul class="kyc-instructions text-center">
                 <li class="text-center">
@@ -186,7 +189,7 @@
 
             <div class="row form-group ">
               <div class="col-12 col-sm-6">
-                <div >
+                <div>
                   <label class="form-label" for="document_id_number">Identification Document Number</label>
                   <input type="text" title="Identification Document Number" class="form-control" name="document_id_number" value="" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                   <% tabindex_val += 1 %>
@@ -208,7 +211,7 @@
                     <% tabindex_val += 1 %>
                     <% to_show_usa_nationality = true
                        GlobalConstant::CountryNationality.nationalities.each do |nationality_name|
-                         if to_show_usa_nationality && ("UNITED STATE OF AMERICA" < nationality_name)                      %>
+                         if to_show_usa_nationality && ("UNITED STATE OF AMERICA" < nationality_name)                       %>
 
                       <option value="AMERICAN">United States Of America</option>
                     <% to_show_usa_nationality = false
@@ -501,6 +504,11 @@
       );
     });
 
+    <% if @presenter_obj.is_account_activated? %>
+    simpletoken.utils.errorHandling.showSuccessAlert("Your Account is Activated");
+    <% end %>
+
+
     function simpletoken_kyc_recaptcha_callback() {
       simpletoken.home.kyc.$kycForm.find('.error[data-for="recaptcha"]').text('');
     }
@@ -531,6 +539,7 @@
 
 
 
+
 </script>
 
 <script type="custom" id="passport-popover">
@@ -549,6 +558,7 @@
         </div>
       </div>
   </div>
+
 
 
 

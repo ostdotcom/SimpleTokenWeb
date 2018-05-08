@@ -5,7 +5,7 @@ class Web::UserController < Web::BaseController
   before_action :delete_user_cookie, only: [:sign_up, :login, :reset_password, :change_password]
   before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
 
-  before_action :set_page_meta_info, only: [:update_branded_token, :add_branded_token, :verification_link]
+  before_action :set_page_meta_info, only: [:update_branded_token, :add_branded_token]
 
   after_action :remove_browser_caching
 
@@ -137,17 +137,18 @@ class Web::UserController < Web::BaseController
     set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
-  # KYC form
+  # Verify Email page
   #
-  # * Author: Tahir
+  # * Author: Aman
   # * Date: 10/10/2017
-  # * Reviewed By: Sunil Khedar
+  # * Reviewed By:
   #
-  def add_kyc_form
+  def verification_link
+
     service_response = SimpleTokenApi::Request::User.new(
         host_url_with_protocol,
         request.cookies,
-        {"User-Agent" => http_user_agent}).basic_detail(GlobalConstant::TemplateType.kyc_template_type)
+        {"User-Agent" => http_user_agent}).basic_detail(GlobalConstant::TemplateType.verification_template_type)
 
     # Check if error present or not?
     unless service_response.success?
@@ -160,7 +161,38 @@ class Web::UserController < Web::BaseController
     redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
 
     @user = service_response.data["user"]
-    redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.kyc_page_allowed_states)
+    redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.verification_page_allowed_states)
+    return if has_performed?
+
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
+  end
+
+  # KYC form
+  #
+  # * Author: Tahir
+  # * Date: 10/10/2017
+  # * Reviewed By: Sunil Khedar
+  #
+  def add_kyc_form
+    service_response = SimpleTokenApi::Request::User.new(
+        host_url_with_protocol,
+        request.cookies,
+        {"User-Agent" => http_user_agent}).basic_detail(GlobalConstant::TemplateType.kyc_template_type, params[:t])
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
+    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_country_from_ip)
+    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
+
+    @user = service_response.data["user"]
+
+    extra_param = params[:t].present? ? "?e_t=1" : ""
+    redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.kyc_page_allowed_states, extra_param)
     return if has_performed?
 
     get_ip_to_cynopsis_country
@@ -273,30 +305,6 @@ class Web::UserController < Web::BaseController
 
     @user = service_response.data["user"]
     redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
-    return if has_performed?
-  end
-
-  # Branded token form
-  #
-  # * Author: Tahir
-  # * Date: 10/10/2017
-  # * Reviewed By: Sunil Khedar
-  #
-  def verification_link
-    # if GlobalConstant::StTokenSale.has_sale_ended?
-    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
-    # end
-
-    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
-
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    @user = service_response.data["user"]
-    redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.verification_page_allowed_states)
     return if has_performed?
   end
 
