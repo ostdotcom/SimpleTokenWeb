@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EntityConfigService } from '../entity-config.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestStateHandlerService } from '../request-state-handler.service';
 import {OstHttp} from '../ost-http.service';
+import {TableComponent} from '../table/table.component';
 declare var $: any;
 
 
@@ -10,9 +11,12 @@ declare var $: any;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss', '../table/table.component.scss' ]
 })
 export class DashboardComponent implements OnInit {
+
+  @ViewChild(TableComponent) table;
+
 
   constructor(
     private entityConfigService: EntityConfigService ,
@@ -36,6 +40,7 @@ export class DashboardComponent implements OnInit {
   downloadURL = 'api/admin/kyc/get-kyc-report';
   successMessage;
   errorMessage;
+  params;
 
   // Defaults and filtersMap
   filtersMap: object = {
@@ -61,6 +66,7 @@ export class DashboardComponent implements OnInit {
 
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
       this.stateHandler.updateRequestStatus(this);
+      this.checkboxError = '';
       this.isCSVDownloaded = false;
     });
   }
@@ -143,11 +149,10 @@ export class DashboardComponent implements OnInit {
   downloadCSV() {
     this.stateHandler.updateRequestStatus(this ,  true );
     console.log(this.getQueryParams());
-    this.http.get(this.downloadURL, {params: this.getQueryParams() }).subscribe(
+    this.http.get(this.downloadURL,  this.params ).subscribe(
       response => {
         let res = response.json();
-        if (!res.status){
-          console.log(res.err.display_text);
+        if (!res.success) {
           this.stateHandler.updateRequestStatus(this , false , true,  false  , res );
           return;
         }
@@ -165,6 +170,11 @@ export class DashboardComponent implements OnInit {
         this.stateHandler.updateRequestStatus(this , false , true,  false  , err );
 
       })
+  }
+
+  getParamsForDownloadCSV(params) {
+     this.params = params;
+
   }
 
 

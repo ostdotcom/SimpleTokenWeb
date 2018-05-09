@@ -21,6 +21,7 @@ export class ReportIssuesComponent implements OnInit {
   isMailSent;
   hasError;
   errorMsg;
+  frontEndError = '';
 
 
 
@@ -73,14 +74,8 @@ export class ReportIssuesComponent implements OnInit {
   }
 
   onReportIssue( reportIssue ) {
-    const validate  = this.validateForm();
-    if (validate.isValidated) {
-      this.createData();
-      this.postData();
-    }else {
-      this.hasError = true;
-      this.errorMsg = validate.message;
-    }
+    this.createData();
+    this.postData();
   }
 
   hideReportIssue() {
@@ -93,10 +88,19 @@ export class ReportIssuesComponent implements OnInit {
     this.http.post(this.postUrl, this.data).subscribe(
       response => {
         let res = response.json();
+        if (!res.success) {
+          this.stateHandler.updateRequestStatus(this , false , true,  false  , res );
+          return;
+        }
         this.stateHandler.updateRequestStatus(this);
         this.isMailSent = true;
-        $('#confirmation').modal('hide');
-        this.hideReportIssue();
+        setTimeout(
+          function(){
+            $('#confirmation').modal('hide');
+            this.hideReportIssue();
+          },
+          1000
+        );
       },
       error => {
         let err = error.json();
@@ -148,5 +152,17 @@ export class ReportIssuesComponent implements OnInit {
       return {isValidated: true, message: ''};
     }
     return {isValidated: false, message: 'Please select atleast one issue'};
+  }
+
+  validateAndOpenModal() {
+    const validation = this.validateForm();
+
+    if (! validation.isValidated) {
+      this.frontEndError = validation.message;
+    }else {
+      this.frontEndError = '';
+      $('#confirmation').modal('show');
+    }
+
   }
 }

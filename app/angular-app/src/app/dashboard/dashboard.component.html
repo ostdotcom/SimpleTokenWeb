@@ -60,6 +60,7 @@
             [filterForm]='filterForm'
             [sortForm]='sortForm'
             (pageChangeEvent)="onPageChange( $event )"
+            (sendDownloadCSVData)="getParamsForDownloadCSV( $event )"
             [warningMsg]="'We could not find any results, please try changing the filters or refresh the page.'"
             [customErrorMsg]="'Something went wrong, we couldnot load the dashboard, please refresh the page or try updating the filters'">
     <dashboard-table-header class='header'></dashboard-table-header>

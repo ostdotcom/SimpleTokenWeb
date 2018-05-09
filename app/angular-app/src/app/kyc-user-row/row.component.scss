@@ -10,10 +10,13 @@
   border-left: 4px solid $yellow-700;
 }
 
+@media (min-width: 780){
+  .row-body{
+    background-color: inherit;
+  }
 
-.row-body{
-  background-color: inherit;
 }
+
 
 .desktop{
   cursor: pointer;

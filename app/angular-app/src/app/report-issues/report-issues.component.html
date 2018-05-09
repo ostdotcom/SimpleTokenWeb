@@ -39,8 +39,9 @@
 
 
         </div>
-      <div>
-          <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2" data-toggle='modal' data-target='#confirmation'>Send email</button>
+      <div class='form-group'>
+          <span class='error'> {{frontEndError}} </span>
+          <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2" (click)='validateAndOpenModal()'>Send email</button>
           <button type="button" class="btn btn-light text-uppercase mb-2" (click)="hideReportIssue()">Cancel</button>
       </div>
   </div>

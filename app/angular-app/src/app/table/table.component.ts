@@ -32,6 +32,8 @@ export class TableComponent implements OnInit {
   @Input('warningMsg') warningMsg?: string = "";
 
   @Output('pageChangeEvent') pageChangeEvent? = new EventEmitter<number>();
+  @Output('sendDownloadCSVData') sendDownloadCSVData = new EventEmitter<object>();
+
 
   rows: Array<any> = [];
   isProcessing: boolean = false;
@@ -166,6 +168,8 @@ export class TableComponent implements OnInit {
     if (this.sortForm) {
       Object.assign(requestParams, this.getSorting());
     }
+    this.sendDownloadCSVData.emit( { params : requestParams } );
+
     //TODO meta data to append
     return { params : requestParams };
   }

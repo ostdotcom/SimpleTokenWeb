@@ -1,6 +1,6 @@
 @import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
-@media (min-width: 992px){
+@media (min-width: 768px){
   .row-record:nth-child(odd) {
     background-color: $green-1000;
   }
