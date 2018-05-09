@@ -1,11 +1,10 @@
-<request-state-handler [isProcessing]="isProcessing" [hasError]="hasError"></request-state-handler>
+
+<request-state-handler class="d-block w-100" [isProcessing]="isProcessing" [hasError]="hasError">
+</request-state-handler>
 
 <ng-container *ngIf="!isProcessing && !hasError">
-
   <div class="mt-3">
-
     <div class="container mb-4">
-
       <ng-container *ngIf="showCase">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
@@ -16,42 +15,45 @@
           </ol>
         </nav>
 
-        <div *ngIf="true">
-          <div class="alert alert-danger" role="alert">
-            <div class="d-flex justify-content-center align-items-center">
-              <svg class="svg alert-error-svg">
+
+        <ost-alert *ngIf="isStatusDenied" [alertStyleClass]="'alert-danger'">
+          <ng-container class="svg-container">
+            <svg class="svg alert-error-svg">
                 <switch>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon"></use>
                 </switch>
-              </svg>
+            </svg>
+          </ng-container>
+          <ng-container class="alert-text">
               <span class="ml-2">AML/CTF status denied, this case cannot be reopned</span>
-            </div>
-          </div>
-        </div>
-        <div *ngIf="true">
-          <div class="alert alert-warning" role="alert">
-            <div class="d-flex justify-content-center align-items-center">
-              <svg class="svg alert-warning-svg">
-                <switch>
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
-                </switch>
-              </svg>
-              <span class="ml-2">Issue reported, data mismatch email sent.</span>
-            </div>
-          </div>
-        </div>
-        <div *ngIf="true">
-          <div class="alert alert-warning" role="alert">
-            <div class="d-flex justify-content-center align-items-center">
-              <svg class="svg alert-warning-svg">
-                <switch>
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
-                </switch>
-              </svg>
-              <span class="ml-2">Case approved, whitelisting in Progress</span>
-            </div>
-          </div>
-        </div>
+            </ng-container>
+        </ost-alert>
+
+         <ost-alert *ngIf="isReportIssue" [alertStyleClass]="'alert-warning'">
+            <ng-container class="svg-container">
+                <svg class="svg alert-warning-svg">
+                    <switch>
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                    </switch>
+                  </svg>
+            </ng-container>
+            <ng-container class="alert-text">
+                <span class="ml-2">Issue reported, data mismatch email sent.</span>
+              </ng-container>
+          </ost-alert>
+
+          <ost-alert *ngIf="isWhitelisting" [alertStyleClass]="'alert-warning'">
+              <ng-container class="svg-container">
+                  <svg class="svg alert-warning-svg">
+                      <switch>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                      </switch>
+                    </svg>
+              </ng-container>
+              <ng-container class="alert-text">
+                  <span class="ml-2">Case approved, whitelisting in Progress</span>
+                </ng-container>
+          </ost-alert>
 
 
         <div class="row">
@@ -69,7 +71,7 @@
                     <span class="value">{{caseDetails.cynopsis_status}}</span>
                   </div>
 
-                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#retrySending">Retry cynopsis</span>
+                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#retrySendingModal">Retry cynopsis</span>
 
                 </div>
 
@@ -269,122 +271,8 @@
           </div>
         </div>
 
-
-              <!--<span *ngIf="even">-->
-                <!--<div class="col-12 mb-3">-->
-                  <!--<div class="card-group">-->
-
-
-                    <!--<div *ngIf="userDetails.investor_proof_files_url.length>i+1">-->
-                      <!--<div class="card">-->
-                        <!--<div class="card-body">-->
-                          <!--<h6 class="card-title">Document_{{i+2}}</h6>-->
-                        <!--</div>-->
-                        <!--<iframe class="card-img-top" src="{{userDetails.investor_proof_files_url[i+1]}}" alt="Card image cap"></iframe>-->
-                      <!--</div>-->
-                    <!--</div>-->
-
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</span>-->
-
-
-
-
         <kyc-log-modal [caseId]='caseId'></kyc-log-modal>
         <kyc-duplicate-details-modal [caseId]='caseId'> </kyc-duplicate-details-modal>
-
-        <div class="modal fade" id="reOpenModal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-
-              <!-- Modal Header -->
-              <div class="modal-header d-flex justify-content-center align-items-center">
-                <h5 class="modal-title">Are you sure you want to reopen this case?</h5>
-              </div>
-
-              <!-- Modal body -->
-              <div class="modal-body text-center mx-5">
-                <div>When a case is reopened, User is unwhitelisted.</div>
-                <div class="mt-2">Once the user is qualified, the user will be whitelisted again The user will not be able to take part in
-                  the ICO, until the case is closed again.</div>
-              </div>
-
-
-              <!-- Modal footer -->
-              <div class="modal-footer mt-3 mb-3">
-                <div class="d-flex justify-content-center align-items-center">
-                  <button type="button" class="btn primary text-uppercase">Re-open</button>
-                  <button type="button" class="btn cancel ml-3" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade" id="retrySending">
-          <div class="modal-dialog">
-            <div class="modal-content">
-
-              <!-- Modal Header -->
-              <div class="modal-header d-flex justify-content-center align-items-center">
-                <h5 class="modal-title text-center">Are you sure you want to Retry sending this users request to cynopsis?</h5>
-              </div>
-
-              <!-- Modal footer -->
-              <div class="modal-footer mt-3 mb-3">
-                <div class="d-flex justify-content-center align-items-center">
-                  <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
-                  <button type="button" class="btn primary ml-3 text-uppercase">RETRY</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade" id="qualifyAction">
-          <div class="modal-dialog">
-            <div class="modal-content">
-
-              <!-- Modal Header -->
-              <div class="modal-header d-flex justify-content-center align-items-center">
-                <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
-              </div>
-
-              <!-- Modal footer -->
-              <div class="modal-footer mt-3 mb-3">
-                <div class="d-flex justify-content-center align-items-center">
-                  <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
-                  <button type="button" class="btn primary ml-3 text-uppercase">QUALIFY KYC</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade" id="denyAction">
-          <div class="modal-dialog">
-            <div class="modal-content">
-
-              <!-- Modal Header -->
-              <div class="modal-header d-flex justify-content-center align-items-center">
-                <h5 class="modal-title text-center">Are you sure you want to Deny this user?</h5>
-              </div>
-
-              <!-- Modal footer -->
-              <div class="modal-footer mt-3 mb-3">
-                <div class="d-flex justify-content-center align-items-center">
-                  <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
-                  <button type="button" class="btn primary ml-3 text-uppercase">DENY KYC</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
 
       </ng-container>
 
@@ -410,7 +298,7 @@
 
               <div id="caseClose" class="d-flex justify-content-center align-items-center mb-2">
                 <span class="mr-2 font-weight-normal">This case has been Approved and closed</span>
-                <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reOpenModal">Re-open</button>
+                <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
               </div>
 
             </ng-template>
@@ -420,9 +308,9 @@
               <button type="button" class="btn btn-light text-uppercase mb-2" (click)="showPageState(false, false, true)">Update eth address</button>
 
               <div class="float-right">
-                <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyAction">Deny</button>
+                <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyActionModal">Deny</button>
                 <button type="button" class="btn btn-light mr-2 mb-2 text-uppercase" (click)="showPageState(false, true, false)">Report Issue</button>
-                <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyAction">Qualify</button>
+                <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyActionModal">Qualify</button>
               </div>
 
             </ng-template>
@@ -434,5 +322,19 @@
     </div>
 
   </div>
+
+  <deny-action-modal [postApi]="'api/admin/kyc/deny-kyc'" 
+                     [caseId]="caseId"  (denyActionSuccessEvent)="onDenyActionSuccessEvent($event)" >
+  </deny-action-modal>
+
+  <qualify-action-modal [postApi]="'api/admin/kyc/qualify'" 
+                        [caseId]="caseId" (qaulifyActionSuccessEvent)="onQaulifyActionSuccessEvent($event)">
+ </qualify-action-modal>
+  <retry-cynopsis-modal [postApi]="'api/admin/kyc/retry-cynopsis-upload'" 
+                        [caseId]="caseId" (retryActionSuccessEvent)="onRetryActionSuccessEvent($event)">
+ </retry-cynopsis-modal>
+  <reopen-case-modal  [postApi]="'api/admin/kyc/open-case'" 
+                      [caseId]="caseId" (reopenActionSuccessEvent)="onReopenActionSuccessEvent($event)"  >
+  </reopen-case-modal>
 
 </ng-container>

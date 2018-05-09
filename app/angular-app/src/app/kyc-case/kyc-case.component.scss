@@ -143,109 +143,13 @@
 
 }
 
-#reOpenModal{
-  .modal-header{
-    border-bottom: none;
-  }
 
-  .modal-body{
-    padding: 0px;
-    border-bottom: none;
 
-    color: #9aaaaa;
-    font-size: $display4-size;
-    font-weight: $font-weight-400;
-  }
 
-  .modal-footer{
-    border-top: none;
-    display: inline;
 
-    .primary{
-      border-radius: 1px;
-      background-color: $yellow-800;
-      color: $white;
-    }
 
-    .cancel{
-      border-radius: 1px;
-      border: solid 0.8px $blue-900;
-      color: $blue-900;
 
-    }
-  }
-}
 
-#retrySending{
-
-  .modal-header{
-    border-bottom: none;
-  }
-
-  .modal-footer{
-    border-top: none;
-    display: inline;
-
-    .primary{
-      border-radius: 1px;
-      background-color: $yellow-800;
-      color: $blue-900;
-
-    }
-    .cancel{
-      border-radius: 1px;
-      border: solid 0.8px $blue-900;
-      color: $blue-900;
-    }
-  }
-}
-
-#qualifyAction{
-
-  .modal-header{
-    border-bottom: none;
-  }
-
-  .modal-footer{
-    border-top: none;
-    display: inline;
-
-    .primary{
-      border-radius: 1px;
-      background-color: $green-400;
-      color: $blue-900;
-
-    }
-    .cancel{
-      border-radius: 1px;
-      border: solid 0.8px $blue-900;
-      color: $blue-900;
-    }
-  }
-}
-
-#denyAction{
-  .modal-header{
-    border-bottom: none;
-  }
-
-  .modal-footer{
-    border-top: none;
-    display: inline;
-
-    .primary{
-      border-radius: 1px;
-      background-color: $red;
-      color: $blue-900;
-
-    }
-    .cancel{
-      border-radius: 1px;
-      border: solid 0.8px $blue-900;
-      color: $blue-900;
-    }
-  }
-}
 
 
 

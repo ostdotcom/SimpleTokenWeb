@@ -16,7 +16,7 @@ export class InviteUserModalComponent implements OnInit {
   @Output('onInviteSuccessEvent') onInviteSuccessEvent = new EventEmitter(); 
 
   ngOnInit() {
-    $("#inviteUser").on("hidden.bs.modal", () => {
+    $("#inviteUser").off('hidden.bs.modal').on("hidden.bs.modal", () => {
       this.stateHandler.updateRequestStatus(this);
     });
   }

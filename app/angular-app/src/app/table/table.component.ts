@@ -40,7 +40,7 @@ export class TableComponent implements OnInit {
   filtersObserver: any;
   sortObserver: any;
   metaData: object;
-  errMsg: string="";
+  errorMessage: string="";
 
   ngOnInit() {
     this.configOverWrites();
