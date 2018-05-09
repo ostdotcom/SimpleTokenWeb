@@ -46,15 +46,22 @@ export class OstHttp extends Http {
         erroMsg = "Unable to connect to server";
       }
 
-      if( erroMsg ) {
-        let _body =  error['_body'] || {};
-        _body =  JSON.parse(_body);
-        if( !_body['err'] ){
-          _body['err'] = {};
-        }
-        _body['err']['display_text'] = erroMsg;
-        error['_body'] = JSON.stringify(_body);
+
+        if( erroMsg ) {
+          let _body =  error['_body'] || {};
+          try {
+            _body = JSON.parse(_body);
+          }catch (e){
+            _body = {};
+          }
+          if( !_body['err'] ){
+            _body['err'] = {};
+          }
+          _body['err']['display_text'] = erroMsg;
+          error['_body'] = JSON.stringify(_body);
       }
+
+
 
       return Observable.throw(error);
     }
