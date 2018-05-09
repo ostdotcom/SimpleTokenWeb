@@ -2,17 +2,18 @@
 <h4>Update Eth Address</h4>
 <hr />
 <div class="row">
-    <div class="col-12 col-sm-6">
+    <div class="col-12 col-sm-6 form-group">
         <form #updateEthAdressForm="ngForm">
             <div class="form-group">
                 <label for="form-label">Enter Eth address</label>
-                <input type="text" name="address" class="form-control" >
-              </div>         
+                <input type="text" name="address" class="form-control" ngModel>
+              </div>
         </form>
-       <div class="mt-4">
-          <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2" (click)=updateEthAddress(updateEthAdressForm)>Update Eth Address</button>
+       <div class="mt-4 ">
+          <span class='error d-block' >{{errorMsg}}</span>
+          <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2"  (click)=updateEthAddress(updateEthAdressForm)>{{updateMsg}}</button>
           <button type="button" class="btn btn-light text-uppercase mb-2" (click)="hideEthAddress()">Cancel</button>
        </div>
     </div>
   </div>
- </div>    
+ </div>

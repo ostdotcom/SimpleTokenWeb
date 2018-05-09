@@ -15,6 +15,7 @@ declare var $: any;
 export class ReportIssuesComponent implements OnInit {
 
   @Input() caseId: number;
+  @Input() userDetails;
   isProcessing = false;
   beforeSend = true;
   isMailSent;
@@ -31,16 +32,29 @@ export class ReportIssuesComponent implements OnInit {
                     {key: 'document_id_number', value: 'Document ID Number'}];
   document_issue = [ {key: 'document_id_issue', value: 'Document ID issue'},
                      {key: 'selfie_issue', value: 'Selfie Issue'},
-                     {key: 'residency_proof_issue', value: 'Residency Proof Issue' },
-                     {key: 'investor_proof_issue', value: 'Investor Proof Issue'} ];
+                   ];
   data = {'email_temp_vars': {}};
   postUrl =  'api/admin/kyc/email-kyc-issue';
 
   constructor(private formBuilder: FormBuilder, private http: OstHttp, private stateHandler: RequestStateHandlerService ) {
 
 
+    console.log(this.userDetails);
 
 
+
+  }
+
+  @Output('closeReportIssueEvent') closeReportIssueEvent =  new EventEmitter();
+
+  ngOnInit() {
+
+    if (this.userDetails.residence_proof_file_url) {
+      this.document_issue.push( {key: 'residency_proof_issue', value: 'Residency Proof Issue' });
+    }
+    if (this.userDetails.investor_proof_files_url.length) {
+      this.document_issue.push(  {key: 'investor_proof_issue', value: 'Investor Proof Issue'});
+    }
 
     this.form = this.formBuilder.group({
       data_mismatch: this.formBuilder.array(this.data_mismatch.map(x => !1)),
@@ -48,11 +62,8 @@ export class ReportIssuesComponent implements OnInit {
       other_issue: '',
       other_issue_expln: '',
     });
-  }
 
-  @Output('closeReportIssueEvent') closeReportIssueEvent =  new EventEmitter();
 
-  ngOnInit() {
 
     $('#confirmation').off('hidden.bs.modal').on('hidden.bs.modal', () => {
       this.stateHandler.updateRequestStatus(this);
