@@ -81,7 +81,6 @@ export class DashboardComponent implements OnInit {
       currentQueryParams[this.filtersMap[key]] ?
       currentQueryParams[this.filtersMap[key]] :
       this.defaultQueryParams[this.filtersMap[key]]
-      console.log(this.filtersMap[key]);
     }
   }
 

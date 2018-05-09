@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { RequestOptions } from '@angular/http';
 import { OstHttp } from '../ost-http.service';
 import { RequestStateHandlerService } from '../request-state-handler.service';
 import { AppConfigService } from '../app-config.service';
@@ -25,8 +26,19 @@ export class KycCaseComponent implements OnInit {
   isStatusDenied :boolean =  false ; 
   isReportIssue :boolean = false ; 
   isWhitelisting:boolean =  false; 
+  filters: object = {
+    admin_status: 'qualified',
+    admin_action_status: 'all',
+    cynopsis_status: 'all',
+    whitelist_status: 'all'
+  };
+  sortings: object = {
+    sort_by: 'desc'
+  };
+
+
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private http: OstHttp,
     private stateHandler : RequestStateHandlerService,
     private domSanitizer: DomSanitizer,
@@ -34,19 +46,23 @@ export class KycCaseComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.activatedRoute.paramMap.subscribe(params => {
       this.caseId = params.get('id');
-      this.fetchCase( );
+      this.fetchCase();
     });
   }
 
-  fetchCase( ) {
+  fetchCase() {
     this.isProcessing = true;
-    this.http.get('api/admin/kyc/check-details/', {
+    var options = {
       params: {
-        id: this.caseId
+        id: this.caseId,
+        filters: this.getFilters(),
+        sortings: this.getSortings()
       }
-    }).subscribe( response => {
+    }
+    var requestOptions = new RequestOptions(options);
+    this.http.get('api/admin/kyc/check-details/', requestOptions).subscribe( response => {
       let json_response = response.json();
       if(json_response.success){
         this.onSuccess( response.json());
@@ -67,9 +83,9 @@ export class KycCaseComponent implements OnInit {
   }
 
   showPageState(showCase = true, showReportIssue = false , showUpdateEth = false){
-        this.showCase = showCase;
-        this.showReportIssue = showReportIssue;
-        this.showUpdateEth = showUpdateEth;
+    this.showCase = showCase;
+    this.showReportIssue = showReportIssue;
+    this.showUpdateEth = showUpdateEth;
   }
 
   bypassSecurityTrustResourceUrl(url){
@@ -77,7 +93,29 @@ export class KycCaseComponent implements OnInit {
   }
 
   onActionSuccess(){
-    this.fetchCase( );
+    this.fetchCase();
+  }
+
+  getFilters(){
+    var currentQueryParams = this.activatedRoute.snapshot.queryParams;
+    var currentFilters = {};
+    for (var key in this.filters) {
+      if(currentQueryParams[key]){
+        currentFilters[key] = currentQueryParams[key];
+      }
+    }
+    return currentFilters;
+  }
+
+  getSortings(){
+    var currentQueryParams = this.activatedRoute.snapshot.queryParams;
+    var currentSortings = {};
+    for (var key in this.sortings) {
+      if(currentQueryParams[key]){
+        currentSortings[key] = currentQueryParams[key];
+      }
+    }
+    return currentSortings;
   }
 
 }
