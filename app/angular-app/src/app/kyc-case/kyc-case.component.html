@@ -73,7 +73,7 @@
                     <span class="value">{{caseDetails.cynopsis_status}}</span>
                   </div>
 
-                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#retrySendingModal">Retry cynopsis</span>
+                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>
 
                 </div>
 
@@ -337,18 +337,46 @@
 
   </div>
 
-  <deny-action-modal [postApi]="'api/admin/kyc/deny-kyc'"
-                     [caseId]="caseId"  (denyActionSuccessEvent)="onDenyActionSuccessEvent($event)" >
-  </deny-action-modal>
+  <kyc-case-action-modal  [postApi]="'api/admin/kyc/deny-kyc'" [caseId]="caseId"
+                          [modalId]="'denyActionModal'"  [actionBtnPrimaryName]="'DENY KYC'"
+                          [actionBtnPrimaryClass]="'btn-danger'"
+                          (actionSuccessEvent)="onActionSuccess( $event )">
+    <ng-container class="modal-body-content">
+        <h5 class="modal-title text-center">Are you sure you want to Deny this user?</h5>
+    </ng-container>  
+  </kyc-case-action-modal>
 
-  <qualify-action-modal [postApi]="'api/admin/kyc/qualify'"
-                        [caseId]="caseId" (qaulifyActionSuccessEvent)="onQaulifyActionSuccessEvent($event)">
- </qualify-action-modal>
-  <retry-cynopsis-modal [postApi]="'api/admin/kyc/retry-cynopsis-upload'"
-                        [caseId]="caseId" (retryActionSuccessEvent)="onRetryActionSuccessEvent($event)">
- </retry-cynopsis-modal>
-  <reopen-case-modal  [postApi]="'api/admin/kyc/open-case'"
-                      [caseId]="caseId" (reopenActionSuccessEvent)="onReopenActionSuccessEvent($event)"  >
-  </reopen-case-modal>
+
+  <kyc-case-action-modal  [postApi]="'api/admin/kyc/qualify'" [caseId]="caseId"
+                          [modalId]="'qualifyActionModal'"  [actionBtnPrimaryName]="'QUALIFY KYC'"
+                          [actionBtnPrimaryClass]="'btn-success'"
+                          (actionSuccessEvent)="onActionSuccess( $event )">
+    <ng-container class="modal-body-content">
+        <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
+    </ng-container> 
+  </kyc-case-action-modal>
+
+
+ <kyc-case-action-modal   [postApi]="'api/admin/kyc/retry-cynopsis-upload'" [caseId]="caseId"
+                          [modalId]="'retryCynopsisModal'"  [actionBtnPrimaryName]="'RETRY'"
+                          (actionSuccessEvent)="onActionSuccess( $event )">
+    <ng-container class="modal-body-content">
+        <h5 class="modal-title text-center">Are you sure you want to Retry sending this users request to cynopsis?</h5>
+    </ng-container> 
+  </kyc-case-action-modal>
+
+  <kyc-case-action-modal [postApi]="'api/admin/kyc/open-case'" [caseId]="caseId"
+                          [modalId]="'reopenModal'"  [actionBtnPrimaryName]="'Re-open'"
+                          (actionSuccessEvent)="onActionSuccess( $event )">
+    <ng-container class="modal-body-content">
+        <h5 class="modal-title">Are you sure you want to reopen this case?</h5>
+        <div class="sub-body mt-3">
+          <div>When a case is reopened, User is unwhitelisted.</div>
+          <div class="mt-2">Once the user is qualified, the user will be whitelisted again The user will not be able to take part in
+            the ICO, until the case is closed again.
+          </div>  
+        </div>
+    </ng-container> 
+  </kyc-case-action-modal>
 
 </ng-container>

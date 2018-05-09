@@ -39,11 +39,8 @@ import { InviteUserModalComponent } from './invite-user/invite-user-modal/invite
 import { DeleteUserModalComponent } from './admin-dashboard/delete-user-modal/delete-user-modal.component';
 import { ResendInviteModalComponent } from './admin-dashboard/resend-invite-modal/resend-invite-modal.component';
 import { ResetMfaModalComponent } from './admin-dashboard/reset-mfa-modal/reset-mfa-modal.component';
-import { ReopenCaseModalComponent } from './kyc-case/reopen-case-modal/reopen-case-modal.component';
-import { RetryModalComponent } from './kyc-case/retry-modal/retry-modal.component';
-import { QualifyActionModalComponent } from './kyc-case/qualify-action-modal/qualify-action-modal.component';
-import { DenyActionModalComponent } from './kyc-case/deny-action-modal/deny-action-modal.component';
 import { OstAlertComponent } from './ost-alert/ost-alert.component';
+import { KycCaseActionModalComponent } from './kyc-case/kyc-case-action-modal/kyc-case-action-modal.component';
 
 
 
@@ -85,11 +82,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     DeleteUserModalComponent,
     ResendInviteModalComponent,
     ResetMfaModalComponent,
-    ReopenCaseModalComponent,
-    RetryModalComponent,
-    QualifyActionModalComponent,
-    DenyActionModalComponent,
-    OstAlertComponent
+    OstAlertComponent,
+    KycCaseActionModalComponent
   ],
   imports: [
     BrowserModule,

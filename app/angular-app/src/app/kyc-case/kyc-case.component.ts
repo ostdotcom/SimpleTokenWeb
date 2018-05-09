@@ -36,15 +36,15 @@ export class KycCaseComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.caseId = params.get('id');
-    this.fetchCase(params.get('id'));
+      this.fetchCase( );
     });
   }
 
-  fetchCase(id) {
+  fetchCase( ) {
     this.isProcessing = true;
     this.http.get('api/admin/kyc/check-details/', {
       params: {
-        id: id
+        id: this.caseId
       }
     }).subscribe( response => {
       let json_response = response.json();
@@ -76,20 +76,8 @@ export class KycCaseComponent implements OnInit {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
-  onDenyActionSuccessEvent(  ){
-    
-  }
-
-  onQaulifyActionSuccessEvent(  ){
-  
-  }
-
-  onRetryActionSuccessEvent( ){
-    
-  }
-
-  onReopenActionSuccessEvent( ){
-    
+  onActionSuccess(){
+    this.fetchCase( );
   }
 
 }

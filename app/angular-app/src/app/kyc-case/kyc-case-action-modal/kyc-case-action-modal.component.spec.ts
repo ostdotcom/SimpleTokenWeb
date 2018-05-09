@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QualifyActionModalComponent } from './qualify-action-modal.component';
+import { KycCaseActionModalComponent } from './kyc-case-action-modal.component';
 
-describe('QualifyActionModalComponent', () => {
-  let component: QualifyActionModalComponent;
-  let fixture: ComponentFixture<QualifyActionModalComponent>;
+describe('KycCaseActionModalComponent', () => {
+  let component: KycCaseActionModalComponent;
+  let fixture: ComponentFixture<KycCaseActionModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QualifyActionModalComponent ]
+      declarations: [ KycCaseActionModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QualifyActionModalComponent);
+    fixture = TestBed.createComponent(KycCaseActionModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
