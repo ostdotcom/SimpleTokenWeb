@@ -97,7 +97,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     HttpModule,
     RouterModule.forRoot([
       {
-        path: 'admin/new-dashboard',
+        path: 'admin/dashboard',
         component: DashboardComponent
       },
       {

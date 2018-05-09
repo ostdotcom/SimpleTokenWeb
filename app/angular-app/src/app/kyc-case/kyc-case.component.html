@@ -1,5 +1,8 @@
 
 <request-state-handler class="d-block w-100" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="error-content">
+    <div class="col-12">{{errorMessage || "Something went wrong, please try again."}}</div>
+  </ng-container>
 </request-state-handler>
 
 <ng-container *ngIf="!isProcessing && !hasError">
@@ -9,14 +12,13 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a routerLink="/admin/new-dashboard">KYC Dashboard</a>
+              <a routerLink="/admin/dashboard">KYC Dashboard</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">KYC Details</li>
           </ol>
         </nav>
 
-
-        <ost-alert *ngIf="isStatusDenied" [alertStyleClass]="'alert-danger'">
+        <ost-alert *ngIf="caseDetails.cynopsis_status == 'rejected'" [alertStyleClass]="'alert-danger'">
           <ng-container class="svg-container">
             <svg class="svg alert-error-svg">
                 <switch>
@@ -292,13 +294,22 @@
 
           <ng-container *ngIf="showCase">
 
-            <div *ngIf="1!=1; then caseClose else caseOpen"></div>
+            <ng-container *ngIf="caseDetails.is_case_closed == 1 then caseClosed else caseOpen"></ng-container>
 
-            <ng-template #caseClose>
+            <ng-template #caseClosed>
 
-              <div id="caseClose" class="d-flex justify-content-center align-items-center mb-2">
-                <span class="mr-2 font-weight-normal">This case has been Approved and closed</span>
-                <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
+              <div class="d-flex justify-content-center align-items-center mb-2">
+
+                <span class="mr-2 font-weight-normal">
+                  This case 
+                  <ng-container *ngIf="caseDetails.kyc_status == 'approved'">has been approved and</ng-container>
+                  <ng-container *ngIf="caseDetails.kyc_status == 'denied'">has been denied and</ng-container>
+                    is closed
+                </span>
+                <ng-container *ngIf="caseDetails.can_reopen_case == 1">
+                  <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
+                </ng-container>
+                
               </div>
 
             </ng-template>
@@ -309,7 +320,9 @@
 
               <div class="float-right">
                 <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyActionModal">Deny</button>
-                <button type="button" class="btn btn-light mr-2 mb-2 text-uppercase" [disabled]='caseDetails.is_case_closed' (click)="showPageState(false, true, false)">Report Issue</button>
+                <ng-container *ngIf="appConfig.getClientSetup().has_email_setup == true">
+                  <button type="button" class="btn btn-light mr-2 mb-2 text-uppercase" (click)="showPageState(false, true, false)">Report Issue</button>
+                </ng-container>
                 <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyActionModal">Qualify</button>
 
               </div>
