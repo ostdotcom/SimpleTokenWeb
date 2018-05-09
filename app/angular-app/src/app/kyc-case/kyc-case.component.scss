@@ -6,6 +6,11 @@
   .breadcrumb-item + .breadcrumb-item::before{
     content: '>'
   }
+  .kyc-dashboard-breadcrumb{
+    color: $yellow-800;
+    border-bottom: none;
+    font-weight: $font-weight-normal;
+  }
 }
 
 .alert-error-svg, .alert-warning-svg{
