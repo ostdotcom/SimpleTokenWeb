@@ -1,0 +1,19 @@
+<div class="modal fade" id="qualifyActionModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="perResquestContent" *ngIf="!isProcessing && !hasError">
+              <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
+              <div class="d-flex justify-content-center align-items-center">
+                  <button type="button" class="btn cancel text-uppercase" data-dismiss="modal">CANCEL</button>
+                  <button type="button" class="btn primary ml-3 text-uppercase" (click)="onQualify()" >QUALIFY KYC</button>
+              </div>
+          </div> 
+          <request-state-handler [isProcessing]="isProcessing" 
+                                  [hasError]="hasError" 
+                                  [errorMessage]="errorMessage">
+          </request-state-handler>
+        </div>  
+      </div>
+    </div>
+</div>

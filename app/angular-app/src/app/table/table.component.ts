@@ -40,7 +40,7 @@ export class TableComponent implements OnInit {
   filtersObserver: any;
   sortObserver: any;
   metaData: object;
-  errMsg: string="";
+  errorMessage: string="";
 
   ngOnInit() {
     this.configOverWrites();
@@ -140,7 +140,7 @@ export class TableComponent implements OnInit {
   getTableData() {
     let params: RequestOptionsArgs = this.getParams();
     this.clearTableData();
-    this.stateHandler.updateRequestStatus(this, true, false , false);
+    this.stateHandler.updateRequestStatus(this, true);
     this.http.get(this.dataUrl, params).subscribe(
       response => {
         let res = response.json();
@@ -159,7 +159,7 @@ export class TableComponent implements OnInit {
   getParams(): RequestOptionsArgs {
     let requestParams =  this.requestParams;
     requestParams['page_number'] = this.getPageNumber();
-    requestParams['page_size'] = 5;
+    //requestParams['page_size'] = 5;
     if (this.filterForm) {
       Object.assign(requestParams, this.getFilter());
     }

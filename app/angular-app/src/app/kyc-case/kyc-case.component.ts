@@ -21,6 +21,9 @@ export class KycCaseComponent implements OnInit {
   meta: object = {};
   rData
   caseId;
+  isStatusDenied :boolean =  false ; 
+  isReportIssue :boolean = false ; 
+  isWhitelisting:boolean =  false; 
   constructor(
     private route: ActivatedRoute,
     private http: OstHttp,
@@ -64,6 +67,22 @@ export class KycCaseComponent implements OnInit {
 
   bypassSecurityTrustResourceUrl(url){
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  onDenyActionSuccessEvent(  ){
+    
+  }
+
+  onQaulifyActionSuccessEvent(  ){
+  
+  }
+
+  onRetryActionSuccessEvent( ){
+    
+  }
+
+  onReopenActionSuccessEvent( ){
+    
   }
 
 }

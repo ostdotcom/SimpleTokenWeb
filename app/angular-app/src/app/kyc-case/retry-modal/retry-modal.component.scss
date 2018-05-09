@@ -1,0 +1,14 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+  
+.primary{
+  border-radius: 1px;
+  background-color: $yellow-800;
+  color: $blue-900;
+
+}
+.cancel{
+  border-radius: 1px;
+  border: solid 0.8px $blue-900;
+  color: $blue-900;
+}
+    

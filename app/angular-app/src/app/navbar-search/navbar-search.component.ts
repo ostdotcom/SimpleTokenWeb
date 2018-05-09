@@ -28,7 +28,7 @@ export class NavbarSearchComponent implements OnInit {
   hasError: boolean = false;
   hasWarning: boolean = false;
   hideResponse: boolean= true;
-  errMsg: string = "Sorry no results found!";
+  errorMessage: string = "Sorry no results found!";
   searchTimeOut;
 
   ngOnInit() {

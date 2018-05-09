@@ -66,8 +66,8 @@
                                         [hasError]="hasError">
                   <div class="processing-content mt-3">Sending email, please wait ... </div>
                   <div class="error-content col-12 text-center">
-                    <div *ngIf="errMsg">{{errMsg}}</div>
-                    <div *ngIf="!errMsg">There was some issue while sending mail.<br>Please Try Again.</div>
+                    <div *ngIf="errorMessage">{{errorMessage}}</div>
+                    <div *ngIf="!errorMessage">There was some issue while sending mail.<br>Please Try Again.</div>
                     <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
                   </div>
                   </request-state-handler>

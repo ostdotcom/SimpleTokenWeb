@@ -1,45 +1,45 @@
 <div class="modal fade" id="resendInviteModal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-       
+
         <div class="modal-body p-5">
           <div class='row' *ngIf="!isProcessing && !hasError && !isInviteSend">
             <div class="col-12">
               <h4 class="text-center">Are you sure you want to resend and invite?</h4>
             </div>
             <div class="col-12 form-group mt-4 text-center">
-               <button class="btn btn-primary" (click)="sendInvite()">RESEND INVITE</button>  
+               <button class="btn btn-primary" (click)="sendInvite()">RESEND INVITE</button>
                <button class="btn btn-secondary ml-3" data-dismiss="modal">CANCEL</button>
             </div>
           </div>
 
           <div class="row">
-              <request-state-handler class="d-block w-100" 
+              <request-state-handler class="d-block w-100"
                                     [isProcessing]="isProcessing"
                                     [hasError]="hasError">
-              <div class="processing-content mt-3">Sending invite please wait ... </div>      
+              <div class="processing-content mt-3">Sending invite please wait ... </div>
               <div class="error-content col-12 text-center">
-                <div *ngIf="errMsg">{{errMsg}}</div>
-                <div *ngIf="!errMsg">There was some issue while sending user invite.<br>Please Try Again.</div>
+                <div *ngIf="errorMessage">{{errorMessage}}</div>
+                <div *ngIf="!errorMessage">There was some issue while sending user invite.<br>Please Try Again.</div>
                 <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
-              </div>            
+              </div>
               </request-state-handler>
-          </div> 
+          </div>
 
           <div class="row">
               <div class="col-12 success-hanlder-wrap text-center p-1" *ngIf="isInviteSend">
-                  <div class="success-icon-wrap mb-3">  
+                  <div class="success-icon-wrap mb-3">
                       <svg class="icon" style="width:50px; height: 50px">
                           <switch>
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
                             </use>
                           </switch>
                       </svg>
-                  </div> 
+                  </div>
                   <div class="mt-2 mb-3">The user invite has been send successfully</div>
                   <button class="btn btn-primary" data-dismiss="modal">OK</button>
-              </div>  
-          </div>   
+              </div>
+          </div>
         </div>
       </div>
     </div>
