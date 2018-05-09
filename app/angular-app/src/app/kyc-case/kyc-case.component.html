@@ -18,7 +18,7 @@
           </ol>
         </nav>
 
-        <ost-alert *ngIf="caseDetails.cynopsis_status == 'rejected'" [alertStyleClass]="'alert-danger'">
+        <ost-alert *ngIf="caseDetails.cynopsis_status == 'rejected'; else notRejected" [alertStyleClass]="'alert-danger'">
           <ng-container class="svg-container">
             <svg class="svg alert-error-svg">
                 <switch>
@@ -31,20 +31,9 @@
             </ng-container>
         </ost-alert>
 
-         <ost-alert *ngIf="isReportIssue" [alertStyleClass]="'alert-warning'">
-            <ng-container class="svg-container">
-                <svg class="svg alert-warning-svg">
-                    <switch>
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
-                    </switch>
-                  </svg>
-            </ng-container>
-            <ng-container class="alert-text">
-                <span class="ml-2">Issue reported, data mismatch email sent.</span>
-              </ng-container>
-          </ost-alert>
+        <ng-template #notRejected>
 
-          <ost-alert *ngIf="isWhitelisting" [alertStyleClass]="'alert-warning'">
+          <ost-alert *ngIf="appConfig.getClientSetup().has_whitelist_setup == true && caseDetails.kyc_status == 'approved'" [alertStyleClass]="'alert-warning'">
               <ng-container class="svg-container">
                   <svg class="svg alert-warning-svg">
                       <switch>
@@ -53,10 +42,29 @@
                     </svg>
               </ng-container>
               <ng-container class="alert-text">
-                  <span class="ml-2">Case approved, whitelisting in Progress</span>
+                  <span class="ml-2">
+                    Case approved, whitelisting 
+                    <ng-container *ngIf="caseDetails.whitelist_status == 'unprocessed' || caseDetails.whitelist_status == 'started'">is in process...</ng-container>
+                    <ng-container *ngIf="caseDetails.whitelist_status == 'done'">is done.</ng-container>   
+                    <ng-container *ngIf="caseDetails.whitelist_status == 'failed'">has failed!</ng-container>                    
+                  </span>
                 </ng-container>
           </ost-alert>
 
+          <ost-alert *ngIf="caseDetails.last_issue_email_sent.length > 0" [alertStyleClass]="'alert-warning'">
+              <ng-container class="svg-container">
+                  <svg class="svg alert-warning-svg">
+                      <switch>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                      </switch>
+                    </svg>
+              </ng-container>
+              <ng-container class="alert-text">
+                  <span class="ml-2">Issue reported and email sent.</span>
+                </ng-container>
+          </ost-alert> 
+
+        </ng-template>
 
         <div class="row">
           <div class="col-12 col-md-4 mb-3">
@@ -87,7 +95,7 @@
                 <div>
 
                   <span class="key">Submission : </span>
-                  <span *ngIf="caseDetails.is_re_submitted == 1;then newSubmission else reSubmitted"></span>
+                  <span *ngIf="caseDetails.is_re_submitted == 1;then reSubmitted else newSubmission"></span>
                   <ng-template #newSubmission>
                     <span class="value blue-bar">New Submission</span>
                   </ng-template>
@@ -101,7 +109,7 @@
 
                   <div class="d-inline-block">
                     <span class="key">Duplicate Status : </span>
-                    <span *ngIf="caseDetails.is_duplicate == 1;then original else duplicate"></span>
+                    <span *ngIf="caseDetails.is_duplicate == 1;then duplicate else original"></span>
                     <ng-template #original>
                       <span class="value blue-bar">Original</span>
                     </ng-template>
@@ -247,9 +255,7 @@
           </div>
         </div>
 
-
-
-        <div *ngIf="userDetails.investor_proof_files_url.length > 0">
+        <div *ngIf="userDetails.investor_proof_files_url && userDetails.investor_proof_files_url.length > 0">
           <div class="row">
             <div class="col-12">
               <h5>Other Uploaded Documents</h5>

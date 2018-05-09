@@ -1,3 +1,6 @@
-<p>
-  ost-alert works!
-</p>
+<div class="alert {{alertStyleClass}}" role="alert">
+  <div class="d-flex justify-content-center align-items-center">
+    <ng-content select=".svg-container"></ng-content>
+    <ng-content select=".alert-text"></ng-content>
+  </div>
+</div>
