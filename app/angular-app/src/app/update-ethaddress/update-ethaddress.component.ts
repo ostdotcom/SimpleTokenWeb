@@ -26,7 +26,7 @@ export class UpdateEthaddressComponent implements OnInit {
 
   updateEthAddress(updateEthAdressForm) {
     let ethAddress = this.data['ethereum_address'] = updateEthAdressForm.value.address.trim();
-    this.data['case_id'] = this.caseId;
+    this.data['id'] = this.caseId;
     if (!ethAddress) {
       this.errorMsg = 'Please fill Eth address';
       return;

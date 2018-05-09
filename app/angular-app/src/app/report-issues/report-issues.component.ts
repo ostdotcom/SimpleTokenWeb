@@ -95,6 +95,8 @@ export class ReportIssuesComponent implements OnInit {
         let res = response.json();
         this.stateHandler.updateRequestStatus(this);
         this.isMailSent = true;
+        $('#confirmation').modal('hide');
+        this.hideReportIssue();
       },
       error => {
         let err = error.json();

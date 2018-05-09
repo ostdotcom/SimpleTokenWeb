@@ -13,6 +13,7 @@ export class RequestStateHandlerService {
     if( error ){
       let err = error['err'];
       context.errorMessage = err && err['display_text'] ;
+      console.log(context.errorMessage);
     }
   }
 
