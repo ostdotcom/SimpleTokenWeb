@@ -18,4 +18,9 @@ export class AppConfigService {
         return admin && admin['email'] || "";   
     }
 
+    getClientSetup() {
+        let client = this.data && this.data['client_setup']; 
+        return client || "";   
+    }
+
 }

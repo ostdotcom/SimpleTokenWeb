@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OstHttp } from '../ost-http.service';
 import { RequestStateHandlerService } from '../request-state-handler.service';
+import { AppConfigService } from '../app-config.service';
 
 @Component({
   selector: 'app-kyc-case',
@@ -28,7 +29,8 @@ export class KycCaseComponent implements OnInit {
     private route: ActivatedRoute,
     private http: OstHttp,
     private stateHandler : RequestStateHandlerService,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private appConfig : AppConfigService
   ) { }
 
   ngOnInit() {
