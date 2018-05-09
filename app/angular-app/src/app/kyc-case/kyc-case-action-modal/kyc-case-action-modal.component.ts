@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { OstHttp } from '../../ost-http.service';
 import { RequestStateHandlerService } from '../../request-state-handler.service';
 
@@ -10,7 +10,7 @@ declare var $:any;
   styleUrls: ['./kyc-case-action-modal.component.scss']
 })
 
-export class KycCaseActionModalComponent implements OnInit {
+export class KycCaseActionModalComponent  {
 
   constructor( private http: OstHttp , private stateHandler : RequestStateHandlerService) { }
 
@@ -26,7 +26,7 @@ export class KycCaseActionModalComponent implements OnInit {
   //Output
   @Output('actionSuccessEvent') actionSuccessEvent = new EventEmitter(); 
 
-  ngOnInit() {
+  ngAfterViewInit() {
     $("#"+this.modalId).off('hidden.bs.modal').on("hidden.bs.modal", () => {
       this.stateHandler.updateRequestStatus(this);
     });
