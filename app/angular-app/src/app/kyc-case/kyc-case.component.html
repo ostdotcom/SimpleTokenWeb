@@ -1,5 +1,8 @@
 
 <request-state-handler class="d-block w-100" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="error-content">
+    <div class="col-12">{{errorMessage || "Something went wrong, please try again."}}</div>
+  </ng-container>
 </request-state-handler>
 
 <ng-container *ngIf="!isProcessing && !hasError">
@@ -9,14 +12,13 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a routerLink="/admin/new-dashboard">KYC Dashboard</a>
+              <a routerLink="/admin/dashboard">KYC Dashboard</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">KYC Details</li>
           </ol>
         </nav>
 
-
-        <ost-alert *ngIf="isStatusDenied" [alertStyleClass]="'alert-danger'">
+        <ost-alert *ngIf="caseDetails.cynopsis_status == 'rejected'" [alertStyleClass]="'alert-danger'">
           <ng-container class="svg-container">
             <svg class="svg alert-error-svg">
                 <switch>

@@ -47,7 +47,12 @@ export class KycCaseComponent implements OnInit {
         id: id
       }
     }).subscribe( response => {
-      this.onSuccess( response.json());
+      let json_response = response.json();
+      if(json_response.success){
+        this.onSuccess( response.json());
+      } else {
+        this.stateHandler.updateRequestStatus( this, false,  true , false ,  json_response);
+      }
     }, error => {
       this.stateHandler.updateRequestStatus( this, false,  true , false ,  error.json());
     })
