@@ -29,7 +29,7 @@
     <div *ngIf="row.is_re_submitted; else newSubmission">
       <div class="yellow-left-border pl-2 font-weight-500">
         Re-submitted
-        <span class='d-block'>
+        <span class='d-block display-4'>
           {{row.submission_count}} submission
         </span>
       </div>
@@ -58,8 +58,8 @@
     <div *ngIf="row.last_acted_by; else elseBlock">
       {{row.last_acted_by}}
       <div *ngIf='row.last_acted_timestamp'>
-          <span class='display-3'>
-             Last edited {{row.last_acted_timestamp}}
+          <span class='display-4'>
+             Last edited {{row.last_acted_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm' }}
           </span>
         </div>
 
@@ -104,7 +104,15 @@
           <div class="col-6">
             <span class='font-weight-500 display-4 '>SUBMISSION </span>
             <div *ngIf="row.is_re_submitted; else newSubmission">
-              <span class='display-3 text-capitalize'> Re-submitted </span>
+              <div class="yellow-left-border pl-2">
+                  <span class='font-weight-500 display-3'> Re-submitted </span>
+                  <span class='d-block display-4'>
+                      {{row.submission_count}} submission
+                      </span>
+
+              </div>
+
+
             </div>
 
           </div>
@@ -144,7 +152,7 @@
               <span class='display-3 text-capitalize'> {{row.last_acted_by}} </span>
               <div *ngIf='row.last_acted_timestamp'>
                 <span class='display-3'>
-                   Last edited {{row.last_acted_timestamp}}
+                   Last Edited {{row.last_acted_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}
                 </span>
               </div>
 
