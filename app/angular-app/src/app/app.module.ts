@@ -36,14 +36,9 @@ import { UserDashBoardHeaderComponent } from './admin-dashboard/user-dash-board-
 import { UserDashBoardRowComponent } from './admin-dashboard/user-dash-board-row/user-dash-board-row.component';
 import { OstRowComponent } from './table/ost-row/ost-row.component';
 import { InviteUserModalComponent } from './invite-user/invite-user-modal/invite-user-modal.component';
-import { DeleteUserModalComponent } from './admin-dashboard/delete-user-modal/delete-user-modal.component';
-import { ResendInviteModalComponent } from './admin-dashboard/resend-invite-modal/resend-invite-modal.component';
-import { ResetMfaModalComponent } from './admin-dashboard/reset-mfa-modal/reset-mfa-modal.component';
-import { ReopenCaseModalComponent } from './kyc-case/reopen-case-modal/reopen-case-modal.component';
-import { RetryModalComponent } from './kyc-case/retry-modal/retry-modal.component';
-import { QualifyActionModalComponent } from './kyc-case/qualify-action-modal/qualify-action-modal.component';
-import { DenyActionModalComponent } from './kyc-case/deny-action-modal/deny-action-modal.component';
 import { OstAlertComponent } from './ost-alert/ost-alert.component';
+import { KycCaseActionModalComponent } from './kyc-case/kyc-case-action-modal/kyc-case-action-modal.component';
+import { AdminDashboardModalComponent } from './admin-dashboard/admin-dashboard-modal/admin-dashboard-modal.component';
 
 
 
@@ -82,14 +77,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     UserDashBoardRowComponent,
     OstRowComponent,
     InviteUserModalComponent,
-    DeleteUserModalComponent,
-    ResendInviteModalComponent,
-    ResetMfaModalComponent,
-    ReopenCaseModalComponent,
-    RetryModalComponent,
-    QualifyActionModalComponent,
-    DenyActionModalComponent,
-    OstAlertComponent
+    OstAlertComponent,
+    KycCaseActionModalComponent,
+    AdminDashboardModalComponent
   ],
   imports: [
     BrowserModule,
