@@ -59,8 +59,8 @@ Rails.application.routes.draw do
       get '/authentication' => :authentication
       get '/change-password' => :change_password
 
-      get '/dashboard' => :dashboard
-      get '/new-dashboard' => :angular_app
+      get '/old-dashboard' => :dashboard
+      get '/dashboard' => :angular_app
       get '/case-id/:id' => :angular_app
       get '/admin-user/dashboard' => :angular_app
       get '/get-kyc-dashboard' => :get_kyc_dashboard

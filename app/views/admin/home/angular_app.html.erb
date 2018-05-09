@@ -6,14 +6,5 @@
 
 %>
 
-<app-root id="main_app_root"></app-root>
-<script text="text/javascript">
-  (function () {
-
-    var initData = <%= raw initialConfig %> ;
-    console.log("initData ====" , initData);
-    var main_app_root = document.getElementById("main_app_root");
-    main_app_root.dataset.initDataJson = JSON.stringify( initData );
-  })();
-</script>
+<app-root id="main_app_root" data-init-data-json="<%= initialConfig %>"></app-root>
 
