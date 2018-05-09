@@ -12,7 +12,7 @@ export class AdminDashboardModalComponent  {
 
   constructor( private http: OstHttp ,  private stateHandler : RequestStateHandlerService) { }
 
-  @Input('modalId') modalId ; 
+  @Input('modalId') modalId ;
   @Input('user') user;
   @Input('postApi') postApi;
   @Input('actionBtnPrimaryName') actionBtnPrimaryName ;

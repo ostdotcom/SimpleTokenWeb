@@ -60,7 +60,7 @@
                     </svg>
               </ng-container>
               <ng-container class="alert-text">
-                  <span class="ml-2">Issue reported and email sent.</span>
+                  <span class="ml-2">Issue reported and {{caseDetails.last_issue_email_sent}} email sent.</span>
                 </ng-container>
           </ost-alert> 
 
@@ -148,7 +148,7 @@
 
         <div class="row">
           <div class="col-12">
-            <h5>Submitted details Vs ID Image</h5>
+            <h5>Submitted details vs ID Image</h5>
           </div>
           <div class="col-12 mb-3">
             <div class="card-group">
@@ -181,41 +181,35 @@
                       <div class="value">{{userDetails.document_id_number}}</div>
                     </div>
                     <div class="card-col col-12 col-sm-6">
-                      <div class="label">Passport Number</div>
-                      <div class="value">??</div>
-                    </div>
-                  </div>
-                  <div class="row card-row">
-                    <div class="card-col col-12 col-sm-6">
                       <div class="label">Nationality</div>
                       <div class="value">{{userDetails.nationality}}</div>
                     </div>
+                  </div>
+                  <div class="row card-row">
                     <div class="card-col col-12 col-sm-6">
                       <div class="label">Email Address</div>
                       <div class="value">{{userDetails.email}}</div>
                     </div>
-                  </div>
-                  <div class="row card-row">
                     <div class="card-col col-12 col-sm-6">
                       <div class="label">Date & Time</div>
                       <div class="value">{{userDetails.submitted_at}}</div>
                     </div>
+                  </div>
+                  <div class="row card-row">
                     <div class="card-col col-12 col-sm-6">
                       <div class="label">Street Address</div>
                       <div class="value">{{userDetails.street_address}}</div>
                     </div>
-                  </div>
-                  <div class="row card-row">
                     <div class="card-col col-12 col-sm-6">
                       <div class="label">City</div>
                       <div class="value">{{userDetails.city}}</div>
                     </div>
+                  </div>
+                  <div class="row card-row">
                     <div class="card-col col-12 col-sm-6">
                       <div class="label">Zip Code</div>
                       <div class="value">{{userDetails.postal_code}}</div>
                     </div>
-                  </div>
-                  <div class="row card-row">
                     <div class="card-col col-12 col-sm-6">
                       <div class="label">State / Region</div>
                       <div class="value">{{userDetails.state}}</div>

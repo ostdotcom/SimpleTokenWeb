@@ -28,7 +28,7 @@ export class OstHttp extends Http {
         return super.request(url, options)
                .catch(this.handleError);
     }
-    
+
     public handleError = (error: Response) => {
       let  erroMsg = null ;
 
@@ -42,20 +42,20 @@ export class OstHttp extends Http {
         window.location.href = "/login";
       } else if (error.status == 408){
         erroMsg = 'Time out error.';
-      } 
+      }else {
+        erroMsg = "Unable to connect to server";
+      }
 
       if( erroMsg ) {
         let _body =  error['_body'] || {};
-        _body =  JSON.parse(_body); 
+        _body =  JSON.parse(_body);
         if( !_body['err'] ){
-          _body['err'] = {}; 
+          _body['err'] = {};
         }
         _body['err']['display_text'] = erroMsg;
-        error['_body'] = JSON.stringify(_body); 
+        error['_body'] = JSON.stringify(_body);
       }
 
-      console.log("error------",  error.json());
-     
       return Observable.throw(error);
     }
 }
