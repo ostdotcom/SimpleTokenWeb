@@ -27,12 +27,12 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   // Default parameters
-  adminStatus : any ;
-  admimActionStatus : any;
-  cynopsisStatus: any;
-  whiteListStatus: any;
-  sortBy : any;
-  pageNumber: number;
+  admin_status : any ;
+  admin_action_status : any;
+  cynopsis_status: any;
+  whitelist_status: any;
+  sort_by : any;
+  page_number: number;
   isCSVDownloaded = false;
   securityCheckbox: boolean = false;
   securityEthCheckbox: boolean =false;
@@ -44,18 +44,18 @@ export class DashboardComponent implements OnInit {
 
   // Defaults and filtersMap
   filtersMap: object = {
-    'filters[admin_status]': 'adminStatus',
-    'filters[admin_action_types]': 'admimActionStatus',
-    'filters[cynopsis_status]': 'cynopsisStatus',
-    'filters[whitelist_status]': 'whiteListStatus'
+    'filters[admin_status]': 'admin_status',
+    'filters[admin_action_types]': 'admin_action_status',
+    'filters[cynopsis_status]': 'cynopsis_status',
+    'filters[whitelist_status]': 'whitelist_status'
   };
   defaultQueryParams: object = {
-    adminStatus: 'all',
-    admimActionStatus: 'all',
-    cynopsisStatus: 'all',
-    whiteListStatus: 'all',
-    sortBy: 'desc',
-    pageNumber: 1
+    admin_status: 'all',
+    admin_action_status: 'all',
+    cynopsis_status: 'all',
+    whitelist_status: 'all',
+    sort_by: 'desc',
+    page_number: 1
   };
 
   ngOnInit() {
@@ -78,23 +78,24 @@ export class DashboardComponent implements OnInit {
       currentQueryParams[this.filtersMap[key]] ?
       currentQueryParams[this.filtersMap[key]] :
       this.defaultQueryParams[this.filtersMap[key]]
+      console.log(this.filtersMap[key]);
     }
   }
 
   initSort(){
     var currentQueryParams = this.getQueryParams();
-    this.sortBy =
-    currentQueryParams['sortBy'] ?
-    currentQueryParams['sortBy'] :
-    this.defaultQueryParams['sortBy'];
+    this.sort_by =
+    currentQueryParams['sort_by'] ?
+    currentQueryParams['sort_by'] :
+    this.defaultQueryParams['sort_by'];
   }
 
   initPagination(){
     var currentQueryParams = this.getQueryParams();
-    this.pageNumber =
-    currentQueryParams['pageNumber'] ?
-    currentQueryParams['pageNumber'] :
-    this.defaultQueryParams['pageNumber'];
+    this.page_number =
+    currentQueryParams['page_number'] ?
+    currentQueryParams['page_number'] :
+    this.defaultQueryParams['page_number'];
   }
 
   onFilterChange( filtersForm ) {
@@ -102,21 +103,21 @@ export class DashboardComponent implements OnInit {
     for (var key in this.filtersMap) {
       filters[this.filtersMap[key]] = filtersForm.value[key];
     }
-    filters['pageNumber'] = 1;
+    filters['page_number'] = 1;
     this.setQueryParams(filters);
   }
 
   onSortChange( sortForm ){
     var sort = {
-      sortBy: sortForm.value['sortings[sort_by]']
+      sort_by: sortForm.value['sortings[sort_by]']
     };
-    sort['pageNumber'] = 1;
+    sort['page_number'] = 1;
     this.setQueryParams(sort);
   }
 
   onPageChange ( pageNumber ){
     var page = {
-      pageNumber: pageNumber
+      page_number: pageNumber
     };
     this.setQueryParams(page);
   }
