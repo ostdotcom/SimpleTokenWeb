@@ -1,6 +1,6 @@
 <div class="row mt-4">
   <h2 class="kyc-header ml-4 text-transform-upper">KYC DASHBOARD</h2>
-  <div class="float-right d-flex justify-content-center align-items-center ml-auto">
+  <div class="float-right d-flex justify-content-center align-items-center ml-auto" *ngIf="appConfigService.isSuperAdmin()">
     <button class="btn btn-primary mr-4" data-toggle="modal" data-target="#confirmDownload">DOWNLOAD CSV</button>
   </div>
 </div>
@@ -33,7 +33,7 @@
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.cynopsis_status'">
             </select>
           </div>
-          <div class="col-12 col-lg pr-lg-0 mt-3">
+          <div class="col-12 col-lg pr-lg-0 mt-3" *ngIf="appConfigService.hasWhiteListSetUp()">
             <label class='form-label mb-2'>WHITELIST STATUS</label>
             <select class="form-control selectpicker" name="filters[whitelist_status]" [(ngModel)]='whitelist_status'
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.whitelist_status'">

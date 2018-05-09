@@ -16,7 +16,7 @@
   <div class="col p-0 pr-3 display-3">
     {{row.cynopsis_status}}
   </div>
-  <div class="col p-0 pr-3 display-3">
+  <div class="col p-0 pr-3 display-3" *ngIf="appConfigService.hasWhiteListSetUp()">
     {{row.whitelist_status}}
   </div>
   <div class="col p-0 pr-3 display-3">
@@ -92,10 +92,9 @@
             <div class='display-3 text-capitalize'>{{row.cynopsis_status}}</div>
 
           </div>
-          <div class="col-6">
+          <div class="col-6" *ngIf="appConfigService.hasWhiteListSetUp()">
             <span class='font-weight-500 display-4 '>WHITELIST </span>
             <div class='display-3 text-capitalize'>{{row.whitelist_status}}</div>
-
           </div>
 
         </div>

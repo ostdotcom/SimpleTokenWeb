@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AppConfigService } from '../app-config.service';
 
 @Component({
   selector: 'dashboard-table-header',
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Input() header;
 
-  constructor() { }
+  constructor( public appConfigService: AppConfigService ) { }
 
   ngOnInit() {
   }

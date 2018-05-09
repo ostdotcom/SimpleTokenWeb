@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Pipe } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AppConfigService } from '../app-config.service';
 
 @Component({
   selector: 'app-row',
@@ -9,8 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 
 export class RowComponent implements OnInit {
 
+
+
   constructor(
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public appConfigService : AppConfigService
   ) {}
 
   ngOnInit(){

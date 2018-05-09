@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RequestStateHandlerService } from '../request-state-handler.service';
 import {OstHttp} from '../ost-http.service';
 import {TableComponent} from '../table/table.component';
+import { AppConfigService } from '../app-config.service';
+
 declare var $: any;
 
 
@@ -23,7 +25,8 @@ export class DashboardComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private stateHandler: RequestStateHandlerService,
-    private http: OstHttp
+    private http: OstHttp,
+    public appConfigService : AppConfigService
   ) {}
 
   // Default parameters

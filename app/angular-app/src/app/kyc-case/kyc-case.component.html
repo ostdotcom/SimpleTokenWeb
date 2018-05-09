@@ -320,13 +320,13 @@
 
               <div class="float-right">
                 <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyActionModal">Deny</button>
-                <ng-container *ngIf="appConfig.getClientSetup().has_email_setup == true">
+                <ng-container *ngIf="appConfig.hasEmailSetup()">
                   <button type="button" class="btn btn-light mr-2 mb-2 text-uppercase" (click)="showPageState(false, true, false)">Report Issue</button>
                 </ng-container>
                 <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyActionModal">Qualify</button>
 
               </div>
-
+              hasEmailSetup
             </ng-template>
 
           </ng-container>
