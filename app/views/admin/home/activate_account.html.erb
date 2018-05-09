@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-12">
           <div class="simple-token-form">
-            <h3 class="text-center mt-4 mb-2">Hi, <%#= @resp_data['name'].to_s %>!</h3>
+            <h3 class="text-center mt-4 mb-2">Hi, <%= @resp_data['name'].to_s %>!</h3>
             <p class="text-center">Please select a password to activate your account</p>
             <form class="user-form col-12 col-md-6 col-lg-5 col-xl-4 mx-auto" method="POST" action="/api/admin/activate-invite" id="activateAccountPasswordForm">
               <div class="form-group">
