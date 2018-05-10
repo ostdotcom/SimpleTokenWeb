@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { RequestStateHandlerService } from '../../request-state-handler.service';
-import { OstHttp } from '../../ost-http.service';
+import { RequestStateHandlerService } from '../../services/request-state-handler.service';
+import { OstHttp } from '../../services/ost-http.service';
 declare var $:any;
 
 @Component({
@@ -12,8 +12,8 @@ export class InviteUserModalComponent {
 
   constructor(public stateHandler: RequestStateHandlerService ,  private http : OstHttp) { }
 
-  @Input('inviteUserForm') inviteUserForm ; 
-  @Output('onInviteSuccessEvent') onInviteSuccessEvent = new EventEmitter(); 
+  @Input('inviteUserForm') inviteUserForm ;
+  @Output('onInviteSuccessEvent') onInviteSuccessEvent = new EventEmitter();
 
   ngAfterViewInit() {
     $("#inviteUser").off('hidden.bs.modal').on("hidden.bs.modal", () => {
@@ -31,7 +31,7 @@ export class InviteUserModalComponent {
           this.stateHandler.updateRequestStatus(this);
           $('#inviteUser').modal('hide');
           setTimeout(()=> {
-            this.onInviteSuccessEvent.emit( true ); 
+            this.onInviteSuccessEvent.emit( true );
           } , 500 )
         }else{
           this.stateHandler.updateRequestStatus(this,  false,  true , false, res);

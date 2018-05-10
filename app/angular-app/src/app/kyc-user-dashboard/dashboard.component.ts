@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { EntityConfigService } from '../entity-config.service';
+import { EntityConfigService } from '../services/entity-config.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RequestStateHandlerService } from '../request-state-handler.service';
-import {OstHttp} from '../ost-http.service';
+import { RequestStateHandlerService } from '../services/request-state-handler.service';
+import {OstHttp} from '../services/ost-http.service';
 import {TableComponent} from '../table/table.component';
-import { AppConfigService } from '../app-config.service';
+import { AppConfigService } from '../services/app-config.service';
 
 declare var $: any;
 

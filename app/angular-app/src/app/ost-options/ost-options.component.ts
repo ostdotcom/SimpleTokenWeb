@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EntityConfigService } from '../entity-config.service';
+import { EntityConfigService } from '../services/entity-config.service';
 
 declare var $:any;
 
@@ -12,7 +12,7 @@ export class OstOptionsComponent implements OnInit {
 
   constructor(private entityConfigService : EntityConfigService) { }
 
-  @Input('entityPath') entityPath:string; 
+  @Input('entityPath') entityPath:string;
 
   options: Array<any>
 
@@ -21,14 +21,14 @@ export class OstOptionsComponent implements OnInit {
   }
 
   /*
-  * Selectpicker should always be initialized after the content for component has been render 
-  * ngAfterContentInit is a life cycle hook is trigger after the content init but dosent update the dom yet 
-  * So selectpicker is called once the dom is updated with all the options with setTimeOut 
+  * Selectpicker should always be initialized after the content for component has been render
+  * ngAfterContentInit is a life cycle hook is trigger after the content init but dosent update the dom yet
+  * So selectpicker is called once the dom is updated with all the options with setTimeOut
   */
   ngAfterContentInit(){
     setTimeout(function(){
         $('.selectpicker').selectpicker();
-    } , 100); 
+    } , 100);
   }
 
 }

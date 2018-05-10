@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, TemplateRef, ContentChild, Output, EventEmitter} from '@angular/core';
-import {OstHttp} from '../ost-http.service';
+import {OstHttp} from '../services/ost-http.service';
 import {Http, RequestOptionsArgs, ResponseContentType} from '@angular/http';
-import { RequestStateHandlerService } from '../request-state-handler.service';
+import { RequestStateHandlerService } from '../services/request-state-handler.service';
 
 @Component({
   selector: 'app-table',

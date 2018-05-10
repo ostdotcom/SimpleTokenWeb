@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { OstHttp } from '../../ost-http.service';
-import { RequestStateHandlerService } from '../../request-state-handler.service';
+import { OstHttp } from '../../services/ost-http.service';
+import { RequestStateHandlerService } from '../../services/request-state-handler.service';
 
-declare var $:any; 
+declare var $:any;
 
 @Component({
   selector: 'kyc-case-action-modal',
@@ -14,17 +14,17 @@ export class KycCaseActionModalComponent  {
 
   constructor( private http: OstHttp , private stateHandler : RequestStateHandlerService) { }
 
-  @Input('postApi') postApi ; 
-  @Input('caseId')  caseId  ; 
-  @Input('modalId') modalId ; 
+  @Input('postApi') postApi ;
+  @Input('caseId')  caseId  ;
+  @Input('modalId') modalId ;
 
-  //Inputs with defaults 
-  @Input('actionBtnPrimaryName') actionBtnPrimaryName?:string = "OK"; 
-  @Input('actionBtnSecondaryName') actionBtnSecondaryName?:string = "CANCEL"; 
-  @Input('actionBtnPrimaryClass') actionBtnPrimaryClass?:string = "btn-primary"; 
+  //Inputs with defaults
+  @Input('actionBtnPrimaryName') actionBtnPrimaryName?:string = "OK";
+  @Input('actionBtnSecondaryName') actionBtnSecondaryName?:string = "CANCEL";
+  @Input('actionBtnPrimaryClass') actionBtnPrimaryClass?:string = "btn-primary";
 
   //Output
-  @Output('actionSuccessEvent') actionSuccessEvent = new EventEmitter(); 
+  @Output('actionSuccessEvent') actionSuccessEvent = new EventEmitter();
 
   ngAfterViewInit() {
     $("#"+this.modalId).off('hidden.bs.modal').on("hidden.bs.modal", () => {
@@ -34,29 +34,29 @@ export class KycCaseActionModalComponent  {
 
   onAction(){
     let params = { 'id' : this.caseId };
-    this.stateHandler.updateRequestStatus(this, true); 
+    this.stateHandler.updateRequestStatus(this, true);
     this.http.post( this.postApi , {...params}).subscribe(
       response => {
           this.onSuccess( response.json() )
       },
       error => {
-        this.onError( error.json() ); 
+        this.onError( error.json() );
       }
     )
   }
 
   onSuccess( response ){
     if( !response.success ) {
-      this.stateHandler.updateRequestStatus(this, false , true ,  false , response); 
-      return ; 
+      this.stateHandler.updateRequestStatus(this, false , true ,  false , response);
+      return ;
     }
-    this.stateHandler.updateRequestStatus(this, false); 
+    this.stateHandler.updateRequestStatus(this, false);
     $("#"+this.modalId).modal('hide');
-    this.actionSuccessEvent.emit(true); 
+    this.actionSuccessEvent.emit(true);
   }
 
   onError( error ){
-    this.stateHandler.updateRequestStatus(this, false , true ,  false , error); 
+    this.stateHandler.updateRequestStatus(this, false , true ,  false , error);
   }
 
 }

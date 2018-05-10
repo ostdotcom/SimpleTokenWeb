@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import {OstHttp} from '../ost-http.service';
+import {OstHttp} from '../services/ost-http.service';
 
 
 @Component({

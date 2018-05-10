@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { OstHttp } from '../ost-http.service';
-import { RequestStateHandlerService } from '../request-state-handler.service';
-import { AppConfigService } from '../app-config.service';
+import { OstHttp } from '../services/ost-http.service';
+import { RequestStateHandlerService } from '../services/request-state-handler.service';
+import { AppConfigService } from '../services/app-config.service';
 
 @Component({
   selector: 'app-kyc-case',
@@ -17,16 +17,16 @@ export class KycCaseComponent implements OnInit {
   showCase: boolean = true;
   showReportIssue: boolean = false;
   showUpdateEth: boolean = false;
-  isInitDuplicateTable:boolean = false; 
+  isInitDuplicateTable:boolean = false;
   isInitLogTabel:boolean = false;
   caseDetails: object = {};
   userDetails: object = {};
   meta: object = {};
   rData
   caseId;
-  isStatusDenied :boolean =  false ; 
-  isReportIssue :boolean = false ; 
-  isWhitelisting:boolean =  false; 
+  isStatusDenied :boolean =  false ;
+  isReportIssue :boolean = false ;
+  isWhitelisting:boolean =  false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -84,11 +84,11 @@ export class KycCaseComponent implements OnInit {
   }
 
   initDuplicateTable(){
-    this.isInitDuplicateTable =true; 
+    this.isInitDuplicateTable =true;
   }
 
   initLogTabel(){
-    this.isInitLogTabel =true; 
+    this.isInitLogTabel =true;
   }
 
 }

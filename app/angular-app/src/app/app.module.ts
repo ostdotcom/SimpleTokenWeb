@@ -3,7 +3,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { OstHttp } from './ost-http.service';
+import { OstHttp } from './services/ost-http.service';
 
 
 import { AppComponent } from './app.component';
@@ -12,15 +12,15 @@ import { RowComponent } from './kyc-user-dashboard/kyc-user-row/row.component';
 import { PaginationComponent } from './table/pagination/pagination.component';
 import { DashboardComponent } from './kyc-user-dashboard/dashboard.component';
 import { HeaderComponent } from './kyc-user-dashboard/kyc-user-header/header.component';
-import { AppConfigService } from './app-config.service';
-import { EntityConfigService } from './entity-config.service';
+import { AppConfigService } from './services/app-config.service';
+import { EntityConfigService } from './services/entity-config.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OstSearchComponent } from './ost-search/search.component';
 import { KycCaseComponent } from './kyc-case/kyc-case.component';
 import { KycLogRowComponent } from './kyc-case/kyc-log-row/kyc-log-row.component';
 import { KycLogHeaderComponent } from './kyc-case/kyc-log-header/kyc-log-header.component';
 import { RequestStateHandlerComponent } from './request-state-handler/request-state-handler.component';
-import { RequestStateHandlerService } from './request-state-handler.service';
+import { RequestStateHandlerService } from './services/request-state-handler.service';
 import { OstOptionsComponent } from './ost-options/ost-options.component';
 import { InviteUserComponent } from './invite-user/invite-user.component';
 import { OstHeaderComponent } from './table/ost-header/ost-header.component';

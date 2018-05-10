@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { OstHttp } from '../../ost-http.service';
-import { RequestStateHandlerService } from '../../request-state-handler.service';
+import { OstHttp } from '../../services/ost-http.service';
+import { RequestStateHandlerService } from '../../services/request-state-handler.service';
 declare var $: any;
 
 @Component({

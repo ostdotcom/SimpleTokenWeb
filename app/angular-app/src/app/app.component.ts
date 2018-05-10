@@ -1,5 +1,5 @@
 import { Component, ElementRef  } from '@angular/core';
-import { AppConfigService } from './app-config.service';
+import { AppConfigService } from './services/app-config.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +8,14 @@ import { AppConfigService } from './app-config.service';
 })
 
 export class AppComponent {
- 
+
   constructor(private elementRef : ElementRef ,  private appConfigService : AppConfigService){
-    let dataset = elementRef.nativeElement.dataset , 
-        initDataJson = dataset && dataset.initDataJson || "{}", 
+    let dataset = elementRef.nativeElement.dataset ,
+        initDataJson = dataset && dataset.initDataJson || "{}",
         initData = initDataJson && JSON.parse( initDataJson )
         ;
-    appConfigService.setAppInitData( initData ); 
-    console.log( appConfigService.getAppInitData( initData )  ); 
+    appConfigService.setAppInitData( initData );
+    console.log( appConfigService.getAppInitData( initData )  );
   }
 
 }

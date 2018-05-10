@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, ElementRef } from '@angular/core';
-import { OstHttp } from '../ost-http.service';
-import { RequestStateHandlerService } from '../request-state-handler.service';
+import { OstHttp } from '../services/ost-http.service';
+import { RequestStateHandlerService } from '../services/request-state-handler.service';
 
 @Component({
   selector: 'ost-search',

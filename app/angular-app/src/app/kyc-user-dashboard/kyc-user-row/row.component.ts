@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Pipe } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppConfigService } from '../../app-config.service';
+import { AppConfigService } from '../../services/app-config.service';
 
 @Component({
   selector: 'kyc-user-row',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { OstHttp } from '../../ost-http.service';
+import { OstHttp } from '../../services/ost-http.service';
 
 @Component({
   selector: 'ost-row',
@@ -21,11 +21,11 @@ export class OstRowComponent {
   }
 
   onDelete( row ){
-    this.deleteRowEvent.emit(row); 
+    this.deleteRowEvent.emit(row);
   };
 
   onUpdate( row ){
-    this.updateRowEvent.emit(row); 
+    this.updateRowEvent.emit(row);
   }
 
 }
