@@ -1,5 +1,8 @@
 
-<request-state-handler class="d-block w-100" [isProcessing]="isProcessing" [hasError]="hasError">
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="processing-content">
+      <div class="text-center display-1 mt-4">Loading your dashboard please wait ... </div>
+  </ng-container>  
   <ng-container class="error-content">
     <div class="col-12">{{errorMessage || "Something went wrong, please try again."}}</div>
   </ng-container>
@@ -118,7 +121,11 @@
                     </ng-template>
                   </div>
 
-                  <span *ngIf="caseDetails.is_duplicate == 1" class="button-UI text-uppercase" data-toggle="modal" data-target="#detailsModal">view details</span>
+                  <span *ngIf="caseDetails.is_duplicate == 1" class="button-UI text-uppercase" 
+                        data-toggle="modal" data-target="#detailsModal" 
+                        (click)="initDuplicateTable()">
+                        view details
+                  </span>
                 </div>
 
               </div>
@@ -136,7 +143,11 @@
                   <span class="key">Agent : </span>
                   <span class="value"> </span>
 
-                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#logsModal">view logs</span>
+                  <span class="button-UI text-uppercase" 
+                        data-toggle="modal" data-target="#logsModal"
+                        (click)="initLogTabel()">
+                      view logs
+                  </span>
 
                 </div>
 
@@ -273,8 +284,12 @@
           </div>
         </div>
 
-        <kyc-log-modal [caseId]='caseId'></kyc-log-modal>
-        <kyc-duplicate-details-modal [caseId]='caseId'> </kyc-duplicate-details-modal>
+        <ng-container *ngIf="isInitLogTabel">
+          <kyc-log-modal [caseId]='caseId'></kyc-log-modal>
+        </ng-container>  
+        <ng-container *ngIf="isInitDuplicateTable">
+          <kyc-duplicate-details-modal [caseId]='caseId'> </kyc-duplicate-details-modal>
+       </ng-container>   
 
       </ng-container>
 

@@ -18,6 +18,8 @@ export class KycCaseComponent implements OnInit {
   showCase: boolean = true;
   showReportIssue: boolean = false;
   showUpdateEth: boolean = false;
+  isInitDuplicateTable:boolean = false; 
+  isInitLogTabel:boolean = false;
   caseDetails: object = {};
   userDetails: object = {};
   meta: object = {};
@@ -116,6 +118,14 @@ export class KycCaseComponent implements OnInit {
       }
     }
     return currentSortings;
+  }
+
+  initDuplicateTable(){
+    this.isInitDuplicateTable =true; 
+  }
+
+  initLogTabel(){
+    this.isInitLogTabel =true; 
   }
 
 }
