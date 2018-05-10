@@ -30,20 +30,29 @@ export class KycLogRowComponent implements OnInit {
   ngOnInit() {
     const actionData = this.row.action_data;
     const humanizedActionData = this.row.humanized_action_data;
+    let breakFlag = false;
     if (this.row.action === 'kyc_issue_email_sent') {
+      this.actionData = '';
       for (let key in humanizedActionData) {
-        if ( key.toLowerCase() !== 'other issue') {
-           this.actionData = '<b>' + key + '</b>: ';
-           this.actionData += humanizedActionData[key];
-        }else {
-           this.actionData += '<br><b>' + key + '</b>';
+        if (humanizedActionData.hasOwnProperty(key)) {
+          if (! breakFlag) {
+            this.actionData += '<b>' + key + ':</b> ';
+            breakFlag = true;
+          } else {
+            this.actionData += '<br><b>' + key + ':</b> ';
+          }
+           if (!(humanizedActionData[key] === null)) {
+            this.actionData += humanizedActionData[key];
+           }
+
         }
      }
-     this.row.action = this.actionData;
-
+     console.log(this.actionData);
+     this.row.action = this.actionData.replace("Other issue:", "Other issue");
+     console.log(this.row.action);
     } else {
       this.row.action = this.messageHash[this.row.action];
     }
   }
-
 }
+

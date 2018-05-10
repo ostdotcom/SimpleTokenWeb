@@ -140,7 +140,7 @@ export class DashboardComponent implements OnInit {
       this.downloadCSV();
 
     }else {
-      this.checkboxError = 'Please confirm to download CSV';
+      this.checkboxError = 'Please confirm the above to download the CSV';
     }
     console.log(this.securityEthCheckbox, this.securityCheckbox);
 

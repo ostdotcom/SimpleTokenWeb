@@ -45,7 +45,7 @@
     <div *ngIf="row.is_duplicate;else original">
       <div class='red-left-border pl-2'>
         <span class="font-weight-500 display-3">Duplicate</span>
-        <span class='duplicate-reason d-block display-4 text-capitalize'>Same {{row.duplicate_type}}</span>
+        <span class='duplicate-reason d-block display-4 text-capitalize'>{{row.duplicate_type}}</span>
       </div>
     </div>
 
@@ -121,7 +121,7 @@
             <div *ngIf="row.is_duplicate;else original">
               <div class="red-left-border pl-2">
                 <span class='display-3 text-capitalize font-weight-500'>Duplicate</span>
-                <span class='display-4 d-block text-capitalize'>Same {{row.duplicate_type}}</span>
+                <span class='display-4 d-block text-capitalize'>{{row.duplicate_type}}</span>
               </div>
             </div>
 

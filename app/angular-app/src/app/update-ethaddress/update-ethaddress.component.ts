@@ -28,7 +28,7 @@ export class UpdateEthaddressComponent implements OnInit {
     let ethAddress = this.data['ethereum_address'] = updateEthAdressForm.value.address.trim();
     this.data['id'] = this.caseId;
     if (!ethAddress) {
-      this.errorMsg = 'Please fill Eth address';
+      this.errorMsg = 'Please enter Eth address';
       return;
     }
     this.updateMsg = 'updating ...';
@@ -42,20 +42,17 @@ export class UpdateEthaddressComponent implements OnInit {
           this.errorMsg = res.err.display_text;
         }
 
-
-       // this.stateHandler.updateRequestStatus(this);
-       // this.isMailSent = true;
       },
       error => {
-        this.errorMsg = 'abcd';
         let err = error.json();
-        // this.stateHandler.updateRequestStatus(this , false , true,  false  , err );
-
       });
   }
 
   hideEthAddress() {
     this.closeEthAddressEvent.emit("closeEthAddress");
+  }
+  onKey(){
+    this.errorMsg = '';
   }
 
 }

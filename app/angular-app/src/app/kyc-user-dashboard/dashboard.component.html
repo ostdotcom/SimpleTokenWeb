@@ -73,109 +73,11 @@
     </app-table>
 </div>
 
-
-<div class="modal fade" id="downlaodCSV">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header d-flex justify-content-center align-items-center">
-        <h5 class="modal-title text-center">Please confirm to download CSV</h5>
-      </div>
-
-      <!-- Modal body -->
-      <!-- <div class="modal-body mx-5">
-        <div>
-          <input type="checkbox" class="form-check-input" id="securityCheckbox">
-          <label class="form-check-label" for="securityCheckbox">OST KYC is not responsible for the security of data</label>
-        </div>
-        <div class="mt-2">
-          <input type="checkbox" class="form-check-input" id="securityEthCheckbox">
-          <label class="form-check-label" for="securityEthCheckbox">OST KYC is not responsible for the security of ETH address shared.</label>
-        </div>
-      </div> -->
-
-      <!-- Modal footer -->
-      <div class="modal-footer mt-3 mb-3">
-        <div class="d-flex justify-content-center align-items-center">
-          <button type="button" class="btn btn-primary text-uppercase" data-toggle="modal" data-target="#successCSV">Confirm</button>
-          <button type="button" class="btn btn-light ml-3 text-uppercase" data-dismiss="modal">Cancel</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-<div class="modal fade" id="successCSV">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header d-flex justify-content-center align-items-center mt-3">
-        <svg class="svg model-success-svg">
-          <switch>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon"></use>
-          </switch>
-        </svg>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body text-center mx-5">
-        <div>
-          <h4 class="success">Success</h4>
-          <span>We are consolidating your CSV file. We will send an email on char@company.com, with a link to download it. Please check your inbox in sometime. </span>
-        </div>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer mb-3 d-flex justify-content-center align-items-center">
-          <button type="button" class="btn btn-primary text-uppercase" data-toggle="modal" data-target="#errorCSV">Ok</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-<div class="modal fade" id="errorCSV">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header d-flex justify-content-center align-items-center mt-3">
-        <svg class="svg model-warning-svg">
-          <switch>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
-          </switch>
-        </svg>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body text-center mx-5">
-        <span>You can only download the CSV 5 times in 24 hours. Please try again after 2:30 PM tomorrow.</span>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer mb-3 d-flex justify-content-center align-items-center">
-          <button type="button" class="btn btn-primary text-uppercase" data-dismiss="modal">Ok</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
 <div class="modal fade" id="confirmDownload">
     <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-body px-sm-5">
               <div class='row' *ngIf="!isProcessing && !hasError && !isCSVDownloaded">
-
-                   <!-- Modal Header -->
-
-
-                  <!-- Modal body -->
                   <div class="modal-body m-md-4">
                       <div class="d-flex mb-4">
                           <h5 class="modal-title text-center">Please confirm to download CSV</h5>

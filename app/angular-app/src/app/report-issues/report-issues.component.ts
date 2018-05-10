@@ -20,6 +20,7 @@ export class ReportIssuesComponent implements OnInit {
   hasError;
   errorMsg;
   frontEndError = '';
+  otherIssueError;
 
   form: FormGroup;
   data_mismatch = [{key: 'first_name', value: 'First Name' },
@@ -136,20 +137,23 @@ export class ReportIssuesComponent implements OnInit {
       }
     }
     if (formValues['other_issue'] && ! formValues['other_issue_expln']) {
-       return {isValidated: false, message: 'Please provide explanation for other issue'};
+       this.otherIssueError = 'Please provide explanation for other issue';
+       this.frontEndError = '';
+       return {isValidated: false};
     }
     if (atleastOneSelected) {
-      return {isValidated: true, message: ''};
+      return {isValidated: true};
     }
-    return {isValidated: false, message: 'Please select atleast one issue'};
+    this.otherIssueError = '';
+    this.frontEndError = 'Please select atleast one issue';
+    return {isValidated: false };
   }
 
   validateAndOpenModal() {
     const validation = this.validateForm();
 
-    if (! validation.isValidated) {
-      this.frontEndError = validation.message;
-    }else {
+    if (validation.isValidated) {
+      this.otherIssueError = '';
       this.frontEndError = '';
       $('#confirmation').modal('show');
     }
