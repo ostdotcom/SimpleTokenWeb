@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-base-modal',
+  selector: 'table-modal-base',
   templateUrl: './base-modal.component.html',
   styleUrls: ['./base-modal.component.scss']
 })

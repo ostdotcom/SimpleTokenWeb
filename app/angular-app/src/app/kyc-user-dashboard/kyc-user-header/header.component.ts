@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AppConfigService } from '../app-config.service';
+import { AppConfigService } from '../../app-config.service';
 
 @Component({
-  selector: 'dashboard-table-header',
+  selector: 'kyc-user-table-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss', '../ost-header/ost-header.component.scss']
+  styleUrls: [ '../../table/ost-header/ost-header.component.scss' , './header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   @Input() header;

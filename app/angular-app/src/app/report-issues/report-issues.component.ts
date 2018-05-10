@@ -5,8 +5,6 @@ import { RequestStateHandlerService } from '../request-state-handler.service';
 declare var $: any;
 
 
-
-
 @Component({
   selector: 'report-issues',
   templateUrl: './report-issues.component.html',
@@ -23,8 +21,6 @@ export class ReportIssuesComponent implements OnInit {
   errorMsg;
   frontEndError = '';
 
-
-
   form: FormGroup;
   data_mismatch = [{key: 'first_name', value: 'First Name' },
                    {key: 'last_name', value: 'Last Name' },
@@ -38,12 +34,6 @@ export class ReportIssuesComponent implements OnInit {
   postUrl =  'api/admin/kyc/email-kyc-issue';
 
   constructor(private formBuilder: FormBuilder, private http: OstHttp, private stateHandler: RequestStateHandlerService ) {
-
-
-    console.log(this.userDetails);
-
-
-
   }
 
   @Output('closeReportIssueEvent') closeReportIssueEvent =  new EventEmitter();
@@ -53,7 +43,7 @@ export class ReportIssuesComponent implements OnInit {
     if (this.userDetails.residence_proof_file_url) {
       this.document_issue.push( {key: 'residency_proof_issue', value: 'Residency Proof Issue' });
     }
-    if (this.userDetails.investor_proof_files_url.length) {
+    if (this.userDetails.investor_proof_files_url && this.userDetails.investor_proof_files_url.length) {
       this.document_issue.push(  {key: 'investor_proof_issue', value: 'Investor Proof Issue'});
     }
 

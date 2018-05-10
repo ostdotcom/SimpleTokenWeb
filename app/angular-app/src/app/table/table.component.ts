@@ -15,7 +15,7 @@ export class TableComponent implements OnInit {
   }
 
   // Decide row template according to parent
-  @ContentChild('rowData') rowTemplate: TemplateRef<any>;
+  @ContentChild('rowTemplate') rowTemplate: TemplateRef<any>;
 
   //Mandatory input options
   @Input('dataUrl') dataUrl: string;
@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
   @Input('warningMsg') warningMsg?: string = "";
 
   @Output('pageChangeEvent') pageChangeEvent? = new EventEmitter<number>();
-  @Output('tableDataLoadedEvent') tableDataLoadedEvent? =  new EventEmitter(); 
+  @Output('tableDataLoadedEvent') tableDataLoadedEvent? =  new EventEmitter();
 
 
   rows: Array<any> = [];
@@ -183,16 +183,16 @@ export class TableComponent implements OnInit {
         hasWarning = true ;
       }
       this.stateHandler.updateRequestStatus(this, false, false , hasWarning);
-      this.tableDataLoadedEvent.emit( true ); 
+      this.tableDataLoadedEvent.emit( true );
     }else{
       this.stateHandler.updateRequestStatus(this, false, true, false , response );
-      this.tableDataLoadedEvent.emit( false ); 
+      this.tableDataLoadedEvent.emit( false );
     }
   }
 
   onTableDataError(error) {
     this.stateHandler.updateRequestStatus(this, false, true, false, error);
-    this.tableDataLoadedEvent.emit( false ); 
+    this.tableDataLoadedEvent.emit( false );
   }
 
   isPagination(): Boolean {

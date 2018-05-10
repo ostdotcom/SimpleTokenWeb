@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'kyc-details-header',
   templateUrl: './kyc-details-header.component.html',
-  styleUrls: ['../ost-header/ost-header.component.scss',  './kyc-details-header.component.scss']
+  styleUrls: ['../../table/ost-header/ost-header.component.scss',  './kyc-details-header.component.scss']
 })
 export class KycDetailsHeaderComponent implements OnInit {
 

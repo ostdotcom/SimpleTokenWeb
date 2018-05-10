@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'kyc-duplicate-details-modal',
   templateUrl: './duplicate-details-modal.component.html',
-  styleUrls: ['../base-modal/base-modal.component.scss', './duplicate-details-modal.component.scss']
+  styleUrls: ['../../table-modal-base/base-modal.component.scss', './duplicate-details-modal.component.scss']
 })
 export class DuplicateDetailsModalComponent implements OnInit {
   @Input() caseId;

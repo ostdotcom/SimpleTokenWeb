@@ -1,48 +1,48 @@
-<div class="mt-4"> 
+<div class="mt-4">
     <div class="row" *ngIf="!showInviteUser" >
-        <div class="col-6 invite-btn-wrap text-left">  
+        <div class="col-6 invite-btn-wrap text-left">
             <h4 class="text-transform-upper">USER DASHBOARD</h4>
-        </div> 
+        </div>
         <div class="col-6" style="text-align: right;">
             <button class="btn btn-primary" (click)="showInviteUserSection()">Invite Users</button>
-        </div>      
+        </div>
         <div class="col-12 user-table-wrap p-0 mt-4">
             <app-table [dataUrl]="'api/admin/admin-user/dashboard'">
-                <user-dash-board-header class="header"></user-dash-board-header>    
-                <ng-template #rowData let-row >
-                    <user-dash-board-row [row]='row' 
+                <user-dash-board-header class="header"></user-dash-board-header>
+                <ng-template #rowTemplate let-row >
+                    <user-dash-board-row [row]='row'
                                          (deleteRowEvent) = "onDeleteRow( $event )"
                                          (resendInviteEvent) = "onResendInvite( $event )"
                                          (resetMfaEvent) = "onResetMfa( $event)" >
                     </user-dash-board-row>
-                </ng-template>          
+                </ng-template>
             </app-table>
-        </div>    
-    </div>      
+        </div>
+    </div>
     <invite-user *ngIf="showInviteUser"  (closeInviteUser)="hideInviteUserSection( $event )"></invite-user>
 </div>
 
-<!-- <delete-user-modal  (deleteUserSuccessEvent)="onDeleteRowSucces( $event )" 
+<!-- <delete-user-modal  (deleteUserSuccessEvent)="onDeleteRowSucces( $event )"
                     [user]="user" [deleteUserApi]="'api/admin/admin-user/delete-admin'">
 </delete-user-modal> -->
 
-<admin-dashboard-modal  [modalId]="'deleteAdminUserModal'" [user]="user" 
+<admin-dashboard-modal  [modalId]="'deleteAdminUserModal'" [user]="user"
                         [postApi]="'api/admin/admin-user/delete-admin'" [actionBtnPrimaryName]="'DELETE'"
                         (actionSuccessEvent)="onDeleteRowSucces( $event )">
     <ng-container class="modal-body-content">
         <div class="col-12">
             <h4 class="text-center">Are you sure you want to delete this admin?</h4>
         </div>
-    </ng-container>  
+    </ng-container>
     <ng-container class="custom-processing-content">
         <span>Deleting please wait ... </span>
-    </ng-container>   
+    </ng-container>
     <ng-container class="custom-error-content">
         <span>There was some issue while deleting user.<br>Please Try Again.</span>
-    </ng-container>    
+    </ng-container>
     <ng-container class="custom-success-content">
         <span>The user has been deleted successfully.</span>
-    </ng-container>                     
+    </ng-container>
 </admin-dashboard-modal>
 
 
@@ -51,26 +51,26 @@
 
 
 
-<!-- <resend-invite-modal  (resendInviteSuccessEvent)="onResendInviteSucces( $event )" 
+<!-- <resend-invite-modal  (resendInviteSuccessEvent)="onResendInviteSucces( $event )"
                       [user]="user" [resendInviteApi]="'api/admin/admin-user/resend-invite'">
 </resend-invite-modal> -->
-<admin-dashboard-modal  [modalId]="'resendInviteModal'" [user]="user" 
+<admin-dashboard-modal  [modalId]="'resendInviteModal'" [user]="user"
                         [postApi]="'api/admin/admin-user/resend-invite'" [actionBtnPrimaryName]="'RESEND INVITE'"
                         (actionSuccessEvent)="onResendInviteSucces( $event )">
     <ng-container class="modal-body-content">
         <div class="col-12">
             <h4 class="text-center">Are you sure you want to resend and invite?</h4>
         </div>
-    </ng-container>  
+    </ng-container>
     <ng-container class="custom-processing-content">
             <span>Sending invite please wait ... </span>
-    </ng-container>    
+    </ng-container>
     <ng-container class="custom-error-content">
         <span>There was some issue while sending user invite.<br>Please Try Again.</span>
-    </ng-container>    
+    </ng-container>
     <ng-container class="custom-success-content">
         <span>The user invite has been send successfully.</span>
-    </ng-container>                     
+    </ng-container>
 </admin-dashboard-modal>
 
 
@@ -79,24 +79,24 @@
 
 
 
-<!-- <reset-mfa-modal  (resetMfaSuccessEvent)="onResetMfaSucces( $event )" 
+<!-- <reset-mfa-modal  (resetMfaSuccessEvent)="onResetMfaSucces( $event )"
                   [user]="user" [resetMfaApi]="'api/admin/admin-user/reset-mfa'">
 </reset-mfa-modal> -->
-<admin-dashboard-modal  [modalId]="'resetMfaModal'" [user]="user" 
+<admin-dashboard-modal  [modalId]="'resetMfaModal'" [user]="user"
                         [postApi]="'api/admin/admin-user/reset-mfa'" [actionBtnPrimaryName]="'RESET MFA'"
                         (actionSuccessEvent)="onResetMfaSucces( $event )">
     <ng-container class="modal-body-content">
         <div class="col-12">
             <h4 class="text-center">Are you sure you want to reset MFA?</h4>
         </div>
-    </ng-container>  
+    </ng-container>
     <ng-container class="custom-processing-content">
             <span>Resetting MFA please wait ...</span>
-    </ng-container>   
+    </ng-container>
     <ng-container class="custom-error-content">
         <span>There was some issue while resetting MFA.<br>Please Try Again.</span>
-    </ng-container>    
+    </ng-container>
     <ng-container class="custom-success-content">
         <span>The user MFA has been reset successfully.</span>
-    </ng-container>                     
+    </ng-container>
 </admin-dashboard-modal>

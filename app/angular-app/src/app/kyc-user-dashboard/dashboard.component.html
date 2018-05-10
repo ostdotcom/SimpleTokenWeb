@@ -2,7 +2,7 @@
   <h2 class="kyc-header ml-4 text-transform-upper">KYC DASHBOARD</h2>
   <div class="float-right d-flex justify-content-center align-items-center ml-auto" *ngIf="appConfigService.isSuperAdmin()">
     <button class="btn btn-primary mr-4"
-            data-toggle="modal" 
+            data-toggle="modal"
             data-target="#confirmDownload">
             DOWNLOAD CSV
     </button>
@@ -11,10 +11,10 @@
 
 <div class="row  p-3 filters">
     <div class="col-12 d-lg-none">
-        <kyc-navbar-search  [searchApi]="'api/admin/kyc/get-cases-by-email'"
+        <ost-search  [searchApi]="'api/admin/kyc/get-cases-by-email'"
                             [entityName]="'email'"
                             [placeholder]="'Search by Email'">
-        </kyc-navbar-search>
+        </ost-search>
     </div>
     <div class="col-12 col-lg-8">
       <form class="form-group" #filterForm="ngForm" name='filters' (change)="onFilterChange(filterForm)">
@@ -66,9 +66,9 @@
             (pageChangeEvent)="onPageChange( $event )"
             [warningMsg]="'We could not find any results, please try changing the filters or refresh the page.'"
             [customErrorMsg]="'Something went wrong, we couldnot load the dashboard, please refresh the page or try updating the filters'">
-    <dashboard-table-header class='header'></dashboard-table-header>
-    <ng-template #rowData let-row >
-      <app-row [row]='row'></app-row>
+    <kyc-user-table-header class='header'></kyc-user-table-header>
+    <ng-template #rowTemplate let-row >
+      <kyc-user-row [row]='row'></kyc-user-row>
     </ng-template>
     </app-table>
 </div>

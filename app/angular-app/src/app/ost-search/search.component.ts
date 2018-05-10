@@ -3,14 +3,14 @@ import { OstHttp } from '../ost-http.service';
 import { RequestStateHandlerService } from '../request-state-handler.service';
 
 @Component({
-  selector: 'kyc-navbar-search',
-  templateUrl: './navbar-search.component.html',
-  styleUrls: ['./navbar-search.component.scss'],
+  selector: 'ost-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
   host: {
     '(document:click)': 'handleClickEvent($event)'
   }
 })
-export class NavbarSearchComponent implements OnInit {
+export class OstSearchComponent implements OnInit {
 
   constructor(private http : OstHttp, private _eref: ElementRef , private stateHandler: RequestStateHandlerService) { }
 

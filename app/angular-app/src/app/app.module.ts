@@ -8,27 +8,27 @@ import { OstHttp } from './ost-http.service';
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
-import { RowComponent } from './kyc-user-row/row.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeaderComponent } from './kyc-user-header/header.component';
+import { RowComponent } from './kyc-user-dashboard/kyc-user-row/row.component';
+import { PaginationComponent } from './table/pagination/pagination.component';
+import { DashboardComponent } from './kyc-user-dashboard/dashboard.component';
+import { HeaderComponent } from './kyc-user-dashboard/kyc-user-header/header.component';
 import { AppConfigService } from './app-config.service';
 import { EntityConfigService } from './entity-config.service';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NavbarSearchComponent } from './navbar-search/navbar-search.component';
+import { OstSearchComponent } from './ost-search/search.component';
 import { KycCaseComponent } from './kyc-case/kyc-case.component';
-import { KycLogRowComponent } from './kyc-log-row/kyc-log-row.component';
-import { KycLogHeaderComponent } from './kyc-log-header/kyc-log-header.component';
+import { KycLogRowComponent } from './kyc-case/kyc-log-row/kyc-log-row.component';
+import { KycLogHeaderComponent } from './kyc-case/kyc-log-header/kyc-log-header.component';
 import { RequestStateHandlerComponent } from './request-state-handler/request-state-handler.component';
 import { RequestStateHandlerService } from './request-state-handler.service';
 import { OstOptionsComponent } from './ost-options/ost-options.component';
 import { InviteUserComponent } from './invite-user/invite-user.component';
-import { OstHeaderComponent } from './ost-header/ost-header.component';
-import { KycDetailsHeaderComponent } from './kyc-details-header/kyc-details-header.component';
-import { KycDetailsRowComponent } from './kyc-details-row/kyc-details-row.component';
-import { BaseModalComponent } from './base-modal/base-modal.component';
-import { LogModalComponent } from './log-modal/log-modal.component';
-import { DuplicateDetailsModalComponent } from './duplicate-details-modal/duplicate-details-modal.component';
+import { OstHeaderComponent } from './table/ost-header/ost-header.component';
+import { KycDetailsHeaderComponent } from './kyc-case/kyc-details-header/kyc-details-header.component';
+import { KycDetailsRowComponent } from './kyc-case/kyc-details-row/kyc-details-row.component';
+import { BaseModalComponent } from './table-modal-base/base-modal.component';
+import { LogModalComponent } from './kyc-case/log-modal/log-modal.component';
+import { DuplicateDetailsModalComponent } from './kyc-case/duplicate-details-modal/duplicate-details-modal.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ReportIssuesComponent } from './report-issues/report-issues.component';
 import { UpdateEthaddressComponent } from './update-ethaddress/update-ethaddress.component';
@@ -57,7 +57,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     DashboardComponent,
     HeaderComponent,
     NavbarComponent,
-    NavbarSearchComponent,
+    OstSearchComponent,
     KycCaseComponent,
     KycLogRowComponent,
     KycLogHeaderComponent,
