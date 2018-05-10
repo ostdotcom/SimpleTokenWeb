@@ -102,4 +102,8 @@ export class KycCaseComponent implements OnInit {
     this.previousCaseId = this.hasPreviousPage ? meta.previous_page_payload.id : 0;
   }
 
+  getDocType(url){
+    return url.includes("/i/") ? 'image' : 'pdf';
+  }
+
 }

@@ -15,7 +15,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a routerLink="/admin/dashboard" class="kyc-dashboard-breadcrumb text-uppercase">KYC Dashboard</a>
+              <a routerLink="/admin/dashboard" [queryParams]="activatedRoute.snapshot.queryParams" class="kyc-dashboard-breadcrumb text-uppercase">KYC Dashboard</a>
             </li>
             <li class="breadcrumb-item text-uppercase active" aria-current="page">KYC Details</li>
           </ol>
@@ -232,7 +232,10 @@
                 <div class="card-body">
                   <h6 class="card-title">ID Image</h6>
                 </div>
-                <img class="card-img-top" src="{{userDetails.document_id_file_url}}" alt="Card image cap">
+                <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top" src="{{userDetails.document_id_file_url}}" />
+                <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
+                  <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.document_id_file_url)'></iframe>
+                </div>
               </div>
             </div>
           </div>
@@ -248,13 +251,19 @@
                 <div class="card-body">
                   <h6 class="card-title">Id image</h6>
                 </div>
-                <img class="card-img-top" src="{{userDetails.document_id_file_url}}" alt="Card image cap">
+                <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top" src="{{userDetails.document_id_file_url}}" />
+                <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
+                  <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.document_id_file_url)'></iframe>
+                </div>
               </div>
               <div class="card">
                 <div class="card-body">
                   <h6 class="card-title">Selfie image</h6>
                 </div>
-                <img class="card-img-top" src="{{userDetails.selfie_file_url}}" alt="Card image cap">
+                <img *ngIf="getDocType(userDetails.selfie_file_url) == 'image'" class="card-img-top" src="{{userDetails.selfie_file_url}}" />
+                <div *ngIf="getDocType(userDetails.selfie_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
+                  <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.selfie_file_url)'></iframe>
+                </div>
               </div>
             </div>
           </div>
@@ -273,7 +282,8 @@
                   <div class="card-body">
                     <h6 class="card-title">Document_{{i+1}}</h6>
                   </div>
-                  <div class="embed-responsive embed-responsive-1by1">
+                  <img *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'image'" class="card-img-top" src="{{userDetails.investor_proof_files_url[i]}}" />
+                  <div *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'pdf'" class="embed-responsive embed-responsive-1by1">
                     <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.investor_proof_files_url[i])'></iframe>
                   </div>
                 </div>
