@@ -52,6 +52,7 @@ export class DashboardComponent implements OnInit {
     'filters[cynopsis_status]': 'cynopsis_status',
     'filters[whitelist_status]': 'whitelist_status'
   };
+
   defaultQueryParams: object = {
     admin_status: 'all',
     admin_action_status: 'all',
@@ -151,8 +152,7 @@ export class DashboardComponent implements OnInit {
 
   downloadCSV() {
     this.stateHandler.updateRequestStatus(this ,  true );
-    console.log(this.getQueryParams());
-    this.http.get(this.downloadURL,  this.params ).subscribe(
+    this.http.get(this.downloadURL,  this.getQueryParams() ).subscribe(
       response => {
         let res = response.json();
         if (!res.success) {
@@ -163,10 +163,6 @@ export class DashboardComponent implements OnInit {
         this.isCSVDownloaded = true;
         this.successMessage  = res.data.success_message;
         console.log(res);
-        // this.stateHandler.updateRequestStatus(this);
-        // this.isMailSent = true;
-        // $('#confirmation').modal('hide');
-        // this.hideReportIssue();
       },
       error => {
         let err = error.json();
@@ -175,10 +171,6 @@ export class DashboardComponent implements OnInit {
       })
   }
 
-  getParamsForDownloadCSV(params) {
-     this.params = params;
-
-  }
 
 
 
