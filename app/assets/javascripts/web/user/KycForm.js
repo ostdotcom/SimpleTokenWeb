@@ -72,10 +72,17 @@
 
         var fileUpload = $(this).closest('.file-upload');
 
+        var fileInputLast = fileUpload.find(".file-wrapper input[type='file'].upload:last-child");
+        var file = fileInputLast.length && fileInputLast[0].files[0];
+
+        if (fileInputLast.length && !file){
+          fileUpload.find(".file-wrapper input[type='file'].upload:last-child").remove();
+        }
+
         if (fileUpload.find(".file-wrapper .upload").length == 0) {
           oThis.fileCount = 0;
         }
-        else {
+        else if(fileInputLast.length && file){
           oThis.fileCount++;
         }
 
