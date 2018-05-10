@@ -51,7 +51,7 @@ export class UpdateEthaddressComponent implements OnInit {
   hideEthAddress() {
     this.closeEthAddressEvent.emit("closeEthAddress");
   }
-  onKey(){
+  onKey(e){
     this.errorMsg = '';
   }
 
