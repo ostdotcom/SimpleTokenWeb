@@ -2,7 +2,8 @@
   <div class="search-input-wrapper">
     <form class="form-group" #searchForm="ngForm"
           (input)="onSearch( searchForm )">
-        <input [name]="entityName"
+        <input type="text" 
+              [name]="entityName"
               [placeholder]="placeholder"
               [(ngModel)]="searchValue"
               class="form-control" />

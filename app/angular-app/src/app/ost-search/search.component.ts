@@ -15,15 +15,15 @@ export class OstSearchComponent implements OnInit {
   constructor(private http : OstHttp, private _eref: ElementRef , private stateHandler: RequestStateHandlerService) { }
 
   //Mandatory options to pass
-  @Input('searchApi')  searchApi      : string;
-  @Input('entityName') entityName     : string;
-  @Input('placeholder') placeholder?  : string;
+  @Input('searchApi')  searchApi      : any;
+  @Input('entityName') entityName     : any;
+  @Input('placeholder') placeholder?  : any = "Search by email";
 
   //Optional options to pass
   @Input('config') config?: string;
 
   items : Array<any> = [];
-  searchValue: string = null;
+  searchValue: any = null;
   isProcessing: boolean = false;
   hasError: boolean = false;
   hasWarning: boolean = false;
@@ -31,13 +31,11 @@ export class OstSearchComponent implements OnInit {
   errorMessage: string = "Sorry no results found!";
   searchTimeOut;
 
-  ngOnInit() {
-    this.placeholder = this.placeholder || "Search"
-  }
+  ngOnInit() {}
 
   onSearch( searchForm ){
     this.preSearch();
-    if( this.searchValue ){
+    if( !!this.searchValue ){
       this.sendSearchRequest(searchForm) ;
     }else{
       this.stateHandler.updateRequestStatus(this, false , false , false);

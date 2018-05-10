@@ -8,7 +8,9 @@ import { AppConfigService } from '../services/app-config.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private appConfig : AppConfigService, public  appConfigService : AppConfigService ) { }
+  constructor(
+    public appConfig : AppConfigService
+  ) { }
 
   ngOnInit() {
   }

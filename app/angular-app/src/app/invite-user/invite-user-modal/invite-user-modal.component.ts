@@ -11,8 +11,7 @@ declare var $:any;
 export class InviteUserModalComponent {
 
   constructor(public stateHandler: RequestStateHandlerService ,  private http : OstHttp) { }
-
-  errorMessage;
+  errorMessage: string;
   hasError: boolean = false;
   isProcessing: boolean = false;
 
