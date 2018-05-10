@@ -22,14 +22,17 @@ export class KycCaseComponent implements OnInit {
   caseDetails: object = {};
   userDetails: object = {};
   meta: object = {};
-  rData
+  hasNextPage: boolean = false;
+  hasPreviousPage: boolean = false;
   caseId;
+  nextCaseId;
+  previousCaseId;
   isStatusDenied :boolean =  false ;
   isReportIssue :boolean = false ;
   isWhitelisting:boolean =  false;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    public activatedRoute: ActivatedRoute,
     private http: OstHttp,
     private stateHandler : RequestStateHandlerService,
     private domSanitizer: DomSanitizer,
@@ -66,6 +69,7 @@ export class KycCaseComponent implements OnInit {
     this.userDetails = res.data.user_detail;
     this.meta = res.data.meta;
     this.stateHandler.updateRequestStatus( this, false,  false);
+    this.getNextPrevious(res.data.meta);
     this.showPageState();
   }
 
@@ -89,6 +93,17 @@ export class KycCaseComponent implements OnInit {
 
   initLogTabel(){
     this.isInitLogTabel =true;
+  }
+
+  getNextPrevious(meta){
+    this.hasNextPage = Object.keys(meta.next_page_payload).length > 0;
+    this.hasPreviousPage = Object.keys(meta.previous_page_payload).length > 0;
+    this.nextCaseId = this.hasNextPage ? meta.next_page_payload.id : 0;
+    this.previousCaseId = this.hasPreviousPage ? meta.previous_page_payload.id : 0;
+  }
+
+  getDocType(url){
+    return url.includes("/i/") ? 'image' : 'pdf';
   }
 
 }
