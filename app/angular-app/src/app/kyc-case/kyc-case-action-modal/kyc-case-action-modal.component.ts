@@ -14,6 +14,10 @@ export class KycCaseActionModalComponent  {
 
   constructor( private http: OstHttp , private stateHandler : RequestStateHandlerService) { }
 
+  errorMessage;
+  hasError: boolean = false;
+  isProcessing: boolean = false;
+
   @Input('postApi') postApi ;
   @Input('caseId')  caseId  ;
   @Input('modalId') modalId ;

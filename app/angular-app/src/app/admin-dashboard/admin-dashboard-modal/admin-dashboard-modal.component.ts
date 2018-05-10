@@ -12,6 +12,10 @@ export class AdminDashboardModalComponent  {
 
   constructor( private http: OstHttp ,  private stateHandler : RequestStateHandlerService) { }
 
+  errorMessage;
+  hasError: boolean = false;
+  isProcessing: boolean = false;
+
   @Input('modalId') modalId ;
   @Input('user') user;
   @Input('postApi') postApi;

@@ -142,8 +142,6 @@ export class DashboardComponent implements OnInit {
     }else {
       this.checkboxError = 'Please confirm the above to download the CSV';
     }
-    console.log(this.securityEthCheckbox, this.securityCheckbox);
-
   }
 
   downloadCSV() {
@@ -158,13 +156,16 @@ export class DashboardComponent implements OnInit {
         this.stateHandler.updateRequestStatus(this);
         this.isCSVDownloaded = true;
         this.successMessage  = res.data.success_message;
-        console.log(res);
       },
       error => {
         let err = error.json();
         this.stateHandler.updateRequestStatus(this , false , true,  false  , err );
 
       })
+  }
+
+  checkboxChecked() {
+    this.checkboxError = '';
   }
 
 

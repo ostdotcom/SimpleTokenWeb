@@ -18,7 +18,7 @@ export class ReportIssuesComponent implements OnInit {
   beforeSend = true;
   isMailSent;
   hasError;
-  errorMsg;
+  errorMessage;
   frontEndError = '';
   otherIssueError;
 
