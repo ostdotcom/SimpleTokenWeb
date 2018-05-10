@@ -35,7 +35,7 @@ export class PaginationComponent {
   }
 
   isPrev(): boolean{
-    return this.currentPageNumber > 2;
+    return this.currentPageNumber > 1;
   }
 
   isActive( index ):boolean{

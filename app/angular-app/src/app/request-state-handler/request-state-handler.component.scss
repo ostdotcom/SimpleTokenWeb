@@ -1,18 +1,31 @@
 @import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
 .request-handler-wrapper {
-    .img-fluid, .svg{
+    svg{
         width: 40px;
         height: 40px;
+    }
+    .img-fluid {
+        width: 40px;
     }
 }
 
 :host(.smaller) {
     .request-handler-wrapper {
         padding: 0;
-        .img-fluid, .svg{
+        svg{
             width: 20px;
             height: 20px;
         }
+        .img-fluid {
+            width: 20px; 
+        }
+    }
+}
+
+
+:host(.page-loader) {
+    .request-handler-wrapper {
+       margin-top: 50px;  
     }
 }

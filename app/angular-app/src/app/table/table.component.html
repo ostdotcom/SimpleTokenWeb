@@ -23,11 +23,11 @@
   <div class="row" *ngIf="rows.length < 1">
     <div class="col-12">
         <request-state-handler class="d-block w-100 p-5"
-        [isProcessing]="isProcessing"
-        [hasError]="hasError"
-        [hasWarning]="hasWarning"
-        [errorMessage]="customErrorMsg || errorMessage"
-        [warningMessage]="warningMsg">
+                               [isProcessing]="isProcessing"
+                               [hasError]="hasError"
+                               [hasWarning]="hasWarning"
+                               [errorMessage]="customErrorMsg || errorMessage"
+                               [warningMessage]="warningMsg">
         </request-state-handler>
     </div>
   </div>

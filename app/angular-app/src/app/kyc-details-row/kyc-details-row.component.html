@@ -12,7 +12,7 @@
     {{row.active}}
   </div>
   <div class="col display-3">
-    <div *ngIf="(row.inactive | json) == '{}'; else default">
+    <div *ngIf="row.inactive.length; else default">
         {{row.inactive }}
     </div>
     <ng-template #default>
@@ -55,7 +55,7 @@
           <div class="col-6">
               <div class='font-weight-500 display-4 text-transform-upper'>PREVIOUS STATUS</div>
               <span class="display-3">
-                  <div *ngIf="(row.inactive | json) == '{}'; else default">
+                  <div *ngIf="row.inactive.length; else default">
                       {{row.inactive }}
                   </div>
 

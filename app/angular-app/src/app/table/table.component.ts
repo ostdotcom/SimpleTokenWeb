@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
   @Input('warningMsg') warningMsg?: string = "";
 
   @Output('pageChangeEvent') pageChangeEvent? = new EventEmitter<number>();
-  @Output('sendDownloadCSVData') sendDownloadCSVData = new EventEmitter<object>();
+  @Output('tableDataLoadedEvent') tableDataLoadedEvent? =  new EventEmitter(); 
 
 
   rows: Array<any> = [];
@@ -161,16 +161,12 @@ export class TableComponent implements OnInit {
   getParams(): RequestOptionsArgs {
     let requestParams =  this.requestParams;
     requestParams['page_number'] = this.getPageNumber();
-    requestParams['page_size'] = 5;
     if (this.filterForm) {
       Object.assign(requestParams, this.getFilter());
     }
     if (this.sortForm) {
       Object.assign(requestParams, this.getSorting());
     }
-    this.sendDownloadCSVData.emit( { params : requestParams } );
-
-    //TODO meta data to append
     return { params : requestParams };
   }
 
@@ -187,13 +183,16 @@ export class TableComponent implements OnInit {
         hasWarning = true ;
       }
       this.stateHandler.updateRequestStatus(this, false, false , hasWarning);
+      this.tableDataLoadedEvent.emit( true ); 
     }else{
       this.stateHandler.updateRequestStatus(this, false, true, false , response );
+      this.tableDataLoadedEvent.emit( false ); 
     }
   }
 
   onTableDataError(error) {
     this.stateHandler.updateRequestStatus(this, false, true, false, error);
+    this.tableDataLoadedEvent.emit( false ); 
   }
 
   isPagination(): Boolean {

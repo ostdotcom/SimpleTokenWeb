@@ -1,5 +1,8 @@
 
-<request-state-handler class="d-block w-100" [isProcessing]="isProcessing" [hasError]="hasError">
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="processing-content">
+      <div class="text-center display-1 mt-4">Loading your dashboard please wait ... </div>
+  </ng-container>  
   <ng-container class="error-content">
     <div class="col-12">{{errorMessage || "Something went wrong, please try again."}}</div>
   </ng-container>
@@ -81,7 +84,7 @@
                     <span class="value">{{caseDetails.cynopsis_status}}</span>
                   </div>
 
-                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>
+                  <span *ngIf="caseDetails.retry_cynopsis == 1" class="button-UI text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>
 
                 </div>
 
@@ -118,7 +121,11 @@
                     </ng-template>
                   </div>
 
-                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#detailsModal">view details</span>
+                  <span *ngIf="caseDetails.is_duplicate == 1" class="button-UI text-uppercase" 
+                        data-toggle="modal" data-target="#detailsModal" 
+                        (click)="initDuplicateTable()">
+                        view details
+                  </span>
                 </div>
 
               </div>
@@ -130,13 +137,17 @@
 
                 <div>
                   <span class="key">Reg IP/Country : </span>
-                  <span class="value">{{userDetails.geoip_data.ip_address}} / {{userDetails.geoip_data.country}}</span>
+                  <span class="value">{{userDetails.geoip_data.ip_address}} <ng-container *ngIf="userDetails.geoip_data.country">/</ng-container> {{userDetails.geoip_data.country}}</span>
                 </div>
                 <div class="mt-3 d-flex justify-content-between align-items-center">
                   <span class="key">Agent : </span>
                   <span class="value"> </span>
 
-                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#logsModal">view logs</span>
+                  <span class="button-UI text-uppercase" 
+                        data-toggle="modal" data-target="#logsModal"
+                        (click)="initLogTabel()">
+                      view logs
+                  </span>
 
                 </div>
 
@@ -273,8 +284,12 @@
           </div>
         </div>
 
-        <kyc-log-modal [caseId]='caseId'></kyc-log-modal>
-        <kyc-duplicate-details-modal [caseId]='caseId'> </kyc-duplicate-details-modal>
+        <ng-container *ngIf="isInitLogTabel">
+          <kyc-log-modal [caseId]='caseId'></kyc-log-modal>
+        </ng-container>  
+        <ng-container *ngIf="isInitDuplicateTable">
+          <kyc-duplicate-details-modal [caseId]='caseId'> </kyc-duplicate-details-modal>
+       </ng-container>   
 
       </ng-container>
 
@@ -320,13 +335,13 @@
 
               <div class="float-right">
                 <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyActionModal">Deny</button>
-                <ng-container *ngIf="appConfig.getClientSetup().has_email_setup == true">
+                <ng-container *ngIf="appConfig.hasEmailSetup()">
                   <button type="button" class="btn btn-light mr-2 mb-2 text-uppercase" (click)="showPageState(false, true, false)">Report Issue</button>
                 </ng-container>
                 <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyActionModal">Qualify</button>
 
               </div>
-
+              
             </ng-template>
 
           </ng-container>

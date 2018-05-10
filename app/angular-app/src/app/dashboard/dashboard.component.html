@@ -1,7 +1,11 @@
 <div class="row mt-4">
   <h2 class="kyc-header ml-4 text-transform-upper">KYC DASHBOARD</h2>
-  <div class="float-right d-flex justify-content-center align-items-center ml-auto">
-    <button class="btn btn-primary mr-4" data-toggle="modal" data-target="#confirmDownload">DOWNLOAD CSV</button>
+  <div class="float-right d-flex justify-content-center align-items-center ml-auto" *ngIf="appConfigService.isSuperAdmin()">
+    <button class="btn btn-primary mr-4"
+            data-toggle="modal" 
+            data-target="#confirmDownload">
+            DOWNLOAD CSV
+    </button>
   </div>
 </div>
 
@@ -33,7 +37,7 @@
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.cynopsis_status'">
             </select>
           </div>
-          <div class="col-12 col-lg pr-lg-0 mt-3">
+          <div class="col-12 col-lg pr-lg-0 mt-3" *ngIf="appConfigService.hasWhiteListSetUp()">
             <label class='form-label mb-2'>WHITELIST STATUS</label>
             <select class="form-control selectpicker" name="filters[whitelist_status]" [(ngModel)]='whitelist_status'
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.whitelist_status'">
@@ -60,7 +64,6 @@
             [filterForm]='filterForm'
             [sortForm]='sortForm'
             (pageChangeEvent)="onPageChange( $event )"
-            (sendDownloadCSVData)="getParamsForDownloadCSV( $event )"
             [warningMsg]="'We could not find any results, please try changing the filters or refresh the page.'"
             [customErrorMsg]="'Something went wrong, we couldnot load the dashboard, please refresh the page or try updating the filters'">
     <dashboard-table-header class='header'></dashboard-table-header>
@@ -190,23 +193,11 @@
                         <span class="error text-center" > {{checkboxError}} </span>
                      </div>
                       <div class="d-flex justify-content-center">
-
-
                             <button type="button" class="btn btn-primary text-uppercase" (click)='validateAndDownload()'>Confirm</button>
                             <button type="button" class="btn btn-light ml-3 text-uppercase" data-dismiss="modal">Cancel</button>
-
-
-
                       </div>
                       </div>
-
                   </div>
-
-                  <!-- Modal footer -->
-
-
-
-
               </div>
 
               <div class="row">

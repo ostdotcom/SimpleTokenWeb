@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RequestStateHandlerService } from '../request-state-handler.service';
 import {OstHttp} from '../ost-http.service';
 import {TableComponent} from '../table/table.component';
+import { AppConfigService } from '../app-config.service';
+
 declare var $: any;
 
 
@@ -23,7 +25,8 @@ export class DashboardComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private stateHandler: RequestStateHandlerService,
-    private http: OstHttp
+    private http: OstHttp,
+    public appConfigService : AppConfigService
   ) {}
 
   // Default parameters
@@ -49,6 +52,7 @@ export class DashboardComponent implements OnInit {
     'filters[cynopsis_status]': 'cynopsis_status',
     'filters[whitelist_status]': 'whitelist_status'
   };
+
   defaultQueryParams: object = {
     admin_status: 'all',
     admin_action_status: 'all',
@@ -78,7 +82,6 @@ export class DashboardComponent implements OnInit {
       currentQueryParams[this.filtersMap[key]] ?
       currentQueryParams[this.filtersMap[key]] :
       this.defaultQueryParams[this.filtersMap[key]]
-      console.log(this.filtersMap[key]);
     }
   }
 
@@ -149,8 +152,7 @@ export class DashboardComponent implements OnInit {
 
   downloadCSV() {
     this.stateHandler.updateRequestStatus(this ,  true );
-    console.log(this.getQueryParams());
-    this.http.get(this.downloadURL,  this.params ).subscribe(
+    this.http.get(this.downloadURL,  this.getQueryParams() ).subscribe(
       response => {
         let res = response.json();
         if (!res.success) {
@@ -161,10 +163,6 @@ export class DashboardComponent implements OnInit {
         this.isCSVDownloaded = true;
         this.successMessage  = res.data.success_message;
         console.log(res);
-        // this.stateHandler.updateRequestStatus(this);
-        // this.isMailSent = true;
-        // $('#confirmation').modal('hide');
-        // this.hideReportIssue();
       },
       error => {
         let err = error.json();
@@ -173,10 +171,6 @@ export class DashboardComponent implements OnInit {
       })
   }
 
-  getParamsForDownloadCSV(params) {
-     this.params = params;
-
-  }
 
 
 
