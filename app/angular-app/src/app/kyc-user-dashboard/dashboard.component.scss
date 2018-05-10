@@ -1,0 +1,73 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.kyc-header{
+  color: $yellow-500;
+}
+
+.filters{
+  .form-control {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #597a84;
+  }
+
+  @media screen and (max-width: 1070px) and (min-width: 760px)  {
+    .form-label{
+      min-height: 35px;
+    }
+
+  }
+}
+
+
+#downlaodCSV{
+  .modal-header{
+    border-bottom: none;
+  }
+
+  .modal-body{
+    font-size: $display3-size;
+  }
+
+  .modal-footer {
+    border-top: none;
+    display: inline;
+  }
+}
+
+#successCSV{
+  .modal-header{
+    border-bottom: none;
+    height: 60px;
+    .model-success-svg{
+      width: 50px;
+    }
+  }
+
+  .modal-body{
+    .success{
+      font-weight: $font-weight-400;
+    }
+  }
+
+  .modal-footer {
+    border-top: none;
+    display: inline;
+  }
+}
+
+#errorCSV{
+  .modal-header{
+    border-bottom: none;
+    height: 60px;
+    .model-warning-svg{
+      width: 50px;
+    }
+  }
+
+  .modal-footer {
+    border-top: none;
+    display: inline;
+  }
+}
+
+

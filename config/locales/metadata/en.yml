@@ -330,19 +330,40 @@ en:
       :assets:
         :specific_css_required: 1
 
+    forgot_password:
+      :meta:
+        :title: Simple Token Forgot Password
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 0
+
+    reset_password:
+      :meta:
+        :title: Simple Token Reset Password
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 0
+
+    activate_account:
+      :meta:
+        :title: Simple Token Activate Account Password
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 0
+
     authentication:
       :meta:
         :title: Simple Token Admin Login Authentication
         :robots: 'noindex, nofollow'
       :assets:
-        :specific_css_required: 1
+        :specific_css_required: 0
 
     change_password:
       :meta:
         :title: Simple Token Admin Change Password
         :robots: 'noindex, nofollow'
       :assets:
-        :specific_css_required: 1
+        :specific_css_required: 0
 
     dashboard:
       :meta:
@@ -350,6 +371,14 @@ en:
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 1
+
+    angular_app:
+      :meta:
+        :title: Simple Token Admin Dashboard
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 1
+        :specific_js_required: 1
 
     whitelist_dashboard:
       :meta:

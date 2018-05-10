@@ -1,0 +1,116 @@
+.form-group {
+  margin-bottom: 0;
+
+  .form-control{
+    color: $blue-800;
+    border: 1px solid $custom-grey-7;
+    &:focus{
+      border-color: $cyanish-gray;
+      box-shadow: none;
+    }
+  }
+
+  .form-label {
+    color: $cyanish-gray;
+    text-transform: uppercase;
+    font-size: $text4-size;
+    margin: 0 0 5px 0;
+    font-weight: $font-weight-600;
+    letter-spacing: $letter-spacing * 2;
+  }
+
+  .form-label.disabled {
+    color: $mystic;
+  }
+
+  input {
+    &::placeholder{
+      color: $custom-gray-3;
+    }
+    &::-webkit-input-placeholder{
+      color: $custom-gray-3;
+    }
+    &::-moz-placeholder{
+      color: $custom-gray-3;
+    }
+    &:-ms-input-placeholder{
+      color: $custom-gray-3;
+    }
+  }
+
+  .error {
+    font-size: $text4-size;
+    color: color('red');
+    padding: 3px 0 0;
+    display: block;
+    min-height: 25px;
+    font-weight: $font-weight-500;
+  }
+
+  [data-for="general_error"] {
+    text-align: center;
+  }
+
+  .showhide-addon {
+    position: absolute;
+    right: 5px;
+    top: 1px;
+    padding: 9px 0;
+    font-size: 0
+  }
+
+  label.upload-file input[type="file"] {
+    position: fixed;
+    top: -1000px;
+  }
+
+  .form-instructions {
+    display: inline-block;
+    vertical-align: top;
+    a {
+      border-bottom: 1px solid $blue-800;
+      &:hover, &:active {
+        border-bottom: 1px solid $yellow-500;
+      }
+    }
+  }
+
+}
+
+[data-for="general_error"].error {
+  font-weight: $font-weight-500;
+  font-size: $text4-size;
+  text-align: center;
+  color: color('red');
+  padding: 3px 0 0;
+  display: block;
+  min-height: 25px;
+}
+
+.zxcvbn-group {
+  overflow: hidden;
+
+  .zxcvbn {
+    height: 8px;
+    background: #f2f2f2;
+    float: left;
+    width: 19%;
+    margin: 8px 1% 0 0;
+  }
+  .zxcvbn-0 {
+    background-color: #e7003b;
+  }
+  .zxcvbn-1 {
+    background-color: #ff7a00;
+  }
+  .zxcvbn-2 {
+    background-color: #e6e664;
+  }
+  .zxcvbn-3 {
+    background-color: #a7d646;
+  }
+  .zxcvbn-4 {
+    background-color: #30b3c5;
+  }
+}
+

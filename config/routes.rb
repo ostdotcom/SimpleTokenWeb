@@ -52,10 +52,17 @@ Rails.application.routes.draw do
 
     scope 'admin/', controller: 'admin/home' do
       get '/login' => :login
+      get '/forgot-password' => :forgot_password
+      get '/reset-password' => :reset_password
+      get '/activate-account' => :activate_account
       get '/logout' => :logout
       get '/authentication' => :authentication
       get '/change-password' => :change_password
-      get '/dashboard' => :dashboard
+
+      get '/old-dashboard' => :dashboard
+      get '/dashboard' => :angular_app
+      get '/case-id/:id' => :angular_app
+      get '/admin-user/dashboard' => :angular_app
       get '/get-kyc-dashboard' => :get_kyc_dashboard
       get '/get-kyc-details' => :kyc_details
       get '/kyc-action-logs' => :kyc_action_logs

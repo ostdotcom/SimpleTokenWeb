@@ -1,8 +1,8 @@
 class Admin::HomeController < Admin::BaseController
   layout "admin"
 
-  before_action :delete_admin_cookie, only: [:login]
-  before_action :check_admin_cookie, except: [:login]
+  before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
+  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account]
 
   before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard]
 
@@ -13,6 +13,56 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def login
+  end
+
+  # Forgot password
+  #
+  # * Author: Thahir
+  # * Date: 24/04/2018
+  # * Reviewed By:
+  #
+  def forgot_password
+  end
+
+  # Reset password
+  #
+  # * Author: Thahir
+  # * Date: 26/04/2018
+  # * Reviewed By:
+  #
+  def reset_password
+  end
+
+  # Activate Account password
+  #
+  # * Author: Thahir
+  # * Date: 03/05/2018
+  # * Reviewed By:
+  #
+  def activate_account
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_invite_detail(params[:i_t])
+    unless service_response.success?
+      if (["invalid_token", "expired_token"].include?(service_response.error))
+
+        if service_response.error == "invalid_token"
+          display_text = 'Your Invite token is invalid'
+        elsif service_response.error == "expired_token"
+          display_text = 'Your Invite token has expired'
+        end
+
+        respond_to do |format|
+          format.html {render "/admin/home/_activate_account_error.html.erb", locals: {display_text: display_text}}
+        end
+
+        return
+      end
+
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
   end
 
   # Admin login mfa
@@ -48,6 +98,24 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def dashboard
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_client_detail
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
+    @admin_status = params[:filters][:admin_status] if params[:filters].present?
+    @cynopsis_status = params[:filters][:cynopsis_status] if params[:filters].present?
+    @admin_action_type = params[:filters][:admin_action_type] if params[:filters].present?
+    @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
+    @display_start = params[:display_start]
+  end
+
+  def angular_app
     service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_client_detail
 

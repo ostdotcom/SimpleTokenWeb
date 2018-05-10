@@ -19,11 +19,11 @@
 
       $("#adminLogin").click(function (event) {
         event.preventDefault();
-        var v = utilsNs.errorHandling.validationGeneric( $('#adminLoginForm input[type="text"], #adminLoginForm input[type="password"]') );
+        var v = utilsNs.errorHandling.validationGeneric($('#adminLoginForm input[type="text"], #adminLoginForm input[type="password"]'));
 
-        if(typeof $('#jLoginForm').find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+        if(typeof $('#adminLoginForm').find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
           if(grecaptcha.getResponse() == ''){
-            $('#jLoginForm').find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+            $('#adminLoginForm').find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
             v = false;
           }
         }
@@ -47,9 +47,13 @@
             window.location = '/admin/authentication';
             return false;
           } else {
-            utilsNs.errorHandling.displayFormErrors(response);
-            if(typeof grecaptcha  != 'undefined'){
-              grecaptcha.reset();
+            if (response.err && response.err.code === "is_deleted" ){
+              oThis.showDeactivated();
+            }else{
+              utilsNs.errorHandling.displayFormErrors(response);
+              if(typeof grecaptcha  != 'undefined'){
+                grecaptcha.reset();
+              }
             }
           }
         },
@@ -60,7 +64,13 @@
           }
         }
       });
+    },
+
+    showDeactivated: function () {
+      $('#loginForm').hide();
+      $('#accountDeactivated').show();
     }
+
   };
 
   $(document).ready(function () {

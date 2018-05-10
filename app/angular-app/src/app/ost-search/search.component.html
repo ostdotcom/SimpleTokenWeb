@@ -1,0 +1,31 @@
+<div class="kyc-search-wrapper">
+  <div class="search-input-wrapper">
+    <form class="form-group" #searchForm="ngForm"
+          (input)="onSearch( searchForm )">
+        <input type="text" 
+              [name]="entityName"
+              [placeholder]="placeholder"
+              [(ngModel)]="searchValue"
+              class="form-control" />
+    </form>
+  </div>
+  <div class="search-result-wrapper" *ngIf="!hideResponse && searchValue">
+
+    <div *ngIf="items.length > 0">
+      <div class="search-item py-1 px-2"  *ngFor="let item of items" (click)="onSearchItemClick()" >
+          <a class="border-none" [routerLink]="['/admin/case-id', item.id]">{{item.email}}</a>
+      </div>
+    </div>
+
+    <request-state-handler class="smaller"
+                           [isProcessing]="isProcessing"
+                           [hasError]="hasError"
+                           [hasWarning]="hasWarning"
+                           [isErrorIcon]="false"
+                           [isWarningIcon]="false"
+                           [errorMessage]="errorMessage" >
+        <div class="warning-content">No results found for  <strong>{{searchValue}}</strong></div>
+    </request-state-handler>
+
+  </div>
+</div>

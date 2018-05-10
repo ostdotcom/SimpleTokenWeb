@@ -1,0 +1,43 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.green-left-border{
+  border-left: 4px solid $green-300;
+}
+.red-left-border{
+  border-left: 4px solid $red-100;
+}
+.yellow-left-border{
+  border-left: 4px solid $yellow-700;
+}
+
+@media (min-width: 780){
+  .row-body{
+    background-color: inherit;
+  }
+
+}
+
+
+.desktop{
+  cursor: pointer;
+}
+
+.mobile{
+
+  cursor: pointer;
+  .row:nth-child(odd) {
+    background-color: $green-1000;
+  }
+  .card{
+    border-color: $custom-grey-7;
+    .card-body{
+      .mobile-name-div{
+        background-color: #b1e0e1;
+      }
+
+
+    }
+
+  }
+
+}

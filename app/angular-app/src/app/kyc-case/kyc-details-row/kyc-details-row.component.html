@@ -1,0 +1,79 @@
+<div class="row py-3 mx-0 desktop d-none d-md-flex">
+  <div class="col display-3 case-id font-weight-500">
+  {{row.id}}
+  </div>
+  <div class="col text-capitalize display-3">
+    {{row.admin_status}}
+  </div>
+  <div class="col text-capitalize display-3">
+      {{row.cynopsis_status}}
+  </div>
+  <div class="col display-3">
+    <div *ngIf="row.active.length; else default">
+        {{row.active}}
+    </div>
+  </div>
+  <div class="col display-3">
+    <div *ngIf="row.inactive.length; else default">
+        {{row.inactive }}
+    </div>
+    <ng-template #default>
+      --
+    </ng-template>
+
+
+
+  </div>
+</div>
+
+<div class="mobile d-md-none">
+  <div class="card m-3">
+    <div class="card-body p-0">
+        <div class="col-12 mobile-name-div py-4">
+            <span class='display-1 mr-2'>Case Id</span>
+            <span class="display-3">{{row.id}}</span>
+        </div>
+        <div class="row py-4 mx-0">
+          <div class="col-6">
+              <div class='font-weight-500 display-4 text-transform-upper'>ADMIN STATUS</div>
+              <span class="display-3 text-capitalize">  {{row.admin_status}}</span>
+          </div>
+
+          <div class="col-6">
+              <div class='font-weight-500 display-4 text-transform-upper'>CYNOPSIS STATUS</div>
+              <span class="display-3 text-capitalize">  {{row.cynopsis_status}}</span>
+
+          </div>
+
+        </div>
+
+
+        <div class="row py-4 mx-0">
+          <div class="col-6">
+              <div class='font-weight-500 display-4 text-transform-upper'>CURRENT MATCHES</div>
+              <span class="display-3">
+                  <div *ngIf="row.active.length; else default">
+                      {{row.active}}
+                  </div>
+
+              </span>
+          </div>
+
+          <div class="col-6">
+              <div class='font-weight-500 display-4 text-transform-upper'>PREVIOUS STATUS</div>
+              <span class="display-3">
+                  <div *ngIf="row.inactive.length; else default">
+                      {{row.inactive }}
+                  </div>
+
+              </span>
+
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+
+
+ </div>

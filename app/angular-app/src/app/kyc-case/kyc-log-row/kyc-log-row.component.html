@@ -1,0 +1,49 @@
+<div class="row py-3 mx-0 px-0 desktop d-none d-md-flex">
+  <div class="col display-3">
+  {{row.created_at_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}
+  </div>
+  <div class="col display-3 text-capitalize">
+      <div *ngIf="row.agent; else default">
+          {{row.agent }}
+      </div>
+      <ng-template #default>
+        --
+      </ng-template>
+
+  </div>
+  <div class="col display-3 text-capitalize">
+      <span [innerHTML]='row.action'></span>
+  </div>
+</div>
+
+<div class="mobile d-md-none">
+  <div class="card m-3">
+    <div class="card-body p-0">
+        <div class="col-12 mobile-name-div py-4">
+            <span class='display-1 mr-2'>Date / Time </span>
+            <span class="display-3">  {{row.created_at_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}</span>
+        </div>
+        <div class="row py-4 mx-0">
+          <div class="col-6">
+              <div class='font-weight-500 display-4 text-transform-upper'>AGENT </div>
+              <span class="display-3 text-capitalize">
+                  <div *ngIf="row.agent; else default">
+                      {{row.agent }}
+                  </div>
+
+              </span>
+          </div>
+
+          <div class="col-6">
+              <div class='font-weight-500 display-4 text-transform-upper'>ACTIVITY </div>
+              <span [innerHTML]='row.action' class='display-3 text-capitalize'></span>
+
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+
+
+ </div>

@@ -1,0 +1,12 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+  .mobile{
+    .card{
+      border-color: $custom-grey-7;
+      .card-body{
+        .mobile-name-div{
+          background-color: $green-900;
+        }
+      }
+    }
+  }

@@ -1,0 +1,57 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.navbar{
+  box-shadow: 0 0.5px 3px 2px rgba(237, 242, 246, 0.89);
+  background: #ffffff;
+}
+
+.kyc-header-wrap {
+    border-bottom: 1px solid $gray-200;
+}
+
+.dropdown-menu {
+  top: 40px;
+  left: 10px;
+  border: none;
+  text-transform: uppercase;
+  box-shadow: 0 0.5px 3px 2px rgba(50, 50, 50, 0.09);
+  .dropdown-item{
+    color: $blue-800;
+    font-size: 0.75rem;
+    font-weight: $font-weight-500;
+    padding: 0.5rem 1rem;
+    letter-spacing: $letter-spacing;
+  }
+}
+
+.dropdown-toggle{
+  .caret{
+    display: inline-block;
+    background: url(https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/drop-down-arrow.svg) no-repeat center;
+    height: 12px;
+    width: 12px;
+    position: relative;
+    top: 1px;
+  }
+  &:after{
+    display: none;
+  }
+}
+
+.triangle {
+  position: relative;
+  &:after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -8px;
+    right: 0;
+    border: 8px solid;
+    border-color: transparent transparent #ffffff #ffffff;
+    transform-origin: 0 0;
+    transform: rotate(135deg);
+    box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+

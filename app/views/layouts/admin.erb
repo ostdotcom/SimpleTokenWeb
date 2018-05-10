@@ -22,18 +22,22 @@
   <link rel="icon" type="image/png" sizes="96x96" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/v2/16.png">
 
+  <%= stylesheet_link_tag 'admin/default_simple_token_admin' %>
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
   <% if ['admin/home::login'].include?("#{params[:controller]}::#{params[:action]}") %>
     <script src="https://www.google.com/recaptcha/api.js"></script>
   <% end %>
 
+  <base href="/">
 </head>
 <body contenteditable="false">
 
 <main id="site-content">
   <%= yield %>
 </main>
+
+<%= render :partial => "/admin/shared/footer" %>
 
 <%= javascript_include_tag "admin/common" %>
 <%= javascript_include_tag "#{specific_manifest_file_path}", :defer => "defer" if has_specific_js_manifest_file? %>
@@ -42,3 +46,5 @@
 
 </body>
 </html>
+
+<%= render :partial => "/admin/shared/svg_sprite" %>

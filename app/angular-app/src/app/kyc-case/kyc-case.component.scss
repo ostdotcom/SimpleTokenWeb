@@ -1,0 +1,177 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.breadcrumb{
+  background-color: transparent;
+  padding: 0.75rem 0;
+  .breadcrumb-item + .breadcrumb-item::before{
+    content: '>'
+  }
+  .kyc-dashboard-breadcrumb{
+    color: $yellow-800;
+    border-bottom: none;
+    font-weight: $font-weight-normal;
+  }
+}
+
+.alert-error-svg, .alert-warning-svg{
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.carousel-nav{
+  position: fixed;
+  top: 50%;
+  color: $green-900;
+  padding: 0.5rem;
+  border: 1px solid $green-900;
+  cursor: pointer;
+  &.right{
+    right: -1px;
+    border-radius: 5px 0 0 5px;
+  }
+  &.left{
+    left: -1px;
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+.card-group{
+  .card{
+    border: solid 0.8px $blue-400;
+    .card-title{
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+    .card-row{
+      margin-right: -1.23rem;
+      margin-left: -1.23rem;
+      &:nth-child(even) {
+        background: #f3fbfb
+      }
+      &:nth-child(odd) {
+        background: #FFF
+      }
+    }
+    .card-col{
+      padding: 0.5rem 1.25rem;
+      .label{
+        color: #9bafb5;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      .value{
+        color: #597a84;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.box-border{
+  border-radius: 2.5px;
+  border: solid 0.8px $blue-400;
+  color: $blue-800;
+  font-size: $display3-size;
+
+  .key{
+    font-weight: $font-weight-light;
+  }
+  .value{
+    font-weight: $font-weight-500;
+    padding-left: 5px;
+    &.blue-bar{
+      border-left: 2px solid $green-300;
+    }
+
+    &.red-bar{
+      border-left: 2px solid $red-100;
+    }
+  }
+
+  .button-UI{
+    background-color: transparent;
+    border: none;
+    float: right;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: $font-weight-600;
+  }
+}
+.title{
+  color: $blue-800;
+  font-size: $display2-size;
+  font-weight: $font-weight-600;
+}
+
+
+.button-container{
+  position: fixed;
+  bottom: 0;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 2px -0.5px rgba(155, 175, 181, 0.2);
+
+  .float-right{
+    .btn{
+      width: 180px;
+    }
+  }
+}
+
+#logsModal, #detailsModal{
+  .modal-dialog{
+    margin: auto;
+    float: right;
+    width: 50%;
+    height: 100vh;
+    max-width: 700px;
+
+    .modal-content{
+
+      border: none;
+      border-radius: 0px;
+      min-height: 100%;
+
+      .modal-body{
+        padding-top:0px;
+      }
+    }
+  }
+  @media screen and (max-width: 1076px) {
+    .modal-dialog{
+      width:80%;
+
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .modal-dialog{
+      width:100%;
+    }
+  }
+
+  &.modal.fade:not(.show)  {
+    .modal-dialog{
+      -webkit-transform: translate(100%, 0);
+      transform: translate(100%, 0);
+    }
+  }
+  &.modal.show  {
+    .modal-dialog{
+      -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+

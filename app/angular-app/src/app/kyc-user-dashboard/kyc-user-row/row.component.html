@@ -1,0 +1,171 @@
+<div class="row-body desktop d-none d-lg-flex py-3" [routerLink]="['/admin/case-id/', row.id]" [queryParams]="getQueryParams()">
+    <div class="col name-date col p-0 px-3 display-3">
+        <div class="font-weight-600">
+        {{row.name}}
+        </div>
+        <div class="pt-2 display-4">
+         {{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}
+        </div>
+
+
+    </div>
+
+  <div class="col p-0 pr-3 display-3">
+    {{row.admin_status}}
+  </div>
+  <div class="col p-0 pr-3 display-3">
+    {{row.cynopsis_status}}
+  </div>
+  <div class="col p-0 pr-3 display-3" *ngIf="appConfigService.hasWhiteListSetUp()">
+    {{row.whitelist_status}}
+  </div>
+  <div class="col p-0 pr-3 display-3">
+    {{row.country}}
+  </div>
+  <div class="col p-0 pr-3 display-3">
+    {{row.nationality}}
+  </div>
+  <div class="col p-0 pr-3 display-3">
+    <div *ngIf="row.is_re_submitted; else newSubmission">
+      <div class="yellow-left-border pl-2 font-weight-500">
+        Re-submitted
+        <span class='d-block display-4'>
+          {{row.submission_count}} submission
+        </span>
+      </div>
+    </div>
+    <ng-template #newSubmission>
+      <div>
+        <div class='display-3 text-capitalize green-left-border pl-2 font-weight-500'>New Submission</div>
+      </div>
+
+    </ng-template>
+  </div>
+  <div class="col p-0 pr-3 duplicate-status display-3">
+    <div *ngIf="row.is_duplicate;else original">
+      <div class='red-left-border pl-2'>
+        <span class="font-weight-500 display-3">Duplicate</span>
+        <span class='duplicate-reason d-block display-4 text-capitalize'>{{row.duplicate_type}}</span>
+      </div>
+    </div>
+
+    <ng-template #original>
+      <div class='green-left-border pl-2 font-weight-500 display-3'>Original</div>
+    </ng-template>
+
+  </div>
+  <div class="col p-0 pr-3 display-3 text-capitalize">
+    <div *ngIf="row.last_acted_by; else elseBlock">
+      {{row.last_acted_by}}
+      <div *ngIf='row.last_acted_timestamp'>
+          <span class='display-4'>
+             Last edited {{row.last_acted_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm' }}
+          </span>
+        </div>
+
+    </div>
+    <ng-template #elseBlock>
+      <div>
+        --
+      </div>
+    </ng-template>
+
+  </div>
+</div>
+
+<div class="mobile d-lg-none m-3" [routerLink]="['/admin/case-id/', row.id]" [queryParams]="getQueryParams()">
+  <div class="col px-0">
+    <div class="card">
+      <div class="card-body p-0" >
+        <div class="mobile-name-div py-3 px-2 ">
+          <span class='display-1 mr-2 font-weight-500'> {{row.name}} </span>
+          <div class='display-3 font-weight-600 d-inline-block'>{{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}</div>
+          <div class='mobile-admin-status '>
+            <span class='font-weight-600 display-4 '> ADMIN STATUS </span>
+            <div class='d-inline-block display-3 text-capitalize pl-2'>{{row.admin_status}}</div>
+          </div>
+        </div>
+        <div class="row py-3 mx-0">
+          <div class="col-6">
+            <span class='font-weight-500 display-4 '>CYNOPSIS </span>
+            <div class='display-3 text-capitalize'>{{row.cynopsis_status}}</div>
+
+          </div>
+          <div class="col-6" *ngIf="appConfigService.hasWhiteListSetUp()">
+            <span class='font-weight-500 display-4 '>WHITELIST </span>
+            <div class='display-3 text-capitalize'>{{row.whitelist_status}}</div>
+          </div>
+
+        </div>
+
+        <div class="row py-3 mx-0">
+          <div class="col-6">
+            <span class='font-weight-500 display-4 '>SUBMISSION </span>
+            <div *ngIf="row.is_re_submitted; else newSubmission">
+              <div class="yellow-left-border pl-2">
+                  <span class='font-weight-500 display-3'> Re-submitted </span>
+                  <span class='d-block display-4'>
+                      {{row.submission_count}} submission
+                      </span>
+
+              </div>
+
+
+            </div>
+
+          </div>
+          <div class="col-6">
+            <span class='font-weight-500 display-4 '>DUPLICATE STATUS </span>
+
+            <div *ngIf="row.is_duplicate;else original">
+              <div class="red-left-border pl-2">
+                <span class='display-3 text-capitalize font-weight-500'>Duplicate</span>
+                <span class='display-4 d-block text-capitalize'>{{row.duplicate_type}}</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row py-3 mx-0">
+          <div class="col-6">
+            <span class='font-weight-500 display-4 '>RESIDENCE COUNTRY </span>
+            <div class='display-3 text-capitalize'>{{row.country}}</div>
+
+          </div>
+          <div class="col-6">
+            <span class='font-weight-500 display-4 '>NATIONALITY </span>
+            <div class='display-3 text-capitalize'>{{row.nationality}}</div>
+
+          </div>
+
+        </div>
+
+        <div class="row py-3 mx-0">
+          <div class="col-12">
+            <span class='font-weight-500 display-4 '>ADMIN </span>
+            <div *ngIf="row.last_acted_by; else elseBlock">
+              <span class='display-3 text-capitalize'> {{row.last_acted_by}} </span>
+              <div *ngIf='row.last_acted_timestamp'>
+                <span class='display-3'>
+                   Last Edited {{row.last_acted_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}
+                </span>
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

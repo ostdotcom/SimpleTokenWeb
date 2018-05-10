@@ -1,0 +1,16 @@
+
+// Import theme variables
+@import "variables";
+
+// As of now, only variables are overrided
+@import "../../plugins/bootstrap-4/scss/bootstrap";
+
+//Custom overrides for components
+@import "components/body";
+@import "components/navbar";
+@import "components/reboot";
+@import "components/forms";
+@import "components/buttons";
+@import "components/checkbox";
+@import "components/dropdown";
+

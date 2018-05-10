@@ -1,0 +1,33 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.kyc-search-wrapper{
+    position: relative;
+
+    .search-input-wrapper {
+        min-width: 320px;
+    }
+
+    .search-result-wrapper {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        z-index: 10;
+        background: $white;
+        border-top: none;
+        border: 1px solid $custom-grey-7;
+    }
+
+    .request-handler-wrapper {
+        padding: 0;
+    }
+
+    .search-item:nth-child(even){
+        background-color: #f3fbfb;
+    }
+}
+
+
+
+
+
+
