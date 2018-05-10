@@ -98,7 +98,7 @@ export class ReportIssuesComponent implements OnInit {
           function(){
             $('#confirmation').modal('hide');
             this.hideReportIssue();
-          },
+          }.bind(this),
           1000
         );
       },
@@ -118,7 +118,7 @@ export class ReportIssuesComponent implements OnInit {
         if (formValues[key] instanceof Array) {
           this.data['email_temp_vars'][key] = this.getArray(key, formValues[key]);
         } else if (key === 'other_issue') {
-          this.data['other_issue'] = formValues['other_issue_expln'];
+          this.data['email_temp_vars']['other_issue'] = formValues['other_issue_expln'];
         }
       }
     }
