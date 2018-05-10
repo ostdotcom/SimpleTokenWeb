@@ -1,9 +1,9 @@
 <div class="row-body py-4 px-3 d-none d-lg-block">
     <div class="row">
-        <div class="col">{{row.name}}</div>
-        <div class="col">{{row.email}}</div>
-        <div class="col">{{statusMap[row.status]}}</div>
-        <div class="col form-group">
+        <div class="col-2">{{row.name}}</div>
+        <div class="col-3">{{row.email}}</div>
+        <div class="col-2">{{statusMap[row.status]}}</div>
+        <div class="col-5 form-group">
             <select class="form-control selectpicker" ostOptions
                     title="Action"
                     [(ngModel)]="status"

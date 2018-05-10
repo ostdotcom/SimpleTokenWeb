@@ -27,7 +27,10 @@
                                [hasError]="hasError"
                                [hasWarning]="hasWarning"
                                [errorMessage]="customErrorMsg || errorMessage"
-                               [warningMessage]="warningMsg">
+                               [warningMessage]="warningMessage">
+            <ng-content select=".processing-content"></ng-content>
+            <ng-content select=".error-content"></ng-content>
+            <ng-content select=".warning-content"></ng-content>
         </request-state-handler>
     </div>
   </div>

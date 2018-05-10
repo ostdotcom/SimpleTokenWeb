@@ -2,7 +2,8 @@
   margin-bottom: 0;
 
   .form-control{
-    color: #597a84;
+    color: $blue-800;
+    border: 1px solid $custom-grey-7;
     &:focus{
       border-color: $cyanish-gray;
       box-shadow: none;

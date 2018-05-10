@@ -8,7 +8,7 @@
     <ng-content select=".processing-content"></ng-content>
   </div>
 
-  <div class="error-hanlder-wrap text-center p-1" *ngIf="hasError">
+  <div class="error-hanlder-wrap text-center p-1" *ngIf="!isProcessing && hasError">
       <div class="error-icon-wrap mb-3" *ngIf="isErrorIcon">
         <svg class="svg">
             <switch>
@@ -20,7 +20,7 @@
       <ng-content select=".error-content"></ng-content>
   </div>
 
-  <div class="warning-hanlder-wrap text-center p-1" *ngIf="hasWarning">
+  <div class="warning-hanlder-wrap text-center p-1" *ngIf="!isProcessing && !hasError && hasWarning">
       <div class="warning-img mb-3" *ngIf="isWarningIcon">
         <svg class="svg">
             <switch>
@@ -28,7 +28,7 @@
             </switch>
           </svg>
       </div>
-      <div class="warning-message" *ngIf="warningMessage">{{noResultMessage}}</div>
+      <div class="warning-message" *ngIf="warningMessage">{{warningMessage}}</div>
       <ng-content select=".warning-content"></ng-content>
   </div>
 </div>

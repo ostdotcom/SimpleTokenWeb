@@ -28,8 +28,8 @@ export class TableComponent implements OnInit {
   @Input('getDataOnInit') getDataOnInit?: boolean = true;
   @Input('isPaginated') isPaginated?: boolean = true;
   @Input('requestParams') requestParams?: object = {};
-  @Input('customErrorMsg') customErrorMsg?: string = "";
-  @Input('warningMsg') warningMsg?: string = "";
+  @Input('customErrorMessage') customErrorMessage?: string = "";
+  @Input('warningMessage') warningMessage?: string = "";
 
   @Output('pageChangeEvent') pageChangeEvent? = new EventEmitter<number>();
   @Output('tableDataLoadedEvent') tableDataLoadedEvent? =  new EventEmitter();
