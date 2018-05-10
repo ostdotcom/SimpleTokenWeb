@@ -103,18 +103,20 @@
 
           fileUpload.find('.file-wrapper input[type="file"]').change(function () {
 
-            var inputDataCount = fileUpload.find(".file-wrapper-view [data-file-count=" + oThis.fileCount + "]");
-            if ($(this).val() && inputDataCount.length === 0) {
-              fileUpload.find('.file-wrapper-view').append($("<div class='file-name display-4 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<svg class="icon upload-file-close-btn" data-file-count="' + oThis.fileCount + '"> <switch><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use> </switch> </svg>'));
-              fileUpload.find('.upload-file-close-btn').click(function (e) {
-                var fileCount = $(e.target).closest('.file-name').data('file-count');
-                fileUpload.find(".file-wrapper [data-file-count=" + fileCount + "]").remove();
-                fileUpload.find('.file-wrapper-view [data-file-count=' + fileCount + ']').remove();
+            if (fileUpload.find(".file-wrapper-view .file-name").length < maxLength) {
+              var inputDataCount = fileUpload.find(".file-wrapper-view [data-file-count=" + oThis.fileCount + "]");
+              if ($(this).val() && inputDataCount.length === 0) {
+                fileUpload.find('.file-wrapper-view').append($("<div class='file-name display-4 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<svg class="icon upload-file-close-btn" data-file-count="' + oThis.fileCount + '"> <switch><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use> </switch> </svg>'));
+                fileUpload.find('.upload-file-close-btn').click(function (e) {
+                  var fileCount = $(e.target).closest('.file-name').data('file-count');
+                  fileUpload.find(".file-wrapper [data-file-count=" + fileCount + "]").remove();
+                  fileUpload.find('.file-wrapper-view [data-file-count=' + fileCount + ']').remove();
+
+                  oThis.updateMultiFileBtnStateForInvestor(fileUpload);
+                }).bind(oThis);
 
                 oThis.updateMultiFileBtnStateForInvestor(fileUpload);
-              }).bind(oThis);
-
-              oThis.updateMultiFileBtnStateForInvestor(fileUpload);
+              }
             }
           });
         }
