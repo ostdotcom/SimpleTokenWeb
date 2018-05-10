@@ -1,25 +1,25 @@
 <div id="verifyModal" class="modal fade user-modal" role="dialog" tabindex="-1">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
-        <span aria-hidden="true" class="modal-close-black-icon" title="close"></span>
-      </button>
-      <div class="modal-body">
+    <div class="modal-content border-none rounded-0">
+      <!--<button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">-->
+        <!--<span aria-hidden="true" class="modal-close-black-icon" title="close"></span>-->
+      <!--</button>-->
+      <div class="modal-body py-4">
         <div class="verify-content form-group">
-          <h4 class="mt-4 mb-4 text-center">I confirm the following</h4>
+          <h4 class="mb-4 text-center">I confirm the following</h4>
           <% kyc_checkbox_points_html.each_with_index do |line, index| %>
-            <div class="checkbox mt-2">
-              <input type="checkbox" id="p<%= index %>" name="p<%= index %>">
-              <label for="p<%= index %>">
-                <span class="">
-                  <%= raw line%>
-                </span>
+            <div class="my-2">
+              <input type="checkbox" class="custom-control-input" id="p<%= index %>" name="p<%= index %>">
+              <label for="p<%= index %>" class="form-check-label">
+                <span class="align-middle"><%= raw line%></span>
+                <!--<svg viewBox="0 0 10 8" class="check-box-svg" xmlns="http://www.w3.org/2000/svg"><path d="M1 4.497l2.01 1.96L8.323 1" id="Path-1" stroke-width="1.5" fill="none"></path></svg>-->
               </label>
             </div>
           <% end %>
-          <div class="error" data-for="verify_error"></div>
+          <div class="error text-center p-0" data-for="verify_error" style="min-height: 22px"></div>
           <div class="col-12 text-center">
-            <button class="btn btn-primary verify-btn mt-4" title="Verify" id="kycVerify">I Agree</button>
+            <button class="btn btn-primary verify-btn m-2" title="Verify" id="kycVerify">I Agree</button>
+            <button class="btn btn-secondary m-2" title="Cancel" data-dismiss="modal">Cancel</button>
           </div>
         </div>
         <div class="loader-content" style="display: none">

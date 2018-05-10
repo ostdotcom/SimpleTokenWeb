@@ -39,3 +39,25 @@ input[type="checkbox"]:checked ~ label::after{
   display: inline-block;
 }
 /* Checkboxes CSS Ends */
+
+
+//.check-box-svg {
+//  width: 18px;
+//  height: 18px;
+//  position: absolute;
+//  left: 0;
+//  top: .1em;
+//  border: 1px solid #747a80;
+//}
+//.form-check-label {
+//  padding-left: 1.6rem;
+//  position: relative;
+//  cursor: pointer;
+//}
+//input[type="checkbox"]:checked ~ label svg path {
+//  stroke-dashoffset: 0;
+//  stroke: green;
+//}
+//input[type="checkbox"]:checked ~ label svg{
+//  background-color: #747a80;
+//}
