@@ -1,13 +1,16 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
 .pagination-container{
 
   .btn{
-    color: #597a84;
+    color: $blue-800;
+    background-color: $white;
     font-size: 14px;
     &.active{
-      background-color: #d3e3e5;
+      background-color: $custom-grey-7;
     }
   }
   .arrow-btn{
-    background-color: #f3fbfb;
+    background-color: $green-1000;
   }
 }

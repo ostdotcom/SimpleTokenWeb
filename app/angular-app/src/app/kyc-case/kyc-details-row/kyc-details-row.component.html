@@ -9,7 +9,9 @@
       {{row.cynopsis_status}}
   </div>
   <div class="col display-3">
-    {{row.active}}
+    <div *ngIf="row.active.length; else default">
+        {{row.active}}
+    </div>
   </div>
   <div class="col display-3">
     <div *ngIf="row.inactive.length; else default">
@@ -49,7 +51,12 @@
         <div class="row py-4 mx-0">
           <div class="col-6">
               <div class='font-weight-500 display-4 text-transform-upper'>CURRENT MATCHES</div>
-              <span class="display-3">  {{row.active}}</span>
+              <span class="display-3">
+                  <div *ngIf="row.active.length; else default">
+                      {{row.active}}
+                  </div>
+
+              </span>
           </div>
 
           <div class="col-6">
