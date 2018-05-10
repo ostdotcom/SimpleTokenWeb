@@ -15,6 +15,8 @@ export class PaginationComponent {
 
   constructor() { }
 
+  loading: boolean = false;
+
   changePage(pageNumber: number): void {
     this.currentPageNumber  = pageNumber ;
     this.pageChangeEvent.emit( this.currentPageNumber );

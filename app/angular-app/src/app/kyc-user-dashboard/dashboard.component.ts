@@ -8,8 +8,6 @@ import { AppConfigService } from '../services/app-config.service';
 
 declare var $: any;
 
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -19,7 +17,6 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild(TableComponent) table;
 
-
   constructor(
     private entityConfigService: EntityConfigService ,
     private activatedRoute: ActivatedRoute,
@@ -28,6 +25,9 @@ export class DashboardComponent implements OnInit {
     private http: OstHttp,
     public appConfigService : AppConfigService
   ) {}
+
+  isProcessing: boolean = false;
+  hasError: boolean = false;
 
   // Default parameters
   admin_status : any ;

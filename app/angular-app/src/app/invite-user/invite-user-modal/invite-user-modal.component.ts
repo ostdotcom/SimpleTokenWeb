@@ -12,6 +12,9 @@ export class InviteUserModalComponent {
 
   constructor(public stateHandler: RequestStateHandlerService ,  private http : OstHttp) { }
 
+  hasError: boolean = false;
+  isProcessing: boolean = false;
+
   @Input('inviteUserForm') inviteUserForm ;
   @Output('onInviteSuccessEvent') onInviteSuccessEvent = new EventEmitter();
 

@@ -14,6 +14,7 @@ export class KycCaseComponent implements OnInit {
 
   isProcessing: boolean = true;
   hasError: boolean = false;
+  errorMessage: string = '';
   showCase: boolean = true;
   showReportIssue: boolean = false;
   showUpdateEth: boolean = false;

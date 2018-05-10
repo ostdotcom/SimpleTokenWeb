@@ -16,7 +16,7 @@
 			</a>
 			<div class="dropdown-menu dropdown-menu-right pb-0">
 				<div class="triangle"></div>
-				<a *ngIf="appConfigService.isSuperAdmin()" class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/admin-user/dashboard']">manage admins</a>
+				<a *ngIf="appConfig.isSuperAdmin()" class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/admin-user/dashboard']">manage admins</a>
 				<a href="/admin/change-password" title="Change Password" class="dropdown-item border-none">change password</a>
 				<a href="/admin/logout" title="Logout" class="dropdown-item border-none">logout</a>
 			</div>

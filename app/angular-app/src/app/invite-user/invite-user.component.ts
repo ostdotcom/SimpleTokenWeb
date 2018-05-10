@@ -1,8 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
-
-
 @Component({
   selector: 'invite-user',
   templateUrl: './invite-user.component.html',
@@ -11,6 +9,9 @@ import { EventEmitter } from '@angular/core';
 export class InviteUserComponent implements OnInit {
 
   constructor() { }
+
+  email: any;
+  name: any;
 
   @Output('closeInviteUser') closeInviteUser = new EventEmitter<boolean>();
   
