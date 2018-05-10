@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
 
   // Default parameters
   admin_status : any ;
-  admin_action_status : any;
+  admin_action_types : any;
   cynopsis_status: any;
   whitelist_status: any;
   sort_by : any;
@@ -45,22 +45,17 @@ export class DashboardComponent implements OnInit {
   errorMessage;
   params;
 
-  // Defaults and filtersMap
-  filtersMap: object = {
-    'filters[admin_status]': 'admin_status',
-    'filters[admin_action_types]': 'admin_action_status',
-    'filters[cynopsis_status]': 'cynopsis_status',
-    'filters[whitelist_status]': 'whitelist_status'
-  };
-
+  // Defaults, filterKeys, sortKeys
   defaultQueryParams: object = {
-    admin_status: 'all',
-    admin_action_status: 'all',
-    cynopsis_status: 'all',
-    whitelist_status: 'all',
-    sort_by: 'desc',
+    'filters[admin_status]': 'all',
+    'filters[admin_action_types]': 'all',
+    'filters[cynopsis_status]': 'all',
+    'filters[whitelist_status]': 'all',
+    'sortings[sort_by]': 'desc',
     page_number: 1
   };
+  filterKeys: Array<any> = ['admin_status','admin_action_types','cynopsis_status','whitelist_status'];
+  sortKeys: Array<any> = ['sort_by'];
 
   ngOnInit() {
     this.initFilters();
@@ -77,20 +72,22 @@ export class DashboardComponent implements OnInit {
 
   initFilters(){
     var currentQueryParams = this.getQueryParams();
-    for (var key in this.filtersMap) {
-      this[this.filtersMap[key]] =
-      currentQueryParams[this.filtersMap[key]] ?
-      currentQueryParams[this.filtersMap[key]] :
-      this.defaultQueryParams[this.filtersMap[key]]
+    for (var i = 0; i < this.filterKeys.length; i++) {
+      this[this.filterKeys[i]] =
+      currentQueryParams['filters['+this.filterKeys[i]+']'] ?
+      currentQueryParams['filters['+this.filterKeys[i]+']'] :
+      this.defaultQueryParams['filters['+this.filterKeys[i]+']']
     }
   }
 
   initSort(){
     var currentQueryParams = this.getQueryParams();
-    this.sort_by =
-    currentQueryParams['sort_by'] ?
-    currentQueryParams['sort_by'] :
-    this.defaultQueryParams['sort_by'];
+    for (var i = 0; i < this.sortKeys.length; i++) {
+      this[this.sortKeys[i]] =
+      currentQueryParams['sortings['+this.sortKeys[i]+']'] ?
+      currentQueryParams['sortings['+this.sortKeys[i]+']'] :
+      this.defaultQueryParams['sortings['+this.sortKeys[i]+']']
+    }
   }
 
   initPagination(){
@@ -102,20 +99,19 @@ export class DashboardComponent implements OnInit {
   }
 
   onFilterChange( filtersForm ) {
-    var filters = {};
-    for (var key in this.filtersMap) {
-      filters[this.filtersMap[key]] = filtersForm.value[key];
-    }
-    filters['page_number'] = 1;
+    var filters = {
+      'page_number': 1
+    };
+    Object.assign(filters, filtersForm.value);
     this.setQueryParams(filters);
   }
 
   onSortChange( sortForm ){
-    var sort = {
-      sort_by: sortForm.value['sortings[sort_by]']
+    var sortings = {
+      'page_number': 1
     };
-    sort['page_number'] = 1;
-    this.setQueryParams(sort);
+    Object.assign(sortings, sortForm.value);
+    this.setQueryParams(sortings);
   }
 
   onPageChange ( pageNumber ){

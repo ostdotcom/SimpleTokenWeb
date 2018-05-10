@@ -2,7 +2,7 @@
 <request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
   <ng-container class="processing-content">
       <div class="text-center display-1 mt-4">Loading your dashboard please wait ... </div>
-  </ng-container>  
+  </ng-container>
   <ng-container class="error-content">
     <div class="col-12">{{errorMessage || "Something went wrong, please try again."}}</div>
   </ng-container>
@@ -46,10 +46,10 @@
               </ng-container>
               <ng-container class="alert-text">
                   <span class="ml-2">
-                    Case approved, whitelisting 
+                    Case approved, whitelisting
                     <ng-container *ngIf="caseDetails.whitelist_status == 'unprocessed' || caseDetails.whitelist_status == 'started'">is in process...</ng-container>
-                    <ng-container *ngIf="caseDetails.whitelist_status == 'done'">is done.</ng-container>   
-                    <ng-container *ngIf="caseDetails.whitelist_status == 'failed'">has failed!</ng-container>                    
+                    <ng-container *ngIf="caseDetails.whitelist_status == 'done'">is done.</ng-container>
+                    <ng-container *ngIf="caseDetails.whitelist_status == 'failed'">has failed!</ng-container>
                   </span>
                 </ng-container>
           </ost-alert>
@@ -65,7 +65,7 @@
               <ng-container class="alert-text">
                   <span class="ml-2">Issue reported and {{caseDetails.last_issue_email_sent}} email sent.</span>
                 </ng-container>
-          </ost-alert> 
+          </ost-alert>
 
         </ng-template>
 
@@ -121,8 +121,8 @@
                     </ng-template>
                   </div>
 
-                  <span *ngIf="caseDetails.is_duplicate == 1" class="button-UI text-uppercase" 
-                        data-toggle="modal" data-target="#detailsModal" 
+                  <span *ngIf="caseDetails.is_duplicate == 1" class="button-UI text-uppercase"
+                        data-toggle="modal" data-target="#detailsModal"
                         (click)="initDuplicateTable()">
                         view details
                   </span>
@@ -143,7 +143,7 @@
                   <span class="key">Agent : </span>
                   <span class="value"> </span>
 
-                  <span class="button-UI text-uppercase" 
+                  <span class="button-UI text-uppercase"
                         data-toggle="modal" data-target="#logsModal"
                         (click)="initLogTabel()">
                       view logs
@@ -286,10 +286,10 @@
 
         <ng-container *ngIf="isInitLogTabel">
           <kyc-log-modal [caseId]='caseId'></kyc-log-modal>
-        </ng-container>  
+        </ng-container>
         <ng-container *ngIf="isInitDuplicateTable">
           <kyc-duplicate-details-modal [caseId]='caseId'> </kyc-duplicate-details-modal>
-       </ng-container>   
+       </ng-container>
 
       </ng-container>
 
@@ -316,7 +316,7 @@
               <div class="d-flex justify-content-center align-items-center mb-2">
 
                 <span class="mr-2 font-weight-normal">
-                  This case 
+                  This case
                   <ng-container *ngIf="caseDetails.kyc_status == 'approved'">has been approved and</ng-container>
                   <ng-container *ngIf="caseDetails.kyc_status == 'denied'">has been denied and</ng-container>
                     is closed
@@ -324,7 +324,7 @@
                 <ng-container *ngIf="caseDetails.can_reopen_case == 1">
                   <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
                 </ng-container>
-                
+
               </div>
 
             </ng-template>
@@ -341,7 +341,7 @@
                 <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyActionModal">Qualify</button>
 
               </div>
-              
+
             </ng-template>
 
           </ng-container>
@@ -358,7 +358,7 @@
                           (actionSuccessEvent)="onActionSuccess( $event )">
     <ng-container class="modal-body-content">
         <h5 class="modal-title text-center">Are you sure you want to Deny this user?</h5>
-    </ng-container>  
+    </ng-container>
   </kyc-case-action-modal>
 
 
@@ -368,7 +368,7 @@
                           (actionSuccessEvent)="onActionSuccess( $event )">
     <ng-container class="modal-body-content">
         <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
-    </ng-container> 
+    </ng-container>
   </kyc-case-action-modal>
 
 
@@ -377,7 +377,7 @@
                           (actionSuccessEvent)="onActionSuccess( $event )">
     <ng-container class="modal-body-content">
         <h5 class="modal-title text-center">Are you sure you want to Retry sending this users request to cynopsis?</h5>
-    </ng-container> 
+    </ng-container>
   </kyc-case-action-modal>
 
   <kyc-case-action-modal [postApi]="'api/admin/kyc/open-case'" [caseId]="caseId"
@@ -389,9 +389,9 @@
           <div>When a case is reopened, User is unwhitelisted.</div>
           <div class="mt-2">Once the user is qualified, the user will be whitelisted again The user will not be able to take part in
             the ICO, until the case is closed again.
-          </div>  
+          </div>
         </div>
-    </ng-container> 
+    </ng-container>
   </kyc-case-action-modal>
 
 </ng-container>
