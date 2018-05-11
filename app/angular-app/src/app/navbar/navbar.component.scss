@@ -58,3 +58,10 @@
   }
 }
 
+.profile-name {
+  @media (max-width: map-get($grid-breakpoints , 'sm')){
+    display: inline-block;
+    max-width: 80px;
+    vertical-align: middle;
+  }
+}

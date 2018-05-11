@@ -1,4 +1,4 @@
-<div class="row-body py-4 px-3 d-none d-lg-block">
+<div class="row-body p-3 d-none d-lg-block">
     <div class="row">
         <div class="col-2">{{row.name}}</div>
         <div class="col-3">{{row.email}}</div>
@@ -14,30 +14,28 @@
     </div>  
 </div>
 
-<div class="row-body mobile py-4 px-3 d-lg-none">
-    <div class="col">
-      <div class="card">
-          <div class="card-body p-0">
-                <div class="mobile-name-div p-3">
-                  <div class="col-12 text-transform-upper display-1 font-weight-500">{{row.name}}</div>
-                  <div class="col-12 mt-2">
-                      <span class="display-1 font-weight-500 mr-2">STATUS</span>
-                      <span class="display-1">{{statusMap[row.status]}}</span>
-                  </div>
-                </div> 
-                <div class="row m-0 p-3"> 
-                    <div class="col-12 text-transform-upper display-1 font-weight-500">email address</div>
-                    <div class="col-12">{{row.email}}</div>
-                </div>    
-                <div class="row form-group m-0 p-3">
-                    <select class="form-control selectpicker" ostOptions
-                            title="Action"
-                            [(ngModel)]="status"
-                            (change)="onStatusChange()"
-                            [entityPath]="entityPath">
-                    </select>
+<div class="row-body mobile mb-4 d-lg-none">
+    <div class="card">
+        <div class="card-body p-0">
+            <div class="mobile-name-div p-3">
+                <div class="col-12 p-0 text-transform-upper display-3 font-weight-600">{{row.name}}</div>
+                <div class="col-12 p-0  mt-1">
+                    <span class="display-3 font-weight-600 mr-2">STATUS</span>
+                    <span class="display-3">{{statusMap[row.status]}}</span>
                 </div>
-          </div>  
-      </div>    
-    </div>  
+            </div> 
+            <div class="row m-0 p-3"> 
+                <div class="col-12 p-0 text-transform-upper display-3 font-weight-600">email address</div>
+                <div class="col-12 p-0 display-3 mt-1">{{row.email}}</div>
+            </div>    
+            <div class="row form-group m-0 p-3">
+                <select class="form-control selectpicker" ostOptions
+                        title="Action"
+                        [(ngModel)]="status"
+                        (change)="onStatusChange()"
+                        [entityPath]="entityPath">
+                </select>
+            </div>
+        </div>  
+    </div>    
 </div>

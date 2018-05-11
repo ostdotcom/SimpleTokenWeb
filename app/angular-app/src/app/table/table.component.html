@@ -22,15 +22,22 @@
 
   <div class="row" *ngIf="rows.length < 1">
     <div class="col-12">
-        <request-state-handler class="d-block w-100 p-5"
+        <request-state-handler class="d-block w-100 p-5 kyc-table"
                                [isProcessing]="isProcessing"
                                [hasError]="hasError"
                                [hasWarning]="hasWarning"
-                               [errorMessage]="customErrorMsg || errorMessage"
+                               [processingMessage]="processingMessage"
+                               [errorMessage]="errorMessage || customErrorMsg"
                                [warningMessage]="warningMessage">
-            <ng-content select=".processing-content"></ng-content>
-            <ng-content select=".error-content"></ng-content>
-            <ng-content select=".warning-content"></ng-content>
+            <ng-container class="processing-content">
+                <ng-content select=".processing-content"></ng-content>
+            </ng-container>                   
+           <ng-container class="error-content">
+              <ng-content select=".error-content"></ng-content>
+           </ng-container>  
+           <ng-container class="warning-content">
+              <ng-content select=".warning-content"></ng-content>
+           </ng-container>
         </request-state-handler>
     </div>
   </div>

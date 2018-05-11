@@ -70,4 +70,13 @@
   }
 }
 
+.download-csv-btn {
+  @media (max-width: map-get($grid-breakpoints , 'lg')){
+    float: left;
+    margin-bottom: 20px;
+  }
+  @media (min-width: map-get($grid-breakpoints , 'lg')){
+    float: right;
+  }
+}
 

@@ -1,0 +1,10 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.invite-user-btn {
+    @media (max-width: map-get($grid-breakpoints , 'lg')){
+      float: left;
+    }
+    @media (min-width: map-get($grid-breakpoints , 'lg')){
+      float: right;
+    }
+}

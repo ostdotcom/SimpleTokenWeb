@@ -1,15 +1,17 @@
 <div class="row mt-4 pt-2">
-  <h4 class="kyc-header ml-4 text-transform-upper">KYC DASHBOARD</h4>
-  <div class="float-right d-flex justify-content-center align-items-center ml-auto" *ngIf="appConfigService.isSuperAdmin()">
-    <button class="btn btn-primary mr-4"
-            data-toggle="modal"
-            data-target="#confirmDownload">
-            DOWNLOAD CSV
-    </button>
+  <div class="col-12 col-lg-6">
+    <h4 class="kyc-header text-transform-upper">KYC DASHBOARD</h4>
   </div>
+  <div class="col-12 col-lg-6"  *ngIf="appConfigService.isSuperAdmin()">
+      <button class="btn btn-primary download-csv-btn"
+              data-toggle="modal"
+              data-target="#confirmDownload">
+              DOWNLOAD CSV
+      </button>
+  </div>  
 </div>
 
-<div class="row p-3 mb-3 filters">
+<div class="row py-3 mb-3 filters">
     <div class="col-12 d-lg-none">
         <ost-search  [searchApi]="'api/admin/kyc/get-cases-by-email'"
                             [entityName]="'email'"
@@ -47,8 +49,8 @@
       </form>
     </div>
 
-    <div class="col-12 col-lg-4 px-0 ml-auto mt-3">
-      <form class="col-lg-7 ml-auto pr-lg-0 form-group" #sortForm="ngForm" name='sorting'  (change)="onSortChange(sortForm)">
+    <div class="col-12 col-lg-4 ml-auto mt-3">
+      <form class="col-lg-7 px-0 ml-auto pr-lg-0 form-group" #sortForm="ngForm" name='sorting'  (change)="onSortChange(sortForm)">
         <label class='form-label mb-2'>SORT BY</label>
         <select class="form-control selectpicker" name="sortings[sort_by]" [(ngModel)]='sort_by'
                 ostOptions  [entityPath]="'entity_configs.kyc_user_details.sort_by'">
@@ -58,7 +60,7 @@
   </div>
 
 <div class="row" >
-  <app-table class="w-100 kyc-user-dashboard alternate-style-lg"
+  <app-table class="w-100 alternate-style-lg"
             [dataUrl]="'api/admin/kyc/dashboard/'"
             [pageNumber]='page_number'
             [filterForm]='filterForm'
@@ -77,32 +79,15 @@
 <div class="modal fade" id="downlaodCSV">
   <div class="modal-dialog">
     <div class="modal-content">
-
-      <!-- Modal Header -->
       <div class="modal-header d-flex justify-content-center align-items-center">
         <h5 class="modal-title text-center">Please confirm to download CSV</h5>
       </div>
-
-      <!-- Modal body -->
-      <!-- <div class="modal-body mx-5">
-        <div>
-          <input type="checkbox" class="form-check-input" id="securityCheckbox">
-          <label class="form-check-label" for="securityCheckbox">OST KYC is not responsible for the security of data</label>
-        </div>
-        <div class="mt-3">
-          <input type="checkbox" class="form-check-input" id="securityEthCheckbox">
-          <label class="form-check-label" for="securityEthCheckbox">OST KYC is not responsible for the security of ETH address shared.</label>
-        </div>
-      </div> -->
-
-      <!-- Modal footer -->
       <div class="modal-footer mt-3 mb-3">
         <div class="d-flex justify-content-center align-items-center">
           <button type="button" class="btn btn-primary text-uppercase" data-toggle="modal" data-target="#successCSV">Confirm</button>
           <button type="button" class="btn btn-light ml-3 text-uppercase" data-dismiss="modal">Cancel</button>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -111,8 +96,6 @@
 <div class="modal fade" id="successCSV">
   <div class="modal-dialog">
     <div class="modal-content">
-
-      <!-- Modal Header -->
       <div class="modal-header d-flex justify-content-center align-items-center mt-3">
         <svg class="svg model-success-svg">
           <switch>
@@ -120,16 +103,12 @@
           </switch>
         </svg>
       </div>
-
-      <!-- Modal body -->
       <div class="modal-body text-center mx-5">
         <div>
           <h4 class="success">Success</h4>
           <span>We are consolidating your CSV file. We will send an email on char@company.com, with a link to download it. Please check your inbox in sometime. </span>
         </div>
       </div>
-
-      <!-- Modal footer -->
       <div class="modal-footer mb-3 d-flex justify-content-center align-items-center">
           <button type="button" class="btn btn-primary text-uppercase" data-toggle="modal" data-target="#errorCSV">Ok</button>
       </div>
@@ -142,8 +121,6 @@
 <div class="modal fade" id="errorCSV">
   <div class="modal-dialog">
     <div class="modal-content">
-
-      <!-- Modal Header -->
       <div class="modal-header d-flex justify-content-center align-items-center mt-3">
         <svg class="svg model-warning-svg">
           <switch>
@@ -151,17 +128,12 @@
           </switch>
         </svg>
       </div>
-
-      <!-- Modal body -->
       <div class="modal-body text-center mx-5">
         <span>You can only download the CSV 5 times in 24 hours. Please try again after 2:30 PM tomorrow.</span>
       </div>
-
-      <!-- Modal footer -->
       <div class="modal-footer mb-3 d-flex justify-content-center align-items-center">
           <button type="button" class="btn btn-primary text-uppercase" data-dismiss="modal">Ok</button>
       </div>
-
     </div>
   </div>
 </div>
@@ -170,17 +142,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-body px-sm-5">
-
               <div class='row' *ngIf="!isProcessing && !hasError && !isCSVDownloaded">
-
-                   <!-- Modal Header -->
-
-
-                  <!-- Modal body -->
                   <div class="modal-body m-md-4">
                       <div class="d-flex mb-4">
                           <h5 class="modal-title text-center">Please confirm to download CSV</h5>
-                        </div>
+                    </div>
                   <div>
                   <input type="checkbox" class="form-check-input" id="securityCheckbox" [(ngModel)]="securityCheckbox" (change)='checkboxChecked()'>
                   <label class="form-check-label display-3" for="securityCheckbox">OST KYC is not responsible for the security of data</label>
@@ -200,7 +166,6 @@
                       </div>
                   </div>
               </div>
-
               <div class="row">
                   <request-state-handler class="d-block w-100"
                                         [isProcessing]="isProcessing"
@@ -213,7 +178,6 @@
                   </div>
                   </request-state-handler>
               </div>
-
               <div class="row">
                   <div class="col-12 success-hanlder-wrap text-center p-1" *ngIf="isCSVDownloaded">
                       <div class="success-icon-wrap mb-3">
@@ -231,8 +195,6 @@
                   </div>
               </div>
             </div>
-
-
       </div>
     </div>
   </div>

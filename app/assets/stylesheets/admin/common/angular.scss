@@ -1,0 +1,22 @@
+@import "admin/simple_token_theme_admin/variables";
+
+
+admin-dashboard {
+  .bootstrap-select {
+    width: 170px!important;
+    .dropdown-toggle {
+      background-color: $custom-grey-7!important;
+    }
+    &.show {
+      .dropdown-toggle {
+        background-color: $custom-grey-8!important;
+      }
+    }
+    .text{
+      color: $blue-800!important;
+      font-size: $display4-size!important;
+      font-weight: $font-weight-500!important;
+      letter-spacing: 1px!important;
+    }
+  }
+}

@@ -28,8 +28,9 @@ export class TableComponent implements OnInit {
   @Input('getDataOnInit') getDataOnInit?: boolean = true;
   @Input('isPaginated') isPaginated?: boolean = true;
   @Input('requestParams') requestParams?: object = {};
-  @Input('customErrorMessage') customErrorMessage?: string = "";
-  @Input('warningMessage') warningMessage?: string = "";
+  @Input('processingMessage') processingMessage?: string;
+  @Input('customErrorMessage') customErrorMessage?: string ;
+  @Input('warningMessage') warningMessage?: string ;
 
   @Output('pageChangeEvent') pageChangeEvent? = new EventEmitter<number>();
   @Output('tableDataLoadedEvent') tableDataLoadedEvent? =  new EventEmitter();
