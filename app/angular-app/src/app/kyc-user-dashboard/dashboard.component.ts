@@ -146,7 +146,7 @@ export class DashboardComponent implements OnInit {
 
   downloadCSV() {
     this.stateHandler.updateRequestStatus(this ,  true );
-    this.http.get(this.downloadURL,  this.getQueryParams() ).subscribe(
+    this.http.get(this.downloadURL, {params: this.getQueryParams() }  ).subscribe(
       response => {
         let res = response.json();
         if (!res.success) {
