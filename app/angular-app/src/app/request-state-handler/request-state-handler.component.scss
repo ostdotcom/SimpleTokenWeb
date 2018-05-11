@@ -36,3 +36,10 @@
        background-position: bottom;
     }
 }
+
+
+:host(.kyc-table) {
+    .processing-message, .error-message, .warning-message {
+       font-weight: 500;
+    }
+}

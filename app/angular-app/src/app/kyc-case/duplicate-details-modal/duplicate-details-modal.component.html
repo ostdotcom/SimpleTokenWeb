@@ -12,11 +12,12 @@
       <!-- Modal body -->
       <div class="modal-body">
         <div class='row'>
-        <app-table class="w-100 alternate-style-md" [dataUrl]="duplicateDataUrl"
-                                 [isPaginated]="false" >
-
+        <app-table  class="w-100 alternate-style-md" 
+                    [customErrorMessage]= "'Something went wrong, we could not load the data. We are looking into this.'"
+                    [warningMessage]="'Sorry we could not find any results.'"
+                    [dataUrl]="duplicateDataUrl"
+                    [isPaginated]="false" >
           <kyc-details-header class='header'></kyc-details-header>
-
           <ng-template #rowTemplate let-row>
             <kyc-details-row [row]='row'></kyc-details-row>
           </ng-template>

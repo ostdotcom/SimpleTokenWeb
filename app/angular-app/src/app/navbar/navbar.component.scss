@@ -11,7 +11,7 @@
 
 .dropdown-menu {
   top: 40px;
-  left: -1rem;
+  left: 25px;
   border: none;
   text-transform: uppercase;
   box-shadow: 0 0.5px 3px 2px rgba(50, 50, 50, 0.09);
@@ -24,6 +24,9 @@
     &:hover{
       background-color: $green-1000 !important;
     }
+  }
+  @media (max-width: map-get($grid-breakpoints , 'sm')){
+    left: -50px;
   }
 }
 
@@ -58,3 +61,10 @@
   }
 }
 
+.profile-name {
+  @media (max-width: map-get($grid-breakpoints , 'sm')){
+    display: inline-block;
+    max-width: 80px;
+    vertical-align: middle;
+  }
+}

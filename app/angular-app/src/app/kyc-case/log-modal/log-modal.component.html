@@ -12,7 +12,11 @@
       <!-- Modal body -->
       <div class="modal-body">
         <div class='row'>
-          <app-table class="w-100 alternate-style-md" [dataUrl]="logUrl" [isPaginated]="false">
+          <app-table class="w-100 alternate-style-md" 
+                     [customErrorMessage]= "'Something went wrong, we could not load the data. We are looking into this.'"
+                     [warningMessage]="'Sorry we could not find any results.'"
+                     [dataUrl]="logUrl" 
+                     [isPaginated]="false">
 
             <kyc-log-header class='header'></kyc-log-header>
 

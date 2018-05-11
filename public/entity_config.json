@@ -128,11 +128,11 @@
         "values" : [
           {
             "value": "reset",
-            "display_text": "RESET MFA"
+            "display_text": "Reset MFA"
           },
           {
             "value": "delete",
-            "display_text": "DELETE ADMIN"
+            "display_text": "Delete Admin"
           }
       ]
       },
@@ -140,11 +140,11 @@
         "values" : [
           {
             "value": "resend",
-            "display_text": "RESEND INVITE"
+            "display_text": "Resend Invite"
           },
           {
             "value": "delete",
-            "display_text": "DELETE ADMIN"
+            "display_text": "Delete Admin"
           }
         ]
       }
