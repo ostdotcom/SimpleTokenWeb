@@ -321,8 +321,8 @@
        <kyc-log-modal *ngIf="isInitLogTabel" [caseId]='caseId'></kyc-log-modal>
        <kyc-duplicate-details-modal *ngIf="isInitDuplicateTable" [caseId]='caseId'> </kyc-duplicate-details-modal>
 
-       <div *ngIf="hasNextPage" class="carousel-nav right" [routerLink]="['/admin/case-id/', nextCaseId]" [queryParams]="activatedRoute.snapshot.queryParams">&#9658;</div>
-       <div *ngIf="hasPreviousPage" class="carousel-nav left" [routerLink]="['/admin/case-id/', previousCaseId]" [queryParams]="activatedRoute.snapshot.queryParams">&#9668;</div>
+       <div *ngIf="hasNextPage" class="carousel-nav right py-2 pr-1" [routerLink]="['/admin/case-id/', nextCaseId]" [queryParams]="activatedRoute.snapshot.queryParams">&#9654;</div>
+       <div *ngIf="hasPreviousPage" class="carousel-nav left py-2 pl-1" [routerLink]="['/admin/case-id/', previousCaseId]" [queryParams]="activatedRoute.snapshot.queryParams">&#9664;</div>
 
       </ng-container>
 
