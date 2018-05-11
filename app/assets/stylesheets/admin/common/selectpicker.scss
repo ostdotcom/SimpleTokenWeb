@@ -1,4 +1,4 @@
-@import "admin/simple_token_theme_admin/variables";
+@import "../../admin/simple_token_theme_admin/variables";
 
 .bootstrap-select{
   &.btn-group{
@@ -19,6 +19,7 @@
         height: 12px;
         width: 12px;
         right: .5rem;
+        margin-top: -5px !important;
         position: relative;
       }
       &:after{
@@ -36,11 +37,11 @@
     li{
       a{
         outline: none;
-        color: $blue-800;
-        padding: .5rem .875rem;
+        color: $blue-800 !important;
+        padding: .5rem .875rem !important;
         font-size: $display3-size;
         &:hover{
-          background-color: #f3fbfb;
+          background-color: $green-1000 !important;
         }
       }
     }

@@ -59,6 +59,15 @@
     font-size: 0
   }
 
+  .search-addon {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    padding: 8px;
+    font-size: 0;
+    background-color: rgba(196, 213, 214, 0.1);
+  }
+
   label.upload-file input[type="file"] {
     position: fixed;
     top: -1000px;
