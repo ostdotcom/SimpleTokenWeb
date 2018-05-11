@@ -1,3 +1,5 @@
 /*
- *= require admin/angular/angular_common
+ *= require admin/common/selectpicker.scss
+ *= require plugins/bootstrap_select/bootstrap-select.scss
+ *= require admin/common/angular.scss
  */

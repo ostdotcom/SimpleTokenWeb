@@ -1,4 +1,4 @@
-@import "../../admin/simple_token_theme_admin/variables";
+@import "admin/simple_token_theme_admin/variables";
 
 .bootstrap-select{
   &.btn-group{
@@ -43,15 +43,6 @@
           background-color: #f3fbfb;
         }
       }
-    }
-  }
-}
-
-user-dash-board-row {
-  .bootstrap-select {
-    max-width: 150px;
-    &.btn-group .dropdown-toggle {
-      background-color: $custom-grey-7;
     }
   }
 }
