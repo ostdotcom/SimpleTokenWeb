@@ -10,6 +10,8 @@
     color: $yellow-800;
     border-bottom: none;
     font-weight: $font-weight-normal;
+    font-weight: $font-weight-600;
+    letter-spacing: 1px;
   }
 }
 
@@ -35,12 +37,18 @@
   }
 }
 
+.customized-h5{
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
 // .card-group{
   .card{
     border: solid 0.8px $blue-400;
     .card-title{
       text-transform: uppercase;
       font-size: 0.8rem;
+      letter-spacing: 2px;
     }
     .card-row{
       margin-right: -1.23rem;
@@ -59,6 +67,8 @@
         text-transform: uppercase;
         font-size: 0.8rem;
         font-weight: 500;
+        letter-spacing: 2px;
+        font-weight: 600;
       }
       .value{
         color: #597a84;
@@ -96,6 +106,12 @@
     display: inline-block;
     font-size: 12px;
     font-weight: $font-weight-600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    &:hover, &:active {
+      border-bottom: 1px solid $yellow-500;
+      color: $yellow-500;
+    }
   }
 }
 .title{
@@ -104,27 +120,30 @@
   font-weight: $font-weight-600;
 }
 
+@media screen and (min-width: 769px){
 
 .button-container{
   position: fixed;
   bottom: 0;
   background-color: #ffffff;
   box-shadow: 0 -2px 2px -0.5px rgba(155, 175, 181, 0.2);
-  @media screen and (min-width: 769px){
     .float-lg-right{
       .btn{
         width: 180px;
       }
     }
   }
-
-  @media screen and (max-width: 768px){
-    .btn{
-      width: 100%;
-    }
-  }
 }
 
+@media screen and (max-width: 768px){
+
+  .button-container{
+    background-color: #ffffff;
+        .btn{
+          width: 100%;
+        }
+    }
+}
 #logsModal, #detailsModal{
   .modal-dialog{
     margin: auto;
