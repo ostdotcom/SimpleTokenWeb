@@ -16,16 +16,16 @@
   </div>
 </div>
 
-<div class="mobile d-md-none">
-  <div class="card m-3">
+<div class="mobile d-md-none mt-3">
+  <div class="card">
     <div class="card-body p-0">
-        <div class="col-12 mobile-name-div py-4">
-            <span class='display-1 mr-2'>Date / Time </span>
-            <span class="display-3">  {{row.created_at_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}</span>
+        <div class="col-12 mobile-name-div py-3">
+            <span class='display-1 mr-2 font-weight-500'>Date/Time </span>
+            <span class="display-3 font-weight-500">  {{row.created_at_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}</span>
         </div>
-        <div class="row py-4 mx-0">
+        <div class="row py-3 mx-0">
           <div class="col-6">
-              <div class='font-weight-500 display-4 text-transform-upper'>AGENT </div>
+              <div class='font-weight-600 display-4 text-transform-upper mb-1'>AGENT </div>
               <span class="display-3 text-capitalize">
                   <div *ngIf="row.agent; else default">
                       {{row.agent }}
@@ -35,7 +35,7 @@
           </div>
 
           <div class="col-6">
-              <div class='font-weight-500 display-4 text-transform-upper'>ACTIVITY </div>
+              <div class='font-weight-600 display-4 text-transform-upper'>ACTIVITY </div>
               <span [innerHTML]='row.action' class='display-3 text-capitalize'></span>
 
           </div>
