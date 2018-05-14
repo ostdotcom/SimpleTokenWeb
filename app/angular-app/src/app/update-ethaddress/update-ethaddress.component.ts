@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
+import { ScrollTopService } from '../services/scroll-top.service';
 
 
 @Component({
@@ -17,11 +18,12 @@ export class UpdateEthaddressComponent implements OnInit {
   updateMsg = 'Update eth address';
 
 
-  constructor(private http: OstHttp) { }
+  constructor(private http: OstHttp,  private scrollTopService : ScrollTopService) { }
 
   @Output("closeEthAddressEvent") closeEthAddressEvent =  new EventEmitter();
 
   ngOnInit() {
+    this.scrollTopService.scrollTop();
   }
 
   updateEthAddress(updateEthAdressForm) {

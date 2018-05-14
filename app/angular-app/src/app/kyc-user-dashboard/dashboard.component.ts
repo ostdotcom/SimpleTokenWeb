@@ -58,11 +58,18 @@ export class DashboardComponent implements OnInit {
   sortKeys: Array<any> = ['sort_by'];
 
   ngOnInit() {
-    this.initFilters();
-    this.initSort();
-    this.initPagination();
-    this.setQueryParams({});
 
+    this.activatedRoute.queryParams.subscribe((queryParams:any) => {
+      this.initFilters();
+      this.initSort();
+      this.initPagination();
+      this.setQueryParams({});
+      setTimeout(function(){
+        $('.selectpicker').selectpicker('render');
+      },  0)
+    });
+   
+    
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
       this.stateHandler.updateRequestStatus(this);
       this.checkboxError = '';
@@ -76,7 +83,7 @@ export class DashboardComponent implements OnInit {
       this[this.filterKeys[i]] =
       currentQueryParams['filters['+this.filterKeys[i]+']'] ?
       currentQueryParams['filters['+this.filterKeys[i]+']'] :
-      this.defaultQueryParams['filters['+this.filterKeys[i]+']']
+      this.defaultQueryParams['filters['+this.filterKeys[i]+']'];
     }
   }
 
