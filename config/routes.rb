@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get '/product' => :product
       get '/privacy' => :privacy
       get '/terms' => :terms
-      get '/news' => :news
+      # get '/news' => :news
       get '/careers' => :careers
       get '/documents' => :documents
       get '/partners' => :partners
