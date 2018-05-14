@@ -6,8 +6,8 @@ export class ScrollTopService {
   constructor() { }
 
   scrollTop( el? ){
-    let scrollEl = el || window; 
-    window.scrollTo(0, 0);
+    let scrollEl = el || window;
+    scrollEl.scrollTo(0, 0);
   }
 
 }
