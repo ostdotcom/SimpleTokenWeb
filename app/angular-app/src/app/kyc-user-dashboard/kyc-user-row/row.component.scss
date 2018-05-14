@@ -14,7 +14,22 @@
   .row-body{
     background-color: inherit;
   }
+}
+@media (max-width: 1030px){
+  .row-body{
+    .text-truncate{
+      max-width:96px;
+    }
 
+  }
+}
+
+@media (min-width: 1031px){
+  .row-body{
+    .text-truncate{
+      max-width:140px;
+    }
+  }
 }
 
 
@@ -33,7 +48,15 @@
     .card-body{
       .mobile-name-div{
         background-color: #b1e0e1;
+        .mobile-name{
+          max-width: 140px;
+        }
+        .date{
+          vertical-align: super;
+        }
+
       }
+
 
 
     }

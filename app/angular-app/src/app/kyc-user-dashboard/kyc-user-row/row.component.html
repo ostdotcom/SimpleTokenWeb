@@ -1,6 +1,6 @@
 <div class="row-body desktop d-none d-lg-flex py-3" [routerLink]="['/admin/case-id/', row.id]" [queryParams]="getQueryParams()">
     <div class="col name-date col p-0 px-3 display-3">
-        <div class="font-weight-600">
+        <div class="font-weight-600 text-truncate">
         {{row.name}}
         </div>
         <div class="pt-2 display-4">
@@ -78,8 +78,10 @@
     <div class="card">
       <div class="card-body p-0" >
         <div class="mobile-name-div py-3 px-2 ">
-          <span class='display-1 mr-2 font-weight-500'> {{row.name}} </span>
-          <div class='display-3 font-weight-600 d-inline-block'>{{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}</div>
+          <div class='mobile-name text-truncate display-1 mr-2 font-weight-500 d-inline-block'>
+             {{row.name}}
+          </div>
+          <div class='display-3 font-weight-600 d-inline-block date'>{{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}</div>
           <div class='mobile-admin-status '>
             <span class='font-weight-600 display-4 '> ADMIN STATUS </span>
             <div class='d-inline-block display-3 text-capitalize pl-2'>{{row.admin_status}}</div>
