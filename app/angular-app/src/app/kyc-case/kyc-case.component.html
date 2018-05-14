@@ -354,17 +354,17 @@
                       is closed
                   </span>
                   <ng-container *ngIf="caseDetails.can_reopen_case == 1">
-                    <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
+                    <button type="button" class="btn btn-secondary text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
                   </ng-container>
                 </ng-template>
               </div>
             </ng-template>
             <ng-template #caseOpen>
-              <button type="button" class="btn btn-light text-uppercase mb-2" (click)="showPageState(false, false, true)">Update eth address</button>
+              <button type="button" class="btn btn-secondary text-uppercase mb-2" (click)="showPageState(false, false, true)">Update eth address</button>
               <div class="float-lg-right">
                 <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyActionModal">Deny</button>
                 <ng-container *ngIf="appConfig.hasEmailSetup()">
-                  <button type="button" class="btn btn-light mr-2 mb-2 text-uppercase" (click)="showPageState(false, true, false)">Report Issue</button>
+                  <button type="button" class="btn btn-secondary mr-2 mb-2 text-uppercase" (click)="showPageState(false, true, false)">Report Issue</button>
                 </ng-container>
                 <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyActionModal">Qualify</button>
               </div>
