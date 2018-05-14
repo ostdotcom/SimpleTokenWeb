@@ -231,7 +231,7 @@ module Web
       end
 
       def ethereum_address_whitelist_done?
-        (GlobalConstant::TokenSaleUserState.ethereum_address_whitelist_done == whitelist_status)
+        !is_whitelist_setup_done? || (GlobalConstant::TokenSaleUserState.ethereum_address_whitelist_done == whitelist_status)
       end
 
       def ethereum_address_whitelist_icon_class
