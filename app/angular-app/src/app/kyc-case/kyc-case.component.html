@@ -171,82 +171,78 @@
             <div class="card-group">
               <div class="card">
                 <div class="card-body">
-                  <h6 class="card-title mt-2">Submitted Details</h6>
-                  <div class="row card-row py-2 mt-4">
-                    <div class="card-col col-12 col-sm-6">
+
+                  <h6 class="card-title mb-3">Submitted Details</h6>
+                    <div class='row'>
+
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.first_name'>
                       <div class="label">First Name</div>
                       <div class="value">{{userDetails.first_name}}</div>
                     </div>
-                    <div class="card-col col-12 col-sm-6">
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.last_name'>
                       <div class="label">Last Name</div>
                       <div class="value">{{userDetails.last_name}}</div>
                     </div>
-                  </div>
-                  <div class="row card-row py-2">
-                    <div class="card-col col-12 col-sm-6">
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.last_name'>
                       <div class="label">Birth Date</div>
                       <div class="value">{{userDetails.birthdate}}</div>
                     </div>
-                    <div class="card-col col-12 col-sm-6">
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.birthdate'>
                       <div class="label">Residence Country</div>
                       <div class="value">{{userDetails.country}}</div>
                     </div>
-                  </div>
-                  <div class="row card-row py-2">
-                    <div class="card-col col-12 col-sm-6">
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.document_id_number'>
                       <div class="label">Document ID Number</div>
                       <div class="value">{{userDetails.document_id_number}}</div>
                     </div>
-                    <div class="card-col col-12 col-sm-6">
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.nationality'>
                       <div class="label">Nationality</div>
                       <div class="value">{{userDetails.nationality}}</div>
                     </div>
-                  </div>
-                  <div class="row card-row py-2">
-                    <div class="card-col col-12 col-sm-6">
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.email'>
                       <div class="label">Email Address</div>
                       <div class="value">{{userDetails.email}}</div>
                     </div>
-                    <div class="card-col col-12 col-sm-6">
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.submitted_at'>
                       <div class="label">Date & Time</div>
                       <div class="value">{{userDetails.submitted_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}</div>
                     </div>
-                  </div>
-                  <div class="row card-row py-2">
-                    <div class="card-col col-12 col-sm-6">
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.street_address'>
                       <div class="label">Street Address</div>
                       <div *ngIf='userDetails.street_address; else default;' class="value">
                         {{userDetails.street_address}}
                       </div>
-                    </div>
-                    <div class="card-col col-12 col-sm-6">
+                      </div>
+
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.city'>
                       <div class="label">City</div>
                       <div *ngIf='userDetails.city; else default;' class="value">
                           {{userDetails.city}}
                         </div>
                     </div>
-                  </div>
-                  <div class="row card-row py-2">
-                    <div class="card-col col-12 col-sm-6">
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.postal_code'>
                       <div class="label">Zip Code</div>
                       <div *ngIf='userDetails.postal_code; else default;' class="value">
                           {{userDetails.postal_code}}
                         </div>
                     </div>
-                    <div class="card-col col-12 col-sm-6">
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.state'>
                       <div class="label">State / Region</div>
                       <div *ngIf='userDetails.state; else default;' class="value">
                           {{userDetails.state}}
                         </div>
                     </div>
-                  </div>
+                    <div class="card-col d-none d-sm-block col-sm-6" *ngIf='userDetails.extraDiv'>
+                      </div>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-body">
+              </div>
+              <div class="card grey-background">
+                <div class="p-3 title-div" style='margin-top:1px;'>
                   <h6 class="card-title">ID Image</h6>
+                  <a href='{{userDetails.document_id_file_url}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
                 </div>
-                <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top" src="{{userDetails.document_id_file_url}}" />
+                <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.document_id_file_url}}" />
                 <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
                   <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.document_id_file_url)'></iframe>
                 </div>
@@ -255,26 +251,30 @@
           </div>
         </div>
 
+
         <div class="row">
           <div class="col-12">
             <h5 class='customized-h5 pt-3 pb-1'>ID Image Vs Selfie Image</h5>
           </div>
           <div class="col-12 mb-3">
             <div class="card-group">
-              <div class="card">
-                <div class="card-body">
+              <div class="card grey-background">
+                <div class="p-3 title-div">
                   <h6 class="card-title">Id image</h6>
+                  <a href='{{userDetails.document_id_file_url}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
                 </div>
-                <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top" src="{{userDetails.document_id_file_url}}" />
+                <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.document_id_file_url}}" />
                 <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
                   <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.document_id_file_url)'></iframe>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-body">
+              <div class="card grey-background">
+                <div class="p-3 title-div">
                   <h6 class="card-title">Selfie image</h6>
+                  <a href='{{userDetails.selfie_file_url}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
+
                 </div>
-                <img *ngIf="getDocType(userDetails.selfie_file_url) == 'image'" class="card-img-top" src="{{userDetails.selfie_file_url}}" />
+                <img *ngIf="getDocType(userDetails.selfie_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.selfie_file_url}}" />
                 <div *ngIf="getDocType(userDetails.selfie_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
                   <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.selfie_file_url)'></iframe>
                 </div>
@@ -283,8 +283,8 @@
           </div>
         </div>
 
-        <div class='px-3' *ngIf="userDetails.residence_proof_file_url || (userDetails.investor_proof_files_url && userDetails.investor_proof_files_url.length > 0)">
-          <div class="row">
+        <div class='px-3' class='other-documents' *ngIf="userDetails.residence_proof_file_url || (userDetails.investor_proof_files_url && userDetails.investor_proof_files_url.length > 0)">
+          <div class="row mx-2 mx-sm-0">
             <div class="col-12 px-0">
               <h5 class='customized-h5 pt-3 pb-1'>Other Uploaded Documents</h5>
             </div>
@@ -293,6 +293,8 @@
 
                   <div class="card-body">
                     <h6 class="card-title">Residence Proof</h6>
+                    <a href='{{userDetails.residence_proof_file_url}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
+
                   </div>
                   <img *ngIf="getDocType(userDetails.residence_proof_file_url) == 'image'" class="card-img-top" src="{{userDetails.residence_proof_file_url}}" />
                   <div *ngIf="getDocType(userDetails.residence_proof_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
@@ -307,6 +309,8 @@
 
                   <div class="card-body">
                     <h6 class="card-title">Investor proof {{i+1}}</h6>
+                    <a href='{{userDetails.investor_proof_files_url[i]}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
+
                   </div>
                   <img *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'image'" class="card-img-top" src="{{userDetails.investor_proof_files_url[i]}}" />
                   <div *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'pdf'" class="embed-responsive embed-responsive-1by1">

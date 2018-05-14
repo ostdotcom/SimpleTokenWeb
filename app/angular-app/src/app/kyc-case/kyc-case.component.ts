@@ -31,6 +31,8 @@ export class KycCaseComponent implements OnInit {
   isStatusDenied :boolean =  false ;
   isReportIssue :boolean = false ;
   isWhitelisting:boolean =  false;
+  submittedDetails = ['birthdate', 'country', 'document_id_number', 'email', 'first_name', 'last_name', 'nationality',
+                      'postal_code', 'submitted_at', 'street_address', 'city', 'state'];
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -65,9 +67,10 @@ export class KycCaseComponent implements OnInit {
     })
   }
 
-  onSuccess( res ){
+  onSuccess( res ) {
     this.caseDetails = res.data.case_detail;
     this.userDetails = res.data.user_detail;
+    this.userDetails['extraDiv'] = this.checkForOddSections();
     this.meta = res.data.meta;
     this.stateHandler.updateRequestStatus( this, false,  false);
     this.getNextPrevious(res.data.meta);
@@ -105,6 +108,16 @@ export class KycCaseComponent implements OnInit {
 
   getDocType(url){
     return url.includes("/i/") ? 'image' : 'pdf';
+  }
+
+  checkForOddSections() {
+    let count = 0;
+    for (var i of this.submittedDetails){
+      if (this.userDetails[i]) {
+        count += 1;
+      }
+    }
+    return count % 2;
   }
 
 }

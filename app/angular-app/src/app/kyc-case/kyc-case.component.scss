@@ -36,6 +36,26 @@
     border-radius: 0 5px 5px 0;
   }
 }
+@media screen and (min-width:576px){
+.other-documents{
+  .col-sm-6{
+    &:nth-child(even){
+      border-right: none;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+     }
+     &:nth-child(odd){
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+     }
+    &:last-child{
+      border-right:  solid 0.8px $blue-400;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}
+}
 
 .customized-h5{
   font-weight: 500;
@@ -45,6 +65,24 @@
 // .card-group{
   .card{
     border: solid 0.8px $blue-400;
+
+
+     &.grey-background{
+      background-color:#f7f7f7;
+     }
+     .external-link{
+      color: white;
+      position: absolute;
+      top: 16px;
+      right:8px;
+      background-color: $green-900;
+    }
+    .title-div{
+      background-color:$white;
+
+    }
+    .row {
+      margin : 0px -19px;
     .card-title{
       text-transform: uppercase;
       font-size: 0.8rem;
@@ -60,8 +98,19 @@
         background: $white;
       }
     }
+    @media screen and (min-width: 576px){
+      .col-sm-6:nth-child(4n+1), .col-sm-6:nth-child(4n+2){
+        background-color: $green-1000;
+       }
+    }
+    @media screen and (max-width: 576px){
+      .col-sm-6:nth-child(odd){
+        background-color: $green-1000;
+       }
+    }
+
     .card-col{
-      padding: 0.5rem 1.25rem;
+      padding: 1rem 1.25rem;
       .label{
         color: $cyanish-gray;
         text-transform: uppercase;
@@ -75,6 +124,7 @@
         font-size: 0.9rem;
       }
     }
+  }
   }
 // }
 
