@@ -65,6 +65,11 @@
 // .card-group{
   .card{
     border: solid 0.8px $blue-400;
+    .card-title{
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+    }
 
 
      &.grey-background{
@@ -83,11 +88,7 @@
     }
     .row {
       margin : 0px -19px;
-    .card-title{
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-    }
+
     .card-row{
       margin-right: -1.23rem;
       margin-left: -1.23rem;
