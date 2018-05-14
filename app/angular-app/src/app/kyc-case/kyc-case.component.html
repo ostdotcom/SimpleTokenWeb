@@ -236,7 +236,13 @@
               <div class="card grey-background">
                 <div class="p-3 title-div" style='margin-top:1px;'>
                   <h6 class="card-title">ID Image</h6>
-                  <a href='{{userDetails.document_id_file_url}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
+                  <a href='{{userDetails.document_id_file_url}}' target="_blank" class="external-link">
+                      <svg class="svg">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#open-external-link"></use>
+                          </switch>
+                      </svg>
+                  </a>
                 </div>
                 <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.document_id_file_url}}" />
                 <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
@@ -258,7 +264,13 @@
               <div class="card grey-background">
                 <div class="p-3 title-div">
                   <h6 class="card-title">Id image</h6>
-                  <a href='{{userDetails.document_id_file_url}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
+                  <a href='{{userDetails.document_id_file_url}}' target="_blank" class="external-link">
+                      <svg class="svg">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#open-external-link"></use>
+                          </switch>
+                      </svg>
+                  </a>
                 </div>
                 <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.document_id_file_url}}" />
                 <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
@@ -269,7 +281,13 @@
               <div class="card grey-background">
                 <div class="p-3 title-div">
                   <h6 class="card-title">Selfie image</h6>
-                  <a href='{{userDetails.selfie_file_url}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
+                  <a href='{{userDetails.selfie_file_url}}' target="_blank" class="external-link">
+                      <svg class="svg">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#open-external-link"></use>
+                          </switch>
+                      </svg>
+                  </a>
 
                 </div>
                 <img *ngIf="getDocType(userDetails.selfie_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.selfie_file_url}}" />
@@ -293,7 +311,13 @@
 
                   <div class="p-3 title-div">
                     <h6 class="card-title">Residence Proof</h6>
-                    <a href='{{userDetails.residence_proof_file_url}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
+                    <a href='{{userDetails.residence_proof_file_url}}' target="_blank" class="external-link">
+                        <svg class="svg">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#open-external-link"></use>
+                            </switch>
+                        </svg>
+                    </a>
 
                   </div>
                   <img *ngIf="getDocType(userDetails.residence_proof_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.residence_proof_file_url}}" />
@@ -309,7 +333,13 @@
 
                   <div class="p-3 title-div">
                     <h6 class="card-title">Investor proof {{i+1}}</h6>
-                    <a href='{{userDetails.investor_proof_files_url[i]}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
+                    <a href='{{userDetails.investor_proof_files_url[i]}}' target="_blank" class="external-link">
+                        <svg class="svg">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#open-external-link"></use>
+                            </switch>
+                        </svg>
+                    </a>
 
                   </div>
                   <img *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.investor_proof_files_url[i]}}" />
