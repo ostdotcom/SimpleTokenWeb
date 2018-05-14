@@ -64,16 +64,16 @@ module SimpleTokenApi
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def dashboard_detail(params)
-        request_params = {
-            offset: params[:start],
-            page_size: params[:length]
-        }
-        request_params[:filters] = params[:filters].permit! if params[:filters].present?
-        request_params[:sortings] = params[:sortings].permit! if params[:sortings].present?
-
-        get("kyc/dashboard", request_params)
-      end
+      # def dashboard_detail(params)
+      #   request_params = {
+      #       offset: params[:start],
+      #       page_size: params[:length]
+      #   }
+      #   request_params[:filters] = params[:filters].permit! if params[:filters].present?
+      #   request_params[:sortings] = params[:sortings].permit! if params[:sortings].present?
+      #
+      #   get("kyc/dashboard", request_params)
+      # end
 
       # Get Kyc info
       #
@@ -84,12 +84,12 @@ module SimpleTokenApi
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def get_kyc_details(params)
-        request_params = {case_id: params[:case_id]}
-        request_params[:filters] = params[:filters].permit! if params[:filters].present?
-        request_params[:sortings] = params[:sortings].permit! if params[:sortings].present?
-        get("kyc/check-details", request_params)
-      end
+      # def get_kyc_details(params)
+      #   request_params = {case_id: params[:case_id]}
+      #   request_params[:filters] = params[:filters].permit! if params[:filters].present?
+      #   request_params[:sortings] = params[:sortings].permit! if params[:sortings].present?
+      #   get("kyc/check-details", request_params)
+      # end
 
       # Get Kyc action logs
       #
@@ -100,10 +100,10 @@ module SimpleTokenApi
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def get_kyc_action_logs(params)
-        request_params = {case_id: params[:case_id], offset: params[:start], limit: params[:length]}
-        get("kyc/kyc-action-logs", request_params)
-      end
+      # def get_kyc_action_logs(params)
+      #   request_params = {case_id: params[:case_id], offset: params[:start], limit: params[:length]}
+      #   get("kyc/kyc-action-logs", request_params)
+      # end
 
       # Get User info
       #
@@ -114,35 +114,16 @@ module SimpleTokenApi
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def whitelist_dashboard_detail(params)
-        request_params = {
-            offset: params[:start],
-            page_size: params[:length]
-        }
-        request_params[:filters] = params[:filters].permit! if params[:filters].present?
-        request_params[:sortings] = params[:sortings].permit! if params[:sortings].present?
-
-        get("kyc/whitelist-dashboard", request_params)
-      end
-
-      # Get Sale dashboard info
+      # def whitelist_dashboard_detail(params)
+      #   request_params = {
+      #       offset: params[:start],
+      #       page_size: params[:length]
+      #   }
+      #   request_params[:filters] = params[:filters].permit! if params[:filters].present?
+      #   request_params[:sortings] = params[:sortings].permit! if params[:sortings].present?
       #
-      # * Author: Alpesh
-      # * Date: 09/11/2017
-      # * Reviewed By: Sunil
-      #
-      #
-      # @return [Result::Base] returns an object of Result::Base class
-      #
-      def sale_daily_dashboard_detail(params)
-        request_params = {
-            offset: params[:start],
-            page_size: params[:length],
-            tab_type: params[:tab_type]
-        }
-
-        get("kyc/sale-daily-dashboard", request_params)
-      end
+      #   get("kyc/whitelist-dashboard", request_params)
+      # end
 
       # Get Sale dashboard info
       #
@@ -153,14 +134,33 @@ module SimpleTokenApi
       #
       # @return [Result::Base] returns an object of Result::Base class
       #
-      def sale_all_dashboard_detail(params)
-        request_params = {
-            offset: params[:start],
-            page_size: params[:length]
-        }
+      # def sale_daily_dashboard_detail(params)
+      #   request_params = {
+      #       offset: params[:start],
+      #       page_size: params[:length],
+      #       tab_type: params[:tab_type]
+      #   }
+      #
+      #   get("kyc/sale-daily-dashboard", request_params)
+      # end
 
-        get("kyc/sale-all-dashboard", request_params)
-      end
+      # Get Sale dashboard info
+      #
+      # * Author: Alpesh
+      # * Date: 09/11/2017
+      # * Reviewed By: Sunil
+      #
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      # #
+      # def sale_all_dashboard_detail(params)
+      #   request_params = {
+      #       offset: params[:start],
+      #       page_size: params[:length]
+      #   }
+      #
+      #   get("kyc/sale-all-dashboard", request_params)
+      # end
 
       # Get Contract Events Dashboard
       #
@@ -170,15 +170,15 @@ module SimpleTokenApi
       #
       #
       # @return [Result::Base] returns an object of Result::Base class
+      # #
+      # def contract_events_dashboard_detail(params)
+      #   request_params = {
+      #       offset: params[:start],
+      #       page_size: params[:length]
+      #   }
       #
-      def contract_events_dashboard_detail(params)
-        request_params = {
-            offset: params[:start],
-            page_size: params[:length]
-        }
-
-        get("kyc/contract-events-dashboard", request_params)
-      end
+      #   get("kyc/contract-events-dashboard", request_params)
+      # end
 
     end
   end

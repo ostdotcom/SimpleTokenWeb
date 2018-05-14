@@ -146,56 +146,6 @@ module GlobalConstant
 
       ### Admin Status End ###
 
-
-      ### admin action type ####
-
-      # def no_admin_action_type
-      #   'no'
-      # end
-      #
-      # def any_admin_action_type
-      #   'any'
-      # end
-      #
-      # def data_mismatch_admin_action_type
-      #   'data_mismatch'
-      # end
-      #
-      # def document_id_issue_admin_action_type
-      #   'document_id_issue'
-      # end
-      #
-      # def selfie_issue_admin_action_type
-      #   'selfie_issue'
-      # end
-      #
-      # def residency_issue_admin_action_type
-      #   'residency_issue'
-      # end
-
-      # def admin_action_type_names
-      #   {
-      #       no_admin_action_type => 'No Review Action',
-      #       any_admin_action_type => 'Any Review Action',
-      #       data_mismatch_admin_action_type => 'Data Mismatch',
-      #       document_id_issue_admin_action_type => 'Document Id Issue',
-      #       selfie_issue_admin_action_type => 'Selfie Image Issue',
-      #       residency_issue_admin_action_type => 'Proof of Residence Issue'
-      #   }
-      # end
-
-
-      # def admin_action_type
-      #   {
-      #       data_mismatch_admin_action_type => 'Data Mismatch Email Sent',
-      #       document_id_issue_admin_action_type => 'Document ID Image Issue Email Sent',
-      #       selfie_issue_admin_action_type => 'Selfie Image Issue Email Sent',
-      #       residency_issue_admin_action_type => 'Residency Image Issue Email Sent'
-      #   }
-      # end
-
-      ### admin action type End ####
-
     end
 
   end

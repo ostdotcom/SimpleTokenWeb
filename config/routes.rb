@@ -59,15 +59,15 @@ Rails.application.routes.draw do
       get '/authentication' => :authentication
       get '/change-password' => :change_password
 
-      get '/old-dashboard' => :dashboard
+
       get '/dashboard' => :angular_app
       get '/case-id/:id' => :angular_app
       get '/admin-user/dashboard' => :angular_app
-      get '/get-kyc-dashboard' => :get_kyc_dashboard
-      get '/get-kyc-details' => :kyc_details
-      get '/kyc-action-logs' => :kyc_action_logs
-      get '/whitelist-dashboard' => :whitelist_dashboard
-      get '/get-kyc-whitelist-dashboard' => :get_kyc_whitelist_dashboard
+
+      # get '/get-kyc-dashboard' => :get_kyc_dashboard
+      # get '/kyc-action-logs' => :kyc_action_logs
+      # get '/whitelist-dashboard' => :whitelist_dashboard
+      # get '/get-kyc-whitelist-dashboard' => :get_kyc_whitelist_dashboard
       # get '/sale-all-dashboard' => :sale_all_dashboard
       # get '/get-sale-all-dashboard' => :get_sale_all_dashboard
       # get '/sale-daily-dashboard' => :sale_daily_dashboard
@@ -75,6 +75,10 @@ Rails.application.routes.draw do
       # get '/contract-events-dashboard' => :contract_events_dashboard
       # get '/get-contract-events-dashboard' => :get_contract_events_dashboard
       # get '/pos-dashboard' => :pos_dashboard
+      # get '/old-dashboard' => :dashboard
+      # get '/get-kyc-details' => :kyc_details
+
+
     end
 
     namespace 'devadmin' do

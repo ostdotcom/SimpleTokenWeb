@@ -365,13 +365,6 @@ en:
       :assets:
         :specific_css_required: 0
 
-    dashboard:
-      :meta:
-        :title: Simple Token Dashboard
-        :robots: 'noindex, nofollow'
-      :assets:
-        :specific_css_required: 1
-
     angular_app:
       :meta:
         :title: Simple Token Admin Dashboard
@@ -379,48 +372,6 @@ en:
       :assets:
         :specific_css_required: 1
         :specific_js_required: 1
-
-    whitelist_dashboard:
-      :meta:
-        :title: Simple Token Whitelist Dashboard
-        :robots: 'noindex, nofollow'
-      :assets:
-        :specific_css_required: 1
-
-    sale_all_dashboard:
-      :meta:
-        :title: Sale Dashboard
-        :robots: 'noindex, nofollow'
-      :assets:
-        :specific_css_required: 1
-
-    sale_daily_dashboard:
-      :meta:
-        :title: Sale Dashboard
-        :robots: 'noindex, nofollow'
-      :assets:
-        :specific_css_required: 1
-
-    contract_events_dashboard:
-      :meta:
-        :title: Sale Dashboard
-        :robots: 'noindex, nofollow'
-      :assets:
-        :specific_css_required: 1
-
-    pos_dashboard:
-      :meta:
-        :title: Simple Token POS Dashboard
-        :robots: 'noindex, nofollow'
-      :assets:
-        :specific_css_required: 0
-
-    kyc_details:
-      :meta:
-        :title: Simple Token KYC details page
-        :robots: 'noindex, nofollow'
-      :assets:
-        :specific_css_required: 1
 
   web/token_sale:
     index:
