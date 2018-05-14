@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup} from '@angular/forms';
 import {OstHttp} from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
+import { ScrollTopService } from '../services/scroll-top.service';
 declare var $: any;
 
 
@@ -34,13 +35,16 @@ export class ReportIssuesComponent implements OnInit {
   data = {'email_temp_vars': {}};
   postUrl =  'api/admin/kyc/email-kyc-issue';
 
-  constructor(private formBuilder: FormBuilder, private http: OstHttp, private stateHandler: RequestStateHandlerService ) {
+  constructor(private formBuilder: FormBuilder, 
+              private http: OstHttp, 
+              private stateHandler: RequestStateHandlerService,
+              private scrollTopService : ScrollTopService ) {
   }
 
   @Output('closeReportIssueEvent') closeReportIssueEvent =  new EventEmitter();
 
   ngOnInit() {
-
+    this.scrollTopService.scrollTop();
     if (this.userDetails.residence_proof_file_url) {
       this.document_issue.push( {key: 'residency_proof_issue', value: 'Residency Proof Issue' });
     }

@@ -1,8 +1,3 @@
-<ng-template #default>
-  <div class='value'>
-    --
-  </div>
-</ng-template>
 <request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
   <ng-container class="processing-content">
       <div class="text-center display-1 mt-4">Loading please wait ... </div>
@@ -14,6 +9,7 @@
 
 <ng-container *ngIf="!isProcessing && !hasError">
   <div class="mt-3">
+
     <div class="container mb-4">
       <ng-container *ngIf="showCase">
         <nav aria-label="breadcrumb">
@@ -327,29 +323,14 @@
        <div *ngIf="hasPreviousPage" class="carousel-nav left py-2 pl-1" [routerLink]="['/admin/case-id/', previousCaseId]" [queryParams]="activatedRoute.snapshot.queryParams">&#9664;</div>
 
       </ng-container>
-
-      <ng-container *ngIf="showReportIssue">
-       <report-issues (closeReportIssueEvent)="showPageState()" [userDetails]='userDetails' [caseId]='caseId'></report-issues>
-      </ng-container>
-
-      <ng-container *ngIf="showUpdateEth">
-       <update-ethaddress [caseId]='caseId' (closeEthAddressEvent)="showPageState()"></update-ethaddress>
-      </ng-container>
-
     </div>
 
-    <div class="row">
+    <div class="row"  *ngIf="showCase">
       <div class="container-fluid button-container py-2">
         <div class="container mt-2">
-
-          <ng-container *ngIf="showCase">
-
             <ng-container *ngIf="caseDetails.is_case_closed == 1 then caseClosed else caseOpen"></ng-container>
-
             <ng-template #caseClosed>
-
               <div class="d-flex justify-content-center align-items-center mb-2">
-
                 <span class="mr-2 font-weight-normal">
                   This case
                   <ng-container *ngIf="caseDetails.kyc_status == 'approved'">has been approved and</ng-container>
@@ -359,30 +340,30 @@
                 <ng-container *ngIf="caseDetails.can_reopen_case == 1">
                   <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
                 </ng-container>
-
               </div>
-
             </ng-template>
-
             <ng-template #caseOpen>
-
               <button type="button" class="btn btn-light text-uppercase mb-2" (click)="showPageState(false, false, true)">Update eth address</button>
-
               <div class="float-lg-right">
                 <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyActionModal">Deny</button>
                 <ng-container *ngIf="appConfig.hasEmailSetup()">
                   <button type="button" class="btn btn-light mr-2 mb-2 text-uppercase" (click)="showPageState(false, true, false)">Report Issue</button>
                 </ng-container>
                 <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyActionModal">Qualify</button>
-
               </div>
-
             </ng-template>
-
-          </ng-container>
-
         </div>
       </div>
+    </div>
+
+    <div class="container">
+      <ng-container *ngIf="showReportIssue">
+        <report-issues (closeReportIssueEvent)="showPageState()" [userDetails]='userDetails' [caseId]='caseId'></report-issues>
+      </ng-container>
+
+      <ng-container *ngIf="showUpdateEth">
+        <update-ethaddress [caseId]='caseId' (closeEthAddressEvent)="showPageState()"></update-ethaddress>
+      </ng-container>
     </div>
 
   </div>
@@ -396,7 +377,6 @@
     </ng-container>
   </kyc-case-action-modal>
 
-
   <kyc-case-action-modal  [postApi]="'api/admin/kyc/qualify'" [caseId]="caseId"
                           [modalId]="'qualifyActionModal'"  [actionBtnPrimaryName]="'QUALIFY KYC'"
                           [actionBtnPrimaryClass]="'btn-success'"
@@ -405,7 +385,6 @@
         <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
     </ng-container>
   </kyc-case-action-modal>
-
 
  <kyc-case-action-modal   [postApi]="'api/admin/kyc/retry-cynopsis-upload'" [caseId]="caseId"
                           [modalId]="'retryCynopsisModal'"  [actionBtnPrimaryName]="'RETRY'"
@@ -430,3 +409,9 @@
   </kyc-case-action-modal>
 
 </ng-container>
+
+<ng-template #default>
+    <div class='value'>
+      --
+    </div>
+</ng-template>

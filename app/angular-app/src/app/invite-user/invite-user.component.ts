@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { ScrollTopService } from '../services/scroll-top.service';
 
 @Component({
   selector: 'invite-user',
@@ -8,7 +9,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class InviteUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private scrollTopService: ScrollTopService) { }
 
   email: any;
   name: any;
@@ -16,6 +17,7 @@ export class InviteUserComponent implements OnInit {
   @Output('closeInviteUser') closeInviteUser = new EventEmitter<boolean>();
   
   ngOnInit() {
+    this.scrollTopService.scrollTop();
   }
 
   hideInviteUser(){

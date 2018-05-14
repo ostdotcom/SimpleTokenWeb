@@ -39,6 +39,7 @@ import { InviteUserModalComponent } from './invite-user/invite-user-modal/invite
 import { OstAlertComponent } from './ost-alert/ost-alert.component';
 import { KycCaseActionModalComponent } from './kyc-case/kyc-case-action-modal/kyc-case-action-modal.component';
 import { AdminDashboardModalComponent } from './admin-dashboard/admin-dashboard-modal/admin-dashboard-modal.component';
+import { ScrollTopService } from './services/scroll-top.service';
 
 
 
@@ -111,7 +112,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 },
                 OstHttp,
                 AppConfigService,
-                RequestStateHandlerService
+                RequestStateHandlerService,
+                ScrollTopService
             ],
   bootstrap: [AppComponent]
 })
