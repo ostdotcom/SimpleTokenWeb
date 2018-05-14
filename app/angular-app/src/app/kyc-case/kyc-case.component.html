@@ -289,14 +289,14 @@
               <h5 class='customized-h5 pt-3 pb-1'>Other Uploaded Documents</h5>
             </div>
 
-            <div *ngIf="userDetails.residence_proof_file_url" class="col-12 col-sm-6 card px-0 mt-3">
+            <div *ngIf="userDetails.residence_proof_file_url" class="col-12 col-sm-6 card px-0 mt-3 grey-background">
 
-                  <div class="card-body">
+                  <div class="p-3 title-div">
                     <h6 class="card-title">Residence Proof</h6>
                     <a href='{{userDetails.residence_proof_file_url}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
 
                   </div>
-                  <img *ngIf="getDocType(userDetails.residence_proof_file_url) == 'image'" class="card-img-top" src="{{userDetails.residence_proof_file_url}}" />
+                  <img *ngIf="getDocType(userDetails.residence_proof_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.residence_proof_file_url}}" />
                   <div *ngIf="getDocType(userDetails.residence_proof_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
                     <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.residence_proof_file_url)'></iframe>
                   </div>
@@ -305,14 +305,14 @@
 
             <ng-container *ngFor="let userDetail of userDetails.investor_proof_files_url; let i = index">
 
-              <div class="col-12 col-sm-6 card px-0 mt-3">
+              <div class="col-12 col-sm-6 card px-0 mt-3 grey-background">
 
-                  <div class="card-body">
+                  <div class="p-3 title-div">
                     <h6 class="card-title">Investor proof {{i+1}}</h6>
                     <a href='{{userDetails.investor_proof_files_url[i]}}' target="_blank" class="badge badge-pill external-link">&#8599;</a>
 
                   </div>
-                  <img *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'image'" class="card-img-top" src="{{userDetails.investor_proof_files_url[i]}}" />
+                  <img *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.investor_proof_files_url[i]}}" />
                   <div *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'pdf'" class="embed-responsive embed-responsive-4by3">
                     <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.investor_proof_files_url[i])'></iframe>
                   </div>
