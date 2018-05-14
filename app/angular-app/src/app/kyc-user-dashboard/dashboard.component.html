@@ -66,7 +66,7 @@
             [filterForm]='filterForm'
             [sortForm]='sortForm'
             (pageChangeEvent)="onPageChange( $event )"
-            [warningMessage]="'We could not find any results, please try changing the filters or refresh the page.'"
+            [warningMessage]="'We could not find any results, please try changing the filters.'"
             [customErrorMessage]="'Something went wrong, we couldnot load the dashboard, please refresh the page or try updating the filters'">
     <kyc-user-table-header class='header'></kyc-user-table-header>
     <ng-template #rowTemplate let-row >
@@ -98,7 +98,7 @@
                      </div>
                       <div class="d-flex justify-content-center">
                             <button type="button" class="btn btn-primary text-uppercase" (click)='validateAndDownload()'>Confirm</button>
-                            <button type="button" class="btn btn-light ml-3 text-uppercase" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-secondary ml-3 text-uppercase" data-dismiss="modal">Cancel</button>
                       </div>
                       </div>
                   </div>
@@ -117,7 +117,7 @@
               </div>
               <div class="row">
                   <div class="col-12 success-hanlder-wrap text-center p-1" *ngIf="isCSVDownloaded">
-                      <div class="success-icon-wrap mb-3">
+                      <div class="success-icon-wrap mb-1">
                           <svg class="icon" style="width:50px; height: 50px">
                               <switch>
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
