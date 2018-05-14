@@ -40,7 +40,7 @@
 
         <ng-template #notRejected>
 
-          <ost-alert *ngIf="appConfig.getClientSetup().has_whitelist_setup == true && caseDetails.kyc_status == 'approved'" [alertStyleClass]="'alert-warning'">
+          <ost-alert *ngIf="appConfig.getClientSetup().has_whitelist_setup == true && caseDetails.kyc_status == 'approved'; else notApproved" [alertStyleClass]="'alert-warning'">
               <ng-container class="svg-container">
                   <svg class="svg alert-warning-svg">
                       <switch>
@@ -58,7 +58,8 @@
                 </ng-container>
           </ost-alert>
 
-          <ost-alert *ngIf="caseDetails.last_issue_email_sent.length > 0" [alertStyleClass]="'alert-warning'">
+          <ng-template #notApproved>
+            <ost-alert *ngIf="caseDetails.last_issue_email_sent_humanized.length > 0" [alertStyleClass]="'alert-warning'">
               <ng-container class="svg-container">
                   <svg class="svg alert-warning-svg">
                       <switch>
@@ -67,9 +68,10 @@
                     </svg>
               </ng-container>
               <ng-container class="alert-text">
-                  <span class="ml-2">Issue reported and {{caseDetails.last_issue_email_sent}} email sent.</span>
+                  <span class="ml-2">Issue reported and {{caseDetails.last_issue_email_sent_humanized}} email sent.</span>
                 </ng-container>
-          </ost-alert>
+            </ost-alert>
+          </ng-template>
 
         </ng-template>
 
