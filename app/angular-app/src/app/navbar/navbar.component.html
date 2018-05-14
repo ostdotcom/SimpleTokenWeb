@@ -9,15 +9,14 @@
 											[entityName]="'email'"
 											[placeholder]="'Search by Email'">
 		</ost-search>
-		<svg class="svg mr-2" style="height: 30px;width: 30px">
-			<switch>
-				<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-icon"></use>
-			</switch>
-		</svg>
 		<div class="dropdown mr-3">
-			<a class="dropdown-toggle border-none" data-toggle="dropdown">
-				<span class="profile-icon"></span>
-				<span class="profile-name text-truncate">{{appConfig.getLoggedInUserName()}}</span>
+			<a class="dropdown-toggle border-none align-center" data-toggle="dropdown">
+				<svg class="svg mr-1 align-middle" style="height: 30px;width: 30px;">
+					<switch>
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-icon"></use>
+					</switch>
+				</svg>
+				<span class="profile-name text-truncate align-middle">{{appConfig.getLoggedInUserName()}}</span>
 				<span class="caret ml-1"></span>
 			</a>
 			<div class="dropdown-menu pb-0">
