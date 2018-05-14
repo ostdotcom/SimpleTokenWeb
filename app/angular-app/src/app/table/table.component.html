@@ -11,7 +11,7 @@
       </ng-container>
     </div>
     <div class="col-12">
-        <table-pagination   *ngIf="isPagination()"
+        <table-pagination   *ngIf="isPaginated && isPagination()"
                             [metaData]="metaData"
                             [currentPageNumber]="getPageNumber()"
                             (pageChangeEvent)="onPageChange( $event )"
@@ -31,10 +31,10 @@
                                [warningMessage]="warningMessage">
             <ng-container class="processing-content">
                 <ng-content select=".processing-content"></ng-content>
-            </ng-container>                   
+            </ng-container>
            <ng-container class="error-content">
               <ng-content select=".error-content"></ng-content>
-           </ng-container>  
+           </ng-container>
            <ng-container class="warning-content">
               <ng-content select=".warning-content"></ng-content>
            </ng-container>
