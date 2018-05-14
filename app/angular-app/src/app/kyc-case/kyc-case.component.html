@@ -243,7 +243,7 @@
                   <h6 class="card-title">ID Image</h6>
                 </div>
                 <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top" src="{{userDetails.document_id_file_url}}" />
-                <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
+                <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
                   <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.document_id_file_url)'></iframe>
                 </div>
               </div>
@@ -262,7 +262,7 @@
                   <h6 class="card-title">Id image</h6>
                 </div>
                 <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top" src="{{userDetails.document_id_file_url}}" />
-                <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
+                <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
                   <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.document_id_file_url)'></iframe>
                 </div>
               </div>
@@ -271,7 +271,7 @@
                   <h6 class="card-title">Selfie image</h6>
                 </div>
                 <img *ngIf="getDocType(userDetails.selfie_file_url) == 'image'" class="card-img-top" src="{{userDetails.selfie_file_url}}" />
-                <div *ngIf="getDocType(userDetails.selfie_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
+                <div *ngIf="getDocType(userDetails.selfie_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
                   <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.selfie_file_url)'></iframe>
                 </div>
               </div>
@@ -291,7 +291,7 @@
                     <h6 class="card-title">Residence Proof</h6>
                   </div>
                   <img *ngIf="getDocType(userDetails.residence_proof_file_url) == 'image'" class="card-img-top" src="{{userDetails.residence_proof_file_url}}" />
-                  <div *ngIf="getDocType(userDetails.residence_proof_file_url) == 'pdf'" class="embed-responsive embed-responsive-1by1">
+                  <div *ngIf="getDocType(userDetails.residence_proof_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
                     <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.residence_proof_file_url)'></iframe>
                   </div>
 
@@ -305,7 +305,7 @@
                     <h6 class="card-title">Investor proof {{i+1}}</h6>
                   </div>
                   <img *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'image'" class="card-img-top" src="{{userDetails.investor_proof_files_url[i]}}" />
-                  <div *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'pdf'" class="embed-responsive embed-responsive-1by1">
+                  <div *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'pdf'" class="embed-responsive embed-responsive-4by3">
                     <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.investor_proof_files_url[i])'></iframe>
                   </div>
 
@@ -331,15 +331,24 @@
             <ng-container *ngIf="caseDetails.is_case_closed == 1 then caseClosed else caseOpen"></ng-container>
             <ng-template #caseClosed>
               <div class="d-flex justify-content-center align-items-center mb-2">
-                <span class="mr-2 font-weight-normal">
-                  This case
-                  <ng-container *ngIf="caseDetails.kyc_status == 'approved'">has been approved and</ng-container>
-                  <ng-container *ngIf="caseDetails.kyc_status == 'denied'">has been denied and</ng-container>
-                    is closed
-                </span>
-                <ng-container *ngIf="caseDetails.can_reopen_case == 1">
-                  <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
-                </ng-container>
+
+                <ng-container *ngIf="caseDetails.case_reopen_inprocess == 1 then caseReopening else caseNotReopening"></ng-container>
+
+                <ng-template #caseReopening>
+                  <span class="mr-2 font-weight-normal">The case will be re-opened shortly. Please check back after some time.</span>  
+                </ng-template>
+
+                <ng-template #caseNotReopening>
+                  <span class="mr-2 font-weight-normal">
+                    This case
+                    <ng-container *ngIf="caseDetails.kyc_status == 'approved'">has been approved and</ng-container>
+                    <ng-container *ngIf="caseDetails.kyc_status == 'denied'">has been denied and</ng-container>
+                      is closed
+                  </span>
+                  <ng-container *ngIf="caseDetails.can_reopen_case == 1">
+                    <button type="button" class="btn btn-light text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
+                  </ng-container>
+                </ng-template>
               </div>
             </ng-template>
             <ng-template #caseOpen>
