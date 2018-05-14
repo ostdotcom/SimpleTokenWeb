@@ -23,7 +23,8 @@ export class OstSearchComponent implements OnInit {
   @Input('config') config?: string;
 
   items : Array<any> = [];
-  searchValue: any = null;
+  searchValue: any = "";
+  previousValue: any = ""
   isProcessing: boolean = false;
   hasError: boolean = false;
   hasWarning: boolean = false;
@@ -34,23 +35,31 @@ export class OstSearchComponent implements OnInit {
   ngOnInit() {}
 
   onSearch( searchForm ){
-    this.preSearch();
-    if( !!this.searchValue ){
+    if( this.isToSearch() ){
+      this.preSearch();  
       this.sendSearchRequest(searchForm) ;
     }else{
       this.stateHandler.updateRequestStatus(this, false , false , false);
     }
   }
 
+  isToSearch(){
+    return !!this.searchValue  && this.searchValue.trim().length >= 3  &&
+            this.previousValue.trim() != this.searchValue.trim(); 
+  }
+
   preSearch(){
     this.items = [];
     this.hideResponse = false ;
+    this.searchValue = this.searchValue.trim(); 
+    this.previousValue = this.searchValue ; 
     clearTimeout( this.searchTimeOut );
   }
 
   sendSearchRequest(searchForm){
     this.stateHandler.updateRequestStatus(this, true , false , false);
     this.searchTimeOut = setTimeout(() => {
+      if(!this.searchValue) return ; 
       this.http.get( this.searchApi ,  {params : searchForm.value } ).subscribe(
         response => {
           console.log("has success", response);
@@ -97,6 +106,7 @@ export class OstSearchComponent implements OnInit {
 
   onSearchItemClick(){
     this.hideResponse = true;
+    this.searchValue = "";
   }
 
 }
