@@ -35,8 +35,8 @@ export class ReportIssuesComponent implements OnInit {
   data = {'email_temp_vars': {}};
   postUrl =  'api/admin/kyc/email-kyc-issue';
 
-  constructor(private formBuilder: FormBuilder, 
-              private http: OstHttp, 
+  constructor(private formBuilder: FormBuilder,
+              private http: OstHttp,
               private stateHandler: RequestStateHandlerService,
               private scrollTopService : ScrollTopService ) {
   }
@@ -110,10 +110,16 @@ export class ReportIssuesComponent implements OnInit {
     console.log(formValues);
     for (const key in formValues) {
       if (formValues.hasOwnProperty(key)) {
+        console.log(formValues[key], key);
+
         if (formValues[key] instanceof Array) {
           this.data['email_temp_vars'][key] = this.getArray(key, formValues[key]);
         } else if (key === 'other_issue') {
-          this.data['email_temp_vars']['other_issue'] = formValues['other_issue_expln'];
+            if (formValues['other_issue']) {
+              this.data['email_temp_vars']['other_issue'] = formValues['other_issue_expln'];
+            } else {
+              this.data['email_temp_vars']['other_issue'] = '';
+            }
         }
       }
     }
