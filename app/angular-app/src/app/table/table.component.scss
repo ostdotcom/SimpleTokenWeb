@@ -1,7 +1,7 @@
 @import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
 :host(.alternate-style-lg){
-  @media (min-width: 992px){
+  @media (min-width: map-get($grid-breakpoints , 'lg')){
     .row-record:nth-child(odd) {
       background-color: $green-1000;
     }
@@ -10,7 +10,7 @@
 }
 
 :host(.alternate-style-md){
-  @media (min-width: 768px){
+  @media (min-width: map-get($grid-breakpoints , 'md')){
     .row-record:nth-child(odd) {
       background-color: $green-1000;
     }

@@ -1,3 +1,4 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 .modal{
   top: 0;
 }
@@ -21,13 +22,13 @@
       }
     }
   }
-  @media screen and (max-width: 1076px) {
+  @media screen and (max-width: map-get($grid-breakpoints , 'xl')) {
     .modal-dialog{
       width:80%;
 
     }
   }
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: map-get($grid-breakpoints , 'sm')) {
     .modal-dialog{
       width:100%;
     }

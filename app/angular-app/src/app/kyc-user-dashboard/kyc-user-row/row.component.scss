@@ -10,12 +10,12 @@
   border-left: 4px solid $yellow-700;
 }
 
-@media (min-width: 780){
+@media (min-width: map-get($grid-breakpoints , 'md')){
   .row-body{
     background-color: inherit;
   }
 }
-@media (max-width: 1030px){
+@media (max-width: map-get($grid-breakpoints , 'lg')){
   .row-body{
     .text-truncate{
       max-width:96px;
@@ -23,8 +23,7 @@
 
   }
 }
-
-@media (min-width: 1031px){
+@media (min-width: map-get($grid-breakpoints , 'lg')){
   .row-body{
     .text-truncate{
       max-width:140px;
