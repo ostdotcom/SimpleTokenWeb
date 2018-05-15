@@ -3,6 +3,8 @@ import { FormBuilder, FormArray, FormGroup} from '@angular/forms';
 import {OstHttp} from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import { ScrollTopService } from '../services/scroll-top.service';
+import { EntityConfigService } from '../services/entity-config.service';
+
 declare var $: any;
 
 
@@ -24,32 +26,30 @@ export class ReportIssuesComponent implements OnInit {
   otherIssueError;
 
   form: FormGroup;
-  data_mismatch = [{key: 'first_name', value: 'First Name' },
-                   {key: 'last_name', value: 'Last Name' },
-                   {key: 'birthdate', value: 'Birthdate' },
-                    {key: 'nationality', value: 'Nationality'},
-                    {key: 'document_id_number', value: 'Document ID Number'}];
-  document_issue = [ {key: 'document_id_issue', value: 'Document ID issue'},
-                     {key: 'selfie_issue', value: 'Selfie Issue'},
-                   ];
+  data_mismatch: Array<object>;
+  document_issue: Array<object>;
   data = {'email_temp_vars': {}};
   postUrl =  'api/admin/kyc/email-kyc-issue';
 
   constructor(private formBuilder: FormBuilder,
               private http: OstHttp,
               private stateHandler: RequestStateHandlerService,
-              private scrollTopService : ScrollTopService ) {
+              private scrollTopService: ScrollTopService,
+              private entityConfigService: EntityConfigService ) {
   }
 
   @Output('closeReportIssueEvent') closeReportIssueEvent =  new EventEmitter();
 
   ngOnInit() {
     this.scrollTopService.scrollTop();
+    this.data_mismatch = this.entityConfigService.getEntityConfig('entity_configs.report_issue.data_mismatch')['values'];
+    this.document_issue = [ ...this.entityConfigService.getEntityConfig('entity_configs.report_issue.document_issue')['values']];
+
     if (this.userDetails.residence_proof_file_url) {
-      this.document_issue.push( {key: 'residency_proof_issue', value: 'Residency Proof Issue' });
+      this.document_issue.push(this.entityConfigService.getEntityConfig('entity_configs.report_issue.residence_proof')['values']);
     }
     if (this.userDetails.investor_proof_files_url && this.userDetails.investor_proof_files_url.length) {
-      this.document_issue.push(  {key: 'investor_proof_issue', value: 'Investor Proof Issue'});
+      this.document_issue.push(this.entityConfigService.getEntityConfig('entity_configs.report_issue.investor_proof')['values']);
     }
 
     this.form = this.formBuilder.group({

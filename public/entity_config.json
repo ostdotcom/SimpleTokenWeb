@@ -148,6 +148,50 @@
           }
         ]
       }
+    },
+    "report_issue": {
+      "data_mismatch": {
+        "values": [
+          { "key": "first_name", 
+            "value": "First Name" 
+          },
+          {"key": "last_name", 
+            "value": "Last Name" 
+          },
+          {"key": "birthdate", 
+           "value": "Birthdate" 
+          },
+          {"key": "nationality", 
+           "value": "Nationality"
+          },
+          {"key": "document_id_number", 
+            "value": "Document ID Number"}
+          ] 
+      },
+
+      "document_issue": {
+        "values": [
+          { "key": "document_id_issue", 
+            "value": "Document ID issue"
+          },
+          {"key": "selfie_issue", 
+           "value": "Selfie Issue"}
+        ]
+      },
+      "residence_proof": {
+        "values": 
+          {"key": "residency_proof_issue", 
+          "value": "Residency Proof Issue" }
+      },
+      "investor_proof": {
+        "values": 
+          {"key": "investor_proof_issue", 
+          "value": "Investor Proof Issue" }
+      }
+           
+
+      }
+
     }
   }
-}
+
