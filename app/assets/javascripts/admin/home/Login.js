@@ -29,6 +29,9 @@
         }
 
         if(v === true ) {
+          $("#adminLogin")
+            .text('logging in...')
+            .prop( "disabled", true );
           oThis.onSubscribe();
         }
       });
