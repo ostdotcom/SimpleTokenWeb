@@ -6,14 +6,26 @@
         <form #updateEthAdressForm="ngForm">
             <div class="form-group">
                 <label class="form-label">Enter Eth address</label>
-                <input type="text" name="address" class="form-control" (keyup)="onKey($event)"  ngModel>
+                <input type="text" [disabled]='ethAddrInputDisabled' name="address" class="form-control" (keyup)="onKey($event)"  ngModel>
               </div>
         </form>
-       <div >
+
+       <div *ngIf='!ethAddrUpdated; else updated'>
           <span class='error d-block mb-1' >{{errorMsg}}</span>
           <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2" [attr.disabled]=buttonDisabled  (click)=updateEthAddress(updateEthAdressForm)>{{updateMsg}}</button>
           <button type="button" class="btn btn-secondary text-uppercase mb-2" [attr.disabled]=buttonDisabled (click)="hideEthAddress()">Cancel</button>
        </div>
+       <ng-template #updated>
+          <div class="success-icon-wrap my-3 ml-2 d-inline-block">
+              <svg class="icon" style="width:30px; height: 30px">
+                  <switch>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                    </use>
+                  </switch>
+              </svg>
+          </div>
+        <span class='display-1' style='vertical-align:super;'>Updated Successfully</span>
+       </ng-template>
     </div>
   </div>
  </div>
