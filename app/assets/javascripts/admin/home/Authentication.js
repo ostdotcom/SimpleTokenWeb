@@ -44,6 +44,11 @@
         },
         error: function (jqXHR, exception) {
           adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+        },
+        complete: function(){
+          $("#adminAuthentication")
+            .text('submit')
+            .prop( "disabled", false );
         }
       });
     }

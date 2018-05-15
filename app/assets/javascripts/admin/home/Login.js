@@ -65,6 +65,11 @@
           if(typeof grecaptcha  != 'undefined'){
             grecaptcha.reset();
           }
+        },
+        complete: function(){
+          $("#userLogin")
+            .text('login')
+            .prop( "disabled", false );
         }
       });
     },
