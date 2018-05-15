@@ -39,7 +39,7 @@ export class OstHttp extends Http {
       } else if (error.status == 500) {
         erroMsg = 'Internal Server Error.';
       } else if (error.status == 401) {
-        window.location.href = "/login";
+        window.location.href = "/admin/login";
       } else if (error.status == 408){
         erroMsg = 'Time out error.';
       }else {
