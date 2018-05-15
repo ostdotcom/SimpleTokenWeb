@@ -1,0 +1,16 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.kyc-header{
+  color: $yellow-500;
+}
+
+.search-input-wrapper{
+    position: relative;
+    min-width: 100px;
+    .form-control{
+      border-radius: 0px;
+    }
+
+    .request-handler-wrapper {
+        padding: 0;
+    }
+}

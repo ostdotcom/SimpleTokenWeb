@@ -40,6 +40,9 @@ import { OstAlertComponent } from './ost-alert/ost-alert.component';
 import { KycCaseActionModalComponent } from './kyc-case/kyc-case-action-modal/kyc-case-action-modal.component';
 import { AdminDashboardModalComponent } from './admin-dashboard/admin-dashboard-modal/admin-dashboard-modal.component';
 import { ScrollTopService } from './services/scroll-top.service';
+import { ManageUserComponent } from './manage-user/manage-user.component';
+import { ManageUserHeaderComponent } from './manage-user/manage-user-header/manage-user-header.component';
+import { ManageUserRowComponent } from './manage-user/manage-user-row/manage-user-row.component';
 
 
 
@@ -80,7 +83,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     InviteUserModalComponent,
     OstAlertComponent,
     KycCaseActionModalComponent,
-    AdminDashboardModalComponent
+    AdminDashboardModalComponent,
+    ManageUserComponent,
+    ManageUserHeaderComponent,
+    ManageUserRowComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +105,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
         path: 'admin/admin-user/dashboard',
         component: AdminDashboardComponent
       },
+      {
+        path: 'admin/user/dashboard',
+        component: ManageUserComponent
+      }
     ]),
     ReactiveFormsModule
   ],
