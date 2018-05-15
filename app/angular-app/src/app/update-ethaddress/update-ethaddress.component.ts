@@ -16,6 +16,7 @@ export class UpdateEthaddressComponent implements OnInit {
   ethAddress;
   data = {};
   updateMsg = 'Update eth address';
+  buttonDisabled = null;
 
 
   constructor(private http: OstHttp,  private scrollTopService : ScrollTopService) { }
@@ -33,10 +34,12 @@ export class UpdateEthaddressComponent implements OnInit {
       this.errorMsg = 'Please enter Eth address';
       return;
     }
+    this.buttonDisabled = true;
     this.updateMsg = 'updating ...';
     this.http.post(this.postUrl, this.data).subscribe(
       response => {
         let res = response.json();
+        this.buttonDisabled = null;
         this.updateMsg = 'update eth address';
         if (res.success){
           this.closeEthAddressEvent.emit("closeEthAddressEvent");
@@ -46,6 +49,7 @@ export class UpdateEthaddressComponent implements OnInit {
 
       },
       error => {
+        this.buttonDisabled = null;
         let err = error.json();
       });
   }

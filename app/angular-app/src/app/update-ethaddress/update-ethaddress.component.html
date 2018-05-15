@@ -11,8 +11,8 @@
         </form>
        <div >
           <span class='error d-block mb-1' >{{errorMsg}}</span>
-          <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2"  (click)=updateEthAddress(updateEthAdressForm)>{{updateMsg}}</button>
-          <button type="button" class="btn btn-secondary text-uppercase mb-2" (click)="hideEthAddress()">Cancel</button>
+          <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2" [attr.disabled]=buttonDisabled  (click)=updateEthAddress(updateEthAdressForm)>{{updateMsg}}</button>
+          <button type="button" class="btn btn-secondary text-uppercase mb-2" [attr.disabled]=buttonDisabled (click)="hideEthAddress()">Cancel</button>
        </div>
     </div>
   </div>
