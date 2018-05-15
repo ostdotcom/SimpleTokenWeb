@@ -24,6 +24,7 @@ export class ReportIssuesComponent implements OnInit {
   errorMessage;
   frontEndError = '';
   otherIssueError;
+  otherIssueDisabled : boolean = true;
 
   form: FormGroup;
   data_mismatch: Array<object>;
@@ -168,5 +169,9 @@ export class ReportIssuesComponent implements OnInit {
       $('#confirmation').modal('show');
     }
 
+  }
+
+  otherIssueToggled() {
+    this.otherIssueDisabled = this.otherIssueDisabled ? null : true;
   }
 }

@@ -28,9 +28,9 @@
 
           <div class="form-section mt-4 mb-0">
               <div class="form-check form-group">
-                <input type="checkbox" class="form-check-input" id="other_issue_other_issue" formControlName="other_issue"/>
+                <input type="checkbox" class="form-check-input" (ngModelChange)='otherIssueToggled()' id="other_issue_other_issue" formControlName="other_issue"/>
                 <label class="form-check-label" for="other_issue_other_issue" >Other Issue</label>
-                <textarea class="form-control mt-3" name="other_issue" id="other_issue" rows="5" formControlName="other_issue_expln"></textarea>
+                <textarea class="form-control mt-3" name="other_issue" [attr.disabled]=otherIssueDisabled id="other_issue" rows="5" formControlName="other_issue_expln"></textarea>
                 <span class='error'>{{otherIssueError}}</span>
               </div>
           </div>
