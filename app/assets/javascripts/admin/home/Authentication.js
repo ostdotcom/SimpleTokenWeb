@@ -18,6 +18,9 @@
         event.preventDefault();
         var v = utilsNs.errorHandling.validationGeneric($('#adminAuthForm input[type="text"]'));
         if (v === true) {
+          $("#adminAuthentication")
+            .text('submitting...')
+            .prop( "disabled", true );
           oThis.onSubscribe();
         }
       });
