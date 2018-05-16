@@ -1,117 +1,77 @@
-<div class="row-body desktop d-none d-lg-flex py-3" [routerLink]="['/admin/case-id/', row.id]">
+<div class="row-body desktop d-none d-lg-flex py-3">
   <div class="col name-date col p-0 px-3 display-3">
       {{row.email}}
   </div>
 
 <div class="col p-0 pr-3 display-3">
-    {{row.registration_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm' }}
+    {{row.registration_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm:ss' }}
+</div>
+<div class="col p-0 pr-3 display-3" *ngIf='row.kyc_submitted; else kycNotSubmitted' >
+  Yes
+</div>
+<ng-template #kycNotSubmitted>
+  <div class="col p-0 pr-3 display-3">
+    No
+  </div>
+</ng-template>
+<div class="col p-0 pr-3 display-3">
+  {{row.whitelist_status}}
 </div>
 <div class="col p-0 pr-3 display-3">
-  {{row.kyc_submitted}}
-</div>
-<div class="col p-0 pr-3 display-3">
-  {{row.kyc_status}}
-</div>
-<div class="col p-0 pr-3 display-3">
-    <button class='btn text-uppercase delete-button'>delete user</button>
+    <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_status == 'started' ? true:null" (click)='deleteUser()'>delete user</button>
+    <span *ngIf="row.case_reopen_inprocess; else notInProgress"  data-toggle="tooltip" data-placement="left"
+      title="Case reopening is in process. Please wait to delete user.">
+      @
+    </span>
+    <ng-template #notInProgress>
+        <span *ngIf="row.whitelist_status == 'started'" data-toggle="tooltup" data-placement="left"
+        title="whitelisting started">
+          @
+          </span>
+
+    </ng-template>
+
   </div>
 </div>
 
-<div class="mobile d-lg-none mb-4" [routerLink]="['/admin/case-id/', row.id]">
-<div class="col px-0">
+<div class="mobile d-lg-none mt-3">
   <div class="card">
-    <div class="card-body p-0" >
-      <div class="mobile-name-div py-3 px-2 ">
-        <div class='mobile-name text-truncate display-1 mr-2 font-weight-500 d-inline-block'>
-           {{row.name}}
+    <div class="card-body p-0">
+        <div class="col-12 mobile-name-div py-3">
+            <span class='display-1 mr-2 font-weight-500'> {{row.email}} </span>
+            <span class="display-3 font-weight-500 d-block mt-2">{{row.registration_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm:ss' }}
+            </span>
         </div>
-        <div class='display-3 font-weight-600 d-inline-block date'>{{row.kyc_confirmed_at * 1000 | date: 'dd/MM/yyyy hh:mm'}}</div>
-        <div class='mobile-admin-status '>
-          <span class='font-weight-600 display-4 '> ADMIN STATUS </span>
-          <div class='d-inline-block display-3 text-capitalize pl-2'>{{row.admin_status}}</div>
-        </div>
-      </div>
-      <div class="row py-3 mx-0">
-        <div class="col-6">
-          <span class='font-weight-500 display-4 '>CYNOPSIS </span>
-          <div class='display-3 text-capitalize'>{{row.cynopsis_status}}</div>
-
-        </div>
-        <div class="col-6">
-          <span class='font-weight-500 display-4 '>WHITELIST </span>
-          <div class='display-3 text-capitalize'>{{row.whitelist_status}}</div>
-        </div>
-
-      </div>
-
-      <div class="row py-3 mx-0">
-        <div class="col-6">
-          <span class='font-weight-500 display-4 '>SUBMISSION </span>
-          <div *ngIf="row.is_re_submitted; else newSubmission">
-            <div class="yellow-left-border pl-2">
-                <span class='font-weight-500 display-3'> Re-submitted </span>
-                <span class='d-block display-4'>
-                    {{row.submission_count}} submission
-                    </span>
-
-            </div>
-
-
-          </div>
-
-        </div>
-        <div class="col-6">
-          <span class='font-weight-500 display-4 '>DUPLICATE STATUS </span>
-
-          <div *ngIf="row.is_duplicate;else original">
-            <div class="red-left-border pl-2">
-              <span class='display-3 text-capitalize font-weight-500'>Duplicate</span>
-              <span class='display-4 d-block text-capitalize'>{{row.duplicate_type}}</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="row py-3 mx-0">
-        <div class="col-6">
-          <span class='font-weight-500 display-4 '>RESIDENCE COUNTRY </span>
-          <div class='display-3 text-capitalize'>{{row.country}}</div>
-
-        </div>
-        <div class="col-6">
-          <span class='font-weight-500 display-4 '>NATIONALITY </span>
-          <div class='display-3 text-capitalize'>{{row.nationality}}</div>
-
-        </div>
-
-      </div>
-
-      <div class="row py-3 mx-0">
-        <div class="col-12">
-          <span class='font-weight-500 display-4 '>ADMIN </span>
-          <div *ngIf="row.last_acted_by; else elseBlock">
-            <span class='display-3 text-capitalize'> {{row.last_acted_by}} </span>
-            <div *ngIf='row.last_acted_timestamp'>
-              <span class='display-3'>
-                 Last Edited {{row.last_acted_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}
+        <div class="row py-3 mx-0" >
+          <div class="col-12">
+              <span class='font-weight-600 display-4 text-transform-upper mb-1'>KYC SUBMITTED:</span>
+              <span class="display-3 text-capitalize" *ngIf='row.kyc_submitted; else kycNotSubmittedMobile'>
+                   Yes
               </span>
-            </div>
+              <ng-template #kycNotSubmittedMobile>
+                  <span class="display-3 text-capitalize">
+                      No
+                </span>
+              </ng-template>
+          </div>
 
+          <div class="col-12">
+              <span class='font-weight-600 display-4 text-transform-upper'>Verification status:</span>
+              <span class='display-3 text-capitalize'>
+                {{row.whitelist_status}}
+              </span>
 
           </div>
 
 
+
         </div>
-
-
-
-      </div>
-
+        <div class="col-12 delete-btn-div py-3">
+          <button class='btn text-uppercase delete-button'>delete user</button>
+        </div>
 
     </div>
   </div>
-</div>
-</div>
+
+
+ </div>

@@ -1,0 +1,50 @@
+<div class="modal fade" id="{{modalId}}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-body p-4">
+        <div class='row' *ngIf="!isProcessing && !hasError && !isSuccess">
+          <ng-content select=".modal-body-content"></ng-content>
+          <div class="col-12 form-group mt-4 text-center">
+            <button class="btn btn-secondary ml-3" data-dismiss="modal">CANCEL</button>
+            <button class="btn btn-primary delete-user mx-2" (click)="onAction()">{{actionBtnPrimaryName}}</button>
+          </div>
+        </div>
+
+        <div class="row">
+            <request-state-handler class="d-block w-100"
+                                  [isProcessing]="isProcessing"
+                                  [hasError]="hasError">
+            <div class="processing-content mt-3">
+                <ng-content select=".custom-processing-content" ></ng-content>
+             </div>
+            <div class="error-content col-12 text-center">
+              <div *ngIf="errorMessage">{{errorMessage}}</div>
+              <div *ngIf="!errorMessage">
+                <ng-content select=".custom-error-content"></ng-content>
+              </div>
+              <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
+            </div>
+            </request-state-handler>
+        </div>
+
+        <div class="row" *ngIf="isSuccess">
+            <div class="col-12 success-hanlder-wrap text-center p-1" >
+                <div class="success-icon-wrap mb-3">
+                    <svg class="icon" style="width:50px; height: 50px">
+                        <switch>
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                          </use>
+                        </switch>
+                    </svg>
+                </div>
+                <div class="mt-2 mb-3">
+                    <ng-content select=".custom-success-content" ></ng-content>
+                </div>
+                <button class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

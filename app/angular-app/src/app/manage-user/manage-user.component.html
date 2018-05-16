@@ -5,40 +5,47 @@
 
 </div>
 <div class='row py-3 mb-3'>
-<div class="col-12 col-lg-8">
+<div class="col-12 col-lg-3">
+   <form class='form-group' #searchForm="ngForm" name="search" (change)="onSearchSubmit(searchForm)">
+    <div class="col-12 pr-lg-2 mt-3">
+        <label class='form-label mb-2'>SEARCH WITHIN THIS PAGE</label>
+
+        <div class="search-input-wrapper">
+            <div class="form-group">
+                <input type="text"
+                      [placeholder]="placeholder"
+                      name="search[q]"
+                      [(ngModel)]="q"
+                      (change)="onSearch(filterForm)"
+                      class="form-control" />
+                <button type="submit" class="search-addon rounded-right" style='border:none;'>
+
+                        <svg class="svg" style="height: 20px;width: 20px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search-icon"></use>
+                          </switch>
+                        </svg>
+                </button>
+
+              </div>
+          </div>
+      </div>
+    </form>
+</div>
+<div class="col-12 col-lg-5">
     <form class="form-group" #filterForm="ngForm" name='filters' (change)="onFilterChange(filterForm)">
       <div class="row">
-        <div class="col-12 col-lg-4 pr-lg-2 mt-3">
-          <label class='form-label mb-2'>SEARCH WITHIN THIS PAGE</label>
 
-          <div class="search-input-wrapper">
-              <div class="form-group">
-                  <input type="text"
-                        [placeholder]="placeholder"
-                        name="filters[q]"
-                        [(ngModel)]="q"
-                        (change)="onSearch()"
-                        class="form-control" />
-                  <span class="search-addon rounded-right">
-                    <svg class="svg" style="height: 20px;width: 20px">
-                      <switch>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search-icon"></use>
-                      </switch>
-                    </svg>
-                  </span>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-3 pr-lg-2 mt-3">
+        <div class="col-12 col-lg-4 pr-lg-2 mt-3">
           <label class='form-label mb-2'>KYC SUBMITTED</label>
-          <select class="form-control selectpicker" name="filters[admin_action_types]" [(ngModel)]='admin_action_types'
-                  ostOptions [entityPath]="'entity_configs.kyc_user_details.admin_action_types'">
+          <select class="form-control selectpicker" name="filters[kyc_submitted]" [(ngModel)]='kyc_submitted'
+                  ostOptions [entityPath]="'entity_configs.user_management_dashboard.kyc_submitted'">
           </select>
         </div>
-        <div class="col-12 col-lg-3 pr-lg-2 mt-3">
-          <label class='form-label mb-2'>VERIFICATION STATUS</label>
-          <select class="form-control selectpicker" name="filters[cynopsis_status]" [(ngModel)]='cynopsis_status'
-                  ostOptions [entityPath]="'entity_configs.kyc_user_details.cynopsis_status'">
+        <div class="col-12 col-lg-4 pr-lg-2 mt-3">
+          <label class='form-label mb-2'>WHITELIST STATUS</label>
+          <select class="form-control selectpicker" name="filters[whitelist_status]" [(ngModel)]='whitelist_status'
+                  ostOptions [entityPath]="'entity_configs.kyc_user_details.whitelist_status'">
           </select>
         </div>
       </div>
@@ -58,6 +65,7 @@
       <app-table class="w-100 alternate-style-lg"
                 [dataUrl]="'api/admin/users/list'"
                 [pageNumber]='page_number'
+                [searchForm]='searchForm'
                 [filterForm]='filterForm'
                 [sortForm]='sortForm'
                 (pageChangeEvent)="onPageChange( $event )"
@@ -65,7 +73,30 @@
                 [customErrorMessage]="'Something went wrong, we could not load the dashboard, please refresh the page or try updating the filters'">
         <manage-user-header class='header'></manage-user-header>
         <ng-template #rowTemplate let-row >
-          <manage-user-row [row]='row'></manage-user-row>
+          <manage-user-row [row]='row'
+          (deleteRowEvent) = "onDeleteRow( $event )"
+          ></manage-user-row>
         </ng-template>
         </app-table>
     </div>
+
+
+    <manage-user-modal  [modalId]="'deleteUserModal'" [user]="user"
+                        [postApi]="'api/admin/admin-user/delete-admin'" [actionButtonClass]="actionButtonClass" [actionBtnPrimaryName]="actionBtnPrimaryName"
+                        (actionSuccessEvent)="onDeleteRowSucces( $event )">
+    <ng-container class="modal-body-content">
+        <div class="col-12">
+            <h5 class="text-center">{{message}}
+            </h5>
+        </div>
+    </ng-container>
+    <ng-container class="custom-processing-content">
+        <span>Deleting please wait ... </span>
+    </ng-container>
+    <ng-container class="custom-error-content">
+        <span>There was some issue while deleting user.<br>Please Try Again.</span>
+    </ng-container>
+    <ng-container class="custom-success-content">
+        <span>The user has been deleted successfully.</span>
+    </ng-container>
+</manage-user-modal>

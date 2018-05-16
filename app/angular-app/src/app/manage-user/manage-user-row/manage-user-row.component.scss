@@ -1,4 +1,34 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+
 .delete-button{
   background-color: #eb4d4a;
   color: white;
+}
+.mobile{
+
+  cursor: pointer;
+  .delete-btn-div {
+    background-color: $green-1000;
+  }
+  .card{
+    border-color: $custom-grey-7;
+    .card-body{
+      .mobile-name-div{
+        background-color: #b1e0e1;
+        .mobile-name{
+          max-width: 140px;
+        }
+        .date{
+          vertical-align: super;
+        }
+
+      }
+
+
+
+    }
+
+  }
+
 }
