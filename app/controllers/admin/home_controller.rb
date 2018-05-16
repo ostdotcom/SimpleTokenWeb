@@ -1,10 +1,10 @@
 class Admin::HomeController < Admin::BaseController
   layout "admin"
 
-  before_action :delete_admin_cookie, only: [:login]
-  before_action :check_admin_cookie, except: [:login]
+  before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
+  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account]
 
-  before_action :set_page_meta_info, :except => [:get_kyc_dashboard, :kyc_action_logs, :logout, :get_kyc_whitelist_dashboard]
+  before_action :set_page_meta_info, :except => [:logout]
 
   # Admin login
   #
@@ -13,6 +13,56 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def login
+  end
+
+  # Forgot password
+  #
+  # * Author: Thahir
+  # * Date: 24/04/2018
+  # * Reviewed By:
+  #
+  def forgot_password
+  end
+
+  # Reset password
+  #
+  # * Author: Thahir
+  # * Date: 26/04/2018
+  # * Reviewed By:
+  #
+  def reset_password
+  end
+
+  # Activate Account password
+  #
+  # * Author: Thahir
+  # * Date: 03/05/2018
+  # * Reviewed By:
+  #
+  def activate_account
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_invite_detail(params[:i_t])
+    unless service_response.success?
+      if (["invalid_token", "expired_token"].include?(service_response.error))
+
+        if service_response.error == "invalid_token"
+          display_text = 'Your Invite token is invalid'
+        elsif service_response.error == "expired_token"
+          display_text = 'Your Invite token has expired'
+        end
+
+        respond_to do |format|
+          format.html {render "/admin/home/_activate_account_error.html.erb", locals: {display_text: display_text}}
+        end
+
+        return
+      end
+
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
   end
 
   # Admin login mfa
@@ -47,7 +97,25 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def dashboard
+  # def dashboard
+    # service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+    #                        .get_client_detail
+    #
+    # # Check if error present or not?
+    # unless service_response.success?
+    #   render_error_response(service_response)
+    #   return
+    # end
+    #
+    # @resp_data = service_response.data
+    # @admin_status = params[:filters][:admin_status] if params[:filters].present?
+    # @cynopsis_status = params[:filters][:cynopsis_status] if params[:filters].present?
+    # @admin_action_type = params[:filters][:admin_action_type] if params[:filters].present?
+    # @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
+    # @display_start = params[:display_start]
+  # end
+
+  def angular_app
     service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_client_detail
 
@@ -71,43 +139,43 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def get_kyc_dashboard
+  # def get_kyc_dashboard
+  #
+  #   service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+  #                          .dashboard_detail(params)
+  #
+  #   # Check if error present or not?
+  #   unless service_response.success?
+  #     render_error_response(service_response)
+  #     return
+  #   end
 
-    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
-                           .dashboard_detail(params)
-
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    resp_data = service_response.data
-
-    curr_resp_data = []
-    resp_data['curr_page_data'].each do |c_p_d|
-      curr_resp_data << {
-          user_case_id: c_p_d['case_id'],
-          date_time: c_p_d['kyc_confirmed_at'],
-          status_st: GlobalConstant::UserKycDetail.admin_kyc_statuses[c_p_d['admin_status']],
-          status_cy: GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[c_p_d['cynopsis_status']],
-          duplicate: c_p_d['is_duplicate'],
-          re_submitted: c_p_d['is_re_submitted'],
-          name: c_p_d['name'],
-          country: c_p_d['country'],
-          nationality: c_p_d['nationality'],
-          admin: c_p_d['last_acted_by']
-      }
-    end
-
-    response = {
-        recordsFiltered: resp_data['meta']['total_filtered_recs'],
-        data: curr_resp_data
-    }
-
-    render :json => response and return
-
-  end
+  #   resp_data = service_response.data
+  #
+  #   curr_resp_data = []
+  #   resp_data['curr_page_data'].each do |c_p_d|
+  #     curr_resp_data << {
+  #         user_case_id: c_p_d['case_id'],
+  #         date_time: c_p_d['kyc_confirmed_at'],
+  #         status_st: GlobalConstant::UserKycDetail.admin_kyc_statuses[c_p_d['admin_status']],
+  #         status_cy: GlobalConstant::UserKycDetail.cynopsis_kyc_statuses[c_p_d['cynopsis_status']],
+  #         duplicate: c_p_d['is_duplicate'],
+  #         re_submitted: c_p_d['is_re_submitted'],
+  #         name: c_p_d['name'],
+  #         country: c_p_d['country'],
+  #         nationality: c_p_d['nationality'],
+  #         admin: c_p_d['last_acted_by']
+  #     }
+  #   end
+  #
+  #   response = {
+  #       recordsFiltered: resp_data['meta']['total_filtered_recs'],
+  #       data: curr_resp_data
+  #   }
+  #
+  #   render :json => response and return
+  #
+  # end
 
   # Admin dashboard
   #
@@ -115,25 +183,25 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def kyc_details
-
-    @case_id = params[:case_id]
-    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
-                           .get_kyc_details(params)
-
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    @dash_filters = params[:filters].present? ? params[:filters].permit! : {}
-    @dash_sortings = params[:sortings].present? ? params[:sortings].permit! : {}
-    @display_start = params[:display_start].to_i
-
-    @service_data = service_response.data
-
-  end
+  # def kyc_details
+  #
+  #   @case_id = params[:case_id]
+  #   service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+  #                          .get_kyc_details(params)
+  #
+  #   # Check if error present or not?
+  #   unless service_response.success?
+  #     render_error_response(service_response)
+  #     return
+  #   end
+  #
+  #   @dash_filters = params[:filters].present? ? params[:filters].permit! : {}
+  #   @dash_sortings = params[:sortings].present? ? params[:sortings].permit! : {}
+  #   @display_start = params[:display_start].to_i
+  #
+  #   @service_data = service_response.data
+  #
+  # end
 
   # Admin dashboard
   #
@@ -141,41 +209,41 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def kyc_action_logs
-
-    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
-                           .get_kyc_action_logs(params)
-
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    resp_data = service_response.data
-
-    curr_resp_data = []
-    resp_data['curr_page_data'].each do |c_p_d|
-      curr_resp_data << {
-          date_time: c_p_d['date_time'],
-          agent: c_p_d['agent'],
-          activity: c_p_d['activity']
-      }
-    end
-
-    records_filtered = params[:start].to_i + curr_resp_data.length
-    if curr_resp_data.length >= params[:length].to_i
-      records_filtered = records_filtered + 1
-    end
-
-    response = {
-        recordsFiltered: records_filtered,
-        data: curr_resp_data
-    }
-
-    render :json => response and return
-
-  end
+  # def kyc_action_logs
+  #
+  #   service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+  #                          .get_kyc_action_logs(params)
+  #
+  #   # Check if error present or not?
+  #   unless service_response.success?
+  #     render_error_response(service_response)
+  #     return
+  #   end
+  #
+  #   resp_data = service_response.data
+  #
+  #   curr_resp_data = []
+  #   resp_data['curr_page_data'].each do |c_p_d|
+  #     curr_resp_data << {
+  #         date_time: c_p_d['date_time'],
+  #         agent: c_p_d['agent'],
+  #         activity: c_p_d['activity']
+  #     }
+  #   end
+  #
+  #   records_filtered = params[:start].to_i + curr_resp_data.length
+  #   if curr_resp_data.length >= params[:length].to_i
+  #     records_filtered = records_filtered + 1
+  #   end
+  #
+  #   response = {
+  #       recordsFiltered: records_filtered,
+  #       data: curr_resp_data
+  #   }
+  #
+  #   render :json => response and return
+  #
+  # end
 
   # Admin logout
   #
@@ -194,22 +262,22 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def whitelist_dashboard
-    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
-                           .get_client_detail
-
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    @resp_data = service_response.data
-
-    @whitelist_status = params[:filters][:whitelist_status] if params[:filters].present?
-    @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
-    @display_start = params[:display_start]
-  end
+  # def whitelist_dashboard
+  #   service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+  #                          .get_client_detail
+  #
+  #   # Check if error present or not?
+  #   unless service_response.success?
+  #     render_error_response(service_response)
+  #     return
+  #   end
+  #
+  #   @resp_data = service_response.data
+  #
+  #   @whitelist_status = params[:filters][:whitelist_status] if params[:filters].present?
+  #   @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
+  #   @display_start = params[:display_start]
+  # end
 
   # Admin dashboard
   #
@@ -217,41 +285,41 @@ class Admin::HomeController < Admin::BaseController
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def get_kyc_whitelist_dashboard
-    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
-                           .whitelist_dashboard_detail(params)
-
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    resp_data = service_response.data
-
-    curr_resp_data = []
-    resp_data['curr_page_data'].each do |c_p_d|
-      curr_resp_data << {
-          user_case_id: c_p_d['case_id'],
-          date_time: c_p_d['kyc_confirmed_at'],
-          whitelist_status: GlobalConstant::UserKycDetail.whitelist_kyc_statuses[c_p_d['whitelist_status']],
-          duplicate: c_p_d['is_duplicate'],
-          re_submitted: c_p_d['is_re_submitted'],
-          name: c_p_d['name'],
-          country: c_p_d['country'],
-          nationality: c_p_d['nationality'],
-          admin: c_p_d['last_acted_by']
-      }
-    end
-
-    response = {
-        recordsFiltered: resp_data['meta']['total_filtered_recs'],
-        data: curr_resp_data
-    }
-
-    render :json => response and return
-
-  end
+  # def get_kyc_whitelist_dashboard
+  #   service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+  #                          .whitelist_dashboard_detail(params)
+  #
+  #   # Check if error present or not?
+  #   unless service_response.success?
+  #     render_error_response(service_response)
+  #     return
+  #   end
+  #
+  #   resp_data = service_response.data
+  #
+  #   curr_resp_data = []
+  #   resp_data['curr_page_data'].each do |c_p_d|
+  #     curr_resp_data << {
+  #         user_case_id: c_p_d['case_id'],
+  #         date_time: c_p_d['kyc_confirmed_at'],
+  #         whitelist_status: GlobalConstant::UserKycDetail.whitelist_kyc_statuses[c_p_d['whitelist_status']],
+  #         duplicate: c_p_d['is_duplicate'],
+  #         re_submitted: c_p_d['is_re_submitted'],
+  #         name: c_p_d['name'],
+  #         country: c_p_d['country'],
+  #         nationality: c_p_d['nationality'],
+  #         admin: c_p_d['last_acted_by']
+  #     }
+  #   end
+  #
+  #   response = {
+  #       recordsFiltered: resp_data['meta']['total_filtered_recs'],
+  #       data: curr_resp_data
+  #   }
+  #
+  #   render :json => response and return
+  #
+  # end
 
   # Pos dashboard
   #

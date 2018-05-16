@@ -1,0 +1,35 @@
+
+<div class="request-handler-wrapper" *ngIf="isRequestStatus()">
+
+  <div class="processing-hanlder-wrap text-center p-1" *ngIf="isProcessing">
+    <div class="loader-icon-wrap"  *ngIf="isProcessingIcon">
+      <img class="img-fluid" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
+    </div>
+    <div class="processing-message" *ngIf="processingMessage">{{processingMessage}}</div>
+    <ng-content select=".processing-content"></ng-content>
+  </div>
+
+  <div class="error-hanlder-wrap text-center p-1" *ngIf="!isProcessing && hasError">
+      <div class="error-icon-wrap mb-3" *ngIf="isErrorIcon">
+        <svg class="svg">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon"></use>
+            </switch>
+          </svg>
+      </div>
+      <div class="error-message" *ngIf="errorMessage">{{errorMessage}}</div>
+      <ng-content select=".error-content"></ng-content>
+  </div>
+
+  <div class="warning-hanlder-wrap text-center p-1" *ngIf="!isProcessing && !hasError && hasWarning">
+      <div class="warning-img mb-3" *ngIf="isWarningIcon">
+        <svg class="svg">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+            </switch>
+          </svg>
+      </div>
+      <div class="warning-message" *ngIf="warningMessage">{{warningMessage}}</div>
+      <ng-content select=".warning-content"></ng-content>
+  </div>
+</div>

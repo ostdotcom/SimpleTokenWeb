@@ -33,3 +33,51 @@ Gemfile.lock
 
 # Ignore asset precompile folders
 /public/js-css
+
+# Angular app ignore files start
+Makefile
+
+# compiled output
+/angular-app/dist
+/angular-app/dist-server
+/angular-app/tmp
+/angular-app/out-tsc
+
+# dependencies
+/angular-app/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/angular-app/.sass-cache
+/angular-app/connect.lock
+/angular-app/coverage
+/angular-app/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/angular-app/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Angular app ignore files end

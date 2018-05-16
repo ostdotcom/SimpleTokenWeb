@@ -209,7 +209,7 @@ module SimpleTokenApi
             else
               # API Error
               Rails.logger.info("=*=Simple-Token-API-ERROR=*= #{response_data.inspect}")
-              error_with_internal_code('simple_token_api_error', 'simple token api error', GlobalConstant::ErrorCode.internal_server_error, {}, response_data['err']['error_data'], response_data['err']['display_text'])
+              error_with_internal_code(response_data['err']['code'], 'simple token api error', GlobalConstant::ErrorCode.internal_server_error, {}, response_data['err']['error_data'], response_data['err']['display_text'])
             end
           when "Net::HTTPUnauthorized"
             # 401

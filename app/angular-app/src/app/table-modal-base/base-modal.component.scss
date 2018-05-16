@@ -1,0 +1,49 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.modal{
+  top: 0;
+}
+
+.modal-dialog{
+    margin: auto;
+    //margin-top: auto;
+    float: right;
+    width: 50%;
+    height: 100vh;
+    max-width: 700px;
+
+    .modal-content{
+
+      border: none;
+      border-radius: 0px;
+      min-height: 100%;
+
+      .modal-body{
+        padding-top:0px;
+      }
+    }
+  }
+  @media screen and (max-width: map-get($grid-breakpoints , 'xl')) {
+    .modal-dialog{
+      width:80%;
+
+    }
+  }
+  @media screen and (max-width: map-get($grid-breakpoints , 'sm')) {
+    .modal-dialog{
+      width:100%;
+    }
+  }
+
+  .modal.fade:not(.show)  {
+    .modal-dialog{
+      -webkit-transform: translate(100%, 0);
+      transform: translate(100%, 0);
+    }
+  }
+  .modal.show  {
+    .modal-dialog{
+      -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+
+    }
+  }

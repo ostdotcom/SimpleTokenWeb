@@ -1,0 +1,18 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.modal-dialog{
+  width: 80%;
+  max-width: 880px;
+}
+
+@media screen and (max-width: map-get($grid-breakpoints , 'xl')) {
+  .modal-dialog{
+    width:80%;
+
+  }
+}
+@media screen and (max-width: map-get($grid-breakpoints , 'sm')) {
+  .modal-dialog{
+    width:100%;
+  }
+}

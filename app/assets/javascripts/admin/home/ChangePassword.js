@@ -18,6 +18,9 @@
         event.preventDefault();
         var v = webUtilsNs.errorHandling.validationGeneric( $('#adminChangePasswordForm input[type="password"]') );
         if(v === true ) {
+          $("#adminChangePassword")
+            .text('changing password...')
+            .prop( "disabled", true );
           oThis.changePassword();
         }
       });
@@ -45,6 +48,11 @@
         },
         error: function (jqXHR, exception) {
           adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+        },
+        complete: function(){
+          $("#adminChangePassword")
+            .text('update password')
+            .prop( "disabled", false );
         }
       });
     }

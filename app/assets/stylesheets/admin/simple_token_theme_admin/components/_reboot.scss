@@ -1,0 +1,27 @@
+
+a {
+  border-bottom: solid 1px $blue-800;
+  &:hover, &:active {
+    border-bottom: 1px solid $yellow-500;
+  }
+}
+
+.border-none {
+  border: none;
+  &:hover, &:active {
+    border: none;
+  }
+}
+
+.text-transform-upper {
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.font-weight-600{
+  font-weight: 600;
+}

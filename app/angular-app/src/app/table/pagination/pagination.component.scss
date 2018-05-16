@@ -1,0 +1,17 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.pagination-container{
+
+  .btn{
+    color: $blue-800;
+    background-color: $white;
+    font-size: 14px;
+    padding: 0.3rem 1.5rem;
+    &.active{
+      background-color: $custom-grey-7;
+    }
+  }
+  .arrow-btn{
+    background-color: $green-1000;
+  }
+}

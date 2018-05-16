@@ -1,0 +1,34 @@
+<nav class="navbar fixed-top">
+
+	<a class="navbar-brand border-none" routerLink="/admin/dashboard">
+		<img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-brand-nav-menu.svg" width="150"/>
+	</a>
+
+	<div class="d-flex justify-content-between align-items-center">
+		<ost-search class="d-none d-lg-block mr-4" [searchApi]="'api/admin/kyc/get-cases-by-email'"
+											[entityName]="'email'"
+											[placeholder]="'Search by Email'">
+		</ost-search>
+		<div class="dropdown mr-3">
+			<a class="dropdown-toggle border-none align-center" data-toggle="dropdown">
+				<svg class="svg mr-1 align-middle" style="height: 30px;width: 30px;">
+					<switch>
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-icon"></use>
+					</switch>
+				</svg>
+				<span class="profile-name text-truncate align-middle">{{appConfig.getLoggedInUserName()}}</span>
+				<span class="caret ml-1"></span>
+			</a>
+			<div class="dropdown-menu pb-0">
+				<div class="triangle"></div>
+				<a *ngIf="appConfig.isSuperAdmin()" class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/admin-user/dashboard']">manage admins</a>
+				<a href="/admin/change-password" title="Change Password" class="dropdown-item border-none">change password</a>
+				<a href="/admin/logout" title="Logout" class="dropdown-item border-none">logout</a>
+			</div>
+		</div>
+
+	</div>
+</nav>
+
+<div style="margin-bottom: 60px"><!-- Phantom for navbar fixed-top --></div>
+

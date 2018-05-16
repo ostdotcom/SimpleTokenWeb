@@ -1,0 +1,24 @@
+<div class="modal fade" id="{{modalId}}">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body p-5">
+          <div class="perResquestContent text-center px-3" *ngIf="!isProcessing && !hasError">
+            <ng-content class="modal-body-content"></ng-content>
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    {{actionBtnSecondaryName}}
+                </button>
+                <button type="button" class="btn {{actionBtnPrimaryClass}} ml-3" (click)="onAction()" >
+                  {{actionBtnPrimaryName}}
+                </button>
+            </div>
+          </div> 
+          <request-state-handler [isProcessing]="isProcessing" 
+                                 [hasError]="hasError" 
+                                 [errorMessage]="errorMessage">
+              <div class="processing-content mt-3">Processing, please wait ... </div>
+          </request-state-handler>
+        </div>  
+      </div>
+    </div>
+  </div>

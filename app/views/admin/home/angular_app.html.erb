@@ -1,0 +1,10 @@
+<%
+    initialConfig = {
+        client_setup: @resp_data['client_setup'],
+        admin: @resp_data['admin']
+    }.to_json
+
+%>
+
+<app-root id="main_app_root" data-init-data-json="<%= initialConfig %>"></app-root>
+

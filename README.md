@@ -30,3 +30,10 @@ export STW_GENERAL_ACCESS_SALE_END_DATE='2017-12-01 13:00:00 UTC'
 export COMPANY_ROOT_URL='http://developmentost.com:8080/'
 export COMPANY_KIT_ROOT_URL='http://kit.developmentost.com:8080/'
 export COMPANY_VIEW_ROOT_URL='http://view.developmentost.com:8080/'
+
+
+
+#TO locally start angular app add this in your nginx.conf in server block kyc.developmentost.com;
+#  location /js-css/dev/admin/angular/ {
+#        rewrite  angular\/(.*)\.self(.*)\.js$  http://localhost:4200/$1.js  permanent;
+#  }

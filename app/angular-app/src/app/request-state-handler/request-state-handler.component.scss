@@ -1,0 +1,45 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.request-handler-wrapper {
+    svg{
+        width: 40px;
+        height: 40px;
+    }
+    .img-fluid {
+        width: 40px;
+    }
+}
+
+:host(.smaller) {
+    .request-handler-wrapper {
+        padding: 0;
+        svg{
+            width: 20px;
+            height: 20px;
+        }
+        .img-fluid {
+            width: 20px;
+        }
+    }
+}
+
+
+:host(.page-loader) {
+    .request-handler-wrapper {
+       padding-top: 50px;
+       margin-right: -15px;
+       margin-left: -15px;
+       min-height: calc(100vh - 60px);
+       background-image: url(https://dxwfxs8b4lg24.cloudfront.net/ost-kyc/images/graphic-bg.png);
+      background-size: 100% auto;
+       background-repeat: no-repeat;
+       background-position: bottom;
+    }
+}
+
+
+:host(.kyc-table) {
+    .processing-message, .error-message, .warning-message {
+       font-weight: 500;
+    }
+}

@@ -1,0 +1,15 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.mobile{
+    .row:nth-child(odd) {
+      background-color: $green-1000;
+    }
+    .card{
+      border-color: $custom-grey-7;
+      .card-body{
+        .mobile-name-div{
+          background-color: #b1e0e1;
+        }
+      }
+    }
+}

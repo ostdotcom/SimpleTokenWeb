@@ -1,0 +1,32 @@
+<div class="modal fade" id="detailsModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4>Duplicate Details</h4>
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class='row'>
+        <app-table  class="w-100 alternate-style-md" 
+                    [customErrorMessage]= "'Something went wrong, we could not load the data. We are looking into this.'"
+                    [warningMessage]="'Sorry we could not find any results.'"
+                    [dataUrl]="duplicateDataUrl"
+                    [isPaginated]="false" >
+          <kyc-details-header class='header'></kyc-details-header>
+          <ng-template #rowTemplate let-row>
+            <kyc-details-row [row]='row'></kyc-details-row>
+          </ng-template>
+        </app-table>
+      </div>
+      </div>
+
+      <!-- Modal footer -->
+
+    </div>
+  </div>
+</div>
