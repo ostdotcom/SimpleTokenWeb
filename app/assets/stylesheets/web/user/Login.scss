@@ -70,3 +70,9 @@
   display: inline-block;
   width: 100%;
 }
+
+.st-selectpicker {
+  .dropdown-toggle {
+    border: 1px solid $cyanish-gray;
+  }
+}
