@@ -107,14 +107,6 @@ export class ManageUserComponent implements OnInit {
     this.defaultQueryParams['page_number'];
   }
 
-  onSearch(filtersForm) {
-    for (let key in filtersForm.value){
-
-    }
-    this.onFilterChange(filtersForm);
-    console.log(filtersForm, filtersForm.value);
-  }
-
 
   onFilterChange( filtersForm ) {
     var filters = {
@@ -155,11 +147,7 @@ export class ManageUserComponent implements OnInit {
   }
 
   onSearchSubmit(searchForm) {
-    console.log(searchForm.value);
-    console.log('Hey I am here');
-    var filters = {
-      'page_number': 1
-    };
+    var filters = {}
     Object.assign(filters, searchForm.value);
     this.setQueryParams(filters);
 
