@@ -1,63 +1,63 @@
 /* Checkboxes CSS Starts */
-input[type="checkbox"]{
-  position: absolute;
-  opacity: 0;
-  display: none;
-}
-input[type="checkbox"] ~ label{
-  height: $checkbox-size;
-  margin: 0;
-  display: inline-block;
-  position: relative;
-  padding: 0 0 0 30px;
-  cursor: pointer;
-}
-input[type="checkbox"] ~ label::before,
-input[type="checkbox"] ~ label::after{
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-input[type="checkbox"] ~ label::before{
-  display: inline-block;
-  width: $checkbox-size;
-  height: $checkbox-size;
-  background-image: url($checkbox-bg-image);
-  background-repeat: no-repeat;
-  background-position: -44px -6px;
-}
-input[type="checkbox"] ~ label::after{
-  display: none;
-  width: $checkbox-size;
-  height: $checkbox-size;
-  background-image: url($checkbox-bg-image);
-  background-repeat: no-repeat;
-  background-position: -74px -6px;
-}
-input[type="checkbox"]:checked ~ label::after{
-  display: inline-block;
-}
+//input[type="checkbox"]{
+//  position: absolute;
+//  opacity: 0;
+//  display: none;
+//}
+//input[type="checkbox"] ~ label{
+//  height: $checkbox-size;
+//  margin: 0;
+//  display: inline-block;
+//  position: relative;
+//  padding: 0 0 0 30px;
+//  cursor: pointer;
+//}
+//input[type="checkbox"] ~ label::before,
+//input[type="checkbox"] ~ label::after{
+//  content: '';
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//}
+//input[type="checkbox"] ~ label::before{
+//  display: inline-block;
+//  width: $checkbox-size;
+//  height: $checkbox-size;
+//  background-image: url($checkbox-bg-image);
+//  background-repeat: no-repeat;
+//  background-position: -44px -6px;
+//}
+//input[type="checkbox"] ~ label::after{
+//  display: none;
+//  width: $checkbox-size;
+//  height: $checkbox-size;
+//  background-image: url($checkbox-bg-image);
+//  background-repeat: no-repeat;
+//  background-position: -74px -6px;
+//}
+//input[type="checkbox"]:checked ~ label::after{
+//  display: inline-block;
+//}
 /* Checkboxes CSS Ends */
 
 
-//.check-box-svg {
-//  width: 18px;
-//  height: 18px;
-//  position: absolute;
-//  left: 0;
-//  top: .1em;
-//  border: 1px solid #747a80;
-//}
-//.form-check-label {
-//  padding-left: 1.6rem;
-//  position: relative;
-//  cursor: pointer;
-//}
-//input[type="checkbox"]:checked ~ label svg path {
-//  stroke-dashoffset: 0;
-//  stroke: green;
-//}
-//input[type="checkbox"]:checked ~ label svg{
-//  background-color: #747a80;
-//}
+.check-box-svg {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 0;
+  top: .1em;
+  border: 1px solid #747a80;
+}
+.form-check-label {
+  padding-left: 1.6rem;
+  position: relative;
+  cursor: pointer;
+}
+input[type="checkbox"]:checked ~ label svg path {
+  stroke: green;
+  stroke-width: 1;
+}
+input[type="checkbox"]:checked ~ label svg{
+  background-color: #597A84;
+}
