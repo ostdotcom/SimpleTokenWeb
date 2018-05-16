@@ -38,6 +38,11 @@ export class ManageUserComponent implements OnInit {
   actionButtonClass: string;
   message: string;
   successMessage: string;
+  kyc_submitted: string;
+  whitelist_status: string;
+  sort_by: string;
+
+  isWhitelistDisabled : boolean = false;
 
   constructor(
     private entityConfigService: EntityConfigService ,
@@ -57,6 +62,7 @@ export class ManageUserComponent implements OnInit {
       this.initPagination();
 
       this.setQueryParams({});
+      this.updateWhitelistFilter();
       setTimeout(function(){
         $('.selectpicker').selectpicker('render');
       }, 0);
@@ -115,6 +121,7 @@ export class ManageUserComponent implements OnInit {
     };
     Object.assign(filters, filtersForm.value);
     this.setQueryParams(filters);
+    this.updateWhitelistFilter();
   }
 
   onSortChange( sortForm ){
@@ -183,6 +190,12 @@ export class ManageUserComponent implements OnInit {
     this.tableComponent.getTableData();
   }
 
+  updateWhitelistFilter(){
+    this.isWhitelistDisabled = this.kyc_submitted == "no" ? true : false ;
+    setTimeout(function(){
+      $('.selectpicker').selectpicker('refresh');
+    }, 0);
+  }
 
 
 }

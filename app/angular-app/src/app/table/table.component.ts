@@ -126,7 +126,6 @@ export class TableComponent implements OnInit {
   }
 
   onSearching(){
-    this.resetPageNumber();
     this.getTableData();
   }
 
