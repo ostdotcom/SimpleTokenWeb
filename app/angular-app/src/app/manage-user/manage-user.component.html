@@ -44,8 +44,9 @@
         </div>
         <div class="col-12 col-lg-4 pr-lg-2 mt-3">
           <label class='form-label mb-2'>WHITELIST STATUS</label>
-          <select class="form-control selectpicker" name="filters[whitelist_status]" [(ngModel)]='whitelist_status'
-                  ostOptions [entityPath]="'entity_configs.kyc_user_details.whitelist_status'">
+          <select [disabled]="!!isWhitelistDisabled"
+                  class="form-control selectpicker" name="filters[whitelist_status]" [(ngModel)]='whitelist_status'
+                  ostOptions [entityPath]="'entity_configs.user_management_dashboard.whitelist_status'">
           </select>
         </div>
       </div>
@@ -55,7 +56,7 @@
       <form class="col-lg-5 px-3 ml-auto px-lg-0 form-group" #sortForm="ngForm" name='sorting'>
         <label class='form-label mb-2'>SORT BY</label>
         <select class="form-control selectpicker" name="sortings[sort_by]" [(ngModel)]='sort_by'
-                ostOptions  [entityPath]="'entity_configs.kyc_user_details.sort_by'">
+                ostOptions  [entityPath]="'entity_configs.user_management_dashboard.sort_by'">
         </select>
       </form>
     </div>

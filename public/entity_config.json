@@ -163,11 +163,47 @@
           {
             "value": "no",
             "display_text":"No"
-          }
-          
+          }    
         ]
+      },
+      "whitelist_status": {
+        "values": [
+          {
+            "value": "all",
+            "display_text": "All"
+          },
+          {
+            "value": "unprocessed",
+            "display_text": "Unprocessed"
+          },
+          {
+            "value": "started",
+            "display_text": "Started"
+          },
+          {
+            "value": "done",
+            "display_text": "Done"
+          },
+          {
+            "value": "failed",
+            "display_text": "Failed"
+          }
+        ],
+        "data_type": "array"
+      },
+      "sort_by": {
+        "values": [
+          {
+            "value": "desc",
+            "display_text": "Newest"
+          },
+          {
+            "value": "asc",
+            "display_text": "Oldest"
+          }
+        ],
+        "data_type": "array"
       }
-
     },
     "report_issue": {
       "data_mismatch": {
