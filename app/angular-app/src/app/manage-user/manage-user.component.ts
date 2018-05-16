@@ -155,7 +155,7 @@ export class ManageUserComponent implements OnInit {
 
   onDeleteRow( user ){
     this.user = user;
-    if (this || this.user.whitelist_status == 'done'){
+    if (this.user.whitelist_status == 'done'){
       this.postApi = 'api/admin/kyc/open-case';
       this. actionBtnPrimaryName =  "RE-OPEN CASE";
       this.actionButtonClass = "case-reopen";
@@ -175,8 +175,7 @@ export class ManageUserComponent implements OnInit {
   }
 
   onDeleteRowSucces(e){
-    console.log(e);
-    this.tableComponent.getTableData();
+     this.tableComponent.getTableData();
   }
 
   updateWhitelistFilter(){
