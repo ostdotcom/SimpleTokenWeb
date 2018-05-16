@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AppConfigService } from '../../services/app-config.service';
+
 
 declare var $: any;
 
@@ -11,10 +13,12 @@ export class ManageUserRowComponent implements OnInit {
 
   @Output("deleteRowEvent") deleteRowEvent = new EventEmitter();
   @Input() row;
-  constructor() { }
+  constructor(private appConfigService: AppConfigService) { }
 
   ngOnInit() {
-    $('[data-toggle="tooltip"]').tooltip();
+    setTimeout(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    },0);
   }
 
   deleteUser(){

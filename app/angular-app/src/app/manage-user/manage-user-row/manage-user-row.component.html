@@ -14,7 +14,7 @@
     No
   </div>
 </ng-template>
-<div class="col p-0 pr-3 display-3">
+<div class="col p-0 pr-3 display-3" *ngIf="appConfigService.hasWhiteListSetUp()">
   {{row.whitelist_status}}
 </div>
 <div class="col p-0 pr-3 display-3">
@@ -55,8 +55,8 @@
               </ng-template>
           </div>
 
-          <div class="col-12">
-              <span class='font-weight-600 display-4 text-transform-upper'>Verification status:</span>
+          <div class="col-12" *ngIf="appConfigService.hasWhiteListSetUp()">
+              <span class='font-weight-600 display-4 text-transform-upper'>Whitelist status:</span>
               <span class='display-3 text-capitalize'>
                 {{row.whitelist_status}}
               </span>
@@ -67,7 +67,20 @@
 
         </div>
         <div class="col-12 delete-btn-div py-3">
-          <button class='btn text-uppercase delete-button'>delete user</button>
+
+          <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_status == 'started' ? true:null" (click)='deleteUser()'>delete user</button>
+          <span *ngIf="row.case_reopen_inprocess; else notInProgress"  data-toggle="tooltip" data-placement="bottom"
+            title="Case reopening is in process. Please wait to delete user.">
+            @
+          </span>
+          <ng-template #notInProgress>
+              <span *ngIf="row.whitelist_status == 'started'" data-toggle="tooltup" data-placement="bottom"
+              title="whitelisting started">
+                @
+                </span>
+
+          </ng-template>
+
         </div>
 
     </div>

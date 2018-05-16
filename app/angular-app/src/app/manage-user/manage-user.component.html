@@ -32,9 +32,9 @@
       </div>
     </form>
 </div>
-<div class="col-12 col-lg-5">
+<div class="col-12 col-lg-5 pl-lg-0">
     <form class="form-group" #filterForm="ngForm" name='filters' (change)="onFilterChange(filterForm)">
-      <div class="row">
+      <div class="row px-3 px-lg-0">
 
         <div class="col-12 col-lg-4 pr-lg-2 mt-3">
           <label class='form-label mb-2'>KYC SUBMITTED</label>
@@ -52,7 +52,7 @@
     </form>
   </div>
   <div class="col-12 col-lg-4 ml-auto mt-3">
-      <form class="col-lg-7 px-0 ml-auto pr-lg-0 form-group" #sortForm="ngForm" name='sorting'>
+      <form class="col-lg-5 px-3 ml-auto px-lg-0 form-group" #sortForm="ngForm" name='sorting'>
         <label class='form-label mb-2'>SORT BY</label>
         <select class="form-control selectpicker" name="sortings[sort_by]" [(ngModel)]='sort_by'
                 ostOptions  [entityPath]="'entity_configs.kyc_user_details.sort_by'">
@@ -81,8 +81,12 @@
     </div>
 
 
-    <manage-user-modal  [modalId]="'deleteUserModal'" [user]="user"
-                        [postApi]="'api/admin/admin-user/delete-admin'" [actionButtonClass]="actionButtonClass" [actionBtnPrimaryName]="actionBtnPrimaryName"
+    <manage-user-modal  [modalId]="'deleteUserModal'"
+                        [user]="user"
+                        [postApi]="postApi"
+                        [actionButtonClass]="actionButtonClass"
+                        [actionBtnPrimaryName]="actionBtnPrimaryName"
+                        [DataType]="DataType"
                         (actionSuccessEvent)="onDeleteRowSucces( $event )">
     <ng-container class="modal-body-content">
         <div class="col-12">
@@ -91,12 +95,12 @@
         </div>
     </ng-container>
     <ng-container class="custom-processing-content">
-        <span>{{successMessage}}</span>
+        <span>Processing ...</span>
     </ng-container>
     <ng-container class="custom-error-content">
-        <span>There was some issue while deleting user.<br>Please Try Again.</span>
+        <span>There was some issue.<br>Please Try Again.</span>
     </ng-container>
     <ng-container class="custom-success-content">
-        <span>The user has been deleted successfully.</span>
+        <span>{{successMessage}}</span>
     </ng-container>
 </manage-user-modal>

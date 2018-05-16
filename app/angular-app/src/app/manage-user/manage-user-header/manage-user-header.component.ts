@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppConfigService } from '../../services/app-config.service';
+
 
 @Component({
   selector: 'manage-user-header',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageUserHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appConfigService: AppConfigService) { }
 
   ngOnInit() {
   }

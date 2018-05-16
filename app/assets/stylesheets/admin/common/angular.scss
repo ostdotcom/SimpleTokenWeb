@@ -26,6 +26,10 @@ admin-dashboard {
 .tooltip{
   .arrow::before{
     border-left-color: $white;
+    border-bottom-color: $white;
+    border-top-color: $white;
+    border-left-color: $white;
+
     opacity:1;
   }
   &.show{

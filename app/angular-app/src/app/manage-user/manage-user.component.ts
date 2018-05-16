@@ -38,6 +38,7 @@ export class ManageUserComponent implements OnInit {
   actionButtonClass: string;
   message: string;
   successMessage: string;
+  DataType: string;
 
   constructor(
     private entityConfigService: EntityConfigService ,
@@ -159,13 +160,13 @@ export class ManageUserComponent implements OnInit {
 
   onDeleteRow( user ){
     this.user = user;
-    if (this.user.whitelist_status == 'done'){
-      this.postApi = 'case_reopen_api';
+    if (this || this.user.whitelist_status == 'done'){
+      this.postApi = 'api/admin/kyc/open-case';
       this. actionBtnPrimaryName =  "RE-OPEN CASE";
       this.actionButtonClass = "case-reopen";
       this.message = "To delete a user who has already been qualified, you will need to reopen the case. Do you want to continue?";
       this.successMessage = "The case will be re-opened shortly. You will be able to delete the user once the case has been reopened."
-
+      this.DataType = 'case_id';
     }
     else{
       this.postApi = 'delete_api';
@@ -173,7 +174,7 @@ export class ManageUserComponent implements OnInit {
       this.actionButtonClass = "delete-user";
       this.message = "Attention! You are about to delete this user. This action is permanent and cannot be undone. Are you sure you want to continue?";
       this.successMessage = "User Deleted";
-
+      this.DataType = 'user_id';
     }
     $('#deleteUserModal').modal('show');
   }

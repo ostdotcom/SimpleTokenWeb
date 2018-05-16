@@ -18,6 +18,7 @@ export class ManageUserModalComponent {
   hasError: boolean = false;
   isProcessing: boolean = false;
   @Input('actionButtonClass') actionButtonClass;
+  @Input('DataType') DataType;
   @Input('modalId') modalId ;
   @Input('user') user;
   @Input('postApi') postApi;
@@ -36,12 +37,17 @@ export class ManageUserModalComponent {
 
   onAction() {
     let params = {
-      'id' : this.user['id']
+      'id' : this.user[this.DataType]
     }
     this.stateHandler.updateRequestStatus(this ,  true );
     this.http.post( this.postApi , {...params} ).subscribe(
       response => {
-        this.onSuccess( response.json() );
+        let res = response.json();
+        if (res.success)
+          this.onSuccess( res );
+        else{
+          this.onFailure( res );
+        }
       },
       error => {
         this.onFailure( error.json() );
