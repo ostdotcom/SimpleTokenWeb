@@ -2,6 +2,8 @@
   margin-bottom: 0;
 
   .form-control{
+    color: #597a84;
+    border: 1px solid $cyanish-gray;
     &:focus{
       border-color: $cyanish-gray;
       box-shadow: none;
@@ -9,7 +11,7 @@
   }
 
   .form-label {
-    color: $cyanish-gray;
+    color: $blue-800;
     text-transform: uppercase;
     font-size: $text4-size;
     margin: 0 0 5px 0;
