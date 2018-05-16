@@ -5,6 +5,7 @@ import { RequestStateHandlerService } from '../services/request-state-handler.se
 import {OstHttp} from '../services/ost-http.service';
 import {TableComponent} from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
+import { TableStateManagementService } from '../services/table-state-management.service';
 
 declare var $: any;
 
@@ -27,7 +28,7 @@ export class ManageUserComponent implements OnInit {
     'filters[kyc_submitted]': 'all',
     'filters[whitelist_status]': 'all',
     'sortings[sort_by]': 'desc',
-    page_number: 1
+    'page_number': 1
   };
 
   filterKeys: Array<any> = [ 'kyc_submitted', 'whitelist_status'];
@@ -38,7 +39,6 @@ export class ManageUserComponent implements OnInit {
   actionButtonClass: string;
   message: string;
   successMessage: string;
-  DataType: string;
   kyc_submitted: string;
   whitelist_status: string;
   sort_by: string;
@@ -51,117 +51,43 @@ export class ManageUserComponent implements OnInit {
     private router: Router,
     private stateHandler: RequestStateHandlerService,
     private http: OstHttp,
-    public appConfigService: AppConfigService
+    public appConfigService: AppConfigService,
+    private stateManage : TableStateManagementService
   ) { }
 
   ngOnInit() {
-
     this.activatedRoute.queryParams.subscribe((queryParams:any) => {
-      this.initFilters();
-      this.initSort();
-      this.initSearch();
-      this.initPagination();
-
-      this.setQueryParams({});
+      this.stateManage.init( this ); 
       this.updateWhitelistFilter();
-      setTimeout(function(){
-        $('.selectpicker').selectpicker('render');
-      }, 0);
     });
-
   }
-
-  initFilters() {
-
-    var currentQueryParams = this.getQueryParams();
-    for (var i = 0; i < this.filterKeys.length; i++) {
-      this[this.filterKeys[i]] =
-      currentQueryParams['filters['+this.filterKeys[i]+']'] ?
-      currentQueryParams['filters['+this.filterKeys[i]+']'] :
-      this.defaultQueryParams['filters['+this.filterKeys[i]+']'];
-    }
-    console.log('Inside init filters',  this);
-  }
-
-  initSort() {
-    var currentQueryParams = this.getQueryParams();
-    for (var i = 0; i < this.sortKeys.length; i++) {
-      this[this.sortKeys[i]] =
-      currentQueryParams['sortings['+this.sortKeys[i]+']'] ?
-      currentQueryParams['sortings['+this.sortKeys[i]+']'] :
-      this.defaultQueryParams['sortings['+this.sortKeys[i]+']']
-    }
-  }
-
-  initSearch() {
-    var currentQueryParams = this.getQueryParams();
-    console.log('initSearch', currentQueryParams );
-    this.q = currentQueryParams['search[q]'] ? currentQueryParams['search[q]'] : this.defaultQueryParams['search[q]'];
-  }
-
-  initPagination() {
-    var currentQueryParams = this.getQueryParams();
-    this.page_number =
-    currentQueryParams['page_number'] ?
-    currentQueryParams['page_number'] :
-    this.defaultQueryParams['page_number'];
-  }
-
 
   onFilterChange( filtersForm ) {
-    var filters = {
-      'page_number': 1
-    };
-    Object.assign(filters, filtersForm.value);
-    this.setQueryParams(filters);
+    this.stateManage.onFilterChange( filtersForm ); 
     this.updateWhitelistFilter();
   }
 
   onSortChange( sortForm ){
-    var sortings = {
-      'page_number': 1
-    };
-    Object.assign(sortings, sortForm.value);
-    this.setQueryParams(sortings);
+    this.stateManage.onFilterChange( sortForm ); 
   }
 
   onPageChange ( pageNumber ){
-    var page = {
-      page_number: pageNumber
-    };
-    this.setQueryParams(page);
-  }
-
-  getQueryParams(){
-    return Object.assign({}, this.activatedRoute.snapshot.queryParams);
-  }
-
-  setQueryParams(params){
-    var currentQueryParams = this.getQueryParams();
-    if(Object.keys(currentQueryParams).length === 0 && currentQueryParams.constructor === Object){
-      var newQueryParams = Object.assign(this.defaultQueryParams, params);
-    } else {
-      var newQueryParams = Object.assign(currentQueryParams, params);
-    }
-    this.router.navigate([], { queryParams: newQueryParams });
+    this.stateManage.onFilterChange( pageNumber ); 
   }
 
   onSearchSubmit(searchForm) {
-    var filters = {}
-    Object.assign(filters, searchForm.value);
-    this.setQueryParams(filters);
-
+    this.stateManage.onSearch( searchForm ); 
   }
 
   onDeleteRow( user ){
     this.user = user;
     if (this.user.whitelist_status == 'done'){
-      this.postApi = 'api/admin/kyc/open-case';
+      this.postApi = 'case_reopen_api';
       this. actionBtnPrimaryName =  "RE-OPEN CASE";
       this.actionButtonClass = "case-reopen";
       this.message = "To delete a user who has already been qualified, you will need to reopen the case. Do you want to continue?";
       this.successMessage = "The case will be re-opened shortly. You will be able to delete the user once the case has been reopened."
-      this.DataType = 'case_id';
+
     }
     else{
       this.postApi = 'delete_api';
@@ -169,13 +95,14 @@ export class ManageUserComponent implements OnInit {
       this.actionButtonClass = "delete-user";
       this.message = "Attention! You are about to delete this user. This action is permanent and cannot be undone. Are you sure you want to continue?";
       this.successMessage = "User Deleted";
-      this.DataType = 'user_id';
+
     }
     $('#deleteUserModal').modal('show');
   }
 
   onDeleteRowSucces(e){
-     this.tableComponent.getTableData();
+    console.log(e);
+    this.tableComponent.getTableData();
   }
 
   updateWhitelistFilter(){
