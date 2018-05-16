@@ -43,6 +43,7 @@ import { ScrollTopService } from './services/scroll-top.service';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageUserHeaderComponent } from './manage-user/manage-user-header/manage-user-header.component';
 import { ManageUserRowComponent } from './manage-user/manage-user-row/manage-user-row.component';
+import { ManageUserModalComponent } from './manage-user/manage-user-modal/manage-user-modal.component';
 
 
 
@@ -86,7 +87,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     AdminDashboardModalComponent,
     ManageUserComponent,
     ManageUserHeaderComponent,
-    ManageUserRowComponent
+    ManageUserRowComponent,
+    ManageUserModalComponent
   ],
   imports: [
     BrowserModule,

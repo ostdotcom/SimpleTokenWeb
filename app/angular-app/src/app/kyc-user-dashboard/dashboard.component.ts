@@ -68,8 +68,8 @@ export class DashboardComponent implements OnInit {
         $('.selectpicker').selectpicker('render');
       },  0)
     });
-   
-    
+
+
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
       this.stateHandler.updateRequestStatus(this);
       this.checkboxError = '';

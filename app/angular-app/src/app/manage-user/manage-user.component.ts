@@ -37,6 +37,7 @@ export class ManageUserComponent implements OnInit {
   actionBtnPrimaryName: string;
   actionButtonClass: string;
   message: string;
+  successMessage: string;
 
   constructor(
     private entityConfigService: EntityConfigService ,
@@ -163,6 +164,7 @@ export class ManageUserComponent implements OnInit {
       this. actionBtnPrimaryName =  "RE-OPEN CASE";
       this.actionButtonClass = "case-reopen";
       this.message = "To delete a user who has already been qualified, you will need to reopen the case. Do you want to continue?";
+      this.successMessage = "The case will be re-opened shortly. You will be able to delete the user once the case has been reopened."
 
     }
     else{
@@ -170,6 +172,7 @@ export class ManageUserComponent implements OnInit {
       this. actionBtnPrimaryName =  "DELETE USER";
       this.actionButtonClass = "delete-user";
       this.message = "Attention! You are about to delete this user. This action is permanent and cannot be undone. Are you sure you want to continue?";
+      this.successMessage = "User Deleted";
 
     }
     $('#deleteUserModal').modal('show');

@@ -149,6 +149,26 @@
         ]
       }
     },
+    "user_management_dashboard":{
+      "kyc_submitted":{
+        "values":[
+          {
+            "value": "all",
+            "display_text": "All"
+          },
+          {
+            "value": "yes",
+            "display_text": "Yes"
+          },
+          {
+            "value": "no",
+            "display_text":"No"
+          }
+          
+        ]
+      }
+
+    },
     "report_issue": {
       "data_mismatch": {
         "values": [

@@ -24,6 +24,7 @@ export class TableComponent implements OnInit {
   @Input('pageNumber') pageNumber?: number ;
   @Input('filterForm') filterForm?: any = null;
   @Input('sortForm') sortForm?: any = null;
+  @Input('searchForm') searchForm?: any = null;
   @Input('config') config?: object = null;
   @Input('getDataOnInit') getDataOnInit?: boolean = true;
   @Input('isPaginated') isPaginated?: boolean = true;
@@ -41,6 +42,7 @@ export class TableComponent implements OnInit {
   hasError: boolean = false;
   hasWarning: boolean = false;
   filtersObserver: any;
+  searchObserver: any;
   sortObserver: any;
   metaData: object;
   errorMessage: string="";
@@ -73,11 +75,13 @@ export class TableComponent implements OnInit {
   bindTableChangeEvents() {
     this.bindFilters();
     this.bindSorting();
+    this.bindSearch();
   }
 
   unBindTableChangeEvents() {
     this.unBindFilters();
     this.unBindSorting();
+    this.unBindSearch();
   }
 
   bindFilters() {
@@ -92,6 +96,18 @@ export class TableComponent implements OnInit {
     this.sortObserver = this.sortForm.valueChanges.subscribe(() => {
       this.onSorting();
     });
+  }
+
+  bindSearch() {
+    if (!this.searchForm) return;
+    this.searchObserver = this.searchForm.ngSubmit.subscribe(() => {
+      this.onSearching();
+    });
+  }
+
+  unBindSearch(){
+    if (!this.searchObserver) return;
+    this.searchObserver.unsubscribe();
   }
 
   unBindFilters(){
@@ -109,6 +125,11 @@ export class TableComponent implements OnInit {
     this.getTableData();
   }
 
+  onSearching(){
+    this.resetPageNumber();
+    this.getTableData();
+  }
+
   onSorting() {
     this.resetPageNumber();
     this.getTableData();
@@ -120,6 +141,11 @@ export class TableComponent implements OnInit {
 
   getSorting() {
     return this.sortForm && this.sortForm.value;
+  }
+
+  getSeaching() {
+    console.log('searchForm', this.searchForm.value);
+    return this.searchForm && this.searchForm.value;
   }
 
   onPageChange(pageNumber: number) {
@@ -167,6 +193,9 @@ export class TableComponent implements OnInit {
     }
     if (this.sortForm) {
       Object.assign(requestParams, this.getSorting());
+    }
+    if (this.searchForm){
+      Object.assign(requestParams, this.getSeaching());
     }
     return { params : requestParams };
   }
