@@ -48,15 +48,6 @@ export class DashboardComponent extends PageBaseComponentComponent implements On
   errorMessage;
   params;
 
-  // Defaults, filterKeys, sortKeys
-  defaultQueryParams: object = {
-    'filters[admin_status]': 'all',
-    'filters[admin_action_types]': 'all',
-    'filters[cynopsis_status]': 'all',
-    'filters[whitelist_status]': 'all',
-    'sortings[sort_by]': 'desc',
-    'page_number': 1
-  };
   filterKeys: Array<any> = ['admin_status','admin_action_types','cynopsis_status','whitelist_status'];
   sortKeys: Array<any> = ['sort_by'];
 

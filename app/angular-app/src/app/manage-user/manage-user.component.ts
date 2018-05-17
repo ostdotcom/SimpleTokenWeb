@@ -23,13 +23,6 @@ export class ManageUserComponent extends PageBaseComponentComponent implements O
   placeholder: string = 'Search By Email';
   user;
 
-  defaultQueryParams: object = {
-    'search[q]': '',
-    'filters[kyc_submitted]': 'all',
-    'sortings[sort_by]': 'desc',
-    'page_number': 1
-  };
-
   filterKeys: Array<any> = [ 'kyc_submitted'];
   sortKeys: Array<any> = ['sort_by'];
 
