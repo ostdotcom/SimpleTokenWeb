@@ -44,7 +44,7 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageUserHeaderComponent } from './manage-user/manage-user-header/manage-user-header.component';
 import { ManageUserRowComponent } from './manage-user/manage-user-row/manage-user-row.component';
 import { ManageUserModalComponent } from './manage-user/manage-user-modal/manage-user-modal.component';
-import { TableStateManagementService } from './services/table-state-management.service';
+import { PageBaseComponentComponent } from './page-base-component/page-base-component.component';
 
 
 
@@ -89,7 +89,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ManageUserComponent,
     ManageUserHeaderComponent,
     ManageUserRowComponent,
-    ManageUserModalComponent
+    ManageUserModalComponent,
+    PageBaseComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -126,8 +127,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 OstHttp,
                 AppConfigService,
                 RequestStateHandlerService,
-                ScrollTopService,
-                TableStateManagementService
+                ScrollTopService
             ],
   bootstrap: [AppComponent]
 })
