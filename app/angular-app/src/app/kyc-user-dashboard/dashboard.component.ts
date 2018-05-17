@@ -5,7 +5,6 @@ import { RequestStateHandlerService } from '../services/request-state-handler.se
 import {OstHttp} from '../services/ost-http.service';
 import {TableComponent} from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
-import { TableStateManagementService } from '../services/table-state-management.service';
 import { PageBaseComponentComponent } from '../page-base-component/page-base-component.component';
 
 declare var $: any;
@@ -24,11 +23,10 @@ export class DashboardComponent extends PageBaseComponentComponent implements On
     private stateHandler: RequestStateHandlerService,
     private http: OstHttp,
     public appConfigService : AppConfigService,
-    private stateManage : TableStateManagementService,
     activatedRoute: ActivatedRoute,
-    router: Router,
+    router: Router
   ) {
-    super( activatedRoute , router ); 
+    super( activatedRoute , router );
   }
 
   isProcessing: boolean = false;
@@ -91,7 +89,7 @@ export class DashboardComponent extends PageBaseComponentComponent implements On
 
   downloadCSV() {
     this.stateHandler.updateRequestStatus(this ,  true );
-    this.http.get(this.downloadURL, {params: this.stateManage.getQueryParams() }  ).subscribe(
+    this.http.get(this.downloadURL, {params: this.getQueryParams() }  ).subscribe(
       response => {
         let res = response.json();
         if (!res.success) {

@@ -5,7 +5,6 @@ import { RequestStateHandlerService } from '../services/request-state-handler.se
 import {OstHttp} from '../services/ost-http.service';
 import {TableComponent} from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
-import { TableStateManagementService } from '../services/table-state-management.service';
 import { PageBaseComponentComponent } from '../page-base-component/page-base-component.component';
 
 declare var $: any;
@@ -33,7 +32,7 @@ export class ManageUserComponent extends PageBaseComponentComponent implements O
 
   filterKeys: Array<any> = [ 'kyc_submitted'];
   sortKeys: Array<any> = ['sort_by'];
-  
+
   page_number: number;
   postApi: string;
   actionBtnPrimaryName: string;
@@ -50,11 +49,10 @@ export class ManageUserComponent extends PageBaseComponentComponent implements O
     private stateHandler: RequestStateHandlerService,
     private http: OstHttp,
     public appConfigService: AppConfigService,
-    private stateManage : TableStateManagementService,
     activatedRoute: ActivatedRoute,
-    router: Router,
-  ) { 
-    super( activatedRoute , router); 
+    router: Router
+  ) {
+    super( activatedRoute , router);
   }
 
   ngOnInit() {
