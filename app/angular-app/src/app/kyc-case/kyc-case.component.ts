@@ -69,6 +69,8 @@ export class KycCaseComponent implements OnInit {
 
   onSuccess( res ) {
     this.caseDetails = res.data.case_detail;
+
+
     this.userDetails = res.data.user_detail;
     this.userDetails['extraDiv'] = this.checkForOddSections();
     this.meta = res.data.meta;

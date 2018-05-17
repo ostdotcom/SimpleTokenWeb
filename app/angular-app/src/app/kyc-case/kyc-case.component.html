@@ -357,8 +357,8 @@
        <kyc-log-modal *ngIf="isInitLogTabel" [caseId]='caseId'></kyc-log-modal>
        <kyc-duplicate-details-modal *ngIf="isInitDuplicateTable" [caseId]='caseId'> </kyc-duplicate-details-modal>
 
-       <div *ngIf="hasNextPage" class="carousel-nav right py-2 pr-1" 
-            [routerLink]="['/admin/case-id/', nextCaseId]" 
+       <div *ngIf="hasNextPage" class="carousel-nav right py-2 pr-1"
+            [routerLink]="['/admin/case-id/', nextCaseId]"
             [queryParams]="activatedRoute.snapshot.queryParams">
 						<svg class="align-middle" style="height: 15px;width: 15px">
 							<switch>
@@ -366,8 +366,8 @@
 							</switch>
 						</svg>
       </div>
-      <div *ngIf="hasPreviousPage" class="carousel-nav left py-2 pl-1" 
-            [routerLink]="['/admin/case-id/', previousCaseId]" 
+      <div *ngIf="hasPreviousPage" class="carousel-nav left py-2 pl-1"
+            [routerLink]="['/admin/case-id/', previousCaseId]"
             [queryParams]="activatedRoute.snapshot.queryParams">
 						<svg class="align-middle" style="height: 15px;width: 15px">
 							<switch>
@@ -385,8 +385,15 @@
             <ng-container *ngIf="caseDetails.is_case_closed == 1 then caseClosed else caseOpen"></ng-container>
             <ng-template #caseClosed>
               <div class="d-flex justify-content-center align-items-center mb-2">
+                <ng-container *ngIf="caseDetails.case_reopen_inprocess || caseDetails.whitelist_confirmation_pending then caseInProcess else caseNotReopening;" >
 
-                <ng-container *ngIf="caseDetails.case_reopen_inprocess == 1 then caseReopening else caseNotReopening"></ng-container>
+                </ng-container>
+                <ng-template #caseInProcess>
+                    <span class="mr-2 font-weight-normal" *ngIf="caseDetails.whitelist_confirmation_pending">Whitelist confirmation is pending.</span>
+
+                    <span class="mr-2 font-weight-normal" *ngIf="caseDetails.case_reopen_inprocess">The case will be re-opened shortly. Please check back after some time.</span>
+
+                </ng-template>
 
                 <ng-template #caseReopening>
                   <span class="mr-2 font-weight-normal">The case will be re-opened shortly. Please check back after some time.</span>

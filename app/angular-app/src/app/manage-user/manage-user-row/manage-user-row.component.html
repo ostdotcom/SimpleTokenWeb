@@ -20,12 +20,20 @@
 <div class="col p-0 pr-3 display-3">
     <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_confirmation_pending ? true:null" (click)='deleteUser()'>delete user</button>
     <span *ngIf="row.whitelist_confirmation_pending"  data-toggle="tooltip" data-placement="left"
-      title="Whitelist confirmation is pending. Please wait to delete user.">
-      @
+      title="Whitelist confirmation is pending. Please wait to delete user." class='ml-2'>
+      <svg class="svg" style="height: 16px;width: 16px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+          </switch>
+        </svg>
     </span>
     <span *ngIf="row.case_reopen_inprocess"  data-toggle="tooltip" data-placement="left"
-      title="Case reopening is in process. Please wait to delete user.">
-      @
+      title="Case reopening is in process. Please wait to delete user." class='ml-2'>
+      <svg class="svg" style="height: 16px;width: 16px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+          </switch>
+        </svg>
     </span>
 
   </div>
@@ -67,12 +75,20 @@
 
           <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_confirmation_pending" (click)='deleteUser()'>delete user</button>
           <span *ngIf="row.whitelist_confirmation_pending"  data-toggle="tooltip" data-placement="bottom"
-            title="Whitelist confirmation is pending. Please wait to delete user.">
-            @
+            title="Whitelist confirmation is pending. Please wait to delete user." class='ml-2'>
+            <svg class="svg" style="height: 16px;width: 16px">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                </switch>
+              </svg>
           </span>
           <span *ngIf="row.case_reopen_inprocess"  data-toggle="tooltip" data-placement="bottom"
-            title="Case reopening is in process. Please wait to delete user.">
-            @
+            title="Case reopening is in process. Please wait to delete user." class='ml-2'>
+            <svg class="svg" style="height: 16px;width: 16px">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                </switch>
+              </svg>
           </span>
 
 
