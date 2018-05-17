@@ -9,7 +9,7 @@ import { AppConfigService } from '../../services/app-config.service';
 })
 export class ManageUserHeaderComponent implements OnInit {
 
-  constructor(private appConfigService: AppConfigService) { }
+  constructor(public appConfigService: AppConfigService) { }
 
   ngOnInit() {
   }

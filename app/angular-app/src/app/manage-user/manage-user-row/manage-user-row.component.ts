@@ -13,7 +13,7 @@ export class ManageUserRowComponent implements OnInit {
 
   @Output("deleteRowEvent") deleteRowEvent = new EventEmitter();
   @Input() row;
-  constructor(private appConfigService: AppConfigService) { }
+  constructor(public appConfigService: AppConfigService) { }
 
   ngOnInit() {
     setTimeout(function(){
