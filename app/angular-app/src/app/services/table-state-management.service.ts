@@ -9,7 +9,7 @@ export class TableStateManagementService {
   context: any
 
   init( context ) {
-    this.context = context; 
+    this.context = context;
     this.initFilters();
     this.initSort();
     this.initSearch();
@@ -21,29 +21,29 @@ export class TableStateManagementService {
   }
 
   initFilters(){
-    if( !this.context.filterKeys ) return ; 
+    if( !this.context.filterKeys ) return ;
     let context = this.context ,
         currentQueryParams = this.getQueryParams()
     ;
     for (var i = 0; i < context.filterKeys.length; i++) {
-      context[context.filterKeys[i]] = currentQueryParams['filters['+context.filterKeys[i]+']'] 
+      context[context.filterKeys[i]] = currentQueryParams['filters['+context.filterKeys[i]+']']
                                     || context.defaultQueryParams['filters['+context.filterKeys[i]+']'];
     }
   }
 
   initSort(){
-    if( !this.context.sortKeys ) return ; 
-    let context = this.context, 
+    if( !this.context.sortKeys ) return ;
+    let context = this.context,
         currentQueryParams = this.getQueryParams()
     ;
     for (var i = 0; i < context.sortKeys.length; i++) {
-      context[context.sortKeys[i]] = currentQueryParams['sortings['+context.sortKeys[i]+']'] 
+      context[context.sortKeys[i]] = currentQueryParams['sortings['+context.sortKeys[i]+']']
                                    || context.defaultQueryParams['sortings['+context.sortKeys[i]+']'];
     }
   }
 
   initSearch() {
-    let context = this.context , 
+    let context = this.context ,
         currentQueryParams = this.getQueryParams()
     ;
     context.q = currentQueryParams['search[q]'] || context.defaultQueryParams['search[q]'];
@@ -57,7 +57,7 @@ export class TableStateManagementService {
   }
 
   onFilterChange( filtersForm ) {
-    if(!filtersForm ) return ; 
+    if(!filtersForm ) return ;
     let filters = {
       'page_number': 1
     };
@@ -66,7 +66,7 @@ export class TableStateManagementService {
   }
 
   onSortChange( sortForm ){
-    if(!sortForm ) return ; 
+    if(!sortForm ) return ;
     let sortings = {
       'page_number': 1
     };
@@ -75,14 +75,16 @@ export class TableStateManagementService {
   }
 
   onSearch(searchForm) {
-    if( !searchForm ) return ; 
-    let searchValue = {}; 
+    if( !searchForm ) return ;
+    let searchValue = {
+      'page_number': 1
+    };
     Object.assign(searchValue, searchForm.value);
     this.setQueryParams(searchValue);
   }
 
   onPageChange ( pageNumber ){
-    if(!pageNumber ) return ; 
+    if(!pageNumber ) return ;
     let page = {
       page_number: pageNumber
     };

@@ -24,12 +24,31 @@ admin-dashboard {
   }
 }
 .tooltip{
-  .arrow::before{
-    border-left-color: $white;
-    border-bottom-color: $white;
-    border-top-color: $white;
-    border-left-color: $white;
+  &.bs-tooltip-left{
+    .arrow::before{
+      border-left-color: $white;
 
+    }
+  }
+  &.bs-tooltip-right{
+    .arrow::before{
+      border-right-color: $white;
+
+    }
+  }
+  &.bs-tooltip-top{
+    .arrow::before{
+      border-top-color: $white;
+
+    }
+  }
+  &.bs-tooltip-bottom{
+    .arrow::before{
+      border-bottom-color: $white;
+
+    }
+  }
+  .arrow::before{
     opacity:1;
   }
   &.show{

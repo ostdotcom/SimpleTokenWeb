@@ -14,18 +14,20 @@
     No
   </div>
 </ng-template>
-<div class="col p-0 pr-3 display-3" *ngIf="appConfigService.hasWhiteListSetUp()">
+<div class="col p-0 pr-3 display-3 text-capitalize" *ngIf="appConfigService.hasWhiteListSetUp()">
   {{row.whitelist_status}}
 </div>
 <div class="col p-0 pr-3 display-3">
     <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_status == 'started' ? true:null" (click)='deleteUser()'>delete user</button>
-    <span *ngIf="row.case_reopen_inprocess; else notInProgress"  data-toggle="tooltip" data-placement="left"
+    <span *ngIf="row.case_reopen_inprocess;  else notInProgress"  data-toggle="tooltip" data-placement="left"
       title="Case reopening is in process. Please wait to delete user.">
       @
     </span>
     <ng-template #notInProgress>
-        <span *ngIf="row.whitelist_status == 'started'" data-toggle="tooltup" data-placement="left"
-        title="whitelisting started">
+        <span *ngIf="row.whitelist_status == 'started'" data-toggle="tooltip" data-placement="left"
+        title="Cannot delete a user when whitelisting
+        has started. Please try again once the
+        process is complete.">
           @
           </span>
 
@@ -69,13 +71,15 @@
         <div class="col-12 delete-btn-div py-3">
 
           <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_status == 'started' ? true:null" (click)='deleteUser()'>delete user</button>
-          <span *ngIf="row.case_reopen_inprocess; else notInProgress"  data-toggle="tooltip" data-placement="bottom"
+          <span *ngIf="row.case_reopen_inprocess; else notInProgressMobile"  data-toggle="tooltip" data-placement="bottom"
             title="Case reopening is in process. Please wait to delete user.">
             @
           </span>
-          <ng-template #notInProgress>
-              <span *ngIf="row.whitelist_status == 'started'" data-toggle="tooltup" data-placement="bottom"
-              title="whitelisting started">
+          <ng-template #notInProgressMobile>
+              <span *ngIf="row.whitelist_status == 'started'" data-toggle="tooltip" data-placement="bottom"
+              title="Cannot delete a user when whitelisting
+              has started. Please try again once the
+              process is complete.">
                 @
                 </span>
 
