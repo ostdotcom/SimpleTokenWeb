@@ -197,7 +197,7 @@ export class TableComponent implements OnInit {
       Object.assign(requestParams, this.getSeaching());
     }
     if( this.metaData ){
-      requestParams['page_payload'] = this.metaData['page_payload']; 
+      requestParams['page_payload'] = this.metaData['page_payload'];
     }
     return { params : requestParams };
   }

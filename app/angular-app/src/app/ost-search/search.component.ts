@@ -44,7 +44,7 @@ export class OstSearchComponent implements OnInit {
   }
 
   isToSearch(){
-    return !!this.searchValue  && this.searchValue.trim().length >= 3  &&
+    return !!this.searchValue  && this.searchValue.trim().length >= 1  &&
             this.previousValue.trim() != this.searchValue.trim(); 
   }
 

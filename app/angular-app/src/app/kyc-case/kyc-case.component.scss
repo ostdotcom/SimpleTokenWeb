@@ -49,7 +49,7 @@
       border-bottom-left-radius: 0;
      }
     &:last-child{
-      border-right:  solid 0.8px $blue-400;
+      border-right:  solid 1px $blue-400;
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
     }
@@ -64,7 +64,7 @@
 
 // .card-group{
   .card{
-    border: solid 0.8px $blue-400;
+    border: solid 1px $blue-400;
     .card-title{
       text-transform: uppercase;
       font-size: 0.8rem;
@@ -140,7 +140,7 @@
 
 .box-border{
   border-radius: 2.5px;
-  border: solid 0.8px $blue-400;
+  border: solid 1px $blue-400;
   color: $blue-800;
   font-size: $display3-size;
 

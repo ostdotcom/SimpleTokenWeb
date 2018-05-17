@@ -6,8 +6,8 @@
         <div class='row' *ngIf="!isProcessing && !hasError && !isSuccess">
           <ng-content select=".modal-body-content"></ng-content>
           <div class="col-12 form-group mt-4 text-center">
-            <button class="btn btn-secondary ml-3" data-dismiss="modal">CANCEL</button>
             <button class="btn btn-primary {{actionButtonClass}} mx-2" (click)="onAction()">{{actionBtnPrimaryName}}</button>
+            <button class="btn btn-secondary ml-3" data-dismiss="modal">CANCEL</button>
           </div>
         </div>
 

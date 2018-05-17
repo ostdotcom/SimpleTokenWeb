@@ -81,7 +81,7 @@ export class ManageUserComponent implements OnInit {
     this.user = user;
     if (this.user.whitelist_status == 'done'){
       this.postApi = 'api/admin/kyc/open-case';
-      this. actionBtnPrimaryName =  "RE-OPEN CASE";
+      this.actionBtnPrimaryName =  "RE-OPEN";
       this.actionButtonClass = "case-reopen";
       this.message = "To delete a user who has already been qualified, you will need to reopen the case. Do you want to continue?";
       this.successMessage = "The case will be re-opened shortly. You will be able to delete the user once the case has been reopened."
@@ -89,12 +89,11 @@ export class ManageUserComponent implements OnInit {
     }
     else{
       this.postApi = 'delete_api';
-      this. actionBtnPrimaryName =  "DELETE USER";
+      this.actionBtnPrimaryName =  "DELETE";
       this.actionButtonClass = "delete-user";
       this.message = "Attention! You are about to delete this user. This action is permanent and cannot be undone. Are you sure you want to continue?";
       this.successMessage = "User Deleted";
       this.DataType = 'user_id';
-
     }
     $('#deleteUserModal').modal('show');
   }
