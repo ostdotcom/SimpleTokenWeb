@@ -18,26 +18,21 @@
   {{row.whitelist_status}}
 </div>
 <div class="col p-0 pr-3 display-3">
-    <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_status == 'started' ? true:null" (click)='deleteUser()'>delete user</button>
-    <span *ngIf="row.case_reopen_inprocess;  else notInProgress"  data-toggle="tooltip" data-placement="left"
+    <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_confirmation_pending ? true:null" (click)='deleteUser()'>delete user</button>
+    <span *ngIf="row.whitelist_confirmation_pending"  data-toggle="tooltip" data-placement="left"
+      title="Whitelist confirmation is pending. Please wait to delete user.">
+      @
+    </span>
+    <span *ngIf="row.case_reopen_inprocess"  data-toggle="tooltip" data-placement="left"
       title="Case reopening is in process. Please wait to delete user.">
       @
     </span>
-    <ng-template #notInProgress>
-        <span *ngIf="row.whitelist_status == 'started'" data-toggle="tooltip" data-placement="left"
-        title="Cannot delete a user when whitelisting
-        has started. Please try again once the
-        process is complete.">
-          @
-          </span>
-
-    </ng-template>
 
   </div>
 </div>
 
 <div class="mobile d-lg-none mt-3">
-  <div class="card">
+  <div class="card mx-sm-3">
     <div class="card-body p-0">
         <div class="col-12 mobile-name-div py-3">
             <span class='display-1 mr-2 font-weight-500'> {{row.email}} </span>
@@ -70,20 +65,16 @@
         </div>
         <div class="col-12 delete-btn-div py-3">
 
-          <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_status == 'started' ? true:null" (click)='deleteUser()'>delete user</button>
-          <span *ngIf="row.case_reopen_inprocess; else notInProgressMobile"  data-toggle="tooltip" data-placement="bottom"
+          <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_confirmation_pending" (click)='deleteUser()'>delete user</button>
+          <span *ngIf="row.whitelist_confirmation_pending"  data-toggle="tooltip" data-placement="bottom"
+            title="Whitelist confirmation is pending. Please wait to delete user.">
+            @
+          </span>
+          <span *ngIf="row.case_reopen_inprocess"  data-toggle="tooltip" data-placement="bottom"
             title="Case reopening is in process. Please wait to delete user.">
             @
           </span>
-          <ng-template #notInProgressMobile>
-              <span *ngIf="row.whitelist_status == 'started'" data-toggle="tooltip" data-placement="bottom"
-              title="Cannot delete a user when whitelisting
-              has started. Please try again once the
-              process is complete.">
-                @
-                </span>
 
-          </ng-template>
 
         </div>
 
