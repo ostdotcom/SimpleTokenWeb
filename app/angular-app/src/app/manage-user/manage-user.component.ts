@@ -6,6 +6,7 @@ import {OstHttp} from '../services/ost-http.service';
 import {TableComponent} from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
 import { TableStateManagementService } from '../services/table-state-management.service';
+import { PageBaseComponentComponent } from '../page-base-component/page-base-component.component';
 
 declare var $: any;
 
@@ -15,7 +16,7 @@ declare var $: any;
   templateUrl: './manage-user.component.html',
   styleUrls: ['./manage-user.component.scss']
 })
-export class ManageUserComponent implements OnInit {
+export class ManageUserComponent extends PageBaseComponentComponent implements OnInit {
 
   @ViewChild(TableComponent) tableComponent;
 
@@ -32,6 +33,7 @@ export class ManageUserComponent implements OnInit {
 
   filterKeys: Array<any> = [ 'kyc_submitted'];
   sortKeys: Array<any> = ['sort_by'];
+  
   page_number: number;
   postApi: string;
   actionBtnPrimaryName: string;
@@ -43,38 +45,29 @@ export class ManageUserComponent implements OnInit {
   whitelist_status: string;
   sort_by: string;
 
-  isWhitelistDisabled : boolean = false;
-
   constructor(
     private entityConfigService: EntityConfigService ,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
     private stateHandler: RequestStateHandlerService,
     private http: OstHttp,
     public appConfigService: AppConfigService,
-    private stateManage : TableStateManagementService
-  ) { }
+    private stateManage : TableStateManagementService,
+    activatedRoute: ActivatedRoute,
+    router: Router,
+  ) { 
+    super( activatedRoute , router); 
+  }
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((queryParams:any) => {
-      this.stateManage.init( this );
+      this.initFilters();
+      this.initSort();
+      this.initSearch();
+      this.initPagination();
+      this.setQueryParams({});
+      setTimeout(function(){
+        $('.selectpicker').selectpicker('render');
+      },  0)
      });
-  }
-
-  onFilterChange( filtersForm ) {
-    this.stateManage.onFilterChange( filtersForm );
-   }
-
-  onSortChange( sortForm ){
-    this.stateManage.onSortChange( sortForm );
-  }
-
-  onPageChange ( pageNumber ){
-    this.stateManage.onPageChange( pageNumber );
-  }
-
-  onSearchSubmit(searchForm) {
-    this.stateManage.onSearch( searchForm );
   }
 
   onDeleteRow( user ){

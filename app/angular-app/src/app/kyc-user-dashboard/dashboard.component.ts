@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EntityConfigService } from '../services/entity-config.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import {OstHttp} from '../services/ost-http.service';
 import {TableComponent} from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
 import { TableStateManagementService } from '../services/table-state-management.service';
+import { PageBaseComponentComponent } from '../page-base-component/page-base-component.component';
 
 declare var $: any;
 
@@ -14,18 +15,21 @@ declare var $: any;
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss', '../table/table.component.scss' ]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent extends PageBaseComponentComponent implements OnInit {
 
   @ViewChild(TableComponent) table;
 
   constructor(
     private entityConfigService: EntityConfigService ,
-    private activatedRoute: ActivatedRoute,
     private stateHandler: RequestStateHandlerService,
     private http: OstHttp,
     public appConfigService : AppConfigService,
-    private stateManage : TableStateManagementService
-  ) {}
+    private stateManage : TableStateManagementService,
+    activatedRoute: ActivatedRoute,
+    router: Router,
+  ) {
+    super( activatedRoute , router ); 
+  }
 
   isProcessing: boolean = false;
   hasError: boolean = false;
@@ -60,7 +64,13 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((queryParams:any) => {
-      this.stateManage.init( this );
+      this.initFilters();
+      this.initSort();
+      this.initPagination();
+      this.setQueryParams({});
+      setTimeout(function(){
+        $('.selectpicker').selectpicker('render');
+      },  0)
     });
 
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
@@ -68,18 +78,6 @@ export class DashboardComponent implements OnInit {
       this.checkboxError = '';
       this.isCSVDownloaded = false;
     });
-  }
-
-  onFilterChange( filtersForm ) {
-   this.stateManage.onFilterChange( filtersForm );
-  }
-
-  onSortChange( sortForm ){
-    this.stateManage.onSortChange( sortForm );
-  }
-
-  onPageChange ( pageNumber ){
-    this.stateManage.onPageChange( pageNumber );
   }
 
   validateAndDownload(){

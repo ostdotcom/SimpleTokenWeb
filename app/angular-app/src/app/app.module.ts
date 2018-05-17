@@ -45,6 +45,7 @@ import { ManageUserHeaderComponent } from './manage-user/manage-user-header/mana
 import { ManageUserRowComponent } from './manage-user/manage-user-row/manage-user-row.component';
 import { ManageUserModalComponent } from './manage-user/manage-user-modal/manage-user-modal.component';
 import { TableStateManagementService } from './services/table-state-management.service';
+import { PageBaseComponentComponent } from './page-base-component/page-base-component.component';
 
 
 
@@ -89,7 +90,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ManageUserComponent,
     ManageUserHeaderComponent,
     ManageUserRowComponent,
-    ManageUserModalComponent
+    ManageUserModalComponent,
+    PageBaseComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,7 @@
-import { Component, AfterViewInit , ViewChild} from '@angular/core';
+import { Component, AfterViewInit , ViewChild, OnInit} from '@angular/core';
 import { TableComponent} from "../table/table.component";
+import { PageBaseComponentComponent } from '../page-base-component/page-base-component.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var $: any; 
 
@@ -9,17 +11,24 @@ declare var $: any;
   styleUrls: ['./admin-dashboard.component.scss']
 })
 
-export class AdminDashboardComponent implements AfterViewInit {
+export class AdminDashboardComponent extends PageBaseComponentComponent implements OnInit{
 
-  constructor() { }
+  constructor( activatedRoute: ActivatedRoute,
+               router: Router,) { 
+    super( activatedRoute , router); 
+  }
 
   showInviteUser: boolean = false;
   user:any; 
   @ViewChild(TableComponent) tableComponent;
 
-  ngAfterViewInit() {
+  ngOnInit(){
+    this.activatedRoute.queryParams.subscribe((queryParams:any) => {
+      this.initPagination();
+      this.setQueryParams({});
+     });
   }
-
+ 
   hideInviteUserSection(){
     this.showInviteUser = false;
   }
