@@ -29,6 +29,9 @@
         }
 
         if(v === true ) {
+          $("#adminLogin")
+            .text('logging in...')
+            .prop( "disabled", true );
           oThis.onSubscribe();
         }
       });
@@ -62,6 +65,11 @@
           if(typeof grecaptcha  != 'undefined'){
             grecaptcha.reset();
           }
+        },
+        complete: function(){
+          $("#userLogin")
+            .text('login')
+            .prop( "disabled", false );
         }
       });
     },

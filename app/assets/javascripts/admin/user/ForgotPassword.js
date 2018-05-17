@@ -17,6 +17,9 @@
                 event.preventDefault();
                 var v = utilsNs.errorHandling.validationGeneric($('#forgotPasswordForm input[type="text"]'));
                 if (v === true) {
+                  $("#recoverPassword")
+                    .text('Recovering...')
+                    .prop( "disabled", true );
                     oThis.forgot_password(false);
                     return false;
                 }
