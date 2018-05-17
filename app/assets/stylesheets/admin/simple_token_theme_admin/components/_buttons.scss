@@ -36,6 +36,9 @@
     border-color: $yellow-400;
     background-color: $yellow-400;
   }
+  &:disabled{
+    color: $white;
+  }
 }
 
 .btn-secondary{
@@ -55,6 +58,9 @@
     color: $white;
     border-color: $blue-900;
     background-color: $blue-900;
+  }
+  &:disabled{
+    border-color: $blue-900;
   }
 }
 
