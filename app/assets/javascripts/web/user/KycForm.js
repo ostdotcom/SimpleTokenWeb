@@ -122,53 +122,6 @@
         }
       });
 
-      $(".multi-upload-file").click(function (e) {
-        if ($(".file-wrapper .upload").length == 0) {
-          oThis.fileCount = 0;
-        }
-        else {
-          oThis.fileCount++;
-        }
-
-        $(".file-wrapper").append('<input type="file" name="investor_file_path" data-file-count="' + oThis.fileCount + '" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>');
-        $(".file-wrapper input[type='file'].upload:last-child").trigger("click");
-
-        $('.file-wrapper').find('input[type="file"]').change(function () {
-
-          $('.multi-file-wrapper').append($("<div class='file-name display-4 col-6 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<svg class="icon upload-file-close-btn" data-file-count="' + oThis.fileCount + '"> <switch><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use> </switch> </svg>'));
-          $('.upload-file-close-btn').click(function (e) {
-            var fileCount = $(e.target).closest('.file-name').data('file-count');
-            $(".file-wrapper").find("[data-file-count=" + fileCount + "]").remove();
-            $('.multi-file-wrapper').find("[data-file-count=" + fileCount + "]").remove();
-
-            oThis.updateMultiFileBtnStateForInvestor();
-          }).bind(oThis);
-          oThis.updateMultiFileBtnStateForInvestor();
-        });
-
-      });
-
-
-      $('.single-upload-file').click(function () {
-
-        $(this).closest('.form-group').find('.file-name').append('<input type="file" style="position:absolute; top:-1000px; left:-1000px" name="single-file-upload" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" required/>');
-        $(this).closest('.form-group').find('.file-name').find("input[type='file']").trigger("click");
-        var chooseButtonObject = $(this).closest('.form-group').find("input[type='button']");
-
-        $(this).closest('.form-group').find('.file-name').find("input[type='file']").change(function () {
-
-          $(this).closest('.form-group').find('.file-name').text($(this).val().split('\\').pop()).addClass('display-background').append('<img class="upload-file-close-btn"src="close.svg"  alt="Image"/>');
-          chooseButtonObject.attr('disabled', 'disabled');
-
-          $(".upload-file-close-btn").click(function (event) {
-            $(this).closest('.form-group').find('input[type="button"]').removeAttr('disable');
-            $(this).closest('.form-group').find('.file-name').find("input[type='file']").remove();
-            chooseButtonObject.removeAttr('disabled');
-            $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
-          });
-        });
-      });
-
       $('.radio-button-yes').click(function () {
         console.log("radio button yes clicked");
         $('.upload-proof-invester').css('display', '');
