@@ -72,7 +72,7 @@ export class ManageUserComponent extends PageBaseComponentComponent implements O
       this.DataType = 'case_id';
     }
     else{
-      this.postApi = 'delete_api';
+      this.postApi = 'api/admin/users/delete-user';
       this.actionBtnPrimaryName =  "DELETE";
       this.actionButtonClass = "delete-user";
       this.message = "Attention! You are about to delete this user. This action is permanent and cannot be undone. Are you sure you want to continue?";
