@@ -48,7 +48,7 @@ class Admin::HomeController < Admin::BaseController
         if service_response.error == "invalid_token"
           display_text = 'Your Invite token is invalid'
         elsif service_response.error == "expired_token"
-          display_text = 'Your Invite token has expired'
+          display_text = 'Your Invitation has expired'
         end
 
         respond_to do |format|
