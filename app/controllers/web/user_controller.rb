@@ -3,9 +3,9 @@ class Web::UserController < Web::BaseController
   layout "web"
 
   before_action :delete_user_cookie, only: [:sign_up, :login, :reset_password, :change_password]
-  before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
+  before_action :check_user_cookie, except: [:verify_optin_redirect, :sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
 
-  before_action :set_page_meta_info, only: [:update_branded_token, :add_branded_token]
+  before_action :set_page_meta_info, only: [:update_branded_token, :add_branded_token, :verify_optin_redirect]
 
   after_action :remove_browser_caching
 
@@ -32,6 +32,24 @@ class Web::UserController < Web::BaseController
     redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_country_from_ip)
     redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
     set_page_meta_info(@presenter_obj.custom_meta_tags)
+  end
+
+  # Just Redirect to add kyc page for double optin
+  #
+  # * Author: Aman
+  # * Date: 09/10/2017
+  # * Reviewed By:
+  #
+  def verify_optin_redirect
+    service_response = SimpleTokenApi::Request::User.new(
+        host_url_with_protocol,
+        request.cookies,
+        {"User-Agent" => http_user_agent}).client_detail(GlobalConstant::TemplateType.sign_up_template_type)
+
+    @extra_param = params[:t].present? ? "?t=#{params[:t]}" : ""
+
+    redirect_to "/login#{@extra_param}", status: GlobalConstant::ErrorCode.temporary_redirect and return unless service_response.success?
+    @presenter_obj = ::Web::Client::Setup.new(service_response, params)
   end
 
   # Login

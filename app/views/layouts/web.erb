@@ -62,6 +62,9 @@
 }
 
 
+
+
+
     </script>
 
     <script type="application/ld+json">
@@ -78,6 +81,9 @@
     "https://twitter.com/TheSimpleToken"
   ]
 }
+
+
+
 
 
     </script>
@@ -120,16 +126,18 @@
   <%= stylesheet_link_tag 'web/default_simple_token' %>
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
-  <% if !is_simple_token_specific_page? %>
+  <% if !is_only_redirect_page? %>
+    <% if !is_simple_token_specific_page? %>
 
-    <% if @presenter_obj.gtm_pixel.present? %>
-      <%= render :partial => "/shared/web/thirdparty/gtm_config.erb", locals: {gtm_id: @presenter_obj.gtm_pixel['id']} %>
+      <% if @presenter_obj.gtm_pixel.present? %>
+        <%= render :partial => "/shared/web/thirdparty/gtm_config.erb", locals: {gtm_id: @presenter_obj.gtm_pixel['id']} %>
+      <% end %>
+
+      <% if @presenter_obj.fb_pixel.present? %>
+        <%= render :partial => "/shared/web/thirdparty/fb_config.erb" %>
+      <% end %>
+
     <% end %>
-
-    <% if @presenter_obj.fb_pixel.present? %>
-      <%= render :partial => "/shared/web/thirdparty/fb_config.erb" %>
-    <% end %>
-
   <% end %>
 
   <% if ['web/user::update_kyc_form', 'web/user::add_kyc_form', 'web/user::login', 'web/user::sign_up', 'web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
@@ -150,15 +158,17 @@
 
 <body contenteditable="false">
 
-<% if !is_simple_token_specific_page? && @presenter_obj.gtm_pixel.present? %>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<%= @presenter_obj.gtm_pixel['id'] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
+<% if !is_only_redirect_page? %>
+  <% if !is_simple_token_specific_page? && @presenter_obj.gtm_pixel.present? %>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<%= @presenter_obj.gtm_pixel['id'] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  <% end %>
 <% end %>
 
-<main id="site-content" >
+<main id="site-content">
 
   <div class="main-content <%= yield (:gradient_class) %>">
     <%= yield %>
@@ -170,11 +180,13 @@
 
 </main>
 
-<!--IMPORTANT Footer should always be outside site content start-->
-<% if !is_simple_token_specific_page? %>
-  <%= render :partial => "/shared/web/common/kycaas_footer" %>
-<% else %>
-  <%= render :partial => "/shared/web/common/footer" %>
+<% if !is_only_redirect_page? %>
+  <!--IMPORTANT Footer should always be outside site content start-->
+  <% if !is_simple_token_specific_page? %>
+    <%= render :partial => "/shared/web/common/kycaas_footer" %>
+  <% else %>
+    <%= render :partial => "/shared/web/common/footer" %>
+  <% end %>
 <% end %>
 <!--IMPORTANT Footer should always be outside site content start-->
 

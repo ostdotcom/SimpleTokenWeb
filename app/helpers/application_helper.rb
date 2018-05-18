@@ -62,6 +62,16 @@ module ApplicationHelper
             ['add_branded_token', 'update_branded_token'].include?(params[:action]))
   end
 
+  # All pages in kyc which should not have any body
+  #
+  # * Author: Aman
+  # * Date: 18/02/2018
+  # * Reviewed By:
+  #
+  def is_only_redirect_page?
+    (params[:controller] == 'web/user' && ['verify_optin_redirect'].include?(params[:action]))
+  end
+
   # All static pages used in simple token but not a part of kyc
   #
   # * Author: Aman
