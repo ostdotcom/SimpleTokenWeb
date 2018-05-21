@@ -30,7 +30,7 @@ class Web::BaseController < ApplicationController
     if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].present?
       delete_cookie(GlobalConstant::Cookie.user_cookie_name)
     else
-      set_cookie(GlobalConstant::Cookie.user_cookie_name, nil, 1.year.to_i)
+      set_cookie(GlobalConstant::Cookie.user_cookie_name, nil, Time.at(0))
     end
   end
 
