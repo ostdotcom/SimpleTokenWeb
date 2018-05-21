@@ -79,19 +79,19 @@
                         [actionBtnPrimaryName]="actionBtnPrimaryName"
                         [DataType]="DataType"
                         (actionSuccessEvent)="onDeleteRowSucces( $event )">
-    <ng-container class="modal-body-content">
-        <div class="col-12">
-            <h5 class="text-center">{{message}}
-            </h5>
-        </div>
-    </ng-container>
-    <ng-container class="custom-processing-content">
-        <span>Processing ...</span>
-    </ng-container>
-    <ng-container class="custom-error-content">
-        <span>There was some issue.<br>Please Try Again.</span>
-    </ng-container>
-    <ng-container class="custom-success-content">
-        <span>{{successMessage}}</span>
-    </ng-container>
-</manage-user-modal>
+      <ng-container class="modal-body-content">
+          <div class="col-12">
+              <h5 class="text-center">{{message}}
+              </h5>
+          </div>
+      </ng-container>
+      <ng-container class="custom-processing-content">
+          <span>Processing ...</span>
+      </ng-container>
+      <ng-container class="custom-error-content">
+          <span>There was some issue.<br>Please Try Again.</span>
+      </ng-container>
+      <ng-container class="custom-success-content">
+          <span>{{successMessage}}</span>
+      </ng-container>
+  </manage-user-modal>
