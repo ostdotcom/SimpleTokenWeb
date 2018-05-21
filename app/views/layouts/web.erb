@@ -126,7 +126,6 @@
   <%= stylesheet_link_tag 'web/default_simple_token' %>
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
-  <% if !is_only_redirect_page? %>
     <% if !is_simple_token_specific_page? %>
 
       <% if @presenter_obj.gtm_pixel.present? %>
@@ -138,7 +137,6 @@
       <% end %>
 
     <% end %>
-  <% end %>
 
   <% if ['web/user::update_kyc_form', 'web/user::add_kyc_form', 'web/user::login', 'web/user::sign_up', 'web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
     <script src="https://www.google.com/recaptcha/api.js"></script>
@@ -158,7 +156,7 @@
 
 <body contenteditable="false">
 
-<% if !is_only_redirect_page? %>
+
   <% if !is_simple_token_specific_page? && @presenter_obj.gtm_pixel.present? %>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
@@ -166,7 +164,7 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
   <% end %>
-<% end %>
+
 
 <main id="site-content">
 
@@ -180,14 +178,13 @@
 
 </main>
 
-<% if !is_only_redirect_page? %>
+
   <!--IMPORTANT Footer should always be outside site content start-->
   <% if !is_simple_token_specific_page? %>
     <%= render :partial => "/shared/web/common/kycaas_footer" %>
   <% else %>
     <%= render :partial => "/shared/web/common/footer" %>
   <% end %>
-<% end %>
 <!--IMPORTANT Footer should always be outside site content start-->
 
 <%= javascript_include_tag "web/common-user" %>

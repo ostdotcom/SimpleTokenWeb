@@ -35,17 +35,6 @@ en:
       :assets:
         :specific_js_required: 1
 
-    verify_optin_redirect:
-      :meta:
-        :title: 'Verify optin for the ICO'
-        :description: 'Verify optin for the ICO.'
-        :canonical: '%{canonical}'
-        :keywords: 'ICO'
-        :name: 'ICO'
-        :robots: 'index, follow'
-      :assets:
-        :specific_js_required: 0
-
     reset_password:
       :meta:
         :title: 'Reset your password for the %{account_name} ICO'

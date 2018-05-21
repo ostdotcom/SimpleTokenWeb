@@ -5,6 +5,20 @@ class Web::BaseController < ApplicationController
 
   private
 
+  # Just Redirect to add kyc page for double optin
+  #
+  # * Author: Aman
+  # * Date: 09/10/2017
+  # * Reviewed By:
+  #
+  def dummy_reload_for_external_links
+    return if request.referer.blank? || request.xhr? || cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].present?
+    referer_host = URI(request.referer).host rescue nil
+    if referer_host.to_s != (request.host.downcase)
+      render html: "", layout: "dummy_reload" and return
+    end
+  end
+
   # Delete user cookies
   #
   # * Author: Aman

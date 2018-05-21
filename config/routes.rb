@@ -108,9 +108,6 @@ Rails.application.routes.draw do
     get '/login' => :login
     get '/logout' => :logout
     get '/sign-up' => :sign_up
-
-    get '/verify-optin' => :verify_optin_redirect
-
     get '/dashboard' => :dashboard_home
     get '/update-kyc' => :update_kyc_form
     get '/reset-password' => :reset_password
