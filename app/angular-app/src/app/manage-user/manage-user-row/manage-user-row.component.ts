@@ -25,10 +25,6 @@ export class ManageUserRowComponent implements OnInit {
     this.deleteRowEvent.emit(this.row);
   }
 
-  isDeleteUser():boolean{
-    return this.isReopenInprocess() || this.isWhitelistPending(); 
-  }
-
   isReopenInprocess():boolean{
     let performAction = this.row && this.row.action_to_perform || [];
     if(performAction.includes('case_reopen_inprocess') ){
