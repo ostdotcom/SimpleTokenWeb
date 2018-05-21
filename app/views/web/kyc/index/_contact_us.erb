@@ -43,12 +43,14 @@
 
           <div class="input-container">
             <label class="mb-1 d-block">DO YOU NEED A CUSTOMIZABLE FRONT-END?</label>
-            <input type="radio" name="need_front_end" value="yes"
+            <input id="customizable_yes" type="radio" name="need_front_end" value="yes"
                    title="DO YOU NEED A CUSTOMIZABLE FRONT-END?"
-                   required autocomplete="off" /> Yes
-            <input class="ml-2" type="radio" name="need_front_end" value="no"
+                   required autocomplete="off" />
+            <label class="radio-label" for="customizable_yes">Yes</label>
+            <input id="customizable_no" class="ml-2" type="radio" name="need_front_end" value="no"
                    title="DO YOU NEED A CUSTOMIZABLE FRONT-END?"
-                   required autocomplete="off" /> No
+                   required autocomplete="off" />
+            <label class="radio-label" for="customizable_no">No</label>
             <!--<span class="border-line mt-2"></span>-->
           </div>
           <div class="error" data-for="need_front_end"></div>
@@ -56,18 +58,18 @@
 
           <div class="input-container">
             <label class="mb-1 d-block">EXPECTED VOLUME OF PARTICIPANTS</label>
-            <input type="radio" name="applicant_volume" value="Less than 300"
+            <input id="less_than_300" type="radio" name="applicant_volume" value="Less than 300"
                    title="EXPECTED VOLUME OF PARTICIPANTS"
                    required autocomplete="off" />
-            <span class="radio-label">Less than 300</span>
-            <input class="ml-2" type="radio" name="applicant_volume" value="Up to 5000"
+            <label class="radio-label" for="less_than_300">Less than 300</label>
+            <input id="up_to_5000" class="ml-2" type="radio" name="applicant_volume" value="Up to 5000"
                    title="EXPECTED VOLUME OF PARTICIPANTS"
                    required autocomplete="off" />
-            <span class="radio-label">Up to 5000</span>
-            <input class="ml-2" type="radio" name="applicant_volume" value="More than 5000"
+            <label class="radio-label" for="up_to_5000">Up to 5000</label>
+            <input id="more_than_5000" class="ml-2" type="radio" name="applicant_volume" value="More than 5000"
                    title="EXPECTED VOLUME OF PARTICIPANTS"
                    required autocomplete="off" />
-            <span class="radio-label">More than 5000</span>
+            <label class="radio-label" for="more_than_5000">More than 5000</label>
             <!--<span class="border-line mt-2"></span>-->
           </div>
           <div class="error" data-for="applicant_volume"></div>

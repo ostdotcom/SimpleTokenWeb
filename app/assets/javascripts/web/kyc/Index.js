@@ -63,8 +63,7 @@
         .datepicker({
           format: 'dd/mm/yyyy',
           autoclose: true,
-          startDate: '01/01/1900',
-          endDate: '01/11/1999',
+          startDate: new Date(),
           orientation: 'bottom'
         })
         .on('changeDate', function (e) {
