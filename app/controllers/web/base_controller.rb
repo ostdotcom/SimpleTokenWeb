@@ -27,7 +27,7 @@ class Web::BaseController < ApplicationController
   #
   #
   def delete_user_cookie
-    return if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].blank?
+    # return if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].blank?
     delete_cookie(GlobalConstant::Cookie.user_cookie_name)
   end
 
