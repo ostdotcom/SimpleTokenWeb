@@ -4,4 +4,5 @@
  *= require web/common/KycInstructions
  *= require web/common/AccountActivationBanner
  *= require web/user/Login
+ *= require web/user/Background
  */

@@ -67,7 +67,7 @@
           }
         },
         complete: function(){
-          $("#userLogin")
+          $("#adminLogin")
             .text('login')
             .prop( "disabled", false );
         }
