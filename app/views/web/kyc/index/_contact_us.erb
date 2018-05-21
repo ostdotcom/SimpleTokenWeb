@@ -17,23 +17,69 @@
           </div>
           <div class="error" data-for="full_name"></div>
           <div class="input-container">
-            <label class="mb-1">COMPANY WEBSITE</label>
-            <input class="input" id="company" type="text" name="company" value="" title="company name" required autocomplete="off" />
-            <span class="border-line"></span>
-          </div>
-          <div class="error" data-for="company"></div>
-          <div class="input-container">
             <label class="mb-1">EMAIL ADDRESS</label>
             <input class="input" id="email" type="email" name="email" value="" title="email address" required autocomplete="off" />
             <span class="border-line"></span>
           </div>
           <div class="error" data-for="email"></div>
           <div class="input-container">
-            <label class="mb-1">CONTACT NUMBER</label>
-            <input class="input" id="contact_number" type="text" name="contact_number" value="" title="contact number" required autocomplete="off" />
+            <label class="mb-1">COMPANY Name</label>
+            <input class="input" id="company" type="text" name="company" value="" title="company name" required autocomplete="off" />
             <span class="border-line"></span>
           </div>
-          <div class="error" data-for="contact_number"></div>
+          <div class="error" data-for="company"></div>
+          <!--<div class="input-container">-->
+            <!--<label class="mb-1">CONTACT NUMBER</label>-->
+            <!--<input class="input" id="contact_number" type="text" name="contact_number" value="" title="contact number" required autocomplete="off" />-->
+            <!--<span class="border-line"></span>-->
+          <!--</div>-->
+          <!--<div class="error" data-for="contact_number"></div>-->
+          <div class="input-container">
+            <label class="mb-1">PLANNED KYC START DATE</label>
+            <input class="input" id="token_sale_start_date" type="text" name="token_sale_start_date" value="" title="Token sale start date"
+                   required autocomplete="off" />
+            <span class="border-line"></span>
+          </div>
+          <div class="error" data-for="token_sale_start_date"></div>
+
+          <div class="input-container">
+            <label class="mb-1">DO YOU NEED A CUSTOMIZABLE FRONT-END?</label>
+            <input class="input"  type="radio" name="need_front_end" value="yes"
+                   title="DO YOU NEED A CUSTOMIZABLE FRONT-END?"
+                   required autocomplete="off" /> Yes
+            <input class="input"type="radio" name="need_front_end" value="no"
+                   title="DO YOU NEED A CUSTOMIZABLE FRONT-END?"
+                   required autocomplete="off" /> No
+            <span class="border-line"></span>
+          </div>
+          <div class="error" data-for="need_front_end"></div>
+
+
+          <div class="input-container">
+            <label class="mb-1">EXPECTED VOLUME OF PARTICIPANTS</label>
+            <input class="input"  type="radio" name="applicant_volume" value="Less than 300"
+                   title="EXPECTED VOLUME OF PARTICIPANTS"
+                   required autocomplete="off" /> Less than 300
+            <input class="input"type="radio" name="applicant_volume" value="Up to 5000"
+                   title="EXPECTED VOLUME OF PARTICIPANTS"
+                   required autocomplete="off" /> Up to 5000
+            <input class="input"type="radio" name="applicant_volume" value="More than 5000"
+                   title="EXPECTED VOLUME OF PARTICIPANTS"
+                   required autocomplete="off" /> More than 5000
+            <span class="border-line"></span>
+          </div>
+          <div class="error" data-for="applicant_volume"></div>
+
+          <div class="input-container">
+            <label class="mb-1">SHORT PROJECT DESCRIPTION & COMMENTS</label>
+            <textarea class="input" id="project_description" type="text" name="project_description"
+                      value="" title="SHORT PROJECT DESCRIPTION & COMMENTS" autocomplete="off" ></textarea>
+              <span class="border-line"></span>
+          </div>
+          <div class="error" data-for="project_description"></div>
+
+
+
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <div class="form-group form-recapcha">
             <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>"></div>
