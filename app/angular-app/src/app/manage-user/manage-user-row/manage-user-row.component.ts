@@ -45,4 +45,12 @@ export class ManageUserRowComponent implements OnInit {
     return false; 
   }
 
+  getTooltipMsg():string{
+    if(this.isReopenInprocess()){
+      return "Case reopening is in process. Please wait to delete user.";
+    }else if(this.isWhitelistPending()){
+      return "Whitelist confirmation is pending. Please wait to delete user.";
+    }
+  }
+
 }
