@@ -27,8 +27,6 @@
   .custom-form{
     font-weight: 400;
     font-size: 16px;
-    max-width: 350px;
-    margin: 0 auto;
   }
 
   :focus {
@@ -42,6 +40,10 @@
     letter-spacing: 0.4px;
   }
 
+  .radio-label{
+    color: #3c5056;
+  }
+
   .input-container {
     padding: 0;
     position: relative;
@@ -51,28 +53,21 @@
   input[type="email"],
   input[type="number"]{
     width: 100%;
+    color: #3c5056;
   }
 
   .input {
     border: 0;
     padding: 0 0 5px;
     background-color: transparent;
+  }
+
+  .border-line {
     border-bottom: 1px solid #3c5056;
-  }
-
-  .input ~ .border-line {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #6ca3a9!important;
-  }
-
-  .input:focus ~ .border-line {
     width: 100%;
-    transition: 0.5s;
+    display: block;
   }
+
   .error{
     padding: 2px 0 0;
     min-height: 22px;
@@ -118,4 +113,16 @@
 .form-recapcha .form-recapcha-wrap div div {
   display: inline-block;
   width:auto !important;
+}
+
+textarea{
+  background-color: transparent;
+  border: 1px solid #3c5056;
+  &:focus{
+    background-color: #fff;
+  }
+}
+input[type="text"]::-webkit-input-placeholder{
+  color: #3c5056;
+  opacity: 0.5;
 }

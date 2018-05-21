@@ -59,6 +59,18 @@
         }
       });
 
+      $('#ost-kyc-contact-us-form').find('input[name=token_sale_start_date]')
+        .datepicker({
+          format: 'dd/mm/yyyy',
+          autoclose: true,
+          startDate: '01/01/1900',
+          endDate: '01/11/1999',
+          orientation: 'bottom'
+        })
+        .on('changeDate', function (e) {
+          $(this).trigger('change');
+        });
+
     },
 
     onContactFormSubmit: function () {
