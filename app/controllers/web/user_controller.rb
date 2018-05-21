@@ -2,7 +2,7 @@ class Web::UserController < Web::BaseController
 
   layout "web"
 
-  before_action :dummy_reload_for_external_links, except: [ :sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
+  before_action :reload_for_external_links_to_retain_cookie, except: [ :sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
 
   before_action :delete_user_cookie, only: [:sign_up, :login, :reset_password, :change_password]
   before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
