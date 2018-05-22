@@ -29,24 +29,24 @@ export class PageBaseComponentComponent {
 
   defaultQueryParams: object = { };
 
-  /* 
+  /*
    * Options for filter and sort example start
    * filterKeys: Array<any> = ['admin_status','admin_action_types','cynopsis_status','whitelist_status'];
    * sortKeys: Array<any> = ['sort_by'];
   */
 
   filterKeys  : Array<any> = null;
-  sortKeys    : Array<any> = null; 
-  page_number : number = null; 
+  sortKeys    : Array<any> = null;
+  page_number : number = null;
   q           : string = null ;
 
   initFilters() {
     if( !this.filterKeys ) return ;
     let currentQueryParams = this.getQueryParams(),
-        filterKey , stateParam , defaultParam 
+        filterKey , stateParam , defaultParam
     ;
     for (var i = 0; i < this.filterKeys.length; i++) {
-      filterKey       = this.filterKeys[i]; 
+      filterKey       = this.filterKeys[i];
       stateParam      = currentQueryParams['filters['+filterKey+']'];
       defaultParam    = this.defaultQueryParams['filters['+filterKey+']'];
       this[filterKey] = stateParam || defaultParam || this.gobalDefault['filter'];
@@ -60,7 +60,7 @@ export class PageBaseComponentComponent {
     ;
     for (var i = 0; i < this.sortKeys.length; i++) {
       sortKey       = this.sortKeys[i];
-      stateParam    = currentQueryParams['sortings['+sortKey+']']; 
+      stateParam    = currentQueryParams['sortings['+sortKey+']'];
       defaultParam  = this.defaultQueryParams['sortings['+sortKey+']'];
       this[sortKey] = stateParam || defaultParam || this.gobalDefault['sort'];
     }
@@ -130,45 +130,45 @@ export class PageBaseComponentComponent {
   }
 
   getDefaultQueryParams() : object {
-   let queryParams: object= {}; 
+   let queryParams: object= {};
     if( this.filterKeys ){
-      Object.assign(queryParams , this.getDefaultFilter()); 
+      Object.assign(queryParams , this.getDefaultFilter());
     }
     if( this.sortKeys ){
-      Object.assign(queryParams , this.getDefaultSort()); 
+      Object.assign(queryParams , this.getDefaultSort());
     }
     if( this.page_number ){
-      queryParams['page_number'] = this.page_number; 
+      queryParams['page_number'] = this.page_number;
     }
     if( this.q ){
-      queryParams['search[q]'] = this.q; 
+      queryParams['search[q]'] = this.q;
     }
 
-    return queryParams; 
+    return queryParams;
   }
 
   getDefaultFilter() :object {
-    let filters:object =  {}, 
-        filterKey , defaultParam 
-    ; 
+    let filters:object =  {},
+        filterKey , defaultParam
+    ;
     for (var i = 0; i < this.filterKeys.length; i++) {
-      filterKey     = this.filterKeys[i]; 
+      filterKey     = this.filterKeys[i];
       defaultParam  = this.defaultQueryParams['filters['+filterKey+']'];
       filters['filters['+filterKey+']']  = defaultParam || this.gobalDefault['filter'];
     }
-    return filters; 
+    return filters;
   }
 
   getDefaultSort() : object{
     let sortings:object = {},
         sortKey , defaultParam
-    ; 
+    ;
     for (var i = 0; i < this.sortKeys.length; i++) {
       sortKey       = this.sortKeys[i];
       defaultParam  = this.defaultQueryParams['sortings['+sortKey+']'];
       sortings['sortings['+sortKey+']'] = defaultParam || this.gobalDefault['sort'];
     }
-    return sortings; 
+    return sortings;
   }
 
 }

@@ -25,4 +25,28 @@ export class ManageUserRowComponent implements OnInit {
     this.deleteRowEvent.emit(this.row);
   }
 
+  isReopenInprocess():boolean{
+    let performAction = this.row && this.row.action_to_perform || [];
+    if(performAction.includes('case_reopen_inprocess') ){
+      return true; 
+    }
+    return false; 
+  }
+
+  isWhitelistPending():boolean{
+    let performAction = this.row && this.row.action_to_perform || [];
+    if(performAction.includes('whitelist_confirmation_pending') ){
+      return true; 
+    }
+    return false; 
+  }
+
+  getTooltipMsg():string{
+    if(this.isReopenInprocess()){
+      return "Case reopening is in process. Please wait to delete user.";
+    }else if(this.isWhitelistPending()){
+      return "Whitelist confirmation is pending. Please wait to delete user.";
+    }
+  }
+
 }

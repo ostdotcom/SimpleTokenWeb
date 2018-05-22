@@ -5,6 +5,20 @@ class Web::BaseController < ApplicationController
 
   private
 
+  # Reload the same url to retain cookie
+  #
+  # * Author: Aman
+  # * Date: 09/10/2017
+  # * Reviewed By:
+  #
+  def reload_for_external_links_to_retain_cookie
+    return if request.referer.blank? || request.xhr? || cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].present?
+    referer_host = URI(request.referer).host rescue nil
+    if referer_host.to_s != (request.host.downcase)
+      render html: "", layout: "reload_url" and return
+    end
+  end
+
   # Delete user cookies
   #
   # * Author: Aman
@@ -13,8 +27,11 @@ class Web::BaseController < ApplicationController
   #
   #
   def delete_user_cookie
-    return if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].blank?
-    delete_cookie(GlobalConstant::Cookie.user_cookie_name)
+    if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].present?
+      delete_cookie(GlobalConstant::Cookie.user_cookie_name)
+    else
+      set_cookie(GlobalConstant::Cookie.user_cookie_name, nil, Time.at(0))
+    end
   end
 
   # redirect to login page if cookie not present

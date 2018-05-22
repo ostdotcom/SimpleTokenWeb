@@ -1,9 +1,20 @@
+<ng-template #defaultForDesktop>
+  <div class="col p-0 pr-3 display-3">
+        --
+  </div>
+</ng-template>
+<ng-template #defaultForMobile>
+  <span>
+        --
+  </span>
+</ng-template>
+
 <div class="row-body desktop d-none d-lg-flex py-3">
-  <div class="col name-date col p-0 px-3 display-3">
+  <div class="col name-date col p-0 px-3 display-3" *ngIf="row.email; else defaultForDesktop;">
       {{row.email}}
   </div>
 
-<div class="col p-0 pr-3 display-3">
+<div class="col p-0 pr-3 display-3" *ngIf='row.registration_timestamp; else defaultForDesktop;'>
     {{row.registration_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm:ss' }}
 </div>
 <div class="col p-0 pr-3 display-3" *ngIf='row.kyc_submitted; else kycNotSubmitted' >
@@ -15,20 +26,17 @@
   </div>
 </ng-template>
 <div class="col p-0 pr-3 display-3 text-capitalize" *ngIf="appConfigService.hasWhiteListSetUp()">
-  {{row.whitelist_status}}
+  <div *ngIf="row.whitelist_status; else  defaultForDesktop">
+      {{row.whitelist_status}}
+  </div>
 </div>
 <div class="col p-0 pr-3 display-3">
-    <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_confirmation_pending ? true:null" (click)='deleteUser()'>delete user</button>
-    <span *ngIf="row.whitelist_confirmation_pending"  data-toggle="tooltip" data-placement="left"
-      title="Whitelist confirmation is pending. Please wait to delete user." class='ml-2'>
-      <svg class="svg" style="height: 16px;width: 16px">
-          <switch>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
-          </switch>
-        </svg>
-    </span>
-    <span *ngIf="row.case_reopen_inprocess"  data-toggle="tooltip" data-placement="left"
-      title="Case reopening is in process. Please wait to delete user." class='ml-2'>
+    <button class='btn text-uppercase delete-button'
+            [disabled]="isWhitelistPending() || isReopenInprocess()"
+            (click)='deleteUser()'>delete user
+    </button>
+    <span *ngIf="isWhitelistPending() || isReopenInprocess()"  data-toggle="tooltip" data-placement="left"
+      [title]="getTooltipMsg()" class='ml-2'>
       <svg class="svg" style="height: 16px;width: 16px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>

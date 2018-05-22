@@ -2,9 +2,10 @@ class Web::UserController < Web::BaseController
 
   layout "web"
 
+  before_action :reload_for_external_links_to_retain_cookie, except: [ :sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
+
   before_action :delete_user_cookie, only: [:sign_up, :login, :reset_password, :change_password]
   before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
-
   before_action :set_page_meta_info, only: [:update_branded_token, :add_branded_token]
 
   after_action :remove_browser_caching

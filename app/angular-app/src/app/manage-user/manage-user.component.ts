@@ -63,15 +63,17 @@ export class ManageUserComponent extends PageBaseComponentComponent implements O
 
   onDeleteRow( user ){
     this.user = user;
-    if (this.user.whitelist_status == 'done'){
+    let performAction = this.user && this.user.action_to_perform || [];
+
+    if (performAction.includes('reopen')){
       this.postApi = 'api/admin/kyc/open-case';
       this.actionBtnPrimaryName =  "RE-OPEN";
       this.actionButtonClass = "case-reopen";
       this.message = "To delete a user who has already been qualified, you will need to reopen the case. Do you want to continue?";
       this.successMessage = "The case will be re-opened shortly. You will be able to delete the user once the case has been reopened."
       this.DataType = 'case_id';
-    }
-    else{
+
+    }else if(performAction.includes('delete')){
       this.postApi = 'api/admin/users/delete-user';
       this.actionBtnPrimaryName =  "DELETE";
       this.actionButtonClass = "delete-user";
@@ -85,6 +87,5 @@ export class ManageUserComponent extends PageBaseComponentComponent implements O
   onDeleteRowSucces(e){
     this.tableComponent.getTableData();
   }
-
 
 }

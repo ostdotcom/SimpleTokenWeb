@@ -7,7 +7,7 @@
             <select class="form-control selectpicker" ostOptions
                     title="Action"
                     [(ngModel)]="status"
-                    (change)="onStatusChange()"
+                    (change)="onStatusChange( $event )"
                     [entityPath]="entityPath">
             </select>
         </div>
@@ -32,7 +32,7 @@
                 <select class="form-control selectpicker" ostOptions
                         title="Action"
                         [(ngModel)]="status"
-                        (change)="onStatusChange()"
+                        (change)="onStatusChange( $event )"
                         [entityPath]="entityPath">
                 </select>
             </div>

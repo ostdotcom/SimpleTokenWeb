@@ -43,9 +43,12 @@ export class TableComponent implements OnInit {
   hasWarning: boolean = false;
   filtersObserver: any;
   searchObserver: any;
+  searchValueObserver: any;
   sortObserver: any;
   metaData: object;
   errorMessage: string="";
+  resetPageTimeout: any;
+
 
   ngOnInit() {
     this.configOverWrites();
@@ -103,11 +106,26 @@ export class TableComponent implements OnInit {
     this.searchObserver = this.searchForm.ngSubmit.subscribe(() => {
       this.onSearching();
     });
+    this.searchValueObserver = this.searchForm.valueChanges.subscribe((event) => {
+      this.resetSearch();
+    });
+  }
+
+  resetSearch(){
+    clearTimeout( this.resetPageTimeout );
+    let value = this.searchForm.value && this.searchForm.value['search[q]'];
+    if(!value){
+      this.resetPageTimeout = setTimeout(()=> {
+        this.getTableData();
+        this.searchForm.ngSubmit.emit();
+      } , 300);
+    }
   }
 
   unBindSearch(){
     if (!this.searchObserver) return;
     this.searchObserver.unsubscribe();
+    this.searchValueObserver.unsubscribe()
   }
 
   unBindFilters(){
@@ -126,6 +144,8 @@ export class TableComponent implements OnInit {
   }
 
   onSearching(){
+    let value = this.searchForm.value && this.searchForm.value['search[q]'];
+    if(!value.trim()) return;
     this.getTableData();
   }
 

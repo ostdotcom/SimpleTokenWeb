@@ -227,39 +227,6 @@
               </div>
             </div>
 
-            <!--<div class="row">-->
-              <!--<div class="col-12 col-sm-12">-->
-
-                <!--<div class="row form-group">-->
-                  <!--<div class="col-12">-->
-                    <!--<label class="form-label" for="document_id_file_path">Upload an image of your ID Document-->
-                      <!--<span class="badge badge-pill badge-secondary align-middle p-0">-->
-                        <!--<svg class="info-icon">-->
-                          <!--<switch>-->
-                            <!--<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>-->
-                          <!--</switch>-->
-                        <!--</svg>-->
-                      <!--</span>-->
-                    <!--</label>-->
-                    <!--<div class="file-name display-4 my-1 col-6"></div>-->
-                  <!--</div>-->
-                  <!--<div class="col-12 mt-2">-->
-                    <!--&lt;!&ndash;<label class="upload-file btn btn-secondary upload-image-btn">&ndash;&gt;-->
-                      <!--&lt;!&ndash;<input type="file" title="Identification Document" name="document_id_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>&ndash;&gt;-->
-                      <!--&lt;!&ndash;<% tabindex_val += 1 %>&ndash;&gt;-->
-                      <!--&lt;!&ndash;<span>choose file</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</label>&ndash;&gt;-->
-
-                    <!--<input type="button" title="Identification Document" class="single-upload-file btn btn-secondary upload-image-btn" value="Choose file"  data-max-length="3" name="document_id_file_path" tabindex="<%= tabindex_val %>">-->
-                    <!--&lt;!&ndash;<% tabindex_val += 1 %>&ndash;&gt;-->
-                    <!--<span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200kb, JPG/PNG/PDF only)</span>-->
-                    <!--<div class="error" data-for="document_id_file_path"></div>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-
-
 
             <div class="row form-group">
 
@@ -291,36 +258,6 @@
               </div>
 
             </div>
-
-
-            <!--<div class="row">-->
-              <!--<div class="col-12 col-sm-12">-->
-                <!--<div class="row form-group">-->
-                  <!--<div class="col-12">-->
-                    <!--<label class="form-label" for="selfie_file_path">Upload a picture of you holding your ID Document-->
-                      <!--<span class="badge badge-pill badge-secondary align-middle p-0">-->
-                        <!--<svg class="info-icon">-->
-                          <!--<switch>-->
-                            <!--<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>-->
-                          <!--</switch>-->
-                        <!--</svg>-->
-                      <!--</span>-->
-                    <!--</label>-->
-                    <!--<div class="file-name display-4 my-1 col-6"></div>-->
-                  <!--</div>-->
-                  <!--<div class="col-12 mt-2">-->
-                    <!--<label class="upload-file btn btn-secondary upload-image-btn">-->
-                      <!--<input type="file" title="Selfie with your identification document" name="selfie_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required>-->
-                      <!--<% tabindex_val += 1 %>-->
-                      <!--<span>choose file</span>-->
-                    <!--</label>-->
-                    <!--<span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality picture<br/> of you holding your ID Document <br/>next to your face. <br/>(Min 200kb, JPG/PNG/PDF only)</span>-->
-                    <!--<div class="error" data-for="selfie_file_path"></div>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-
 
             <div class="row form-group">
 
@@ -354,33 +291,6 @@
             </div>
 
 
-
-            <!--<div class="row residence-proof display-none" >-->
-
-              <!--<div class="col-12 col-sm-12">-->
-                <!--<div class="row form-group ">-->
-                  <!--<div class="col-12">-->
-                    <!--<label class="form-label" for="residence_proof_file_path">Proof of Residence-->
-                    <!--</label>-->
-                    <!--<div class="file-name display-4 my-1 col-6"></div>-->
-                  <!--</div>-->
-                  <!--<div class="col-12 mt-2">-->
-                    <!--<label class="upload-file btn btn-secondary upload-image-btn">-->
-                      <!--<input type="file" title="Residence proof" name="residence_proof_file_path" class="upload btn btn-orange" accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640" tabindex="<%= tabindex_val %>" required/>-->
-                      <!--<span>choose file</span>-->
-                      <!--<% tabindex_val += 1 %>-->
-                    <!--</label>-->
-                    <!--<span class="form-instructions display-4 thumbnail-upload-instructions choose-file-instructions">Please upload a high quality <br/>scan of your proof of residence.<br/> (Min 200kb, JPG/PNG/PDF only)</span>-->
-                  <!--</div>-->
-                  <!--<div class="error" data-for="residence_proof_file_path"></div>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-
-
-
-
-
           <div class="row form-group residence-proof display-none" >
 
             <div class="file-upload" data-title="Residence proof" data-name="residence_proof_file_path" data-max-length="1" data-accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="15728640">
@@ -404,7 +314,6 @@
             </div>
 
           </div>
-
           <%if @presenter_obj.page_data['kyc_fields'].include?('investor_proof_files_path')%>
 
               <div class="row form-group " id="investor_proofs">
@@ -414,14 +323,14 @@
                   <div class="col-12 col-sm-12">
                     <div class="form-check form-check-inline">
                       <input type="radio"  class="form-check-input radio-button radio-button-yes" name="ACCREDITEDRadio" id="yesRadios" value="option1" checked />
-                      <label class="radio-button-label" for="yesRadios">
+                      <label class="radio-button-label position-relative" for="yesRadios" style="top: 5px;">
                         <span class="radio-button-circle"></span>Yes
                       </label>
                     </div>
 
                     <div class="form-check form-check-inline">
                       <input class="form-check-input radio-button radio-button-no" type="radio" name="ACCREDITEDRadio" id="noRadios" value="option2" />
-                      <label class="radio-button-label" for="noRadios">
+                      <label class="radio-button-label position-relative" for="noRadios" style="top: 5px;">
                         <span class="radio-button-circle"></span>No
                       </label>
                     </div>
