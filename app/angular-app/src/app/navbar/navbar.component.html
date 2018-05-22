@@ -16,13 +16,14 @@
 						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-icon"></use>
 					</switch>
 				</svg>
-				<span class="profile-name text-truncate align-middle">{{appConfig.getLoggedInUserName()}}</span>
-				<span class="caret ml-1"></span>
+				<span class="profile-name align-middle d-none d-sm-inline-block">{{appConfig.getLoggedInUserName()}}</span>
+				<span class="caret ml-1 d-none d-sm-inline-block"></span>
 			</a>
 			<div class="dropdown-menu pb-0">
 				<div class="triangle"></div>
-        <a *ngIf="appConfig.isSuperAdmin()" class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/admin-user/dashboard']">manage admins</a>
-        <a class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/user/dashboard']">User management</a>
+				<span class="d-block d-sm-none profile-name">{{appConfig.getLoggedInUserName()}}</span>
+        		<a *ngIf="appConfig.isSuperAdmin()" class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/admin-user/dashboard']">manage admins</a>
+        		<a class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/user/dashboard']">User management</a>
 				<a href="/admin/change-password" title="Change Password" class="dropdown-item border-none">change password</a>
 				<a href="/admin/logout" title="Logout" class="dropdown-item border-none">logout</a>
 			</div>
