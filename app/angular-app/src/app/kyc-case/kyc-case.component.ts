@@ -5,6 +5,8 @@ import { OstHttp } from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import { AppConfigService } from '../services/app-config.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-kyc-case',
   templateUrl: './kyc-case.component.html',
@@ -46,6 +48,7 @@ export class KycCaseComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.caseId = params.get('id');
       this.fetchCase();
+      this.hideModal();
     });
   }
 
@@ -65,6 +68,10 @@ export class KycCaseComponent implements OnInit {
     }, error => {
       this.stateHandler.updateRequestStatus( this, false,  true , false ,  error.json());
     })
+  }
+
+  hideModal(){
+    $("#detailsModal").modal('hide');
   }
 
   onSuccess( res ) {

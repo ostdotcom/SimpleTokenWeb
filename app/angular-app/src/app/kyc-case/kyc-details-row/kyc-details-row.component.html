@@ -1,6 +1,6 @@
 <div class="row py-3 mx-0 desktop d-none d-md-flex">
-  <div class="col display-3 case-id font-weight-500">
-  {{row.id}}
+  <div class="col display-3  font-weight-500">
+  <span class="case-id" [routerLink]="['/admin/case-id/', row.id]"> {{row.id}} </span>
   </div>
   <div class="col text-capitalize display-3">
     {{row.admin_status}}
@@ -28,7 +28,7 @@
     <div class="card-body p-0">
         <div class="col-12 mobile-name-div py-3">
             <span class='display-1 mr-2 font-weight-500'>Case Id</span>
-            <span class="display-3 font-weight-500">{{row.id}}</span>
+            <span class="display-3 font-weight-500 case-id" [routerLink]="['/admin/case-id/', row.id]">{{row.id}}</span>
         </div>
         <div class="row px-1 pt-3 mx-0 ">
           <div class="col-6 px-2">

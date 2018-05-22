@@ -2,6 +2,15 @@
 
   .case-id{
     color: $yellow-300;
+    cursor: pointer;
+    &:focus{
+      outline: none;
+    }
+    &:hover, &:active {
+      border-bottom: 1px solid $yellow-500;
+      color: $yellow-500;
+    }
+
   }
 
   .mobile{
