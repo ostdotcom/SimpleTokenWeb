@@ -4,11 +4,11 @@
       <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
         <span aria-hidden="true" class="modal-close-black-icon" title="close"></span>
       </button>
-      <div class="modal-body">
+      <div class="modal-body p-4">
         <div class="text-center">
-          <h3 class="heading" style="padding-bottom: 20px">Warning</h3>
-          <div class="desc" style="padding-bottom: 30px;font-size: 16px"><%= @presenter_obj.kyc_update_modal_text %></div>
-          <a href="javascript:void(0)" class="btn btn-primary verify-btn" id="continueToUpdate" title="CONTINUE">CONTINUE</a>
+          <h4 class="heading" >Warning</h4>
+          <div class="desc"><%= @presenter_obj.kyc_update_modal_text %></div>
+          <a href="javascript:void(0)" class="btn btn-primary verify-btn mt-4" id="continueToUpdate" title="CONTINUE">CONTINUE</a>
         </div>
       </div>
     </div>

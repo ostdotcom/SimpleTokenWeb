@@ -48,9 +48,10 @@
     border-color: $blue-900;
     background-color: $blue-900;
   }
-  &:disabled{
-    border-color: $custom-gray-3 ;
-    background-color: $custom-gray-3;
+  &:disabled, &:disabled:hover {
+    color: $cyanish-gray!important;
+    border-color: $custom-gray-3!important;
+    background-color: $custom-gray-3!important;
   }
 }
 

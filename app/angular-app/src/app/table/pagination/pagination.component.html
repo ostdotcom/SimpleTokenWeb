@@ -1,7 +1,14 @@
 
-<div class="pagination-container mt-5">
+<div class="pagination-container mt-5 mb-4 d-inline-block float-right">
 
-  <div class="numbers p-2 mr-3 float-right">
+  <div class="d-none d-md-block pagination-count-wrap float-left mt-3" *ngIf="metaData">
+      <span>{{(currentPageNumber-1) * metaData.page_size + 1}}&nbsp;-&nbsp;
+        {{currentPageNumber * metaData.page_size < metaData.total_records ? currentPageNumber * metaData.page_size:metaData.total_records  }}
+        &nbsp;of</span>
+      <span>{{metaData.total_records}}&nbsp;Entires</span>
+  </div>
+
+  <div class="numbers p-2 mx-3 float-left">
       <button class="btn px-2 arrow-btn" (click)="onPrev()" [disabled]="!isPrev()" [ngClass]="{ 'disabled': !isPrev() || loading }">
         &lang;</button>
 
@@ -15,12 +22,4 @@
         <span> &rang; </span>
       </button>
   </div>
-
-  <div class="d-none d-md-block pagination-count-wrap float-right mt-3 mr-3" *ngIf="metaData">
-      <span>{{(currentPageNumber-1) * metaData.page_size + 1}}&nbsp;-&nbsp;
-        {{currentPageNumber * metaData.page_size < metaData.total_records ? currentPageNumber * metaData.page_size:metaData.total_records  }}
-        &nbsp;of</span>
-      <span>{{metaData.total_records}}&nbsp;Entires</span>
-  </div>
-
 </div>
