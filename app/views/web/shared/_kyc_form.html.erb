@@ -351,14 +351,19 @@
                   <div class="file-wrapper-view"></div>
                 </div>
 
-                <span class="form-instructions reached-max-limit display-4 choose-file-instructions mt-3" style="display: none">(You have reached max limit of uploads for acredited investors, please remove one file to upload more)</span>
+                <span class="form-instructions reached-max-limit display-4 choose-file-instructions mt-3" style="display: none">
+                  (You have reached max limit of uploads for acredited investors, please remove one file to upload more)</span>
 
                 <div class="col-12 mt-2">
                   <div class="file-wrapper" style="position:absolute; top:-10000px; left:-10000px"></div>
 
-                  <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"  data-max-length="<%= @presenter_obj.page_data['max_investor_proofs_allowed']%>" tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
+                  <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"
+                         data-max-length="<%= @presenter_obj.page_data['max_investor_proofs_allowed']%>"
+                         tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
                   </input>
-                  <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality scan or<br/> picture of your passport photo page. <br/>(Min 200kb, JPG/PNG/PDF only)</span>
+                  <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">
+                    Please upload a high quality scan or<br/> picture of your passport photo page. <br/>(Min 200kb, JPG/PNG/PDF only)
+                  </span>
                   <div class="error" data-for="investor_proof_files_path[]"></div>
                 </div>
               </div>

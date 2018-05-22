@@ -82,9 +82,12 @@
         if (fileUpload.find(".file-wrapper .upload").length == 0) {
           oThis.fileCount = 0;
         }
-        else if(fileInputLast.length && file){
+        else if(fileInputLast.length && file) {
           oThis.fileCount++;
         }
+
+        var errorJEl = fileUpload.find('.error');
+        errorJEl.text("");
 
         var file_attrs = {
           title: fileUpload.data('title'),

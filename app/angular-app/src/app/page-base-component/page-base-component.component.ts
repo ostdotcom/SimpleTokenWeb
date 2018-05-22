@@ -105,6 +105,18 @@ export class PageBaseComponentComponent {
     this.setQueryParams(searchValue);
   }
 
+  resetSearch( searchInput ){
+    if( !searchInput ) return ; 
+    let value = searchInput.model, 
+        name  = searchInput.name, 
+        param = {}
+    ; 
+    param[name]= value;
+    if(!value.trim()){
+      this.setQueryParams(param);
+    }
+  }
+
   onPageChange ( pageNumber ) {
     if(!pageNumber ) return ;
     let page = {

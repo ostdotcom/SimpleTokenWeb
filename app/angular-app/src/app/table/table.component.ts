@@ -117,7 +117,6 @@ export class TableComponent implements OnInit {
     if(!value){
       this.resetPageTimeout = setTimeout(()=> {
         this.getTableData();
-        this.searchForm.ngSubmit.emit();
       } , 300);
     }
   }

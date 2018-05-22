@@ -4,9 +4,9 @@
         <div class="modal-body p-5">
           <div class='row' *ngIf="!isProcessing && !hasError">
             <div class="col-12">
-              <h4 class="text-center">Please confrim to invite {{inviteUserForm.value.email}}</h4>
+              <h5 class="text-center">Please confrim to invite {{inviteUserForm.value.email}}</h5>
             </div>
-            <div class="col-12 form-group mt-4 text-center">
+            <div class="col-12 form-group mt-3 text-center">
                <button class="btn btn-primary mt-3" (click)="sendInvite()">INVITE USER</button>
                <button class="btn btn-secondary ml-md-3 mt-3" data-dismiss="modal">CANCEL</button>
             </div>

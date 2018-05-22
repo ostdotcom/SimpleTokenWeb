@@ -63,16 +63,21 @@ export class DashboardComponent extends PageBaseComponentComponent implements On
     });
 
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
-      this.stateHandler.updateRequestStatus(this);
-      this.checkboxError = '';
-      this.isCSVDownloaded = false;
+      this.resetDownLoadCsvModal(); 
     });
+  }
+
+  resetDownLoadCsvModal(){
+    this.stateHandler.updateRequestStatus(this);
+    this.checkboxError = '';
+    this.isCSVDownloaded = false;
+    this.securityEthCheckbox = false;
+    this.securityCheckbox = false;
   }
 
   validateAndDownload(){
     if ( this.securityEthCheckbox && this.securityCheckbox){
       this.downloadCSV();
-
     }else {
       this.checkboxError = 'Please confirm the above to download the CSV';
     }
