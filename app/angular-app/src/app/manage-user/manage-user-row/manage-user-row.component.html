@@ -52,7 +52,7 @@
     <div class="card-body p-0">
         <div class="col-12 mobile-name-div py-3">
             <span class='display-1 mr-2 font-weight-500'> {{row.email}} </span>
-            <span class="display-3 font-weight-500 d-block mt-2">{{row.registration_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm:ss' }}
+            <span class="display-3 font-weight-500 d-block mt-2" *ngIf='row.registration_timestamp; else defaultForMobile'>{{row.registration_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm:ss' }}
             </span>
         </div>
         <div class="row py-3 mx-0" >
@@ -70,7 +70,7 @@
 
           <div class="col-12" *ngIf="appConfigService.hasWhiteListSetUp()">
               <span class='font-weight-600 display-4 text-transform-upper'>Whitelist status:</span>
-              <span class='display-3 text-capitalize'>
+              <span class='display-3 text-capitalize' *ngIf="row.whitelist_status; else defaultForMobile;">
                 {{row.whitelist_status}}
               </span>
 
