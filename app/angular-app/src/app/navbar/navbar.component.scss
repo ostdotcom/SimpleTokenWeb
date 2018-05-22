@@ -26,7 +26,7 @@
     }
   }
   @media (max-width: map-get($grid-breakpoints , 'sm')){
-    left: -50px;
+    left: -129px;
   }
 }
 
@@ -62,10 +62,13 @@
   }
 }
 
-.profile-name {
-  @media (max-width: map-get($grid-breakpoints , 'sm')){
-    display: inline-block;
-    max-width: 80px;
-    vertical-align: middle;
+@media (max-width: map-get($grid-breakpoints , 'sm')){
+  .profile-name{
+    padding: 10px 0px 10px 16px;
+    margin-top: -8px;
+    font-size: 14px;
+    text-transform: initial;
+    font-weight: 500;
+    background-color: #F6F9FA;
   }
 }
