@@ -32,6 +32,7 @@ export class TableComponent implements OnInit {
   @Input('processingMessage') processingMessage?: string;
   @Input('customErrorMessage') customErrorMessage?: string ;
   @Input('warningMessage') warningMessage?: string ;
+  @Input('action') action?: string = "get"; 
 
   @Output('pageChangeEvent') pageChangeEvent? = new EventEmitter<number>();
   @Output('tableDataLoadedEvent') tableDataLoadedEvent? =  new EventEmitter();
@@ -185,10 +186,12 @@ export class TableComponent implements OnInit {
   }
 
   getTableData() {
-    let params: RequestOptionsArgs = this.getParams();
+    let params: RequestOptionsArgs = this.getParams(), 
+        action: string = this.getAction(); 
+    ;
     this.clearTableData();
     this.stateHandler.updateRequestStatus(this, true);
-    this.http.get(this.dataUrl, params).subscribe(
+    this.http[action](this.dataUrl, params).subscribe(
       response => {
         let res = response.json();
         this.onTableDataSuccess(res);
@@ -197,6 +200,21 @@ export class TableComponent implements OnInit {
         let err = error.json();
         this.onTableDataError( err );
       })
+  }
+
+  getAction(): string {
+    let action  = String(this.action).toLowerCase(); 
+    switch(action) {
+      case "post": {
+        return "post"; 
+      }
+      default: {
+        if ( action !== "get") {
+          console.warn("Table Component Does not support" + action + "action. Falling back to get.");
+        }
+        return "get"; 
+      }
+    }
   }
 
   clearTableData(){
@@ -218,7 +236,11 @@ export class TableComponent implements OnInit {
     if( this.metaData ){
       requestParams['page_payload'] = this.metaData['page_payload'];
     }
-    return { params : requestParams };
+    if(this.getAction() == "post"){
+      return requestParams ;
+    }else{
+      return { params : requestParams };
+    }
   }
 
   onTableDataSuccess(response) {
