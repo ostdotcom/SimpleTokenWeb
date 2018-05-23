@@ -56,6 +56,7 @@
 
   <div class="row" >
       <app-table class="w-100 alternate-style-lg"
+                [action]="'post'"
                 [dataUrl]="'api/admin/users/list'"
                 [pageNumber]='page_number'
                 [searchForm]='searchForm'
