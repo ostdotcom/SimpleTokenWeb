@@ -28,7 +28,6 @@ export class KycLogRowComponent implements OnInit {
   }
 
   ngOnInit() {
-    const actionData = this.row.action_data;
     const humanizedActionData = this.row.humanized_action_data;
     let breakFlag = false;
     if (this.row.action === 'kyc_issue_email_sent') {
@@ -49,7 +48,6 @@ export class KycLogRowComponent implements OnInit {
      }
      console.log(this.actionData);
      this.row.action = this.actionData.replace("Other issue:", "Other issue");
-     console.log(this.row.action);
     } else {
       this.row.action = this.messageHash[this.row.action];
     }

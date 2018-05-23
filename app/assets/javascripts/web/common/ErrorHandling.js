@@ -187,7 +187,7 @@ jQuery.fn.extend({
           }
           if( targetEl.files[0].size > $(targetEl).data('max-bytes')){
             var maxMb = $(targetEl).data('max-bytes') / (1024*1024);
-            simpletoken.utils.errorHandling.addFormError( targetEl.name, targetEl.title+' file size too large. Max allowed '+maxMb+' Mb');
+            simpletoken.utils.errorHandling.addFormError( targetEl.name, targetEl.title+' file size too large. Max allowed '+maxMb+' MB');
           }
         }
         else {
