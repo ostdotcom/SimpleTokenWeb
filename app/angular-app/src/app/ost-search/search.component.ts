@@ -36,7 +36,7 @@ export class OstSearchComponent implements OnInit {
 
   onSearch( searchForm ){
     if( this.isToSearch() ){
-      this.preSearch();  
+      this.preSearch();
       this.sendSearchRequest(searchForm) ;
     }else{
       this.stateHandler.updateRequestStatus(this, false , false , false);
@@ -45,22 +45,22 @@ export class OstSearchComponent implements OnInit {
 
   isToSearch(){
     return !!this.searchValue  && this.searchValue.trim().length >= 1  &&
-            this.previousValue.trim() != this.searchValue.trim(); 
+            this.previousValue.trim() != this.searchValue.trim();
   }
 
   preSearch(){
     this.items = [];
     this.hideResponse = false ;
-    this.searchValue = this.searchValue.trim(); 
-    this.previousValue = this.searchValue ; 
+    this.searchValue = this.searchValue.trim();
+    this.previousValue = this.searchValue ;
     clearTimeout( this.searchTimeOut );
   }
 
   sendSearchRequest(searchForm){
     this.stateHandler.updateRequestStatus(this, true , false , false);
     this.searchTimeOut = setTimeout(() => {
-      if(!this.searchValue) return ; 
-      this.http.get( this.searchApi ,  {params : searchForm.value } ).subscribe(
+      if(!this.searchValue) return ;
+      this.http.post( this.searchApi ,  {params : searchForm.value } ).subscribe(
         response => {
           console.log("has success", response);
           let res = response.json();
