@@ -28,8 +28,8 @@ body {
     letter-spacing: $letter-spacing;
     text-align: center;
     padding: 20px 10px 19px;
-    color: $custom-gray-6;
-    background: $custom-gray-2;
+    color: $blue-800;
+    background: $green-1100;
 
     @media (max-width: map-get($grid-breakpoints, "md")) {
       font-size: $text4-size;
