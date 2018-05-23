@@ -86,25 +86,37 @@
 
         <ng-container *ngIf="caseDetails.kyc_status == 'pending'">
 
-          <ost-alert *ngIf="caseDetails.admin_status != 'unprocessed'" [alertStyleClass]="'alert-warning'">
-              <ng-container class="svg-container">
-                  <svg class="svg alert-warning-svg">
-                      <switch>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
-                      </switch>
-                  </svg>
-              </ng-container>
-              <ng-container class="alert-text">
-                <ng-container *ngIf="caseDetails.admin_status == 'qualified'; else issueReported">
+          <ng-container *ngIf="caseDetails.admin_status == 'qualified'; else issueReported">
+            <ost-alert [alertStyleClass]="'alert-warning'">
+                <ng-container class="svg-container">
+                    <svg class="svg alert-warning-svg">
+                        <switch>
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                        </switch>
+                    </svg>
+                </ng-container>
+                <ng-container class="alert-text">
                   <span class="ml-2">Admin qualified, waiting AML/CTF action</span>
                 </ng-container>
-                <ng-template #notRejected>
-                    <span class="ml-2">Issue reported and {{caseDetails.last_issue_email_sent_humanized}} email sent.</span>
-                </ng-template>
-              </ng-container>
-          </ost-alert>
+            </ost-alert>
+          </ng-container>
+          
+          <ng-template #issueReported>
+            <ost-alert *ngIf="caseDetails.last_issue_email_sent_humanized.length > 0;" [alertStyleClass]="'alert-warning'">
+                <ng-container class="svg-container">
+                    <svg class="svg alert-warning-svg">
+                        <switch>
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                        </switch>
+                    </svg>
+                </ng-container>
+                <ng-container class="alert-text">
+                  <span class="ml-2">Issue reported and {{caseDetails.last_issue_email_sent_humanized}} email sent.</span>
+                </ng-container>
+            </ost-alert>
+          </ng-template>
 
-        </ng-container>  
+        </ng-container>
 
         <div class="row">
           <div class="col-12 col-md-4 mb-3">
