@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, TemplateRef, ContentChild, Output, EventEmitter} from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
-import {Http, RequestOptionsArgs, ResponseContentType} from '@angular/http';
+import {Http, RequestOptionsArgs, ResponseContentType, URLSearchParams} from '@angular/http';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 
 @Component({
@@ -186,7 +186,7 @@ export class TableComponent implements OnInit {
   }
 
   getTableData() {
-    let params: RequestOptionsArgs = this.getParams(), 
+    let params = this.getParams(), 
         action: string = this.getAction(); 
     ;
     this.clearTableData();
@@ -217,11 +217,7 @@ export class TableComponent implements OnInit {
     }
   }
 
-  clearTableData(){
-    this.rows = [];
-  }
-
-  getParams(): RequestOptionsArgs {
+  getParams() {
     let requestParams =  this.requestParams;
     requestParams['page_number'] = this.getPageNumber();
     if (this.filterForm) {
@@ -233,14 +229,20 @@ export class TableComponent implements OnInit {
     if (this.searchForm){
       Object.assign(requestParams, this.getSeaching());
     }
-    if( this.metaData ){
-      requestParams['page_payload'] = this.metaData['page_payload'];
-    }
     if(this.getAction() == "post"){
-      return requestParams ;
+      let body = new URLSearchParams();
+      for ( var pKey in requestParams ) { 
+        if (!( requestParams.hasOwnProperty( pKey ) ) ) { continue; }
+        body.set( pKey, requestParams[ pKey ] );
+      }
+      return body ;
     }else{
       return { params : requestParams };
     }
+  }
+
+  clearTableData(){
+    this.rows = [];
   }
 
   onTableDataSuccess(response) {
