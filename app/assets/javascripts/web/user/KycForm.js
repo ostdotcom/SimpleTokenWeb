@@ -86,9 +86,6 @@
           oThis.fileCount++;
         }
 
-        var errorJEl = fileUpload.find('.error');
-        errorJEl.text("");
-
         var file_attrs = {
           title: fileUpload.data('title'),
           name: fileUpload.data('name'),
@@ -112,8 +109,11 @@
                 fileUpload.find('.file-wrapper-view').append($("<div class='file-name display-4 mt-2 display-background' data-file-count='" + oThis.fileCount + "'></div>").text($(this).val().split('\\').pop()).append('<svg class="icon upload-file-close-btn" data-file-count="' + oThis.fileCount + '"> <switch><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close-icon"></use> </switch> </svg>'));
                 fileUpload.find('.upload-file-close-btn').click(function (e) {
                   var fileCount = $(e.target).closest('.file-name').data('file-count');
+                  var fileUpload = $(this).closest('.file-upload');
+                  var errorJEl = fileUpload.find('.error');
                   fileUpload.find(".file-wrapper [data-file-count=" + fileCount + "]").remove();
                   fileUpload.find('.file-wrapper-view [data-file-count=' + fileCount + ']').remove();
+                  errorJEl.text("");
 
                   oThis.updateMultiFileBtnStateForInvestor(fileUpload);
                 }).bind(oThis);
@@ -182,6 +182,7 @@
           $(".upload-file-close-btn").click(function (event) {
             $(this).closest('.form-group').find('.upload-file').removeClass('disable-upload-button');
             $(this).closest('.form-group').find('.file-name').html('').removeClass('display-background');
+            
           });
         }
       });
