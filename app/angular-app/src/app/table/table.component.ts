@@ -236,7 +236,11 @@ export class TableComponent implements OnInit {
     if( this.metaData ){
       requestParams['page_payload'] = this.metaData['page_payload'];
     }
-    return { params : requestParams };
+    if(this.getAction() == "post"){
+      return requestParams ;
+    }else{
+      return { params : requestParams };
+    }
   }
 
   onTableDataSuccess(response) {
