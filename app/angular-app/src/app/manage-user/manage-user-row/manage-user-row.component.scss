@@ -4,6 +4,9 @@
 .delete-button{
   background-color: #eb4d4a;
   color: white;
+  &:hover{
+    background-color: #D74846;
+  }
 }
 .mobile{
   .delete-btn-div {
