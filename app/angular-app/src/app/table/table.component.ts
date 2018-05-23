@@ -210,7 +210,7 @@ export class TableComponent implements OnInit {
       }
       default: {
         if ( action !== "get") {
-          console.warn("Table Component Does not support '" + action + "' action. Falling back to get.");
+          console.warn("Table Component Does not support" + action + "action. Falling back to get.");
         }
         return "get"; 
       }
