@@ -86,6 +86,9 @@
           oThis.fileCount++;
         }
 
+        var errorJEl = fileUpload.find('.error');	
+        errorJEl.text("");
+
         var file_attrs = {
           title: fileUpload.data('title'),
           name: fileUpload.data('name'),
