@@ -51,7 +51,10 @@
                 </svg>
               </ng-container>
               <ng-container class="alert-text">
-                <span class="ml-2">Case approved, whitelisting is in process...</span>
+                <span class="ml-2">Case approved, 
+                  <ng-container *ngIf="caseDetails.whitelist_confirmation_pending">whitelist confirmation is pending...</ng-container>
+                  <ng-container *ngIf="!caseDetails.whitelist_confirmation_pending">whitelisting is in process...</ng-container>
+                </span>
               </ng-container>
             </ost-alert>
 
@@ -64,7 +67,10 @@
                   </svg>
                 </ng-container>
                 <ng-container class="alert-text">
-                  <span class="ml-2">Case approved, whitelisting is done.</span>
+                  <span class="ml-2">Case approved, 
+                    <ng-container *ngIf="caseDetails.whitelist_confirmation_pending">whitelist confirmation is pending...</ng-container>
+                    <ng-container *ngIf="!caseDetails.whitelist_confirmation_pending">whitelisting is done.</ng-container>
+                  </span>
                 </ng-container>
             </ost-alert>
 
@@ -77,7 +83,10 @@
                     </svg>
                 </ng-container>
                 <ng-container class="alert-text">
-                  <span class="ml-2">Case approved, whitelisting has failed!</span>
+                  <span class="ml-2">Case approved, 
+                    <ng-container *ngIf="caseDetails.whitelist_confirmation_pending">whitelist confirmation is pending...</ng-container>
+                    <ng-container *ngIf="!caseDetails.whitelist_confirmation_pending">whitelisting has failed!</ng-container>
+                  </span>
                 </ng-container>
             </ost-alert>
 
