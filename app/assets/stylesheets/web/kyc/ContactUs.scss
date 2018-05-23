@@ -53,7 +53,7 @@
   input[type="text"],
   input[type="email"],
   input[type="number"]{
-    width: 100%;
+//    width: 100%;
     color: #3c5056;
   }
 
@@ -71,7 +71,11 @@
 
   .error{
     padding: 2px 0 0;
-    min-height: 22px;
+    min-height: 20px;
+  }
+  .info-text{
+    color: #587a85;
+    font-size: 11px;
   }
 }
 
@@ -119,6 +123,7 @@
 textarea{
   background-color: transparent;
   border: 1px solid #3c5056;
+  color: #3c5056;
   &:focus{
     background-color: #fff;
   }
@@ -126,4 +131,23 @@ textarea{
 input[type="text"]::-webkit-input-placeholder{
   color: #3c5056;
   opacity: 0.5;
+}
+
+.datepicker{
+  padding: 15px!important;
+  table{
+    tr{
+      td{
+        width: 25px;
+        height: 25px;
+        &.disabled{
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+}
+
+body.modal-open{
+  overflow: hidden;
 }

@@ -68,6 +68,20 @@
         })
         .on('changeDate', function (e) {
           $(this).trigger('change');
+          var nextDate = new Date ($(this).datepicker('getDate'));
+          nextDate.setDate(nextDate.getDate()+1);
+          $('#ost-kyc-contact-us-form').find('input[name=token_sale_end_date]').datepicker('setStartDate', nextDate);
+        });
+
+      $('#ost-kyc-contact-us-form').find('input[name=token_sale_end_date]')
+        .datepicker({
+          format: 'dd/mm/yyyy',
+          autoclose: true,
+          startDate: new Date(),
+          orientation: 'bottom'
+        })
+        .on('changeDate', function (e) {
+          $(this).trigger('change');
         });
 
     },
@@ -87,7 +101,7 @@
 
     isContactFormValid: function () {
       simpletoken.utils.errorHandling.clearFormErrors();
-      oThis.jContactForm.find('input').trigger('change');
+      oThis.jContactForm.find('input, textarea').trigger('change');
       if(typeof oThis.jContactForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
         if(grecaptcha.getResponse() == ''){
           oThis.jContactForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
@@ -101,7 +115,7 @@
       var $contactusform = $('#ost-kyc-contact-us-form');
       var $contactusformurl = $contactusform.prop('action');
       var $formHeight = $contactusform.height();
-      $('#send-message-success').hide();
+      $('#successModal').modal('hide');
       $.ajax({
         url: $contactusformurl,
         dataType: 'json',
@@ -109,8 +123,8 @@
         data: $contactusform.serialize(),
         success: function (response) {
           if (response.success == true) {
-            $contactusform.hide();
-            $('#send-message-success').show().height($formHeight);
+//            $contactusform.hide();
+            $('#successModal').modal('show');
           } else {
             simpletoken.utils.errorHandling.displayFormErrors(response);
             if(typeof grecaptcha  != 'undefined'){
