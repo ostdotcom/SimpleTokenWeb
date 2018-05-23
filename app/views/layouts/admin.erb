@@ -37,9 +37,9 @@
   <%= yield %>
 </main>
 
-<% unless (params[:controller] == 'admin/home' && ['angular_app'].include?(params[:action])) %>
+<%# unless (params[:controller] == 'admin/home' && ['angular_app'].include?(params[:action])) %>
 <%= render :partial => "/admin/shared/footer" %>
-<% end %>
+<%# end %>
 
 <%= javascript_include_tag "admin/common" %>
 <%= javascript_include_tag "#{specific_manifest_file_path}", :defer => "defer" if has_specific_js_manifest_file? %>
