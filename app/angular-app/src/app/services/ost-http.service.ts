@@ -1,4 +1,4 @@
-import { Http, Request, RequestOptions, RequestOptionsArgs, Response, XHRBackend } from "@angular/http"
+import { Http, Request, RequestOptions, RequestOptionsArgs, Response, XHRBackend , URLSearchParams} from "@angular/http"
 import { Injectable } from "@angular/core"
 import { Observable } from "rxjs/Rx"
 
@@ -27,6 +27,35 @@ export class OstHttp extends Http {
     public request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
         return super.request(url, options)
                .catch(this.handleError);
+    }
+
+    public getOverwrite(url: string, options?: RequestOptionsArgs): Observable<Response> {
+      if( options &&  options['params']) {
+        let params : any = options['params'],
+            finalParams =  new URLSearchParams("" , new CustomEncoder());
+        ; 
+        for ( var pKey in params ) { 
+          if (!( params.hasOwnProperty( pKey ) ) ) { continue; }
+          finalParams.set( pKey, params[ pKey ] );
+        }
+        options['params'] = finalParams;
+      }
+
+      return super.get(url, options)
+             .catch(this.handleError);
+    }
+
+    public postOverwrite(url: string, body , options?: RequestOptionsArgs): Observable<Response> {
+      if( body ) {
+        let finalBody =  new URLSearchParams("" , new CustomEncoder());
+        for ( var pKey in body ) { 
+          if (!( body.hasOwnProperty( pKey ) ) ) { continue; }
+          finalBody.set( pKey, body[ pKey ] );
+        }
+        body = finalBody; 
+      }
+      return super.post(url, body , options)
+             .catch(this.handleError);
     }
 
     public handleError = (error: Response) => {
@@ -65,4 +94,23 @@ export class OstHttp extends Http {
 
       return Observable.throw(error);
     }
+}
+
+
+class CustomEncoder {
+  encodeKey(key: string): string {
+    return encodeURIComponent(key);
+  }
+
+  encodeValue(value: string): string {
+    return encodeURIComponent(value);
+  }
+
+  decodeKey(key: string): string {
+    return decodeURIComponent(key);
+  }
+
+  decodeValue(value: string): string {
+    return decodeURIComponent(value);
+  }
 }

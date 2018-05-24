@@ -60,7 +60,7 @@ export class OstSearchComponent implements OnInit {
     this.stateHandler.updateRequestStatus(this, true , false , false);
     this.searchTimeOut = setTimeout(() => {
       if(!this.searchValue) return ;
-      this.http.post( this.searchApi , searchForm.value ).subscribe(
+      this.http.get( this.searchApi , { params : searchForm.value } ).subscribe(
         response => {
           console.log("has success", response);
           let res = response.json();

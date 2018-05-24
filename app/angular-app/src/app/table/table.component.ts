@@ -208,6 +208,12 @@ export class TableComponent implements OnInit {
       case "post": {
         return "post"; 
       }
+      case "postoverwrite": {
+        return "postOverwrite"; 
+      }
+      case "getoverwrite": {
+        return "getOverwrite"; 
+      }
       default: {
         if ( action !== "get") {
           console.warn("Table Component Does not support" + action + "action. Falling back to get.");
@@ -229,13 +235,8 @@ export class TableComponent implements OnInit {
     if (this.searchForm){
       Object.assign(requestParams, this.getSeaching());
     }
-    if(this.getAction() == "post"){
-      let body = new URLSearchParams("" , new CustomEncoder());
-      for ( var pKey in requestParams ) { 
-        if (!( requestParams.hasOwnProperty( pKey ) ) ) { continue; }
-        body.set( pKey, requestParams[ pKey ] );
-      }
-      return body ;
+    if(this.getAction().indexOf('post') >= 0 ){
+      return requestParams ; 
     }else{
       return { params : requestParams };
     }
@@ -328,23 +329,4 @@ export class TableComponent implements OnInit {
   }
 
 
-}
-
-
-class CustomEncoder  {
-  encodeKey(key: string): string {
-    return encodeURIComponent(key);
-  }
-
-  encodeValue(value: string): string {
-    return encodeURIComponent(value);
-  }
-
-  decodeKey(key: string): string {
-    return decodeURIComponent(key);
-  }
-
-  decodeValue(value: string): string {
-    return decodeURIComponent(value);
-  }
 }
