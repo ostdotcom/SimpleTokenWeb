@@ -89,13 +89,4 @@ class Web::HomeController < Web::BaseController
   def ost_circulation
     render :layout => false
   end
-
-  # Action to show GDPR policies
-  #
-  # * Author: Pankaj
-  # * Date: 24/05/2018
-  # * Reviewed By:
-  #
-  def gdpr_policy
-  end
 end
