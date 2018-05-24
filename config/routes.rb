@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   constraints(InitKyc) do
     scope '', controller: 'web/kyc' do
       get '/' => :index
+      get '/gdpr' => :gdpr_policy
     end
 
     scope 'admin/', controller: 'admin/home' do
