@@ -82,6 +82,9 @@
         })
         .on('changeDate', function (e) {
           $(this).trigger('change');
+          var nextDate = new Date ($(this).datepicker('getDate'));
+          nextDate.setDate(nextDate.getDate()-1);
+          $('#ost-kyc-contact-us-form').find('input[name=token_sale_start_date]').datepicker('setEndDate', nextDate);
         });
 
     },
@@ -123,8 +126,8 @@
         data: $contactusform.serialize(),
         success: function (response) {
           if (response.success == true) {
-//            $contactusform.hide();
             $('#successModal').modal('show');
+            oThis.jContactForm[0].reset();
           } else {
             simpletoken.utils.errorHandling.displayFormErrors(response);
             if(typeof grecaptcha  != 'undefined'){

@@ -41,8 +41,9 @@
   }
 
   .radio-label{
-    color: #3c5056;
     font-size: 1rem;
+    cursor: pointer;
+    color: #597A84;
   }
 
   .input-container {
@@ -53,7 +54,6 @@
   input[type="text"],
   input[type="email"],
   input[type="number"]{
-//    width: 100%;
     color: #3c5056;
   }
 
@@ -71,7 +71,7 @@
 
   .error{
     padding: 2px 0 0;
-    min-height: 20px;
+    min-height: 25px;
   }
   .info-text{
     color: #587a85;
@@ -145,6 +145,11 @@ input[type="text"]::-webkit-input-placeholder{
         }
       }
     }
+  }
+}
+.datepicker-dropdown{
+  &:after, &:before{
+    display: none!important;
   }
 }
 
