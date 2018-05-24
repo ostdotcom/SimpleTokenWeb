@@ -46,7 +46,7 @@
               <ng-container class="svg-container">
                 <svg class="svg alert-warning-svg">
                     <switch>
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-pending-icon"></use>
                     </switch>
                 </svg>
               </ng-container>
@@ -59,7 +59,7 @@
               <ng-container class="svg-container">
                 <svg class="svg alert-warning-svg">
                   <switch>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-pending-icon"></use>
                   </switch>
                 </svg>
               </ng-container>
@@ -72,7 +72,7 @@
                 <ng-container class="svg-container">
                   <svg class="svg alert-success-svg">
                       <switch>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon"></use>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-success-icon"></use>
                       </switch>
                   </svg>
                 </ng-container>
@@ -101,7 +101,7 @@
               <ng-container class="svg-container">
                 <svg class="svg alert-success-svg">
                   <switch>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon"></use>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-success-icon"></use>
                   </switch>
                 </svg>
               </ng-container>
@@ -120,7 +120,7 @@
                 <ng-container class="svg-container">
                     <svg class="svg alert-warning-svg">
                         <switch>
-                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-pending-icon"></use>
                         </switch>
                     </svg>
                 </ng-container>
@@ -468,8 +468,8 @@
                 </ng-container>
                 <ng-template #caseInProcess>
 
-                    <span class="mr-2 font-weight-normal" *ngIf="caseDetails.whitelist_confirmation_pending">Whitelist confirmation is pending. Please check back after some time.</span>
-                    <span class="mr-2 font-weight-normal" *ngIf="caseDetails.case_reopen_inprocess">The case will be re-opened shortly. Please check back after some time.</span>
+                    <span class="mr-2 font-weight-normal text-center mt-1" *ngIf="caseDetails.whitelist_confirmation_pending">Whitelist confirmation is pending. Please check back after some time.</span>
+                    <span class="mr-2 font-weight-normal text-center mt-1" *ngIf="caseDetails.case_reopen_inprocess">The case will be re-opened shortly. Please check back after some time.</span>
                 </ng-template>
 
                 <ng-template #caseNotReopening>
@@ -502,11 +502,18 @@
 
     <div class="container">
       <ng-container *ngIf="showReportIssue">
-        <report-issues (closeReportIssueEvent)="showPageState()" [userDetails]='userDetails' [caseId]='caseId'></report-issues>
+        <report-issues (actionSuccessEvent)="onActionSuccess($event)"
+                       (closeReportIssueEvent)="showPageState()"
+                       [userDetails]='userDetails'
+                       [caseId]='caseId'>
+        </report-issues>
       </ng-container>
 
       <ng-container *ngIf="showUpdateEth">
-        <update-ethaddress [caseId]='caseId' (closeEthAddressEvent)="showPageState()"></update-ethaddress>
+        <update-ethaddress [caseId]='caseId' 
+                           (actionSuccessEvent)="onActionSuccess( $event )"
+                           (closeEthAddressEvent)="showPageState()">
+        </update-ethaddress>
       </ng-container>
     </div>
 

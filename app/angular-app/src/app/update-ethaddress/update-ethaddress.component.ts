@@ -24,6 +24,7 @@ export class UpdateEthaddressComponent implements OnInit {
   constructor(private http: OstHttp,  private scrollTopService : ScrollTopService) { }
 
   @Output("closeEthAddressEvent") closeEthAddressEvent =  new EventEmitter();
+  @Output('actionSuccessEvent') actionSuccessEvent =  new EventEmitter();
 
   ngOnInit() {
     this.scrollTopService.scrollTop();
@@ -48,7 +49,8 @@ export class UpdateEthaddressComponent implements OnInit {
           this.ethAddrInputDisabled = true;
           setTimeout(function(){
             this.closeEthAddressEvent.emit("closeEthAddressEvent");
-          }.bind(this), 3000);
+            this.actionSuccessEvent.emit();
+          }.bind(this), 1000);
         } else {
           this.errorMsg = res.err.display_text;
         }

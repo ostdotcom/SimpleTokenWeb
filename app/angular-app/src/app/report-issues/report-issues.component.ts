@@ -40,6 +40,7 @@ export class ReportIssuesComponent implements OnInit {
   }
 
   @Output('closeReportIssueEvent') closeReportIssueEvent =  new EventEmitter();
+  @Output('actionSuccessEvent') actionSuccessEvent =  new EventEmitter();
 
   ngOnInit() {
     this.scrollTopService.scrollTop();
@@ -94,6 +95,7 @@ export class ReportIssuesComponent implements OnInit {
           function(){
             $('#confirmation').modal('hide');
             this.hideReportIssue();
+            this.actionSuccessEvent.emit();
           }.bind(this),
           1000
         );
