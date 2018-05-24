@@ -51,7 +51,7 @@
                 </svg>
               </ng-container>
               <ng-container class="alert-text">
-                <span class="ml-2">Case approved, 
+                <span class="ml-2">Case approved,
                   <ng-container *ngIf="caseDetails.whitelist_confirmation_pending">whitelist confirmation is pending...</ng-container>
                   <ng-container *ngIf="!caseDetails.whitelist_confirmation_pending">whitelisting is in process...</ng-container>
                 </span>
@@ -67,7 +67,7 @@
                   </svg>
                 </ng-container>
                 <ng-container class="alert-text">
-                  <span class="ml-2">Case approved, 
+                  <span class="ml-2">Case approved,
                     <ng-container *ngIf="caseDetails.whitelist_confirmation_pending">whitelist confirmation is pending...</ng-container>
                     <ng-container *ngIf="!caseDetails.whitelist_confirmation_pending">whitelisting is done.</ng-container>
                   </span>
@@ -83,7 +83,7 @@
                     </svg>
                 </ng-container>
                 <ng-container class="alert-text">
-                  <span class="ml-2">Case approved, 
+                  <span class="ml-2">Case approved,
                     <ng-container *ngIf="caseDetails.whitelist_confirmation_pending">whitelist confirmation is pending...</ng-container>
                     <ng-container *ngIf="!caseDetails.whitelist_confirmation_pending">whitelisting has failed!</ng-container>
                   </span>
@@ -448,8 +448,8 @@
                 </ng-container>
                 <ng-template #caseInProcess>
 
-                    <span class="mr-2 font-weight-normal" *ngIf="caseDetails.whitelist_confirmation_pending">Whitelist confirmation is pending. Please check back after some time.</span>
-                    <span class="mr-2 font-weight-normal" *ngIf="caseDetails.case_reopen_inprocess">The case will be re-opened shortly. Please check back after some time.</span>
+                    <span class="mr-2 font-weight-normal text-center mt-1" *ngIf="caseDetails.whitelist_confirmation_pending">Whitelist confirmation is pending. Please check back after some time.</span>
+                    <span class="mr-2 font-weight-normal text-center mt-1" *ngIf="caseDetails.case_reopen_inprocess">The case will be re-opened shortly. Please check back after some time.</span>
                 </ng-template>
 
                 <ng-template #caseNotReopening>
