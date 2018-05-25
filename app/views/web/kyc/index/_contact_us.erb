@@ -1,39 +1,117 @@
 <section class="container-fluid" id="contactus">
   <div class="row container-contact-us">
-    <div class="col-12 col-sm-8 col-md-6 mx-auto">
+    <div class="container mx-auto">
       <div class="row">
         <div class="col-12 text-center">
           <h2>Contact Us</h2>
-          <h3>Want to learn more about OST Infinity KYC?</h3>
-          <p>Please provide us with the info below and we will get in touch shortly.</p>
+          <h4 class="mt-2">Get in Touch with Our Team and Get Started</h4>
+          <p>By submitting the info below you will be contacted via email about OST KYC product.<br/>
+            Please refer to OST <a href="<%= GlobalConstant::Base.company_other_product_urls['root_url'] %>privacy" title="Privacy Policy" target="_blank">Privacy Policy</a> for more information.</p>
         </div>
       </div>
       <div class="row">
-        <form action="/api/home/contact-us-kyc" class="custom-form form-group" id="ost-kyc-contact-us-form">
-          <div class="input-container">
+        <form action="/api/home/kyc/contact-us" class="custom-form form-group col-12 col-md-8 col-xl-6 mx-auto" id="ost-kyc-contact-us-form">
+
+          <div class="form-group">
             <label class="mb-1">FULL NAME</label>
-            <input class="input" id="full_name" type="text" name="full_name" value="" title="full name" required autocomplete="off" />
+            <input class="form-control input" id="full_name" type="text" name="full_name" value="" title="full name" required autocomplete="off"/>
             <span class="border-line"></span>
           </div>
           <div class="error" data-for="full_name"></div>
-          <div class="input-container">
-            <label class="mb-1">COMPANY WEBSITE</label>
-            <input class="input" id="company" type="text" name="company" value="" title="company name" required autocomplete="off" />
-            <span class="border-line"></span>
-          </div>
-          <div class="error" data-for="company"></div>
-          <div class="input-container">
+
+          <div class="form-group">
             <label class="mb-1">EMAIL ADDRESS</label>
-            <input class="input" id="email" type="email" name="email" value="" title="email address" required autocomplete="off" />
+            <input class="form-control input" id="email" type="email" name="email" value="" title="email address" required autocomplete="off" />
             <span class="border-line"></span>
           </div>
           <div class="error" data-for="email"></div>
-          <div class="input-container">
-            <label class="mb-1">CONTACT NUMBER</label>
-            <input class="input" id="contact_number" type="text" name="contact_number" value="" title="contact number" required autocomplete="off" />
+
+          <div class="form-group">
+            <label class="mb-1">COMPANY NAME</label>
+            <input class="form-control input" id="company" type="text" name="company" value="" title="company name" required autocomplete="off" />
             <span class="border-line"></span>
           </div>
-          <div class="error" data-for="contact_number"></div>
+          <div class="error" data-for="company"></div>
+
+          <div class="form-group">
+            <label class="mb-2 d-block">ESTIMATED PERIOD OF TOKEN SALE</label>
+            <div style="overflow: hidden" class="row">
+              <div class="col-12 col-md-6">
+                <div class="border-line" style="overflow: hidden">
+                  <span class="radio-label d-inline-block float-left">From</span>
+                  <input type="text" id="token_sale_start_date" class="form-control input rounded-0 w-50 float-left ml-2"  name="token_sale_start_date" title="Token sale start date" placeholder="DD/MM/YYYY" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1[012])[- /.][0-9]{4}" autocomplete="off" required/>
+                </div>
+                <div class="error" data-for="token_sale_start_date"></div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="border-line" style="overflow: hidden">
+                  <span class="radio-label d-inline-block float-left">To</span>
+                  <input type="text" id="token_sale_end_date" class="form-control input rounded-0 w-50 float-left ml-2" name="token_sale_end_date" title="Token sale End date" placeholder="DD/MM/YYYY" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1[012])[- /.][0-9]{4}" autocomplete="off" required/>
+                </div>
+                <div class="error" data-for="token_sale_end_date"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="mb-1 d-block">DO YOU NEED A CUSTOMIZABLE FRONT-END?</label>
+            <div class="info-text mb-3">
+              <span>
+                As a part of the OST KYC experience we provide a customizable front-end, where your future token holders can register and submit their details for your token sale.
+              </span>
+            </div>
+            <div class="form-check form-check-inline mr-3">
+              <div class="radio">
+                <input id="customizable_yes" name="need_front_end" type="radio" value="yes" title="DO YOU NEED A CUSTOMIZABLE FRONT-END?" checked />
+                <label for="customizable_yes" class="radio-label mb-0">Yes</label>
+              </div>
+            </div>
+            <div class="form-check form-check-inline">
+              <div class="radio">
+                <input id="customizable_no" name="need_front_end" type="radio" value="no" class="ml-2" title="DO YOU NEED A CUSTOMIZABLE FRONT-END?">
+                <label for="customizable_no" class="radio-label mb-0">No</label>
+              </div>
+            </div>
+          </div>
+          <div class="error" data-for="need_front_end"></div>
+
+
+          <div class="form-group">
+            <label class="mb-1 d-block">EXPECTED VOLUME OF PARTICIPANTS</label>
+            <div class="info-text mb-3">This information will help us to find the most suitable OST KYC plan for your token sale.</div>
+            <div class="form-check form-check-inline">
+              <div class="radio">
+                <input id="less_than_400" name="applicant_volume" type="radio" value="Less than 400" title="EXPECTED VOLUME OF PARTICIPANTS" checked>
+                <label for="less_than_400" class="radio-label mb-0">Less than 400</label>
+              </div>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <div class="radio">
+                <input id="up_to_5000" name="applicant_volume" type="radio" value="Up to 5000" title="EXPECTED VOLUME OF PARTICIPANTS">
+                <label for="up_to_5000" class="radio-label mb-0">Up to 5000</label>
+              </div>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <div class="radio">
+                <input id="more_than_5000" name="applicant_volume" type="radio" value="More than 5000" title="EXPECTED VOLUME OF PARTICIPANTS">
+                <label for="more_than_5000" class="radio-label mb-0">More than 5000</label>
+              </div>
+            </div>
+          </div>
+          <div class="error" data-for="applicant_volume"></div>
+
+          <div class="form-group">
+            <label class="mb-0 d-block">SHORT PROJECT DESCRIPTION & COMMENTS (OPTIONAL)</label>
+            <div class="info-text mb-3">Please tell us about your company and the goals of your planned token sale.</div>
+            <textarea class="w-100" id="project_description" name="project_description"
+                      title="SHORT PROJECT DESCRIPTION & COMMENTS" style="resize:none" rows="4" cols="50"></textarea>
+          </div>
+          <div class="error" data-for="project_description"></div>
+
+
+
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <div class="form-group form-recapcha">
             <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>"></div>
@@ -42,12 +120,23 @@
           <button type="submit" class="btn btn-primary mx-auto d-block" id="ost-kyc-contact-us-submit" style="margin: 0 auto;display: block;" title="Submit">SUBMIT</button>
           <div class="error" data-for="general_error"></div>
         </form>
-        <div id="send-message-success" style="display: none" class="w-100">
-          <div class="send-message-success">
-            <span class="small-title">Thank you for contacting us</span>
-            <span class="small-desc">We have received your request and our team we’ll get back to you very soon.</span>
+          <div id="successModal" class="modal fade user-modal" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
+              <div class="modal-content rounded-0">
+                <div class="modal-body text-center py-4">
+                  <svg class="icon" style="width:50px; height: 50px">
+                    <switch>
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                      </use>
+                    </switch>
+                  </svg>
+                  <h5>Thank you for contacting us.</h5>
+                  <h5>We have received your request and our team will get back to you very soon.</h5>
+                  <button class="btn btn-primary mt-4" title="Close" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
