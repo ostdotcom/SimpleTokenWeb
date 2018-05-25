@@ -70,7 +70,7 @@
           $(this).trigger('change');
           var nextDate = new Date ($(this).datepicker('getDate'));
           nextDate.setDate(nextDate.getDate()+1);
-          $('#ost-kyc-contact-us-form').find('input[name=token_sale_end_date]').datepicker('setStartDate', nextDate);
+          oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', nextDate);
         });
 
       $('#ost-kyc-contact-us-form').find('input[name=token_sale_end_date]')
@@ -84,7 +84,7 @@
           $(this).trigger('change');
           var nextDate = new Date ($(this).datepicker('getDate'));
           nextDate.setDate(nextDate.getDate()-1);
-          $('#ost-kyc-contact-us-form').find('input[name=token_sale_start_date]').datepicker('setEndDate', nextDate);
+          oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', nextDate);
         });
 
     },
@@ -127,6 +127,8 @@
         success: function (response) {
           if (response.success == true) {
             $('#successModal').modal('show');
+            oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', false);
+            oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', new Date());
             oThis.jContactForm[0].reset();
           } else {
             simpletoken.utils.errorHandling.displayFormErrors(response);
