@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
   @Input('processingMessage') processingMessage?: string;
   @Input('customErrorMessage') customErrorMessage?: string ;
   @Input('warningMessage') warningMessage?: string ;
-  @Input('action') action?: string = "get"; 
+  @Input('action') action?: string = "get";
 
   @Output('pageChangeEvent') pageChangeEvent? = new EventEmitter<number>();
   @Output('tableDataLoadedEvent') tableDataLoadedEvent? =  new EventEmitter();
@@ -146,6 +146,7 @@ export class TableComponent implements OnInit {
   onSearching(){
     let value = this.searchForm.value && this.searchForm.value['search[q]'];
     if(!value.trim()) return;
+    this.resetPageNumber();
     this.getTableData();
   }
 
@@ -186,8 +187,8 @@ export class TableComponent implements OnInit {
   }
 
   getTableData() {
-    let params = this.getParams(), 
-        action: string = this.getAction(); 
+    let params = this.getParams(),
+        action: string = this.getAction();
     ;
     this.clearTableData();
     this.stateHandler.updateRequestStatus(this, true);
@@ -203,22 +204,22 @@ export class TableComponent implements OnInit {
   }
 
   getAction(): string {
-    let action  = String(this.action).toLowerCase(); 
+    let action  = String(this.action).toLowerCase();
     switch(action) {
       case "post": {
-        return "post"; 
+        return "post";
       }
       case "postoverwrite": {
-        return "postOverwrite"; 
+        return "postOverwrite";
       }
       case "getoverwrite": {
-        return "getOverwrite"; 
+        return "getOverwrite";
       }
       default: {
         if ( action !== "get") {
           console.warn("Table Component Does not support" + action + "action. Falling back to get.");
         }
-        return "get"; 
+        return "get";
       }
     }
   }
@@ -235,8 +236,13 @@ export class TableComponent implements OnInit {
     if (this.searchForm){
       Object.assign(requestParams, this.getSeaching());
     }
-    if(this.getAction().indexOf('post') >= 0 ){
-      return requestParams ; 
+    if(this.getAction() == "post"){
+      let body = new URLSearchParams("" , new CustomEncoder());
+      for ( var pKey in requestParams ) {
+        if (!( requestParams.hasOwnProperty( pKey ) ) ) { continue; }
+        body.set( pKey, requestParams[ pKey ] );
+      }
+      return body ;
     }else{
       return { params : requestParams };
     }
@@ -330,3 +336,22 @@ export class TableComponent implements OnInit {
 
 
 }
+
+class CustomEncoder  {
+  encodeKey(key: string): string {
+    return encodeURIComponent(key);
+  }
+
+  encodeValue(value: string): string {
+    return encodeURIComponent(value);
+  }
+
+  decodeKey(key: string): string {
+    return decodeURIComponent(key);
+  }
+
+  decodeValue(value: string): string {
+    return decodeURIComponent(value);
+  }
+}
+

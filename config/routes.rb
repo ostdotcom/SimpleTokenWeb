@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get '/product' => :product
       get '/privacy' => :privacy
       get '/terms' => :terms
-      get '/news' => :news
+      # get '/news' => :news
       get '/careers' => :careers
       get '/documents' => :documents
       get '/partners' => :partners
@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   constraints(InitKyc) do
     scope '', controller: 'web/kyc' do
       get '/' => :index
+      get '/gdpr' => :gdpr_policy
     end
 
     scope 'admin/', controller: 'admin/home' do

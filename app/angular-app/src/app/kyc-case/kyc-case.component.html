@@ -34,55 +34,84 @@
           </ng-container>
           <ng-template #adminDenied>
             <ng-container class="alert-text" *ngIf="caseDetails.admin_status == 'denied'">
-              <span class="ml-2">Admin status denied</span>
+              <span class="ml-2">Case denied by Admin</span>
             </ng-container>
           </ng-template>
         </ost-alert>
 
         <ng-container *ngIf="caseDetails.kyc_status == 'approved'">
-          <ng-container *ngIf="appConfig.getClientSetup().has_whitelist_setup == true">
+          <ng-container *ngIf="appConfig.getClientSetup().has_whitelist_setup == true; else noWhitelistSetup">
 
             <ost-alert *ngIf="caseDetails.whitelist_status == 'unprocessed' || caseDetails.whitelist_status == 'started'" [alertStyleClass]="'alert-warning'">
               <ng-container class="svg-container">
                 <svg class="svg alert-warning-svg">
                     <switch>
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-pending-icon"></use>
                     </switch>
                 </svg>
               </ng-container>
               <ng-container class="alert-text">
-                <span class="ml-2">Case approved, whitelisting is in process...</span>
+                <span class="ml-2">Case approved - whitelisting in progress</span>
               </ng-container>
             </ost-alert>
 
-            <ost-alert *ngIf="caseDetails.whitelist_status == 'done'" [alertStyleClass]="'alert-success'">
+            <ost-alert *ngIf="caseDetails.whitelist_status == 'done' && caseDetails.whitelist_confirmation_pending" [alertStyleClass]="'alert-warning'">
+              <ng-container class="svg-container">
+                <svg class="svg alert-warning-svg">
+                  <switch>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-pending-icon"></use>
+                  </switch>
+                </svg>
+              </ng-container>
+              <ng-container class="alert-text">
+                <span class="ml-2">Case approved - whitelisting done, awaiting confirmation</span>
+              </ng-container>
+            </ost-alert>
+
+            <ost-alert *ngIf="caseDetails.whitelist_status == 'done' && !caseDetails.whitelist_confirmation_pending " [alertStyleClass]="'alert-success'">
                 <ng-container class="svg-container">
                   <svg class="svg alert-success-svg">
                       <switch>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon"></use>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-success-icon"></use>
                       </switch>
                   </svg>
                 </ng-container>
                 <ng-container class="alert-text">
-                  <span class="ml-2">Case approved, whitelisting is done.</span>
+                  <span class="ml-2">The case has been approved</span>
                 </ng-container>
             </ost-alert>
 
-            <ost-alert *ngIf="caseDetails.whitelist_status == 'failed'" [alertStyleClass]="'alert-danger'">
-                <ng-container class="svg-container">
-                    <svg class="svg alert-error-svg">
-                        <switch>
-                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon"></use>
-                        </switch>
-                    </svg>
-                </ng-container>
-                <ng-container class="alert-text">
-                  <span class="ml-2">Case approved, whitelisting has failed!</span>
-                </ng-container>
+            <ost-alert *ngIf="caseDetails.whitelist_status == 'failed'" [alertStyleClass]="'alert-warning'">
+              <ng-container class="svg-container">
+                <svg class="svg alert-warning-svg">
+                  <switch>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                  </switch>
+                </svg>
+              </ng-container>
+              <ng-container class="alert-text">
+                <span class="ml-2">Case approved - whitelisting failed</span>
+              </ng-container>
             </ost-alert>
 
           </ng-container>
+
+          <ng-template #noWhitelistSetup>
+            <ost-alert [alertStyleClass]="'alert-success'">
+              <ng-container class="svg-container">
+                <svg class="svg alert-success-svg">
+                  <switch>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-success-icon"></use>
+                  </switch>
+                </svg>
+              </ng-container>
+              <ng-container class="alert-text">
+                  <span class="ml-2">The case has been approved</span>
+              </ng-container>
+            </ost-alert>
+          </ng-template>
         </ng-container>
+
 
         <ng-container *ngIf="caseDetails.kyc_status == 'pending'">
 
@@ -91,12 +120,12 @@
                 <ng-container class="svg-container">
                     <svg class="svg alert-warning-svg">
                         <switch>
-                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-pending-icon"></use>
                         </switch>
                     </svg>
                 </ng-container>
                 <ng-container class="alert-text">
-                  <span class="ml-2">Admin qualified, waiting AML/CTF action</span>
+                  <span class="ml-2">Case approved by admin and is awaiting AML/CTF action</span>
                 </ng-container>
             </ost-alert>
           </ng-container>
@@ -111,7 +140,7 @@
                     </svg>
                 </ng-container>
                 <ng-container class="alert-text">
-                  <span class="ml-2">Issue reported and {{caseDetails.last_issue_email_sent_humanized}} email sent.</span>
+                  <span class="ml-2">Issue reported - {{caseDetails.last_issue_email_sent_humanized}} email sent.</span>
                 </ng-container>
             </ost-alert>
           </ng-template>
@@ -439,8 +468,8 @@
                 </ng-container>
                 <ng-template #caseInProcess>
 
-                    <span class="mr-2 font-weight-normal" *ngIf="caseDetails.whitelist_confirmation_pending">Whitelist confirmation is pending. Please check back after some time.</span>
-                    <span class="mr-2 font-weight-normal" *ngIf="caseDetails.case_reopen_inprocess">The case will be re-opened shortly. Please check back after some time.</span>
+                    <span class="mr-2 font-weight-normal text-center mt-1" *ngIf="caseDetails.whitelist_confirmation_pending">Whitelist confirmation is pending. Please check back after some time.</span>
+                    <span class="mr-2 font-weight-normal text-center mt-1" *ngIf="caseDetails.case_reopen_inprocess">The case will be re-opened shortly. Please check back after some time.</span>
                 </ng-template>
 
                 <ng-template #caseNotReopening>
@@ -473,11 +502,18 @@
 
     <div class="container">
       <ng-container *ngIf="showReportIssue">
-        <report-issues (closeReportIssueEvent)="showPageState()" [userDetails]='userDetails' [caseId]='caseId'></report-issues>
+        <report-issues (actionSuccessEvent)="onActionSuccess($event)"
+                       (closeReportIssueEvent)="showPageState()"
+                       [userDetails]='userDetails'
+                       [caseId]='caseId'>
+        </report-issues>
       </ng-container>
 
       <ng-container *ngIf="showUpdateEth">
-        <update-ethaddress [caseId]='caseId' (closeEthAddressEvent)="showPageState()"></update-ethaddress>
+        <update-ethaddress [caseId]='caseId' 
+                           (actionSuccessEvent)="onActionSuccess( $event )"
+                           (closeEthAddressEvent)="showPageState()">
+        </update-ethaddress>
       </ng-container>
     </div>
 
