@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class OstAlertComponent implements OnInit {
 
-  @Input("alertStyleClass")  alertStyleClass; 
+  @Input("alertStyleClass")  alertStyleClass;
+  @Input("alertMessage") alertMessage;
 
   constructor() { }
 
