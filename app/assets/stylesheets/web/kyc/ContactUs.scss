@@ -79,38 +79,6 @@
   }
 }
 
-#send-message-success{
-  position: relative;
-  .send-message-success{
-    text-align: center;
-    background: #91C0AD;
-    border-radius: 10px;
-    padding: 10px 15px 25px 10px;
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    .small-title{
-      color: #fff;
-      text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 3px;
-      margin-top: 20px;
-      margin-bottom: 5px;
-      display: block;
-    }
-    .small-desc{
-      color: #fff;
-      font-weight: 300;
-      font-size: 16px;
-      display: block;
-    }
-  }
-}
-
-
 .form-recapcha .form-recapcha-wrap div {
   text-align: center;
   width:auto !important;
