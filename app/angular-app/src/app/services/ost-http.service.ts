@@ -29,7 +29,7 @@ export class OstHttp extends Http {
                .catch(this.handleError);
     }
 
-    public getOverwrite(url: string, options?: RequestOptionsArgs): Observable<Response> {
+    public get(url: string, options?: RequestOptionsArgs): Observable<Response> {
       if( options &&  options['params']) {
         let params : any = options['params'],
             finalParams =  new URLSearchParams("" , new CustomEncoder());
@@ -45,7 +45,7 @@ export class OstHttp extends Http {
              .catch(this.handleError);
     }
 
-    public postOverwrite(url: string, body , options?: RequestOptionsArgs): Observable<Response> {
+    public post(url: string, body , options?: RequestOptionsArgs): Observable<Response> {
       if( body ) {
         let finalBody =  new URLSearchParams("" , new CustomEncoder());
         for ( var pKey in body ) { 

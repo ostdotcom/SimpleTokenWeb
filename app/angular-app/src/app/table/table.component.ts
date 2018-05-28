@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
   @Input('processingMessage') processingMessage?: string;
   @Input('customErrorMessage') customErrorMessage?: string ;
   @Input('warningMessage') warningMessage?: string ;
-  @Input('action') action?: string = "get"; 
+  @Input('action') action?: string = "get";
 
   @Output('pageChangeEvent') pageChangeEvent? = new EventEmitter<number>();
   @Output('tableDataLoadedEvent') tableDataLoadedEvent? =  new EventEmitter();
@@ -49,6 +49,7 @@ export class TableComponent implements OnInit {
   metaData: object;
   errorMessage: string="";
   resetPageTimeout: any;
+  tableDataTimeOut: any;
 
 
   ngOnInit() {
@@ -60,12 +61,12 @@ export class TableComponent implements OnInit {
   }
 
   ngAfterContentInit() {
+    if (this.getDataOnInit) {
+      this.getTableData();
+    }
     setTimeout(() => {
-      if (this.getDataOnInit) {
-        this.getTableData();
-      }
       this.bindTableChangeEvents();
-    }, 100);
+    }, 0);
   }
 
   configOverWrites() {
@@ -113,12 +114,9 @@ export class TableComponent implements OnInit {
   }
 
   resetSearch(){
-    clearTimeout( this.resetPageTimeout );
     let value = this.searchForm.value && this.searchForm.value['search[q]'];
     if(!value){
-      this.resetPageTimeout = setTimeout(()=> {
-        this.getTableData();
-      } , 300);
+      this.getTableData();
     }
   }
 
@@ -163,7 +161,6 @@ export class TableComponent implements OnInit {
   }
 
   getSeaching() {
-    console.log('searchForm', this.searchForm.value);
     return this.searchForm && this.searchForm.value;
   }
 
@@ -186,39 +183,40 @@ export class TableComponent implements OnInit {
   }
 
   getTableData() {
-    let params = this.getParams(), 
-        action: string = this.getAction(); 
-    ;
-    this.clearTableData();
-    this.stateHandler.updateRequestStatus(this, true);
-    this.http[action](this.dataUrl, params).subscribe(
-      response => {
-        let res = response.json();
-        this.onTableDataSuccess(res);
-      },
-      error => {
-        let err = error.json();
-        this.onTableDataError( err );
+   this.preGetTableData();
+   this.tableDataTimeOut = setTimeout( () => {
+      let params = this.getParams(),
+      action: string = this.getAction();
+      ;
+      this.http[action](this.dataUrl, params).subscribe(
+        response => {
+          let res = response.json();
+          this.onTableDataSuccess(res);
+        },
+        error => {
+          let err = error.json();
+          this.onTableDataError( err );
       })
+    } ,  300);
+  }
+
+  preGetTableData(){
+    this.stateHandler.updateRequestStatus(this, true);
+    this.clearTableData();
+    clearTimeout(this.tableDataTimeOut);
   }
 
   getAction(): string {
-    let action  = String(this.action).toLowerCase(); 
+    let action  = String(this.action).toLowerCase();
     switch(action) {
       case "post": {
-        return "post"; 
-      }
-      case "postoverwrite": {
-        return "postOverwrite"; 
-      }
-      case "getoverwrite": {
-        return "getOverwrite"; 
+        return "post";
       }
       default: {
         if ( action !== "get") {
           console.warn("Table Component Does not support" + action + "action. Falling back to get.");
         }
-        return "get"; 
+        return "get";
       }
     }
   }
@@ -236,7 +234,7 @@ export class TableComponent implements OnInit {
       Object.assign(requestParams, this.getSeaching());
     }
     if(this.getAction().indexOf('post') >= 0 ){
-      return requestParams ; 
+      return requestParams ;
     }else{
       return { params : requestParams };
     }

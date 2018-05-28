@@ -57,14 +57,17 @@ export class DashboardComponent extends PageBaseComponentComponent implements On
       this.initSort();
       this.initPagination();
       this.setQueryParams({});
-      setTimeout(function(){
-        $('.selectpicker').selectpicker('render');
-      },  0)
     });
 
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
-      this.resetDownLoadCsvModal(); 
+      this.resetDownLoadCsvModal();
     });
+  }
+
+  ngAfterViewInit(){
+    setTimeout(function(){
+      $('.selectpicker').selectpicker('render');
+    },  0)
   }
 
   resetDownLoadCsvModal(){

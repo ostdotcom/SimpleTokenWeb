@@ -28,7 +28,7 @@ export class OstOptionsComponent implements OnInit {
   ngAfterContentInit(){
     setTimeout(function(){
         $('.selectpicker').selectpicker();
-    } , 100);
+    } , 0);
   }
 
 }

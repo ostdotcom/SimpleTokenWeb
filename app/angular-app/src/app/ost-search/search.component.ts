@@ -62,12 +62,10 @@ export class OstSearchComponent implements OnInit {
       if(!this.searchValue) return ;
       this.http.get( this.searchApi , { params : searchForm.value } ).subscribe(
         response => {
-          console.log("has success", response);
           let res = response.json();
           this.onSuccess( res );
         },
         error => {
-          console.log("has error", error);
           let err = error.json();
           this.onError( err );
         }
