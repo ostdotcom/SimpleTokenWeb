@@ -144,6 +144,7 @@ export class TableComponent implements OnInit {
   onSearching(){
     let value = this.searchForm.value && this.searchForm.value['search[q]'];
     if(!value.trim()) return;
+    this.resetPageNumber();
     this.getTableData();
   }
 

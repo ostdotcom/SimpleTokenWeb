@@ -1,6 +1,7 @@
 <div class="alert {{alertStyleClass}}" role="alert">
   <div class="d-flex justify-content-center align-items-center">
-    <ng-content select=".svg-container"></ng-content>
-    <ng-content select=".alert-text"></ng-content>
+          <ng-content select=".svg-container">
+          </ng-content>
+       <span class="ml-2">{{alertMessage}}</span>
   </div>
 </div>
