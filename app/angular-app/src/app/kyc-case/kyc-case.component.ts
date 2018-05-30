@@ -30,7 +30,7 @@ export class KycCaseComponent implements OnInit {
   caseId;
   nextCaseId;
   previousCaseId;
-  isChecked;
+  isChecked = false;
   isStatusDenied :boolean =  false ;
   isReportIssue :boolean = false ;
   isWhitelisting:boolean =  false;
