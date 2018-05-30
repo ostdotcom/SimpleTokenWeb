@@ -30,6 +30,7 @@ export class KycCaseComponent implements OnInit {
   caseId;
   nextCaseId;
   previousCaseId;
+  isChecked;
   isStatusDenied :boolean =  false ;
   isReportIssue :boolean = false ;
   isWhitelisting:boolean =  false;
@@ -50,6 +51,18 @@ export class KycCaseComponent implements OnInit {
       this.fetchCase();
       this.hideModal();
     });
+
+  }
+
+  ngAfterViewChecked(){
+    if ($(".card").length && ! this.isChecked){
+      this.isChecked = true;
+      let computedWidth = $(".card.grey-background").css("width").slice(0,-2) - 100 + "px";
+      $(".card.grey-background").css("min-height", computedWidth);
+      $("img.card-img-top").on("load", function(){
+        $(".card.grey-background").css("min-height", '');
+      });
+    }
   }
 
   fetchCase() {
@@ -130,3 +143,5 @@ export class KycCaseComponent implements OnInit {
   }
 
 }
+
+

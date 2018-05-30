@@ -510,7 +510,7 @@
       </ng-container>
 
       <ng-container *ngIf="showUpdateEth">
-        <update-ethaddress [caseId]='caseId' 
+        <update-ethaddress [caseId]='caseId'
                            (actionSuccessEvent)="onActionSuccess( $event )"
                            (closeEthAddressEvent)="showPageState()">
         </update-ethaddress>
