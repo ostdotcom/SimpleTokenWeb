@@ -12,6 +12,7 @@ import { Meta } from '@angular/platform-browser';
 
 @Injectable()
 export class OstHttp extends Http {
+  customEncoder : CustomEncoder; 
 
     constructor(
         backend: XHRBackend,
@@ -22,6 +23,7 @@ export class OstHttp extends Http {
         super(backend, options);
         let csrf_token = meta.getTag('name=csrf-token').content;
         this._defaultOptions.headers.set( 'X-CSRF-Token', csrf_token );
+        this.customEncoder = new CustomEncoder(); 
     }
 
     public request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
@@ -32,7 +34,7 @@ export class OstHttp extends Http {
     public get(url: string, options?: RequestOptionsArgs): Observable<Response> {
       if( options &&  options['params']) {
         let params : any = options['params'],
-            finalParams =  new URLSearchParams("" , new CustomEncoder());
+            finalParams =  new URLSearchParams("" , this.customEncoder );
         ; 
         for ( var pKey in params ) { 
           if (!( params.hasOwnProperty( pKey ) ) ) { continue; }
@@ -47,7 +49,7 @@ export class OstHttp extends Http {
 
     public post(url: string, body , options?: RequestOptionsArgs): Observable<Response> {
       if( body ) {
-        let finalBody =  new URLSearchParams("" , new CustomEncoder());
+        let finalBody =  new URLSearchParams("" , this.customEncoder );
         for ( var pKey in body ) { 
           if (!( body.hasOwnProperty( pKey ) ) ) { continue; }
           finalBody.set( pKey, body[ pKey ] );
@@ -74,8 +76,6 @@ export class OstHttp extends Http {
       }else {
         erroMsg = "Unable to connect to server";
       }
-
-
         if( erroMsg ) {
           let _body =  error['_body'] || {};
           try {
@@ -89,9 +89,6 @@ export class OstHttp extends Http {
           _body['err']['display_text'] = erroMsg;
           error['_body'] = JSON.stringify(_body);
       }
-
-
-
       return Observable.throw(error);
     }
 }
