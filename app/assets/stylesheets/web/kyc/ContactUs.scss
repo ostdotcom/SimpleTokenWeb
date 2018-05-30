@@ -57,16 +57,29 @@
     color: #3c5056;
   }
 
-  .input {
+  .form-input {
     border: 0;
     padding: 0 0 5px;
+    border-radius: 0;
     background-color: transparent;
+    border-bottom: 1px solid #3C5056;
+    &:focus{
+      border-bottom: 1px solid #6CA3A9;
+    }
   }
 
-  .border-line {
-    border-bottom: 1px solid #3c5056;
+  .form-input ~ .input-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #6CA3A9;
+  }
+
+  .form-input:focus ~ .input-border {
     width: 100%;
-    display: block;
+    transition: 0.5s;
   }
 
   .error{

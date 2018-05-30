@@ -6,19 +6,31 @@ body{
   color: inherit;
 }
 
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
+.btn{
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: .688rem 1.6rem;
+  &.btn-primary{
+    padding: .782rem 1.6rem !important;
+  }
+  &.btn-secondary{
+    border: 1.5px solid #34445b;
   }
 }
-@media (min-width: 992px) {
-  .container {
-    width: 750px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 970px;
-  }
-}
+
+//@media (min-width: 768px) {
+//  .container {
+//    width: 750px;
+//  }
+//}
+//@media (min-width: 992px) {
+//  .container {
+//    width: 750px;
+//  }
+//}
+//@media (min-width: 1200px) {
+//  .container {
+//    width: 970px;
+//  }
+//}
 
