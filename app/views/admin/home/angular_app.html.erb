@@ -8,3 +8,41 @@
 
 <app-root id="main_app_root" data-init-data-json="<%= initialConfig %>"></app-root>
 
+
+
+<% content_for :javascript do %>
+  <script text="text/javascript">
+    $(document).ready(function () {
+
+      $( 'body' ).off('show.bs.modal').on('show.bs.modal' , function( event ) {
+        var dTarget = event.target
+          , dPage = this
+          , jPage           = $( dPage )
+          , jTarget         = $( dTarget )
+          , jPageParents    = jPage.parents()
+          , jTargetParents  = jTarget.parents()
+          , jPageChildren   = jPage.find("> *")
+          , jToBlur
+          , jChainElements
+        ;
+
+        jChainElements = jTargetParents.not( jPageParents );
+        jChainElements.each( function (indx, el) {
+          var jParent = $( el );
+          var jThisToBlur = jParent.find("> *").not( jChainElements ).not( jTarget );
+          if ( !jToBlur ) {
+            jToBlur = jThisToBlur;
+          } else {
+            jToBlur = jToBlur.add( jThisToBlur );
+          }
+        });
+        jToBlur.addClass("blured-by-modal-show");
+      });
+
+      $( 'body' ).off('hidden.bs.modal').on('hidden.bs.modal' , function( event ) {
+        $('.blured-by-modal-show').removeClass('blured-by-modal-show');
+      });
+
+    });
+  </script>
+<% end %>
