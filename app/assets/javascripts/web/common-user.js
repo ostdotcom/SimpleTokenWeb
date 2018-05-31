@@ -2,7 +2,11 @@
 //= require plugins/popper/popper
 //= require plugins/bootstrap-4/bootstrap
 //= require plugins/jquery-number/jquery.number
+//= require plugins/jquery-validate/jquery.validate
+//= require plugins/jquery-validate/ost-jquery-validate-modifications
+//= require plugins/jquery-validate/additional-methods
+//= require plugins/helpers/formHelper
 //= require web/common/SimpleTokenNamespace
-//= require web/common/ErrorHandling
 //= require web/common/UtmHelper
 //= require web/common/TopNavBar
+//= require plugins/helpers/ajaxHooks

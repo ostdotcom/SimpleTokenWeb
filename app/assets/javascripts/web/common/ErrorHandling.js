@@ -194,30 +194,5 @@ jQuery.fn.extend({
           targetEl.setCustomValidity("");
         }
       });
-        // $form.find('input, select, textarea').each(function(){
-        //     $(this).on('change', function(){
-        //         if (this.required && this.value == '') {
-        //             simpletoken.utils.errorHandling.addFormError(this.name, this.title+' is required');
-        //         }
-        //         else if(this.validity.typeMismatch || this.validity.patternMismatch){
-        //             simpletoken.utils.errorHandling.addFormError(this.name, 'Please enter a valid '+this.title);
-        //         }
-        //         else if(this.validity.rangeUnderflow){
-        //             simpletoken.utils.errorHandling.addFormError(this.name, this.title+' cannot be less than '+this.min);
-        //         }
-        //         else if(this.type == 'file' && this.files.length > 0){
-        //             if(this.files[0].size < $(this).data('min-bytes')){
-        //                 simpletoken.utils.errorHandling.addFormError(this.name, this.title+' file size too small');
-        //             }
-        //             if(this.files[0].size > $(this).data('max-bytes')){
-        //                 var maxMb = $(this).data('max-bytes') / (1024*1024);
-        //                 simpletoken.utils.errorHandling.addFormError(this.name, this.title+' file size too large. Max allowed '+maxMb+' Mb');
-        //             }
-        //         }
-        //         else {
-        //             this.setCustomValidity("");
-        //         }
-        //     });
-        // });
     },
 });

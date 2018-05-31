@@ -7,13 +7,29 @@
 
   KycNs.index = oThis = {
     jContactForm: null,
+    formHelper: null,
     jVideoCarousal: null,
+    isCaptchaValid : false,
 
     init: function (config) {
       oThis.jContactForm = $('#ost-kyc-contact-us-form');
-      oThis.jContactForm.setCustomValidity();
-      oThis.jVideoCarousal = $("#kyc-video-carousel");
+      oThis.formHelper =  oThis.jContactForm.formHelper({
+        success: function (response) {
+          if (response.success == true) {
+            $('#successModal').modal('show');
+            oThis.jContactForm[0].reset();
+            oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', false);
+            oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', new Date());
+          }
+        },
+        complete: function (response) {
+          if(typeof grecaptcha  != 'undefined'){
+            grecaptcha.reset();
+          }
+        }
+      });
 
+      oThis.jVideoCarousal = $("#kyc-video-carousel");
       oThis.bindEventListeners();
       oThis.bindButtonActions();
     },
@@ -44,11 +60,6 @@
         oThis.showVideo( $(this) );
       });
 
-      $("#ost-kyc-contact-us-submit").on("click", function (event) {
-        event.preventDefault();
-        oThis.onContactFormSubmit( event );
-      });
-
       $(".smooth-scroll").on('click', function (event) {
         if (this.hash !== "") {
           event.preventDefault();
@@ -59,7 +70,7 @@
         }
       });
 
-      $('#ost-kyc-contact-us-form').find('input[name=token_sale_start_date]')
+      oThis.jContactForm .find('input[name=token_sale_start_date]')
         .datepicker({
           format: 'dd/mm/yyyy',
           autoclose: true,
@@ -73,7 +84,7 @@
           oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', nextDate);
         });
 
-      $('#ost-kyc-contact-us-form').find('input[name=token_sale_end_date]')
+      oThis.jContactForm .find('input[name=token_sale_end_date]')
         .datepicker({
           format: 'dd/mm/yyyy',
           autoclose: true,
@@ -87,71 +98,25 @@
           oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', nextDate);
         });
 
+      oThis.jContactForm.on("beforeSubmit", function (event) {
+        if ( !oThis.isCaptchaValid ) {
+          event.preventDefault();
+        }
+      });
+
+      $('#ost-kyc-contact-us-btn').on('click' , function () {
+         oThis.isCaptchaValid = oThis.validateCaptcha();
+         oThis.formHelper.jForm.submit();
+      });
     },
 
-    onContactFormSubmit: function () {
-
-      //Validate Everything Again
-      if ( !oThis.isContactFormValid() ) {
-        console.log("Validation failed!");
-        return;
-      }
-      $("#ost-kyc-contact-us-submit")
-        .text('sending ...')
-        .prop( "disabled", true );
-      oThis.onSendMessage();
-    },
-
-    isContactFormValid: function () {
-      simpletoken.utils.errorHandling.clearFormErrors();
-      oThis.jContactForm.find('input, textarea').trigger('change');
+    validateCaptcha: function () {
       if(typeof oThis.jContactForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
         if(grecaptcha.getResponse() == ''){
           oThis.jContactForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
         }
       }
       return oThis.jContactForm.find('.error:not(:empty)').length == 0;
-    },
-
-    onSendMessage: function () {
-      console.log("onSendMessage :: triggered!");
-      var $contactusform = $('#ost-kyc-contact-us-form');
-      var $contactusformurl = $contactusform.prop('action');
-      var $formHeight = $contactusform.height();
-      $('#successModal').modal('hide');
-      $.ajax({
-        url: $contactusformurl,
-        dataType: 'json',
-        method: 'POST',
-        data: $contactusform.serialize(),
-        success: function (response) {
-          if (response.success == true) {
-            $('#successModal').modal('show');
-            oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', false);
-            oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', new Date());
-            oThis.jContactForm[0].reset();
-          } else {
-            simpletoken.utils.errorHandling.displayFormErrors(response);
-            if(typeof grecaptcha  != 'undefined'){
-              grecaptcha.reset();
-            }
-          }
-        },
-        error: function (jqXHR, exception) {
-          utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
-        },
-
-        complete: function (response) {
-          $("#ost-kyc-contact-us-submit")
-            .text('SUBMIT')
-            .prop('disabled', false);
-
-          if(typeof grecaptcha  != 'undefined'){
-            grecaptcha.reset();
-          }
-        }
-
-      });
     },
 
     isVideoPlaying: false,
