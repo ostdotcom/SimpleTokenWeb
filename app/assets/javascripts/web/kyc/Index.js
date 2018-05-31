@@ -78,7 +78,7 @@
           orientation: 'bottom'
         })
         .on('changeDate', function (e) {
-          $(this).trigger('change');
+          $(this).valid();
           var nextDate = new Date ($(this).datepicker('getDate'));
           nextDate.setDate(nextDate.getDate()+1);
           oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', nextDate);
@@ -92,7 +92,7 @@
           orientation: 'bottom'
         })
         .on('changeDate', function (e) {
-          $(this).trigger('change');
+          $(this).valid();
           var nextDate = new Date ($(this).datepicker('getDate'));
           nextDate.setDate(nextDate.getDate()-1);
           oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', nextDate);
