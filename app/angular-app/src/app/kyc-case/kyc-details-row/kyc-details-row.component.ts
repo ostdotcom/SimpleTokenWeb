@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+declare var $: any;
+
 
 @Component({
   selector: 'kyc-details-row',
@@ -12,6 +14,10 @@ export class KycDetailsRowComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  closeModalEvent(){
+    $("#detailsModal").trigger("hidden.bs.modal");
   }
 
 }
