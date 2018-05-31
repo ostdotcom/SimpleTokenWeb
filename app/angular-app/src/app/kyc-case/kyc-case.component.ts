@@ -105,7 +105,7 @@ export class KycCaseComponent implements OnInit {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
-  onActionSuccess(){
+  onActionSuccess(e){
     this.fetchCase();
   }
 
