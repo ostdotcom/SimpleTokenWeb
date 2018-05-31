@@ -49,7 +49,6 @@ export class KycCaseComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.caseId = params.get('id');
       this.fetchCase();
-      this.hideModal();
     });
 
   }
@@ -82,10 +81,6 @@ export class KycCaseComponent implements OnInit {
     }, error => {
       this.stateHandler.updateRequestStatus( this, false,  true , false ,  error.json());
     })
-  }
-
-  hideModal(){
-    $("#detailsModal").modal('hide');
   }
 
   onSuccess( res ) {
