@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Router} from '@angular/router';
 declare var $: any;
 
 
@@ -11,13 +12,17 @@ export class KycDetailsRowComponent implements OnInit {
   @Input() row;
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   closeModalEvent(){
-    $("#detailsModal").trigger("hidden.bs.modal");
+    $("#detailsModal").off("hidden.bs.modal").on("hidden.bs.modal", () => {
+      this.router.navigate(['/admin/case-id/', this.row.id]);
+    });
+    $("#detailsModal").modal("hide");
+
   }
 
 }
