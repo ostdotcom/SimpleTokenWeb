@@ -9,9 +9,10 @@ body{
 .btn{
   font-size: 0.9rem;
   font-weight: 500;
-  padding: .688rem 1.6rem;
+  padding: .813rem 1.6rem;
+  line-height: 100%;
   &.btn-primary{
-    padding: .782rem 1.6rem !important;
+    padding: 1rem 1.6rem !important;
   }
   &.btn-secondary{
     border: 1.5px solid #34445b;
