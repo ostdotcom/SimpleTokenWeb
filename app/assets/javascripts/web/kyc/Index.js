@@ -7,13 +7,21 @@
 
   KycNs.index = oThis = {
     jContactForm: null,
+    jContactBtn : null,
     formHelper: null,
     jVideoCarousal: null,
     isCaptchaValid : false,
 
     init: function (config) {
       oThis.jContactForm = $('#ost-kyc-contact-us-form');
+      oThis.jContactBtn = $('#ost-kyc-contact-us-btn');
+
       oThis.formHelper =  oThis.jContactForm.formHelper({
+        updateSubmitText : function () {
+          var jSubmittingText =  oThis.jContactBtn.data('submiting')
+          ;
+          oThis.jContactBtn.text( jSubmittingText );
+        },
         success: function (response) {
           if (response.success == true) {
             $('#successModal').modal('show');
@@ -23,6 +31,7 @@
           }
         },
         complete: function (response) {
+          oThis.jContactBtn.text('Submit');
           if(typeof grecaptcha  != 'undefined'){
             grecaptcha.reset();
           }
@@ -112,8 +121,11 @@
 
     validateCaptcha: function () {
       if(typeof oThis.jContactForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
+        var jElCaptchaErr =  oThis.jContactForm.find('.error[data-for="recaptcha"]');
         if(grecaptcha.getResponse() == ''){
-          oThis.jContactForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+          jElCaptchaErr.text('Please select the reCaptcha checkbox');
+        }else {
+          jElCaptchaErr.text('');
         }
       }
       return oThis.jContactForm.find('.error:not(:empty)').length == 0;
