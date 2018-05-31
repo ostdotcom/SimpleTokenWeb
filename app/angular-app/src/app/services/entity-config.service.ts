@@ -5,7 +5,7 @@ import { Response } from '@angular/http';
 @Injectable()
 export class EntityConfigService {
   entityConfig= {};
-  entityConfigUrl = 'entity_config.json/?ts='+ Date.now();
+  entityConfigUrl = 'entity_config.json?ts='+ Date.now();
   errorOccured: Boolean;
 
   constructor(private http: OstHttp) {}
