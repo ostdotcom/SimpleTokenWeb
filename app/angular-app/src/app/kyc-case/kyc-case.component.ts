@@ -30,7 +30,7 @@ export class KycCaseComponent implements OnInit {
   caseId;
   nextCaseId;
   previousCaseId;
-  isChecked = false;
+  widthComputed = false;
   isStatusDenied :boolean =  false ;
   isReportIssue :boolean = false ;
   isWhitelisting:boolean =  false;
@@ -55,8 +55,8 @@ export class KycCaseComponent implements OnInit {
   }
 
   ngAfterViewChecked(){
-    if ($(".card").length && ! this.isChecked){
-      this.isChecked = true;
+    if ($(".card").length && ! this.widthComputed){
+      this.widthComputed = true;
       let computedWidth = $(".card.grey-background").css("width").slice(0,-2) - 100 + "px";
       $(".card.grey-background").css("min-height", computedWidth);
       $("img.card-img-top").on("load", function(){
@@ -66,6 +66,7 @@ export class KycCaseComponent implements OnInit {
   }
 
   fetchCase() {
+    this.widthComputed = false;
     this.isProcessing = true;
     let params = Object.assign(
       {id: this.caseId},
