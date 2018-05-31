@@ -14,7 +14,7 @@
   <script text="text/javascript">
     $(document).ready(function () {
 
-      $( 'body' ).off('show.bs.modal').on('show.bs.modal' , function( event ) {
+      $( 'body' ).on('show.bs.modal' , function( event ) {
         var dTarget = event.target
           , dPage = this
           , jPage           = $( dPage )
@@ -39,7 +39,7 @@
         jToBlur.addClass("blured-by-modal-show");
       });
 
-      $( 'body' ).off('hidden.bs.modal').on('hidden.bs.modal' , function( event ) {
+      $( 'body' ).on('hidden.bs.modal' , function( event ) {
         $('.blured-by-modal-show').removeClass('blured-by-modal-show');
       });
 
