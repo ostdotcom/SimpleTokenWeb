@@ -2,38 +2,51 @@
 (function (window) {
 
     var homeNs = ns("simpletoken.home"),
-        utilsNs = ns("simpletoken.utils"),
+        utilities = ns("simpletoken.utilities"),
         oThis;
 
     homeNs.reset = oThis = {
         jForm: null,
         formHelper : null,
+        is_resend : false,
 
-        init: function (config) {
+        init: function ( ) {
           var oThis = this;
           oThis.jForm = $('#userPasswordResetForm');
           oThis.formHelper= oThis.jForm.formHelper({
             success: function (response) {
               if (response.success == true) {
-                if (is_resend == true){
+                if (oThis.is_resend){
                   oThis.showSuccessMsg();
                 }
                 else {
                   oThis.showSuccessPage();
                 }
+              }else {
+                utilities.displayAjaxError( response );
               }
+            },
+            error: function ( error ) {
+              utilities.displayAjaxError( error );
+            },
+            complete: function () {
+              var jRecoverBtn = $("#recoverPassword"),
+                  jResendBtn = $("#resendLink")
+              ;
+              jRecoverBtn.text(jRecoverBtn.attr('title')).prop( "disabled", false );
+              jResendBtn.text(jResendBtn.attr('title')).prop( "disabled", false );
             }
           });
+
+          oThis.bindButtonActions();
         },
 
         bindButtonActions: function () {
-
-            $("#resendLink").click(function (event) {
-                event.preventDefault();
-                oThis.forgot_password(true);
-                return false;
+            $("#resendLink").click(function () {
+              $(this).text($(this).data('submiting')).prop( "disabled", true );
+              oThis.is_resend =  true;
+              oThis.formHelper.jForm.submit();
             });
-
         },
 
         showSuccessPage: function () {
@@ -46,7 +59,6 @@
         showSuccessMsg: function () {
             $('#successMessage').show().text('Reset Link has been sent!');
         }
-
 
     };
 
