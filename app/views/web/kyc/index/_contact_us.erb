@@ -11,12 +11,12 @@
       </div>
       <div class="row">
         <form action="/api/home/kyc/contact-us" method="POST"
-              class="custom-form form-group col-12 col-md-8 col-xl-6 mx-auto"
+              class="custom-form form-group col-12 col-md-8 col-xl-7 mx-auto"
               id="ost-kyc-contact-us-form">
 
           <div class="form-group">
             <label class="mb-1">FULL NAME</label>
-            <input class="form-control input" type="text"
+            <input class="form-control input" type="text" title="full name"
                    name="full_name" value="" required autocomplete="off"/>
             <span class="border-line"></span>
             <div class="invalid-feedback" data-forname="full_name"></div>
@@ -26,7 +26,7 @@
           <div class="form-group">
             <label class="mb-1">EMAIL ADDRESS</label>
             <input class="form-control input" type="email" name="email"
-                   value=""  required autocomplete="off" />
+                   title="email address" value=""  required autocomplete="off" />
             <span class="border-line"></span>
             <div class="invalid-feedback" data-forname="email"></div>
           </div>
@@ -34,7 +34,7 @@
           <div class="form-group">
             <label class="mb-1">COMPANY NAME</label>
             <input class="form-control input"  type="text" name="company"
-                   value="" required autocomplete="off" />
+                   title="company name" value="" required autocomplete="off" />
             <span class="border-line"></span>
             <div class="invalid-feedback" data-forname="company"></div>
           </div>
@@ -46,7 +46,7 @@
                 <div class="border-line" style="overflow: hidden">
                   <span class="radio-label d-inline-block float-left">From</span>
                   <input type="text" class="form-control input rounded-0 w-50 float-left ml-2"
-                         name="token_sale_start_date"
+                         name="token_sale_start_date" title="token sale start date"
                          placeholder="DD/MM/YYYY" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1[012])[- /.][0-9]{4}"
                          autocomplete="off" required/>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="border-line" style="overflow: hidden">
                   <span class="radio-label d-inline-block float-left">To</span>
                   <input type="text" class="form-control input rounded-0 w-50 float-left ml-2"
-                         name="token_sale_end_date"
+                         name="token_sale_end_date" title="token sale end date"
                          placeholder="DD/MM/YYYY" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])[- /.](0[1-9]|1[012])[- /.][0-9]{4}"
                          autocomplete="off" required/>
                 </div>
