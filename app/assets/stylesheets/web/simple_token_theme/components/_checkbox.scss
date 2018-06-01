@@ -2,7 +2,7 @@
 input[type="checkbox"]{
   position: absolute;
   opacity: 0;
-  display: none;
+  //display: none;
 }
 input[type="checkbox"] ~ label{
   height: $checkbox-size;
