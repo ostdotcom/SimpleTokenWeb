@@ -20,7 +20,52 @@
           return true;
         }
       }
-    }
+    },
+
+      showSuccessAlert: function (msg, intervals) {
+
+          var settings = $.extend({}, {show: 1000, hide: 1000, stay: 4000}, intervals);
+          var uts = Date.now();
+
+          $('<div id="simpletoken-alert-' + uts + '" class="simpletoken-alert text-center"><span class="icon ver-middle"></span><span class="msg ver-middle"></span></div>').appendTo('#banner-content');
+
+          var $simpletokenAlert = $('#simpletoken-alert-' + uts);
+          var $simpletokenAlertIcon = $('#simpletoken-alert-' + uts + ' .icon');
+
+
+          $simpletokenAlert.addClass('success');
+          $simpletokenAlertIcon.addClass('success-tick-white-icon');
+
+          $('#simpletoken-alert-' + uts + ' .msg').html(msg);
+
+          if ($(window).scrollTop() >= 50) {
+              $simpletokenAlert.css({
+                  position: 'fixed',
+                  top: 0
+              });
+          } else {
+              $simpletokenAlert.css({
+                  position: 'absolute',
+                  top: '0'
+              });
+          }
+
+          $simpletokenAlert.show().animate({
+              opacity: '1'
+          }, settings.show, function () {
+              setTimeout(function () {
+                  $simpletokenAlert.animate({
+                          opacity: '0'
+                      },
+                      settings.hide,
+                      'swing',
+                      function () {
+                          $(this).remove();
+                      });
+              }, settings.stay);
+          });
+
+      }
 
 
 

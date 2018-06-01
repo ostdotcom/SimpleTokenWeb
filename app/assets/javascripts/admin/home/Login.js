@@ -4,75 +4,54 @@
   var homeNs = ns("simpletokenadmin.home"),
     adminUtilsNs = ns("simpletokenadmin.utils"),
     utilsNs = ns("simpletoken.utils"),
-    oThis;
+    utilities = ns("simpletoken.utilities"),
+
+      oThis;
 
   homeNs.login = oThis = {
 
     jLoginForm: null,
 
     init: function (config) {
-      oThis.bindButtonActions();
+
       oThis.jLoginForm = $('#adminLoginForm');
+      oThis.jLogin = $('#adminLogin');
+        oThis.formHelper = oThis.jLoginForm.formHelper({
+            success : function ( response ) {
+                    if (response.success == true) {
+                        window.location = '/admin/authentication';
+                        return false;
+                    } else {
+                        if (response.err && response.err.code === "is_deleted" ){
+                            oThis.showDeactivated();
+                        }
+                }
+            },
+            complete: function ( response ) {
+                if(typeof grecaptcha  != 'undefined'){
+                    grecaptcha.reset();
+                }
+
+            }
+        });
+        oThis.bindButtonActions();
+
     },
 
     bindButtonActions: function () {
-
-      $("#adminLogin").click(function (event) {
-        event.preventDefault();
-        var v = utilsNs.errorHandling.validationGeneric($('#adminLoginForm input[type="text"], #adminLoginForm input[type="password"]'));
-
-        if(typeof $('#adminLoginForm').find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
-          if(grecaptcha.getResponse() == ''){
-            $('#adminLoginForm').find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
-            v = false;
-          }
-        }
-
-        if(v === true ) {
-          $("#adminLogin")
-            .text('logging in...')
-            .prop( "disabled", true );
-          oThis.onSubscribe();
-        }
-      });
-
-    },
-
-    onSubscribe: function () {
-      var $form = $('#adminLoginForm');
-      $.ajax({
-        url: $form.attr('action'),
-        dataType: 'json',
-        method: $form.attr('method'),
-        data: $form.serialize(),
-        success: function (response) {
-          if (response.success == true) {
-            window.location = '/admin/authentication';
-            return false;
-          } else {
-            if (response.err && response.err.code === "is_deleted" ){
-              oThis.showDeactivated();
-            }else{
-              utilsNs.errorHandling.displayFormErrors(response);
-              if(typeof grecaptcha  != 'undefined'){
-                grecaptcha.reset();
-              }
+        oThis.jLoginForm.on("beforeSubmit", function (event) {
+            if ( !oThis.isCaptchaValid ) {
+                event.preventDefault();
             }
-          }
-        },
-        error: function (jqXHR, exception) {
-          adminUtilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
-          if(typeof grecaptcha  != 'undefined'){
-            grecaptcha.reset();
-          }
-        },
-        complete: function(){
-          $("#adminLogin")
-            .text('login')
-            .prop( "disabled", false );
-        }
-      });
+        });
+
+        oThis.jLogin.off('click').on('click' , function () {
+            oThis.isCaptchaValid = utilities.validateCaptcha( oThis.jLoginForm );
+            oThis.formHelper.jForm.submit();
+        });
     },
+
+
 
     showDeactivated: function () {
       $('#loginForm').hide();
