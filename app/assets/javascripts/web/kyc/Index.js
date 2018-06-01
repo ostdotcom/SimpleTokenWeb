@@ -1,8 +1,9 @@
 ;
 (function (window) {
 
-  var KycNs = ns("kyc"),
-      utilsNs = ns("simpletoken.utils"),
+  var KycNs     = ns("kyc"),
+      utilsNs   = ns("simpletoken.utils"),
+      utilities = ns("simpletoken.utilities"),
       oThis;
 
   KycNs.index = oThis = {
@@ -18,11 +19,6 @@
       oThis.jContactBtn = $('#ost-kyc-contact-us-btn');
 
       oThis.formHelper =  oThis.jContactForm.formHelper({
-        updateSubmitText : function () {
-          var jSubmittingText =  oThis.jContactBtn.data('submiting')
-          ;
-          oThis.jContactBtn.text( jSubmittingText );
-        },
         success: function (response) {
           if (response.success == true) {
             $('#successModal').modal('show');
@@ -32,7 +28,6 @@
           }
         },
         complete: function (response) {
-          oThis.jContactBtn.text('Submit');
           if(typeof grecaptcha  != 'undefined'){
             grecaptcha.reset();
           }
@@ -115,22 +110,11 @@
       });
 
       $('#ost-kyc-contact-us-btn').on('click' , function () {
-         oThis.isCaptchaValid = oThis.validateCaptcha();
+         oThis.isCaptchaValid = utilities.validateCaptcha( oThis.jContactForm );
          oThis.formHelper.jForm.submit();
       });
     },
 
-    validateCaptcha: function () {
-      if(typeof oThis.jContactForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
-        var jElCaptchaErr =  oThis.jContactForm.find('.error[data-for="recaptcha"]');
-        if(grecaptcha.getResponse() == ''){
-          jElCaptchaErr.text('Please select the reCaptcha checkbox');
-        }else {
-          jElCaptchaErr.text('');
-        }
-      }
-      return oThis.jContactForm.find('.error:not(:empty)').length == 0;
-    },
 
     showVideo: function( jItem ){
       oThis.isVideoPlaying = true;
