@@ -9,34 +9,36 @@
         <form class="user-form" method="POST" action="/api/user/sign-up" id="userSignUpForm">
           <div class="form-group">
             <label class="form-label" for="email">email address</label>
-            <input type="text" name="email" value="" class="form-control" autofocus tabindex="1" autocomplete="off"/>
-            <div class="error" data-for="email"></div>
+            <input type="text" name="email" value="" class="form-control" required autofocus tabindex="1" autocomplete="off"/>
+            <div class="invalid-feedback" data-forname="email"></div>
           </div>
           <div class="form-group">
             <label class="form-label" for="password">password</label><span class="float-right display-4 minimum-characters">Minimum 8 characters</span>
             <div class="position-relative" >
-              <input type="password" name="password" id="password" value="" class="form-control" tabindex="2" autocomplete="off"/>
+              <input type="password" name="password" id="password" value="" class="form-control" required minlength="8" tabindex="2" autocomplete="off"/>
               <span class="input-group-addon showhide-addon" id="showhide-password"><span class="show-password-eye-icon"></span></span>
             </div>
             <div class="zxcvbn-group"></div>
-            <div class="error" data-for="password"></div>
+            <div class="invalid-feedback" data-forname="password"></div>
           </div>
           <div class="form-group form-recapcha">
             <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="3"></div>
             <div class="error text-center" data-for="recaptcha" ></div>
           </div>
           <div class="checkbox termsConditions form-group">
-            <input name="terms_of_service" type="checkbox" class="list-item display-none" value="agree" id="agree-and-acknowledge">
+            <input name="terms_of_service" type="checkbox" class="list-item"
+                   value="agree" id="agree-and-acknowledge" required />
             <label for="agree-and-acknowledge" class="termsLinks display-4" tabindex="4" style="line-height: 1.5;">
               <%= raw @presenter_obj.page_data['checkbox_html'] %>
             </label>
-            <div class="error text-center" data-for="terms_of_service"></div>
+            <div class="invalid-feedback text-center" data-forid="agree-and-acknowledge"></div>
           </div>
           <div class="user-form-footer form-group">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
-            <button type="submit" class="btn btn-primary" id="userSignUp" title="Register" tabindex="5">register</button>
-            <div class="error text-center" data-for="general_error"></div>
+            <button class="btn btn-primary" id="userSignUp" data-submiting="signing up..."  title="Register" tabindex="5">register
+            </button>
+            <div class="invalid-feedback text-center general_error" data-forid="userSignUpForm"></div>
           </div>
           <div class="user-form-footer login-page-footer">
             <div class="create-account mt-2 mb-2" tabindex="5" >Have an Account Already?</div>

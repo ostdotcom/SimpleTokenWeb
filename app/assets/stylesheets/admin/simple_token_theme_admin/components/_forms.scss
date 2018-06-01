@@ -84,7 +84,6 @@
       }
     }
   }
-
 }
 
 [data-for="general_error"].error {
@@ -122,5 +121,9 @@
   .zxcvbn-4 {
     background-color: #30b3c5;
   }
+}
+.invalid-feedback.is-invalid {
+  visibility: visible;
+  letter-spacing: 1px;
 }
 

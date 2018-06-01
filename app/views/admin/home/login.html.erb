@@ -12,18 +12,17 @@
           <form class="user-form col-12 col-md-6 col-lg-5 col-xl-4 mx-auto" method="POST" action="/api/admin/login" id="adminLoginForm">
             <div class="form-group">
               <label class="form-label" for="email">email address</label>
-              <input type="text" name="email" id="email" value="" class="form-control" autofocus tabindex="1">
-              <div class="error" data-for="email"></div>
+              <input type="text" name="email" id="email" value="" class="form-control" autofocus tabindex="1" required>
+              <div class="invalid-feedback" data-forname="email"></div>
             </div>
             <div class="form-group">
               <label class="form-label" for="password">password</label>
               <div class="position-relative">
-                <input type="password" class="form-control" name="password" id="password" tabindex="2" />
+                <input type="password" class="form-control" name="password" id="password" tabindex="2" minlength="8" required/>
                 <span class="input-group-addon showhide-addon" id="showhide-password"><span class="show-password-eye-icon"></span></span>
               </div>
               <a href="/admin/forgot-password" title="Forgot password?" class="forgot-password display-4 border-none" tabindex="3">Forgot password?</a>
-
-              <div class="error" data-for="password"></div>
+              <div class="invalid-feedback" data-forname="password"></div>
             </div>
             <div class="form-group user-form-footer text-center">
               <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
@@ -31,8 +30,8 @@
                 <div class="g-recaptcha form-recapcha-wrap d-inline-block" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>"></div>
                 <div class="error" data-for="recaptcha" style="text-align: center"></div>
               </div>
-              <button type="submit" class="btn btn-primary" id="adminLogin" tabindex="3" title="LOGIN">login</button>
-              <div class="error text-center" data-for="general_error"></div>
+              <button  data-submiting="logging in..."  class="btn btn-primary" id="adminLogin" tabindex="3" title="LOGIN">login</button>
+              <div class="invalid-feedback general_error text-center" data-forid="adminLoginForm"></div>
             </div>
           </form>
         </div>
