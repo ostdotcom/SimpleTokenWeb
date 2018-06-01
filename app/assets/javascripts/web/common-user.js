@@ -10,3 +10,4 @@
 //= require web/common/UtmHelper
 //= require web/common/TopNavBar
 //= require plugins/helpers/ajaxHooks
+//= require plugins/helpers/utilities

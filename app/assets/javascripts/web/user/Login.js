@@ -3,78 +3,59 @@
 
     var homeNs = ns("simpletoken.home"),
         utilsNs = ns("simpletoken.utils"),
+        utilities = ns("simpletoken.utilities"),
         oThis;
 
     homeNs.login = oThis = {
 
         api_token_sale_state_page_names: null,
         d_token: null,
+        jLoginForm: null,
+        jLoginBtn : null,
+        formHelper: null,
+        isCaptchaValid: false,
+
 
         init: function (config) {
             $.extend(oThis , config) ;
+
+            oThis.jLoginForm = $('#userLoginForm');
+            oThis.jLoginBtn  = $('#userLogin');
+            oThis.formHelper = oThis.jLoginForm.formHelper({
+              success : function ( response ) {
+                if (response.success == true) {
+                  var data = response.data || {};
+                  if ( oThis.d_token && (['verification_page', 'kyc_page'].indexOf(data.user_token_sale_state) > -1) ) {
+                    window.location = '/add-kyc?t=' + oThis.d_token;
+                  } else {
+                    var path = oThis.get_redirect_path(data.user_token_sale_state);
+                    window.location = '/' + path;
+                  }
+                }
+              },
+              complete: function ( response ) {
+                if(typeof grecaptcha  != 'undefined'){
+                  grecaptcha.reset();
+                }
+              }
+            });
             oThis.bindButtonActions();
         },
 
+
         bindButtonActions: function () {
 
-            $("#userLogin").click(function (event) {
-                event.preventDefault();
-                var v = utilsNs.errorHandling.validationGeneric($('#userLoginForm input[type="text"], #userLoginForm input[type="password"]'));
+          oThis.jLoginForm.on("beforeSubmit", function (event) {
+            if ( !oThis.isCaptchaValid ) {
+              event.preventDefault();
+            }
+          });
 
-                if(typeof $('#userLoginForm').find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
-                  if(grecaptcha.getResponse() == ''){
-                    $('#userLoginForm').find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
-                    v = false;
-                  }
-                }
+          oThis.jLoginBtn.off('click').on('click' , function () {
+            oThis.isCaptchaValid = utilities.validateCaptcha( oThis.jLoginForm );
+            oThis.formHelper.jForm.submit();
+          });
 
-                if (v === true) {
-                    $("#userLogin")
-                        .text('logging in...')
-                        .prop( "disabled", true );
-                    oThis.login();
-                }
-            });
-
-        },
-
-        login: function () {
-            var $form = $('#userLoginForm');
-            $.ajax({
-                url: $form.attr('action'),
-                dataType: 'json',
-                method: $form.attr('method'),
-                data: $form.serialize(),
-                success: function (response) {
-                    if (response.success == true) {
-                        var data = response.data || {};
-
-                        if ( oThis.d_token && (['verification_page', 'kyc_page'].indexOf(data.user_token_sale_state) > -1) ) {
-                            window.location = '/add-kyc?t=' + oThis.d_token;
-                        } else {
-                            var path = oThis.get_redirect_path(data.user_token_sale_state);
-                            window.location = '/' + path;
-                        }
-
-                    } else {
-                        utilsNs.errorHandling.displayFormErrors(response);
-                        if(typeof grecaptcha  != 'undefined'){
-                          grecaptcha.reset();
-                        }
-                    }
-                },
-                error: function (jqXHR, exception) {
-                    utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
-                    if(typeof grecaptcha  != 'undefined'){
-                      grecaptcha.reset();
-                    }
-                },
-                complete: function(){
-                    $("#userLogin")
-                        .text('login')
-                        .prop( "disabled", false );
-                }
-            });
         },
 
         get_redirect_path: function (user_token_sale_state) {
