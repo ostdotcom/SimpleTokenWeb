@@ -11,6 +11,7 @@
     formHelper: null,
     jVideoCarousal: null,
     isCaptchaValid : false,
+    isVideoPlaying: false,
 
     init: function (config) {
       oThis.jContactForm = $('#ost-kyc-contact-us-form');
@@ -131,7 +132,6 @@
       return oThis.jContactForm.find('.error:not(:empty)').length == 0;
     },
 
-    isVideoPlaying: false,
     showVideo: function( jItem ){
       oThis.isVideoPlaying = true;
       var jIframe = jItem.find('iframe');
@@ -146,7 +146,7 @@
       //Hide Image
       jItem.find('img').css({
         visibility: "hidden"
-      })
+      });
 
       //Show Iframe
       jIframe.attr({'src' : jIframe.data('src') }).show();

@@ -65,7 +65,7 @@
             console.log("IMPORTANT :: ERROR SUBMITING FORM");
             console.log( ex );
           }
-          
+
         }
       }
 
@@ -157,12 +157,12 @@
         jEL.text( jEL.data("submiting") );
         oThis.autoDisableSubmitBtn && jEL.prop('disabled', true);
       });
-      
+
 
       //This method can be used to 'forcefully' submit the form.
       ajaxConfig = ajaxConfig || oThis.getAjaxConfig();
       oThis.jqXhr = $.ajax( ajaxConfig );
-      
+
       oThis.triggerFormSubmit( oThis.jqXhr );
 
       return oThis.jqXhr;
@@ -171,7 +171,7 @@
 
     , getAjaxConfig: function () {
       var oThis = this;
-      
+
       return {
         url: oThis.getActionUrl()
         , method: oThis.getActionMethod()
@@ -230,7 +230,7 @@
 
         }
 
-        , statusCode: { 
+        , statusCode: {
           401: function () {
             //Redirect to Login.
             window.location = '/login';
@@ -305,10 +305,10 @@
 
       jCustomElements.each(function ( indx, el ){
         var jEl = $( el )
-            ,elData = {
-              name: jEl.attr("name")
-              , value: jEl.val()
-            }
+          ,elData = {
+            name: jEl.attr("name")
+            , value: jEl.val()
+          }
         ;
         data.push( elData );
       });
@@ -319,19 +319,13 @@
 
     , showServerErrors: function ( response ) {
       var oThis = this;
-      var errorHash = {};
-      var serverErrors = response.err.error_data || {};
-      if ( serverErrors instanceof Array && serverErrors.length) {
 
-        var errObj = serverErrors[0];
-        if ( errObj.hasOwnProperty( 'parameter' ) && errObj.hasOwnProperty( 'msg' ) ) {
-          $(serverErrors).each(function(index, currErrObj) {
-            var parameter = currErrObj.parameter;
-            errorHash[ parameter ] = currErrObj.msg;
-          });
-        }
+      var serverErrors = response.err.error_data || {};
+      if ( serverErrors instanceof Array ) {
+        //Hack for now.
+        serverErrors = serverErrors[ 0 ] || {};
       }
-      oThis.validator.showErrors( errorHash );
+      oThis.validator.showErrors( serverErrors );
 
       var generalErrorMessage = response.err.display_text;
 
@@ -354,9 +348,9 @@
         $.each(arrayData, function(indx, errorData ) {
           if ( errorData.element ) {
             var jEl = $( errorData.element );
-            
+
             var jError = jEl.parent()
-                .find(".invalid-feedback")
+              .find(".invalid-feedback")
             ;
             if ( !jError.length ) {
               jError = jEl.closest(".form-group")
@@ -367,7 +361,7 @@
             jEl.addClass("is-invalid");
             jError.addClass("is-invalid");
             jError.length && jError.html( errorData.message );
-          }        
+          }
         });
 
         var validElements = oThis.validator.validElements();
@@ -375,7 +369,7 @@
           var jEl = $(el);
 
           var jError = jEl.parent()
-              .find(".invalid-feedback")
+            .find(".invalid-feedback")
           ;
           if ( !jError.length ) {
             jError = jEl.closest(".form-group")
@@ -402,7 +396,7 @@
   $.fn.extend({
     formHelper: function ( config ) {
       var jEl = $( this )
-          ,helper = jEl.data( jqDataNameSpace );
+        ,helper = jEl.data( jqDataNameSpace );
       ;
 
       if ( !helper || !helper instanceof FormHelper ) {
@@ -412,7 +406,7 @@
       }
       if ( config && typeof config === "object") {
         $.extend(helper, config );
-      } 
+      }
       return helper;
     }
     , setVal: function ( val, orgEvent ) {
@@ -432,13 +426,13 @@
       jEl.trigger("change", eventArgs);
       return true;
     }
-    , safeSetVal : function ( val, orgEvent ) { 
+    , safeSetVal : function ( val, orgEvent ) {
       var jEl = $( this );
 
       if ( orgEvent &&  jEl.is( orgEvent.currentTarget ) ) {
         return false;
       }
-      
+
       return $.fn.setVal.apply( this, arguments);
     }
   })
