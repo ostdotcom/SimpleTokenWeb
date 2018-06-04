@@ -19,7 +19,7 @@ export class ReportIssuesComponent implements OnInit {
   @Input() userDetails;
   isProcessing = false;
   beforeSend = true;
-  Login to the Admin Portal  isMailSent;
+  isMailSent = false;
   hasError;
   errorMessage;
   frontEndError = '';
