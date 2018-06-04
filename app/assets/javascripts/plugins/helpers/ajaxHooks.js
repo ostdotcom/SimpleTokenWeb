@@ -1,5 +1,13 @@
 ;
 (function(window, $){
+
+  function getStatus401redirect(){
+    if( typeof status401redirect == "string" &&  status401redirect.length > 0 ){
+      return status401redirect;
+    }else {
+      return "/login";
+    }
+  };
   
   // //Add CSRF TOKEN
   $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
@@ -22,7 +30,7 @@
     } else if (jqXHR.status == 500) {
       msg = 'Internal Server Error.';
     } else if (jqXHR.status == 401) {
-        window.location = '/login';
+        window.location = getStatus401redirect();
     } else if (thrownError === 'parsererror') {
       msg = 'Requested JSON parse failed.';
     } else if (thrownError === 'timeout') {
