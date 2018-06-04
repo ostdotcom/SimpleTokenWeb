@@ -296,9 +296,12 @@
     },
 
     validateForm: function () {
-      var errMsg = "";
+      var isFormValid = false ,  isCaptachValid = false , isInputFilesValid = false,
+          errMsg = "";
 
-      oThis.formHelper.jForm.valid();
+      utilities.clearErrors( oThis.$kycForm );
+      isFormValid = oThis.formHelper.jForm.valid();
+      isCaptachValid = utilities.validateCaptcha( oThis.$kycForm );
       oThis.formNames.forEach(function (value) {
         oThis.$kycForm.find('input[name="' + value + '"]').trigger('change');
         if (oThis.$kycForm.find('input[name="' + value + '"]').length == 0) {
@@ -306,10 +309,12 @@
           $('.error[data-forid="'+value+'"]').text(errMsg);
         }
       });
-      utilities.validateCaptcha( oThis.$kycForm );
 
-      if (  oThis.$kycForm.find('.error:not(:empty)').length == 0 &&
-            oThis.$kycForm.find('.invalid-feedback:not(.is-invalid)').length == 0 ) {
+      if( oThis.$kycForm.find('.error:not(:empty)').length == 0 ){
+        isInputFilesValid =  true
+      }
+
+      if ( isFormValid && isCaptachValid && isInputFilesValid ) {
         var jKYCSubmit = oThis.$kycForm.find("#kycSubmit");
 
         //Disbale the Submit Button
