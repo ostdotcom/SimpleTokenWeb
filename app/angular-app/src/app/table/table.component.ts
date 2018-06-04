@@ -221,6 +221,8 @@ export class TableComponent implements OnInit {
   getParams() {
     let requestParams =  this.requestParams;
     requestParams['page_number'] = this.getPageNumber();
+    requestParams['page_size'] = 2;
+
     if (this.filterForm) {
       Object.assign(requestParams, this.getFilter());
     }
