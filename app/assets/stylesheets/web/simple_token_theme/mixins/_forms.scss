@@ -3,7 +3,7 @@
 @mixin form-validation-state($state, $color) {
   .#{$state}-feedback {
     visibility: hidden; /* OST-CHANGE */
-    min-height: 25px;
+    min-height: 25px; /* OST-CHANGE */
     width: 100%;
     margin-top: $form-feedback-margin-top;
     font-size: $form-feedback-font-size;

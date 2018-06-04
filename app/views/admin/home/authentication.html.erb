@@ -28,8 +28,7 @@
           <div class="form-group">
             <label class="form-label" for="email">mfa code</label>
             <input type="text" name="otp" id="otp" value="" class="form-control" autofocus tabindex="1" required>
-
-            <div class="invalid-feedback" data-for="otp"></div>
+            <div class="invalid-feedback" data-forid="otp"></div>
           </div>
           <div class="text-center">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>

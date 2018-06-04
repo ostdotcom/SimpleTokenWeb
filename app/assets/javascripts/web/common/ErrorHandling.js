@@ -166,12 +166,6 @@ jQuery.fn.extend({
       $form.on('change', 'input, select, textarea', function( event ){
         var targetEl = event.currentTarget;
 
-        if ( !targetEl ) {
-          console.log("Aniket, please change above line");
-        } else {
-          //console.log("All is well Aniket");
-        }
-
         if (targetEl.required && targetEl.value == '') {
           simpletoken.utils.errorHandling.addFormError(targetEl.name, targetEl.title+' is required');
         }

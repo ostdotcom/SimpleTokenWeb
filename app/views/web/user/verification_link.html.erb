@@ -19,9 +19,10 @@
           <div class="user-form-footer">
             <div class="create-account no-mail">Didn't receive the email?</div>
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-            <a href="javascript:void(0)" id="resendLink" class="btn btn-secondary resendLink mt-3" title="Re-send Activation Email" tabindex="1">Re-send Activation Email</a>
+            <a href="javascript:void(0)" id="resendLink" class="btn btn-secondary resendLink mt-3"
+               title="Re-send Activation Email" tabindex="1">Re-send Activation Email</a>
             <div class="success mt-2" id="successMessage"></div>
-            <div class="error mt-2" data-for="general_error"></div>
+            <div class="error mt-2 general_error" data-for="general_error"></div>
           </div>
         </div>
       </div>
