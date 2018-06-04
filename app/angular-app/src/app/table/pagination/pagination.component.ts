@@ -8,8 +8,8 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 export class PaginationComponent {
   @Input('totalPageCount') totalPageCount: number;
-  @Input('currentPageNumber') currentPageNumber: number;
-  @Input('metaData') metaData; 
+  @Input('currentPageNumber') currentPageNumber;
+  @Input('metaData') metaData;
 
   @Output('pageChangeEvent') pageChangeEvent = new EventEmitter<number>();
 
@@ -42,6 +42,14 @@ export class PaginationComponent {
 
   isActive( index ):boolean{
    return this.currentPageNumber == index;
+  }
+
+  isToShow( index ){
+    if( index <= this.currentPageNumber ){
+      return index >=  parseInt(this.currentPageNumber) - 3;
+    }else{
+      return index <= parseInt(this.currentPageNumber) + 3;
+    }
   }
 
   getPages() {
