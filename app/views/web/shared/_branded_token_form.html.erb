@@ -9,8 +9,8 @@
         <form class="user-form" method="POST" action="/api/user/bt-submit" id="userBtForm">
           <div class="form-group">
             <label class="form-label float-left" for="token_name">desired bt name</label>
-            <input type="text" name="bt_name" id="token_name" class="form-control" autofocus tabindex="1" value="<%= user['bt_name'] %>" autocomplete="off">
-            <div class="error" style="text-align: left;" data-for="bt_name"></div>
+            <input type="text" name="bt_name" id="token_name" class="form-control" autofocus tabindex="1" title="name" value="<%= user['bt_name'] %>" autocomplete="off" required>
+            <div class="invalid-feedback" style="text-align: left;" data-forname="bt_name"></div>
           </div>
           <p class="mb-4">All name reservations are
             subject to approval from the OpenST Foundation and Trademark rights. For more details refer to
@@ -20,13 +20,13 @@
           </p>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
-          <button id="btSubmit" class="btn btn-primary upload-image-btn mb-3 mr-md-3" title="<%= is_update ? 'update' : 'done' %>" tabindex="2"><%= is_update ? 'update' : 'done' %></button>
+          <button id="btSubmit" data-submiting="<%= is_update ? 'updating' : 'done' %>..." class="btn btn-primary upload-image-btn mb-3 mr-md-3" title="<%= is_update ? 'update' : 'done' %>" tabindex="2"><%= is_update ? 'update' : 'done' %></button>
           <% if is_update %>
             <a href="/dashboard" class="btn btn-secondary upload-image-btn mb-3" title="back" tabindex="3">back</a>
           <% else %>
             <button id="btSkip" class=" btn btn-secondary upload-image-btn mb-3" title="skip" tabindex="3">skip</button>
           <% end %>
-          <div class="error" data-for="general_error"></div>
+          <div class="invalid-feedback general_error" data-forid="userBtForm"></div>
         </form>
       </div>
     </div>
