@@ -188,9 +188,9 @@
     },
     showEthereumAddressConfirmError: function (errorMessage) {
       var jModal = $('#ethereum-confirm-modal'),
-        jErr = jModal.find('.error[data-for="general_error"]')
+        jErr = jModal.find('.general_error')
       ;
-      jErr.html(errorMessage);
+      jErr.html(errorMessage).addClass("is-invalid");
     },
     showEthereumAddress: function (ethAddress) {
       var jWrap = $("#ethereum-deposit-address"),
@@ -207,13 +207,13 @@
     /* Section: Validate User ETH Address - BEGIN */
     onValidateUserEthAddress: function (event) {
       var jWrap = $("#user-eth-address"),
-        jErr = jWrap.find('.error[data-for="general_error"]'),
+        jErr = jWrap.find('general_error'),
         jEthAddr = jWrap.find("#user-eth-address-input"),
         dataUrl = "/api/user/check-ethereum-balance"
       ;
 
       if (!jEthAddr.val()) {
-        jErr.html("Invalid Etherenum Address");
+        jErr.html("Invalid Etherenum Address").addClass("is-invalid");
         oThis.onUserEthAddressError();
         return;
       }

@@ -65,9 +65,9 @@
       if((response.success === false) || (response.err != undefined && response.err != '')){
         var jErrEl = jParent.find('.general_error');
         if( jErrEl.length > 0 ){
-          jErrEl.text(response.err.display_text);
+          jErrEl.text(response.err.display_text).addClass("is-invalid");
         } else {
-          $('.general_error').text(response.err.display_text);
+          $('.general_error').text(response.err.display_text).addClass("is-invalid");
         }
       }
     },
@@ -76,20 +76,9 @@
       if ( !jParent ) {
         jParent = $("body");
       }
-      jParent.find('.error, .invalid-feedback').text('');
+      jParent.find('.error, .invalid-feedback').text('').removeClass("is-invalid");
       jParent.find('input').removeClass('border-error');
-    },
-
-
-    addErrors: function(field_name, message){
-      $('.error[data-forid="'+field_name+'"]').text(message);
-      if(message != ''){
-        $('[name="'+field_name+'"]').addClass('border-error');
-      } else {
-        $('[name="'+field_name+'"]').removeClass('border-error');
-      }
     }
-
   }
 
 

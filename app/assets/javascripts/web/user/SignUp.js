@@ -47,37 +47,9 @@
                 oThis.isCaptchaValid = utilities.validateCaptcha( oThis.jSignupForm );
                 oThis.formHelper.jForm.submit();
             });
-
-            // $("#userSignUp").click(function (event) {
-                // event.preventDefault();
-                // var v = utilsNs.errorHandling.validationGeneric($('#userSignUpForm input[type="text"], #userSignUpForm input[type="password"]'));
-                // var ch = $('#userSignUpForm input[name=terms_of_service]').is(':checked');
-                //
-                // if(typeof $('#userSignUpForm').find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
-                //   if(grecaptcha.getResponse() == ''){
-                //     $('#userSignUpForm').find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
-                //     v = false;
-                //   }
-                // }
-                //
-                // if (v === true && ch == true) {
-                //     $("#userSignUp")
-                //         .text('registering...')
-                //         .prop( "disabled", true );
-                //     oThis.signup();
-                // }
-                // if (ch == false) {
-                //     $('.error[data-for="terms_of_service"]').text('please agree terms and privacy policy');
-                // }
-            // });
-
         },
 
-
-
-
         get_redirect_path: function (user_token_sale_state) {
-
             var data = oThis.api_token_sale_state_page_names &&
                        oThis.api_token_sale_state_page_names[user_token_sale_state];
 

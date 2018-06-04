@@ -217,7 +217,8 @@
               <div class="col-12 col-sm-6">
                 <div class="form-group st-selectpicker">
                   <label class="form-label" for="nationality">Nationality</label>
-                  <select class="form-control selectpicker" name="nationality" title="Select Nationality" tabindex="<%= tabindex_val %>" required>
+                  <select class="form-control selectpicker required" name="nationality" title="Select Nationality"
+                          tabindex="<%= tabindex_val %>" required>
                     <% tabindex_val += 1 %>
                     <% to_show_usa_nationality = true
                        GlobalConstant::CountryNationality.nationalities.each do |nationality_name|

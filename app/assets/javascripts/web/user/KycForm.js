@@ -27,6 +27,11 @@
       if ($('#investor_proofs').length > 0) {
         oThis.addFormName('investor_proof_files_path[]');
       }
+
+      //Jquerey validate triggers on option click, with selectpicker actual options are not clicked.
+      $('select.selectpicker').on('change' , function () {
+        $(this).valid();
+      });
     },
 
     bindButtonActions: function () {
@@ -201,13 +206,6 @@
         }
       });
 
-      // /*
-      //  * On change remove all errors
-      //  */
-      // oThis.$kycForm.find('input').change(function () {
-      //   $(this).removeClass('border-error');
-      //   $(this).closest('.form-group').find('.error[data-for]').text('');
-      // });
 
       /*
        * Form validation
@@ -243,10 +241,10 @@
        */
       $('#kycVerify').click(function () {
         if ($('#verifyModal input:checkbox:checked').length == $('#verifyModal input:checkbox').length) {
-          //simpletoken.utils.errorHandling.clearFormErrors();
+          $('.invalid-feedback[data-forid="verify_error"]').text('').removeClass('.is-invalid');
           oThis.getSignedUrls();
         } else {
-          $('.invalid-feedback[data-forid="verify_error"]').text('Please verify all above mentioned confirmations');
+          $('.invalid-feedback[data-forid="verify_error"]').text('Please verify all above mentioned confirmations').addClass('.is-invalid');
         }
       });
 
@@ -284,7 +282,6 @@
         success: function (response) {
           if ((response.success === false) || (response.err != undefined && response.err != '')) {
             if (typeof response.err.error_data != undefined) {
-              //oThis.$kycForm.find('.error[data-forid="ethereum_address"]').text(response.err.error_data.ethereum_address);
               oThis.formHelper.showServerErrors( response );
             }
             onErrorCallback && onErrorCallback(response);
@@ -294,42 +291,25 @@
         },
         error: function (jqXHR, exception) {
           oThis.formHelper.showServerErrors( exception );
-          //utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
         }
       });
     },
 
     validateForm: function () {
+      var errMsg = "";
 
-      //simpletoken.utils.errorHandling.clearFormErrors();
-      // oThis.$kycForm.find('input[type="file"]').attr('required', false);
-      //
-      // oThis.formNames.forEach(function (value) {
-      //   oThis.$kycForm.find('input[name="' + value + '"]').attr('required', true);
-      // });
-
-      // oThis.$kycForm.find('input, select, textarea').each(function () {
-      //   $(this).trigger('change');
-      // });
-
+      oThis.formHelper.jForm.valid();
       oThis.formNames.forEach(function (value) {
         oThis.$kycForm.find('input[name="' + value + '"]').trigger('change');
         if (oThis.$kycForm.find('input[name="' + value + '"]').length == 0) {
-          utilities.addErrors(value, oThis.$kycForm.find('[data-name="' + value + '"]').data('title') + ' is required');
+          errMsg = oThis.$kycForm.find('[data-name="' + value + '"]').data('title') + ' is required';
+          $('.error[data-forid="'+value+'"]').text(errMsg);
         }
       });
-
-      // if (typeof oThis.$kycForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha != 'undefined') {
-      //   if (grecaptcha.getResponse() == '') {
-      //     oThis.$kycForm.find('.error[data-forid="recaptcha"]').text('Please select the reCaptcha checkbox');
-      //   }
-      // }
-
-      oThis.formHelper.jForm.valid();
       utilities.validateCaptcha( oThis.$kycForm );
 
       if (  oThis.$kycForm.find('.error:not(:empty)').length == 0 &&
-            oThis.$kycForm.find('.invalid-feedback:not(:empty)').length == 0 ) {
+            oThis.$kycForm.find('.invalid-feedback:not(.is-invalid)').length == 0 ) {
         var jKYCSubmit = oThis.$kycForm.find("#kycSubmit");
 
         //Disbale the Submit Button
@@ -352,9 +332,6 @@
             //Form has Errors..
             oThis.onFormError();
           });
-
-      } else {
-        oThis.onFormError();
       }
 
     },
@@ -378,8 +355,9 @@
       if (typeof grecaptcha != 'undefined') {
         grecaptcha.reset();
       }
-      oThis.$kycForm.find('.general_error').text('We found some errors in your KYC form. Please scroll up to review');
-
+      oThis.$kycForm.find('.general_error')
+        .addClass("is-invalid")
+        .text('We found some errors in your KYC form. Please scroll up to review');
     },
 
     makeFileParams: function () {
