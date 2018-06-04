@@ -235,10 +235,10 @@
               </div>
             </div>
 
-
+            <!-- Identification Document wrapper start-->
             <div class="row form-group">
-
-              <div class="file-upload" data-title="Identification Document" data-name="document_id_file_path" data-max-length="1" data-accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="20971520">
+              <div class="file-upload" data-title="Identification Document" data-name="document_id_file_path"
+                   data-max-length="1" data-accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="20971520">
                 <div class="col-12">
                   <label class="form-label" for="document_id_file_path">Upload an image of your ID Document
                     <span class="badge badge-pill badge-secondary align-middle p-0">
@@ -262,14 +262,14 @@
                          data-max-length="3" tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
                   </input>
                   <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200KB - Max 20MB, JPG/PNG/PDF only) </span>
-                   <div class="error" data-for="document_id_file_path"></div>
+                   <div class="error" data-forid="document_id_file_path"></div>
                 </div>
               </div>
-
             </div>
+            <!-- Identification Document wrapper end-->
 
+            <!-- Selfie Document wrapper start-->
             <div class="row form-group">
-
               <div class="file-upload" data-title="Selfie with your identification document"
                    data-name="selfie_file_path" data-max-length="1" data-accept="image/*,application/pdf"
                    data-min-bytes="204800" data-max-bytes="20971520">
@@ -284,11 +284,9 @@
                       </span>
                   </label>
                 </div>
-
                 <div class="col-12">
                   <div class="file-wrapper-view"></div>
                 </div>
-
                 <div class="col-12 mt-2">
                   <div class="file-wrapper" style="position:absolute; top:-10000px; left:-10000px"></div>
                   <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"
@@ -296,15 +294,14 @@
                   </input>
                   <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>picture of you holding your ID  
                   <br/>Document next to your face.<br/>(Min 200KB - Max 20MB, JPG/PNG/PDF only)</span>
-                  <div class="error" data-for="selfie_file_path"></div>
+                  <div class="error" data-forid="selfie_file_path"></div>
                 </div>
               </div>
-
             </div>
+            <!-- Selfie Document wrapper end-->
 
-
+            <!-- residence proof Document wrapper start-->
           <div class="row form-group residence-proof display-none" >
-
             <div class="file-upload" data-title="Residence proof" data-name="residence_proof_file_path"
                  data-max-length="1" data-accept="image/*,application/pdf"
                  data-min-bytes="204800" data-max-bytes="20971520">
@@ -312,24 +309,20 @@
                 <label class="form-label" for="residence_proof_file_path">Proof of Residence
                 </label>
               </div>
-
               <div class="col-12">
                 <div class="file-wrapper-view"></div>
               </div>
-
               <div class="col-12 mt-2">
                 <div class="file-wrapper" style="position:absolute; top:-10000px; left:-10000px"></div>
-
-                <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"  data-max-length="3" tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
+                <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"
+                       data-max-length="3" tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
                 </input>
                 <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan of your proof of residence.<br/> (Min 200KB- Max 20MB, JPG/PNG/PDF only)</span>
-                <div class="error" data-for="residence_proof_file_path"></div>
+                <div class="error" data-forid="residence_proof_file_path"></div>
               </div>
             </div>
-
           </div>
           <%if @presenter_obj.page_data['kyc_fields'].include?('investor_proof_files_path')%>
-
               <div class="row form-group " id="investor_proofs">
               <div class="col-12 col-sm-12">
                 <label class="form-label">ARE YOU AN ACCREDITED INVESTOR?</label>
@@ -342,7 +335,6 @@
                         <span class="radio-button-circle"></span>Yes
                       </label>
                     </div>
-
                     <div class="form-check form-check-inline">
                       <input class="form-check-input radio-button radio-button-no" type="radio" name="ACCREDITEDRadio"
                              id="noRadios" value="option2" />
@@ -350,14 +342,11 @@
                         <span class="radio-button-circle"></span>No
                       </label>
                     </div>
-
                   </div>
                 </div>
               </div>
             </div>
-
             <div class="row form-group upload-proof-invester">
-
               <div class="file-upload" data-title="Accredited investor proof"
                    data-name="investor_proof_files_path[]"
                    data-max-length="<%= @presenter_obj.page_data['max_investor_proofs_allowed']%>"
@@ -383,12 +372,13 @@
                   <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">
                     Please upload a high quality scan or<br/> picture of your investor proof. <br/>(Min 200KB - Max 20MB, JPG/PNG/PDF only)
                   </span>                  
-                  <div class="error" data-for="investor_proof_files_path[]"></div>
+                  <div class="error" data-forid="investor_proof_files_path[]"></div>
                 </div>
               </div>
 
             </div>
           <%end%>
+            <!-- residence proof Document wrapper end-->
 
 
             <div class="row mt-2 form-group">
@@ -396,7 +386,7 @@
                 <div class="g-recaptcha" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>"
                      tabindex="<%= tabindex_val %>" data-callback="simpletoken_kyc_recaptcha_callback"></div>
                 <% tabindex_val += 1 %>
-                <div class="error" data-for="recaptcha"></div>
+                <div class="error" data-forid="recaptcha"></div>
               </div>
             </div>
 
@@ -405,7 +395,7 @@
                 <div class="form-group">
                   <div>
                     <button id="kycSubmit" class="btn btn-primary upload-image-btn" title="submit"
-                            type="submit" tabindex="<%= tabindex_val %>">Submit</button>
+                            tabindex="<%= tabindex_val %>">Submit</button>
                     <% tabindex_val += 1 %>
                     <% if is_update %>
                       <a href="/dashboard" class="btn btn-secondary upload-image-btn ml-3" title="back"
@@ -413,11 +403,10 @@
                       <% tabindex_val += 1 %>
                     <% end %>
                   </div>
-                  <div class="error" data-for="general_error"></div>
+                  <div class="invalid-feedback general_error"></div>
                 </div>
               </div>
             </div>
-
           </div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
@@ -441,12 +430,12 @@
     });
 
     <% if @presenter_obj.is_account_activated? %>
-      simpletoken.utils.errorHandling.showSuccessAlert("Your Account is Activated");
+      simpletoken.utilities.showSuccessAlert("Your Account is Activated");
     <% end %>
 
 
     function simpletoken_kyc_recaptcha_callback() {
-      simpletoken.home.kyc.$kycForm.find('.error[data-for="recaptcha"]').text('');
+      simpletoken.home.kyc.$kycForm.find('.error[data-forid="recaptcha"]').text('');
     }
   </script>
 <% end %>

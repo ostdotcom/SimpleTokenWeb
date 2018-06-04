@@ -2,7 +2,6 @@
 (function (window) {
 
   var KycNs     = ns("kyc"),
-      utilsNs   = ns("simpletoken.utils"),
       utilities = ns("simpletoken.utilities"),
       oThis;
 

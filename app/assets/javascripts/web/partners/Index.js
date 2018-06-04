@@ -2,7 +2,7 @@
 (function (window) {
 
   var partnersNs = ns("simpletoken.partners"),
-      utilsNs = ns("simpletoken.utils"),
+      utilities  = ns("simpletoken.utilities"),
       oThis;
 
   partnersNs.index = oThis = {
@@ -52,14 +52,13 @@
         oThis.jContactForm.find('input').trigger('change');
         if(typeof oThis.jContactForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
           if(grecaptcha.getResponse() == ''){
-            oThis.jContactForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+            oThis.jContactForm.find('.error[data-forid="recaptcha"]').text('Please select the reCaptcha checkbox');
           }
         }
         return oThis.jContactForm.find('.error:not(:empty)').length == 0;
       },
 
       onSendMessage: function () {
-        console.log("onSendMessage :: triggered!");
         var $contactusform = $('#partners-contact-us-form');
         var $contactusformurl = $contactusform.prop('action');
         var $formHeight = $contactusform.height();
@@ -74,14 +73,14 @@
               $contactusform.hide();
               $('#send-message-success').show().height($formHeight);
             } else {
-              simpletoken.utils.errorHandling.displayFormErrors(response);
+              utilities.displayAjaxError(response);
               if(typeof grecaptcha  != 'undefined'){
                 grecaptcha.reset();
               }
             }
           },
           error: function (jqXHR, exception) {
-            utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+            utilities.displayAjaxError(exception);
           },
 
           complete: function (response) {

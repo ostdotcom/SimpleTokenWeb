@@ -23,11 +23,11 @@
                   oThis.showSuccessPage();
                 }
               }else {
-                utilities.displayAjaxError( response );
+                oThis.formHelper.showServerErrors( response );
               }
             },
             error: function ( error ) {
-              utilities.displayAjaxError( error );
+              oThis.formHelper.showServerErrors( error );
             },
             complete: function () {
               var jRecoverBtn = $("#recoverPassword"),

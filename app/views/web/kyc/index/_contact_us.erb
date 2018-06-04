@@ -130,7 +130,7 @@
           <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
           <div class="form-group form-recapcha">
             <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>"></div>
-            <div class="error" data-for="recaptcha" style="text-align: center"></div>
+            <div class="error" data-forid="recaptcha" style="text-align: center"></div>
           </div>
           <button id="ost-kyc-contact-us-btn" class="btn btn-primary mx-auto d-block" title="Submit"
                   data-submiting="Submitting...">SUBMIT</button>

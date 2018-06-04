@@ -3,7 +3,6 @@
 
   var homeNs = ns("simpletokenadmin.home"),
     adminUtilsNs = ns("simpletokenadmin.utils"),
-    utilsNs = ns("simpletoken.utils"),
     utilities = ns("simpletoken.utilities"),
 
       oThis;

@@ -1,7 +1,6 @@
 ;
 (function (window) {
     var homeNs = ns("simpletoken.home"),
-        utilsNs = ns("simpletoken.utils"),
         utilities = ns("simpletoken.utilities"),
         oThis;
 

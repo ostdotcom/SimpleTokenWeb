@@ -27,7 +27,7 @@
           </div>
           <div class="form-group form-recapcha">
             <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="3"></div>
-            <div class="error text-center" data-for="recaptcha"></div>
+            <div class="error text-center" data-forid="recaptcha"></div>
           </div>
           <div class="user-form-footer text-center form-group">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>

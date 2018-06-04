@@ -2,7 +2,7 @@
 (function (window) {
 
     var verificationNs = ns("simpletoken.verification"),
-        utilsNs = ns("simpletoken.utilities"),
+        utilities = ns("simpletoken.utilities"),
         oThis;
 
       verificationNs.home = oThis = {
@@ -37,11 +37,11 @@
                       $('#successMessage').show().text('Activation email has been sent!');
                         return false;
                     } else {
-                      utilsNs.displayAjaxError(response);
+                      utilities.displayAjaxError(response);
                     }
                 },
                 error: function (jqXHR, exception) {
-                  utilsNs.displayAjaxError(jqXHR, exception);
+                  utilities.displayAjaxError(exception);
                 }
             });
         },
