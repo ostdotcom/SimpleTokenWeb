@@ -109,8 +109,8 @@
           oThis.jContactForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
         }
       }
-      if(!$('#ost-kyc-contact-us-form input[name=ost_privacy_policy]').is(':checked')){
-        oThis.jContactForm.find('.error[data-for="ost_privacy_policy"]').text('Please check the checkbox');
+      if(!$('#ost-kyc-contact-us-form input[name=ost_product_communicate]').is(':checked')){
+        oThis.jContactForm.find('.error[data-for="ost_product_communicate"]').text('Please check the checkbox');
       }
       return oThis.jContactForm.find('.error:not(:empty)').length == 0;
     },
