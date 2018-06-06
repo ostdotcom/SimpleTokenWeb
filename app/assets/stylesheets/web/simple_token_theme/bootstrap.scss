@@ -3,7 +3,42 @@
 @import "variables";
 
 // As of now, only variables are overrided
-@import "../../plugins/bootstrap-4/scss/bootstrap";
+@import "../../plugins/bootstrap-4/scss/mixins";
+
+@import "mixins/forms";
+
+@import "../../plugins/bootstrap-4/scss/root";
+@import "../../plugins/bootstrap-4/scss/reboot";
+@import "../../plugins/bootstrap-4/scss/type";
+@import "../../plugins/bootstrap-4/scss/images";
+@import "../../plugins/bootstrap-4/scss/code";
+@import "../../plugins/bootstrap-4/scss/grid";
+@import "../../plugins/bootstrap-4/scss/tables";
+@import "../../plugins/bootstrap-4/scss/forms";
+@import "../../plugins/bootstrap-4/scss/buttons";
+@import "../../plugins/bootstrap-4/scss/transitions";
+@import "../../plugins/bootstrap-4/scss/dropdown";
+@import "../../plugins/bootstrap-4/scss/button-group";
+@import "../../plugins/bootstrap-4/scss/input-group";
+@import "../../plugins/bootstrap-4/scss/custom-forms";
+@import "../../plugins/bootstrap-4/scss/nav";
+@import "../../plugins/bootstrap-4/scss/navbar";
+@import "../../plugins/bootstrap-4/scss/card";
+@import "../../plugins/bootstrap-4/scss/breadcrumb";
+@import "../../plugins/bootstrap-4/scss/pagination";
+@import "../../plugins/bootstrap-4/scss/badge";
+@import "../../plugins/bootstrap-4/scss/jumbotron";
+@import "../../plugins/bootstrap-4/scss/alert";
+@import "../../plugins/bootstrap-4/scss/progress";
+@import "../../plugins/bootstrap-4/scss/media";
+@import "../../plugins/bootstrap-4/scss/list-group";
+@import "../../plugins/bootstrap-4/scss/close";
+@import "../../plugins/bootstrap-4/scss/modal";
+@import "../../plugins/bootstrap-4/scss/tooltip";
+@import "../../plugins/bootstrap-4/scss/popover";
+@import "../../plugins/bootstrap-4/scss/carousel";
+@import "../../plugins/bootstrap-4/scss/utilities";
+@import "../../plugins/bootstrap-4/scss/print";
 
 //Custom overrides for components
 @import "components/body";

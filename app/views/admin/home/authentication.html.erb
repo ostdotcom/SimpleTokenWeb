@@ -10,7 +10,9 @@
         <h4 class="text-center mt-5 mb-2">Multi Factor Authentication</h4>
 
         <p class="text-center">Please enter an MFA code to complete sign-in.</p>
-        <form class="user-form col-12 col-md-6 col-lg-5 col-xl-4 mx-auto" method="POST" action="/api/admin/mfa" id="adminAuthForm">
+        <form class="user-form col-12 col-md-6 col-lg-5 col-xl-4 mx-auto"
+              data-redirect="/admin/dashboard"  data-ost-formhelper
+              method="POST" action="/api/admin/mfa" id="adminAuthForm">
 
           <% if qr_code_url.present? %>
               <div class="">
@@ -25,14 +27,13 @@
 
           <div class="form-group">
             <label class="form-label" for="email">mfa code</label>
-            <input type="text" name="otp" id="otp" value="" class="form-control" autofocus tabindex="1">
-
-            <div class="error" data-for="otp"></div>
+            <input type="text" name="otp" id="otp" value="" class="form-control" autofocus tabindex="1" required>
+            <div class="invalid-feedback" data-forid="otp"></div>
           </div>
           <div class="text-center">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-            <button type="submit" class="btn btn-primary" id="adminAuthentication" tabindex="2" title="Submit">Submit</button>
-            <div class="error" data-for="general_error"></div>
+            <button type="submit" class="btn btn-primary" id="adminAuthentication" data-submiting="Authenticating" tabindex="2" title="Submit">Submit</button>
+            <div class="general_error invalid-feedback" data-forid="adminAuthForm"></div>
           </div>
         </form>
       </div>

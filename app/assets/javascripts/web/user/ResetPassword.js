@@ -2,68 +2,50 @@
 (function (window) {
 
     var homeNs = ns("simpletoken.home"),
-        utilsNs = ns("simpletoken.utils"),
+        utilities = ns("simpletoken.utilities"),
         oThis;
 
     homeNs.reset = oThis = {
+        jForm: null,
+        formHelper : null,
+        is_resend : false,
 
-        init: function (config) {
-            oThis.bindButtonActions();
+        init: function ( ) {
+          var oThis = this;
+          oThis.jForm = $('#userPasswordResetForm');
+          oThis.formHelper= oThis.jForm.formHelper({
+            success: function (response) {
+              if (response.success == true) {
+                if (oThis.is_resend){
+                  oThis.showSuccessMsg();
+                }
+                else {
+                  oThis.showSuccessPage();
+                }
+              }else {
+                oThis.formHelper.showServerErrors( response );
+              }
+            },
+            error: function ( error ) {
+              oThis.formHelper.showServerErrors( error );
+            },
+            complete: function () {
+              var jRecoverBtn = $("#recoverPassword"),
+                  jResendBtn = $("#resendLink")
+              ;
+              jRecoverBtn.text(jRecoverBtn.attr('title')).prop( "disabled", false );
+              jResendBtn.text(jResendBtn.attr('title')).prop( "disabled", false );
+            }
+          });
+
+          oThis.bindButtonActions();
         },
 
         bindButtonActions: function () {
-
-            $("#recoverPassword").click(function (event) {
-                event.preventDefault();
-                var v = utilsNs.errorHandling.validationGeneric($('#userPasswordResetForm input[type="text"]'));
-                if (v === true) {
-                    oThis.forgot_password(false);
-                    return false;
-                }
-
-            });
-
-            $("#resendLink").click(function (event) {
-                event.preventDefault();
-                oThis.forgot_password(true);
-                return false;
-            });
-
-        },
-
-        forgot_password: function (is_resend) {
-            $("#recoverPassword")
-                .text('Recovering...')
-                .prop( "disabled", true );
-            $('#successMessage').hide().text('');
-            var $form = $('#userPasswordResetForm');
-            $.ajax({
-                url: $form.attr('action'),
-                dataType: 'json',
-                method: $form.attr('method'),
-                data: $form.serialize(),
-                success: function (response) {
-                    if (response.success == true) {
-                        if (is_resend == true){
-                            oThis.showSuccessMsg();
-                        }
-                        else {
-                            oThis.showSuccessPage();
-                        }
-
-                        return false;
-                    } else {
-                        utilsNs.errorHandling.displayFormErrors(response);
-                    }
-                },
-                error: function (jqXHR, exception) {
-                    utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
-                },
-                complete: function(){
-                    $("#recoverPassword")
-                        .text('Recover')
-                        .prop( "disabled", false );
-                }
+            $("#resendLink").click(function () {
+              $(this).text($(this).data('submiting')).prop( "disabled", true );
+              oThis.is_resend =  true;
+              oThis.formHelper.jForm.submit();
             });
         },
 
@@ -77,7 +59,6 @@
         showSuccessMsg: function () {
             $('#successMessage').show().text('Reset Link has been sent!');
         }
-
 
     };
 

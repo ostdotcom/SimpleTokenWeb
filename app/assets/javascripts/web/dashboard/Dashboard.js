@@ -2,10 +2,12 @@
 (function (window) {
 
   var dashboardNs = ns("simpletoken.dashboard"),
+      utilities = ns('simpletoken.utilities'),
     oThis;
-  showEthereumAddressConfirmModal: 'false';
+
 
   dashboardNs.timer = oThis = {
+    showEthereumAddressConfirmModal: false,
 
     init: function (config) {
       oThis.showEthereumAddressConfirmModal = config.show_ethereum_address_confirm_modal;
@@ -23,8 +25,6 @@
 
         if ($(this).hasClass('openModal')) {
           var jModal = $('#update-warning-modal');
-          //Clear the errors.
-          simpletoken.utils.errorHandling.clearFormErrors(jModal);
           jModal.modal('show');
         }
         else {
@@ -137,7 +137,7 @@
 
       if (areAllChecked) {
         //Clear all errors.
-        simpletoken.utils.errorHandling.clearFormErrors(jModal);
+        utilities.clearErrors(jModal);
 
         //Call the server for the address.
         oThis.getTokenSaleEthereumAddress();
@@ -149,7 +149,7 @@
     },
     getTokenSaleEthereumAddress: function () {
 
-      dataUrl = "/api/user/get-token-sale-address";
+      var dataUrl = "/api/user/get-token-sale-address";
       if (oThis.showEthereumAddressConfirmModal == 'true') {
         var jModal = $('#ethereum-confirm-modal');
         $("#userConfirm").hide();
@@ -174,11 +174,11 @@
             }
 
           } else {
-            simpletoken.utils.errorHandling.displayFormErrors(response, jModal);
+            utilities.displayAjaxError(response, jModal);
           }
         },
         error: function (jqXHR, exception) {
-          simpletoken.utils.errorHandling.xhrErrResponse(jqXHR, exception, jModal);
+          utilities.displayAjaxError( exception, jModal);
         },
         complete: function () {
           $("#userConfirm").show();
@@ -188,9 +188,9 @@
     },
     showEthereumAddressConfirmError: function (errorMessage) {
       var jModal = $('#ethereum-confirm-modal'),
-        jErr = jModal.find('.error[data-for="general_error"]')
+        jErr = jModal.find('.general_error')
       ;
-      jErr.html(errorMessage);
+      jErr.html(errorMessage).addClass("is-invalid");
     },
     showEthereumAddress: function (ethAddress) {
       var jWrap = $("#ethereum-deposit-address"),
@@ -207,13 +207,13 @@
     /* Section: Validate User ETH Address - BEGIN */
     onValidateUserEthAddress: function (event) {
       var jWrap = $("#user-eth-address"),
-        jErr = jWrap.find('.error[data-for="general_error"]'),
+        jErr = jWrap.find('general_error'),
         jEthAddr = jWrap.find("#user-eth-address-input"),
         dataUrl = "/api/user/check-ethereum-balance"
       ;
 
       if (!jEthAddr.val()) {
-        jErr.html("Invalid Etherenum Address");
+        jErr.html("Invalid Etherenum Address").addClass("is-invalid");
         oThis.onUserEthAddressError();
         return;
       }
@@ -221,7 +221,7 @@
       var data = {
         "user_ethereum_address": jEthAddr.val()
       };
-      simpletoken.utils.errorHandling.clearFormErrors(jWrap);
+      utilities.clearErrors(jWrap);
       oThis.clearUserEthAddressError();
       $.ajax({
         url: dataUrl,
@@ -269,13 +269,13 @@
             }
 
           } else {
-            simpletoken.utils.errorHandling.displayFormErrors(response, jWrap);
+            utilities.displayAjaxError(response, jWrap);
             oThis.onUserEthAddressError();
           }
 
         },
         error: function (jqXHR, exception) {
-          simpletoken.utils.errorHandling.xhrErrResponse(jqXHR, exception, jWrap);
+          utilities.displayAjaxError( exception, jWrap );
           oThis.onUserEthAddressError();
         }
       });
