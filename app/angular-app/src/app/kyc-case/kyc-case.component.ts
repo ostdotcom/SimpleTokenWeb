@@ -30,6 +30,7 @@ export class KycCaseComponent implements OnInit {
   caseId;
   nextCaseId;
   previousCaseId;
+  widthComputed = false;
   isStatusDenied :boolean =  false ;
   isReportIssue :boolean = false ;
   isWhitelisting:boolean =  false;
@@ -48,11 +49,23 @@ export class KycCaseComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.caseId = params.get('id');
       this.fetchCase();
-      this.hideModal();
     });
+
+  }
+
+  ngAfterViewChecked(){
+    if ($(".card").length && ! this.widthComputed){
+      this.widthComputed = true;
+      let computedWidth = $(".card.grey-background").css("width").slice(0,-2) - 100 + "px";
+      $(".card.grey-background").css("min-height", computedWidth);
+      $("img.card-img-top").on("load", function(){
+        $(".card.grey-background").css("min-height", '');
+      });
+    }
   }
 
   fetchCase() {
+    this.widthComputed = false;
     this.isProcessing = true;
     let params = Object.assign(
       {id: this.caseId},
@@ -68,10 +81,6 @@ export class KycCaseComponent implements OnInit {
     }, error => {
       this.stateHandler.updateRequestStatus( this, false,  true , false ,  error.json());
     })
-  }
-
-  hideModal(){
-    $("#detailsModal").modal('hide');
   }
 
   onSuccess( res ) {
@@ -96,7 +105,7 @@ export class KycCaseComponent implements OnInit {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
-  onActionSuccess(){
+  onActionSuccess(e){
     this.fetchCase();
   }
 
@@ -130,3 +139,5 @@ export class KycCaseComponent implements OnInit {
   }
 
 }
+
+

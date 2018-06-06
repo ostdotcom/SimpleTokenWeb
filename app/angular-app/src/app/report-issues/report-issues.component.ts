@@ -65,6 +65,9 @@ export class ReportIssuesComponent implements OnInit {
 
     $('#confirmation').off('hidden.bs.modal').on('hidden.bs.modal', () => {
       this.stateHandler.updateRequestStatus(this);
+      if(this.isMailSent) {
+        this.actionSuccessEvent.emit();
+      }
       this.isMailSent = false;
     });
 
@@ -91,21 +94,14 @@ export class ReportIssuesComponent implements OnInit {
         }
         this.stateHandler.updateRequestStatus(this);
         this.isMailSent = true;
-        setTimeout(
-          function(){
-            $('#confirmation').modal('hide');
-            this.hideReportIssue();
-            this.actionSuccessEvent.emit();
-          }.bind(this),
-          1000
-        );
+        setTimeout(() => {
+          $('#confirmation').modal('hide');
+        } , 1000 );
       },
       error => {
         let err = error.json();
         this.stateHandler.updateRequestStatus(this , false , true,  false  , err );
-
       })
-
   }
 
   createData() {

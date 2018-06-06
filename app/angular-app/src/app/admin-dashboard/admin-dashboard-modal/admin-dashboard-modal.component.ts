@@ -26,7 +26,7 @@ export class AdminDashboardModalComponent  {
   isSuccess: boolean =  false;
 
   ngAfterViewInit() {
-    $("#"+this.modalId).off("hidden.bs.modal").on("hidden.bs.modal", () => {
+    $("#"+this.modalId).on("hidden.bs.modal", () => {
       this.stateHandler.updateRequestStatus(this);
       this.isSuccess = false;
     });

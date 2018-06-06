@@ -10,19 +10,19 @@
 
     </div>
 
-  <div class="col p-0 pr-3 display-3">
+  <div class="col p-0 pr-3 display-3 text-capitalize">
     {{row.admin_status}}
   </div>
-  <div class="col p-0 pr-3 display-3">
+  <div class="col p-0 pr-3 display-3 text-capitalize">
     {{row.cynopsis_status}}
   </div>
-  <div class="col p-0 pr-3 display-3" *ngIf="appConfigService.hasWhiteListSetUp()">
+  <div class="col p-0 pr-3 display-3 text-capitalize" *ngIf="appConfigService.hasWhiteListSetUp()">
     {{row.whitelist_status}}
   </div>
-  <div class="col p-0 pr-3 display-3">
+  <div class="col p-0 pr-3 display-3 text-capitalize">
     {{row.country}}
   </div>
-  <div class="col p-0 pr-3 display-3">
+  <div class="col p-0 pr-3 display-3 text-capitalize">
     {{row.nationality}}
   </div>
   <div class="col p-0 pr-3 display-3">
