@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav">
         <li><a
         <% if "#{params[:controller]}::#{params[:action]}" == 'web/home::index' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/" title="Home"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>" title="Home"
         <% end %> >Home</a></li>
         <li id="nav-products" class="dropdown hidden-xs">
           <a href="#"
@@ -32,7 +32,7 @@
             <li>
               <a
               <% if params[:action] == 'product' %> class="bg-selected-nav" href="javascript:void(0)"
-              <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT"
+              <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>product" title="ostKIT"
               <% end %> >
                 <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kit-brand-nav-menu.svg" width="80"/>
                 The complete blockchain toolkit for business
@@ -52,7 +52,7 @@
         <li class="hidden-sm hidden-md hidden-lg hidden-xl">
           <a
           <% if params[:action] == 'product' %> class="selected-nav" href="javascript:void(0)"
-          <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/product" title="ostKIT"
+          <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>product" title="ostKIT"
           <% end %> >PRODUCTS - ostKIT</a></li>
         <li class="hidden-sm hidden-md hidden-lg hidden-xl">
           <a
@@ -61,15 +61,15 @@
           <% end %> >PRODUCTS - ostKYC</a></li>
         <li><a
         <% if params[:action] == 'partners' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/partners" title="Partners"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>partners" title="Partners"
         <% end %> >Partners</a></li>
         <li><a
         <% if params[:action] == 'about' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/team" title="Team"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>team" title="Team"
         <% end %> >Team</a></li>
         <li><a
         <% if params[:action] == 'documents' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" title="Documents"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>documents" title="Documents"
         <% end %> >Documents</a></li>
         <li><a href="https://medium.com/ostdotcom" title="BLOG" target="_blank">BLOG</a></li>
         <li><a
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a
         <% if params[:action] == 'careers' %> class="selected-nav" href="javascript:void(0)"
-        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/careers" title="Careers"
+        <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>careers" title="Careers"
         <% end %> >careers</a></li>
         <li><a href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/login" title="Login">Login</a></li>
         <% if !GlobalConstant::StTokenSale.has_sale_ended? %>
