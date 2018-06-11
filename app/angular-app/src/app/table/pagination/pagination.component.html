@@ -12,11 +12,14 @@
       <button class="btn px-2 arrow-btn" (click)="onPrev()" [disabled]="!isPrev()" [ngClass]="{ 'disabled': !isPrev() || loading }">
         &lang;</button>
 
-      <button  class='btn px-2' *ngFor="let pageNum of getPages()"
-        (click)="changePage(pageNum)"
-        [ngClass]="{'active': isActive(pageNum)}">
-        {{ pageNum }}
-      </button>
+      <ng-container *ngFor="let pageNum of getPages()">
+        <button *ngIf="isToShow( pageNum )"
+          class='btn px-2'
+          (click)="changePage(pageNum)"
+          [ngClass]="{'active': isActive(pageNum)}">
+          {{ pageNum }}
+        </button>
+      </ng-container>
 
       <button class="btn px-2 arrow-btn" (click)="onNext()" [disabled]="!isNext()" [ngClass]="{ 'disabled': !isNext() || loading }">
         <span> &rang; </span>

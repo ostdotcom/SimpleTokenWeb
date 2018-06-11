@@ -118,18 +118,18 @@ class ApplicationController < ActionController::Base
   # * Reviewed By: Sunil
   #
   def browser_basic_auth
-    return if !Rails.env.staging?
+    if Rails.env.staging? || (Rails.env.production? && request.host == 'punekyc.ost.com')
+      users = {'simpleToken' => ['A$F^&n!@$ghf%7']}
 
-    users = {'simpleToken' => ['A$F^&n!@$ghf%7']}
-
-    authenticate_or_request_with_http_basic do |username, password|
-      if users[username].present? && users[username][0] == password
-        true
-      else
-        false
+      authenticate_or_request_with_http_basic do |username, password|
+        if users[username].present? && users[username][0] == password
+          true
+        else
+          false
+        end
       end
-    end
 
+    end
   end
 
   # Set page meta info
