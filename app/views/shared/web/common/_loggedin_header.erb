@@ -11,7 +11,7 @@
     <div class="navbar-collapse collapse" id="navbarToggler">
       <ul class="navbar-nav">
         <li class="nav-item mx-2 mx-lg-0"><a <% if params[:action] == 'dashboard_home' %> class="selected-nav nav-link" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['sale_root_url'] %>/dashboard" class="nav-link" title="Dashboard" <% end %> >Dashboard</a></li>
-        <li class="nav-item mx-2 mx-lg-0"><a <% if params[:action] == 'documents' %> class="selected-nav nav-link" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/documents" class="nav-link" title="Documents" target="_blank" <% end %> >Documents</a></li>
+        <li class="nav-item mx-2 mx-lg-0"><a <% if params[:action] == 'documents' %> class="selected-nav nav-link" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>documents" class="nav-link" title="Documents" target="_blank" <% end %> >Documents</a></li>
         <li class="nav-item mx-2 mx-lg-0"><a <% if params[:action] == 'faq' %> class="selected-nav nav-link" href="javascript:void(0)" <% else %> href="<%= GlobalConstant::Base.simple_token_web['root_url'] %>/faq/" class="nav-link" title="FAQ" target="_blank" <% end %> >FAQ</a></li>
       </ul>
       <ul class="navbar-nav ml-auto">
