@@ -45,35 +45,12 @@ $activeArrowTop: $captionHeight + $captionBottomMargin;
     .kyc-carousel-content {
       margin-top: -40px;
       text-align: center;
-      position: relative;
-      
+
       img {
         position: relative;
         width: 100%;
         z-index: 1;
       }
-
-      .btn-square-gold{
-        border-radius: 4px;
-        text-transform: uppercase;
-        font-weight: 400;
-        font-size: 14px;
-        height: 40px;
-        padding: 0 30px;
-        margin: 0 20px;
-        text-align: center;
-        display: inline-block;
-        border-color: #e4b030;
-        background: #e4b030;
-        color: #fff;
-        &:hover,
-        &:active,
-        &:focus{
-          color: #fff;
-          text-decoration: none;
-        }
-      }
-
 
       .ost-kyc-play-btn {
         position: absolute;
@@ -84,8 +61,7 @@ $activeArrowTop: $captionHeight + $captionBottomMargin;
         margin:auto;
         width: 200px;
         z-index: 2;
-        font-size: 12px;
-        letter-spacing: 2.2px;
+        height: 52px;
         .btn-play{
           .play{
             width: 16px;
