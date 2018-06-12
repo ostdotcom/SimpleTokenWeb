@@ -337,6 +337,10 @@
             //Form has Errors..
             oThis.onFormError();
           });
+      } else{
+        oThis.$kycForm.find('.general_error')
+          .addClass("is-invalid")
+          .text('We found some errors in your KYC form. Please scroll up to review');
       }
 
     },
