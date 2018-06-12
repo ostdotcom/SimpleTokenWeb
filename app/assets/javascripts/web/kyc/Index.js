@@ -39,7 +39,6 @@
     },
 
     bindEventListeners: function () {
-     
       var oThis = this;
       oThis.jVideoCarousal.swipe({
         swipe: function (event, direction, distance, duration, fingerCount, fingerData) {

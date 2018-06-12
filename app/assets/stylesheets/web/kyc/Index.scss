@@ -6,19 +6,59 @@ body{
   color: inherit;
 }
 
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
+.btn{
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: .813rem 1.6rem;
+  line-height: 100%;
+  &.btn-primary{
+    padding: 1rem 1.6rem !important;
+  }
+  &.btn-secondary{
+    border: 1.5px solid #34445b;
   }
 }
-@media (min-width: 992px) {
-  .container {
-    width: 750px;
+
+.ost-triangleSpace{
+  padding-top: 4em;
+  width: 100%;
+}
+
+.ost-backward-triangle{
+  position: absolute;
+  left: -40px;
+  right: -40px;
+  top: -60px;
+  height: 120px;
+  transform: rotate(-0.8deg);
+  background: #fff;
+  @media (max-width: 512px){
+    transform: rotate(-3.6deg);
+  }
+  @media (min-width: 513px) and (max-width: 768px){
+    transform: rotate(-2.8deg);
+  }
+  @media (min-width: 769px) and (max-width: 1024px){
+    transform: rotate(-1.8deg);
+  }
+  @media (min-width: 1025px){
+    transform: rotate(-2.4deg);
   }
 }
-@media (min-width: 1200px) {
-  .container {
-    width: 970px;
-  }
-}
+
+//@media (min-width: 768px) {
+//  .container {
+//    width: 750px;
+//  }
+//}
+//@media (min-width: 992px) {
+//  .container {
+//    width: 750px;
+//  }
+//}
+//@media (min-width: 1200px) {
+//  .container {
+//    width: 970px;
+//  }
+//}
 
