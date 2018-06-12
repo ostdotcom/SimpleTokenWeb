@@ -241,10 +241,10 @@
        */
       $('#kycVerify').click(function () {
         if ($('#verifyModal input:checkbox:checked').length == $('#verifyModal input:checkbox').length) {
-          $('.invalid-feedback[data-forid="verify_error"]').text('').removeClass('.is-invalid');
+          $('.invalid-feedback[data-forid="verify_error"]').text('').removeClass('is-invalid');
           oThis.getSignedUrls();
         } else {
-          $('.invalid-feedback[data-forid="verify_error"]').text('Please verify all above mentioned confirmations').addClass('.is-invalid');
+          $('.invalid-feedback[data-forid="verify_error"]').text('Please verify all above mentioned confirmations').addClass('is-invalid');
         }
       });
 
