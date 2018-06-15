@@ -207,7 +207,7 @@
     /* Section: Validate User ETH Address - BEGIN */
     onValidateUserEthAddress: function (event) {
       var jWrap = $("#user-eth-address"),
-        jErr = jWrap.find('general_error'),
+        jErr = jWrap.find('.general_error'),
         jEthAddr = jWrap.find("#user-eth-address-input"),
         dataUrl = "/api/user/check-ethereum-balance"
       ;
