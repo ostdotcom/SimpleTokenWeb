@@ -46,6 +46,12 @@
 
 <%= yield :javascript %>
 
+<script type="text/javascript">
+  $(document).ready(function () {
+    status401redirect = "/admin/login";
+  });
+</script>
+
 </body>
 </html>
 

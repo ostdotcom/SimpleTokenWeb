@@ -1,19 +1,39 @@
 ;
 (function (window) {
 
-  var KycNs = ns("kyc"),
-      utilsNs = ns("simpletoken.utils"),
+  var KycNs     = ns("kyc"),
+      utilities = ns("simpletoken.utilities"),
       oThis;
 
   KycNs.index = oThis = {
     jContactForm: null,
+    jContactBtn : null,
+    formHelper: null,
     jVideoCarousal: null,
+    isCaptchaValid : false,
+    isVideoPlaying: false,
 
     init: function (config) {
       oThis.jContactForm = $('#ost-kyc-contact-us-form');
-      oThis.jContactForm.setCustomValidity();
-      oThis.jVideoCarousal = $("#kyc-video-carousel");
+      oThis.jContactBtn = $('#ost-kyc-contact-us-btn');
 
+      oThis.formHelper =  oThis.jContactForm.formHelper({
+        success: function (response) {
+          if (response.success == true) {
+            $('#successModal').modal('show');
+            oThis.jContactForm[0].reset();
+            oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', false);
+            oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', new Date());
+          }
+        },
+        complete: function (response) {
+          if(typeof grecaptcha  != 'undefined'){
+            grecaptcha.reset();
+          }
+        }
+      });
+
+      oThis.jVideoCarousal = $("#kyc-video-carousel");
       oThis.bindEventListeners();
       oThis.bindButtonActions();
     },
@@ -43,11 +63,6 @@
         oThis.showVideo( $(this) );
       });
 
-      $("#ost-kyc-contact-us-submit").on("click", function (event) {
-        event.preventDefault();
-        oThis.onContactFormSubmit( event );
-      });
-
       $(".smooth-scroll").on('click', function (event) {
         if (this.hash !== "") {
           event.preventDefault();
@@ -58,7 +73,7 @@
         }
       });
 
-      $('#ost-kyc-contact-us-form').find('input[name=token_sale_start_date]')
+      oThis.jContactForm .find('input[name=token_sale_start_date]')
         .datepicker({
           format: 'dd/mm/yyyy',
           autoclose: true,
@@ -66,13 +81,13 @@
           orientation: 'bottom'
         })
         .on('changeDate', function (e) {
-          $(this).trigger('change');
+          $(this).valid();
           var nextDate = new Date ($(this).datepicker('getDate'));
           nextDate.setDate(nextDate.getDate()+1);
           oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', nextDate);
         });
 
-      $('#ost-kyc-contact-us-form').find('input[name=token_sale_end_date]')
+      oThis.jContactForm .find('input[name=token_sale_end_date]')
         .datepicker({
           format: 'dd/mm/yyyy',
           autoclose: true,
@@ -80,83 +95,25 @@
           orientation: 'bottom'
         })
         .on('changeDate', function (e) {
-          $(this).trigger('change');
+          $(this).valid();
           var nextDate = new Date ($(this).datepicker('getDate'));
           nextDate.setDate(nextDate.getDate()-1);
           oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', nextDate);
         });
 
-    },
-
-    onContactFormSubmit: function () {
-
-      //Validate Everything Again
-      if ( !oThis.isContactFormValid() ) {
-        console.log("Validation failed!");
-        return;
-      }
-      $("#ost-kyc-contact-us-submit")
-        .text('sending ...')
-        .prop( "disabled", true );
-      oThis.onSendMessage();
-    },
-
-    isContactFormValid: function () {
-      simpletoken.utils.errorHandling.clearFormErrors();
-      oThis.jContactForm.find('input, textarea').trigger('change');
-      if(typeof oThis.jContactForm.find('.g-recaptcha')[0] != 'undefined' && typeof grecaptcha  != 'undefined'){
-        if(grecaptcha.getResponse() == ''){
-          oThis.jContactForm.find('.error[data-for="recaptcha"]').text('Please select the reCaptcha checkbox');
+      oThis.jContactForm.on("beforeSubmit", function (event) {
+        if ( !oThis.isCaptchaValid ) {
+          event.preventDefault();
         }
-      }
-      if(!$('#ost-kyc-contact-us-form input[name=ost_product_communicate]').is(':checked')){
-        oThis.jContactForm.find('.error[data-for="ost_product_communicate"]').text('Please check the checkbox');
-      }
-      return oThis.jContactForm.find('.error:not(:empty)').length == 0;
-    },
+      });
 
-    onSendMessage: function () {
-      console.log("onSendMessage :: triggered!");
-      var $contactusform = $('#ost-kyc-contact-us-form');
-      var $contactusformurl = $contactusform.prop('action');
-      var $formHeight = $contactusform.height();
-      $('#successModal').modal('hide');
-      $.ajax({
-        url: $contactusformurl,
-        dataType: 'json',
-        method: 'POST',
-        data: $contactusform.serialize(),
-        success: function (response) {
-          if (response.success == true) {
-            $('#successModal').modal('show');
-            oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', false);
-            oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', new Date());
-            oThis.jContactForm[0].reset();
-          } else {
-            simpletoken.utils.errorHandling.displayFormErrors(response);
-            if(typeof grecaptcha  != 'undefined'){
-              grecaptcha.reset();
-            }
-          }
-        },
-        error: function (jqXHR, exception) {
-          utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
-        },
-
-        complete: function (response) {
-          $("#ost-kyc-contact-us-submit")
-            .text('SUBMIT')
-            .prop('disabled', false);
-
-          if(typeof grecaptcha  != 'undefined'){
-            grecaptcha.reset();
-          }
-        }
-
+      $('#ost-kyc-contact-us-btn').on('click' , function () {
+         oThis.isCaptchaValid = utilities.validateCaptcha( oThis.jContactForm );
+         oThis.formHelper.jForm.submit();
       });
     },
 
-    isVideoPlaying: false,
+
     showVideo: function( jItem ){
       oThis.isVideoPlaying = true;
       var jIframe = jItem.find('iframe');
@@ -171,7 +128,7 @@
       //Hide Image
       jItem.find('img').css({
         visibility: "hidden"
-      })
+      });
 
       //Show Iframe
       jIframe.attr({'src' : jIframe.data('src') }).show();

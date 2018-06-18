@@ -25,6 +25,7 @@
     letter-spacing: 1px;
   }
   .custom-form{
+    position: initial;
     font-weight: 400;
     font-size: 16px;
   }
@@ -65,6 +66,9 @@
     border-bottom: 1px solid #3C5056;
     &:focus{
       border-bottom: 1px solid #6CA3A9;
+    }
+    &::-moz-placeholder {
+      color: #74989C;
     }
   }
 
