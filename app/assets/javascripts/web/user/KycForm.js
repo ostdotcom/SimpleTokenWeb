@@ -32,6 +32,10 @@
       $('select.selectpicker').on('change' , function () {
         $(this).valid();
       });
+
+      $('#verifyModal').on('hidden.bs.modal' , function ( e ) {
+          $(this).find('.invalid-feedback').removeClass('is-invalid');
+      });
     },
 
     bindButtonActions: function () {
