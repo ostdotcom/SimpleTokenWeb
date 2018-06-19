@@ -325,49 +325,49 @@ en:
 
     login:
       :meta:
-        :title: Simple Token Admin Login
+        :title: OST KYC Admin Login
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 1
 
     forgot_password:
       :meta:
-        :title: Simple Token Forgot Password
+        :title: OST KYC Forgot Password
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 0
 
     reset_password:
       :meta:
-        :title: Simple Token Reset Password
+        :title: OST KYC Reset Password
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 0
 
     activate_account:
       :meta:
-        :title: Simple Token Activate Account Password
+        :title: OST KYC Activate Account Password
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 0
 
     authentication:
       :meta:
-        :title: Simple Token Admin Login Authentication
+        :title: OST KYC Admin Login Authentication
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 0
 
     change_password:
       :meta:
-        :title: Simple Token Admin Change Password
+        :title: OST KYC Admin Change Password
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 0
 
     angular_app:
       :meta:
-        :title: Simple Token Admin Dashboard
+        :title: OST KYC Admin Dashboard
         :robots: 'noindex, nofollow'
       :assets:
         :specific_css_required: 1
