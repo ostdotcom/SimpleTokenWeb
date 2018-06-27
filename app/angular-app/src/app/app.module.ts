@@ -101,6 +101,22 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
+
+      {
+        path: 'admin',
+        component: AdminSettingsComponent,
+        children: [
+          {
+            path: 'admin-user/dashboard',
+            component: AdminDashboardComponent
+          },
+          {
+            path: 'user/dashboard',
+            component: ManageUserComponent
+          }
+       ]
+
+      },
       {
         path: 'admin/dashboard',
         component: DashboardComponent
@@ -108,19 +124,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
       {
         path: 'admin/case-id/:id',
         component: KycCaseComponent
-      },
-      {
-        path: 'admin/admin-user/dashboard',
-        component: AdminDashboardComponent
-      },
-      {
-        path: 'admin/user/dashboard',
-        component: ManageUserComponent
-      },
-      {
-        path: 'admin/settings',
-        component: AdminSettingsComponent
       }
+
+
     ]),
     ReactiveFormsModule
   ],

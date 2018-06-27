@@ -7,7 +7,7 @@
             <button class="btn btn-primary invite-user-btn" (click)="showInviteUserSection()">Invite Users</button>
         </div>
         <div class="col-12 user-table-wrap p-0 mt-4 pt-3">
-            <app-table  class="alternate-style-lg" 
+            <app-table  class="alternate-style-lg"
                         (pageChangeEvent)="onPageChange( $event )"
                         [dataUrl]="'api/admin/admin-user/dashboard'"
                         [customErrorMessage]= "'Something went wrong, we could not load the data. We are looking into this.'"
