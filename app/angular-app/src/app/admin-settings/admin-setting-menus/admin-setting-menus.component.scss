@@ -1,3 +1,4 @@
+
 .li-color-back{
   background-color: #f3fbfb;
   text-align: left;
@@ -28,10 +29,27 @@
 
 }
 
-.list-style{
+.list-style {
 
-font-size: 18px;
+  font-size: 18px;
   font-weight: 500;
-color: #597a84
+  color: #597a84
+
+}
+
+
+.desktop-menus-list{
+  background-color:#f3fbfb;
+  min-height: 100vh;
+
+.desktop-menu{
+  height:50px;
+  outline: none;
+  border-bottom: solid 1px rgba(211, 227, 229, 0.5);
+  cursor: pointer;
+  &.first{
+    border-top: solid 1px rgba(211, 227, 229, 0.5);
+  }
+}
 
 }

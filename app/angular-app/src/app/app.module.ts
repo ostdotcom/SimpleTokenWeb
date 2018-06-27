@@ -107,11 +107,11 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
         component: AdminSettingsComponent,
         children: [
           {
-            path: 'admin-user/dashboard',
+            path: 'settings/admin',
             component: AdminDashboardComponent
           },
           {
-            path: 'user/dashboard',
+            path: 'settings/user',
             component: ManageUserComponent
           }
        ]
