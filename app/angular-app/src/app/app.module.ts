@@ -45,6 +45,8 @@ import { ManageUserHeaderComponent } from './manage-user/manage-user-header/mana
 import { ManageUserRowComponent } from './manage-user/manage-user-row/manage-user-row.component';
 import { ManageUserModalComponent } from './manage-user/manage-user-modal/manage-user-modal.component';
 import { PageBaseComponentComponent } from './page-base-component/page-base-component.component';
+import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
+import { AdminSettingMenusComponent } from './admin-settings/admin-setting-menus/admin-setting-menus.component';
 
 
 
@@ -90,7 +92,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ManageUserHeaderComponent,
     ManageUserRowComponent,
     ManageUserModalComponent,
-    PageBaseComponentComponent
+    PageBaseComponentComponent,
+    AdminSettingsComponent,
+    AdminSettingMenusComponent
   ],
   imports: [
     BrowserModule,
@@ -112,6 +116,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
       {
         path: 'admin/user/dashboard',
         component: ManageUserComponent
+      },
+      {
+        path: 'admin/settings',
+        component: AdminSettingsComponent
       }
     ]),
     ReactiveFormsModule

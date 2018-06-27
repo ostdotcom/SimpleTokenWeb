@@ -23,9 +23,11 @@
 				<div class="triangle"></div>
 				<span class="d-block d-sm-none profile-name">{{appConfig.getLoggedInUserName()}}</span>
         		<a *ngIf="appConfig.isSuperAdmin()" class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/admin-user/dashboard']">manage admins</a>
-        		<a *ngIf="appConfig.isSuperAdmin()" class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/user/dashboard']">User management</a>
+            <a *ngIf="appConfig.isSuperAdmin()" class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/user/dashboard']">User management</a>
+            <a class="dropdown-item border-none" title="Manage Admins" [routerLink]="['/admin/settings']">Settings</a>
 				<a href="/admin/change-password" title="Change Password" class="dropdown-item border-none">change password</a>
-				<a href="/admin/logout" title="Logout" class="dropdown-item border-none">logout</a>
+        <a href="/admin/logout" title="Logout" class="dropdown-item border-none">logout</a>
+
 			</div>
 		</div>
 
