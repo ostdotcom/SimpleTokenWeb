@@ -12,15 +12,20 @@
     &.first{
       border-top: solid 1px rgba(211, 227, 229, 0.5);
     }
+    .admin-dashboard{
+      fill: #AFE1E3;
+    }
     &.selected{
       background-color: #afe1e3;
       color: $white;
+      .admin-dashboard{
+        fill: #ffffff;
+      }
     }
   }
 
 
 }
-
 
 .mobile-list {
 .btn-style{
