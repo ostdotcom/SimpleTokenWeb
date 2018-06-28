@@ -38,6 +38,22 @@
 
 }
 
+[aria-expanded="false"] .menu-open {
+  display: block;
+}
+
+[aria-expanded="false"] .menu-close {
+  display: none;
+}
+
+[aria-expanded="true"] .menu-open {
+  display: none;
+}
+
+[aria-expanded="true"] .menu-close {
+  display: block;
+}
+
 
 .desktop-menus-list{
   background-color:#f3fbfb;
