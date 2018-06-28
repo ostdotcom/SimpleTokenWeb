@@ -1,29 +1,20 @@
-<div class="d-none d-lg-block h-100 desktop-menus-list pt-5" (click)= changeHighlightState($event)   >
-    <div class="desktop-menu display-2 pl-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">Go to Dashboard</div>
-  <div class="desktop-menu display-2 pl-2 align-items-center d-flex"
-  data-menu="admin" [routerLink]="['settings/admin']" [ngClass]="{'selected': this.selectedMenu=='admin'}">Admin Management</div>
-  <div class="desktop-menu display-2 pl-2 align-items-center d-flex"
-  data-menu="user" [routerLink]="['settings/user']" [ngClass]="{'selected': this.selectedMenu=='user'}">User Mangement </div>
+<div class="d-none d-lg-block h-100 desktop-menus-list pt-5"   >
+  <div class="desktop-menu display-2 pl-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">Go to Dashboard</div>
+  <div class="desktop-menu display-2 pl-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']" >Admin Management</div>
+  <div class="desktop-menu display-2 pl-2 align-items-center d-flex" data-menu="user" [routerLink]="['/admin/settings/user']" [routerLinkActive]="['selected']">User Mangement </div>
 </div>
 
-<div class="d-lg-none">
-  <button class="btn container-fluid btn-style" type="button" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
+<div class="d-lg-none mobile-list">
+  <button class="btn container-fluid btn-style px-3" type="button" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
     Settings
     <img class="img-topbar-style menu-open" src="https://goo.gl/images/AbHREA"><img class="img-topbar-style menu-close" src="https://www.iconspng.com/images/up-button-arrow/up-button-arrow.jpg">
   </button>
   <div class="collapse " id="collapseSettings">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item li-color-back">
-        <a [routerLink]="['settings/admin']" class="list-style"> <img class="img-style" src="https://goo.gl/images/AbHREA"> Go to Dashboard</a><br>
-      </li>
-      <li class="list-group-item li-color-back">
-        <a [routerLink]="['settings/admin']" class="list-style"> <img class="img-style" src="https://goo.gl/images/AbHREA"> Admin management mobile</a><br>
-      </li>
-      <li class="list-group-item li-color-back">
-        <a [routerLink]="['settings/user']" class="list-style"><img class="img-style" src="https://goo.gl/images/AbHREA">User Mangement mobile </a>
-      </li>
-
-    </ul>
+    <div class="d-lg-none mobile-menus-list"  >
+        <div class="desktop-menu pl-2 align-items-center d-flex" [routerLink]="['/admin/dashboard']">Go to Dashboard</div>
+        <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']" >Admin Management</div>
+        <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="user" [routerLink]="['/admin/settings/user']" [routerLinkActive]="['selected']">User Mangement </div>
+      </div>
   </div>
 
 </div>
