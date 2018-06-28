@@ -1,9 +1,7 @@
 <div class="d-none d-lg-block h-100 desktop-menus-list pt-5" (click)= changeHighlightState($event)   >
-    <div class="desktop-menu display-2 pl-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">Go to Dashboard</div>
-  <div class="desktop-menu display-2 pl-2 align-items-center d-flex"
-  data-menu="admin" [routerLink]="['settings/admin']" [ngClass]="{'selected': this.router.url.indexOf('settings/admin') > -1 }">Admin Management</div>
-  <div class="desktop-menu display-2 pl-2 align-items-center d-flex"
-  data-menu="user" [routerLink]="['settings/user']" [ngClass]="{'selected': this.router.url.indexOf('settings/user') > -1 }">User Mangement </div>
+  <div class="desktop-menu display-2 pl-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">Go to Dashboard</div>
+  <div class="desktop-menu display-2 pl-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']" >Admin Management</div>
+  <div class="desktop-menu display-2 pl-2 align-items-center d-flex" data-menu="user" [routerLink]="['/admin/settings/user']" [routerLinkActive]="['selected']">User Mangement </div>
 </div>
 
 <div class="d-lg-none">
@@ -14,13 +12,13 @@
   <div class="collapse " id="collapseSettings">
     <ul class="list-group list-group-flush">
       <li class="list-group-item li-color-back">
-        <a [routerLink]="['settings/admin']" class="list-style"> <img class="img-style" src="https://goo.gl/images/AbHREA"> Go to Dashboard</a><br>
+        <a [routerLink]="['/admin/dashboard']" class="list-style"> <img class="img-style" src="https://goo.gl/images/AbHREA" > Go to Dashboard</a><br>
       </li>
       <li class="list-group-item li-color-back">
-        <a [routerLink]="['settings/admin']" class="list-style"> <img class="img-style" src="https://goo.gl/images/AbHREA"> Admin management mobile</a><br>
+        <a [routerLink]="['/admin/settings/admin']" class="list-style" [routerLinkActive]="['selected']"> <img class="img-style" src="https://goo.gl/images/AbHREA" > Admin Management</a><br>
       </li>
       <li class="list-group-item li-color-back">
-        <a [routerLink]="['settings/user']" class="list-style"><img class="img-style" src="https://goo.gl/images/AbHREA">User Mangement mobile </a>
+        <a [routerLink]="['/admin/settings/user']" class="list-style" [routerLinkActive]="['selected']"><img class="img-style" src="https://goo.gl/images/AbHREA">User Mangement</a>
       </li>
 
     </ul>
