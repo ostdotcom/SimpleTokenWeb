@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'admin-setting-menus',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminSettingMenusComponent implements OnInit {
 
+selectedMenu = 'admin';
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changeHighlightState(e){
+    this.selectedMenu = $(e.target).data('menu');
   }
 
 }
