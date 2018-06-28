@@ -50,6 +50,10 @@
   &.first{
     border-top: solid 1px rgba(211, 227, 229, 0.5);
   }
+  &.selected{
+    background-color: #afe1e3;
+    color: #ffffff;
+  }
 }
 
 }
