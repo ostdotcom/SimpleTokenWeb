@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -8,15 +9,15 @@ declare var $: any;
 })
 export class AdminSettingMenusComponent implements OnInit {
 
-selectedMenu = 'admin';
 
-  constructor() { }
+
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
 
   changeHighlightState(e){
-    this.selectedMenu = $(e.target).data('menu');
+
   }
 
 }

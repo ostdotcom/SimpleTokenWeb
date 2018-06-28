@@ -1,9 +1,9 @@
 <div class="d-none d-lg-block h-100 desktop-menus-list pt-5" (click)= changeHighlightState($event)   >
     <div class="desktop-menu display-2 pl-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">Go to Dashboard</div>
   <div class="desktop-menu display-2 pl-2 align-items-center d-flex"
-  data-menu="admin" [routerLink]="['settings/admin']" [ngClass]="{'selected': this.selectedMenu=='admin'}">Admin Management</div>
+  data-menu="admin" [routerLink]="['settings/admin']" [ngClass]="{'selected': this.router.url.indexOf('settings/admin') > -1 }">Admin Management</div>
   <div class="desktop-menu display-2 pl-2 align-items-center d-flex"
-  data-menu="user" [routerLink]="['settings/user']" [ngClass]="{'selected': this.selectedMenu=='user'}">User Mangement </div>
+  data-menu="user" [routerLink]="['settings/user']" [ngClass]="{'selected': this.router.url.indexOf('settings/user') > -1 }">User Mangement </div>
 </div>
 
 <div class="d-lg-none">
