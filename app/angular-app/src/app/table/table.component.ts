@@ -128,7 +128,7 @@ export class TableComponent implements OnInit {
 
   resetSearch(){
     clearTimeout( this.resetPageTimeout );
-    let value = this.searchForm.value && this.searchForm.value['search[q]'];
+    let value = this.getSearchValue();
     if(!value){
       this.resetPageTimeout = setTimeout(()=> {
         this.getTableData();
@@ -158,7 +158,7 @@ export class TableComponent implements OnInit {
   }
 
   onSearching(){
-    let value = this.searchForm.value && this.searchForm.value['search[q]'];
+    let value = this.getSearchValue();
     if(!value.trim()) return;
     this.resetPageNumber();
     this.getTableData();
@@ -181,6 +181,13 @@ export class TableComponent implements OnInit {
     return this.searchForm && this.searchForm.value;
   }
 
+  getSearchValue(){
+    let searchObj = this.getSeaching();
+    for(let key in searchObj){
+      return searchObj[key];
+    }
+  }
+
   onPageChange(pageNumber: number) {
     this.pageChangeEvent.emit( pageNumber );
     this.setPageNumber(pageNumber)
@@ -196,7 +203,7 @@ export class TableComponent implements OnInit {
   }
 
   getPageNumber(): number {
-    return this.pageNumber || 1;
+    return this.pageNumber;
   }
 
   getTableData() {
