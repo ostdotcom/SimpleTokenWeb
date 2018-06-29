@@ -1,7 +1,7 @@
 
 <!--DESKTOP -->
 <div class="d-none d-lg-block h-100 desktop-menus-list pt-5"   >
-  <div class="desktop-menu display-2 pl-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">
+  <div class="desktop-menu pl-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">
     <span>
         <svg class="go-to-dashboard-icon" height="20px" width="20px">
             <switch>
@@ -10,7 +10,7 @@
           </svg>
     </span>
     <span class="pl-2">Go to Dashboard </span></div>
-  <div class="desktop-menu display-2 pl-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']" >
+  <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']" >
     <span>
         <svg class="admin-dashboard" height="20px" width="20px">
             <switch>
@@ -19,7 +19,7 @@
           </svg>
     </span>
     <span class="pl-2">Admin Management</span></div>
-  <div class="desktop-menu display-2 pl-2 align-items-center d-flex" data-menu="user" [routerLink]="['/admin/settings/user']" [routerLinkActive]="['selected']">
+  <div class="desktop-menu pl-2 align-items-center d-flex"  *ngIf="isSuperAdmin" data-menu="user" [routerLink]="['/admin/settings/user']" [routerLinkActive]="['selected']">
     <span>
         <svg class="user-dashboard" height="20px" width="20px">
             <switch>
@@ -74,7 +74,7 @@
           </span>
           <span class="pl-2">Admin Management</span>
         </div>
-        <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="user" [routerLink]="['/admin/settings/user']" [routerLinkActive]="['selected']">
+        <div class="desktop-menu pl-2 align-items-center d-flex" *ngIf="isSuperAdmin" data-menu="user" [routerLink]="['/admin/settings/user']" [routerLinkActive]="['selected']">
           <span>
               <svg class="user-dashboard" height="20px" width="20px">
                   <switch>
