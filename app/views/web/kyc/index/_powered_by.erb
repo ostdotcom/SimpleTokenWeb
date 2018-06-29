@@ -2,76 +2,46 @@
    tick_image = "<img src='//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-green-check-mark.svg' width='20'/>";
    powered_by = [
      {
-      col1: "Staging (KYC + AML/CTF + Eth whitelist)",
-      col2: tick_image,
-      col3: tick_image,
+      col1: "User Registrations",
+      col2: "400 user registrations ",
+      col3: "5,000 user registrations Included",
       bg_color: 'active'
      },
      {
-      col1: "Easy-KYC Dashboard",
-      col2: tick_image,
-      col3: tick_image,
+      col1: "Secure storage",
+      col2: "3 months secure storage",
+      col3: "3 months secure storage",
       bg_color: 'transparent'
      },
      {
-      col1: "AML/CTF record checks",
-      col2: tick_image,
-      col3: tick_image,
+      col1: "Encryption",
+      col2: "256-bit AES and SSL/TLS encryption",
+      col3: "256-bit AES and SSL/TLS encryption",
       bg_color: 'active'
      },
      {
-      col1: "Statutory record retention",
-      col2: tick_image,
-      col3: tick_image,
+      col1: "Support",
+      col2: "Email Support",
+      col3: "Priority Support",
       bg_color: 'transparent'
      },
      {
       col1: "ETH Whitelisting",
-      col2: tick_image,
-      col3: tick_image,
+      col2: "Available",
+      col3: "Available as an Add on ( +1$)",
       bg_color: 'active'
      },
      {
-      col1: "256-bit AES and SSL/TLS encryption",
-      col2: tick_image,
-      col3: tick_image,
+      col1: "User Interface ",
+      col2: "User Interface Development",
+      col3: "Customisable User Interface",
       bg_color: 'transparent'
      },
      {
-       col1: "Pepo Campaigns (Email Marketing)",
-       col2: tick_image,
-       col3: tick_image,
+       col1: "Pricing",
+       col2: "Flat rate <br/> <span class='price-text'>$2500</span> <br/> Payments accepted in OST",
+       col3: "Starts at <br/> <span class='price-text'>$2<small>Per User Submission</small></span> <br/> Payments accepted in OST",
        bg_color: 'active'
-     },
-     {
-       col1: "Admin Logins w/ Two-Factor Auth",
-       col2: "10 Logins",
-       col3: "Unlimited Logins",
-       bg_color: 'transparent'
-     },
-     {
-       col1: "Priority Support",
-       col2: "Email Support",
-       col3: "Email & Phone/Skype Support",
-       bg_color: 'active'
-     },
-     {
-       col1: "Automated Face Recognition",
-       col2: "-",
-       col3: "Coming Soon",
-       bg_color: 'transparent'
-     },
-     {
-       col1: "Minimum Purchase",
-       col2: "10,000 API Calls",
-       col3: "25,000 API Calls",
-       bg_color: 'active'
-     },
-     {
-       col1: "Each Additional API Call",
-       col2: "6 OST",
-       col3: "10 OST",
-       bg_color: 'transparent'
      }
    ]
 %>
@@ -83,8 +53,7 @@
           <span style="vertical-align: bottom">Powered by</span>
           <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-logo-white.svg" height="48" />
         </h2>
-        <p>Two great ostKYC packages available depending on your needs.
-          Pricing is in $OST based on your volume of API calls. <a href="https://coinmarketcap.com/currencies/simple-token/" class="read-more" target="_blank" title="View current $OST Price">View current $OST Price</a>.</p>
+        <p>OST KYC offers flexible features to run your ICO and charges in OST.</p>
       </div>
       <div class="container-fluid">
         <div class="row">
@@ -93,15 +62,16 @@
               <thead>
               <tr>
                 <th></th>
-                <th>
-                  <span class="title">LITE</span>
-                  <span class="price">6<sup>OST</sup></span>
-                  <span class="desc">per API call</span>
+                <th class="align-top text-left">
+                  <!--<span class="title">LITE</span>-->
+                  <!--<span class="price">6<sup>OST</sup></span>-->
+                  <span class="title">Presale</span>
                 </th>
-                <th>
-                  <span class="title">PLUS</span>
-                  <span class="price">10<sup>OST</sup></span>
-                  <span class="desc">per API call</span>
+                <th class="text-left">
+                  <!--<span class="title">PLUS</span>-->
+                  <!--<span class="price">10<sup>OST</sup></span>-->
+                  <span class="title">Public Sale</span>
+                  <small class="font-weight-light">12 Months Secure Storage and Priority Support included with any Add On</small>
                 </th>
               </tr>
               </thead>
@@ -112,7 +82,7 @@
     </div>
     <div class="row">
       <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-        <table class="table data-rows">
+        <table class="table data-rows mt-1">
           <tbody>
           <% powered_by.each_with_index do|data, index| %>
             <tr class="<%= data[:bg_color] %>">
@@ -126,7 +96,7 @@
       </div>
     </div>
     <div class="text-center">
-      <a href="#contactus" class="btn btn-primary btn-gold square-btn smooth-scroll" title="Contact Us">Contact Us</a>
+      <a href="#contactus" class="btn btn-primary smooth-scroll mt-4" title="Get Started">Get Started</a>
     </div>
   </div>
 </section>

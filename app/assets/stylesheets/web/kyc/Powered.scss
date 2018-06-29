@@ -46,23 +46,23 @@
       margin-bottom: 0;
       .title{
         color: #234359;
-        font-weight: bold;
+//        font-weight: bold;
         font-size: 18px;
       }
-      .price{
-        color: #c0993a;
-        font-size: 40px;
-        font-weight: bold;
-        sup{
-          font-size: 12px;
-          padding-bottom: 1px;
-          border-bottom: 1px solid #c0993a;
-          top: -24px;
-          font-weight: 300;
-          left: 5px;
-          letter-spacing: 1px;
-        }
-      }
+//      .price{
+//        color: #c0993a;
+//        font-size: 40px;
+//        font-weight: bold;
+//        sup{
+//          font-size: 12px;
+//          padding-bottom: 1px;
+//          border-bottom: 1px solid #c0993a;
+//          top: -24px;
+//          font-weight: 300;
+//          left: 5px;
+//          letter-spacing: 1px;
+//        }
+//      }
       .desc{
         color: #5a7a7f;
       }
@@ -73,31 +73,41 @@
     }
     tr{
       th{
-        background-color: #fff;
+        background-color: #eff9fa;
         padding: 10px 10px !important;
         &:first-child{
           background-color: transparent;
         }
         &:last-child{
-          background-color: #eff9fa;
+          background-color: #FFFFFF;
         }
       }
       th, td{
         border: none;
-        text-align: center;
+//        text-align: center;
         vertical-align: middle;
-        padding: 14px 10px;
-        color: #607c89;
-        font-weight: 500;
+        padding: 20px;
+        color: #234359;
+        font-weight: 400;
         font-size: 14px;
-        @media (min-width: 667px) {
-          width: 20%;
-        }
+//        @media (min-width: 667px) {
+//          width: 20%;
+//        }
         &:first-child{
-          padding: 14px 20px;
-          text-align: left;
-          @media (min-width: 667px) {
-            width: 60%;
+//          padding: 14px 20px;
+//          text-align: left;
+          font-weight: 300;
+          color: #597a84;
+//          @media (min-width: 667px) {
+//            width: 60%;
+//          }
+        }
+        .price-text{
+          color: #c0993a;
+          font-size: 2rem;
+          font-weight: 400;
+          small{
+            font-size: 0.875rem;
           }
         }
       }

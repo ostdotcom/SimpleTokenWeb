@@ -1,0 +1,25 @@
+.container-documentation{
+  .card{
+    background-color: transparent;
+    border: none;
+    .card-body{
+      .card-title{
+        color: #736844;
+      }
+      .card-text{
+        color: #736844;
+      }
+    }
+  }
+  .card-footer{
+    background-color: transparent;
+    border: none;
+  }
+  a{
+    margin: 0 auto;
+    letter-spacing: 1px;
+    color: #c0993a;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #c0993a;
+  }
+}
