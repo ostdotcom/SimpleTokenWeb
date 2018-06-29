@@ -1,3 +1,5 @@
+
+<!--DESKTOP -->
 <div class="d-none d-lg-block h-100 desktop-menus-list pt-5"   >
   <div class="desktop-menu display-2 pl-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">
     <span>
@@ -28,10 +30,27 @@
     <span class="pl-2">User Management</span> </div>
 </div>
 
+
+
+
+<!--MOBILE CALLAPSIBLE-->
 <div class="d-lg-none mobile-list">
-  <button class="btn container-fluid btn-style px-3" type="button" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
+  <button class="btn container-fluid btn-style px-3" (click)="toggleShow()" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
     Settings
-    <img class="img-topbar-style menu-open" src="https://goo.gl/images/AbHREA"><img class="img-topbar-style menu-close" src="https://www.iconspng.com/images/up-button-arrow/up-button-arrow.jpg">
+    <span class="d-inline" *ngIf="show" >
+        <svg class="down-arrow-icon img-topbar-style"  height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#down-arrow-icon"></use>
+            </switch>
+        </svg>
+    </span>
+    <span class="d-inline" *ngIf="!show">
+        <svg class="up-arrow-icon img-topbar-style"  height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#up-arrow-icon"></use>
+            </switch>
+        </svg>
+    </span>
   </button>
   <div class="collapse " id="collapseSettings">
     <div class="d-lg-none mobile-menus-list"  >

@@ -1,32 +1,32 @@
 @import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
 .desktop-menus-list{
-  background-color:#f3fbfb;
+  background-color:$green-1000;
   min-height: 100vh;
 
   .desktop-menu{
     height:56px;
     outline: none;
-    border-bottom: solid 1px rgba(211, 227, 229, 0.5);
+    border-bottom: solid 1px $custom-grey-7;
     cursor: pointer;
     &.first{
-      border-top: solid 1px rgba(211, 227, 229, 0.5);
+      border-top: solid 1px $custom-grey-7;
     }
     .admin-dashboard{
-      fill: #AFE1E3;
+      fill: $blue-1100;
     }
     .user-dashboard{
-      fill: #AFE1E3;
+      fill: $blue-1100;
     }
 
     &.selected{
-      background-color: #afe1e3;
+      background-color: $blue-1100;
       color: $white;
       .admin-dashboard {
-        fill: #ffffff;
+        fill: $white;
       }
       .user-dashboard{
-        fill: #ffffff;
+        fill: $white;
       }
     }
   }
@@ -37,28 +37,13 @@
 .mobile-list {
 .btn-style{
   text-align: left;
-  color: #e4b030;
-  border-bottom: solid 1px rgba(211, 227, 229, 0.5);
+  color: $yellow-300;
+  border-bottom: solid 1px $custom-grey-7;
   letter-spacing: 3px;
   font-size: 16px;
-  background-color: #ffffff;
+  background-color: $white;
   .img-topbar-style{
     float: right;
-  }
-  [aria-expanded="false"] .menu-open {
-    display: block;
-  }
-
-  [aria-expanded="false"] .menu-close {
-    display: none;
-  }
-
-  [aria-expanded="true"] .menu-open {
-    display: none;
-  }
-
-  [aria-expanded="true"] .menu-close {
-    display: block;
   }
 
 
@@ -66,35 +51,37 @@
 
 }
 
-
+.down-arrow-icon, .up-arrow-icon {
+  pointer-events: none;
+}
 
 
 
 
 .mobile-menus-list{
 
-  background-color:#f3fbfb;
+  background-color:$green-1000;
 
   .desktop-menu{
     height:56px;
     outline: none;
-    border-top: solid 1px rgba(211, 227, 229, 0.5);
+    border-top: solid 1px $custom-grey-7;
     cursor: pointer;
     .admin-dashboard{
-      fill: #AFE1E3;
+      fill: $blue-1100;
     }
     .user-dashboard{
-      fill: #AFE1E3;
+      fill: $blue-1100;
     }
 
     &.selected{
-      background-color: #afe1e3;
-      color: #ffffff;
+      background-color: $blue-1100;
+      color: $white;
       .admin-dashboard {
-        fill: #ffffff;
+        fill: $white;
       }
       .user-dashboard{
-        fill: #ffffff;
+        fill: $white;
       }
     }
   }

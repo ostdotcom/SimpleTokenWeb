@@ -9,15 +9,21 @@ declare var $: any;
 })
 export class AdminSettingMenusComponent implements OnInit {
 
+  show:boolean;
 
 
   constructor(public router: Router) { }
 
   ngOnInit() {
+    this.show=true;
   }
 
   changeHighlightState(e){
 
   }
+  toggleShow(){
+      this.show = !this.show;
+  }
+
 
 }
