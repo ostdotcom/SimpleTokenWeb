@@ -12,7 +12,7 @@ export class AdminSettingMenusComponent implements OnInit {
 
 
   show:boolean;
-  isSuperAdmin;
+  isSuperAdmin: boolean = false;
 
 
   constructor(public router: Router, private appConfigService: AppConfigService ) { }

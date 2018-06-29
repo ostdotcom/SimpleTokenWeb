@@ -22,7 +22,7 @@ export class AdminDashboardComponent extends PageBaseComponentComponent implemen
   showInviteUser: boolean = false;
   user:any;
   @ViewChild(TableComponent) tableComponent;
-  isSuperAdmin;
+  isSuperAdmin: boolean = false;
 
   ngOnInit(){
     this.isSuperAdmin = this.appConfigService.isSuperAdmin();
