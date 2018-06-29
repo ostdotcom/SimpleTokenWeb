@@ -1,91 +1,98 @@
 @import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
-.desktop-menus-list{
-  background-color:$green-1000;
+.desktop-menus-list {
+  background-color: $green-1000;
   min-height: 100vh;
 
-  .desktop-menu{
-    height:56px;
+  .desktop-menu {
+    height: 56px;
     outline: none;
     border-bottom: solid 1px $custom-grey-7;
     cursor: pointer;
-    &.first{
+    &.first {
       border-top: solid 1px $custom-grey-7;
     }
-    .admin-dashboard{
-      fill: $blue-1100;
+
+    svg {
+      vertical-align: top;
     }
-    .user-dashboard{
+    .admin-dashboard {
+      display: inline;
+    }
+    .admin-dashboard-selected {
+      display: none;
+    }
+    .user-dashboard {
       fill: $blue-1100;
     }
 
-    &.selected{
+    &.selected {
       background-color: $blue-1100;
       color: $white;
       .admin-dashboard {
-        fill: $white;
+        display: none;
       }
-      .user-dashboard{
+      .admin-dashboard-selected {
+        display: inline;
+      }
+      .user-dashboard {
         fill: $white;
       }
     }
   }
-
-
 }
 
 .mobile-list {
-.btn-style{
-  text-align: left;
-  color: $yellow-300;
-  border-bottom: solid 1px $custom-grey-7;
-  letter-spacing: 3px;
-  font-size: 16px;
-  background-color: $white;
-  .img-topbar-style{
-    float: right;
+  .btn-style {
+    text-align: left;
+    color: $yellow-300;
+    border-bottom: solid 1px $custom-grey-7;
+    letter-spacing: 3px;
+    font-size: 16px;
+    background-color: $white;
+    .img-topbar-style {
+      float: right;
+    }
+  }
+  svg {
+    vertical-align: top;
+  }
+  .down-arrow-icon,
+  .up-arrow-icon {
+    pointer-events: none;
   }
 
+  .mobile-menus-list {
+    background-color: $green-1000;
 
-
-
-}
-
-.down-arrow-icon, .up-arrow-icon {
-  pointer-events: none;
-}
-
-
-
-
-.mobile-menus-list{
-
-  background-color:$green-1000;
-
-  .desktop-menu{
-    height:56px;
-    outline: none;
-    border-top: solid 1px $custom-grey-7;
-    cursor: pointer;
-    .admin-dashboard{
-      fill: $blue-1100;
-    }
-    .user-dashboard{
-      fill: $blue-1100;
-    }
-
-    &.selected{
-      background-color: $blue-1100;
-      color: $white;
+    .desktop-menu {
+      height: 56px;
+      outline: none;
+      border-top: solid 1px $custom-grey-7;
+      cursor: pointer;
       .admin-dashboard {
-        fill: $white;
+        display: inline;
       }
-      .user-dashboard{
-        fill: $white;
+      .admin-dashboard-selected {
+        display: none;
+      }
+      .user-dashboard {
+        fill: $blue-1100;
+      }
+
+      &.selected {
+        background-color: $blue-1100;
+        color: $white;
+        .admin-dashboard {
+          display: none;
+        }
+        .admin-dashboard-selected {
+          display: inline;
+        }
+        .user-dashboard {
+          fill: $white;
+        }
       }
     }
   }
 }
-}
-
-
