@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OstRowComponent } from '../../table/ost-row/ost-row.component';
+import { AppConfigService } from '../../services/app-config.service';
 
 declare var $:any;
 
@@ -10,7 +11,7 @@ declare var $:any;
 })
 export class UserDashBoardRowComponent extends OstRowComponent implements OnInit {
 
-  constructor() {
+  constructor(private appConfigService: AppConfigService ) {
     super();
    }
 
@@ -20,6 +21,7 @@ export class UserDashBoardRowComponent extends OstRowComponent implements OnInit
 
   entityPath: string;
   status: any;
+  isSuperAdmin;
 
   statusMap = {
     "active" : "Active",
@@ -27,6 +29,7 @@ export class UserDashBoardRowComponent extends OstRowComponent implements OnInit
   }
 
   ngOnInit() {
+    this.isSuperAdmin = this.appConfigService.isSuperAdmin();
     if(this.row){
       this.entityPath = "entity_configs.admin_dashboard."+ this.row.status ;
     }

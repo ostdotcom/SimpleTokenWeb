@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 declare var $: any;
+import { AppConfigService } from '../../services/app-config.service';
 
 @Component({
   selector: 'admin-setting-menus',
@@ -9,11 +10,12 @@ declare var $: any;
 })
 export class AdminSettingMenusComponent implements OnInit {
 
+  isSuperAdmin;
 
-
-  constructor(public router: Router) { }
+  constructor(public router: Router, private appConfigService: AppConfigService ) { }
 
   ngOnInit() {
+    this.isSuperAdmin = this.appConfigService.isSuperAdmin();
   }
 
   changeHighlightState(e){
