@@ -3,7 +3,7 @@
   color: $yellow-500;
 }
 .search-wrapper{
-  @media (min-width: 992px) {
+  @media (min-width: map-get($grid-breakpoints , 'lg')) {
     max-width: 300px;
   }
   .search-input-wrapper{

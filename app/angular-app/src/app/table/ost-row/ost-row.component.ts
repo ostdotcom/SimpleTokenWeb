@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { OstHttp } from '../../services/ost-http.service';
+import { AppConfigService } from '../../services/app-config.service';
 
 @Component({
   selector: 'ost-row',
@@ -11,7 +12,14 @@ export class OstRowComponent {
   @Output('deleteRowEvent') deleteRowEvent = new EventEmitter();
   @Output('updateRowEvent') updateRowEvent = new EventEmitter();
 
-  constructor(private http?: OstHttp){
+  isSuperAdmin:boolean = false;
+
+  constructor(private http?: OstHttp, public appConfigService?: AppConfigService){
+
+    if( appConfigService ) {
+      this.isSuperAdmin = this.appConfigService.isSuperAdmin();
+    }
+
   }
 
   cachedRow:Object ;

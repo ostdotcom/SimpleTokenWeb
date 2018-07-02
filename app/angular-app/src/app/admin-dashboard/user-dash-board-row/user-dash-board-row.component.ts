@@ -11,7 +11,7 @@ declare var $:any;
 })
 export class UserDashBoardRowComponent extends OstRowComponent implements OnInit {
 
-  constructor(private appConfigService: AppConfigService ) {
+  constructor(public appConfigService: AppConfigService ) {
     super();
    }
 
