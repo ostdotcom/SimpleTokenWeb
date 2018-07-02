@@ -14,7 +14,7 @@ export class OstRowComponent {
 
   isSuperAdmin:boolean = false;
 
-  constructor(private http?: OstHttp, public appConfigService?: AppConfigService){
+  constructor( public appConfigService?: AppConfigService){
 
     if( appConfigService ) {
       this.isSuperAdmin = this.appConfigService.isSuperAdmin();

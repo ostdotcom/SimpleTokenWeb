@@ -12,7 +12,7 @@ declare var $:any;
 export class UserDashBoardRowComponent extends OstRowComponent implements OnInit {
 
   constructor(public appConfigService: AppConfigService ) {
-    super();
+    super(appConfigService);
    }
 
   @Input('row') row: any ;
@@ -21,7 +21,6 @@ export class UserDashBoardRowComponent extends OstRowComponent implements OnInit
 
   entityPath: string;
   status: any;
-  isSuperAdmin;
 
   statusMap = {
     "active" : "Active",
