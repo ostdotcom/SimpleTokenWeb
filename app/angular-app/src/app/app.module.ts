@@ -44,7 +44,7 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageUserHeaderComponent } from './manage-user/manage-user-header/manage-user-header.component';
 import { ManageUserRowComponent } from './manage-user/manage-user-row/manage-user-row.component';
 import { ManageUserModalComponent } from './manage-user/manage-user-modal/manage-user-modal.component';
-import { PageBaseComponentComponent } from './page-base-component/page-base-component.component';
+import { PageBaseComponent } from './page-base-component/page-base-component.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { AdminSettingMenusComponent } from './admin-settings/admin-setting-menus/admin-setting-menus.component';
 
@@ -92,7 +92,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ManageUserHeaderComponent,
     ManageUserRowComponent,
     ManageUserModalComponent,
-    PageBaseComponentComponent,
+    PageBaseComponent,
     AdminSettingsComponent,
     AdminSettingMenusComponent
   ],

@@ -1,6 +1,6 @@
 import { Component, AfterViewInit , ViewChild, OnInit} from '@angular/core';
 import { TableComponent} from "../table/table.component";
-import { PageBaseComponentComponent } from '../page-base-component/page-base-component.component';
+import { PageBaseComponent } from '../page-base-component/page-base-component.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConfigService } from '../services/app-config.service';
 
@@ -12,21 +12,18 @@ declare var $: any;
   styleUrls: ['./admin-dashboard.component.scss']
 })
 
-export class AdminDashboardComponent extends PageBaseComponentComponent implements OnInit{
+export class AdminDashboardComponent extends PageBaseComponent implements OnInit{
 
-  constructor( activatedRoute: ActivatedRoute,
-               router: Router, public appConfigService: AppConfigService) {
-    super( activatedRoute , router);
-  }
-
+  @ViewChild(TableComponent) tableComponent;
   showInviteUser: boolean = false;
   user:any;
-  @ViewChild(TableComponent) tableComponent;
-  isSuperAdmin: boolean = false;
+
+  constructor( activatedRoute: ActivatedRoute,
+               router: Router, appConfigService: AppConfigService) {
+    super( activatedRoute , router , appConfigService );
+  }
 
   ngOnInit(){
-    this.isSuperAdmin = this.appConfigService.isSuperAdmin();
-    console.log(this.isSuperAdmin);
     this.activatedRoute.queryParams.subscribe((queryParams:any) => {
       this.initPagination();
       this.setQueryParams({});

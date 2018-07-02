@@ -10,26 +10,17 @@ import { AppConfigService } from '../../services/app-config.service';
 })
 export class AdminSettingMenusComponent implements OnInit {
 
-
   show:boolean;
   isSuperAdmin: boolean = false;
-
 
   constructor(public router: Router, private appConfigService: AppConfigService ) { }
 
   ngOnInit() {
-
     this.show=true;
     this.isSuperAdmin = this.appConfigService.isSuperAdmin();
-
   }
 
-  changeHighlightState(e){
-
-  }
   toggleShow(){
       this.show = !this.show;
   }
-
-
 }
