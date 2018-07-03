@@ -85,7 +85,11 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
   }
 
   onDeleteRowSucces(e){
-    this.tableComponent.getTableData();
+    if( this.q ){
+      this.q = ""; //Reset the search , the table component will by default get all table data  
+    }else{
+      this.tableComponent.getTableData();
+    }
   }
 
 }
