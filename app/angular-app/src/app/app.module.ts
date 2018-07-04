@@ -40,6 +40,7 @@ import { OstAlertComponent } from './ost-alert/ost-alert.component';
 import { KycCaseActionModalComponent } from './kyc-case/kyc-case-action-modal/kyc-case-action-modal.component';
 import { AdminDashboardModalComponent } from './admin-dashboard/admin-dashboard-modal/admin-dashboard-modal.component';
 import { ScrollTopService } from './services/scroll-top.service';
+import { FormErrorHandlerService } from './services/form-error-handler.service';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageUserHeaderComponent } from './manage-user/manage-user-header/manage-user-header.component';
 import { ManageUserRowComponent } from './manage-user/manage-user-row/manage-user-row.component';
@@ -155,7 +156,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 OstHttp,
                 AppConfigService,
                 RequestStateHandlerService,
-                ScrollTopService
+                ScrollTopService,
+                FormErrorHandlerService
+
             ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
+import {FormErrorHandlerService} from '../services/form-error-handler.service';
 declare var $: any;
 
 @Component({
@@ -14,8 +15,9 @@ export class ProfileComponent implements OnInit {
   dataUrl = "api/admin/client/profile";
   hasError: boolean =false;
   message: string;
+  btnText: string = "Update Password";
 
-  constructor(private http: OstHttp) { }
+  constructor(private http: OstHttp, private formErrorHandler: FormErrorHandlerService) { }
 
   ngOnInit() {
     this.getProfileInfo();
@@ -38,48 +40,40 @@ export class ProfileComponent implements OnInit {
       })
   }
 
-  changePasswordSubmit(changePassword){
+  changePasswordSubmit(changePassword) {
     let params =  changePassword.value;
-    this.formReset( changePassword );
+    changePassword.isSubmitting = true;
+    this.btnText = "Updating...";
     if (changePassword.valid){
       this.http.post('api/admin/profile/change-password' , {...params }  ).subscribe(
         response => {
           let res = response.json();
-          console.log(res);
-          $("#changePasswordModal").modal("show");
+          changePassword.isSubmitting = false;
+          this.btnText = "Update Password";
           if( res.success ){
             $("#changePasswordSuccess").modal("show");
+            changePassword.reset();
           }else{
-            this.formSubmitErrorHandler( changePassword ,  res );
+            this.formErrorHandler.hadleError( changePassword ,  res );
           }
         },
         error => {
           let err = error.json();
-          this.formSubmitErrorHandler( changePassword ,  err );
+          changePassword.isSubmitting = false;
+          this.btnText = "Update Password";
+          this.formErrorHandler.hadleError( changePassword ,  err );
         }
       )
     }
   }
-
-  formSubmitErrorHandler( form , response  ){
-    let error     = response && response.err  ,
-        error_data = error && error.error_data
-        ;
-    console.log("errorData--", error_data);
-    if( error_data ) {
-      form['error_data'] = error_data
-    }
-  }
-
-  formReset( form ){
-    form['error_data'] = null;
-  }
-
-
-
   resetForm( changePassword){
-    this.formReset( changePassword );
+    this.formErrorHandler.clearServerErrors( changePassword );
     changePassword.reset();
+  }
+
+
+  inputChanges(form){
+    this.formErrorHandler.clearServerErrors(form);
   }
 
 }
