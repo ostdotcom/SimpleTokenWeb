@@ -20,122 +20,70 @@
       font-size: 16px;
     }
   }
-  .read-more{
-    letter-spacing: 1px;
-    line-height: 30px;
-    color: #c0993a;
-    border-bottom: 1px solid #c0993a;
-    &:hover, &:focus{
-      outline: none;
-      text-decoration: none;
-    }
-  }
   .square-btn{
     margin: 15px auto 0;
     line-height: 40px;
     padding: 0 20px;
   }
-  .table{
-    border-spacing: 3px 0px;
-    border-collapse: unset;
-    table-layout: fixed;
-    &.data-rows{
-      margin: 15px 0;
+
+  .table-tabs{
+    margin-bottom: 0;
+    .title{
+      color: #234359;
+      font-size: 18px;
+      font-weight: 400;
+      padding: 15px;
     }
-    &.table-tabs{
-      margin-bottom: 0;
-      .title{
-        color: #234359;
-//        font-weight: bold;
-        font-size: 18px;
-      }
-//      .price{
-//        color: #c0993a;
-//        font-size: 40px;
-//        font-weight: bold;
-//        sup{
-//          font-size: 12px;
-//          padding-bottom: 1px;
-//          border-bottom: 1px solid #c0993a;
-//          top: -24px;
-//          font-weight: 300;
-//          left: 5px;
-//          letter-spacing: 1px;
-//        }
-//      }
-      .desc{
-        color: #5a7a7f;
-      }
-      span{
-        margin: 5px 0;
-        display: block;
-      }
+    .desc{
+      color: #5a7a7f;
     }
-    tr{
-      th{
-        background-color: #eff9fa;
-        padding: 10px 10px !important;
-        &:first-child{
-          background-color: transparent;
-        }
-        &:last-child{
-          background-color: #FFFFFF;
-        }
-      }
-      th, td{
-        border: none;
-//        text-align: center;
-        vertical-align: middle;
-        padding: 20px;
-        color: #234359;
-        font-weight: 400;
-        font-size: 14px;
-//        @media (min-width: 667px) {
-//          width: 20%;
-//        }
-        &:first-child{
-//          padding: 14px 20px;
-//          text-align: left;
-          font-weight: 300;
-          color: #597a84;
-//          @media (min-width: 667px) {
-//            width: 60%;
-//          }
-        }
-        .price-text{
-          color: #c0993a;
-          font-size: 2rem;
-          font-weight: 400;
-          small{
-            font-size: 0.875rem;
-          }
-        }
-        .mobileshow{
-          display:none;
-        }
-        @media only screen and (max-device-width : 768px){
-          .mobileshow {display: inline;}
-          .mobilehide {display: none;}
-          .price-text{
-            color: #c0993a;
-            font-size: 2rem;
-            font-weight: 400;
-            small{
-              font-size: 0.875rem;
-            }
-          }
-        }
-      }
-      &.active{
-        td{
-          background-color: #f3fbfd;
-        }
-      }
-      &.transparent{
-        td{
-          background-color: #ffffff;
-        }
-      }
+    .active{
+      opacity: 0.8;
+    }
+    .transparent{
+      box-shadow: -2px 0 3px 2.2px rgba(0, 0, 0, 0.08);
     }
   }
+}
+
+.data-rows{
+  .item{
+    color: #234359;
+    font-size: 14px;
+    padding: 15px;
+    font-weight: 300;
+    &:first-child{
+      color: #597a84;
+    }
+  }
+  .last-div{
+    box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.08);
+  }
+  small{
+    font-size: 0.625rem;
+  }
+  .price-text{
+    color: #c0993a;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  .price-text-small{
+    font-size: 0.875rem;
+    color: #c0993a;
+  }
+  .mobileshow{
+    display:none;
+  }
+  @media only screen and (max-width : 768px){
+    .price-text{
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.active{
+  background-color: #f3fbfd;
+}
+.transparent{
+  background-color: #FFFFFF;
 }

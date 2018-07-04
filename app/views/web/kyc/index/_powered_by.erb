@@ -1,5 +1,4 @@
 <%
-   tick_image = "<img src='//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-green-check-mark.svg' width='20'/>";
    powered_by = [
      {
       col1: "User Registrations",
@@ -10,7 +9,7 @@
      {
       col1: "Secure storage",
       col2: "3 months",
-      col3: "3 months</br> <span class='font-weight-light'>12 Months Secure Storage included with any Add-On</span>",
+      col3: "3 months</br> <small class='font-weight-light'>12 Months Secure Storage included with any Add-On</small>",
       bg_color: 'transparent'
      },
      {
@@ -22,7 +21,7 @@
      {
       col1: "Support",
       col2: "Email Support",
-      col3: "Priority Support </br><span class='font-weight-light'>Email, Skype and Phone</span>",
+      col3: "Priority Support </br><small class='font-weight-light'>Email, Skype and Phone</small>",
       bg_color: 'transparent'
      },
      {
@@ -39,65 +38,71 @@
      },
      {
        col1: "Pricing",
-       col2: "Flat rate <br/> <span class='price-text'>$2,500</span> <br/> Payments accepted in OST",
-       col3: "Starts at <br/> <span class='price-text mobilehide'>$2<small>Per User Submission</small></span> <span class='mobileshow price-text'>$2<small>/ User Submission</small></span><br/> Payments accepted in OST",
+       col2: "Flat rate <br/> <span class='price-text'>$2,500</span> <br/> Prepayments in $OST",
+       col3: "Starts at <br/> <span class='price-text'>$2</span><small class='price-text-small'>Per User Submission</small><br/> Prepayments in $OST",
        bg_color: 'active'
      }
    ]
 %>
 <section id="pricing" class="container-powered">
+
   <div class="container-fluid">
     <div class="row powered-desc">
-      <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
         <h2>
           <span style="vertical-align: bottom">Powered by</span>
           <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-logo-white.svg" height="48" />
         </h2>
         <p>OST KYC offers flexible features to run your ICO and charges in OST.</p>
-      </div>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-            <table class="table table-tabs">
-              <thead>
-              <tr>
-                <th></th>
-                <th class="align-top text-left">
-                  <!--<span class="title">LITE</span>-->
-                  <!--<span class="price">6<sup>OST</sup></span>-->
-                  <span class="title">Presale Plan</span>
-                </th>
-                <th class="text-left">
-                  <!--<span class="title">PLUS</span>-->
-                  <!--<span class="price">10<sup>OST</sup></span>-->
-                  <span class="title">Public Sale plan</span>
-                  <!--small class="font-weight-light">12 Months Secure Storage and Priority Support included with any Add On</small-->
-                </th>
-              </tr>
-              </thead>
-            </table>
+        <div class="row table-tabs">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <div class="d-flex item active title">
+              <div class="align-self-center">Presale Plan</div>
+            </div>
+          </div>
+          <div class="col-4 p-0">
+            <div class="d-flex item transparent title">
+              <div class="align-self-center">Public Sale plan</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-        <table class="table data-rows mt-1">
-          <tbody>
-          <% powered_by.each_with_index do|data, index| %>
-            <tr class="<%= data[:bg_color] %>">
-              <td><%= data[:col1] %></td>
-              <td><%= raw data[:col2] %></td>
-              <td><%= raw data[:col3] %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+  </div>
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+          <div class="row data-rows">
+            <div class="col-4 p-0">
+              <% powered_by.each_with_index do|data, index| %>
+                <div class="<%= data[:bg_color] %> d-flex item">
+                  <div class="align-self-center p-0"><%= raw data[:col1] %></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-4">
+              <% powered_by.each_with_index do|data, index| %>
+                <div class="<%= data[:bg_color] %> d-flex item">
+                  <div class="align-self-center p-0 font-weight-normal"><%= raw data[:col2] %></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-4 p-0 last-div">
+              <% powered_by.each_with_index do|data, index| %>
+                <div class="<%= data[:bg_color] %> d-flex item">
+                  <div class="align-self-center p-0 font-weight-normal"><%= raw data[:col3] %></div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
+
+    <div class="text-center mt-5">
+      <a href="#contactus" class="btn btn-primary smooth-scroll" title="Get Started">Get Started</a>
     </div>
-    <div class="text-center">
-      <a href="#contactus" class="btn btn-primary smooth-scroll mt-4" title="Get Started">Get Started</a>
-    </div>
+
   </div>
 </section>
 

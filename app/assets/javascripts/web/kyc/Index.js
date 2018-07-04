@@ -16,6 +16,7 @@
     init: function (config) {
       oThis.jContactForm = $('#ost-kyc-contact-us-form');
       oThis.jContactBtn = $('#ost-kyc-contact-us-btn');
+      oThis.adjustHeight();
 
       oThis.formHelper =  oThis.jContactForm.formHelper({
         success: function (response) {
@@ -113,6 +114,13 @@
       });
     },
 
+    adjustHeight: function(){
+      var maxheight = 0;
+      $('div.item').each(function () {
+        maxheight = $(this).innerHeight() > maxheight ? $(this).innerHeight() : maxheight;
+      });
+      $('div.item').innerHeight(maxheight);
+    },
 
     showVideo: function( jItem ){
       oThis.isVideoPlaying = true;
@@ -160,5 +168,7 @@
   $(window).on('load', function() {
     oThis.hideVideo(true);
   });
+
+  $(window).on('resize', oThis.adjustHeight());
 
 })(window);
