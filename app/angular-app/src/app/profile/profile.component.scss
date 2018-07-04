@@ -1,0 +1,26 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.profile-settings{
+  .company-profile-info{
+    border-bottom: 1px solid $custom-grey-7;
+    .kyc-header{
+      color: $yellow-500;
+    }
+    .company-profile-header{
+      letter-spacing: 1px;
+    }
+    .read-only-fields{
+      min-height: 42px;
+      border-radius: 4px;
+      background-color: $grey-bg;
+      border: solid 1px $custom-grey-7;
+        small{
+          font-weight: 300;
+        }
+    }
+
+  }
+
+
+
+
+}

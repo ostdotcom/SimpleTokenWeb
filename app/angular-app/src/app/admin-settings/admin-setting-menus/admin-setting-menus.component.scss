@@ -22,6 +22,13 @@
     .admin-dashboard-selected {
       display: none;
     }
+    .profile {
+      display: inline;
+    }
+    .profile-selected {
+      display: none;
+    }
+
     .user-dashboard {
       fill: $blue-1100;
     }
@@ -33,6 +40,12 @@
         display: none;
       }
       .admin-dashboard-selected {
+        display: inline;
+      }
+      .profile {
+        display: none;
+      }
+      .profile-selected {
         display: inline;
       }
       .user-dashboard {
@@ -76,6 +89,12 @@
       .admin-dashboard-selected {
         display: none;
       }
+      .profile {
+        display: inline;
+      }
+      .profile-selected {
+        display: none;
+      }
       .user-dashboard {
         fill: $blue-1100;
       }
@@ -87,6 +106,12 @@
           display: none;
         }
         .admin-dashboard-selected {
+          display: inline;
+        }
+        .profile {
+          display: none;
+        }
+        .profile-selected {
           display: inline;
         }
         .user-dashboard {

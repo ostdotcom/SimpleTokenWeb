@@ -47,6 +47,8 @@ import { ManageUserModalComponent } from './manage-user/manage-user-modal/manage
 import { PageBaseComponent } from './page-base-component/page-base-component.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { AdminSettingMenusComponent } from './admin-settings/admin-setting-menus/admin-setting-menus.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
 
 
 
@@ -94,7 +96,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ManageUserModalComponent,
     PageBaseComponent,
     AdminSettingsComponent,
-    AdminSettingMenusComponent
+    AdminSettingMenusComponent,
+    ProfileComponent,
+    ChangePasswordModalComponent
   ],
   imports: [
     BrowserModule,
@@ -113,6 +117,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path: 'settings/user',
             component: ManageUserComponent
+          },
+          {
+            path:'settings/profile',
+            component: ProfileComponent
           }
        ]
 
