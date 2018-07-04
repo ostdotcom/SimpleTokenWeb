@@ -32,7 +32,7 @@
       color: #234359;
       font-size: 18px;
       font-weight: 400;
-      padding: 15px;
+      padding: 10px 15px;
     }
     .desc{
       color: #5a7a7f;
@@ -41,7 +41,7 @@
       opacity: 0.8;
     }
     .transparent{
-      box-shadow: -2px 0 3px 2.2px rgba(0, 0, 0, 0.08);
+      box-shadow: 1px 0px 7px 2.2px rgba(0,0,0,0.08);
     }
   }
 }
@@ -50,14 +50,14 @@
   .item{
     color: #234359;
     font-size: 14px;
-    padding: 15px;
+    padding: 10px 15px;
     font-weight: 300;
     &:first-child{
       color: #597a84;
     }
   }
   .last-div{
-    box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.08);
+    box-shadow: 1px 4px 7px 2.2px rgba(0,0,0,0.08);
   }
   small{
     font-size: 0.625rem;

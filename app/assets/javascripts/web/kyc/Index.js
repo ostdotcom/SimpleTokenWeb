@@ -169,6 +169,8 @@
     oThis.hideVideo(true);
   });
 
-  $(window).on('resize', oThis.adjustHeight());
+  $(window).on('resize', function() {
+    oThis.adjustHeight();
+  });
 
 })(window);
