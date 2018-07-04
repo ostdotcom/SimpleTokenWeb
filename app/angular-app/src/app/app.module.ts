@@ -49,6 +49,7 @@ import { AdminSettingsComponent } from './admin-settings/admin-settings.componen
 import { AdminSettingMenusComponent } from './admin-settings/admin-setting-menus/admin-setting-menus.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
+import { DevelopersIntegrationComponent } from './developers-integration/developers-integration.component';
 
 
 
@@ -98,7 +99,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     AdminSettingsComponent,
     AdminSettingMenusComponent,
     ProfileComponent,
-    ChangePasswordModalComponent
+    ChangePasswordModalComponent,
+    DevelopersIntegrationComponent
   ],
   imports: [
     BrowserModule,
@@ -121,6 +123,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path:'settings/profile',
             component: ProfileComponent
+          },
+          {
+            path: 'settings/developer-integrations',
+            component: DevelopersIntegrationComponent
           }
        ]
 
