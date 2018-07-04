@@ -5,9 +5,9 @@
 
 </div>
 <div class='row py-3 mb-3'>
-<div class="col-12 col-lg-3">
+<div class="col-12 col-lg-4 search-wrapper">
    <form class='form-group' #searchForm="ngForm" name="search" (submit)="onSearch(searchForm)">
-    <div class="col-12 mt-3 px-0 pr-lg-4">
+    <div class="col-12 mt-3 px-0 pr-lg-3">
         <label class='form-label mb-2'>SEARCH WITHIN THIS PAGE</label>
         <div class="search-input-wrapper">
             <div class="form-group">
@@ -31,11 +31,11 @@
       </div>
     </form>
 </div>
-<div class="col-12 col-lg-5 pl-lg-0">
+<div class="col-12 col-lg-4 pl-lg-0">
     <form class="form-group" #filterForm="ngForm" name='filters' (change)="onFilterChange(filterForm)">
       <div class="row px-3 px-lg-0">
 
-        <div class="col-12 col-lg-4 px-0 mt-3">
+        <div class="col-12 col-lg-6 px-0 mt-3">
           <label class='form-label mb-2'>KYC SUBMITTED</label>
           <select class="form-control selectpicker" name="filters[kyc_submitted]" [(ngModel)]='kyc_submitted'
                   ostOptions [entityPath]="'entity_configs.user_management_dashboard.kyc_submitted'">

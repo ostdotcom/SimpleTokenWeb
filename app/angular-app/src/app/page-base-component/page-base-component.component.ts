@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppConfigService } from '../services/app-config.service';
 
 @Component({
   selector: 'page-base-component',
@@ -7,9 +8,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./page-base-component.component.scss']
 })
 
-export class PageBaseComponentComponent {
+export class PageBaseComponent {
 
-  constructor( public activatedRoute: ActivatedRoute ,  public router: Router) {}
+  isSuperAdmin:boolean = false;
+
+  constructor( public activatedRoute: ActivatedRoute ,
+               public router: Router,
+               public appConfigService?: AppConfigService)
+    {
+      if( appConfigService ) {
+        this.isSuperAdmin = this.appConfigService.isSuperAdmin();
+      }
+    }
 
   private gobalDefault:object = {
     filter      : "all",
@@ -106,11 +116,11 @@ export class PageBaseComponentComponent {
   }
 
   resetSearch( searchInput ){
-    if( !searchInput ) return ; 
-    let value = searchInput.model, 
-        name  = searchInput.name, 
+    if( !searchInput ) return ;
+    let value = searchInput.model,
+        name  = searchInput.name,
         param = {}
-    ; 
+    ;
     param[name]= value;
     if(!value.trim()){
       this.setQueryParams(param);
