@@ -1,17 +1,16 @@
 <%
    faqs = [
      {
-       title: "What sources does OST KYC check?",
-       description: "OST KYC provides a seamless integration with Cynopsis-Artemis API to manage the anti money laundering / counter terrorism financing, risk assessment, risk scoring and risk rating of your customers.",
+       title: "What is OST KYC?",
+       description: "OST KYC is a complete solution for ICOs Know Your Customer (KYC), Anti Money Laundering (AML), and Counter Terrorist Financing (CTF). Only with OST KYC you can Whitelist your customers Public ETH Address directly in your Smart Contract.",
        readmore: "Read More",
-       readmoreurl: "https://docs.google.com/document/d/1ZZJksQkK3c4Qa6ad8zaDRuL0gIha2Ecmdlsl0dtxejo/edit#heading=h.5zf787787ll"
+       readmoreurl: "https://help.ost.com/support/solutions/folders/35000201337"
      },
      {
-       title: "How does OST KYC protect personal data?",
-       description: "OST KYC APIs and tools are SSL protected and the infrastructure is hosted on AWS VPC (virtual private cloud). Traffic to and from VPC stays within the company's firewall without crossing the Internet.",
+       title: "How long does it take to have the OST KYC solution up and running?",
+       description: "As soon as all the required details for setup are provided from the client side, on average it is requiring ~1.5 days to have the dedicated sandbox environment ready. From there, once all is verified from the client side, it is easy to move to production and start the ICO.",
        readmore: "Read More",
-       readmoreurl: "https://docs.google.com/document/d/1ZZJksQkK3c4Qa6ad8zaDRuL0gIha2Ecmdlsl0dtxejo/edit#heading=h.gwn7zthvlc2w",
-       bg_class: "bg-image"
+       readmoreurl: "https://help.ost.com/support/solutions/folders/35000201337",
      },
    ]
 %>
@@ -19,22 +18,21 @@
 <section class="container-faqs">
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 mb-5">
         <h2>FAQs</h2>
-        <div class="">
-          <% faqs.each_with_index do|data, index| %>
-            <% if (index % 3) == 0 %><div class="row"><% end %>
-            <div class="col-12 col-sm-6 offset-sm-0 <%= raw data[:bg_class] %>">
-              <h3><%= raw data[:title] %></h3>
-              <p class="companies-desc"><%= raw data[:description] %></p>
-              <a href="<%= raw data[:readmoreurl] %>" class="read-more" target="_blank"><%= raw data[:readmore] %></a>
-            </div>
-            <% if ((index % 3) == 2) || ((index + 1) == faqs.length) %></div><% end %>
-          <% end %>
-          <div class="text-center col-12">
-            <a href="https://docs.google.com/document/d/1ZZJksQkK3c4Qa6ad8zaDRuL0gIha2Ecmdlsl0dtxejo/edit?usp=sharing" target="_blank" class="btn btn-primary" title="Read Documentation">Read Documentation</a>
+        <% faqs.each_with_index do|data, index| %>
+          <% if (index % 3) == 0 %><div class="row"><% end %>
+          <div class="col-12 col-sm-6">
+            <h3><%= raw data[:title] %></h3>
+            <p class="companies-desc"><%= raw data[:description] %></p>
+            <a href="<%= raw data[:readmoreurl] %>" class="read-more text-uppercase font-weight-normal" target="_blank"><%= raw data[:readmore] %></a>
           </div>
-        </div>
+          <% if ((index % 3) == 2) || ((index + 1) == faqs.length) %></div><% end %>
+        <% end %>
+      </div>
+      <div class="text-center col-12 mt-5">
+        <img class="btn-bg-image" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kyc/images/marketing/faq-btn-bg@3x.png">
+        <a href="https://help.ost.com/support/solutions/folders/35000201337" target="_blank" class="btn btn-primary square-btn" title="Read Documentation">Read All Faqs</a>
       </div>
     </div>
   </div>
