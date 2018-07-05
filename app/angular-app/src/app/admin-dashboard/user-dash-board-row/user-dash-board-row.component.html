@@ -2,8 +2,13 @@
     <div class="row">
         <div class="col-3">{{row.name}}</div>
         <div class="col-4 text-truncate">{{row.email}}</div>
-        <div class="col-2">{{statusMap[row.status]}}</div>
-        <div class="col-3 form-group" *ngIf="isSuperAdmin">
+        <div class="col-2" *ngIf="! (row.role == 'super_admin'); else statusSuperAdmin">{{statusMap[row.status]}}</div>
+        <ng-template #statusSuperAdmin>
+          <div class="col-2">
+            Super Admin
+          </div>
+        </ng-template>
+        <div class="col-3 form-group" *ngIf="isSuperAdmin && ! (row.role == 'super_admin')">
             <select class="form-control selectpicker" ostOptions
                     title="Action"
                     [(ngModel)]="status"
@@ -21,14 +26,19 @@
                 <div class="col-12 p-0 text-transform-upper display-3 font-weight-600">{{row.name}}</div>
                 <div class="col-12 p-0  mt-1">
                     <span class="display-3 font-weight-600 mr-2">STATUS</span>
-                    <span class="display-3">{{statusMap[row.status]}}</span>
+                    <span class="display-3" *ngIf="! (row.role == 'super_admin'); else statusSuperAdminMobile">{{statusMap[row.status]}}</span>
+                    <ng-template #statusSuperAdminMobile>
+                        <span class="display-3">
+                          Super Admin
+                        </span>
+                      </ng-template>
                 </div>
             </div>
             <div class="row m-0 p-3">
                 <div class="col-12 p-0 text-transform-upper display-3 font-weight-600">email address</div>
                 <div class="col-12 p-0 display-3 mt-1">{{row.email}}</div>
             </div>
-            <div class="row form-group m-0 p-3" *ngIf="isSuperAdmin" >
+            <div class="row form-group m-0 p-3" *ngIf="isSuperAdmin && ! (row.role == 'super_admin')" >
                 <select class="form-control selectpicker" ostOptions
                         data-size="2"
                         title="Action"
