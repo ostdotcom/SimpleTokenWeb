@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
 import {FormErrorHandlerService} from '../services/form-error-handler.service';
+import { RequestStateHandlerService } from '../services/request-state-handler.service';
 declare var $: any;
 
 @Component({
@@ -17,8 +18,11 @@ export class ProfileComponent implements OnInit {
   message: string;
   btnText: string = "Update Password";
   hasLoaded =false;
+  errorMessage: string;
 
-  constructor(private http: OstHttp, private formErrorHandler: FormErrorHandlerService) { }
+  constructor(private http: OstHttp,
+              private formErrorHandler: FormErrorHandlerService,
+              private stateHandler : RequestStateHandlerService) { }
 
   ngOnInit() {
     this.getProfileInfo();
@@ -33,10 +37,15 @@ export class ProfileComponent implements OnInit {
           this.clientName = res.data.name;
           this.domainName = res.data.domain_name;
           this.superAdminEmails = res.data.super_admin_email_ids;
+          this.stateHandler.updateRequestStatus(this, false,false);
+        }
+        else{
+          this.stateHandler.updateRequestStatus(this, false,true,false, res);
         }
       },
       error => {
         let err = error.json();
+        this.stateHandler.updateRequestStatus(this, false,true, false, err);
       })
   }
 

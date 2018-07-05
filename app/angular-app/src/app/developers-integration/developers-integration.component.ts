@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
+import { RequestStateHandlerService } from '../services/request-state-handler.service';
+
 
 @Component({
   selector: 'app-developers-integration',
@@ -13,8 +15,9 @@ export class DevelopersIntegrationComponent implements OnInit {
   apiSecret = "";
   amlLoginUrl = "";
   amlUsername = "";
-
-  constructor(private http: OstHttp) { }
+  hasError: boolean =false;
+  errorMessage: string;
+  constructor(private http: OstHttp, private stateHandler: RequestStateHandlerService) { }
 
   ngOnInit() {
     this.getIntegrationInfo();
@@ -32,12 +35,14 @@ export class DevelopersIntegrationComponent implements OnInit {
           this.apiSecret = res.data.api_secret;
           this.amlLoginUrl = res.data.aml_login_url;
           this.amlUsername = res.data.aml_username;
-
+          this.stateHandler.updateRequestStatus(this, false,false);
+        } else{
+          this.stateHandler.updateRequestStatus(this, false,true,false, res);
         }
       },
       error => {
         let err = error.json();
-        console.log(error);
+        this.stateHandler.updateRequestStatus(this, false,true, false, err);
       })
   }
 }

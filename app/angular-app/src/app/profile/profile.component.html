@@ -1,4 +1,12 @@
-<div class="profile-settings">
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="false" [hasError]="hasError">
+
+    <ng-container class="error-content">
+      <div class="col-12">{{ errorMessage }}</div>
+    </ng-container>
+  </request-state-handler>
+
+
+<div class="profile-settings" *ngIf="!hasError" >
   <div class="company-profile-info">
     <div class="row mt-4 pt-2 ">
       <div class="col-12 col-lg-6">

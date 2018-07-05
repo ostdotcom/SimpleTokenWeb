@@ -1,4 +1,11 @@
-<div class="developer-integrations">
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="false" [hasError]="hasError">
+
+    <ng-container class="error-content">
+      <div class="col-12">{{ errorMessage }}</div>
+    </ng-container>
+  </request-state-handler>
+
+<div class="developer-integrations" *ngIf="!hasError">
   <div class="integtration-info pb-4">
     <div class="row mt-4 pt-2 ">
       <div class="col-12">
