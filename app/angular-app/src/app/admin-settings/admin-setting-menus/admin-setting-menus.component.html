@@ -1,4 +1,5 @@
 <!--DESKTOP -->
+<div class="admin-settings h-100">
 <div class="d-none d-lg-block h-100 desktop-menus-list pt-5">
   <div class="desktop-menu px-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">
     <span>
@@ -10,6 +11,26 @@
     </span>
     <span class="pl-2">Go to Dashboard </span>
   </div>
+
+  <div class="desktop-menu px-2 align-items-center d-flex" [routerLink]="['/admin/settings/profile']" [routerLinkActive]="['selected']">
+    <span>
+      <svg class="profile" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-icon"></use>
+        </switch>
+      </svg>
+    </span>
+
+    <span>
+      <svg class="profile-selected" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-selected-icon"></use>
+        </switch>
+      </svg>
+    </span>
+    <span class="pl-2">Profile</span>
+  </div>
+
   <div class="desktop-menu px-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']">
     <span>
       <svg class="admin-dashboard" height="20px" width="20px">
@@ -39,6 +60,27 @@
     </span>
     <span class="pl-2">User Management</span>
   </div>
+
+  <div class="desktop-menu px-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/developer-integrations']" [routerLinkActive]="['selected']">
+    <span>
+        <svg class="developer" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-icon"></use>
+          </switch>
+        </svg>
+      </span>
+      <span>
+        <svg class="developer-selected" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-selected-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span class="pl-2">Developer Integrations</span>
+  </div>
+
+
+
 </div>
 
 
@@ -76,6 +118,30 @@
         </span>
         <span class="pl-2">Go to Dashboard </span>
       </div>
+
+
+      <div class="desktop-menu pl-2 align-items-center d-flex" [routerLink]="['/admin/settings/profile']" [routerLinkActive]="['selected']">
+
+        <span>
+          <svg class="profile" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-icon"></use>
+            </switch>
+          </svg>
+        </span>
+
+        <span>
+          <svg class="profile-selected" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+
+        <span class="pl-2">Profile</span>
+      </div>
+
+
       <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']">
         <span>
           <svg class="admin-dashboard" height="20px" width="20px">
@@ -104,7 +170,26 @@
         </span>
         <span class="pl-2">User Management</span>
       </div>
+
+      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/developer-integrations']" [routerLinkActive]="['selected']">
+        <span>
+          <svg class="developer" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="developer-selected" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Developer Integrations</span>
+      </div>
     </div>
   </div>
 
+</div>
 </div>
