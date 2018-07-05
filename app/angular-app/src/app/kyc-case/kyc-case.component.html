@@ -544,10 +544,13 @@
   <ng-container class="modal-body-content">
     <h5 class="modal-title">Are you sure you want to reopen this case?</h5>
     <div class="sub-body mt-3">
-      <div>When a case is reopened, User is unwhitelisted.</div>
-      <div class="mt-2">Once the user is qualified, the user will be whitelisted again The user will not be able to take part in the ICO, until
-        the case is closed again.
+      <div *ngIf="appConfig.getClientSetup().has_whitelist_setup == true; else no_whitelist_setup">
+        <div>When a case is reopened, User is unwhitelisted.</div>
+        <div class="mt-2">Once the user is qualified, the user will be whitelisted again. The user will not be able to take part in the ICO, until the case is closed again.</div>
       </div>
+      <ng-template #no_whitelist_setup>
+        <div>The user will not be able to take part in the ICO, until the case is closed again.</div>
+      </ng-template>
     </div>
   </ng-container>
 </kyc-case-action-modal>
