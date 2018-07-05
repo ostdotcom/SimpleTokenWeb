@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   hasError: boolean =false;
   message: string;
   btnText: string = "Update Password";
+  hasLoaded =false;
 
   constructor(private http: OstHttp, private formErrorHandler: FormErrorHandlerService) { }
 
@@ -27,16 +28,15 @@ export class ProfileComponent implements OnInit {
     this.http.get(this.dataUrl).subscribe(
       response => {
         let res = response.json();
+        this.hasLoaded = true;
         if(res.success){
           this.clientName = res.data.name;
           this.domainName = res.data.domain_name;
           this.superAdminEmails = res.data.super_admin_email_ids;
-
         }
       },
       error => {
         let err = error.json();
-        console.log(error);
       })
   }
 

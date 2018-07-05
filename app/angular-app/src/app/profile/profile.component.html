@@ -26,7 +26,10 @@
           domain Name
         </div>
         <div class="read-only-fields p-2">
-          <small>{{domainName}} </small>
+          <small *ngIf="domainName || ! hasLoaded; else domainNA">{{domainName}}</small>
+          <ng-template #domainNA>
+            <small >NA</small>
+          </ng-template>
         </div>
 
       </div>
