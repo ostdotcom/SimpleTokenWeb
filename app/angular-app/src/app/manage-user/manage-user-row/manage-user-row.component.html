@@ -1,5 +1,5 @@
 <ng-template #defaultForDesktop>
-  <div class="col p-0 pr-3 display-3">
+  <div class="col-2 p-0">
         --
   </div>
 </ng-template>
@@ -10,27 +10,27 @@
 </ng-template>
 
 <div class="row-body desktop d-none d-lg-flex py-3">
-  <div class="col name-date col p-0 px-3 display-3" *ngIf="row.email; else defaultForDesktop;">
+  <div class="col-3 name-date col p-0 px-3 display-3 text-truncate"  *ngIf="row.email; else defaultForDesktop;">
       {{row.email}}
   </div>
 
-<div class="col p-0 pr-3 display-3" *ngIf='row.registration_timestamp; else defaultForDesktop;'>
+<div class="col-2 p-0 pr-3 display-3" *ngIf='row.registration_timestamp; else defaultForDesktop;'>
     {{row.registration_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm:ss' }}
 </div>
-<div class="col p-0 pr-3 display-3" *ngIf='row.kyc_submitted; else kycNotSubmitted' >
+<div class="col-2 p-0 pr-3 display-3" *ngIf='row.kyc_submitted; else kycNotSubmitted' >
   Yes
 </div>
 <ng-template #kycNotSubmitted>
-  <div class="col p-0 pr-3 display-3">
+  <div class="col-2 p-0 pr-3 display-3">
     No
   </div>
 </ng-template>
-<div class="col p-0 pr-3 display-3 text-capitalize" *ngIf="appConfigService.hasWhiteListSetUp()">
+<div class="col-2 p-0 pr-3 display-3 text-capitalize" *ngIf="appConfigService.hasWhiteListSetUp()">
   <div *ngIf="row.whitelist_status; else  defaultForDesktop">
       {{row.whitelist_status}}
   </div>
 </div>
-<div class="col p-0 pr-3 display-3">
+<div class="col-3 p-0 pr-2 display-3">
     <button class='btn text-uppercase delete-button'
             [disabled]="isWhitelistPending() || isReopenInprocess()"
             (click)='deleteUser()'>delete user

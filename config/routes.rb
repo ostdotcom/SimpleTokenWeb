@@ -63,8 +63,9 @@ Rails.application.routes.draw do
 
       get '/dashboard' => :angular_app
       get '/case-id/:id' => :angular_app
-      get '/admin-user/dashboard' => :angular_app
-      get '/user/dashboard' => :angular_app
+      get '/settings/admin' => :angular_app
+      get '/settings/user' => :angular_app
+      
 
       # get '/get-kyc-dashboard' => :get_kyc_dashboard
       # get '/kyc-action-logs' => :kyc_action_logs

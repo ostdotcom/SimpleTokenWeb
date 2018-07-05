@@ -2,30 +2,29 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AppConfigService {
-    data:object = {}; 
+    data:object = {};
 
     setAppInitData( data:object ){
-        console.log("data====", data);
-        this.data = data; 
+        this.data = data;
     }
 
     getAppInitData( data ):object {
-       return this.data ; 
+       return this.data ;
     }
 
     getLoggedInUserName() {
-        let admin = this.data && this.data['admin']; 
-        return admin && admin['email'] || "";   
+        let admin = this.data && this.data['admin'];
+        return admin && admin['email'] || "";
     }
 
     isSuperAdmin():boolean{
         let admin = this.data && this.data['admin'],
             role =  admin && admin['role'],
-            isSuperAdmin =false ; 
+            isSuperAdmin =false ;
         if( role == "super_admin"){
-            isSuperAdmin =  true; 
+            isSuperAdmin =  true;
         }
-        return isSuperAdmin; 
+        return isSuperAdmin;
     }
 
     hasWhiteListSetUp():boolean{
@@ -37,8 +36,8 @@ export class AppConfigService {
     }
 
     getClientSetup() {
-        let client = this.data && this.data['client_setup']; 
-        return client || "";   
+        let client = this.data && this.data['client_setup'];
+        return client || "";
     }
 
 }

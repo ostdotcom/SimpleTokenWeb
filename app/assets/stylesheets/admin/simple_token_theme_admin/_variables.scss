@@ -80,6 +80,7 @@ $blue-700:  #6da4a9  !default;
 $blue-800:  #597A84 !default; // font-primary
 $blue-900:  #34445b !default;
 $blue-1000: #595b5e !default;
+$blue-1100: #AFE1E3 !default;
 
 //Theme green shades
 $green-300 : #91c0ad!default;
@@ -91,6 +92,7 @@ $green-800: #435353!default;
 $green-900: #b1e0e1!default;
 $green-1000: #f3fbfb!default;
 $green-1100: #aee1e3!default;
+$green-1200: #84b4ca!default;
 
 
 // Theme yellow shades
@@ -332,6 +334,7 @@ $text1-size:                  $font-size-base * 1.25  !default;
 $text2-size:                  $font-size-base * 1.125 !default;
 $text3-size:                  $font-size-base * 0.875 !default;
 $text4-size:                  $font-size-base * 0.75  !default;
+$text5-size:                  $font-size-base * 0.5  !default;
 
 $headings-margin-bottom:      ($spacer / 2) !default;
 $headings-font-family:        inherit !default;

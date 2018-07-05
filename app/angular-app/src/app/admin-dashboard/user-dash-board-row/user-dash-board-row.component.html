@@ -1,9 +1,9 @@
 <div class="row-body p-3 d-none d-lg-block">
     <div class="row">
-        <div class="col-2">{{row.name}}</div>
-        <div class="col-3">{{row.email}}</div>
+        <div class="col-3">{{row.name}}</div>
+        <div class="col-4 text-truncate">{{row.email}}</div>
         <div class="col-2">{{statusMap[row.status]}}</div>
-        <div class="col-5 form-group">
+        <div class="col-3 form-group" *ngIf="isSuperAdmin">
             <select class="form-control selectpicker" ostOptions
                     title="Action"
                     [(ngModel)]="status"
@@ -28,7 +28,7 @@
                 <div class="col-12 p-0 text-transform-upper display-3 font-weight-600">email address</div>
                 <div class="col-12 p-0 display-3 mt-1">{{row.email}}</div>
             </div>
-            <div class="row form-group m-0 p-3">
+            <div class="row form-group m-0 p-3" *ngIf="isSuperAdmin" >
                 <select class="form-control selectpicker" ostOptions
                         data-size="2"
                         title="Action"

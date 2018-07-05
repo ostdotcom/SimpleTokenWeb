@@ -21,7 +21,7 @@ export class TableComponent implements OnInit {
   @Input('dataUrl') dataUrl: string;
 
   //Optional input options
-  @Input('pageNumber') pageNumber?: number ;
+  @Input('pageNumber') pageNumber?: number = 1; //Default page number
   @Input('filterForm') filterForm?: any = null;
   @Input('sortForm') sortForm?: any = null;
   @Input('searchForm') searchForm?: any = null;
@@ -49,7 +49,11 @@ export class TableComponent implements OnInit {
   metaData: object;
   errorMessage: string="";
   resetPageTimeout: any;
+  getTableDataTimeout: any;
 
+  ngOnChanges( changes ){
+    this.resetPagination( changes );
+  }
 
   ngOnInit() {
     this.configOverWrites();
@@ -112,9 +116,19 @@ export class TableComponent implements OnInit {
     });
   }
 
+  resetPagination( changes ) {
+    let pagination    = changes['pageNumber'],
+        currentValue  = pagination && pagination['currentValue'],
+        previousValue = pagination && pagination['previousValue']
+    ;
+    if( currentValue == 1  && previousValue != currentValue ) {
+      this.getTableData();
+    }
+  }
+
   resetSearch(){
     clearTimeout( this.resetPageTimeout );
-    let value = this.searchForm.value && this.searchForm.value['search[q]'];
+    let value = this.getSearchValue();
     if(!value){
       this.resetPageTimeout = setTimeout(()=> {
         this.getTableData();
@@ -144,7 +158,7 @@ export class TableComponent implements OnInit {
   }
 
   onSearching(){
-    let value = this.searchForm.value && this.searchForm.value['search[q]'];
+    let value = this.getSearchValue();
     if(!value.trim()) return;
     this.resetPageNumber();
     this.getTableData();
@@ -164,8 +178,14 @@ export class TableComponent implements OnInit {
   }
 
   getSeaching() {
-    console.log('searchForm', this.searchForm.value);
     return this.searchForm && this.searchForm.value;
+  }
+
+  getSearchValue(){
+    let searchObj = this.getSeaching();
+    for(let key in searchObj){
+      return searchObj[key];
+    }
   }
 
   onPageChange(pageNumber: number) {
@@ -183,24 +203,31 @@ export class TableComponent implements OnInit {
   }
 
   getPageNumber(): number {
-    return this.pageNumber || 1;
+    return this.pageNumber;
   }
 
   getTableData() {
-    let params = this.getParams(),
-        action: string = this.getAction();
-    ;
+   this.preGetTableData();
+    this.getTableDataTimeout = setTimeout(() => {
+      let params = this.getParams(),
+          action: string = this.getAction()
+      ;
+      this.http[action](this.dataUrl, params).subscribe(
+        response => {
+          let res = response.json();
+          this.onTableDataSuccess(res);
+        },
+        error => {
+          let err = error.json();
+          this.onTableDataError( err );
+        })
+    }, 300);
+  }
+
+  preGetTableData(){
     this.clearTableData();
     this.stateHandler.updateRequestStatus(this, true);
-    this.http[action](this.dataUrl, params).subscribe(
-      response => {
-        let res = response.json();
-        this.onTableDataSuccess(res);
-      },
-      error => {
-        let err = error.json();
-        this.onTableDataError( err );
-      })
+    clearTimeout( this.getTableDataTimeout );
   }
 
   getAction(): string {
