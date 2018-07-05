@@ -60,7 +60,14 @@
 
     bindButtonActions: function () {
 
-      $(".carousel-inner .carousel-item .kyc-carousel-content").on("click", function () {
+      $(".carousel-inner .carousel-item .kyc-carousel-content")
+      .on("touchend", function ( e ) {
+          e.preventDefault();
+          e.stopPropagation();
+          oThis.showVideo( $(this) );
+          return false;
+        })
+      .on("click", function () {
         oThis.showVideo( $(this) );
       });
 
@@ -125,14 +132,9 @@
     showVideo: function( jItem ){
       oThis.isVideoPlaying = true;
       var jIframe = jItem.find('iframe');
-
-
-      console.log( jIframe );
-      console.log( jItem );
       console.log( oThis.jVideoCarousal );
       //Pause the Carousal
       oThis.jVideoCarousal.carousel('pause');
-
       //Hide Image
       jItem.find('img').css({
         visibility: "hidden"
