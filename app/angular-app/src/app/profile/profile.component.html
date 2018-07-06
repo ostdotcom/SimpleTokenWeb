@@ -64,67 +64,31 @@
         action="/api/admin/profile/change-password" id="adminChangePasswordForm">
         <div class="form-group">
           <label class="form-label" for="current_password">current password</label>
-          <input type="password" (keyup)="inputChanges(changePassword)" class="form-control" ngModel #current_password="ngModel" name="current_password" title="current password"
+          <input type="password"  class="form-control" ngModel #current_password="ngModel" name="current_password" title="current password"
             tabindex="1" minlength="8" required/>
-          <div class="error">
-            <div *ngIf="current_password.touched && ! current_password.valid; else currentPwdServerError">
-              <div *ngIf="current_password.errors && current_password.errors.required">
-                Password is required
-              </div>
-              <div *ngIf="current_password.errors && current_password.errors.minlength">
-                Password minimum length is {{ current_password.errors.minlength.requiredLength }}
-              </div>
-            </div>
-            <ng-template #currentPwdServerError >
-              <ng-container *ngIf="changePassword.serverErrors">
-                  {{changePassword.serverErrors.current_password}}
-              </ng-container>
-            </ng-template>
-          </div>
+            <ost-form-error-handler [inputField]="current_password" [fieldName]="'Password'" [errorResponse]="errorResponse">
+            </ost-form-error-handler>
+
         </div>
 
         <div class="form-group">
           <label class="form-label" for="new_password">new password</label>
-          <input type="password" (keyup)="inputChanges(changePassword)" class="form-control" name="new_password" ngModel #new_password="ngModel" title="new password" id="new_password"
+          <input type="password"  class="form-control"
+            name="new_password" ngModel #new_password="ngModel" title="new password" id="new_password"
             tabindex="2" minlength="8" required/>
-          <div class="error">
-            <div *ngIf="new_password.touched && ! new_password.valid; else newPwdServerError">
-              <div *ngIf="new_password.errors && new_password.errors.required">
-                Password is required
-              </div>
-              <div *ngIf="new_password.errors && new_password.errors.minlength">
-                Password minimum length is {{ new_password.errors.minlength.requiredLength }}
-              </div>
+            <ost-form-error-handler [inputField]="new_password" [fieldName]="'Password'" [errorResponse]="errorResponse">
+            </ost-form-error-handler>
 
-            </div>
-            <ng-template #newPwdServerError >
-              <ng-container *ngIf="changePassword.serverErrors">
-                  {{changePassword.serverErrors.new_password}}
-              </ng-container>
-            </ng-template>
-          </div>
         </div>
 
 
         <div class="form-group">
           <label class="form-label" for="confirm_password">confirm password</label>
-          <input type="password" (keyup)="inputChanges(changePassword)" class="form-control" ngModel #confirm_password="ngModel" name="confirm_password" title="confirm password"
+          <input type="password"  class="form-control" ngModel #confirm_password="ngModel" name="confirm_password" title="confirm password"
             id="confirm_password" tabindex="3" minlength="8" required/>
-          <div class="error">
-            <div *ngIf="confirm_password.touched && ! confirm_password.valid; else confirmPwdServerError">
-              <div *ngIf="confirm_password.errors && confirm_password.errors.required">
-                Password is required
-              </div>
-              <div *ngIf="confirm_password.errors && confirm_password.errors.minlength">
-                Password minimum length is {{ confirm_password.errors.minlength.requiredLength }}
-              </div>
-            </div>
-            <ng-template #confirmPwdServerError >
-                <ng-container *ngIf="changePassword.serverErrors">
-                    {{changePassword.serverErrors.confirm_password}}
-                </ng-container>
-              </ng-template>
-          </div>
+            <ost-form-error-handler [inputField]="confirm_password" [fieldName]="'Password'" [errorResponse]="errorResponse">
+              </ost-form-error-handler>
+
         </div>
         <div class="form-group user-form-footer text-center text-sm-left row">
           <div class="col-12">
@@ -137,9 +101,8 @@
             </button>
           </div>
           <div class="general_error error text-center col-12">
-            <ng-container  *ngIf="changePassword.serverErrors">
-                {{changePassword.serverErrors.general_error}}
-            </ng-container>
+              <ost-form-error-handler [errorResponse]="errorResponse">
+              </ost-form-error-handler>
           </div>
         </div>
 

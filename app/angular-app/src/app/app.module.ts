@@ -51,6 +51,7 @@ import { AdminSettingMenusComponent } from './admin-settings/admin-setting-menus
 import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
 import { DevelopersIntegrationComponent } from './developers-integration/developers-integration.component';
+import { OstFormErrorHandlerComponent } from './ost-form-error-handler/ost-form-error-handler.component';
 
 
 
@@ -101,7 +102,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     AdminSettingMenusComponent,
     ProfileComponent,
     ChangePasswordModalComponent,
-    DevelopersIntegrationComponent
+    DevelopersIntegrationComponent,
+    OstFormErrorHandlerComponent
   ],
   imports: [
     BrowserModule,

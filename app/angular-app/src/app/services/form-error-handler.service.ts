@@ -11,16 +11,17 @@ export class FormErrorHandlerService {
         serverErrors  = null;
         ;
     if( this.isErrorData(error_data) ) {
-      serverErrors = error_data
-    }else{
-      serverErrors = {};
-      serverErrors["general_error"] = error && error["display_text"];
+      form.controls[Object.keys(error_data)[0]]['serverError'] = Object.values(error_data)[0];
+
+    } else{
+      form.controls["general_error"]["serverError"] = error && error["display_text"];
     }
-    form["serverErrors"] = serverErrors ;
   }
 
   clearServerErrors( form  ){
-    form["serverErrors"] = null;
+    for (let key in form.controls){
+      form.controls[key]["serverError"] = null;
+    }
   }
 
   isErrorData( errorData ){
