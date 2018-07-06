@@ -22,8 +22,8 @@ export class KycCaseComponent implements OnInit {
   showUpdateEth: boolean = false;
   isInitDuplicateTable:boolean = false;
   isInitLogTabel:boolean = false;
-  caseDetails: object = {};
-  userDetails: object = {};
+  caseDetails;
+  userDetails;
   meta: object = {};
   hasNextPage: boolean = false;
   hasPreviousPage: boolean = false;
@@ -36,6 +36,11 @@ export class KycCaseComponent implements OnInit {
   isWhitelisting:boolean =  false;
   submittedDetails = ['birthdate', 'country', 'document_id_number', 'email', 'first_name', 'last_name', 'nationality',
                       'postal_code', 'submitted_at', 'street_address', 'city', 'state'];
+  alertStyleClass: string;
+  svgClass: string;
+  svgId: string;
+  alertMessage: string = "";
+
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -49,6 +54,7 @@ export class KycCaseComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.caseId = params.get('id');
       this.fetchCase();
+    //  this.hideModal();
     });
 
   }
@@ -83,11 +89,85 @@ export class KycCaseComponent implements OnInit {
     })
   }
 
+  ostAlert(){
+
+    let kyc_status = this.caseDetails.kyc_status;
+    let cynopsis_status = this.caseDetails.cynopsis_status;
+    let hasWhitelistSetup  = this.appConfig.getClientSetup().has_whitelist_setup;
+
+    if ( kyc_status == "denied") {
+      this.alertStyleClass = "alert-danger";
+      this.svgClass = "alert-error-svg";
+      this.svgId = "#kyc-error-icon";
+      if ( cynopsis_status == 'rejected'){
+        this.alertMessage = "AML/CTF status denied, this case cannot be reopned";
+      } else{
+        this.alertMessage = "Case denied by Admin";
+      }
+    } else if ( kyc_status == "approved"){
+      if (hasWhitelistSetup){
+        let whitelistStatus = this.caseDetails.whitelist_status;
+        if (whitelistStatus == 'unprocessed' || whitelistStatus == 'started'){
+          this.alertStyleClass = "alert-warning";
+          this.svgClass = "alert-warning-svg";
+          this.svgId = "#kyc-pending-icon";
+          this.alertMessage = "Case approved - whitelisting in progress";
+        } else if (whitelistStatus == 'done' && this.caseDetails.whitelist_confirmation_pending){
+          this.alertStyleClass = "alert-warning";
+          this.svgClass = "alert-warning-svg";
+          this.svgId = "#kyc-pending-icon";
+          this.alertMessage = "Case approved - whitelisting done, awaiting confirmation";
+        } else if (whitelistStatus == 'done' && ! this.caseDetails.whitelist_confirmation_pending){
+          this.alertStyleClass = "alert-success";
+          this.svgClass = "alert-success-svg";
+          this.svgId = "#kyc-success-icon";
+          this.alertMessage = "The case has been approved";
+        } else if (whitelistStatus == 'failed'){
+          this.alertStyleClass = "alert-warning";
+          this.svgClass = "alert-warning-svg";
+          this.svgId = "#kyc-warning-icon";
+          this.alertMessage = "Case approved - whitelisting failed";
+        }
+      } else {
+        this.alertStyleClass = "alert-success";
+        this.svgClass = "alert-success-svg";
+        this.svgId = "#kyc-success-icon";
+        this.alertMessage = "The case has been approved";
+      }
+
+    } else if (kyc_status == "pending"){
+      let adminStatus = this.caseDetails.admin_status;
+      if (adminStatus == 'qualified'){
+        this.alertStyleClass = "alert-warning";
+        this.svgClass = "alert-warning-svg";
+        this.svgId = "#kyc-pending-icon";
+        this.alertMessage = "Case approved by admin and is awaiting AML/CTF action";
+
+      } else{
+        if (this.caseDetails.last_issue_email_sent_humanized.length > 0){
+          this.alertStyleClass = "alert-warning";
+          this.svgClass = "alert-warning-svg";
+          this.svgId = "#kyc-warning-icon";
+          this.alertMessage = "Issue reported - " + this.caseDetails.last_issue_email_sent_humanized +" email sent.";
+        }
+
+      }
+
+
+    }
+
+  }
+
+  hideModal(){
+    $("#detailsModal").modal('hide');
+  }
+
   onSuccess( res ) {
     this.caseDetails = res.data.case_detail;
 
 
     this.userDetails = res.data.user_detail;
+    this.ostAlert();
     this.userDetails['extraDiv'] = this.checkForOddSections();
     this.meta = res.data.meta;
     this.stateHandler.updateRequestStatus( this, false,  false);
