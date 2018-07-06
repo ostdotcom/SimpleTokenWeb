@@ -8,6 +8,30 @@
     color: #438bad;
   }
 
+  .illustration{
+    .btn-play{
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      cursor: pointer;
+      letter-spacing: 0.1rem;
+      &:hover{
+        .play{
+          .svg{
+            fill: #ffffff;
+            transition: all 0.3s;
+          }
+        }
+      }
+    }
+    img{
+      max-width: 490px;
+    }
+  }
+
+
   .ost-kyc-hero{
     @media (min-width: 736px){
       max-width: 490px;
@@ -46,4 +70,15 @@
     }
   }
 
+}
+
+@media (max-width: 767px) {
+  .container-jumbotron{
+    .illustration{
+      img{
+        max-width: 300px;
+        margin: 0 auto;
+      }
+    }
+  }
 }
