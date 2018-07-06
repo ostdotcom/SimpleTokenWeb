@@ -57,8 +57,9 @@ export class ProfileComponent implements OnInit {
     let params =  changePassword.value;
     changePassword.isSubmitting = true;
     this.btnText = "Updating...";
+    this.errorResponse = null;
     if (changePassword.valid){
-      this.http.post('api/admin/profile/change-password1' , {...params }  ).subscribe(
+      this.http.post('api/admin/profile/change-password' , {...params }  ).subscribe(
         response => {
           let res = response.json();
           changePassword.isSubmitting = false;
@@ -68,7 +69,7 @@ export class ProfileComponent implements OnInit {
             changePassword.reset();
           }else{
             this.errorResponse = res;
-            this.formErrorHandler.handleError( res );
+            //this.formErrorHandler.handleError( res );
           }
         },
         error => {
@@ -76,19 +77,18 @@ export class ProfileComponent implements OnInit {
           changePassword.isSubmitting = false;
           this.btnText = "Update Password";
           this.errorResponse = err;
-          this.formErrorHandler.handleError(err);
+         // this.formErrorHandler.handleError(err);
         }
       )
     }
   }
+
+
   resetForm( changePassword){
-    this.formErrorHandler.clearServerErrors( );
+    console.log("i am here");
+    this.errorResponse = null;
     changePassword.reset();
   }
 
-
-  inputChanges(form){
-    this.formErrorHandler.clearServerErrors();
-  }
 
 }
