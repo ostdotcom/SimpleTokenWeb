@@ -42,7 +42,7 @@ export class KycCaseComponent implements OnInit {
     private http: OstHttp,
     private stateHandler : RequestStateHandlerService,
     private domSanitizer: DomSanitizer,
-    private appConfig : AppConfigService
+    public appConfig : AppConfigService
   ) { }
 
   ngOnInit() {
