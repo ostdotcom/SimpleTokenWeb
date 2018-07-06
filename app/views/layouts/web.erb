@@ -105,7 +105,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
   <% if !is_simple_token_specific_page? && !@presenter_obj.is_st_token_sale_client? %>
-    <link rel="icon" href="<%= @presenter_obj.header_logo['src'] %>"/>
+    <link rel="icon" href="<%= @presenter_obj.header_favicon_src %>"/>
   <% else %>
     <link rel="icon" type="image/png" sizes="64x64" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/64x64.png"/>
     <link rel="apple-touch-icon" sizes="57x57" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/57x57.png">
