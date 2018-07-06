@@ -1,3 +1,10 @@
-<p>
-  ost-form-error-handler works!
-</p>
+<div class="error">
+  <ng-container *ngIf="inputField.touched && ! inputField.valid; else showServerErrors">
+    {{getErrorMessage()}}
+  </ng-container>
+  <ng-template #showServerErrors >
+    <ng-container *ngIf="form.controls[inputField.name] && form.controls[inputField.name]['serverError']">
+        {{form.controls[inputField.name]["serverError"]}}
+    </ng-container>
+  </ng-template>
+</div>

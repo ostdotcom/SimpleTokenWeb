@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
-import {FormErrorHandlerService} from '../services/form-error-handler.service';
+
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
+import { OstFormErrorHandlerComponent } from '../ost-form-error-handler/ost-form-error-handler.component';
 declare var $: any;
 
 @Component({
@@ -19,9 +20,12 @@ export class ProfileComponent implements OnInit {
   btnText: string = "Update Password";
   hasLoaded =false;
   errorMessage: string;
+  errorResponse;
+
+  @ViewChild(OstFormErrorHandlerComponent) formErrorHandler:OstFormErrorHandlerComponent;
 
   constructor(private http: OstHttp,
-              private formErrorHandler: FormErrorHandlerService,
+
               private stateHandler : RequestStateHandlerService) { }
 
   ngOnInit() {
@@ -54,7 +58,7 @@ export class ProfileComponent implements OnInit {
     changePassword.isSubmitting = true;
     this.btnText = "Updating...";
     if (changePassword.valid){
-      this.http.post('api/admin/profile/change-password' , {...params }  ).subscribe(
+      this.http.post('api/admin/profile/change-password1' , {...params }  ).subscribe(
         response => {
           let res = response.json();
           changePassword.isSubmitting = false;
@@ -63,26 +67,28 @@ export class ProfileComponent implements OnInit {
             $("#changePasswordSuccess").modal("show");
             changePassword.reset();
           }else{
-            this.formErrorHandler.hadleError( changePassword ,  res );
+            this.errorResponse = res;
+            this.formErrorHandler.handleError( res );
           }
         },
         error => {
           let err = error.json();
           changePassword.isSubmitting = false;
           this.btnText = "Update Password";
-          this.formErrorHandler.hadleError( changePassword ,  err );
+          this.errorResponse = err;
+          this.formErrorHandler.handleError(err);
         }
       )
     }
   }
   resetForm( changePassword){
-    this.formErrorHandler.clearServerErrors( changePassword );
+    this.formErrorHandler.clearServerErrors( );
     changePassword.reset();
   }
 
 
   inputChanges(form){
-    this.formErrorHandler.clearServerErrors(form);
+    this.formErrorHandler.clearServerErrors();
   }
 
 }
