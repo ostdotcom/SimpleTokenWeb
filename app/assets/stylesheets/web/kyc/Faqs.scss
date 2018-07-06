@@ -42,10 +42,17 @@
     }
   }
   .square-btn{
-    margin: 0 auto;
-    line-height: 40px;
-    padding: 0 20px;
+    position: relative;
+    letter-spacing: 2px;
   }
+//  .btn-bg-image{
+//    width: 60px;
+//    position: absolute;
+//    z-index: 1;
+//    top: -59px;
+//    left: 50%;
+//    margin-left: -30px;
+//  }
 }
 
 

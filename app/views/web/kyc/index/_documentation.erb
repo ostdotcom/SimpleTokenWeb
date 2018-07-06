@@ -1,0 +1,70 @@
+<%
+   img_root = "//dxwfxs8b4lg24.cloudfront.net/ost-kyc/images/marketing/";
+   documentation = [
+   {
+     title: "Setup & Architecture",
+     description: "This segment includes an entire detailed overview of OST KYC's system architecture and OST KYC's Admin Dashboard Features.",
+     readmore: "Read Docs",
+     readmoreurl: "https://docs.google.com/document/d/1NxwpJModV2lCUGnyL1z7PpaXZw3MZCrmKn48nEReG3o/edit",
+     image:{
+       src: img_root + "documentation-setup-icon.png",
+       height: "75",
+       width: "76",
+       alt: "Review process"
+     }
+   },
+   {
+     title: "API Reference",
+     description: "OST KYC's API Documentation gives you flexibility and ease to integrate your own front-end by using APIs with OST KYC admin dashboard.",
+     readmore: "API Documentation",
+     readmoreurl: "https://docs.google.com/document/d/1jjg3eilIvthiI1hpG_K8goG-RDFbG_nGgzdgMXAfqm4/edit",
+     image:{
+       src: img_root + "documentation-api-icon.png",
+       height: "75",
+       width: "72",
+       alt: "Encryption"
+     }
+   },
+   {
+     title: "Customizable Front-End",
+     description: "OST KYC's experience includes customisable front-end development, where KYC users can submit their data and upload their documents.",
+     readmore: "Read Docs",
+     readmoreurl: "https://docs.google.com/document/d/1QvIU_YHoFp4UqHk-ZnrMDRgzZvWqQfdtDyTPH2v04Jw/edit#heading=h.453f5kmroxtm",
+     image:{
+       src: img_root + "documentation-ui-icon.png",
+       height: "75",
+       width: "73",
+       alt: "Admin and 2FA"
+     }
+   }
+   ]
+%>
+
+<section class="container-more-benefits container-documentation pt-4 pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center">Documentation</h2>
+        <div class="card-group">
+          <% documentation.each_with_index do|member, index| %>
+            <% if (index % 3) == 0 %><div class="row"><% end %>
+            <div class="col-12 col-md-4 card mb-5" itemprop="member" itemscope itemtype="http://schema.org/Person">
+              <img class="img-fluid" src="<%=member[:image][:src] %>" alt="<%=member[:image][:alt] %>" height="<%=member[:image][:height] %>" width="<%=member[:image][:width] %>">
+              <div class="card-body p-0 mt-3 mb-4">
+                <h5 class="card-title"><%= raw member[:title] %></h5>
+                <p class="card-text companies-desc"><%= raw member[:description] %></p>
+              </div>
+              <div class="card-footer p-0">
+                <a href="<%= raw member[:readmoreurl] %>" class="read-more text-uppercase font-weight-normal" target="_blank"><%= raw member[:readmore] %></a>
+              </div>
+            </div>
+            <% if ((index % 3) == 2) || ((index + 1) == documentation.length) %></div><% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
