@@ -1,8 +1,8 @@
 <div class="header-row d-none d-lg-flex">
 
-    <div class="col p-0 px-3">EMAIL ID</div>
-    <div class="col p-0 pr-3">REGISTRATION DATE/TIME</div>
-    <div class="col p-0 pr-3">KYC SUBMITTED</div>
-    <div class="col p-0 pr-3" *ngIf="appConfigService.hasWhiteListSetUp()">WHITELIST STATUS</div>
-    <div class="col p-0 pr-3">ACTIONS</div>
+    <div class="col-3 p-0 px-3 header-name">EMAIL ID</div>
+    <div class="col-2 p-0 pr-3 header-name">REGISTRATION DATE/TIME</div>
+    <div class="col-2 p-0 pr-3 header-name">KYC SUBMITTED</div>
+    <div class="col-2 p-0 pr-3 header-name" *ngIf="appConfigService.hasWhiteListSetUp()">WHITELIST STATUS</div>
+    <div class="col-3 p-0 pr-3 header-name">ACTIONS</div>
 </div>

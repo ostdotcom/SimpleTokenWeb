@@ -1,0 +1,195 @@
+<!--DESKTOP -->
+<div class="admin-settings h-100">
+<div class="d-none d-lg-block h-100 desktop-menus-list pt-5">
+  <div class="desktop-menu px-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">
+    <span>
+      <svg class="go-to-dashboard-icon" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#go-to-dashboard-icon"></use>
+        </switch>
+      </svg>
+    </span>
+    <span class="pl-2">Go to Dashboard </span>
+  </div>
+
+  <div class="desktop-menu px-2 align-items-center d-flex" [routerLink]="['/admin/settings/profile']" [routerLinkActive]="['selected']">
+    <span>
+      <svg class="profile" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-icon"></use>
+        </switch>
+      </svg>
+    </span>
+
+    <span>
+      <svg class="profile-selected" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-selected-icon"></use>
+        </switch>
+      </svg>
+    </span>
+    <span class="pl-2">Profile</span>
+  </div>
+
+  <div class="desktop-menu px-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']">
+    <span>
+      <svg class="admin-dashboard" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-icon"></use>
+        </switch>
+      </svg>
+    </span>
+
+    <span>
+      <svg class="admin-dashboard-selected" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-selected-icon"></use>
+        </switch>
+      </svg>
+    </span>
+    <span class="pl-2">Admin Management</span>
+  </div>
+  <div class="desktop-menu px-2 align-items-center d-flex" *ngIf="isSuperAdmin" data-menu="user" [routerLink]="['/admin/settings/user']"
+    [routerLinkActive]="['selected']">
+    <span>
+      <svg class="user-dashboard" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user-management-icon"></use>
+        </switch>
+      </svg>
+    </span>
+    <span class="pl-2">User Management</span>
+  </div>
+
+  <div class="desktop-menu px-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/developer-integrations']" [routerLinkActive]="['selected']">
+    <span>
+        <svg class="developer" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-icon"></use>
+          </switch>
+        </svg>
+      </span>
+      <span>
+        <svg class="developer-selected" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-selected-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span class="pl-2">Developer Integrations</span>
+  </div>
+
+
+
+</div>
+
+
+
+
+<!--MOBILE CALLAPSIBLE-->
+<div class="d-lg-none mobile-list">
+  <button class="btn container-fluid btn-style px-3" (click)="toggleShow()" data-toggle="collapse" data-target="#collapseSettings"
+    aria-expanded="false" aria-controls="collapseSettings">
+    Settings
+    <span class="d-inline" *ngIf="show">
+      <svg class="down-arrow-icon img-topbar-style" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#down-arrow-icon"></use>
+        </switch>
+      </svg>
+    </span>
+    <span class="d-inline" *ngIf="!show">
+      <svg class="up-arrow-icon img-topbar-style" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#up-arrow-icon"></use>
+        </switch>
+      </svg>
+    </span>
+  </button>
+  <div class="collapse " id="collapseSettings">
+    <div class="d-lg-none mobile-menus-list">
+      <div class="desktop-menu pl-2 align-items-center d-flex" [routerLink]="['/admin/dashboard']">
+        <span>
+          <svg class="go-to-dashboard-icon" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#go-to-dashboard-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Go to Dashboard </span>
+      </div>
+
+
+      <div class="desktop-menu pl-2 align-items-center d-flex" [routerLink]="['/admin/settings/profile']" [routerLinkActive]="['selected']">
+
+        <span>
+          <svg class="profile" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-icon"></use>
+            </switch>
+          </svg>
+        </span>
+
+        <span>
+          <svg class="profile-selected" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+
+        <span class="pl-2">Profile</span>
+      </div>
+
+
+      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']">
+        <span>
+          <svg class="admin-dashboard" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="admin-dashboard-selected" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Admin Management</span>
+      </div>
+      <div class="desktop-menu pl-2 align-items-center d-flex" *ngIf="isSuperAdmin" data-menu="user" [routerLink]="['/admin/settings/user']"
+        [routerLinkActive]="['selected']">
+        <span>
+          <svg class="user-dashboard" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user-management-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">User Management</span>
+      </div>
+
+      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/developer-integrations']" [routerLinkActive]="['selected']">
+        <span>
+          <svg class="developer" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="developer-selected" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Developer Integrations</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>

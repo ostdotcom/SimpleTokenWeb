@@ -45,7 +45,7 @@
 
             oThis.jSignBtn.off('click').on('click' , function () {
                 oThis.isCaptchaValid = utilities.validateCaptcha( oThis.jSignupForm );
-                oThis.formHelper.jForm.submit();
+               // oThis.formHelper.jForm.submit();
             });
         },
 

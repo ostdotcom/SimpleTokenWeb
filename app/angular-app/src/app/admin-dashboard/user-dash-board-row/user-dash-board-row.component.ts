@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OstRowComponent } from '../../table/ost-row/ost-row.component';
+import { AppConfigService } from '../../services/app-config.service';
 
 declare var $:any;
 
@@ -10,8 +11,8 @@ declare var $:any;
 })
 export class UserDashBoardRowComponent extends OstRowComponent implements OnInit {
 
-  constructor() {
-    super();
+  constructor(public appConfigService: AppConfigService ) {
+    super(appConfigService);
    }
 
   @Input('row') row: any ;
@@ -27,6 +28,7 @@ export class UserDashBoardRowComponent extends OstRowComponent implements OnInit
   }
 
   ngOnInit() {
+    this.isSuperAdmin = this.appConfigService.isSuperAdmin();
     if(this.row){
       this.entityPath = "entity_configs.admin_dashboard."+ this.row.status ;
     }
