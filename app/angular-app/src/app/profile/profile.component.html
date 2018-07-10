@@ -68,7 +68,6 @@
             tabindex="1" minlength="8" required/>
             <ost-form-error-handler [inputField]="current_password" [fieldName]="'Password'" [errorResponse]="errorResponse">
             </ost-form-error-handler>
-
         </div>
 
         <div class="form-group">
@@ -78,18 +77,16 @@
             tabindex="2" minlength="8" required/>
             <ost-form-error-handler [inputField]="new_password" [fieldName]="'Password'" [errorResponse]="errorResponse">
             </ost-form-error-handler>
-
         </div>
-
 
         <div class="form-group">
           <label class="form-label" for="confirm_password">confirm password</label>
           <input type="password"  class="form-control" ngModel #confirm_password="ngModel" name="confirm_password" title="confirm password"
             id="confirm_password" tabindex="3" minlength="8" required/>
             <ost-form-error-handler [inputField]="confirm_password" [fieldName]="'Password'" [errorResponse]="errorResponse">
-              </ost-form-error-handler>
-
+            </ost-form-error-handler>
         </div>
+
         <div class="form-group user-form-footer text-center text-sm-left row">
           <div class="col-12">
             <button [disabled]="!changePassword.valid" type="submit" class="btn btn-primary mb-3 mb-xl-0"
@@ -101,8 +98,8 @@
             </button>
           </div>
           <div class="general_error error text-center col-12">
-              <ost-form-error-handler [errorResponse]="errorResponse">
-              </ost-form-error-handler>
+            <ost-form-error-handler [errorResponse]="errorResponse">
+            </ost-form-error-handler>
           </div>
         </div>
 

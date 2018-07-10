@@ -244,6 +244,32 @@
           {"key": "investor_proof_issue", 
           "value": "Investor Proof Issue" }
       }      
+    },
+    "artificial_intelligence_component": {
+      "ocr": {
+        "values": [
+          { "key": "auto_approve_fields", 
+            "value": "first_name_match",
+            "display_text": "First Name"
+          },
+          {"key": "auto_approve_fields", 
+            "value": "last_name_match",
+            "display_text": "Last Name"
+          },
+          {"key": "auto_approve_fields", 
+           "value": "birthdate_match" ,
+           "display_text": "Birthdate"
+          },
+          {"key": "auto_approve_fields", 
+           "value": "nationality_match",
+           "display_text": "Nationality"
+          },
+          {"key": "auto_approve_fields", 
+            "value": "document_id_number_match",
+            "display_text": "Document ID Number"
+          }
+          ] 
+      }
     }
   }
 }

@@ -3,6 +3,7 @@ import {OstHttp} from '../services/ost-http.service';
 
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import { OstFormErrorHandlerComponent } from '../ost-form-error-handler/ost-form-error-handler.component';
+import { NgForm } from '../../../node_modules/@angular/forms';
 declare var $: any;
 
 @Component({
@@ -69,7 +70,6 @@ export class ProfileComponent implements OnInit {
             changePassword.reset();
           }else{
             this.errorResponse = res;
-            //this.formErrorHandler.handleError( res );
           }
         },
         error => {
@@ -77,18 +77,14 @@ export class ProfileComponent implements OnInit {
           changePassword.isSubmitting = false;
           this.btnText = "Update Password";
           this.errorResponse = err;
-         // this.formErrorHandler.handleError(err);
         }
       )
     }
   }
 
-
   resetForm( changePassword){
-    console.log("i am here");
     this.errorResponse = null;
     changePassword.reset();
   }
-
 
 }

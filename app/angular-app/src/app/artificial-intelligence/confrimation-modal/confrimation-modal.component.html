@@ -1,0 +1,58 @@
+<div class="modal fade" id="ai-confimation-modal">
+    <div class="modal-dialog modal-dialog-centered  modal-lg h-100 my-0 pb-5">
+      <div class="modal-content">
+
+        <div class="modal-body p-5">
+          <div class='row' *ngIf="!isProcessing && !hasError && !isSuccess">
+            <div class="col-12">
+              <h5 class="text-center">
+                You are changing the Facial Recognition value. It will take 10 minutes to implement.
+                 Are you sure you want to continue?
+              </h5>   
+            </div>  
+            <div class="col-12 form-group mt-4 text-center">
+              <button class="btn btn-primary mt-2 mr-md-2" (click)="onConfirmation()">
+                  YES, CONTINUE
+              </button>
+              <button class="btn btn-secondary mt-2" data-dismiss="modal">
+                CANCEL
+              </button>
+            </div>
+          </div>
+  
+          <div class="row">
+              <request-state-handler class="d-block w-100"
+                                    [isProcessing]="isProcessing"
+                                    [hasError]="hasError">
+              <div class="processing-content mt-3 text-center">
+                  Processing your request, please wait. 
+               </div>
+              <div class="error-content col-12 text-center">
+                <div *ngIf="errorMessage">{{errorMessage}}</div>
+                <div *ngIf="!errorMessage">Something went wrong, please try again later.</div>
+                <button class="btn btn-primary mt-3" data-dismiss="modal">Done</button>
+              </div>
+              </request-state-handler>
+          </div>
+  
+          <div class="row" *ngIf="isSuccess">
+              <div class="col-12 success-hanlder-wrap text-center p-1" >
+                  <div class="success-icon-wrap mb-3">
+                      <svg class="icon" style="width:50px; height: 50px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                            </use>
+                          </switch>
+                      </svg>
+                  </div>
+                  <div class="mt-2 mb-3">
+                     <h5 class="text-center"> Facial Recognition Value Updated.</h5>
+                  </div>
+                  <button class="btn btn-primary" data-dismiss="modal">OK</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

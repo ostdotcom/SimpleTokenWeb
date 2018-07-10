@@ -40,7 +40,6 @@ import { OstAlertComponent } from './ost-alert/ost-alert.component';
 import { KycCaseActionModalComponent } from './kyc-case/kyc-case-action-modal/kyc-case-action-modal.component';
 import { AdminDashboardModalComponent } from './admin-dashboard/admin-dashboard-modal/admin-dashboard-modal.component';
 import { ScrollTopService } from './services/scroll-top.service';
-import { FormErrorHandlerService } from './services/form-error-handler.service';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageUserHeaderComponent } from './manage-user/manage-user-header/manage-user-header.component';
 import { ManageUserRowComponent } from './manage-user/manage-user-row/manage-user-row.component';
@@ -52,6 +51,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
 import { DevelopersIntegrationComponent } from './developers-integration/developers-integration.component';
 import { OstFormErrorHandlerComponent } from './ost-form-error-handler/ost-form-error-handler.component';
+import { ArtificialIntelligenceComponent } from './artificial-intelligence/artificial-intelligence.component';
+import { OstSliderComponent } from './ost-slider/ost-slider.component';
+import { ConfrimationModalComponent } from './artificial-intelligence/confrimation-modal/confrimation-modal.component';
 
 
 
@@ -103,7 +105,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ProfileComponent,
     ChangePasswordModalComponent,
     DevelopersIntegrationComponent,
-    OstFormErrorHandlerComponent
+    OstFormErrorHandlerComponent,
+    ArtificialIntelligenceComponent,
+    OstSliderComponent,
+    ConfrimationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -130,6 +135,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path: 'settings/developer-integrations',
             component: DevelopersIntegrationComponent
+          },
+          {
+            path: 'settings/artificial-intelligence',
+            component: ArtificialIntelligenceComponent
           }
        ]
 
@@ -142,8 +151,6 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
         path: 'admin/case-id/:id',
         component: KycCaseComponent
       }
-
-
     ]),
     ReactiveFormsModule
   ],
@@ -158,9 +165,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 OstHttp,
                 AppConfigService,
                 RequestStateHandlerService,
-                ScrollTopService,
-                FormErrorHandlerService
-
+                ScrollTopService
             ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,22 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.kyc-header{
+    color: $yellow-500;
+}
+
+.display-4 {
+  color: #9fb3b4
+}
+
+.aml-ctf-info {
+  border-top: 2px solid $custom-grey-7;
+}
+
+.fr-match-percent {
+  max-width: 60px;
+}
+
+.form-check-label.ocr-options {
+  font-size: 0.9rem; 
+  padding-top: 3px; 
+}

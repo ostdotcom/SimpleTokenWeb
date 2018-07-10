@@ -54,7 +54,9 @@ export class OstFormErrorHandlerComponent {
       this.generalError = error && error["display_text"] ;
     } else {
       //Reset all errors.
-      this.inputField['serverError'] = null;
+      if( this.inputField ){
+        this.inputField['serverError'] = null;
+      } 
       this.generalError = null;
     }
   }
