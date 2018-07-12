@@ -1,18 +1,14 @@
 <div class="error">
-  <ng-container *ngIf="inputField">
-      <ng-container *ngIf="inputField.touched && !inputField.valid; else showServerErrors">
+  <ng-container *ngIf="errorForTemplate">
+      <ng-container *ngIf="errorForTemplate.touched && !errorForTemplate.valid; else showServerErrors">
         {{getErrorMessage()}}
       </ng-container>
       <ng-template #showServerErrors >
-        <ng-container *ngIf="inputField.serverError">
-            {{inputField.serverError}}
+        <ng-container *ngIf="errorForTemplate.serverError">
+            {{errorForTemplate.serverError}}
         </ng-container>
       </ng-template>
     </ng-container>
-
-  <ng-container *ngIf="!inputField && generalError">
-    {{generalError}}
-  </ng-container>
 </div>
 
 

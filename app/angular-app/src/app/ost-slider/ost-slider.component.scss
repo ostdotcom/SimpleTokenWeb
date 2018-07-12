@@ -1,0 +1,27 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.slider-input-right {
+    margin-top: 12px;
+
+    .input-group-text {
+      background-color: $powder-blue;
+      opacity: 0.5;
+      color: $blue-800;
+    }
+  
+    .input-group {
+      border-color: $powder-blue;
+    }
+}
+
+.range-display-wrap {
+  font-size: $display4-size; 
+  padding-right: 120px;  //TODO - Flex grow by 1 not working. Please check. 
+  margin-top: -18px; 
+
+  .range-display {
+    flex-grow: 1; 
+    max-width: 100%; 
+    color: $blue-800; 
+  }
+}

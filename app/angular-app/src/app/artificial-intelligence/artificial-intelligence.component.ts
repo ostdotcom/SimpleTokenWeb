@@ -31,7 +31,7 @@ export class ArtificialIntelligenceComponent implements OnInit {
   recommendedAutoApproveFields  : Array<any>  = [];
   clientFRMmatchPercent         : number      = 100;  //Default to be set as 100% match
   clientAutoApproveFields       : Array<any>  = []; 
-  requestParams                 : object      = {};
+  params                        : object      = {};
   errorResponse                 : object      = null; 
   
   ngOnInit() {
@@ -119,8 +119,8 @@ export class ArtificialIntelligenceComponent implements OnInit {
   updateSettings( form ){
     let params = form.value
     ;
-    params['auto_approve_fields'] = this.clientAutoApproveFields; 
-    this.requestParams = params; 
+    params['auto_approve_fields'] = this.clientAutoApproveFields;  
+    this.params = params;  
     $('#ai-confimation-modal').modal('show'); 
   } 
 

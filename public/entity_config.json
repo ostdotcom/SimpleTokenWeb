@@ -248,24 +248,24 @@
     "artificial_intelligence_component": {
       "ocr": {
         "values": [
-          { "key": "auto_approve_fields", 
-            "value": "first_name_match",
+          { "key": "ocr_fields", 
+            "value": "first_name",
             "display_text": "First Name"
           },
-          {"key": "auto_approve_fields", 
-            "value": "last_name_match",
+          {"key": "ocr_fields", 
+            "value": "last_name",
             "display_text": "Last Name"
           },
-          {"key": "auto_approve_fields", 
-           "value": "birthdate_match" ,
+          {"key": "ocr_fields", 
+           "value": "birthdate" ,
            "display_text": "Birthdate"
           },
-          {"key": "auto_approve_fields", 
-           "value": "nationality_match",
+          {"key": "ocr_fields", 
+           "value": "nationality",
            "display_text": "Nationality"
           },
-          {"key": "auto_approve_fields", 
-            "value": "document_id_number_match",
+          {"key": "ocr_fields", 
+            "value": "document_id_number",
             "display_text": "Document ID Number"
           }
           ] 

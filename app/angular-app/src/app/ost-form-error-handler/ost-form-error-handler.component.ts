@@ -1,63 +1,83 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgModel } from '../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'ost-form-error-handler',
   templateUrl: './ost-form-error-handler.component.html',
   styleUrls: ['./ost-form-error-handler.component.scss']
 })
-export class OstFormErrorHandlerComponent {
+export class OstFormErrorHandlerComponent implements OnInit{
 
-  @Input("inputField") inputField;
+  @Input("errorFor") errorFor;
   @Input("fieldName") fieldName = "This field";
-  @Input("errorResponse") errorResponse;
+  @Input("serverError") serverError;
 
-  errorMessages = {"required": " is required",
+  errorDictionary = {
+                   "required": " is required",
                    "minlength": " minimum length is ",
                    "maxlength":  + " maximum length is "
                   };
-  generalError : null;
+
+  errorForTemplate : object = {}; 
 
   ngOnChanges( changes ){
     this.handleError();
   }
 
+  ngOnInit(){
+    if( this.errorFor instanceof Object ){
+      this.errorForTemplate = Object.create( this.errorFor ); 
+      console.log("this.errorFor " , this.errorFor ); 
+      console.log("this.clonedError" , this.errorForTemplate ); 
+    }
+  }
+
   getErrorMessage(){
-    let errors =  this.inputField.errors;
-    this.inputField["serverError"] = null;
+    let errors =  this.errorForTemplate['errors'];
+    this.errorForTemplate["serverError"] = null;
     if( errors.required ){
-     return  this.fieldName + this.errorMessages.required
+     return  this.fieldName + this.errorDictionary.required
     }else if( errors.minlength ){
-      return this.fieldName + this.errorMessages.minlength + errors.minlength.requiredLength
+      return this.fieldName + this.errorDictionary.minlength + errors.minlength.requiredLength
     }else if( errors.maxlength){
-      return this.fieldName + this.errorMessages.maxlength + errors.maxlength.requiredLength
+      return this.fieldName + this.errorDictionary.maxlength + errors.maxlength.requiredLength
     }else {
       return "Input is invalid."
     }
   }
 
-  handleError(  ){
-    let errorResponse = this.errorResponse,
-        error         = errorResponse && errorResponse.err  ,
-        error_data    = error && error.error_data ,
-        inputName ,
-        inputError
+  handleError( ){
+    let error         = this.serverError && this.serverError.err 
         ;
-    if( this.inputField && this.isErrorData(error_data) ) {
-      //If input and has error_data.
-      inputName  = this.inputField.name;
-      inputError = error_data[inputName];
+    if( this.errorFor && error ) {
+      let inputName  = this.getName( ), 
+          inputError = this.getError( inputName , error );
       if( inputError ){
-        this.inputField['serverError'] = inputError;
+        this.errorForTemplate['serverError'] = inputError;
       }
-    } else if( !this.inputField && error ){
-      //If not input and has error means its general error.
-      this.generalError = error && error["display_text"] ;
-    } else {
-      //Reset all errors.
-      if( this.inputField ){
-        this.inputField['serverError'] = null;
-      } 
-      this.generalError = null;
+    }  else {
+      this.errorForTemplate = {};
+    }
+  }
+
+  getName( ){
+    if( this.errorFor instanceof NgModel ){
+      return this.errorFor['name']; 
+    }else if( typeof this.errorFor == "string" ){
+      return this.errorFor; 
+    }else{
+      console.log("Name not found for error handler" , this.errorFor); 
+      return "no_name_found"; 
+    }
+  }
+
+  getError( name , error ) {
+    let errorData = error && error.error_data ;
+    if( name == 'general_error'){
+      return error && error["display_text"]; 
+    }
+    if( this.isErrorData( errorData ) ){
+      return errorData[name]; 
     }
   }
 

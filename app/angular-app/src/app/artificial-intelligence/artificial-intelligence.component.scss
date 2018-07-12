@@ -3,30 +3,14 @@
 .artificial-intelligence {
   .kyc-header{
     color: $yellow-500;
-}
-
-.display-4 {
-  color: #9fb3b4
-}
-
-.aml-ctf-info {
-  border-top: 2px solid $custom-grey-7;
-}
-
-.fr-match-percent {
-  max-width: 60px;
-}
-
-.slider-input-right {
-  .input-group-text {
-    background-color: $powder-blue;
-    opacity: 0.5;
-    color: $blue-800;
   }
 
-  .input-group {
-    border-color: $powder-blue;
+  .display-4 {
+    color: #9fb3b4
   }
-}
+
+  .aml-ctf-info {
+    border-top: 2px solid $custom-grey-7;
+  }
 
 }

@@ -25,6 +25,8 @@ export class OstSliderComponent implements OnInit {
   @Input('initSlider')    isInitSlider : boolean = true ; 
   @Input('minThreshold')  minThreshold : number  = null ;
   @Input('maxThreshold')  maxThreshold : number  = null ;
+
+  @Input('serverError') serverError: object =null; 
  
   @Output('sliderValChange') sliderValChange = new EventEmitter();
   
@@ -32,6 +34,9 @@ export class OstSliderComponent implements OnInit {
   sliderValue; 
 
   ngOnInit() {
+    if(!this.name){
+      throw "Name not provide form slider"; 
+    }
     if(this.isInitSlider){
       this.initSlider();
     }
@@ -43,7 +48,7 @@ export class OstSliderComponent implements OnInit {
         previousValue = valueObj && valueObj['previousValue']
         ;
     if( currentValue != previousValue ){
-      this.setValue( currentValue  ); 
+      this.updateSliderValue( currentValue ); 
     }
   } 
 
@@ -72,9 +77,8 @@ export class OstSliderComponent implements OnInit {
     if( !this.slider ) return ; 
       this.slider.on('change' ,  () => {
         let currentVal =  this.getValue();
-        if( currentVal != this.value ){
-          this.value = currentVal; 
-          this.sliderValChange.emit( currentVal );
+        if( currentVal != this.value ){ 
+         this.updateSliderValue( currentVal ); 
         }
       })
   }
@@ -87,18 +91,27 @@ export class OstSliderComponent implements OnInit {
     })
   }
 
-  checkForMinThreshold( value ){
-    if( this.minThreshold ) {
-      if (this.minThreshold > value) {
-        this.setValue( this.minThreshold ); 
-      }
+  updateSliderValue( valueToSet ){
+    if(!this.slider) return ; 
+    if( !this.checkForMinThreshold( valueToSet ) && !this.checkForMaxThreshold( valueToSet ) ){
+      this.sliderValChange.emit( valueToSet );
     }
+    this.value = this.getValue(); 
+  }
+
+  checkForMinThreshold( value ){
+    let minValue =  this.minThreshold || this.min
+      if ( minValue > value ) {
+        this.setValue( minValue ); 
+        return true ; 
+      }
   }
 
   checkForMaxThreshold( value ){
     let maxValue = this.maxThreshold || this.max;
       if (maxValue < value) {
         this.setValue( maxValue ); 
+        return true ; 
       }
   }
 
@@ -117,11 +130,18 @@ export class OstSliderComponent implements OnInit {
   setValue( value ){
     if( this.slider ){
       this.slider.bootstrapSlider('setValue' , value ); 
+       this.sliderValChange.emit( value );
     }
   }
 
   getValue( ){
     return this.slider && this.slider.bootstrapSlider('getValue'); 
+  }
+
+  onSliderInput(){
+    setTimeout( ()=>{
+      this.updateSliderValue( this.value )
+    } , 0); 
   }
 
 }
