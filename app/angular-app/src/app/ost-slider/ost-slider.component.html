@@ -5,12 +5,12 @@
     <div style="flex-grow: 1; max-width: 100%; color: #597a84">
       <span class="text-left">
         <ng-container *ngIf="prefix">{{prefix}}</ng-container>
-        <ng-container *ngIf="min">{{min}}</ng-container>
+        {{min}}
         <ng-container *ngIf="postfix">{{postfix}}</ng-container>
       </span>
       <span class="text-right float-right">
           <ng-container *ngIf="prefix">{{prefix}}</ng-container>
-          <ng-container *ngIf="max">{{max}}</ng-container>
+          {{max}}
           <ng-container *ngIf="postfix">{{postfix}}</ng-container>
       </span>
     </div>

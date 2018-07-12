@@ -14,25 +14,25 @@
   }
 
   .slider-selection{
-    background: $blue-700;
+    background: $powder-blue;
     box-shadow: none;
   }
 
   .slider-handle{
     cursor: pointer;
-    background: $blue-700;
+    background: $powder-blue;
   }
 
   .slider-track-high{
-    border: 1px solid $blue-700;
+    border: 1px solid $powder-blue;
   }
 
   .tooltip{
     .tooltip-inner{
       padding: 0.10rem 0.5rem;
-      color: $blue-700;
+      color: $powder-blue;
       background-color: $white;
-      border: 1px solid $blue-700;
+      border: 1px solid $powder-blue;
       font-size: 0.75rem  ;
       border-radius: $border-radius-lg;
     }
@@ -116,23 +116,23 @@
 
   &.slider-primary {
     .slider-selection{
-      background: $blue-700;
+      background: $powder-blue;
     }
     .slider-handle{
-      background: $blue-700;
+      background: $powder-blue;
     }
     .slider-track-high{
-      border: 1px solid $blue-700;
+      border: 1px solid $powder-blue;
     }
     .tooltip{
       .tooltip-inner{
-        color: $blue-700;
+        color: $powder-blue;
         background-color: $white;
-        border: 1px solid $blue-700;
+        border: 1px solid $powder-blue;
       }
       .arrow{
         &:before{
-          border-top-color: $blue-700;
+          border-top-color: $powder-blue;
         }
       }
     }

@@ -1,6 +1,7 @@
 @import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
-.kyc-header{
+.artificial-intelligence {
+  .kyc-header{
     color: $yellow-500;
 }
 
@@ -16,7 +17,16 @@
   max-width: 60px;
 }
 
-.form-check-label.ocr-options {
-  font-size: 0.9rem; 
-  padding-top: 3px; 
+.slider-input-right {
+  .input-group-text {
+    background-color: $powder-blue;
+    opacity: 0.5;
+    color: $blue-800;
+  }
+
+  .input-group {
+    border-color: $powder-blue;
+  }
+}
+
 }
