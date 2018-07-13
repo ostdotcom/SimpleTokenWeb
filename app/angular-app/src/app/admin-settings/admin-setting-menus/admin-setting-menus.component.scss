@@ -68,6 +68,12 @@
   .developer-selected {
     display: none;
   }
+  .ai-icon {
+    display: inline;
+  }
+  .ai-selected-icon {
+    display: none;
+  }
   .user-dashboard {
     fill: $blue-1100;
   }
@@ -91,6 +97,12 @@
       display: none;
     }
     .developer-selected {
+      display: inline;
+    }
+    .ai-icon {
+      display: none;
+    }
+    .ai-selected-icon {
       display: inline;
     }
     .user-dashboard {
