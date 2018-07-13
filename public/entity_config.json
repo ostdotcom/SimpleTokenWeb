@@ -248,23 +248,23 @@
     "artificial_intelligence_component": {
       "ocr": {
         "values": [
-          { "key": "ocr_fields", 
+          { "key": "ocr_comparison_fields", 
             "value": "first_name",
             "display_text": "First Name"
           },
-          {"key": "ocr_fields", 
+          {"key": "ocr_comparison_fields", 
             "value": "last_name",
             "display_text": "Last Name"
           },
-          {"key": "ocr_fields", 
+          {"key": "ocr_comparison_fields", 
            "value": "birthdate" ,
            "display_text": "Birthdate"
           },
-          {"key": "ocr_fields", 
+          {"key": "ocr_comparison_fields", 
            "value": "nationality",
            "display_text": "Nationality"
           },
-          {"key": "ocr_fields", 
+          {"key": "ocr_comparison_fields", 
             "value": "document_id_number",
             "display_text": "Document ID Number"
           }

@@ -3,7 +3,6 @@ import { AppConfigService } from '../services/app-config.service';
 import { OstHttp } from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import { EntityConfigService } from '../services/entity-config.service';
-import { ScrollTopService } from '../services/scroll-top.service';
 
 declare var $: any ; 
 
@@ -17,7 +16,6 @@ export class ArtificialIntelligenceComponent implements OnInit {
   constructor( private http: OstHttp ,  
                private stateHandler : RequestStateHandlerService,
                private entityConfigService : EntityConfigService,
-               private scrollTopService : ScrollTopService,
                public appConfig : AppConfigService ) { }
 
   hasError        : boolean = false; 
@@ -26,13 +24,11 @@ export class ArtificialIntelligenceComponent implements OnInit {
   cachedResponse  : object  = null; 
   ocrOptions      : Array<object>;
 
-  approveStatus                 : string      = "manual";  
-  recommendedFRMmatchPercent    : number      = 0; 
-  recommendedAutoApproveFields  : Array<any>  = [];
-  clientFRMmatchPercent         : number      = 100;  //Default to be set as 100% match
-  clientAutoApproveFields       : Array<any>  = []; 
-  params                        : object      = {};
-  errorResponse                 : object      = null; 
+  approveType           : string      = "manual";  //Default to be set to manual
+  frMmatchPercent       : number      = 100;       //Default to be set as 100% match
+  ocrComparisonFields   : Array<any>  = []; 
+  params                : object      = {};
+  errorResponse         : object      = null; 
   
   ngOnInit() {
     let ocr     = this.entityConfigService.getEntityConfig('entity_configs.artificial_intelligence_component.ocr'),
@@ -65,26 +61,20 @@ export class ArtificialIntelligenceComponent implements OnInit {
   updateView( res ){
     let response              = res,
         data                  = response && response.data,
-        recommendedSetting    = data && data.recommended_setting,
-        clientSetting         = data && data.client_kyc_auto_approve_setting
+        clientSetting         = data && data.client_kyc_pass_setting
     ; 
     this.cachedResponse       = JSON.parse(JSON.stringify(response));  //Cache response; 
-    
-    this.approveStatus = data && data.approve_status || this.approveStatus ; 
+    this.approveType          = data && data.approve_type || this.approveType ; 
 
-    if( recommendedSetting ){
-      this.recommendedFRMmatchPercent   = recommendedSetting.fr_match_percent    || this.recommendedFRMmatchPercent; 
-      this.recommendedAutoApproveFields = recommendedSetting.auto_approve_fields || this.recommendedAutoApproveFields; 
-    }
 
     if( clientSetting ){
-      this.clientFRMmatchPercent    = clientSetting.fr_match_percent    || this.clientFRMmatchPercent; 
-      this.clientAutoApproveFields  = clientSetting.auto_approve_fields || this.clientAutoApproveFields; 
+      this.frMmatchPercent      = clientSetting.fr_match_percent      || this.frMmatchPercent; 
+      this.ocrComparisonFields  = clientSetting.ocr_comparison_fields || this.ocrComparisonFields; 
     }
   }
 
   isChecked( value ){
-    if( this.clientAutoApproveFields.indexOf(value) > -1 ){
+    if( this.ocrComparisonFields.indexOf(value) > -1 ){
       return true; 
     }else{
       return false; 
@@ -92,11 +82,11 @@ export class ArtificialIntelligenceComponent implements OnInit {
   }
 
   onChange( value ){
-    let indexOf =  this.clientAutoApproveFields.indexOf(value);
+    let indexOf =  this.ocrComparisonFields.indexOf(value);
     if( indexOf > -1 ){
-      this.clientAutoApproveFields.splice( indexOf ,  1); 
+      this.ocrComparisonFields.splice( indexOf ,  1); 
     }else{
-      this.clientAutoApproveFields.push( value );
+      this.ocrComparisonFields.push( value );
     }
   }
 
@@ -105,21 +95,21 @@ export class ArtificialIntelligenceComponent implements OnInit {
       return false; 
     }
 
-    if( this.approveStatus == "auto" ){
-      return this.clientAutoApproveFields && this.clientAutoApproveFields.length > 0 ; 
+    if( this.approveType == "auto" ){
+      return this.ocrComparisonFields && this.ocrComparisonFields.length > 0 ; 
     }
     
     return true ; 
   }
 
   onSliderUpdate( value ){
-    this.clientFRMmatchPercent = value; 
+    this.frMmatchPercent = value; 
   }  
 
   updateSettings( form ){
     let params = form.value
     ;
-    params['auto_approve_fields'] = this.clientAutoApproveFields;  
+    params['ocr_comparison_fields'] = this.ocrComparisonFields;  
     this.params = params;  
     $('#ai-confimation-modal').modal('show'); 
   } 
