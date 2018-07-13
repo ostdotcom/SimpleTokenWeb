@@ -11,6 +11,17 @@
       <div class="row mt-4 pt-4 ">
         <div class="col-12 ">
           <h4 class="kyc-header text-transform-upper ">ARTIFICIAL INTELLIGENCE
+              <span *ngIf="isSuperAdmin"  
+                    data-toggle="tooltip" 
+                    data-placement="right"
+                    [title]="'The settings on this page can only be changed once in 24 hours.'" 
+                    class='ml-2'>
+                <svg class="svg" style="height: 20px;width: 20px">
+                  <switch>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                  </switch>
+                </svg>
+              </span>
               <span *ngIf="!isSuperAdmin" class="view-only py-1 px-2 d-inline-block"> View only</span>
           </h4>
         </div>
@@ -23,16 +34,17 @@
       <div class="row mt-4">
         <div class=" col-12">
           <div class="form-check form-check-inline">
-              <input [disabled]="!isSuperAdmin" type="radio"
+              <input  type="radio"
                       class="form-check-input radio-button radio-button-yes"
                       [(ngModel)]="approveType" id="ai-manual"
-                      name="approve_status"  value="manual" />
+                      name="approve_type"  value="manual" />
               <label class="radio-button-label position-relative" for="ai-manual" style="top: 5px;">
                 <span class="radio-button-circle d-inline"></span>Manual
               </label>
             </div>
           <div class="pl-4 display-4">
-              All the users will need to be manually qualified
+              All the users will need to be manually qualified. Admins can refer to the Facial Recognition (FR) and Optical Character Recognition (OCR)
+              results to make an informed decision.
           </div>
         </div>
       </div>
@@ -40,16 +52,17 @@
       <div class="row mt-4">
         <div class="col-12">
             <div class="form-check form-check-inline">
-                <input [disabled]="!isSuperAdmin" type="radio" class="form-check-input radio-button radio-button-yes"
-                      [(ngModel)]="approveType" id="ai-automation"
-                      name="approve_status" value="auto" />
+                <input  [disabled]="!isSuperAdmin" type="radio" 
+                        class="form-check-input radio-button radio-button-yes"
+                        [(ngModel)]="approveType" id="ai-automation"
+                        name="approve_type" value="auto" />
                 <label class="radio-button-label position-relative" for="ai-automation" style="top: 5px;">
                   <span class="radio-button-circle d-inline"></span>
                   Automation
                 </label>
             </div>
           <div class="pl-4 display-4">
-            This will automatically qualify users based on Facial Recognition (FR) and Optical Character Recognition (OCR)
+              This will automatically qualify users based on Facial Recognition (FR) and Optical Character Recognition (OCR).
           </div>
         </div>
       </div>
@@ -57,17 +70,21 @@
 
       <div class="aml-ctf-info mb-4">
           <div class="row mt-4">
+              <div class="col-12 col-md-9 display-1 mb-4">
+                  Artificial Intelligence is a part of the Admin features set, independent of the selected
+                  qualification settings.
+              </div>  
               <div class="form-group col-12 col-md-10 col-lg-11 col-xl-8">
                 <div class="form-label">
                   FACIAL RECOGNITION
                 </div>
                 <div class="read-only-fields display-4">
-                  Ideal value is 70%. You may not choose a value lesser than 20% to be able to use automation.
+                    Ideal value is 70%. You may not choose a value lesser than 20% to be able to use automation.
                 </div>
                 <div class="row pt-2">
-                  <div class="col-12 col-lg-10">
+                  <div class="col-12 col-lg-10 my-3">
                     <ost-slider [name]="'fr_match_percent'" [value]="frMmatchPercent" [serverError]="errorResponse"
-                                [min]="20" [max]="100" [step]="1" [tooltip]="show" [postfix]="'%'" [class]="'pt-2'"
+                                [min]="20" [max]="100" [step]="1" [tooltip]="show" [postfix]="'%'"
                                 [disabled]="!isSuperAdmin" (sliderValChange)="onSliderUpdate( $event )">
                     </ost-slider>
                     <input class="not-in-view" name="fr_match_percent" [ngModel]="frMmatchPercent">
@@ -79,6 +96,9 @@
               <div class="form-group col-12">
                 <div class="form-label">
                   OPTICAL CHARACTER RECOGINITION
+                </div>
+                <div class="read-only-fields display-4  mb-3">
+                    Minimum one field needs to selected be able to use automation.
                 </div>
                 <div class="pt-2 pr-2 pb-2 pl-0 form-check" *ngFor="let option of ocrOptions; let i = index">
                   <input  [disabled]="!isSuperAdmin"
@@ -94,7 +114,7 @@
               </div>
             </div>
       </div>
-      <div class="form-group user-form-footer row " *ngIf="isSuperAdmin">
+      <div class="form-group user-form-footer row my-4" *ngIf="isSuperAdmin">
           <div class="col-12">
             <button [disabled]="!isVaild( aiForm )"
                     (click)="updateSettings( aiForm )"

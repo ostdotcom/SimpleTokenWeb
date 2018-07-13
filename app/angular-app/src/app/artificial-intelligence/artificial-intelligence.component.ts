@@ -34,9 +34,12 @@ export class ArtificialIntelligenceComponent implements OnInit {
     let ocr     = this.entityConfigService.getEntityConfig('entity_configs.artificial_intelligence_component.ocr'),
         values  = ocr && ocr['values']
     ; 
+    for(let i =0 ;  i< values.length ; i++){
+      this.ocrComparisonFields.push( values[i]['value']); 
+    }
     this.isSuperAdmin = this.appConfig.isSuperAdmin(); 
     this.ocrOptions   = values || [];
-    this.getData()
+    this.getData();
   }
 
   getData(){
@@ -46,6 +49,7 @@ export class ArtificialIntelligenceComponent implements OnInit {
         let res = response.json(); 
         if( res.success ){
           this.updateView( res ); 
+          this.initTooltip();
           this.stateHandler.updateRequestStatus(this , false , false );
         }else{
           this.stateHandler.updateRequestStatus(this , false , true , false,  res ); 
@@ -56,6 +60,15 @@ export class ArtificialIntelligenceComponent implements OnInit {
         this.stateHandler.updateRequestStatus(this , false , true , false,  err );
       }
     )
+  }
+
+  initTooltip(){
+    setTimeout(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+      $('.tooltip-inner').css({
+        'padding': '1.25rem 0.5rem'
+      });
+    },0);
   }
 
   updateView( res ){
@@ -81,7 +94,7 @@ export class ArtificialIntelligenceComponent implements OnInit {
     }
   }
 
-  onChange( value ){
+  onChange( value ){  
     let indexOf =  this.ocrComparisonFields.indexOf(value);
     if( indexOf > -1 ){
       this.ocrComparisonFields.splice( indexOf ,  1); 
@@ -91,15 +104,7 @@ export class ArtificialIntelligenceComponent implements OnInit {
   }
 
   isVaild( form ){
-    if( !form.valid ){
-      return false; 
-    }
-
-    if( this.approveType == "auto" ){
-      return this.ocrComparisonFields && this.ocrComparisonFields.length > 0 ; 
-    }
-    
-    return true ; 
+    return form.valid && this.ocrComparisonFields && this.ocrComparisonFields.length > 0 ; 
   }
 
   onSliderUpdate( value ){

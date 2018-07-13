@@ -22,7 +22,7 @@
 
 </div>
 
-<div class="d-flex align-items-center range-display-wrap" >
+<div class="d-flex align-items-center range-display-wrap {{ hasInput ? 'has-input' : 'no-input' }}" >
     <div class="range-display">
     <span class="text-left">
         <ng-container *ngIf="prefix">{{prefix}}</ng-container>

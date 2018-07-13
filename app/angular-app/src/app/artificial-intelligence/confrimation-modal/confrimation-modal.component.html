@@ -6,8 +6,16 @@
           <div class='row' *ngIf="!isProcessing && !hasError && !isSuccess">
             <div class="col-12">
               <h5 class="text-center">
-                You are changing the Facial Recognition value. It will take 10 minutes to implement.
-                 Are you sure you want to continue?
+                <ng-container *ngIf="params.approve_type=='auto'">
+                    You are choosing to auto qualify the user.
+                    You can continue to refer to Facial Recognition and Optical
+                    Character Recognition results on the user case page.
+                </ng-container> 
+                <ng-container *ngIf="params.approve_type=='manual'">
+                    You are choosing to manually qualify the user.
+                    You can continue to refer to Facial Recognition and Optical
+                    Character Recognition results on the user case page.
+                </ng-container> 
               </h5>   
             </div>  
             <div class="col-12 form-group mt-4 text-center">
@@ -46,7 +54,14 @@
                       </svg>
                   </div>
                   <div class="mt-2 mb-3">
-                     <h5 class="text-center"> Facial Recognition Value Updated.</h5>
+                     <h5 class="text-center"> 
+                        <ng-container *ngIf="params.approve_type=='auto'">
+                            Auto Qualify setting applied.
+                        </ng-container> 
+                        <ng-container *ngIf="params.approve_type=='manual'">
+                            Manual Qualify setting applied.
+                        </ng-container> 
+                     </h5>
                   </div>
                   <button class="btn btn-primary" data-dismiss="modal">OK</button>
               </div>

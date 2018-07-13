@@ -23,6 +23,7 @@ export class OstSliderComponent implements OnInit {
   @Input('prefix')    prefix    : string  = null;
 
   @Input('initSlider')    isInitSlider : boolean = true ; 
+  @Input('hasInput')      hasInput     : boolean = true;
   @Input('minThreshold')  minThreshold : number  = null ;
   @Input('maxThreshold')  maxThreshold : number  = null ;
 
