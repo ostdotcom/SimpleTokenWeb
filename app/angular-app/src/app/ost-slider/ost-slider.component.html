@@ -12,7 +12,7 @@
                 [max]="max" 
                 [disabled]="disabled" 
                 name="{{name + '_display'}}"
-                (input)="onSliderInput( )"
+                (blur)="onSliderInput( value )"
                 [(ngModel)]="value" />
         <div class="input-group-append" *ngIf="postfix">
             <span class="input-group-text">{{postfix}}</span>

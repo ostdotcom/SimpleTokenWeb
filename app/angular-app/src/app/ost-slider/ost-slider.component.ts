@@ -1,3 +1,16 @@
+  /**
+  ** ngOnChanges   is triggered when component passed initial value is change. 
+  ** bindOnChange  is triggered when slider value is changed after slide.
+  ** onSliderInput is triggered when display input value is changed. 
+  **  - operations performed when above 3 functions are triggered. 
+  **        - check min / max 
+  **        - set slider value   
+  **        - emit the updated value of slider
+  **        - change input display input value from slider
+  **        - slider value - source of truth 
+ **/ 
+
+
 import { Component, OnInit, Input , EventEmitter, Output, ElementRef} from '@angular/core';
 declare var $:any; 
 
@@ -94,8 +107,10 @@ export class OstSliderComponent implements OnInit {
 
   updateSliderValue( valueToSet ){
     if(!this.slider) return ; 
-    if( !this.checkForMinThreshold( valueToSet ) && !this.checkForMaxThreshold( valueToSet ) ){
+    if( this.checkForMinThreshold( valueToSet ) || this.checkForMaxThreshold( valueToSet ) ){
       this.sliderValChange.emit( valueToSet );
+    }else{
+      this.setValue( valueToSet ); 
     }
     this.value = this.getValue(); 
   }
@@ -139,9 +154,9 @@ export class OstSliderComponent implements OnInit {
     return this.slider && this.slider.bootstrapSlider('getValue'); 
   }
 
-  onSliderInput(){
+  onSliderInput( value ){
     setTimeout( ()=>{
-      this.updateSliderValue( this.value )
+      this.updateSliderValue( value )
     } , 0); 
   }
 
