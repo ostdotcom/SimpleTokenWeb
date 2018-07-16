@@ -36,6 +36,14 @@
       font-size: 0.75rem  ;
       border-radius: $border-radius-lg;
     }
+
+    &.tooltip-main {
+      .arrow{
+        &:before{
+          border-top-color: $powder-blue;
+        }
+      }
+    }
   }
 
   ~.error{
