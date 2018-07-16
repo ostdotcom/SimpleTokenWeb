@@ -1,0 +1,9 @@
+<ost-alert *ngIf="alertMessage" [alertStyleClass]="alertConfig.alertStyleClass" [alertMessage]="alertMessage" [reasonList]="reasonList">
+  <ng-container class="svg-container">
+    <svg attr.class="svg {{alertConfig.svgClass}}">
+    <switch>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" attr.xlink:href="{{alertConfig.svgId}}"></use>
+    </switch>
+    </svg>
+  </ng-container>
+</ost-alert>

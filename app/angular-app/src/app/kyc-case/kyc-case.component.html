@@ -21,22 +21,9 @@
           </ol>
         </nav>
 
-        <!--ost-alert-->
-
-
-        <ost-alert *ngIf="alertMessage" [alertStyleClass]="alertStyleClass" [alertMessage]="alertMessage">
-            <ng-container class="svg-container">
-              <svg attr.class="svg {{svgClass}}">
-              <switch>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" attr.xlink:href="{{svgId}}"></use>
-              </switch>
-              </svg>
-            </ng-container>
-
-        </ost-alert>
-
-
-        <!--/ost-alert -->
+        <!--kyc-case-alert-->
+        <kyc-case-alert [response]="response"></kyc-case-alert>
+        <!--/kc-case-alert -->
 
         <div class="row">
           <div class="col-12 col-md-4 mb-3">

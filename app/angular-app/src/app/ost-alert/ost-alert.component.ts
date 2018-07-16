@@ -9,6 +9,9 @@ export class OstAlertComponent implements OnInit {
 
   @Input("alertStyleClass")  alertStyleClass;
   @Input("alertMessage") alertMessage;
+  @Input("reasonList") reasonList;
+
+  isCollapsed = true;
 
   constructor() { }
 
