@@ -52,7 +52,7 @@
 
           oThis.jLoginBtn.off('click').on('click' , function () {
             oThis.isCaptchaValid = utilities.validateCaptcha( oThis.jLoginForm );
-            oThis.formHelper.jForm.submit();
+            //oThis.formHelper.jForm.submit();
           });
 
         },

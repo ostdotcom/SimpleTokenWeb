@@ -117,7 +117,7 @@
 
       $('#ost-kyc-contact-us-btn').on('click' , function () {
          oThis.isCaptchaValid = utilities.validateCaptcha( oThis.jContactForm );
-         oThis.formHelper.jForm.submit();
+         //oThis.formHelper.jForm.submit();
       });
     },
 

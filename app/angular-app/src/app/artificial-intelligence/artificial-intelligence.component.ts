@@ -71,15 +71,12 @@ export class ArtificialIntelligenceComponent implements OnInit {
     },0);
   }
 
-  updateView( res ){
-    let response              = res,
-        data                  = response && response.data,
+  updateView( response ){
+    let data                  = response && response.data,
         clientSetting         = data && data.client_kyc_pass_setting
     ; 
     this.cachedResponse       = JSON.parse(JSON.stringify(response));  //Cache response; 
-    this.approveType          = data && data.approve_type || this.approveType ; 
-
-
+    this.approveType          = clientSetting && clientSetting.approve_type || this.approveType ; 
     if( clientSetting ){
       this.frMmatchPercent      = clientSetting.fr_match_percent      || this.frMmatchPercent; 
       this.ocrComparisonFields  = clientSetting.ocr_comparison_fields || this.ocrComparisonFields; 

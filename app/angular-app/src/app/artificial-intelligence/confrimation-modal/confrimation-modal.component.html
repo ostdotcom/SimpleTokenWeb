@@ -37,7 +37,7 @@
                </div>
               <div class="error-content col-12 text-center">
                 <div *ngIf="errorMessage">{{errorMessage}}</div>
-                <div *ngIf="!errorMessage">Something went wrong, please try again later.</div>
+                <div *ngIf="!errorMessage">Something went wrong, please try again.</div>
                 <button class="btn btn-primary mt-3" data-dismiss="modal">Done</button>
               </div>
               </request-state-handler>
@@ -56,10 +56,10 @@
                   <div class="mt-2 mb-3">
                      <h5 class="text-center"> 
                         <ng-container *ngIf="params.approve_type=='auto'">
-                            Auto Qualify setting applied.
+                            Automation setting applied.
                         </ng-container> 
                         <ng-container *ngIf="params.approve_type=='manual'">
-                            Manual Qualify setting applied.
+                            Manual setting applied.
                         </ng-container> 
                      </h5>
                   </div>

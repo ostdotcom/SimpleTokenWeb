@@ -258,7 +258,7 @@
           },
           {"key": "ocr_comparison_fields", 
            "value": "birthdate" ,
-           "display_text": "Birthdate"
+           "display_text": "Date of Birth"
           },
           {"key": "ocr_comparison_fields", 
            "value": "nationality",
