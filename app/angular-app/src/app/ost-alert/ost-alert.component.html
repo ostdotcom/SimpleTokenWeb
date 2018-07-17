@@ -1,20 +1,20 @@
-<div class="alert text-center px-0 
-            {{alertStyleClass}} 
-            {{isCollapsed ? 'view-details-hide' : 'view-details-shown'}}" 
+<div class="alert text-center px-0
+            {{alertStyleClass}}
+            {{isCollapsed ? 'view-details-hide' : 'view-details-shown'}}"
             role="alert" >
   <div class="text-warpper">
     <ng-content select=".svg-container">
     </ng-content>
     <div class="d-inline-block alert-message-wrap">{{alertMessage}}</div>
-    <div  class="d-inline-block view-more-details-wrap" 
+    <div  class="d-inline-block view-more-details-wrap"
           *ngIf="viewMoreList && viewMoreList.length > 0" >
-      <a class="view-more-details-text"  
+      <a class="view-more-details-text"
           (click)="onClick()"
-          data-toggle="collapse" 
-          data-target="#detailsList" 
+          data-toggle="collapse"
+          data-target="#detailsList"
           href="javascript:void(0)"
-          role="button" 
-          aria-expanded="false" 
+          role="button"
+          aria-expanded="false"
           aria-controls="detailsList">
         <span class="d-inline" *ngIf="isCollapsed">
             View more
@@ -33,11 +33,11 @@
               </svg>
         </span>
       </a>
-    </div>  
-  </div> 
+    </div>
+  </div>
 </div>
 <div id="detailsList" class="collapse ">
    <div class="list-details text-left alert {{alertStyleClass}}">
     <div class="list-item pl-4" *ngFor="let item of viewMoreList">{{item}}</div>
-   </div> 
-</div> 
+   </div>
+</div>

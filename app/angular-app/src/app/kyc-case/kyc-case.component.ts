@@ -23,6 +23,10 @@ export class KycCaseComponent implements OnInit {
   isInitDuplicateTable:boolean = false;
   isInitLogTabel:boolean = false;
   caseDetails;
+  user_kyc_comparison_detail;
+  client_kyc_pass_setting;
+  ai_pass_detail;
+  image_processing_status;
   userDetails;
   response;
   meta: object = {};
@@ -37,7 +41,7 @@ export class KycCaseComponent implements OnInit {
   isWhitelisting:boolean =  false;
   submittedDetails = ['birthdate', 'country', 'document_id_number', 'email', 'first_name', 'last_name', 'nationality',
                       'postal_code', 'submitted_at', 'street_address', 'city', 'state'];
- 
+
   constructor(
     public activatedRoute: ActivatedRoute,
     private http: OstHttp,
@@ -45,6 +49,8 @@ export class KycCaseComponent implements OnInit {
     private domSanitizer: DomSanitizer,
     private appConfig: AppConfigService
   ) { }
+
+  ocr_comparison_fields;
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -85,7 +91,7 @@ export class KycCaseComponent implements OnInit {
     })
   }
 
-  
+
   hideModal(){
     $("#detailsModal").modal('hide');
   }
@@ -94,12 +100,22 @@ export class KycCaseComponent implements OnInit {
     this.response  = res;
     this.caseDetails = res.data.case_detail;
     this.userDetails = res.data.user_detail;
+    this.user_kyc_comparison_detail = res.data.user_kyc_comparison_detail;
+    this.client_kyc_pass_setting = res.data.client_kyc_pass_setting;
+    this.ai_pass_detail = res.data.ai_pass_detail;
+    this.ocr_comparison_fields = this.client_kyc_pass_setting.ocr_comparison_fields;
+    this.image_processing_status =  this.user_kyc_comparison_detail.image_processing_status;
     //this.kycCaseAlertComponent.ostAlert(this.caseDetails, this.alertStyleClass, this.svgClass, this.svgId, this.alertMessage  );
     this.userDetails['extraDiv'] = this.checkForOddSections();
     this.meta = res.data.meta;
     this.stateHandler.updateRequestStatus( this, false,  false);
     this.getNextPrevious(res.data.meta);
     this.showPageState();
+    this.setAdminConfig();
+    this.setFRText();
+    this.setOpticalCharacterReg();
+    this.setamlCtfStatusConfig();
+
   }
 
   showPageState(showCase = true, showReportIssue = false , showUpdateEth = false){
@@ -144,6 +160,113 @@ export class KycCaseComponent implements OnInit {
     }
     return count % 2;
   }
+
+  FRconfig = null ;
+  setFRText(){
+    let image_processing_status = this.user_kyc_comparison_detail.image_processing_status || "unprocessed",
+        clientFr = this.client_kyc_pass_setting.fr_match_percent
+      ;
+    if( image_processing_status == "unprocessed"  ){
+      this.FRconfig = {
+       text:  "Pending",
+       class: "yellow-bar"
+       }
+    }else if( image_processing_status == "failed"){
+      this.FRconfig = {
+        text:  "Failed",
+        class: "red-bar"
+        }
+    }else{
+      let FRValue         = this.user_kyc_comparison_detail.face_match_percent,
+          settingFRValue  = this.client_kyc_pass_setting.fr_match_percent,
+          className       = "green-bar"
+          ;
+      if( FRValue < settingFRValue ){
+        className = "red-bar"
+      }
+      this.FRconfig = {
+        text  :  (FRValue || "0") + " %" ,
+        class : className
+        }
+    }
+  }
+
+  OCRconfig =  null
+  setOpticalCharacterReg() {
+    let image_processing_status = this.user_kyc_comparison_detail.image_processing_status || "unprocessed",
+        ocrStatus = this.ai_pass_detail.ocr_match_status
+      ;
+    if( image_processing_status == "unprocessed"  ){
+      this.OCRconfig = {
+        text:  "Pending",
+        class: "yellow-bar"
+       }
+    }else if( ocrStatus ){
+      this.OCRconfig = {
+        text:  "Passed",
+        class: "green-bar"
+      }
+    }else{
+      this.OCRconfig = {
+        text:  "Failed",
+        class: "red-bar"
+      }
+    }
+  }
+
+  adminStatusConfig = null ;
+  setAdminConfig(){
+    let adminStatus = this.caseDetails.admin_status ;
+    if(adminStatus == "unprocessed" ){
+      this.adminStatusConfig = {
+        text:  "Pending",
+        class: "yellow-bar"
+       }
+    }else if( adminStatus == "qualified" ){
+      this.adminStatusConfig = {
+        text:  "Qualified",
+        class: "green-bar"
+       }
+    }else if( adminStatus == "denied" ) {
+      this.adminStatusConfig = {
+        text:  "Denied",
+        class: "red-bar"
+       }
+    }
+  }
+
+  amlCtfStatusConfig = null ;
+  setamlCtfStatusConfig(){
+    let amlCtfStatus = this.caseDetails.cynopsis_status ;
+    if(amlCtfStatus == "pending" ){
+      this.amlCtfStatusConfig = {
+        text:  "Pending",
+        class: "yellow-bar"
+       }
+    }else if( amlCtfStatus == "cleared" ){
+      this.amlCtfStatusConfig = {
+        text:  "Cleared",
+        class: "green-bar"
+       }
+    }else if( amlCtfStatus == "denied" ) {
+      this.amlCtfStatusConfig = {
+        text:  "Denied",
+        class: "red-bar"
+       }
+    }
+  }
+
+  isOCRFailed( key ){
+      if(!this.ai_pass_detail.ocr_match_status){
+        let failedReason = this.user_kyc_comparison_detail.failed_reason || [],
+            clientOcrSetting = this.client_kyc_pass_setting.ocr_comparison_fields || []
+        ;
+        return clientOcrSetting.indexOf( key ) > -1  && failedReason.indexOf( key ) > -1 ;
+      }else{
+        return false ;
+      }
+  }
+
 
 }
 

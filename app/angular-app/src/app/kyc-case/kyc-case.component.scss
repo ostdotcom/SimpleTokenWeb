@@ -148,16 +148,25 @@
   .key{
     font-weight: $font-weight-light;
   }
-  .value{
+  .value {
     font-weight: $font-weight-500;
     padding-left: 5px;
-    &.blue-bar{
-      border-left: 2px solid $green-300;
+    text-transform: capitalize;
+    &.green-bar{
+      border-left: 2px solid $green-400;
     }
 
     &.red-bar{
       border-left: 2px solid $red-100;
     }
+
+    &.yellow-bar{
+      border-left: 2px solid $yellow-300;
+    }
+
+    &.grey-bar{
+      border-left: 2px solid $gray-300;
+    }    
   }
 
   .button-UI{
@@ -168,6 +177,7 @@
     font-size: 12px;
     font-weight: $font-weight-600;
     letter-spacing: 1px;
+    color: $yellow-500;
     cursor: pointer;
     &:hover, &:active {
       border-bottom: 1px solid $yellow-500;
