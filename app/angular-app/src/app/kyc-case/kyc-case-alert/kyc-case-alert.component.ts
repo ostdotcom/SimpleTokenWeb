@@ -18,7 +18,7 @@ export class KycCaseAlertComponent  {
 
   alertMessage  : string      = null; 
   alertConfig   : object      = null; 
-  failedReason  : Array<any>  = null;
+  failedReason  : Array<any>  = [];
   
 
   ngAfterContentInit() {
@@ -49,6 +49,7 @@ export class KycCaseAlertComponent  {
         onAutomation              : any,
         onManual                  : any,
         onImageProcessingComplete : any,
+        processFailedReasons      : any,
         setAlertMessageAndStatus  : any
         ;
 
@@ -56,7 +57,7 @@ export class KycCaseAlertComponent  {
         if( cynopsis_status == "rejected"){
           setAlertMessageAndStatus("AML/CTF status denied, this case cannot be reopened." , "failed"); 
         }else {
-          this.failedReason = failedReasons; 
+          processFailedReasons();
           checkForAdminStatus();
         }
      }   
@@ -154,6 +155,19 @@ export class KycCaseAlertComponent  {
         }
       }
 
+      processFailedReasons = () =>{
+        let cnt , len = failedReasons.length , 
+            reasonKey ,  reasonMsg;
+        if( len <= 0 ) return ; 
+        for( cnt = 0 ;  cnt < len ;  cnt++ ){
+          reasonKey = failedReasons[ cnt ]; 
+          reasonMsg = this.failedReasonsMap[ reasonKey ]; 
+          if( reasonMsg ){
+            this.failedReason.push( reasonMsg ); 
+          }
+        }
+      }
+
       setAlertMessageAndStatus = ( message :string , status:string ) => {
         this.alertMessage  = message; 
         alertStatus =  status; 
@@ -190,6 +204,16 @@ export class KycCaseAlertComponent  {
       "svgClass" : 'alert-warning-svg',
       "svgId" : '#kyc-warning-icon'
     }
+  }
+
+  failedReasonsMap = {
+    ocr_unmatch : "Case cannot be automatically qualified, due to Optical Character Recognition ( OCR ) unmatch.", 
+    fr_unmatch : "Case cannot be automatically qualified, due to low facial recognition ( FR ) match.", 
+    residency_proof : "Case cannot be automatically qualified, due to residency proof documents.", 
+    investor_proof : "Case cannot be automatically qualified, due to Investor proof.", 
+    duplicate_kyc : "Case cannot be automatically qualified, due to duplicate status.", 
+    token_sale_ended: "Case cannot be automatically qualified, as the token sale ended.", 
+    case_closed_for_auto_approve: "Case cannot be automatically qualified, as the case is closed for auto approve."
   }
 
 }
