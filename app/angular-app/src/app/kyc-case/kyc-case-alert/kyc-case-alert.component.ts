@@ -35,7 +35,7 @@ export class KycCaseAlertComponent  {
         whitelist_confirmation_pending  = this.utilitites.deepGet(data ,  "case_detail.whitelist_confirmation_pending"),
         last_issue_email_sent_humanized = this.utilitites.deepGet(data ,  "case_detail.last_issue_email_sent_humanized"),
         isWhitelistSetup                = this.appConfig.getClientSetup().has_whitelist_setup,
-        failedReasons                   = this.utilitites.deepGet(data ,  "user_kyc_comparison_detail.failed_reason"),
+        failedReasons                   = this.utilitites.deepGet(data ,  "user_kyc_comparison_detail.failed_reason") || [],
 
         kyc_status   = this.utilitites.deepGet(data ,  "case_detail.kyc_status") , 
         alertStatus  = "",
