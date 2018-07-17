@@ -55,7 +55,6 @@ import { ArtificialIntelligenceComponent } from './artificial-intelligence/artif
 import { OstSliderComponent } from './ost-slider/ost-slider.component';
 import { ConfrimationModalComponent } from './artificial-intelligence/confrimation-modal/confrimation-modal.component';
 import { KycCaseAlertComponent } from './kyc-case/kyc-case-alert/kyc-case-alert.component';
-import { KycBannerConfigService } from './services/kyc-banner-config.service';
 import { UtilitiesService } from './services/utilities.service';
 
 
@@ -169,8 +168,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 OstHttp,
                 AppConfigService,
                 RequestStateHandlerService,
-                ScrollTopService, 
-                KycBannerConfigService,
+                ScrollTopService,
                 UtilitiesService
 
             ],

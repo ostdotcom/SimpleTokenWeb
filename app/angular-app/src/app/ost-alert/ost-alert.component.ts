@@ -7,9 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class OstAlertComponent implements OnInit {
 
-  @Input("alertStyleClass")  alertStyleClass;
-  @Input("alertMessage") alertMessage;
-  @Input("reasonList") reasonList;
+  @Input("alertStyleClass")  alertStyleClass : string     = null
+  @Input("alertMessage")     alertMessage    : string     = null
+  @Input("viewMoreList")     viewMoreList    : Array<any> = null;
 
   isCollapsed = true;
 

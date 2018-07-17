@@ -3,7 +3,8 @@
     <ng-content select=".svg-container">
     </ng-content>
     <div class="ml-2 d-inline-block alert-message-wrap">{{alertMessage}}</div>
-    <div *ngIf="reasonList.length > 0" class="ml-4 float-right view" data-toggle="collapse" data-target="#detailsList" aria-expanded="false"
+    <div *ngIf="viewMoreList.length > 0" class="ml-4 float-right view" 
+      data-toggle="collapse" data-target="#detailsList" aria-expanded="false"
       aria-controls="collapseSettings">
       <span>View More</span>
       <!-- <span>View Less</span> -->
@@ -11,6 +12,6 @@
     </div>
   </div>
   <div id="detailsList" class="collapse list text-left mt-2">
-    <div class="list-item pl-4" *ngFor="let item of reasonList">{{item}}</div>
+    <div class="list-item pl-4" *ngFor="let item of viewMoreList">{{item}}</div>
   </div>
 </div>
