@@ -1,48 +1,68 @@
 @import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
-
-
 .alert-warning {
   border-color: $yellow-700;
   background-color:#FEFAF4;
   color: inherit;
+  .list-details-container {
+    border-top: 1px solid $yellow-700;
+  }  
 }
 .alert-danger{
   border-color: $red-100;
   background-color:#FEF2F5;
   color: inherit;
+  .list-details-container {
+    border-top: 1px solid  $red-100;
+  }  
 }
 
 .alert-success{
   background-color: #EEF8EE;
   border-color: #5EBE55;
   color: inherit;
+  .list-details-container {
+    border-top: 1px solid #EEF8EE;
+  }  
 }
 
+svg {
+  vertical-align: middle;
+}
+
+.alert{
+  padding: 0.75rem 1.25rem 0.5rem;
+}
 
 .alert-message-wrap {
   margin-top: 2px;
   vertical-align: top;
 }
 
+.view-more-details-present {
+  .message-content-wrap {
+    width: calc(100% - 120px);
+    display: inline-block;
+  }
+}
+
 .view-more-details-text{
-  text-decoration: none;
   border-bottom: none; 
-  font-size: 0.8rem;
-  font-weight: 600;
   vertical-align: top;
-  margin-top: 6px;
-  min-width:150px;
+  width:120px;
+  letter-spacing: 1px;
+  &:hover , &:active , &:focus {
+    color: $blue-800; 
+  }
 }
 
 .view-more-details-wrap {
   float: right;
 }
 
-.view-details-shown {
+.alert {
   margin-bottom: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+ 
 }
 
 .down-arrow-icon,

@@ -13,7 +13,7 @@ export class OstAlertComponent implements OnInit {
   @Input("alertMessage")     alertMessage    : string     = null
   @Input("viewMoreList")     viewMoreList    : Array<any> = null;
 
-  isCollapsed:boolean = false;
+  isCollapsed:boolean = true;
 
   constructor() { }
 
@@ -21,7 +21,9 @@ export class OstAlertComponent implements OnInit {
   }
 
   onClick(){
-    this.isCollapsed = !this.isCollapsed;
+    setTimeout( ()=> {
+      this.isCollapsed = !this.isCollapsed;
+    }, 0)  
   }
 
 }
