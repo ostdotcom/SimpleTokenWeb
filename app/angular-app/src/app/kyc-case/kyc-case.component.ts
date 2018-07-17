@@ -23,6 +23,9 @@ export class KycCaseComponent implements OnInit {
   isInitDuplicateTable:boolean = false;
   isInitLogTabel:boolean = false;
   caseDetails;
+  user_kyc_comparison_detail;
+  client_kyc_pass_setting;
+  ai_pass_detail;
   userDetails;
   response;
   meta: object = {};
@@ -94,6 +97,9 @@ export class KycCaseComponent implements OnInit {
     this.response  = res;
     this.caseDetails = res.data.case_detail;
     this.userDetails = res.data.user_detail;
+    this.user_kyc_comparison_detail = res.data.user_kyc_comparison_detail;
+    this.client_kyc_pass_setting = res.data.client_kyc_pass_setting;
+    this.ai_pass_detail = res.data.ai_pass_detail;
     //this.kycCaseAlertComponent.ostAlert(this.caseDetails, this.alertStyleClass, this.svgClass, this.svgId, this.alertMessage  );
     this.userDetails['extraDiv'] = this.checkForOddSections();
     this.meta = res.data.meta;

@@ -151,12 +151,17 @@
   .value{
     font-weight: $font-weight-500;
     padding-left: 5px;
+    text-transform: capitalize;
     &.blue-bar{
       border-left: 2px solid $green-300;
     }
 
     &.red-bar{
       border-left: 2px solid $red-100;
+    }
+
+    &.yellow-bar{
+      border-left: 2px solid $yellow-300;
     }
   }
 
