@@ -37,10 +37,8 @@ export class KycCaseAlertComponent  {
         isWhitelistSetup                = this.appConfig.getClientSetup().has_whitelist_setup,
         failedReasons                   = this.utilitites.deepGet(data ,  "user_kyc_comparison_detail.failed_reason"),
 
-        last_qualified_type   = this.utilitites.deepGet(data ,  "case_detail.last_qualified_type"),
-        kyc_status            = this.utilitites.deepGet(data ,  "case_detail.kyc_status") , 
-        last_issue_email_sent = this.utilitites.deepGet(data ,  "case_detail.last_issue_email_sent"),
-        alertStatus           = "",
+        kyc_status   = this.utilitites.deepGet(data ,  "case_detail.kyc_status") , 
+        alertStatus  = "",
 
         //All status functions. 
         amlStatusCheck            : any,
@@ -50,13 +48,13 @@ export class KycCaseAlertComponent  {
         onAdminStatusPending      : any,
         onAutomation              : any,
         onManual                  : any,
-        onImageProcessingComplete : any
+        onImageProcessingComplete : any,
+        setAlertMessageAndStatus  : any
         ;
 
      amlStatusCheck = () => {
         if( cynopsis_status == "rejected"){
-          alertStatus = 'failed'; 
-          this.alertMessage = "AML/CTF status denied, this case cannot be reopened.";  
+          setAlertMessageAndStatus("AML/CTF status denied, this case cannot be reopened." , "failed"); 
         }else {
           this.failedReason = failedReasons; 
           checkForAdminStatus();
@@ -65,8 +63,7 @@ export class KycCaseAlertComponent  {
 
      checkForAdminStatus = () =>{
        if( admin_status == "denied" ){
-        alertStatus = 'failed';
-        this.alertMessage = "Case manually denied by admin.";  
+        setAlertMessageAndStatus("Case manually denied by admin." , "failed"); 
        }else if( admin_status == "qualified"){
         onAdminStatusApproved();
        }else {
@@ -76,21 +73,19 @@ export class KycCaseAlertComponent  {
 
      onAdminStatusApproved = () => {
       if( cynopsis_status == "pending" ){
-        alertStatus = 'warning';
         if( approve_type == "auto"){
-          this.alertMessage = "The case has been automatically qualified and is awaiting AML/CTF action.";  
+          setAlertMessageAndStatus("The case has been automatically qualified and is awaiting AML/CTF action." , "warning"); 
         }else{
-          this.alertMessage = "The case has been manually qualified and is awaiting AML/CTF action.";  
+          setAlertMessageAndStatus("The case has been manually qualified and is awaiting AML/CTF action." , "warning"); 
         }
       }else if( kyc_status == "approved" ){
         if( isWhitelistSetup ){
           whiteListHandling(); 
         }else{
-          alertStatus =  "success"; 
           if( approve_type == "auto"){
-            this.alertMessage = "The case has been automatically qualified.";  
+            setAlertMessageAndStatus("The case has been automatically qualified." , "success");
           }else{
-            this.alertMessage = "The case has been manually qualified.";  
+            setAlertMessageAndStatus("The case has been manually qualified." , "success");
           }
         }
       }
@@ -106,21 +101,17 @@ export class KycCaseAlertComponent  {
 
      onManual = () =>{
        if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
-        alertStatus = 'warning';
-        this.alertMessage = "Issue reported - " + last_issue_email_sent_humanized + " email sent"; 
+        setAlertMessageAndStatus("Issue reported - " + last_issue_email_sent_humanized + " email sent" , "warning");
        }else if( cynopsis_status == "pending" ) {
-         alertStatus = "warning";
-         this.alertMessage = "Awaiting AML/CTF action."
+         setAlertMessageAndStatus("Awaiting AML/CTF action." , "warning");
        }
      }
 
      onAutomation = () => {
         if( image_processing_status == "unprocessed" ){
-          alertStatus = 'warning';
-          this.alertMessage = "Awaiting automation response.";  
+          setAlertMessageAndStatus("Awaiting automation response." , "warning");
         }else if( image_processing_status == "failed" ){
-          alertStatus = 'failed';
-          this.alertMessage = "Manual review needed.";
+          setAlertMessageAndStatus("Manual review needed." , "failed");
         }else {
           onImageProcessingComplete(); 
         }
@@ -128,44 +119,44 @@ export class KycCaseAlertComponent  {
 
      onImageProcessingComplete = () =>{
         if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
-          alertStatus = 'warning';
-          this.alertMessage = "Issue reported - " + last_issue_email_sent_humanized + " email sent";
+          setAlertMessageAndStatus("Issue reported - " + last_issue_email_sent_humanized + " email sent" , "warning");
         }else if( !automation_passed ) {
-          alertStatus = 'failed';
-          this.alertMessage = "Manual review needed.";
+          setAlertMessageAndStatus("Manual review needed." , "failed");
         }
      }
 
      whiteListHandling = () => {
         if (whitelist_status == 'unprocessed' || whitelist_status == 'started') {
-          alertStatus =  "warning"; 
           if(  approve_type == "auto" ){
-            this.alertMessage = "The case has been auto qualified. Whitelisting in progress.";
+            setAlertMessageAndStatus("The case has been auto qualified. Whitelisting in progress." , "warning");
           }else {
-            this.alertMessage = "The case has been manually qualified. Whitelisting in progress.";
+            setAlertMessageAndStatus("The case has been manually qualified. Whitelisting in progress." , "warning");
           }
         } else if ( whitelist_status == 'done' && whitelist_confirmation_pending ) {
-          alertStatus =  "warning"; 
           if( approve_type == "auto"  ){
-            this.alertMessage = "Case auto approved, whitelisting done. Awaiting confirmation";
+            setAlertMessageAndStatus("Case auto approved, whitelisting done. Awaiting confirmation." , "warning");
           }else{
-            this.alertMessage = "Case maually approved, whitelisting done. Awaiting confirmation";
+            setAlertMessageAndStatus("Case maually approved, whitelisting done. Awaiting confirmation." , "warning");
           }
         } else if ( whitelist_status == 'done' && !whitelist_confirmation_pending) {
-          alertStatus =  "success"; 
           if( approve_type == "auto"  ){
-            this.alertMessage = "The case has been automatically qualified. Whitelisting done.";
+            setAlertMessageAndStatus("The case has been automatically qualified. Whitelisting done." , "success");
           }else{
-            this.alertMessage = "The case has been manually qualified. Whitelisting done.";
+            setAlertMessageAndStatus("The case has been manually qualified. Whitelisting done." , "success");
           }
         } else if (whitelist_status == 'failed') {
-          alertStatus =  "warning"; 
+         
           if( approve_type == "auto"  ){
-            this.alertMessage = "The case has been automatically qualified. Whitelisting failed.";
+            setAlertMessageAndStatus("The case has been automatically qualified. Whitelisting failed." , "failed");
           }else{
-            this.alertMessage = "The case has been manually qualified. Whitelisting failed.";
+            setAlertMessageAndStatus("The case has been manually qualified. Whitelisting failed." , "failed");
           }
         }
+      }
+
+      setAlertMessageAndStatus = ( message :string , status:string ) => {
+        this.alertMessage  = message; 
+        alertStatus =  status; 
       }
 
       amlStatusCheck(); 
