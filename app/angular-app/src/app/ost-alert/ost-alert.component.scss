@@ -19,16 +19,15 @@
   color: inherit;
 }
 
-.alert{
-  padding: 0.75rem 0rem 0rem 0rem;
-}
 
 .alert-message-wrap {
   margin-top: 2px;
   vertical-align: top;
 }
 
-.view{
+.view-more-details-text{
+  text-decoration: none;
+  border-bottom: none; 
   font-size: 0.8rem;
   font-weight: 600;
   vertical-align: top;
@@ -36,17 +35,24 @@
   min-width:150px;
 }
 
-.caret{
-  display: inline-block;
-    background: url(https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/drop-down-arrow.svg) no-repeat center;
-    height: 7px;
-    width: 12px;
-    position: relative;
-    top: 1px;
+.view-more-details-wrap {
+  float: right;
 }
 
-.list{
-  border-top: 1px solid #f5a623;
-  padding: 0.75rem;
+.view-details-shown {
+  margin-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.down-arrow-icon,
+.up-arrow-icon {
+  pointer-events: none;
+}
+
+.list-details{
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
