@@ -31,7 +31,7 @@ export class OstSliderComponent implements OnInit {
   @Input('value')     value     : number  = 0;
   @Input('tooltip')   tooltip   : string  = 'show' ;
   @Input('disabled')  disabled  : boolean = false; 
-  @Input('class')     className : string  = null; 
+  @Input('className')     className : string  = null; 
   @Input('postfix')   postfix   : string  = null;
   @Input('prefix')    prefix    : string  = null;
 
