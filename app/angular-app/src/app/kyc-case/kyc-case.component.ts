@@ -105,7 +105,6 @@ export class KycCaseComponent implements OnInit {
     this.ai_pass_detail = res.data.ai_pass_detail;
     this.ocr_comparison_fields = this.client_kyc_pass_setting.ocr_comparison_fields;
     this.image_processing_status =  this.user_kyc_comparison_detail.image_processing_status;
-    //this.kycCaseAlertComponent.ostAlert(this.caseDetails, this.alertStyleClass, this.svgClass, this.svgId, this.alertMessage  );
     this.userDetails['extraDiv'] = this.checkForOddSections();
     this.meta = res.data.meta;
     this.stateHandler.updateRequestStatus( this, false,  false);
@@ -161,7 +160,7 @@ export class KycCaseComponent implements OnInit {
     return count % 2;
   }
 
-  FRconfig = null ;
+  FRconfig = {} ;
   setFRText(){
     let image_processing_status = this.user_kyc_comparison_detail.image_processing_status || "unprocessed",
         clientFr = this.client_kyc_pass_setting.fr_match_percent
@@ -191,7 +190,7 @@ export class KycCaseComponent implements OnInit {
     }
   }
 
-  OCRconfig =  null
+  OCRconfig =  {}
   setOpticalCharacterReg() {
     let image_processing_status = this.user_kyc_comparison_detail.image_processing_status || "unprocessed",
         ocrStatus = this.ai_pass_detail.ocr_match_status
@@ -214,7 +213,7 @@ export class KycCaseComponent implements OnInit {
     }
   }
 
-  adminStatusConfig = null ;
+  adminStatusConfig = {} ;
   setAdminConfig(){
     let adminStatus = this.caseDetails.admin_status ;
     if(adminStatus == "unprocessed" ){
@@ -236,21 +235,21 @@ export class KycCaseComponent implements OnInit {
   }
 
   amlCtfStatusConfig = null ;
-  setamlCtfStatusConfig(){
+  setamlCtfStatusConfig(){  //TODO 
     let amlCtfStatus = this.caseDetails.cynopsis_status ;
-    if(amlCtfStatus == "pending" ){
+    if( amlCtfStatus == "pending" || amlCtfStatus == "unprocessed"){
       this.amlCtfStatusConfig = {
-        text:  "Pending",
+        text: amlCtfStatus,
         class: "yellow-bar"
        }
-    }else if( amlCtfStatus == "cleared" ){
+    }else if( amlCtfStatus == "cleared" || amlCtfStatus == "approved" ){
       this.amlCtfStatusConfig = {
-        text:  "Cleared",
+        text:  amlCtfStatus,
         class: "green-bar"
        }
-    }else if( amlCtfStatus == "denied" ) {
+    }else if( amlCtfStatus == "failed" || amlCtfStatus == "rejected" ) {
       this.amlCtfStatusConfig = {
-        text:  "Denied",
+        text:  amlCtfStatus,
         class: "red-bar"
        }
     }

@@ -16,55 +16,65 @@ export class KycCaseAlertComponent  {
     private appConfig       : AppConfigService
   ) {}
 
-  alertMessage  : string      = null; 
-  alertConfig   : object      = null; 
+  alertMessage  : string      = null;
+  alertConfig   : object      = null;
   failedReason  : Array<any>  = [];
-  
+
 
   ngAfterContentInit() {
     var data =  this.response['data']
     ;
 
-    var cynopsis_status         = this.utilitites.deepGet(data ,  "case_detail.cynopsis_status"), 
+    var cynopsis_status         = this.utilitites.deepGet(data ,  "case_detail.cynopsis_status"),
         admin_status            = this.utilitites.deepGet(data ,  "case_detail.admin_status"),
         approve_type            = this.utilitites.deepGet(data ,  "client_kyc_pass_setting.approve_type"),
+        last_qualified_type     = this.utilitites.deepGet(data ,  "case_detail.last_qualified_type"),
         whitelist_status        = this.utilitites.deepGet(data ,  "case_detail.whitelist_status"),
         image_processing_status = this.utilitites.deepGet(data ,  "user_kyc_comparison_detail.image_processing_status"),
         automation_passed       = this.utilitites.deepGet(data ,  "ai_pass_detail.automation_passed"),
-        
+
         whitelist_confirmation_pending  = this.utilitites.deepGet(data ,  "case_detail.whitelist_confirmation_pending"),
         last_issue_email_sent_humanized = this.utilitites.deepGet(data ,  "case_detail.last_issue_email_sent_humanized"),
         isWhitelistSetup                = this.appConfig.getClientSetup().has_whitelist_setup,
         failedReasons                   = this.utilitites.deepGet(data ,  "user_kyc_comparison_detail.failed_reason") || [],
 
-        kyc_status   = this.utilitites.deepGet(data ,  "case_detail.kyc_status") , 
+        kyc_status   = this.utilitites.deepGet(data ,  "case_detail.kyc_status") ,
         alertStatus  = "",
+        approve_type_text = null,
 
-        //All status functions. 
+        //All status functions.
         amlStatusCheck            : any,
         checkForAdminStatus       : any,
         whiteListHandling         : any,
         onAdminStatusApproved     : any,
         onAdminStatusPending      : any,
         onAutomation              : any,
+        onAutomationPending       : any,
         onManual                  : any,
         onImageProcessingComplete : any,
         processFailedReasons      : any,
         setAlertMessageAndStatus  : any
         ;
 
+      if( last_qualified_type == "auto_approved" ){
+        approve_type_text = " automatically ";
+      }else{
+        approve_type_text = " manually ";
+      }
+
+
      amlStatusCheck = () => {
         if( cynopsis_status == "rejected"){
-          setAlertMessageAndStatus("AML/CTF status denied, this case cannot be reopened." , "failed"); 
+          setAlertMessageAndStatus("AML/CTF status denied, this case cannot be reopened." , "failed");
         }else {
           processFailedReasons();
           checkForAdminStatus();
         }
-     }   
+     }
 
      checkForAdminStatus = () =>{
        if( admin_status == "denied" ){
-        setAlertMessageAndStatus("Case manually denied by admin." , "failed"); 
+        setAlertMessageAndStatus("Case manually denied by admin." , "failed");
        }else if( admin_status == "qualified"){
         onAdminStatusApproved();
        }else {
@@ -73,30 +83,22 @@ export class KycCaseAlertComponent  {
      }
 
      onAdminStatusApproved = () => {
-      if( cynopsis_status == "pending" ){
-        if( approve_type == "auto"){
-          setAlertMessageAndStatus("The case has been automatically qualified and is awaiting AML/CTF action." , "warning"); 
-        }else{
-          setAlertMessageAndStatus("The case has been manually qualified and is awaiting AML/CTF action." , "warning"); 
-        }
+      if( cynopsis_status == "pending" ||  cynopsis_status == "unprocessed" ){
+          setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified and is awaiting AML/CTF action." , "warning");
       }else if( kyc_status == "approved" ){
         if( isWhitelistSetup ){
-          whiteListHandling(); 
+          whiteListHandling();
         }else{
-          if( approve_type == "auto"){
-            setAlertMessageAndStatus("The case has been automatically qualified." , "success");
-          }else{
-            setAlertMessageAndStatus("The case has been manually qualified." , "success");
-          }
+            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified." , "success");
         }
       }
      }
 
      onAdminStatusPending = () =>{
        if( approve_type == "auto"){
-          onAutomation(); 
+          onAutomation();
        }else{
-          onManual(); 
+          onManual();
        }
      }
 
@@ -110,13 +112,21 @@ export class KycCaseAlertComponent  {
 
      onAutomation = () => {
         if( image_processing_status == "unprocessed" ){
-          setAlertMessageAndStatus("Awaiting automation response." , "warning");
+          onAutomationPending();
         }else if( image_processing_status == "failed" ){
           setAlertMessageAndStatus("Manual review needed." , "failed");
         }else {
-          onImageProcessingComplete(); 
+          onImageProcessingComplete();
         }
-     }
+     };
+
+    onAutomationPending = () => {
+      if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
+        setAlertMessageAndStatus("Issue reported - " + last_issue_email_sent_humanized + " email sent" , "warning");
+      }else{
+        setAlertMessageAndStatus("Awaiting automation response." , "warning");
+      }
+    }
 
      onImageProcessingComplete = () =>{
         if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
@@ -128,58 +138,41 @@ export class KycCaseAlertComponent  {
 
      whiteListHandling = () => {
         if (whitelist_status == 'unprocessed' || whitelist_status == 'started') {
-          if(  approve_type == "auto" ){
-            setAlertMessageAndStatus("The case has been auto qualified. Whitelisting in progress." , "warning");
-          }else {
-            setAlertMessageAndStatus("The case has been manually qualified. Whitelisting in progress." , "warning");
-          }
+            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified. Whitelisting in progress." , "warning");
         } else if ( whitelist_status == 'done' && whitelist_confirmation_pending ) {
-          if( approve_type == "auto"  ){
-            setAlertMessageAndStatus("Case auto approved, whitelisting done. Awaiting confirmation." , "warning");
-          }else{
-            setAlertMessageAndStatus("Case maually approved, whitelisting done. Awaiting confirmation." , "warning");
-          }
+            setAlertMessageAndStatus("Case"+ approve_type_text + "approved, whitelisting done. Awaiting confirmation." , "warning");
         } else if ( whitelist_status == 'done' && !whitelist_confirmation_pending) {
-          if( approve_type == "auto"  ){
-            setAlertMessageAndStatus("The case has been automatically qualified. Whitelisting done." , "success");
-          }else{
-            setAlertMessageAndStatus("The case has been manually qualified. Whitelisting done." , "success");
-          }
+            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified. Whitelisting done." , "success");
         } else if (whitelist_status == 'failed') {
-         
-          if( approve_type == "auto"  ){
-            setAlertMessageAndStatus("The case has been automatically qualified. Whitelisting failed." , "failed");
-          }else{
-            setAlertMessageAndStatus("The case has been manually qualified. Whitelisting failed." , "failed");
-          }
+            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified. Whitelisting failed." , "failed");
         }
       }
 
       processFailedReasons = () =>{
-        let cnt , len = failedReasons.length , 
+        let cnt , len = failedReasons.length ,
             reasonKey ,  reasonMsg;
-        if( len <= 0 ) return ; 
+        if( len <= 0 ) return ;
         for( cnt = 0 ;  cnt < len ;  cnt++ ){
-          reasonKey = failedReasons[ cnt ]; 
-          reasonMsg = this.failedReasonsMap[ reasonKey ]; 
+          reasonKey = failedReasons[ cnt ];
+          reasonMsg = this.failedReasonsMap[ reasonKey ];
           if( reasonMsg ){
-            this.failedReason.push( reasonMsg ); 
+            this.failedReason.push( reasonMsg );
           }
         }
       }
 
       setAlertMessageAndStatus = ( message :string , status:string ) => {
-        this.alertMessage  = message; 
-        alertStatus =  status; 
+        this.alertMessage  = message;
+        alertStatus =  status;
       }
 
-      amlStatusCheck(); 
+      amlStatusCheck();
 
-      console.log("kyc case reponses", data ); 
-      console.log("alertStatus",  "alertStatus"); 
-      console.log("this.alertMessage",  this.alertMessage); 
+      console.log("kyc case reponses", data );
+      console.log("alertStatus",  "alertStatus");
+      console.log("this.alertMessage",  this.alertMessage);
       if( alertStatus ){
-        this.alertConfig = this.statusUIMap[ alertStatus ]; 
+        this.alertConfig = this.statusUIMap[ alertStatus ];
       }
 
   }
@@ -207,12 +200,12 @@ export class KycCaseAlertComponent  {
   }
 
   failedReasonsMap = {
-    ocr_unmatch : "Case cannot be automatically qualified, due to Optical Character Recognition ( OCR ) unmatch.", 
-    fr_unmatch : "Case cannot be automatically qualified, due to low facial recognition ( FR ) match.", 
-    residency_proof : "Case cannot be automatically qualified, due to residency proof documents.", 
-    investor_proof : "Case cannot be automatically qualified, due to Investor proof.", 
-    duplicate_kyc : "Case cannot be automatically qualified, due to duplicate status.", 
-    token_sale_ended: "Case cannot be automatically qualified, as the token sale ended.", 
+    ocr_unmatch : "Case cannot be automatically qualified, due to Optical Character Recognition ( OCR ) unmatch.",
+    fr_unmatch : "Case cannot be automatically qualified, due to low facial recognition ( FR ) match.",
+    residency_proof : "Case cannot be automatically qualified, due to residency proof documents.",
+    investor_proof : "Case cannot be automatically qualified, due to Investor proof.",
+    duplicate_kyc : "Case cannot be automatically qualified, due to duplicate status.",
+    token_sale_ended: "Case cannot be automatically qualified, as the token sale ended.",
     case_closed_for_auto_approve: "Case cannot be automatically qualified, as the case is closed for auto approve."
   }
 
