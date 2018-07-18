@@ -58,7 +58,7 @@
   <div class="change-password">
     <div class="simple-token-form row">
       <div class="my-3 company-profile-header col-12">
-        Change User Password
+        Change Password
       </div>
       <form #changePassword="ngForm" (ngSubmit)="changePasswordSubmit(changePassword)" class="admin-form col-12 col-md-5" method="POST"
         action="/api/admin/profile/change-password" id="adminChangePasswordForm">
@@ -101,7 +101,7 @@
               title="CHANGE PASSWORD">{{btnText}}
             </button>
             <button type="reset" (click)="resetForm(changePassword)" class="btn btn-secondary ml-xl-3 mb-3 mb-xl-0">
-              cancel
+              Clear
             </button>
           </div>
           <div class="general_error error text-center col-12">
