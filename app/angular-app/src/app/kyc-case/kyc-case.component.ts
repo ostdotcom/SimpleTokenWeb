@@ -159,8 +159,7 @@ export class KycCaseComponent implements OnInit {
 
   FRconfig = {} ;
   setFRText(){
-    let image_processing_status = this.user_kyc_comparison_detail.image_processing_status || "unprocessed",
-        clientFr = this.client_kyc_pass_setting.fr_match_percent
+    let image_processing_status = this.user_kyc_comparison_detail.image_processing_status || "unprocessed"
       ;
     if( image_processing_status == "unprocessed"  ){
       this.FRconfig = {
@@ -253,11 +252,11 @@ export class KycCaseComponent implements OnInit {
   }
 
   isOCRFailed( key ){
-      if(!this.ai_pass_detail.ocr_match_status){
-        let failedReason = this.user_kyc_comparison_detail.failed_reason || [],
-            clientOcrSetting = this.client_kyc_pass_setting.ocr_comparison_fields || []
+      if( this.ai_pass_detail.ocr_match_status == false ){
+        let failedOcrFields  = this.ai_pass_detail.ocr_match_fields || [],
+            clientOcrFields  = this.client_kyc_pass_setting.ocr_comparison_fields || []
         ;
-        return clientOcrSetting.indexOf( key ) > -1  && failedReason.indexOf( key ) > -1 ;
+       return clientOcrFields.indexOf( key ) > -1 && !failedOcrFields[key] ; 
       }else{
         return false ;
       }
