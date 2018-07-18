@@ -19,10 +19,10 @@
 
 .alert-success{
   background-color: #EEF8EE;
-  border-color: #5EBE55;
+  border-color: $green-400;
   color: inherit;
   .list-details-container {
-    border-top: 1px solid #EEF8EE;
+    border-top: 1px solid $green-400;
   }  
 }
 
@@ -37,12 +37,16 @@ svg {
 .alert-message-wrap {
   margin-top: 2px;
   vertical-align: top;
+  font-size: $text3-size;
 }
 
 .view-more-details-present {
   .message-content-wrap {
-    width: calc(100% - 120px);
+    width: 100%;
     display: inline-block;
+    @media (min-width: map-get($grid-breakpoints , 'md')){
+      width: calc(100% - 120px);
+    }
   }
 }
 
@@ -57,7 +61,12 @@ svg {
 }
 
 .view-more-details-wrap {
+  width: 120px;
   float: right;
+  @media (max-width: map-get($grid-breakpoints , 'md')){
+    width: 100%;
+    float: none;
+  }
 }
 
 .alert {
@@ -74,5 +83,6 @@ svg {
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  font-size: $text3-size;
 }
 

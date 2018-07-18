@@ -15,11 +15,6 @@
   }
 }
 
-.alert-error-svg, .alert-warning-svg, .alert-success-svg{
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .carousel-nav{
   position: fixed;
   top: 50%;
@@ -265,3 +260,8 @@
   }
 
 }
+
+.geoip-info-country{
+  text-transform: capitalize;
+}
+

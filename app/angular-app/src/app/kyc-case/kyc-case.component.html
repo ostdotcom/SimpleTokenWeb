@@ -99,7 +99,13 @@
 
         <div class="row">
           <div class="col-12">
-            <h5 class='customized-h5 pt-3 pb-1'>Submitted details vs ID Image</h5>
+            <h5 class='customized-h5 pt-3 pb-1 d-inline-block'>Submitted details vs ID Image</h5>
+            <div class="d-inline-block display-3">( Reg IP : {{userDetails.geoip_data.ip_address}} 
+              <ng-container *ngIf="userDetails.geoip_data.country">/</ng-container> 
+                <span class="geoip-info-country">
+                  {{userDetails.geoip_data.country}} )
+                </span>
+            </div>
           </div>
           <div class="col-12 mb-3">
             <div class="card-group">
