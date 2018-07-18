@@ -149,6 +149,7 @@ export class KycCaseAlertComponent  {
       }
 
       processFailedReasons = () =>{
+        if( approve_type != "auto") return ; 
         let cnt , len = failedReasons.length ,
             reasonKey ,  reasonMsg;
         if( len <= 0 ) return ;

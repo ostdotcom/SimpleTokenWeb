@@ -56,9 +56,7 @@ export class KycCaseComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.caseId = params.get('id');
       this.fetchCase();
-    //  this.hideModal();
     });
-
   }
 
   ngAfterViewChecked(){
@@ -113,8 +111,7 @@ export class KycCaseComponent implements OnInit {
     this.setAdminConfig();
     this.setFRText();
     this.setOpticalCharacterReg();
-    this.setamlCtfStatusConfig();
-
+    this.setAmlCtfStatusConfig();
   }
 
   showPageState(showCase = true, showReportIssue = false , showUpdateEth = false){
@@ -235,7 +232,7 @@ export class KycCaseComponent implements OnInit {
   }
 
   amlCtfStatusConfig = null ;
-  setamlCtfStatusConfig(){  //TODO 
+  setAmlCtfStatusConfig(){  //TODO 
     let amlCtfStatus = this.caseDetails.cynopsis_status ;
     if( amlCtfStatus == "pending" || amlCtfStatus == "unprocessed"){
       this.amlCtfStatusConfig = {
