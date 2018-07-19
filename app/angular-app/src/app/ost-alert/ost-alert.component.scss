@@ -7,6 +7,9 @@
   .list-details-container {
     border-top: 1px solid $yellow-700;
   }  
+  .list-details {
+    background-color:#FFFDFB; 
+  }
 }
 .alert-danger{
   border-color: $red-100;
@@ -14,7 +17,11 @@
   color: inherit;
   .list-details-container {
     border-top: 1px solid  $red-100;
+    
   }  
+  .list-details {
+    background-color : #FFFAFB; 
+  }
 }
 
 .alert-success{
@@ -24,6 +31,13 @@
   .list-details-container {
     border-top: 1px solid $green-400;
   }  
+  .list-details {
+    background-color : #F9FCF9;
+  }
+}
+
+.list-details-container {
+  padding-bottom: 0.5rem;
 }
 
 svg {
@@ -31,7 +45,11 @@ svg {
 }
 
 .alert{
-  padding: 0.75rem 1.25rem 0.5rem;
+  padding: 0.75rem 1.25rem 0rem;
+}
+
+.message-container {
+  padding-bottom: 0.5rem;
 }
 
 .alert-message-wrap {
@@ -61,11 +79,11 @@ svg {
 }
 
 .view-more-details-wrap {
-  width: 120px;
-  float: right;
-  @media (max-width: map-get($grid-breakpoints , 'md')){
-    width: 100%;
-    float: none;
+  width: 100%;
+  float: none;
+  @media (min-width: map-get($grid-breakpoints , 'md')){
+    width: 120px;
+    float: right;
   }
 }
 
@@ -77,6 +95,7 @@ svg {
 .down-arrow-icon,
 .up-arrow-icon {
   pointer-events: none;
+  stroke: #597A84;
 }
 
 .list-details{
@@ -85,4 +104,5 @@ svg {
   border-top-right-radius: 0;
   font-size: $text3-size;
 }
+
 

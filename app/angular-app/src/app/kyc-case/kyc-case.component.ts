@@ -180,7 +180,7 @@ export class KycCaseComponent implements OnInit {
         className = "red-bar"
       }
       this.FRconfig = {
-        text  :  (FRValue || "0") + " %" ,
+        text  :  (FRValue || 0),
         class : className
         }
     }

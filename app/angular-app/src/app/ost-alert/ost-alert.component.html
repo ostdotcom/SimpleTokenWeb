@@ -2,7 +2,7 @@
             {{alertStyleClass}} 
             {{viewMoreList && viewMoreList.length > 0 ? 'view-more-details-present':''}}" 
             role="alert" >
-  <div>
+  <div class="message-container">
     <div class="message-content-wrap">
       <div class="d-inline-block">
         <ng-content select=".svg-container">
@@ -22,15 +22,15 @@
           aria-controls="detailsList">
         <span class="d-inline" *ngIf="isCollapsed">
             <span class="pr-1 display-4 font-weight-500">View More</span>
-            <svg class="down-arrow-icon" height="12px" width="12px" style="fill: black;">
+            <svg class="down-arrow-icon" height="12px" width="12px">
               <switch>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#down-arrow-icon"></use>
               </switch>
             </svg>
           </span>
-          <span class="d-inline" *ngIf="!isCollapsed" style="fill: black;">
+          <span class="d-inline" *ngIf="!isCollapsed" >
               <span class="pr-1 display-4 font-weight-500"> View Less </span>
-              <svg class="down-arrow-icon" height="12px" width="12px">
+              <svg class="up-arrow-icon" height="12px" width="12px">
                 <switch>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#up-arrow-icon"></use>
                 </switch>
@@ -41,9 +41,9 @@
   </div> 
   <div id="detailsList" class="collapse ">
       <div class="list-details text-left ">
-        <div class="list-details-container mt-2 pt-2">
+        <div class="list-details-container pt-2">
             <ul class="pl-5 mb-0">
-              <li class="list-item pl-3" *ngFor="let item of viewMoreList">
+              <li class="list-item pl-2" *ngFor="let item of viewMoreList">
                   {{item}}
               </li>  
             </ul>  
