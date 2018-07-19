@@ -171,18 +171,16 @@ export class KycCaseComponent implements OnInit {
         text:  "Failed",
         class: "red-bar"
         }
-    }else{
-      let FRValue         = this.user_kyc_comparison_detail.face_match_percent,
-          settingFRValue  = this.client_kyc_pass_setting.fr_match_percent,
-          className       = "green-bar"
-          ;
-      if( FRValue < settingFRValue ){
-        className = "red-bar"
+    }else if( image_processing_status == "processed" ){
+      let  className = "red-bar" , 
+           FRValue   = this.user_kyc_comparison_detail.face_match_percent; 
+      if( this.ai_pass_detail.fr_pass_status ){
+        className = "green-bar"
       }
       this.FRconfig = {
         text  :  (FRValue || 0),
         class : className
-        }
+      }
     }
   }
 
@@ -201,7 +199,7 @@ export class KycCaseComponent implements OnInit {
         text:  "Passed",
         class: "green-bar"
       }
-    }else{
+    }else {
       this.OCRconfig = {
         text:  "Failed",
         class: "red-bar"
