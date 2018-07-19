@@ -70,6 +70,12 @@ export class KycCaseComponent implements OnInit {
     }
   }
 
+  initTooltip(){
+    setTimeout(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    },0);
+  }
+
   fetchCase() {
     this.widthComputed = false;
     this.isProcessing = true;
@@ -112,6 +118,7 @@ export class KycCaseComponent implements OnInit {
     this.setFRText();
     this.setOpticalCharacterReg();
     this.setAmlCtfStatusConfig();
+    this.initTooltip();
   }
 
   showPageState(showCase = true, showReportIssue = false , showUpdateEth = false){

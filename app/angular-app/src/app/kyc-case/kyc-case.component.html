@@ -118,40 +118,46 @@
 
                     <div class="card-col col-12 col-sm-6" *ngIf='userDetails.first_name'>
                       <div class="label">First Name
-                        <svg *ngIf=" isOCRFailed('first_name')"
-                          class="error-info-icon"
-                          height="12px" width="12px">
-                          <switch>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xlink:href="#error-info-icon"></use>
-                          </switch>
-                        </svg>
+                        <span data-toggle="tooltip" data-placement="right" [title]="'OCR Unmatch : First Name'">
+                          <svg *ngIf=" isOCRFailed('first_name')"
+                            class="error-info-icon"
+                            height="12px" width="12px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#error-info-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
                       </div>
                       <div class="value">{{userDetails.first_name}}</div>
                     </div>
                     <div class="card-col col-12 col-sm-6" *ngIf='userDetails.last_name'>
                       <div class="label">Last Name
-                        <svg *ngIf="isOCRFailed('last_name')"
-                          class="error-info-icon"
-                          height="12px" width="12px">
-                          <switch>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xlink:href="#error-info-icon"></use>
-                          </switch>
-                        </svg>
+                        <span data-toggle="tooltip" data-placement="right" [title]="'OCR Unmatch : Last Name'">
+                          <svg *ngIf="isOCRFailed('last_name')"
+                            class="error-info-icon"
+                            height="12px" width="12px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#error-info-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
                       </div>
                       <div class="value">{{userDetails.last_name}} </div>
                     </div>
                     <div class="card-col col-12 col-sm-6" *ngIf='userDetails.birthdate'>
                       <div class="label">Birth Date
-                        <svg *ngIf="isOCRFailed('birthdate')"
-                          class="error-info-icon"
-                          height="12px" width="12px">
-                          <switch>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xlink:href="#error-info-icon"></use>
-                          </switch>
-                        </svg>
+                        <span data-toggle="tooltip" data-placement="right" [title]="'OCR Unmatch : Birth Date'">
+                          <svg *ngIf="isOCRFailed('birthdate')"
+                            class="error-info-icon"
+                            height="12px" width="12px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#error-info-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
                       </div>
                       <div class="value">{{userDetails.birthdate}} </div>
                     </div>
@@ -161,27 +167,31 @@
                     </div>
                     <div class="card-col col-12 col-sm-6 pr-0" *ngIf='userDetails.document_id_number'>
                       <div class="label">Document ID Number
-                        <svg *ngIf="isOCRFailed('document_id_number')"
-                          class="error-info-icon"
-                          height="12px" width="12px">
-                          <switch>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xlink:href="#error-info-icon"></use>
-                          </switch>
-                        </svg>
+                        <span data-toggle="tooltip" data-placement="right" [title]="'OCR Unmatch : Document ID Number'">
+                          <svg *ngIf="isOCRFailed('document_id_number')"
+                            class="error-info-icon"
+                            height="12px" width="12px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#error-info-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
                       </div>
                       <div class="value">{{userDetails.document_id_number}}</div>
                     </div>
                     <div class="card-col col-12 col-sm-6" *ngIf='userDetails.nationality'>
                       <div class="label">Nationality
-                        <svg *ngIf="isOCRFailed('nationality')"
-                          class="error-info-icon"
-                          height="12px" width="12px">
-                          <switch>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xlink:href="#error-info-icon"></use>
-                          </switch>
-                        </svg>
+                        <span data-toggle="tooltip" data-placement="right" [title]="'OCR Unmatch : Nationality'">
+                          <svg *ngIf="isOCRFailed('nationality')"
+                            class="error-info-icon"
+                            height="12px" width="12px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#error-info-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
                       </div>
                       <div class="value">{{userDetails.nationality}}</div>
                     </div>
