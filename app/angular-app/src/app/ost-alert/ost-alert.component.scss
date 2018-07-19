@@ -38,6 +38,9 @@
 
 .list-details-container {
   padding-bottom: 0.5rem;
+  @media (max-width: map-get($grid-breakpoints , 'sm')){
+    padding-right: 1.5rem;
+  }
 }
 
 svg {
@@ -102,6 +105,8 @@ svg {
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
   font-size: $text3-size;
 }
 

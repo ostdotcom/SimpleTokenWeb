@@ -178,7 +178,7 @@ export class KycCaseComponent implements OnInit {
         className = "green-bar"
       }
       this.FRconfig = {
-        text  :  (FRValue || 0),
+        text  :  (Number(FRValue) || 0) + " %",
         class : className
       }
     }
