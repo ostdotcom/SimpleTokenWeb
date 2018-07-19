@@ -23,6 +23,7 @@ export class ArtificialIntelligenceComponent implements OnInit {
   isSuperAdmin    : boolean = false; 
   cachedResponse  : object  = null; 
   ocrOptions      : Array<object>;
+  errorMessage    : object  = null;
 
   approveType           : string      = "manual";  //Default to be set to manual
   frMmatchPercent       : number      = 100;       //Default to be set as 100% match

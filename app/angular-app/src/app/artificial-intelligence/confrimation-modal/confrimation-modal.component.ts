@@ -27,7 +27,8 @@ export class ConfrimationModalComponent {
   isProcessing  : boolean = false; 
   hasError      : boolean = false; 
   isSuccess     : boolean = false;
-
+  errorMessage  : object  = null;
+  
   onConfirmation() {
     let params = this.params; 
     this.stateHandler.updateRequestStatus(this, true ); 
