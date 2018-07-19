@@ -114,7 +114,7 @@ export class KycCaseAlertComponent  {
         if( image_processing_status == "unprocessed" ){
           onAutomationPending();
         }else if( image_processing_status == "failed" ){
-          setAlertMessageAndStatus("Manual review needed." , "failed");
+          setAlertMessageAndStatus("Manual review needed." , "warning");
         }else {
           onImageProcessingComplete();
         }
@@ -132,7 +132,7 @@ export class KycCaseAlertComponent  {
         if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
           setAlertMessageAndStatus("Issue reported - " + last_issue_email_sent_humanized + " email sent" , "warning");
         }else if( !automation_passed ) {
-          setAlertMessageAndStatus("Manual review needed." , "failed");
+          setAlertMessageAndStatus("Manual review needed." , "warning");
         }
      }
 
