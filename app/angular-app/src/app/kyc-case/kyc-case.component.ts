@@ -206,12 +206,12 @@ export class KycCaseComponent implements OnInit {
        }
     }else if( ocrStatus ){
       this.OCRconfig = {
-        text:  "Passed",
+        text:  "Match",
         class: "green-bar"
       }
     }else {
       this.OCRconfig = {
-        text:  "Failed",
+        text:  "Unmatch",
         class: "red-bar"
       }
     }

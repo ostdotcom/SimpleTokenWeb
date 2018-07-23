@@ -108,7 +108,7 @@ export class OstSliderComponent implements OnInit {
   updateSliderValue( valueToSet ){
     if(!this.slider) return ; 
     if( this.checkForMinThreshold( valueToSet ) || this.checkForMaxThreshold( valueToSet ) ){
-      this.sliderValChange.emit( valueToSet );
+      this.sliderValChange.emit( this.getValue() );
     }else{
       this.setValue( valueToSet ); 
     }
