@@ -43,7 +43,7 @@
                     <span class="key">AML/CTF Status : </span>
                     <span class="value {{amlCtfStatusConfig.class}}">{{amlCtfStatusConfig.text}}</span>
                   </div>
-                  <span *ngIf="caseDetails.retry_cynopsis == 1" class="button-UI  text-right text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>
+                  <span *ngIf="caseDetails.retry_cynopsis == 1" class="button-UI text-right text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>
                 </div>
               </div>
             </div>
@@ -359,7 +359,7 @@
           </div>
         </div>
 
-        <kyc-log-modal *ngIf="isInitLogTabel" [caseId]='caseId'></kyc-log-modal>
+        <kyc-log-modal *ngIf="isInitLogTabel" [lastActedByName]='caseDetails.last_acted_by' [caseId]='caseId'></kyc-log-modal>
         <kyc-duplicate-details-modal *ngIf="isInitDuplicateTable" [caseId]='caseId'> </kyc-duplicate-details-modal>
 
         <div *ngIf="hasNextPage" class="carousel-nav right py-2 pr-1" [routerLink]="['/admin/case-id/', nextCaseId]" [queryParams]="activatedRoute.snapshot.queryParams">

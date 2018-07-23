@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { OstHttp } from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import { AppConfigService } from '../services/app-config.service';
+import { ScrollTopService } from '../services/scroll-top.service';
 
 declare var $: any;
 
@@ -47,7 +48,8 @@ export class KycCaseComponent implements OnInit {
     private http: OstHttp,
     private stateHandler : RequestStateHandlerService,
     private domSanitizer: DomSanitizer,
-    public appConfig: AppConfigService
+    public appConfig: AppConfigService,
+    private scrollTopService: ScrollTopService
   ) { }
 
   ocr_comparison_fields;
@@ -119,6 +121,7 @@ export class KycCaseComponent implements OnInit {
     this.setOpticalCharacterReg();
     this.setAmlCtfStatusConfig();
     this.initTooltip();
+    this.scrollTopService.scrollTop();
   }
 
   showPageState(showCase = true, showReportIssue = false , showUpdateEth = false){
