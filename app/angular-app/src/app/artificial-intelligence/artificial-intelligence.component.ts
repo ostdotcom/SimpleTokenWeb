@@ -126,6 +126,7 @@ export class ArtificialIntelligenceComponent implements OnInit {
   }
 
   onUpdateError( res ){
+    this.updateView( this.cachedResponse );
     this.errorResponse = res; 
   }
 }
