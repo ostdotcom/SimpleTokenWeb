@@ -292,9 +292,6 @@
           } else {
             onValidCallback && onValidCallback(response);
           }
-        },
-        error: function (jqXHR, exception) {
-          oThis.formHelper.showServerErrors( exception );
         }
       });
     },
