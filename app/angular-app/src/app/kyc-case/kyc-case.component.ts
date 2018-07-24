@@ -204,15 +204,22 @@ export class KycCaseComponent implements OnInit {
         text:  "Pending",
         class: "yellow-bar"
        }
-    }else if( ocrStatus ){
+    }else if(image_processing_status == "failed" ){
       this.OCRconfig = {
-        text:  "Match",
-        class: "green-bar"
+        text:  "Failed",
+        class: "red-bar"
       }
     }else {
-      this.OCRconfig = {
-        text:  "Unmatch",
-        class: "red-bar"
+      if( ocrStatus ){
+        this.OCRconfig = {
+          text:  "Match",
+          class: "green-bar"
+        } 
+      }else {
+        this.OCRconfig = {
+          text:  "Unmatch",
+          class: "red-bar"
+        }
       }
     }
   }
