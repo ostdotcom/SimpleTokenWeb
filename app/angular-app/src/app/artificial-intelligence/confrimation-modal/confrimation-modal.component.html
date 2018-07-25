@@ -7,16 +7,19 @@
             <div class="col-12">
               <h5 class="text-center">
                 <ng-container *ngIf="params.approve_type=='auto'">
-                    You are choosing to auto qualify the user.
-                    You can continue to refer to Facial Recognition and Optical
-                    Character Recognition results on the user case page.
+                    You are choosing to automatically qualify the user based
+                    on the values set for Facial Recognition and
+                    Optical Character Recognition.*
                 </ng-container> 
                 <ng-container *ngIf="params.approve_type=='manual'">
-                    You are choosing to manually qualify the user.
-                    You can continue to refer to Facial Recognition and Optical
-                    Character Recognition results on the user case page.
+                    You are choosing to manually qualify the user. You can
+                    continue to refer to the Facial Recognition and
+                    Optical Recognition results on the user case page.*
                 </ng-container> 
-              </h5>   
+              </h5>  
+              <div class="col-12 text-center">
+                  <span class="display-3">*This setting can be changed only once every 60 minutes.</span>
+              </div>     
             </div>  
             <div class="col-12 form-group mt-4 text-center">
               <button class="btn btn-primary mt-2 mr-md-2" (click)="onConfirmation()">
