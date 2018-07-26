@@ -24,9 +24,6 @@ export class DevelopersIntegrationComponent implements OnInit {
     this.getIntegrationInfo();
     setTimeout(function(){
       $('[data-toggle="tooltip"]').tooltip();
-      $('.tooltip-inner').css({
-        'padding': '1.25rem 0.5rem'
-      });
     },0);
   }
 

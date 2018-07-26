@@ -66,9 +66,6 @@ export class ArtificialIntelligenceComponent implements OnInit {
   initTooltip(){
     setTimeout(function(){
       $('[data-toggle="tooltip"]').tooltip();
-      $('.tooltip-inner').css({
-        'padding': '1.25rem 0.5rem'
-      });
     },0);
   }
 
