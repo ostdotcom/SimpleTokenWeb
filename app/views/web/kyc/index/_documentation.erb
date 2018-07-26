@@ -5,7 +5,7 @@
      title: "Setup & Architecture",
      description: "This segment includes an entire detailed overview of OST KYC's system architecture and OST KYC's Admin Dashboard Features.",
      readmore: "Read Docs",
-     readmoreurl: "https://docs.google.com/document/d/1NxwpJModV2lCUGnyL1z7PpaXZw3MZCrmKn48nEReG3o/edit",
+     readmoreurl: "https://drive.google.com/open?id=1kwcMgZOsuaR0B-vxD_oYfJb5xr7iMqST",
      image:{
        src: img_root + "documentation-setup-icon.png",
        height: "75",
@@ -17,7 +17,7 @@
      title: "API Reference",
      description: "OST KYC's API Documentation gives you flexibility and ease to integrate your own front-end by using APIs with OST KYC admin dashboard.",
      readmore: "API Documentation",
-     readmoreurl: "https://docs.google.com/document/d/1jjg3eilIvthiI1hpG_K8goG-RDFbG_nGgzdgMXAfqm4/edit",
+     readmoreurl: "https://drive.google.com/file/d/16MZGrayka1b4r6RT_na5Z7kRRVSdCvGB/view",
      image:{
        src: img_root + "documentation-api-icon.png",
        height: "75",
@@ -29,7 +29,7 @@
      title: "Customizable Front-End",
      description: "OST KYC's experience includes customisable front-end development, where KYC users can submit their data and upload their documents.",
      readmore: "Read Docs",
-     readmoreurl: "https://docs.google.com/document/d/1QvIU_YHoFp4UqHk-ZnrMDRgzZvWqQfdtDyTPH2v04Jw/edit#heading=h.453f5kmroxtm",
+     readmoreurl: "https://drive.google.com/file/d/1opZ2Xf53-cqIWUz4r0zpG83zM1tJGddk/view",
      image:{
        src: img_root + "documentation-ui-icon.png",
        height: "75",
@@ -55,7 +55,7 @@
                 <p class="card-text companies-desc"><%= raw member[:description] %></p>
               </div>
               <div class="card-footer p-0">
-                <a href="<%= raw member[:readmoreurl] %>" class="read-more text-uppercase font-weight-normal" target="_blank"><%= raw member[:readmore] %></a>
+                <a href="<%= raw member[:readmoreurl] %>" class="read-more text-uppercase font-weight-normal" target="_blank" title="<%= member[:readmore] %>"><%= raw member[:readmore] %></a>
               </div>
             </div>
             <% if ((index % 3) == 2) || ((index + 1) == documentation.length) %></div><% end %>
