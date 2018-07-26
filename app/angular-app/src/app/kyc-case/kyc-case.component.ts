@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { OstHttp } from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import { AppConfigService } from '../services/app-config.service';
+import { ScrollTopService } from '../services/scroll-top.service';
 
 declare var $: any;
 
@@ -22,8 +23,13 @@ export class KycCaseComponent implements OnInit {
   showUpdateEth: boolean = false;
   isInitDuplicateTable:boolean = false;
   isInitLogTabel:boolean = false;
-  caseDetails: object = {};
-  userDetails: object = {};
+  caseDetails;
+  user_kyc_comparison_detail;
+  client_kyc_pass_setting;
+  ai_pass_detail;
+  image_processing_status;
+  userDetails;
+  response;
   meta: object = {};
   hasNextPage: boolean = false;
   hasPreviousPage: boolean = false;
@@ -42,15 +48,17 @@ export class KycCaseComponent implements OnInit {
     private http: OstHttp,
     private stateHandler : RequestStateHandlerService,
     private domSanitizer: DomSanitizer,
-    public appConfig : AppConfigService
+    public appConfig: AppConfigService,
+    private scrollTopService: ScrollTopService
   ) { }
+
+  ocr_comparison_fields;
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
       this.caseId = params.get('id');
       this.fetchCase();
     });
-
   }
 
   ngAfterViewChecked(){
@@ -62,6 +70,12 @@ export class KycCaseComponent implements OnInit {
         $(".card.grey-background").css("min-height", '');
       });
     }
+  }
+
+  initTooltip(){
+    setTimeout(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    },0);
   }
 
   fetchCase() {
@@ -83,16 +97,31 @@ export class KycCaseComponent implements OnInit {
     })
   }
 
+
+  hideModal(){
+    $("#detailsModal").modal('hide');
+  }
+
   onSuccess( res ) {
+    this.response  = res;
     this.caseDetails = res.data.case_detail;
-
-
     this.userDetails = res.data.user_detail;
+    this.user_kyc_comparison_detail = res.data.user_kyc_comparison_detail;
+    this.client_kyc_pass_setting = res.data.client_kyc_pass_setting;
+    this.ai_pass_detail = res.data.ai_pass_detail;
+    this.ocr_comparison_fields = this.client_kyc_pass_setting.ocr_comparison_fields;
+    this.image_processing_status =  this.user_kyc_comparison_detail.image_processing_status;
     this.userDetails['extraDiv'] = this.checkForOddSections();
     this.meta = res.data.meta;
     this.stateHandler.updateRequestStatus( this, false,  false);
     this.getNextPrevious(res.data.meta);
     this.showPageState();
+    this.setAdminConfig();
+    this.setFRText();
+    this.setOpticalCharacterReg();
+    this.setAmlCtfStatusConfig();
+    this.initTooltip();
+    this.scrollTopService.scrollTop();
   }
 
   showPageState(showCase = true, showReportIssue = false , showUpdateEth = false){
@@ -137,6 +166,117 @@ export class KycCaseComponent implements OnInit {
     }
     return count % 2;
   }
+
+  FRconfig = {} ;
+  setFRText(){
+    let image_processing_status = this.user_kyc_comparison_detail.image_processing_status || "unprocessed"
+      ;
+    if( image_processing_status == "unprocessed"  ){
+      this.FRconfig = {
+       text:  "Pending",
+       class: "yellow-bar"
+       }
+    }else if( image_processing_status == "failed"){
+      this.FRconfig = {
+        text:  "Failed",
+        class: "red-bar"
+        }
+    }else if( image_processing_status == "processed" ){
+      let  className = "red-bar" , 
+           FRValue   = this.user_kyc_comparison_detail.face_match_percent; 
+      if( this.ai_pass_detail.fr_pass_status ){
+        className = "green-bar"
+      }
+      this.FRconfig = {
+        text  :  (Number(FRValue) || 0) + " %",
+        class : className
+      }
+    }
+  }
+
+  OCRconfig =  {}
+  setOpticalCharacterReg() {
+    let image_processing_status = this.user_kyc_comparison_detail.image_processing_status || "unprocessed",
+        ocrStatus = this.ai_pass_detail.ocr_match_status
+      ;
+    if( image_processing_status == "unprocessed"  ){
+      this.OCRconfig = {
+        text:  "Pending",
+        class: "yellow-bar"
+       }
+    }else if(image_processing_status == "failed" ){
+      this.OCRconfig = {
+        text:  "Failed",
+        class: "red-bar"
+      }
+    }else {
+      if( ocrStatus ){
+        this.OCRconfig = {
+          text:  "Match",
+          class: "green-bar"
+        } 
+      }else {
+        this.OCRconfig = {
+          text:  "Unmatch",
+          class: "red-bar"
+        }
+      }
+    }
+  }
+
+  adminStatusConfig = {} ;
+  setAdminConfig(){
+    let adminStatus = this.caseDetails.admin_status ;
+    if(adminStatus == "unprocessed" ){
+      this.adminStatusConfig = {
+        text:  "Pending",
+        class: "yellow-bar"
+       }
+    }else if( adminStatus == "qualified" ){
+      this.adminStatusConfig = {
+        text:  "Qualified",
+        class: "green-bar"
+       }
+    }else if( adminStatus == "denied" ) {
+      this.adminStatusConfig = {
+        text:  "Denied",
+        class: "red-bar"
+       }
+    }
+  }
+
+  amlCtfStatusConfig = null ;
+  setAmlCtfStatusConfig(){  //TODO 
+    let amlCtfStatus = this.caseDetails.cynopsis_status ;
+    if( amlCtfStatus == "pending" || amlCtfStatus == "unprocessed"){
+      this.amlCtfStatusConfig = {
+        text: amlCtfStatus,
+        class: "yellow-bar"
+       }
+    }else if( amlCtfStatus == "cleared" || amlCtfStatus == "approved" ){
+      this.amlCtfStatusConfig = {
+        text:  amlCtfStatus,
+        class: "green-bar"
+       }
+    }else if( amlCtfStatus == "failed" || amlCtfStatus == "rejected" ) {
+      this.amlCtfStatusConfig = {
+        text:  amlCtfStatus,
+        class: "red-bar"
+       }
+    }
+  }
+
+  isOCRFailed( key ){
+      if( this.ai_pass_detail.ocr_match_status == false ){
+        let failedOcrFields  = this.ai_pass_detail.ocr_match_fields || [],
+            clientOcrFields  = this.client_kyc_pass_setting.ocr_comparison_fields || []
+        ;
+       return clientOcrFields.indexOf( key ) > -1 && !failedOcrFields[key] ; 
+      }else{
+        return false ;
+      }
+  }
+
 
 }
 

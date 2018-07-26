@@ -48,6 +48,15 @@
           <div class="form-group col-12 col-md-5">
             <div class="form-label">
                 AML/CTF LOGIN URL
+                <span data-toggle="tooltip" 
+                data-placement="right"
+                [title]="'To change your password, use the URL with the username provided and click on lost password.'">
+                  <svg class="svg" style="height: 16px;width: 16px">
+                    <switch>
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                    </switch>
+                  </svg>
+                </span>
             </div>
             <div class="read-only-fields p-2">
               <small>{{amlLoginUrl}}</small>

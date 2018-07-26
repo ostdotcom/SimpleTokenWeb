@@ -8,4 +8,5 @@
 //= require plugins/helpers/formHelper
 //= require plugins/helpers/ajaxHooks
 //= require plugins/helpers/utilities
+//= require plugins/bootstrap-slider/bootstrap-slider
 //= require web/common/UtmHelper

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 
+declare var $: any ; 
 
 @Component({
   selector: 'app-developers-integration',
@@ -21,10 +22,10 @@ export class DevelopersIntegrationComponent implements OnInit {
 
   ngOnInit() {
     this.getIntegrationInfo();
+    setTimeout(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    },0);
   }
-
-
-
 
   getIntegrationInfo(){
     this.http.get(this.dataUrl).subscribe(

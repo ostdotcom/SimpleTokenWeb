@@ -1,6 +1,54 @@
-<div class="alert {{alertStyleClass}}" role="alert">
-  <div class="d-flex justify-content-center align-items-center">
-    <ng-content select=".svg-container"></ng-content>
-    <ng-content select=".alert-text"></ng-content>
-  </div>
+<div class="alert text-center px-0 
+            {{alertStyleClass}} 
+            {{viewMoreList && viewMoreList.length > 0 ? 'view-more-details-present':''}}" 
+            role="alert" >
+  <div class="message-container">
+    <div class="message-content-wrap">
+      <div class="d-inline-block">
+        <ng-content select=".svg-container">
+        </ng-content>
+        <div class="alert-message-wrap d-inline-block">{{alertMessage}}</div>
+      </div>
+    </div>
+    <div  class="d-inline-block view-more-details-wrap" 
+          *ngIf="viewMoreList && viewMoreList.length > 0" >
+      <a class="view-more-details-text d-inline-block "  
+          (click)="onClick()"
+          data-toggle="collapse" 
+          data-target="#detailsList" 
+          href="javascript:void(0)"
+          role="button" 
+          aria-expanded="false" 
+          aria-controls="detailsList">
+        <span class="d-inline" *ngIf="isCollapsed">
+            <span class="pr-1 display-4 font-weight-500">View More</span>
+            <svg class="down-arrow-icon" height="12px" width="12px">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#down-arrow-icon"></use>
+              </switch>
+            </svg>
+          </span>
+          <span class="d-inline" *ngIf="!isCollapsed" >
+              <span class="pr-1 display-4 font-weight-500"> View Less </span>
+              <svg class="up-arrow-icon" height="12px" width="12px">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#up-arrow-icon"></use>
+                </switch>
+              </svg>
+        </span>
+      </a>
+    </div>  
+  </div> 
+  <div id="detailsList" class="collapse ">
+      <div class="list-details text-left ">
+        <div class="list-details-container pt-2">
+            <ul class="mb-0">
+              <li class="list-item" *ngFor="let item of viewMoreList">
+                  {{item}}
+              </li>  
+            </ul>  
+        </div>  
+      </div> 
+   </div> 
 </div>
+

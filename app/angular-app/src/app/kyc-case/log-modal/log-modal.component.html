@@ -18,7 +18,7 @@
                      [dataUrl]="logUrl" 
                      [isPaginated]="false">
 
-            <kyc-log-header class='header'></kyc-log-header>
+            <kyc-log-header [lastActedByName]='lastActedByName' class='header'></kyc-log-header>
 
             <ng-template #rowTemplate let-row>
               <kyc-log-row [row]='row'></kyc-log-row>
