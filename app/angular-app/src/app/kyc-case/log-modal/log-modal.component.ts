@@ -6,7 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['../../table-modal-base/base-modal.component.scss', './log-modal.component.scss']
 })
 export class LogModalComponent implements OnInit {
-  @Input() caseId ;
+  @Input('caseId') caseId  : any  = null; ;
+  @Input('lastActedByName') lastActedByName : string = null; 
   logUrl: string;
 
   constructor() { }

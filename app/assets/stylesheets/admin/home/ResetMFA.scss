@@ -1,0 +1,21 @@
+@import "../simple_token_theme_admin/variables";
+
+.mfa-form {
+  .img-container {
+    display: inline-block;
+    width: 100%;
+    img{
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  .qr-code{
+    border: 1px solid $green-1100;
+    border-radius: 5px;
+  }
+  .qr-info{
+    background-color: #afe1e3;
+    font-size: 0.87rem;
+  }
+}

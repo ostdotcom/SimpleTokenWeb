@@ -1,0 +1,19 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.artificial-intelligence {
+  .kyc-header{
+    color: $yellow-500;
+  }
+
+  .aml-ctf-info {
+    border-top: 2px solid $custom-grey-7;
+  }
+
+  .view-only{
+    vertical-align: middle;
+    color: $white;
+    background-color: $green-1200;
+    font-size: $text5-size;
+  }
+
+}
