@@ -84,7 +84,7 @@ export class KycCaseAlertComponent  {
 
      onAdminStatusApproved = () => {
       if( cynopsis_status == "pending" ||  cynopsis_status == "unprocessed" ){
-          setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified and is awaiting AML/CTF action." , "warning");
+          setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified and is awaiting AML/CTF action by Admin on Artemis Dashboard." , "warning");
       }else if( kyc_status == "approved" ){
         if( isWhitelistSetup ){
           whiteListHandling();
@@ -106,7 +106,7 @@ export class KycCaseAlertComponent  {
        if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
         setAlertMessageAndStatus("Issue reported - " + last_issue_email_sent_humanized + " email sent" , "warning");
        }else if( cynopsis_status == "pending" ) {
-         setAlertMessageAndStatus("Awaiting AML/CTF action." , "warning");
+         setAlertMessageAndStatus("Awaiting AML/CTF action by Admin on Artemis Dashboard." , "warning");
        }
      }
 
