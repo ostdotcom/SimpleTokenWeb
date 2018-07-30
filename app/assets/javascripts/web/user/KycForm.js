@@ -179,7 +179,7 @@
           format: 'dd/mm/yyyy',
           autoclose: true,
           startDate: '01/01/1900',
-          endDate: '01/11/1999',
+          endDate: oThis.getCutoffDate(),
           orientation: 'bottom'
         })
         .on('changeDate', function (e) {
@@ -259,6 +259,16 @@
       $('#kycUpdateFailed').click(function () {
         oThis.hideKycUpdateFailedDialog();
       });
+    },
+
+    getCutoffDate: function() {
+      var today = new Date(),
+       eighteenYearsAgo = today.setFullYear(today.getFullYear()-18),
+       cutOffdate = new Date(eighteenYearsAgo),
+       date =  cutOffdate.getDate(),
+       month = cutOffdate.getMonth()+1,
+       year = cutOffdate.getFullYear();
+        return date+"/"+month+"/"+year;
     },
 
     updateMultiFileBtnStateForInvestor: function (ref) {
