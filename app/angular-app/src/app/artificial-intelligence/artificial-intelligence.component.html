@@ -11,10 +11,10 @@
       <div class="row mt-4 pt-4 ">
         <div class="col-12 ">
           <h4 class="kyc-header text-transform-upper ">ARTIFICIAL INTELLIGENCE
-              <span *ngIf="isSuperAdmin"  
-                    data-toggle="tooltip" 
+              <span *ngIf="isSuperAdmin"
+                    data-toggle="tooltip"
                     data-placement="right"
-                    [title]="'The settings on this page can only be changed once every 60 minutes.'" 
+                    [title]="'The settings on this page can only be changed once every 60 minutes.'"
                     class='ml-2'>
                 <svg class="svg" style="height: 20px;width: 20px">
                   <switch>
@@ -52,7 +52,7 @@
       <div class="row mt-4">
         <div class="col-12">
             <div class="form-check form-check-inline">
-                <input  [disabled]="!isSuperAdmin" type="radio" 
+                <input  [disabled]="!isSuperAdmin" type="radio"
                         class="form-check-input radio-button radio-button-yes"
                         [(ngModel)]="approveType" id="ai-automation"
                         name="approve_type" value="auto" />
@@ -73,13 +73,13 @@
               <div class="col-12 col-md-10 display-2 mb-4 extra-header">
                   Artificial Intelligence is a part of the Admin features set, independent of the selected
                   qualification settings.
-              </div>  
+              </div>
               <div class="form-group col-12 col-md-10 col-lg-11 col-xl-8">
                 <div class="form-label">
                   FACIAL RECOGNITION
                 </div>
                 <div class="read-only-fields display-4">
-                    Ideal value is 70%. You may not choose a value lesser than 20% to be able to use automation.
+                    Ideal value is 70%. You may not choose a value lower than 20% to be able to use automation.
                 </div>
                 <div class="row pt-2">
                   <div class="col-12 col-lg-10 my-3">
@@ -88,8 +88,8 @@
                                 [disabled]="!isSuperAdmin" (sliderValChange)="onSliderUpdate( $event )">
                     </ost-slider>
                     <input class="not-in-view" name="fr_match_percent" [ngModel]="frMmatchPercent">
-                  </div>    
-                </div>  
+                  </div>
+                </div>
               </div>
             </div>
             <div class="row mt-2">
@@ -118,7 +118,7 @@
           <div class="col-12">
             <button [disabled]="!isVaild( aiForm )"
                     (click)="updateSettings( aiForm )"
-                    class="btn btn-primary mb-3 mb-xl-0" 
+                    class="btn btn-primary mb-3 mb-xl-0"
                     type="button">Apply
             </button>
             <button class="btn btn-secondary ml-xl-3 mb-3 mb-xl-0" type="button" (click)="onCancel( )">
@@ -130,7 +130,7 @@
 </div>
 
 
-<ai-confrimation-modal [params]="params" 
-                       (onSuccessEvent)="onUpdateSuccess( $event )" 
+<ai-confrimation-modal [params]="params"
+                       (onSuccessEvent)="onUpdateSuccess( $event )"
                        (onErrorEvent)="onUpdateError( $event )">
 </ai-confrimation-modal>
