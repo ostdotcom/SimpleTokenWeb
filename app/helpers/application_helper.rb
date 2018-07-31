@@ -37,7 +37,7 @@ module ApplicationHelper
   # * Reviewed By: Sunil Khedar
   #
   def get_formatted_controller_name
-    params[:controller]
+    is_admin_preview_for_client_customisable_pages? ? "web/user" : params[:controller]
   end
 
   # format action name for specific manifest file path
@@ -70,6 +70,35 @@ module ApplicationHelper
   #
   def is_not_a_kyc_page?
     ['web/home', 'web/token_sale'].include?(params[:controller])
+  end
+
+  # Is an admin preview mode for customisable pages
+  #
+  # * Author: Aman
+  # * Date: 06/02/2018
+  # * Reviewed By:
+  #
+  def is_admin_preview_for_client_customisable_pages?
+    ['admin/preview'].include?(params[:controller])
+  end
+
+  # All static pages used in simple token but not a part of kyc
+  #
+  # * Author: Aman
+  # * Date: 06/02/2018
+  # * Reviewed By:
+  #
+  def load_captcha_on_page?
+    [
+        'admin/preview::login',
+        'admin/preview::add_kyc_form',
+
+        'web/user::update_kyc_form',
+        'web/user::add_kyc_form',
+        'web/user::login',
+        'web/user::sign_up',
+        'web/home::partners'
+    ].include?("#{params[:controller]}::#{params[:action]}")
   end
 
 end

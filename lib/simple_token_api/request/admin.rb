@@ -59,6 +59,20 @@ module SimpleTokenApi
       #
       # * Author: Aman
       # * Date: 12/10/2017
+      # * Reviewed By:
+      #
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def client_detail(template_type)
+        extra_params = {template_type: template_type}
+        get("preview/client-detail", extra_params)
+      end
+
+      # Get User info
+      #
+      # * Author: Aman
+      # * Date: 12/10/2017
       # * Reviewed By: Sunil
       #
       #

@@ -138,7 +138,7 @@
 
     <% end %>
 
-  <% if ['web/user::update_kyc_form', 'web/user::add_kyc_form', 'web/user::login', 'web/user::sign_up', 'web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
+  <% if load_captcha_on_page? %>
     <script src="https://www.google.com/recaptcha/api.js"></script>
   <% end %>
 

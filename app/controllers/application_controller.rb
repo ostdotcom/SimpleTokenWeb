@@ -90,6 +90,31 @@ class ApplicationController < ActionController::Base
     request.remote_ip.to_s
   end
 
+  # Get IP based cynopsis country name
+  #
+  # * Author: Sunil
+  # * Date: 17/10/2017
+  # * Reviewed By: Sunil
+  #
+  def get_ip_to_cynopsis_country
+    @ip_to_cynopsis_country ||= GlobalConstant::CountryNationality.cynopsis_country_for(get_country_from_ip)
+  end
+
+  # Get IP based country name
+  #
+  # * Author: Sunil
+  # * Date: 17/10/2017
+  # * Reviewed By: Sunil
+  #
+  def get_country_from_ip
+    @country_from_ip ||= begin
+      country_name = ''
+      geo_ip_obj = Util::GeoIpUtil.new(ip_address: ip_address)
+      country_name = geo_ip_obj.get_country_name.to_s
+      country_name
+    end
+  end
+
   # set bot request flag in params
   #
   # * Author: Kedar
@@ -140,7 +165,7 @@ class ApplicationController < ActionController::Base
   #
   def set_page_meta_info(custom_extended_data = {})
     service_response = GetPageMetaInfo.new(
-        controller: params[:controller],
+        controller: custom_extended_data[:controller] || params[:controller],
         action: params[:action],
         request_url: request.url,
         custom_extended_data: custom_extended_data

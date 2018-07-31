@@ -51,6 +51,11 @@ Rails.application.routes.draw do
       get '/gdpr' => :gdpr_policy
     end
 
+    scope 'admin/preview', controller: 'admin/preview' do
+      get '/login' => :login
+      get '/add-kyc-form' => :add_kyc_form
+    end
+
     scope 'admin/', controller: 'admin/home' do
       get '/login' => :login
       get '/forgot-password' => :forgot_password

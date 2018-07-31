@@ -87,31 +87,6 @@ class Web::BaseController < ApplicationController
     redirect_to "/#{path}#{extra_url_query_parameter}", status: http_status and return
   end
 
-  # Get IP based cynopsis country name
-  #
-  # * Author: Sunil
-  # * Date: 17/10/2017
-  # * Reviewed By: Sunil
-  #
-  def get_ip_to_cynopsis_country
-    @ip_to_cynopsis_country ||= GlobalConstant::CountryNationality.cynopsis_country_for(get_country_from_ip)
-  end
-
-  # Get IP based country name
-  #
-  # * Author: Sunil
-  # * Date: 17/10/2017
-  # * Reviewed By: Sunil
-  #
-  def get_country_from_ip
-    @country_from_ip ||= begin
-      country_name = ''
-      geo_ip_obj = Util::GeoIpUtil.new(ip_address: ip_address)
-      country_name = geo_ip_obj.get_country_name.to_s
-      country_name
-    end
-  end
-
   # Set Utm Parameters for landing pages
   #
   # * Author: Aman
