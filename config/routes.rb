@@ -51,6 +51,10 @@ Rails.application.routes.draw do
       get '/gdpr' => :gdpr_policy
     end
 
+    scope 'admin/configurator/', controller: 'admin/configurator' do
+      get '/register' => :register
+    end
+
     scope 'admin/', controller: 'admin/home' do
       get '/login' => :login
       get '/forgot-password' => :forgot_password

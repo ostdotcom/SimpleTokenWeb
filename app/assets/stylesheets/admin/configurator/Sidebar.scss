@@ -1,0 +1,48 @@
+.sidebar-nav {
+  left: 0;
+  background: #34445b;
+  width: 390px;
+  position: fixed;
+  height: 100vh;
+  padding: 20px;
+  transition: all .2s ease-in-out;
+  overflow-y: scroll;
+  .accordion{
+    .card{
+      display: block;
+      border: none;
+    }
+    .card-header{
+      border: none;
+      padding: 0.5rem 1.25rem;
+      background-color: rgba(52,68,91, 0.8);
+      .card-link{
+        border: none;
+        display: block;
+        color: #9bafb5;
+        font-weight: 400;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+    }
+    [data-toggle="collapse"]:after {
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: "";
+      background: url("https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/drop-down-arrow.svg") no-repeat center;
+      transform: rotate(180deg) ;
+      transition: all linear 0.25s;
+      float: right;
+      height: 15px;
+      width: 15px;
+    }
+    [data-toggle="collapse"].collapsed:after {
+      transform: rotate(0deg) ;
+    }
+  }
+}
