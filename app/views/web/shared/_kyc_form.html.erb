@@ -186,8 +186,8 @@
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
                     <label class="form-label" for="postal_code">Estimated Participation Amount (ETH)</label>
-                    <input type="number" min="0.01" lang="en-150" title="Estimated amount ($)" class="form-control"
-                           name="estimated_participation_amount" value="0" tabindex="<%= tabindex_val %>" autocomplete="off"/>
+                    <input type="number"  min="0.01" lang="en-150" title="Estimated amount" class="form-control"
+                           name="estimated_participation_amount" value="0" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                     <% tabindex_val += 1 %>
                     <div class="invalid-feedback" data-forname="estimated_participation_amount"></div>
                   </div>
