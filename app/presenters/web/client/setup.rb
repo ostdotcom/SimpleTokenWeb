@@ -67,10 +67,26 @@ module Web
         page_setting['page_data']
       end
 
+      def kyc_config_detail_data
+        page_setting['kyc_config_detail_data']
+      end
+
       #### common data ###
 
+      def kyc_fields
+        kyc_config_detail_data['kyc_fields']
+      end
+
+      def residency_proof_nationalities
+        kyc_config_detail_data['residency_proof_nationalities']
+      end
+
+      def max_investor_proofs_allowed
+        kyc_config_detail_data['max_investor_proofs_allowed']
+      end
+
       def blacklisted_countries
-        common_data['blacklisted_countries'] || []
+        kyc_config_detail_data['blacklisted_countries'] || []
       end
 
       def gtm_pixel
@@ -125,12 +141,15 @@ module Web
 
       # Validate ip of request
       #
+      # @param country_list_from_ip - Array of cynopsis_country
+      #
       # * Author: Aman
       # * Date: 15/10/2017
       # * Reviewed By:
       #
-      def is_blacklisted_ip?(country_from_ip)
-        blacklisted_countries.include?(country_from_ip.downcase)
+      def is_blacklisted_ip?(country_list_from_ip)
+        return true if (blacklisted_countries & country_list_from_ip).length > 0
+        false
       end
 
       def custom_meta_tags

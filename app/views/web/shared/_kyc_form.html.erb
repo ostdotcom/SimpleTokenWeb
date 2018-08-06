@@ -101,7 +101,7 @@
 
 
             <div class="row">
-              <% if @presenter_obj.page_data['kyc_fields'].include?('street_address') %>
+              <% if @presenter_obj.kyc_fields.include?('street_address') %>
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
                     <label class="form-label" for="street_address">Street address</label>
@@ -112,7 +112,7 @@
                   </div>
                 </div>
               <% end %>
-              <% if @presenter_obj.page_data['kyc_fields'].include?('city') %>
+              <% if @presenter_obj.kyc_fields.include?('city') %>
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
                     <label class="form-label" for="">City</label>
@@ -126,7 +126,7 @@
             </div>
 
             <div class="row">
-              <% if @presenter_obj.page_data['kyc_fields'].include?('state') %>
+              <% if @presenter_obj.kyc_fields.include?('state') %>
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
                     <label class="form-label" for="state">State / region</label>
@@ -143,7 +143,8 @@
                   <select class="form-control selectpicker" name="country" title="Select Country" tabindex="<%= tabindex_val %>" required>
                     <% tabindex_val += 1 %>
                     <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
-                      <option value="<%= country_name %>" <%= @ip_to_cynopsis_country.to_s.upcase == country_name ? 'selected' : '' %>><%= country_name.titleize %></option>
+                      <% next if @presenter_obj.blacklisted_countries.include?(country_name) %>
+                      <option value="<%= country_name %>" <%= @ip_to_preferred_cynopsis_country.to_s == country_name  ? 'selected' : '' %>><%= country_name.titleize %></option>
                     <% end %>
                   </select>
                   <div class="invalid-feedback" data-forname="country"></div>
@@ -151,7 +152,7 @@
               </div>
             </div>
 
-            <% if @presenter_obj.page_data['kyc_fields'].include?('postal_code') %>
+            <% if @presenter_obj.kyc_fields.include?('postal_code') %>
               <div class="row">
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
@@ -182,7 +183,7 @@
               </div>
             </div>
 
-            <% if @presenter_obj.page_data['kyc_fields'].include?('estimated_participation_amount') %>
+            <% if @presenter_obj.kyc_fields.include?('estimated_participation_amount') %>
               <div class="row">
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
@@ -323,7 +324,7 @@
               </div>
             </div>
           </div>
-          <%if @presenter_obj.page_data['kyc_fields'].include?('investor_proof_files_path')%>
+          <%if @presenter_obj.kyc_fields.include?('investor_proof_files_path')%>
               <div class="row form-group " id="investor_proofs">
               <div class="col-12 col-sm-12">
                 <label class="form-label">ARE YOU AN ACCREDITED INVESTOR?</label>
@@ -350,7 +351,7 @@
             <div class="row form-group upload-proof-invester">
               <div class="file-upload" data-title="Accredited investor proof"
                    data-name="investor_proof_files_path[]"
-                   data-max-length="<%= @presenter_obj.page_data['max_investor_proofs_allowed']%>"
+                   data-max-length="<%= @presenter_obj.max_investor_proofs_allowed%>"
                    data-accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="20971520">
 
                 <div class="col-12">
@@ -364,7 +365,7 @@
                   <div class="file-wrapper" style="position:absolute; top:-10000px; left:-10000px"></div>
 
                   <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"
-                         data-max-length="<%= @presenter_obj.page_data['max_investor_proofs_allowed']%>"
+                         data-max-length="<%= @presenter_obj.max_investor_proofs_allowed%>"
                          tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
                   </input>
                   <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">
@@ -422,7 +423,7 @@
       simpletoken.home.kyc.init(
         {
           show_verify_modal: <%= show_verify_modal %>,
-          residency_proof_nationalities: <%= raw @presenter_obj.page_data['residency_proof_nationalities'] %>
+          residency_proof_nationalities: <%= raw @presenter_obj.residency_proof_nationalities %>
         }
       );
     });
