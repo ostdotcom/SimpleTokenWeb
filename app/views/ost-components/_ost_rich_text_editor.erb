@@ -1,10 +1,10 @@
 <!--<script type="text/x-handlebars-template" id="ost-file-uploader">-->
-  <div class="form-group row ost-file-uploader-wrap">
+  <div class="form-group row tinymce-wrap">
     <div class="col-12">
       <label class="form-label"> Rich text editor </label>
     </div>
     <div class="col-12 text-right" >
-      <textarea class="rich-editor-tmc"  name="rich-editor-tmc"></textarea>
+      <textarea class="tinymce" name="rich-editor-tmc"></textarea>
     </div>
     <div class="invalid-feedback col-12" data-forname="{{name}}"></div>
   </div>
@@ -16,16 +16,23 @@
 
     $(function(){
       tinymce.init({
-        selector:'.rich-editor-tmc' ,
+        selector:'textarea.tinymce',
         menubar: false,
         plugins: ['link'],
         toolbar: 'bold , italic , underline,  link ',
+        forced_root_block: false,
+        extended_valid_elements: "*[*]",
         statusbar: false,
         toolbar_item_size: "small",
         setup: function (editor) {
           editor.on('keyup change', function () {
-            $('.rich-editor-tmc')
-              .val(tinymce.activeEditor.getContent())
+            var hParent         = tinymce.activeEditor.editorContainer,
+                jParent         = $( hParent ),
+                jTextArea       = jParent.parent().find('textarea.tinymce'),
+                updatedContent  = tinymce.activeEditor.getContent()
+            ;
+            jTextArea
+              .val( updatedContent )
               .trigger('keyup');
           });
         }
