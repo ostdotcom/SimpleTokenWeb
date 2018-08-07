@@ -8,11 +8,11 @@
        Upload Img
       </label>
       <input id="{{get_input_id name true}}"
-             data-get-signed-url="{{signedUrl}}"
+             data-get-signed-url="{{signed_url}}"
              class="file-upload-input"
              {{is_required isRequired}}
-             data-min-bytes="{{minBytes}}"
-             data-max-bytes="{{maxBytes}}"
+             data-min-bytes="{{min_bytes}}"
+             data-max-bytes="{{max_bytes}}"
              accept="{{accept}}"
              type='file'
              name="{{name}}"
@@ -20,6 +20,15 @@
     </div>
     <div class="invalid-feedback col-12" data-forname="{{name}}"></div>
   </div>
+</script>
+
+<script type="unknown" id="j-processing-icon">
+  <img class="img-fluid" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
+</script>
+
+<script type="unknown" id="uploaded-image-wrap">
+  <img class="img-fluid" src="{{img_src}}"/>
+  <div >Edit icon </div>
 </script>
 
 <% content_for :ost_components do %>
@@ -49,3 +58,5 @@
     });
   </script>
 <%end%>
+
+

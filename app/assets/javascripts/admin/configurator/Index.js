@@ -1,8 +1,10 @@
 ;
 (function (window ) {
 
-  var oSTNs = ns("ost"),
-    oThis;
+  var oSTNs           = ns("ost"),
+      ostFileUploader = ns('ost.ostFileUploader'),
+      oThis
+  ;
 
   oSTNs.index = oThis = {
 
@@ -18,10 +20,9 @@
     testComponents: function () {
       var fileUploaderConfig = {
         'label'       : "File Upload",
-        'accept'      : "image/*,application/pdf",
-        'minBytes'    : "204800",
-        'maxBytes'    : "20971520",
-        'name'        : "file_uploader"
+        'accept'      : "image/*",
+        'name'        : "company_logo",
+        'signed_url'  : "/api/admin/configurator/upload-params"
       };
 
       var sTemplate  = $('#ost-file-uploader'),
@@ -32,6 +33,7 @@
       ;
 
       jWrapper.append( jMarkup );
+      ostFileUploader.bindButtonActions();
     }
   };
 
