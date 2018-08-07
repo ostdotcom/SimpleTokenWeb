@@ -3,6 +3,8 @@ module GlobalConstant
 
   class CountryNationality
 
+    require 'csv'
+
     class << self
 
       # Get Cynopsis Countries From Ip
@@ -117,9 +119,8 @@ module GlobalConstant
         @cynopsis_country_to_maxmind_hash ||= begin
           country_mapping = {}
           cynopsis_country_to_maxmind_data.each do |row|
-            sp = row.gsub("\r", "").split(",")
-            key = sp[0].upcase
-            value = sp.drop(1)
+            key = row[0].upcase
+            value = row.drop(1)
             country_mapping[key] = value
           end
           country_mapping
@@ -158,8 +159,7 @@ module GlobalConstant
       # @return [Hash]
       #
       def cynopsis_country_to_maxmind_data
-        @cynopsis_country_to_maxmind_data ||= File.open("#{Rails.root}/config/cynopsis_country_to_maxmind_mapping.csv",
-                                                        "rb").read.split("\n")
+        @cynopsis_country_to_maxmind_data ||= CSV.read("#{Rails.root}/config/cynopsis_country_to_maxmind_mapping.csv")
       end
 
     end
