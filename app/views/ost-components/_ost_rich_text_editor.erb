@@ -1,21 +1,25 @@
-<div class="rich-editor">
-  <div id="toolbar"></div>
-  <div id="editor"></div>
-</div>
+<!--<script type="text/x-handlebars-template" id="ost-file-uploader">-->
+  <div class="form-group row ost-file-uploader-wrap">
+    <div class="col-12">
+      <label class="form-label"> Rich text editor </label>
+    </div>
+    <div class="col-12 text-right" >
+      <textarea class="rich-editor-tmc"  name="rich-editor-tmc"></textarea>
+    </div>
+    <div class="invalid-feedback col-12" data-forname="{{name}}"></div>
+  </div>
 
+<!--</script>-->
 
 <% content_for :ost_components do %>
   <script type="text/javascript" >
 
     $(function(){
-      var toolbarOptions = [
-        ['bold', 'italic', 'underline', 'link']
-      ];
-      var editor = new Quill('#editor', {
-        modules: {
-          toolbar: toolbarOptions
-        },
-        theme: 'snow'
+      tinymce.init({
+        selector:'.rich-editor-tmc' ,
+        menubar: false,
+        plugins: false,
+        toolbar: 'bold , italic , underline,  link '
       });
     });
 
