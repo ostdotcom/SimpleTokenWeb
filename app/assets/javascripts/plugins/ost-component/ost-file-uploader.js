@@ -25,7 +25,6 @@
       'pdf'   : "pdfs"
     },
 
-
     bindButtonActions: function () {
 
       $( oThis.sElement ).on('change' , function ( e ) {

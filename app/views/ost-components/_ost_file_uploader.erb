@@ -27,12 +27,16 @@
 </script>
 
 <script type="unknown" id="j-processing-icon">
-  <img class="img-fluid" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
+  <img class="img-fluid processing-icon" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
 </script>
 
-<script type="unknown" id="uploaded-image-wrap">
-  <img class="img-fluid" src="{{img_src}}"/>
-  <div >Edit icon </div>
+<script type="text/x-handlebars-template" id="uploaded-image-wrap">
+  <img class="img-fluid file-uploaded-img" src="{{img_src}}"/>
+  <svg class="fav-svg align-middle">
+    <switch>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cms-fav-icon-logo"></use>
+    </switch>
+  </svg>
 </script>
 
 <% content_for :ost_components do %>
