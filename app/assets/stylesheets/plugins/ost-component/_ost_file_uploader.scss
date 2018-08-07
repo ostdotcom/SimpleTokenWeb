@@ -1,0 +1,10 @@
+@import "../../admin/simple_token_theme_admin/variables";
+
+.ost-file-uploader-wrap {
+  .file-upload-input {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
+

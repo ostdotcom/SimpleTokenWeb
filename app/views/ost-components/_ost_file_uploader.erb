@@ -1,0 +1,51 @@
+<script type="text/x-handlebars-template" id="ost-file-uploader">
+  <div class="form-group row ost-file-uploader-wrap">
+    <div class="col-6">
+      <label class="form-label"> {{label}} </label>
+    </div>
+    <div class="col-6 text-right" >
+      <label class="input-label-wrapper" for="{{get_input_id name}}">
+       Upload Img
+      </label>
+      <input id="{{get_input_id name true}}"
+             data-get-signed-url="{{signedUrl}}"
+             class="file-upload-input"
+             {{is_required isRequired}}
+             data-min-bytes="{{minBytes}}"
+             data-max-bytes="{{maxBytes}}"
+             accept="{{accept}}"
+             type='file'
+             name="{{name}}"
+             value="{{value}}" />
+    </div>
+    <div class="invalid-feedback col-12" data-forname="{{name}}"></div>
+  </div>
+</script>
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function () {
+
+      Handlebars.registerHelper('is_required', function(data, options ) {
+        if( data ){
+          return "required";
+        }else {
+          return "";
+        }
+      });
+
+      var idCount = 1 ;
+      Handlebars.registerHelper('get_input_id', function( name, isSameId , options ) {
+        if( !isSameId ) {
+          idCount++
+        }
+        if( name ){
+          return name + "_" + idCount ;
+        }else {
+          return "no_name" + "_" + idCount ;
+        }
+      });
+
+    });
+  </script>
+<%end%>

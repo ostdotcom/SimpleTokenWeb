@@ -3,4 +3,5 @@
   *= require admin/common/selectpicker.scss
   *= require admin/configurator/Sidebar
   *= require admin/configurator/Navbar
+  *= require plugins/ost-component/_ost_file_uploader
  */

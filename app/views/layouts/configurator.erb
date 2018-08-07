@@ -39,6 +39,7 @@
 
 
 <%= javascript_include_tag "admin/common" %>
+<%= yield :ost_components %>
 <%= javascript_include_tag "#{specific_manifest_file_path}", :defer => "defer" if has_specific_js_manifest_file? %>
 
 <%= yield :javascript %>
