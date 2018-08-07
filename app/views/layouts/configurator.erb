@@ -38,7 +38,7 @@
   <%= yield %>
 </main>
 
-<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script><!--todo Move to manifest plugins -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.1/tinymce.min.js"></script><!--todo Move to manifest plugins -->
 <%= javascript_include_tag "admin/configurator-common" %>
 <%= yield :ost_components %>
 <%= javascript_include_tag "#{specific_manifest_file_path}", :defer => "defer" if has_specific_js_manifest_file? %>
