@@ -1,0 +1,23 @@
+<div class="rich-editor">
+  <div id="toolbar"></div>
+  <div id="editor"></div>
+</div>
+
+
+<% content_for :ost_components do %>
+  <script type="text/javascript" >
+
+    $(function(){
+      var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'link']
+      ];
+      var editor = new Quill('#editor', {
+        modules: {
+          toolbar: toolbarOptions
+        },
+        theme: 'snow'
+      });
+    });
+
+  </script>
+<%end%>

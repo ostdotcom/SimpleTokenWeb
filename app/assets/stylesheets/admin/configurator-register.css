@@ -1,7 +1,7 @@
 /*
   *= require plugins/bootstrap_select/bootstrap-select.scss
-  *= require admin/common/selectpicker.scss
-  *= require admin/configurator/Sidebar
-  *= require admin/configurator/Navbar
+  *= require plugins/ost-component/_ost_sidebar
+  *= require plugins/ost-component/_ost_navbar
+  *= require plugins/ost-component/_ost_rich_text_editor
   *= require plugins/ost-component/_ost_file_uploader
  */

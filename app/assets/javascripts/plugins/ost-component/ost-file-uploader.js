@@ -25,6 +25,7 @@
       'pdf'   : "pdfs"
     },
 
+
     bindButtonActions: function () {
 
       $( oThis.sElement ).on('change' , function ( e ) {
@@ -74,9 +75,9 @@
       var action = oThis.getToSignedApi( jEl )
       ;
       $.ajax({
-        url: action,
-        data: oThis.getParams( jEl ),
-        method : "POST",
+        url     : action,
+        data    : oThis.getParams( jEl ),
+        method  : "POST",
         success : function ( res ) {
           oThis.onSignedSuccess( res , jEl );
         },
@@ -126,36 +127,31 @@
 
     uploadFile : function ( responses, jEl ) {
       var action = responses.url ,
-          fields = responses.fields
+          fields = responses.fields,
+          theFormFile  = jEl[0].files[0]
       ;
 
-      jEl.fileupload({
-        dataType: 'xml',
-        method: 'POST',
-        autoUpload: false,
-        singleFileUploads: false,
-        success: function (e, data) {
-         console.log("success e " , e);
-         console.log("success data " , data);
-         oThis.onFileUploadSuccess();
-        },
-        error: function ( jqXHR, exception ) {
-          console.log("error exception " , exception );
-          oThis.showServerError( exception , jEl );
-        },
-        fail: function (e, reason) {
-          console.log("fail reason " , data );
-          var exception = $(data.jqXHR.responseXML);
-          oThis.showServerError( exception , jEl );
-        }
-      });
-
-      jEl.fileupload( 'send', {
-        files     : [jEl[0].files[0]],
-        paramName : ['file'],
-        url       : action,
-        formData  : fields
-      });
+      $.ajax({
+          type: 'PUT',
+          // Content type must much with the parameter you signed your URL with
+          url: action,
+          // this flag is important, if not set, it will try to send data as a form
+          contentType: 'binary/octet-stream',
+          //response type
+          dataType: 'xml',
+          // the actual file is sent raw
+          processData: false,
+          // file data
+          data: theFormFile,
+          success: function ( res ) {
+            console.log("success data " , res);
+            oThis.onFileUploadSuccess( res , jEl );
+          },
+          error: function ( jqXHR, exception ) {
+            console.log("success data " , exception);
+            oThis.showServerError( exception , jEl );
+          }
+        })
     },
 
     onFileUploadSuccess : function ( data , jEl ) {
