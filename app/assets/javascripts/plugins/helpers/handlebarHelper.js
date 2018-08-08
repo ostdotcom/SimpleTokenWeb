@@ -36,7 +36,7 @@
 
   var idCount = 1 ;
   Handlebars.registerHelper('get_input_id', function( name, isSameId , options ) {
-    if( !isSameId ) {
+    if( isSameId !== true ) {  //This should be exactly checked.
       idCount++
     }
     if( name ){

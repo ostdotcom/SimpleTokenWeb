@@ -92,7 +92,7 @@
          'required'        : 1
        },
        //form_data
-       'value'          : "safsas safsafsaf"
+       'value'          : 10
      },
 
      inputTextarea : {
@@ -163,7 +163,32 @@
          'required'        : 1
        },
        //form_data
-       'value'          : "rba(255,255,255)"
+       'value'          : "rgb(255,255,255)"
+     },
+
+     radioInput : {
+       'label'          : "radioInput",
+       'tooltip'        : "some tooltip",
+       "inputType"      : inputTypesEnum.radio,
+       options          : [
+         {
+           "label" : "Dark",
+           "value" : "dark"
+         },
+         {
+           "label" : "Light",
+           "value" : "light"
+         }
+       ],
+
+       //Backend
+       'data_kind'      : "text",
+       'data_key_name'  : "radio_input",
+       'validation'     : {
+         'required'        : 1
+       },
+       //form_data
+       'value'          : "light"
      }
 
    }

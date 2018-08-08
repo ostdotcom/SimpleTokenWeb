@@ -5,6 +5,14 @@
     oThis
   ;
 
+  function getTextArea( inst ){
+    var hParent   = inst.editorContainer,
+        jParent   = $( hParent ),
+        jTextArea = jParent.parent().find('.tinymce-editor')
+    ;
+    return jTextArea;
+  }
+
   var tinyMceConfig =  {
       menubar                 : false,
       plugins                 : ['link'],
@@ -14,16 +22,20 @@
       forced_root_block       : false,
       extended_valid_elements : "*[*]",
       setup: function (editor) {
-        editor.on('change', function () {
-          var hParent         = tinymce.activeEditor.editorContainer,
-              jParent         = $( hParent ),
-              jTextArea       = jParent.parent().find('textarea.tinymce'),
+        editor.on('keyup change', function () {
+          var jTextArea       = getTextArea( tinymce.activeEditor ),
               updatedContent  = tinymce.activeEditor.getContent()
           ;
-          jTextArea
+          jTextArea && jTextArea
             .val( updatedContent )
-            .trigger('keyup');
+            .trigger('change');
       });
+    },
+    init_instance_callback : function ( inst ) {
+      var jTextArea       = getTextArea( inst ),
+          initialVal      = jTextArea && jTextArea.val( ) || ""
+      ;
+      inst.setContent( initialVal );
     }
   };
 

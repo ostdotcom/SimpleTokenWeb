@@ -15,13 +15,9 @@
       </div>
     </div>
     <div class="col-12 " >
-      <textarea class="input-text"
-             {{is_required validation.required}}
-             data-min-bytes="{{validation.min_length}}"
-             data-max-bytes="{{validation.max_length}}"
-             type='text'
-             name="{{data_key_name}}"
-             value="{{value}}" >
+      <textarea class="input-text-area" {{is_required validation.required}}
+                data-min-bytes="{{validation.min_length}}" data-max-bytes="{{validation.max_length}}"
+                type='text' name="{{data_key_name}}">{{value}}
       </textarea>
     </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
