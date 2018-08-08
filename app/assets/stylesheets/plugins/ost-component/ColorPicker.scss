@@ -1,0 +1,22 @@
+.ost-spectrum{
+  &.sp-replacer{
+    border: solid 0.5px #d3e3e5;
+    background: transparent;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    padding: 0;
+  }
+  .sp-preview{
+    margin-right: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: none;
+  }
+
+
+  .sp-dd{
+    display: none;
+  }
+}

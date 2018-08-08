@@ -1,18 +1,32 @@
-<script type="text/x-handlebars-template" id="ost-color-picker">
-  <div class="color-picker-wrapper">
-      <div class="form-group">
-        <div class="col">
-          <label class="form-lable">{{label}</label>
-        </div>
-        <div class="col">
-          <input type='text' name="{{name}}"  {{required}} value="{{value}}" />
-        </div>
-        <div class="invalid-feedback" data-forname="{{name}}"></div>
+<div class="form-group row tinymce-wrap">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-10">
+        <label class="form-label">
+          {{label}}
+        </label>
       </div>
+      <div class="col-2 text-right">
+        <input type='text' id="ost-spectrum" name="color-picker" hidden/>
+      </div>
+    </div>
   </div>
-</script>
+</div>
 
 
-<script type="text/javascript">
 
-</script>
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function(){
+      $("#ost-spectrum").spectrum({
+        color: "#e4b030",
+        showInput: true,
+        className: "ost-spectrum",
+        showInitial: true,
+        showPalette: false,
+        preferredFormat: "rgb",
+        hideAfterPaletteSelect:true
+      });
+    })
+  </script>
+<%end%>
