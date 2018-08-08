@@ -128,7 +128,7 @@
        },
 
        //form_data
-       'value'          : "dummy.path"
+       'value'          : "https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-news/ost-fanin.jpg"
      },
 
      richTextEditor : {

@@ -45,7 +45,12 @@
       transform: rotate(0deg) ;
     }
   }
-  .fav-svg{
+  .edit-svg{
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+  }
+  .upload-svg{
     cursor: pointer;
     height: 22px;
     width: 22px;

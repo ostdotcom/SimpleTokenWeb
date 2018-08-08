@@ -1,11 +1,11 @@
 <script type="text/x-handlebars-template" id="ost-input-file">
-  <div class="form-group row ost-file-uploader-wrap">
-    <div class="col-6">
-      <div class="form-label align-items-center">
-        <span>{{label}}</span>
-        {{#ifTooltip tooltip}}
-          <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='ml-2'>
-            <svg class="svg"  width="20px" height="20px">
+  <div class="form-group ost-file-uploader-wrap row border-bottom">
+      <div class="col-9 align-self-center">
+        <div class="form-label mb-0">
+          <label class="align-middle mb-0">{{label}}</label>
+          {{#ifTooltip tooltip}}
+          <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='config-info-icon align-middle'>
+            <svg class="config-info-icon">
               <switch>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
               </switch>
@@ -14,27 +14,36 @@
           {{/ifTooltip}}
         </div>
       </div>
-    </div>
-    <div class="col-2 text-right align-self-center">
-      <label class="input-label-wrapper mb-0" for="{{get_input_id data_key_name}}" title="{{title}}">
-        <svg class="fav-svg align-middle">
-          <switch>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cms-fav-icon-logo"></use>
-          </switch>
-        </svg>
-      </label>
-      <input id="{{get_input_id data_key_name true}}"
-             data-get-signed-url="{{signed_url}}"
-             class="file-upload-input"
-             {{is_required validation.required}}
-             data-min-bytes="{{validation.min_bytes}}"
-             data-max-bytes="{{validation.max_bytes}}"
-             accept="{{getAccept validation.accept}}"
-             type='file'
-             name="{{data_key_name}}"
-             value="{{value}}" />
-    </div>
+      <div class="col-3 text-right align-self-center">
+        <label class="input-label-wrapper mb-0" for="{{get_input_id data_key_name}}" title="{{title}}">
+          {{#ifFilePath value}}
+            <img class="file-uploaded-img" src="{{value}}" height="25" width="25"/>
+            <svg class="edit-svg align-middle">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#edit-logo"></use>
+              </switch>
+            </svg>
+            {{else}}
+            <svg class="upload-svg align-middle">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#upload-logo"></use>
+              </switch>
+            </svg>
+          {{/ifFilePath}}
+        </label>
+        <input id="{{get_input_id data_key_name true}}"
+               data-get-signed-url="{{signed_url}}"
+               class="file-upload-input"
+        {{is_required validation.required}}
+        data-min-bytes="{{validation.min_bytes}}"
+        data-max-bytes="{{validation.max_bytes}}"
+        accept="{{getAccept validation.accept}}"
+        type='file'
+        name="{{data_key_name}}"
+        value="{{value}}" />
+      </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
+  </div>
 </script>
 
 <script type="unknown" id="j-processing-icon">
@@ -45,7 +54,7 @@
   <img class="img-fluid file-uploaded-img" src="{{img_src}}"/>
   <svg class="fav-svg align-middle">
     <switch>
-      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cms-fav-icon-logo"></use>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#edit-logo"></use>
     </switch>
   </svg>
 </script>
@@ -61,6 +70,14 @@
         }
         return "";
       });
+
+      Handlebars.registerHelper('ifFilePath', function( data, options ) {
+        if( typeof data == "string" ){
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      });
+
     });
   </script>
 <%end%>
