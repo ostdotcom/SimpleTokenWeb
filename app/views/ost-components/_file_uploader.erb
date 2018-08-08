@@ -11,12 +11,13 @@
               </switch>
             </svg>
           </span>
-        {{/ifTooltip}}
+          {{/ifTooltip}}
+        </div>
       </div>
     </div>
-    <div class="col-6 text-right" >
-      <label class="input-label-wrapper" for="{{get_input_id data_key_name}}" title="{{title}}">
-        <svg class="fav-svg align-middle" >
+    <div class="col-2 text-right align-self-center">
+      <label class="input-label-wrapper mb-0" for="{{get_input_id data_key_name}}" title="{{title}}">
+        <svg class="fav-svg align-middle">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cms-fav-icon-logo"></use>
           </switch>
@@ -34,7 +35,6 @@
              value="{{value}}" />
     </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
-  </div>
 </script>
 
 <script type="unknown" id="j-processing-icon">
