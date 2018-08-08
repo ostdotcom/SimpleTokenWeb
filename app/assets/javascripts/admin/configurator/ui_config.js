@@ -189,6 +189,18 @@
        },
        //form_data
        'value'          : "light"
+     },
+
+     toggleInput : {
+       'label'          : "toggleInput",
+       'tooltip'        : "some tooltip",
+       "inputType"      : inputTypesEnum.toggle,
+
+       //Backend
+       'data_kind'      : "number",
+       'data_key_name'  : "toggle_input",
+       //form_data
+       'value'          : 1
      }
 
    }

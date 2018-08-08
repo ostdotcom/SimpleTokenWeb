@@ -155,7 +155,7 @@
     },
 
     onFileUploadSuccess : function ( data , jEl ) {
-      var imgSrc   = data.src ,
+      var imgSrc   = data.src ,  //TODO
           jWrapper = jEl.closest( oThis.sParent ).find( oThis.sLabelWrap),
           jMarkup  = handlebarHelper.getMarkup( oThis.sUploadedImageWrap ,  {'img_src' : imgSrc } )
       ;

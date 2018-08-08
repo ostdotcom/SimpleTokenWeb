@@ -6,6 +6,7 @@
   *= require plugins/ost-component/RichTextEditor
   *= require plugins/ost-component/FileUploader
   *= require plugins/ost-component/ColorPicker
+  *= require plugins/ost-component/InputToggle
   *= require plugins/ost-component/Footer
   *= require plugins/ost-component/Common
   *= require admin/common/selectpicker

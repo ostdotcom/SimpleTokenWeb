@@ -1,0 +1,28 @@
+<script type="text/x-handlebars-template" id="ost-input-toggle">
+  <div class="row form-group ost-input-toggle-wrap">
+    <div class="col-8">
+      <div class="form-label">{{label}}</div>
+    </div>
+    <div class="col-4">
+      <label class="switch">
+        <input type="checkbox" name="{{data_key_name}}" value="{{value}}" {{isToggleChecked value}} />
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
+  </div>
+</script>
+
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function () {
+      Handlebars.registerHelper('isToggleChecked', function( value ,  options ) {
+        if( value == 1 ){
+          return "checked";
+        }
+        return "";
+    });
+    });
+  </script>
+<%end%>
