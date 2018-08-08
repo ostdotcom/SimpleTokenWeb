@@ -1,9 +1,10 @@
 import { Component, AfterViewInit , ViewChild, OnInit} from '@angular/core';
 import { TableComponent} from "../table/table.component";
-import { PageBaseComponentComponent } from '../page-base-component/page-base-component.component';
+import { PageBaseComponent } from '../page-base-component/page-base-component.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppConfigService } from '../services/app-config.service';
 
-declare var $: any; 
+declare var $: any;
 
 @Component({
   selector: 'admin-dashboard',
@@ -11,16 +12,16 @@ declare var $: any;
   styleUrls: ['./admin-dashboard.component.scss']
 })
 
-export class AdminDashboardComponent extends PageBaseComponentComponent implements OnInit{
+export class AdminDashboardComponent extends PageBaseComponent implements OnInit{
+
+  @ViewChild(TableComponent) tableComponent;
+  showInviteUser: boolean = false;
+  user:any;
 
   constructor( activatedRoute: ActivatedRoute,
-               router: Router,) { 
-    super( activatedRoute , router); 
+               router: Router, appConfigService: AppConfigService) {
+    super( activatedRoute , router , appConfigService );
   }
-
-  showInviteUser: boolean = false;
-  user:any; 
-  @ViewChild(TableComponent) tableComponent;
 
   ngOnInit(){
     this.activatedRoute.queryParams.subscribe((queryParams:any) => {
@@ -28,7 +29,7 @@ export class AdminDashboardComponent extends PageBaseComponentComponent implemen
       this.setQueryParams({});
      });
   }
- 
+
   hideInviteUserSection(){
     this.showInviteUser = false;
   }
@@ -38,25 +39,25 @@ export class AdminDashboardComponent extends PageBaseComponentComponent implemen
   }
 
   onDeleteRow( user ){
-    this.user = user; 
-    $('.modal').modal('hide'); 
-    $('#deleteAdminUserModal').modal('show'); 
+    this.user = user;
+    $('.modal').modal('hide');
+    $('#deleteAdminUserModal').modal('show');
   }
 
   onResendInvite( user ){
-    this.user = user; 
-    $('.modal').modal('hide'); 
-    $('#resendInviteModal').modal('show'); 
+    this.user = user;
+    $('.modal').modal('hide');
+    $('#resendInviteModal').modal('show');
   }
 
   onResetMfa( user ){
     this.user = user;
-    $('.modal').modal('hide'); 
-    $('#resetMfaModal').modal('show');  
+    $('.modal').modal('hide');
+    $('#resetMfaModal').modal('show');
   }
 
   onDeleteRowSucces( user ){
-    this.tableComponent.onDeleteRowSuccess( user['id']); 
+    this.tableComponent.onDeleteRowSuccess( user['id']);
   }
 
   onResendInviteSucces( user ){

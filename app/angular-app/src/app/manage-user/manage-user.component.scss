@@ -2,8 +2,11 @@
 .kyc-header{
   color: $yellow-500;
 }
-
-.search-input-wrapper{
+.search-wrapper{
+  @media (min-width: map-get($grid-breakpoints , 'lg')) {
+    max-width: 300px;
+  }
+  .search-input-wrapper{
     position: relative;
     min-width: 100px;
     .form-control{
@@ -14,3 +17,6 @@
         padding: 0;
     }
 }
+
+}
+

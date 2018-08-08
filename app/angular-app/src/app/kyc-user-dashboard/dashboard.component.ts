@@ -5,7 +5,7 @@ import { RequestStateHandlerService } from '../services/request-state-handler.se
 import {OstHttp} from '../services/ost-http.service';
 import {TableComponent} from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
-import { PageBaseComponentComponent } from '../page-base-component/page-base-component.component';
+import { PageBaseComponent } from '../page-base-component/page-base-component.component';
 
 declare var $: any;
 
@@ -14,7 +14,7 @@ declare var $: any;
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss', '../table/table.component.scss' ]
 })
-export class DashboardComponent extends PageBaseComponentComponent implements OnInit {
+export class DashboardComponent extends PageBaseComponent implements OnInit {
 
   @ViewChild(TableComponent) table;
 
@@ -63,7 +63,7 @@ export class DashboardComponent extends PageBaseComponentComponent implements On
     });
 
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
-      this.resetDownLoadCsvModal(); 
+      this.resetDownLoadCsvModal();
     });
   }
 

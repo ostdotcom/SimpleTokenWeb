@@ -1,133 +1,108 @@
 <%
-   tick_image = "<img src='//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-green-check-mark.svg' width='20'/>";
    powered_by = [
      {
-      col1: "Staging (KYC + AML/CTF + Eth whitelist)",
-      col2: tick_image,
-      col3: tick_image,
+      col1: "User Registrations",
+      col2: "400 user registrations ",
+      col3: "5,000 user registrations Included",
       bg_color: 'active'
      },
      {
-      col1: "Easy-KYC Dashboard",
-      col2: tick_image,
-      col3: tick_image,
+      col1: "Secure storage",
+      col2: "3 months",
+      col3: "3 months</br> <small class='font-weight-light'>12 Months Secure Storage included with any Add-On</small>",
       bg_color: 'transparent'
      },
      {
-      col1: "AML/CTF record checks",
-      col2: tick_image,
-      col3: tick_image,
+      col1: "Encryption",
+      col2: "256-bit AES and SSL/TLS ",
+      col3: "256-bit AES and SSL/TLS ",
       bg_color: 'active'
      },
      {
-      col1: "Statutory record retention",
-      col2: tick_image,
-      col3: tick_image,
+      col1: "Support",
+      col2: "Email Support",
+      col3: "Priority Support </br><small class='font-weight-light'>Email, Skype and Phone</small>",
       bg_color: 'transparent'
      },
      {
       col1: "ETH Whitelisting",
-      col2: tick_image,
-      col3: tick_image,
+      col2: "Included",
+      col3: "Available as Add-On (+$1)",
       bg_color: 'active'
      },
      {
-      col1: "256-bit AES and SSL/TLS encryption",
-      col2: tick_image,
-      col3: tick_image,
+      col1: "Customisable Front-End",
+      col2: "Included",
+      col3: "Available as Add-On (+$1)",
       bg_color: 'transparent'
      },
      {
-       col1: "Pepo Campaigns (Email Marketing)",
-       col2: tick_image,
-       col3: tick_image,
+       col1: "Pricing",
+       col2: "Flat rate <br/> <span class='price-text'>$2,500</span> <br/> Prepayments in $OST",
+       col3: "Starts at <br/> <span class='price-text'>$2</span><small class='price-text-small'>Per User Submission</small><br/> Prepayments in $OST",
        bg_color: 'active'
-     },
-     {
-       col1: "Admin Logins w/ Two-Factor Auth",
-       col2: "10 Logins",
-       col3: "Unlimited Logins",
-       bg_color: 'transparent'
-     },
-     {
-       col1: "Priority Support",
-       col2: "Email Support",
-       col3: "Email & Phone/Skype Support",
-       bg_color: 'active'
-     },
-     {
-       col1: "Automated Face Recognition",
-       col2: "-",
-       col3: "Coming Soon",
-       bg_color: 'transparent'
-     },
-     {
-       col1: "Minimum Purchase",
-       col2: "10,000 API Calls",
-       col3: "25,000 API Calls",
-       bg_color: 'active'
-     },
-     {
-       col1: "Each Additional API Call",
-       col2: "6 OST",
-       col3: "10 OST",
-       bg_color: 'transparent'
      }
    ]
 %>
 <section id="pricing" class="container-powered">
+
   <div class="container-fluid">
     <div class="row powered-desc">
-      <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
         <h2>
           <span style="vertical-align: bottom">Powered by</span>
           <img src="//d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-logo-white.svg" height="48" />
         </h2>
-        <p>Two great ostKYC packages available depending on your needs.
-          Pricing is in $OST based on your volume of API calls. <a href="https://coinmarketcap.com/currencies/simple-token/" class="read-more" target="_blank" title="View current $OST Price">View current $OST Price</a>.</p>
-      </div>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-            <table class="table table-tabs">
-              <thead>
-              <tr>
-                <th></th>
-                <th>
-                  <span class="title">LITE</span>
-                  <span class="price">6<sup>OST</sup></span>
-                  <span class="desc">per API call</span>
-                </th>
-                <th>
-                  <span class="title">PLUS</span>
-                  <span class="price">10<sup>OST</sup></span>
-                  <span class="desc">per API call</span>
-                </th>
-              </tr>
-              </thead>
-            </table>
+        <p>OST KYC offers flexible features to run your ICO and charges in OST.</p>
+        <div class="row table-tabs">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <div class="d-flex item active title">
+              <div class="align-self-center">Presale Plan</div>
+            </div>
+          </div>
+          <div class="col-4 p-0">
+            <div class="d-flex item transparent title">
+              <div class="align-self-center">Public Sale plan</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-        <table class="table data-rows">
-          <tbody>
-          <% powered_by.each_with_index do|data, index| %>
-            <tr class="<%= data[:bg_color] %>">
-              <td><%= data[:col1] %></td>
-              <td><%= raw data[:col2] %></td>
-              <td><%= raw data[:col3] %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+  </div>
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+          <div class="row data-rows">
+            <div class="col-4 p-0">
+              <% powered_by.each_with_index do|data, index| %>
+                <div class="<%= data[:bg_color] %> d-flex item">
+                  <div class="align-self-center p-0"><%= raw data[:col1] %></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-4">
+              <% powered_by.each_with_index do|data, index| %>
+                <div class="<%= data[:bg_color] %> d-flex item">
+                  <div class="align-self-center p-0 font-weight-normal"><%= raw data[:col2] %></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-4 p-0 last-div">
+              <% powered_by.each_with_index do|data, index| %>
+                <div class="<%= data[:bg_color] %> d-flex item">
+                  <div class="align-self-center p-0 font-weight-normal"><%= raw data[:col3] %></div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
+
+    <div class="text-center mt-5">
+      <a href="#contactus" class="btn btn-primary smooth-scroll" title="Get Started">Get Started</a>
     </div>
-    <div class="text-center">
-      <a href="#contactus" class="btn btn-primary btn-gold square-btn smooth-scroll" title="Contact Us">Contact Us</a>
-    </div>
+
   </div>
 </section>
 

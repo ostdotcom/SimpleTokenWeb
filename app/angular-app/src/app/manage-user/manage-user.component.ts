@@ -5,7 +5,7 @@ import { RequestStateHandlerService } from '../services/request-state-handler.se
 import {OstHttp} from '../services/ost-http.service';
 import {TableComponent} from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
-import { PageBaseComponentComponent } from '../page-base-component/page-base-component.component';
+import { PageBaseComponent } from '../page-base-component/page-base-component.component';
 
 declare var $: any;
 
@@ -15,7 +15,7 @@ declare var $: any;
   templateUrl: './manage-user.component.html',
   styleUrls: ['./manage-user.component.scss']
 })
-export class ManageUserComponent extends PageBaseComponentComponent implements OnInit {
+export class ManageUserComponent extends PageBaseComponent implements OnInit {
 
   @ViewChild(TableComponent) tableComponent;
 
@@ -85,7 +85,11 @@ export class ManageUserComponent extends PageBaseComponentComponent implements O
   }
 
   onDeleteRowSucces(e){
-    this.tableComponent.getTableData();
+    if( this.q ){
+      this.q = ""; //Reset the search , the table component will by default get all table data  
+    }else{
+      this.tableComponent.getTableData();
+    }
   }
 
 }

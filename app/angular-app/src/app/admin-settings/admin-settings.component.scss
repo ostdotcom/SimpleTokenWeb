@@ -1,0 +1,7 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.dynamic-component {
+  @media (min-width: map-get($grid-breakpoints , 'md')) {
+    padding: 0px 35px 20px;
+  }
+}

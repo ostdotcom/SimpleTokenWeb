@@ -1,0 +1,113 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.admin-settings {
+  .desktop-menus-list {
+    background-color: $green-1000;
+    min-height: 100vh;
+
+    .desktop-menu {
+      height: 56px;
+      outline: none;
+      border-bottom: solid 1px $custom-grey-7;
+      cursor: pointer;
+      &.first {
+        border-top: solid 1px $custom-grey-7;
+      }
+      svg {
+        vertical-align: top;
+      }
+    }
+  }
+
+  .mobile-list {
+    .btn-style {
+      text-align: left;
+      color: $yellow-300;
+      border-bottom: solid 1px $custom-grey-7;
+      letter-spacing: 3px;
+      font-size: 16px;
+      background-color: $white;
+      .img-topbar-style {
+        float: right;
+      }
+    }
+    svg {
+      vertical-align: top;
+    }
+    .down-arrow-icon,
+    .up-arrow-icon {
+      pointer-events: none;
+        stroke: #E4B030;
+    }
+
+    .mobile-menus-list {
+      background-color: $green-1000;
+
+      .desktop-menu {
+        height: 56px;
+        outline: none;
+        border-top: solid 1px $custom-grey-7;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .admin-dashboard {
+    display: inline;
+  }
+  .admin-dashboard-selected {
+    display: none;
+  }
+  .profile {
+    display: inline;
+  }
+  .profile-selected {
+    display: none;
+  }
+  .developer {
+    display: inline;
+  }
+  .developer-selected {
+    display: none;
+  }
+  .ai-icon {
+    display: inline;
+  }
+  .ai-selected-icon {
+    display: none;
+  }
+  .user-dashboard {
+    fill: $blue-1100;
+  }
+
+  .selected {
+    background-color: $blue-1100;
+    color: $white;
+    .admin-dashboard {
+      display: none;
+    }
+    .admin-dashboard-selected {
+      display: inline;
+    }
+    .profile {
+      display: none;
+    }
+    .profile-selected {
+      display: inline;
+    }
+    .developer {
+      display: none;
+    }
+    .developer-selected {
+      display: inline;
+    }
+    .ai-icon {
+      display: none;
+    }
+    .ai-selected-icon {
+      display: inline;
+    }
+    .user-dashboard {
+      fill: $white;
+    }
+  }
+}

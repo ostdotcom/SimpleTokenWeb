@@ -1,0 +1,40 @@
+<div class="input-group slider-with-input d-flex align-items-center {{className}}">
+    <input class="ost-slider" type="number" name="{{name + '_slider'}}" />
+    
+    <div class="slider-input-right ml-2">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend" *ngIf="prefix">
+            <span class="input-group-text">{{prefix}}</span>
+        </div>
+        <input type="number"
+                class="form-control ost-slider-display-input display-4" 
+                [min]="min" 
+                [max]="max" 
+                [disabled]="disabled" 
+                name="{{name + '_display'}}"
+                (blur)="onSliderInput( value )"
+                [(ngModel)]="value" />
+        <div class="input-group-append" *ngIf="postfix">
+            <span class="input-group-text">{{postfix}}</span>
+        </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="d-flex align-items-center range-display-wrap {{ hasInput ? 'has-input' : 'no-input' }}" >
+    <div class="range-display">
+    <span class="text-left">
+        <ng-container *ngIf="prefix">{{prefix}}</ng-container>
+        {{min}}
+        <ng-container *ngIf="postfix">{{postfix}}</ng-container>
+    </span>
+    <span class="text-right float-right">
+        <ng-container *ngIf="prefix">{{prefix}}</ng-container>
+        {{max}}
+        <ng-container *ngIf="postfix">{{postfix}}</ng-container>
+    </span>
+    </div>
+</div>
+
+<ost-form-error-handler [errorFor]="name" [serverError]="serverError"></ost-form-error-handler>

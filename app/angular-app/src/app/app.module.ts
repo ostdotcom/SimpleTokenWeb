@@ -44,7 +44,18 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageUserHeaderComponent } from './manage-user/manage-user-header/manage-user-header.component';
 import { ManageUserRowComponent } from './manage-user/manage-user-row/manage-user-row.component';
 import { ManageUserModalComponent } from './manage-user/manage-user-modal/manage-user-modal.component';
-import { PageBaseComponentComponent } from './page-base-component/page-base-component.component';
+import { PageBaseComponent } from './page-base-component/page-base-component.component';
+import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
+import { AdminSettingMenusComponent } from './admin-settings/admin-setting-menus/admin-setting-menus.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
+import { DevelopersIntegrationComponent } from './developers-integration/developers-integration.component';
+import { OstFormErrorHandlerComponent } from './ost-form-error-handler/ost-form-error-handler.component';
+import { ArtificialIntelligenceComponent } from './artificial-intelligence/artificial-intelligence.component';
+import { OstSliderComponent } from './ost-slider/ost-slider.component';
+import { ConfrimationModalComponent } from './artificial-intelligence/confrimation-modal/confrimation-modal.component';
+import { KycCaseAlertComponent } from './kyc-case/kyc-case-alert/kyc-case-alert.component';
+import { UtilitiesService } from './services/utilities.service';
 
 
 
@@ -90,13 +101,51 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ManageUserHeaderComponent,
     ManageUserRowComponent,
     ManageUserModalComponent,
-    PageBaseComponentComponent
+    PageBaseComponent,
+    AdminSettingsComponent,
+    AdminSettingMenusComponent,
+    ProfileComponent,
+    ChangePasswordModalComponent,
+    DevelopersIntegrationComponent,
+    OstFormErrorHandlerComponent,
+    ArtificialIntelligenceComponent,
+    OstSliderComponent,
+    ConfrimationModalComponent,
+    KycCaseAlertComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
+
+      {
+        path: 'admin',
+        component: AdminSettingsComponent,
+        children: [
+          {
+            path: 'settings/admin',
+            component: AdminDashboardComponent
+          },
+          {
+            path: 'settings/user',
+            component: ManageUserComponent
+          },
+          {
+            path:'settings/profile',
+            component: ProfileComponent
+          },
+          {
+            path: 'settings/developer-integrations',
+            component: DevelopersIntegrationComponent
+          },
+          {
+            path: 'settings/artificial-intelligence',
+            component: ArtificialIntelligenceComponent
+          }
+       ]
+
+      },
       {
         path: 'admin/dashboard',
         component: DashboardComponent
@@ -104,14 +153,6 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
       {
         path: 'admin/case-id/:id',
         component: KycCaseComponent
-      },
-      {
-        path: 'admin/admin-user/dashboard',
-        component: AdminDashboardComponent
-      },
-      {
-        path: 'admin/user/dashboard',
-        component: ManageUserComponent
       }
     ]),
     ReactiveFormsModule
@@ -127,7 +168,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 OstHttp,
                 AppConfigService,
                 RequestStateHandlerService,
-                ScrollTopService
+                ScrollTopService,
+                UtilitiesService
+
             ],
   bootstrap: [AppComponent]
 })

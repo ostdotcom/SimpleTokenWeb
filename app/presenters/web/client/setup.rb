@@ -97,6 +97,10 @@ module Web
         common_data['fb_pixel']
       end
 
+      def header_favicon_src
+        common_data['header']['favicon_src'] || common_data['header']['logo']['src']
+      end
+
       def header_logo
         common_data['header']['logo']
       end
@@ -155,7 +159,7 @@ module Web
       def custom_meta_tags
         {
             meta: {
-              account_name: account_name
+                account_name: account_name
             }
         }
       end

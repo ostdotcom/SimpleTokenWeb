@@ -21,215 +21,78 @@
           </ol>
         </nav>
 
-        <ost-alert *ngIf="caseDetails.kyc_status == 'denied'" [alertStyleClass]="'alert-danger'">
-          <ng-container class="svg-container">
-            <svg class="svg alert-error-svg">
-              <switch>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon"></use>
-              </switch>
-            </svg>
-          </ng-container>
-          <ng-container class="alert-text" *ngIf="caseDetails.cynopsis_status == 'rejected'; else adminDenied">
-            <span class="ml-2">AML/CTF status denied, this case cannot be reopned</span>
-          </ng-container>
-          <ng-template #adminDenied>
-            <ng-container class="alert-text" *ngIf="caseDetails.admin_status == 'denied'">
-              <span class="ml-2">Case denied by Admin</span>
-            </ng-container>
-          </ng-template>
-        </ost-alert>
+        <!--kyc-case-alert-->
+        <kyc-case-alert [response]="response"></kyc-case-alert>
+        <!--/kc-case-alert -->
 
-        <ng-container *ngIf="caseDetails.kyc_status == 'approved'">
-          <ng-container *ngIf="appConfig.getClientSetup().has_whitelist_setup == true; else noWhitelistSetup">
-
-            <ost-alert *ngIf="caseDetails.whitelist_status == 'unprocessed' || caseDetails.whitelist_status == 'started'" [alertStyleClass]="'alert-warning'">
-              <ng-container class="svg-container">
-                <svg class="svg alert-warning-svg">
-                  <switch>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-pending-icon"></use>
-                  </switch>
-                </svg>
-              </ng-container>
-              <ng-container class="alert-text">
-                <span class="ml-2">Case approved - whitelisting in progress</span>
-              </ng-container>
-            </ost-alert>
-
-            <ost-alert *ngIf="caseDetails.whitelist_status == 'done' && caseDetails.whitelist_confirmation_pending" [alertStyleClass]="'alert-warning'">
-              <ng-container class="svg-container">
-                <svg class="svg alert-warning-svg">
-                  <switch>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-pending-icon"></use>
-                  </switch>
-                </svg>
-              </ng-container>
-              <ng-container class="alert-text">
-                <span class="ml-2">Case approved - whitelisting done, awaiting confirmation</span>
-              </ng-container>
-            </ost-alert>
-
-            <ost-alert *ngIf="caseDetails.whitelist_status == 'done' && !caseDetails.whitelist_confirmation_pending " [alertStyleClass]="'alert-success'">
-              <ng-container class="svg-container">
-                <svg class="svg alert-success-svg">
-                  <switch>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-success-icon"></use>
-                  </switch>
-                </svg>
-              </ng-container>
-              <ng-container class="alert-text">
-                <span class="ml-2">The case has been approved</span>
-              </ng-container>
-            </ost-alert>
-
-            <ost-alert *ngIf="caseDetails.whitelist_status == 'failed'" [alertStyleClass]="'alert-warning'">
-              <ng-container class="svg-container">
-                <svg class="svg alert-warning-svg">
-                  <switch>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
-                  </switch>
-                </svg>
-              </ng-container>
-              <ng-container class="alert-text">
-                <span class="ml-2">Case approved - whitelisting failed</span>
-              </ng-container>
-            </ost-alert>
-
-          </ng-container>
-
-          <ng-template #noWhitelistSetup>
-            <ost-alert [alertStyleClass]="'alert-success'">
-              <ng-container class="svg-container">
-                <svg class="svg alert-success-svg">
-                  <switch>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-success-icon"></use>
-                  </switch>
-                </svg>
-              </ng-container>
-              <ng-container class="alert-text">
-                <span class="ml-2">The case has been approved</span>
-              </ng-container>
-            </ost-alert>
-          </ng-template>
-        </ng-container>
-
-
-        <ng-container *ngIf="caseDetails.kyc_status == 'pending'">
-
-          <ng-container *ngIf="caseDetails.admin_status == 'qualified'; else issueReported">
-            <ost-alert [alertStyleClass]="'alert-warning'">
-              <ng-container class="svg-container">
-                <svg class="svg alert-warning-svg">
-                  <switch>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-pending-icon"></use>
-                  </switch>
-                </svg>
-              </ng-container>
-              <ng-container class="alert-text">
-                <span class="ml-2">Case approved by admin and is awaiting AML/CTF action</span>
-              </ng-container>
-            </ost-alert>
-          </ng-container>
-
-          <ng-template #issueReported>
-            <ost-alert *ngIf="caseDetails.last_issue_email_sent_humanized.length > 0;" [alertStyleClass]="'alert-warning'">
-              <ng-container class="svg-container">
-                <svg class="svg alert-warning-svg">
-                  <switch>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
-                  </switch>
-                </svg>
-              </ng-container>
-              <ng-container class="alert-text">
-                <span class="ml-2">Issue reported - {{caseDetails.last_issue_email_sent_humanized}} email sent.</span>
-              </ng-container>
-            </ost-alert>
-          </ng-template>
-
-        </ng-container>
-
-        <div class="row">
-          <div class="col-12 col-md-4 mb-3">
-            <div class="card box-border">
+        <div class="row mt-4">
+          <div class="col-12 col-md-4 mb-3 d-flex">
+            <div class="card box-border w-100">
               <div class="card-body">
-                <div>
-                  <span class="key">Admin Status : </span>
-                  <span class="value">{{caseDetails.admin_status}}</span>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-inline-block">
+                    <span class="key">Status : </span>
+                    <span class="value {{adminStatusConfig.class}}">{{adminStatusConfig.text}}</span>
+                  </div>
+                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#logsModal" (click)="initLogTabel()">
+                      LOGS
+                  </span>
                 </div>
                 <div class="mt-3 d-flex justify-content-between align-items-center">
-
-                  <div>
+                  <div class="d-inline-block">
                     <span class="key">AML/CTF Status : </span>
-                    <span class="value">{{caseDetails.cynopsis_status}}</span>
+                    <span class="value {{amlCtfStatusConfig.class}}">{{amlCtfStatusConfig.text}}</span>
                   </div>
-
-                  <span *ngIf="caseDetails.retry_cynopsis == 1" class="button-UI text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>
-
+                  <span *ngIf="caseDetails.retry_cynopsis == 1" class="button-UI text-right text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>
                 </div>
-
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-4 mb-3">
-            <div class="card box-border">
+          <div class="col-12 col-md-4 mb-3 d-flex">
+            <div class="card box-border w-100">
               <div class="card-body">
-
                 <div>
-
-                  <span class="key">Submission : </span>
-                  <span *ngIf="caseDetails.is_re_submitted == 1;then reSubmitted else newSubmission"></span>
-                  <ng-template #newSubmission>
-                    <span class="value blue-bar">New Submission</span>
-                  </ng-template>
-                  <ng-template #reSubmitted>
-                    <span class="value red-bar">Re-Submitted</span>
-                  </ng-template>
-
+                  <span class="key">Facial Recognition Match : </span>
+                  <span class="value {{FRconfig.class}}"  class="value">{{FRconfig.text}}</span>
                 </div>
-
                 <div class="mt-3 d-flex justify-content-between align-items-center">
-
+                  <div class="d-inline-block">
+                    <span class="key">Optical Character Recognition: </span>
+                    <span  class="value {{OCRconfig.class}}">{{OCRconfig.text}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mb-3 d-flex">
+            <div class="card box-border w-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
                   <div class="d-inline-block">
                     <span class="key">Duplicate Status : </span>
                     <span *ngIf="caseDetails.is_duplicate == 1;then duplicate else original"></span>
                     <ng-template #original>
-                      <span class="value blue-bar">Original</span>
+                      <span class="value green-bar">Original</span>
                     </ng-template>
                     <ng-template #duplicate>
                       <span class="value red-bar">Duplicate</span>
                     </ng-template>
                   </div>
-
                   <span *ngIf="caseDetails.is_duplicate == 1" class="button-UI text-uppercase" data-toggle="modal" data-target="#detailsModal"
-                    (click)="initDuplicateTable()">
-                    view details
+                      (click)="initDuplicateTable()">
+                      View Details
                   </span>
                 </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-4 mb-3">
-            <div class="card box-border">
-              <div class="card-body">
-
-                <div>
-                  <span class="key">Reg IP/Country : </span>
-                  <span class="value">{{userDetails.geoip_data.ip_address}}
-                    <ng-container *ngIf="userDetails.geoip_data.country">/</ng-container> {{userDetails.geoip_data.country}}</span>
+                <div class="mt-3 d-inline-block">
+                    <span class="key">Submission : </span>
+                    <span *ngIf="caseDetails.is_re_submitted == 1;then reSubmitted else newSubmission"></span>
+                    <ng-template #newSubmission>
+                      <span class="value green-bar">New Submission</span>
+                    </ng-template>
+                    <ng-template #reSubmitted>
+                      <span class="value red-bar">Re-Submitted</span>
+                    </ng-template>
                 </div>
-                <div class="mt-3 d-flex justify-content-between align-items-center">
-                  <div class="d-inline-block">
-                    <span class="key">Agent : </span>
-                    <span class="value"> {{caseDetails.last_acted_by}} </span>
-                  </div>
-
-                  <span class="button-UI text-uppercase" data-toggle="modal" data-target="#logsModal" (click)="initLogTabel()">
-                    view logs
-                  </span>
-
-                </div>
-
-
               </div>
             </div>
           </div>
@@ -237,7 +100,13 @@
 
         <div class="row">
           <div class="col-12">
-            <h5 class='customized-h5 pt-3 pb-1'>Submitted details vs ID Image</h5>
+            <h5 class='customized-h5 pt-3 pb-1 d-inline-block'>Submitted details vs ID Image</h5>
+            <div class="d-inline-block display-3">( Reg IP : {{userDetails.geoip_data.ip_address}} 
+              <ng-container *ngIf="userDetails.geoip_data.country">/</ng-container> 
+                <span class="geoip-info-country">
+                  {{userDetails.geoip_data.country}} )
+                </span>
+            </div>
           </div>
           <div class="col-12 mb-3">
             <div class="card-group">
@@ -248,27 +117,82 @@
                   <div class='row'>
 
                     <div class="card-col col-12 col-sm-6" *ngIf='userDetails.first_name'>
-                      <div class="label">First Name</div>
+                      <div class="label">First Name
+                        <span data-toggle="tooltip" data-placement="right" [title]="'OCR Unmatch : First Name'">
+                          <svg *ngIf=" isOCRFailed('first_name')"
+                            class="error-info-icon"
+                            height="12px" width="12px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#error-info-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
+                      </div>
                       <div class="value">{{userDetails.first_name}}</div>
                     </div>
                     <div class="card-col col-12 col-sm-6" *ngIf='userDetails.last_name'>
-                      <div class="label">Last Name</div>
-                      <div class="value">{{userDetails.last_name}}</div>
-                    </div>
-                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.last_name'>
-                      <div class="label">Birth Date</div>
-                      <div class="value">{{userDetails.birthdate}}</div>
+                      <div class="label">Last Name
+                        <span data-toggle="tooltip" data-placement="right" [title]="'OCR Unmatch : Last Name'">
+                          <svg *ngIf="isOCRFailed('last_name')"
+                            class="error-info-icon"
+                            height="12px" width="12px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#error-info-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
+                      </div>
+                      <div class="value">{{userDetails.last_name}} </div>
                     </div>
                     <div class="card-col col-12 col-sm-6" *ngIf='userDetails.birthdate'>
+                      <div class="label">Birth Date
+                        <span data-toggle="tooltip" data-placement="right" [title]="'OCR Unmatch : Birth Date'">
+                          <svg *ngIf="isOCRFailed('birthdate')"
+                            class="error-info-icon"
+                            height="12px" width="12px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#error-info-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
+                      </div>
+                      <div class="value">{{userDetails.birthdate}} </div>
+                    </div>
+                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.country'>
                       <div class="label">Residence Country</div>
                       <div class="value">{{userDetails.country}}</div>
                     </div>
-                    <div class="card-col col-12 col-sm-6" *ngIf='userDetails.document_id_number'>
-                      <div class="label">Document ID Number</div>
+                    <div class="card-col col-12 col-sm-6 pr-0" *ngIf='userDetails.document_id_number'>
+                      <div class="label">Document ID Number
+                        <span data-toggle="tooltip" data-placement="right" [title]="'OCR Unmatch : Document ID Number'">
+                          <svg *ngIf="isOCRFailed('document_id_number')"
+                            class="error-info-icon"
+                            height="12px" width="12px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#error-info-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
+                      </div>
                       <div class="value">{{userDetails.document_id_number}}</div>
                     </div>
                     <div class="card-col col-12 col-sm-6" *ngIf='userDetails.nationality'>
-                      <div class="label">Nationality</div>
+                      <div class="label">Nationality
+                        <span data-toggle="tooltip" data-placement="right" [title]="'OCR Unmatch : Nationality'">
+                          <svg *ngIf="isOCRFailed('nationality')"
+                            class="error-info-icon"
+                            height="12px" width="12px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#error-info-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
+                      </div>
                       <div class="value">{{userDetails.nationality}}</div>
                     </div>
                     <div class="card-col col-12 col-sm-6" *ngIf='userDetails.email'>
@@ -435,7 +359,7 @@
           </div>
         </div>
 
-        <kyc-log-modal *ngIf="isInitLogTabel" [caseId]='caseId'></kyc-log-modal>
+        <kyc-log-modal *ngIf="isInitLogTabel" [lastActedByName]='caseDetails.last_acted_by' [caseId]='caseId'></kyc-log-modal>
         <kyc-duplicate-details-modal *ngIf="isInitDuplicateTable" [caseId]='caseId'> </kyc-duplicate-details-modal>
 
         <div *ngIf="hasNextPage" class="carousel-nav right py-2 pr-1" [routerLink]="['/admin/case-id/', nextCaseId]" [queryParams]="activatedRoute.snapshot.queryParams">
@@ -508,7 +432,9 @@
       </ng-container>
 
       <ng-container *ngIf="showUpdateEth">
-        <update-ethaddress [caseId]='caseId' (actionSuccessEvent)="onActionSuccess( $event )" (closeEthAddressEvent)="showPageState()">
+        <update-ethaddress [caseId]='caseId'
+                           (actionSuccessEvent)="onActionSuccess( $event )"
+                           (closeEthAddressEvent)="showPageState()">
         </update-ethaddress>
       </ng-container>
     </div>
@@ -544,10 +470,13 @@
   <ng-container class="modal-body-content">
     <h5 class="modal-title">Are you sure you want to reopen this case?</h5>
     <div class="sub-body mt-3">
-      <div>When a case is reopened, User is unwhitelisted.</div>
-      <div class="mt-2">Once the user is qualified, the user will be whitelisted again The user will not be able to take part in the ICO, until
-        the case is closed again.
+      <div *ngIf="appConfig.getClientSetup().has_whitelist_setup == true; else noWhitelistSetup">
+        <div>When a case is reopened, User is unwhitelisted.</div>
+        <div class="mt-2">Once the user is qualified, the user will be whitelisted again.</div>
       </div>
+      <ng-template #noWhitelistSetup>
+        <div>The user will not be able to take part in the ICO, until the case is closed again.</div>
+      </ng-template>
     </div>
   </ng-container>
 </kyc-case-action-modal>

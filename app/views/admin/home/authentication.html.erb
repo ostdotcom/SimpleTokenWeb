@@ -3,29 +3,44 @@
 
 %>
 <%= render :partial => "admin/shared/kyc_loggedin_header" %>
-<div class="container sign-up-form py-5">
+<div class="container mfa-form py-5   ">
   <div class="row">
     <div class="col-12">
       <div class="simple-token-form">
+        <div class="col-12 text-center">
+          <img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/ost-kyc/ost-kyc-jumbotron-logo.svg" width="211">
+        </div>
+
         <h4 class="text-center mt-5 mb-2">Multi Factor Authentication</h4>
 
         <p class="text-center">Please enter an MFA code to complete sign-in.</p>
-        <form class="user-form col-12 col-md-6 col-lg-5 col-xl-4 mx-auto"
+        <form class="user-form col-12 mx-auto
+              <%= qr_code_url.present? ? "col-md-8 col-lg-6 col-xl-5" : "col-md-6 col-lg-5 col-xl-4" %>"
               data-redirect="/admin/dashboard"  data-ost-formhelper
               method="POST" action="/api/admin/mfa" id="adminAuthForm">
-
-          <% if qr_code_url.present? %>
-              <div class="">
-                <div class="img-label">Scan the QR Code</div>
-                <div class="img-container">
-                  <div class="qr-image">
-                    <a href="<%= qr_code_url %>" target="_blank"><img src="<%= qr_code_url %>" alt="QR CODE" width="180" ></a>
+            <% if qr_code_url.present? %>    
+              <div class="row qr-code">
+                <div class="col-12 col-md-5 align-self-center text-center">
+                  <div class="img-container">
+                    <div class="qr-image">
+                      <a href="<%= qr_code_url %>" target="_blank"><img src="<%= qr_code_url %>" alt="QR CODE" width="180" ></a>
+                    </div>
                   </div>
                 </div>
-              </div>
-          <% end %>
-
-          <div class="form-group">
+                <div class="col-12 col-md-7 qr-info py-3">
+                <span class="font-weight-600">Download Google Authenticator</span><br>
+                <span>
+                  from the
+                  <a target="_blank" href='https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en_IN'>Play Store</a>
+                  or <a target="_blank"  href='https://itunes.apple.com/in/app/google-authenticator/id388497605?mt=8'>App Store</a>.
+                  Open the app on your phone
+                  and scan the Qr code. Enter the 6 digit code associated with OST KYC in the text box below.
+                  This level of authentication ensures that your account remains secure at all times.
+                </span>
+                </div>
+              </div>  
+            <%end%>  
+          <div class="form-group row mt-4">
             <label class="form-label" for="email">mfa code</label>
             <input type="text" name="otp" id="otp" value="" class="form-control" autofocus tabindex="1" required>
             <div class="invalid-feedback" data-forid="otp"></div>

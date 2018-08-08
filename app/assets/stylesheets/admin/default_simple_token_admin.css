@@ -2,6 +2,7 @@
  * Bootstrap theme 'ost_theme'
  *= require admin/simple_token_theme_admin/bootstrap.scss
  *
+ *= require plugins/bootstrap-slider/bootstrap-slider
  * Use this space to include side/app wide common SCSS files:
  *
  * Common CSS

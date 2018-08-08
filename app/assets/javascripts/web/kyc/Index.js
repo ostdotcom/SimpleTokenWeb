@@ -16,6 +16,7 @@
     init: function (config) {
       oThis.jContactForm = $('#ost-kyc-contact-us-form');
       oThis.jContactBtn = $('#ost-kyc-contact-us-btn');
+      oThis.adjustHeight();
 
       oThis.formHelper =  oThis.jContactForm.formHelper({
         success: function (response) {
@@ -59,7 +60,14 @@
 
     bindButtonActions: function () {
 
-      $(".carousel-inner .carousel-item .kyc-carousel-content").on("click", function () {
+      $(".carousel-inner .carousel-item .kyc-carousel-content")
+      .on("touchend", function ( e ) {
+          e.preventDefault();
+          e.stopPropagation();
+          oThis.showVideo( $(this) );
+          return false;
+        })
+      .on("click", function () {
         oThis.showVideo( $(this) );
       });
 
@@ -109,22 +117,24 @@
 
       $('#ost-kyc-contact-us-btn').on('click' , function () {
          oThis.isCaptchaValid = utilities.validateCaptcha( oThis.jContactForm );
-         oThis.formHelper.jForm.submit();
+         //oThis.formHelper.jForm.submit();
       });
     },
 
+    adjustHeight: function(){
+      var maxheight = 0;
+      $('div.item').each(function () {
+        maxheight = $(this).innerHeight() > maxheight ? $(this).innerHeight() : maxheight;
+      });
+      $('div.item').innerHeight(maxheight);
+    },
 
     showVideo: function( jItem ){
       oThis.isVideoPlaying = true;
       var jIframe = jItem.find('iframe');
-
-
-      console.log( jIframe );
-      console.log( jItem );
       console.log( oThis.jVideoCarousal );
       //Pause the Carousal
       oThis.jVideoCarousal.carousel('pause');
-
       //Hide Image
       jItem.find('img').css({
         visibility: "hidden"
@@ -159,6 +169,10 @@
 
   $(window).on('load', function() {
     oThis.hideVideo(true);
+  });
+
+  $(window).on('resize', function() {
+    oThis.adjustHeight();
   });
 
 })(window);

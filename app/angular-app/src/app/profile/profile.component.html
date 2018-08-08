@@ -1,0 +1,120 @@
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="false" [hasError]="hasError">
+
+    <ng-container class="error-content">
+      <div class="col-12">{{ errorMessage }}</div>
+    </ng-container>
+  </request-state-handler>
+
+
+<div class="profile-settings" *ngIf="!hasError" >
+  <div class="company-profile-info">
+    <div class="row mt-4 pt-2 ">
+      <div class="col-12 col-lg-6">
+        <h4 class="kyc-header text-transform-upper">Profile</h4>
+      </div>
+    </div>
+    <div class="my-3 company-profile-header">
+      Company Profile Information
+    </div>
+    <div class="row mt-3">
+      <div class="form-group col-12 col-md-5">
+        <div class="form-label">
+          client name
+        </div>
+        <div class="read-only-fields p-2">
+          <small>{{clientName}}</small>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="form-group col-12 col-md-5">
+        <div class="form-label">
+          domain Name
+        </div>
+        <div class="read-only-fields p-2">
+          <small *ngIf="domainName || ! hasLoaded; else domainNA">{{domainName}}</small>
+          <ng-template #domainNA>
+            <small >NA</small>
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row mt-4 mb-4">
+      <div class="form-group col-12 col-md-5">
+        <div class="form-label">
+          SUPER ADMIN EMAIL ID
+        </div>
+        <div class="read-only-fields p-2 mb-2" *ngFor="let superAdminEmail of superAdminEmails">
+          <small>{{superAdminEmail}}</small>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="change-password">
+    <div class="simple-token-form row">
+      <div class="my-3 company-profile-header col-12">
+        Change Password
+      </div>
+      <form #changePassword="ngForm" (ngSubmit)="changePasswordSubmit(changePassword)" class="admin-form col-12 col-md-5" method="POST"
+        action="/api/admin/profile/change-password" id="adminChangePasswordForm">
+        <div class="form-group">
+          <label class="form-label" for="current_password">current password</label>
+          <input type="password"  class="form-control" ngModel #current_password="ngModel" name="current_password" title="current password"
+            tabindex="1" minlength="8" required/>
+            <ost-form-error-handler [errorFor]="current_password"
+                                    [fieldName]="'Password'"
+                                    [serverError]="errorResponse">
+            </ost-form-error-handler>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="new_password">new password</label>
+          <input type="password"  class="form-control"
+            name="new_password" ngModel #new_password="ngModel" title="new password" id="new_password"
+            tabindex="2" minlength="8" required/>
+            <ost-form-error-handler [errorFor]="new_password"
+                                    [fieldName]="'Password'"
+                                    [serverError]="errorResponse">
+            </ost-form-error-handler>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirm_password">confirm password</label>
+          <input type="password"  class="form-control" ngModel #confirm_password="ngModel" 
+                 name="confirm_password" title="confirm password"
+                 id="confirm_password" tabindex="3" minlength="8" required/>
+            <ost-form-error-handler [errorFor]="confirm_password"
+                                    [fieldName]="'Password'"
+                                    [serverError]="errorResponse">
+            </ost-form-error-handler>
+        </div>
+
+        <div class="form-group user-form-footer text-center text-sm-left row">
+          <div class="col-12">
+            <button [disabled]="!changePassword.valid" type="submit" class="btn btn-primary mb-3 mb-xl-0"
+                id="adminChangePassword" tabindex="4"
+              title="CHANGE PASSWORD">{{btnText}}
+            </button>
+            <button type="reset" (click)="resetForm(changePassword)" class="btn btn-secondary ml-xl-3 mb-3 mb-xl-0">
+              Clear
+            </button>
+          </div>
+          <div class="general_error error text-center col-12">
+            <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">
+            </ost-form-error-handler>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+
+  </div>
+</div>
+
+<change-password-modal></change-password-modal>

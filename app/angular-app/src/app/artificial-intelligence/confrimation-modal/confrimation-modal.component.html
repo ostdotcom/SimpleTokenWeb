@@ -1,0 +1,76 @@
+<div class="modal fade" id="ai-confimation-modal">
+    <div class="modal-dialog modal-dialog-centered  modal-lg h-100 my-0 pb-5">
+      <div class="modal-content">
+
+        <div class="modal-body p-5">
+          <div class='row' *ngIf="!isProcessing && !hasError && !isSuccess">
+            <div class="col-12">
+              <h5 class="text-center">
+                <ng-container *ngIf="params.approve_type=='auto'">
+                    You are choosing to automatically qualify the user based
+                    on the values set for Facial Recognition and
+                    Optical Character Recognition.*
+                </ng-container> 
+                <ng-container *ngIf="params.approve_type=='manual'">
+                    You are choosing to manually qualify the user. You can
+                    continue to refer to the Facial Recognition and
+                    Optical Recognition results on the user case page.*
+                </ng-container> 
+              </h5>  
+              <div class="col-12 text-center">
+                  <span class="display-3">*This setting can be changed only once every 60 minutes.</span>
+              </div>     
+            </div>  
+            <div class="col-12 form-group mt-4 text-center">
+              <button class="btn btn-primary mt-2 mr-md-2" (click)="onConfirmation()">
+                  YES, CONTINUE
+              </button>
+              <button class="btn btn-secondary mt-2" data-dismiss="modal">
+                CANCEL
+              </button>
+            </div>
+          </div>
+  
+          <div class="row">
+              <request-state-handler class="d-block w-100"
+                                    [isProcessing]="isProcessing"
+                                    [hasError]="hasError">
+              <div class="processing-content mt-3 text-center">
+                  Processing your request, please wait. 
+               </div>
+              <div class="error-content col-12 text-center">
+                <div *ngIf="errorMessage">{{errorMessage}}</div>
+                <div *ngIf="!errorMessage">Something went wrong, please try again.</div>
+                <button class="btn btn-primary mt-3" data-dismiss="modal">Done</button>
+              </div>
+              </request-state-handler>
+          </div>
+  
+          <div class="row" *ngIf="isSuccess">
+              <div class="col-12 success-hanlder-wrap text-center p-1" >
+                  <div class="success-icon-wrap mb-3">
+                      <svg class="icon" style="width:50px; height: 50px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                            </use>
+                          </switch>
+                      </svg>
+                  </div>
+                  <div class="mt-2 mb-3">
+                     <h5 class="text-center"> 
+                        <ng-container *ngIf="params.approve_type=='auto'">
+                            Automation setting applied.
+                        </ng-container> 
+                        <ng-container *ngIf="params.approve_type=='manual'">
+                            Manual setting applied.
+                        </ng-container> 
+                     </h5>
+                  </div>
+                  <button class="btn btn-primary" data-dismiss="modal">OK</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

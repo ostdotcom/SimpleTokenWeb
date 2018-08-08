@@ -1,0 +1,31 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.developer-integrations{
+  .integtration-info{
+    border-bottom: 1px solid $custom-grey-7;
+  }
+  .kyc-header{
+    color: $yellow-500;
+    .view-only{
+      vertical-align: middle;
+      color: $white;
+      background-color: $green-1200;
+      font-size: $text5-size;
+    }
+  }
+  .integration-header{
+    letter-spacing: 1px;
+  }
+  .read-only-fields{
+    overflow-x: auto;
+    min-height: 42px;
+    border-radius: 4px;
+    background-color: $grey-bg;
+    border: solid 1px $custom-grey-7;
+      small{
+        font-weight: 300;
+      }
+  }
+  svg {
+    vertical-align: top;
+  }
+}
