@@ -1,0 +1,35 @@
+;
+(function (window ) {
+
+  var oSTNs           = ns("ost"),
+      oThis
+  ;
+
+  var colorPickerConfig =  {
+        showInput: true,
+        className: "color-picker",
+        showInitial: true,
+        showPalette: false,
+        preferredFormat: "rgb",
+        hideAfterPaletteSelect:true
+  };
+
+  oSTNs.colorPicker = oThis = {
+
+    getColorPickerConfig : function () {
+      return colorPickerConfig;
+    } ,
+
+    initColorPicker : function ( selector , config ) {
+      if(!selector) return ;
+      var colorPickerConfig = config || oThis.getColorPickerConfig(),
+          jEl = $(selector),
+          val = jEl.val()
+      ;
+      colorPickerConfig['color'] = val;
+      console.log( "colorPickerConfig" ,  colorPickerConfig );
+      jEl.spectrum(colorPickerConfig);
+    }
+  };
+
+})(window );

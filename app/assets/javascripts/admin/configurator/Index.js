@@ -4,6 +4,7 @@
   var oSTNs               = ns("ost"),
       fileUploader        = ns('ost.fileUploader'),
       richTextEditor      = ns('ost.richTextEditor'),
+      colorPicker         = ns('ost.colorPicker'),
       handlebarHelper     = ns('ost.handlebarHelper'),
       configuratorConfig  = ns('ost.configuratorConfig'),
       oThis
@@ -49,12 +50,16 @@
         case inputTypes.richTextEditor :
           return '#ost-tinymce-editor';
         break;
+        case inputTypes.colorPicker :
+          return '#ost-color-picker';
+        break;
       }
     },
 
     testBind: function(){
       fileUploader.bindButtonActions();
       richTextEditor.initTinyMc('.tinymce-editor');
+      colorPicker.initColorPicker('.color-picker-input');
       $('[data-toggle="tooltip"]').tooltip();
     }
   };

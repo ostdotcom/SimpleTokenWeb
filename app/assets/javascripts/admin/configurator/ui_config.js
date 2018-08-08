@@ -91,6 +91,21 @@
        },
        //form_data
        'value'          : "asdhsajkd dasdaskjd"
+     },
+
+     coloPicker : {
+       'label'          : "Color Picker",
+       'tooltip'        : "some tooltip",
+       "inputType"      : inputTypesEnum.colorPicker,
+
+       //Backend
+       'data_kind'      : "text",
+       'data_key_name'  : "color_picker",
+       'validation'     : {
+         'required'        : 1
+       },
+       //form_data
+       'value'          : "rba(255,255,255)"
      }
 
    }

@@ -1,17 +1,28 @@
-<script type="text/x-handlebars-template">
+<script type="text/x-handlebars-template" id="ost-color-picker">
   <div class="form-group row color-picker-wrap">
     <div class="col-12">
       <div class="row">
         <div class="col-10">
           <label class="form-label">
             {{label}}
+            {{#ifTooltip tooltip}}
+              <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='ml-2'>
+                <svg class="svg"  width="20px" height="20px">
+                  <switch>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                  </switch>
+                </svg>
+              </span>
+            {{/ifTooltip}}
           </label>
         </div>
         <div class="col-2 text-right">
-          <input type='text' id="ost-spectrum" name="color-picker" hidden/>
+          <input type='text' {{is_required validation.required}}
+                 class="color-picker-input" name="{{data_key_name}}" hidden/>
         </div>
       </div>
     </div>
+    <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>
 </script>
 
@@ -20,7 +31,7 @@
 <% content_for :ost_components do %>
   <script type="text/javascript">
     $(function(){
-      $("#ost-spectrum").spectrum({
+      $("#color-spectrum").spectrum({
         color: "#e4b030",
         showInput: true,
         className: "ost-spectrum",
