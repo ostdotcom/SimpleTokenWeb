@@ -1,29 +1,30 @@
-<!--<script type="text/x-handlebars-template" id="ost-file-uploader">-->
+<script type="text/x-handlebars-template" id="ost-tinymce-editor">
   <div class="form-group row tinymce-wrap">
     <div class="col-12">
-      <label class="form-label"> Rich text editor </label>
+      <label class="form-label">
+        {{label}}
+      </label>
     </div>
     <div class="col-12 text-right" >
-      <textarea class="tinymce" name="rich-editor-tmc"></textarea>
+      <textarea class="tinymce" name="{{data-key-name}}" minlength="validation.min_length" maxlength="validation.max_length"></textarea>
     </div>
-    <div class="invalid-feedback col-12" data-forname="{{name}}"></div>
+    <div class="invalid-feedback col-12" data-forname="{{{data-key-name}}"></div>
   </div>
-
-<!--</script>-->
+</script>
 
 <% content_for :ost_components do %>
   <script type="text/javascript" >
 
     $(function(){
       tinymce.init({
-        selector:'textarea.tinymce',
-        menubar: false,
-        plugins: ['link'],
-        toolbar: 'bold , italic , underline,  link ',
-        forced_root_block: false,
-        extended_valid_elements: "*[*]",
-        statusbar: false,
-        toolbar_item_size: "small",
+        selector  :'textarea.tinymce',
+        menubar   : false,
+        plugins   : ['link'],
+        toolbar   : 'bold ,italic ,underline, link',
+        statusbar : false,
+        toolbar_item_size       : "small",
+        forced_root_block       : false,
+        extended_valid_elements : "*[*]",
         setup: function (editor) {
           editor.on('keyup change', function () {
             var hParent         = tinymce.activeEditor.editorContainer,
