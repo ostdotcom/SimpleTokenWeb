@@ -1,4 +1,5 @@
 //= require plugins/helpers/handlebarHelper.js
-//= require plugins/ost-component/ost-file-uploader
+//= require plugins/ost-component/FileUploader.js
+//= require plugins/ost-component/RichTextEditor.js
 //= require admin/configurator/TopNavBar
 //= require admin/configurator/Index
