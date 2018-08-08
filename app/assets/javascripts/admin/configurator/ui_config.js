@@ -1,18 +1,31 @@
 ;
 (function (window) {
 
-  var oSTNs = ns("ost")
+  var oSTNs = ns("ost") ,
 
-  var inputTypesEnum = {
-        "textType"        : "text",
-        "numberType"      : "number",
-        "checkboxType"    : "checkbox",
-        "radioType"       : "radio",
-        "fileType"        : "file",
-        "colorPicker"     : "colorPicker",
-        "richTextEditor"  : "richTextEditor",
-        "textArea"        : "textArea"
-  };
+     inputTypesEnum = {
+        "text"            : "text",
+        "number"          : "number",
+        "radio"           : "radio",
+        "file"            : "file",
+        "colorPicker"     : "color_picker",
+        "richTextEditor"  : "rich_text_editor",
+        "textarea"        : "textarea",
+        "toggle"          : "toggle"
+     } ,
+
+     inputTemplateMap = {
+       "text"             : "#ost-input-text",
+       "number"           : "#ost-input-number",
+       "radio"            : "#ost-input-radio",
+       "file"             : "#ost-input-file",
+       "textarea"         : "#ost-input-textarea",
+       "toggle"           : "#ost-input-toggle",
+       "color_picker"     : "#ost-color-picker",
+       "rich_text_editor" : "#ost-rich-text-editor"
+     }
+  ;
+
 
   oSTNs.configuratorConfig = {
 
@@ -52,12 +65,57 @@
 
    testComponents : {
 
+     inputText : {
+       'label'          : "Text Input",
+       'tooltip'        : "some tooltip",
+       "inputType"      : inputTypesEnum.text,
+
+       //Backend
+       'data_kind'      : "text",
+       'data_key_name'  : "text_input",
+       'validation'     : {
+         'required'        : 1
+       },
+       //form_data
+       'value'          : "safsas safsafsaf"
+     },
+
+     inputNumber : {
+       'label'          : "Number Input",
+       'tooltip'        : "some tooltip",
+       "inputType"      : inputTypesEnum.number,
+
+       //Backend
+       'data_kind'      : "number",
+       'data_key_name'  : "number_input",
+       'validation'     : {
+         'required'        : 1
+       },
+       //form_data
+       'value'          : "safsas safsafsaf"
+     },
+
+     inputTextarea : {
+       'label'          : "Textarea Input",
+       'tooltip'        : "some tooltip",
+       "inputType"      : inputTypesEnum.textarea,
+
+       //Backend
+       'data_kind'      : "text",
+       'data_key_name'  : "textarea_input",
+       'validation'     : {
+         'required'        : 1
+       },
+       //form_data
+       'value'          : "safsas safsafsaf"
+     },
+
      fileUploader   : {
        'label'          : "File Upload",
        'signed_url'     : "/api/admin/configurator/upload-params",
        'tooltip'        : "some tooltip",
        'title'          : "File Upload",
-       "inputType"      : inputTypesEnum.fileType,
+       "inputType"      : inputTypesEnum.file,
 
        //Backend
        'data_kind'      : "file",
@@ -112,8 +170,18 @@
 
   };
 
+
+
+
+  /*
+  * Getters for private maps , cant be changed.
+  * */
   oSTNs.configuratorConfig['getInputTypes'] =  function () {
     return inputTypesEnum;
+  },
+
+  oSTNs.configuratorConfig['getTemplateMap'] =  function () {
+    return inputTemplateMap;
   }
 
 })(window);

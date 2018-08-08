@@ -49,19 +49,20 @@
 
     isValid : function ( jEl ) {
       var jTarget   = jEl[0] ,
-          files     = jTarget.files[0] ,
-          size      = files.size,
+          file      = jTarget.files[0] ,
+          size      = file.size,
+          name      = file.name,
           minBytes  = jEl.data('min-bytes'),
           maxBytes  = jEl.data('max-bytes'),
           isError   = true,
           maxMb ,
           errorMsg
       ;
-      if( minBytes && minBytes < size ){
+      if( minBytes && minBytes > size ){
         isError =  false;
-        errorMsg = jEl.title+' file size too small';
+        errorMsg = name + ' file size too small';
         oThis.showError( errorMsg , jEl ) ;
-      }else if( maxBytes && maxBytes > size  ){
+      }else if( maxBytes && maxBytes < size  ){
         isError = false;
         maxMb = maxBytes / (1024*1024);
         errorMsg = jEl.title+' file size too large. Max allowed '+maxMb+' MB';

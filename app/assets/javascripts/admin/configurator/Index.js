@@ -39,21 +39,8 @@
     },
 
     getComponentTemplate : function ( type  ) {
-      var inputTypes = configuratorConfig.getInputTypes();
-
-      console.log( "type--" , type);
-
-      switch ( type ){
-        case inputTypes.fileType :
-          return '#ost-file-uploader';
-        break;
-        case inputTypes.richTextEditor :
-          return '#ost-tinymce-editor';
-        break;
-        case inputTypes.colorPicker :
-          return '#ost-color-picker';
-        break;
-      }
+      var inputTypes = configuratorConfig.getTemplateMap();
+      return inputTypes[ type ];
     },
 
     testBind: function(){

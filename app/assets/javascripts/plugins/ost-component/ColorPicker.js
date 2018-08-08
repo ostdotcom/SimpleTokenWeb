@@ -11,7 +11,8 @@
         showInitial: true,
         showPalette: false,
         preferredFormat: "rgb",
-        hideAfterPaletteSelect:true
+        hideAfterPaletteSelect:true,
+        change: function(color) { }
   };
 
   oSTNs.colorPicker = oThis = {
