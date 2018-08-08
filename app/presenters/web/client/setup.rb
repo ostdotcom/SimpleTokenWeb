@@ -68,7 +68,7 @@ module Web
       end
 
       def kyc_config_detail_data
-        page_setting['kyc_config_detail_data']
+        client_setting['kyc_config_detail_data']
       end
 
       #### common data ###
