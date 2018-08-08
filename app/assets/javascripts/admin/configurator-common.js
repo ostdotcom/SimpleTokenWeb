@@ -10,3 +10,4 @@
 //= require plugins/bootstrap-slider/bootstrap-slider
 //= require plugins/bootstrap_select/bootstrap-select
 //= require plugins/handlebars/handlebars
+//= require admin/configurator/ui_config

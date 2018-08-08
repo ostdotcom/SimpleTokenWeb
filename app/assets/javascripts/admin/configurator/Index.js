@@ -1,8 +1,11 @@
 ;
 (function (window ) {
 
-  var oSTNs           = ns("ost"),
-      ostFileUploader = ns('ost.ostFileUploader'),
+  var oSTNs               = ns("ost"),
+      fileUploader        = ns('ost.fileUploader'),
+      richTextEditor      = ns('ost.richTextEditor'),
+      handlebarHelper     = ns('ost.handlebarHelper'),
+      configuratorConfig  = ns('ost.configuratorConfig'),
       oThis
   ;
 
@@ -14,26 +17,45 @@
 
     bindButtonActions: function () {
       oThis.testComponents();
+      oThis.testBind();
     },
 
 
     testComponents: function () {
-      var fileUploaderConfig = {
-        'label'       : "File Upload",
-        'accept'      : "image/*",
-        'name'        : "company_logo",
-        'signed_url'  : "/api/admin/configurator/upload-params"
-      };
-
-      var sTemplate  = $('#ost-file-uploader'),
-        sMarkup    = sTemplate.html(),
-        jTemplate  = Handlebars.compile( sMarkup ),
-        jMarkup    = jTemplate( fileUploaderConfig ),
-        jWrapper   = $('.jCollapseContainer')
+      var jWrapper = $('.jCollapseContainer'),
+          config  , sTemplate , jMarkup
       ;
 
-      jWrapper.append( jMarkup );
-      ostFileUploader.bindButtonActions();
+      for( var key in configuratorConfig.testComponents ){
+        config    = configuratorConfig.testComponents[ key ];
+        console.log("config---" , config);
+        sTemplate = oThis.getComponentTemplate( config.inputType );
+        console.log("sTemplate---" , sTemplate);
+        jMarkup   = handlebarHelper.getMarkup( sTemplate , config );
+        jWrapper.append( jMarkup );
+      }
+
+    },
+
+    getComponentTemplate : function ( type  ) {
+      var inputTypes = configuratorConfig.getInputTypes();
+
+      console.log( "type--" , type);
+
+      switch ( type ){
+        case inputTypes.fileType :
+          return '#ost-file-uploader';
+        break;
+        case inputTypes.richTextEditor :
+          return '#ost-tinymce-editor';
+        break;
+      }
+    },
+
+    testBind: function(){
+      fileUploader.bindButtonActions();
+      richTextEditor.initTinyMc('.tinymce-editor');
+      $('[data-toggle="tooltip"]').tooltip();
     }
   };
 

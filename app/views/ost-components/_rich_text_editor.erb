@@ -3,42 +3,34 @@
     <div class="col-12">
       <label class="form-label">
         {{label}}
+        {{#ifTooltip tooltip}}
+          <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='ml-2'>
+              <svg class="svg" width="20px" height="20px">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                </switch>
+              </svg>
+          </span>
+        {{/ifTooltip}}
       </label>
     </div>
     <div class="col-12 text-right" >
-      <textarea class="tinymce" name="{{data-key-name}}" minlength="validation.min_length" maxlength="validation.max_length"></textarea>
+      <textarea class="tinymce-editor" name="{{data_key_name}}"
+                value="{{value}}"
+                {{is_required validation.required}}
+                minlength="validation.min_length"
+                maxlength="validation.max_length">
+      </textarea>
     </div>
-    <div class="invalid-feedback col-12" data-forname="{{{data-key-name}}"></div>
+    <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>
 </script>
 
 <% content_for :ost_components do %>
   <script type="text/javascript" >
-
     $(function(){
-      tinymce.init({
-        selector  :'textarea.tinymce',
-        menubar   : false,
-        plugins   : ['link'],
-        toolbar   : 'bold ,italic ,underline, link',
-        statusbar : false,
-        toolbar_item_size       : "small",
-        forced_root_block       : false,
-        extended_valid_elements : "*[*]",
-        setup: function (editor) {
-          editor.on('keyup change', function () {
-            var hParent         = tinymce.activeEditor.editorContainer,
-                jParent         = $( hParent ),
-                jTextArea       = jParent.parent().find('textarea.tinymce'),
-                updatedContent  = tinymce.activeEditor.getContent()
-            ;
-            jTextArea
-              .val( updatedContent )
-              .trigger('keyup');
-          });
-        }
-      });
-    });
 
+
+    });
   </script>
 <%end%>

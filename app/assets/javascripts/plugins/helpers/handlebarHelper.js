@@ -18,7 +18,6 @@
   };
 
 
-
   Handlebars.registerHelper('is_required', function(data, options ) {
     if( data == 1 ){
       return "required";

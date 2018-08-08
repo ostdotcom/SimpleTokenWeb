@@ -5,7 +5,7 @@
         {{label}}
         {{#ifTooltip tooltip}}
           <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='ml-2'>
-            <svg class="svg">
+            <svg class="svg"  width="20px" height="20px">
               <switch>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
               </switch>
@@ -16,7 +16,7 @@
     </div>
     <div class="col-6 text-right" >
       <label class="input-label-wrapper" for="{{get_input_id data_key_name}}" title="{{title}}">
-        <svg class="fav-svg align-middle">
+        <svg class="fav-svg align-middle" >
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cms-fav-icon-logo"></use>
           </switch>
@@ -25,10 +25,10 @@
       <input id="{{get_input_id data_key_name true}}"
              data-get-signed-url="{{signed_url}}"
              class="file-upload-input"
-             {{is_required required}}
-             data-min-bytes="{{min_bytes}}"
-             data-max-bytes="{{max_bytes}}"
-             accept="{{accept}}"
+             {{is_required validation.required}}
+             data-min-bytes="{{validation.min_bytes}}"
+             data-max-bytes="{{validation.max_bytes}}"
+             accept="{{getAccept validation.accept}}"
              type='file'
              name="{{data_key_name}}"
              value="{{value}}" />
@@ -53,6 +53,14 @@
 <% content_for :ost_components do %>
   <script type="text/javascript">
     $(function () {
+      Handlebars.registerHelper('getAccept', function( data, options ) {
+        if( typeof data == "string" ){
+          return data;
+        }else if( data.constructor == Array ) {
+          return data.join(' , ');
+        }
+        return "";
+      });
     });
   </script>
 <%end%>

@@ -7,7 +7,7 @@
 
       oThis;
 
-  oSTNs.ostFileUploader = oThis = {
+  oSTNs.fileUploader = oThis = {
     generalErrorMsg     : "Something went wrong!",
 
     sElement            : ".file-upload-input",
