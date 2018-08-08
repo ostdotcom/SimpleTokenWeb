@@ -4,4 +4,5 @@
   *= require plugins/ost-component/Navbar.scss
   *= require plugins/ost-component/RichTextEditor.scss
   *= require plugins/ost-component/FileUploader.scss
+  *= require admin/common/selectpicker.scss
  */

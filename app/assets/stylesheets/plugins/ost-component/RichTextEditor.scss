@@ -1,39 +1,24 @@
-.rich-editor{
-  border: 1px solid #d3e3e5;
-  border-radius: 4px;
-  overflow: hidden;
-
-  .ql-toolbar{
-    &.ql-snow {
-      border: none;
-      padding: 4px;
-      background-color: #f6f8fa;
-      .ql-stroke{
-        stroke: #597a84;
-      }
-      .ql-formats{
-        display: block;
-        margin-right: 0;
+.tinymce-wrap{
+  .mce-panel{
+    box-shadow: none!important;
+    border: 0.5px solid #d3e3e5!important;
+  }
+  .mce-container{
+    display: block;
+    overflow: hidden;
+  }
+  .mce-btn-group{
+    .mce-btn{
+      width: 25%;
+      margin-left: 0;
+      text-align: center;
+      border: 1px solid transparent;
+      &.mce-active{
+        background: transparent;
         button{
-          width: 25%;
-          float: none;
-          svg{
-            float: none;
-          }
+          background: #555c66;
         }
       }
     }
   }
-
-  .ql-container{
-    font-size: 16px;
-    &.ql-snow{
-      border: none;
-      color: #597a84;
-      .ql-editor{
-        padding: 12px;
-      }
-    }
-  }
-
 }
