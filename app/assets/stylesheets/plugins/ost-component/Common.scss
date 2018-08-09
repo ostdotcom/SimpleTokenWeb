@@ -1,9 +1,4 @@
-.config-info-icon{
-  height: 15px;
-  width: 15px;
-  cursor: pointer;
-  display: inline-block;
-}
+
 
 .invalid-feedback{
   margin-top: 0;
@@ -11,40 +6,49 @@
   font-size: 0.7rem;
 }
 
-label{
-  color: #34445b;
-  letter-spacing: 1px;
-  text-transform: capitalize;
-}
 
-.form-group{
-  padding-top: 1rem;
-  border-top: solid 0.5px #d3e3e5;
-  &:first-child{
-    padding-top: 0;
-    border-top: none;
+.card-body{
+  .config-info-icon{
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+    display: inline-block;
   }
-}
-
-.radio-button-label{
-  font-size: 14px;
-  color: #597a84;
-  font-weight: 400;
-  .label{
-    line-height: 22px;
+  label{
+    color: #34445b;
+    letter-spacing: 1px;
+    text-transform: capitalize;
   }
-}
+  .form-group{
+    padding-top: 1rem;
+    border-top: solid 0.5px #d3e3e5;
+    &:first-child{
+      padding-top: 0;
+      border-top: none;
+    }
+  }
 
-textarea, input{
-  width: 100%;
-  border-radius: 3px;
-  padding: 10px;
-  background-color: #ffffff;
-  border: solid 0.5px #d3e3e5;
-  letter-spacing: 0.2px;
-  color: #597a84;
-  &:focus{
-    outline: none;
+  textarea, input{
+    width: 100%;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: solid 0.5px #d3e3e5;
+    letter-spacing: 0.2px;
+    color: #597a84;
+    font-size: 14px;
+    font-weight: 300;
+    &:focus{
+      outline: none;
+    }
+  }
+  .radio-button-label{
+    font-size: 14px;
+    color: #597a84;
+    font-weight: 400;
+    .label{
+      line-height: 22px;
+    }
   }
 }
 
