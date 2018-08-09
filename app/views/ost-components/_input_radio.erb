@@ -1,16 +1,18 @@
 <script type="text/x-handlebars-template" id="ost-input-radio">
   <div class="row form-group ost-input-radio-wrap">
     <div class="col-12">
-      <label class="form-label">{{label}}</label>
-      {{#each options as |option| }}
-        <div class="form-check ">
+      <div class="form-label mb-0">
+        <label class="d-block">{{label}}</label>
+        {{#each options as |option| }}
+        <div class="form-check d-inline-block p-0 mr-3  ">
           <input type="radio"  class="form-check-input radio-button" {{isChecked ../value option.value}}
-                 name="{{../data_key_name}}" id="{{get_input_id ../data_key_name }}" value="{{option.value}}"/>
+          name="{{../data_key_name}}" id="{{get_input_id ../data_key_name }}" value="{{option.value}}"/>
           <label class="radio-button-label position-relative" for="{{get_input_id ../data_key_name true }}" >
             <span class="radio-button-circle d-inline"></span>{{option.label}}
           </label>
         </div>
-      {{/each}}
+        {{/each}}
+      </div>
     </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>

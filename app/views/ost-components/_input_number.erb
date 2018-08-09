@@ -1,11 +1,11 @@
 <script type="text/x-handlebars-template" id="ost-input-number">
-  <div class="form-group row input-number-wrap">
-    <div class="col-6">
-      <div class="form-label align-items-center">
-        <span>{{label}}</span>
+  <div class="row form-group input-number-wrap">
+    <div class="col-9 align-self-center">
+      <div class="form-label mb-0">
+        <label class="align-middle mb-0">{{label}}</label>
         {{#ifTooltip tooltip}}
-        <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='ml-2'>
-            <svg class="svg"  width="20px" height="20px">
+        <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='config-info-icon align-middle'>
+            <svg class="config-info-icon">
               <switch>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
               </switch>
@@ -14,8 +14,8 @@
         {{/ifTooltip}}
       </div>
     </div>
-    <div class="col-6 text-right">
-      <input class="input-number"
+    <div class="col-3 text-right align-self-center">
+      <input class="input-number py-0 px-1"
              {{is_required validation.required}}
              data-min-bytes="{{validation.min}}"
              data-max-bytes="{{validation.max}}"

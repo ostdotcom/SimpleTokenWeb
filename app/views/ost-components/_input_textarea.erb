@@ -1,24 +1,23 @@
 <script type="text/x-handlebars-template" id="ost-input-textarea">
-  <div class="form-group row input-text-wrap">
+  <div class="row form-group input-text-wrap">
     <div class="col-12">
       <div class="form-label align-items-center">
-        <span>{{label}}</span>
+        <label class="align-middle mb-0">{{label}}</label>
         {{#ifTooltip tooltip}}
-        <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='ml-2'>
-            <svg class="svg"  width="20px" height="20px">
-              <switch>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
-              </switch>
-            </svg>
-          </span>
+        <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='config-info-icon align-middle'>
+          <svg class="config-info-icon">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+            </switch>
+          </svg>
+        </span>
         {{/ifTooltip}}
       </div>
     </div>
     <div class="col-12 " >
-      <textarea class="input-text-area" {{is_required validation.required}}
+      <textarea class="input-text-area" style="resize: none" {{is_required validation.required}}
                 data-min-bytes="{{validation.min_length}}" data-max-bytes="{{validation.max_length}}"
-                type='text' name="{{data_key_name}}">{{value}}
-      </textarea>
+                type='text' name="{{data_key_name}}">{{value}}</textarea>
     </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>

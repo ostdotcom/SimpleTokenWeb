@@ -1,18 +1,18 @@
 <script type="text/x-handlebars-template" id="ost-rich-text-editor">
-  <div class="form-group row tinymce-wrap">
+  <div class="row form-group tinymce-wrap">
     <div class="col-12">
-      <label class="form-label">
-        {{label}}
+      <div class="form-label align-items-center">
+        <label class="align-middle mb-0">{{label}}</label>
         {{#ifTooltip tooltip}}
-          <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='ml-2'>
-              <svg class="svg" width="20px" height="20px">
+          <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='config-info-icon align-middle'>
+              <svg class="config-info-icon">
                 <switch>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
                 </switch>
               </svg>
           </span>
         {{/ifTooltip}}
-      </label>
+      </div>
     </div>
     <div class="col-12 text-right" >
       <textarea class="tinymce-editor" name="{{data_key_name}}"

@@ -14,3 +14,25 @@ label{
   color: #34445b;
   text-transform: capitalize;
 }
+
+textarea, input{
+  width: 100%;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: solid 0.5px #d3e3e5;
+  letter-spacing: 0.2px;
+  color: #597a84;
+  &:focus{
+    outline: none;
+  }
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
