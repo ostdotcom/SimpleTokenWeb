@@ -7,6 +7,9 @@
     colorPicker         = ns('ost.colorPicker'),
     handlebarHelper     = ns('ost.handlebarHelper'),
     configuratorConfig  = ns('ost.configuratorConfig'),
+    sCollapse           = "#ost-collapse",
+    sCollapseWrapper    = ".collapse-content-wrap",
+    withFormData        =  true,
     oThis
   ;
 
@@ -21,69 +24,80 @@
 
     init: function ( data  ) {
       oThis.entityConfig  = data[ 'entity_config' ] || {};
-      oThis.formData      = data[ 'form_data' ] || {};
+      oThis.formData      = data[ 'form_data' ]     || {};
       oThis.buildAccordions();
       oThis.intComponents();
     },
 
     buildAccordions : function () {
       var jAccordions = $("[" + accordionAttr + "]") ,
-        len = jAccordions.length ,  cnt,
-        accordion
+          len = jAccordions.length ,  cnt,
+          accordion
       ;
-
       if( !len ) return ;
       for( cnt = 0 ;  cnt < len ; cnt++ ){
-        accordion   = jAccordions.eq( cnt );
-        oThis.buildCollapses( accordion  );
+        accordion = jAccordions.eq( cnt );
+        oThis.buildCollapses( accordion );
       }
     },
 
-    buildCollapses: function ( accordion ) {
-      var configKey = accordion && accordion.data('accordion-content'),
-        config    = oThis.getUIConfig( configKey ) ,
-        collapsesConfig , collapse
-
+    buildCollapses: function ( jWrapper ) {
+      var accordionKey    = jWrapper && jWrapper.attr( accordionAttr ),
+          accordionConfig = oThis.getSectionConfig( accordionKey ) ,
+          collapsesConfig , collapse
       ;
-      if( !config ) return ;
-      collapsesConfig  = config['collapses'];
-      for( var key in  collapsesConfig ){
+      if( !accordionConfig ) return ;
+      collapsesConfig  = accordionConfig['collapses'];
+      for( var key in collapsesConfig ){
         collapse = collapsesConfig[ key ] ;
-        oThis.buildCollapse( accordion , collapse ) ;
+        oThis.buildCollapse( jWrapper , collapse ) ;
       }
     },
 
-    buildCollapse : function ( accordion , collapse ) {
-      var jMarkup = handlebarHelper.getMarkup( "#ost-collapse" , collapse ) ,
-        entities  = collapse.entities,
-        jCollapse
+    buildCollapse : function ( jWrapper , collapseConfig ) {
+      var entities = collapseConfig && collapseConfig.entities,
+          jCollapse , jMarkup
       ;
-
-      accordion.append( jMarkup );
-      jCollapse = accordion.find('.collapse-content-wrap');
-      oThis.buildEntities( jCollapse , entities );
-
-    },
-
-    buildEntities : function ( jCollapse , entities ) {
       if( !entities ) return ;
-      oThis.setEntities( entities );
-      for( var key in  entities ){
-        oThis.buildEntity( jCollapse , key  ) ;
+      jMarkup   = $( handlebarHelper.getMarkup( sCollapse , collapseConfig ) ) ;
+      jCollapse = $( jMarkup ).find( sCollapseWrapper );
+      oThis.buildEntities( jCollapse , entities );
+      jWrapper.append( jMarkup[0] );
+    },
+
+    buildEntities : function ( jWrapper , entities ) {
+      var len = entities && entities.length , cnt ,
+          entityKey
+      ;
+      for( cnt = 0; cnt < len ; cnt++ ){
+        entityKey = entities[cnt];
+        oThis.buildEntity( jWrapper , entityKey , withFormData ) ;
       }
     },
 
-    buildEntity : function ( jCollapse , entityKey ) {
+    buildEntity : function ( jWrapper , entityKey , withFormData ) {
       var entityConfig    = oThis.getEntityConfig( entityKey ) ,
-        uiEntityConfig  = oThis.getUIEntityConfig( entityKey ) ,
-        dataKeyName     = entityConfig && entityConfig['data_key_name'],
-        formData        = oThis.getFormData( dataKeyName ),
-        jMarkup
+          uiEntityConfig  = oThis.getUIEntityConfig( entityKey ) ,
+          mergedConfig    = oThis.getMergedEntity( uiEntityConfig , entityConfig )
       ;
+      if( withFormData ){
+        mergedConfig = oThis.getEntityConfigWithFormData( mergedConfig  )
+      }
+      oThis.buildEntityMarkup( jWrapper , mergedConfig  );
+    },
 
-      entityConfig = oThis.getMergedEntity( uiEntityConfig , entityConfig , formData );
-      jMarkup = oThis.getEntityMarkup( entityConfig ) ;
-      jCollapse.append( jMarkup  );
+    buildEntityMarkup : function ( jWrapper , entityConfig ) {
+      var dataKind = entityConfig['data_kind'] ;
+      if( dataKind == "array" ){
+        oThis.buildArrayEntity( entityConfig , jWrapper )
+      }else{
+        var jMarkup = oThis.getEntityMarkup( entityConfig , jWrapper ) ;
+        jWrapper.append( jMarkup  );
+      }
+    },
+
+    buildArrayEntity : function ( entityConfig , jWrapper ) {
+      //TODO
     },
 
     getEntityMarkup : function ( entityConfig ) {
@@ -95,21 +109,26 @@
       return jMarkup ;
     },
 
-    getMergedEntity : function ( uiEntityConfig , entityConfig , formData ) {
+    getMergedEntity : function ( uiEntityConfig , entityConfig  ) {
       var mergedEntityConfig  = {} ;
       $.extend( mergedEntityConfig , uiEntityConfig , entityConfig  );
-      if( formData ){
-        mergedEntityConfig['value'] = formData ;
-      }
       return mergedEntityConfig ;
     },
 
-    getUIConfig : function( configKey ){
+    getEntityConfigWithFormData : function ( entityConfig ) {
+      var  dataKeyName = entityConfig && entityConfig['data_key_name'],
+           formData    = oThis.getFormData( dataKeyName )
+      ;
+      entityConfig['value'] = formData;
+      return entityConfig ;
+    },
+
+    getSectionConfig : function( configKey ){
       return configuratorConfig[ configKey ];
     },
 
     getUIEntityConfig : function ( entityKey ) {
-      return oThis.entities[ entityKey ];
+      return configuratorConfig['entityConfig'][ entityKey ];
     },
 
     getEntityConfig: function ( entityKey ) {
@@ -123,9 +142,6 @@
     getComponentTemplate : function ( type  ) {
       var inputTypes = configuratorConfig.getTemplateMap();
       return inputTypes[ type ];
-    },
-    setEntities : function ( entities  ) {
-      oThis.entities  = entities;
     },
 
     intComponents: function(){
