@@ -48,7 +48,8 @@
                'required'        : 1
              },
              //form_data
-             'value'          : "safsas safsafsaf"
+             'value'          : "",
+             'placeHolder'    : "<enter text here>"
            },
 
            inputNumber : {
@@ -78,7 +79,8 @@
                'required'        : 1
              },
              //form_data
-             'value'          : "safsas safsafsaf"
+             'value'          : "",
+             'placeHolder'    : "<enter text here>"
            },
 
            fileUploader   : {
@@ -119,7 +121,7 @@
                'required'        : 1
              },
              //form_data
-             'value'          : "asdhsajkd dasdaskjd"
+             'value'          : "Rich text editor"
            },
 
            coloPicker : {
