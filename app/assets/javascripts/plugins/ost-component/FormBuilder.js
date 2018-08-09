@@ -165,10 +165,10 @@
       richTextEditor.initTinyMc('.tinymce-editor');
       colorPicker.initColorPicker('.color-picker-input');
       oThis.initToolTips();
-      oThis.initMocker();
+      oThis.initLengthMocker();
     },
 
-    initMocker : function () {
+    initLengthMocker : function () {
       $('.mock-length').on('keyup change', function () {
         var jVal        = $(this).val(),
             jValLength  = jVal && jVal.length,
