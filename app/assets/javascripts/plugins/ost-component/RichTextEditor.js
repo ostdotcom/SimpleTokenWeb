@@ -16,11 +16,12 @@
   var tinyMceConfig =  {
       menubar                 : false,
       plugins                 : ['link'],
-      toolbar                 : 'bold ,italic ,underline, link',
+      toolbar                 : 'bold, italic, underline, link',
       statusbar               : false,
       toolbar_item_size       : "small",
       forced_root_block       : false,
       extended_valid_elements : "*[*]",
+      toolbar_items_size: "small",
       setup: function (editor) {
         editor.on('keyup change', function () {
           var jTextArea       = getTextArea( tinymce.activeEditor ),
