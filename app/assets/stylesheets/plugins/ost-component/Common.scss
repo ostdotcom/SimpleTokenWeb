@@ -16,6 +16,15 @@ label{
   text-transform: capitalize;
 }
 
+.radio-button-label{
+  font-size: 14px;
+  color: #597a84;
+  font-weight: 400;
+  .label{
+    line-height: 22px;
+  }
+}
+
 textarea, input{
   width: 100%;
   border-radius: 3px;

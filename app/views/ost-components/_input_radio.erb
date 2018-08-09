@@ -4,11 +4,12 @@
       <div class="form-label mb-0">
         <label class="d-block">{{label}}</label>
         {{#each options as |option| }}
-        <div class="form-check d-inline-block p-0 mr-3  ">
+        <div class="form-check d-inline-block p-0 mr-3">
           <input type="radio"  class="form-check-input radio-button" {{isChecked ../value option.value}}
           name="{{../data_key_name}}" id="{{get_input_id ../data_key_name }}" value="{{option.value}}"/>
-          <label class="radio-button-label position-relative" for="{{get_input_id ../data_key_name true }}" >
-            <span class="radio-button-circle d-inline"></span>{{option.label}}
+          <label class="radio-button-label position-relative mb-0" for="{{get_input_id ../data_key_name true }}" >
+            <span class="radio-button-circle"></span>
+            <span class="label">{{option.label}}</span>
           </label>
         </div>
         {{/each}}
