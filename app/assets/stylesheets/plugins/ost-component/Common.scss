@@ -1,8 +1,4 @@
-.config-info-icon{
-  height: 15px;
-  width: 15px;
-  display: inline-block;
-}
+
 
 .invalid-feedback{
   margin-top: 0;
@@ -10,31 +6,49 @@
   font-size: 0.7rem;
 }
 
-label{
-  color: #34445b;
-  letter-spacing: 1px;
-  text-transform: capitalize;
-}
 
-.radio-button-label{
-  font-size: 14px;
-  color: #597a84;
-  font-weight: 400;
-  .label{
-    line-height: 22px;
+.card-body{
+  .config-info-icon{
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+    display: inline-block;
   }
-}
+  label{
+    color: #34445b;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+  }
+  .form-group{
+    padding-top: 1rem;
+    border-top: solid 0.5px #d3e3e5;
+    &:first-child{
+      padding-top: 0;
+      border-top: none;
+    }
+  }
 
-textarea, input{
-  width: 100%;
-  border-radius: 3px;
-  padding: 10px;
-  background-color: #ffffff;
-  border: solid 0.5px #d3e3e5;
-  letter-spacing: 0.2px;
-  color: #597a84;
-  &:focus{
-    outline: none;
+  textarea, input{
+    width: 100%;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: solid 0.5px #d3e3e5;
+    letter-spacing: 0.2px;
+    color: #597a84;
+    font-size: 14px;
+    font-weight: 300;
+    &:focus{
+      outline: none;
+    }
+  }
+  .radio-button-label{
+    font-size: 14px;
+    color: #597a84;
+    font-weight: 400;
+    .label{
+      line-height: 22px;
+    }
   }
 }
 
@@ -47,23 +61,36 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-  .tooltip{
-    &.fade.show{
-      opacity: 1;
-      left: 3px!important;
-    }
-    .arrow{
-      &:before{
-        border-right-color: #f2f2f2;
-      }
-    }
-    .tooltip-inner {
-      background-color: #ffffff;
-      box-shadow: 0 0.5px 3px 2px rgba(50, 50, 50, 0.09);
-      padding: 5px;
-      color: #597a84;
-      text-align: left;
-      font-weight: 300;
-      font-size: 12px;
+.tooltip{
+  &.fade.show{
+    opacity: 1;
+    left: 3px!important;
+  }
+  .arrow{
+    &:before{
+      border-right-color: #f2f2f2;
     }
   }
+  .tooltip-inner {
+    background-color: #ffffff;
+    box-shadow: 0 0.5px 3px 2px rgba(50, 50, 50, 0.09);
+    padding: 5px;
+    color: #597a84;
+    text-align: left;
+    font-weight: 300;
+    font-size: 12px;
+  }
+}
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #597a84;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #597a84;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #597a84;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #597a84;
+}

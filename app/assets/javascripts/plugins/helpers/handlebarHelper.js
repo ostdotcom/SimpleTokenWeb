@@ -35,7 +35,7 @@
   });
 
   var idCount = 1 ;
-  Handlebars.registerHelper('get_input_id', function( name, isSameId , options ) {
+  Handlebars.registerHelper('configurator_component_id', function( name, isSameId , options ) {
     if( isSameId !== true ) {  //This should be exactly checked.
       idCount++
     }
