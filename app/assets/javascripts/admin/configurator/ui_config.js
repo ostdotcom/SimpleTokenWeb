@@ -35,7 +35,11 @@
           "header"      : "Header Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
           "entities"    : [ "inputText" , "inputNumber" , "inputTextarea" , "fileUploader" ,
-                            "richTextEditor" , "coloPicker" , "radioInput", "toggleInput"]
+                            "richTextEditor" , "coloPicker" , "radioInput", "toggleInput"],
+          "footer" : {
+              "selector" : "#add-configurator-component" ,
+              "component" : "richTextEditor"
+          }
        }
      }
    },
@@ -119,11 +123,11 @@
        'tooltip'        : "some tooltip",
        'title'          : "Rich text editor",
        'isDraggable'    : true,
-       'isDelete'       : true,
+       'isDeleteEnabled': true,
        "inputType"      : inputTypesEnum.richTextEditor,
 
        //Backend
-       'data_kind'      : "text",
+       'data_kind'      : "array",
        'data_key_name'  : "rich_text_editor",
        'validation'     : {
          'min_length'      : '1',
@@ -131,7 +135,7 @@
          'required'        : 1
        },
        //form_data
-       'value'          : "Rich text editor"
+       'value'          : ["kjbjkb", "jhgjhghj", "hgfuyg uyuyg uy"]
      },
 
      coloPicker : {

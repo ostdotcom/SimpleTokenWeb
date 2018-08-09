@@ -52,7 +52,6 @@
       var tinyMceInitConfig = config || oThis.getTinyMceConfig()
       ;
       tinyMceInitConfig['selector'] = selector;
-      console.log( "tinyMceInitConfig" ,  tinyMceInitConfig );
       tinymce.init(  tinyMceInitConfig );
     }
   };

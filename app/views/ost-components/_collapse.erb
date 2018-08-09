@@ -17,7 +17,41 @@
     <div class="collapse show" id="{{configurator_component_id 'collapse' true}}">
       <div class="card-body collapse-content-wrap">
       </div>
+      {{#ifCollapseFooter footer}}
+        <div class="card-footer">
+         {{{ getCollapseFooter footer }}}
+        </div>
+      {{/ifCollapseFooter}}
     </div>
   </div>
 </script>
 
+<script type="text/x-handlebars-template" id="add-configurator-component">
+  <div class="row">
+    <div class="col-8">Add Checkbox Field</div>
+    <div class="col-4 add-component-wrap" data-component-to-add="{{ component }}">
+      Add Icon
+    </div>
+  </div>
+</script>
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function () {
+
+      Handlebars.registerHelper('ifCollapseFooter', function( data, options ) {
+        if( data ){
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      });
+
+      Handlebars.registerHelper('getCollapseFooter', function( data , options ) {
+        var selector  = data.selector ,
+            jMarkup   = ost.handlebarHelper.getMarkup( selector , data ) ;
+        return jMarkup ;
+      });
+
+    });
+  </script>
+<%end%>

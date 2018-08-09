@@ -28,7 +28,6 @@
           val = jEl.val()
       ;
       colorPickerConfig['color'] = val;
-      console.log( "colorPickerConfig" ,  colorPickerConfig );
       jEl.spectrum(colorPickerConfig);
     }
   };

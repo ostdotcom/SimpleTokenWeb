@@ -87,17 +87,31 @@
     },
 
     buildEntityMarkup : function ( jWrapper , entityConfig ) {
-      var dataKind = entityConfig['data_kind'] ;
+      var dataKind = entityConfig['data_kind'] ,
+          jMarkup
+      ;
       if( dataKind == "array" ){
-        oThis.buildArrayEntity( entityConfig , jWrapper )
+        jMarkup = oThis.getArrayEntityMarkup( entityConfig )
       }else{
-        var jMarkup = oThis.getEntityMarkup( entityConfig , jWrapper ) ;
-        jWrapper.append( jMarkup  );
+        jMarkup = oThis.getEntityMarkup( entityConfig ) ;
       }
+      jWrapper.append( jMarkup  );
     },
 
-    buildArrayEntity : function ( entityConfig , jWrapper ) {
-      //TODO
+    getArrayEntityMarkup : function ( entityConfig  ) {
+      var entityConfigCopy  = $.extend({}, entityConfig ),
+          values            = entityConfigCopy['value'] ,
+          len               = values && values.length , cnt,
+          jMarkup           = "" , currVal
+      ;
+      if(!len) return ;
+      for( cnt = 0 ;  cnt < len ; cnt++) {
+        currVal = values[ cnt ] ;
+        entityConfigCopy['value'] = currVal ;
+        entityConfigCopy['count'] = cnt + 1;
+        jMarkup = jMarkup.concat( oThis.getEntityMarkup( entityConfigCopy ) );
+      }
+      return jMarkup ;
     },
 
     getEntityMarkup : function ( entityConfig ) {
@@ -119,7 +133,9 @@
       var  dataKeyName = entityConfig && entityConfig['data_key_name'],
            formData    = oThis.getFormData( dataKeyName )
       ;
-      entityConfig['value'] = formData;
+      if( formData ){
+        entityConfig['value'] = formData;
+      }
       return entityConfig ;
     },
 
@@ -148,6 +164,24 @@
       fileUploader.bindButtonActions();
       richTextEditor.initTinyMc('.tinymce-editor');
       colorPicker.initColorPicker('.color-picker-input');
+      oThis.initToolTips();
+      oThis.initMocker();
+    },
+
+    initMocker : function () {
+      $('.mock-length').on('keyup change', function () {
+        var jVal        = $(this).val(),
+            jValLength  = jVal && jVal.length,
+            jParent     = $(this).parent('.form-group'),
+            jMocker     = jParent.find('.length-mocker')
+        ;
+        if( jMocker ){
+          jMocker.html(jValLength);
+        }
+      });
+    },
+
+    initToolTips : function () {
       $('[data-toggle="tooltip"]').tooltip();
     }
 
