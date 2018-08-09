@@ -67,7 +67,7 @@
 
      inputText : {
        'label'          : "Text Input",
-       'tooltip'        : "some tooltip",
+       'tooltip'        : "Use a square image for best results. (Min 200KB, Max 1GB, JPG/PNG only.)",
        "inputType"      : inputTypesEnum.text,
 
        //Backend

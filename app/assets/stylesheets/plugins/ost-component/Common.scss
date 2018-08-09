@@ -12,6 +12,7 @@
 
 label{
   color: #34445b;
+  letter-spacing: 1px;
   text-transform: capitalize;
 }
 
@@ -36,3 +37,24 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+  .tooltip{
+    &.fade.show{
+      opacity: 1;
+      left: 3px!important;
+    }
+    .arrow{
+      &:before{
+        border-right-color: #f2f2f2;
+      }
+    }
+    .tooltip-inner {
+      background-color: #ffffff;
+      box-shadow: 0 0.5px 3px 2px rgba(50, 50, 50, 0.09);
+      padding: 5px;
+      color: #597a84;
+      text-align: left;
+      font-weight: 300;
+      font-size: 12px;
+    }
+  }
