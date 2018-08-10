@@ -2,15 +2,17 @@
   <div class="row form-group tinymce-wrap">
     <div class="col-12">
       <div class="row">
-        <div class="col-9">
+        <div class="col-10">
           <div class="form-label align-items-center">
+            {{#count}}
             <svg class="config-info-icon align-middle">
               <switch>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rearrange-icon"></use>
               </switch>
             </svg>
+            {{/count}}
             <label class="align-middle mb-0">
-              {{label}}#{{count}}
+              {{label}} {{#count}}#{{count}}{{/count}}
             </label>
             {{#ifTooltip tooltip}}
             <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='config-info-icon align-middle'>
@@ -23,7 +25,7 @@
             {{/ifTooltip}}
           </div>
         </div>
-        <div class="col-3 text-right pl-0">
+        <div class="col-2 text-right pl-0">
           <span style="font-size: 13px">
             <span class="length-mocker">{{value.length}}</span>
             <span>/{{validation.max_length}}</span>

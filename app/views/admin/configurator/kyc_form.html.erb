@@ -1,5 +1,27 @@
 <form method="POST" action="">
-  <div class="accordion mb-4" role="tablist"  data-accordion-content="kycForm">
+  <div class="accordion" role="tablist">
+    <div class="accordion-header">
+
+    </div>
+    <div class="accordion-content-wrapper"   data-accordion-content="kyc_configuration">
+
+    </div>
+  </div>
+
+  <div class="accordion" role="tablist">
+    <div class="accordion-header">
+
+    </div>
+    <div class="accordion-content-wrapper"   data-accordion-content="popup_kyc_configuration">
+
+    </div>
   </div>
 </form>
 
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function () {
+      ost.kycConfigurator.init({});
+    });
+  </script>
+<%end%>
