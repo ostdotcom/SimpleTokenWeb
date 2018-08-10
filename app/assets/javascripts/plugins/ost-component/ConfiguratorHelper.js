@@ -13,6 +13,46 @@
 
   oSTNs.configuratorHelper = oThis = {
 
+    getPageData : function ( config ) {
+      var api    = oThis.getApi( config ) ,
+          method = oThis.getMethod( config ) ,
+          params = oThis.getParams( config )
+      ;
+      if( api ) return ;
+
+      $.ajax({
+        url     : api ,
+        method  : method,
+        data    : oThis.getParams( config ),
+        success: function(result) {
+          if( result.success ){
+            formBuilder.init( result.data );
+          }else{
+            oThis.showError( result );
+          }
+        },
+        error : function ( jqXhr , error ) {
+          oThis.showError( error );
+        }
+      });
+    },
+
+    getApi : function ( config ) {
+      return config && config.url ;
+    },
+
+    getMethod : function( config ){
+      return config && config.method ||"GET" ;
+    },
+
+    getParams : function ( config ) {
+      return config && config.params || {};
+    },
+
+    showError : function ( response ) {
+
+    }
+
   };
 
 
