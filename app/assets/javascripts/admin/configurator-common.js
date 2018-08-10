@@ -12,12 +12,6 @@
 //= require plugins/bootstrap_select/bootstrap-select
 //= require plugins/handlebars/handlebars
 //= require plugins/jquery-ui/jquery-ui-sortable
-//= require admin/configurator/ui_config
-//= require plugins/ost-component/Iframe.js
-//= require plugins/helpers/handlebarHelper.js
-//= require admin/configurator/spectrum/spectrum
-//= require plugins/ost-component/FileUploader
-//= require plugins/ost-component/RichTextEditor
-//= require plugins/ost-component/ColorPicker
-//= require plugins/ost-component/FormBuilder
-//= require admin/configurator/TopNavBar
+//= require plugins/helpers/handlebarHelper
+//= require plugins/ost-component/spectrum
+//= require admin/configurator/UIConfigConstants

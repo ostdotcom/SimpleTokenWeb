@@ -6,7 +6,8 @@
     richTextEditor      = ns('ost.richTextEditor'),
     colorPicker         = ns('ost.colorPicker'),
     handlebarHelper     = ns('ost.handlebarHelper'),
-    configuratorConfig  = ns('ost.configuratorConfig'),
+    uiConfigConstants   = ns('ost.uiConfigConstants'),
+    configuratorConfig         = ns('ost.configuratorConfig'),
     sCollapse           = "#ost-collapse",
     sCollapseWrapper    = ".collapse-content-wrap",
     withFormData        =  true,
@@ -156,7 +157,7 @@
     },
 
     getComponentTemplate : function ( type  ) {
-      var inputTypes = configuratorConfig.getTemplateMap();
+      var inputTypes = uiConfigConstants.getTemplateMap();
       return inputTypes[ type ];
     },
 
