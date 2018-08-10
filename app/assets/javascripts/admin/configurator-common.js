@@ -1,3 +1,4 @@
+
 //= require plugins/jquery/jquery
 //= require plugins/popper/popper
 //= require plugins/bootstrap-4/bootstrap
@@ -11,5 +12,12 @@
 //= require plugins/bootstrap_select/bootstrap-select
 //= require plugins/handlebars/handlebars
 //= require plugins/jquery-ui/jquery-ui-sortable
-//= require plugins/ost-component/Iframe.js
 //= require admin/configurator/ui_config
+//= require plugins/ost-component/Iframe.js
+//= require plugins/helpers/handlebarHelper.js
+//= require admin/configurator/spectrum/spectrum
+//= require plugins/ost-component/FileUploader
+//= require plugins/ost-component/RichTextEditor
+//= require plugins/ost-component/ColorPicker
+//= require plugins/ost-component/FormBuilder
+//= require admin/configurator/TopNavBar

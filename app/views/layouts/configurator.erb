@@ -35,10 +35,16 @@
 <body contenteditable="false">
 
 <main id="site-content">
-  <%= yield %>
+  <%= render :partial => "/admin/configurator/common/navbar" %>
+  <aside id="sidebar" class="sidebar-nav">
+    <%= yield %>
+    <%= render :partial => "/admin/configurator/common/aside_footer"%>
+  </aside>
+  <%= render :partial => "/admin/configurator/common/iframe"%>
+  <%= render :partial => "/admin/configurator/common/common_components" %>
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.1/tinymce.min.js"></script><!--todo Move to manifest plugins -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.1/tinymce.min.js"></script>
 <%= javascript_include_tag "admin/configurator-common" %>
 <%= yield :ost_components %>
 <%= javascript_include_tag "#{specific_manifest_file_path}", :defer => "defer" if has_specific_js_manifest_file? %>

@@ -1,9 +1,9 @@
+
 .invalid-feedback{
   margin-top: 0;
   min-height: 16px;
   font-size: 0.7rem;
 }
-
 
 .card-header,
 .card-body{
@@ -13,6 +13,10 @@
     cursor: pointer;
     display: inline-block;
   }
+}
+
+.dropdown-menu{
+  z-index: 999999;
 }
 
 .card-body{
