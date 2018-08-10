@@ -18,18 +18,23 @@
   oSTNs.colorPicker = oThis = {
 
     getColorPickerConfig : function () {
-      return colorPickerConfig;
-    } ,
-
-    initColorPicker : function ( selector , config ) {
-      if(!selector) return ;
-      var colorPickerConfig = config || oThis.getColorPickerConfig(),
-          jEl = $(selector),
-          val = jEl.val()
-      ;
-      colorPickerConfig['color'] = val;
-      jEl.spectrum(colorPickerConfig);
+      return $.extend( true ,  colorPickerConfig ) ;
     }
   };
+
+  $.fn.extend({
+    initColorPricker : function ( config ) {
+      var colorPickerConfig = config || oThis.getColorPickerConfig(),
+          len = $(this).length,  cnt ,
+          jEl , val
+      ;
+      for( cnt = 0 ;  cnt < len ; cnt++  ){
+        jEl = $(this).eq( cnt );
+        val = jEl.val();
+        colorPickerConfig['color'] = val;
+        jEl.spectrum(colorPickerConfig);
+      }
+    }
+  });
 
 })(window );

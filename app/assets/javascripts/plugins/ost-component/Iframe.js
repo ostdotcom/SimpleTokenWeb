@@ -2,7 +2,6 @@
 (function (window ) {
 
   var oSTNs               = ns("ost"),
-      formBuilder         = ns('ost.configuratorIframe'),
       oThis
   ;
 
@@ -20,5 +19,5 @@
 
   };
   
-  
+
 })(window );

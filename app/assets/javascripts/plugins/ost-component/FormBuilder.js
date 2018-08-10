@@ -163,7 +163,7 @@
     intComponents: function(){
       fileUploader.bindButtonActions();
       richTextEditor.initTinyMc('.tinymce-editor');
-      colorPicker.initColorPicker('.color-picker-input');
+      $('.color-picker-input').initColorPricker();
       oThis.initToolTips();
       oThis.initLengthMocker();
     },

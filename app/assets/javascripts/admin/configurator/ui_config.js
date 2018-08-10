@@ -204,7 +204,7 @@
          'required'        : 1
        },
        //form_data
-       'value'          : "rgb(255,255,255)"
+       'value'          : "rgb(255,1,255)"
      },
 
      primary_button_background : {
@@ -219,7 +219,7 @@
          'required'        : 1
        },
        //form_data
-       'value'          : "rgb(255,255,255)"
+       'value'          : "rgb(255,255,0)"
      },
 
      primary_button_border : {
