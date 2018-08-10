@@ -8,8 +8,7 @@
 
   var addComponentWrap  = "data-component-to-add" ,
       sAddComponentWrap = ".collapse-content-wrap",
-
-      sDeleteWrapper = ".form-group"
+      sDeleteWrapper    = ".form-group"
   ;
 
   oSTNs.configuratorHelper = oThis = {

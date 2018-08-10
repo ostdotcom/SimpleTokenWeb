@@ -56,14 +56,15 @@
   };
 
   oSTNs.richTextEditor = oThis = {
+    defaultSelector : '.tinymce-editor',
 
     getTinyMceConfig : function () {
       return tinyMceConfig;
     } ,
 
     initTinyMc : function ( selector , config ) {
-      if(!selector) return ;
-      var tinyMceInitConfig = config || oThis.getTinyMceConfig()
+      var selector = selector || oThis.defaultSelector ,
+          tinyMceInitConfig = config || oThis.getTinyMceConfig()
       ;
       tinyMceInitConfig['selector'] = selector;
       tinymce.init(  tinyMceInitConfig );

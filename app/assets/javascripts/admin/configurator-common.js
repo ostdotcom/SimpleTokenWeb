@@ -14,4 +14,5 @@
 //= require plugins/jquery-ui/jquery-ui-sortable
 //= require plugins/helpers/handlebarHelper
 //= require plugins/ost-component/spectrum
+//= require plugins/ost-component/ConfiguratorHelper
 //= require admin/configurator/UIConfigConstants

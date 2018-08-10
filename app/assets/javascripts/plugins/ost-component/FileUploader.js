@@ -10,7 +10,7 @@
   oSTNs.fileUploader = oThis = {
     generalErrorMsg     : "Something went wrong!",
 
-    sElement            : ".file-upload-input",
+    selector            : ".file-upload-input",
     dSignedUrl          : "get-signed-url",
     dPreUploadMarkup    : "pre-upload-markup",
 
@@ -25,13 +25,11 @@
       'pdf'   : "pdfs"
     },
 
-    bindButtonActions: function () {
-
-      $( oThis.sElement ).on('change' , function ( e ) {
-        var jEl = $(this);
-        oThis.startUpload( jEl );
+    bindButtonActions: function ( selector ) {
+      var jEL = selector ? $(selector) : $(oThis.selector);
+      jEL.on('change' , function ( e ) {
+        oThis.startUpload( $(this) );
       });
-
     },
 
     startUpload: function ( jEl ) {

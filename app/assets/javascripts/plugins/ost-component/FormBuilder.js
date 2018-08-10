@@ -23,7 +23,7 @@
 
     entities      : {},
 
-    init: function ( data  ) {
+    init: function ( data ) {
       oThis.entityConfig  = data[ 'entity_config' ] || {};
       oThis.formData      = data[ 'form_data' ]     || {};
       oThis.buildAccordions();
@@ -88,12 +88,15 @@
     },
 
     buildEntityMarkup : function ( jWrapper , entityConfig ) {
-      var dataKind = entityConfig['data_kind'] ,
+      var dataKind  = entityConfig['data_kind'] ,
+          customCom = entityConfig['isCustom'] ,
           jMarkup
       ;
-      if( dataKind == "array" ){
+      if( customCom ){
+        jMarkup = oThis.getCustomComponent( entityConfig );
+      }else if( dataKind == "array" ){
         jMarkup = oThis.getArrayEntityMarkup( entityConfig )
-      }else{
+      }else {
         jMarkup = oThis.getEntityMarkup( entityConfig ) ;
       }
       jWrapper.append( jMarkup  );
@@ -122,6 +125,10 @@
       sTemplate = oThis.getComponentTemplate( entityType );
       jMarkup   = handlebarHelper.getMarkup( sTemplate , entityConfig );
       return jMarkup ;
+    },
+
+    getCustomComponent: function ( entityConfig ) {
+      //overwrite and create markup for your won custom component.
     },
 
     getMergedEntity : function ( uiEntityConfig , entityConfig  ) {
@@ -163,8 +170,8 @@
 
     intComponents: function(){
       fileUploader.bindButtonActions();
-      richTextEditor.initTinyMc('.tinymce-editor');
-      $('.color-picker-input').initColorPricker();
+      richTextEditor.initTinyMc();
+      colorPicker.initColorPricker();
       oThis.initToolTips();
       oThis.initLengthMocker();
     },
