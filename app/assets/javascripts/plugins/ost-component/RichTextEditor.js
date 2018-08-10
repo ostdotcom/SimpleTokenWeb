@@ -13,6 +13,20 @@
     return jTextArea;
   }
 
+  function getSanitizedContent( content ) {
+    var replaceString   = "&nbsp;" ,
+        replaceBy       = " " ,
+        trimmedContent  = ""
+    ;
+    if( content ){
+      trimmedContent = content.replace( new RegExp( replaceString , 'g'), replaceBy );
+      trimmedContent = trimmedContent.replace(/\s\s+/g, replaceBy );
+      trimmedContent = trimmedContent.trim();
+    }
+
+    return trimmedContent ;
+  }
+
   var tinyMceConfig =  {
       menubar                 : false,
       plugins                 : ['link'],
@@ -27,6 +41,7 @@
           var jTextArea       = getTextArea( tinymce.activeEditor ),
               updatedContent  = tinymce.activeEditor.getContent()
           ;
+          updatedContent = getSanitizedContent( updatedContent );
           jTextArea && jTextArea
             .val( updatedContent )
             .trigger('change');
@@ -41,7 +56,6 @@
   };
 
   oSTNs.richTextEditor = oThis = {
-    events : 'change',
 
     getTinyMceConfig : function () {
       return tinyMceConfig;

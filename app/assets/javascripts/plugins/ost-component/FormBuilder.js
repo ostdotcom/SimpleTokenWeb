@@ -170,10 +170,10 @@
 
     initLengthMocker : function () {
       $('.mock-length').on('keyup change', function () {
-        var jVal        = $(this).val(),
-            jValLength  = jVal && jVal.length,
-            jParent     = $(this).parent('.form-group'),
-            jMocker     = jParent.find('.length-mocker')
+        var jParent     = $(this).closest('.form-group'),
+            jMocker     = jParent.find('.length-mocker'),
+            jVal        = $(this).val() || "",
+            jValLength  = jVal.length
         ;
         if( jMocker ){
           jMocker.html(jValLength);
