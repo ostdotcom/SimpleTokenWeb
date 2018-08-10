@@ -9,4 +9,8 @@ class Admin::ConfiguratorController < Admin::BaseController
 
   end
 
+  def kyc_form
+
+  end
+
 end

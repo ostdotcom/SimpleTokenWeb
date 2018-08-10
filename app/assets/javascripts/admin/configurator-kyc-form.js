@@ -1,0 +1,2 @@
+//= require admin/configurator/Index
+
