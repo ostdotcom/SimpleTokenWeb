@@ -18,6 +18,15 @@
        }
      }
    },
+    "popup_kyc_configuration" : {
+      "collapses"  : {
+        "form_field_options" : {
+          "header"      : "Pop-up Options",
+          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+          "entities"    : [ "show_pop_up" , "term_and_condition"]
+        }
+      }
+    },
 
    entityConfig : {
 
@@ -83,6 +92,37 @@
        },
        //form_data
        'value'          : ["kjbjkb"]
+     },
+
+     show_pop_up : {
+       'label'          : "Show Pop-Up",
+       'tooltip'        : "some tooltip",
+       "inputType"      : inputTypesEnum.toggle,
+
+       //Backend
+       'data_kind'      : "number",
+       'data_key_name'  : "toggle_input",
+       //form_data
+       'value'          : 1
+     },
+
+     term_and_condition : {
+       'label'          : "Checkbox",
+       'tooltip'        : "some tooltip",
+       'title'          : "Footer Text + Link",
+       "inputType"      : inputTypesEnum.richTextEditor,
+       'isDraggable'    : true,
+       'isDeleteEnabled': true,
+       //Backend
+       'data_kind'      : "array",
+       'data_key_name'  : "rich_text_editor",
+       'validation'     : {
+         'min_length'      : '1',
+         'max_length'      : '150',
+         'required'        : 1
+       },
+       //form_data
+       'value'          : ["fafas asfasf afasfas f" , "sfddsfdsf dfdsf " , "dsfdsfds, fdsfdsf"]
      }
 
    }

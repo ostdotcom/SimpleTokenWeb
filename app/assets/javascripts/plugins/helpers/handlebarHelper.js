@@ -7,12 +7,13 @@
   oSTNs.handlebarHelper = oThis = {
 
     getMarkup: function( selector ,  config  ){
-      var sTemplate  = $( selector ),
-          sMarkup    = sTemplate.html(),
-          jTemplate  = Handlebars.compile( sMarkup ),
-          jMarkup    = jTemplate( config )
+      var config     = config     || {},
+          sTemplate  = selector   && $( selector ),
+          sMarkup    = sTemplate  && sTemplate.html(),
+          jTemplate  = sMarkup    && Handlebars.compile( sMarkup ),
+          jMarkup    = jTemplate  && jTemplate( config )
       ;
-      return jMarkup ;
+      return jMarkup || "" ;
     }
 
   };
