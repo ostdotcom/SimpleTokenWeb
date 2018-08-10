@@ -28,7 +28,6 @@
 
   oSTNs.uiConfigConstants = {};
 
-
   /*
   * Getters for private maps , cant be changed.
   */

@@ -3,3 +3,11 @@
   </div>
 </form>
 
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function () {
+      ost.themeConfigurator.init({});
+    });
+  </script>
+<%end%>

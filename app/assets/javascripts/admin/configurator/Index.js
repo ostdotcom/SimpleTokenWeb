@@ -6,18 +6,12 @@
       oThis
   ;
 
-  oSTNs.index = oThis = {
+  oSTNs.themeConfigurator  = oThis = {
 
-    init: function ( ) {
+    init: function ( config ) {
       formBuilder.init({});
     }
 
   };
-
-
-  $(document).ready(function () {
-    oThis.init(); //TODO this will be called from erb with backend data.
-  });
-
 
 })(window );
