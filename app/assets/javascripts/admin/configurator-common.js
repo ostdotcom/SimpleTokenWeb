@@ -10,4 +10,6 @@
 //= require plugins/bootstrap-slider/bootstrap-slider
 //= require plugins/bootstrap_select/bootstrap-select
 //= require plugins/handlebars/handlebars
+//= require plugins/jquery-ui/jquery-ui-sortable
+//= require plugins/ost-component/Iframe.js
 //= require admin/configurator/ui_config

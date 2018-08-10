@@ -1,7 +1,9 @@
+@import "admin/simple_token_theme_admin/variables";
+
 .sidebar-nav {
   left: 0;
   background: #34445b;
-  width: 390px;
+  width: $configurator-aside-width;
   position: fixed;
   height: calc(100vh - 70px);
   padding: 20px 20px 0;

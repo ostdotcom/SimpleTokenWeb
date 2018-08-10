@@ -9,5 +9,6 @@
   *= require plugins/ost-component/InputToggle
   *= require plugins/ost-component/Footer
   *= require plugins/ost-component/Common
+  *= require plugins/ost-component/Iframe
   *= require admin/common/selectpicker
  */

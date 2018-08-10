@@ -173,7 +173,8 @@
         var jParent     = $(this).closest('.form-group'),
             jMocker     = jParent.find('.length-mocker'),
             jVal        = $(this).val() || "",
-            jValLength  = jVal.length
+            jTrimVal    = jVal.trim(),
+            jValLength  = jTrimVal.length
         ;
         if( jMocker ){
           jMocker.html(jValLength);
