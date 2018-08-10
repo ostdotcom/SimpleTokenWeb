@@ -389,7 +389,7 @@
        "inputType"      : inputTypesEnum.richTextEditor,
 
        //Backend
-       'data_kind'      : "array",
+       'data_kind'      : "text",
        'data_key_name'  : "rich_text_editor",
        'validation'     : {
          'min_length'      : '1',

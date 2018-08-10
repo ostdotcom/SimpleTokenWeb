@@ -1,4 +1,4 @@
 //= require admin/configurator/ThemeConfig
 //= require admin/configurator/CommonRequires
-//= require admin/configurator/Index
+//= require admin/configurator/Theme
 
