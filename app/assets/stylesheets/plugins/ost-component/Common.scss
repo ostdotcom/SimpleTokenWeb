@@ -1,5 +1,3 @@
-
-
 .invalid-feedback{
   margin-top: 0;
   min-height: 16px;
@@ -7,6 +5,7 @@
 }
 
 
+.card-header,
 .card-body{
   .config-info-icon{
     height: 15px;
@@ -14,6 +13,9 @@
     cursor: pointer;
     display: inline-block;
   }
+}
+
+.card-body{
   label{
     color: #34445b;
     letter-spacing: 1px;

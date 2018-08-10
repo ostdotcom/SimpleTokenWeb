@@ -2,10 +2,10 @@
   <div class="card mb-4">
     <div class="card-header">
       <a class="card-link" data-toggle="collapse" data-target="#{{configurator_component_id 'collapse' }}" data-parent="#accordion">
-        {{header}}
+        <span>{{header}}</span>
         {{#ifTooltip tooltip}}
         <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='config-info-icon align-middle'>
-            <svg class="config-info-icon" style="width: 16px; height: 16px;">
+            <svg class="config-info-icon">
               <switch>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
               </switch>
@@ -15,7 +15,7 @@
       </a>
     </div>
     <div class="collapse show" id="{{configurator_component_id 'collapse' true}}">
-      <div class="card-body collapse-content-wrap">
+      <div class="card-body collapse-content-wrap pb-0">
       </div>
       {{#ifCollapseFooter footer}}
         <div class="card-footer">

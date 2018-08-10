@@ -5,7 +5,7 @@ class Admin::ConfiguratorController < Admin::BaseController
 
   before_action :set_page_meta_info
 
-  def register
+  def theme_configuration
 
   end
 
