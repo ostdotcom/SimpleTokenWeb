@@ -23,7 +23,7 @@
         "form_field_options" : {
           "header"      : "Pop-up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-          "entities"    : [ "show_pop_up" , "term_and_condition"]
+          "entities"    : [ "show_pop_up" , "term_and_condition", "add_checkbox_field"]
         }
       }
     },
@@ -123,7 +123,18 @@
        },
        //form_data
        'value'          : ["fafas asfasf afasfas f" , "sfddsfdsf dfdsf " , "dsfdsfds, fdsfdsf"]
-     }
+     },
+
+     add_checkbox_field : {
+       'label'          : "Add Checkbox Field",
+       "inputType"      : inputTypesEnum.addCheckbox,
+
+       //Backend
+       'data_kind'      : "number",
+       'data_key_name'  : "toggle_input",
+       //form_data
+       'value'          : 1
+     },
 
    }
 
