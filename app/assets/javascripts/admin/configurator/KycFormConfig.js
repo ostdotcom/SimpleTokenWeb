@@ -62,7 +62,7 @@
 
      ethereum_address_instruction : {
        'label'          : "Ethereum Address Instruction Text",
-       'title'          : "Footer Text + Link",
+       'title'          : "Ethereum Address Instruction Text",
        "inputType"      : inputTypesEnum.richTextEditor,
 
        //Backend

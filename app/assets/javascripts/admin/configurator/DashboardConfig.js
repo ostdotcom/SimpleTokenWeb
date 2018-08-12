@@ -9,7 +9,7 @@
 
   oSTNs.configuratorConfig = {
  
-   "dashboard_configuration" : {
+   "sale_live_dashboard_configuration" : {
      "collapses"  : {
        "top_banner_options" : {
           "header"      : "Top Banner Options",
@@ -33,6 +33,24 @@
        }
      }
    },
+    deposit_address_popup: {
+      "collapses"  : {
+        "popup_options" : {
+          "header"      : "Pop-Up Options",
+          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+          "entities"    : [ "show_pop_up", "review_confirm", "add_checkbox_field" ]
+        }
+      }
+    },
+    deposit_address_user_dashboard: {
+      "collapses"  : {
+        "popup_options" : {
+          "header"      : "Deposit Address User Dashboard",
+          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+          "entities"    : [ "middle_banner_title_text", "middle_banner_body_text" ]
+        }
+      }
+    },
 
    entityConfig : {
 
@@ -187,6 +205,78 @@
        //form_data
        'value'          : ""
      },
+
+     show_pop_up : {
+       'label'          : "Show Pop-Up",
+       'tooltip'        : "some tooltip",
+       "inputType"      : inputTypesEnum.toggle,
+
+       //Backend
+       'data_kind'      : "number",
+       'data_key_name'  : "toggle_input",
+       //form_data
+       'value'          : 1
+     },
+
+     review_confirm : {
+       'label'          : "Checkbox",
+       'title'          : "Footer Text + Link",
+       "inputType"      : inputTypesEnum.richTextEditor,
+       'isDraggable'    : true,
+       'isDeleteEnabled': true,
+       //Backend
+       'data_kind'      : "array",
+       'data_key_name'  : "rich_text_editor",
+       'validation'     : {
+         'min_length'      : '1',
+         'max_length'      : '150',
+         'required'        : 1
+       },
+       //form_data
+       'value'          : ["fafas asfasf afasfas f" , "sfddsfdsf dfdsf " , "dsfdsfds, fdsfdsf"]
+     },
+
+     add_checkbox_field : {
+       'label'          : "Add Checkbox Field",
+       "inputType"      : inputTypesEnum.addCheckbox,
+
+       //Backend
+       'data_kind'      : "number",
+       'data_key_name'  : "toggle_input",
+       //form_data
+       'value'          : 1
+     },
+
+     middle_banner_title_text : {
+       'label'          : "Middle Banner Title Text",
+       "inputType"      : inputTypesEnum.textarea,
+       'placeHolder'    : "<enter text here>",
+
+       //Backend
+       'data_kind'      : "text",
+       'data_key_name'  : "textarea_input",
+       'validation'     : {
+         'required'        : 1
+       },
+       //form_data
+       'value'          : ""
+     },
+
+     middle_banner_body_text : {
+       'label'          : "Middle Banner Body Text",
+       'title'          : "Middle Banner Body Text",
+       "inputType"      : inputTypesEnum.richTextEditor,
+       //Backend
+       'data_kind'      : "text",
+       'data_key_name'  : "rich_text_editor",
+       'validation'     : {
+         'min_length'      : '1',
+         'max_length'      : '150',
+         'required'        : 1
+       },
+       //form_data
+       'value'          : ["fafas asfasf afasfas f"]
+     }
 
    }
 
