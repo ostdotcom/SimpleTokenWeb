@@ -13,4 +13,8 @@ class Admin::ConfiguratorController < Admin::BaseController
 
   end
 
+  def dashboard
+
+  end
+
 end
