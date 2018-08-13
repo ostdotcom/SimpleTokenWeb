@@ -6,6 +6,12 @@
   font-size: 0.7rem;
 }
 
+.add-icon{
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
 .card-header,
 .card-body{
   .config-info-icon{
@@ -31,11 +37,15 @@
   }
 }
 
+.card-footer{
+  background-color: #FFFFFF;
+}
+
 .dropdown-menu{
   z-index: 999999;
 }
 
-.card-body{
+.accordion-content-wrapper{
   label{
     color: $blue-900;
     letter-spacing: $letter-spacing;
