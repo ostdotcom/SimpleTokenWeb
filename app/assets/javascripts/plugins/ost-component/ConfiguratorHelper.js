@@ -103,6 +103,7 @@
 
       if( jComponentKey ) {
         componentKey  = jComponentKey.attr( addComponentWrap );
+        jWrapper      = jComponentKey.closest( sWrapper );
       }
 
       if( componentKey ){
@@ -112,7 +113,7 @@
           return;
         }
       }
-      jWrapper      = jComponentKey.closest( sWrapper );
+
       jWrapper.append( jMarkup );
     },
 

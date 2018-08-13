@@ -17,6 +17,10 @@
         axis: 'y',
         cursor: 'move'
       });
+
+      $('.add-component-el').on('click' , function () {
+        $(this).addOstComponent();
+      });
     }
 
   };
