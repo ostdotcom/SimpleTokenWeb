@@ -13,7 +13,7 @@
 
   oSTNs.configuratorHelper = oThis = {
 
-    getPageData : function ( config ) {
+    getPageData : function ( config ,  callback ) {
       var api    = oThis.getApi( config ) ,
           method = oThis.getMethod( config ) ,
           params = oThis.getParams( config )
@@ -26,6 +26,7 @@
         data    : oThis.getParams( config ),
         success: function(result) {
           if( result.success ){
+            callback( result.data );
             formBuilder.init( result.data );
           }else{
             oThis.showError( result );
@@ -59,11 +60,11 @@
   //jQuerry related stuff
   $.fn.extend({
 
-    addOstComponent : function( sWrap ) {
+    addOstComponent : function( sWrap ,  callBack ) {
       var jEl       =   $(this),
           sWrapper  = sWrap || sAddComponentWrap,
           jComponentKey , componentKey,
-          jWrapper
+          jWrapper , jMarkup
       ;
 
       if( jEl.attr( addComponentWrap )){
@@ -78,16 +79,25 @@
       }
 
       if( componentKey ){
-        formBuilder.buildEntity( jWrapper , componentKey );
+        if( callBack ){
+          callBack( jMarkup ,jWrapper ,  jEl );
+          return;
+        }
+        jMarkup  = formBuilder.getBuildEntityMarkup( componentKey );
+        jWrapper.append();
       }
     },
 
-    deleteOstComponent : function( sWrapperToDelete ) {
+    deleteOstComponent : function( sWrapperToDelete ,  callback) {
       var jEl = $(this)  ,
           sDeleteEl = sWrapperToDelete || sDeleteWrapper,
           jDeleteEl = jEl.closest( sDeleteEl )
       ;
-      jDeleteEl.remove();
+      if( callback ){
+        callback( jDeleteEl , jEl );
+      }else {
+        jDeleteEl.remove();
+      }
     }
 
   })

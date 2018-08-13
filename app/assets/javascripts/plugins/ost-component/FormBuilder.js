@@ -45,17 +45,18 @@
     buildCollapses: function ( jWrapper ) {
       var accordionKey    = jWrapper && jWrapper.attr( accordionAttr ),
           accordionConfig = oThis.getSectionConfig( accordionKey ) ,
-          collapsesConfig , collapse
+          collapsesConfig , collapse ,  jMarkup
       ;
       if( !accordionConfig ) return ;
       collapsesConfig  = accordionConfig['collapses'];
       for( var key in collapsesConfig ){
         collapse = collapsesConfig[ key ] ;
-        oThis.buildCollapse( jWrapper , collapse ) ;
+        jMarkup = oThis.getMarkupCollapse( collapse ) ;
+        jWrapper.append( jMarkup );
       }
     },
 
-    buildCollapse : function ( jWrapper , collapseConfig ) {
+    getMarkupCollapse : function (  collapseConfig ) {
       var entities = collapseConfig && collapseConfig.entities,
           jCollapse , jMarkup
       ;
@@ -63,33 +64,25 @@
       jMarkup   = $( handlebarHelper.getMarkup( sCollapse , collapseConfig ) ) ;
       jCollapse = $( jMarkup ).find( sCollapseWrapper );
       oThis.buildEntities( jCollapse , entities );
-      jWrapper.append( jMarkup[0] );
+      return jMarkup[0] ;
     },
 
     buildEntities : function ( jWrapper , entities ) {
       var len = entities && entities.length , cnt ,
-          entityKey
+          jMarkup  , entityKey
       ;
       for( cnt = 0; cnt < len ; cnt++ ){
         entityKey = entities[cnt];
-        oThis.buildEntity( jWrapper , entityKey , withFormData ) ;
+        jMarkup = oThis.getBuildEntityMarkup( entityKey , withFormData ) ;
+        jWrapper.append( jMarkup );
       }
     },
 
-    buildEntity : function ( jWrapper , entityKey , withFormData ) {
-      var entityConfig    = oThis.getEntityConfig( entityKey ) ,
-          uiEntityConfig  = oThis.getUIEntityConfig( entityKey ) ,
-          mergedConfig    = oThis.getMergedEntity( uiEntityConfig , entityConfig )
-      ;
-      if( withFormData ){
-        mergedConfig = oThis.getEntityConfigWithFormData( mergedConfig  )
-      }
-      oThis.buildEntityMarkup( jWrapper , mergedConfig  );
-    },
+    getBuildEntityMarkup : function ( entityKey , withFormData ) {
+      var entityConfig = oThis.getEntityConfig(  entityKey , withFormData),
 
-    buildEntityMarkup : function ( jWrapper , entityConfig ) {
-      var dataKind  = entityConfig['data_kind'] ,
-          customCom = entityConfig['isCustom'] ,
+          dataKind  = entityConfig && entityConfig['data_kind'] ,
+          customCom = entityConfig && entityConfig['isCustom'] ,
           jMarkup
       ;
       if( customCom ){
@@ -99,8 +92,21 @@
       }else {
         jMarkup = oThis.getEntityMarkup( entityConfig ) ;
       }
-      jWrapper.append( jMarkup  );
+      return  jMarkup  ;
     },
+
+
+    getEntityConfig : function (  entityKey , withFormData ) {
+      var entityConfig    = oThis.getBEEntityConfig( entityKey ) ,
+          uiEntityConfig  = oThis.getUIEntityConfig( entityKey ) ,
+          mergedConfig    = oThis.getMergedEntity( uiEntityConfig , entityConfig )
+      ;
+      if( withFormData ){
+        mergedConfig = oThis.getEntityConfigWithFormData( mergedConfig  )
+      }
+      return mergedConfig;
+    },
+
 
     getArrayEntityMarkup : function ( entityConfig  ) {
       var entityConfigCopy  = $.extend({}, entityConfig ),
@@ -120,7 +126,7 @@
 
     getEntityMarkup : function ( entityConfig ) {
       var entityType = entityConfig['inputType'],
-        sTemplate , jMarkup
+          sTemplate , jMarkup
       ;
       sTemplate = oThis.getComponentTemplate( entityType );
       jMarkup   = handlebarHelper.getMarkup( sTemplate , entityConfig );
@@ -155,7 +161,7 @@
       return configuratorConfig['entityConfig'][ entityKey ];
     },
 
-    getEntityConfig: function ( entityKey ) {
+    getBEEntityConfig: function ( entityKey ) {
       return oThis.entityConfig[ entityKey ];
     },
 

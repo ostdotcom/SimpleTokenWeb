@@ -3,6 +3,7 @@
 
   var oSTNs               = ns("ost"),
       formBuilder         = ns('ost.formBuilder'),
+      richTextEditor      = ns('ost.richTextEditor'),
       oThis
   ;
 
@@ -10,6 +11,12 @@
 
     init: function ( config ) {
       formBuilder.init({});
+
+      $( ".collapse-content-wrap" ).sortable({
+        items: ".tinymce-wrap",
+        axis: 'y',
+        cursor: 'move'
+      });
     }
 
   };
