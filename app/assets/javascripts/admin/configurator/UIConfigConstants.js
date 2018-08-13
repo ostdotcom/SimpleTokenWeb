@@ -11,7 +11,8 @@
       "colorPicker"     : "color_picker",
       "richTextEditor"  : "rich_text_editor",
       "textarea"        : "textarea",
-      "toggle"          : "toggle"
+      "toggle"          : "toggle",
+      "addCheckbox"    : "add_checkbox"
     } ,
 
     inputTemplateMap = {
@@ -22,7 +23,8 @@
       "textarea"         : "#ost-input-textarea",
       "toggle"           : "#ost-input-toggle",
       "color_picker"     : "#ost-color-picker",
-      "rich_text_editor" : "#ost-rich-text-editor"
+      "rich_text_editor" : "#ost-rich-text-editor",
+      "add_checkbox"     : "#ost-add-checkbox-filed"
     }
   ;
 

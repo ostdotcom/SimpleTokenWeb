@@ -1,8 +1,10 @@
+@import "admin/simple_token_theme_admin/variables";
+
 .color-picker{
   &.sp-replacer{
-    border: solid 0.5px #d3e3e5;
+    border: solid 0.5px $custom-grey-7;
     background: transparent;
-    border-radius: 50%;
+    border-radius: $custom-radio-indicator-border-radius;
     height: 25px;
     width: 25px;
     padding: 0;
@@ -11,7 +13,7 @@
     margin-right: 0;
     height: 25px;
     width: 25px;
-    border-radius: 50%;
+    border-radius: $custom-radio-indicator-border-radius;
     border: none;
   }
   .sp-dd{

@@ -1,0 +1,26 @@
+<script type="text/x-handlebars-template" id="ost-add-checkbox-filed">
+  <div class="row form-group pb-2">
+    <div class="col-10 align-self-center pr-0">
+      <div class="form-label mb-0">
+        <label class="align-middle mb-0">Add Checkbox Field</label>
+      </div>
+    </div>
+    <div class="col-2 add-component-wrap align-self-center" data-component-to-add="{{ component }}">
+      <svg class="config-info-icon">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add-icon"></use>
+        </switch>
+      </svg>
+    </div>
+  </div>
+</script>
+
+
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function () {
+
+    });
+  </script>
+<%end%>

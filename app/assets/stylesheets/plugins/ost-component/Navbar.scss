@@ -1,3 +1,5 @@
+@import "admin/simple_token_theme_admin/variables";
+
 .navbar{
   box-shadow: 0 0.3px 1px 0 rgba(0, 0, 0, 0.5);
   .nav-svg{
@@ -19,7 +21,7 @@
       height: 2px;
       border-radius: 1px;
       margin: 5px 0;
-      background-color: #34445b;
+      background-color: $blue-900;
     }
   }
   .mega-dropdown-menu{
@@ -30,7 +32,7 @@
       height: 0;
       top: 1px;
       right: 3px;
-      border: 6px solid #fff;
+      border: 6px solid $white;
       transform-origin: 0 0;
       transform: rotate(135deg);
       box-shadow: -1px 1px 0px 0px rgba(0, 0, 0, 0.05);
@@ -40,20 +42,20 @@
         border: none;
         width: 100%;
         padding: 10px 0;
-        color: #597a84;
+        color: $blue-800;
         font-size: 0.8rem;
         display: inline-block;
         letter-spacing: 0.4px;
         text-transform: uppercase;
         &:hover{
-          background-color: #f3fbfb;
+          background-color: $green-1000;
         }
       }
     }
   }
   .bootstrap-select.btn-group{
     .dropdown-toggle{
-      font-weight: 300;
+      font-weight: $font-weight-light;
       letter-spacing: 0.5px;
     }
   }

@@ -2,7 +2,7 @@
 
 .sidebar-nav {
   left: 0;
-  background: #34445b;
+  background: $blue-900;
   width: $configurator-aside-width;
   position: fixed;
   height: calc(100vh - 70px);
@@ -21,10 +21,10 @@
       .card-link{
         border: none;
         display: block;
-        color: #9bafb5;
-        font-weight: 400;
-        font-size: 0.75rem;
-        letter-spacing: 1px;
+        color: $cyanish-gray;
+        font-weight: $font-weight-400;
+        font-size: $display4-size;
+        letter-spacing: $letter-spacing;
         text-transform: uppercase;
       }
     }
@@ -46,15 +46,5 @@
     [data-toggle="collapse"].collapsed:after {
       transform: rotate(0deg) ;
     }
-  }
-  .edit-svg{
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-  }
-  .upload-svg{
-    cursor: pointer;
-    height: 22px;
-    width: 22px;
   }
 }
