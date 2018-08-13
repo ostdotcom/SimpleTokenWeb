@@ -22,6 +22,7 @@
           "header"      : "Pop-up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
           "entities"    : [ "show_pop_up" , "term_and_condition"],
+          "className"   : "terms-condition-wrapper",
           "footer"      : {
             template  : "#ost-add-terms_condition",
             component : "term_and_condition"
@@ -121,9 +122,7 @@
          'min_length'      : '1',
          'max_length'      : '150',
          'required'        : 1
-       },
-       //form_data
-       'value'          : ["fafas asfasf afasfas f" , "sfddsfdsf dfdsf " , "dsfdsfds, fdsfdsf"]
+       }
      }
 
    }

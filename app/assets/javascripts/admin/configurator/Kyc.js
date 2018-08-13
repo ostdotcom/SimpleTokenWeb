@@ -3,24 +3,27 @@
 
   var oSTNs               = ns("ost"),
       formBuilder         = ns('ost.formBuilder'),
-      configuratorHelper = ns('ost.configuratorHelper'),
+      configuratorHelper  = ns('ost.configuratorHelper'),
+      richTextEditor      = ns('ost.richTextEditor') ,
       oThis
   ;
 
   oSTNs.kycConfigurator  = oThis = {
 
     init: function ( config ) {
-      formBuilder.init({}); //TODO delete after integration
+      oThis.onSuccess({}); //TODO delete after integration
 
-      configuratorHelper.getPageData({} , function ( data ) {
-        formBuilder.init( data );
-        oThis.bindDraggable( );
-        oThis.bindAddComponent()
-      });
+      //configuratorHelper.getPageData({} , oThis.onSuccess ); //TODO uncomment after integration
 
     },
 
-    bindDraggable : function (   ) {
+    onSuccess : function ( data ) {
+      formBuilder.init( data );
+      oThis.bindDraggable( );
+      oThis.bindAddComponent();
+    },
+
+    bindDraggable : function (  ) {
       $( ".section-content-wrap" ).sortable({
         items: ".tinymce-wrap",
         axis: 'y',
@@ -29,8 +32,13 @@
     },
 
     bindAddComponent : function () {
+      var jWrapper = $('.terms-condition-wrapper') ,
+          jMarkup
+      ;
       $('.add-component-el').on('click' , function () {
-        $(this).addOstComponent();
+        jMarkup = configuratorHelper.getAddOstComponentMarkup( $(this) );
+        jWrapper.append( jMarkup );
+        richTextEditor.initTinyMc( );
       });
     }
 

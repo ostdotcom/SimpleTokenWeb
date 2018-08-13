@@ -11,8 +11,7 @@
       jAjaxErrorWrap       = $(".ajax-error-wrapper"),
     
       addComponentWrap    = "data-component-to-add" ,
-      sDeleteWrapper      = ".form-group" ,
-      sAddComponentWrap   = uiConfigConstants.getSectionContentWrapper()
+      sDeleteWrapper      = ".form-group"
   ;
 
   oSTNs.configuratorHelper = oThis = {
@@ -36,7 +35,7 @@
         beforeSend : function () {
           jAjaxProcessingWrap.show(); 
         },
-        success: function(result) {
+        success: function( result ) {
           if( result.success ){
             if( callback ){
               callback( result.data );
@@ -79,19 +78,11 @@
         jAjaxErrorWrap.find('.error-message').html( errMsg );
       }
       jAjaxErrorWrap.show(); 
-    }
+    },
 
-  };
-
-
-  //jQuerry related stuff
-  $.fn.extend({
-
-    addOstComponent : function( callBack ) {
-      var jEl       = $(this),
-          sWrapper  = sAddComponentWrap,
-          jComponentKey , componentKey,
-          jWrapper , jMarkup
+    getAddOstComponentMarkup : function( jEl   ) {
+      var jComponentKey , componentKey,
+          jMarkup = ""
       ;
 
       if( jEl.attr( addComponentWrap )){
@@ -102,32 +93,26 @@
 
       if( jComponentKey ) {
         componentKey  = jComponentKey.attr( addComponentWrap );
-        jWrapper      = jComponentKey.closest( sWrapper );
       }
 
       if( componentKey ){
-        jMarkup  = formBuilder.getBuildEntityMarkup( componentKey );
-        if( callBack ){
-          callBack( jMarkup , jWrapper , jEl );
-          return;
+        if( !formBuilder.getBuildEntityMarkup ){
+          formBuilder = ns('ost.formBuilder') ;
         }
+        jMarkup  = formBuilder.getBuildEntityMarkup( componentKey );
       }
 
-      jWrapper.append( jMarkup );
+     return jMarkup;
     },
 
-    deleteOstComponent : function( sWrapperToDelete ,  callback) {
-      var jEl = $(this)  ,
-          sDeleteEl = sWrapperToDelete || sDeleteWrapper,
-          jDeleteEl = jEl.closest( sDeleteEl )
+    deleteOstComponent : function( jEL , sWrapperToDelete  ) {
+      var sDeleteEl = sWrapperToDelete || sDeleteWrapper,
+          jDeleteEl = jEL.closest( sDeleteEl )
       ;
-      if( callback ){
-        callback( jDeleteEl , jEl );
-      }else {
-        jDeleteEl.remove();
-      }
+      jDeleteEl.remove();
     }
 
-  })
+  };
+
 
 })(window , jQuery);

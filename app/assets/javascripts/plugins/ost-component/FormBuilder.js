@@ -119,9 +119,9 @@
     *  returns : Markup
     */
     getBuildEntityMarkup: function (entityKey, withFormData) {
-      var entityConfig = oThis.getEntityConfig(entityKey, withFormData),
-        dataKind = entityConfig && entityConfig['data_kind'],
-        customCom = entityConfig && entityConfig['isCustom'],
+      var entityConfig  = oThis.getEntityConfig(entityKey, withFormData),
+        dataKind        = entityConfig && entityConfig['data_kind'],
+        customCom       = entityConfig && entityConfig['isCustom'],
         jMarkup = ""
       ;
       if (customCom) {
@@ -142,9 +142,9 @@
      * returns : Merged entity config of UI , Backend and FormData
      */
     getEntityConfig: function (entityKey, withFormData) {
-      var entityConfig = oThis.getBEEntityConfig(entityKey),
-        uiEntityConfig = oThis.getUIEntityConfig(entityKey),
-        mergedConfig = oThis.getMergedEntity(uiEntityConfig, entityConfig)
+      var entityConfig  = oThis.getBEEntityConfig(entityKey),
+        uiEntityConfig  = oThis.getUIEntityConfig(entityKey),
+        mergedConfig    = oThis.getMergedEntity(uiEntityConfig, entityConfig)
       ;
       if (withFormData) {
         mergedConfig = oThis.getEntityConfigWithFormData(mergedConfig)
@@ -161,11 +161,11 @@
      */
     getArrayEntityMarkup: function (entityConfig) {
       var entityConfigCopy = $.extend({}, entityConfig),
-        values = entityConfigCopy['value'],
-        len = values && values.length, cnt,
-        jMarkup = "", currVal
+          initialValue     = entityConfig['init_value'] || "" ,
+          values = entityConfigCopy['value'] || [ initialValue ],
+          len = values && values.length, cnt,
+          jMarkup = "", currVal
       ;
-      if (!len) return;
       for (cnt = 0; cnt < len; cnt++) {
         currVal = values[cnt];
         entityConfigCopy['value'] = currVal;
