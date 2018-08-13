@@ -12,7 +12,7 @@
 //= require plugins/bootstrap_select/bootstrap-select
 //= require plugins/handlebars/handlebars
 //= require plugins/jquery-ui/jquery-ui-sortable
-//= require plugins/helpers/handlebarHelper
 //= require plugins/ost-component/spectrum
-//= require plugins/ost-component/ConfiguratorHelper
 //= require admin/configurator/ui_configs/UIConfigConstants.js
+//= require plugins/helpers/handlebarHelper
+//= require plugins/ost-component/ConfiguratorHelper

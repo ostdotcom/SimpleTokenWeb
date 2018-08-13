@@ -31,16 +31,16 @@
             </svg>
           {{/ifFilePath}}
         </label>
-        <input id="{{configurator_component_id data_key_name true}}"
-               data-get-signed-url="{{signed_url}}"
-               class="file-upload-input"
-        {{is_required validation.required}}
-        data-min-bytes="{{validation.min_bytes}}"
-        data-max-bytes="{{validation.max_bytes}}"
-        accept="{{getAccept validation.accept}}"
-        type='file'
-        name="{{data_key_name}}"
-        value="{{value}}" />
+          <input id="{{configurator_component_id data_key_name true}}"
+                 data-get-signed-url="{{signed_url}}"
+                 class="file-upload-input"
+                {{is_required validation.required}}
+                data-min-bytes="{{validation.min_bytes}}"
+                data-max-bytes="{{validation.max_bytes}}"
+                accept="{{getAccept validation.accept}}"
+                type='file'
+                name="{{data_key_name}}"
+                value="{{value}}" />
       </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>

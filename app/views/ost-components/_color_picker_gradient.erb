@@ -1,10 +1,10 @@
-<script type="text/x-handlebars-template" id="ost-color-picker">
+<script type="text/x-handlebars-template" id="ost-color-picker-gradient">
   <div class="row form-group color-picker-wrap">
     <div class="col-10 align-self-center pr-0">
       <div class="form-label mb-0">
-        <label class="align-middle mb-0">{{label}}</label>
+        <label class="align-middle mb-0">{{label}} #{{count}}</label>
         {{#ifTooltip tooltip}}
-          <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='config-info-icon align-middle'>
+        <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='config-info-icon align-middle'>
             <svg class="config-info-icon">
               <switch>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
@@ -15,8 +15,15 @@
       </div>
     </div>
     <div class="col-2 text-right align-self-center pl-0">
+      <input class="input-number py-0 px-1"
+             {{is_required validation.required}}
+             min="{{validation.min}}"
+             max="{{validation.max}}"
+             type='number'
+             name="{{data_key_name}}[gradient]"
+             value="{{value.gradient}}" />
       <input type='text' {{is_required validation.required}}
-             class="color-picker-input" name="{{data_key_name}}"  value="{{value}}" hidden/>
+             class="color-picker-input" name="{{data_key_name}}[color]"  value="{{value.color}}" hidden/>
     </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>

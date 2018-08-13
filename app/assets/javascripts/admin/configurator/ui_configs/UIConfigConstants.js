@@ -12,7 +12,8 @@
       "richTextEditor"  : "rich_text_editor",
       "textarea"        : "textarea",
       "toggle"          : "toggle",
-      "addCheckbox"    : "add_checkbox"
+      "addCheckbox"     : "add_checkbox",
+      "colorGradient"   : "color_gradient"
     } ,
       inputTemplateMap = {}
     ;
@@ -24,6 +25,7 @@
   inputTemplateMap[inputTypesEnum.radio]            = "#ost-input-radio";
   inputTemplateMap[inputTypesEnum.toggle]           = "#ost-input-toggle";
   inputTemplateMap[inputTypesEnum.colorPicker]      = "#ost-color-picker";
+  inputTemplateMap[inputTypesEnum.colorGradient]    = "#ost-color-picker-gradient";
   inputTemplateMap[inputTypesEnum.richTextEditor]   = "#ost-rich-text-editor";
   inputTemplateMap[inputTypesEnum.addCheckbox]      = "#ost-add-checkbox-filed";
 

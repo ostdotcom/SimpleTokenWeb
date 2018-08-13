@@ -13,7 +13,7 @@
        "header_options" : {
           "header"      : "Header Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-          "entities"    : [ "mast_head_logo", "resize_logo", "fav_icon", "top_gradient_color_picker", "bottom_gradient_color_picker" ]
+          "entities"    : [ "mast_head_logo", "resize_logo", "fav_icon", "background_color_picker" ]
        },
        "tracking_options" : {
          "header"      : "Tracking Options",
@@ -107,19 +107,28 @@
        'value'          : "rgb(255,255,255)"
      },
 
-     bottom_gradient_color_picker : {
-       'label'          : "Background Bottom Gradient Color",
+     background_color_picker : {
+       'label'          : "Background Gradient Color",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
+       "inputType"      : inputTypesEnum.colorGradient,
 
        //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
+       'data_kind'      : "array",
+       'data_key_name'  : "background_color_picker[]",
        'validation'     : {
          'required'        : 1
        },
+
        //form_data
-       'value'          : "rgb(255,255,255)"
+       'value' : [{
+         "color": "#fff",
+         "gradient": "10"
+       },
+         {
+           "color": "#fff",
+           "gradient": "10"
+         }
+       ]
      },
 
      gtm_pixel_id : {
