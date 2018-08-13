@@ -1,3 +1,4 @@
+@import "admin/simple_token_theme_admin/variables";
 
 .invalid-feedback{
   margin-top: 0;
@@ -13,6 +14,16 @@
     cursor: pointer;
     display: inline-block;
   }
+  .edit-svg{
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+  }
+  .upload-svg{
+    cursor: pointer;
+    height: 22px;
+    width: 22px;
+  }
 }
 
 .dropdown-menu{
@@ -21,13 +32,13 @@
 
 .card-body{
   label{
-    color: #34445b;
-    letter-spacing: 1px;
+    color: $blue-900;
+    letter-spacing: $letter-spacing;
     text-transform: capitalize;
   }
   .form-group{
     padding-top: 1rem;
-    border-top: solid 0.5px #d3e3e5;
+    border-top: solid 0.5px $custom-grey-7;
     &:first-child{
       padding-top: 0;
       border-top: none;
@@ -36,22 +47,22 @@
 
   textarea, input{
     width: 100%;
-    border-radius: 3px;
+    border-radius: $border-radius-sm;
     padding: 10px;
-    background-color: #ffffff;
-    border: solid 0.5px #d3e3e5;
+    background-color: $white;
+    border: solid 0.5px $custom-grey-7;
     letter-spacing: 0.2px;
-    color: #597a84;
-    font-size: 14px;
-    font-weight: 300;
+    color: $blue-800;
+    font-size: $display4-size;
+    font-weight: $font-weight-light;
     &:focus{
       outline: none;
     }
   }
   .radio-button-label{
-    font-size: 14px;
-    color: #597a84;
-    font-weight: 400;
+    font-size: $display4-size;
+    color: $blue-800;
+    font-weight: $font-weight-normal;
     .label{
       line-height: 22px;
     }
@@ -78,25 +89,25 @@ input[type="number"] {
     }
   }
   .tooltip-inner {
-    background-color: #ffffff;
+    background-color: $white;
     box-shadow: 0 0.5px 3px 2px rgba(50, 50, 50, 0.09);
     padding: 5px;
-    color: #597a84;
+    color: $blue-800;
     text-align: left;
-    font-weight: 300;
-    font-size: 12px;
+    font-weight: $font-weight-normal;
+    font-size: $display4-size;
   }
 }
 
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #597a84;
+  color: $blue-800;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: #597a84;
+  color: $blue-800;
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: #597a84;
+  color: $blue-800;
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: #597a84;
+  color: $blue-800;
 }
