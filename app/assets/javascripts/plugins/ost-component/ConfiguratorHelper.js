@@ -1,5 +1,5 @@
 ;
-(function (window ) {
+(function (window , $ ) {
 
   var oSTNs               = ns("ost"),
       formBuilder         = ns('ost.formBuilder'),
@@ -7,27 +7,40 @@
       oThis
   ;
 
-  var addComponentWrap  = "data-component-to-add" ,
-      sDeleteWrapper    = ".form-group" ,
-      sAddComponentWrap = uiConfigConstants.getSectionContentWrapper()
+  var jAjaxProcessingWrap  = $(".ajax-processing-wrapper"),
+      jAjaxErrorWrap       = $(".ajax-error-wrapper"),
+    
+      addComponentWrap    = "data-component-to-add" ,
+      sDeleteWrapper      = ".form-group" ,
+      sAddComponentWrap   = uiConfigConstants.getSectionContentWrapper()
   ;
 
   oSTNs.configuratorHelper = oThis = {
 
     getPageData : function ( config ,  callback ) {
-      var api    = oThis.getApi( config ) ,
-          method = oThis.getMethod( config ) ,
-          params = oThis.getParams( config )
-      ;
-      if( api ) return ;
+      var ajaxConfig = oThis.getAjaxConfig( config , callback ) ;
+      if( !ajaxConfig ) return ;
+      $.ajax( ajaxConfig );
+    },
 
-      $.ajax({
+    getAjaxConfig : function ( config , callback ) {
+      var api    = oThis.getApi( config ) ,
+          method = oThis.getMethod( config ) || "GET",
+          params = oThis.getParams( config ) ,
+          ajaxConfig
+      ;
+      if( api ) return false;
+      ajaxConfig = {
         url     : api ,
         method  : method,
-        data    : oThis.getParams( config ),
+        beforeSend : function () {
+          jAjaxProcessingWrap.show(); 
+        },
         success: function(result) {
           if( result.success ){
-            callback( result.data );
+            if( callback ){
+              callback( result.data );
+            }
             formBuilder.init( result.data );
           }else{
             oThis.showError( result );
@@ -35,8 +48,16 @@
         },
         error : function ( jqXhr , error ) {
           oThis.showError( error );
+        },
+        complete: function () {
+          jAjaxProcessingWrap.hide();
         }
-      });
+      } ;
+      if( params ){
+        ajaxConfig['data'] = params ;
+      }
+
+      return ajaxConfig ;
     },
 
     getApi : function ( config ) {
@@ -52,7 +73,13 @@
     },
 
     showError : function ( response ) {
-
+      var err     = response && response.err,
+          errMsg  = err && err.display_text
+      ;
+      if( errMsg ){
+        jAjaxErrorWrap.find('.error-message').html( errMsg );
+      }
+      jAjaxErrorWrap.show(); 
     }
 
   };
@@ -81,7 +108,7 @@
       if( componentKey ){
         jMarkup  = formBuilder.getBuildEntityMarkup( componentKey );
         if( callBack ){
-          callBack( jMarkup ,jWrapper ,  jEl );
+          callBack( jMarkup , jWrapper , jEl );
           return;
         }
       }
@@ -103,4 +130,4 @@
 
   })
 
-})(window );
+})(window , jQuery);
