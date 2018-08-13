@@ -41,7 +41,6 @@
             if( callback ){
               callback( result.data );
             }
-            formBuilder.init( result.data );
           }else{
             oThis.showError( result );
           }

@@ -4,6 +4,7 @@
   var oSTNs = ns("ost"),
       uiConfigConstants = ns("ost.uiConfigConstants"),
       inputTypesEnum = uiConfigConstants.getInputTypes()
+
   ;
 
 
