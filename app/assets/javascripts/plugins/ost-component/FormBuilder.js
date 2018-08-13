@@ -1,25 +1,22 @@
 ;
 (function (window, $) {
 
-  var oSTNs = ns("ost"),
-    fileUploader = ns('ost.fileUploader'),
-    richTextEditor = ns('ost.richTextEditor'),
-    colorPicker = ns('ost.colorPicker'),
-    handlebarHelper = ns('ost.handlebarHelper'),
-    uiConfigConstants = ns('ost.uiConfigConstants'),
-    configuratorConfig = ns('ost.configuratorConfig'),
-    sCollapseWrapper = ".section-content-wrap",
-    withFormData = true,
+  var oSTNs             = ns("ost"),
+    fileUploader        = ns('ost.fileUploader'),
+    richTextEditor      = ns('ost.richTextEditor'),
+    colorPicker         = ns('ost.colorPicker'),
+    handlebarHelper     = ns('ost.handlebarHelper'),
+    uiConfigConstants   = ns('ost.uiConfigConstants'),
+    configuratorConfig  = ns('ost.configuratorConfig'),
+
+    sectionsAttr        = uiConfigConstants.getSectionsAttr(),
+    sCollapseWrapper    = uiConfigConstants.getSectionContentWrapper(),
+
+    withFormData        = true,
     oThis
   ;
 
-  var sectionAttr = "data-accordion-content";
-
   oSTNs.formBuilder = oThis = {
-
-    sSection: {
-      "collapse": "#ost-collapse"
-    },
 
     entityConfig: {},
     formData: {},
@@ -31,7 +28,7 @@
     * params : data
     * Eg : { entityConfig : {} formData : {} }
     * */
-    init: function (data) {
+    init: function ( data ) {
       oThis.entityConfig = data['entity_config'] || {};
       oThis.formData = data['form_data'] || {};
       oThis.buildSections();
@@ -45,7 +42,7 @@
      */
 
     buildSections: function () {
-      var jSections = $("[" + sectionAttr + "]"),
+      var jSections = $("[" + sectionsAttr + "]"),
         len = jSections.length, cnt,
         section
       ;
@@ -63,7 +60,7 @@
      *  jWrapper Should have the above key.
      */
     buildSection: function (jWrapper) {
-      var sectionKey = jWrapper && jWrapper.attr(sectionAttr),
+      var sectionKey = jWrapper && jWrapper.attr(sectionsAttr),
         sectionConfig = oThis.getSectionConfig(sectionKey),
         section, jMarkup
       ;
@@ -218,9 +215,12 @@
      *  params : sectionType,
      *  returns : template
     */
-    getSectionTemplate: function (sectionType) {
-      var sectionType = sectionType || "collapse";
-      return oThis.sSection[sectionType];
+    getSectionTemplate: function ( sectionType ) {
+      var getSectionTypesEnum = uiConfigConstants.getSectionTypesEnum(),
+          sectionType         = sectionType || getSectionTypesEnum['collapse'],
+          sectionTemplateMap  = uiConfigConstants.getSectionTemplateMap()
+      ;
+      return sectionTemplateMap[sectionType];
     },
 
     getSectionConfig: function (configKey) {

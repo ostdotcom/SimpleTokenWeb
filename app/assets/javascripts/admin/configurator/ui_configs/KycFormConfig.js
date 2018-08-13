@@ -63,7 +63,7 @@
 
        //Backend
        'data_kind'      : "text",
-       'data_key_name'  : "rich_text_editor",
+       'data_key_name'  : "rich_text_editor[]",
        'validation'     : {
          'min_length'      : '1',
          'max_length'      : '150',
@@ -111,7 +111,7 @@
        'isDeleteEnabled': true,
        //Backend
        'data_kind'      : "array",
-       'data_key_name'  : "rich_text_editor",
+       'data_key_name'  : "term_and_condition[]",
        'validation'     : {
          'min_length'      : '1',
          'max_length'      : '150',

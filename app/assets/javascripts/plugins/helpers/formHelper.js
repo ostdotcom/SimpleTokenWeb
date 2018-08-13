@@ -78,8 +78,49 @@
         }
       }
 
-      oThis.validator = jForm.validate( jqValidateOptions );
 
+      var validator = oThis.validator = jForm.validate( jqValidateOptions );
+      var _org_findByName = validator.findByName;
+      validator.findByName = function ( errorKey ) {
+        var oThis = this;
+        var resultEl = _org_findByName.apply(oThis, arguments);
+        if (resultEl) {
+          console.log("I am here and default method found the el.\nresultEl", resultEl);
+          return resultEl;
+        }
+
+        // We have to identify the element. The original method could not find it.
+        // errorKey Formats (name and error key):
+        // Backend to frontend format
+        // a[0]     = a[]
+        // a[0][b]  = a[][b]
+        // a[][d][] = a[][d][]
+
+        //odo replace below logic by regex 'asdas[8][ds][7]'.match(/([0-9])+/g);
+
+        var openDel = "[", closeDel = "]",
+            keySplits = errorKey.split(openDel),
+            len = keySplits.length, cnt = 0,
+            indexSum = 0, nameAttr
+        ;
+        for (cnt = 0; cnt < len; cnt++) {
+          var currSplit = keySplits[cnt];
+          if (currSplit.indexOf(closeDel) == (currSplit.length - 1)) {
+            var cleanedSplit = currSplit.replace(closeDel, "");
+            cleanedSplit = Number(cleanedSplit)
+            ;
+            if (isNaN(cleanedSplit)) {
+              keySplits[cnt] = openDel + currSplit;
+              continue;
+            }
+            indexSum = indexSum + cleanedSplit;
+            keySplits[cnt] = openDel + closeDel;
+          }
+          nameAttr = keySplits.join("");
+          resultEl = $("[name='" + nameAttr + "']").eq(indexSum);
+          return resultEl;
+        }
+      }
     }
 
     /* END: Form Validity Properties and methods. */

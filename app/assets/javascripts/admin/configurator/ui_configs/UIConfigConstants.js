@@ -14,19 +14,27 @@
       "toggle"          : "toggle",
       "addCheckbox"    : "add_checkbox"
     } ,
+      inputTemplateMap = {}
+    ;
 
-    inputTemplateMap = {
-      "text"             : "#ost-input-text",
-      "number"           : "#ost-input-number",
-      "radio"            : "#ost-input-radio",
-      "file"             : "#ost-input-file",
-      "textarea"         : "#ost-input-textarea",
-      "toggle"           : "#ost-input-toggle",
-      "color_picker"     : "#ost-color-picker",
-      "rich_text_editor" : "#ost-rich-text-editor",
-      "add_checkbox"     : "#ost-add-checkbox-filed"
-    }
+  inputTemplateMap[inputTypesEnum.text]             = "#ost-input-text";
+  inputTemplateMap[inputTypesEnum.number]           = "#ost-input-number";
+  inputTemplateMap[inputTypesEnum.file]             = "#ost-input-file";
+  inputTemplateMap[inputTypesEnum.textarea]         = "#ost-input-textarea";
+  inputTemplateMap[inputTypesEnum.radio]            = "#ost-input-radio";
+  inputTemplateMap[inputTypesEnum.toggle]           = "#ost-input-toggle";
+  inputTemplateMap[inputTypesEnum.colorPicker]      = "#ost-color-picker";
+  inputTemplateMap[inputTypesEnum.richTextEditor]   = "#ost-rich-text-editor";
+  inputTemplateMap[inputTypesEnum.addCheckbox]      = "#ost-add-checkbox-filed";
+
+
+  var  sectionTypesEnum = {
+      "collapse" : "collapse"
+    },
+    sectionTemplateMap = {}
   ;
+
+  sectionTemplateMap[sectionTypesEnum.collapse] = "#ost-collapse" ;
 
   oSTNs.uiConfigConstants = {};
 
@@ -39,6 +47,22 @@
 
   oSTNs.uiConfigConstants['getTemplateMap'] =  function () {
     return inputTemplateMap;
+  };
+
+  oSTNs.uiConfigConstants['getSectionTypesEnum'] =  function () {
+    return sectionTypesEnum;
+  };
+
+  oSTNs.uiConfigConstants['getSectionTemplateMap'] =  function () {
+    return sectionTemplateMap;
+  };
+
+  oSTNs.uiConfigConstants['getSectionContentWrapper'] =  function () {
+    return ".section-content-wrap" ;
+  };
+
+  oSTNs.uiConfigConstants['getSectionsAttr'] =  function () {
+    return "data-accordion-content" ;
   };
 
 })();
