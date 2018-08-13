@@ -1,8 +1,8 @@
 <%
   if is_update
-    kyc_checkbox_points_html = @presenter_obj.page_data['verify_modal']['update_kyc_checkbox_points_html']
+    kyc_checkbox_points_html = @presenter_obj.page_data.kyc_confirm_checkboxes
   else
-    kyc_checkbox_points_html = @presenter_obj.page_data['verify_modal']['add_kyc_checkbox_points_html']
+    kyc_checkbox_points_html = @presenter_obj.page_data.kyc_confirm_checkboxes
   end
 
   show_verify_modal = kyc_checkbox_points_html.present?
@@ -177,7 +177,7 @@
               </div>
               <div class="col-12 col-sm-6">
                 <div class="form-instructions display-4 mt-1 pt-md-4 pb-3 pb-md-0">
-                  <%= raw @presenter_obj.page_data['ethereum_address_info_html'] %>
+                  <%= raw @presenter_obj.page_data.kyc_ethereum_address_info_text %>
                 </div>
               </div>
             </div>
@@ -208,7 +208,7 @@
               </div>
               <div class="col-12 col-sm-6">
                 <div class="form-instructions display-4 mt-1 pt-md-4 pb-3 pb-md-0">
-                  <%= raw @presenter_obj.page_data['document_info_html'] %>
+                  <%= raw @presenter_obj.page_data.kyc_document_info_text %>
                 </div>
               </div>
             </div>

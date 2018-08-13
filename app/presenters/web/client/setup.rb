@@ -59,12 +59,12 @@ module Web
 
       #### page settings ####
 
-      def common_data
-        page_setting['common_data']
+      def client_theme_style
+        @ct ||= Web::ClientStyles::Theme.new(page_setting['common_data'])
       end
 
       def page_data
-        page_setting['page_data']
+        @cr ||= Web::ClientStyles::Registration.new(page_setting['page_data'])
       end
 
       def kyc_config_detail_data
@@ -90,43 +90,55 @@ module Web
       end
 
       def gtm_pixel
-        common_data['gtm_pixel']
+        client_theme_style.gtm_pixel
       end
 
       def fb_pixel
-        common_data['fb_pixel']
+        client_theme_style.fb_pixel
       end
 
       def header_favicon_src
-        common_data['header']['favicon_src'] || common_data['header']['logo']['src']
+        client_theme_style.favicon
       end
 
       def header_logo
-        common_data['header']['logo']
+        client_theme_style.logo
       end
 
       def primary_button_style
-        common_data['primary_button_style']
+        client_theme_style.primary_button_style
       end
 
       def secondary_button_style
-        common_data['secondary_button_style']
+        client_theme_style.secondary_button_style
       end
 
       def background_gradient_style
-        common_data['background_gradient_style']
+        client_theme_style.background_gradient
       end
 
-      def footer_html
-        common_data['footer_html']
+      def footer_text_color
+        client_theme_style.footer_text_color
+      end
+
+      def footer_background_color
+        client_theme_style.footer_background_color
+      end
+
+      def footer_text
+        client_theme_style.footer_text
+      end
+
+      def terms_and_conditions
+        client_theme_style.terms_and_conditions
       end
 
       def account_name
-        common_data['account_name']
+        'Account name'
       end
 
       def account_name_short
-        common_data['account_name_short']
+        'TBD'
       end
 
       #### common data ###

@@ -29,7 +29,7 @@
             <input name="terms_of_service" type="checkbox" class="list-item"
                    value="agree" id="agree-and-acknowledge" required />
             <label for="agree-and-acknowledge" class="termsLinks display-4" tabindex="4" style="line-height: 1.5;">
-              <%= raw @presenter_obj.page_data['checkbox_html'] %>
+              <%= raw @presenter_obj.page_data.signup_policy_text %>
             </label>
             <div class="invalid-feedback text-center" data-forid="agree-and-acknowledge"></div>
           </div>
