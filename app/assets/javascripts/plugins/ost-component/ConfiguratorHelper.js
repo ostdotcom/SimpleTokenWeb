@@ -3,12 +3,13 @@
 
   var oSTNs               = ns("ost"),
       formBuilder         = ns('ost.formBuilder'),
+      uiConfigConstants   = ns('ost.uiConfigConstants'),
       oThis
   ;
 
   var addComponentWrap  = "data-component-to-add" ,
-      sAddComponentWrap = ".section-content-wrap", //Should be at common place
-      sDeleteWrapper    = ".form-group"
+      sDeleteWrapper    = ".form-group" ,
+      sAddComponentWrap = uiConfigConstants.getSectionContentWrapper()
   ;
 
   oSTNs.configuratorHelper = oThis = {
