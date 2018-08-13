@@ -24,6 +24,11 @@
     height: 22px;
     width: 22px;
   }
+  .input-number{
+    width: 45px;
+    height: 25px;
+    text-align: center;
+  }
 }
 
 .dropdown-menu{
@@ -67,15 +72,6 @@
       line-height: 22px;
     }
   }
-}
-
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
 }
 
 .tooltip{
