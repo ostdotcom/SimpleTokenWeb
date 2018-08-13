@@ -5,11 +5,33 @@
   background: $blue-900;
   width: $configurator-aside-width;
   position: fixed;
-  height: calc(100vh - 70px);
-  padding: 20px 20px 0;
+  height: calc(100vh - 40px);
   transition: all .2s ease-in-out;
   overflow-y: scroll;
   .accordion{
+    .accordion-header{
+      width: 100%;
+      padding: 15px 20px;
+      color: $cyanish-gray;
+      font-size: $display3-size;
+      font-weight: $font-weight-400;
+      letter-spacing: $letter-spacing;
+      box-shadow: 0 0.3px 1px 0 rgba(0, 0, 0, 0.5);
+      background-image: linear-gradient(to bottom, rgba(89, 122, 132, 0.3), $blue-900);
+      .circle{
+        width: 30px;
+        height: 30px;
+        line-height: 26px;
+        text-align: center;
+        display: inline-block;
+        background-color: $blue-900;
+        border: solid 2px rgba(255, 255, 255, 0.5);
+        border-radius: $custom-radio-indicator-border-radius;
+      }
+    }
+    .accordion-content-wrapper{
+      padding: 0 20px;
+    }
     .card{
       display: block;
       border: none;
