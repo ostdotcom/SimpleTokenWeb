@@ -35,7 +35,7 @@
 </head>
 <body contenteditable="false">
 
-<main id="site-content">
+<main id="site-content" class="position-relative">
   <%= render :partial => "/admin/configurator/common/navbar" %>
   <aside id="sidebar" class="sidebar-nav">
     <%= yield %>
@@ -43,7 +43,7 @@
   </aside>
   <%= render :partial => "/admin/configurator/common/iframe"%>
   <%= render :partial => "/admin/configurator/common/common_components" %>
-
+  <%= render :partial => "/admin/configurator/common/loading_modal" %>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.1/tinymce.min.js"></script>
