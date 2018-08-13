@@ -10,7 +10,6 @@
   oSTNs.configuratorConfig = {
  
    "theme_configuration" : {
-     "collapses"  : {
        "header_options" : {
           "header"      : "Header Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
@@ -35,7 +34,6 @@
          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
          "entities"    : [ "footer_background", "footer_text_color", "footer_text_link", "terms_conditions_link", "footer_link_color" ]
        }
-     }
    },
 
    entityConfig : {

@@ -10,22 +10,18 @@
   oSTNs.configuratorConfig = {
  
    "kyc_configuration" : {
-     "collapses"  : {
        "form_field_options" : {
           "header"      : "Form Field Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
           "entities"    : [ "title", "subtitle", "ethereum_address_instruction", "identification_document_instruction"]
        }
-     }
    },
     "popup_kyc_configuration" : {
-      "collapses"  : {
         "form_field_options" : {
           "header"      : "Pop-up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
           "entities"    : [ "show_pop_up" , "term_and_condition", "add_checkbox_field"]
         }
-      }
     },
 
    entityConfig : {

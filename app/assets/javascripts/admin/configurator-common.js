@@ -15,4 +15,4 @@
 //= require plugins/helpers/handlebarHelper
 //= require plugins/ost-component/spectrum
 //= require plugins/ost-component/ConfiguratorHelper
-//= require admin/configurator/UIConfigConstants
+//= require admin/configurator/ui_configs/UIConfigConstants.js

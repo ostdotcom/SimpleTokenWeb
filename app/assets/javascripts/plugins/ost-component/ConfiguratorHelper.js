@@ -7,7 +7,7 @@
   ;
 
   var addComponentWrap  = "data-component-to-add" ,
-      sAddComponentWrap = ".collapse-content-wrap",
+      sAddComponentWrap = ".section-content-wrap", //Should be at common place
       sDeleteWrapper    = ".form-group"
   ;
 
@@ -60,9 +60,9 @@
   //jQuerry related stuff
   $.fn.extend({
 
-    addOstComponent : function( sWrap ,  callBack ) {
-      var jEl       =   $(this),
-          sWrapper  = sWrap || sAddComponentWrap,
+    addOstComponent : function( callBack ) {
+      var jEl       = $(this),
+          sWrapper  = sAddComponentWrap,
           jComponentKey , componentKey,
           jWrapper , jMarkup
       ;
@@ -75,17 +75,17 @@
 
       if( jComponentKey ) {
         componentKey  = jComponentKey.attr( addComponentWrap );
-        jWrapper      = jComponentKey.closest( sWrapper );
       }
 
       if( componentKey ){
+        jMarkup  = formBuilder.getBuildEntityMarkup( componentKey );
         if( callBack ){
           callBack( jMarkup ,jWrapper ,  jEl );
           return;
         }
-        jMarkup  = formBuilder.getBuildEntityMarkup( componentKey );
-        jWrapper.append();
       }
+      jWrapper      = jComponentKey.closest( sWrapper );
+      jWrapper.append( jMarkup );
     },
 
     deleteOstComponent : function( sWrapperToDelete ,  callback) {

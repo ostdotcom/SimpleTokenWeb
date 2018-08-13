@@ -10,7 +10,6 @@
   oSTNs.configuratorConfig = {
  
    "sale_live_dashboard_configuration" : {
-     "collapses"  : {
        "top_banner_options" : {
           "header"      : "Top Banner Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
@@ -31,25 +30,20 @@
          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
          "entities"    : [ "telegram_button_theme", "telegram_link" ]
        }
-     }
    },
     deposit_address_popup: {
-      "collapses"  : {
         "popup_options" : {
           "header"      : "Pop-Up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
           "entities"    : [ "show_pop_up", "review_confirm", "add_checkbox_field" ]
         }
-      }
     },
     deposit_address_user_dashboard: {
-      "collapses"  : {
         "popup_options" : {
           "header"      : "Deposit Address User Dashboard",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
           "entities"    : [ "middle_banner_title_text", "middle_banner_body_text" ]
         }
-      }
     },
 
    entityConfig : {

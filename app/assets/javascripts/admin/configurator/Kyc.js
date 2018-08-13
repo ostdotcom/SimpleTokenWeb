@@ -12,7 +12,7 @@
     init: function ( config ) {
       formBuilder.init({});
 
-      $( ".collapse-content-wrap" ).sortable({
+      $( ".section-content-wrap" ).sortable({
         items: ".tinymce-wrap",
         axis: 'y',
         cursor: 'move'
