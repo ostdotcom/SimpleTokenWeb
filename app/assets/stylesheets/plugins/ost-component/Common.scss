@@ -122,7 +122,15 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 9999999999;
-//  background-color: #FFFFFF;
+  background-color: #FFFFFF;
+  background-image: url(https://dxwfxs8b4lg24.cloudfront.net/ost-kyc/images/graphic-bg.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  .gif-loader{
+    height: 60px;
+    width: 60px;
+  }
 }
