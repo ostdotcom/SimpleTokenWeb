@@ -13,12 +13,12 @@ module Web
         'By submitting new details, the previous ones will be lost.'
       end
 
-      def sale_timer_gradient
-        @page_spec_data[:sale_timer_background_gradient]
+      def sale_timer_style
+        'color: %{sale_timer_text_color}; background: linear-gradient%{sale_timer_background_gradient};' % @page_spec_data
       end
 
-      def sale_timer_text_color
-        @page_spec_data[:sale_timer_text_color]
+      def title_text_color
+        @page_spec_data[:dashboard_title_text_color]
       end
 
       def telegram_link
@@ -26,11 +26,19 @@ module Web
       end
 
       def telegram_container_background_color
-        '#6c9ba9'
+        @page_spec_data[:dashboard_bottom_banner_background]
+      end
+
+      def telegram_container_text_color
+        @page_spec_data[:dashboard_bottom_banner_text_color]
       end
 
       def dashboard_middle_banner_background
         @page_spec_data[:dashboard_middle_banner_background]
+      end
+
+      def dashboard_middle_banner_text_color
+        @page_spec_data[:dashboard_middle_banner_text_color]
       end
 
       def ethereum_deposit_text
