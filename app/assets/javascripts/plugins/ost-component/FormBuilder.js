@@ -269,8 +269,11 @@
           inputType     = entityConfig['inputType'],
           entityName    = entityConfig['data_key_name'],
           inputTypes    = uiConfigConstants.getInputTypes(),
-          selector      = '[name="'+entityName +'"]'
+          selector
       ;
+      if( entityName ){
+        selector = '[name="'+entityName +'"]'
+      }
       switch(inputType) {
         case inputTypes.file:
           fileUploader.bindButtonActions( selector );

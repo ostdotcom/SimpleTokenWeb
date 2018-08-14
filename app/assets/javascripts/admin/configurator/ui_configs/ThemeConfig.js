@@ -85,7 +85,8 @@
 
      background_gradient : {
        'label'          : "Background Gradient Color",
-       "inputType"      : inputTypesEnum.colorGradient
+       "inputType"      : inputTypesEnum.colorGradient,
+       'data_kind'      : "array"
      },
 
      gtm_pixel_id : {

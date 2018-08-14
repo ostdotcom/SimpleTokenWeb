@@ -25,7 +25,7 @@
           "className"   : "terms-condition-wrapper",
           "footer"      : {
             template  : "#ost-add-terms_condition",
-            component : "term_and_condition"
+            component : "kyc_form_popup_checkboxes"
           }
         }
     },
@@ -73,8 +73,8 @@
        'tooltip'        : "some tooltip",
        'title'          : "Footer Text + Link",
        "inputType"      : inputTypesEnum.richTextEditor,
-       'isDraggable'    : true,
-       'isDeleteEnabled': true
+       'isDeleteEnabled': true,
+       'data_kind'      : "array"
      }
 
    }
