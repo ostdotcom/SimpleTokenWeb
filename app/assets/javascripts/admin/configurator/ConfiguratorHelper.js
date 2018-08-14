@@ -3,6 +3,7 @@
 
   var oSTNs               = ns("ost"),
       formBuilder         = ns('ost.formBuilder'),
+      iframe              = ns('ost.ostIframe'),
       uiConfigConstants   = ns('ost.uiConfigConstants'),
       oThis
   ;
@@ -96,9 +97,6 @@
       }
 
       if( componentKey ){
-        if( !formBuilder.addEntity ){
-          formBuilder = ns('ost.formBuilder') ;
-        }
         jMarkup = formBuilder.addEntity( componentKey , jWrapper);
       }
 
@@ -111,6 +109,20 @@
       ;
       jDeleteEl.remove();
       return jDeleteEl;
+    },
+
+    bindAccordionClick : function ( sSelector  , sSlider ) {
+      var sSelector = sSelector || '.accordion' ,
+          sSlider   = sSlider   || '.accordion-content-wrapper' ,
+          jEl  , iframeUrl;
+        ;
+      $( sSelector ).on('click' , function () {
+        jEl = $(this) ;
+        iframeUrl = jEl.data('iframe-url');
+        jEl.siblings(sSelector).find(sSlider).slideUp();
+        jEl.find(sSlider).slideDown();
+        iframe.loadUrlInIframe( iframeUrl );
+      });
     }
 
   };

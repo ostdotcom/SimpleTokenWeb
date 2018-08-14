@@ -19,6 +19,7 @@
 
     onSuccess : function ( data ) {
       formBuilder.init( data );
+      configuratorHelper.bindAccordionClick();
       oThis.bindDraggable( );
       oThis.bindAddComponent();
       oThis.bindDeleteComponents();
@@ -44,6 +45,8 @@
         configuratorHelper.deleteComponent( $(this) );
       });
     }
+
+
 
   };
 

@@ -141,3 +141,13 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     pointer-events: none;
   }
 }
+
+.accordion-content-wrapper {
+  display: none;
+}
+
+.shown {
+  .accordion-content-wrapper {
+    display: block;
+  }
+}
