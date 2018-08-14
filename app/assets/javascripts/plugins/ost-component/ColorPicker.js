@@ -10,9 +10,15 @@
         className: "color-picker",
         showInitial: true,
         showPalette: false,
-        preferredFormat: "rgb",
+        preferredFormat: "hex",
         hideAfterPaletteSelect:true,
-        change: function(color) { }
+        change: function(color) {
+          var jEl       = $(this) ,
+              jSpectrum =  jEl.spectrum("get"),
+              rgbVal    = jSpectrum.toRgbString()
+          ;
+          jEl.val( rgbVal );
+        }
   };
 
   oSTNs.colorPicker = oThis = {

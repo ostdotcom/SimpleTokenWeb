@@ -1,5 +1,5 @@
 ;
-(function (window ) {
+(function (window  , $) {
 
   var oSTNs               = ns("ost"),
       formBuilder         = ns('ost.formBuilder'),
@@ -45,4 +45,4 @@
 
   };
 
-})(window );
+})(window , jQuery );

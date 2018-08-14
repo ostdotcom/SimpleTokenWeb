@@ -25,14 +25,16 @@
 
     /* *
     * Builds the left panel configurator
-    * params : data
+    * params : data , componentsNoBind
     * Eg : { entityConfig : {} formData : {} }
     * */
-    init: function ( data ) {
+    init: function ( data , componentsNoBind  ) {
       oThis.entityConfig = data['entity_config'] || {};
       oThis.formData = data['form_data'] || {};
       oThis.buildSections();
-      oThis.intComponents();
+      if( !componentsNoBind ){
+        oThis.intComponents();
+      }
     },
 
     /*
