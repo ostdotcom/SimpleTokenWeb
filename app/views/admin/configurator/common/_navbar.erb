@@ -9,14 +9,16 @@
       FRONT-END <span style="color: #c0993a; ">CONFIGURATOR</span>
     </span>
   </a>
-  <div class="navbar-nav navbar-right ml-md-auto align-items-center">
-    <div class="next-previous-wrap mr-3">
-      <svg id="previous-item-btn" class="nav-svg align-middle">
-        <switch>
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#previous-icon"></use>
-        </switch>
-      </svg>
-      <div class="form-group mx-2 d-inline-block">
+  <div class="navbar-nav navbar-right ml-md-auto">
+    <div class="next-previous-wrap mr-3 d-flex align-items-center">
+      <button  class="btn float-left p-0">
+        <svg id="previous-item-btn" class="nav-svg align-middle">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#previous-icon"></use>
+          </switch>
+        </svg>
+      </button>
+      <div class="form-group mx-3 float-left">
         <select id="configurator-options" class="form-control selectpicker" data-width="275px">
           <option value="theme">Theme Configurator</option>
           <option value="register">Register Landing</option>
@@ -24,15 +26,19 @@
           <option value="dashboard">User Dashboard</option>
         </select>
       </div>
-      <svg id="next-item-btn" class="nav-svg align-middle">
-        <switch>
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-icon"></use>
-        </switch>
-      </svg>
+      <button  class="btn float-left p-0">
+        <svg id="next-item-btn" class="nav-svg align-middle">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-icon"></use>
+          </switch>
+        </svg>
+      </button>
     </div>
 
-    <button id="copy-shareable-link-btn" class="btn btn-secondary font-weight-normal">Copy</button>
-    <button id="publish-changes-btn" class="btn btn-primary font-weight-normal ml-3">Publish</button>
+    <div class="next-previous-wrap mr-3 d-flex align-items-center">
+      <button id="copy-shareable-link-btn" class="btn btn-secondary font-weight-normal">Copy</button>
+      <button id="publish-changes-btn" class="btn btn-primary font-weight-normal ml-3">Publish</button>
+    </div>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown nav-products">
         <a class="nav-link hamburger ml-2" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,7 +46,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <ul class="dropdown-menu mega-dropdown-menu text-center px-2 pt-3" style="left: -148px;top: 60px;min-width: 200px;box-shadow: 0.5px 1px 2.5px 0 rgba(0, 0, 0, 0.22);border: none;">
+        <ul class="dropdown-menu mega-dropdown-menu text-left px-2 pt-3" style="left: -148px;top: 60px;min-width: 200px;box-shadow: 0.5px 1px 2.5px 0 rgba(0, 0, 0, 0.22);border: none;">
           <li id="reset-configurator-changes">
             <span title="Discard Changes">Reset</span>
           </li>
