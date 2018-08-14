@@ -2,8 +2,7 @@
 (function (window ) {
 
   var oSTNs               = ns("ost"),
-    formBuilder         = ns('ost.formBuilder'),
-    oThis
+      oThis
   ;
 
   oSTNs.configuratorTopNav  = oThis = {
@@ -33,6 +32,45 @@
     },
 
     bindConfiguratorOptionsChange : function () {
+      var jSelect = $('#configurator-options'),
+          jNext   = $('#next-item-btn'),
+          jPre    = $('#previous-item-btn')
+      ;
+
+      jSelect.on('change' ,  function () {
+        var value       = $(this).val();
+        window.location.href = value;
+      });
+
+      jNext.on('click' , function ( e ) {
+        if( $(this) .hasClass('disabled') ){
+          return false ;
+        }
+        oThis.onOptionsUpdate( jSelect );
+      });
+
+      jPre.on('click' , function ( e ) {
+        if( $(this) .hasClass('disabled') ){
+          return false ;
+        }
+        oThis.onOptionsUpdate( jSelect , true );
+      });
+
+    },
+
+    onOptionsUpdate : function ( jSelect ,  isPre  ) {
+      var jBootStrapSelect    = jSelect.parent('.bootstrap-select'),
+          jCurrentSelected    = jBootStrapSelect.find(".dropdown-menu.inner .selected"),
+          currentIndex        = jCurrentSelected.data("original-index") ,
+          indexUpdater        = isPre ? -1 : 1,
+          indexTopUpdate      = Number( currentIndex ) + indexUpdater ,
+          jOption             = jSelect.find('option').eq( indexUpdater ),
+          optionVal           = jOption.val()
+      ;
+
+      if( optionVal ){
+        window.location.href = optionVal ;
+      }
 
     },
 
@@ -45,8 +83,24 @@
     },
 
     bindCopyToClipboardChanges : function () {
+      $('#copy-shareable-link-btn').off('click').on('click' , function () {
+        var jEl = $(this) ,
+            currentText     = jEl.text() ,
+            tempInput       = document.createElement('input'),
+            contentToCopy   = window.location.href;
 
+        document.body.appendChild( tempInput );
+        tempInput.value = contentToCopy;
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        jEl.text("Copied!");
+        setTimeout( function () {
+          jEl.text( currentText ) ;
+        } , 5000 )
+      });
     }
+
 
   };
 
