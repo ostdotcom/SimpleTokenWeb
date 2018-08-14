@@ -4,7 +4,7 @@
 .configurator-iframe-wrapper {
   width: calc(100% - #{$configurator-aside-width});
   height: 100%;
-  z-index: 100000;
+  z-index: 9;
   position: absolute;
   right: 0;
 
