@@ -11,10 +11,9 @@
   oSTNs.kycConfigurator  = oThis = {
 
     init: function ( config ) {
-      oThis.onSuccess({}); //TODO delete after integration
-
-      //configuratorHelper.getPageData({} , oThis.onSuccess ); //TODO uncomment after integration
-
+      configuratorHelper.getPageData({
+        'api' : "/api/admin/configurator/kyc-form/config?gid=1&uuid=1131312"
+      } , oThis.onSuccess );
     },
 
     onSuccess : function ( data ) {

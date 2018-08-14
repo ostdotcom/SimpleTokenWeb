@@ -29,7 +29,7 @@
           params = oThis.getParams( config ) ,
           ajaxConfig
       ;
-      if( api ) return false;
+      if( !api ) return false;
       ajaxConfig = {
         url     : api ,
         method  : method,
@@ -60,7 +60,7 @@
     },
 
     getApi : function ( config ) {
-      return config && config.url ;
+      return config && config.api ;
     },
 
     getMethod : function( config ){
