@@ -134,11 +134,12 @@ module Web
       end
 
       def account_name
-        'Account name'
+        puts token_sale_details
+        token_sale_details['token_name']
       end
 
       def account_name_short
-        'TBD'
+        token_sale_details['token_symbol']
       end
 
       #### common data ###

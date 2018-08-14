@@ -26,8 +26,6 @@ module Web
 
       def logo
         {"href"=>"javascript:void(0)",
-        "alt"=>"Logo",
-        "title"=>"Title",
         "src" => @theme_data[:company_logo],
         "width"=>120}
       end
