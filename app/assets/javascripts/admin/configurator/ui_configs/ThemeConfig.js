@@ -13,7 +13,7 @@
        "header_options" : {
           "header"      : "Header Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-          "entities"    : [ "mast_head_logo", "resize_logo", "fav_icon", "background_color_picker" ]
+          "entities"    : [ "company_logo", "company_logo_size_percent", "company_favicon", "background_gradient" ]
        },
        "tracking_options" : {
          "header"      : "Tracking Options",
@@ -23,22 +23,22 @@
        "button_options" : {
          "header"      : "Button Options",
          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-         "entities"    : [ "primary_button_text_color", "primary_button_background", "primary_button_border",
-                           "primary_button_text_color_on_active", "primary_button_background_on_active", "primary_button_border_on_active",
-                           "secondary_button_text_color", "secondary_button_background", "secondary_button_border",
-                           "secondary_button_text_color_on_active", "secondary_button_background_on_active", "secondary_button_border_on_active"
+         "entities"    : [ "primary_button_text_color", "primary_button_background_color", "primary_button_border_color",
+                           "primary_button_text_color_active", "primary_button_background_color_active", "primary_button_border_color_active",
+                           "secondary_button_text_color", "secondary_button_background_color", "secondary_button_border_color",
+                           "secondary_button_text_color_active", "secondary_button_background_color_active", "secondary_button_border_color_active"
                          ]
        },
        "footer_options" : {
          "header"      : "Footer Options",
          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-         "entities"    : [ "footer_background", "footer_text_color", "footer_text_link", "terms_conditions_link", "footer_link_color" ]
+         "entities"    : [ "footer_background_color", "footer_text_color", "footer_text", "terms_condition_link", "footer_link_color" ]
        }
    },
 
    entityConfig : {
 
-     mast_head_logo : {
+     company_logo : {
        'label'          : "Masthead Logo",
        'tooltip'        : "Use a square image for best results. (Min 200KB, Max 1GB, JPG/PNG only.)",
        'signed_url'     : "/api/admin/configurator/upload-params",
@@ -56,22 +56,13 @@
        }
      },
 
-     resize_logo : {
+     company_logo_size_percent : {
        'label'          : "Resize Logo (% value)",
        'tooltip'        : "",
        "inputType"      : inputTypesEnum.number,
-
-       //Backend
-       'data_kind'      : "number",
-       'data_key_name'  : "number_input",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : 10
      },
 
-     fav_icon   : {
+     company_favicon   : {
        'label'          : "Favicon",
        'signed_url'     : "/api/admin/configurator/upload-params",
        'tooltip'        : "some tooltip",
@@ -92,350 +83,134 @@
        'value'          : "https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-news/ost-fanin.jpg"
      },
 
-     top_gradient_color_picker : {
-       'label'          : "Background Top Gradient Color",
-       'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
-     },
-
-     background_color_picker : {
+     background_gradient : {
        'label'          : "Background Gradient Color",
-       'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorGradient,
-
-       //Backend
-       'data_kind'      : "array",
-       'data_key_name'  : "background_color_picker[]",
-       'validation'     : {
-         'required'        : 1
-       },
-
-       //form_data
-       'value' : [{
-         "color": "#fff",
-         "gradient": "10"
-       },
-         {
-           "color": "#fff",
-           "gradient": "10"
-         }
-       ]
+       "inputType"      : inputTypesEnum.colorGradient
      },
 
      gtm_pixel_id : {
        'label'          : "GTM Pixel ID",
        'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.textarea,
-       'placeHolder'    : "<enter text here>",
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "textarea_input",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : ""
+       'placeHolder'    : "<enter text here>"
      },
 
      fb_pixel_id : {
        'label'          : "FB Pixel ID",
        'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.textarea,
-       'placeHolder'    : "<enter text here>",
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "textarea_input",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : ""
+       'placeHolder'    : "<enter text here>"
      },
 
      fb_pixel_version : {
        'label'          : "FB Pixel Version",
        'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.textarea,
-       'placeHolder'    : "<enter text here>",
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "textarea_input",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : ""
+       'placeHolder'    : "<enter text here>"
      },
 
      primary_button_text_color : {
        'label'          : "Primary Button Text Color",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,1,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     primary_button_background : {
+     primary_button_background_color : {
        'label'          : "Primary Button Background",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,0)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     primary_button_border : {
+     primary_button_border_color : {
        'label'          : "Primary Button Border",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     primary_button_text_color_on_active : {
+     primary_button_text_color_active : {
        'label'          : "Primary Button Text Color - on Active",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     primary_button_background_on_active : {
+     primary_button_background_color_active : {
        'label'          : "Primary Button Background - on Active",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     primary_button_border_on_active : {
+     primary_button_border_color_active : {
        'label'          : "Primary Button Border - on Active",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
      secondary_button_text_color : {
        'label'          : "Secondary Button Text Color",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     secondary_button_background : {
+     secondary_button_background_color : {
        'label'          : "Secondary Button Background",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     secondary_button_border : {
+     secondary_button_border_color : {
        'label'          : "Secondary Button Border",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     secondary_button_text_color_on_active : {
+     secondary_button_text_color_active : {
        'label'          : "Secondary Button Text Color - on Active",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     secondary_button_background_on_active : {
+     secondary_button_background_color_active : {
        'label'          : "Secondary Button Background - on Active",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     secondary_button_border_on_active : {
+     secondary_button_border_color_active : {
        'label'          : "Secondary Button Border - on Active",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     footer_background: {
+     footer_background_color: {
        'label'          : "Footer Background",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
      footer_text_color: {
        'label'          : "Footer Text Color",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      },
 
-     footer_text_link : {
+     footer_text : {
        'label'          : "Footer Text + Link",
        'tooltip'        : "some tooltip",
        'title'          : "Footer Text + Link",
-       "inputType"      : inputTypesEnum.richTextEditor,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "rich_text_editor",
-       'validation'     : {
-         'min_length'      : '1',
-         'max_length'      : '150',
-         'required'        : 1
-       },
-       //form_data
-       'value'          : ["kjbjkb"]
+       "inputType"      : inputTypesEnum.richTextEditor
      },
 
-     terms_conditions_link : {
+     terms_condition_link : {
        'label'          : "Terms & Conditions Link",
        'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.textarea,
-       'placeHolder'    : "https://ost.com/terms",
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "textarea_input",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : ""
+       'placeHolder'    : "https://ost.com/terms"
      },
 
      footer_link_color: {
        'label'          : "Footer Link Color",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.colorPicker,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "color_picker",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : "rgb(255,255,255)"
+       "inputType"      : inputTypesEnum.colorPicker
      }
 
    }
