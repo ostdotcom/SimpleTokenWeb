@@ -14,14 +14,14 @@
        "form_field_options" : {
           "header"      : "Form Field Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-          "entities"    : [ "title", "subtitle", "ethereum_address_instruction", "identification_document_instruction"]
+          "entities"    : [ "kyc_form_title", "kyc_form_subtitle", "eth_address_instruction_text", "document_id_instruction_text"]
        }
    },
     "popup_kyc_configuration" : {
         "form_field_options" : {
           "header"      : "Pop-up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-          "entities"    : [ "show_pop_up" , "term_and_condition"],
+          "entities"    : [ "show_pop_up" , "kyc_form_popup_checkboxes"],
           "className"   : "terms-condition-wrapper",
           "footer"      : {
             template  : "#ost-add-terms_condition",
@@ -32,68 +32,28 @@
 
    entityConfig : {
 
-     title : {
+     kyc_form_title : {
        'label'          : "Title",
        "inputType"      : inputTypesEnum.textarea,
-       'placeHolder'    : "<enter text here>",
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "textarea_input",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : ""
+       'placeHolder'    : "<enter text here>"
      },
 
-     subtitle : {
+     kyc_form_subtitle : {
        'label'          : "Subtitle",
        "inputType"      : inputTypesEnum.textarea,
-       'placeHolder'    : "<enter text here>",
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "textarea_input",
-       'validation'     : {
-         'required'        : 1
-       },
-       //form_data
-       'value'          : ""
+       'placeHolder'    : "<enter text here>"
      },
 
-     ethereum_address_instruction : {
+     eth_address_instruction_text : {
        'label'          : "Ethereum Address Instruction Text",
        'title'          : "Ethereum Address Instruction Text",
-       "inputType"      : inputTypesEnum.richTextEditor,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "rich_text_editor[]",
-       'validation'     : {
-         'min_length'      : '1',
-         'max_length'      : '150',
-         'required'        : 1
-       },
-       //form_data
-       'value'          : ["kjbjkb"]
+       "inputType"      : inputTypesEnum.richTextEditor
      },
 
-     identification_document_instruction : {
+     document_id_instruction_text : {
        'label'          : "Identification Document Instruction Text",
        'title'          : "Footer Text + Link",
-       "inputType"      : inputTypesEnum.richTextEditor,
-
-       //Backend
-       'data_kind'      : "text",
-       'data_key_name'  : "rich_text_editor",
-       'validation'     : {
-         'min_length'      : '1',
-         'max_length'      : '150',
-         'required'        : 1
-       },
-       //form_data
-       'value'          : ["kjbjkb"]
+       "inputType"      : inputTypesEnum.richTextEditor
      },
 
      show_pop_up : {
@@ -108,21 +68,13 @@
        'value'          : 1
      },
 
-     term_and_condition : {
+     kyc_form_popup_checkboxes : {
        'label'          : "Checkbox",
        'tooltip'        : "some tooltip",
        'title'          : "Footer Text + Link",
        "inputType"      : inputTypesEnum.richTextEditor,
        'isDraggable'    : true,
-       'isDeleteEnabled': true,
-       //Backend
-       'data_kind'      : "array",
-       'data_key_name'  : "term_and_condition[]",
-       'validation'     : {
-         'min_length'      : '1',
-         'max_length'      : '150',
-         'required'        : 1
-       }
+       'isDeleteEnabled': true
      }
 
    }
