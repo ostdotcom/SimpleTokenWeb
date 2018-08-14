@@ -118,7 +118,7 @@
     * returns : jMarkup Returns jMarkup just in case needed to consume from outside
     */
     addEntity : function ( entityKey , jWrapper ) {
-      var jMarkup = oThis.getBuildEntityMarkup(entityKey, withFormData) || "";
+      var jMarkup = oThis.getBuildEntityMarkup( entityKey, withFormData) || "";
       if( jWrapper ){
         jWrapper.append(jMarkup);
         oThis.bindEntityEvents( entityKey );
@@ -173,7 +173,7 @@
      */
     getArrayEntityMarkup: function (entityConfig) {
       var entityConfigCopy = $.extend({}, entityConfig),
-          initialValue     = entityConfig['init_value'] || "" ,
+          initialValue     = entityConfig['default_value'] || null ,
           values = entityConfigCopy['value'] || [ initialValue ],
           len = values && values.length, cnt,
           jMarkup = "", currVal

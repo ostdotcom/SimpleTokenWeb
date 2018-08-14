@@ -11,14 +11,14 @@
   oSTNs.configuratorConfig = {
  
    "kyc_configuration" : {
-       "form_field_options" : {
+       "kyc_configuration" : {
           "header"      : "Form Field Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
           "entities"    : [ "kyc_form_title", "kyc_form_subtitle", "eth_address_instruction_text", "document_id_instruction_text"]
        }
    },
     "popup_kyc_configuration" : {
-        "form_field_options" : {
+        "popup_kyc_configuration" : {
           "header"      : "Pop-up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
           "entities"    : [ "show_pop_up" , "kyc_form_popup_checkboxes"],

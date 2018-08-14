@@ -34,7 +34,7 @@
 
     bindAddComponent : function () {
       $('.add-component-el').on('click' , function () {
-        configuratorHelper.addComponent( $(this) , $('.section-content-wrap.form_field_options') );
+        configuratorHelper.addComponent( $(this) , $('.popup_kyc_configuration') );
         oThis.bindDeleteComponents();
       });
     },
