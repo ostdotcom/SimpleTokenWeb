@@ -31,10 +31,9 @@
             <% if is_update %>
               <h4 class="text-center mt-4 mb-2">Update Your Registration Details</h4>
             <% else %>
-              <h4 class="text-center mt-4 mb-2">One Step Away to Access the Token
-                Sale</h4>
+              <h4 class="text-center mt-4 mb-2"><%= @presenter_obj.page_data.kyc_form_title %></h4>
             <% end %>
-            <h6 class="kyc-instructions-title text-center mt-2">You will need to supply the following information to complete your registration</h6>
+            <h6 class="kyc-instructions-title text-center mt-2"><%= @presenter_obj.page_data.kyc_form_subtitle %></h6>
             <% if @presenter_obj.is_st_token_sale_client? %>
               <ul class="kyc-instructions text-center">
                 <li class="text-center">

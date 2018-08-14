@@ -13,6 +13,14 @@ module Web
         @page_spec_data[:policy_text]
       end
 
+      def kyc_form_title
+        @page_spec_data[:kyc_form_title]
+      end
+
+      def kyc_form_subtitle
+        @page_spec_data[:kyc_form_subtitle]
+      end
+
       def kyc_ethereum_address_info_text
         @page_spec_data[:eth_address_instruction_text]
       end
