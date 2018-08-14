@@ -142,6 +142,22 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   }
 }
 
+.cms-modal{
+  p{
+    text-align: center;
+    color: #597a84;
+    font-weight: 500;
+    font-size: 20px;
+  }
+  .modal-error-svg{
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.blured-by-modal-show{
+  filter: blur(5px);
+}
 .accordion-content-wrapper {
   display: none;
 }
