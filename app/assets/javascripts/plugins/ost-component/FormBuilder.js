@@ -8,6 +8,7 @@
     handlebarHelper     = ns('ost.handlebarHelper'),
     uiConfigConstants   = ns('ost.uiConfigConstants'),
     configuratorConfig  = ns('ost.configuratorConfig'),
+    lengthMocker        = ns('ost.lengthMocker'),
 
     sectionsAttr        = uiConfigConstants.getSectionsAttr(),
     sCollapseWrapper    = uiConfigConstants.getSectionContentWrapper(),
@@ -25,16 +26,13 @@
 
     /* *
     * Builds the left panel configurator
-    * params : data , componentsNoBind
+    * params : data
     * Eg : { entityConfig : {} formData : {} }
     * */
-    init: function ( data , componentsNoBind  ) {
+    init: function ( data ) {
       oThis.entityConfig = data['entity_config'] || {};
       oThis.formData = data['form_data'] || {};
       oThis.buildSections();
-      if( !componentsNoBind ){
-        oThis.intComponents();
-      }
     },
 
     /*
@@ -69,6 +67,7 @@
       if (!sectionConfig) return;
       for (var key in sectionConfig) {
         section = sectionConfig[key];
+        section = oThis.getConfigWithClassName( section , key );
         jMarkup = oThis.getSectionMarkup(section);
         if (jMarkup) {
           jWrapper.append(jMarkup);
@@ -99,8 +98,8 @@
 
     /*
      * Build Entities of a section and appends to the jWrapper passedl
-     *  params : jWrapper, entities ,
-     *  returns : undefined
+     * params : jWrapper, entities ,
+     * returns : undefined
     */
     buildEntities: function (jWrapper, entities) {
       var len = entities && entities.length, cnt,
@@ -109,9 +108,22 @@
       if (!jWrapper || jWrapper.length == 0) return;
       for (cnt = 0; cnt < len; cnt++) {
         entityKey = entities[cnt];
-        jMarkup = oThis.getBuildEntityMarkup(entityKey, withFormData);
-        jWrapper.append(jMarkup);
+        oThis.addEntity( entityKey , jWrapper );
       }
+    },
+
+    /*
+    * Add entity to jWrapper anf bind event
+    * params : entityKey , jWrapper ,
+    * returns : jMarkup Returns jMarkup just in case needed to consume from outside
+    */
+    addEntity : function ( entityKey , jWrapper ) {
+      var jMarkup = oThis.getBuildEntityMarkup(entityKey, withFormData) || "";
+      if( jWrapper ){
+        jWrapper.append(jMarkup);
+        oThis.bindEntityEvents( entityKey );
+      }
+      return jMarkup ;
     },
 
    /*
@@ -121,11 +133,12 @@
     *  returns : Markup
     */
     getBuildEntityMarkup: function (entityKey, withFormData) {
-      var entityConfig  = oThis.getEntityConfig(entityKey, withFormData),
+      var entityConfig  = oThis.getEntityConfig( entityKey, withFormData ),
         dataKind        = entityConfig && entityConfig['data_kind'],
         customCom       = entityConfig && entityConfig['isCustom'],
         jMarkup = ""
       ;
+      entityConfig = oThis.getConfigWithClassName( entityConfig , entityKey ) ;
       if (customCom) {
         jMarkup = oThis.getCustomComponent(entityConfig);
       } else if (dataKind == "array") {
@@ -144,10 +157,7 @@
      * returns : Merged entity config of UI , Backend and FormData
      */
     getEntityConfig: function (entityKey, withFormData) {
-      var entityConfig  = oThis.getBEEntityConfig(entityKey),
-        uiEntityConfig  = oThis.getUIEntityConfig(entityKey),
-        mergedConfig    = oThis.getMergedEntity(uiEntityConfig, entityConfig)
-      ;
+      var mergedConfig = oThis.getMergedEntity( entityKey );
       if (withFormData) {
         mergedConfig = oThis.getEntityConfigWithFormData(mergedConfig)
       }
@@ -185,7 +195,7 @@
     */
     getEntityMarkup: function (entityConfig) {
       var entityType = entityConfig['inputType'],
-        sTemplate, jMarkup
+          sTemplate, jMarkup
       ;
       sTemplate = oThis.getComponentTemplate(entityType);
       jMarkup = handlebarHelper.getMarkup(sTemplate, entityConfig);
@@ -196,8 +206,11 @@
       //overwrite and create markup for your won custom component.
     },
 
-    getMergedEntity: function (uiEntityConfig, entityConfig) {
-      var mergedEntityConfig = {};
+    getMergedEntity: function ( entityKey ) {
+      var entityConfig  = oThis.getBEEntityConfig(entityKey),
+          uiEntityConfig  = oThis.getUIEntityConfig(entityKey),
+          mergedEntityConfig = {}
+      ;
       $.extend(mergedEntityConfig, uiEntityConfig, entityConfig);
       return mergedEntityConfig;
     },
@@ -225,6 +238,11 @@
       return sectionTemplateMap[sectionType];
     },
 
+    getConfigWithClassName : function ( section ,  className ) {
+      section['className'] = className ;
+      return section ;
+    },
+
     getSectionConfig: function (configKey) {
       return configuratorConfig[configKey];
     },
@@ -246,26 +264,27 @@
       return inputTypes[type];
     },
 
-    intComponents: function () {
-      fileUploader.bindButtonActions();
-      richTextEditor.initTinyMc();
-      colorPicker.initColorPricker();
+    bindEntityEvents : function( entityKey ){
+      var entityConfig  = oThis.getEntityConfig( entityKey ) ,
+          inputType     = entityConfig['inputType'],
+          entityName    = entityConfig['data_key_name'],
+          inputTypes    = uiConfigConstants.getInputTypes(),
+          selector      = '[name="'+entityName +'"]'
+      ;
+      switch(inputType) {
+        case inputTypes.file:
+          fileUploader.bindButtonActions( selector );
+          break;
+        case inputTypes.richTextEditor:
+          richTextEditor.initTinyMc( selector );
+          break;
+        case inputTypes.colorPicker:
+        case inputTypes.colorGradient:
+          colorPicker.initColorPricker( selector );
+          break;
+      }
+      lengthMocker.initLengthMocker();
       oThis.initToolTips();
-      oThis.initLengthMocker();
-    },
-
-    initLengthMocker: function () {
-      $('.mock-length').on('keyup change', function () {
-        var jParent = $(this).closest('.form-group'),
-          jMocker = jParent.find('.length-mocker'),
-          jVal = $(this).val() || "",
-          jTrimVal = jVal.trim(),
-          jValLength = jTrimVal.length
-        ;
-        if (jMocker) {
-          jMocker.html(jValLength);
-        }
-      });
     },
 
     initToolTips: function () {

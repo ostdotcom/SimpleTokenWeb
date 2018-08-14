@@ -27,7 +27,7 @@
 
     bindButtonActions: function ( selector ) {
       var jEL = selector ? $(selector) : $(oThis.selector);
-      jEL.on('change' , function ( e ) {
+      jEL.off('change').on('change' , function ( e ) {
         oThis.startUpload( $(this) );
       });
     },

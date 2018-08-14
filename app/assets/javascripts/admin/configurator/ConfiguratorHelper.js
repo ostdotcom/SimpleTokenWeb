@@ -80,7 +80,7 @@
       jAjaxErrorWrap.show(); 
     },
 
-    getAddOstComponentMarkup : function( jEl   ) {
+    addComponent : function( jEl , jWrapper  ) {
       var jComponentKey , componentKey,
           jMarkup = ""
       ;
@@ -96,20 +96,21 @@
       }
 
       if( componentKey ){
-        if( !formBuilder.getBuildEntityMarkup ){
+        if( !formBuilder.addEntity ){
           formBuilder = ns('ost.formBuilder') ;
         }
-        jMarkup  = formBuilder.getBuildEntityMarkup( componentKey );
+        jMarkup = formBuilder.addEntity( componentKey , jWrapper);
       }
 
      return jMarkup;
     },
 
-    deleteOstComponent : function( jEL , sWrapperToDelete  ) {
+    deleteComponent : function( jEL , sWrapperToDelete  ) {
       var sDeleteEl = sWrapperToDelete || sDeleteWrapper,
           jDeleteEl = jEL.closest( sDeleteEl )
       ;
       jDeleteEl.remove();
+      return jDeleteEl;
     }
 
   };

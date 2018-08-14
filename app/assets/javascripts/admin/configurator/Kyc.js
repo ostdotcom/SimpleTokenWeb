@@ -21,6 +21,7 @@
       formBuilder.init( data );
       oThis.bindDraggable( );
       oThis.bindAddComponent();
+      oThis.bindDeleteComponents();
     },
 
     bindDraggable : function (  ) {
@@ -32,16 +33,17 @@
     },
 
     bindAddComponent : function () {
-      var jWrapper = $('.terms-condition-wrapper') ,
-          jMarkup
-      ;
       $('.add-component-el').on('click' , function () {
-        jMarkup = configuratorHelper.getAddOstComponentMarkup( $(this) );
-        jWrapper.append( jMarkup );
-        richTextEditor.initTinyMc( );
+        configuratorHelper.addComponent( $(this) , $('.section-content-wrap.form_field_options') );
+        oThis.bindDeleteComponents();
+      });
+    },
+
+    bindDeleteComponents : function () {
+      $('.delete-component').off('click').on('click' ,function () {
+        configuratorHelper.deleteComponent( $(this) );
       });
     }
-
 
   };
 

@@ -43,14 +43,14 @@
       });
 
       jNext.on('click' , function ( e ) {
-        if( $(this) .hasClass('disabled') ){
+        if( $(this).hasClass('disabled') ){
           return false ;
         }
         oThis.onOptionsUpdate( jSelect );
       });
 
       jPre.on('click' , function ( e ) {
-        if( $(this) .hasClass('disabled') ){
+        if( $(this).hasClass('disabled') ){
           return false ;
         }
         oThis.onOptionsUpdate( jSelect , true );
@@ -59,27 +59,29 @@
     },
 
     onOptionsUpdate : function ( jSelect ,  isPre  ) {
-      var jBootStrapSelect    = jSelect.parent('.bootstrap-select'),
-          jCurrentSelected    = jBootStrapSelect.find(".dropdown-menu.inner .selected"),
-          currentIndex        = jCurrentSelected.data("original-index") ,
-          indexUpdater        = isPre ? -1 : 1,
-          indexTopUpdate      = Number( currentIndex ) + indexUpdater ,
-          jOption             = jSelect.find('option').eq( indexUpdater ),
-          optionVal           = jOption.val()
+      var jBootStrapSelect  = jSelect.parent('.bootstrap-select'),
+          jCurrentSelected  = jBootStrapSelect.find(".dropdown-menu.inner .selected"),
+          currentIndex      = jCurrentSelected.data("original-index") ,
+          indexUpdater      = isPre ? -1 : 1,
+          indexTopUpdate    = Number( currentIndex ) + indexUpdater ,
+          jOption           = jSelect.find('option').eq( indexUpdater ),
+          optionVal         = jOption.val()
       ;
-
       if( optionVal ){
         window.location.href = optionVal ;
       }
-
     },
 
     bindPublishChangesBtnClick : function () {
-
+      $('#publish-changes-btn').on( 'click', function () {
+          //TODO backend Integration
+      });
     },
 
     bindResetChangesBtnClick : function () {
-
+      $('#reset-configurator-changes').on('click', function () {
+        //TODO backend Integration
+      });
     },
 
     bindCopyToClipboardChanges : function () {
