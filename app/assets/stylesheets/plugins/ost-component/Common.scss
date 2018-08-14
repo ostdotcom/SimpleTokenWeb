@@ -134,3 +134,10 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     width: 60px;
   }
 }
+
+.btn{
+  &.btn-disabled{
+    opacity: 0;
+    pointer-events: none;
+  }
+}

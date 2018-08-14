@@ -13,22 +13,22 @@
 
     <!-- TODO backend integration start -->
     <div class="next-previous-wrap mr-3 d-flex align-items-center">
-      <button class="btn float-left p-0">
-        <svg id="previous-item-btn" class="nav-svg align-middle">
+      <button class="btn float-left p-0 <%= is_first_configurator_page? ? 'btn-disabled' : '' %>">
+        <svg id="previous-item-btn" class="nav-svg previous-icon align-middle">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#previous-icon"></use>
           </switch>
         </svg>
       </button>
-      <div class="form-group mx-3 float-left">
+      <div class="form-group mx-1 float-left" style="width: 275px">
         <select id="configurator-options" class="form-control selectpicker" data-width="275px">
-          <option value="/admin/configurator/theme-configurator" selected>Theme Configurator</option>
-          <option value="/admin/configurator/register">Register Landing</option>
-          <option value="/admin/configurator/kyc-form">KYC Form</option>
-          <option value="/admin/configurator/dashboard">User Dashboard</option>
+          <option value="/admin/configurator/theme-configurator" <%= is_theme_configurator? ? 'selected=selected' : '' %>>Theme Configurator</option>
+          <option value="/admin/configurator/register" <%= is_register_configurator? ? 'selected=selected' : '' %>>Register Landing</option>
+          <option value="/admin/configurator/kyc-form" <%= is_kyc_configurator? ? 'selected=selected' : '' %>>KYC Form</option>
+          <option value="/admin/configurator/dashboard" <%= is_dashboard_configurator? ? 'selected=selected' : '' %>>User Dashboard</option>
         </select>
       </div>
-      <button  class="btn float-left p-0">
+      <button  class="btn float-left p-0 <%= is_last_configurator_page? ? 'btn-disabled' : '' %>">
         <svg id="next-item-btn" class="nav-svg align-middle">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-icon"></use>
