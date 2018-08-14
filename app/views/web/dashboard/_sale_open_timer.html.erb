@@ -1,7 +1,7 @@
 <div class="container-fluid dashboard-page margin35auto">
   <div class="row">
     <div class="col-12">
-      <div class="registration-timer" style="color: <%= @presenter_obj.page_data['timer_element_color']%>">
+      <div class="registration-timer" style="color: <%= @presenter_obj.page_data.sale_timer_text_color%>">
         <h6 class="text-center pb-2"><%= @presenter_obj.is_early_access_mode_on_for_user? ? 'early access sale' : 'sale' %> <%= @presenter_obj.is_sale_live_for_user? ? 'is live' : 'starts in' %></h6>
         <% if @presenter_obj.is_sale_live_for_user? %>
           <div class="time-remain text-center mb-3 display-3" >&mdash;&nbsp;Time Remaining&nbsp;&mdash;</div>
