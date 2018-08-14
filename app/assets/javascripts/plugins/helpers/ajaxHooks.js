@@ -30,7 +30,7 @@
     } else if (jqXHR.status == 500) {
       msg = 'Internal Server Error.';
     } else if (jqXHR.status == 401) {
-        //window.location = getStatus401redirect();
+        window.location = getStatus401redirect();
     } else if (thrownError === 'parsererror') {
       msg = 'Requested JSON parse failed.';
     } else if (thrownError === 'timeout') {
