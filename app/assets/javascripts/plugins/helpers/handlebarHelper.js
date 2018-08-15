@@ -35,6 +35,13 @@
     return options.inverse(this);
   });
 
+  Handlebars.registerHelper('ifDataKindArray', function( dataKind , options ) {
+    if( dataKind == "array" ){
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  });
+
   var idCount = 1 ;
   Handlebars.registerHelper('configurator_component_id', function( name, isSameId , options ) {
     if( isSameId !== true ) {  //This should be exactly checked.

@@ -4,15 +4,15 @@
       <div class="row">
         <div class="col-9">
           <div class="form-label align-items-center">
-            {{#count}}
+            {{#ifDataKindArray data_kind}}
             <svg class="config-info-icon align-middle">
               <switch>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rearrange-icon"></use>
               </switch>
             </svg>
-            {{/count}}
+            {{/ifDataKindArray}}
             <label class="align-middle mb-0">
-              {{label}} {{#count}}#{{/count}}<span class="entity-count">{{count}}</span>
+              {{label}}
             </label>
             {{#ifTooltip tooltip}}
             <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='config-info-icon align-middle'>

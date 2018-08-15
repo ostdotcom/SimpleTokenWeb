@@ -10,9 +10,7 @@
   oSTNs.themeConfigurator  = oThis = {
 
     init: function ( config ) {
-      configuratorHelper.getPageData({
-        'api' : "api/admin/configurator/theme/config?gid=1&uuid=1131312"
-      } , oThis.onSuccess );
+      configuratorHelper.getPageData( config , oThis.onSuccess );
     },
 
     onSuccess : function ( data ) {
