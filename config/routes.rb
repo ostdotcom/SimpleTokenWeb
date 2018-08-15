@@ -52,7 +52,7 @@ Rails.application.routes.draw do
     end
 
     scope 'admin/configurator/', controller: 'admin/configurator' do
-      get '/theme-configurator' => :theme
+      get '/theme' => :theme
       get '/kyc-form' => :kyc_form
       get '/register' => :register
       get '/dashboard' => :dashboard

@@ -24,4 +24,12 @@ module ConfiguratorHelper
     is_dashboard_configurator?
   end
 
+  def get_config_params
+    "gid=#{params[:gid]}&uuid=#{params[:uuid]}"
+  end
+
+  def api_get_url(entity_type)
+    "/api/admin/configurator/#{entity_type}/config?#{get_config_params}"
+  end
+
 end

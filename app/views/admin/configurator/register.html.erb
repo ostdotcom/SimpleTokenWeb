@@ -10,7 +10,9 @@
 <% content_for :javascript do %>
   <script type="text/javascript">
     $(function () {
-      ost.registerConfigurator.init({});
+      ost.registerConfigurator.init({
+        'api' : "<%= api_get_url('registration') %>"
+      });
     });
   </script>
 <%end%>

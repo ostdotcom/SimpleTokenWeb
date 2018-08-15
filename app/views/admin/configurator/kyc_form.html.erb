@@ -1,3 +1,7 @@
+<%
+  configurator_get_api = "/api/admin/configurator/kyc-form/config?gid=1&uuid=1131312"
+%>
+
 <form method="POST" action="">
   <div class="accordion shown" role="tablist">
     <div class="accordion-header">
@@ -19,7 +23,9 @@
 <% content_for :javascript do %>
   <script type="text/javascript">
     $(function () {
-      ost.kycConfigurator.init({});
+      ost.kycConfigurator.init({
+        'api' : "<%= api_get_url('kyc') %>"
+      });
     });
   </script>
 <%end%>

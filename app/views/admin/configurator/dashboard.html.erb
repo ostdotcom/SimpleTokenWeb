@@ -1,3 +1,7 @@
+<%
+  configurator_get_api = "/api/admin/configurator/dashboard/config?gid=1&uuid=1131312"
+%>
+
 <form method="POST" action="">
 
   <div class="accordion shown" role="tablist">
@@ -30,7 +34,9 @@
 <% content_for :javascript do %>
   <script type="text/javascript">
     $(function () {
-      ost.dashboardConfigurator.init({});
+      ost.dashboardConfigurator.init({
+        'api' : "<%= api_get_url('dashboard') %>"
+      });
     });
   </script>
 <%end%>

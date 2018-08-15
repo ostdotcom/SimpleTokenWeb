@@ -17,7 +17,6 @@
 
     onSuccess : function ( data ) {
       formBuilder.init( data );
-      configuratorHelper.bindAccordionClick();
     }
 
 

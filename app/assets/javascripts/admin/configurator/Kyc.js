@@ -11,13 +11,10 @@
   oSTNs.kycConfigurator  = oThis = {
 
     init: function ( config ) {
-      configuratorHelper.getPageData({
-        'api' : "/api/admin/configurator/kyc-form/config?gid=1&uuid=1131312"
-      } , oThis.onSuccess );
+      configuratorHelper.getPageData( config , oThis.onSuccess );
     },
 
     onSuccess : function ( data ) {
-      formBuilder.init( data );
       configuratorHelper.bindAccordionClick();
       oThis.bindDraggable( );
       oThis.bindAddComponent();

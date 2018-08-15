@@ -97,7 +97,7 @@
       }
 
       if( componentKey ){
-        jMarkup = formBuilder.addEntity( componentKey , jWrapper);
+        jMarkup = formBuilder.buildEntity( componentKey , jWrapper);
       }
 
      return jMarkup;
