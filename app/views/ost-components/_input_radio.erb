@@ -6,8 +6,8 @@
         {{#each options as |option| }}
         <div class="form-check d-inline-block p-0 mr-3">
           <input type="radio"  class="form-check-input radio-button" {{isChecked ../value option.value}}
-          name="{{../data_key_name}}" id="{{configurator_component_id ../data_key_name }}" value="{{option.value}}"/>
-          <label class="radio-button-label position-relative mb-0" for="{{configurator_component_id ../data_key_name true }}" >
+          name="{{../data_key_name}}" id="{{generateId}}" value="{{option.value}}"/>
+          <label class="radio-button-label position-relative mb-0" for="{{generateId true}}" >
             <span class="radio-button-circle"></span>
             <span class="label">{{option.label}}</span>
           </label>

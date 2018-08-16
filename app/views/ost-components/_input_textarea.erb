@@ -15,8 +15,10 @@
       </div>
     </div>
     <div class="col-12 " >
-      <textarea class="input-text-area" style="resize: none" {{is_required validation.required}}
-                minlength="{{validation.min_length}}" maxlength="{{validation.max_length}}"
+      <textarea class="input-text-area" style="resize: none"
+                {{#validations.required}} required {{/validations.required}}
+                {{#validations.min_length}} minlength="{{validations.min_length}}" {{/validations.min_length}}
+                {{#validations.max_length}} maxlength="{{validations.max_length}}" {{/validations.max_length}}
                 type='text' name="{{data_key_name}}" placeholder="{{placeHolder}}">{{value}}</textarea>
     </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>

@@ -105,6 +105,8 @@
       if( canPublish ){
         $('#publish-changes-btn').show();
       }
+
+      iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
     },
 
     getConfiguratorApi : function ( config ) {
@@ -267,7 +269,7 @@
 
     addComponent : function( jEl , jWrapper  ) {
       var jComponentKey , componentKey,
-          jMarkup = ""
+          entityConfig , jMarkup = ""
       ;
 
       if( jEl.attr( addComponentWrap )){
@@ -281,7 +283,8 @@
       }
 
       if( componentKey ){
-        jMarkup = formBuilder.buildEntity( componentKey , jWrapper);
+        entityConfig = formBuilder.getEntityConfig( componentKey );
+        jMarkup = formBuilder.buildEntity( entityConfig , jWrapper);
       }
 
      return jMarkup;

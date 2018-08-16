@@ -40,4 +40,8 @@ module ConfiguratorHelper
     #TODO by pankaj
   end
 
+  def iframe_url(entity_type)
+    "/admin/#{entity_type}/preview?#{get_config_params}"
+  end
+
 end

@@ -22,10 +22,22 @@
     },
 
     bindDraggable : function (  ) {
-      $( ".section-content-wrap" ).sortable({
+      var elId ;
+      $(".popup_kyc_configuration").sortable({
         items: ".tinymce-wrap",
         axis: 'y',
-        cursor: 'move'
+        cursor: 'move',
+        start : function( event, ui  ) {
+          var item = $(ui.item) ,
+              jEl  = item && item.find('textarea')
+          ;
+          elId = jEl && jEl.attr( 'id' );
+        },
+        stop : function() {
+          var jELID = "#"+elId ;
+          tinyMCE.get(elId).destroy() ;
+          richTextEditor.initTinyMc( jELID  );
+        }
       });
     },
 

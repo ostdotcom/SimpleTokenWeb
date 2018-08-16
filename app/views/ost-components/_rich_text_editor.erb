@@ -28,7 +28,7 @@
         <div class="col-3 text-right pl-0">
           <span style="font-size: 13px">
             <span class="length-mocker">{{value.length}}</span>
-            <span>{{validation.max_length}}</span>
+            <span>{{validations.max_length}}</span>
           </span>
           {{#isComponentDelete isDeleteEnabled}}
             <span class="delete-component" title="Delete">
@@ -43,10 +43,12 @@
       </div>
     </div>
     <div class="col-12 text-right" >
-      <textarea class="tinymce-editor mock-length form-control" name="{{data_key_name}}"
-                {{is_required validation.required}}
-                minlength="validation.min_length"
-                maxlength="validation.max_length">{{value}}</textarea>
+      <textarea class="tinymce-editor mock-length form-control" name="{{data_key_name}}" id="{{generateId}}"
+                {{#validations.required}} required {{/validations.required}}
+                {{#validations.min_length}} minlength="validations.min_length" {{/validations.min_length}}
+                {{#validations.max_length}} maxlength="validations.max_length" {{/validations.max_length}}>
+        {{value}}
+      </textarea>
     </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>

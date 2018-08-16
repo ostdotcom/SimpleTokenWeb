@@ -1,7 +1,7 @@
 <script type="text/x-handlebars-template" id="ost-collapse">
   <div class="card mb-4">
     <div class="card-header">
-      <a class="card-link" data-toggle="collapse" data-target="#{{configurator_component_id 'collapse' }}" data-parent="#accordion">
+      <a class="card-link" data-toggle="collapse" data-target="#{{generateId 'collapse' }}" data-parent="#accordion">
         <span>{{header}}</span>
         {{#ifTooltip tooltip}}
         <span data-toggle="tooltip" data-placement="right" title="{{tooltip}}" class='config-info-icon align-middle'>
@@ -14,7 +14,7 @@
         {{/ifTooltip}}
       </a>
     </div>
-    <div class="collapse show" id="{{configurator_component_id 'collapse' true}}">
+    <div class="collapse show" id="{{generateId true}}">
       <div class="card-body section-content-wrap pb-0 {{className}}">
       </div>
       {{#ifCollapseFooter footer}}

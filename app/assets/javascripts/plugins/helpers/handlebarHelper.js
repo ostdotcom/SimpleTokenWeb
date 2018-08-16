@@ -42,16 +42,14 @@
     return options.inverse(this);
   });
 
-  var idCount = 1 ;
-  Handlebars.registerHelper('configurator_component_id', function( name, isSameId , options ) {
-    if( isSameId !== true ) {  //This should be exactly checked.
-      idCount++
-    }
-    if( name ){
-      return name + "_" + idCount ;
-    }else {
-      return "no_name" + "_" + idCount ;
-    }
-  });
+  (function (){
+    var idTs = Date.now();
+    Handlebars.registerHelper('generateId', function ( isSameId ) {
+      if( isSameId !== true ){
+        idTs++;
+      }
+      return "c_" + idTs + "_id";
+    })
+  })()
 
 })(window );
