@@ -40,4 +40,8 @@ export class AppConfigService {
         return client || "";
     }
 
+    hasEthereumAddressField():boolean{
+      return this.data['kyc_config_detail'] && this.data['kyc_config_detail']['has_ethereum_address_field'];
+    }
+
 }
