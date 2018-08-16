@@ -16,8 +16,11 @@
   ;
 
   oSTNs.configuratorHelper = oThis = {
+    initConfig        : null ,
+    configuratorData  : null ,
 
-    getPageData : function ( config ,  callback ) {
+    init : function ( config ,  callback ) {
+      oThis.initConfig = config ;
       var ajaxConfig = oThis.getAjaxConfig( config , callback ) ;
       if( !ajaxConfig ) return ;
       $.ajax( ajaxConfig );
@@ -36,27 +39,42 @@
         beforeSend : function () {
           jAjaxProcessingWrap.show(); 
         },
-        success: function( result ) {
-          if( result.success ){
-            if( callback ){
-              callback( result.data );
-            }
-          }else{
-            oThis.showError( result );
-          }
+        success: function( res  ) {
+          oThis.onSuccess( res , callback );
         },
         error : function ( jqXhr , error ) {
-          oThis.showError( error );
+          oThis.onError( jqXhr , error  );
+
         },
-        complete: function () {
-          jAjaxProcessingWrap.hide();
+        complete: function ( res ) {
+          oThis.onComplete( res ) ;
         }
       } ;
       if( params ){
         ajaxConfig['data'] = params ;
       }
-
       return ajaxConfig ;
+    },
+
+    onSuccess : function ( result , callback ) {
+      if( result.success ){
+        var data = result.data || {} ;
+        oThis.configuratorData = data ;
+        formBuilder.init( data );
+        if( callback ){
+          callback( data );
+        }
+      }else{
+        oThis.showError( result );
+      }
+    },
+
+    onError : function (  jqXhr , error  ) {
+      oThis.showError( error );
+    },
+
+    onComplete : function ( res ) {
+      jAjaxProcessingWrap.hide();
     },
 
     getApi : function ( config ) {

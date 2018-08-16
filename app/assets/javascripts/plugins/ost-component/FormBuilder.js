@@ -30,7 +30,7 @@
     * Eg : { entityConfig : {} formData : {} }
     */
 
-    init: function (data) {
+    init: function ( data  ) {
       oThis.entityConfig  = data && data['entity_config'] || {};
       oThis.formData      = data && data['form_data'] || {};
       oThis.buildSections();
@@ -124,7 +124,6 @@
 
     buildEntity: function ( entityKey, jWrapper, withFormData ) {
       var entityConfig = oThis.getEntityConfig(entityKey, withFormData),
-          customCom    = entityConfig && entityConfig['isCustom'],
           jMarkup
       ;
       if ( !entityConfig ) return ;
@@ -151,7 +150,7 @@
       ;
       if ( customCom ) {
         jMarkup = oThis.getCustomComponentMarkup(entityConfig);
-      } else if (value instanceof Array) {
+      } else if ( value instanceof Array ) {
         jMarkup = oThis.getArrayEntityMarkup(entityConfig)
       } else {
         jMarkup = oThis.getEntityMarkup(entityConfig);
@@ -223,7 +222,7 @@
      */
 
     getCustomComponentMarkup: function ( entityConfig ) {
-      //if any custom component fill code here.
+      //if any custom component fill code here. OverWrite from outside.
     },
 
     /*
@@ -249,24 +248,42 @@
       var inputType   = entityConfig['inputType'],
           entityName  = entityConfig['data_key_name'],
           inputTypes  = uiConfigConstants.getInputTypes(),
-          selector
+          selector , binderFunction
       ;
       if ( !entityName ) return ;
       selector = '[name="' + entityName + '"]';
+
       switch (inputType) {
         case inputTypes.file:
-          fileUploader.bindButtonActions( selector );
+          binderFunction = fileUploader.bindButtonActions;
           break;
         case inputTypes.richTextEditor:
-          richTextEditor.initTinyMc( selector );
+          binderFunction = richTextEditor.initTinyMc;
           break;
         case inputTypes.colorPicker:
+            binderFunction = colorPicker.initColorPricker;
+          break;
         case inputTypes.colorGradient:
-          colorPicker.initColorPricker( selector );
+          selector = oThis.getColorGradientSelector( entityConfig );
+          binderFunction =  colorPicker.initColorPricker ;
           break;
       }
-      lengthMocker.initLengthMocker();
-      oThis.initToolTips();
+
+      setTimeout( function () {
+        //If required passed config to binderFunction as well. Not required for now.
+        binderFunction && binderFunction( selector  );
+        lengthMocker.initLengthMocker();
+        oThis.initToolTips();
+      }, 0)
+    },
+
+    getColorGradientSelector : function ( entityConfig ) {
+      var entityName  = entityConfig['data_key_name'] ,
+          keyAppend   = entityConfig['name_append'] || '[color]' ,
+          entityName  = entityName + keyAppend ,
+          selector    =  '[name="' + entityName + '"]'
+      ;
+      return selector ;
     },
 
     /*

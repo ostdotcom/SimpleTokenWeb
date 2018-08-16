@@ -59,7 +59,7 @@
      company_logo_size_percent : {
        'label'          : "Resize Logo (% value)",
        'tooltip'        : "",
-       "inputType"      : inputTypesEnum.number,
+       "inputType"      : inputTypesEnum.number
      },
 
      company_favicon   : {
@@ -67,20 +67,7 @@
        'signed_url'     : "/api/admin/configurator/upload-params",
        'tooltip'        : "some tooltip",
        'title'          : "File Upload",
-       "inputType"      : inputTypesEnum.file,
-
-       //Backend
-       'data_kind'      : "file",
-       'data_key_name'  : "company_logo",
-       'validation'     : {
-         'min_bytes'      : '100',
-         'max_bytes'      : '999999999999',
-         'required'       : 1,
-         'accept'         : ['image/jpg' , 'image/png']
-       },
-
-       //form_data
-       'value'          : "https://dxwfxs8b4lg24.cloudfront.net/ost/images/ost-news/ost-fanin.jpg"
+       "inputType"      : inputTypesEnum.file
      },
 
      background_gradient : {

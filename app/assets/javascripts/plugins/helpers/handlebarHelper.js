@@ -18,7 +18,7 @@
 
   };
 
-
+  //Remove this later.
   Handlebars.registerHelper('is_required', function(data, options ) {
     if( data == 1 ){
       return "required";
@@ -36,7 +36,7 @@
   });
 
   Handlebars.registerHelper('ifDataKindArray', function( dataKind , options ) {
-    if( dataKind == "array" ){
+    if( dataKind && dataKind == "array" ){
       return options.fn(this);
     }
     return options.inverse(this);
