@@ -78,11 +78,11 @@
                 <div class="form-label">
                   FACIAL RECOGNITION
                 </div>
-                <div class="read-only-fields display-4">
-                    Ideal value is 70%. You may not choose a value lower than 20% to be able to use automation.
-                </div>
-                <div class="row pt-2">
-                  <div class="col-12 col-lg-10 my-3">
+                <!--<div class="read-only-fields display-4">-->
+                    <!--Ideal value is 70%. You may not choose a value lower than 20% to be able to use automation.-->
+                <!--</div>-->
+                <div class="row">
+                  <div class="col-12 col-lg-10 my-1">
                     <ost-slider [name]="'fr_match_percent'" [value]="frMmatchPercent" [serverError]="errorResponse"
                                 [min]="20" [max]="100" [step]="1" [tooltip]="show" [postfix]="'%'"
                                 [disabled]="!isSuperAdmin" (sliderValChange)="onSliderUpdate( $event )">
