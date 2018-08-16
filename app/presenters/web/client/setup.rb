@@ -121,6 +121,10 @@ module Web
         client_theme_style.footer_text_color
       end
 
+      def footer_link_color
+        client_theme_style.footer_link_color
+      end
+
       def footer_background_color
         client_theme_style.footer_background_color
       end
@@ -134,7 +138,6 @@ module Web
       end
 
       def account_name
-        puts token_sale_details
         token_sale_details['token_name']
       end
 
