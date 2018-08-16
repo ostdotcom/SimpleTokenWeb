@@ -60,6 +60,8 @@ Rails.application.routes.draw do
       get '/authentication' => :authentication
       get '/change-password' => :change_password
 
+      get ':entity_type/preview' => :user_preview_pages
+
 
       get '/dashboard' => :angular_app
       get '/case-id/:id' => :angular_app

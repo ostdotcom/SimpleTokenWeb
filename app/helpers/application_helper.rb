@@ -27,17 +27,9 @@ module ApplicationHelper
   # * Reviewed By: Sunil Khedar
   #
   def specific_manifest_file_path
-    "#{get_formatted_controller_name}-#{get_formatted_action_name}"
-  end
-
-  # format controller name for specific manifest file path
-  #
-  # * Author: Kedar
-  # * Date: 09/10/2017
-  # * Reviewed By: Sunil Khedar
-  #
-  def get_formatted_controller_name
-    params[:controller]
+    action_name = @preview_template.present? ? @preview_template[:action] : params[:action]
+    controller_name = @preview_template.present? ? @preview_template[:controller] : params[:controller]
+    "#{controller_name}-#{get_formatted_action_name(action_name)}"
   end
 
   # format action name for specific manifest file path
@@ -46,8 +38,8 @@ module ApplicationHelper
   # * Date: 09/10/2017
   # * Reviewed By: Sunil Khedar
   #
-  def get_formatted_action_name
-    params[:action].gsub('_', '-')
+  def get_formatted_action_name(action_name)
+    action_name.gsub('_', '-')
   end
 
   # All pages used only by simple token and not kyc clients
