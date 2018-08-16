@@ -1,13 +1,13 @@
 <%
     initialConfig = {
         client_setup: @resp_data['client_setup'],
-        admin: @resp_data['admin']
+        admin: @resp_data['admin'],
+        kyc_config_detail: @resp_data['kyc_config_detail']
     }.to_json
 
 %>
 
 <app-root id="main_app_root" data-init-data-json="<%= initialConfig %>"></app-root>
-
 
 
 <% content_for :javascript do %>

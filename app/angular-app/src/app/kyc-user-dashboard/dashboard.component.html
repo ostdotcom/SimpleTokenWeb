@@ -40,7 +40,7 @@
             </select>
           </div>
           <div class="col-12 col-lg-3 pr-lg-2 mt-3" *ngIf="appConfigService.hasWhiteListSetUp()">
-            <label class='form-label mb-2'>WHITELIST STATUS</label>
+            <label class='form-label mb-2'>ETH WHITELIST STATUS</label>
             <select class="form-control selectpicker" name="filters[whitelist_status]" [(ngModel)]='whitelist_status'
                     ostOptions [entityPath]="'entity_configs.kyc_user_details.whitelist_status'">
             </select>

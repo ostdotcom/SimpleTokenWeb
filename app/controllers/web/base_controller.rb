@@ -87,28 +87,31 @@ class Web::BaseController < ApplicationController
     redirect_to "/#{path}#{extra_url_query_parameter}", status: http_status and return
   end
 
-  # Get IP based cynopsis country name
+  # Get IP Based Cynopsis Countries Name
   #
   # * Author: Sunil
   # * Date: 17/10/2017
   # * Reviewed By: Sunil
   #
-  def get_ip_to_cynopsis_country
-    @ip_to_cynopsis_country ||= GlobalConstant::CountryNationality.cynopsis_country_for(get_country_from_ip)
+  # @returns [Array]
+  #
+  def get_ip_to_cynopsis_countries
+    @ip_to_cynopsis_countries ||= begin
+      GlobalConstant::CountryNationality.get_cynopsis_countries_from_ip(ip_address)
+    end
   end
 
-  # Get IP based country name
+  # Get IP Based Preferred Cynopsis Country Name
   #
-  # * Author: Sunil
-  # * Date: 17/10/2017
-  # * Reviewed By: Sunil
+  # * Author: Tejas
+  # * Date: 01/08/2018
+  # * Reviewed By: Aman
   #
-  def get_country_from_ip
-    @country_from_ip ||= begin
-      country_name = ''
-      geo_ip_obj = Util::GeoIpUtil.new(ip_address: ip_address)
-      country_name = geo_ip_obj.get_country_name.to_s
-      country_name
+  # @returns [String]
+  #
+  def get_ip_to_preferred_cynopsis_country
+    @ip_to_preferred_cynopsis_country ||= begin
+      GlobalConstant::CountryNationality.get_preferred_cynopsis_country_from_ip(ip_address)
     end
   end
 

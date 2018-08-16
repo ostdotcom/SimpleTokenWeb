@@ -18,8 +18,8 @@ module GlobalConstant
         'login'
       end
 
-      def sign_up_template_type
-        'sign_up'
+      def registration_template_type
+        'registration'
       end
 
       def reset_password_template_type

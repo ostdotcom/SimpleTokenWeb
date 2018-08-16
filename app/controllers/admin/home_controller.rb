@@ -2,9 +2,9 @@ class Admin::HomeController < Admin::BaseController
   layout "admin"
 
   before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
-  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account]
+  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account, :user_preview_pages]
 
-  before_action :set_page_meta_info, :except => [:logout]
+  before_action :set_page_meta_info, :except => [:logout, :user_preview_pages]
 
   # Admin login
   #
@@ -473,5 +473,54 @@ class Admin::HomeController < Admin::BaseController
   #   render :json => response and return
   #
   # end
+
+  # User preview pages on admin
+  #
+  # * Author: Pankaj
+  # * Date: 16/08/2018
+  # * Reviewed By:
+  #
+  def user_preview_pages
+    entity_type = params[:entity_type]
+    template_type = get_template_from_entity(entity_type)
+    api_route = ['kyc-form', 'dashboard'].include?(entity_type) ? 'dummy-user' : 'client-detail'
+    service_response = SimpleTokenApi::Request::User.new(
+        host_url_with_protocol,
+        request.cookies,
+        {"User-Agent" => http_user_agent}).admin_preview_pages(entity_type, params[:gid], api_route)
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    if entity_type == "dashboard"
+      @presenter_obj = ::Web::Client::Profile.new(service_response, params)
+    else
+      @presenter_obj = ::Web::Client::Setup.new(service_response, params)
+    end
+
+    @user = service_response.data["user"] || {}
+
+    @preview_template = {controller: 'web/user', action: template_type}
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
+    render template: "web/user/#{template_type}", layout: 'web' and return
+  end
+
+  def get_template_from_entity(entity_type)
+    case entity_type
+    when 'theme'
+      'login'
+    when 'registration'
+      'sign_up'
+    when 'kyc-form'
+      'add_kyc_form'
+    when 'dashboard'
+      'dashboard_home'
+    else
+      entity_type
+    end
+  end
 
 end

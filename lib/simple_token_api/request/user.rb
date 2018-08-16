@@ -62,6 +62,21 @@ module SimpleTokenApi
         get("profile")
       end
 
+      # Get Admin preview pages
+      #
+      # * Author: Pankaj
+      # * Date: 16/08/2018
+      # * Reviewed By:
+      #
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def admin_preview_pages(template_type, preview_group_id, api_route)
+        @service_base_route = 'admin/preview/'
+        extra_params = {template_type: template_type, gid: preview_group_id}
+        get(api_route, extra_params)
+      end
+
     end
   end
 end

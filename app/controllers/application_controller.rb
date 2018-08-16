@@ -140,8 +140,8 @@ class ApplicationController < ActionController::Base
   #
   def set_page_meta_info(custom_extended_data = {})
     service_response = GetPageMetaInfo.new(
-        controller: params[:controller],
-        action: params[:action],
+        controller: (@preview_template.present? ? @preview_template[:controller] : params[:controller]),
+        action: (@preview_template.present? ? @preview_template[:action] : params[:action]),
         request_url: request.url,
         custom_extended_data: custom_extended_data
     ).perform

@@ -4,7 +4,7 @@
       <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
         <span aria-hidden="true" class="modal-close-black-icon" title="close"></span>
       </button>
-      <div class="modal-body">
+      <div class="modal-body" style="max-height: calc(100vh - 50px);; overflow-y: auto; ">
         <div class="verify-content form-group">
           <h4 class="mt-4 mb-4 text-center">I confirm the following</h4>
           <% kyc_checkbox_points_html.each_with_index do |line, index| %>
