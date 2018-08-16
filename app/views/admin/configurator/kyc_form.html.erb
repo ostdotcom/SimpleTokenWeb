@@ -1,4 +1,4 @@
-<form method="POST" action="" data-ost-formhelper>
+<form id="configurator-form" method="POST" action="" data-ost-formhelper>
   <div class="accordion shown" role="tablist">
     <div class="accordion-header">
       <span class="circle mr-1">1</span>
@@ -20,7 +20,9 @@
   <script type="text/javascript">
     $(function () {
       ost.kycConfigurator.init({
-        'api' : "<%= api_get_url('kyc') %>"
+        'configuratorGetApi' : "<%= api_get_url('kyc') %>",
+        'publishApi': "<%= api_publish_url('kyc') %>",
+        'resetApi': "<%= api_reset_url('kyc') %>"
       });
     });
   </script>

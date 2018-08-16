@@ -1,4 +1,4 @@
-<form method="POST" action="" data-ost-formhelper>
+<form id="configurator-form" method="POST" action="" data-ost-formhelper >
 
   <div class="accordion shown" role="tablist">
     <div class="accordion-header">
@@ -31,7 +31,9 @@
   <script type="text/javascript">
     $(function () {
       ost.dashboardConfigurator.init({
-        'api' : "<%= api_get_url('dashboard') %>"
+        'configuratorGetApi' : "<%= api_get_url('dashboard') %>",
+        'publishApi': "<%= api_publish_url('dashboard') %>",
+        'resetApi': "<%= api_reset_url('dashboard') %>"
       });
     });
   </script>

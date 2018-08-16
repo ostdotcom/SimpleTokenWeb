@@ -16,20 +16,22 @@
   ;
 
   oSTNs.configuratorHelper = oThis = {
-    initConfig        : null ,
-    configuratorData  : null ,
+    initConfig            : null  ,
+    configuratorData      : null  ,
+    configurationChanged  : false ,
 
     init : function ( config ,  callback ) {
-      oThis.initConfig = config ;
-      var ajaxConfig = oThis.getAjaxConfig( config , callback ) ;
+      oThis.initConfig = config ; //Should be very first step.
+
+      var ajaxConfig = oThis.getConfiguratorAjaxConfig( callback ) ;
       if( !ajaxConfig ) return ;
       $.ajax( ajaxConfig );
     },
 
-    getAjaxConfig : function ( config , callback ) {
-      var api    = oThis.getApi( config ) ,
-          method = oThis.getMethod( config ) || "GET",
-          params = oThis.getParams( config ) ,
+    getConfiguratorAjaxConfig : function (  callback ) {
+      var api    = oThis.getConfiguratorApi() ,
+          method = oThis.getConfiguratorMethod(),
+          params = oThis.getConfiguratorParams(),
           ajaxConfig
       ;
       if( !api ) return false;
@@ -40,14 +42,14 @@
           jAjaxProcessingWrap.show(); 
         },
         success: function( res  ) {
-          oThis.onSuccess( res , callback );
+          oThis.onConfiguratorGetSuccess( res , callback );
         },
         error : function ( jqXhr , error ) {
-          oThis.onError.apply(oThis, arguments );
+          oThis.onConfiguratorError.apply(oThis, arguments );
 
         },
         complete: function ( res ) {
-          oThis.onComplete.apply(oThis, arguments ) ;
+          oThis.onConfiguratorComplete.apply(oThis, arguments ) ;
         }
       } ;
       if( params ){
@@ -56,29 +58,40 @@
       return ajaxConfig ;
     },
 
-    onSuccess : function ( result , callback ) {
+    onConfiguratorGetSuccess : function ( result , callback ) {
       if( result.success ){
 
         var data = result.data || {} ;
         oThis.configuratorData = data ;
         formBuilder.init( data );
         oThis.initCommonSettings( data );
+        oThis.bindEvents();
 
         if( callback ){
           callback( data );
         }
 
       }else{
-        oThis.showError( result );
+        oThis.showConfiguratorErrorOverlay( result );
       }
     },
 
-    onError : function (  jqXhr , error  ) {
-      oThis.showError( error );
+    onConfiguratorError : function (  jqXhr , error  ) {
+      oThis.showConfiguratorErrorOverlay( error );
     },
 
-    onComplete : function ( res ) {
+    onConfiguratorComplete : function ( res ) {
       jAjaxProcessingWrap.hide();
+    },
+
+    showConfiguratorErrorOverlay : function ( response ) {
+      var err     = response && response.err,
+        errMsg  = err && err.display_text
+      ;
+      if( errMsg ){
+        jAjaxErrorWrap.find('.error-message').html( errMsg );
+      }
+      jAjaxErrorWrap.show();
     },
 
     initCommonSettings : function ( data ) {
@@ -94,26 +107,162 @@
       }
     },
 
-    getApi : function ( config ) {
-      return config && config.api ;
+    getConfiguratorApi : function ( config ) {
+      return oThis.initConfig && oThis.initConfig.configuratorGetApi ;
     },
 
-    getMethod : function( config ){
-      return config && config.method ||"GET" ;
+    getConfiguratorMethod : function( config ){
+      return oThis.initConfig && oThis.initConfig.configuratorMethod ||"GET" ;
     },
 
-    getParams : function ( config ) {
-      return config && config.params || {};
+    getConfiguratorParams : function ( config ) {
+      return oThis.initConfig && oThis.initConfig.configuratorParams;
     },
 
-    showError : function ( response ) {
-      var err     = response && response.err,
-          errMsg  = err && err.display_text
+    getPublishApi : function () {
+      return oThis.initConfig && oThis.initConfig.publishApi ;
+    },
+
+    getResetApi : function () {
+      return oThis.initConfig && oThis.initConfig.resetApi ;
+    },
+
+    onCmsExitBtnClick : function () {
+      $("#exit-cms-modal").modal('show');
+    },
+
+    onCmsExitConfirmationBtnClick : function () {
+      window.location.href = "/admin/dashboard" ;
+    },
+
+
+    bindEvents : function () {
+
+      $('#save-and-preview-btn-click').on('click' , function () {
+        oThis.onSaveAndPreviewClick();
+      });
+
+      $("#configurator-form").on('change' , "input , textarea" , function () {
+        oThis.configurationChanged =  true ;
+      });
+
+      $("#exit-cms-btn").on('click' , function () {
+        oThis.onCmsExitBtnClick();
+      });
+
+      $('#reset-configurator-changes').on('click' , function () {
+        oThis.resetChangesClick();
+      });
+
+      $('#publish-changes-btn').on('click' , function () {
+        oThis.publishChangesClick();
+      });
+
+      $(window).bind("beforeunload",function(event) {
+        if( oThis.configurationChanged ) {
+          return " There are unsaved changes made to this page."
+        }
+      });
+
+    },
+
+    onSaveAndPreviewClick : function ( jEl ) {
+      var jForm       = $('#configurator-form') ,
+          formHelper  =  jForm.formHelper({
+            beforeSend : function () {
+              var preSubmitText   = jEl.text() ,
+                  submittingText  = jEl.data('submitting')
+              ;
+              jEl.data("pre-submit-text" , preSubmitText );
+              jEl.text( submittingText );
+              jEl.prop( "disabled", true );
+            },
+            success: function ( res ) {
+              if( res.success ){
+                oThis.onSaveAndPreviewSuccess( res );
+              }else{
+                oThis.onRequestFailure(  $('#issues-while-submitting') , res );
+              }
+            },
+            error: function ( jqXhr ,  error ) {
+              oThis.onRequestFailure(  $('#issues-while-submitting') , error );
+            },
+            complete: function () {
+              var preSubmitText   = jEl.data('pre-submit-text');
+              jEl.text( preSubmitText );
+              jEl.prop( "disabled", false );
+            }
+          });
+    },
+
+    onSaveAndPreviewSuccess : function ( res ) {
+      //TODO handle iframe reload.
+    },
+
+    resetChangesClick : function () {
+      var api     = oThis.getResetApi() ,
+          jModal  = $('#reset-changes-modal')
+      ;
+      if( api ) return ;
+      $.ajax({
+        url: api,
+        methods: "POST",
+        beforeSend : function () {
+          jModal.modal('show');
+        },
+        success : function ( res ) {
+          if( res.success ){
+
+          }else{
+            oThis.onRequestFailure(jModal , res );
+          }
+        },
+        error: function (jqXhr ,  error ) {
+          oThis.onRequestFailure(jModal ,  error );
+        }
+      });
+    },
+
+    publishChangesClick : function (  ) {
+      var api     = oThis.getPublishApi() ,
+          jModal  = $('#publish-changes-modal')
+      ;
+      if( api ) return ;
+      $.ajax({
+        url: api,
+        methods: "POST",
+        beforeSend : function () {
+          jModal.modal('show');
+        },
+        success : function ( res ) {
+          if( res.success ){
+
+          }else{
+            oThis.onRequestFailure(jModal , res );
+          }
+        },
+        error: function (jqXhr ,  error ) {
+          oThis.onRequestFailure(jModal ,  error );
+        }
+      });
+    },
+
+    onRequestFailure : function ( jModal ,  res ) {
+      var error   = res.err ,
+        errMsg  = error['display_text']
       ;
       if( errMsg ){
-        jAjaxErrorWrap.find('.error-message').html( errMsg );
+        jModal.find('.error-message').text( errMsg );
       }
-      jAjaxErrorWrap.show(); 
+      jModal.find('.state-handler').hide();
+      jModal.find('.error-state').show();
+      jModal.modal('show');
+    },
+
+    onRequestSuccess : function ( jModal ,  res ) {
+      jModal.find('.state-handler').hide();
+      jModal.find('.success-state').show();
+      jModal.modal('show');
     },
 
     addComponent : function( jEl , jWrapper  ) {
@@ -153,11 +302,16 @@
         ;
       $( sSelector ).on('click' , function () {
         jEl = $(this) ;
-        iframeUrl = jEl.data('iframe-url');
         jEl.siblings(sSelector).find(sSlider).slideUp();
         jEl.find(sSlider).slideDown();
-        iframe.loadUrlInIframe( iframeUrl );
+       oThis.onAccordionClickIframeLoad( jEl );
       });
+    },
+
+    onAccordionClickIframeLoad : function ( jEl ) {
+      var  iframeUrl ;  //TODO backend integration.
+
+      iframe.loadUrlInIframe( iframeUrl );
     }
 
   };

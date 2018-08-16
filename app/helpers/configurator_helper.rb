@@ -32,4 +32,12 @@ module ConfiguratorHelper
     "/api/admin/configurator/#{entity_type}/config?#{get_config_params}"
   end
 
+  def api_publish_url(entity_type)
+    #TODO by pankaj
+  end
+
+  def api_reset_url(entity_type)
+    #TODO by pankaj
+  end
+
 end
