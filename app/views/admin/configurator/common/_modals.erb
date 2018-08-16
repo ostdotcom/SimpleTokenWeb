@@ -62,9 +62,88 @@
   </div>
 </div>
 
+<div class="modal cms-modal fade" id="publish-changes-modal" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered modal-lg h-100 my-0 pb-5">
+    <div class="modal-content">
+      <div class="modal-body p-5">
+
+        <div class="processing-state state-handler text-center p-1">
+          <div class="loader-icon-wrap">
+            <img class="img-fluid" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
+          </div>
+          <div class="processing-message">Publishing configurations … Please wait.</div>
+        </div>
+
+        <div class="success-state state-handler text-center p-1">
+          <div class="warning-img mb-3">
+            <svg class="svg">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+              </switch>
+            </svg>
+          </div>
+          <div class="success-message">Your changes have been published.</div>
+        </div>
+
+        <div class="error-state state-handler text-center p-1">
+          <div class="error-icon-wrap mb-3">
+            <svg class="svg">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon"></use>
+              </switch>
+            </svg>
+          </div>
+          <div class="error-message">There were some issues while publishing the configurations. Please try again after some time.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal cms-modal fade" id="reset-changes-modal" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered modal-lg h-100 my-0 pb-5">
+    <div class="modal-content">
+      <div class="modal-body p-5">
+
+          <div class="processing-state state-handler text-center p-1">
+            <div class="loader-icon-wrap">
+              <img class="img-fluid" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
+            </div>
+            <div class="processing-message">Resetting configuration … Please wait.</div>
+          </div>
+
+          <div class="success-state state-handler text-center p-1">
+            <div class="warning-img mb-3">
+              <svg class="svg">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                </switch>
+              </svg>
+            </div>
+            <div class="success-message">Configurations have been reset to currently published version.</div>
+          </div>
+
+          <div class="error-state state-handler text-center p-1">
+            <div class="error-icon-wrap mb-3">
+              <svg class="svg">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon"></use>
+                </switch>
+              </svg>
+            </div>
+            <div class="error-message">There were some issues while resetting the configurations. Please try again after some time.</div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <% content_for :javascript do %>
-  <script text="text/javascript">
+  <script type="text/javascript">
     $(document).ready(function () {
 
       $( 'body' ).on('show.bs.modal' , function( event ) {
