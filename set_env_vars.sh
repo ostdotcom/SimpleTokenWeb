@@ -1,7 +1,7 @@
 # ENV variables and their development values
 #
 # Secret key is included here only in development.
-export SECRET_KEY_BASE="c4c1fb31b8e28def95652fbf12ea8b43ecb655d49e197bc6acc6290d40a94477cee827a021785905e296046669e68960cc5ffdef52be191b89e01667a68b01c1"
+export SECRET_KEY_BASE="2c83f7055dfb1f11e8698764515bafeb85136f98d864a8fb2246b429d61cf43f91b8d60bdf138abdf11bc0aeb36098964274d9a597bd24fc58751df58f8dd9ac14fb77f56"
 
 export STW_CLOUDFRONT_DOMAIN="da3bndq04bonc.cloudfront.net"
 
@@ -18,7 +18,7 @@ export STW_SK_ADMIN_PW=""
 
 export STW_GEOIP_FILE_WITH_PATH='../GeoIP2-City.mmdb'
 
-export STW_RECAPTCHA_SITE_KEY="6LcegDQUAAAAAAVNYy1XIbs2NVnEqjpn7ojygcii"
+export STW_RECAPTCHA_SITE_KEY="6LfbfzQUAAAAAObwp0iXySZxH69WXY6NsLdKZF6B"
 
 export STW_EARLY_ACCESS_REGISTER_START_DATE='2017-11-01 13:00:00 UTC'
 export STW_EARLY_ACCESS_REGISTER_END_DATE='2017-11-13 20:00:00 UTC'

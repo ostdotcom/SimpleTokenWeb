@@ -6,7 +6,7 @@ module Web
       # @param [Hash] params (Page specific data) - page_spec_data
       # @return [Web::ClientStyles::UserDashboard] returns an object of Web::ClientStyles::UserDashboard class
       def initialize(page_spec_data)
-        @page_spec_data = page_spec_data.symbolize_keys
+        @page_spec_data = page_spec_data.deep_symbolize_keys
       end
 
       def kyc_update_modal_text
@@ -14,7 +14,11 @@ module Web
       end
 
       def sale_timer_style
-        'color: %{sale_timer_text_color}; background: linear-gradient%{sale_timer_background_gradient};' % @page_spec_data
+        "color: #{@page_spec_data[:sale_timer_text_color]}; background: linear-gradient(to bottom, #{sale_time_gradient})"
+      end
+
+      def sale_time_gradient
+        @page_spec_data[:sale_timer_background_gradient].map {|x| "#{x[:color]} #{x[:gradient]}%"}.join(',')
       end
 
       def title_text_color
