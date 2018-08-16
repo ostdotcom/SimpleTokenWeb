@@ -43,11 +43,11 @@
           oThis.onSuccess( res , callback );
         },
         error : function ( jqXhr , error ) {
-          oThis.onError( jqXhr , error  );
+          oThis.onError.apply(oThis, arguments );
 
         },
         complete: function ( res ) {
-          oThis.onComplete( res ) ;
+          oThis.onComplete.apply(oThis, arguments ) ;
         }
       } ;
       if( params ){
@@ -58,12 +58,16 @@
 
     onSuccess : function ( result , callback ) {
       if( result.success ){
+
         var data = result.data || {} ;
         oThis.configuratorData = data ;
         formBuilder.init( data );
+        oThis.initCommonSettings( data );
+
         if( callback ){
           callback( data );
         }
+
       }else{
         oThis.showError( result );
       }
@@ -75,6 +79,19 @@
 
     onComplete : function ( res ) {
       jAjaxProcessingWrap.hide();
+    },
+
+    initCommonSettings : function ( data ) {
+      var rules      = data && data['rules'] ,
+          canReset   = rules["can_reset"]  ,
+          canPublish = rules["can_publish"]
+      ;
+      if( canReset ) {
+        $('#reset-configurator-changes').show();
+      }
+      if( canPublish ){
+        $('#publish-changes-btn').show();
+      }
     },
 
     getApi : function ( config ) {

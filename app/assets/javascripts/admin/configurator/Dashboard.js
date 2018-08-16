@@ -14,7 +14,7 @@
     },
 
     onSuccess : function ( data ) {
-
+      configuratorHelper.bindAccordionClick();
     }
 
   };
