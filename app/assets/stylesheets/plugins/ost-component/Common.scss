@@ -168,3 +168,22 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     display: block;
   }
 }
+
+/*
+ popup_kyc_configuration - is the parent scope class for all the label-counter classes
+ label-counter - is the class where indexing should append
+*/
+
+.popup_kyc_configuration{
+  counter-reset: label-counter;
+  .label-counter{
+    counter-increment: label-counter;
+    &:after {
+      content: " #" counter(label-counter);
+    }
+  }
+}
+
+
+
+
