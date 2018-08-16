@@ -70,7 +70,6 @@
 
      kyc_form_popup_checkboxes : {
        'label'          : "Checkbox",
-       'tooltip'        : "some tooltip",
        'title'          : "Footer Text + Link",
        "inputType"      : inputTypesEnum.richTextEditor,
        'isDeleteEnabled': true,
