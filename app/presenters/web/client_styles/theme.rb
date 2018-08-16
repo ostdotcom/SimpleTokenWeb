@@ -2,24 +2,13 @@ module Web
   module ClientStyles
     class Theme
 
+      attr_accessor :theme_data
+
       # Init
       # @param [Hash] params (Theme data) - Theme data
       # @return [Web::ClientStyles::Theme] returns an object of Web::ClientStyles::Theme class
       def initialize(theme_data)
         @theme_data = theme_data.deep_symbolize_keys
-      end
-
-      def primary_button_style
-        ".btn-primary {border-color: #{@theme_data[:primary_button_border_color]};background: #{@theme_data[:primary_button_background_color]};color:
-          #{@theme_data[:primary_button_text_color]};}  .btn-primary.hover-cls, .btn-primary.active-cls, .btn-primary:hover, .client-primary-btn:active
-          {color: #{@theme_data[:primary_button_text_color_active]}!important;text-decoration: none!important;background-color: #{@theme_data[:primary_button_background_color_active]}!important;border-color:
-          #{@theme_data[:primary_button_border_color_active]}!important;}"
-      end
-
-      def secondary_button_style
-        ".btn-secondary {border-color: #{@theme_data[:secondary_button_border_color]};color: #{@theme_data[:secondary_button_text_color]};background: #{@theme_data[:secondary_button_background_color]}}  .btn-secondary:hover, .btn-secondary:active
-        {color: #{@theme_data[:secondary_button_text_color_active]}!important;text-decoration: none!important;background-color: #{@theme_data[:secondary_button_background_color_active]}!important;border-color:
-        #{@theme_data[:secondary_button_border_color_active]}!important;}"
       end
 
       def logo
@@ -32,12 +21,8 @@ module Web
         @theme_data[:company_favicon].present? ? @theme_data[:company_favicon] : @theme_data[:company_logo]
       end
 
-      def background_gradient
-        @background_gradient ||= begin
-          puts @theme_data[:background_gradient]
-          gradient_txt = @theme_data[:background_gradient].map {|x| "#{x[:color]} #{x[:gradient]}%"}.join(',')
-          ".bg-gradient {background: linear-gradient(to bottom, #{gradient_txt} )}"
-        end
+      def background_gradient_text
+        @theme_data[:background_gradient].map {|x| "#{x[:color]} #{x[:gradient]}%"}.join(',')
       end
 
       def footer_text_color

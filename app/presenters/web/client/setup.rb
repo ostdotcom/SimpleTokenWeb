@@ -113,8 +113,8 @@ module Web
         client_theme_style.secondary_button_style
       end
 
-      def background_gradient_style
-        client_theme_style.background_gradient
+      def background_gradient_text
+        client_theme_style.background_gradient_text
       end
 
       def footer_text_color

@@ -145,9 +145,17 @@
 
   <% if !is_simple_token_specific_page? %>
     <style>
-      <%= raw @presenter_obj.primary_button_style %>
-      <%= raw @presenter_obj.secondary_button_style %>
-      <%= raw @presenter_obj.background_gradient_style %>
+      .btn-primary {border-color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_border_color] %>;background: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_background_color] %>color:
+      <%= @presenter_obj.client_theme_style.theme_data[:primary_button_text_color] %>;}  .btn-primary.hover-cls, .btn-primary.active-cls, .btn-primary:hover, .client-primary-btn:active
+         {color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_text_color_active] %>!important;text-decoration: none!important;background-color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_background_color_active] %>!important;border-color:
+        <%= @presenter_obj.client_theme_style.theme_data[:primary_button_border_color_active] %>!important;}
+
+      .btn-secondary {border-color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_border_color] %>;background: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_background_color] %>color:
+      <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_text_color] %>;}
+      .btn-secondary.hover-cls, .btn-secondary.active-cls, .btn-secondary:hover, .client-secondary-btn:active {color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_text_color_active] %>!important;text-decoration: none!important;background-color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_background_color_active] %>!important;border-color:
+        <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_border_color_active] %>!important;}
+      
+      .bg-gradient {background: linear-gradient(to bottom, <%= raw @presenter_obj.background_gradient_text %> )}
     </style>
 
   <% end %>
