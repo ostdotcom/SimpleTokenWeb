@@ -10,16 +10,16 @@ module Web
       end
 
       def primary_button_style
-        ".btn-primary {border-color: %{primary_button_border_color};background: %{primary_button_background_color};color:
-          %{primary_button_text_color};}  .btn-primary.hover-cls, .btn-primary.active-cls, .btn-primary:hover, .client-primary-btn:active
-          {color: %{primary_button_text_color_active}!important;text-decoration: none!important;background-color: %{primary_button_background_color_active}!important;border-color:
-          %{primary_button_border_color_active}!important;}" % @theme_data
+        ".btn-primary {border-color: #{@theme_data[:primary_button_border_color]};background: #{@theme_data[:primary_button_background_color]};color:
+          #{@theme_data[:primary_button_text_color]};}  .btn-primary.hover-cls, .btn-primary.active-cls, .btn-primary:hover, .client-primary-btn:active
+          {color: #{@theme_data[:primary_button_text_color_active]}!important;text-decoration: none!important;background-color: #{@theme_data[:primary_button_background_color_active]}!important;border-color:
+          #{@theme_data[:primary_button_border_color_active]}!important;}"
       end
 
       def secondary_button_style
-        ".btn-secondary {border-color: %{secondary_button_border_color};color: %{secondary_button_text_color};background: %{secondary_button_background_color}}  .btn-secondary:hover, .btn-secondary:active
-        {color: %{secondary_button_text_color_active}!important;text-decoration: none!important;background-color: %{secondary_button_background_color_active}!important;border-color:
-        %{secondary_button_border_color_active}!important;}" % @theme_data
+        ".btn-secondary {border-color: #{@theme_data[:secondary_button_border_color]};color: #{@theme_data[:secondary_button_text_color]};background: #{@theme_data[:secondary_button_background_color]}}  .btn-secondary:hover, .btn-secondary:active
+        {color: #{@theme_data[:secondary_button_text_color_active]}!important;text-decoration: none!important;background-color: #{@theme_data[:secondary_button_background_color_active]}!important;border-color:
+        #{@theme_data[:secondary_button_border_color_active]}!important;}"
       end
 
       def logo

@@ -64,7 +64,7 @@ module Web
       end
 
       def page_data
-        @cr ||= Web::ClientStyles::Registration.new(page_setting['page_data'])
+        @cr ||= Web::ClientStyles::PageData.new(page_setting['page_data'])
       end
 
       def kyc_config_detail_data
