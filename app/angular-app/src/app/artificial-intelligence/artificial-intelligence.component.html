@@ -75,14 +75,14 @@
                   qualification settings.
               </div>
               <div class="form-group col-12 col-md-10 col-lg-11 col-xl-8">
-                <div class="form-label">
+                <div class="form-label pt-2">
                   FACIAL RECOGNITION
                 </div>
-                <!--<div class="read-only-fields display-4">-->
-                    <!--Ideal value is 70%. You may not choose a value lower than 20% to be able to use automation.-->
-                <!--</div>-->
+                <div class="read-only-fields display-4">
+                  To be able to use automation, you may not choose a value lower than 20%.
+                </div>
                 <div class="row">
-                  <div class="col-12 col-lg-10 my-1">
+                  <div class="col-12 col-lg-10 my-3">
                     <ost-slider [name]="'fr_match_percent'" [value]="frMmatchPercent" [serverError]="errorResponse"
                                 [min]="20" [max]="100" [step]="1" [tooltip]="show" [postfix]="'%'"
                                 [disabled]="!isSuperAdmin" (sliderValChange)="onSliderUpdate( $event )">
