@@ -332,22 +332,26 @@
         jKYCSubmit.prop("disabled", true).text("SUBMITTING...");
 
         //Validate Eth Address
-        var ethAddress = oThis.$kycForm.find('input[name="ethereum_address"]').val();
-        oThis.isValidAddress(ethAddress,
-          function () { /* Success Callback */
-            //Enable the Submit Button
-            jKYCSubmit.prop("disabled", false).text("SUBMIT");
+        var ethAddress = oThis.$kycForm.find('input[name="ethereum_address"]');
+        if(ethAddress.length > 0){
+          oThis.isValidAddress(ethAddress.val(),
+            function () { /* Success Callback */
+              //Enable the Submit Button
+              jKYCSubmit.prop("disabled", false).text("SUBMIT");
 
-            //Form is now valid
-            oThis.onFormValid();
-          }, function () { /* Error Callback */
+              //Form is now valid
+              oThis.onFormValid();
+            }, function () { /* Error Callback */
 
-            //Enable the Submit Button
-            jKYCSubmit.prop("disabled", false).text("SUBMIT");
+              //Enable the Submit Button
+              jKYCSubmit.prop("disabled", false).text("SUBMIT");
 
-            //Form has Errors..
-            oThis.onFormError();
-          });
+              //Form has Errors..
+              oThis.onFormError();
+            });
+        } else {
+          oThis.onFormValid();
+        }
       } else{
         oThis.$kycForm.find('.general_error')
           .addClass("is-invalid")

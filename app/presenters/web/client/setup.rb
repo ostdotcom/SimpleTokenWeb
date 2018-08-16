@@ -64,7 +64,7 @@ module Web
       end
 
       def page_data
-        @cr ||= Web::ClientStyles::Registration.new(page_setting['page_data'])
+        @cr ||= Web::ClientStyles::PageData.new(page_setting['page_data'])
       end
 
       def kyc_config_detail_data
@@ -113,12 +113,16 @@ module Web
         client_theme_style.secondary_button_style
       end
 
-      def background_gradient_style
-        client_theme_style.background_gradient
+      def background_gradient_text
+        client_theme_style.background_gradient_text
       end
 
       def footer_text_color
         client_theme_style.footer_text_color
+      end
+
+      def footer_link_color
+        client_theme_style.footer_link_color
       end
 
       def footer_background_color
@@ -134,7 +138,6 @@ module Web
       end
 
       def account_name
-        puts token_sale_details
         token_sale_details['token_name']
       end
 
