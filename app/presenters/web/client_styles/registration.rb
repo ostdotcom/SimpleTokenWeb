@@ -9,8 +9,8 @@ module Web
         @page_spec_data = page_spec_data.symbolize_keys
       end
 
-      def signup_policy_text
-        @page_spec_data[:policy_text]
+      def signup_policy_texts
+        @page_spec_data[:policy_texts]
       end
 
       def kyc_form_title
