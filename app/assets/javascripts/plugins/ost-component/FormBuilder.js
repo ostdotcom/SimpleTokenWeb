@@ -106,28 +106,26 @@
 
     buildEntities: function ( jWrapper, entities ) {
       var len = entities && entities.length, cnt,
-          jMarkup, entityKey
+          jMarkup, entityKey, entityConfig
       ;
       if ( !jWrapper ) return;
       for ( cnt = 0; cnt < len; cnt++ ) {
         entityKey = entities[cnt];
-        oThis.buildEntity( entityKey, jWrapper, withFormData );
+        entityConfig = oThis.getEntityConfig( entityKey, withFormData );
+        oThis.buildEntity( entityConfig, jWrapper  );
       }
     },
 
     /*
      * Add entity to jWrapper and bind event
-     * params   : entityKey , jWrapper , withFormData
+     * params   : entityConfig , jWrapper
      * withFormData should be not passed or passed as false if creating a new entity
      * returns  : jMarkup back if required to be used.
      */
 
-    buildEntity: function ( entityKey, jWrapper, withFormData ) {
-      var entityConfig = oThis.getEntityConfig(entityKey, withFormData),
-          jMarkup
-      ;
+    buildEntity: function ( entityConfig, jWrapper ) {
+      var jMarkup ;
       if ( !entityConfig ) return ;
-      oThis.addClassNameInConfig( entityConfig, entityKey );
       jMarkup = oThis.getBuildEntityMarkup( entityConfig );
       if( jWrapper ) {
         jWrapper.append( jMarkup );
@@ -172,6 +170,7 @@
           mergedConfig  = {}
       ;
       mergedConfig = $.extend( true, mergedConfig, uiConfig, entityConfig );
+      oThis.addClassNameInConfig( mergedConfig , entityKey );
       if (formData) {
         mergedConfig['value'] = formData;
       }
