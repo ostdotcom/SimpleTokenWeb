@@ -1,6 +1,7 @@
-<% accordion_config = accordion_config('dashboard') %>
+<% entity_type = GlobalConstant::TemplateType.dashboard_template_type %>
+<% accordion_config = accordion_config(entity_type) %>
 
-<form id="configurator-form" method="POST" action="" data-ost-formhelper >
+<form id="configurator-form" method="POST" action="<%= api_post_url(entity_type) %>" data-ost-formhelper>
 
   <div class="accordion <%= is_active_accordion( accordion_config[:sale_live] )? "shown" : "" %>" role="tablist">
     <div class="accordion-header">
@@ -31,7 +32,6 @@
 
 <% content_for :javascript do %>
   <script type="text/javascript">
-    <% entity_type = GlobalConstant::TemplateType.dashboard_template_type %>
     $(function () {
       ost.dashboardConfigurator.init({
         'configuratorGetApi' : "<%= api_get_url(entity_type) %>",

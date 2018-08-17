@@ -1,6 +1,7 @@
-<% accordion_config = accordion_config('kyc') %>
+<% entity_type = GlobalConstant::TemplateType.kyc_template_type %>
+<% accordion_config = accordion_config(entity_type) %>
 
-<form id="configurator-form" method="POST" action="" data-ost-formhelper>
+<form id="configurator-form" method="POST" action="<%= api_post_url(entity_type) %>" data-ost-formhelper>
 
   <div class="accordion <%= is_active_accordion( accordion_config[:kyc_form] )? "shown" : "" %>" role="tablist">
     <div class="accordion-header">
