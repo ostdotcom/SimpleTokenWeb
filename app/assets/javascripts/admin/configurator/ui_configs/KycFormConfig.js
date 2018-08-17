@@ -22,9 +22,8 @@
           "header"      : "Pop-up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
           "entities"    : [ "show_pop_up" , "kyc_form_popup_checkboxes"],
-          "className"   : "terms-condition-wrapper",
           "footer"      : {
-            template        : "#ost-add-terms_condition",
+            template        : "#ost-add-component-footer",
             componentToAdd  : "kyc_form_popup_checkboxes"
           }
         }

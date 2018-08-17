@@ -35,7 +35,11 @@
         "popup_options" : {
           "header"      : "Pop-Up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-          "entities"    : [ "show_pop_up", "ethereum_deposit_popup_checkboxes" ]
+          "entities"    : [ "show_pop_up", "ethereum_deposit_popup_checkboxes" ],
+          "footer"      : {
+            template        : "#ost-add-component-footer",
+            componentToAdd  : "ethereum_deposit_popup_checkboxes"
+          }
         }
     },
     "deposit_addr": {
