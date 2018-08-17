@@ -36,14 +36,7 @@
             $('#ethereum-confirm-modal').modal('show');
           <% end %>
           <% if is_active_accordion('deposit_addr') %>
-            var jWrap = $("#ethereum-deposit-address"),
-                jInput = jWrap.find("#ethereum-address-input")
-            ;
-            jInput.val('0x00000000000000000000000000000');
-            jWrap.show();
-            $('#eth-gas-limit-title').show();
-            $('#eth-deposit-address-title').hide();
-            $("#get-deposit-address").hide();
+            simpletoken.dashboard.timer.showEthereumAddress('0x0000000000000000000000000000');
           <% end %>
       });
   </script>
