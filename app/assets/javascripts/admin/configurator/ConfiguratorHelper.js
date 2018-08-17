@@ -15,9 +15,12 @@
   ;
 
   oSTNs.configuratorHelper = oThis = {
+    formHelper  : null,
+
     initConfig  : {
       iframeUrl       : null
     }  ,
+
     configuratorData      : {}  ,
     configurationChanged  : false ,
 
@@ -26,7 +29,8 @@
 
       var ajaxConfig = oThis.getConfiguratorAjaxConfig( callback ) ;
       if( !ajaxConfig ) return ;
-      $.ajax( ajaxConfig );
+      $.ajax( ajaxConfig ) ;
+      oThis.initFormHelper() ;
     },
 
     getConfiguratorAjaxConfig : function (  callback ) {
@@ -166,35 +170,40 @@
 
     },
 
-    onSaveAndPreviewClick : function ( jEl ) {
-      var jForm       = $('#configurator-form') ,
-          formHelper  = jForm.formHelper({
-            beforeSend : function () {
-              var preSubmitText   = jEl.text() ,
-                  submittingText  = jEl.data('submitting')
-              ;
-              jEl.data("pre-submit-text" , preSubmitText );
-              jEl.text( submittingText );
-              jEl.prop( "disabled", true );
-            },
-            success: function ( res ) {
-              if( res.success ){
-                oThis.onSaveAndPreviewSuccess( res );
-              }else{
-                oThis.onRequestFailure(  $('#issues-while-submitting') , res );
-              }
-            },
-            error: function ( jqXhr ,  error ) {
-              oThis.onRequestFailure(  $('#issues-while-submitting') , error );
-            },
-            complete: function () {
-              var preSubmitText   = jEl.data('pre-submit-text');
-              jEl.text( preSubmitText );
-              jEl.prop( "disabled", false );
-            }
-          });
+    initFormHelper : function () {
+      var jEl         = $('#save-and-preview-btn-click'),
+          jErrorModal = $('#issues-while-submitting'),
+          jForm       = $('#configurator-form')
+      ;
+      oThis.formHelper  = jForm.formHelper({
+        beforeSend : function () {
+          var preSubmitText = jEl.text() ,
+            submittingText  = jEl.data('submitting')
+          ;
+          jEl.data("pre-submit-text" , preSubmitText );
+          jEl.text( submittingText );
+          jEl.prop( "disabled", true );
+        },
+        success: function ( res ) {
+          if( res.success ){
+            oThis.onSaveAndPreviewSuccess( res );
+          }else{
+            oThis.onRequestFailure( jErrorModal , res );
+          }
+        },
+        error: function ( jqXhr ,  error ) {
+          oThis.onRequestFailure( jErrorModal , error );
+        },
+        complete: function () {
+          var preSubmitText   = jEl.data('pre-submit-text');
+          jEl.text( preSubmitText );
+          jEl.prop( "disabled", false );
+        }
+      });
+    },
 
-      formHelper.jForm.submit();
+    onSaveAndPreviewClick : function ( jEl ) {
+      oThis.formHelper.jForm.submit();
     },
 
     onSaveAndPreviewSuccess : function ( res ) {
