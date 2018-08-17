@@ -176,6 +176,9 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 
 .popup_kyc_configuration{
   counter-reset: label-counter;
+  .kyc_form_popup_checkboxes{
+    cursor: grab;
+  }
   .label-counter{
     counter-increment: label-counter;
     &:after {
