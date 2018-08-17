@@ -483,7 +483,8 @@ class Admin::HomeController < Admin::BaseController
   def user_preview_pages
     entity_type = params[:entity_type]
     template_type = get_template_from_entity(entity_type)
-    api_route = ['kyc-form', 'dashboard'].include?(entity_type) ? 'dummy-user' : 'client-detail'
+    api_route = [GlobalConstant::TemplateType.kyc_template_type,
+                 GlobalConstant::TemplateType.dashboard_template_type].include?(entity_type) ? 'dummy-user' : 'client-detail'
     service_response = SimpleTokenApi::Request::User.new(
         host_url_with_protocol,
         request.cookies,
@@ -495,7 +496,7 @@ class Admin::HomeController < Admin::BaseController
       return
     end
 
-    if entity_type == "dashboard"
+    if entity_type == GlobalConstant::TemplateType.dashboard_template_type
       @presenter_obj = ::Web::Client::Profile.new(service_response, params)
     else
       @presenter_obj = ::Web::Client::Setup.new(service_response, params)
@@ -510,13 +511,13 @@ class Admin::HomeController < Admin::BaseController
 
   def get_template_from_entity(entity_type)
     case entity_type
-    when 'theme'
+    when GlobalConstant::TemplateType.theme_template_type
       'login'
-    when 'registration'
+    when GlobalConstant::TemplateType.registration_template_type
       'sign_up'
-    when 'kyc-form'
+    when GlobalConstant::TemplateType.kyc_template_type
       'add_kyc_form'
-    when 'dashboard'
+    when GlobalConstant::TemplateType.dashboard_template_type
       'dashboard_home'
     else
       entity_type

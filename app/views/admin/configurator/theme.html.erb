@@ -9,12 +9,13 @@
 
 <% content_for :javascript do %>
   <script type="text/javascript">
+    <% entity_type = GlobalConstant::TemplateType.theme_template_type %>
     $(function () {
       ost.themeConfigurator.init({
-        'configuratorGetApi' : "<%= api_get_url('theme') %>",
-        'publishApi': "<%= api_publish_url('theme') %>",
-        'resetApi': "<%= api_reset_url('theme') %>",
-        'iframeUrl': "<%= iframe_url('theme') %>"
+        'configuratorGetApi' : "<%= api_get_url(entity_type) %>",
+        'publishApi': "<%= api_publish_url(entity_type) %>",
+        'resetApi': "<%= api_reset_url(entity_type) %>",
+        'iframeUrl': "<%= iframe_url(entity_type) %>"
       });
     });
   </script>

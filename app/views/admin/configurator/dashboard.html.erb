@@ -29,12 +29,13 @@
 
 <% content_for :javascript do %>
   <script type="text/javascript">
+    <% entity_type = GlobalConstant::TemplateType.dashboard_template_type %>
     $(function () {
       ost.dashboardConfigurator.init({
-        'configuratorGetApi' : "<%= api_get_url('dashboard') %>",
-        'publishApi': "<%= api_publish_url('dashboard') %>",
-        'resetApi': "<%= api_reset_url('dashboard') %>",
-        'iframeUrl': "<%= iframe_url('dashboard') %>"
+        'configuratorGetApi' : "<%= api_get_url(entity_type) %>",
+        'publishApi': "<%= api_publish_url(entity_type) %>",
+        'resetApi': "<%= api_reset_url(entity_type) %>",
+        'iframeUrl': "<%= iframe_url(entity_type) %>"
       });
     });
   </script>

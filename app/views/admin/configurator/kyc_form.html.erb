@@ -18,12 +18,13 @@
 
 <% content_for :javascript do %>
   <script type="text/javascript">
+     <% entity_type = GlobalConstant::TemplateType.kyc_template_type %>
     $(function () {
       ost.kycConfigurator.init({
-        'configuratorGetApi' : "<%= api_get_url('kyc-form') %>",
-        'publishApi': "<%= api_publish_url('kyc-form') %>",
-        'resetApi': "<%= api_reset_url('kyc-form') %>",
-        'iframeUrl': "<%= iframe_url('kyc-form') %>"
+        'configuratorGetApi' : "<%= api_get_url(entity_type) %>",
+        'publishApi': "<%= api_publish_url(entity_type) %>",
+        'resetApi': "<%= api_reset_url(entity_type) %>",
+        'iframeUrl': "<%= iframe_url(entity_type) %>"
       });
     });
   </script>

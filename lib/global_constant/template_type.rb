@@ -34,6 +34,14 @@ module GlobalConstant
         'token_sale_blocked_region'
       end
 
+      def theme_template_type
+        'theme'
+      end
+
+      def dashboard_template_type
+        'dashboard'
+      end
+
     end
 
   end

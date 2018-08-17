@@ -9,12 +9,13 @@
 
 <% content_for :javascript do %>
   <script type="text/javascript">
+    <% entity_type = GlobalConstant::TemplateType.registration_template_type %>
     $(function () {
       ost.registerConfigurator.init({
-        'configuratorGetApi' : "<%= api_get_url('registration') %>",
-        'publishApi': "<%= api_publish_url('registration') %>",
-        'resetApi': "<%= api_reset_url('registration') %>",
-        'iframeUrl': "<%= iframe_url('registration') %>"
+        'configuratorGetApi' : "<%= api_get_url(entity_type) %>",
+        'publishApi': "<%= api_publish_url(entity_type) %>",
+        'resetApi': "<%= api_reset_url(entity_type) %>",
+        'iframeUrl': "<%= iframe_url(entity_type) %>"
       });
     });
   </script>
