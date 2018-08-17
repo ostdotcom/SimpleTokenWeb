@@ -5,11 +5,11 @@ module ConfiguratorHelper
   end
 
   def is_registration_configurator?
-    params[:action] == GlobalConstant::TemplateType.registration_template_type
+    params[:action] == 'register'
   end
 
   def is_kyc_configurator?
-    params[:action] == GlobalConstant::TemplateType.kyc_template_type
+    params[:action] == 'kyc_form'
   end
 
   def is_dashboard_configurator?
