@@ -59,6 +59,7 @@
        'label'          : "Show Pop-Up",
        'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.toggle,
+       "data_key_name"  : "show_pop_up",
        "toggleOnValue"  : 1,
        "toggleOffValue"  : 0
      },
