@@ -215,16 +215,16 @@
       var api       = oThis.getResetApi() ,
           jModal    = $('#reset-changes-modal')
       ;
-      if( api ) return ;
+      if( !api ) return ;
       $.ajax({
         url: api,
-        methods: "POST",
+        method: "POST",
         beforeSend : function () {
           jModal.modal('show');
         },
         success : function ( res ) {
           if( res.success ){
-            iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
+            oThis.onRequestSuccess( jModal , res );
           }else{
             oThis.onRequestFailure(jModal , res );
           }
@@ -240,16 +240,16 @@
       var api     = oThis.getPublishApi() ,
           jModal  = $('#publish-changes-modal')
       ;
-      if( api ) return ;
+      if( !api ) return ;
       $.ajax({
         url: api,
-        methods: "POST",
+        method: "POST",
         beforeSend : function () {
           jModal.modal('show');
         },
         success : function ( res ) {
           if( res.success ){
-
+           oThis.onRequestSuccess( jModal ,  res );
           }else{
             oThis.onRequestFailure(jModal , res );
           }
@@ -262,7 +262,7 @@
 
     onRequestFailure : function ( jModal ,  res ) {
       var error   = res.err ,
-        errMsg  = error['display_text']
+          errMsg  = error['display_text']
       ;
       if( errMsg ){
         jModal.find('.error-message').text( errMsg );
@@ -273,9 +273,8 @@
     },
 
     onRequestSuccess : function ( jModal ,  res ) {
-      jModal.find('.state-handler').hide();
-      jModal.find('.success-state').show();
-      jModal.modal('show');
+      location.reload();
+      jModal.modal('hide');
     },
 
     deleteComponent : function( jEL , sWrapperToDelete  ) {
