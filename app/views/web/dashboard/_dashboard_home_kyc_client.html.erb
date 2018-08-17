@@ -29,6 +29,18 @@
 <% end %>
 </section>
 
+<% content_for :preview_template_handlers do %>
+  <script type="text/javascript" >
+      $(function(){
+          <% if is_active_accordion('popup') %>
+            $('#ethereum-confirm-modal').modal('show');
+          <% end %>
+          <% if is_active_accordion('deposit_addr') %>
+            simpletoken.dashboard.timer.showEthereumAddress('0x0000000000000000000000000000');
+          <% end %>
+      });
+  </script>
+<%end%>
 
 <% content_for :end_js do %>
   <script type="text/javascript">
