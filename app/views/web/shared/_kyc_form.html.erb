@@ -142,7 +142,7 @@
                     <% tabindex_val += 1 %>
                     <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
                       <% next if @presenter_obj.blacklisted_countries.include?(country_name) %>
-                      <option value="<%= country_name %>" <%= @ip_to_preferred_cynopsis_country.to_s == country_name  ? 'selected' : '' %>><%= country_name.titleize %></option>
+                      <option value="<%= country_name %>" <%= @ip_to_preferred_cynopsis_country.to_s == country_name ? 'selected' : '' %>><%= country_name.titleize %></option>
                     <% end %>
                   </select>
                   <div class="invalid-feedback" data-forname="country"></div>
@@ -165,22 +165,24 @@
             <% end %>
 
             <% if @presenter_obj.kyc_fields.include?('ethereum_address') %>
-            <div class="row form-group">
-              <div class="col-12 col-sm-6">
-                <div>
-                  <label class="form-label" for="ethereum_address">Ethereum address</label>
-                  <input type="text" title="Ethereum address" class="form-control" name="ethereum_address"
-                         pattern="(0x|0X)?[0-9a-fA-F]{40}" value="" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
-                  <% tabindex_val += 1 %>
-                  <div class="invalid-feedback" data-forname="ethereum_address"></div>
+              <div class="row form-group">
+                <div class="col-12 col-sm-6">
+                  <div>
+                    <label class="form-label" for="ethereum_address">Ethereum address</label>
+                    <input type="text" title="Ethereum address" class="form-control" name="ethereum_address"
+                           pattern="(0x|0X)?[0-9a-fA-F]{40}" value="" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
+                    <% tabindex_val += 1 %>
+                    <div class="invalid-feedback" data-forname="ethereum_address"></div>
+                  </div>
                 </div>
+                <% if @presenter_obj.page_data.kyc_ethereum_address_info_text.present? %>
+                  <div class="col-12 col-sm-6">
+                    <div class="form-instructions display-4 mt-1 pt-md-4 pb-3 pb-md-0">
+                      <%= raw @presenter_obj.page_data.kyc_ethereum_address_info_text %>
+                    </div>
+                  </div>
+                <% end %>
               </div>
-              <div class="col-12 col-sm-6">
-                <div class="form-instructions display-4 mt-1 pt-md-4 pb-3 pb-md-0">
-                  <%= raw @presenter_obj.page_data.kyc_ethereum_address_info_text %>
-                </div>
-              </div>
-            </div>
             <% end %>
 
             <% if @presenter_obj.kyc_fields.include?('estimated_participation_amount') %>
@@ -188,7 +190,7 @@
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
                     <label class="form-label" for="postal_code">Estimated Participation Amount (ETH)</label>
-                    <input type="number"  min="0.01" lang="en-150" title="Estimated amount" class="form-control"
+                    <input type="number" min="0.01" lang="en-150" title="Estimated amount" class="form-control"
                            name="estimated_participation_amount" value="0" tabindex="<%= tabindex_val %>" autocomplete="off" required/>
                     <% tabindex_val += 1 %>
                     <div class="invalid-feedback" data-forname="estimated_participation_amount"></div>
@@ -207,11 +209,13 @@
                   <div class="invalid-feedback" data-forname="document_id_number"></div>
                 </div>
               </div>
-              <div class="col-12 col-sm-6">
-                <div class="form-instructions display-4 mt-1 pt-md-4 pb-3 pb-md-0">
-                  <%= raw @presenter_obj.page_data.kyc_document_info_text %>
+              <% if @presenter_obj.page_data.kyc_document_info_text.present? %>
+                <div class="col-12 col-sm-6">
+                  <div class="form-instructions display-4 mt-1 pt-md-4 pb-3 pb-md-0">
+                    <%= raw @presenter_obj.page_data.kyc_document_info_text %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             </div>
 
             <div class="row">
@@ -223,7 +227,7 @@
                     <% tabindex_val += 1 %>
                     <% to_show_usa_nationality = true
                        GlobalConstant::CountryNationality.nationalities.each do |nationality_name|
-                         if to_show_usa_nationality && ("UNITED STATE OF AMERICA" < nationality_name)                       %>
+                         if to_show_usa_nationality && ("UNITED STATE OF AMERICA" < nationality_name)                        %>
 
                       <option value="AMERICAN">United States Of America</option>
                     <% to_show_usa_nationality = false
@@ -261,10 +265,11 @@
                   <div class="file-wrapper" style="position:absolute; top:-10000px; left:-10000px"></div>
 
                   <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"
-                         data-max-length="3" tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
+                         data-max-length="3" tabindex="<%= tabindex_val %>">
+                  <% tabindex_val += 1 %>
                   </input>
                   <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan or picture of your ID Document.<br/>(Min 200KB - Max 20MB, JPG/PNG/PDF only) </span>
-                   <div class="error" data-forid="document_id_file_path"></div>
+                  <div class="error" data-forid="document_id_file_path"></div>
                 </div>
               </div>
             </div>
@@ -292,7 +297,8 @@
                 <div class="col-12 mt-2">
                   <div class="file-wrapper" style="position:absolute; top:-10000px; left:-10000px"></div>
                   <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"
-                         data-max-length="3" tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
+                         data-max-length="3" tabindex="<%= tabindex_val %>">
+                  <% tabindex_val += 1 %>
                   </input>
                   <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>picture of you holding your ID  
                   <br/>Document next to your face.<br/>(Min 200KB - Max 20MB, JPG/PNG/PDF only)</span>
@@ -303,80 +309,82 @@
             <!-- Selfie Document wrapper end-->
 
             <!-- residence proof Document wrapper start-->
-          <div class="row form-group residence-proof display-none" >
-            <div class="file-upload" data-title="Residence proof" data-name="residence_proof_file_path"
-                 data-max-length="1" data-accept="image/*,application/pdf"
-                 data-min-bytes="204800" data-max-bytes="20971520">
-              <div class="col-12">
-                <label class="form-label" for="residence_proof_file_path">Proof of Residence
-                </label>
-              </div>
-              <div class="col-12">
-                <div class="file-wrapper-view"></div>
-              </div>
-              <div class="col-12 mt-2">
-                <div class="file-wrapper" style="position:absolute; top:-10000px; left:-10000px"></div>
-                <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"
-                       data-max-length="3" tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
-                </input>
-                <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan of your proof of residence.<br/> (Min 200KB- Max 20MB, JPG/PNG/PDF only)</span>
-                <div class="error" data-forid="residence_proof_file_path"></div>
+            <div class="row form-group residence-proof display-none">
+              <div class="file-upload" data-title="Residence proof" data-name="residence_proof_file_path"
+                   data-max-length="1" data-accept="image/*,application/pdf"
+                   data-min-bytes="204800" data-max-bytes="20971520">
+                <div class="col-12">
+                  <label class="form-label" for="residence_proof_file_path">Proof of Residence
+                  </label>
+                </div>
+                <div class="col-12">
+                  <div class="file-wrapper-view"></div>
+                </div>
+                <div class="col-12 mt-2">
+                  <div class="file-wrapper" style="position:absolute; top:-10000px; left:-10000px"></div>
+                  <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"
+                         data-max-length="3" tabindex="<%= tabindex_val %>">
+                  <% tabindex_val += 1 %>
+                  </input>
+                  <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">Please upload a high quality <br/>scan of your proof of residence.<br/> (Min 200KB- Max 20MB, JPG/PNG/PDF only)</span>
+                  <div class="error" data-forid="residence_proof_file_path"></div>
+                </div>
               </div>
             </div>
-          </div>
-          <%if @presenter_obj.kyc_fields.include?('investor_proof_files_path')%>
+            <% if @presenter_obj.kyc_fields.include?('investor_proof_files_path') %>
               <div class="row form-group " id="investor_proofs">
-              <div class="col-12 col-sm-12">
-                <label class="form-label">ARE YOU AN ACCREDITED INVESTOR?</label>
-                <div class="row">
-                  <div class="col-12 col-sm-12">
-                    <div class="form-check form-check-inline">
-                      <input type="radio"  class="form-check-input radio-button radio-button-yes"
-                             name="ACCREDITEDRadio" id="yesRadios" value="option1" checked />
-                      <label class="radio-button-label position-relative" for="yesRadios" style="top: 5px;">
-                        <span class="radio-button-circle d-inline"></span>Yes
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input radio-button radio-button-no" type="radio" name="ACCREDITEDRadio"
-                             id="noRadios" value="option2" />
-                      <label class="radio-button-label position-relative" for="noRadios" style="top: 5px;">
-                        <span class="radio-button-circle"></span>No
-                      </label>
+                <div class="col-12 col-sm-12">
+                  <label class="form-label">ARE YOU AN ACCREDITED INVESTOR?</label>
+                  <div class="row">
+                    <div class="col-12 col-sm-12">
+                      <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input radio-button radio-button-yes"
+                               name="ACCREDITEDRadio" id="yesRadios" value="option1" checked/>
+                        <label class="radio-button-label position-relative" for="yesRadios" style="top: 5px;">
+                          <span class="radio-button-circle d-inline"></span>Yes
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input radio-button radio-button-no" type="radio" name="ACCREDITEDRadio"
+                               id="noRadios" value="option2"/>
+                        <label class="radio-button-label position-relative" for="noRadios" style="top: 5px;">
+                          <span class="radio-button-circle"></span>No
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row form-group upload-proof-invester">
-              <div class="file-upload" data-title="Accredited investor proof"
-                   data-name="investor_proof_files_path[]"
-                   data-max-length="<%= @presenter_obj.max_investor_proofs_allowed%>"
-                   data-accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="20971520">
+              <div class="row form-group upload-proof-invester">
+                <div class="file-upload" data-title="Accredited investor proof"
+                     data-name="investor_proof_files_path[]"
+                     data-max-length="<%= @presenter_obj.max_investor_proofs_allowed %>"
+                     data-accept="image/*,application/pdf" data-min-bytes="204800" data-max-bytes="20971520">
 
-                <div class="col-12">
-                  <div class="file-wrapper-view"></div>
-                </div>
+                  <div class="col-12">
+                    <div class="file-wrapper-view"></div>
+                  </div>
 
-                <span class="form-instructions reached-max-limit display-4 choose-file-instructions mt-3" style="display: none">
+                  <span class="form-instructions reached-max-limit display-4 choose-file-instructions mt-3" style="display: none">
                   (You have reached max limit of uploads for acredited investors, please remove one file to upload more)</span>
 
-                <div class="col-12 mt-2">
-                  <div class="file-wrapper" style="position:absolute; top:-10000px; left:-10000px"></div>
+                  <div class="col-12 mt-2">
+                    <div class="file-wrapper" style="position:absolute; top:-10000px; left:-10000px"></div>
 
-                  <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"
-                         data-max-length="<%= @presenter_obj.max_investor_proofs_allowed%>"
-                         tabindex="<%= tabindex_val %>"><% tabindex_val += 1 %>
-                  </input>
-                  <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">
+                    <input type="button" class="btn btn-secondary upload-image-btn" value="Choose file"
+                           data-max-length="<%= @presenter_obj.max_investor_proofs_allowed %>"
+                           tabindex="<%= tabindex_val %>">
+                    <% tabindex_val += 1 %>
+                    </input>
+                    <span class="form-instructions display-4 choose-file-instructions thumbnail-upload-instructions">
                     Please upload a high quality scan or<br/> picture of your investor proof. <br/>(Min 200KB - Max 20MB, JPG/PNG/PDF only)
-                  </span>                  
-                  <div class="error" data-forid="investor_proof_files_path[]"></div>
+                  </span>
+                    <div class="error" data-forid="investor_proof_files_path[]"></div>
+                  </div>
                 </div>
-              </div>
 
-            </div>
-          <%end%>
+              </div>
+            <% end %>
             <!-- residence proof Document wrapper end-->
 
 
@@ -394,7 +402,8 @@
                 <div class="form-group">
                   <div>
                     <button id="kycSubmit" class="btn btn-primary upload-image-btn" title="submit"
-                            tabindex="<%= tabindex_val %>">Submit</button>
+                            tabindex="<%= tabindex_val %>">Submit
+                    </button>
                     <% tabindex_val += 1 %>
                     <% if is_update %>
                       <a href="/dashboard" class="btn btn-secondary upload-image-btn ml-3" title="back"
@@ -419,24 +428,24 @@
 
 <% content_for :end_js do %>
   <script>
-    $(document).ready(function () {
-      simpletoken.home.kyc.init(
-        {
-          show_verify_modal: <%= show_verify_modal %>,
-          has_ethereum_address: <%= @presenter_obj.kyc_fields.include?('ethereum_address') %>,
-          residency_proof_nationalities: <%= raw @presenter_obj.residency_proof_nationalities %>
-        }
-      );
-    });
+      $(document).ready(function () {
+          simpletoken.home.kyc.init(
+              {
+                  show_verify_modal: <%= show_verify_modal %>,
+                  has_ethereum_address: <%= @presenter_obj.kyc_fields.include?('ethereum_address') %>,
+                  residency_proof_nationalities: <%= raw @presenter_obj.residency_proof_nationalities %>
+              }
+          );
+      });
 
-    <% if @presenter_obj.is_account_activated? %>
+      <% if @presenter_obj.is_account_activated? %>
       simpletoken.utilities.showSuccessAlert("Your Account is Activated");
-    <% end %>
+      <% end %>
 
 
-    function simpletoken_kyc_recaptcha_callback() {
-      simpletoken.home.kyc.$kycForm.find('.error[data-forid="recaptcha"]').text('');
-    }
+      function simpletoken_kyc_recaptcha_callback() {
+          simpletoken.home.kyc.$kycForm.find('.error[data-forid="recaptcha"]').text('');
+      }
   </script>
 <% end %>
 
@@ -465,6 +474,7 @@
 
 
 
+
 </script>
 
 <script type="custom" id="passport-popover">
@@ -487,17 +497,18 @@
 
 
 
+
 </script>
 
 <%= render :partial => "/shared/web/common/index_svg_sprite" %>
 
 
 <% content_for :preview_template_handlers do %>
-  <script type="text/javascript" >
-    $(function(){
-      <% if is_active_accordion('form_popup') %>
-        $('#verifyModal').modal('show');
-      <% end %>
-    });
+  <script type="text/javascript">
+      $(function () {
+          <% if is_active_accordion('form_popup') %>
+          $('#verifyModal').modal('show');
+          <% end %>
+      });
   </script>
-<%end%>
+<% end %>

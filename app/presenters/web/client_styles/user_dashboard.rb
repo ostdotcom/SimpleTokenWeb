@@ -29,6 +29,10 @@ module Web
         @page_spec_data[:telegram_link]
       end
 
+      def telegram_icon
+        @page_spec_data[:telegram_button_theme].to_s == 'light' ? "microsite-telegram-connect-icon" : "microsite-telegram-connect-icon"
+      end
+
       def telegram_container_background_color
         @page_spec_data[:dashboard_bottom_banner_background]
       end
@@ -38,16 +42,24 @@ module Web
       end
 
       def dashboard_middle_banner_background
-        @page_spec_data[:dashboard_middle_banner_background]
+        @page_spec_data[:dashboard_middle_banner_background] || telegram_container_background_color
       end
 
       def dashboard_middle_banner_text_color
-        @page_spec_data[:dashboard_middle_banner_text_color]
+        @page_spec_data[:dashboard_middle_banner_text_color] || telegram_container_text_color
+      end
+
+      def dashboard_middle_banner_link_color
+        @page_spec_data[:dashboard_middle_banner_link_color]
       end
 
       def ethereum_deposit_text
-        '%{dashboard_middle_banner_title_text}<br/><div class="display-2
-        mt-2">%{dashboard_middle_banner_body_text}</div>' % @page_spec_data
+        if @page_spec_data[:dashboard_middle_banner_title_text].present?
+          "#{@page_spec_data[:dashboard_middle_banner_title_text]}<br/><small><div class='display-2
+        mt-2'>#{@page_spec_data[:dashboard_middle_banner_body_text]}</div></small>"
+        else
+          nil
+        end
       end
 
       def ethereum_deposit_popup_checkboxes

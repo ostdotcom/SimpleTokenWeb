@@ -5,9 +5,20 @@
         <div class="text-center">
           <h4 class="header my-3" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-deposit-address-title">Ethereum Deposit Address
             for <%= @presenter_obj.account_name_short %> Public Sale</h4>
-          <h4 class="header my-3 display-none" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-gas-limit-title">
+
+          <% if @presenter_obj.page_data.dashboard_middle_banner_link_color.present? %>
+          <style>
+            h4.middle-banner  a{color:<%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>;border-bottom-color: <%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>}
+            h4.middle-banner  a:hover{color:<%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>;border-bottom-color: <%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>}
+          </style>
+          <% end%>
+
+          <% if @presenter_obj.page_data.ethereum_deposit_text.present? %>
+          <h4 class="header my-3 display-none middle-banner" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-gas-limit-title">
             <%= raw @presenter_obj.page_data.ethereum_deposit_text %>
           </h4>
+          <% end%>
+
           <fieldset id="ethereum-deposit-address" class="ethereum-deposit-address mt-2 display-none">
             <div class="position-relative">
               <input type="text" id="ethereum-address-input" class="copy-address-input" placeholder="Ethereum Deposit Address" readonly value=""/>
