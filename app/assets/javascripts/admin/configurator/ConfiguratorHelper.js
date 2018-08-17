@@ -10,8 +10,7 @@
 
   var jAjaxProcessingWrap  = $(".ajax-processing-wrapper"),
       jAjaxErrorWrap       = $(".ajax-error-wrapper"),
-    
-      addComponentWrap    = "data-component-to-add" ,
+
       sDeleteWrapper      = ".form-group"
   ;
 
@@ -265,29 +264,6 @@
       jModal.find('.state-handler').hide();
       jModal.find('.success-state').show();
       jModal.modal('show');
-    },
-
-    addComponent : function( jEl , jWrapper  ) {
-      var jComponentKey , componentKey,
-          entityConfig , jMarkup = ""
-      ;
-
-      if( jEl.attr( addComponentWrap )){
-        jComponentKey = jEl ;
-      }else{
-        jComponentKey = jEl.closest( addComponentWrap );
-      }
-
-      if( jComponentKey ) {
-        componentKey  = jComponentKey.attr( addComponentWrap );
-      }
-
-      if( componentKey ){
-        entityConfig = formBuilder.getEntityConfig( componentKey );
-        jMarkup = formBuilder.buildEntity( entityConfig , jWrapper);
-      }
-
-     return jMarkup;
     },
 
     deleteComponent : function( jEL , sWrapperToDelete  ) {

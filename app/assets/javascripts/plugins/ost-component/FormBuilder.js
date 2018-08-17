@@ -69,7 +69,7 @@
       if (!sectionConfig) return;
       for ( var key in sectionConfig ) {
         section = sectionConfig[ key ];
-        oThis.addClassNameInConfig( section, key );
+        section["className"] = key ;
         jMarkup = oThis.getSectionMarkup( section );
         if ( jMarkup ) {
           jWrapper.append( jMarkup );
@@ -170,7 +170,7 @@
           mergedConfig  = {}
       ;
       mergedConfig = $.extend( true, mergedConfig, uiConfig, entityConfig );
-      oThis.addClassNameInConfig( mergedConfig , entityKey );
+      mergedConfig['entityKey'] = entityKey;
       if (formData) {
         mergedConfig['value'] = formData;
       }
@@ -222,19 +222,6 @@
 
     getCustomComponentMarkup: function ( entityConfig ) {
       //if any custom component fill code here. OverWrite from outside.
-    },
-
-    /*
-     * Adds class name to config object passed.
-     * Its not a getter considering object by references.
-     * params   : section , className,
-     * returns  : undefined
-     */
-
-    addClassNameInConfig: function (section, className) {
-      if( section && className ){
-        section['className'] = className;
-      }
     },
 
     /*

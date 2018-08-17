@@ -24,8 +24,8 @@
           "entities"    : [ "show_pop_up" , "kyc_form_popup_checkboxes"],
           "className"   : "terms-condition-wrapper",
           "footer"      : {
-            template  : "#ost-add-terms_condition",
-            component : "kyc_form_popup_checkboxes"
+            template        : "#ost-add-terms_condition",
+            componentToAdd  : "kyc_form_popup_checkboxes"
           }
         }
     },

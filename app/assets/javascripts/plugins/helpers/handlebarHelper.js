@@ -18,15 +18,6 @@
 
   };
 
-  //Remove this later.
-  Handlebars.registerHelper('is_required', function(data, options ) {
-    if( data == 1 ){
-      return "required";
-    }else {
-      return "";
-    }
-  });
-
   Handlebars.registerHelper('ifTooltip', function(tooltip, options ) {
     if( !!tooltip ){
       return options.fn(this);

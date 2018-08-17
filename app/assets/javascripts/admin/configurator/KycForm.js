@@ -19,10 +19,11 @@
       oThis.bindDraggable( );
       oThis.bindAddComponent();
       oThis.bindDeleteComponents();
+      oThis.bindPopUpToggleOption();
     },
 
     bindDraggable : function (  ) {
-      var elId ;
+      var elId  ;
       $(".popup_kyc_configuration").sortable({
         items: ".tinymce-wrap",
         axis: 'y',
@@ -41,10 +42,38 @@
       });
     },
 
+    bindPopUpToggleOption : function () {
+      var entityKey   = 'kyc_form_popup_checkboxes' ,
+          jVal ,  entityConfig , value ;
+      $('[name="toggle_input"]').on('change' , function () {
+        jVal = $(this).val() ;
+        console.log("jVal---" , jVal );
+        if( jVal == 0 ) {
+          $('.' + entityKey).remove();
+        }else {
+          entityConfig = formBuilder.getEntityConfig( entityKey );
+          value = entityConfig['value'];
+          if( value instanceof Array && value.length == 0 ){
+            entityConfig.value = null;
+          }
+          formBuilder.buildEntity( entityConfig , $('.popup_kyc_configuration'));
+          oThis.bindDeleteComponents();
+        }
+      });
+    },
+
     bindAddComponent : function () {
+      var jWrapper = $('.popup_kyc_configuration') ,
+          attrKey  = "data-component-to-add" ,
+          entityKey , entityConfig
+      ;
       $('.add-component-el').on('click' , function () {
-        configuratorHelper.addComponent( $(this) , $('.popup_kyc_configuration') );
-        oThis.bindDeleteComponents();
+        entityKey =$(this).attr( attrKey ) ;
+        if( entityKey ){
+          entityConfig = formBuilder.getEntityConfig( entityKey );
+          formBuilder.buildEntity( entityConfig , jWrapper);
+          oThis.bindDeleteComponents();
+        }
       });
     },
 
@@ -53,8 +82,6 @@
         configuratorHelper.deleteComponent( $(this) );
       });
     }
-
-
 
   };
 
