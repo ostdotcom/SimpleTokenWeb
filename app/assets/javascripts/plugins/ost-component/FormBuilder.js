@@ -63,7 +63,7 @@
 
     buildSection: function ( jWrapper ) {
       var sectionKey    = jWrapper && jWrapper.attr(sectionsAttr),
-          sectionConfig = oThis.getSectionConfig(sectionKey),
+          sectionConfig = oThis.getSectionsConfig(sectionKey),
           section, jMarkup
       ;
       if (!sectionConfig) return;
@@ -318,7 +318,7 @@
       return inputTypes[type];
     },
 
-    getSectionConfig: function (configKey) {
+    getSectionsConfig: function (configKey) {
       return configuratorConfig[configKey];
     },
 
