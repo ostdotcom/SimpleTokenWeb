@@ -60,12 +60,8 @@
        'label'          : "Show Pop-Up",
        'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.toggle,
-
-       //Backend
-       'data_kind'      : "number",
-       'data_key_name'  : "toggle_input",
-       //form_data
-       'value'          : 1
+       "toggleOnValue"  : 1,
+       "toggleOffValue"  : 0
      },
 
      kyc_form_popup_checkboxes : {

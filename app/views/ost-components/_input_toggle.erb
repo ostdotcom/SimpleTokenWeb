@@ -6,11 +6,13 @@
       </div>
     </div>
     <div class="col-4 text-right align-self-center">
-      <label class="switch mb-0">
-        <input type="checkbox" name="{{data_key_name}}" value="{{value}}" {{isToggleChecked value}} />
-        <span class="slider round"></span>
-      </label>
-    </div>
+      <div class="switch switch--horizontal switch--no-label">
+        <input id="toggleOff" type="radio" name="{{data_key_name}}" value="{{toggleOffValue}}" checked/>
+        <input id="toggleOn" type="radio" name="{{data_key_name}}" value="{{toggleOnValue}}" {{isToggleChecked value}}/>
+        <span class="toggle-outside">
+          <span class="toggle-inside"></span>
+        </span>
+      </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>
 </script>

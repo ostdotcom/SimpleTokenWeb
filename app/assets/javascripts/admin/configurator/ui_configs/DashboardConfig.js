@@ -109,6 +109,8 @@
        'label'          : "Show Pop-Up",
        'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.toggle,
+       "toggleOnValue"  : 1,
+       "toggleOffValue"  : 0,
 
        //Backend
        'data_kind'      : "number",
