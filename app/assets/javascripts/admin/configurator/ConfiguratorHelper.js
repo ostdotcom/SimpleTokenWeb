@@ -275,39 +275,49 @@
       return jDeleteEl;
     },
 
-    bindAccordionClick : function ( sSelector  , sSlider ) {
-      var sSelector = sSelector || '.accordion' ,
+    bindAccordionClick : function ( sSelector  , sSlider , sParent ) {
+      var sSelector = sSelector || '.accordion-header' ,
           sSlider   = sSlider   || '.accordion-content-wrapper' ,
-          jEl  , iframeUrl;
+          sParent   = sParent   || '.accordion',
+          jParent , jEl  , iframeUrl;
         ;
       $( sSelector ).on('click' , function () {
         jEl = $(this) ;
-        jEl.siblings(sSelector).find(sSlider).slideUp();
-        jEl.find(sSlider).slideDown();
-       oThis.onAccordionClickIframeLoad( jEl );
+        jParent = jEl.closest( sParent );
+        jParent.siblings( sParent ).find(sSlider).slideUp();
+        jParent.find(sSlider).slideDown();
+        oThis.onAccordionClickIframeLoad( jParent );
       });
     },
 
-    onAccordionClickIframeLoad : function ( jEl ) {
+    onAccordionClickIframeLoad : function ( jParent ) {
       var  iframeUrl       = oThis.initConfig.iframeUrl ,
            accordionAttr   = uiConfigConstants.getSectionsAttr(),
-           jAccordion      = jEl.find( "[" + accordionAttr + "]" ),
+           jAccordion      = jParent.find( "[" + accordionAttr + "]" ),
            accordionId     = jAccordion.attr( accordionAttr ),
            windowUpdateUrl = oThis.getUpdateUrl( "accd_id" , accordionId )
       ;
       iframeUrl = oThis.getUpdateUrl( "accd_id" , accordionId , iframeUrl );
       window.history.pushState( "" , "" , windowUpdateUrl );
-      oThis.initConfig.iframeUrl = iframeUrl;
-      iframe.loadUrlInIframe( iframeUrl );
+      if( oThis.initConfig.iframeUrl != iframeUrl ){
+        oThis.initConfig.iframeUrl = iframeUrl;
+        iframe.loadUrlInIframe( iframeUrl );
+      }
     } ,
 
     getUpdateUrl : function( key, value , url ) {
-        key = encodeURI(key); value = encodeURI(value);
-        var kvp = document.location.search.substr(1).split('&') ,
-            i=kvp.length , x , newParams , preParamsUrl , finalUrl ,
-            url = url || window.location.href ,
-            splitter = "?"
-        ;
+
+      if( !key || !value ){
+        return url || window.location.href ;
+      }
+
+      key = encodeURI(key); value = encodeURI(value);
+      var kvp = document.location.search.substr(1).split('&') ,
+          i=kvp.length , x ,
+          url = url || window.location.href ,
+          newParams , preParamsUrl , finalUrl ,
+          splitter = "?"
+      ;
       while(i--)
       {
         x = kvp[i].split('=');
