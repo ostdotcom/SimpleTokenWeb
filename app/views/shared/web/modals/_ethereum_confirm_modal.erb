@@ -6,7 +6,7 @@
       </button>
       <div class="modal-body">
         <div class="verify-content">
-          <h4 class="heading text-center my-4">Simple Tokens are not for everyone.<br/>I confirm the following:</h4>
+          <h4 class="heading text-center my-4"><%= @presenter_obj.account_name_short %> Tokens are not for everyone.<br/>I confirm the following:</h4>
           <% @presenter_obj.ethereum_confirm_checkbox_points_html.each_with_index do |line, index| %>
             <div class="checkbox mt-2">
               <input type="checkbox" value="" id="check<%= index%>" name="check<%= index%>">
