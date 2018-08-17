@@ -32,12 +32,16 @@ module ConfiguratorHelper
     "/api/admin/configurator/#{entity_type}/config?#{get_config_params}"
   end
 
-  def api_publish_url(entity_type)
-    #TODO by pankaj
+  def api_publish_url
+    "/api/admin/configurator/publish-group?#{get_config_params}"
   end
 
   def api_reset_url(entity_type)
-    #TODO by pankaj
+    "/api/admin/configurator/#{entity_type}/reset?#{get_config_params}"
+  end
+
+  def api_post_url(entity_type)
+    "/api/admin/configurator/#{entity_type}/update?#{get_config_params}"
   end
 
   def iframe_url(entity_type)
