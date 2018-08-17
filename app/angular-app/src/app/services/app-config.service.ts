@@ -44,4 +44,8 @@ export class AppConfigService {
       return this.data['kyc_config_detail'] && this.data['kyc_config_detail']['has_ethereum_address_field'];
     }
 
+    getEnvironment(){
+      return "staging";
+    }
+
 }
