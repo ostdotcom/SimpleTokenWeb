@@ -139,7 +139,7 @@
     bindEvents : function () {
 
       $('#save-and-preview-btn-click').on('click' , function () {
-        oThis.onSaveAndPreviewClick();
+        oThis.onSaveAndPreviewClick( $(this) );
       });
 
       $("#configurator-form").on('change' , "input , textarea" , function () {
@@ -168,7 +168,7 @@
 
     onSaveAndPreviewClick : function ( jEl ) {
       var jForm       = $('#configurator-form') ,
-          formHelper  =  jForm.formHelper({
+          formHelper  = jForm.formHelper({
             beforeSend : function () {
               var preSubmitText   = jEl.text() ,
                   submittingText  = jEl.data('submitting')
@@ -193,6 +193,8 @@
               jEl.prop( "disabled", false );
             }
           });
+
+      formHelper.jForm.submit();
     },
 
     onSaveAndPreviewSuccess : function ( res ) {

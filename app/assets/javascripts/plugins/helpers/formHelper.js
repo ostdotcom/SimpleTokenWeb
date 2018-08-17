@@ -96,7 +96,7 @@
         // a[0][b]  = a[][b]
         // a[][d][] = a[][d][]
 
-        //odo replace below logic by regex 'asdas[8][ds][7]'.match(/([0-9])+/g);
+        //todo replace below logic by regex 'asdas[8][ds][7]'.match(/([0-9])+/g);
 
         var openDel = "[", closeDel = "]",
             keySplits = errorKey.split(openDel),
