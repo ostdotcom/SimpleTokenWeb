@@ -45,7 +45,7 @@
     bindPopUpToggleOption : function () {
       var entityKey   = 'kyc_form_popup_checkboxes' ,
           jVal ,  entityConfig , value ;
-      $('[name="toggle_input"]').on('change' , function () {
+      $('[name="show_pop_up"]').on('change' , function () {
         jVal = $(this).val() ;
         console.log("jVal---" , jVal );
         if( jVal == 0 ) {

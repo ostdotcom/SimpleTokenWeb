@@ -9,7 +9,7 @@
 
   oSTNs.configuratorConfig = {
  
-   "sale_live_dashboard_configuration" : {
+   "sale_live" : {
        "top_banner_options" : {
           "header"      : "Top Banner Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
@@ -31,14 +31,14 @@
          "entities"    : [ "telegram_button_theme", "telegram_link" ]
        }
    },
-    deposit_address_popup: {
+    "popup": {
         "popup_options" : {
           "header"      : "Pop-Up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
           "entities"    : [ "show_pop_up", "ethereum_deposit_popup_checkboxes" ]
         }
     },
-    deposit_address_user_dashboard: {
+    "deposit_addr": {
         "popup_options" : {
           "header"      : "Deposit Address User Dashboard",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",

@@ -200,5 +200,8 @@
 
 <%= yield(:end_js) %>
 
+
+<%= yield(:preview_template_handlers) if @preview_template.present? %>
+
 </body>
 </html>

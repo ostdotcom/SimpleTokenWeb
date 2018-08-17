@@ -69,7 +69,7 @@
       if (!sectionConfig) return;
       for ( var key in sectionConfig ) {
         section = sectionConfig[ key ];
-        section["className"] = key ;
+        section["sectionKey"] = key ;
         jMarkup = oThis.getSectionMarkup( section );
         if ( jMarkup ) {
           jWrapper.append( jMarkup );
@@ -85,16 +85,17 @@
 
     getSectionMarkup: function ( sectionConfig ) {
       var entities = sectionConfig && sectionConfig.entities,
-          sectionType, sTemplate, jSection, jMarkup
+          sectionType, sTemplate, jSection, jMarkup ,
+          isValidSection = true
       ;
       sectionType = sectionConfig[ 'section_type' ];
       sTemplate   = oThis.getSectionTemplate( sectionType );
       jMarkup     = $(handlebarHelper.getMarkup( sTemplate, sectionConfig ) );
       if (entities) {
         jSection = $( jMarkup ).find( sCollapseWrapper  );
-        oThis.buildEntities( jSection, entities );
+        isValidSection = oThis.buildEntities( jSection, entities );
       }
-      return jMarkup[0];
+      return isValidSection ? jMarkup[0] : "" ;
     },
 
 
@@ -106,14 +107,40 @@
 
     buildEntities: function ( jWrapper, entities ) {
       var len = entities && entities.length, cnt,
-          jMarkup, entityKey, entityConfig
+          jMarkup, entityKey, entityConfig ,
+          hasValidEntity = false
       ;
       if ( !jWrapper ) return;
       for ( cnt = 0; cnt < len; cnt++ ) {
-        entityKey = entities[cnt];
+        entityKey       = entities[cnt];
+        if( !hasValidEntity && oThis.isSectionValid( entityKey ) ){
+          hasValidEntity  = true ;
+        }
         entityConfig = oThis.getEntityConfig( entityKey, withFormData );
         oThis.buildEntity( entityConfig, jWrapper  );
       }
+      return hasValidEntity ;
+    },
+
+    /*
+     * While building a section, check for eligible only for backend config.
+     * If none of the entities are valid dont create the section
+     * params   : entityKey ,
+     * returns  : boolean
+     */
+
+    isSectionValid : function ( entityKey ) {
+      var entityConfig = oThis.getBEEntityConfig( entityKey  );
+      return oThis.isEligibleEntity( entityConfig ) ;
+    },
+
+    /*
+     * While building an individual entity, UI and BE merged config.
+     * params   : entityConfig ,
+     * returns  : boolean
+     */
+    isEligibleEntity : function ( entityConfig ) {
+     return entityConfig && entityConfig['not_eligible'] != 1 ;
     },
 
     /*
@@ -125,7 +152,7 @@
 
     buildEntity: function ( entityConfig, jWrapper ) {
       var jMarkup ;
-      if ( !entityConfig ) return ;
+      if ( !oThis.isEligibleEntity( entityConfig ) ) return false ;
       jMarkup = oThis.getBuildEntityMarkup( entityConfig );
       if( jWrapper ) {
         jWrapper.append( jMarkup );

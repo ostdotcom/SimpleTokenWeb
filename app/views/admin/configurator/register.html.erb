@@ -1,7 +1,9 @@
+<% accordion_config = accordion_config('registration') %>
+
 <form  id="configurator-form" method="POST" action="" data-ost-formhelper>
 
   <div class="accordion shown" role="tablist">
-    <div class="accordion-content-wrapper mb-4 pt-4" role="tablist" data-accordion-content="register_configuration"></div>
+    <div class="accordion-content-wrapper mb-4 pt-4" role="tablist" data-accordion-content="<%= accordion_config[:registration] %>"></div>
   </div>
 
 </form>

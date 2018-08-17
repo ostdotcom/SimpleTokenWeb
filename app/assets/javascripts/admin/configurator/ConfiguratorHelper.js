@@ -15,8 +15,10 @@
   ;
 
   oSTNs.configuratorHelper = oThis = {
-    initConfig            : null  ,
-    configuratorData      : null  ,
+    initConfig  : {
+      iframeUrl       : null
+    }  ,
+    configuratorData      : {}  ,
     configurationChanged  : false ,
 
     init : function ( config ,  callback ) {
@@ -59,17 +61,14 @@
 
     onConfiguratorGetSuccess : function ( result , callback ) {
       if( result.success ){
-
         var data = result.data || {} ;
         oThis.configuratorData = data ;
-        formBuilder.init( data );
-        oThis.initCommonSettings( data );
-        oThis.bindEvents();
-
         if( callback ){
           callback( data );
         }
-
+        formBuilder.init( oThis.configuratorData );
+        oThis.initCommonSettings( oThis.configuratorData );
+        oThis.bindEvents();
       }else{
         oThis.showConfiguratorErrorOverlay( result );
       }
@@ -197,12 +196,13 @@
     },
 
     onSaveAndPreviewSuccess : function ( res ) {
-      //TODO handle iframe reload.
+      iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
     },
 
+    //to do later should have individual callbacks
     resetChangesClick : function () {
-      var api     = oThis.getResetApi() ,
-          jModal  = $('#reset-changes-modal')
+      var api       = oThis.getResetApi() ,
+          jModal    = $('#reset-changes-modal')
       ;
       if( api ) return ;
       $.ajax({
@@ -213,7 +213,7 @@
         },
         success : function ( res ) {
           if( res.success ){
-
+            iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
           }else{
             oThis.onRequestFailure(jModal , res );
           }
@@ -224,6 +224,7 @@
       });
     },
 
+    //to do later should have individual callbacks
     publishChangesClick : function (  ) {
       var api     = oThis.getPublishApi() ,
           jModal  = $('#publish-changes-modal')
@@ -288,10 +289,50 @@
     },
 
     onAccordionClickIframeLoad : function ( jEl ) {
-      var  iframeUrl ;  //TODO backend integration.
-
+      var  iframeUrl       = oThis.initConfig.iframeUrl ,
+           accordionAttr   = uiConfigConstants.getSectionsAttr(),
+           jAccordion      = jEl.find( "[" + accordionAttr + "]" ),
+           accordionId     = jAccordion.attr( accordionAttr ),
+           windowUpdateUrl = oThis.getUpdateUrl( "accd_id" , accordionId )
+      ;
+      iframeUrl = oThis.getUpdateUrl( "accd_id" , accordionId , iframeUrl );
+      window.history.pushState( "" , "" , windowUpdateUrl );
+      oThis.initConfig.iframeUrl = iframeUrl;
       iframe.loadUrlInIframe( iframeUrl );
-    }
+    } ,
+
+    getUpdateUrl : function( key, value , url ) {
+        key = encodeURI(key); value = encodeURI(value);
+        var kvp = document.location.search.substr(1).split('&') ,
+            i=kvp.length , x , newParams , preParamsUrl , finalUrl ,
+            url = url || window.location.href ,
+            splitter = "?"
+        ;
+      while(i--)
+      {
+        x = kvp[i].split('=');
+
+        if (x[0]==key)
+        {
+          x[1] = value;
+          kvp[i] = x.join('=');
+          break;
+        }
+      }
+
+      if(i<0) {
+        kvp[kvp.length] = [key,value].join('=');
+      }
+
+      newParams = kvp.join('&');
+      preParamsUrl = url.split(splitter)[0];
+      if( newParams ){
+        finalUrl = preParamsUrl + splitter + newParams ;
+      }else {
+        finalUrl = url;
+      }
+      return finalUrl;
+     }
 
   };
 

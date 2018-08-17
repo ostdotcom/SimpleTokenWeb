@@ -9,7 +9,7 @@
 
   oSTNs.configuratorConfig = {
  
-   "theme_configuration" : {
+   "theme" : {
        "header_options" : {
           "header"      : "Header Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",

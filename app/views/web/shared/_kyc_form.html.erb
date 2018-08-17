@@ -490,3 +490,14 @@
 </script>
 
 <%= render :partial => "/shared/web/common/index_svg_sprite" %>
+
+
+<% content_for :preview_template_handlers do %>
+  <script type="text/javascript" >
+    $(function(){
+      <% if is_active_accordion('form_popup') %>
+        $('#verifyModal').modal('show');
+      <% end %>
+    });
+  </script>
+<%end%>
