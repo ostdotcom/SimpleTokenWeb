@@ -63,12 +63,12 @@
       if( result.success ){
         var data = result.data || {} ;
         oThis.configuratorData = data ;
-        if( callback ){
-          callback( data );
-        }
         formBuilder.init( oThis.configuratorData );
         oThis.initCommonSettings( oThis.configuratorData );
         oThis.bindEvents();
+        if( callback ){
+          callback( data );
+        }
       }else{
         oThis.showConfiguratorErrorOverlay( result );
       }
