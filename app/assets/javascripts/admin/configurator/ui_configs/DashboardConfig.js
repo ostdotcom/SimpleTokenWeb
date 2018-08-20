@@ -18,7 +18,7 @@
        "middle_banner_options" : {
          "header"      : "Middle Banner Options",
          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-         "entities"    : [ "dashboard_middle_banner_text_color", "dashboard_middle_banner_background" ]
+         "entities"    : [ "dashboard_middle_banner_text_color", "dashboard_middle_banner_background" , "dashboard_middle_banner_link_color" ]
        },
        "bottom_banner_options" : {
          "header"      : "Bottom Banner Options",
@@ -35,7 +35,7 @@
         "popup_options" : {
           "header"      : "Pop-Up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-          "entities"    : [ "show_pop_up", "ethereum_deposit_popup_checkboxes" ],
+          "entities"    : [ "show_ethereum_address_confirm_popup", "ethereum_deposit_popup_checkboxes" ],
           "footer"      : {
             template        : "#ost-add-component-footer",
             config          : {
@@ -112,18 +112,12 @@
        'placeHolder'    : "https://ost.com/terms"
      },
 
-     show_pop_up : {
+     show_ethereum_address_confirm_popup : {
        'label'          : "Show Pop-Up",
        'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.toggle,
        "toggleOnValue"  : 1,
-       "toggleOffValue"  : 0,
-
-       //Backend
-       'data_kind'      : "number",
-       'data_key_name'  : "toggle_input",
-       //form_data
-       'value'          : 1
+       "toggleOffValue"  : 0
      },
 
      ethereum_deposit_popup_checkboxes : {
@@ -144,6 +138,11 @@
        'label'          : "Middle Banner Body Text",
        'title'          : "Middle Banner Body Text",
        "inputType"      : inputTypesEnum.richTextEditor
+     },
+
+     dashboard_middle_banner_link_color : {
+       'label'          : "Middle Banner Link Color",
+       "inputType"      : inputTypesEnum.colorPicker
      }
 
    }

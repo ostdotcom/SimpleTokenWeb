@@ -8,7 +8,7 @@
       sChildSelector         = ".tinymce-wrap",
       toggleCmptEntityKey    = "kyc_form_popup_checkboxes",
       sAddComponent          = ".add-component-el",
-      sPopUpToggle           = '[name="show_pop_up"]',
+      sPopUpToggle           = '[name="show_kyc_confirm_popup"]',
       oThis
   ;
 

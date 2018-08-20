@@ -9,7 +9,7 @@
       toggleCmptEntityKey    = "ethereum_deposit_popup_checkboxes",
       sAddComponent          = ".add-component-el",
       addCmptAttrKey         = "data-component-to-add",
-      sPopUpToggle           = '[name="toggle_input"]',
+      sPopUpToggle           = '[name="show_ethereum_address_confirm_popup"]',
       oThis
   ;
 

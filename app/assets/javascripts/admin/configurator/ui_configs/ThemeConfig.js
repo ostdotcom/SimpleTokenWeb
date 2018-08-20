@@ -23,16 +23,28 @@
        "button_options" : {
          "header"      : "Button Options",
          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-         "entities"    : [ "primary_button_text_color", "primary_button_background_color", "primary_button_border_color",
-                           "primary_button_text_color_active", "primary_button_background_color_active", "primary_button_border_color_active",
-                           "secondary_button_text_color", "secondary_button_background_color", "secondary_button_border_color",
-                           "secondary_button_text_color_active", "secondary_button_background_color_active", "secondary_button_border_color_active"
+         "entities"    : [  "primary_button_text_color",
+                            "primary_button_background_color",
+                            "primary_button_border_color",
+                            "primary_button_text_color_active",
+                            "primary_button_background_color_active",
+                            "primary_button_border_color_active",
+                            "secondary_button_text_color",
+                            "secondary_button_background_color",
+                            "secondary_button_border_color",
+                            "secondary_button_text_color_active",
+                            "secondary_button_background_color_active",
+                            "secondary_button_border_color_active"
                          ]
        },
        "footer_options" : {
          "header"      : "Footer Options",
          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-         "entities"    : [ "footer_background_color", "footer_text_color", "footer_text", "terms_condition_link", "footer_link_color" ]
+         "entities"    : [  "footer_background_color",
+                            "footer_text_color",
+                            "footer_text",
+                            "terms_condition_link",
+                            "footer_link_color" ]
        }
    },
 

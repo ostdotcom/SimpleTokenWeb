@@ -1,16 +1,30 @@
 ;
 (function (window , $) {
 
-  var oSTNs                   = ns("ost"),
-      configuratorModalConfig = ns("ost.configuratorModalConfig"),
-      handlebarHelper         = ns("ost.handlebarHelper"),
+  var oSTNs            = ns("ost"),
+    handlebarHelper  = ns("ost.handlebarHelper")
+  ;
 
-      oThis;
+  function FileUploader( jEl , config ) {
+    var oThis = this
+    ;
+    oThis.config    = config ;
+    oThis.jEl       = jEl ;
+    oThis.jElMocker = jEl.parent().find(oThis.sjElMocker);
+    oThis.initFileUploader( );
+    oThis.bindButtonActions( );
+  }
 
-  oSTNs.fileUploader = oThis = {
+  FileUploader.prototype = {
+    sjElMocker: '.file-upload-mocker',
+
+    jEl       : null,
+    jElMocker : null ,
+    imageSrcPrefix  : null ,
+    imageSrcPostFix : null ,
+
     generalErrorMsg     : "Something went wrong!",
 
-    selector            : ".file-upload-input",
     dSignedUrl          : "get-signed-url",
     dPreUploadMarkup    : "pre-upload-markup",
 
@@ -25,58 +39,61 @@
       'pdf'   : "pdfs"
     },
 
-    bindButtonActions: function ( selector  , config ) {
-      var jEL = selector ? $(selector) : $(oThis.selector);
-      oThis.initFileUploader( jEL  , config );
-      jEL.off('change').on('change' , function ( e ) {
-        oThis.startUpload( $(this) );
+    bindButtonActions: function ( config ) {
+      var oThis     = this ,
+          jElMocker = oThis.jElMocker
+      ;
+      if( !jElMocker ) return ;
+      jElMocker.off('change').on('change' , function ( e ) {
+        oThis.startUpload( );
       });
     },
 
-    initFileUploader : function( jEL , config  ){
-      var fileUploadConfig = {
+    initFileUploader : function( config ){
+      var oThis = this ,
+          fileUploadConfig = {
               dataType : 'xml',
               method: 'POST',
-              autoUpload : false ,
-              singleFileUploads : false,
               success : function ( el ,  res ) {
-                el.val( res.url );
+                oThis.s3FileUploadSuccess( res );
               },
               error : function ( el, err ) {
-                console.log( "error" , err );
-                //oThis.showError( err , el );
+                oThis.showError( err  );
               },
               fail : function ( el, reason ) {
-                console.log( "fail" , reason );
-                //oThis.showError( reason , el );
+                oThis.showError( reason );
               }
-      } ;
-      if( config ){
-        fileUploadConfig = $.extend( true ,  fileUploadConfig , config );
+          } ;
+      if( oThis.config ) {
+        fileUploadConfig = $.extend( true ,  fileUploadConfig , oThis.config );
       }
-      jEL.fileupload( fileUploadConfig );
+      oThis.jElMocker.fileupload( fileUploadConfig );
     },
 
-    startUpload: function ( jEl ) {
-      var jWrapper  = jEl.closest( oThis.sParent ).find( oThis.sLabelWrap),
+    startUpload: function (  ) {
+      var oThis     = this,
+          jElMocker = oThis.jElMocker,
+          jWrapper  = jElMocker.closest( oThis.sParent ).find( oThis.sLabelWrap),
           preMarkup = jWrapper.html(),
           jMarkup   = $( oThis.sProcessingIcon ).html()
       ;
-      oThis.resetError( jEl );
-      if( oThis.isValid( jEl ) ){
-        jEl.data( oThis.dPreUploadMarkup , preMarkup );
+      oThis.resetError();
+      if( oThis.isValid() ){
+        jElMocker.data( oThis.dPreUploadMarkup , preMarkup );
         jWrapper.html( jMarkup );
-        oThis.getSignedUrl( jEl );
+        oThis.getSignedUrl();
       }
     },
 
-    isValid : function ( jEl ) {
-      var jTarget   = jEl[0] ,
+    isValid : function () {
+      var oThis   = this,
+          jElMocker = oThis.jElMocker,
+          jTarget   = jElMocker[0] ,
           file      = jTarget.files[0] ,
           size      = file.size,
           name      = file.name,
-          minBytes  = jEl.data('min-bytes'),
-          maxBytes  = jEl.data('max-bytes'),
+          minBytes  = jElMocker.data('min-bytes'),
+          maxBytes  = jElMocker.data('max-bytes'),
           isError   = true,
           maxMb ,
           errorMsg
@@ -84,48 +101,49 @@
       if( minBytes && minBytes > size ){
         isError =  false;
         errorMsg = name + ' file size too small';
-        oThis.showError( errorMsg , jEl ) ;
+        oThis.showError( errorMsg  ) ;
       }else if( maxBytes && maxBytes < size  ){
         isError = false;
         maxMb = maxBytes / (1024*1024);
-        errorMsg = jEl.title+' file size too large. Max allowed '+maxMb+' MB';
-        oThis.showError( errorMsg , jEl ) ;
+        errorMsg = jElMocker.title+' file size too large. Max allowed '+maxMb+' MB';
+        oThis.showError( errorMsg  ) ;
       }
       return isError ;
     },
 
-    getSignedUrl : function ( jEl ) {
-      var action = oThis.getToSignedApi( jEl )
+    getSignedUrl : function (  ) {
+      var oThis   = this,
+          jElMocker     = oThis.jElMocker,
+          action  = oThis.getToSignedApi()
       ;
       $.ajax({
         url     : action,
-        data    : oThis.getParams( jEl ),
+        data    : oThis.getParams(  ),
         method  : "GET",
         success : function ( res ) {
-          oThis.onSignedSuccess( res , jEl );
+          oThis.onSignedSuccess( res  );
         },
         error: function ( jqXHR, exception ) {
-          oThis.showServerError( exception , jEl );
+          oThis.showServerError( exception  );
         }
       });
     },
 
-    getToSignedApi : function ( jEl ) {
-      var toSignedApi = jEl.data( oThis.dSignedUrl ),
+    getToSignedApi : function ( ) {
+      var oThis       = this ,
+          jElMocker   = oThis.jElMocker,
+          toSignedApi = jElMocker.data( oThis.dSignedUrl ),
           jForm
       ;
-      if( !toSignedApi ){
-        jForm       = jEl.parent('form');
-        toSignedApi = jForm.data( oThis.dSignedUrl );
-      }
       return toSignedApi;
     },
 
-    getParams : function ( jEl ) {
-      var fileType  = jEl[0].files[0].type ,
-          inputName = jEl.attr('name'),
-          params = { },
-
+    getParams : function ( ) {
+      var oThis     = this,
+          jElMocker = oThis.jElMocker,
+          fileType  = jElMocker[0].files[0].type ,
+          inputName = jElMocker.attr('name'),
+          params    = { },
           currType , pathPreFix
       ;
 
@@ -140,80 +158,118 @@
       return params;
     },
 
-    onSignedSuccess : function ( response , jEl ) {
+    onSignedSuccess : function ( response  ) {
+      var oThis     = this,
+          jElMocker = oThis.jElMocker
+      ;
       if( response.success ){
-        oThis.uploadFile( response, jEl  )
+        oThis.uploadFile( response, jElMocker  )
       }else {
-        oThis.showServerError( response , jEl ) ;
+        oThis.showServerError( response , jElMocker ) ;
       }
     },
 
-    uploadFile : function ( response, jEl ) {
-      var inputName = jEl.attr('name');
-      var action = response.data[inputName].url ,
-          fields = response.data[inputName].fields,
-          contentType = fields['Content-Type'],
-          theFormFile  = jEl[0].files[0]
+    uploadFile : function ( response ) {
+      var oThis   = this,
+        jElMocker = oThis.jElMocker ,
+        inputName = jElMocker.attr('name'),
+        action    = response.data[inputName].url ,
+        fields    = response.data[inputName].fields,
+        theFormFile  = jElMocker[0].files[0] ,
+        imageSrc  = fields.key
       ;
-
-      jEl.fileupload('send', {
+      oThis.imageSrcPrefix  = action ;
+      oThis.imageSrcPostFix = imageSrc ;
+      jElMocker.fileupload('send', {
         files: [ theFormFile ],
         paramName: ['file'],
         url: action ,
-        formData: fields,
-        contentType: contentType
+        formData: fields
       });
     },
 
-    onFileUploadSuccess : function ( data , jEl ) {
-      var imgSrc   = data.src ,  //TODO
-          jWrapper = jEl.closest( oThis.sParent ).find( oThis.sLabelWrap),
-          jMarkup  = handlebarHelper.getMarkup( oThis.sUploadedImageWrap ,  {'img_src' : imgSrc } )
+    s3FileUploadSuccess : function ( data  ) {
+      var oThis     = this,
+          jElMocker = oThis.jElMocker ,
+          imgSrc    = oThis.imageSrcPrefix + "/" + oThis.imageSrcPostFix,
+          jWrapper  = jElMocker.closest( oThis.sParent ).find( oThis.sLabelWrap),
+          jMarkup   = handlebarHelper.getMarkup( oThis.sUploadedImageWrap ,  {'img_src' : imgSrc } )
       ;
       jWrapper.html( jMarkup );
-      jEl.val( imgSrc ) ;
+      oThis.jEl.val( oThis.imageSrcPostFix ) ;
     },
 
-    updateImageDisplay : function ( jEl  ) {
-      var curFiles = jEl[0].files[0],
-          imgSrc   = window.URL.createObjectURL( curFiles ),
-          jWrapper = jEl.closest( oThis.sParent ).find( oThis.sLabelWrap),
-          jMarkup  = handlebarHelper.getMarkup( oThis.sUploadedImageWrap ,  {'img_src' : imgSrc } )
+    updateImageDisplay : function (   ) {
+      var oThis     = this,
+          jElMocker = oThis.jElMocker ,
+          curFiles  = jElMocker[0].files[0],
+          imgSrc    = window.URL.createObjectURL( curFiles ),
+          jWrapper  = jElMocker.closest( oThis.sParent ).find( oThis.sLabelWrap),
+          jMarkup   = handlebarHelper.getMarkup( oThis.sUploadedImageWrap ,  {'img_src' : imgSrc } )
       ;
       jWrapper.html( jMarkup );
     },
 
-    resetError : function ( jEl ) {
-      jEl.closest( oThis.sParent ).find(".invalid-feedback")
+    resetError : function (  ) {
+      var oThis     = this,
+          jElMocker = oThis.jElMocker
+      ;
+      jElMocker.closest( oThis.sParent ).find(".invalid-feedback")
         .html( "" )
         .removeClass( 'is-invalid' );
     },
 
-    showServerError : function ( error , jEl ) {
-      var err       = error['err'] ,
-        errMessage  = err && err['display_text'] || oThis.generalErrorMsg
+    showServerError : function ( error  ) {
+      var oThis       = this,
+          jElMocker   = oThis.jElMocker ,
+          err         = error['err'] ,
+          errMessage  = err && err['display_text'] || oThis.generalErrorMsg
       ;
-      oThis.showError( error , jEl ) ;
+      oThis.showError( error , jElMocker ) ;
     },
 
-    showError : function ( errMessage, jEl ) {
-      var jWrapper = jEl.closest( oThis.sParent ).find( oThis.sLabelWrap),
-          jMarkup  = jEl.data( oThis.dPreUploadMarkup )
+    showError : function ( errMessage  ) {
+      var oThis     = this,
+          jElMocker = oThis.jElMocker,
+          jWrapper  = jElMocker.closest( oThis.sParent ).find( oThis.sLabelWrap),
+          jMarkup   = jElMocker.data( oThis.dPreUploadMarkup )
       ;
-      jEl.closest( oThis.sParent ).find(".invalid-feedback")
-          .html( errMessage )
-          .addClass( 'is-invalid' )
+      jElMocker.closest( oThis.sParent ).find(".invalid-feedback")
+        .html( errMessage )
+        .addClass( 'is-invalid' )
       ;
       jWrapper.html( jMarkup );
     },
 
-    setToSignedApi : function ( selector ,  api ) {
-      if(!selector || !api) return ;
-      $(selector).data(oThis.dSignedUrl, api );
+    setToSignedApi : function (  api ) {
+      oThis.jElMocker.data(oThis.dSignedUrl, api );
     }
 
+  };
 
-};
+
+  var oThis ;
+  oSTNs.fileUploader = oThis = {
+    jqDataNameSpace : "ostFileUploader" ,
+
+    init : function ( selector , config ) {
+      var jqDataNameSpace = oThis.jqDataNameSpace,
+        jElements = $(selector),
+        len = jElements.length,  cnt ,
+        jEl , fileUploader
+
+      ;
+      for( cnt = 0 ;  cnt < len ; cnt++ ) {
+        jEl = jElements.eq( cnt );
+        fileUploader = jEl.data( jqDataNameSpace )  ;
+        if ( !fileUploader || !fileUploader instanceof FileUploader ) {
+          fileUploader = new FileUploader( jEl , config );
+          jEl.data( jqDataNameSpace , fileUploader );
+        }
+      }
+    }
+  }
+
 
 
 })(window , jQuery);

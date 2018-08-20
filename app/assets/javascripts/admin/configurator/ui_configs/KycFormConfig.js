@@ -21,7 +21,7 @@
         "popup_kyc_configuration" : {
           "header"      : "Pop-up Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-          "entities"    : [ "show_pop_up" , "kyc_form_popup_checkboxes"],
+          "entities"    : [ "show_kyc_confirm_popup" , "kyc_form_popup_checkboxes"],
           "footer"      : {
             template        : "#ost-add-component-footer",
             config : {
@@ -58,13 +58,12 @@
        "inputType"      : inputTypesEnum.richTextEditor
      },
 
-     show_pop_up : {
+     show_kyc_confirm_popup : {
        'label'          : "Show Pop-Up",
        'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.toggle,
-       "data_key_name"  : "show_pop_up",
        "toggleOnValue"  : 1,
-       "toggleOffValue"  : 0
+       "toggleOffValue" : 0
      },
 
      kyc_form_popup_checkboxes : {

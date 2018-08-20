@@ -268,17 +268,17 @@
 
       switch (inputType) {
         case inputTypes.file:
-          binderFunction = fileUploader.bindButtonActions;
+          binderFunction = fileUploader.init.bind( fileUploader );
           break;
         case inputTypes.richTextEditor:
-          binderFunction = richTextEditor.initTinyMc;
+          binderFunction = richTextEditor.initTinyMc.bind( richTextEditor );
           break;
         case inputTypes.colorPicker:
-            binderFunction = colorPicker.initColorPricker;
+            binderFunction = colorPicker.initColorPricker.bind( colorPicker );
           break;
         case inputTypes.colorGradient:
           selector = oThis.getColorGradientSelector( entityConfig );
-          binderFunction =  colorPicker.initColorPricker ;
+          binderFunction =  colorPicker.initColorPricker.bind( colorPicker ) ;
           break;
       }
 
@@ -415,7 +415,7 @@
      * params : type, eg : "company_logo"
      * form_data  : {
      *    company_logo : "some value here",
-     *    .......  //More formdata for entities
+     *    .......
      *  }
      * returns : "some value here"
      */

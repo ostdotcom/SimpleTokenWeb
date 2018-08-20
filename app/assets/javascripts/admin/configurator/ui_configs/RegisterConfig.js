@@ -13,7 +13,7 @@
        "form_field_options" : {
           "header"      : "Policy Text Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-          "entities"    : [ "policy_texts", "policy_text_link_color"]
+          "entities"    : [ "policy_texts" ]
        }
    },
 
