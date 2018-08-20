@@ -117,7 +117,10 @@
           hasValidEntity  = true ;
         }
         entityConfig = oThis.getEntityConfig( entityKey, withFormData );
-        oThis.buildEntity( entityConfig, jWrapper  );
+        if ( oThis.isEligibleEntity( entityConfig )
+             && oThis.isBuildEntity( entityConfig ) ) {
+          oThis.buildEntity( entityConfig, jWrapper  );
+        };
       }
       return hasValidEntity ;
     },
@@ -143,16 +146,19 @@
      return entityConfig && entityConfig['not_eligible'] != 1 ;
     },
 
+    //Overwrite from outside
+    isBuildEntity : function ( entityConfig ) {
+      return true ;
+    },
+
     /*
      * Add entity to jWrapper and bind event
      * params   : entityConfig , jWrapper
-     * withFormData should be not passed or passed as false if creating a new entity
      * returns  : jMarkup back if required to be used.
      */
 
     buildEntity: function ( entityConfig, jWrapper ) {
       var jMarkup ;
-      if ( !oThis.isEligibleEntity( entityConfig ) ) return false ;
       jMarkup = oThis.getBuildEntityMarkup( entityConfig );
       if( jWrapper ) {
         jWrapper.append( jMarkup );

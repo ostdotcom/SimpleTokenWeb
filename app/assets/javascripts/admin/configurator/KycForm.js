@@ -15,6 +15,15 @@
   oSTNs.kycConfigurator  = oThis = {
 
     init: function ( config ) {
+      var showKycConfirmPopUp   = formBuilder.getFormData( "show_kyc_confirm_popup" );
+      formBuilder.isBuildEntity =  function ( entityConfig ) {
+        var entityKey = entityConfig['entityKey'] ;
+        if( entityKey == toggleCmptEntityKey ) {
+          return showKycConfirmPopUp == 1 ? true : false ;
+        }else {
+          return true;
+        }
+      };
       configuratorHelper.init( config , oThis.onSuccess );
     },
 

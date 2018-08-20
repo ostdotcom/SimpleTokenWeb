@@ -14,6 +14,15 @@
   ;
 
   oSTNs.dashboardConfigurator  = oThis = {init: function ( config ) {
+      var showEthereumAddressConfirmPopUp   = formBuilder.getFormData( "show_ethereum_address_confirm_popup" );
+      formBuilder.isBuildEntity =  function ( entityConfig ) {
+        var entityKey = entityConfig['entityKey'] ;
+        if( entityKey == toggleCmptEntityKey ) {
+          return showEthereumAddressConfirmPopUp == 1 ? true : false ;
+        }else {
+          return true;
+        }
+      };
       configuratorHelper.init( config , oThis.onSuccess );
     },
 

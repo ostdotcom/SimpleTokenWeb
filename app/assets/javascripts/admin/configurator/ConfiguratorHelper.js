@@ -577,7 +577,7 @@
         if( jVal == 0 ) {
           $('.' + entityKey).remove();
         }else {
-          entityConfig = formBuilder.getEntityConfig( entityKey, true );
+          entityConfig = formBuilder.getEntityConfig( entityKey );
           value = entityConfig['value'];
           if( value instanceof Array && value.length == 0 ){
             entityConfig.value = null;
@@ -618,11 +618,6 @@
       });
     },
 
-    /*
-     * Hide footer related to jInput  element binder helper
-     * params :  sParentSelector, sChildSelector
-     * returns :  null
-     */
 
     updatePopUpFooter : function( jInput ) {
       var value = jInput && jInput.val() ,
