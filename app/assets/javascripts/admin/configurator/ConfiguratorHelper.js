@@ -5,6 +5,7 @@
       formBuilder         = ns('ost.formBuilder'),
       iframe              = ns('ost.ostIframe'),
       uiConfigConstants   = ns('ost.uiConfigConstants'),
+      richTextEditor      = ns('ost.richTextEditor'),
       oThis
   ;
 
@@ -352,7 +353,82 @@
         finalUrl = url;
       }
       return finalUrl;
-     }
+     },
+
+    bindDraggable : function ( sParentSelector, sChildSelector ) {
+      if(!sParentSelector) return;
+      var sortableConfig = {
+            axis: 'y',
+            cursor: 'move',
+            start : function( event, ui  ) {
+              var item = $(ui.item) ,
+                  jEl  = item && item.find('textarea')
+              ;
+              sElementId = jEl && jEl.attr( 'id' );
+            },
+            stop : function() {
+              var sElementId = "#"+sElementId ;
+              tinyMCE.get( sElementId ).destroy() ;
+              richTextEditor.initTinyMc( sElementId  );
+            }
+          },
+
+        sElementId = null
+      ;
+
+      if( sChildSelector) {
+        sortableConfig['items'] = sChildSelector ;
+      }
+      $(sParentSelector).sortable( sortableConfig );
+    },
+
+    /*
+     * This function is used in common for pages kyc-form and dashboard. If other pages require any variation, then creating a separate
+     * page specific function is recommended.
+     */
+    bindPopUpToggleOption : function ( entityKey, sParentSelector, sElementKey, callback ) {
+      if( !(entityKey && sParentSelector && sElementKey) ) return;
+      var entityKey   = entityKey ,
+        jVal ,  entityConfig , value ;
+      $('[name='+sElementKey+']').on('change' , function () {
+        jVal = $(this).val() ;
+        if( jVal == 0 ) {
+          $('.' + entityKey).remove();
+        }else {
+          entityConfig = formBuilder.getEntityConfig( entityKey, true );
+          value = entityConfig['value'];
+          if( value instanceof Array && value.length == 0 ){
+            entityConfig.value = null;
+          }
+          formBuilder.buildEntity( entityConfig , $(sParentSelector));
+        }
+        if( callback ){
+          callback( $(this) );
+        }
+      });
+    },
+
+    /*
+     * This function is used in common for pages kyc-form and dashboard. If other pages require any variation, then creating a separate
+     * page specific function is recommended.
+     */
+    bindAddComponent : function ( sParentSelector, attributeKey, sElementSelector, callback) {
+      if( !(sParentSelector && sElementSelector) ) return;
+      var jWrapper = $(sParentSelector) ,
+        attrKey  = attributeKey || "data-component-to-add" ,
+        entityKey , entityConfig
+      ;
+      $(sElementSelector).on('click' , function () {
+        entityKey =$(this).attr( attrKey ) ;
+        if( entityKey ){
+          entityConfig = formBuilder.getEntityConfig( entityKey );
+          formBuilder.buildEntity( entityConfig , jWrapper);
+          if( callback && typeof callback == 'function' ){
+            callback( $(this) );
+          }
+        }
+      });
+    }
 
   };
 

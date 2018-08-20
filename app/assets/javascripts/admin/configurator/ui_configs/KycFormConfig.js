@@ -24,7 +24,10 @@
           "entities"    : [ "show_pop_up" , "kyc_form_popup_checkboxes"],
           "footer"      : {
             template        : "#ost-add-component-footer",
-            componentToAdd  : "kyc_form_popup_checkboxes"
+            config : {
+              componentToAdd  : "kyc_form_popup_checkboxes",
+              label : "Add Checkbox field"
+            }
           }
         }
     },

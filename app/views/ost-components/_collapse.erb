@@ -38,8 +38,12 @@
       });
 
       Handlebars.registerHelper('getCollapseFooter', function( data , options ) {
-        var selector  = data.template ,
-            jMarkup   = ost.handlebarHelper.getMarkup( selector , data ) ;
+        var selector  = data && data.template ,
+            config    = data && data.config ,
+            jMarkup   = "" ;
+
+        if( !selector || !config ) return ;
+        jMarkup   = ost.handlebarHelper.getMarkup( selector , config ) ;
         return jMarkup ;
       });
 

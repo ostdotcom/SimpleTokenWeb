@@ -38,7 +38,10 @@
           "entities"    : [ "show_pop_up", "ethereum_deposit_popup_checkboxes" ],
           "footer"      : {
             template        : "#ost-add-component-footer",
-            componentToAdd  : "ethereum_deposit_popup_checkboxes"
+            config          : {
+              componentToAdd  : "ethereum_deposit_popup_checkboxes",
+              label           : "Add Checkbox field"
+            }
           }
         }
     },
