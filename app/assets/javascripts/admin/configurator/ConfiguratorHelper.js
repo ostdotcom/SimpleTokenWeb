@@ -383,15 +383,25 @@
     },
 
     /*
-     * This function is used in common for pages kyc-form and dashboard. If other pages require any variation, then creating a separate
-     * page specific function is recommended.
+     * This function is used in common for pages kyc-form and dashboard.
+     * If other pages require any variation, then creating a separate page specific function is recommended.
+     * params
+     *    entityKey   : backend entity key
+     *    sWrapper    : after creating markup append to sWrapper
+     *    sElementKey : selector
+     *    callback    : if needed any hanlding from caller , current jQuerey element passed as argument.
+     * returns : undefined
      */
-    bindPopUpToggleOption : function ( entityKey, sParentSelector, sElementKey, callback ) {
-      if( !(entityKey && sParentSelector && sElementKey) ) return;
+    bindPopUpToggleOption : function ( entityKey, sWrapper, sElement , callback ) {
+      if( !entityKey || !sWrapper || !sElement ) return;
       var entityKey   = entityKey ,
-        jVal ,  entityConfig , value ;
-      $('[name='+sElementKey+']').on('change' , function () {
-        jVal = $(this).val() ;
+          jEl , jVal ,
+          entityConfig , value ,
+          jRemovableElement
+      ;
+      $( sElement ).off('change').on('change' , function () {
+        jEl = $(this) ;
+        jVal = jEl.val();
         if( jVal == 0 ) {
           $('.' + entityKey).remove();
         }else {
@@ -400,26 +410,32 @@
           if( value instanceof Array && value.length == 0 ){
             entityConfig.value = null;
           }
-          formBuilder.buildEntity( entityConfig , $(sParentSelector));
+          formBuilder.buildEntity( entityConfig , $(sWrapper) );
         }
         if( callback ){
-          callback( $(this) );
+          callback( jEl );
         }
       });
     },
 
     /*
-     * This function is used in common for pages kyc-form and dashboard. If other pages require any variation, then creating a separate
-     * page specific function is recommended.
-     */
-    bindAddComponent : function ( sParentSelector, attributeKey, sElementSelector, callback) {
-      if( !(sParentSelector && sElementSelector) ) return;
-      var jWrapper = $(sParentSelector) ,
-        attrKey  = attributeKey || "data-component-to-add" ,
-        entityKey , entityConfig
+    * This function is used in common for pages kyc-form and dashboard.
+    * If other pages require any variation, then creating a separate page specific function is recommended.
+    * params
+    *    sWrapper       : backend entity key
+    *    sElement       : after creating markup append to sWrapper
+    *    dataAttribute  : optional
+    *    callback       : if needed any handling from caller , current jQuerey element passed as argument.
+    * returns : undefined
+    */
+    bindAddComponent : function ( sWrapper, sElement, dataAttribute , callback) {
+      if( !sWrapper || !sElement  ) return;
+      var jWrapper  = $(sWrapper) ,
+          attrKey   = dataAttribute || "data-component-to-add" ,
+          entityKey , entityConfig
       ;
-      $(sElementSelector).on('click' , function () {
-        entityKey =$(this).attr( attrKey ) ;
+      $(sElement).off('click').on('click' , function () {
+        entityKey = $(this).attr( attrKey ) ;
         if( entityKey ){
           entityConfig = formBuilder.getEntityConfig( entityKey );
           formBuilder.buildEntity( entityConfig , jWrapper);
@@ -428,6 +444,17 @@
           }
         }
       });
+    },
+
+    updatePopUpFooter : function( jElement ) {
+      var value = jElement && jElement.val() ,
+          jParentElement = jElement.closest('.card')
+      ;
+      if( value == 1 ){
+        jParentElement.find('.card-footer').show();
+      } else {
+        jParentElement.find('.card-footer').hide();
+      }
     }
 
   };
