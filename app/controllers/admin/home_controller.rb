@@ -2,7 +2,7 @@ class Admin::HomeController < Admin::BaseController
   layout "admin"
 
   before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
-  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account, :user_preview_pages]
+  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account]
 
   before_action :set_page_meta_info, :except => [:logout, :user_preview_pages]
 
