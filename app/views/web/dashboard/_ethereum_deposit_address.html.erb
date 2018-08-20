@@ -1,17 +1,21 @@
-<% if @presenter_obj.can_purchase? && @presenter_obj.has_ethereum_deposit_address? %>
+<% if @presenter_obj.can_purchase? %>
+
   <div class="container-fluid">
     <div class="row eth-deposit-address" style="background-color: <%= @presenter_obj.page_data.dashboard_middle_banner_background %>;">
       <div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
         <div class="text-center">
-          <h4 class="header my-3" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-deposit-address-title">Ethereum Deposit Address
-            for <%= @presenter_obj.account_name_short %> Public Sale</h4>
 
           <% if @presenter_obj.page_data.dashboard_middle_banner_link_color.present? %>
-          <style>
-            h4.middle-banner  a{color:<%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>;border-bottom-color: <%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>}
-            h4.middle-banner  a:hover{color:<%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>;border-bottom-color: <%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>}
-          </style>
+            <style>
+              h4.middle-banner  a{color:<%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>;border-bottom-color: <%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>}
+              h4.middle-banner  a:hover{color:<%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>;border-bottom-color: <%= @presenter_obj.page_data.dashboard_middle_banner_link_color %>}
+            </style>
           <% end%>
+
+          <% if @presenter_obj.has_ethereum_deposit_address? %>
+
+          <h4 class="header my-3 middle-banner" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-deposit-address-title">Ethereum Deposit Address
+            for <%= @presenter_obj.account_name_short %> Public Sale</h4>
 
           <% if @presenter_obj.page_data.ethereum_deposit_text.present? %>
           <h4 class="header my-3 display-none middle-banner" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-gas-limit-title">
@@ -32,6 +36,16 @@
             <div class="error pt-2" data-for="general_error"></div>
             <img id="user-confirm-loader" class="gif-loader-img display-none" src="//d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token_round_loader.gif"/>
           <% end %>
+
+          <% else %>
+            <% if @presenter_obj.page_data.ethereum_deposit_text.present? %>
+              <h4 class="header my-3 display-none middle-banner" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-gas-limit-title">
+                <%= raw @presenter_obj.page_data.ethereum_deposit_text %>
+              </h4>
+            <% end%>
+
+          <% end %>
+
         </div>
       </div>
     </div>
