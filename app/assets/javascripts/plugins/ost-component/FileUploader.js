@@ -1,9 +1,9 @@
 ;
 (function (window , $) {
 
-  var oSTNs = ns("ost"),
+  var oSTNs                   = ns("ost"),
       configuratorModalConfig = ns("ost.configuratorModalConfig"),
-      handlebarHelper = ns("ost.handlebarHelper"),
+      handlebarHelper         = ns("ost.handlebarHelper"),
 
       oThis;
 

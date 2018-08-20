@@ -25,6 +25,18 @@
     configuratorData      : {}  ,
     configurationChanged  : false ,
 
+    /*
+    * Init configurator on the basic of config passed
+    * params : config , callback
+    *     config : {
+    *       configuratorGetApi :  "get api",
+    *       publishApi: "publish api",
+    *       resetApi : "reset api,
+    *       iframeUrl : "iframe loadable url"
+    *     }
+    * returns : undefined
+    */
+
     init : function ( config ,  callback ) {
       oThis.initConfig = config ; //Should be very first step.
 
@@ -34,7 +46,13 @@
       oThis.initFormHelper() ;
     },
 
-    getConfiguratorAjaxConfig : function (  callback ) {
+    /*
+    * Get configurator data
+    * params :  callback
+    * returns : ajaxConfig
+    */
+
+    getConfiguratorAjaxConfig : function ( callback ) {
       var api    = oThis.getConfiguratorApi() ,
           method = oThis.getConfiguratorMethod(),
           params = oThis.getConfiguratorParams(),
@@ -64,6 +82,13 @@
       return ajaxConfig ;
     },
 
+    /*
+    * Callback on configurator get success
+    * params :  result , callback
+    *     callback : passed from Parent page
+    * returns : undefined
+    */
+
     onConfiguratorGetSuccess : function ( result , callback ) {
       if( result.success ){
         var data = result.data || {} ;
@@ -79,13 +104,32 @@
       }
     },
 
+    /*
+     * Callback on configurator get error
+     * params :  jqXhr , error
+     * returns : undefined
+     */
+
     onConfiguratorError : function (  jqXhr , error  ) {
       oThis.showConfiguratorErrorOverlay( error );
     },
 
+
+    /*
+     * Callback on configurator get complete
+     * params :  res
+     * returns : undefined
+     */
+
     onConfiguratorComplete : function ( res ) {
       jAjaxProcessingWrap.hide();
     },
+
+    /*
+     * Show complete page error overlay on get fail.
+     * params :  response
+     * returns : undefined
+     */
 
     showConfiguratorErrorOverlay : function ( response ) {
       var err     = response && response.err,
@@ -96,6 +140,13 @@
       }
       jAjaxErrorWrap.show();
     },
+
+    /*
+     * Init common setting like can publish and reset.
+     * Reload iframe with update url
+     * params :  data
+     * returns : undefined
+     */
 
     initCommonSettings : function ( data ) {
       var rules      = data && data['rules'] ,
@@ -112,34 +163,81 @@
       iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
     },
 
+    /*
+     * Returns configurator ajax Api
+     * params :  config
+     * returns : api
+     */
+
     getConfiguratorApi : function ( config ) {
       return oThis.initConfig && oThis.initConfig.configuratorGetApi ;
     },
+
+    /*
+     * Returns configurator ajax method
+     * params :  config
+     * returns : method
+     */
 
     getConfiguratorMethod : function( config ){
       return oThis.initConfig && oThis.initConfig.configuratorMethod ||"GET" ;
     },
 
+    /*
+     * Returns configurator ajax params
+     * params :  config
+     * returns : params
+     */
+
     getConfiguratorParams : function ( config ) {
       return oThis.initConfig && oThis.initConfig.configuratorParams;
     },
+
+    /*
+     * Returns configurator publish ajax api
+     * params :  null
+     * returns : params
+     */
 
     getPublishApi : function () {
       return oThis.initConfig && oThis.initConfig.publishApi ;
     },
 
+    /*
+     * Returns configurator reset ajax api
+     * params :  null
+     * returns : params
+     */
+
     getResetApi : function () {
       return oThis.initConfig && oThis.initConfig.resetApi ;
     },
+
+    /*
+     * Called on Done button click
+     * params :  null
+     * returns : null
+     */
 
     onCmsExitBtnClick : function () {
       $("#exit-cms-modal").modal('show');
     },
 
+    /*
+     * Called on configurator exit confirmation
+     * params :  null
+     * returns : null
+     */
+
     onCmsExitConfirmationBtnClick : function () {
       window.location.href = "/admin/dashboard" ;
     },
 
+    /*
+     * Bind all user action events.
+     * params :  null
+     * returns : null
+     */
 
     bindEvents : function () {
 
@@ -170,6 +268,12 @@
       });
 
     },
+
+    /*
+     * Init configurator formHelper.
+     * params :  null
+     * returns : null
+     */
 
     initFormHelper : function () {
       var jEl         = $('#save-and-preview-btn-click'),
@@ -203,15 +307,33 @@
       });
     },
 
+    /*
+     * Called on form save.
+     * params :  null
+     * returns : null
+     */
+
     onSaveAndPreviewClick : function ( jEl ) {
       oThis.formHelper.jForm.submit();
     },
+
+    /*
+     * Reload iframe on save form success.
+     * params :  null
+     * returns : null
+     */
 
     onSaveAndPreviewSuccess : function ( res ) {
       iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
     },
 
-    //to do later should have individual callbacks
+    /*
+     * Reset changes to publish version from draft version.
+     * to do later should have individual callbacks
+     * params :  null
+     * returns : null
+     */
+
     resetChangesClick : function () {
       var api       = oThis.getResetApi() ,
           jModal    = $('#reset-changes-modal')
@@ -236,7 +358,13 @@
       });
     },
 
-    //to do later should have individual callbacks
+    /*
+     * Publish saved draft version for the page on production.
+     * to do if required should have individual callbacks
+     * params :  null
+     * returns : null
+     */
+
     publishChangesClick : function (  ) {
       var api     = oThis.getPublishApi() ,
           jModal  = $('#publish-changes-modal')
@@ -261,6 +389,13 @@
       });
     },
 
+    /*
+     * Called on all ajax failure like save , publish and reset .
+     * to do if required should have individual callbacks
+     * params :  jModal , res
+     * returns : null
+     */
+
     onRequestFailure : function ( jModal ,  res ) {
       var error   = res && res.err ,
           errMsg  = error && error['display_text']
@@ -273,10 +408,23 @@
       jModal.modal('show');
     },
 
+    /*
+     * Called on ajax failure of publish and reset .
+     * to do if required  should have individual callbacks
+     * params :  jModal , res
+     * returns : null
+     */
+
     onRequestSuccess : function ( jModal ,  res ) {
       location.reload();
       jModal.modal('hide');
     },
+
+    /*
+     * Called on entity delete .
+     * params :  jEL , sWrapperToDelete
+     * returns : deleted el
+     */
 
     deleteComponent : function( jEL , sWrapperToDelete  ) {
       var sDeleteEl = sWrapperToDelete || sDeleteWrapper,
@@ -285,6 +433,12 @@
       jDeleteEl.remove();
       return jDeleteEl;
     },
+
+    /*
+     * On accordion click open section and reload iframe with accordion param .
+     * params :  sSelector  , sSlider , sParent
+     * returns : null
+     */
 
     bindAccordionClick : function ( sSelector  , sSlider , sParent ) {
       var sSelector = sSelector || '.accordion-header' ,
@@ -301,6 +455,12 @@
       });
     },
 
+    /*
+     * On accordion click reload iframe with accordion param .
+     * params :  jParent
+     * returns : null
+     */
+
     onAccordionClickIframeLoad : function ( jParent ) {
       var  iframeUrl       = oThis.initConfig.iframeUrl ,
            accordionAttr   = uiConfigConstants.getSectionsAttr(),
@@ -315,6 +475,12 @@
         iframe.loadUrlInIframe( iframeUrl );
       }
     } ,
+
+    /*
+     * Get ur with passed key value pair, if no key already create one
+     * params :  key, value , url
+     * returns : update url
+     */
 
     getUpdateUrl : function( key, value , url ) {
 
@@ -354,6 +520,12 @@
       }
       return finalUrl;
      },
+
+    /*
+     * Dragable element binder helper
+     * params :  sParentSelector, sChildSelector
+     * returns :  null
+     */
 
     bindDraggable : function ( sParentSelector, sChildSelector ) {
       if(!sParentSelector) return;
@@ -446,9 +618,15 @@
       });
     },
 
-    updatePopUpFooter : function( jElement ) {
-      var value = jElement && jElement.val() ,
-          jParentElement = jElement.closest('.card')
+    /*
+     * Hide footer related to jInput  element binder helper
+     * params :  sParentSelector, sChildSelector
+     * returns :  null
+     */
+
+    updatePopUpFooter : function( jInput ) {
+      var value = jInput && jInput.val() ,
+          jParentElement = jInput.closest('.card')
       ;
       if( value == 1 ){
         jParentElement.find('.card-footer').show();
