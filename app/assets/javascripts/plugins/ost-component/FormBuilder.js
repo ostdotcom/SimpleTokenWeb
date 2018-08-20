@@ -290,6 +290,13 @@
       }, 0)
     },
 
+    /*
+     * Get selector specific to color gradient entity.
+     * For now name appended against color. Need to optimize code later.
+     * params   : entityConfig,
+     * returns  : selector by name.
+     */
+
     getColorGradientSelector : function ( entityConfig ) {
       var entityName  = entityConfig['data_key_name'] ,
           keyAppend   = entityConfig['name_append'] || '[color]' ,
@@ -313,22 +320,105 @@
       return sectionTemplateMap[sectionType];
     },
 
+    /*
+     * Function returns template id based on entity type passed.
+     * params : type,
+     * returns : template id
+     */
+
     getComponentTemplate: function (type) {
       var inputTypes = uiConfigConstants.getTemplateMap();
       return inputTypes[type];
     },
 
+    /*
+     * Function returns Sections config based on key.
+     * params : type, eg : "theme"
+     * UI_config : "theme" : {
+     *  "header_options" : {
+     *     "header"      : "Header Options",
+     *     "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+     *     "entities"    : [ "company_logo", "company_logo_size_percent", "company_favicon", "background_gradient" ]
+     *  },
+     *  ....... //More sections config
+     * }
+     * returns : {
+     *  "header_options" : {
+     *     "header"      : "Header Options",
+     *     "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+     *     "entities"    : [ "company_logo", "company_logo_size_percent", "company_favicon", "background_gradient" ]
+     *  },
+     *  ...... //More sections config
+     * }
+     */
+
     getSectionsConfig: function (configKey) {
       return configuratorConfig[configKey];
     },
+
+    /*
+     * Function returns Frontend UI config based on key passed.
+     * params : type, eg : "company_logo"
+     * entity_config : {
+     *    company_logo : {
+     *      'label'          : "Masthead Logo",
+     *      'tooltip'        : "Use a square image for best results. (Min 200KB, Max 1GB, JPG/PNG only.)",
+     *      'title'          : "File Upload",
+     *      "inputType"      : inputTypesEnum.file,
+     *    },  ....... //More entity config
+     *  }
+     * returns : {
+     *      'label'          : "Masthead Logo",
+     *      'tooltip'        : "Use a square image for best results. (Min 200KB, Max 1GB, JPG/PNG only.)",
+     *      'title'          : "File Upload",
+     *      "inputType"      : inputTypesEnum.file
+     * }
+     */
 
     getUIEntityConfig: function (entityKey) {
       return configuratorConfig['entityConfig'][entityKey];
     },
 
+    /*
+     * Function returns Backend entity config based on key passed.
+     * params : type, eg : "company_logo"
+     * entity_config  : {
+     *    company_logo : {
+     *      'data_kind'      : "file",
+     *       'data_key_name'  : "company_logo",
+     *       'validation'     : {
+     *             'min_bytes'      : '100',
+     *             'max_bytes'      : '999999999999',
+     *             'required'       : 1,
+     *             'accept'         : ['image/jpg' , 'image/png']
+     *       }
+     *    },  .......  //More entity config
+     *  }
+     * returns : {
+     *       'data_kind'      : "file",
+     *       'data_key_name'  : "company_logo",
+     *       'validation'     : {
+     *             'min_bytes'      : '100',
+     *             'max_bytes'      : '999999999999',
+     *             'required'       : 1,
+     *             'accept'         : ['image/jpg' , 'image/png']
+     *       }
+     * }
+     */
+
     getBEEntityConfig: function (entityKey) {
       return oThis.entityConfig[entityKey];
     },
+
+    /*
+     * Function returns Backend Value for the entity based on key passed.
+     * params : type, eg : "company_logo"
+     * form_data  : {
+     *    company_logo : "some value here",
+     *    .......  //More formdata for entities
+     *  }
+     * returns : "some value here"
+     */
 
     getFormData: function (entityKey) {
       return oThis.formData[entityKey];

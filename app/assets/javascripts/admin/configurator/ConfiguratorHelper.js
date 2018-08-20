@@ -261,8 +261,8 @@
     },
 
     onRequestFailure : function ( jModal ,  res ) {
-      var error   = res.err ,
-          errMsg  = error['display_text']
+      var error   = res && res.err ,
+          errMsg  = error && error['display_text']
       ;
       if( errMsg ){
         jModal.find('.error-message').text( errMsg );

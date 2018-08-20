@@ -43,17 +43,7 @@
        'tooltip'        : "Use a square image for best results. (Min 200KB, Max 1GB, JPG/PNG only.)",
        'signed_url'     : "/api/admin/configurator/upload-params",
        'title'          : "File Upload",
-       "inputType"      : inputTypesEnum.file,
-
-       //Backend
-       'data_kind'      : "file",
-       'data_key_name'  : "company_logo",
-       'validation'     : {
-         'min_bytes'      : '100',
-         'max_bytes'      : '999999999999',
-         'required'       : 1,
-         'accept'         : ['image/jpg' , 'image/png']
-       }
+       "inputType"      : inputTypesEnum.file
      },
 
      company_logo_size_percent : {
