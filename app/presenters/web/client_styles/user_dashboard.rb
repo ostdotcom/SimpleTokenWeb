@@ -53,13 +53,12 @@ module Web
         @page_spec_data[:dashboard_middle_banner_link_color]
       end
 
-      def ethereum_deposit_text
-        if @page_spec_data[:dashboard_middle_banner_title_text].present?
-          "#{@page_spec_data[:dashboard_middle_banner_title_text]}<br/><small><div class='display-2
-        mt-2'>#{@page_spec_data[:dashboard_middle_banner_body_text]}</div></small>"
-        else
-          nil
-        end
+      def dashboard_middle_banner_title_text
+        @page_spec_data[:dashboard_middle_banner_title_text]
+      end
+
+      def dashboard_middle_banner_body_text
+        @page_spec_data[:dashboard_middle_banner_body_text]
       end
 
       def ethereum_deposit_popup_checkboxes
