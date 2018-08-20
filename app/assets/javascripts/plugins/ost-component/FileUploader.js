@@ -25,11 +25,33 @@
       'pdf'   : "pdfs"
     },
 
-    bindButtonActions: function ( selector ) {
+    bindButtonActions: function ( selector  , config ) {
       var jEL = selector ? $(selector) : $(oThis.selector);
+      oThis.initFileUploader( jEL  , config );
       jEL.off('change').on('change' , function ( e ) {
+        console.log(JSON.stringify(jEL));
         oThis.startUpload( $(this) );
       });
+    },
+
+    initFileUploader : function( jEL , config  ){
+      var fileUploadConfig = {
+              dataType : 'xml',
+              method: 'POST',
+              success : function ( el ,  res ) {
+                el.val( res.url );
+              },
+              error : function ( el, err ) {
+                //oThis.showError( err , el );
+              },
+              fail : function ( el, reason ) {
+                //oThis.showError( reason , el );
+              }
+      } ;
+      if( config ){
+        fileUploadConfig = $.extend( true ,  fileUploadConfig , config );
+      }
+      jEL.fileupload( fileUploadConfig );
     },
 
     startUpload: function ( jEl ) {
@@ -75,7 +97,7 @@
       $.ajax({
         url     : action,
         data    : oThis.getParams( jEl ),
-        method  : "POST",
+        method  : "GET",
         success : function ( res ) {
           oThis.onSignedSuccess( res , jEl );
         },
@@ -115,41 +137,29 @@
       return params;
     },
 
-    onSignedSuccess : function ( responses , jEl ) {
-      if( responses.success ){
-        oThis.uploadFile( responses, jEl  )
+    onSignedSuccess : function ( response , jEl ) {
+      if( response.success ){
+        oThis.uploadFile( response, jEl  )
       }else {
-        oThis.showServerError( responses , jEl ) ;
+        oThis.showServerError( response , jEl ) ;
       }
     },
 
-    uploadFile : function ( responses, jEl ) {
-      var action = responses.url ,
-          fields = responses.fields,
+    uploadFile : function ( response, jEl ) {
+      var inputName = jEl.attr('name');
+      var action = response.data[inputName].url ,
+          fields = response.data[inputName].fields,
+          contentType = fields['Content-Type'],
           theFormFile  = jEl[0].files[0]
       ;
 
-      $.ajax({
-          type: 'PUT',
-          // Content type must much with the parameter you signed your URL with
-          url: action,
-          // this flag is important, if not set, it will try to send data as a form
-          contentType: 'binary/octet-stream',
-          //response type
-          dataType: 'xml',
-          // the actual file is sent raw
-          processData: false,
-          // file data
-          data: theFormFile,
-          success: function ( res ) {
-            console.log("success data " , res);
-            oThis.onFileUploadSuccess( res , jEl );
-          },
-          error: function ( jqXHR, exception ) {
-            console.log("success data " , exception);
-            oThis.showServerError( exception , jEl );
-          }
-        })
+      jEl.fileupload('send', {
+        files: [ theFormFile ],
+        paramName: ['file'],
+        url: action ,
+        formData: fields,
+        contentType: contentType
+      });
     },
 
     onFileUploadSuccess : function ( data , jEl ) {
