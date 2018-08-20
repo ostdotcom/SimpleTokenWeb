@@ -39,7 +39,7 @@
 
           <% else %>
             <% if @presenter_obj.page_data.ethereum_deposit_text.present? %>
-              <h4 class="header my-3 display-none middle-banner" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-gas-limit-title">
+              <h4 class="header my-3 middle-banner" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-gas-limit-title">
                 <%= raw @presenter_obj.page_data.ethereum_deposit_text %>
               </h4>
             <% end%>
