@@ -29,7 +29,6 @@
       var jEL = selector ? $(selector) : $(oThis.selector);
       oThis.initFileUploader( jEL  , config );
       jEL.off('change').on('change' , function ( e ) {
-        console.log(JSON.stringify(jEL));
         oThis.startUpload( $(this) );
       });
     },
@@ -38,13 +37,17 @@
       var fileUploadConfig = {
               dataType : 'xml',
               method: 'POST',
+              autoUpload : false ,
+              singleFileUploads : false,
               success : function ( el ,  res ) {
                 el.val( res.url );
               },
               error : function ( el, err ) {
+                console.log( "error" , err );
                 //oThis.showError( err , el );
               },
               fail : function ( el, reason ) {
+                console.log( "fail" , reason );
                 //oThis.showError( reason , el );
               }
       } ;
