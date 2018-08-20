@@ -96,30 +96,15 @@
         // a[0][b]  = a[][b]
         // a[][d][] = a[][d][]
 
-        //todo replace below logic by regex 'asdas[8][ds][7]'.match(/([0-9])+/g);
-
-        var openDel = "[", closeDel = "]",
-            keySplits = errorKey.split(openDel),
-            len = keySplits.length, cnt = 0,
-            indexSum = 0, nameAttr
+        var  indexArray = errorKey.match(/([0-9])+/g),
+             nameAttr	  = errorKey.replace(/([0-9])+/g,  ""),
+             indexSum	  = 0
         ;
-        for (cnt = 0; cnt < len; cnt++) {
-          var currSplit = keySplits[cnt];
-          if (currSplit.indexOf(closeDel) == (currSplit.length - 1)) {
-            var cleanedSplit = currSplit.replace(closeDel, "");
-            cleanedSplit = Number(cleanedSplit)
-            ;
-            if (isNaN(cleanedSplit)) {
-              keySplits[cnt] = openDel + currSplit;
-              continue;
-            }
-            indexSum = indexSum + cleanedSplit;
-            keySplits[cnt] = openDel + closeDel;
-          }
-          nameAttr = keySplits.join("");
-          resultEl = $("[name='" + nameAttr + "']").eq(indexSum);
-          return resultEl;
+        if( indexArray ){
+          indexSum = indexArray.reduce( function(a, b){ return Number(a) + Number(b) } ,  indexSum ) ;
         }
+        resultEl = $("[name='" + nameAttr + "']").eq(indexSum);
+        return resultEl;
       }
     }
 
