@@ -117,7 +117,8 @@
        'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.toggle,
        "toggleOnValue"  : 1,
-       "toggleOffValue"  : 0
+       "toggleOffValue" : 0,
+       'data_key_name'  : "show_ethereum_address_confirm_popup"
      },
 
      ethereum_deposit_popup_checkboxes : {

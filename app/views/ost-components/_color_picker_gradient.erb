@@ -17,8 +17,8 @@
     <div class="col-4 text-right align-self-center pl-0">
       <input class="input-number py-0 px-1"
              {{#validations.required}} required {{/validations.required}}
-             {{#validations.min}} min="{{validations.min}}" {{/validations.min}}
-             {{#validations.max}} max="{{validations.max}}" {{/validations.max}}
+             {{#validations.min}} min="{{this}}" {{/validations.min}}
+             {{#validations.max}} max="{{this}}" {{/validations.max}}
              type='number'
              name="{{data_key_name}}[gradient]"
              value="{{value.gradient}}" />

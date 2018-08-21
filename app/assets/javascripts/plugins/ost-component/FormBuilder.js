@@ -95,7 +95,11 @@
         jSection = $( jMarkup ).find( sCollapseWrapper  );
         isValidSection = oThis.buildEntities( jSection, entities );
       }
-      return isValidSection ? jMarkup[0] : "" ;
+      if( !isValidSection ){
+        $(oThis).trigger('invalid-section', sectionConfig );
+      }else {
+        return jMarkup[0];
+      }
     },
 
 

@@ -17,8 +17,8 @@
     <div class="col-12">
       <input class="input-text"
              {{#validations.required}} required  {{/validations.required}}
-             {{#validations.min_length}} minlength="{{validations.min_length}}" {{/validations.min_length}}
-             {{#validations.max_length}} maxlength="{{validations.max_length}}" {{/validations.max_length}}
+             {{#validations.min_length}} minlength="{{this}}" {{/validations.min_length}}
+             {{#validations.max_length}} maxlength="{{this}}" {{/validations.max_length}}
              type='text'
              name="{{data_key_name}}"
              value="{{value}}" placeholder="{{placeHolder}}" />

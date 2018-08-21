@@ -31,13 +31,13 @@
             </svg>
           {{/ifFilePath}}
         </label>
-          <input id="{{generateId true}}" class="file-upload-mocker" type='file' name="{{data_key_name}}_mocker"
-                 {{#validations.min_bytes}} data-min-bytes="{{validations.min_bytes}}" {{/validations.min_bytes}}
-                 {{#validations.max_bytes}} data-max-bytes="{{validations.max_bytes}}" {{/validations.max_bytes}}
-                 {{#validations.accept}} accept="{{getAccept validations.accept}}" {{/validations.accept}}
+          <input id="{{generateId true}}" class="file-upload-mocker not-in-view" type='file' name="{{data_key_name}}_mocker"
+                 {{#validations.min_bytes}} data-min-bytes="{{this}}" {{/validations.min_bytes}}
+                 {{#validations.max_bytes}} data-max-bytes="{{this}}" {{/validations.max_bytes}}
+                 {{#validations.accept}} accept="{{getAccept this}}" {{/validations.accept}}
                  data-get-signed-url="{{signed_url}}"/>
 
-          <input class="input-no-view" name="{{data_key_name}}" value="{{value}}" type="text"
+          <input class="not-in-view" name="{{data_key_name}}" value="{{value}}" type="text"
                  {{#validations.required}} required {{/validations.required}} />
       </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>

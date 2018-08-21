@@ -8,7 +8,7 @@
       sChildSelector         = ".tinymce-wrap",
       toggleCmptEntityKey    = "kyc_form_popup_checkboxes",
       sAddComponent          = ".add-component-el",
-      sPopUpToggle           = '[name="show_kyc_confirm_popup"]',
+      jPopUpToggle           = $('[name="show_kyc_confirm_popup"]'),
       oThis
   ;
 
@@ -32,22 +32,24 @@
       configuratorHelper.bindAccordionClick();
       configuratorHelper.bindDraggable( sParentSelector, sChildSelector );
       configuratorHelper.bindAddComponent( sParentSelector, sAddComponent, null ,oThis.addComponentCallback );
-      configuratorHelper.bindPopUpToggleOption( toggleCmptEntityKey, sParentSelector, sPopUpToggle , oThis.popUpToggleOptionCallback );
-      configuratorHelper.updatePopUpFooter( $(sPopUpToggle) );
+      configuratorHelper.bindPopUpToggleOption( jPopUpToggle , toggleCmptEntityKey, sParentSelector , oThis.popUpToggleOptionCallback );
+      configuratorHelper.updateSectionFooter( jPopUpToggle,  toggleCmptEntityKey);
     },
 
     addComponentCallback : function( jElement ) {
       oThis.bindDeleteComponents();
+      configuratorHelper.updateSectionFooter( jPopUpToggle ,  toggleCmptEntityKey);
     },
 
     popUpToggleOptionCallback : function( jElement ) {
-      configuratorHelper.updatePopUpFooter( jElement );
+      configuratorHelper.updateSectionFooter( jElement ,  toggleCmptEntityKey);
       oThis.bindDeleteComponents();
     },
 
     bindDeleteComponents : function () {
       $('.delete-component').off('click').on('click' ,function () {
         configuratorHelper.deleteComponent( $(this) );
+        configuratorHelper.updateSectionFooter( jPopUpToggle ,  toggleCmptEntityKey );
       });
     }
   };

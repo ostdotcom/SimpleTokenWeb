@@ -16,6 +16,7 @@
   ;
 
   oSTNs.configuratorHelper = oThis = {
+    jForm       : $('#configurator-form'),
     formHelper  : null,
 
     initConfig  : {
@@ -43,7 +44,8 @@
       var ajaxConfig = oThis.getConfiguratorAjaxConfig( callback ) ;
       if( !ajaxConfig ) return ;
       $.ajax( ajaxConfig ) ;
-      oThis.initFormHelper() ;
+      oThis.initFormHelper();
+      oThis.initValidatorIgnoreRules();
     },
 
     /*
@@ -245,7 +247,7 @@
         oThis.onSaveAndPreviewClick( $(this) );
       });
 
-      $("#configurator-form").on('change' , "input , textarea" , function () {
+      oThis.jForm.on('change' , "input , textarea" , function () {
         oThis.configurationChanged =  true ;
       });
 
@@ -278,7 +280,7 @@
     initFormHelper : function () {
       var jEl         = $('#save-and-preview-btn-click'),
           jErrorModal = $('#issues-while-submitting'),
-          jForm       = $('#configurator-form')
+          jForm       = oThis.jForm
       ;
       oThis.formHelper  = jForm.formHelper({
         beforeSend : function () {
@@ -305,6 +307,10 @@
           jEl.prop( "disabled", false );
         }
       });
+    },
+
+    initValidatorIgnoreRules : function () {
+      oThis.jForm.validate().settings.ignore = null;
     },
 
     /*
@@ -564,20 +570,20 @@
      *    callback    : if needed any hanlding from caller , current jQuerey element passed as argument.
      * returns : undefined
      */
-    bindPopUpToggleOption : function ( entityKey, sWrapper, sElement , callback ) {
-      if( !entityKey || !sWrapper || !sElement ) return;
+    bindPopUpToggleOption : function ( jElement , entityKey, sWrapper,  callback ) {
+      if( !entityKey || !sWrapper || !jElement ) return;
       var entityKey   = entityKey ,
           jEl , jVal ,
           entityConfig , value ,
           jRemovableElement
       ;
-      $( sElement ).off('change').on('change' , function () {
+       jElement.off('change').on('change' , function () {
         jEl = $(this) ;
         jVal = jEl.val();
         if( jVal == 0 ) {
           $('.' + entityKey).remove();
         }else {
-          entityConfig = formBuilder.getEntityConfig( entityKey );
+          entityConfig = formBuilder.getEntityConfig( entityKey , true );
           value = entityConfig['value'];
           if( value instanceof Array && value.length == 0 ){
             entityConfig.value = null;
@@ -619,11 +625,32 @@
     },
 
 
-    updatePopUpFooter : function( jInput ) {
-      var value = jInput && jInput.val() ,
-          jParentElement = jInput.closest('.card')
+    updateSectionFooter : function ( jEL , toggleCmptEntityKey  ) {
+      if( !jEL || !toggleCmptEntityKey ) return false ;
+      var toggleVal   = jEL.val() ,
+        jElements     = $("."+toggleCmptEntityKey) ,
+        entityConfig  = formBuilder.getEntityConfig( toggleCmptEntityKey ) ,
+        validations   = entityConfig && entityConfig['validations'],
+        maxCount      = validations && entityConfig['max_count'],
+        currLength    = jElements && jElements.length ,
+        showFooter    = true
       ;
-      if( value == 1 ){
+      if( toggleVal == 1 ){
+        if( maxCount && maxCount <= currLength  ){
+          showFooter =  false ;
+        }else {
+          showFooter = true ;
+        }
+      }else {
+        showFooter = false  ;
+      }
+      oThis.showHideFooter( jEL , false );
+    },
+
+
+    showHideFooter : function( jInput , show ) {
+      var jParentElement = jInput.closest('.card');
+      if(show ){
         jParentElement.find('.card-footer').show();
       } else {
         jParentElement.find('.card-footer').hide();
