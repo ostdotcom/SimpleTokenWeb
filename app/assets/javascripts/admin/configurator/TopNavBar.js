@@ -14,8 +14,6 @@
     bindEvents : function () {
       oThis.bindNavProducts();
       oThis.bindConfiguratorOptionsChange();
-      oThis.bindPublishChangesBtnClick();
-      oThis.bindResetChangesBtnClick();
       oThis.bindCopyToClipboardChanges();
     },
 
@@ -66,18 +64,6 @@
       }
     },
 
-    bindPublishChangesBtnClick : function () {
-      $('#publish-changes-btn').on( 'click', function () {
-          //TODO backend Integration
-      });
-    },
-
-    bindResetChangesBtnClick : function () {
-      $('#reset-configurator-changes').on('click', function () {
-        //TODO backend Integration
-      });
-    },
-
     bindCopyToClipboardChanges : function () {
       $('#copy-shareable-link-btn').off('click').on('click' , function () {
         var jEl = $(this) ,
@@ -100,8 +86,7 @@
 
   };
 
-  $( function () {
-    oThis.init( {} );
-  });
+  oThis.init(  );
+
 
 })(window , jQuery );

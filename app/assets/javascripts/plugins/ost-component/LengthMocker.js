@@ -9,14 +9,15 @@
     sMock     : '.mock-length' ,
     sMocker   : '.length-mocker',
     sWrapper  : '.form-group',
+    events    : 'keyup.lengthMocker change.lengthMocker',
 
-    initLengthMocker: function ( sMock , sMocker , sWrapper ) {
+    initLengthMocker: function ( sMock , sMocker , sWrapper , events) {
       var sMock    = sMock    || oThis.sMock ,
           sMocker  = sMocker  || oThis.sMocker,
-          sWrapper = sWrapper || oThis.sWrapper
-
+          sWrapper = sWrapper || oThis.sWrapper,
+          events   = events   || oThis.events
       ;
-      $(sMock).off('keyup.lengthMocker change.lengthMocker').on('keyup.lengthMocker change.lengthMocker', function () {
+      $(sMock).off(events).on(events, function () {
         var jParent = $(this).closest(sWrapper),
           jMocker = jParent.find( sMocker ),
           jVal = $(this).val() || "",
