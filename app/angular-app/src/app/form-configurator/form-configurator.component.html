@@ -6,54 +6,38 @@
       </div>
     </div>
 
-    <div *ngIf="appConfig.getEnvironment() == 'production'">
-      <div class="row mt-4 content pl-3">
-        KYC CMS (Content Management System) is created to empower you to tailor the KYC experience for your users as per your requirement.
+    <div class="row mt-4 content pl-3">
+      KYC CMS (Content Management System) is created to empower you to tailor the KYC experience for your users as per your requirement.
 
-        Here, you can make the changes you desire, and click on ‘Save to Preview’ to view the changes made.
+      Here, you can make the changes you desire, and click on ‘Save to Preview’ to view the changes made.
 
-        Please note that there is no live preview available, hence the you will need to use the button ‘Save to Preview’ to see the changes.
+      Please note that there is no live preview available, hence the you will need to use the button ‘Save to Preview’ to see the changes.
 
-        Once you’re done making the required changes, please copy the link of each page and share it with the Super Admin. The Super Admin will be able to publish the changes to Sandbox.
-      </div>
-        <form #form_configurator="ngForm" (ngSubmit)="importAndPublish(form_configurator)" class="mt-4">
-          <div class="row">
-            <div class="form-group col-12 col-md-5">
-              <label class="form-label" for="sandboxApiKey">Sandbox Api Key</label>
-              <input type="text" ngModel #sandbox_api_key="ngModel" name="sandbox_api_key" class="form-control api-key" name="api_key" required>
-              <ost-form-error-handler [errorFor]="sandbox_api_key"
-                                      [fieldName]="'Sandbox Api Key'"
-                                      [serverError]="errorResponse">
-              </ost-form-error-handler>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-12 col-md-5">
-              <label class="form-label" for="sandboxApiSecret">Sandbox Api Secret</label>
-              <input type="text" ngModel #sandbox_api_secret="ngModel" name="sandbox_api_secret" class="form-control api-secret" name="api_secret" required>
-              <ost-form-error-handler [errorFor]="sandbox_api_secret"
-                                      [fieldName]="'Sandbox Api Secret'"
-                                      [serverError]="errorResponse">
-              </ost-form-error-handler>
-            </div>
-          </div>
-          <button type="submit" [disabled]="!form_configurator.valid" class="btn btn-primary mt-5 mb-3 mb-xl-0">Import from sandbox and publish</button>
-        </form>
+      Once you’re done making the required changes, please copy the link of each page and share it with the Super Admin. The Super Admin will be able to publish the changes to Sandbox.
     </div>
-
-    <div *ngIf="appConfig.getEnvironment() == 'staging'">
-      <div class="row mt-4 content pl-3">
-        KYC CMS (Content Management System) is created to empower you to tailor the KYC experience for your users as per your requirement.
-
-        Here, you can make the changes you desire, and click on ‘Save to Preview’ to view the changes made.
-
-        Please note that there is no live preview available, hence the you will need to use the button ‘Save to Preview’ to see the changes.
-
-        Once you’re done making the required changes, please copy the link of each page and share it with the Super Admin. The Super Admin will be able to publish the changes to Sandbox.
-      </div>
-      <button (click)="goToPublishedVersion()" class="btn btn-primary mt-5 mb-3 mb-xl-0">Go to form configurator</button>
-      <button *ngIf="showButton" class="btn btn-secondary mt-5 mb-3 mb-xl-0">Go to published version</button>
-    </div>
+      <form #form_configurator="ngForm" (ngSubmit)="importAndPublish(form_configurator)" class="mt-4">
+        <div class="row">
+          <div class="form-group col-12 col-md-5">
+            <label class="form-label" for="sandboxApiKey">Sandbox Api Key</label>
+            <input type="text" ngModel #sandbox_api_key="ngModel" name="sandbox_api_key" class="form-control api-key" name="api_key" required>
+            <ost-form-error-handler [errorFor]="sandbox_api_key"
+                                    [fieldName]="'Sandbox Api Key'"
+                                    [serverError]="errorResponse">
+            </ost-form-error-handler>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-12 col-md-5">
+            <label class="form-label" for="sandboxApiSecret">Sandbox Api Secret</label>
+            <input type="text" ngModel #sandbox_api_secret="ngModel" name="sandbox_api_secret" class="form-control api-secret" name="api_secret" required>
+            <ost-form-error-handler [errorFor]="sandbox_api_secret"
+                                    [fieldName]="'Sandbox Api Secret'"
+                                    [serverError]="errorResponse">
+            </ost-form-error-handler>
+          </div>
+        </div>
+        <button type="submit" [disabled]="!form_configurator.valid" class="btn btn-primary mt-5 mb-3 mb-xl-0">Import from sandbox and publish</button>
+      </form>
   </div>
 </div>
 

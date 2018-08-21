@@ -57,6 +57,7 @@ import { ConfrimationModalComponent } from './artificial-intelligence/confrimati
 import { KycCaseAlertComponent } from './kyc-case/kyc-case-alert/kyc-case-alert.component';
 import { UtilitiesService } from './services/utilities.service';
 import { FormConfiguratorComponent } from './form-configurator/form-configurator.component';
+import { FormConfigurator1Component } from './form-configurator1/form-configurator1.component';
 
 
 
@@ -113,7 +114,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     OstSliderComponent,
     ConfrimationModalComponent,
     KycCaseAlertComponent,
-    FormConfiguratorComponent
+    FormConfiguratorComponent,
+    FormConfigurator1Component
   ],
   imports: [
     BrowserModule,
@@ -148,6 +150,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path: 'settings/form-configurator',
             component: FormConfiguratorComponent
+          },
+          {
+            path: 'settings/form-configurator1',
+            component: FormConfigurator1Component
           }
        ]
 

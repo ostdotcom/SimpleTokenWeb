@@ -45,7 +45,7 @@ export class AppConfigService {
     }
 
     getEnvironment(){
-      return "staging";
+      return "production";
     }
 
 }

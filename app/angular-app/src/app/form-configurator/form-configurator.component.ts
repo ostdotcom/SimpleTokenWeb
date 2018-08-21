@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AppConfigService } from '../services/app-config.service';
 import {OstHttp} from '../services/ost-http.service';
 
 @Component({
@@ -8,11 +7,9 @@ import {OstHttp} from '../services/ost-http.service';
   styleUrls: ['./form-configurator.component.scss']
 })
 export class FormConfiguratorComponent implements OnInit {
-  errorResponse;
-  showButton = false;
+  errorResponse = false;
 
-  constructor(public appConfig : AppConfigService,
-              private http: OstHttp) { }
+  constructor( private http: OstHttp ) { }
 
   ngOnInit() {
   }
@@ -21,37 +18,21 @@ export class FormConfiguratorComponent implements OnInit {
     let params =  form_configurator.value;
     this.errorResponse = null;
     if (form_configurator.valid){
-      this.http.post('api/admin/configurator/' , {...params }  ).subscribe(
+      this.http.get('api/admin/configurator/fetch-published-version' , {params: params }  ).subscribe(
         response => {
           let res = response.json();
           if( res.success ){
-            console.log("success---"+res);
+            //show success modal
           }else{
             this.errorResponse = res;
           }
         },
         error => {
           let err = error.json();
-          console.log("err---"+err);
           this.errorResponse = err;
         }
       )
     }
-  }
-
-  goToPublishedVersion() {
-    this.http.get('api/admin/configurator/fetch-published-version').subscribe(
-      response => {
-        let res = response.json();
-        if(res.success){
-          console.log("success---"+res);
-          this.showButton = true;
-        }
-      },
-      error => {
-        let err = error.json();
-        console.log("err---"+err);
-      })
   }
 
 }
