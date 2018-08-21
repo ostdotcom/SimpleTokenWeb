@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="col-2 text-right align-self-center pl-0">
-      <input type='text' {{#validations.required}} required {{/validations.required}}
+      <input type='text'  {{isRequired validations.required}}
              class="color-picker-input" name="{{data_key_name}}"  value="{{value}}"/>
     </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>

@@ -38,7 +38,7 @@
                  data-get-signed-url="{{signed_url}}"/>
 
           <input class="not-in-view" name="{{data_key_name}}" value="{{value}}" type="text"
-                 {{#validations.required}} required {{/validations.required}} />
+                 {{isRequired validations.required}} />
       </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>

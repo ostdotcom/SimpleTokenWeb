@@ -16,7 +16,7 @@
     </div>
     <div class="col-12 " >
       <textarea class="input-text-area" style="resize: none"
-                {{#validations.required}} required {{/validations.required}}
+                {{isRequired validations.required}}
                 {{#validations.min_length}} minlength="{{this}}" {{/validations.min_length}}
                 {{#validations.max_length}} maxlength="{{this}}" {{/validations.max_length}}
                 type='text' name="{{data_key_name}}" placeholder="{{placeHolder}}">{{value}}</textarea>

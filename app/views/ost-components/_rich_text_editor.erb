@@ -27,7 +27,7 @@
         </div>
         <div class="col-3 text-right pl-0">
           <span style="font-size: 13px">
-            <span class="length-mocker">{{value.length}}  </span>
+            <span class="length-mocker">{{#value.length}} {{this}} {{else}} 0 {{/value.length}}  </span>
             <span> / {{validations.max_length}}</span>
           </span>
           {{#isComponentDelete isDeleteEnabled}}
@@ -44,7 +44,7 @@
     </div>
     <div class="col-12 text-right" >
       <textarea class="tinymce-editor mock-length form-control" name="{{data_key_name}}" id="{{generateId}}"
-                {{#validations.required}} required {{/validations.required}}
+                {{isRequired validations.required}}
                 {{#validations.min_length}} minlength="{{this}}" {{/validations.min_length}}
                 {{#validations.max_length}} maxlength="{{this}}" {{/validations.max_length}}>
         {{value}}

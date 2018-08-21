@@ -141,8 +141,9 @@
     getParams : function ( ) {
       var oThis     = this,
           jElMocker = oThis.jElMocker,
+          jEl       = oThis.jEl,
           fileType  = jElMocker[0].files[0].type ,
-          inputName = jElMocker.attr('name'),
+          inputName = jEl.attr('name'),
           params    = { },
           currType , pathPreFix
       ;

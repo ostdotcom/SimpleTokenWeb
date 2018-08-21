@@ -13,7 +13,14 @@
        "form_field_options" : {
           "header"      : "Policy Text Options",
           "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
-          "entities"    : [ "policy_texts" ]
+          "entities"    : [ "policy_texts" ],
+         "footer"      : {
+           template        : "#ost-add-component-footer",
+           config : {
+             componentToAdd  : "policy_texts",
+             label : "Add Checkbox field"
+           }
+         }
        }
    },
 
@@ -22,14 +29,9 @@
      policy_texts : {
        'label'          : "Policy Text + Link",
        'title'          : "Policy Text + Link",
-       "inputType"      : inputTypesEnum.richTextEditor
-     },
-
-     policy_text_link_color : {
-       'label'          : "Policy Link Color",
-       "inputType"      : inputTypesEnum.colorPicker
+       "inputType"      : inputTypesEnum.richTextEditor,
+       'isDeleteEnabled': true
      }
-
    }
 
   };

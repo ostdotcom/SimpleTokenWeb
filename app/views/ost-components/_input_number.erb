@@ -16,7 +16,7 @@
     </div>
     <div class="col-3 text-right align-self-center">
       <input class="input-number py-0 px-1"
-             {{#validations.required}} required {{/validations.required}}
+             {{isRequired validations.required}}
              {{#validations.min}} min="{{this}}" {{/validations.min}}
              {{#validations.max}} max="{{this}}" {{/validations.max}}
              type='number'

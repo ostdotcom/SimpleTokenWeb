@@ -21,7 +21,7 @@
           jMocker = jParent.find( sMocker ),
           jVal = $(this).val() || "",
           jTrimVal = jVal.trim(),
-          jValLength = jTrimVal.length
+          jValLength = jTrimVal.length || 0
         ;
         if (jMocker) {
           jMocker.html(jValLength);

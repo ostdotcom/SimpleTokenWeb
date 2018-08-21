@@ -545,9 +545,8 @@
               sElementId = jEl && jEl.attr( 'id' );
             },
             stop : function() {
-              var sElementId = "#"+sElementId ;
               tinyMCE.get( sElementId ).destroy() ;
-              richTextEditor.initTinyMc( sElementId  );
+              richTextEditor.initTinyMc( "#"+sElementId  );
             }
           },
 
