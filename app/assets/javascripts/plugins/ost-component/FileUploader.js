@@ -58,10 +58,10 @@
                 oThis.s3FileUploadSuccess( res );
               },
               error : function ( el, err ) {
-                oThis.showError( err  );
+                oThis.showError( oThis.generalErrorMsg  );
               },
               fail : function ( el, reason ) {
-                oThis.showError( reason );
+                oThis.showError( oThis.generalErrorMsg );
               }
           } ;
       if( oThis.config ) {
@@ -227,7 +227,7 @@
           err         = error['err'] ,
           errMessage  = err && err['display_text'] || oThis.generalErrorMsg
       ;
-      oThis.showError( error , jElMocker ) ;
+      oThis.showError( errMessage , jElMocker ) ;
     },
 
     showError : function ( errMessage  ) {

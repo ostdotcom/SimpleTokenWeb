@@ -20,9 +20,8 @@
 
   Handlebars.registerHelper('isRequired', function( required , options ) {
     if( required == 1 ){
-     "required"
+      return "required" ;
     }
-
     return "";
   });
 
