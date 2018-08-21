@@ -4,7 +4,8 @@
   var oSTNs               = ns("ost"),
       formBuilder         = ns('ost.formBuilder'),
       configuratorHelper  = ns('ost.configuratorHelper'),
-      sParentSelector     = ".form_field_options" ,
+      sParentSelector     = ".form_field_options",
+      sChildSelector      = ".tinymce-wrap",
       sAddComponent       = ".add-component-el",
       oThis
   ;
@@ -18,6 +19,7 @@
     onSuccess : function ( data ) {
       oThis.bindDeleteComponents();
       configuratorHelper.bindAccordionClick();
+      configuratorHelper.bindDraggable( sParentSelector, sChildSelector );
       configuratorHelper.bindAddComponent( sParentSelector, sAddComponent ,  null , oThis.addComponentCallback );
     },
 

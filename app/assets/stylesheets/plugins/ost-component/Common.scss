@@ -172,12 +172,15 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 /*
  popup_kyc_configuration - is the parent scope class for all the label-counter classes
  label-counter - is the class where indexing should append
+ (Need to think over generic solution)
 */
 
-.popup_kyc_configuration, .header_options, .top_banner_options, .form_field_options{
+.popup_kyc_configuration, .header_options,
+.top_banner_options, .form_field_options,
+.popup_options{
   counter-reset: label-counter;
-  .kyc_form_popup_checkboxes {
-    cursor: grab;
+  .kyc_form_popup_checkboxes, ethereum_deposit_popup_checkboxes, policy_texts {
+    cursor: move;
   }
   .label-counter{
     counter-increment: label-counter;
