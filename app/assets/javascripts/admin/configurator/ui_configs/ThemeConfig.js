@@ -12,7 +12,7 @@
    "theme" : {
        "header_options" : {
           "header"      : "Header Options",
-          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+          "tooltip"     : "Use the options in this section to customize how your header will look across all pages and platforms.",
           "entities"    : [ "company_logo", "company_logo_size_percent", "company_favicon", "background_gradient" ]
        },
        "tracking_options" : {
@@ -22,7 +22,7 @@
        },
        "button_options" : {
          "header"      : "Button Options",
-         "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+         "tooltip"     : "Use the options in this section to customize how your primary and secondary buttons will look across all pages and platforms.",
          "entities"    : [  "primary_button_text_color",
                             "primary_button_background_color",
                             "primary_button_border_color",
@@ -39,7 +39,7 @@
        },
        "footer_options" : {
          "header"      : "Footer Options",
-         "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+         "tooltip"     : "Use the options in this section to customize how your footer will look across all pages and platforms.",
          "entities"    : [  "footer_background_color",
                             "footer_text_color",
                             "footer_text",
@@ -52,7 +52,7 @@
 
      company_logo : {
        'label'          : "Masthead Logo",
-       'tooltip'        : "Use a square image for best results. (Min 200KB, Max 1GB, JPG/PNG only.)",
+       'tooltip'        : "Upload your Company Logo. Image format: PNG, JPEG. (Max Width-250 px)",
        'signed_url'     : "/api/admin/configurator/upload-params",
        'title'          : "File Upload",
        "inputType"      : inputTypesEnum.file
@@ -67,7 +67,7 @@
      company_favicon   : {
        'label'          : "Favicon",
        'signed_url'     : "/api/admin/configurator/upload-params",
-       'tooltip'        : "some tooltip",
+       'tooltip'        : "Use a square image for best results. (Max 200KB, JPG/PNG only.)",
        'title'          : "File Upload",
        "inputType"      : inputTypesEnum.file
      },
@@ -79,22 +79,22 @@
      },
 
      gtm_pixel_id : {
-       'label'          : "GTM Pixel ID",
-       'tooltip'        : "some tooltip",
+       'label'          : "Google Tag Manager Pixel ID",
+       'tooltip'        : "Enter the GTM ID in case tracking is needed. This is a non-mandatory field.",
        "inputType"      : inputTypesEnum.textarea,
        'placeHolder'    : "<enter text here>"
      },
 
      fb_pixel_id : {
-       'label'          : "FB Pixel ID",
-       'tooltip'        : "some tooltip",
+       'label'          : "Facebook Pixel ID",
+       'tooltip'        : "Enter the FB ID in case tracking is needed. This is a non-mandatory field.",
        "inputType"      : inputTypesEnum.textarea,
        'placeHolder'    : "<enter text here>"
      },
 
      fb_pixel_version : {
-       'label'          : "FB Pixel Version",
-       'tooltip'        : "some tooltip",
+       'label'          : "Facebook Pixel Version",
+       'tooltip'        : "Enter FB tracking version (2.0 is the default). This is a non-mandatory field.",
        "inputType"      : inputTypesEnum.textarea,
        'placeHolder'    : "<enter text here>"
      },
@@ -185,14 +185,14 @@
 
      footer_text : {
        'label'          : "Footer Text + Link",
-       'tooltip'        : "some tooltip",
+       'tooltip'        : "Example: Copyright © 2018 Company Name. All Rights Reserved. Terms and Conditions & Privacy Policy. Remember to append the link by using the URL option provided.",
        'title'          : "Footer Text + Link",
        "inputType"      : inputTypesEnum.richTextEditor
      },
 
      terms_condition_link : {
        'label'          : "Terms & Conditions Link",
-       'tooltip'        : "some tooltip",
+       'tooltip'        : "Enter the link to the Company Terms and Conditions separately for verification purposes.",
        "inputType"      : inputTypesEnum.textarea,
        'placeHolder'    : "https://ost.com/terms"
      },

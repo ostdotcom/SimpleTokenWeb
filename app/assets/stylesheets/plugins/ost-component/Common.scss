@@ -174,9 +174,9 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
  label-counter - is the class where indexing should append
 */
 
-.popup_kyc_configuration{
+.popup_kyc_configuration, .header_options, .top_banner_options, .form_field_options{
   counter-reset: label-counter;
-  .kyc_form_popup_checkboxes{
+  .kyc_form_popup_checkboxes {
     cursor: grab;
   }
   .label-counter{

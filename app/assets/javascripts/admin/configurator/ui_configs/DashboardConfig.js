@@ -12,29 +12,29 @@
    "sale_live" : {
        "top_banner_options" : {
           "header"      : "Top Banner Options",
-          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+          "tooltip"     : "Use the options in this section to customize how the KYC User Dashboard will look to your customers across all platforms.",
           "entities"    : [ "dashboard_title_text_color", "sale_timer_text_color", "sale_timer_background_gradient" ]
        },
        "middle_banner_options" : {
          "header"      : "Middle Banner Options",
-         "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+         "tooltip"     : "Use the options in this section to customize how the KYC User Dashboard will look to your customers across all platforms.",
          "entities"    : [ "dashboard_middle_banner_text_color", "dashboard_middle_banner_background" , "dashboard_middle_banner_link_color" ]
        },
        "bottom_banner_options" : {
          "header"      : "Bottom Banner Options",
-         "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+         "tooltip"     : "Use the options in this section to customize how the KYC User Dashboard will look to your customers across all platforms.",
          "entities"    : [ "dashboard_bottom_banner_text_color", "dashboard_bottom_banner_background" ]
        },
        "telegram_options" : {
          "header"      : "Telegram Options",
-         "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+         "tooltip"     : "Use the options in this section to add the Telegram Link to the Company's token sale Telegram Chat, and choose a theme for the Telegram Button.",
          "entities"    : [ "telegram_button_theme", "telegram_link" ]
        }
    },
     "popup": {
         "popup_options" : {
           "header"      : "Pop-Up Options",
-          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+          "tooltip"     : "This section allows you to configure the confirmation pop-up that shows once the customer clicks on 'Get Deposit Address'. Kindly provide with all the required criteria and accompanying links of the confirmation dialogue box.",
           "entities"    : [ "show_ethereum_address_confirm_popup", "ethereum_deposit_popup_checkboxes" ],
           "footer"      : {
             template        : "#ost-add-component-footer",
@@ -48,7 +48,7 @@
     "deposit_addr": {
         "popup_options" : {
           "header"      : "Deposit Address User Dashboard",
-          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+          "tooltip"     : "Use the options in this section to customize the text once the user clicks on 'Get Deposit Address' on the KYC User Dashboard. Remember to append any links required.",
           "entities"    : [ "dashboard_middle_banner_title_text", "dashboard_middle_banner_body_text" ]
         }
     },
@@ -107,7 +107,6 @@
 
      telegram_link : {
        'label'          : "Telegram Link",
-       'tooltip'        : "some tooltip",
        "inputType"      : inputTypesEnum.textarea,
        'placeHolder'    : "https://ost.com/terms"
      },

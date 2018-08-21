@@ -13,14 +13,14 @@
    "kyc_form" : {
        "kyc_configuration" : {
           "header"      : "Form Field Options",
-          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+          "tooltip"     : "Use the options in this section to customize and personalize how your KYC Form will look across all platforms.",
           "entities"    : [ "kyc_form_title", "kyc_form_subtitle", "eth_address_instruction_text", "document_id_instruction_text"]
        }
    },
     "form_popup" : {
         "popup_kyc_configuration" : {
           "header"      : "Pop-up Options",
-          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+          "tooltip"     : "This section allows you to configure the confirmation pop-up that shows after the user submits the details. Kindly provide with all the required criteria and accompanying links of the confirmation dialogue box.",
           "entities"    : [ "show_kyc_confirm_popup" , "kyc_form_popup_checkboxes"],
           "footer"      : {
             template        : "#ost-add-component-footer",
