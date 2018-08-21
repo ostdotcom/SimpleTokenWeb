@@ -8,11 +8,12 @@
       sChildSelector         = ".tinymce-wrap",
       toggleCmptEntityKey    = "kyc_form_popup_checkboxes",
       sAddComponent          = ".add-component-el",
-      jPopUpToggle           = $('[name="show_kyc_confirm_popup"]'),
+      sPopUpToggle           = '[name="show_kyc_confirm_popup"]',
       oThis
   ;
 
   oSTNs.kycConfigurator  = oThis = {
+    jPopUpToggle: null ,
 
     init: function ( config ) {
       var showKycConfirmPopUp   = formBuilder.getFormData( "show_kyc_confirm_popup" );
@@ -28,17 +29,18 @@
     },
 
     onSuccess : function ( data ) {
+      oThis.jPopUpToggle = $( sPopUpToggle ) ;
       oThis.bindDeleteComponents();
       configuratorHelper.bindAccordionClick();
       configuratorHelper.bindDraggable( sParentSelector, sChildSelector );
       configuratorHelper.bindAddComponent( sParentSelector, sAddComponent, null ,oThis.addComponentCallback );
-      configuratorHelper.bindPopUpToggleOption( jPopUpToggle , toggleCmptEntityKey, sParentSelector , oThis.popUpToggleOptionCallback );
-      configuratorHelper.updateSectionFooter( jPopUpToggle,  toggleCmptEntityKey);
+      configuratorHelper.bindPopUpToggleOption( oThis.jPopUpToggle , toggleCmptEntityKey, sParentSelector , oThis.popUpToggleOptionCallback );
+      configuratorHelper.updateSectionFooter( oThis.jPopUpToggle,  toggleCmptEntityKey);
     },
 
     addComponentCallback : function( jElement ) {
       oThis.bindDeleteComponents();
-      configuratorHelper.updateSectionFooter( jPopUpToggle ,  toggleCmptEntityKey);
+      configuratorHelper.updateSectionFooter( oThis.jPopUpToggle ,  toggleCmptEntityKey);
     },
 
     popUpToggleOptionCallback : function( jElement ) {
@@ -49,7 +51,7 @@
     bindDeleteComponents : function () {
       $('.delete-component').off('click').on('click' ,function () {
         configuratorHelper.deleteComponent( $(this) );
-        configuratorHelper.updateSectionFooter( jPopUpToggle ,  toggleCmptEntityKey );
+        configuratorHelper.updateSectionFooter( oThis.jPopUpToggle ,  toggleCmptEntityKey );
       });
     }
   };

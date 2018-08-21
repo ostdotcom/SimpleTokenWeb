@@ -173,7 +173,8 @@
     uploadFile : function ( response ) {
       var oThis   = this,
         jElMocker = oThis.jElMocker ,
-        inputName = jElMocker.attr('name'),
+        jEl       = oThis.jEl,
+        inputName = jEl.attr('name'),
         action    = response.data[inputName].url ,
         fields    = response.data[inputName].fields,
         theFormFile  = jElMocker[0].files[0] ,

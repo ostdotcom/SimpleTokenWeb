@@ -625,6 +625,7 @@
 
 
     updateSectionFooter : function ( jEL , toggleCmptEntityKey  ) {
+      debugger ;
       if( !jEL || !toggleCmptEntityKey ) return false ;
       var toggleVal   = jEL.val() ,
         jElements     = $("."+toggleCmptEntityKey) ,
@@ -648,6 +649,7 @@
 
 
     showHideFooter : function( jInput , show ) {
+      debugger ;
       var jParentElement = jInput.closest('.card');
       if(show ){
         jParentElement.find('.card-footer').show();

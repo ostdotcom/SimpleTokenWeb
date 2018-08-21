@@ -9,11 +9,14 @@
       toggleCmptEntityKey    = "ethereum_deposit_popup_checkboxes",
       sAddComponent          = ".add-component-el",
       addCmptAttrKey         = "data-component-to-add",
-      jPopUpToggle           = $('[name="show_ethereum_address_confirm_popup"]'),
+      sPopUpToggle           = '[name="show_ethereum_address_confirm_popup"]',
       oThis
   ;
 
-  oSTNs.dashboardConfigurator  = oThis = {init: function ( config ) {
+  oSTNs.dashboardConfigurator  = oThis = {
+    jPopUpToggle : null,
+
+    init: function ( config ) {
       var showEthereumAddressConfirmPopUp   = formBuilder.getFormData( "show_ethereum_address_confirm_popup" );
       formBuilder.isBuildEntity =  function ( entityConfig ) {
         var entityKey = entityConfig['entityKey'] ;
@@ -27,17 +30,18 @@
     },
 
     onSuccess : function ( data ) {
+      oThis.jPopUpToggle = $( sPopUpToggle );
       oThis.bindDeleteComponents();
       configuratorHelper.bindAccordionClick();
       configuratorHelper.bindDraggable( sParentSelector, sChildSelector );
       configuratorHelper.bindAddComponent( sParentSelector, sAddComponent, null,  oThis.addComponentCallback);
-      configuratorHelper.bindPopUpToggleOption( jPopUpToggle , toggleCmptEntityKey, sParentSelector, oThis.popUpToggleOptionCallback );
-      configuratorHelper.updateSectionFooter( jPopUpToggle,  toggleCmptEntityKey);
+      configuratorHelper.bindPopUpToggleOption(  oThis.jPopUpToggle , toggleCmptEntityKey, sParentSelector, oThis.popUpToggleOptionCallback );
+      configuratorHelper.updateSectionFooter(  oThis.jPopUpToggle,  toggleCmptEntityKey);
     },
 
     addComponentCallback : function( jElement ) {
       oThis.bindDeleteComponents();
-      configuratorHelper.updateSectionFooter( jPopUpToggle,  toggleCmptEntityKey);
+      configuratorHelper.updateSectionFooter(  oThis.jPopUpToggle,  toggleCmptEntityKey);
     },
 
     popUpToggleOptionCallback : function( jElement ) {
@@ -48,7 +52,7 @@
     bindDeleteComponents : function () {
       $('.delete-component').off('click').on('click' ,function () {
         configuratorHelper.deleteComponent( $(this) );
-        configuratorHelper.updateSectionFooter( jPopUpToggle,  toggleCmptEntityKey);
+        configuratorHelper.updateSectionFooter(  oThis.jPopUpToggle,  toggleCmptEntityKey);
       });
     }
 
