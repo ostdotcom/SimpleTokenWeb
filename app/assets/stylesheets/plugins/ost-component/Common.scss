@@ -38,7 +38,7 @@
 }
 
 .card-footer{
-  background-color: #FFFFFF;
+  background-color: $white;
 }
 
 .dropdown-menu{
@@ -124,7 +124,7 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   width: 100%;
   height: 100vh;
   z-index: 9999999999;
-  background-color: #FFFFFF;
+  background-color: $white;
   background-image: url(https://dxwfxs8b4lg24.cloudfront.net/ost-kyc/images/graphic-bg.png);
   background-size: 100% auto;
   background-repeat: no-repeat;
@@ -145,11 +145,11 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 .cms-modal{
   p{
     text-align: center;
-    color: #597a84;
+    color: $blue-800;
     font-weight: 500;
     font-size: 20px;
   }
-  .modal-error-svg{
+  .modal-state-icons{
     height: 50px;
     width: 50px;
   }
