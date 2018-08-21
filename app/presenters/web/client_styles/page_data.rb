@@ -36,7 +36,7 @@ module Web
       end
 
       def kyc_confirm_checkboxes
-        @page_spec_data[:kyc_form_popup_checkboxes]
+        @page_spec_data[:kyc_form_popup_checkboxes] || []
       end
 
       # Kyc Form page End
