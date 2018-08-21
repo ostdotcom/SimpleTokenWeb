@@ -17,10 +17,11 @@
     jPopUpToggle : null,
 
     init: function ( config ) {
-      var showEthereumAddressConfirmPopUp   = formBuilder.getFormData( "show_ethereum_address_confirm_popup" );
+
       formBuilder.isBuildEntity =  function ( entityConfig ) {
         var entityKey = entityConfig['entityKey'] ;
         if( entityKey == toggleCmptEntityKey ) {
+          var showEthereumAddressConfirmPopUp   = formBuilder.getFormData( "show_ethereum_address_confirm_popup" );
           return showEthereumAddressConfirmPopUp == 1 ? true : false ;
         }else {
           return true;

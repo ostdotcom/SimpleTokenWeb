@@ -625,16 +625,21 @@
 
 
     updateSectionFooter : function ( jEL , toggleCmptEntityKey  ) {
-      debugger ;
       if( !jEL || !toggleCmptEntityKey ) return false ;
-      var toggleVal   = jEL.val() ,
-        jElements     = $("."+toggleCmptEntityKey) ,
-        entityConfig  = formBuilder.getEntityConfig( toggleCmptEntityKey ) ,
-        validations   = entityConfig && entityConfig['validations'],
-        maxCount      = validations && entityConfig['max_count'],
-        currLength    = jElements && jElements.length ,
-        showFooter    = true
+      var jElements     = $("."+toggleCmptEntityKey) ,
+          entityConfig  = formBuilder.getEntityConfig( toggleCmptEntityKey ) ,
+          validations   = entityConfig && entityConfig['validations'],
+          maxCount      = validations && entityConfig['max_count'],
+          currLength    = jElements && jElements.length ,
+          showFooter    = true,
+          toggleVal     = 0
       ;
+      for( var cnt = 0 ;  cnt < jEL.length ; cnt++ ){
+        if( jEL.eq(cnt ).is(':checked') ){
+          toggleVal = jEL.eq(cnt ).val();
+        }
+      }
+
       if( toggleVal == 1 ){
         if( maxCount && maxCount <= currLength  ){
           showFooter =  false ;
@@ -644,12 +649,11 @@
       }else {
         showFooter = false  ;
       }
-      oThis.showHideFooter( jEL , false );
+      oThis.showHideFooter( jEL , showFooter );
     },
 
 
     showHideFooter : function( jInput , show ) {
-      debugger ;
       var jParentElement = jInput.closest('.card');
       if(show ){
         jParentElement.find('.card-footer').show();
