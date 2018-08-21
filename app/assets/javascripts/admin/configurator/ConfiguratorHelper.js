@@ -9,10 +9,10 @@
       oThis
   ;
 
-  var jAjaxProcessingWrap  = $(".ajax-processing-wrapper"),
-      jAjaxErrorWrap       = $(".ajax-error-wrapper"),
-
-      sDeleteWrapper      = ".form-group"
+  var sectionsAttr          = uiConfigConstants.getSectionsAttr(),
+      jAjaxProcessingWrap   = $(".ajax-processing-wrapper"),
+      jAjaxErrorWrap        = $(".ajax-error-wrapper"),
+      sDeleteWrapper        = ".form-group"
   ;
 
   oSTNs.configuratorHelper = oThis = {
@@ -95,8 +95,9 @@
       if( result.success ){
         var data = result.data || {} ;
         oThis.configuratorData = data ;
-        formBuilder.init( oThis.configuratorData );
-        oThis.initCommonSettings( oThis.configuratorData );
+        formBuilder.init( data );
+        oThis.checkForAccordions();
+        oThis.initCommonSettings();
         oThis.bindEvents();
         if( callback ){
           callback( data );
@@ -150,8 +151,9 @@
      * returns : undefined
      */
 
-    initCommonSettings : function ( data ) {
-      var rules      = data && data['rules'] ,
+    initCommonSettings : function ( ) {
+      var data       = oThis.configuratorData ,
+          rules      = data && data['rules'] ,
           canReset   = rules["can_reset"]  ,
           canPublish = rules["can_publish"]
       ;
@@ -161,8 +163,24 @@
       if( canPublish ){
         $('#publish-changes-btn').show();
       }
-
       iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
+    },
+
+    checkForAccordions : function () {
+      var sSections = "[" + sectionsAttr + "]" ,
+          jSections = $( sSections ),
+          len       = jSections.length, cnt,
+          jSection , jEntity , jHideSection
+      ;
+      if (!len) return;
+      for (cnt = 0; cnt < len; cnt++) {
+        jSection = jSections.eq(cnt);
+        jEntity  = jSection.find( sDeleteWrapper );
+        if( !jEntity || jEntity.length == 0 ) {
+          jHideSection = jSection.closest( sSections );
+          jHideSection.hide();
+        }
+      }
     },
 
     /*
@@ -282,6 +300,15 @@
         if( oThis.configurationChanged ) {
           return " There are unsaved changes made to this page."
         }
+      });
+
+      $('.cms-modal').on('hidden.bs.modal', function () {
+        var jModal          = $(this),
+            jStateHandler   = jModal.find('.state-handler'),
+            jInitialHandler = jModal.find('.processing-state')
+        ;
+        jStateHandler.hide();
+        jInitialHandler.show();
       });
 
     },

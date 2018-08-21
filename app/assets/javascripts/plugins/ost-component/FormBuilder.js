@@ -1,14 +1,14 @@
 ;
 (function (window, $) {
 
-  var oSTNs = ns("ost"),
-    fileUploader = ns('ost.fileUploader'),
-    richTextEditor = ns('ost.richTextEditor'),
-    colorPicker = ns('ost.colorPicker'),
-    handlebarHelper = ns('ost.handlebarHelper'),
-    uiConfigConstants = ns('ost.uiConfigConstants'),
-    configuratorConfig = ns('ost.configuratorConfig'),
-    lengthMocker = ns('ost.lengthMocker'),
+  var oSTNs             = ns("ost"),
+    fileUploader        = ns('ost.fileUploader'),
+    richTextEditor      = ns('ost.richTextEditor'),
+    colorPicker         = ns('ost.colorPicker'),
+    handlebarHelper     = ns('ost.handlebarHelper'),
+    uiConfigConstants   = ns('ost.uiConfigConstants'),
+    configuratorConfig  = ns('ost.configuratorConfig'),
+    lengthMocker        = ns('ost.lengthMocker'),
 
     sectionsAttr = uiConfigConstants.getSectionsAttr(),
     sCollapseWrapper = uiConfigConstants.getSectionContentWrapper(),
