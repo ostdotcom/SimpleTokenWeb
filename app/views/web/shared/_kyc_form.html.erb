@@ -506,7 +506,7 @@
 <% content_for :preview_template_handlers do %>
   <script type="text/javascript">
       $(function () {
-          <% if is_active_accordion('form_popup') %>
+          <% if is_active_accordion('form_popup') && show_verify_modal %>
           $('#verifyModal').modal('show');
           <% end %>
       });
