@@ -35,6 +35,8 @@
       oThis.bindDeleteComponents();
       configuratorHelper.bindAccordionClick();
       configuratorHelper.bindDraggable( sParentSelector, sChildSelector );
+
+      //not liking this code. Change it if time.
       configuratorHelper.bindAddComponent( sParentSelector, sAddComponent, null,  oThis.addComponentCallback);
       configuratorHelper.bindPopUpToggleOption(  oThis.jPopUpToggle , toggleCmptEntityKey, sParentSelector, oThis.popUpToggleOptionCallback );
       configuratorHelper.updateSectionFooter(  oThis.jPopUpToggle,  toggleCmptEntityKey);
