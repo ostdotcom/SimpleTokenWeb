@@ -16,7 +16,7 @@
           sWrapper = sWrapper || oThis.sWrapper
 
       ;
-      $(sMock).off('keyup change').on('keyup change', function () {
+      $(sMock).off('keyup.lengthMocker change.lengthMocker').on('keyup.lengthMocker change.lengthMocker', function () {
         var jParent = $(this).closest(sWrapper),
           jMocker = jParent.find( sMocker ),
           jVal = $(this).val() || "",

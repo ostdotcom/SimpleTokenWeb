@@ -2,6 +2,7 @@
 (function (window ) {
 
   var oSTNs           = ns("ost"),
+      defaultColor    = "#fff",
       oThis
   ;
 
@@ -13,11 +14,7 @@
         preferredFormat: "hex",
         hideAfterPaletteSelect:true,
         change: function(color) {
-          var jEl       = $(this) ,
-              jSpectrum =  jEl.spectrum("get"),
-              rgbVal    = jSpectrum.toRgbString()
-          ;
-          jEl.val( rgbVal );
+          oThis.setValue( $(this) );
         }
   };
 
@@ -33,14 +30,23 @@
           selector          = selector || oThis.defaultSelector,
           jElements         = $(selector),
           len               = jElements.length,  cnt ,
+          jSpectrum , rgbVal ,
           jEl , val
       ;
       for( cnt = 0 ;  cnt < len ; cnt++  ){
         jEl = jElements.eq( cnt );
-        val = jEl.val();
+        val = jEl.val() || defaultColor;
         colorPickerConfig['color'] = val;
         jEl.spectrum(colorPickerConfig);
+        oThis.setValue( jEl );
       }
+    } ,
+
+    setValue : function ( jEl ) {
+      var jSpectrum =  jEl.spectrum("get"),
+          rgbVal    = jSpectrum.toRgbString()
+      ;
+      jEl.val( rgbVal );
     }
   };
 

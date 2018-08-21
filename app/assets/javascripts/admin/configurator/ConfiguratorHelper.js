@@ -232,7 +232,18 @@
      */
 
     onCmsExitConfirmationBtnClick : function () {
+      oThis.setConfiguratorChangedFlag( false );
       window.location.href = "/admin/dashboard" ;
+    },
+
+    setConfiguratorChangedFlag : function ( value ) {
+      if( value != undefined ){
+        oThis.configurationChanged = value ;
+      }
+    },
+
+    getConfiguratorChangedFlag : function (  ) {
+      return oThis.configurationChanged  ;
     },
 
     /*
@@ -248,11 +259,15 @@
       });
 
       oThis.jForm.on('change' , "input , textarea" , function () {
-        oThis.configurationChanged =  true ;
+        oThis.setConfiguratorChangedFlag( true );
       });
 
       $("#exit-cms-btn").on('click' , function () {
         oThis.onCmsExitBtnClick();
+      });
+
+      $("#exit-cms-confirmation-btn").on('click' , function () {
+        oThis. onCmsExitConfirmationBtnClick();
       });
 
       $('#reset-configurator-changes').on('click' , function () {
@@ -285,7 +300,7 @@
       oThis.formHelper  = jForm.formHelper({
         beforeSend : function () {
           var preSubmitText = jEl.text() ,
-            submittingText  = jEl.data('submitting')
+              submittingText  = jEl.data('submitting')
           ;
           jEl.data("pre-submit-text" , preSubmitText );
           jEl.text( submittingText );
@@ -330,6 +345,7 @@
      */
 
     onSaveAndPreviewSuccess : function ( res ) {
+      oThis.setConfiguratorChangedFlag( false );
       iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
     },
 
@@ -422,6 +438,7 @@
      */
 
     onRequestSuccess : function ( jModal ,  res ) {
+      oThis.setConfiguratorChangedFlag( false );
       location.reload();
       jModal.modal('hide');
     },
