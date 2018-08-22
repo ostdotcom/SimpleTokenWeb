@@ -167,9 +167,10 @@
     },
 
     checkForAccordions : function () {
-      var sSections = "[" + sectionsAttr + "]" ,
-          jSections = $( sSections ),
-          len       = jSections.length, cnt,
+      var sSections     = "[" + sectionsAttr + "]" ,
+          sHideSection  = ".accordion" ,
+          jSections     = $( sSections ),
+          len           = jSections.length, cnt,
           jSection , jEntity , jHideSection
       ;
       if (!len) return;
@@ -177,7 +178,7 @@
         jSection = jSections.eq(cnt);
         jEntity  = jSection.find( sDeleteWrapper );
         if( !jEntity || jEntity.length == 0 ) {
-          jHideSection = jSection.closest( sSections );
+          jHideSection = jSection.closest( sHideSection );
           jHideSection.hide();
         }
       }

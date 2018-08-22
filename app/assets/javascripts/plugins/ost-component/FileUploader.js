@@ -49,7 +49,7 @@
       });
     },
 
-    initFileUploader : function( config ){
+    initFileUploader : function(  ){
       var oThis = this ,
           fileUploadConfig = {
               dataType : 'xml',
@@ -73,7 +73,7 @@
     startUpload: function (  ) {
       var oThis     = this,
           jElMocker = oThis.jElMocker,
-          jWrapper  = jElMocker.closest( oThis.sParent ).find( oThis.sLabelWrap),
+          jWrapper  = jElMocker.closest( oThis.sParent ).find( oThis.sLabelWrap ),
           preMarkup = jWrapper.html(),
           jMarkup   = $( oThis.sProcessingIcon ).html()
       ;
@@ -94,28 +94,29 @@
           name      = file.name,
           minBytes  = jElMocker.data('min-bytes'),
           maxBytes  = jElMocker.data('max-bytes'),
-          isError   = true,
+          validFile = true,
           maxMb ,
           errorMsg
       ;
       if( minBytes && minBytes > size ){
-        isError =  false;
+        validFile =  false;
         errorMsg = name + ' file size too small';
         oThis.showError( errorMsg  ) ;
       }else if( maxBytes && maxBytes < size  ){
-        isError = false;
+        validFile = false;
         maxMb = maxBytes / (1024*1024);
         errorMsg = jElMocker.title+' file size too large. Max allowed '+maxMb+' MB';
         oThis.showError( errorMsg  ) ;
       }
-      return isError ;
+      return validFile ;
     },
 
     getSignedUrl : function (  ) {
-      var oThis   = this,
-          jElMocker     = oThis.jElMocker,
-          action  = oThis.getToSignedApi()
+      var oThis     = this,
+          jElMocker = oThis.jElMocker,
+          action    = oThis.getToSignedApi()
       ;
+      if( !action ) throw "No get signed url present for file upload.";
       $.ajax({
         url     : action,
         data    : oThis.getParams(  ),
