@@ -22,22 +22,28 @@
     defaultSelector : '.color-picker-input',
 
     getColorPickerConfig : function () {
-      return $.extend( true ,  colorPickerConfig ) ;
+      var configCopy = {} ;
+      $.extend( true , configCopy ,  colorPickerConfig ) ;
+      return configCopy ;
     },
 
     initColorPricker : function (selector , config ) {
-      var colorPickerConfig = config || oThis.getColorPickerConfig(),
-          selector          = selector || oThis.defaultSelector,
+      if( !selector ) return ;
+      var colorPickerConfig = oThis.getColorPickerConfig(),
           jElements         = $(selector),
           len               = jElements.length,  cnt ,
           jSpectrum , rgbVal ,
           jEl , val
       ;
+      if ( config && typeof config === "object") {
+        $.extend( colorPickerConfig , config );
+      }
+
       for( cnt = 0 ;  cnt < len ; cnt++  ){
         jEl = jElements.eq( cnt );
         val = jEl.val() || defaultColor;
         colorPickerConfig['color'] = val;
-        jEl.spectrum(colorPickerConfig);
+        jEl.spectrum( colorPickerConfig );
         oThis.setValue( jEl );
       }
     } ,

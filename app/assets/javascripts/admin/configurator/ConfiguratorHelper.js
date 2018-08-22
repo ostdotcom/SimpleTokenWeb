@@ -691,14 +691,9 @@
     },
 
 
-    updateSectionFooter : function ( jEL , toggleCmptEntityKey  ) {
-      if( !jEL || !toggleCmptEntityKey ) return false ;
-      var jElements     = $("."+toggleCmptEntityKey) ,
-          entityConfig  = formBuilder.getEntityConfig( toggleCmptEntityKey ) ,
-          validations   = entityConfig && entityConfig['validations'],
-          maxCount      = validations && entityConfig['max_count'],
-          currLength    = jElements && jElements.length ,
-          showFooter    = true,
+    isToShowAddMoreForToggle : function ( jEL , entityKey  ) {
+      if( !jEL || !entityKey ) return false ;
+      var showFooter    = true,
           toggleVal     = 0
       ;
       for( var cnt = 0 ;  cnt < jEL.length ; cnt++ ){
@@ -706,22 +701,38 @@
           toggleVal = jEL.eq(cnt ).val();
         }
       }
-
       if( toggleVal == 1 ){
-        if( maxCount && maxCount <= currLength  ){
-          showFooter =  false ;
-        }else {
-          showFooter = true ;
-        }
+        showFooter = oThis.isToShowAddMore( entityKey );
       }else {
         showFooter = false  ;
       }
-      oThis.showHideFooter( jEL , showFooter );
+      oThis.showHideFooter( entityKey , showFooter );
+    },
+
+    updateSectionFooterForComponentAdd : function ( entityKey ) {
+      var showFooter = oThis.isToShowAddMore( entityKey ) ;
+      oThis.showHideFooter( entityKey , showFooter);
+    },
+
+    isToShowAddMore  : function ( entityKey ) {
+      var entityConfig  = formBuilder.getEntityConfig( entityKey ) ,
+          validations   = entityConfig && entityConfig['validations'],
+          maxCount      = validations && entityConfig['max_count'] ,
+          jElements     = $("."+entityKey),
+          currLength    = jElements && jElements.length || 0,
+          isShow        = true ;
+      if( maxCount && maxCount <= currLength  ){
+        return false ;
+      }else {
+        return true ;
+      }
     },
 
 
-    showHideFooter : function( jInput , show ) {
-      var jParentElement = jInput.closest('.card');
+    showHideFooter : function( entityKey , show ) {
+      var sEntity         = "."+entityKey ,
+          jEntity         = $( sEntity ) ,
+          jParentElement  = jEntity.closest('.card');
       if(show ){
         jParentElement.find('.card-footer').show();
       } else {
@@ -729,7 +740,7 @@
       }
     },
 
-    sanitizeDeleteIcon : function( entityKey) {
+    sanitizeDeleteIcon : function( entityKey ) {
       var sElement      = "."+entityKey ,
           jElements     = $(sElement) ,
           entityConfig  = formBuilder.getEntityConfig( entityKey ),

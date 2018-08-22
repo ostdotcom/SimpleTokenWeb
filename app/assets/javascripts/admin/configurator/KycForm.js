@@ -38,13 +38,13 @@
       //not liking this code. Change it if time.
       configuratorHelper.bindAddComponent( sParentSelector, sAddComponent, null ,oThis.addComponentCallback );
       configuratorHelper.bindPopUpToggleOption( oThis.jPopUpToggle , toggleCmptEntityKey, sParentSelector , oThis.popUpToggleOptionCallback );
-      configuratorHelper.updateSectionFooter( oThis.jPopUpToggle,  toggleCmptEntityKey);
+      configuratorHelper.isToShowAddMoreForToggle( oThis.jPopUpToggle,  toggleCmptEntityKey);
       configuratorHelper.sanitizeDeleteIcon( toggleCmptEntityKey);
     },
 
     addComponentCallback : function( jElement ) {
       oThis.bindDeleteComponents();
-      configuratorHelper.updateSectionFooter( oThis.jPopUpToggle ,  toggleCmptEntityKey);
+      configuratorHelper.updateSectionFooterForComponentAdd( toggleCmptEntityKey );
       configuratorHelper.sanitizeDeleteIcon( toggleCmptEntityKey);
     },
 
@@ -53,7 +53,7 @@
     },
 
     popUpToggleOptionCallback : function( jElement ) {
-      configuratorHelper.updateSectionFooter( jElement ,  toggleCmptEntityKey);
+      configuratorHelper.isToShowAddMoreForToggle( jElement ,  toggleCmptEntityKey);
       oThis.bindDeleteComponents();
       configuratorHelper.sanitizeDeleteIcon( toggleCmptEntityKey);
     },
@@ -61,7 +61,7 @@
     bindDeleteComponents : function () {
       $('.delete-component').off('click').on('click' ,function () {
         configuratorHelper.deleteComponent( $(this) );
-        configuratorHelper.updateSectionFooter( oThis.jPopUpToggle ,  toggleCmptEntityKey );
+        configuratorHelper.updateSectionFooterForComponentAdd( toggleCmptEntityKey );
       });
     },
 

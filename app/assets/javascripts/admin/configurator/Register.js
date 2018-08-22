@@ -23,11 +23,13 @@
       configuratorHelper.bindAccordionClick();
       configuratorHelper.bindDraggable( sParentSelector, sChildSelector );
       configuratorHelper.bindAddComponent( sParentSelector, sAddComponent ,  null , oThis.addComponentCallback );
+      configuratorHelper.updateSectionFooterForComponentAdd( entityKey );
       configuratorHelper.sanitizeDeleteIcon( entityKey);
     },
 
     addComponentCallback : function () {
       oThis.bindDeleteComponents();
+      configuratorHelper.updateSectionFooterForComponentAdd( entityKey );
       configuratorHelper.sanitizeDeleteIcon( entityKey);
     },
 
@@ -38,6 +40,7 @@
     bindDeleteComponents : function () {
       $('.delete-component').off('click').on('click' ,function () {
         configuratorHelper.deleteComponent( $(this) );
+        configuratorHelper.updateSectionFooterForComponentAdd( entityKey );
       });
     },
 
