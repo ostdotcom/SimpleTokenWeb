@@ -722,7 +722,7 @@
     isToShowAddMore  : function ( entityKey ) {
       var entityConfig  = formBuilder.getEntityConfig( entityKey ) ,
           validations   = entityConfig && entityConfig['validations'],
-          maxCount      = validations && entityConfig['max_count'] ,
+          maxCount      = validations && validations['max_count'] ,
           jElements     = $("."+entityKey),
           currLength    = jElements && jElements.length || 0,
           isShow        = true ;
