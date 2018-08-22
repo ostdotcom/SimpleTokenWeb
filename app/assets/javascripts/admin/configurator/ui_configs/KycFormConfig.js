@@ -72,7 +72,8 @@
        'title'          : "Footer Text + Link",
        "inputType"      : inputTypesEnum.richTextEditor,
        'isDeleteEnabled': true,
-       'data_kind'      : "array"
+       'data_kind'      : "array",
+       "max_count"  : 10
      }
 
    }

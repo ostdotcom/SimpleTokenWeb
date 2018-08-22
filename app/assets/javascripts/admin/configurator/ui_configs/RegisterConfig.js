@@ -31,6 +31,8 @@
        'title'          : "Policy Text + Link",
        'tooltip'        : "Use this field to get consent from the customer regarding what you deem necessary. Ensure you provide the links for Terms & Conditions, Privacy Policy, etc. as required.",
        "inputType"      : inputTypesEnum.richTextEditor,
+       'min_count'      : 1,
+       'max_count'      : 5,
        'isDeleteEnabled': true
      }
    }

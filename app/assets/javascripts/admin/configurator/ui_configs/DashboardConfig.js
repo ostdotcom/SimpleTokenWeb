@@ -46,7 +46,7 @@
         }
     },
     "deposit_addr": {
-        "popup_options" : {
+        "deposit_addr" : {
           "header"      : "Deposit Address User Dashboard",
           "tooltip"     : "Use the options in this section to customize the text once the user clicks on 'Get Deposit Address' on the KYC User Dashboard. Remember to append any links required.",
           "entities"    : [ "dashboard_middle_banner_title_text", "dashboard_middle_banner_body_text" ]
