@@ -704,6 +704,22 @@
       } else {
         jParentElement.find('.card-footer').hide();
       }
+    },
+
+    sanitizeDeleteIcon : function( entityKey) {
+      var sElement      = "."+entityKey ,
+          jElements     = $(sElement) ,
+          entityConfig  = formBuilder.getEntityConfig( entityKey ),
+          minCount      = entityConfig && entityConfig['min_count']
+      ;
+      if( typeof minCount != 'number' ) return ;
+      jElements.each( function( index, jEl) {
+        if( index < minCount ){
+          $(jEl).find( '.delete-component' ).hide();
+        } else {
+          $(jEl).find( '.delete-component' ).show();
+        }
+      });
     }
 
   };

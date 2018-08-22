@@ -179,7 +179,7 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 .top_banner_options, .form_field_options,
 .popup_options{
   counter-reset: label-counter;
-  .kyc_form_popup_checkboxes, ethereum_deposit_popup_checkboxes, policy_texts {
+  .kyc_form_popup_checkboxes, .ethereum_deposit_popup_checkboxes, .policy_texts {
     cursor: move;
   }
   .label-counter{

@@ -8,7 +8,6 @@
       sChildSelector         = ".tinymce-wrap",
       toggleCmptEntityKey    = "ethereum_deposit_popup_checkboxes",
       sAddComponent          = ".add-component-el",
-      addCmptAttrKey         = "data-component-to-add",
       sPopUpToggle           = '[name="show_ethereum_address_confirm_popup"]',
       oThis
   ;
@@ -31,31 +30,45 @@
     },
 
     onSuccess : function ( data ) {
-      oThis.jPopUpToggle = $( sPopUpToggle );
+      oThis.bindSortableStop();
       oThis.bindDeleteComponents();
       configuratorHelper.bindAccordionClick();
+      oThis.jPopUpToggle = $( sPopUpToggle );
       configuratorHelper.bindDraggable( sParentSelector, sChildSelector );
 
       //not liking this code. Change it if time.
       configuratorHelper.bindAddComponent( sParentSelector, sAddComponent, null,  oThis.addComponentCallback);
       configuratorHelper.bindPopUpToggleOption(  oThis.jPopUpToggle , toggleCmptEntityKey, sParentSelector, oThis.popUpToggleOptionCallback );
       configuratorHelper.updateSectionFooter(  oThis.jPopUpToggle,  toggleCmptEntityKey);
+      configuratorHelper.sanitizeDeleteIcon( toggleCmptEntityKey);
     },
 
     addComponentCallback : function( jElement ) {
       oThis.bindDeleteComponents();
       configuratorHelper.updateSectionFooter(  oThis.jPopUpToggle,  toggleCmptEntityKey);
+      configuratorHelper.sanitizeDeleteIcon( toggleCmptEntityKey);
+    },
+
+    draggableCallback : function( jElement ) {
+      configuratorHelper.sanitizeDeleteIcon( toggleCmptEntityKey);
     },
 
     popUpToggleOptionCallback : function( jElement ) {
       configuratorHelper.updateSectionFooter( jElement,  toggleCmptEntityKey);
       oThis.bindDeleteComponents();
+      configuratorHelper.sanitizeDeleteIcon( toggleCmptEntityKey);
     },
 
     bindDeleteComponents : function () {
       $('.delete-component').off('click').on('click' ,function () {
         configuratorHelper.deleteComponent( $(this) );
         configuratorHelper.updateSectionFooter(  oThis.jPopUpToggle,  toggleCmptEntityKey);
+      });
+    },
+
+    bindSortableStop : function() {
+      $( sParentSelector ).on( "sortstop", function( event, ui ) {
+        oThis.draggableCallback( ui.item);
       });
     }
 
