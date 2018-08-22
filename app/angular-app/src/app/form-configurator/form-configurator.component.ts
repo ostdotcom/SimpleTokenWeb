@@ -100,11 +100,11 @@ export class FormConfiguratorComponent implements OnInit {
   }
 
   showSandboxSection() {
-    return (( this.environment == 'sandbox') || (this.environment == 'staging'));
+    return (( this.environment == 'sandbox') || (this.environment == 'staging') || (this.environment == 'development'));
   }
 
   showProductionSection() {
-    return (( this.environment == 'production') || (this.environment == 'staging'));
+    return (( this.environment == 'production') || (this.environment == 'staging') || (this.environment == 'development'));
   }
 
 }
