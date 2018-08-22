@@ -483,12 +483,11 @@ class Admin::HomeController < Admin::BaseController
   def user_preview_pages
     entity_type = params[:entity_type]
     template_type = get_template_from_entity(entity_type)
-    api_route = [GlobalConstant::TemplateType.kyc_template_type,
-                 GlobalConstant::TemplateType.dashboard_template_type].include?(entity_type) ? 'dummy-user' : 'client-detail'
-    service_response = SimpleTokenApi::Request::User.new(
+
+    service_response = SimpleTokenApi::Request::Admin.new(
         host_url_with_protocol,
         request.cookies,
-        {"User-Agent" => http_user_agent}).admin_preview_pages(entity_type, params[:gid], api_route)
+        {"User-Agent" => http_user_agent}).preview_custom_drafts(entity_type, params[:gid])
 
     # Check if error present or not?
     unless service_response.success?
