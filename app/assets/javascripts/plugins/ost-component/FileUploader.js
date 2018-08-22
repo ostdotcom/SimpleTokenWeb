@@ -251,16 +251,15 @@
   };
 
 
-  var oThis ;
-  oSTNs.fileUploader = oThis = {
-    jqDataNameSpace : "ostFileUploader" ,
+  var jqDataNameSpace = "ostFileUploader" ,
+      oThis ;
+
+  oSTNs.ostFileUploader = oThis = {
 
     init : function ( selector , config ) {
-      var jqDataNameSpace = oThis.jqDataNameSpace,
-        jElements = $(selector),
-        len = jElements.length,  cnt ,
-        jEl , fileUploader
-
+      var jElements = $(selector),
+          len = jElements.length,  cnt ,
+          jEl , fileUploader
       ;
       for( cnt = 0 ;  cnt < len ; cnt++ ) {
         jEl = jElements.eq( cnt );
@@ -272,6 +271,23 @@
       }
     }
   }
+
+  $.fn.extend({
+    ostFileUploader : function ( config ) {
+      var jEl           = $( this )
+        ,fileUploader   = jEl.data( jqDataNameSpace );
+      ;
+
+      if ( !fileUploader || !fileUploader instanceof FileUploader ) {
+        fileUploader = new FileUploader( jEl );
+        jEl.data( jqDataNameSpace, fileUploader );
+      }
+      if ( config && typeof config === "object") {
+        $.extend( fileUploader , config );
+      }
+      return fileUploader ;
+    }
+  })
 
 
 

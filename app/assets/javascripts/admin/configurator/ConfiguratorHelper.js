@@ -19,6 +19,9 @@
     jForm       : $('#configurator-form'),
     formHelper  : null,
 
+    jFormGeneralError   : $('#configurator-general-error'),
+    jFormGeneralErrMsg  : "Please check all sections for errors.",
+
     initConfig  : {
       iframeUrl       : null
     }  ,
@@ -281,6 +284,10 @@
         oThis.setConfiguratorChangedFlag( true );
       });
 
+      oThis.jForm.on('invalid-form' , function () {
+        oThis.showFormGeneralError();
+      });
+
       $("#exit-cms-btn").on('click' , function () {
         oThis.onCmsExitBtnClick();
       });
@@ -338,10 +345,12 @@
           if( res.success ){
             oThis.onSaveAndPreviewSuccess( res );
           }else{
+            oThis.showFormGeneralError();
             oThis.onRequestFailure( jErrorModal , res );
           }
         },
         error: function ( jqXhr ,  error ) {
+          oThis.showFormGeneralError();
           oThis.onRequestFailure( jErrorModal , error );
         },
         complete: function () {
@@ -356,6 +365,14 @@
       oThis.jForm.validate().settings.ignore = null;
     },
 
+    showFormGeneralError : function () {
+      oThis.jFormGeneralError.html(oThis.jFormGeneralErrMsg);
+    },
+
+    clearFormGeneralError : function () {
+      oThis.jFormGeneralError.html("");
+    },
+
     /*
      * Called on form save.
      * params :  null
@@ -363,6 +380,7 @@
      */
 
     onSaveAndPreviewClick : function ( jEl ) {
+      oThis.clearFormGeneralError();
       oThis.formHelper.jForm.submit();
     },
 
@@ -373,6 +391,10 @@
      */
 
     onSaveAndPreviewSuccess : function ( res ) {
+      var data      = res  && res.data ,
+          formData  = data && data['form_data']
+      ;
+      formBuilder.setCompleteFormData( formData );
       oThis.setConfiguratorChangedFlag( false );
       iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
     },

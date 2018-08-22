@@ -2,7 +2,7 @@
 (function (window, $) {
 
   var oSTNs             = ns("ost"),
-    fileUploader        = ns('ost.fileUploader'),
+    fileUploader        = ns('ost.ostFileUploader'),
     richTextEditor      = ns('ost.richTextEditor'),
     colorPicker         = ns('ost.colorPicker'),
     handlebarHelper     = ns('ost.handlebarHelper'),
@@ -22,8 +22,6 @@
     entityConfig: {},
     formData: {},
 
-    entities: {},
-
     /*
     * Builds the left panel configurator
     * params : data
@@ -31,9 +29,13 @@
     */
 
     init: function ( data  ) {
+      oThis.initData( data );
+      oThis.buildSections();
+    },
+
+    initData : function ( data ) {
       oThis.entityConfig  = data && data['entity_config'] || {};
       oThis.formData      = data && data['form_data'] || {};
-      oThis.buildSections();
     },
 
     /*
@@ -366,6 +368,12 @@
       return configuratorConfig[configKey];
     },
 
+    setSectionsConfig: function ( configKey , config ) {
+      if( configKey && config ){
+        configuratorConfig[configKey] = config ;
+      }
+    },
+
     /*
      * Function returns Frontend UI config based on key passed.
      * params : type, eg : "company_logo"
@@ -387,6 +395,12 @@
 
     getUIEntityConfig: function (entityKey) {
       return configuratorConfig['entityConfig'][entityKey];
+    },
+
+    setUIEntityConfig: function ( entityKey ,  entityConfig ) {
+      if( entityKey && entityConfig ){
+         configuratorConfig['entityConfig'][entityKey] = entityConfig ;
+      }
     },
 
     /*
@@ -420,6 +434,12 @@
       return oThis.entityConfig[entityKey];
     },
 
+    setBEEntityConfig: function ( entityKey , entityConfig ) {
+      if( entityKey && entityConfig ){
+        oThis.entityConfig[entityKey] = entityConfig ;
+      }
+    },
+
     /*
      * Function returns Backend Value for the entity based on key passed.
      * params : type, eg : "company_logo"
@@ -434,6 +454,31 @@
       return oThis.formData[entityKey];
     },
 
+    setFormData: function ( entityKey , formData ) {
+      if( entityKey && formData ){
+        oThis.formData[entityKey] = formData ;
+      }
+    },
+
+    /*
+     * Function to overwrite complete form data and entity config individually.
+     */
+
+    setCompleteFormData : function ( formData ) {
+      if( formData ){
+        oThis.formData = formData ;
+      }
+    },
+
+    setCompleteEntityConfig : function ( entityConfig ) {
+      if( entityConfig ){
+        oThis.entityConfig = entityConfig ;
+      }
+    },
+
+    /*
+     * Init all tooltips .
+     */
     initToolTips: function () {
       $('[data-toggle="tooltip"]').tooltip();
     }
