@@ -12,7 +12,7 @@ export class FormConfiguratorComponent implements OnInit {
   gid;
   uuid;
   errorMessage: string;
-  isProcessing  = true;
+  isProcessing  = false;
   showButton    = false;
   errorResponse = null;
   hasError: boolean = false;
@@ -70,6 +70,7 @@ export class FormConfiguratorComponent implements OnInit {
   }
 
   getUnpublishedDraft() {
+    this.isProcessing = true;
     this.http.get('api/admin/configurator/').subscribe(
       response => {
         let res = response.json();
