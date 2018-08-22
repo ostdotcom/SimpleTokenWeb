@@ -29,8 +29,8 @@ module Web
         @page_spec_data[:telegram_link]
       end
 
-      def telegram_icon
-        @page_spec_data[:telegram_button_theme].to_s == 'light' ? "microsite-telegram-connect-icon" : "microsite-telegram-connect-icon"
+      def telegram_icon_class
+        @page_spec_data[:telegram_button_theme].to_s == 'light' ? "light" : "dark"
       end
 
       def telegram_container_background_color

@@ -28,9 +28,9 @@
             <% if @presenter_obj.page_data.dashboard_middle_banner_title_text.present? %>
               <h4 class="header my-3 display-none middle-banner" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-gas-limit-title">
                 <%= @presenter_obj.page_data.dashboard_middle_banner_title_text %>
-                <br><small>
-                  <div class='display-2 mt-2'><%= raw @presenter_obj.page_data.dashboard_middle_banner_body_text  %></div>
-                </small>
+                <br><small class='display-2 mt-2' style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;">
+                <%= raw @presenter_obj.page_data.dashboard_middle_banner_body_text %>
+              </small>
               </h4>
             <% end %>
 
@@ -52,8 +52,8 @@
             <% if @presenter_obj.page_data.dashboard_middle_banner_title_text.present? %>
               <h4 class="header my-1 middle-banner" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-gas-limit-title">
                 <%= @presenter_obj.page_data.dashboard_middle_banner_title_text %>
-                <br><small>
-                  <div class='display-2 mt-2'><%= raw @presenter_obj.page_data.dashboard_middle_banner_body_text %></div>
+                <br><small class='display-2 mt-2' style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;">
+                <%= raw @presenter_obj.page_data.dashboard_middle_banner_body_text %>
                 </small>
               </h4>
             <% end %>
