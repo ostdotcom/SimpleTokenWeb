@@ -78,7 +78,6 @@ Rails.application.routes.draw do
       get '/settings/developer-integrations' => :angular_app
       get '/settings/artificial-intelligence' => :angular_app
       get '/settings/form-configurator' => :angular_app
-      get '/settings/form-configurator1' => :angular_app
       
 
       # get '/get-kyc-dashboard' => :get_kyc_dashboard

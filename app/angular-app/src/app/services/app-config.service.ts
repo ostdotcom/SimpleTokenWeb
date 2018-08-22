@@ -45,7 +45,11 @@ export class AppConfigService {
     }
 
     getEnvironment(){
-      return "production";
+      return this.data['environment'];
+    }
+
+    hasClientOpted():boolean{
+      return this.data['client_setup'] && this.data['client_setup']['web_host_setup_done'];
     }
 
 }

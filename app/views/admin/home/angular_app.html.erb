@@ -2,7 +2,8 @@
     initialConfig = {
         client_setup: @resp_data['client_setup'],
         admin: @resp_data['admin'],
-        kyc_config_detail: @resp_data['kyc_config_detail']
+        kyc_config_detail: @resp_data['kyc_config_detail'],
+        environment: Rails.env
     }.to_json
 
 %>
