@@ -46,9 +46,7 @@
       <textarea class="tinymce-editor mock-length form-control" name="{{data_key_name}}" id="{{generateId}}"
                 {{isRequired validations.required}}
                 {{#validations.min_length}} minlength="{{this}}" {{/validations.min_length}}
-                {{#validations.max_length}} maxlength="{{this}}" {{/validations.max_length}}>
-        {{value}}
-      </textarea>
+                {{#validations.max_length}} maxlength="{{this}}" {{/validations.max_length}}>{{value}}</textarea>
     </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>

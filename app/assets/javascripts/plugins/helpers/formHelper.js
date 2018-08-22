@@ -84,7 +84,7 @@
       validator.findByName = function ( errorKey ) {
         var oThis = this;
         var resultEl = _org_findByName.apply(oThis, arguments);
-        if (resultEl) {
+        if (resultEl && resultEl.length > 0) {
           console.log("I am here and default method found the el.\nresultEl", resultEl);
           return resultEl;
         }
