@@ -341,6 +341,22 @@ section.dashboard-content{
 }
 
 .telegram-link{
+  &.dark{
+    .telegram-connect{
+      background: $blue-900;
+      &.token-sale-telegram-connect{
+        color: $white;
+      }
+    }
+  }
+  &.light{
+    .telegram-connect{
+      background: $white;
+      &.token-sale-telegram-connect{
+        color: $neptune;
+      }
+    }
+  }
   &.dark, &.light{
     .microsite-telegram-connect-icon{
       background-position: center center;
