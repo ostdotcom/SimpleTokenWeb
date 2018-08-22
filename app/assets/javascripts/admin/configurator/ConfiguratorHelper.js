@@ -694,7 +694,8 @@
     isToShowAddMoreForToggle : function ( jEL , entityKey  ) {
       if( !jEL || !entityKey ) return false ;
       var showFooter    = true,
-          toggleVal     = 0
+          toggleVal     = 0 ,
+          selector
       ;
       for( var cnt = 0 ;  cnt < jEL.length ; cnt++ ){
         if( jEL.eq(cnt ).is(':checked') ){
@@ -706,12 +707,16 @@
       }else {
         showFooter = false  ;
       }
-      oThis.showHideFooter( entityKey , showFooter );
+      selector = jEL.eq(0).attr('name') ;
+      selector = "[name='" + selector + "']" ;
+      oThis.showHideFooter( selector , showFooter );
     },
 
     updateSectionFooterForComponentAdd : function ( entityKey ) {
-      var showFooter = oThis.isToShowAddMore( entityKey ) ;
-      oThis.showHideFooter( entityKey , showFooter);
+      var showFooter = oThis.isToShowAddMore( entityKey ) ,
+          selector   = "."+entityKey
+      ;
+      oThis.showHideFooter( selector , showFooter);
     },
 
     isToShowAddMore  : function ( entityKey ) {
@@ -729,9 +734,8 @@
     },
 
 
-    showHideFooter : function( entityKey , show ) {
-      var sEntity         = "."+entityKey ,
-          jEntity         = $( sEntity ) ,
+    showHideFooter : function( selector , show ) {
+      var jEntity         = $( selector ) ,
           jParentElement  = jEntity.closest('.card');
       if(show ){
         jParentElement.find('.card-footer').show();
