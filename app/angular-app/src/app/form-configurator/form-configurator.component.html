@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class="topSection" *ngIf="showSandboxSection()">
+    <div *ngIf="showSandboxSection()">
       <div class="mb-4" *ngIf="appConfig.hasClientOpted()">
         <div class="row">
           <div class="col-12">
@@ -44,18 +44,21 @@
       </div>
     </div>
 
-    <div *ngIf="showProductionSection()">
-      <div *ngIf="appConfig.hasClientOpted() && appConfig.isSuperAdmin()">
-        <div class="content">
+    <div class="bottomSection" *ngIf="showProductionSection()">
+      <div *ngIf="appConfig.hasClientOpted()">
+        <div *ngIf="appConfig.isSuperAdmin()" class="content">
           Front-end configurator will be able to publish the changes from Sandbox to Live.
           Please note that there is no live preview available.
           Obtain the Sandbox API key and Sandbox Secret Key from your Developer Integrations page in the Sandbox Environment.
+        </div>
+        <div *ngIf="!appConfig.isSuperAdmin()" class="content">
+          The Super Admin will be able to publish the changes from Sandbox to Live.
         </div>
         <form #form_configurator="ngForm" (ngSubmit)="importAndPublish(form_configurator)" class="mt-4">
           <div class="row">
             <div class="form-group col-12 col-md-5">
               <label class="form-label" for="sandboxApiKey">Sandbox Api Key</label>
-              <input type="text" ngModel #sandbox_api_key="ngModel" name="sandbox_api_key" class="form-control api-key" name="api_key" required>
+              <input type="text" [disabled]="!appConfig.isSuperAdmin()" ngModel #sandbox_api_key="ngModel" name="sandbox_api_key" class="form-control api-key" name="api_key" required>
               <ost-form-error-handler [errorFor]="sandbox_api_key"
                                       [fieldName]="'Sandbox Api Key'"
                                       [serverError]="errorResponse">
@@ -65,20 +68,15 @@
           <div class="row">
             <div class="form-group col-12 col-md-5">
               <label class="form-label" for="sandboxApiSecret">Sandbox Api Secret</label>
-              <input type="text" ngModel #sandbox_api_secret="ngModel" name="sandbox_api_secret" class="form-control api-secret" name="api_secret" required>
+              <input type="text" [disabled]="!appConfig.isSuperAdmin()" ngModel #sandbox_api_secret="ngModel" name="sandbox_api_secret" class="form-control api-secret" name="api_secret" required>
               <ost-form-error-handler [errorFor]="sandbox_api_secret"
                                       [fieldName]="'Sandbox Api Secret'"
                                       [serverError]="errorResponse">
               </ost-form-error-handler>
             </div>
           </div>
-          <button type="submit" [disabled]="!form_configurator.valid" class="btn btn-primary mt-4 mb-3 mb-xl-0">Import from sandbox and publish</button>
+          <button type="submit" [disabled]="!form_configurator.valid" class="btn btn-primary mt-4 mb-3 mb-xl-0">Import from sandbox and publish live</button>
         </form>
-      </div>
-      <div *ngIf="appConfig.hasClientOpted() && !appConfig.isSuperAdmin()">
-        <div class="content">
-          The Super Admin will be able to publish the changes from Sandbox to Live.
-        </div>
       </div>
       <div *ngIf="!appConfig.hasClientOpted()">
         <div class="content">
