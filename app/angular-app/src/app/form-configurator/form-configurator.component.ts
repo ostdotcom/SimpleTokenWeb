@@ -3,6 +3,8 @@ import { AppConfigService } from '../services/app-config.service';
 import {OstHttp} from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 
+declare var $: any ;
+
 @Component({
   selector: 'app-form-configurator',
   templateUrl: './form-configurator.component.html',
@@ -37,7 +39,7 @@ export class FormConfiguratorComponent implements OnInit {
         response => {
           let res = response.json();
           if( res.success ){
-            //show success modal
+            $('#successModal').modal('show');
           }else{
             this.errorResponse = res;
           }
@@ -98,11 +100,11 @@ export class FormConfiguratorComponent implements OnInit {
   }
 
   showSandboxSection() {
-    return (( this.environment == 'sandbox') || (this.environment == 'development'));
+    return (( this.environment == 'sandbox') || (this.environment == 'staging'));
   }
 
   showProductionSection() {
-    return (( this.environment == 'production') || (this.environment == 'development'));
+    return (( this.environment == 'production') || (this.environment == 'staging'));
   }
 
 }
