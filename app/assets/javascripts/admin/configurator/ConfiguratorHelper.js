@@ -748,7 +748,8 @@
       var sElement      = "."+entityKey ,
           jElements     = $(sElement) ,
           entityConfig  = formBuilder.getEntityConfig( entityKey ),
-          minCount      = entityConfig && entityConfig['min_count']
+          validations   = entityConfig && entityConfig['validations'],
+          minCount      = validations && validations['min_count']
       ;
       if( typeof minCount != 'number' ) return ;
       jElements.each( function( index, jEl) {
