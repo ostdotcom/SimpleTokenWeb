@@ -305,6 +305,7 @@
       });
 
       $(window).bind("beforeunload",function(event) {
+        oThis.beforeUnload();
         if( oThis.configurationChanged ) {
           return " There are unsaved changes made to this page."
         }
@@ -319,6 +320,23 @@
         jInitialHandler.show();
       });
 
+    },
+
+    /*
+     * Resets the nav bar select picker on cancelling window unload
+     * params :  null
+     * returns : null
+     */
+    beforeUnload : function() {
+      var jSelect = $('#configurator-options');
+      var value = jSelect.val();
+      setTimeout(function() {
+        var href = window.location.href;
+        if( href.indexOf(value) == -1) {
+          jSelect.val( jSelect.data('selected-value'));
+          jSelect.selectpicker('refresh');
+        }
+      }, 1000);
     },
 
     /*

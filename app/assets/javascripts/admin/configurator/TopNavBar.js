@@ -40,6 +40,11 @@
         window.location.href = value;
       });
 
+      jSelect.on('shown.bs.select', function () {
+        var value = $(this).val();
+        $(this).data('selected-value', value );
+      });
+
       jNext.on('click' , function ( e ) {
         oThis.onOptionsUpdate( jSelect );
       });
