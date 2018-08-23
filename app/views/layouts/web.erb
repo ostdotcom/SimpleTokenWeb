@@ -207,9 +207,9 @@
 <% end %>
 
 
-<main id="site-content">
+<main id="site-content <%= yield (:gradient_class) %>">
 
-  <div class="main-content <%= yield (:gradient_class) %>">
+  <div class="main-content">
     <%= yield %>
   </div>
 
