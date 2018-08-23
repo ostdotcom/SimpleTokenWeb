@@ -43,8 +43,8 @@
         </div>
       </div>
     </div>
-
-    <div class="bottomSection" *ngIf="showProductionSection()">
+    <div *ngIf="showDivider()" class="divider"></div>
+    <div *ngIf="showProductionSection()">
       <div *ngIf="appConfig.hasClientOpted()">
         <div *ngIf="appConfig.isSuperAdmin()" class="content">
           Front-end configurator will be able to publish the changes from Sandbox to Live.

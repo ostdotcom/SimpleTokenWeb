@@ -110,4 +110,8 @@ export class FormConfiguratorComponent implements OnInit {
     return (( this.environment == 'production') || (this.environment == 'staging') || (this.environment == 'development'));
   }
 
+  showDivider() {
+    return ( this.showSandboxSection() && this.showProductionSection());
+  }
+
 }
