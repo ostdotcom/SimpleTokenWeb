@@ -22,16 +22,18 @@
       toolbar_item_size       : "small",
       toolbar_items_size      : "small",
       extended_valid_elements : "*[*]",
+      entity_encoding         : 'raw',
 
       setup: function (editor) {
           editor.on('keyup change', function () {
             var jTextArea       = getTextArea( tinymce.activeEditor ),
                 updatedContent  = tinymce.activeEditor.getContent()
             ;
-            updatedContent = getSanitizedContent( updatedContent );
             jTextArea && jTextArea
               .val( updatedContent )
-              .trigger('change');
+              .trigger('keyup')
+              .trigger('change')
+            ;
         });
       },
 
