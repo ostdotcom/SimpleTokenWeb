@@ -18,6 +18,7 @@ export class FormConfiguratorComponent implements OnInit {
   showButton    = false;
   errorResponse = null;
   hasError: boolean = false;
+  btnText           = 'Import from sandbox and publish live'
   redirectLocation  = '/admin/configurator/theme';
   environment       = this.appConfig.getEnvironment();
 
@@ -35,9 +36,11 @@ export class FormConfiguratorComponent implements OnInit {
   importAndPublish( form_configurator ) {
     let params =  form_configurator.value;
     if (form_configurator.valid){
+      this.btnText = 'Processing...';
       this.http.get('api/admin/configurator/fetch-published-version' , {params: params }  ).subscribe(
         response => {
           let res = response.json();
+          this.btnText = 'Import from sandbox and publish live';
           if( res.success ){
             $('#successModal').modal('show');
           }else{
