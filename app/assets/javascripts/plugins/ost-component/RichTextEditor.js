@@ -6,7 +6,7 @@
   ;
 
   var tinyMceBodyClass = "tiny-mce-editor-inline-body",
-      tinyMceBodyStyle = ".tiny-mce-editor-inline-body { color: #597A84; font-size: 0.7rem; font-weight: 100; letter-spacing: 0.2px;}",
+      tinyMceBodyStyle = ".tiny-mce-editor-inline-body { color: #597A84; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2px; font-family: 'Quasimoda', Source Sans Pro, sans-serif;}",
       pluginOptions    = ['link'] ,
       toolbarOptions   = 'bold, italic, underline, link'
   ;

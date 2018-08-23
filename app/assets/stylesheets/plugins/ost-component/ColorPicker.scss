@@ -1,6 +1,26 @@
 @import "admin/simple_token_theme_admin/variables";
 
+
+@mixin colorPickerBtn {
+  -webkit-transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
+  -moz-transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
+  transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out,box-shadow .3s ease-in-out !important;
+  font-family: 'Quasimoda', Source Sans Pro, sans-serif!important;
+  text-transform: uppercase;
+  border-radius: 2px;
+  font-size: 0.65rem!important;
+  font-weight: $font-weight-light!important;
+  text-shadow: none!important;
+  letter-spacing: $letter-spacing!important;
+  &:focus , &:not(:disabled):not(.disabled):active:focus {
+    outline: none;
+    text-decoration: none;
+    box-shadow: none;
+  }
+}
+
 .color-picker{
+
   &.sp-replacer{
     border: solid 0.5px $custom-grey-7;
     background: transparent;
@@ -18,5 +38,46 @@
   }
   .sp-dd{
     display: none;
+  }
+  .sp-picker-container {
+    background-color: $white!important;
+  }
+
+  &.sp-container {
+    border-color: $gray-400!important;
+  }
+
+  .sp-button-container {
+    width: 100%;
+    padding-top: 10px;
+    text-align: right;
+
+    .sp-cancel {
+      padding: 0.25rem 0.5rem!important;
+      color: $blue-900!important;
+      border: $btn-border-width solid $blue-900;
+      &:hover{
+        color: $white!important;
+        text-decoration: none!important;
+        border-color: $blue-900!important;
+        background-color: $blue-900!important;
+      }
+      @include colorPickerBtn;
+    }
+
+    .sp-choose {
+      background: $yellow-300!important;
+      color: $white!important;
+      padding: 0.4rem 0.5rem!important;
+      border: none;
+      &:hover{
+        color: $white!important;
+        text-decoration: none!important;
+        border-color: $yellow-400!important;
+        background-color: $yellow-400!important;
+      }
+      @include colorPickerBtn;
+    }
+
   }
 }
