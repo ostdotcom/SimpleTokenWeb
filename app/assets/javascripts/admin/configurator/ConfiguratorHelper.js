@@ -305,6 +305,7 @@
       });
 
       $(window).bind("beforeunload",function(event) {
+        oThis.beforeUnload();
         if( oThis.configurationChanged ) {
           return " There are unsaved changes made to this page."
         }
@@ -319,6 +320,23 @@
         jInitialHandler.show();
       });
 
+    },
+
+    /*
+     * Resets the nav bar select picker on cancelling window unload
+     * params :  null
+     * returns : null
+     */
+    beforeUnload : function() {
+      var jSelect = $('#configurator-options');
+      var value = jSelect.val();
+      setTimeout(function() {
+        var href = window.location.href;
+        if( href.indexOf(value) == -1) {
+          jSelect.val( jSelect.data('selected-value'));
+          jSelect.selectpicker('refresh');
+        }
+      }, 1000);
     },
 
     /*
@@ -638,23 +656,27 @@
      */
     bindPopUpToggleOption : function ( jElement , entityKey, sWrapper,  callback ) {
       if( !entityKey || !sWrapper || !jElement ) return;
-      var entityKey   = entityKey ,
-          jEl , jVal ,
-          entityConfig , value ,
-          jRemovableElement
+      var jWrapper        = $(sWrapper) ,
+          entitySelector  = "."+entityKey ,
+          jEntity , jTextArea ,
+          entityConfig ,
+          jEl , jVal
       ;
        jElement.off('change').on('change' , function () {
+        jEntity         = jWrapper.find( entitySelector ),
+        jTextArea       = jEntity.find('textarea'),
         jEl = $(this) ;
         jVal = jEl.val();
         if( jVal == 0 ) {
-          $('.' + entityKey).remove();
+          jEntity.hide();
+          jTextArea.prop('disabled' , true);
         }else {
-          entityConfig = formBuilder.getEntityConfig( entityKey , true );
-          value = entityConfig['value'];
-          if( value instanceof Array && value.length == 0 ){
-            entityConfig.value = null;
+          if( !jEntity || jEntity.length == 0 ) {
+            entityConfig = formBuilder.getEntityConfig(entityKey);
+            formBuilder.buildEntity( entityConfig, jWrapper );
           }
-          formBuilder.buildEntity( entityConfig , $(sWrapper) );
+          jTextArea.prop('disabled' , false);
+          jEntity.show();
         }
         if( callback ){
           callback( jEl );

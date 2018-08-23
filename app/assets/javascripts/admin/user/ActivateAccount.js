@@ -12,7 +12,9 @@
       init: function (config) {
         oThis.formHelper =  oThis.jForm.formHelper({
           success: function (response) {
+            if( response.success  ){
               oThis.showSuccess();
+            }
           }
         });
       },

@@ -43,8 +43,8 @@
         </div>
       </div>
     </div>
-
-    <div class="bottomSection" *ngIf="showProductionSection()">
+    <div *ngIf="showDivider()" class="divider"></div>
+    <div *ngIf="showProductionSection()">
       <div *ngIf="appConfig.hasClientOpted()">
         <div *ngIf="appConfig.isSuperAdmin()" class="content">
           Front-end configurator will be able to publish the changes from Sandbox to Live.
@@ -75,7 +75,7 @@
               </ost-form-error-handler>
             </div>
           </div>
-          <button type="submit" [disabled]="!form_configurator.valid" class="btn btn-primary mt-4 mb-3 mb-xl-0">Import from sandbox and publish live</button>
+          <button type="submit" [disabled]="!form_configurator.valid" class="btn btn-primary mt-4 mb-3 mb-xl-0">{{btnText}}</button>
         </form>
       </div>
       <div *ngIf="!appConfig.hasClientOpted()">
@@ -97,7 +97,7 @@
             </use>
           </switch>
         </svg>
-        <h5>Import from sandbox and publish live is successfully completed.</h5>
+        <h5>Settings have been imported from Sandbox and applied to Production successfully.</h5>
         <button class="btn btn-primary mt-4" title="Close" data-dismiss="modal">Ok</button>
       </div>
     </div>

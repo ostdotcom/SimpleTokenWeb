@@ -19,14 +19,7 @@
       box-shadow: 0 0.3px 1px 0 rgba(0, 0, 0, 0.5);
       background-image: linear-gradient(to bottom, rgba(89, 122, 132, 0.3), $blue-900);
       .circle{
-        width: 30px;
-        height: 30px;
-        line-height: 26px;
-        text-align: center;
-        display: inline-block;
-        background-color: $blue-900;
-        border: solid 2px rgba(255, 255, 255, 0.5);
-        border-radius: $custom-radio-indicator-border-radius;
+
       }
     }
     .accordion-content-wrapper{
@@ -69,4 +62,27 @@
       transform: rotate(0deg) ;
     }
   }
+
+  .dashboard-form,
+  .kyc-form{
+    counter-reset: accordion-counter;
+    .accordion{
+      counter-increment: accordion-counter;
+      .accordion-header-label{
+        &:before {
+          content: counter(accordion-counter);
+          width: 30px;
+          height: 30px;
+          margin-right: 8px;
+          line-height: 26px;
+          text-align: center;
+          display: inline-block;
+          background-color: $blue-900;
+          border: solid 2px rgba(255, 255, 255, 0.5);
+          border-radius: $custom-radio-indicator-border-radius;
+        }
+      }
+    }
+  }
+
 }
