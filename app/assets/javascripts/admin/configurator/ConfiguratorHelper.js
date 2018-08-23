@@ -658,12 +658,13 @@
       if( !entityKey || !sWrapper || !jElement ) return;
       var jWrapper        = $(sWrapper) ,
           entitySelector  = "."+entityKey ,
-          jEntity         = jWrapper.find( entitySelector ),
-          jTextArea       = jEntity.find('textarea'),
+          jEntity , jTextArea ,
           entityConfig ,
           jEl , jVal
       ;
        jElement.off('change').on('change' , function () {
+        jEntity         = jWrapper.find( entitySelector ),
+        jTextArea       = jEntity.find('textarea'),
         jEl = $(this) ;
         jVal = jEl.val();
         if( jVal == 0 ) {
