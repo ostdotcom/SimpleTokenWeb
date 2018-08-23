@@ -1,12 +1,14 @@
 <div id="ethereum-confirm-modal" class="modal fade user-modal" role="dialog" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered h-100 my-0 pb-5">
+  <div class="modal-dialog h-100">
     <div class="modal-content">
       <button type="button" class="close" data-dismiss="modal" style="opacity: 1;font-size: 18px;position: absolute;right: 12px;top: 15px;z-index: 1">
         <span aria-hidden="true" class="modal-close-black-icon" title="close"></span>
       </button>
-      <div class="modal-body">
-        <div class="verify-content">
-          <h4 class="heading text-center my-4">Simple Tokens are not for everyone.<br/>I confirm the following:</h4>
+      <div class="modal-header">
+        <h4 class="text-center"><%= @presenter_obj.account_name_short %> Tokens are not for everyone.I confirm the following:</h4>
+      </div>
+      <div class="modal-body" style="max-height: calc(100vh - 50px); overflow-y: auto;">
+        <div class="verify-content form-group">
           <% @presenter_obj.ethereum_confirm_checkbox_points_html.each_with_index do |line, index| %>
             <div class="checkbox mt-2">
               <input type="checkbox" value="" id="check<%= index%>" name="check<%= index%>">
@@ -15,11 +17,11 @@
               </label>
             </div>
           <% end %>
-          <div class="mt-4 mx-auto text-center form-group">
-            <div class="invalid-feedback general_error"></div>
-            <button id="userConfirm" class="btn btn-primary verify-btn" title="Verify">CONFIRM</button>
-            <img id="user-confirm-loader" class="gif-loader-img" src="//d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token_round_loader.gif" style="display:none"/>
-          </div>
+          <div class="invalid-feedback general_error"></div>
+        </div>
+        <div class="modal-footer justify-content-center border-0">
+          <button id="userConfirm" class="btn btn-primary verify-btn" title="Verify">CONFIRM</button>
+          <img id="user-confirm-loader" class="gif-loader-img" src="//d36lai1ppm9dxu.cloudfront.net/assets/image/simple-token_round_loader.gif" style="display:none"/>
         </div>
       </div>
     </div>
