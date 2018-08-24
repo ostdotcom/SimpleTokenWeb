@@ -18,10 +18,10 @@ export class FormConfiguratorComponent implements OnInit {
   showButton    = false;
   errorResponse = null;
   hasError: boolean = false;
-  btnText           = 'Import from sandbox and publish live'
+  btnText           = 'Import from sandbox and publish live';
+  createBtnClass    = 'btn-primary';
   redirectLocation  = '/admin/configurator/theme';
   environment       = this.appConfig.getEnvironment();
-
 
   constructor( public appConfig : AppConfigService,
                private http: OstHttp,
@@ -81,10 +81,13 @@ export class FormConfiguratorComponent implements OnInit {
         let res = response.json();
         if(res.success){
           this.stateHandler.updateRequestStatus(this, false,false);
-          this.gid = res.data.gid;
+          this.gid  = res.data.gid;
           this.uuid = res.data.uuid;
           if(this.gid && this.uuid){
-            this.showButton = true;
+            this.createBtnClass = 'btn-secondary';
+            this.showButton     = true;
+          } else {
+            this.createBtnClass = 'btn-primary';
           }
         } else {
           this.errorResponse = res;

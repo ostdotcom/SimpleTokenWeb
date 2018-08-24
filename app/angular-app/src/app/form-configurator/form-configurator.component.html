@@ -27,8 +27,8 @@
         </div>
         <div class="row mt-5">
           <div class="col-12">
-            <button (click)="goToFormConfigurator()" class="btn btn-primary mb-3 mb-xl-0">Go to front-end configurator</button>
-            <button *ngIf="showButton" (click)="openUnpublishedDraft()" class="btn btn-secondary mb-3 mb-xl-0 ml-xl-3">Open Unpublished draft</button>
+            <button *ngIf="showButton" (click)="openUnpublishedDraft()" class="btn btn-primary mb-3 mb-xl-0">Open Unpublished draft</button>
+            <button (click)="goToFormConfigurator()" class="btn {{createBtnClass}} mb-3 mb-xl-0">Create New Draft</button>
           </div>
         </div>
       </div>
