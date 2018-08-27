@@ -1,6 +1,6 @@
 <script type="text/x-handlebars-template" id="ost-input-textarea">
   <div class="row form-group input-text-wrap {{entityKey}}">
-    <div class="col-12">
+    <div class="col-9">
       <div class="form-label align-items-center">
         <label class="align-middle mb-0">{{label}}</label>
         {{#ifTooltip tooltip}}
@@ -14,8 +14,16 @@
         {{/ifTooltip}}
       </div>
     </div>
-    <div class="col-12 " >
-      <textarea class="input-text-area" style="resize: none"
+    <div class="col-3 text-right pl-0">
+      {{#validations.max_length}}
+      <span style="font-size: 13px">
+        <span class="length-mocker">{{#../value}} {{#this.length}} {{this}} {{else}} 0 {{/this.length}} {{/../value}} </span>
+        <span> / {{this}}</span>
+      </span>
+      {{/validations.max_length}}
+    </div>
+    <div class="col-12" >
+      <textarea class="input-text-area mock-length" style="resize: none"
                 {{isRequired validations.required validations.min_length}}
                 {{#validations.min_length}} minlength="{{this}}" {{/validations.min_length}}
                 {{#validations.max_length}} maxlength="{{this}}" {{/validations.max_length}}
