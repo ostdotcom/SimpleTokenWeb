@@ -95,17 +95,22 @@
           minBytes  = jElMocker.data('min-bytes'),
           maxBytes  = jElMocker.data('max-bytes'),
           validFile = true,
-          maxMb ,
+          separator = " " ,
+          maxSize , errPostFix = "MB" ,
           errorMsg
       ;
       if( minBytes && minBytes > size ){
         validFile =  false;
-        errorMsg = name + ' file size too small';
+        errorMsg = name + separator + 'file size too small';
         oThis.showError( errorMsg  ) ;
       }else if( maxBytes && maxBytes < size  ){
         validFile = false;
-        maxMb = maxBytes / (1024*1024);
-        errorMsg = jElMocker.title+' file size too large. Max allowed '+maxMb+' MB';
+        maxSize = maxBytes / (1024*1024);
+        if( maxSize < 1) {
+          maxSize = maxBytes / 1024 ;
+          errPostFix = "KB";
+        }
+        errorMsg = name + separator + 'file size too large. Max allowed '+ maxSize + separator + errPostFix ;
         oThis.showError( errorMsg  ) ;
       }
       return validFile ;
