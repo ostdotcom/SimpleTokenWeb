@@ -16,14 +16,13 @@
     </div>
     <div class="col-4 text-right align-self-center pl-0">
       <input class="input-number py-0 px-1"
-             {{isRequired validations.required}}
+             {{isRequired validations.required validations.min}}
              {{#validations.min}} min="{{this}}" {{/validations.min}}
              {{#validations.max}} max="{{this}}" {{/validations.max}}
              type='number'
              name="{{data_key_name}}[gradient]"
              value="{{value.gradient}}" />
-      <input type='text' {{#validations.required}} required {{/validations.required}}
-             class="color-picker-input"
+      <input type='text' class="color-picker-input"
              name="{{data_key_name}}[color]"
              value="{{value.color}}" />
     </div>

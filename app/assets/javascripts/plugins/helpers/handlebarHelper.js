@@ -18,8 +18,8 @@
 
   };
 
-  Handlebars.registerHelper('isRequired', function( required , options ) {
-    if( required == 1 ){
+  Handlebars.registerHelper('isRequired', function( required , minlength ,  options ) {
+    if( required == 1 || minlength && minlength > 0 ){
       return "required" ;
     }
     return "";

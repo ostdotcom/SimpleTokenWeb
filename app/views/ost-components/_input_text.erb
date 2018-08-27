@@ -16,7 +16,7 @@
     </div>
     <div class="col-12">
       <input class="input-text"
-             {{isRequired validations.required}}
+             {{isRequired validations.required validations.min_length}}
              {{#validations.min_length}} minlength="{{this}}" {{/validations.min_length}}
              {{#validations.max_length}} maxlength="{{this}}" {{/validations.max_length}}
              type='text'
