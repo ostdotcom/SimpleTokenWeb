@@ -118,19 +118,19 @@
      },
 
      primary_button_text_color_active : {
-       'label'          : "Primary Button Text Color - on Active",
+       'label'          : "Primary Button Text Color - Hover",
        'tooltip'        : "",
        "inputType"      : inputTypesEnum.colorPicker
      },
 
      primary_button_background_color_active : {
-       'label'          : "Primary Button Background - on Active",
+       'label'          : "Primary Button Background - Hover",
        'tooltip'        : "",
        "inputType"      : inputTypesEnum.colorPicker
      },
 
      primary_button_border_color_active : {
-       'label'          : "Primary Button Border - on Active",
+       'label'          : "Primary Button Border - Hover",
        'tooltip'        : "",
        "inputType"      : inputTypesEnum.colorPicker
      },
@@ -154,19 +154,19 @@
      },
 
      secondary_button_text_color_active : {
-       'label'          : "Secondary Button Text Color - on Active",
+       'label'          : "Secondary Button Text Color - Hover",
        'tooltip'        : "",
        "inputType"      : inputTypesEnum.colorPicker
      },
 
      secondary_button_background_color_active : {
-       'label'          : "Secondary Button Background - on Active",
+       'label'          : "Secondary Button Background - Hover",
        'tooltip'        : "",
        "inputType"      : inputTypesEnum.colorPicker
      },
 
      secondary_button_border_color_active : {
-       'label'          : "Secondary Button Border - on Active",
+       'label'          : "Secondary Button Border - Hover",
        'tooltip'        : "",
        "inputType"      : inputTypesEnum.colorPicker
      },
