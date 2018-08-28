@@ -67,7 +67,15 @@
     <div class="modal-content">
       <div class="modal-body p-5">
 
-        <div class="processing-state state-handler text-center p-1">
+        <div class='state-handler text-center p-1' >
+          <h5 >You’re choosing to publish this page. <br>Are you sure?</h5>
+          <div class="col-12 form-group mt-3 text-center">
+            <button class="btn btn-secondary mt-3" data-dismiss="modal">CANCEL</button>
+            <button id="publish-changes-btn" class="btn btn-primary mr-sm-2 mt-3">CONFIRM</button>
+          </div>
+        </div>
+
+        <div class="processing-state state-handler text-center p-1" style="display: none;">
           <div class="loader-icon-wrap">
             <img class="img-fluid modal-state-icons" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
           </div>
@@ -106,7 +114,17 @@
     <div class="modal-content">
       <div class="modal-body p-5">
 
-          <div class="processing-state state-handler text-center p-1">
+        <div class='state-handler text-center p-1' >
+          <h5 >All changes you have made will be lost and the
+            page will revert to the currently published version.
+            Are you sure you want to continue?</h5>
+          <div class="col-12 form-group mt-3 text-center">
+            <button class="btn btn-secondary mt-3" data-dismiss="modal">CANCEL</button>
+            <button id="reset-changes-btn"  class="btn btn-primary mr-sm-2 mt-3">RESET</button>
+          </div>
+        </div>
+
+          <div class="processing-state state-handler text-center p-1" style="display: none;">
             <div class="loader-icon-wrap">
               <img class="img-fluid modal-state-icons" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
             </div>

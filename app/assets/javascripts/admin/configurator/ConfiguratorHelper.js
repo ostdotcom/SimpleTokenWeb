@@ -164,7 +164,7 @@
         $('#reset-configurator-changes').show();
       }
       if( canPublish ){
-        $('#publish-changes-btn').show();
+        $('#publish-configurator-changes').show();
       }
       iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
     },
@@ -300,8 +300,16 @@
         oThis.resetChangesClick();
       });
 
-      $('#publish-changes-btn').on('click' , function () {
+      $('#publish-configurator-changes').on('click' , function () {
         oThis.publishChangesClick();
+      });
+
+      $('#reset-changes-btn').on('click' , function () {
+        oThis.resetChanges();
+      });
+
+      $('#publish-changes-btn').on('click' , function () {
+        oThis.publishChanges();
       });
 
       $(window).bind("beforeunload",function(event) {
@@ -425,6 +433,10 @@
      */
 
     resetChangesClick : function () {
+      $('#reset-changes-modal').modal('show');
+    },
+
+    resetChanges : function () {
       var api       = oThis.getResetApi() ,
           jModal    = $('#reset-changes-modal')
       ;
@@ -433,7 +445,7 @@
         url: api,
         method: "POST",
         beforeSend : function () {
-          jModal.modal('show');
+          oThis.onBeforeChanges( jModal );
         },
         success : function ( res ) {
           if( res.success ){
@@ -454,8 +466,11 @@
      * params :  null
      * returns : null
      */
+    publishChangesClick : function () {
+      $('#publish-changes-modal').modal('show');
+    },
 
-    publishChangesClick : function (  ) {
+    publishChanges : function (  ) {
       var api     = oThis.getPublishApi() ,
           jModal  = $('#publish-changes-modal')
       ;
@@ -464,7 +479,7 @@
         url: api,
         method: "POST",
         beforeSend : function () {
-          jModal.modal('show');
+          oThis.onBeforeChanges( jModal );
         },
         success : function ( res ) {
           if( res.success ){
@@ -477,6 +492,11 @@
           oThis.onRequestFailure(jModal ,  error );
         }
       });
+    },
+
+    onBeforeChanges : function ( jModal ) {
+      jModal.find('.state-handler').hide();
+      jModal.find('.processing-state').show();
     },
 
     /*

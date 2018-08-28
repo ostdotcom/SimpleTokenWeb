@@ -15,6 +15,9 @@
         hideAfterPaletteSelect:true,
         change: function(color) {
           oThis.setValue( $(this) );
+        },
+        hide: function () {
+          oThis.setValue( $(this) );
         }
   };
 
