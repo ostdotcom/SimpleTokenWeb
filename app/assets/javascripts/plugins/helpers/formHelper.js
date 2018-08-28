@@ -371,6 +371,23 @@
       try {
         var oThis = this;
 
+        var validElements = oThis.validator.validElements();
+        validElements.each(function (indx, el) {
+          var jEl = $(el);
+
+          var jError = jEl.parent()
+            .find(".invalid-feedback")
+          ;
+          if ( !jError.length ) {
+            jError = jEl.closest(".form-group")
+              .find(".invalid-feedback")
+            ;
+          }
+
+          jEl.removeClass("is-invalid");
+          jError.removeClass("is-invalid");
+        });
+
         $.each(arrayData, function(indx, errorData ) {
           if ( errorData.element ) {
             var jEl = $( errorData.element );
@@ -390,22 +407,6 @@
           }
         });
 
-        var validElements = oThis.validator.validElements();
-        validElements.each(function (indx, el) {
-          var jEl = $(el);
-
-          var jError = jEl.parent()
-            .find(".invalid-feedback")
-          ;
-          if ( !jError.length ) {
-            jError = jEl.closest(".form-group")
-              .find(".invalid-feedback")
-            ;
-          }
-
-          jEl.removeClass("is-invalid");
-          jError.removeClass("is-invalid");
-        });
       } catch( ex ) {
         //Keep the try catch. Please :) ~ Rachin Kapoor
         console.log( ex );
