@@ -296,7 +296,7 @@
 
       setTimeout( function () {
         //If required passed config to binderFunction as well. Not required for now.
-        binderFunction && binderFunction( selector  );
+        binderFunction && binderFunction( selector , entityConfig );
         lengthMocker.initLengthMocker();
         oThis.initToolTips();
       }, 0)
