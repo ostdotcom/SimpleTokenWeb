@@ -105,14 +105,6 @@ module Web
         client_theme_style.logo
       end
 
-      def primary_button_style
-        client_theme_style.primary_button_style
-      end
-
-      def secondary_button_style
-        client_theme_style.secondary_button_style
-      end
-
       def background_gradient_text
         client_theme_style.background_gradient_text
       end
