@@ -25,14 +25,19 @@
             <div class="g-recaptcha form-recapcha-wrap" data-sitekey="<%= GlobalConstant::Base.recaptcha['site_key'] %>" tabindex="3"></div>
             <div class="error text-center" data-forid="recaptcha" ></div>
           </div>
-          <div class="checkbox termsConditions form-group">
-            <input name="terms_of_service" type="checkbox" class="list-item"
-                   value="agree" id="agree-and-acknowledge" required />
-            <label for="agree-and-acknowledge" class="termsLinks display-4" tabindex="4" style="line-height: 1.5;">
-              <%= raw @presenter_obj.page_data['checkbox_html'] %>
-            </label>
-            <div class="invalid-feedback text-center" data-forid="agree-and-acknowledge"></div>
-          </div>
+
+          <% @presenter_obj.signup_policy_texts.each_with_index do |signup_policy_text, index| %>
+            <div class="checkbox termsConditions form-group">
+              <input name="terms_of_service-<%= index %>" type="checkbox" class="list-item"
+                     value="agree" id="agree-and-acknowledge-<%= index %>" required />
+              <label for="agree-and-acknowledge-<%= index %>" class="termsLinks display-4" tabindex="4" style="line-height: 1.5;">
+                <%= raw signup_policy_text %>
+              </label>
+              <div class="invalid-feedback text-center" data-forid="agree-and-acknowledge-<%= index %>"></div>
+            </div>
+          <% end %>
+
+
           <div class="user-form-footer form-group">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <%= hidden_field_tag GlobalConstant::Base.page_loaded_at_key, GlobalConstant::Base.current_time -%>
