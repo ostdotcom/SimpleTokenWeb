@@ -50,7 +50,7 @@
       current IP is blocked. Please refer to the Terms and Conditions page.
     </div>
     <% if @presenter_obj.terms_and_conditions.present? %>
-      <a href="<%= @presenter_obj.terms_and_conditions %>" class="btn btn-primary homeBtn mt-5" title="Lets Get You Home">terms
+      <a href="<%= raw @presenter_obj.terms_and_conditions %>" target="_blank" class="btn btn-primary homeBtn mt-5" title="Lets Get You Home">terms
         and conditions</a>
     <% end %>
   </div>
