@@ -28,7 +28,13 @@
         <div class="col-4 text-right pl-0">
           {{#validations.max_length}}
             <span style="font-size: 13px">
-             <span class="len-mocker">{{#../value}} {{#this.length}} {{this}} {{else}} 0 {{/this.length}} {{/../value}} </span>
+             <span class="len-mocker">
+               {{#../value}}
+                  {{#this.length}} {{this}} {{else}} 0 {{/this.length}}
+               {{else}}
+                  0
+               {{/../value}}
+             </span>
              <span> / {{this}}</span>
             </span>
           {{/validations.max_length}}

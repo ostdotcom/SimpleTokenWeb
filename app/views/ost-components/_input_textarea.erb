@@ -17,7 +17,13 @@
     <div class="col-3 text-right pl-0">
       {{#validations.max_length}}
       <span style="font-size: 13px">
-        <span class="length-mocker">{{#../value}} {{#this.length}} {{this}} {{else}} 0 {{/this.length}} {{/../value}} </span>
+        <span class="length-mocker">
+          {{#../value}}
+              {{#this.length}} {{this}} {{else}} 0 {{/this.length}}
+          {{else}}
+              0
+          {{/../value}}
+        </span>
         <span> / {{this}}</span>
       </span>
       {{/validations.max_length}}
@@ -27,7 +33,7 @@
                 {{isRequired validations.required validations.min_length}}
                 {{#validations.min_length}} minlength="{{this}}" {{/validations.min_length}}
                 {{#validations.max_length}} maxlength="{{this}}" {{/validations.max_length}}
-                type='text' name="{{data_key_name}}" placeholder="{{placeHolder}}">{{value}}</textarea>
+                type='text' name="{{data_key_name}}" placeholder="{{placeHolder}}">{{{value}}}</textarea>
     </div>
     <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
   </div>
