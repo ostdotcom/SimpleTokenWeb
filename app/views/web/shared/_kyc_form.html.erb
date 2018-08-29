@@ -28,8 +28,8 @@
       <div class="simple-token-form">
         <form class="simpletoken-form kyc-form" action="/api/user/kyc-submit" method="POST" id="kycForm">
           <div class="col-12 col-sm-12 col-lg-8 mx-auto">
-            <h4 class="text-center mt-4 mb-2"><%= @presenter_obj.page_data.kyc_form_title %></h4>
-            <h6 class="kyc-instructions-title text-center mt-2"><%= @presenter_obj.page_data.kyc_form_subtitle %></h6>
+            <h4 class="text-center mt-4 mb-2"><%= raw @presenter_obj.page_data.kyc_form_title %></h4>
+            <h6 class="kyc-instructions-title text-center mt-2"><%= raw @presenter_obj.page_data.kyc_form_subtitle %></h6>
             <% if @presenter_obj.is_st_token_sale_client? %>
               <ul class="kyc-instructions text-center">
                 <li class="text-center">
