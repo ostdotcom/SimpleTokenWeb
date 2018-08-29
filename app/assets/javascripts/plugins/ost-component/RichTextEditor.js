@@ -81,9 +81,13 @@
       },
 
       init_instance_callback : function ( inst ) {
-        var jTextArea       = getTextArea( inst ),
-            initialVal      = jTextArea && jTextArea.val( ) || ""
+        var jTextArea     = getTextArea( inst ),
+            initialVal    = jTextArea && jTextArea.val( ) || "" ,
+            formGroup     = jTextArea.closest(sWrapper),
+            lenMocker     = formGroup.find(sMocker),
+            contentLength = getStripedContentLength( inst )
         ;
+        lenMocker.html( contentLength );
         inst.setContent( initialVal );
       }
   };
@@ -100,8 +104,7 @@
     var contentDocument   = editor.contentDocument ,
         body              = contentDocument.body ,
         innerContent      = body.textContent,
-        timedContent      = innerContent.trim(),
-        contentLength     = timedContent.length
+        contentLength     = innerContent.length
     ;
     return contentLength;
   }

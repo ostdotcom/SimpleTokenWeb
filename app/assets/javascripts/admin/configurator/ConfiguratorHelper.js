@@ -355,7 +355,7 @@
 
     initFormHelper : function () {
       var jEl         = $('#save-and-preview-btn-click'),
-          jErrorModal = $('#issues-while-submitting'),
+          jModal      = $('#issues-while-submitting'),
           jForm       = oThis.jForm
       ;
       oThis.formHelper  = jForm.formHelper({
@@ -372,12 +372,13 @@
             oThis.onSaveAndPreviewSuccess( res );
           }else{
             oThis.showFormGeneralError();
-            oThis.onRequestFailure( jErrorModal , res );
+            oThis.onRequestFailure( jModal , res );
           }
         },
         error: function ( jqXhr ,  error ) {
-          oThis.showFormGeneralError();
-          oThis.onRequestFailure( jErrorModal , error );
+          setTimeout( function () {
+            oThis.onSaveAndPreviewError( jModal );
+          } , 0 );
         },
         complete: function () {
           var preSubmitText   = jEl.data('pre-submit-text');
@@ -385,6 +386,17 @@
           jEl.prop( "disabled", false );
         }
       });
+    },
+
+    onSaveAndPreviewError : function ( jModal  ) {
+      var jError = oThis.jForm.find('.general_error') ,
+          errMsg = jError && jError.text(),
+          errorRes  = { err : {} }
+      ;
+      if( errMsg ) {
+        errorRes['err']['display_text'] = errMsg ;
+      }
+      oThis.onRequestFailure( jModal , errorRes );
     },
 
     initValidatorIgnoreRules : function () {
