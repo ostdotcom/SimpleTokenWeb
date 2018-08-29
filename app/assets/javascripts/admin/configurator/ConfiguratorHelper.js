@@ -255,7 +255,7 @@
 
     onCmsExitConfirmationBtnClick : function () {
       oThis.setConfiguratorChangedFlag( false );
-      window.location.href = "/admin/dashboard" ;
+      window.location.href = "/admin/settings/form-configurator" ;
     },
 
     setConfiguratorChangedFlag : function ( value ) {
