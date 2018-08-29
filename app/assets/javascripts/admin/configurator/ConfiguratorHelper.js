@@ -322,7 +322,7 @@
       $('.cms-modal').on('hidden.bs.modal', function () {
         var jModal          = $(this),
             jStateHandler   = jModal.find('.state-handler'),
-            jInitialHandler = jModal.find('.processing-state')
+            jInitialHandler = jModal.find('.pre-state')
         ;
         jStateHandler.hide();
         jInitialHandler.show();
