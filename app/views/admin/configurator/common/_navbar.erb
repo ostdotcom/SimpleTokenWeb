@@ -11,8 +11,8 @@
   </a>
   <div class="navbar-nav navbar-right ml-md-auto">
     <div class="next-previous-wrap mr-3 d-flex align-items-center">
-      <button class="btn float-left p-0 <%= is_first_configurator_page? ? 'btn-disabled' : '' %>">
-        <svg id="previous-item-btn" class="nav-svg previous-icon align-middle">
+      <button id="previous-item-btn" class="navigation-btn btn float-left p-0 <%= is_first_configurator_page? ? 'btn-disabled' : '' %>">
+        <svg  class="nav-svg previous-icon align-middle">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#previous-icon"></use>
           </switch>
@@ -38,8 +38,8 @@
           </option>
         </select>
       </div>
-      <button  class="btn float-left p-0 <%= is_last_configurator_page? ? 'btn-disabled' : '' %>">
-        <svg id="next-item-btn" class="nav-svg align-middle">
+      <button id="next-item-btn" class="navigation-btn btn float-left p-0 <%= is_last_configurator_page? ? 'btn-disabled' : '' %>">
+        <svg  class="nav-svg align-middle">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-icon"></use>
           </switch>
