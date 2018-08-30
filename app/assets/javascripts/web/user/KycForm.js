@@ -15,6 +15,7 @@
     residencyProofMandatoryCountries: [],
     popoverPlacement: 'right',
     $kycForm: $('#kycForm'),
+    jKYCSubmit: null,
     formHelper : null,
 
     init: function (config) {
@@ -327,6 +328,7 @@
 
       if ( isFormValid && isCaptachValid && isInputFilesValid ) {
         var jKYCSubmit = oThis.$kycForm.find("#kycSubmit");
+        oThis.jKYCSubmit = jKYCSubmit ;
 
         //Disbale the Submit Button
         jKYCSubmit.prop("disabled", true).text("SUBMITTING...");
@@ -441,11 +443,12 @@
             oThis.verifyModal('show-close');
             oThis.verifyModal('status-text', response.err.display_text);
             oThis.formHelper.showServerErrors( response );
+            oThis.jKYCSubmit.prop("disabled", false).text("SUBMIT");
           }
         },
         error: function (jqXHR, exception) {
           oThis.formHelper.showServerErrors( exception );
-          //utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
+          oThis.jKYCSubmit.prop("disabled", false).text("SUBMIT");
         }
       })
     },
