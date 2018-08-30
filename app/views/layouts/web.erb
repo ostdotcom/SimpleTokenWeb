@@ -190,7 +190,7 @@
   <!--IMP this code should be only rendered in iframe and @preview_template mode start-->
   <!--Modal close icon and modal-content needs to be disabled explicitly-->
   <% if @preview_template.present? %>
-    <style> .modal .close{ pointer-events: none;}</style>
+    <style> body:active, .modal .modal-content:active,  .modal .close, input, .g-recaptcha{ pointer-events: none;}</style>
   <% end %>
 
 </head>
@@ -233,24 +233,7 @@
 
 <%= yield(:end_js) %>
 
-<!--IMP this code should be only rendered in iframe and @preview_template mode start-->
-<!--Modal close icon and modal-content needs to be disabled explicitly-->
-<% if @preview_template.present? %>
-  <script type="text/javascript">
-      $(function () {
-          $('body').on('click', function (event) {
-              event.preventDefault();
-              event.stopPropagation();
-              return false;
-          });
-      });
 
-    $(document).ready(function () {
-        $("#get-deposit-address").unbind("click");
-    });
-
-  </script>
-<% end %>
 
 
 <%= yield(:preview_template_handlers) if @preview_template.present? %>
