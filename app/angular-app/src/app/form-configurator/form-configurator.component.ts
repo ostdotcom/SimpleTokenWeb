@@ -18,6 +18,7 @@ export class FormConfiguratorComponent implements OnInit {
   showButton    = false;
   errorResponse = null;
   hasError: boolean = false;
+  isPublishing: boolean = false ;
   btnText           = 'Import from sandbox and publish live';
   createBtnClass    = 'btn-primary';
   redirectLocation  = '/admin/configurator/theme';
@@ -37,10 +38,12 @@ export class FormConfiguratorComponent implements OnInit {
     let params =  form_configurator.value;
     if (form_configurator.valid){
       this.btnText = 'Processing...';
+      this.isPublishing =  true ;
       this.http.get('api/admin/configurator/fetch-published-version' , {params: params }  ).subscribe(
         response => {
           let res = response.json();
           this.btnText = 'Import from sandbox and publish live';
+          this.isPublishing =  false ;
           if( res.success ){
             $('#successModal').modal('show');
           }else{
@@ -50,6 +53,8 @@ export class FormConfiguratorComponent implements OnInit {
         error => {
           let err = error.json();
           this.errorResponse = err;
+          this.btnText = 'Import from sandbox and publish live';
+          this.isPublishing =  false ;
         }
       )
     }

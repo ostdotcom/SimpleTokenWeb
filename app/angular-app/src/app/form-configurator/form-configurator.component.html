@@ -75,7 +75,7 @@
               </ost-form-error-handler>
             </div>
           </div>
-          <button type="submit" [disabled]="!form_configurator.valid" class="btn btn-primary mt-4 mb-3 mb-xl-0">{{btnText}}</button>
+          <button  type="submit" [disabled]="!form_configurator.valid || isPublishing" class="btn btn-primary mt-4 mb-3 mb-xl-0">{{btnText}}</button>
         </form>
       </div>
       <div *ngIf="!appConfig.hasClientOpted()">
@@ -97,7 +97,7 @@
             </use>
           </switch>
         </svg>
-        <h5>Settings have been imported from Sandbox and applied to Production successfully.</h5>
+        <h5 class="mt-3">Settings have been imported from Sandbox and applied to Production successfully.</h5>
         <button class="btn btn-primary mt-4" title="Close" data-dismiss="modal">Ok</button>
       </div>
     </div>

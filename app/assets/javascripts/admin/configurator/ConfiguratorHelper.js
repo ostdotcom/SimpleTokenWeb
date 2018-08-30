@@ -17,6 +17,7 @@
 
   oSTNs.configuratorHelper = oThis = {
     jForm       : $('#configurator-form'),
+    jFormBtn    : $('#save-and-preview-btn-click'),
     formHelper  : null,
 
     jFormGeneralError   : $('#configurator-general-error'),
@@ -259,7 +260,9 @@
     },
 
     setConfiguratorChangedFlag : function ( value ) {
+      if(  oThis.configurationChanged == value ) return ;
       if( value != undefined ){
+        oThis.jFormBtn.prop('disabled' , !value );
         oThis.configurationChanged = value ;
       }
     },
@@ -276,11 +279,11 @@
 
     bindEvents : function () {
 
-      $('#save-and-preview-btn-click').on('click' , function () {
+      oThis.jFormBtn.on('click' , function () {
         oThis.onSaveAndPreviewClick( $(this) );
       });
 
-      oThis.jForm.on('change' , "input , textarea" , function () {
+      oThis.jForm.on('keyup change' , "input , textarea" , function () {
         oThis.setConfiguratorChangedFlag( true );
       });
 
@@ -354,7 +357,7 @@
      */
 
     initFormHelper : function () {
-      var jEl         = $('#save-and-preview-btn-click'),
+      var jEl         = oThis.jFormBtn,
           jModal      = $('#issues-while-submitting'),
           jForm       = oThis.jForm
       ;
