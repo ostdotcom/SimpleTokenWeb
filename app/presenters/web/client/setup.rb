@@ -71,11 +71,6 @@ module Web
         client_setting['kyc_config_detail_data']
       end
 
-      # temp code
-      def signup_policy_texts
-        page_data['checkbox_html_list'] ||  [page_data['checkbox_html']]
-      end
-
       #### common data ###
 
       def kyc_fields
