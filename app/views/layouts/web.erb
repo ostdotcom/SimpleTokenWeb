@@ -190,7 +190,7 @@
   <!--IMP this code should be only rendered in iframe and @preview_template mode start-->
   <!--Modal close icon and modal-content needs to be disabled explicitly-->
   <% if @preview_template.present? %>
-    <style> .modal,.modal-content{ pointer-events: none;}</style>
+    <style> .modal .close{ pointer-events: none;}</style>
   <% end %>
 
 </head>
