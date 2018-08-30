@@ -6,6 +6,7 @@
       iframe              = ns('ost.ostIframe'),
       uiConfigConstants   = ns('ost.uiConfigConstants'),
       richTextEditor      = ns('ost.richTextEditor'),
+      lengthMocker        = ns('ost.lengthMocker'),
       oThis
   ;
 
@@ -102,6 +103,7 @@
         formBuilder.init( data );
         oThis.checkForAccordions();
         oThis.initCommonSettings();
+        lengthMocker.setInitialLengths();
         oThis.bindEvents();
         if( callback ){
           callback( data );
