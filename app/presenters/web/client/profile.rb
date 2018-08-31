@@ -12,13 +12,16 @@ module Web
         super
       end
 
+      def page_data
+        @ud ||= Web::ClientStyles::UserDashboard.new(page_setting['page_data'])
+      end
 
       def kyc_update_modal_text
-        page_data['kyc_update_modal_text']
+        page_data.kyc_update_modal_text
       end
 
       def ethereum_confirm_checkbox_points_html
-        page_data['ethereum_confirm_checkbox_points_html']
+        page_data.ethereum_deposit_popup_checkboxes
       end
 
       def show_ethereum_address_confirm_modal?

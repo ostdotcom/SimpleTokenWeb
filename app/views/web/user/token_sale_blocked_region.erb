@@ -39,8 +39,8 @@
 <div class="errorPageContent">
   <div class="errorPageContentInner">
     <div>
-      <a class="border-none" href="<%= @presenter_obj.header_logo['href'] %>">
-        <img src="<%= @presenter_obj.header_logo['src'] %>" alt="simpletoken" width="<%= @presenter_obj.header_logo['width'] %>"
+      <a class="border-none" href="<%= @presenter_obj.header_logo['href'] %>"  title="<%= @presenter_obj.account_name %>" >
+        <img src="<%= @presenter_obj.header_logo['src'] %>" alt="<%= @presenter_obj.account_name %> Logo" width="<%= @presenter_obj.header_logo['width'] %>%"
              class="simpletoken-logo"/>
       </a>
     </div>
@@ -49,8 +49,8 @@
     <div class="pr-4  pl-4">The country you are in is not eligible to participate in the token sale and therefore your
       current IP is blocked. Please refer to the Terms and Conditions page.
     </div>
-    <% if @presenter_obj.page_data['primary_button_href'].present? %>
-      <a href="<%= @presenter_obj.page_data['primary_button_href'] %>" class="btn btn-primary homeBtn mt-5" title="Lets Get You Home">terms
+    <% if @presenter_obj.terms_and_conditions.present? %>
+      <a href="<%= raw @presenter_obj.terms_and_conditions %>" target="_blank" class="btn btn-primary homeBtn mt-5" title="Lets Get You Home">terms
         and conditions</a>
     <% end %>
   </div>

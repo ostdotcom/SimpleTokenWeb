@@ -62,8 +62,8 @@
     <span class="pl-2">User Management</span>
   </div>
 
-  <div class="desktop-menu px-2 align-items-center d-flex" data-menu="admin" 
-      [routerLink]="['/admin/settings/developer-integrations']" 
+  <div class="desktop-menu px-2 align-items-center d-flex" data-menu="admin"
+      [routerLink]="['/admin/settings/developer-integrations']"
       [routerLinkActive]="['selected']">
     <span>
         <svg class="developer" height="20px" width="20px">
@@ -101,9 +101,26 @@
     <span class="pl-2">Artificial Intelligence</span>
   </div>
 
+  <div class="desktop-menu px-2 align-items-center d-flex"
+       [routerLink]="['/admin/settings/form-configurator']" [routerLinkActive]="['selected']">
+    <span>
+        <svg class="developer" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fc-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span>
+        <svg class="developer-selected" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fc-selected-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span class="pl-2">Front-End Configurator</span>
+  </div>
+
 </div>
-
-
 
 
 <!--MOBILE CALLAPSIBLE-->
@@ -191,8 +208,8 @@
         <span class="pl-2">User Management</span>
       </div>
 
-      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin" 
-            [routerLink]="['/admin/settings/developer-integrations']" 
+      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
+            [routerLink]="['/admin/settings/developer-integrations']"
             [routerLinkActive]="['selected']">
         <span>
           <svg class="developer" height="20px" width="20px">
@@ -212,8 +229,8 @@
       </div>
 
 
-      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin" 
-            [routerLink]="['/admin/settings/artificial-intelligence']" 
+      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
+            [routerLink]="['/admin/settings/artificial-intelligence']"
             [routerLinkActive]="['selected']">
         <span>
           <svg class="ai-icon" height="20px" width="20px">
@@ -231,6 +248,27 @@
         </span>
         <span class="pl-2">Artificial Intelligence</span>
       </div>
+
+      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
+           [routerLink]="['/admin/settings/form-configurator']"
+           [routerLinkActive]="['selected']">
+        <span>
+          <svg class="fc-icon" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fc-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="fc-selected-icon" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fc-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Front-End Configurator</span>
+      </div>
+
     </div>
   </div>
 

@@ -51,6 +51,16 @@ Rails.application.routes.draw do
       get '/gdpr' => :gdpr_policy
     end
 
+    # Configurator is not allowed in production environment
+    if !Rails.env.production?
+      scope 'admin/configurator/', controller: 'admin/configurator' do
+        get '/theme' => :theme
+        get '/kyc-form' => :kyc_form
+        get '/register' => :register
+        get '/dashboard' => :dashboard
+      end
+    end
+
     scope 'admin/', controller: 'admin/home' do
       get '/login' => :login
       get '/forgot-password' => :forgot_password
@@ -60,6 +70,10 @@ Rails.application.routes.draw do
       get '/authentication' => :authentication
       get '/change-password' => :change_password
 
+      # Configurator is not allowed in production environment
+      if !Rails.env.production?
+        get ':entity_type/preview' => :user_preview_pages
+      end
 
       get '/dashboard' => :angular_app
       get '/case-id/:id' => :angular_app
@@ -68,6 +82,7 @@ Rails.application.routes.draw do
       get '/settings/profile' => :angular_app
       get '/settings/developer-integrations' => :angular_app
       get '/settings/artificial-intelligence' => :angular_app
+      get '/settings/form-configurator' => :angular_app
       
 
       # get '/get-kyc-dashboard' => :get_kyc_dashboard

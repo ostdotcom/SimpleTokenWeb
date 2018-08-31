@@ -1,0 +1,43 @@
+<% entity_type = GlobalConstant::TemplateType.dashboard_template_type %>
+<% accordion_config = accordion_config(entity_type) %>
+
+<form id="configurator-form" class="dashboard-form" method="POST" action="<%= api_post_url(entity_type) %>" data-ost-formhelper>
+
+  <div class="accordion <%= is_active_accordion( accordion_config[:sale_live] )? "shown" : "" %>" role="tablist">
+    <div class="accordion-header">
+      <span class="accordion-header-label">SALE LIVE USER DASHBOARD</span>
+    </div>
+    <div class="accordion-content-wrapper mb-4  mt-4" role="tablist" data-accordion-content="<%= accordion_config[:sale_live] %>"></div>
+  </div>
+
+  <div class="accordion <%= is_active_accordion( accordion_config[:popup] )? "shown" : "" %>" role="tablist">
+    <div class="accordion-header">
+      <span class="accordion-header-label">DEPOSIT ADDRESS POP-UP</span>
+    </div>
+    <div class="accordion-content-wrapper mb-4  mt-4" role="tablist" data-accordion-content="<%= accordion_config[:popup] %>"></div>
+  </div>
+
+  <div class="accordion <%= is_active_accordion( accordion_config[:deposit_addr] )? "shown" : "" %>" role="tablist">
+    <div class="accordion-header">
+      <span class="accordion-header-label">DEPOSIT ADDRESS USER DASHBOARD</span>
+    </div>
+    <div class="accordion-content-wrapper mb-4 mt-4" role="tablist" data-accordion-content="<%= accordion_config[:deposit_addr] %>"></div>
+  </div>
+
+  <!--Should always be display none , its just a mocker -->
+  <div class="general_error not-in-view"  style="display: none; "></div>
+</form>
+
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function () {
+      ost.dashboardConfigurator.init({
+        'configuratorGetApi' : "<%= api_get_url(entity_type) %>",
+        'publishApi': "<%= api_publish_url %>",
+        'resetApi': "<%= api_reset_url(entity_type) %>",
+        'iframeUrl': "<%= iframe_url(entity_type) %>"
+      });
+    });
+  </script>
+<%end%>

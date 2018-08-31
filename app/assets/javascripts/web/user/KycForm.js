@@ -15,6 +15,7 @@
     residencyProofMandatoryCountries: [],
     popoverPlacement: 'right',
     $kycForm: $('#kycForm'),
+    jKYCSubmit: $('#kycSubmit'),
     formHelper : null,
 
     init: function (config) {
@@ -326,28 +327,23 @@
       }
 
       if ( isFormValid && isCaptachValid && isInputFilesValid ) {
-        var jKYCSubmit = oThis.$kycForm.find("#kycSubmit");
-
         //Disbale the Submit Button
-        jKYCSubmit.prop("disabled", true).text("SUBMITTING...");
+        oThis.setBtnProcessState();
 
         //Validate Eth Address
-        var ethAddress = oThis.$kycForm.find('input[name="ethereum_address"]').val();
-        oThis.isValidAddress(ethAddress,
-          function () { /* Success Callback */
-            //Enable the Submit Button
-            jKYCSubmit.prop("disabled", false).text("SUBMIT");
-
-            //Form is now valid
+        var ethAddress = oThis.$kycForm.find('input[name="ethereum_address"]');
+        if(ethAddress.length > 0){
+          oThis.isValidAddress(ethAddress.val(),
+            function () { /* Success Callback */
+              //Form is now valid
+              oThis.onFormValid();
+            }, function () { /* Error Callback */
+              //Form has Errors..
+              oThis.onFormError();
+            });
+        } else {
             oThis.onFormValid();
-          }, function () { /* Error Callback */
-
-            //Enable the Submit Button
-            jKYCSubmit.prop("disabled", false).text("SUBMIT");
-
-            //Form has Errors..
-            oThis.onFormError();
-          });
+        }
       } else{
         oThis.$kycForm.find('.general_error')
           .addClass("is-invalid")
@@ -356,9 +352,19 @@
 
     },
 
-    onFormValid: function () {
-      //simpletoken.utils.errorHandling.clearFormErrors();
+    setBtnProcessState : function () {
+      var preSubmitText = oThis.jKYCSubmit.text();
+      oThis.jKYCSubmit.data('pre-submit-text', preSubmitText );
+      oThis.jKYCSubmit.prop("disabled", true).text("SUBMITTING...");
+    },
 
+    resetButton: function () {
+      var preSubmitText = oThis.jKYCSubmit.data('pre-submit-text');
+      oThis.jKYCSubmit.prop("disabled", false).text(preSubmitText);
+    },
+
+    onFormValid: function () {
+      oThis.resetButton();
       if (oThis.config.show_verify_modal === true) {
         // Show verify modal with checkboxes
         oThis.verifyModal();
@@ -372,6 +378,7 @@
     },
 
     onFormError: function () {
+      oThis.resetButton();
       if (typeof grecaptcha != 'undefined') {
         grecaptcha.reset();
       }
@@ -441,7 +448,6 @@
         },
         error: function (jqXHR, exception) {
           oThis.formHelper.showServerErrors( exception );
-          //utilsNs.errorHandling.xhrErrResponse(jqXHR, exception);
         }
       })
     },

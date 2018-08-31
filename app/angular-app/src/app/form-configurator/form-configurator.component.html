@@ -1,0 +1,114 @@
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="error-content">
+    <div class="col-12">{{ errorMessage }}</div>
+  </ng-container>
+</request-state-handler>
+
+<div class="form-configurator" *ngIf="!hasError && !isProcessing">
+  <div class="form-configurator-info">
+    <div class="row mt-4 pt-2 ">
+      <div class="col-12 col-lg-6">
+        <h4 class="kyc-header text-transform-upper">Front-End Configurator</h4>
+      </div>
+    </div>
+
+    <div *ngIf="showSandboxSection()">
+      <div class="mb-4" *ngIf="appConfig.hasClientOpted()">
+        <div class="row">
+          <div class="col-12">
+            <div class="content">
+              Front-end configurator is created to empower you to tailor the KYC front-end experience for your users as per your requirement.
+              Here, you can make the changes you desire, and click on ‘Save to Preview’ to view the changes made.
+              Please note that there is no live preview available, hence the you will need to use the button ‘Save to Preview’ to see the changes.
+              Once you’re done making the required changes, please copy the link and share it with the Super Admin.
+              The Super Admin will be able to publish the changes to Sandbox.
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12">
+            <button *ngIf="showButton" (click)="openUnpublishedDraft()" class="btn btn-primary mb-3 mr-3">Open Unpublished draft</button>
+            <button (click)="goToFormConfigurator()" class="btn {{createBtnClass}} mb-3 ">{{createDraftBtnText}}</button>
+          </div>
+          <ost-form-error-handler [errorFor]="'general_error'" [serverError]="goToFormConfiguratorError"></ost-form-error-handler>
+        </div>
+      </div>
+      <div class="mb-4" *ngIf="!appConfig.hasClientOpted()">
+        <div class="row">
+          <div class="col-12">
+            <div class="content">
+              Welcome to the Front-end configurator. This feature is not available in your current plan since you have opted for API-only integration.
+              Please reach out to OST KYC Tech Support (kyc-support@ost.com) to access the configurator.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showDivider()" class="divider"></div>
+    <div *ngIf="showProductionSection()">
+      <div *ngIf="appConfig.hasClientOpted()">
+        <div *ngIf="appConfig.isSuperAdmin()" class="content">
+          Front-end configurator will be able to publish the changes from Sandbox to Live.
+          Please note that there is no live preview available.
+          Obtain the Sandbox API key and Sandbox Secret Key from your Developer Integrations page in the Sandbox Environment.
+        </div>
+        <div *ngIf="!appConfig.isSuperAdmin()" class="content">
+          The Super Admin will be able to publish the changes from Sandbox to Live.
+        </div>
+        <form #form_configurator="ngForm" (ngSubmit)="importAndPublish(form_configurator)" class="mt-4">
+          <div class="row">
+            <div class="form-group col-12 col-md-5">
+              <label class="form-label" for="sandboxApiKey">Sandbox Api Key</label>
+              <input type="text" [disabled]="!appConfig.isSuperAdmin()" ngModel #sandbox_api_key="ngModel" name="sandbox_api_key" class="form-control api-key" name="api_key" required>
+              <ost-form-error-handler [errorFor]="sandbox_api_key"
+                                      [fieldName]="'Sandbox Api Key'"
+                                      [serverError]="importAndPublishError">
+              </ost-form-error-handler>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-12 col-md-5">
+              <label class="form-label" for="sandboxApiSecret">Sandbox Api Secret</label>
+              <input type="text" [disabled]="!appConfig.isSuperAdmin()" ngModel #sandbox_api_secret="ngModel" name="sandbox_api_secret" class="form-control api-secret" name="api_secret" required>
+              <ost-form-error-handler [errorFor]="sandbox_api_secret"
+                                      [fieldName]="'Sandbox Api Secret'"
+                                      [serverError]="importAndPublishError">
+              </ost-form-error-handler>
+            </div>
+          </div>
+          <button type="submit" [disabled]="!form_configurator.valid || isPublishing" class="btn btn-primary mt-4 mb-3 mb-xl-0">{{btnText}}</button>
+          <ost-form-error-handler [errorFor]="'general_error'" [serverError]="importAndPublishError"></ost-form-error-handler>
+        </form>
+      </div>
+      <div *ngIf="!appConfig.hasClientOpted()">
+        <div class="content">
+          Welcome to the Front-end configurator. This feature is not available in your current plan since you have opted for API-only integration.
+          Please reach out to OST KYC Tech Support (kyc-support@ost.com) to access the configurator.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="successModal" class="modal fade user-modal" role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
+    <div class="modal-content rounded-0">
+      <div class="modal-body text-center py-4">
+        <svg class="icon" style="width:50px; height: 50px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+            </use>
+          </switch>
+        </svg>
+        <h5 class="mt-3">Settings have been imported from Sandbox and applied to Production successfully.</h5>
+        <div class="col-12 form-group mt-3 text-center">
+          <button class="btn btn-secondary mr-sm-2" data-dismiss="modal">CLOSE</button>
+          <ng-container *ngIf="clientURL">
+            <a target="_blank" href="{{clientURL}}" class="btn btn-primary mt-1" >VIEW ON PRODUCTION</a>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

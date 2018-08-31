@@ -20,7 +20,7 @@ class Web::UserController < Web::BaseController
     service_response = SimpleTokenApi::Request::User.new(
         host_url_with_protocol,
         request.cookies,
-        {"User-Agent" => http_user_agent}).client_detail(GlobalConstant::TemplateType.sign_up_template_type)
+        {"User-Agent" => http_user_agent}).client_detail(GlobalConstant::TemplateType.registration_template_type)
 
     # Check if error present or not?
     unless service_response.success?

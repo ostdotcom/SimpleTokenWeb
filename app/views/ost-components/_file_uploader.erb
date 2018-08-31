@@ -1,0 +1,84 @@
+<script type="text/x-handlebars-template" id="ost-input-file">
+  <div class="row form-group ost-file-uploader-wrap {{entityKey}}">
+      <div class="col-9 align-self-center">
+        <div class="form-label mb-0">
+          <label class="align-middle mb-0">{{label}}</label>
+          {{#ifTooltip tooltip}}
+          <span data-toggle="tooltip" title="{{tooltip}}" class='config-info-icon align-middle'>
+            <svg class="config-info-icon">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+              </switch>
+            </svg>
+          </span>
+          {{/ifTooltip}}
+        </div>
+      </div>
+      <div class="col-3 text-right align-self-center">
+        <label class="input-label-wrapper mb-0" for="{{generateId data_key_name}}" title="{{title}}">
+          {{#ifFilePath value}}
+            <img class="file-uploaded-img" src="{{value}}" height="25" width="25"/>
+            <svg class="edit-svg align-middle">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#edit-icon"></use>
+              </switch>
+            </svg>
+            {{else}}
+            <svg class="upload-svg align-middle">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#upload-icon"></use>
+              </switch>
+            </svg>
+          {{/ifFilePath}}
+        </label>
+          <input id="{{generateId true}}" class="file-upload-mocker not-in-view" type='file' name="{{data_key_name}}_mocker"
+                 {{#validations.min_bytes}} data-min-bytes="{{this}}" {{/validations.min_bytes}}
+                 {{#validations.max_bytes}} data-max-bytes="{{this}}" {{/validations.max_bytes}}
+                 {{#validations.accept}} accept="{{getAccept this}}" {{/validations.accept}}
+                 data-get-signed-url="{{signed_url}}"/>
+
+          <input class="not-in-view" name="{{data_key_name}}" value="{{value}}" type="text"
+                 {{isRequired validations.required}} />
+      </div>
+    <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
+  </div>
+</script>
+
+<script type="unknown" id="j-processing-icon">
+  <img class="img-fluid processing-icon" width="25px" height="25px" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
+</script>
+
+<script type="text/x-handlebars-template" id="uploaded-image-wrap">
+  <img class="file-uploaded-img" src="{{img_src}}" height="25" width="25" />
+  <svg class="edit-svg align-middle">
+    <switch>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#edit-icon"></use>
+    </switch>
+  </svg>
+</script>
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function () {
+
+      Handlebars.registerHelper('getAccept', function( data, options ) {
+        if( typeof data == "string" ){
+          return data;
+        }else if( data && data.constructor == Array ) {
+          return data.join(' , ');
+        }
+        return "";
+      });
+
+      Handlebars.registerHelper('ifFilePath', function( data, options ) {
+        if( typeof data == "string" ){
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      });
+
+    });
+  </script>
+<%end%>
+
+

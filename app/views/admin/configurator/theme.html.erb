@@ -1,0 +1,26 @@
+<% entity_type = GlobalConstant::TemplateType.theme_template_type %>
+<% accordion_config = accordion_config(entity_type) %>
+
+<form id="configurator-form" method="POST" action="<%= api_post_url(entity_type) %>" data-ost-formhelper>
+
+  <div class="accordion shown" role="tablist">
+    <div class="accordion-content-wrapper mb-4 pt-4" role="tablist" data-accordion-content="<%= accordion_config[:theme] %>"></div>
+  </div>
+
+  <!--Should always be display none , its just a mocker -->
+  <div class="general_error not-in-view"  style="display: none; "></div>
+</form>
+
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function () {
+      ost.themeConfigurator.init({
+        'configuratorGetApi' : "<%= api_get_url(entity_type) %>",
+        'publishApi': "<%= api_publish_url %>",
+        'resetApi': "<%= api_reset_url(entity_type) %>",
+        'iframeUrl': "<%= iframe_url(entity_type) %>"
+      });
+    });
+  </script>
+<%end%>

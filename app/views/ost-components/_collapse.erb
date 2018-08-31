@@ -1,0 +1,53 @@
+<script type="text/x-handlebars-template" id="ost-collapse">
+  <div class="card mb-4">
+    <div class="card-header">
+      <a class="card-link" data-toggle="collapse" data-target="#{{generateId 'collapse' }}" data-parent="#accordion">
+        <span>{{header}}</span>
+        {{#ifTooltip tooltip}}
+        <span data-toggle="tooltip" title="{{tooltip}}" class='config-info-icon align-middle'>
+            <svg class="config-info-icon">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+              </switch>
+            </svg>
+          </span>
+        {{/ifTooltip}}
+      </a>
+    </div>
+    <div class="collapse show" id="{{generateId true}}">
+      <div class="card-body section-content-wrap pb-0 {{sectionKey}}">
+      </div>
+      {{#ifCollapseFooter footer}}
+        <div class="card-footer">
+         {{{ getCollapseFooter footer }}}
+        </div>
+      {{/ifCollapseFooter}}
+    </div>
+  </div>
+</script>
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function () {
+
+      Handlebars.registerHelper('ifCollapseFooter', function( data, options ) {
+        if( data ){
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      });
+
+      Handlebars.registerHelper('getCollapseFooter', function( data , options ) {
+        var selector  = data && data.template ,
+            config    = data && data.config ,
+            jMarkup   = "" ;
+
+        if( !selector || !config ) return ;
+        jMarkup   = ost.handlebarHelper.getMarkup( selector , config ) ;
+        return jMarkup ;
+      });
+
+    });
+  </script>
+<%end%>
+

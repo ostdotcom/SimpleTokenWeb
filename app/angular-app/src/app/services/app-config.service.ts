@@ -40,4 +40,16 @@ export class AppConfigService {
         return client || "";
     }
 
+    hasEthereumAddressField():boolean{
+      return this.data['kyc_config_detail'] && this.data['kyc_config_detail']['has_ethereum_address_field'];
+    }
+
+    getEnvironment(){
+      return this.data['environment'];
+    }
+
+    hasClientOpted():boolean{
+      return this.data['client_setup'] && this.data['client_setup']['web_host_setup_done'];
+    }
+
 }

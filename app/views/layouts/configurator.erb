@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <title><%= @page_meta_data[:title] %></title>
+  <meta name="robots" content="noindex, nofollow">
+  <%= csrf_meta_tags %>
+  <script>window.name = "<%= [*('A'..'Z')].sample(8).join %>";</script>
+
+  <link rel="icon" type="image/png" sizes="64x64" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/64x64.png"/>
+  <link rel="apple-touch-icon" sizes="57x57" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/fav-icons/16x16.png">
+
+  <%= stylesheet_link_tag 'admin/default_simple_token_admin' %>
+  <%= stylesheet_link_tag 'admin/configurator-common' %>
+  <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
+
+
+  <% if ['admin/home::login'].include?("#{params[:controller]}::#{params[:action]}") %>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+  <% end %>
+
+  <base href="/">
+</head>
+<body contenteditable="false">
+
+<main id="site-content" class="position-relative">
+  <%= render :partial => "/admin/configurator/common/navbar" %>
+  <aside id="sidebar" class="sidebar-nav">
+    <%= yield %>
+    <%= render :partial => "/admin/configurator/common/aside_footer"%>
+  </aside>
+  <%= render :partial => "/admin/configurator/common/iframe"%>
+  <%= render :partial => "/admin/configurator/common/common_components" %>
+  <%= render :partial => "/admin/configurator/common/configurator_overlay" %>
+  <%= render :partial => "/admin/configurator/common/modals" %>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.1/tinymce.min.js"></script>
+<%= javascript_include_tag "admin/configurator-common" %>
+<%= yield :ost_components %>
+<%= javascript_include_tag "#{specific_manifest_file_path}", :defer => "defer" if has_specific_js_manifest_file? %>
+
+<%= yield :javascript %>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    status401redirect = "/admin/login";
+  });
+</script>
+
+</body>
+</html>
+
+<%= render :partial => "/admin/shared/svg_sprite" %>

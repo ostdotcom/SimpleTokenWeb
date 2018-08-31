@@ -1,0 +1,34 @@
+<script type="text/x-handlebars-template" id="ost-input-radio">
+  <div class="row form-group ost-input-radio-wrap {{entityKey}}">
+    <div class="col-12">
+      <div class="form-label mb-0">
+        <label class="d-block">{{label}}</label>
+        {{#each options as |option| }}
+        <div class="form-check d-inline-block p-0 mr-3">
+          <input type="radio"  class="form-check-input radio-button" {{isChecked ../value option.value}}
+          name="{{../data_key_name}}" id="{{generateId}}" value="{{option.value}}"/>
+          <label class="radio-button-label position-relative mb-0" for="{{generateId true}}" >
+            <span class="radio-button-circle"></span>
+            <span class="label">{{option.label}}</span>
+          </label>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
+  </div>
+</script>
+
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function () {
+      Handlebars.registerHelper('isChecked', function( formVal, optionVal ,  options ) {
+        if( formVal == optionVal ){
+          return "checked";
+        }
+        return "";
+      });
+    });
+  </script>
+<%end%>

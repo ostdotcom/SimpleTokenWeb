@@ -1,0 +1,75 @@
+<script type="text/x-handlebars-template" id="ost-rich-text-editor">
+  <div class="row form-group tinymce-wrap {{entityKey}}">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-8">
+          <div class="form-label align-items-center">
+            {{#ifDataKindArray data_kind}}
+            <svg class="move-icon align-middle">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#move-icon"></use>
+              </switch>
+            </svg>
+            {{/ifDataKindArray}}
+            <label class="align-middle mb-0 label-counter">
+              {{label}}
+            </label>
+            {{#ifTooltip tooltip}}
+            <span data-toggle="tooltip" title="{{tooltip}}" class='config-info-icon align-middle'>
+                <svg class="config-info-icon">
+                  <switch>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+                  </switch>
+                </svg>
+            </span>
+            {{/ifTooltip}}
+          </div>
+        </div>
+        <div class="col-4 text-right pl-0">
+          {{#validations.max_length}}
+            <span style="font-size: 13px">
+             <span class="len-mocker">
+               {{#../value}}
+                  {{#this.length}} {{this}} {{else}} 0 {{/this.length}}
+               {{else}}
+                  0
+               {{/../value}}
+             </span>
+             <span> / {{this}}</span>
+            </span>
+          {{/validations.max_length}}
+          {{#isComponentDelete isDeleteEnabled}}
+            <span class="delete-component" title="Delete">
+              <svg class="config-info-icon">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#delete-icon"></use>
+                </switch>
+              </svg>
+            </span>
+          {{/isComponentDelete}}
+        </div>
+      </div>
+    </div>
+    <div class="col-12 text-right" >
+      <textarea class="tinymce-editor form-control" name="{{data_key_name}}" id="{{generateId}}"
+                {{isRequired validations.required validations.min_length}}
+                {{#validations.min_length}} minlength="{{this}}" {{/validations.min_length}}>{{value}}</textarea>
+    </div>
+    <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
+  </div>
+</script>
+
+<% content_for :ost_components do %>
+  <script type="text/javascript" >
+    $(function(){
+
+      Handlebars.registerHelper('isComponentDelete', function( isDeleteEnabled, options ) {
+        if( isDeleteEnabled ){
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      });
+
+    });
+  </script>
+<%end%>

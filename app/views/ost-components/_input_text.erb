@@ -1,0 +1,40 @@
+<script type="text/x-handlebars-template" id="ost-input-text">
+  <div class="row form-group input-text-wrap {{entityKey}}">
+    <div class="col-12">
+      <div class="form-label align-items-center">
+        <label class="align-middle mb-0">{{label}}</label>
+        {{#ifTooltip tooltip}}
+        <span data-toggle="tooltip" title="{{tooltip}}" class='config-info-icon align-middle'>
+            <svg class="config-info-icon">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+              </switch>
+            </svg>
+          </span>
+        {{/ifTooltip}}
+      </div>
+    </div>
+    <div class="col-12">
+      <input class="input-text"
+             {{isRequired validations.required validations.min_length}}
+             {{#validations.min_length}} minlength="{{this}}" {{/validations.min_length}}
+             {{#validations.max_length}} maxlength="{{this}}" {{/validations.max_length}}
+             type='text'
+             name="{{data_key_name}}"
+             value="{{value}}" placeholder="{{placeHolder}}" />
+    </div>
+    <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
+  </div>
+</script>
+
+
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function () {
+
+    });
+  </script>
+<%end%>
+
+

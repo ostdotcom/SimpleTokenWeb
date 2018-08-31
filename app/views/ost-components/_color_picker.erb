@@ -1,0 +1,30 @@
+<script type="text/x-handlebars-template" id="ost-color-picker">
+  <div class="row form-group color-picker-wrap {{entityKey}}">
+    <div class="col-10 align-self-center pr-0">
+      <div class="form-label mb-0">
+        <label class="align-middle mb-0">{{label}}</label>
+        {{#ifTooltip tooltip}}
+          <span data-toggle="tooltip" title="{{tooltip}}" class='config-info-icon align-middle'>
+            <svg class="config-info-icon">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+              </switch>
+            </svg>
+          </span>
+        {{/ifTooltip}}
+      </div>
+    </div>
+    <div class="col-2 text-right align-self-center pl-0">
+      <input type='text'  {{isRequired validations.required}}
+             class="color-picker-input" name="{{data_key_name}}"  value="{{value}}"/>
+    </div>
+    <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
+  </div>
+</script>
+
+
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+  </script>
+<%end%>
