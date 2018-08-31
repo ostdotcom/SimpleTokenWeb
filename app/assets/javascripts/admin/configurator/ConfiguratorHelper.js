@@ -398,6 +398,7 @@
           isPublished = errData && errData['is_published']
           ;
       if( isPublished == 1 ){
+        this.setConfiguratorChangedFlag( false );
         jModal.find('.create-new-draft-btn').show();
       }
       oThis.showFormGeneralError();
