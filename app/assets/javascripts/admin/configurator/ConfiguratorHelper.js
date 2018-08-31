@@ -537,6 +537,7 @@
         }
         jModal.find('.state-handler').hide();
         jModal.find('.success-state').show();
+        $('#publish-configurator-changes').hide();
       }else{
         oThis.onRequestFailure(jModal , res );
       }
