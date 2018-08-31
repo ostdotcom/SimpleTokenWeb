@@ -400,8 +400,9 @@
       if( isPublished == 1 ){
         this.setConfiguratorChangedFlag( false );
         jModal.find('.create-new-draft-btn').show();
+      }else {
+        oThis.showFormGeneralError();
       }
-      oThis.showFormGeneralError();
       oThis.onRequestFailure( jModal , res );
     },
 
