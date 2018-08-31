@@ -1,0 +1,11 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+
+.error {
+  font-size: $text4-size;
+  color: color('red');
+  padding: 3px 0 0;
+  display: block;
+  min-height: 25px;
+  font-weight: $font-weight-500;
+}

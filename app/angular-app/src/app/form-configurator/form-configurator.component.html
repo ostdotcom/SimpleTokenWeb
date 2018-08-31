@@ -27,9 +27,10 @@
         </div>
         <div class="row mt-5">
           <div class="col-12">
-            <button *ngIf="showButton" (click)="openUnpublishedDraft()" class="btn btn-primary mb-3 mb-xl-0">Open Unpublished draft</button>
-            <button (click)="goToFormConfigurator()" class="btn {{createBtnClass}} mb-3 mb-xl-0 ml-xl-3">Create New Draft</button>
+            <button *ngIf="showButton" (click)="openUnpublishedDraft()" class="btn btn-primary mb-3 mr-3">Open Unpublished draft</button>
+            <button (click)="goToFormConfigurator()" class="btn {{createBtnClass}} mb-3 ">{{createDraftBtnText}}</button>
           </div>
+          <ost-form-error-handler [errorFor]="'general_error'" [serverError]="goToFormConfiguratorError"></ost-form-error-handler>
         </div>
       </div>
       <div class="mb-4" *ngIf="!appConfig.hasClientOpted()">
@@ -61,7 +62,7 @@
               <input type="text" [disabled]="!appConfig.isSuperAdmin()" ngModel #sandbox_api_key="ngModel" name="sandbox_api_key" class="form-control api-key" name="api_key" required>
               <ost-form-error-handler [errorFor]="sandbox_api_key"
                                       [fieldName]="'Sandbox Api Key'"
-                                      [serverError]="errorResponse">
+                                      [serverError]="importAndPublishError">
               </ost-form-error-handler>
             </div>
           </div>
@@ -71,11 +72,12 @@
               <input type="text" [disabled]="!appConfig.isSuperAdmin()" ngModel #sandbox_api_secret="ngModel" name="sandbox_api_secret" class="form-control api-secret" name="api_secret" required>
               <ost-form-error-handler [errorFor]="sandbox_api_secret"
                                       [fieldName]="'Sandbox Api Secret'"
-                                      [serverError]="errorResponse">
+                                      [serverError]="importAndPublishError">
               </ost-form-error-handler>
             </div>
           </div>
-          <button  type="submit" [disabled]="!form_configurator.valid || isPublishing" class="btn btn-primary mt-4 mb-3 mb-xl-0">{{btnText}}</button>
+          <button type="submit" [disabled]="!form_configurator.valid || isPublishing" class="btn btn-primary mt-4 mb-3 mb-xl-0">{{btnText}}</button>
+          <ost-form-error-handler [errorFor]="'general_error'" [serverError]="importAndPublishError"></ost-form-error-handler>
         </form>
       </div>
       <div *ngIf="!appConfig.hasClientOpted()">
@@ -87,6 +89,7 @@
     </div>
   </div>
 </div>
+
 <div id="successModal" class="modal fade user-modal" role="dialog" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
     <div class="modal-content rounded-0">
@@ -98,7 +101,12 @@
           </switch>
         </svg>
         <h5 class="mt-3">Settings have been imported from Sandbox and applied to Production successfully.</h5>
-        <button class="btn btn-primary mt-4" title="Close" data-dismiss="modal">Ok</button>
+        <div class="col-12 form-group mt-3 text-center">
+          <button class="btn btn-secondary mr-sm-2" data-dismiss="modal">CLOSE</button>
+          <ng-container *ngIf="clientURL">
+            <a target="_blank" href="{{clientURL}}" class="btn btn-primary mt-1" >VIEW ON PRODUCTION</a>
+          </ng-container>
+        </div>
       </div>
     </div>
   </div>

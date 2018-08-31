@@ -376,8 +376,7 @@
           if( res.success ){
             oThis.onSaveAndPreviewSuccess( res );
           }else{
-            oThis.showFormGeneralError();
-            oThis.onRequestFailure( jModal , res );
+            oThis.onSaveAndPreviewSuccessFalse(res , jModal );
           }
         },
         error: function ( jqXhr ,  error ) {
@@ -391,6 +390,18 @@
           jEl.prop( "disabled", false );
         }
       });
+    },
+
+    onSaveAndPreviewSuccessFalse: function( res , jModal ){
+      var error       = res && res.err ,
+          errData     = error && error['error_data'] ,
+          isPublished = errData && errData['is_published']
+          ;
+      if( isPublished == 1 ){
+        jModal.find('.create-new-draft-btn').show();
+      }
+      oThis.showFormGeneralError();
+      oThis.onRequestFailure( jModal , res );
     },
 
     onSaveAndPreviewError : function ( jModal  ) {
@@ -465,16 +476,20 @@
           oThis.onBeforeChanges( jModal );
         },
         success : function ( res ) {
-          if( res.success ){
-            oThis.onRequestSuccess( jModal , res );
-          }else{
-            oThis.onRequestFailure(jModal , res );
-          }
+          oThis.onResetSuccess( res , jModal);
         },
         error: function (jqXhr ,  error ) {
           oThis.onRequestFailure(jModal ,  error );
         }
       });
+    },
+
+    onResetSuccess : function (res , jModal) {
+      if( res.success ){
+        location.reload();
+      }else{
+        oThis.onRequestFailure( jModal , res );
+      }
     },
 
     /*
@@ -499,16 +514,31 @@
           oThis.onBeforeChanges( jModal );
         },
         success : function ( res ) {
-          if( res.success ){
-           oThis.onRequestSuccess( jModal ,  res );
-          }else{
-            oThis.onRequestFailure(jModal , res );
-          }
+          oThis.onPublishChangesSuccess( res , jModal );
         },
         error: function (jqXhr ,  error ) {
           oThis.onRequestFailure(jModal ,  error );
         }
       });
+    },
+
+    onPublishChangesSuccess : function ( res , jModal) {
+      if( res.success ){
+        var data      = res && res.data ,
+            clientURL = data && data['published_url'] ,
+            jClientURL
+        ;
+        if( clientURL ){
+          jClientURL = jModal.find('.client-link') ;
+          jClientURL
+            .text( clientURL )
+            .attr('href', clientURL);
+        }
+        jModal.find('.state-handler').hide();
+        jModal.find('.success-state').show();
+      }else{
+        oThis.onRequestFailure(jModal , res );
+      }
     },
 
     onBeforeChanges : function ( jModal ) {
@@ -533,19 +563,6 @@
       jModal.find('.state-handler').hide();
       jModal.find('.error-state').show();
       jModal.modal('show');
-    },
-
-    /*
-     * Called on ajax failure of publish and reset .
-     * to do if required  should have individual callbacks
-     * params :  jModal , res
-     * returns : null
-     */
-
-    onRequestSuccess : function ( jModal ,  res ) {
-      oThis.setConfiguratorChangedFlag( false );
-      location.reload();
-      jModal.modal('hide');
     },
 
     /*
