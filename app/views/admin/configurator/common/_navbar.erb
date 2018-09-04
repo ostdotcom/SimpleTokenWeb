@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-md navbar-light">
+  <a href="javascript:void(0)" class="navbar-brand font-weight-normal p-0 border-0" title="KYC CMS">
+    <svg class="nav-svg align-middle">
+      <switch>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-cms-logo"></use>
+      </switch>
+    </svg>
+    <span class="align-middle text-uppercase">
+      FRONT-END <span style="color: #c0993a; ">CONFIGURATOR</span>
+    </span>
+  </a>
+  <div class="navbar-nav navbar-right ml-md-auto">
+    <div class="next-previous-wrap mr-3 d-flex align-items-center">
+      <button id="previous-item-btn" class="navigation-btn btn float-left p-0 <%= is_first_configurator_page? ? 'btn-disabled' : '' %>">
+        <svg  class="nav-svg previous-icon align-middle" style="width: 26px;height: 26px;">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#previous-icon"></use>
+          </switch>
+        </svg>
+      </button>
+      <div class="form-group mx-1 float-left" style="width: 275px">
+        <select id="configurator-options" class="form-control selectpicker" data-width="275px">
+          <option value="/admin/configurator/theme?<%=get_config_params%>"
+                  <%= is_theme_configurator? ? 'selected=selected' : '' %>>
+            Theme Configurator
+          </option>
+          <option value="/admin/configurator/register?<%=get_config_params%>"
+                  <%= is_registration_configurator? ? 'selected=selected' : '' %>>
+            Register Landing
+          </option>
+          <option value="/admin/configurator/kyc-form?<%=get_config_params%>"
+                  <%= is_kyc_configurator? ? 'selected=selected' : '' %>>
+            KYC Form
+          </option>
+          <option value="/admin/configurator/dashboard?<%=get_config_params%>"
+                  <%= is_dashboard_configurator? ? 'selected=selected' : '' %>>
+            User Dashboard
+          </option>
+        </select>
+      </div>
+      <button id="next-item-btn" class="navigation-btn btn float-left p-0 <%= is_last_configurator_page? ? 'btn-disabled' : '' %>">
+        <svg class="nav-svg align-middle" style="width: 26px;height: 26px;">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-icon"></use>
+          </switch>
+        </svg>
+      </button>
+    </div>
+    <!--TODO backend integration end-->
+
+    <div class="next-previous-wrap mr-3 d-flex align-items-center">
+      <button id="copy-shareable-link-btn" class="btn btn-secondary font-weight-normal">Copy Url</button>
+      <button id="publish-configurator-changes" class="btn btn-primary font-weight-normal ml-3">Publish</button>
+    </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown nav-products">
+        <a class="nav-link hamburger ml-2" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <ul class="dropdown-menu mega-dropdown-menu text-left px-2 pt-3" style="left: -148px;top: 60px;min-width: 200px;box-shadow: 0.5px 1px 2.5px 0 rgba(0, 0, 0, 0.22);border: none;">
+          <li id="reset-configurator-changes">
+            <a href="javascript:void(0)" title="Discard Changes">Reset</a>
+          </li>
+          <li>
+            <a href="/admin/dashboard" title="Go To KYC Dashboard">Go To KYC Dashboard</a>
+          </li>
+          <li>
+            <a href="/admin/logout" title="Logout">Logout</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,219 @@
+@import "admin/simple_token_theme_admin/variables";
+
+.invalid-feedback{
+  margin-top: 0;
+  min-height: 16px;
+  font-size: 0.7rem;
+}
+
+.add-icon{
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+.card-header,
+.card-body{
+  .config-info-icon{
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .edit-svg{
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+  }
+  .upload-svg{
+    cursor: pointer;
+    height: 22px;
+    width: 22px;
+  }
+  .input-number{
+    width: 45px;
+    height: 25px;
+    text-align: center;
+  }
+  .move-icon{
+    height: 15px;
+    width: 18px;
+    cursor: pointer;
+    display: inline-block;
+  }
+}
+
+.card-footer{
+  background-color: $white;
+}
+
+.dropdown-menu{
+  z-index: 99;
+}
+
+.accordion-content-wrapper{
+  label{
+    color: $blue-900;
+    letter-spacing: $letter-spacing;
+    text-transform: capitalize;
+  }
+  .form-group{
+    padding-top: 1rem;
+    border-top: solid 1px $custom-grey-7;
+    &:first-child{
+      padding-top: 0;
+      border-top: none;
+    }
+  }
+
+  textarea, input{
+    width: 100%;
+    border-radius: $border-radius-sm;
+    padding: 10px;
+    background-color: $white;
+    border: solid 1px $custom-grey-7;
+    letter-spacing: 0.2px;
+    color: $blue-800;
+    font-size: $display4-size;
+    font-weight: $font-weight-light;
+    &:focus{
+      outline: none;
+    }
+  }
+  .radio-button-label{
+    font-size: $display4-size;
+    color: $blue-800;
+    font-weight: $font-weight-normal;
+    .label{
+      line-height: 22px;
+    }
+  }
+}
+
+.tooltip{
+  &.fade.show{
+    opacity: 1;
+  }
+  &.bs-tooltip-top{
+    .arrow{
+      &:before{
+        border-top-color: $white;
+      }
+    }
+  }
+  &.bs-tooltip-left{
+    .arrow{
+      &:before{
+        border-left-color: $white;
+      }
+    }
+  }
+  &.bs-tooltip-right{
+    .arrow{
+      &:before{
+        border-right-color: $white;
+      }
+    }
+  }
+  &.bs-tooltip-bottom{
+    .arrow{
+      &:before{
+        border-bottom-color: $white;
+      }
+    }
+  }
+  .tooltip-inner {
+    background-color: $white;
+    box-shadow: 0 0.5px 3px 2px rgba(50, 50, 50, 0.09);
+    padding: 5px;
+    color: $blue-800;
+    text-align: left;
+    font-weight: $font-weight-normal;
+    font-size: $display4-size;
+  }
+}
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $blue-800;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $blue-800;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $blue-800;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: $blue-800;
+}
+
+.configurator-overlay{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999999999;
+  background-color: $white;
+  background-image: url(https://dxwfxs8b4lg24.cloudfront.net/ost-kyc/images/graphic-bg.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  .gif-loader{
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.btn{
+  &.btn-disabled{
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.cms-modal{
+  p{
+    text-align: center;
+    color: $blue-800;
+    font-weight: 500;
+    font-size: 20px;
+  }
+  .modal-state-icons{
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.blured-by-modal-show{
+  filter: blur(5px);
+}
+
+.accordion-content-wrapper {
+  display: none;
+}
+
+.shown {
+  .accordion-content-wrapper {
+    display: block;
+  }
+}
+
+/*
+ popup_kyc_configuration - is the parent scope class for all the label-counter classes
+ label-counter - is the class where indexing should append
+ (Need to think over generic solution)
+*/
+
+.popup_kyc_configuration, .header_options,
+.top_banner_options, .form_field_options,
+.popup_options{
+  counter-reset: label-counter;
+  .kyc_form_popup_checkboxes, .ethereum_deposit_popup_checkboxes, .policy_texts {
+    cursor: move;
+  }
+  .label-counter{
+    counter-increment: label-counter;
+    &:after {
+      content: " #" counter(label-counter);
+    }
+  }
+}

@@ -78,8 +78,34 @@
         }
       }
 
-      oThis.validator = jForm.validate( jqValidateOptions );
 
+      var validator = oThis.validator = jForm.validate( jqValidateOptions );
+      var _org_findByName = validator.findByName;
+      validator.findByName = function ( errorKey ) {
+        var oThis = this;
+        var resultEl = _org_findByName.apply(oThis, arguments);
+        if (resultEl && resultEl.length > 0) {
+          console.log("I am here and default method found the el.\nresultEl", resultEl);
+          return resultEl;
+        }
+
+        // We have to identify the element. The original method could not find it.
+        // errorKey Formats (name and error key):
+        // Backend to frontend format
+        // a[0]     = a[]
+        // a[0][b]  = a[][b]
+        // a[][d][] = a[][d][]
+
+        var  indexArray = errorKey.match(/([0-9])+/g),
+             nameAttr	  = errorKey.replace(/([0-9])+/g,  ""),
+             indexSum	  = 0
+        ;
+        if( indexArray ){
+          indexSum = indexArray.reduce( function(a, b){ return Number(a) + Number(b) } ,  indexSum ) ;
+        }
+        resultEl = $("[name='" + nameAttr + "']").eq(indexSum);
+        return resultEl;
+      }
     }
 
     /* END: Form Validity Properties and methods. */
@@ -345,6 +371,23 @@
       try {
         var oThis = this;
 
+        var validElements = oThis.validator.validElements();
+        validElements.each(function (indx, el) {
+          var jEl = $(el);
+
+          var jError = jEl.parent()
+            .find(".invalid-feedback")
+          ;
+          if ( !jError.length ) {
+            jError = jEl.closest(".form-group")
+              .find(".invalid-feedback")
+            ;
+          }
+
+          jEl.removeClass("is-invalid");
+          jError.removeClass("is-invalid");
+        });
+
         $.each(arrayData, function(indx, errorData ) {
           if ( errorData.element ) {
             var jEl = $( errorData.element );
@@ -364,22 +407,6 @@
           }
         });
 
-        var validElements = oThis.validator.validElements();
-        validElements.each(function (indx, el) {
-          var jEl = $(el);
-
-          var jError = jEl.parent()
-            .find(".invalid-feedback")
-          ;
-          if ( !jError.length ) {
-            jError = jEl.closest(".form-group")
-              .find(".invalid-feedback")
-            ;
-          }
-
-          jEl.removeClass("is-invalid");
-          jError.removeClass("is-invalid");
-        });
       } catch( ex ) {
         //Keep the try catch. Please :) ~ Rachin Kapoor
         console.log( ex );

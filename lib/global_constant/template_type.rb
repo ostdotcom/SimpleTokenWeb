@@ -18,8 +18,8 @@ module GlobalConstant
         'login'
       end
 
-      def sign_up_template_type
-        'sign_up'
+      def registration_template_type
+        'registration'
       end
 
       def reset_password_template_type
@@ -32,6 +32,14 @@ module GlobalConstant
 
       def token_sale_blocked_region_template_type
         'token_sale_blocked_region'
+      end
+
+      def theme_template_type
+        'theme'
+      end
+
+      def dashboard_template_type
+        'dashboard'
       end
 
     end

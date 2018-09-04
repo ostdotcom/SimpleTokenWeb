@@ -529,3 +529,93 @@ en:
           :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
       :assets:
         :specific_js_required: 1
+
+  admin/configurator:
+    theme:
+      :meta:
+        :title: 'KYC Configurator'
+        :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token'
+        :name: 'Simple Token'
+        :robots: 'index, follow'
+        :og:
+          :title: 'KYC Configurator'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :type: 'website'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'KYC Configurator'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+      :assets:
+        :specific_css_required: 1
+        :specific_js_required: 1
+    kyc_form:
+      :meta:
+        :title: 'KYC Configurator'
+        :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token'
+        :name: 'Simple Token'
+        :robots: 'index, follow'
+        :og:
+          :title: 'KYC Configurator'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :type: 'website'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'KYC Configurator'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+      :assets:
+        :specific_css_required: 1
+        :specific_js_required: 1
+    register:
+      :meta:
+        :title: 'KYC Configurator'
+        :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token'
+        :name: 'Simple Token'
+        :robots: 'index, follow'
+        :og:
+          :title: 'KYC Configurator'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :type: 'website'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'KYC Configurator'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+      :assets:
+        :specific_js_required: 1
+        :specific_css_required: 1
+    dashboard:
+      :meta:
+        :title: 'KYC Configurator'
+        :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+        :canonical: '%{canonical}'
+        :keywords: 'Simple Token'
+        :name: 'Simple Token'
+        :robots: 'index, follow'
+        :og:
+          :title: 'KYC Configurator'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :type: 'website'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+          :url: '%{og_url}'
+        :twitter:
+          :card: 'summary_large_image'
+          :title: 'KYC Configurator'
+          :description: 'Simple Token is the bridge between cryptocurrencies and consumer apps. Learn more about the Token Sale starting November 14.'
+          :image: 'https://d36lai1ppm9dxu.cloudfront.net/assets/fav-icon/Simple-Token-og-v1.png'
+      :assets:
+        :specific_js_required: 1
+        :specific_css_required: 1

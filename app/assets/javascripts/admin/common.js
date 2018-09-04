@@ -9,4 +9,6 @@
 //= require plugins/helpers/ajaxHooks
 //= require plugins/helpers/utilities
 //= require plugins/bootstrap-slider/bootstrap-slider
+//= require plugins/bootstrap_select/bootstrap-select
+//= require plugins/handlebars/handlebars
 //= require web/common/UtmHelper

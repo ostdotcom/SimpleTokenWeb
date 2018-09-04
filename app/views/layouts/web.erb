@@ -65,6 +65,7 @@
 
 
 
+
     </script>
 
     <script type="application/ld+json">
@@ -86,6 +87,7 @@
 
 
 
+
     </script>
   <% end %>
 
@@ -93,13 +95,13 @@
 
   <script src="https://use.typekit.net/lde7yjs.js"></script>
   <script>
-    window.name = "<%= [*('A'..'Z')].sample(8).join %>";
-    try {
-      Typekit.load({
-        async: true
-      });
-    } catch (e) {
-    }
+      window.name = "<%= [*('A'..'Z')].sample(8).join %>";
+      try {
+          Typekit.load({
+              async: true
+          });
+      } catch (e) {
+      }
   </script>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
@@ -126,30 +128,69 @@
   <%= stylesheet_link_tag 'web/default_simple_token' %>
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
-    <% if !is_simple_token_specific_page? %>
+  <% if !is_simple_token_specific_page? %>
 
-      <% if @presenter_obj.gtm_pixel.present? %>
-        <%= render :partial => "/shared/web/thirdparty/gtm_config.erb", locals: {gtm_id: @presenter_obj.gtm_pixel['id']} %>
-      <% end %>
-
-      <% if @presenter_obj.fb_pixel.present? %>
-        <%= render :partial => "/shared/web/thirdparty/fb_config.erb" %>
-      <% end %>
-
+    <% if @presenter_obj.gtm_pixel.present? %>
+      <%= render :partial => "/shared/web/thirdparty/gtm_config.erb", locals: {gtm_id: @presenter_obj.gtm_pixel['id']} %>
     <% end %>
 
-  <% if ['web/user::update_kyc_form', 'web/user::add_kyc_form', 'web/user::login', 'web/user::sign_up', 'web/home::partners'].include?("#{params[:controller]}::#{params[:action]}") %>
+    <% if @presenter_obj.fb_pixel.present? %>
+      <%= render :partial => "/shared/web/thirdparty/fb_config.erb" %>
+    <% end %>
+
+  <% end %>
+
+  <% if [
+      'web/user::update_kyc_form',
+      'web/user::add_kyc_form',
+      'web/user::login',
+      'web/user::sign_up',
+      'web/home::partners',
+      'admin/home::user_preview_pages'
+  ].include?("#{params[:controller]}::#{params[:action]}") %>
     <script src="https://www.google.com/recaptcha/api.js"></script>
   <% end %>
 
 
   <% if !is_simple_token_specific_page? %>
     <style>
-      <%= raw @presenter_obj.primary_button_style %>
-      <%= raw @presenter_obj.secondary_button_style %>
-      <%= raw @presenter_obj.background_gradient_style %>
+      .btn-primary {
+        border-color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_border_color] %>;
+        background: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_background_color] %>;
+        color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_text_color] %>
+      }
+
+      .btn-primary.hover-cls, .btn-primary.active-cls, .btn-primary:hover, .client-primary-btn:active {
+        color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_text_color_active] %> !important;
+        text-decoration: none !important;
+        background-color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_background_color_active] %> !important;
+        border-color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_border_color_active] %> !important
+      }
+
+      .btn-secondary {
+        border-color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_border_color] %>;
+        background: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_background_color] %>;
+        color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_text_color] %>
+      }
+
+      .btn-secondary.hover-cls, .btn-secondary.active-cls, .btn-secondary:hover, .client-secondary-btn:active {
+        color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_text_color_active] %> !important;
+        text-decoration: none !important;
+        background-color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_background_color_active] %> !important;
+        border-color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_border_color_active] %> !important
+      }
+
+      .bg-gradient {
+        background: linear-gradient(to bottom, <%= @presenter_obj.background_gradient_text %> )
+      }
     </style>
 
+  <% end %>
+
+  <!--IMP this code should be only rendered in iframe and @preview_template mode start-->
+  <!--Modal close icon and modal-content needs to be disabled explicitly-->
+  <% if @preview_template.present? %>
+    <style> body:active, .modal .modal-content:active,  .modal .close, input, .g-recaptcha{ pointer-events: none;}</style>
   <% end %>
 
 </head>
@@ -157,18 +198,18 @@
 <body contenteditable="false">
 
 
-  <% if !is_simple_token_specific_page? && @presenter_obj.gtm_pixel.present? %>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<%= @presenter_obj.gtm_pixel['id'] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-  <% end %>
+<% if !is_simple_token_specific_page? && @presenter_obj.gtm_pixel.present? %>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<%= @presenter_obj.gtm_pixel['id'] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+<% end %>
 
 
-<main id="site-content">
+<main id="site-content" class="<%= yield (:gradient_class) %>">
 
-  <div class="main-content <%= yield (:gradient_class) %>">
+  <div class="main-content">
     <%= yield %>
   </div>
 
@@ -179,18 +220,23 @@
 </main>
 
 
-  <!--IMPORTANT Footer should always be outside site content start-->
-  <% if !is_simple_token_specific_page? %>
-    <%= render :partial => "/shared/web/common/kycaas_footer" %>
-  <% else %>
-    <%= render :partial => "/shared/web/common/footer" %>
-  <% end %>
+<!--IMPORTANT Footer should always be outside site content start-->
+<% if !is_simple_token_specific_page? %>
+  <%= render :partial => "/shared/web/common/kycaas_footer" %>
+<% else %>
+  <%= render :partial => "/shared/web/common/footer" %>
+<% end %>
 <!--IMPORTANT Footer should always be outside site content start-->
 
 <%= javascript_include_tag "web/common-user" %>
 <%= javascript_include_tag "#{specific_manifest_file_path}" if has_specific_js_manifest_file? %>
 
 <%= yield(:end_js) %>
+
+
+
+
+<%= yield(:preview_template_handlers) if @preview_template.present? %>
 
 </body>
 </html>

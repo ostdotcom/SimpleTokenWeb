@@ -1,0 +1,32 @@
+<script type="text/x-handlebars-template" id="ost-input-toggle">
+  <div class="row form-group ost-input-toggle-wrap {{entityKey}}">
+    <div class="col-8 align-self-center">
+      <div class="form-label mb-0">
+        <label class="align-middle mb-0">{{label}}</label>
+      </div>
+    </div>
+    <div class="col-4 text-right align-self-center">
+      <div class="switch switch--horizontal switch--no-label ml-auto">
+        <input type="radio" name="{{data_key_name}}" value="{{toggleOffValue}}" checked/>
+        <input type="radio" name="{{data_key_name}}" value="{{toggleOnValue}}" {{isToggleChecked value}}/>
+        <span class="toggle-outside">
+          <span class="toggle-inside"></span>
+        </span>
+      </div>
+    <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
+  </div>
+</script>
+
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function () {
+      Handlebars.registerHelper('isToggleChecked', function( value ,  options ) {
+        if( value == 1 ){
+          return "checked";
+        }
+        return "";
+    });
+    });
+  </script>
+<%end%>

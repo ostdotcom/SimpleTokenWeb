@@ -1,0 +1,19 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.form-configurator {
+  .form-configurator-info {
+    .kyc-header {
+      color: $yellow-500;
+    }
+    .content{
+      white-space: pre-line;
+      letter-spacing: 1px;
+    }
+    .divider{
+      border-top: 1px solid $custom-grey-7;
+    }
+    .btn{
+      word-wrap: break-word;
+      white-space: normal;
+    }
+  }
+}

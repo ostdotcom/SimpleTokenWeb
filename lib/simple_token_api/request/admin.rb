@@ -55,6 +55,21 @@ module SimpleTokenApi
         get("get-ga-url")
       end
 
+      # Get Admin preview pages
+      #
+      # * Author: Pankaj
+      # * Date: 16/08/2018
+      # * Reviewed By:
+      #
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def preview_custom_drafts(template_type, preview_group_id)
+        @service_base_route = 'admin/configurator/'
+        extra_params = {template_type: template_type, gid: preview_group_id}
+        get("preview", extra_params)
+      end
+
       # Get User info
       #
       # * Author: Aman

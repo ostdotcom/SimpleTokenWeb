@@ -4,7 +4,7 @@ class Admin::HomeController < Admin::BaseController
   before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
   before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account]
 
-  before_action :set_page_meta_info, :except => [:logout]
+  before_action :set_page_meta_info, :except => [:logout, :user_preview_pages]
 
   # Admin login
   #
@@ -473,5 +473,54 @@ class Admin::HomeController < Admin::BaseController
   #   render :json => response and return
   #
   # end
+
+  # User preview pages on admin
+  #
+  # * Author: Pankaj
+  # * Date: 16/08/2018
+  # * Reviewed By:
+  #
+  def user_preview_pages
+    entity_type = params[:entity_type]
+    template_type = get_template_from_entity(entity_type)
+
+    service_response = SimpleTokenApi::Request::Admin.new(
+        host_url_with_protocol,
+        request.cookies,
+        {"User-Agent" => http_user_agent}).preview_custom_drafts(entity_type, params[:gid])
+
+    # Check if error present or not?
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    if entity_type == GlobalConstant::TemplateType.dashboard_template_type
+      @presenter_obj = ::Web::Client::Profile.new(service_response, params)
+    else
+      @presenter_obj = ::Web::Client::Setup.new(service_response, params)
+    end
+
+    @user = service_response.data["user"] || {}
+
+    @preview_template = {controller: 'web/user', action: template_type}
+    set_page_meta_info(@presenter_obj.custom_meta_tags)
+    render template: "web/user/#{template_type}", layout: 'web' and return
+  end
+
+  def get_template_from_entity(entity_type)
+    case entity_type
+    when GlobalConstant::TemplateType.theme_template_type
+      'login'
+    when GlobalConstant::TemplateType.registration_template_type
+      'sign_up'
+    when GlobalConstant::TemplateType.kyc_template_type
+      'add_kyc_form'
+    when GlobalConstant::TemplateType.dashboard_template_type
+      'dashboard_home'
+    else
+      entity_type
+    end
+  end
 
 end

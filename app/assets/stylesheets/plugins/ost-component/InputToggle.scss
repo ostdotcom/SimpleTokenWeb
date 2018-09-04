@@ -1,0 +1,114 @@
+@import "admin/simple_token_theme_admin/variables";
+
+.ost-input-toggle-wrap {
+  .switch {
+    width: 8rem;
+    position: relative;
+    input {
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      opacity: 0;
+      cursor: pointer;
+      &:checked {
+        z-index: 1;
+        & + label {
+          opacity: 1;
+          cursor: default;
+        }
+      }
+      &:not(:checked) {
+        & + label {
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+    .toggle-outside {
+      height: 100%;
+      border-radius: 2rem;
+      padding: 0.25rem;
+      overflow: hidden;
+      transition: 0.25s ease all;
+    }
+    .toggle-inside {
+      border-radius: 5rem;
+      background-color: $blue-900;
+      position: absolute;
+      transition: 0.25s ease all;
+    }
+  }
+  .switch--horizontal {
+    width: 18rem;
+    height: 1.3rem;
+    margin: 0;
+    font-size: 0;
+    input {
+      height: 1.5rem;
+      width: 2.2rem;
+      left: 6rem;
+      margin: 0;
+      &:checked {
+        & ~ .toggle-outside {
+          .toggle-inside {
+            left: 0.25rem;
+          }
+        }
+      }
+      & ~ input {
+        &:checked {
+          & ~ .toggle-outside {
+            .toggle-inside {
+              left: 1rem;
+            }
+          }
+        }
+      }
+    }
+
+    .toggle-outside {
+      background-color: #34445b;
+      position: absolute;
+      width: 2.2rem;
+      left: 6rem;
+    }
+    .toggle-inside {
+      height: 1rem;
+      width: 1rem;
+      top: 2.5px;
+    }
+  }
+  .switch--no-label {
+
+    input {
+      &:checked {
+        & ~ .toggle-outside {
+          .toggle-inside {
+            background: $white;
+            border: 1px solid rgba(0,0,0,0.2);
+          }
+        }
+      }
+      & ~ input {
+        &:checked {
+          & ~ .toggle-outside {
+            background: #34445b;
+            .toggle-inside {
+              background: $white;
+            }
+          }
+        }
+      }
+    }
+    &.switch--horizontal {
+      width: 2.5rem;
+      top: 6px;
+    }
+  }
+  .switch--no-label.switch--horizontal input,
+  .switch--no-label.switch--horizontal .toggle-outside {
+    left: 0;
+  }
+
+}

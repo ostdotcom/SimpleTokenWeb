@@ -1,0 +1,38 @@
+<script type="text/x-handlebars-template" id="ost-input-number">
+  <div class="row form-group input-number-wrap {{entityKey}}">
+    <div class="col-9 align-self-center">
+      <div class="form-label mb-0">
+        <label class="align-middle mb-0">{{label}}</label>
+        {{#ifTooltip tooltip}}
+        <span data-toggle="tooltip" title="{{tooltip}}" class='config-info-icon align-middle'>
+            <svg class="config-info-icon">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+              </switch>
+            </svg>
+          </span>
+        {{/ifTooltip}}
+      </div>
+    </div>
+    <div class="col-3 text-right align-self-center">
+      <input class="input-number py-0 px-1"
+             {{isRequired validations.required validations.min}}
+             {{#validations.min}} min="{{this}}" {{/validations.min}}
+             {{#validations.max}} max="{{this}}" {{/validations.max}}
+             type='number'
+             name="{{data_key_name}}"
+             value="{{value}}" />
+    </div>
+    <div class="invalid-feedback col-12" data-forname="{{data_key_name}}"></div>
+  </div>
+</script>
+
+
+<% content_for :ost_components do %>
+  <script type="text/javascript">
+    $(function () {
+
+    });
+  </script>
+<%end%>
+
