@@ -579,6 +579,7 @@
           jDeleteEl = jEL.closest( sDeleteEl )
       ;
       jDeleteEl.remove();
+      oThis.setConfiguratorChangedFlag( true );
       return jDeleteEl;
     },
 
@@ -762,6 +763,7 @@
         if( entityKey ){
           entityConfig = formBuilder.getEntityConfig( entityKey );
           formBuilder.buildEntity( entityConfig , jWrapper);
+          oThis.setConfiguratorChangedFlag( true );
           if( callback && typeof callback == 'function' ){
             callback( $(this) );
           }
