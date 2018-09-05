@@ -53,7 +53,10 @@ export class SaleSettingsComponent implements OnInit {
       response => {
         let res = response.json();
         if(res.success){
-          console.log("success");
+          let saleStartTimestamp = Date.now(),
+              saleEndTimestamp = Date.now();
+
+          this.updateDateTimeValues(saleStartTimestamp, saleEndTimestamp );
           this.stateHandler.updateRequestStatus(this, false,false);
         }
         else{
@@ -64,6 +67,17 @@ export class SaleSettingsComponent implements OnInit {
         let err = error.json();
         this.stateHandler.updateRequestStatus(this, false,true, false, err);
       })
+  }
+
+  updateDateTimeValues(saleStartTimestamp, saleEndTimestamp){
+    this.startDate = this.getFormattedDate(new Date(saleStartTimestamp));
+    this.endDate = this.getFormattedDate(new Date(saleEndTimestamp));
+
+    this.startHour = new Date(saleStartTimestamp).getHours().toString();
+    this.startMin = new Date(saleStartTimestamp).getMinutes().toString();
+
+    this.endHour = new Date(saleEndTimestamp).getHours().toString();
+    this.endMin = new Date(saleEndTimestamp).getMinutes().toString();
   }
 
   initDatePicker() {
@@ -91,7 +105,7 @@ export class SaleSettingsComponent implements OnInit {
       format: 'yyyy-mm-dd',
       autoclose: true,
       clearBtn: true,
-      startDate: this.getCurrentFormattedDate(),
+      startDate: this.getFormattedDate(new Date()),
       defaultViewDate: defaultDate
     }
     return config;
@@ -144,18 +158,19 @@ export class SaleSettingsComponent implements OnInit {
     return Date.parse(formattedDate);
   }
 
-  getCurrentFormattedDate() {
-  let currentDate = new Date(),
-      date,
-      month;
+  getFormattedDate( fullDate ) {
+  let formattedDate,
+      date = fullDate.getDate().toString(),
+      month = (fullDate.getMonth()+1).toString();
 
-  if(currentDate.getDate()<10){
-    date ='0'+currentDate.getDate().toString();
+  if(fullDate.getDate()<10){
+    date ='0'+date;
   }
-  if(currentDate.getMonth()<10){
-    month ='0'+(currentDate.getMonth()+1).toString();
+  if(fullDate.getMonth()<10){
+    month ='0'+month;
   }
-  return currentDate.getFullYear().toString()+'-'+month+'-'+date;
+  formattedDate =  fullDate.getFullYear().toString()+'-'+month+'-'+date;
+  return formattedDate;
   }
 
   validate(event){
