@@ -52,7 +52,7 @@
 
      company_logo : {
        'label'          : "Masthead Logo",
-       'tooltip'        : "Upload your Company Logo. Image format: PNG, JPEG. (Max Width-250 px)",
+       'tooltip'        : "Upload your Company Logo. (Max 2MB, JPG/PNG only.)",
        'signed_url'     : "/api/admin/configurator/upload-params",
        'title'          : "File Upload",
        "inputType"      : inputTypesEnum.file
