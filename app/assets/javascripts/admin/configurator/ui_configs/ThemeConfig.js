@@ -67,7 +67,7 @@
      company_favicon   : {
        'label'          : "Favicon",
        'signed_url'     : "/api/admin/configurator/upload-params",
-       'tooltip'        : "Use a square image for best results. (Max 200KB, JPG/PNG only.)",
+       'tooltip'        : "Use a square image for best results. (Max 200KB, JPG/PNG/ICO only.)",
        'title'          : "File Upload",
        "inputType"      : inputTypesEnum.file
      },
