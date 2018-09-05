@@ -1,0 +1,104 @@
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="error-content">
+    <div class="col-12">{{ errorMessage }}</div>
+  </ng-container>
+</request-state-handler>
+
+<div class="sale-settings" *ngIf="!isProcessing && !hasError">
+  <div class="sale-info">
+    <div class="row mt-4 pt-2 ">
+      <div class="col-12 col-lg-6">
+        <h4 class="kyc-header text-transform-upper">Sale Settings</h4>
+      </div>
+    </div>
+    <div class="row mt-3 sale-header">
+      <div class="col-12">
+          Public Sale
+      </div>
+    </div>
+    <div class="row mt-1 sale-sub-header">
+      <div class="col-12">
+        Time is shown in UTC (Universal Time Coordinated) only. Please bear that in mind when setting the time.
+      </div>
+    </div>
+    <div class="row mt-4">
+      <form #saleSettings="ngForm" autocomplete="off" class="sale-form col-12 col-md-5" (ngSubmit)="submitSaleSettingsForm(saleSettings)" id="saleSettingsForm">
+        <fieldset ngModelGroup="startDateTime" #startDateTime="ngModelGroup">
+          <div class="form-group row" >
+            <div class="col-12">
+              <div class="row align-items-center">
+                <div class="col-12 col-md-2">
+                  <label class="form-label">From</label>
+                </div>
+                <div class="col-12 col-md-4">
+                  <input type="text" [(ngModel)]="startDate" name="startDate" class="form-control saleStartDate" placeholder="dd/mm/yyyy" required/>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="timeSpan">
+                    <input type="number" min=0 max=12 [(ngModel)]="startHour" name="startHour"
+                           (keydown)="validate($event)" class="border-0 text-center float-left h-100 hour"
+                           placeholder="hh" required/>
+                    <span class="separator float-left"></span>
+                    <input type="number" min=0 max=59 [(ngModel)]="startMin" name="startMin"
+                           (keydown)="validate($event)"
+                           class="border-0 h-100 text-center float-left min" placeholder="mm" required/>
+                  </div>
+                </div>
+                <div class="switch-field col-6 col-md-3 pl-0">
+                  <input type="radio" id="sLeftPostfix" name="startDatePostfix" [value]="'AM'"  [(ngModel)]="startDatePostfix" checked/>
+                  <label for="sLeftPostfix">AM</label>
+                  <input type="radio" id="sRightPostfix" name="startDatePostfix" [value]="'PM'"  [(ngModel)]="startDatePostfix" />
+                  <label for="sRightPostfix">PM</label>
+                </div>
+              </div>
+              <div *ngIf="startDateTime.invalid" class="error">Invalid data</div>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset ngModelGroup="endDateTime" #endDateTime="ngModelGroup">
+          <div class="form-group row mt-2">
+            <div class="col-12">
+              <div class="row align-items-center">
+                <div class="col-12 col-md-2">
+                  <label class="form-label">To</label>
+                </div>
+                <div class="col-12 col-md-4">
+                  <input type="text" [(ngModel)]="endDate" name="endDate" class="form-control saleEndDate" placeholder="dd/mm/yyyy" required/>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="timeSpan">
+                    <input type="number" min=0 max=12 [(ngModel)]="endHour" name="endHour" (keydown)="validate($event)" class="border-0 text-center float-left h-100 hour" placeholder="hh" required/>
+                    <span class="separator float-left"></span>
+                    <input type="number" min=0 max=59 [(ngModel)]="endMin" name="endMin" (keydown)="validate($event)" class="border-0 h-100 text-center float-left min" placeholder="mm" required/>
+                  </div>
+                </div>
+                <div class="switch-field col-6 col-md-3 pl-0">
+                  <input type="radio" id="eLeftPostfix" name="endDatePostfix" [value]="'AM'"  [(ngModel)]="endDatePostfix" checked/>
+                  <label for="eLeftPostfix">AM</label>
+                  <input type="radio" id="eRightPostfix" name="endDatePostfix" [value]="'PM'"  [(ngModel)]="endDatePostfix" />
+                  <label for="eRightPostfix">PM</label>
+                </div>
+              </div>
+              <div *ngIf="endDateTime.invalid" class="error">Invalid data</div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group user-form-footer text-center text-sm-left row mt-5">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary mb-3 mb-xl-0"
+                    id="applyChanges" tabindex="3"
+                    title="APPLY">Apply
+            </button>
+            <button type="reset" class="btn btn-secondary ml-xl-3 mb-3 mb-xl-0">
+              Clear
+            </button>
+          </div>
+          <div class="general_error error text-center col-12">
+            <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">
+            </ost-form-error-handler>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

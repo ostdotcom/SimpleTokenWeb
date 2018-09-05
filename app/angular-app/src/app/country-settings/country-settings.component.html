@@ -1,0 +1,82 @@
+<div class="country-settings" >
+  <div class="country-info">
+    <div class="row mt-4 pt-2 ">
+      <div class="col-12 col-lg-6">
+        <h4 class="kyc-header text-transform-upper">Country Settings</h4>
+      </div>
+      <div class="col-12 col-lg-6">
+        <button class="btn btn-primary download-csv-btn" (click)="downloadList()">Download List</button>
+      </div>
+    </div>
+    <div class="row">
+      <form #countrySettings="ngForm" (ngSubmit)="countrySettingsSubmit(countrySettings)" class="col-12" method="POST"
+            id="countrySettingsForm">
+        <div class="mt-3 country-sub-header">
+          It is possible to block IP for certain countries that shall not be granted access to the token sale by selecting the countries below.
+        </div>
+        <div class="form-group blacklisted_countries mt-3 col-md-6 col-12">
+          <label class="form-label" for="blacklisted_countries">Blacklisted Countries</label>
+          <!--<input type="text"  class="form-control" ngModel #blacklisted_countries="ngModel" name="blacklisted_countries" title="blacklisted countries"-->
+                 <!--tabindex="1"/>-->
+          <div class="wrapper">
+            <div class="selectionList">
+              <ng-container *ngFor="let option of blackListedList">
+                <label class="float-left mr-3">
+                  <span class="float-right" (click)="deleteFromBlackList(option)">X</span>
+                  <div>{{option}}</div>
+                </label>
+              </ng-container>
+            </div>
+            <div class="optionList">
+              <div class="optionsHeader px-2 py-2">
+                ALL COUNTRIES
+              </div>
+              <div class="options">
+                <ng-container *ngFor="let option of countryList">
+                  <div>
+                    <input type="checkbox" (click)="updateBlackList(option, $event)" value="{{option}}">{{option}}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <ost-form-error-handler [errorFor]="blacklisted_countries"
+                                  [fieldName]="'Blacklisted Countries'"
+                                  [serverError]="errorResponse">
+          </ost-form-error-handler>
+        </div>
+
+        <div class="divider col-12"></div>
+
+        <div class="mt-3 country-sub-header">
+          It is possible to request additional Proof of Nationality documentation for certain nationalities by selecting the countries below.
+        </div>
+        <div class="form-group nationalities mt-3 col-md-5 col-12">
+          <label class="form-label" for="nationalities">Residency Proof Nationalities</label>
+          <input type="text"  class="form-control" ngModel #nationalities="ngModel" name="nationalities" title="residency proof nationalities"
+                 tabindex="2"/>
+          <ost-form-error-handler [errorFor]="blacklisted_countries"
+                                  [fieldName]="'Blacklisted Countries'"
+                                  [serverError]="errorResponse">
+          </ost-form-error-handler>
+        </div>
+
+        <div class="form-group user-form-footer text-center text-sm-left row mt-4">
+          <div class="col-12">
+            <button [disabled]="!countrySettings.valid" type="submit" class="btn btn-primary mb-3 mb-xl-0"
+                    id="applyChanges" tabindex="3"
+                    title="Apply Changes">Apply
+            </button>
+            <button type="reset" tabindex="4" class="btn btn-secondary ml-xl-3 mb-3 mb-xl-0">
+              Clear
+            </button>
+          </div>
+          <div class="general_error error text-center col-12">
+            <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">
+            </ost-form-error-handler>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
