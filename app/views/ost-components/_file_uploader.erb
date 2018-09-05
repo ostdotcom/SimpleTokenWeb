@@ -34,7 +34,7 @@
           <input id="{{generateId true}}" class="file-upload-mocker not-in-view" type='file' name="{{data_key_name}}_mocker"
                  {{#validations.min_bytes}} data-min-bytes="{{this}}" {{/validations.min_bytes}}
                  {{#validations.max_bytes}} data-max-bytes="{{this}}" {{/validations.max_bytes}}
-                 {{#validations.accept}} accept="{{getAccept this}}" {{/validations.accept}}
+                 {{#validations.accept}} accept="{{getAccept ../validations.accept}}" {{/validations.accept}}
                  data-get-signed-url="{{signed_url}}"/>
 
           <input class="not-in-view" name="{{data_key_name}}" value="{{value}}" type="text"
