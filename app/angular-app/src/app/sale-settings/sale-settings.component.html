@@ -7,33 +7,23 @@
 <div class="sale-settings" *ngIf="!isProcessing && !hasError">
   <div class="sale-info">
     <div class="row mt-4 pt-2 ">
-      <div class="col-12 col-lg-6">
-        <h4 class="kyc-header text-transform-upper">Sale Settings</h4>
-      </div>
-    </div>
-    <div class="row mt-3 sale-header">
       <div class="col-12">
-          Public Sale
-      </div>
-    </div>
-    <div class="row mt-1 sale-sub-header">
-      <div class="col-12">
-        Time is shown in UTC (Universal Time Coordinated) only. Please bear that in mind when setting the time.
+        <h4 class="kyc-header">Sale Setting</h4>
+	      <div class="sale-header mt-3">Public Sale</div>
+	      <div class="sale-sub-header mt-1">Time is shown in UTC (Universal Time Coordinated) only. Please bear that in mind when setting the time.</div>
       </div>
     </div>
     <div class="row mt-4">
-      <form #saleSettings="ngForm" autocomplete="off" class="sale-form col-12 col-md-5" (ngSubmit)="submitSaleSettingsForm(saleSettings)" id="saleSettingsForm">
+      <form #saleSettings="ngForm" autocomplete="off" class="sale-form col-12 col-md-7 col-lg-6 col-xl-5" (ngSubmit)="submitSaleSettingsForm(saleSettings)" id="saleSettingsForm">
         <fieldset ngModelGroup="startDateTime" #startDateTime="ngModelGroup">
           <div class="form-group row" >
             <div class="col-12">
               <div class="row align-items-center">
-                <div class="col-4 col-md-2">
-                  <label class="form-label">From</label>
-                </div>
-                <div class="col-5 col-md-4">
+                <label class="form-label font-weight-normal col-2 mb-0 date-label">From</label>
+                <div class="col-5 col-md-5 date-icon">
                   <input type="text" [(ngModel)]="startDate" name="startDate" class="form-control saleStartDate" placeholder="dd/mm/yyyy" required/>
                 </div>
-                <div class="col-3 col-md-3">
+                <div class="col-4 col-md-4">
                   <div class="timeSpan">
                     <input type="number" min=0 max=23 [(ngModel)]="startHour" name="startHour"
                            (input)="validate( $event, 'startHour' )" class="border-0 text-center float-left h-100 hour"
@@ -53,13 +43,11 @@
           <div class="form-group row mt-2">
             <div class="col-12">
               <div class="row align-items-center">
-                <div class="col-4 col-md-2">
-                  <label class="form-label">To</label>
-                </div>
-                <div class="col-5 col-md-4">
+                <label class="form-label font-weight-normal col-2 mb-0 date-label">To</label>
+	              <div class="col-5 col-md-5">
                   <input type="text" [(ngModel)]="endDate" name="endDate" class="form-control saleEndDate" placeholder="dd/mm/yyyy" required/>
                 </div>
-                <div class="col-3 col-md-3">
+	              <div class="col-4 col-md-4">
                   <div class="timeSpan">
                     <input type="number" min=0 max=23 [(ngModel)]="endHour" name="endHour" 
                     (keydown)="validate($event, 'endHour')" class="border-0 text-center float-left h-100 hour" placeholder="hh" required/>
@@ -73,13 +61,13 @@
             <div class="error col-12">{{saleEndDateError}}</div>
           </div>
         </fieldset>
-        <div class="form-group user-form-footer text-center text-sm-left row mt-2">
+        <div class="form-group user-form-footer text-center text-sm-left row mt-4">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary mb-3 mb-xl-0"
+            <button type="submit" class="btn btn-primary mb-3 mb-xl-0 px-5"
                     id="applyChanges" tabindex="3"
                     title="APPLY">{{btnText}}
             </button>
-            <button type="reset" class="btn btn-secondary ml-xl-3 mb-3 mb-xl-0">
+            <button type="reset" class="btn btn-secondary ml-xl-3 mb-3 mb-xl-0 px-5">
               Clear
             </button>
           </div>
