@@ -6,6 +6,7 @@
       iframe              = ns('ost.ostIframe'),
       uiConfigConstants   = ns('ost.uiConfigConstants'),
       richTextEditor      = ns('ost.richTextEditor'),
+      lengthMocker        = ns('ost.lengthMocker'),
       oThis
   ;
 
@@ -17,6 +18,7 @@
 
   oSTNs.configuratorHelper = oThis = {
     jForm       : $('#configurator-form'),
+    jFormBtn    : $('#save-and-preview-btn-click'),
     formHelper  : null,
 
     jFormGeneralError   : $('#configurator-general-error'),
@@ -101,6 +103,7 @@
         formBuilder.init( data );
         oThis.checkForAccordions();
         oThis.initCommonSettings();
+        lengthMocker.setInitialLengths();
         oThis.bindEvents();
         if( callback ){
           callback( data );
@@ -164,7 +167,7 @@
         $('#reset-configurator-changes').show();
       }
       if( canPublish ){
-        $('#publish-changes-btn').show();
+        $('#publish-configurator-changes').show();
       }
       iframe.loadUrlInIframe( oThis.initConfig.iframeUrl );
     },
@@ -255,11 +258,13 @@
 
     onCmsExitConfirmationBtnClick : function () {
       oThis.setConfiguratorChangedFlag( false );
-      window.location.href = "/admin/dashboard" ;
+      window.location.href = "/admin/settings/form-configurator" ;
     },
 
     setConfiguratorChangedFlag : function ( value ) {
+      if(  oThis.configurationChanged == value ) return ;
       if( value != undefined ){
+        oThis.jFormBtn.prop('disabled' , !value );
         oThis.configurationChanged = value ;
       }
     },
@@ -276,11 +281,11 @@
 
     bindEvents : function () {
 
-      $('#save-and-preview-btn-click').on('click' , function () {
+      oThis.jFormBtn.on('click' , function () {
         oThis.onSaveAndPreviewClick( $(this) );
       });
 
-      oThis.jForm.on('change' , "input , textarea" , function () {
+      oThis.jForm.on('keyup change' , "input , textarea" , function () {
         oThis.setConfiguratorChangedFlag( true );
       });
 
@@ -300,8 +305,16 @@
         oThis.resetChangesClick();
       });
 
-      $('#publish-changes-btn').on('click' , function () {
+      $('#publish-configurator-changes').on('click' , function () {
         oThis.publishChangesClick();
+      });
+
+      $('#reset-changes-btn').on('click' , function () {
+        oThis.resetChanges();
+      });
+
+      $('#publish-changes-btn').on('click' , function () {
+        oThis.publishChanges();
       });
 
       $(window).bind("beforeunload",function(event) {
@@ -314,7 +327,7 @@
       $('.cms-modal').on('hidden.bs.modal', function () {
         var jModal          = $(this),
             jStateHandler   = jModal.find('.state-handler'),
-            jInitialHandler = jModal.find('.processing-state')
+            jInitialHandler = jModal.find('.pre-state')
         ;
         jStateHandler.hide();
         jInitialHandler.show();
@@ -346,8 +359,8 @@
      */
 
     initFormHelper : function () {
-      var jEl         = $('#save-and-preview-btn-click'),
-          jErrorModal = $('#issues-while-submitting'),
+      var jEl         = oThis.jFormBtn,
+          jModal      = $('#issues-while-submitting'),
           jForm       = oThis.jForm
       ;
       oThis.formHelper  = jForm.formHelper({
@@ -363,13 +376,13 @@
           if( res.success ){
             oThis.onSaveAndPreviewSuccess( res );
           }else{
-            oThis.showFormGeneralError();
-            oThis.onRequestFailure( jErrorModal , res );
+            oThis.onSaveAndPreviewSuccessFalse(res , jModal );
           }
         },
         error: function ( jqXhr ,  error ) {
-          oThis.showFormGeneralError();
-          oThis.onRequestFailure( jErrorModal , error );
+          setTimeout( function () {
+            oThis.onSaveAndPreviewError( jModal );
+          } , 0 );
         },
         complete: function () {
           var preSubmitText   = jEl.data('pre-submit-text');
@@ -377,6 +390,31 @@
           jEl.prop( "disabled", false );
         }
       });
+    },
+
+    onSaveAndPreviewSuccessFalse: function( res , jModal ){
+      var error       = res && res.err ,
+          errData     = error && error['error_data'] ,
+          isPublished = errData && errData['is_published']
+          ;
+      if( isPublished == 1 ){
+        this.setConfiguratorChangedFlag( false );
+        jModal.find('.create-new-draft-btn').show();
+      }else {
+        oThis.showFormGeneralError();
+      }
+      oThis.onRequestFailure( jModal , res );
+    },
+
+    onSaveAndPreviewError : function ( jModal  ) {
+      var jError = oThis.jForm.find('.general_error') ,
+          errMsg = jError && jError.text(),
+          errorRes  = { err : {} }
+      ;
+      if( errMsg ) {
+        errorRes['err']['display_text'] = errMsg ;
+      }
+      oThis.onRequestFailure( jModal , errorRes );
     },
 
     initValidatorIgnoreRules : function () {
@@ -425,6 +463,10 @@
      */
 
     resetChangesClick : function () {
+      $('#reset-changes-modal').modal('show');
+    },
+
+    resetChanges : function () {
       var api       = oThis.getResetApi() ,
           jModal    = $('#reset-changes-modal')
       ;
@@ -433,19 +475,23 @@
         url: api,
         method: "POST",
         beforeSend : function () {
-          jModal.modal('show');
+          oThis.onBeforeChanges( jModal );
         },
         success : function ( res ) {
-          if( res.success ){
-            oThis.onRequestSuccess( jModal , res );
-          }else{
-            oThis.onRequestFailure(jModal , res );
-          }
+          oThis.onResetSuccess( res , jModal);
         },
         error: function (jqXhr ,  error ) {
           oThis.onRequestFailure(jModal ,  error );
         }
       });
+    },
+
+    onResetSuccess : function (res , jModal) {
+      if( res.success ){
+        location.reload();
+      }else{
+        oThis.onRequestFailure( jModal , res );
+      }
     },
 
     /*
@@ -454,8 +500,11 @@
      * params :  null
      * returns : null
      */
+    publishChangesClick : function () {
+      $('#publish-changes-modal').modal('show');
+    },
 
-    publishChangesClick : function (  ) {
+    publishChanges : function (  ) {
       var api     = oThis.getPublishApi() ,
           jModal  = $('#publish-changes-modal')
       ;
@@ -464,19 +513,40 @@
         url: api,
         method: "POST",
         beforeSend : function () {
-          jModal.modal('show');
+          oThis.onBeforeChanges( jModal );
         },
         success : function ( res ) {
-          if( res.success ){
-           oThis.onRequestSuccess( jModal ,  res );
-          }else{
-            oThis.onRequestFailure(jModal , res );
-          }
+          oThis.onPublishChangesSuccess( res , jModal );
         },
         error: function (jqXhr ,  error ) {
           oThis.onRequestFailure(jModal ,  error );
         }
       });
+    },
+
+    onPublishChangesSuccess : function ( res , jModal) {
+      if( res.success ){
+        var data      = res && res.data ,
+            clientURL = data && data['published_url'] ,
+            jClientURL
+        ;
+        if( clientURL ){
+          jClientURL = jModal.find('.client-link') ;
+          jClientURL
+            .text( clientURL )
+            .attr('href', clientURL);
+        }
+        jModal.find('.state-handler').hide();
+        jModal.find('.success-state').show();
+        $('#publish-configurator-changes').hide();
+      }else{
+        oThis.onRequestFailure(jModal , res );
+      }
+    },
+
+    onBeforeChanges : function ( jModal ) {
+      jModal.find('.state-handler').hide();
+      jModal.find('.processing-state').show();
     },
 
     /*
@@ -491,24 +561,11 @@
           errMsg  = error && error['display_text']
       ;
       if( errMsg ){
-        jModal.find('.error-message').text( errMsg );
+        jModal.find('.error-message').html( errMsg );
       }
       jModal.find('.state-handler').hide();
       jModal.find('.error-state').show();
       jModal.modal('show');
-    },
-
-    /*
-     * Called on ajax failure of publish and reset .
-     * to do if required  should have individual callbacks
-     * params :  jModal , res
-     * returns : null
-     */
-
-    onRequestSuccess : function ( jModal ,  res ) {
-      oThis.setConfiguratorChangedFlag( false );
-      location.reload();
-      jModal.modal('hide');
     },
 
     /*
@@ -522,6 +579,7 @@
           jDeleteEl = jEL.closest( sDeleteEl )
       ;
       jDeleteEl.remove();
+      oThis.setConfiguratorChangedFlag( true );
       return jDeleteEl;
     },
 
@@ -705,6 +763,7 @@
         if( entityKey ){
           entityConfig = formBuilder.getEntityConfig( entityKey );
           formBuilder.buildEntity( entityConfig , jWrapper);
+          oThis.setConfiguratorChangedFlag( true );
           if( callback && typeof callback == 'function' ){
             callback( $(this) );
           }

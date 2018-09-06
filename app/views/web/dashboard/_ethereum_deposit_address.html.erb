@@ -27,7 +27,7 @@
 
             <% if @presenter_obj.page_data.dashboard_middle_banner_title_text.present? %>
               <h4 class="header my-3 display-none middle-banner" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-gas-limit-title">
-                <%= @presenter_obj.page_data.dashboard_middle_banner_title_text %>
+                <%= raw @presenter_obj.page_data.dashboard_middle_banner_title_text %>
                 <br><small class='display-2 mt-2' style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;">
                 <%= raw @presenter_obj.page_data.dashboard_middle_banner_body_text %>
               </small>
@@ -51,7 +51,7 @@
           <% else %>
             <% if @presenter_obj.page_data.dashboard_middle_banner_title_text.present? %>
               <h4 class="header my-1 middle-banner" style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;" id="eth-gas-limit-title">
-                <%= @presenter_obj.page_data.dashboard_middle_banner_title_text %>
+                <%= raw @presenter_obj.page_data.dashboard_middle_banner_title_text %>
                 <br><small class='display-2 mt-2' style="color: <%= @presenter_obj.page_data.dashboard_middle_banner_text_color %>;">
                 <%= raw @presenter_obj.page_data.dashboard_middle_banner_body_text %>
                 </small>

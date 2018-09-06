@@ -11,7 +11,7 @@
             </p>
           </div>
             <div class="col-12 form-group text-center">
-              <button class="btn btn-secondary mt-2 mr-md-2" data-dismiss="modal">Go Back</button>
+              <button class="btn btn-secondary mt-2 mr-md-2" data-dismiss="modal">Cancel</button>
               <button class="btn btn-primary mt-2">Discard</button>
             </div>
           </div>
@@ -31,10 +31,11 @@
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#modal-error-icon"></use>
               </switch>
             </svg>
-            <p class="error-message">There was were some issues while submitting the form.<br/> Please check the errors before retrying.</p>
+            <h5 class="error-message general_error my-3">There was were some issues while submitting the form.<br/> Please check the errors before retrying.</h5>
           </div>
           <div class="col-12 form-group text-center">
-            <button class="btn btn-primary mt-2 px-5" data-dismiss="modal">OK</button>
+            <a href="/admin/settings/form-configurator" class="btn btn-secondary mr-sm-2 create-new-draft-btn">CREATE NEW DRAFT</a>
+            <button class="btn btn-primary px-5" data-dismiss="modal">OK</button>
           </div>
         </div>
       </div>
@@ -53,7 +54,7 @@
             </p>
           </div>
           <div class="col-12 form-group text-center">
-            <button class="btn btn-secondary mt-2 mr-md-2" data-dismiss="modal">Go Back</button>
+            <button class="btn btn-secondary mt-2 mr-md-2" data-dismiss="modal">Cancel</button>
             <button id="exit-cms-confirmation-btn" class="btn btn-primary mt-2 ">Exit</button>
           </div>
         </div>
@@ -67,22 +68,39 @@
     <div class="modal-content">
       <div class="modal-body p-5">
 
-        <div class="processing-state state-handler text-center p-1">
+        <div class='state-handler text-center p-1 pre-state' >
+          <h5 >You’re choosing to publish this page. <br>Are you sure?</h5>
+          <div class="col-12 form-group mt-3 text-center">
+            <button class="btn btn-secondary mt-3" data-dismiss="modal">CANCEL</button>
+            <button id="publish-changes-btn" class="btn btn-primary mr-sm-2 mt-3">CONFIRM</button>
+          </div>
+        </div>
+
+        <div class="processing-state state-handler text-center p-1" style="display: none;">
           <div class="loader-icon-wrap">
             <img class="img-fluid modal-state-icons" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
           </div>
-          <h5 class="processing-message">Publishing configurations … Please wait.</h5>
+          <h5 class="processing-message mt-3">Publishing configurations … Please wait.</h5>
         </div>
 
         <div class="success-state state-handler text-center p-1" style="display: none;">
           <div class="warning-img mb-3">
             <svg class="svg modal-state-icons">
               <switch>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-success-icon"></use>
               </switch>
             </svg>
           </div>
-          <h5 class="success-message">Your changes have been published.</h5>
+          <h5 class="success-message">
+            Changes are published and now live on <br>
+            <a target="_blank" class="client-link d-inline-block mt-1" href=""></a>
+          </h5>
+          <div class="btn-wrapper">
+            <div class="text-center mt-3">Changes can’t be made to a published version. Please create a new draft.</div>
+            <div class="col-12 form-group mt-3 text-center">
+              <button class="btn btn-primary mt-1" data-dismiss="modal">ok</button>
+            </div>
+          </div>
         </div>
 
         <div class="error-state state-handler text-center p-1" style="display: none;">
@@ -93,9 +111,11 @@
               </switch>
             </svg>
           </div>
-          <h5 class="error-message">There were some issues while publishing the configurations. Please try again after some time.</h5>
+          <h5 class="error-message general_error">There were some issues while publishing the configurations. Please try again after some time.</h5>
+          <div class="col-12 form-group mt-3 text-center">
+            <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
+          </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -106,22 +126,21 @@
     <div class="modal-content">
       <div class="modal-body p-5">
 
-          <div class="processing-state state-handler text-center p-1">
+        <div class='state-handler text-center p-1 pre-state' >
+          <h5 >All changes you have made will be lost and the
+            page will revert to the currently published version.
+            Are you sure you want to continue?</h5>
+          <div class="col-12 form-group mt-3 text-center">
+            <button class="btn btn-secondary mt-3" data-dismiss="modal">CANCEL</button>
+            <button id="reset-changes-btn"  class="btn btn-primary mr-sm-2 mt-3">RESET</button>
+          </div>
+        </div>
+
+          <div class="processing-state state-handler text-center p-1" style="display: none;">
             <div class="loader-icon-wrap">
               <img class="img-fluid modal-state-icons" src="https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/processed-loader-1.gif"/>
             </div>
-            <h5 class="processing-message">Resetting configuration … Please wait.</h5>
-          </div>
-
-          <div class="success-state state-handler text-center p-1" style="display: none;">
-            <div class="warning-img mb-3">
-              <svg class="svg modal-state-icons">
-                <switch>
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-warning-icon"></use>
-                </switch>
-              </svg>
-            </div>
-            <h5 class="success-message">Configurations have been reset to currently published version.</h5>
+            <h5 class="processing-message mt-3">Resetting configuration … Please wait.</h5>
           </div>
 
           <div class="error-state state-handler text-center p-1" style="display: none;">
@@ -132,7 +151,10 @@
                 </switch>
               </svg>
             </div>
-            <h5 class="error-message">There were some issues while resetting the configurations. Please try again after some time.</h5>
+            <h5 class="error-message general_error">There were some issues while resetting the configurations. Please try again after some time.</h5>
+            <div class="col-12 form-group mt-3 text-center">
+              <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
+            </div>
           </div>
 
       </div>

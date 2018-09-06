@@ -12,7 +12,7 @@
    "registration" : {
        "form_field_options" : {
           "header"      : "Policy Text Options",
-          "tooltip"     : "Use a square image for best results. (Min 200KB, JPG/PNG only.)",
+          "tooltip"     : "Provide mandatory criteria for user registration consent. Example: I agree to the Terms & Conditions and Privacy Policy",
           "entities"    : [ "policy_texts" ],
          "footer"      : {
            template        : "#ost-add-component-footer",

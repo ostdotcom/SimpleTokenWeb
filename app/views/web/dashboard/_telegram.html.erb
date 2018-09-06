@@ -2,7 +2,7 @@
 <div class="container-fluid container-telegram token-sale-telegram" style="background-color: <%= @presenter_obj.page_data.telegram_container_background_color %>;">
   <div class="content text-center display-2 mx-auto">
     <p style="color: <%= @presenter_obj.page_data.telegram_container_text_color %>;">Live Updates & News on the Public Token Sale</p>
-    <a href="<%= @presenter_obj.page_data.telegram_link %>" title="<%= @presenter_obj.account_name %> Telegram" class="telegram-link <%= @presenter_obj.page_data.telegram_icon_class%>" target="_blank">
+    <a href="<%= raw @presenter_obj.page_data.telegram_link %>" title="<%= @presenter_obj.account_name %> Telegram" class="telegram-link <%= @presenter_obj.page_data.telegram_icon_class%>" target="_blank">
       <div class="telegram-connect token-sale-telegram-connect">
         <div class="left-comp text-center">Learn More</div>
         <div class="right-comp text-center">on telegram</div>

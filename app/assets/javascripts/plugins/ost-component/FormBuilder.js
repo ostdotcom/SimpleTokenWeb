@@ -296,9 +296,9 @@
 
       setTimeout( function () {
         //If required passed config to binderFunction as well. Not required for now.
-        binderFunction && binderFunction( selector  );
-        lengthMocker.initLengthMocker();
-        oThis.initToolTips();
+        binderFunction && binderFunction( selector , entityConfig );
+        lengthMocker.bindLengthMocker();
+        oThis.bindToolTips();
       }, 0)
     },
 
@@ -479,7 +479,7 @@
     /*
      * Init all tooltips .
      */
-    initToolTips: function () {
+    bindToolTips: function () {
       $('[data-toggle="tooltip"]').tooltip();
     }
 
