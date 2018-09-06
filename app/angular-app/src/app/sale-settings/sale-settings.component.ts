@@ -3,6 +3,7 @@ import {OstHttp} from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 
 import {FormsModule} from '@angular/forms';
+import { endTimeRange } from '../../../node_modules/@angular/core/src/profile/wtf_impl';
 
 declare var $:any;
 
@@ -12,52 +13,49 @@ declare var $:any;
   styleUrls: ['./sale-settings.component.scss']
 })
 export class SaleSettingsComponent implements OnInit {
-  errorResponse = null;
-  hasError: boolean =false;
-  isProcessing: boolean =false;
-  errorMessage: string;
-  startHour : string;
-  startMin : string;
-  startDatePostfix : string;
-  endHour : string;
-  endMin : string;
-  endDatePostfix : string;
-  startDate : string;
-  endDate : string;
+
+  hasError      : boolean = false;
+  isProcessing  : boolean = true;
+  errorMessage  : string  = null;
+
+  errorResponse : object  = null;
+
+  startHour     : string  = null;
+  startMin      : string  = null;
+  endHour       : string  = null;
+  endMin        : string  = null;
+  startDate     : string  = null;
+  endDate       : string  = null;
+  
+  saleStartDateError  : string = null;
+  saleEndDateError    : string = null;  
+
+  btnText : string = "Apply"; 
+
+  previous = {
+    startHour : null,
+    startMin  : null,
+    endHour   : null,
+    endMin    : null
+  };
 
   constructor(private http: OstHttp,
-
               private stateHandler : RequestStateHandlerService) {
-
-    this.startHour = '3';
-    this.startMin = '30';
-    this.startDatePostfix = 'AM';
-    this.endDatePostfix = 'AM';
-    this.endHour = '5';
-    this.endMin = '55';
-    this.startDate = '2018-09-26';
-    this.endDate ='2018-09-30';
   }
 
   ngOnInit() {
-    let context = this;
-    //this.initSaleSettingsForm();
-    setTimeout(function(){
-      context.initDatePicker();
-    }, 0);
+    this.initSaleSettingsForm();
   }
-
 
   initSaleSettingsForm() {
     this.http.get('api/admin/client/get-sale-setting').subscribe(
       response => {
-        let res = response.json();
+        let res   = response.json(), 
+            data  = res.data
+        ;
         if(res.success){
-          let saleStartTimestamp = Date.now(),
-              saleEndTimestamp = Date.now();
-
-          this.updateDateTimeValues(saleStartTimestamp, saleEndTimestamp );
-          this.stateHandler.updateRequestStatus(this, false,false);
+          this.updateDateTimeValues( data.sale_start_timestamp, data.sale_end_timestamp );
+          this.stateHandler.updateRequestStatus(this,false,false);
         }
         else{
           this.stateHandler.updateRequestStatus(this, false,true,false, res);
@@ -69,125 +67,197 @@ export class SaleSettingsComponent implements OnInit {
       })
   }
 
-  updateDateTimeValues(saleStartTimestamp, saleEndTimestamp){
-    this.startDate = this.getFormattedDate(new Date(saleStartTimestamp));
-    this.endDate = this.getFormattedDate(new Date(saleEndTimestamp));
+  updateDateTimeValues( saleStartTimestamp  , saleEndTimestamp  ){
+    let startDateObj = saleStartTimestamp && new Date(saleStartTimestamp ) ,
+        endDateObj   = saleEndTimestamp && new Date(saleEndTimestamp ) 
+    ; 
+    if( startDateObj ){
+      this.startDate  = this.getFormattedDate( startDateObj );
+      this.startHour  = this.getNormalizedValue( startDateObj.getUTCHours() );
+      this.startMin   = this.getNormalizedValue( startDateObj.getUTCMinutes() );
 
-    this.startHour = new Date(saleStartTimestamp).getHours().toString();
-    this.startMin = new Date(saleStartTimestamp).getMinutes().toString();
+      //Store it for edit invalid update
+      this.previous['startHour']  = this.startHour;
+      this.previous['startMin']   = this.startMin;
+    }
 
-    this.endHour = new Date(saleEndTimestamp).getHours().toString();
-    this.endMin = new Date(saleEndTimestamp).getMinutes().toString();
+    if( endDateObj ){
+      this.endDate  = endDateObj && this.getFormattedDate( endDateObj );
+      this.endHour  = this.getNormalizedValue( endDateObj.getUTCHours() );
+      this.endMin   = this.getNormalizedValue( endDateObj.getUTCMinutes() );
+
+      //Store it for edit invalid update
+      this.previous['endHour']  = this.endHour ;
+      this.previous['endMin']   = this.endMin ; 
+    }
+
+    setTimeout( () => {
+      this.initDatePicker();
+    })
+  }
+
+  getNormalizedValue (value ){
+    if( value < 10 ){
+      return "0"+value ;
+    }
+    return value ; 
+  }
+
+  getFormattedDate( dateObj ) {
+    let year  = dateObj.getUTCFullYear(),
+        month = this.getNormalizedValue( dateObj.getUTCMonth() + 1  ) , 
+        date  = this.getNormalizedValue( dateObj.getUTCDate() ),
+        separator = "-" , 
+        formattedDate = ""
+        ;
+    formattedDate =  year + separator + month + separator + date;
+    return formattedDate;
   }
 
   initDatePicker() {
-    let context = this,
-        config = this.getDatePickerConfig(this.startDate);
-    $('.saleStartDate').datepicker(config);
-    config = this.getDatePickerConfig(this.endDate);
-    $('.saleEndDate').datepicker(config);
+    let oThis = this,
+        startDateConfig = this.getDatePickerConfig( this.startDate ),
+        endDateConfig   = this.getDatePickerConfig( this.endDate )
+    ;
+    $('.saleStartDate').datepicker( startDateConfig );
+    $('.saleEndDate').datepicker( endDateConfig );
 
     $('.saleStartDate, .saleEndDate').on('show' , function (e) {
       e.stopPropagation();
     });
 
     $('.saleStartDate').on('changeDate' , function (e) {
-      context.updateStartDate(e.target.value);
+      oThis.startDate = e.target.value ;
     });
 
     $('.saleEndDate').on('changeDate' , function (e) {
-      context.updateEndDate(e.target.value);
+      oThis.endDate = e.target.value;
     });
   }
 
-  getDatePickerConfig(defaultDate) {
+  getDatePickerConfig( date  ) {
     let config = {
       format: 'yyyy-mm-dd',
       autoclose: true,
       clearBtn: true,
-      startDate: this.getFormattedDate(new Date()),
-      defaultViewDate: defaultDate
+      startDate: date ,
+      defaultViewDate: date
     }
     return config;
   }
 
-  updateStartDate( value ){
-    this.startDate  = value;
-  }
-
-  updateEndDate( value ){
-    this.endDate  = value;
-  }
-
   submitSaleSettingsForm(saleSettings) {
-    let params =  this.getParams(saleSettings.value);
+    if( saleSettings.invalid ) {
+      this.showFormInputErrors( saleSettings ); 
+      return false ; 
+    }else{
+      this.saleEndDateError   =  null ; 
+      this.saleStartDateError = null; 
+    }
+
+    let params = this.getParams( );
+    this.btnText = "Applying"; 
     this.http.post('api/admin/client/update-sale-setting' , {...params }  ).subscribe(
       response => {
         let res = response.json();
+        this.btnText = "Apply"; 
         if( res.success ){
-          console.log("success");
+          this.onFormSubmitSuccess( res  ); 
         }else{
           this.errorResponse = res;
+          this.onFormSubmitError( res ); 
         }
       },
       error => {
         let err = error.json();
+        this.btnText = "Apply"; 
         this.errorResponse = err;
+        this.onFormSubmitError( err ); 
       }
     )
   }
 
+  showFormInputErrors( saleSettings ) {
+    let controls      = saleSettings['controls'],
+        endDateTime   = controls.endDateTime, 
+        startDateTime = controls.startDateTime
+    ;
+    if( endDateTime.invalid ){
+      this.saleEndDateError = "Please enter a valid date & time."
+    }
+    if( startDateTime.invalid ){
+      this.saleStartDateError = "Please enter a valid date & time."
+    }
+  }
 
-  getParams(formValues) {
-    let params,
-        startDateTime = formValues.startDateTime,
-        endDateTime = formValues.endDateTime;
+  onFormSubmitSuccess( res ){
+    this.saleEndDateError   = null; 
+    this.saleStartDateError = null; 
+    $('#sale-setting-success-modal').modal('show'); 
+  }
+
+  onFormSubmitError( error ) {
+    let err       = error.err,
+        errorData = err['error_data'],
+        saleStartDateError  = errorData && errorData['sale_start_timestamp'],
+        saleEndDateError    = errorData && errorData['sale_end_timestamp']
+    ; 
+    if( saleStartDateError ){
+      this.saleStartDateError = saleStartDateError ; 
+    }
+
+    if( saleEndDateError ){
+      this.saleEndDateError = saleEndDateError ; 
+    }
+  }
+
+  getParams( ) {
+    let startTime     = this.getTime( this.startHour, this.startMin), 
+        endTime       = this.getTime( this.endHour , this.endMin  ),
+        startDateTime = this.getTimeStamp( this.startDate , startTime ), 
+        endDateTime   = this.getTimeStamp( this.endDate , endTime),
+        params
+        ;
     params = {
-      'sale_start_timestamp' : this.getTimeStamp(startDateTime.startDate, this.getTime(startDateTime.startHour, startDateTime.startMin, startDateTime.startDatePostfix)),
-      'sale_end_timestamp'   : this.getTimeStamp(endDateTime.endDate, this.getTime(endDateTime.endHour, endDateTime.endMin, endDateTime.endDatePostfix))
+      'sale_start_timestamp' : startDateTime,
+      'sale_end_timestamp'   : endDateTime
     }
     return params;
   }
 
-  getTime(hour, min, postfix) {
-    return hour+':'+min+':00'+postfix;
+  getTime(hour, min , sec?) {
+    let seprator = ":", 
+        spacer   = " ",
+        milSec   = sec || "00" 
+    ;
+    return hour + seprator + min + seprator + milSec;
   }
 
-  getTimeStamp(date, time) {
-    let formattedDate = date+'T'+time;
-    return Date.parse(formattedDate);
+  getTimeStamp(date, time, timeFormate? ) {
+    let spacer = " ",
+        format = timeFormate || "UTC",
+        formattedDate = date + spacer + time + spacer + format ;
+    return Date.parse( formattedDate );
   }
 
-  getFormattedDate( fullDate ) {
-  let formattedDate,
-      date = fullDate.getDate().toString(),
-      month = (fullDate.getMonth()+1).toString();
-
-  if(fullDate.getDate()<10){
-    date ='0'+date;
-  }
-  if(fullDate.getMonth()<10){
-    month ='0'+month;
-  }
-  formattedDate =  fullDate.getFullYear().toString()+'-'+month+'-'+date;
-  return formattedDate;
-  }
-
-  validate(event){
-    if( event.key != 'Backspace' ){
-      let newVal = event.target.value + event.key,
-          inputVal = parseInt( newVal ),
-          min = parseInt(event.target.min),
-          max = parseInt(event.target.max);
-      if(inputVal < min || inputVal > max || (typeof inputVal == 'number' && newVal.length > 2)){
-        event.preventDefault();
-      }
-      if(event.target.value.length == 2){
-        let nextElement = $(event.target).next().next();
-
-        if (nextElement.length) {
-          nextElement[0].focus();
-        }
+  validate( event , modalName ) {
+    var allowedKeys = [8, 37, 38, 39, 40, 46];
+    if (allowedKeys.indexOf(event.keyCode) != -1) return true;
+    let targetEl  = event.target , 
+        newVal    = targetEl.value ,
+        inputVal  = parseInt( newVal ),
+        min       = parseInt( targetEl.min ) || 0 ,
+        max       = parseInt( targetEl.max )
+    ;
+    if( inputVal < min || ( max && inputVal > max ) || newVal.length > 2 ){
+      targetEl.value = this['previous'][modalName];
+    }else{
+      this['previous'][modalName] = inputVal ; 
+    }
+    if( newVal.length == 2 ){
+      let nextElement = $( targetEl ).next().next();
+      if (nextElement.length) {
+        nextElement[0].focus();
       }
     }
   }
