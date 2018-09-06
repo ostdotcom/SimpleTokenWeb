@@ -10,61 +10,10 @@
     .country-sub-header {
       color: #9fb3b4;
     }
-    .blacklisted_countries, .nationalities {
-      padding-left: 0px;
-    }
     .divider{
       border-top: 1px solid $custom-grey-7;
     }
-    .wrapper{
-      border: 1px solid #9fb3b4;
-      height:30rem;
-      width:100%;
-      border-radius: 4px;
-      .selectionList{
-        height: 6.5rem;
-        overflow: auto;
-        padding:1rem;
-        label {
-          width:10rem;
-          border: 1px solid $blue-800;
-          span{
-            font-size: 12px;
-            border-left: 1px solid $blue-800;
-            padding: .5rem;
-          }
-          div{
-            width: 5rem;
-            padding: .3rem;
-          }
-        }
-      }
-      .optionList{
-        height: 22rem;
-        .optionsHeader{
-          height: 2.5rem;
-          background-color: $custom-grey-7;
-          color: $blue-800;
-          text-transform: uppercase;
-          font-size: 0.75rem;
-          font-weight: 600;
-          letter-spacing: 2px;
-          line-height: 1.5rem;
-        }
-        .options{
-          overflow: auto;
-          height:20rem;
-          padding:.75rem;
-        }
-        input[type="checkbox"] {
-          display:inline;
-          opacity:1;
-          position: relative;
-          margin-right:.5rem;
-          border: 1px solid $blue-800;
-        }
-      }
-    }
+
   }
 }
 

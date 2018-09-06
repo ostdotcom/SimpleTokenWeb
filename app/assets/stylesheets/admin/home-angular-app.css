@@ -2,5 +2,8 @@
  *= require plugins/bootstrap_select/bootstrap-select.scss
  *= require admin/common/selectpicker.scss
  *= require plugins/bootstrap-datepicker/bootstrap-datepicker
+ *= require plugins/selectize/selectize
+ *= require plugins/selectize/selectize.bootstrap
+ *= require plugins/selectize/selectize-override
  *= require admin/common/angular.scss
  */
