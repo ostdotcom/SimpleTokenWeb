@@ -1,33 +1,33 @@
 @import "../../admin/simple_token_theme_admin/_variables";
 
 .selectize-wrapper {
-  .fstElement {
-    font-size: 0.7em !important;
-    border-radius: 4px;
-  }
-  .fstToggleBtn { min-width: 16.5em !important; }
-  .fstMultipleMode { display: block !important; }
-  .fstMultipleMode .fstControls { width: 100% !important; }
-  .fstResultItem.fstSelected, .fstResultItem.fstFocused {
-    background-color: $custom-grey-7 !important;
-    border-color: $white !important;
-  }
-  .option, .item, .itemDiv{
-    color: $cyanish-gray !important;
-    font-size: $display3-size !important;
-    font-weight: $font-weight-400 !important;
-  }
-  .item {
-    background-color: $white !important;
-    border-color: $custom-grey-7 !important;
-  }
-  .removeIcon{
-    color: $blue-800 !important;
-  }
-  .fstQueryInput{
-    color: #9fb3b4 !important;
-    font-weight: $font-weight-100 !important;
-    line-height: $line-height-base !important;
-    font-family: inherit !important;
+  .selectize-control {
+    .option, .item, .itemDiv{
+      color: $cyanish-gray !important;
+      font-size: $display4-size !important;
+      font-weight: $font-weight-400 !important;
+    }
+    .selectize-input > div {
+      background-color: $white !important;
+      border: 1px solid $custom-grey-7 !important;
+      padding: 0.25rem;
+      margin: 0 6px 6px 0;
+    }
+    .selectize-input {
+      border-color: $custom-grey-7 !important;
+    }
+    .selectize-input.has-items {
+      padding-top: 6px !important;
+    }
+    .selectize-input.focus {
+      border-color: #9BAFB5 !important;
+      box-shadow: none !important;
+    }
+    .item {
+      border:none !important;
+    }
+    .removeIcon{
+      color: $blue-800 !important;
+    }
   }
 }

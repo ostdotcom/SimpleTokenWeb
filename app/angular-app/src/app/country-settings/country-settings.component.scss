@@ -13,16 +13,19 @@
     .divider{
       border-top: 1px solid $custom-grey-7;
     }
-
+    .download-link , .download-link:hover, .download-link:active{
+      color: $white;
+      border-bottom: none;
+    }
+    .download-link {
+      @media (max-width: map-get($grid-breakpoints , 'lg')){
+        float: left;
+      }
+      @media (min-width: map-get($grid-breakpoints , 'lg')){
+        float: right;
+      }
+    }
   }
 }
 
-.download-csv-btn {
-  @media (max-width: map-get($grid-breakpoints , 'lg')){
-    float: left;
-  }
-  @media (min-width: map-get($grid-breakpoints , 'lg')){
-    float: right;
-  }
-}
 

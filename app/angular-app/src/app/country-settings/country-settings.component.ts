@@ -10,67 +10,45 @@ declare var $:any;
   styleUrls: ['./country-settings.component.scss']
 })
 export class CountrySettingsComponent implements OnInit {
-  errorResponse = null;
-  hasError: boolean =false;
-  isProcessing: boolean =false;
-  errorMessage: string;
-  countryList = [];
-  nationalityList = [];
-  blacklistedCountryList = [];
-  selectedNationalityList = [];
-  btnText = "Apply";
-  countrySelector = '#blacklisted_countries';
-  nationalitySelector = '#nationalities';
-  constructor(private http: OstHttp,
 
-              private stateHandler : RequestStateHandlerService) { }
+  hasError      : boolean = false;
+  isProcessing  : boolean = true;
+  errorMessage  : string  = null;
+
+  btnText       : string  = "Apply";
+  isSubmitting  : boolean = false;
+
+  countrySelector     : string  = '#blacklisted_countries';
+  nationalitySelector : string  = '#nationalities';
+
+  errorResponse       : object = null;
+
+  constructor(private http: OstHttp, private stateHandler : RequestStateHandlerService) { }
 
   ngOnInit() {
     this.init();
   }
 
   init() {
-    this.isProcessing = true;
     this.http.get('api/admin/client/get-country-setting').subscribe(
       response => {
-        let res = response.json(),
-            options;
-        if(res.success){
-          this.countryList = res.data.countires;
-          this.nationalityList = res.data.nationalities;
-          this.blacklistedCountryList = res.data.blacklisted_countries;
-          this.selectedNationalityList = res.data.residency_proof_nationalities;
-          this.initMultiSelect(this.countrySelector, {
-            valueField: 'value',
-            labelField: 'label',
-            searchField: ['label'],
-            options: this.getOptionsArray(this.countryList),
-            items: this.blacklistedCountryList,
-            render: {
-              item: function (item, escape) {
-                return '<div class="itemDiv">' +
-                  (item.label ? '<span class="item">' + escape(item.label) + '</span>' : '') +
-                  '<span class="removeIcon pl-2">x</span>' +
-                  '</div>';
-              }
-            }
-          }, this.blacklistedCountryList);
-          this.initMultiSelect(this.nationalitySelector, {
-            valueField: 'value',
-            labelField: 'label',
-            searchField: ['label'],
-            options: this.getOptionsArray(this.nationalityList),
-            items: this.selectedNationalityList,
-            render: {
-              item: function (item, escape) {
-                return '<div class="itemDiv">' +
-                  (item.label ? '<span class="item">' + escape(item.label) + '</span>' : '') +
-                  '<span class="removeIcon pl-2">x</span>' +
-                  '</div>';
-              }
-            }
-          }, this.selectedNationalityList);
-          this.stateHandler.updateRequestStatus(this, false,false);
+        let res = response.json();
+        if(res && res.success){
+
+          let data                  = res.data || {} ,
+              countryList           = data.countires,
+              nationalities         = data.nationalities,
+              blacklistedCountries  = data.blacklisted_countries,
+              resProofNationalities = data.residency_proof_nationalities
+          ;
+          let countryConfigOptions     = this.getConfigOptions( 'Select a country', countryList, blacklistedCountries ),
+              nationalityConfigOptions = this.getConfigOptions( 'Select a nationality', nationalities, resProofNationalities );
+
+          setTimeout(()=>{
+            this.initMultiSelect(this.countrySelector, countryConfigOptions );
+            this.initMultiSelect(this.nationalitySelector, nationalityConfigOptions );
+          },0);
+          this.stateHandler.updateRequestStatus(this, false,false,false, res);
         }
         else{
           this.stateHandler.updateRequestStatus(this, false,true,false, res);
@@ -82,46 +60,83 @@ export class CountrySettingsComponent implements OnInit {
       })
   }
 
-  initMultiSelect( elementSelector, options, list){
+  getConfigOptions( placeholder, optionList, selectedItems ) {
+    let config = {
+      valueField: 'value',
+      labelField: 'label',
+      searchField: ['label'],
+      placeholder: placeholder,
+      options: this.getOptionsArray(optionList),
+      items: selectedItems,
+      render: {
+        item: function (item, escape) {
+          return '<div class="itemDiv">' +
+            (item.label ? '<span class="item">' + escape(item.label) + '</span>' : '') +
+            '<span class="removeIcon pl-2">x</span>' +
+            '</div>';
+        }
+      }
+    };
+    return config;
+  }
+
+  initMultiSelect( elementSelector, options){
     let $select = $(elementSelector).selectize( options ),
         control = $select[0].selectize;
-    $(document).on('click','.removeIcon',function(e){
-      e.preventDefault();
-      e.stopPropagation();
+    this.bindEvents( control );
+  }
+
+  bindEvents( controlObj ) {
+    $('body').on('click','.removeIcon',function(e){
       let itemValue = $(e.target).prev().text();
-      control.removeItem(itemValue, true);
-      let index = list.indexOf(itemValue);
-      index > -1 ? list.splice(index): '';
-    })
-    control.on('item_add', function(value, $item) {
-      list.push(value);
+      controlObj.removeItem(itemValue, true);
     });
   }
 
   countrySettingsSubmit( countrySettings ) {
-    let params = countrySettings.value;
-      this.btnText = 'Applying...';
-      this.http.post('api/admin/client/update-country-setting', {...params}).subscribe(
-        response => {
-          let res = response.json();
-          if (res.success) {
-            this.onFormSubmitSuccess();
-          } else {
-            this.errorResponse = res;
-            this.btnText = 'Apply';
-          }
-        },
-        error => {
-          let err = error.json();
-          this.errorResponse = err;
-          this.btnText = 'Apply';
+    let  blacklistedCountryList =  $(this.countrySelector).val() ,
+         resProofNationalities  = $(this.nationalitySelector).val(),
+         data   = {
+           'blacklisted_countries'         : blacklistedCountryList,
+           'residency_proof_nationalities' : resProofNationalities
+         }
+    ;
+    this.preFormSubmit();
+    this.http.post('api/admin/client/update-country-setting', data ).subscribe(
+      response => {
+        let res = response.json();
+        if (res.success) {
+          this.onFormSubmitSuccess( res );
+        } else {
+          this.errorResponse = res;
+          this.onFormSubmitError( res );
         }
-      )
+      },
+      error => {
+        let err = error.json();
+        this.errorResponse = err;
+        this.onFormSubmitError();
+      }
+    )
   }
 
-  onFormSubmitSuccess(){
+  preFormSubmit() {
+    this.btnText = 'Applying...';
+    this.isSubmitting = true;
+  }
+
+  onFormSubmitSuccess( res ){
+    this.onFormSubmitComplete();
+    $('#country-settings-success-modal').modal('show');
+  }
+
+  onFormSubmitError( res? ){
+    this.onFormSubmitComplete();
+  }
+
+  onFormSubmitComplete() {
     this.btnText = 'Apply';
-    $('#country-setting-success-modal').modal('show');
+    this.isSubmitting = false;
   }
 
   getOptionsArray( list ) {
@@ -131,22 +146,16 @@ export class CountrySettingsComponent implements OnInit {
       obj = {
         "label" : list[i],
         "value" : list[i]
-      }
+      };
       options.push(obj);
     }
     return options;
   }
 
-  updateSelectModel(){
-
+  resetForm(){
+    let countryControl = $(this.countrySelector)[0].selectize,
+        nationalityControl = $(this.nationalitySelector)[0].selectize;
+        countryControl.clear();
+        nationalityControl.clear();
   }
-
-  downloadList(){
-
-  }
-
-
-
-
-
 }
