@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { OstHttp } from './services/ost-http.service';
 
-
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { RowComponent } from './kyc-user-dashboard/kyc-user-row/row.component';
@@ -57,6 +56,8 @@ import { ConfrimationModalComponent } from './artificial-intelligence/confrimati
 import { KycCaseAlertComponent } from './kyc-case/kyc-case-alert/kyc-case-alert.component';
 import { UtilitiesService } from './services/utilities.service';
 import { FormConfiguratorComponent } from './form-configurator/form-configurator.component';
+import { SaleSettingsComponent } from './sale-settings/sale-settings.component';
+import { CountrySettingsComponent } from './country-settings/country-settings.component';
 
 
 
@@ -113,7 +114,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     OstSliderComponent,
     ConfrimationModalComponent,
     KycCaseAlertComponent,
-    FormConfiguratorComponent
+    FormConfiguratorComponent,
+    SaleSettingsComponent,
+    CountrySettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -140,6 +143,14 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path: 'settings/developer-integrations',
             component: DevelopersIntegrationComponent
+          },
+          {
+            path: 'settings/sale-settings',
+            component: SaleSettingsComponent
+          },
+          {
+            path: 'settings/country-settings',
+            component: CountrySettingsComponent
           },
           {
             path: 'settings/artificial-intelligence',

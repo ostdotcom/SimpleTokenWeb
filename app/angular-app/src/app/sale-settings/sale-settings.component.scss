@@ -1,0 +1,137 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.sale-settings {
+  .date-label{
+    text-transform: capitalize;
+    font-size: $display3-size;
+    letter-spacing: 1px;
+  }
+  .sale-info {
+    .kyc-header {
+      color: $yellow-500;
+      font-weight: $font-weight-400;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing;
+    }
+    .sale-header {
+      color: $cyanish-gray;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+    }
+    .sale-sub-header {
+      color: $cyanish-gray;
+    }
+    .form-inline label {
+      display: block;
+    }
+    .switch-field {
+      overflow: hidden;
+    }
+
+    .switch-field input {
+      position: absolute !important;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      width: 1px;
+      border: 0;
+      overflow: hidden;
+    }
+
+    .switch-field label {
+      float: left;
+    }
+
+    .switch-field label {
+      display: inline-block;
+      width: 35px;
+      background-color: transparent;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 14px;
+      font-weight: normal;
+      text-align: center;
+      text-shadow: none;
+      padding: 7px 0;
+      //border: 1px solid rgba(0, 0, 0, 0.2);
+      -webkit-transition: all 0.1s ease-in-out;
+      -moz-transition:    all 0.1s ease-in-out;
+      -ms-transition:     all 0.1s ease-in-out;
+      -o-transition:      all 0.1s ease-in-out;
+      transition:         all 0.1s ease-in-out;
+    }
+
+    .switch-field label:hover {
+      cursor: pointer;
+    }
+
+    .switch-field{
+      padding-top: 8px;
+      label {
+        border: 1px solid #d3e3e5;
+        border-right: 0;
+      }
+      label ~ label{
+        border: 1px solid #d3e3e5;
+        border-left: 0;
+      }
+    }
+
+    .switch-field input:checked + label {
+      background-color: #d3e3e5;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    .switch-field label:first-of-type {
+      border-radius: 4px 0 0 4px;
+    }
+
+    .switch-field label:last-of-type {
+      border-radius: 0 4px 4px 0;
+    }
+
+    .timeSpan {
+      border: 1px solid #d3e3e5;
+      display: block;
+      height: 38px;
+      border-radius: 4px;
+      width: 100px;
+    }
+
+    .timeSpan input:focus {
+      outline: none;
+    }
+
+    .timeSpan input {
+      color: #597A84;
+    }
+
+    .separator::after {
+      content: ":";
+      color: #d3e3e5;
+      font-size: 20px;
+      line-height: 36px;
+    }
+
+    .hour, .min{
+      width: 45%;
+      border-radius: 4px;
+    }
+  }
+}
+
+.date-icon, .saleStartDate{
+  &:after{
+    content: "";
+    display: inline-block;
+    background: url('https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/drop-down-arrow.svg') no-repeat center;
+    background-size: 75%;
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    top: 9px;
+    right: 22px;
+    pointer-events: none;
+  }
+}
+

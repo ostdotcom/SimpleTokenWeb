@@ -83,6 +83,44 @@
   </div>
 
   <div class="desktop-menu px-2 align-items-center d-flex"
+       [routerLink]="['/admin/settings/sale-settings']" [routerLinkActive]="['selected']">
+    <span>
+        <svg class="developer" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sale-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span>
+        <svg class="developer-selected" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sale-selected-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span class="pl-2">Sale Settings</span>
+  </div>
+
+  <div class="desktop-menu px-2 align-items-center d-flex"
+       [routerLink]="['/admin/settings/country-settings']" [routerLinkActive]="['selected']">
+    <span>
+        <svg class="developer" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#world-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span>
+        <svg class="developer-selected" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#world-selected-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span class="pl-2">Country Settings</span>
+  </div>
+
+  <div class="desktop-menu px-2 align-items-center d-flex"
        [routerLink]="['/admin/settings/artificial-intelligence']" [routerLinkActive]="['selected']">
     <span>
         <svg class="developer" height="20px" width="20px">
@@ -228,6 +266,45 @@
         <span class="pl-2">Developer Integrations</span>
       </div>
 
+      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
+           [routerLink]="['/admin/settings/sale-settings']"
+           [routerLinkActive]="['selected']">
+        <span>
+          <svg class="developer" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sale-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="developer-selected" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sale-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Sale Settings</span>
+      </div>
+
+      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
+           [routerLink]="['/admin/settings/country-settings']"
+           [routerLinkActive]="['selected']">
+        <span>
+          <svg class="developer" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#world-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="developer-selected" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#world-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Country Settings</span>
+      </div>
 
       <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
             [routerLink]="['/admin/settings/artificial-intelligence']"

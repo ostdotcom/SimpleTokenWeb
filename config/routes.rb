@@ -81,6 +81,8 @@ Rails.application.routes.draw do
       get '/settings/user' => :angular_app
       get '/settings/profile' => :angular_app
       get '/settings/developer-integrations' => :angular_app
+      get '/settings/sale-settings' => :angular_app
+      get '/settings/country-settings' => :angular_app
       get '/settings/artificial-intelligence' => :angular_app
       get '/settings/form-configurator' => :angular_app
       
