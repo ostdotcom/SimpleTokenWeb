@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
+import { AppConfigService } from '../services/app-config.service'
 
 declare var $:any;
 
@@ -14,8 +15,9 @@ export class SaleSettingsComponent implements OnInit {
   hasError      : boolean = false;
   isProcessing  : boolean = true;
   errorMessage  : string  = null;
-
   errorResponse : object  = null;
+
+  isSuperAdmin  : boolean = false;
 
   startHour     : string  = "";
   startMin      : string  = "";
@@ -39,11 +41,13 @@ export class SaleSettingsComponent implements OnInit {
   };
 
   constructor(private http: OstHttp,
-              private stateHandler : RequestStateHandlerService) {
+              private stateHandler : RequestStateHandlerService,
+              public appConfig : AppConfigService ) {
   }
 
   ngOnInit() {
     this.initSaleSettingsForm();
+    this.isSuperAdmin = this.appConfig.isSuperAdmin();
   }
 
   initSaleSettingsForm() {

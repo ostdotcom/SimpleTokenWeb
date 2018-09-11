@@ -29,5 +29,8 @@
     .removeIcon{
       color: $blue-800 !important;
     }
+    & .selectize-input.disabled {
+      background-color: $grey-bg;
+    }
   }
 }
