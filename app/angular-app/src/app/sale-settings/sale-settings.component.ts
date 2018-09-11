@@ -125,12 +125,13 @@ export class SaleSettingsComponent implements OnInit {
       e.stopPropagation();
     });
 
-    $('.saleStartDate').on('changeDate' , function (e) {
+    $('.saleStartDate').on('change blur' , function (e) {
       oThis.startDate = e.target.value ;
+      console.log("date changed" + e.target.value);
     });
 
-    $('.saleEndDate').on('changeDate' , function (e) {
-      oThis.endDate = e.target.value;
+    $('.saleEndDate').on('change blur', function(e) {
+      oThis.endDate = e.target.value ;
     });
   }
 
@@ -139,8 +140,9 @@ export class SaleSettingsComponent implements OnInit {
       format: 'dd-mm-yyyy',
       autoclose: true,
       clearBtn: true,
-      startDate: new Date(),//local or UTC
-      defaultViewDate: date
+      startDate: date,
+      defaultViewDate: date,
+      orientation: 'bottom left'
     };
     return config;
   }
