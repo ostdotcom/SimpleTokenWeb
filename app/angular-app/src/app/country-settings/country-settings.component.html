@@ -7,10 +7,12 @@
 <div class="country-settings selectize-wrapper" *ngIf="!isProcessing && !hasError" >
   <div class="country-info">
     <div class="row mt-4 pt-2 ">
-      <div class="col-12 col-lg-6">
-        <h4 class="kyc-header text-transform-upper">Country Settings</h4>
+      <div class="col-12 col-lg-8">
+        <h4 class="kyc-header text-transform-upper">Country Selection
+          <span *ngIf="!isSuperAdmin" class="view-only py-1 px-2 d-inline-block"> View only</span>
+        </h4>
       </div>
-      <div class="col-12 col-lg-6">
+      <div *ngIf="isSuperAdmin" class="col-12 col-lg-4">
         <a class="download-link btn btn-primary"
            href="https://dxwfxs8b4lg24.cloudfront.net/ost-kyc/docs/country-and-nationality.xlsx">Download List</a>
       </div>
@@ -23,7 +25,7 @@
         </div>
         <div class="form-group pl-0 mt-3 col-md-6 col-12">
           <label class="form-label" for="blacklisted_countries">Blacklisted Countries</label>
-            <select class="form-control multipleSelect" multiple ngModel
+            <select [disabled]="!isSuperAdmin"  class="form-control multipleSelect" multiple ngModel
                     #blacklisted_countries="ngModel" id="blacklisted_countries" name="blacklisted_countries"  >
             </select>
           <ost-form-error-handler [errorFor]="blacklisted_countries"
@@ -39,7 +41,7 @@
         </div>
         <div class="form-group pl-0 mt-3 col-md-6 col-12">
           <label class="form-label" for="nationalities">Residency Proof Nationalities</label>
-            <select  class="form-control multipleSelect" ngModel
+            <select [disabled]="!isSuperAdmin" class="form-control multipleSelect" ngModel
                      #nationalities="ngModel" multiple id="nationalities" name="residency_proof_nationalities"  >
             </select>
           <ost-form-error-handler [errorFor]="nationalities"
@@ -48,7 +50,7 @@
           </ost-form-error-handler>
         </div>
 
-        <div class="form-group user-form-footer text-center text-sm-left row mt-4">
+        <div *ngIf="isSuperAdmin" class="form-group user-form-footer text-center text-sm-left row mt-4">
           <div class="col-12">
             <button [disabled]="isSubmitting" type="submit" class="btn btn-primary mb-3 mb-xl-0"
                     id="applyChanges" tabindex="3"

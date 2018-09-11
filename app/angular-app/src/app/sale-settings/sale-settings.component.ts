@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
+import { AppConfigService } from '../services/app-config.service'
 
 declare var $:any;
 
@@ -14,8 +15,9 @@ export class SaleSettingsComponent implements OnInit {
   hasError      : boolean = false;
   isProcessing  : boolean = true;
   errorMessage  : string  = null;
-
   errorResponse : object  = null;
+
+  isSuperAdmin  : boolean = false;
 
   startHour     : string  = "";
   startMin      : string  = "";
@@ -39,11 +41,13 @@ export class SaleSettingsComponent implements OnInit {
   };
 
   constructor(private http: OstHttp,
-              private stateHandler : RequestStateHandlerService) {
+              private stateHandler : RequestStateHandlerService,
+              public appConfig : AppConfigService ) {
   }
 
   ngOnInit() {
     this.initSaleSettingsForm();
+    this.isSuperAdmin = this.appConfig.isSuperAdmin();
   }
 
   initSaleSettingsForm() {
@@ -125,12 +129,13 @@ export class SaleSettingsComponent implements OnInit {
       e.stopPropagation();
     });
 
-    $('.saleStartDate').on('changeDate' , function (e) {
+    $('.saleStartDate').on('change blur' , function (e) {
       oThis.startDate = e.target.value ;
+      console.log("date changed" + e.target.value);
     });
 
-    $('.saleEndDate').on('changeDate' , function (e) {
-      oThis.endDate = e.target.value;
+    $('.saleEndDate').on('change blur', function(e) {
+      oThis.endDate = e.target.value ;
     });
   }
 
@@ -139,8 +144,9 @@ export class SaleSettingsComponent implements OnInit {
       format: 'dd-mm-yyyy',
       autoclose: true,
       clearBtn: true,
-      startDate: new Date(),//local or UTC
-      defaultViewDate: date
+      startDate: date,
+      defaultViewDate: date,
+      orientation: 'bottom left'
     };
     return config;
   }

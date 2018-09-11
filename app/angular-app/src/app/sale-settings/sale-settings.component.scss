@@ -22,6 +22,12 @@
     .sale-sub-header {
       color: $cyanish-gray;
     }
+    .view-only{
+      vertical-align: middle;
+      color: $white;
+      background-color: $green-1200;
+      font-size: $text5-size;
+    }
     .form-inline label {
       display: block;
     }
@@ -117,6 +123,17 @@
       width: 45%;
       border-radius: 4px;
     }
+  }
+
+  .timeSpan.disabled {
+    & input {
+      background-color: $gray-200;
+    }
+    & .separator::after {
+      color: $blue-800;
+      opacity: 0.5;
+    }
+    background-color: $gray-200;
   }
 }
 

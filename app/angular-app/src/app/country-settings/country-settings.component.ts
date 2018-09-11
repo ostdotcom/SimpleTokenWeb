@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
+import { AppConfigService } from '../services/app-config.service'
 
 declare var $:any;
 
@@ -15,6 +16,8 @@ export class CountrySettingsComponent implements OnInit {
   isProcessing  : boolean = true;
   errorMessage  : string  = null;
 
+  isSuperAdmin  : boolean = false;
+
   btnText       : string  = "Apply";
   isSubmitting  : boolean = false;
 
@@ -23,10 +26,13 @@ export class CountrySettingsComponent implements OnInit {
 
   errorResponse       : object = null;
 
-  constructor(private http: OstHttp, private stateHandler : RequestStateHandlerService) { }
+  constructor(private http: OstHttp,
+              private stateHandler : RequestStateHandlerService,
+              public appConfig : AppConfigService ) { }
 
   ngOnInit() {
     this.init();
+    this.isSuperAdmin = this.appConfig.isSuperAdmin();
   }
 
   init() {
@@ -87,9 +93,20 @@ export class CountrySettingsComponent implements OnInit {
   }
 
   bindEvents( controlObj ) {
-    $('body').on('click','.removeIcon',function(e){
-      let itemValue = $(e.target).prev().text();
-      controlObj.removeItem(itemValue, true);
+    let isSuperAdmin = this.isSuperAdmin;
+    if( !isSuperAdmin ) {
+      this.hideRemoveIcon();
+    } else {
+      $('body').on('click','.removeIcon',function(e){
+        let itemValue = $(e.target).prev().text();
+        controlObj.removeItem(itemValue, true);
+      });
+    }
+  }
+
+  hideRemoveIcon () {
+    $('.removeIcon').css({
+      'display' :'none'
     });
   }
 
