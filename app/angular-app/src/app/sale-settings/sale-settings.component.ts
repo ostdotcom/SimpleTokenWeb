@@ -250,7 +250,7 @@ export class SaleSettingsComponent implements OnInit {
     if( date && typeof date == "string") {
       let splitedDate = date.split("-");
       if( splitedDate[0].length != 4 ) {
-        date = splitedDate.reverse().join('-');
+        date = splitedDate.reverse().join('/');
       }
     }
 
