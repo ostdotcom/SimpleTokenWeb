@@ -120,7 +120,7 @@ export class SaleSettingsComponent implements OnInit {
   initDatePicker() {
     let oThis = this,
         startDateConfig = this.getDatePickerConfig( this.startDate ),
-        endDateConfig   = this.getDatePickerConfig( this.endDate )
+        endDateConfig   = this.getDatePickerConfig( this.endDate , this.startDate )
     ;
     $('.saleStartDate').datepicker( startDateConfig );
     $('.saleEndDate').datepicker( endDateConfig );
@@ -139,12 +139,13 @@ export class SaleSettingsComponent implements OnInit {
     });
   }
 
-  getDatePickerConfig( date  ) {
+  getDatePickerConfig( date,  startDate?  ) {
+    let startdate = startDate || date; 
     let config = {
       format: 'dd-mm-yyyy',
       autoclose: true,
       clearBtn: true,
-      startDate: date,
+      startDate: startdate,
       defaultViewDate: date,
       orientation: 'bottom left'
     };

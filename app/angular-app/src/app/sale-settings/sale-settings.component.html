@@ -22,10 +22,10 @@
             <div class="col-12">
               <div class="row align-items-center">
                 <label class="form-label font-weight-normal col-2 mb-0 date-label">From</label>
-                <div class="col-5 col-md-5 date-icon">
+                <div class="col-6 col-sm-5 date-icon">
                   <input type="text" [disabled]="!isSuperAdmin" [(ngModel)]="startDate" name="startDate" class="form-control saleStartDate" placeholder="dd/mm/yyyy" required/>
                 </div>
-                <div class="col-4 col-md-4">
+                <div class="col-4 col-sm-4 px-0 px-sm-4">
                   <div [ngClass]="{'disabled': !isSuperAdmin}" class="timeSpan">
                     <input type="number" [disabled]="!isSuperAdmin" min=0 max=23 [(ngModel)]="startHour" name="startHour"
                            (input)="validate( $event, 'startHour' )" (blur)="updateValueOnBlur($event, 'startHour')" class="border-0 text-center float-left h-100 hour"
@@ -46,10 +46,10 @@
             <div class="col-12">
               <div class="row align-items-center">
                 <label class="form-label font-weight-normal col-2 mb-0 date-label">To</label>
-	              <div class="col-5 col-md-5 date-icon">
+	              <div class="col-6 col-sm-5 date-icon">
                   <input type="text" [disabled]="!isSuperAdmin" [(ngModel)]="endDate" name="endDate" class="form-control saleEndDate" placeholder="dd/mm/yyyy" required/>
                 </div>
-	              <div class="col-4 col-md-4">
+	              <div class="col-4 col-sm-4 px-0 px-sm-4">
                   <div [ngClass]="{'disabled': !isSuperAdmin}" class="timeSpan">
                     <input type="number" [disabled]="!isSuperAdmin" min=0 max=23 [(ngModel)]="endHour" name="endHour"
                           (input)="validate($event, 'endHour')" (blur)="updateValueOnBlur($event, 'endHour')"
