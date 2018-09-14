@@ -145,7 +145,6 @@ export class SaleSettingsComponent implements OnInit {
       format: 'dd-mm-yyyy',
       autoclose: true,
       clearBtn: true,
-      startDate: startdate,
       defaultViewDate: date,
       orientation: 'bottom left'
     };
