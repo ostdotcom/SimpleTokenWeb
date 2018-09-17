@@ -1,0 +1,37 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.country-settings {
+  .country-info {
+    .kyc-header {
+      color: $yellow-500;
+    }
+    .country-header {
+      letter-spacing: 1px;
+    }
+    .country-sub-header {
+      color: #9fb3b4;
+    }
+    .view-only{
+      vertical-align: middle;
+      color: $white;
+      background-color: $green-1200;
+      font-size: $text5-size;
+    }
+    .divider{
+      border-top: 1px solid $custom-grey-7;
+    }
+    .download-link , .download-link:hover, .download-link:active{
+      color: $white;
+      border-bottom: none;
+    }
+    .download-link {
+      @media (max-width: map-get($grid-breakpoints , 'lg')){
+        float: left;
+      }
+      @media (min-width: map-get($grid-breakpoints , 'lg')){
+        float: right;
+      }
+    }
+  }
+}
+
+

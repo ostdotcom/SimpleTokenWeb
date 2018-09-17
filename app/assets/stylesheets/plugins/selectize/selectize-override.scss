@@ -1,0 +1,36 @@
+@import "../../admin/simple_token_theme_admin/_variables";
+
+.selectize-wrapper {
+  .selectize-control {
+    .option, .item, .itemDiv{
+      color: $cyanish-gray !important;
+      font-size: $display4-size !important;
+      font-weight: $font-weight-400 !important;
+    }
+    .selectize-input > div {
+      background-color: $white !important;
+      border: 1px solid $custom-grey-7 !important;
+      padding: 0.25rem;
+      margin: 0 6px 6px 0;
+    }
+    .selectize-input {
+      border-color: $custom-grey-7 !important;
+    }
+    .selectize-input.has-items {
+      padding-top: 6px !important;
+    }
+    .selectize-input.focus {
+      border-color: #9BAFB5 !important;
+      box-shadow: none !important;
+    }
+    .item {
+      border:none !important;
+    }
+    .removeIcon{
+      color: $blue-800 !important;
+    }
+    & .selectize-input.disabled {
+      background-color: $grey-bg;
+    }
+  }
+}
