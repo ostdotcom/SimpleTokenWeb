@@ -20,12 +20,9 @@
       end
 
       def has_sale_ended_before_time?
-        sale_details['sale_ended_before_time'].to_i == 1
+        true
       end
 
-      def token_sale_active_status
-        sale_details['token_sale_active_status']
-      end
 
       def has_general_access_sale_started?
         current_time >= GlobalConstant::StTokenSale.general_access_sale_start_date
@@ -52,7 +49,7 @@
       end
 
       def has_sale_paused?
-        (token_sale_active_status.to_i != 1) && has_early_access_sale_started?
+        false
       end
 
       private

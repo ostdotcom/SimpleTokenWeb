@@ -90,9 +90,6 @@ module Web
         0 # sale_details['sale_ended_before_time']
       end
 
-      def token_sale_active_status
-        1 # || sale_details['token_sale_active_status']
-      end
 
       ###########################################
 
@@ -154,7 +151,7 @@ module Web
       end
 
       def has_sale_paused?
-        (token_sale_active_status.to_i != 1) && has_early_access_sale_start_date_passed?
+        false && has_early_access_sale_start_date_passed?
       end
 
       def has_sale_ended_before_time?
