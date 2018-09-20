@@ -12,17 +12,17 @@
       text-transform: uppercase;
       letter-spacing: $letter-spacing;
     }
-    .sale-header {
+    .sale-header, .registration-header {
       color: $cyanish-gray;
       letter-spacing: 1px;
-      font-size: 0.85rem;
+      font-size: $font-size-sm;
       font-weight: $font-weight-bold;
       text-transform: uppercase;
     }
     .sale-sub-header {
       color: $cyanish-gray;
     }
-    .view-only{
+    .view-only {
       vertical-align: middle;
       color: $white;
       background-color: $green-1200;
@@ -31,73 +31,126 @@
     .form-inline label {
       display: block;
     }
-    .switch-field {
-      overflow: hidden;
-    }
-
-    .switch-field input {
-      position: absolute !important;
-      clip: rect(0, 0, 0, 0);
-      height: 1px;
-      width: 1px;
-      border: 0;
-      overflow: hidden;
-    }
-
-    .switch-field label {
-      float: left;
-    }
-
-    .switch-field label {
+    /* The switch - the box around the slider */
+    .switch {
+      position: relative;
       display: inline-block;
-      width: 35px;
-      background-color: transparent;
-      color: rgba(0, 0, 0, 0.6);
-      font-size: 14px;
-      font-weight: normal;
-      text-align: center;
-      text-shadow: none;
-      padding: 7px 0;
-      //border: 1px solid rgba(0, 0, 0, 0.2);
-      -webkit-transition: all 0.1s ease-in-out;
-      -moz-transition:    all 0.1s ease-in-out;
-      -ms-transition:     all 0.1s ease-in-out;
-      -o-transition:      all 0.1s ease-in-out;
-      transition:         all 0.1s ease-in-out;
+      width: 40px;
+      height: 20px;
     }
 
-    .switch-field label:hover {
-      cursor: pointer;
-    }
-
-    .switch-field{
-      padding-top: 8px;
-      label {
-        border: 1px solid #d3e3e5;
-        border-right: 0;
+    .switch {
+      width: 8rem;
+      position: relative;
+      input {
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        opacity: 0;
+        cursor: pointer;
+        &:checked {
+          z-index: 1;
+          & + label {
+            opacity: 1;
+            cursor: default;
+          }
+        }
+        &:not(:checked) {
+          & + label {
+            &:hover {
+              opacity: 0.5;
+            }
+          }
+        }
       }
-      label ~ label{
-        border: 1px solid #d3e3e5;
-        border-left: 0;
+      .toggle-outside {
+        height: 100%;
+        border-radius: 2rem;
+        padding: 0.25rem;
+        overflow: hidden;
+        transition: 0.25s ease all;
+      }
+      .toggle-inside {
+        border-radius: 5rem;
+        background-color: $blue-800;
+        position: absolute;
+        transition: 0.25s ease all;
       }
     }
+    .switch--horizontal {
+      width: 18rem;
+      height: 1.25rem;
+      margin: 0;
+      font-size: 0;
+      input {
+        height: 1.5rem;
+        width: 2.2rem;
+        left: 6rem;
+        margin: 0;
+        &:checked {
+          & ~ .toggle-outside {
+            .toggle-inside {
+              left: 0.25rem;
+            }
+          }
+        }
+        & ~ input {
+          &:checked {
+            & ~ .toggle-outside {
+              .toggle-inside {
+                left: 1rem;
+              }
+            }
+          }
+        }
+      }
 
-    .switch-field input:checked + label {
-      background-color: #d3e3e5;
-      -webkit-box-shadow: none;
-      box-shadow: none;
+      .toggle-outside {
+        background-color: $custom-grey-7;
+        position: absolute;
+        width: 2.2rem;
+        left: 6rem;
+      }
+      .toggle-inside {
+        height: 1rem;
+        width: 1rem;
+        top: 1.5px;
+      }
     }
+    .switch--no-label {
 
-    .switch-field label:first-of-type {
-      border-radius: 4px 0 0 4px;
+      input {
+        &:checked {
+          & ~ .toggle-outside {
+            .toggle-inside {
+              background: $blue-800;
+              border: 1px solid rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+        & ~ input {
+          &:checked {
+            & ~ .toggle-outside {
+              background: $custom-grey-7;
+              .toggle-inside {
+                background: $blue-800;
+              }
+            }
+          }
+        }
+      }
+      &.switch--horizontal {
+        width: 2.5rem;
+        top: 6px;
+      }
     }
-
-    .switch-field label:last-of-type {
-      border-radius: 0 4px 4px 0;
+    .switch--no-label.switch--horizontal input,
+    .switch--no-label.switch--horizontal .toggle-outside {
+      left: 0;
     }
 
     .timeSpan {
-      border: 1px solid #d3e3e5;
+      border: 1px solid $custom-grey-7;
       display: block;
       height: 38px;
       border-radius: 4px;
@@ -109,22 +162,45 @@
     }
 
     .timeSpan input {
-      color: #597A84;
+      color: $blue-800;
     }
 
     .separator::after {
       content: ":";
-      color: #d3e3e5;
+      color: $custom-grey-7;
       font-size: 20px;
       line-height: 36px;
     }
 
-    .hour, .min{
+    .hour, .min {
       width: 45%;
       border-radius: 4px;
     }
-  }
 
+    .divider {
+      border-top: 1px solid $custom-grey-7;
+    }
+
+    .registration-wrapper {
+      overflow: hidden;
+      &.show {
+        max-height: 500px;
+        -webkit-transition : max-height 0.6s ease;
+        -moz-transition    : max-height 0.6s ease;
+        -ms-transition     : max-height 0.6s ease;
+        -o-transition      : max-height 0.6s ease;
+        transition         : max-height 0.6s ease;
+      }
+      &.hide {
+        max-height: 0;
+        -webkit-transition : max-height 0.6s ease 0ms;
+        -moz-transition    : max-height 0.6s ease 0ms;
+        -ms-transition     : max-height 0.6s ease 0ms;
+        -o-transition      : max-height 0.6s ease 0ms;
+        transition         : max-height 0.6s ease 0ms ;
+      }
+    }
+  }
   .timeSpan.disabled {
     & input {
       background-color: $gray-200;
