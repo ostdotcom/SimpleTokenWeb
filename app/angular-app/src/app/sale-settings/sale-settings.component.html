@@ -8,63 +8,135 @@
   <div class="sale-info">
     <div class="row mt-4 pt-2 ">
       <div class="col-12">
-        <h4 class="kyc-header">Sale Setting
+        <h4 class="kyc-header">Time Setting
           <span *ngIf="!isSuperAdmin" class="view-only py-1 px-2 d-inline-block"> View only</span>
         </h4>
 	      <div class="sale-header mt-3">Public Sale</div>
-	      <div class="sale-sub-header mt-1">Time is shown in UTC (Universal Time Coordinated) only. Please bear that in mind when setting the time.</div>
+	      <div class="sale-sub-header mt-1">An ICO starts and ends at a very specific date and time that are set in the token sale smart contract.
+          Utilize this section to sync the smart contracts timing with your KYC on-boarding experience.
+          Time below is shown in UTC.
+        </div>
       </div>
     </div>
     <div class="row mt-4">
-      <form #saleSettings="ngForm" autocomplete="off" class="sale-form col-12 col-md-7 col-lg-6 col-xl-5" (ngSubmit)="submitSaleSettingsForm(saleSettings)" id="saleSettingsForm">
-        <fieldset ngModelGroup="startDateTime" #startDateTime="ngModelGroup">
-          <div class="form-group row" >
-            <div class="col-12">
-              <div class="row align-items-center">
-                <label class="form-label font-weight-normal col-2 mb-0 date-label">From</label>
-                <div class="col-6 col-sm-5 date-icon">
-                  <input type="text" [disabled]="!isSuperAdmin" [(ngModel)]="startDate" name="startDate" class="form-control saleStartDate" placeholder="dd/mm/yyyy" required/>
-                </div>
-                <div class="col-4 col-sm-4 px-0 px-sm-4">
-                  <div [ngClass]="{'disabled': !isSuperAdmin}" class="timeSpan">
-                    <input type="number" [disabled]="!isSuperAdmin" min=0 max=23 [(ngModel)]="startHour" name="startHour"
-                           (input)="validate( $event, 'startHour' )" (blur)="updateValueOnBlur($event, 'startHour')" class="border-0 text-center float-left h-100 hour"
-                           placeholder="hh" required/>
-                    <span class="separator float-left"></span>
-                    <input type="number" [disabled]="!isSuperAdmin" min=0 max=59 [(ngModel)]="startMin" name="startMin"
-                           (input)="validate($event , 'startMin')" (blur)="updateValueOnBlur($event, 'startMin')"
-                           class="border-0 h-100 text-center float-left min" placeholder="mm" required/>
+      <form #saleSettings="ngForm" autocomplete="off" class="sale-form col-12" (ngSubmit)="submitSaleSettingsForm(saleSettings)" id="saleSettingsForm">
+        <div class="row">
+          <div class="col-12 col-md-7 col-lg-6 col-xl-5">
+            <fieldset ngModelGroup="startDateTime" #startDateTime="ngModelGroup">
+              <div class="form-group row" >
+                <div class="col-12">
+                  <div class="row align-items-center">
+                    <label class="form-label font-weight-normal col-2 mb-0 date-label">Start</label>
+                    <div class="col-6 col-sm-5 date-icon">
+                      <input type="text" [disabled]="!isSuperAdmin" [(ngModel)]="startDate" name="startDate" class="form-control saleStartDate" placeholder="dd/mm/yyyy" required/>
+                    </div>
+                    <div class="col-4 col-sm-4 px-0 px-sm-4">
+                      <div [ngClass]="{'disabled': !isSuperAdmin}" class="timeSpan">
+                        <input type="number" [disabled]="!isSuperAdmin" min=0 max=23 [(ngModel)]="startHour" name="startHour"
+                               (input)="validate( $event, 'startHour' )" (blur)="updateValueOnBlur($event, 'startHour')" class="border-0 text-center float-left h-100 hour"
+                               placeholder="hh" required/>
+                        <span class="separator float-left"></span>
+                        <input type="number" [disabled]="!isSuperAdmin" min=0 max=59 [(ngModel)]="startMin" name="startMin"
+                               (input)="validate($event , 'startMin')" (blur)="updateValueOnBlur($event, 'startMin')"
+                               class="border-0 h-100 text-center float-left min" placeholder="mm" required/>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                <div class="error pl-3 col-12"> {{saleStartDateError}} </div>
               </div>
-            </div>
-            <div class="error pl-3 col-12"> {{saleStartDateError}} </div>
-          </div>
-        </fieldset>
-        <fieldset ngModelGroup="endDateTime" #endDateTime="ngModelGroup">
-          <div class="form-group row mt-2">
-            <div class="col-12">
-              <div class="row align-items-center">
-                <label class="form-label font-weight-normal col-2 mb-0 date-label">To</label>
-	              <div class="col-6 col-sm-5 date-icon">
-                  <input type="text" [disabled]="!isSuperAdmin" [(ngModel)]="endDate" name="endDate" class="form-control saleEndDate" placeholder="dd/mm/yyyy" required/>
-                </div>
-	              <div class="col-4 col-sm-4 px-0 px-sm-4">
-                  <div [ngClass]="{'disabled': !isSuperAdmin}" class="timeSpan">
-                    <input type="number" [disabled]="!isSuperAdmin" min=0 max=23 [(ngModel)]="endHour" name="endHour"
-                          (input)="validate($event, 'endHour')" (blur)="updateValueOnBlur($event, 'endHour')"
-                           class="border-0 text-center float-left h-100 hour" placeholder="hh" required/>
-                    <span class="separator float-left"></span>
-                    <input type="number" [disabled]="!isSuperAdmin" min=0 max=59 [(ngModel)]="endMin" name="endMin"
-                           (input)="validate($event, 'endMin')" (blur)="updateValueOnBlur($event, 'endMin')"
-                           class="border-0 h-100 text-center float-left min" placeholder="mm" required/>
+            </fieldset>
+            <fieldset ngModelGroup="endDateTime" #endDateTime="ngModelGroup">
+              <div class="form-group row mt-2">
+                <div class="col-12">
+                  <div class="row align-items-center">
+                    <label class="form-label font-weight-normal col-2 mb-0 date-label">End</label>
+                    <div class="col-6 col-sm-5 date-icon">
+                      <input type="text" [disabled]="!isSuperAdmin" [(ngModel)]="endDate" name="endDate" class="form-control saleEndDate" placeholder="dd/mm/yyyy" required/>
+                    </div>
+                    <div class="col-4 col-sm-4 px-0 px-sm-4">
+                      <div [ngClass]="{'disabled': !isSuperAdmin}" class="timeSpan">
+                        <input type="number" [disabled]="!isSuperAdmin" min=0 max=23 [(ngModel)]="endHour" name="endHour"
+                               (input)="validate($event, 'endHour')" (blur)="updateValueOnBlur($event, 'endHour')"
+                               class="border-0 text-center float-left h-100 hour" placeholder="hh" required/>
+                        <span class="separator float-left"></span>
+                        <input type="number" [disabled]="!isSuperAdmin" min=0 max=59 [(ngModel)]="endMin" name="endMin"
+                               (input)="validate($event, 'endMin')" (blur)="updateValueOnBlur($event, 'endMin')"
+                               class="border-0 h-100 text-center float-left min" placeholder="mm" required/>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                <div class="error pl-3 col-12">{{saleEndDateError}}</div>
               </div>
-            </div>
-            <div class="error pl-3 col-12">{{saleEndDateError}}</div>
+            </fieldset>
           </div>
-        </fieldset>
+        </div>
+        <div class="divider col-12"></div>
+        <div class="row">
+          <div class="col-12">
+            <div class="registration-header mt-3">
+              <span class="mr-md-5">Registration Setting</span>
+              <span class="ml-2 ml-md-5">
+                <span>No</span>
+                <div class="switch switch--horizontal switch--no-label ml-auto">
+                  <input type="radio" [(ngModel)]="allowRegistrationSetting" name="allowRegistration" [value]="0"/>
+                  <input type="radio" [(ngModel)]="allowRegistrationSetting" name="allowRegistration" [value]="1"/>
+                  <span class="toggle-outside">
+                  <span class="toggle-inside"></span>
+                </span>
+                </div>
+                <span>Yes</span>
+              </span>
+            </div>
+            <div class="sale-sub-header mt-1">
+              <ng-container *ngIf="allowRegistrationSetting">
+                Does your ICO require a registration down-time before the public sale events starts?
+                Utilize this section to set a time after which registration for new users will no longer be possible.
+                Your existing users until that point in time will still be able to log in to their personal dashboard.
+                Time below is shown in UTC.
+              </ng-container>
+              <ng-container *ngIf="!allowRegistrationSetting">
+                Does your ICO require a registration down-time before the public sale events starts?
+                Turn on this feature to set a time after which registration for new users will no longer be possible.
+                Your existing users until that point in time will still be able to log in to their personal dashboard.
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row registration-wrapper pt-4 {{allowRegistrationSetting ? 'show': 'hide'}}">
+          <div class="col-12 col-md-7 col-lg-6 col-xl-5">
+            <fieldset ngModelGroup="regEndDateTime" #regEndDateTime="ngModelGroup">
+              <div class="form-group row" >
+                <div class="col-12">
+                  <div class="row align-items-center">
+                    <label class="form-label font-weight-normal col-2 mb-0 date-label">End</label>
+                    <div class="col-6 col-sm-5 date-icon">
+                      <input type="text" [disabled]="!isSuperAdmin" [(ngModel)]="regEndDate" [required]="!!allowRegistrationSetting"
+                             name="regEndDate" class="form-control regEndDate" placeholder="dd/mm/yyyy" />
+                    </div>
+                    <div class="col-4 col-sm-4 px-0 px-sm-4">
+                      <div [ngClass]="{'disabled': !isSuperAdmin}" class="timeSpan">
+                        <input type="number" [disabled]="!isSuperAdmin" min=0 max=23 [(ngModel)]="regEndHour" name="regEndHour"
+                               (input)="validate( $event, 'regEndHour' )" (blur)="updateValueOnBlur($event, 'regEndHour')"
+                               class="border-0 text-center float-left h-100 hour"
+                               placeholder="hh" [required]="!!allowRegistrationSetting"/>
+                        <span class="separator float-left"></span>
+                        <input type="number" [disabled]="!isSuperAdmin" min=0 max=59 [(ngModel)]="regEndMin" name="regEndMin"
+                               (input)="validate($event , 'regEndMin')" (blur)="updateValueOnBlur($event, 'regEndMin')"
+                               class="border-0 h-100 text-center float-left min" placeholder="mm"
+                               [required]="!!allowRegistrationSetting"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="error pl-3 col-12"> {{regEndDateError}} </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
         <div *ngIf="isSuperAdmin" class="form-group user-form-footer text-center text-sm-left row mt-4">
           <div class="col-12">
             <button [disabled]="isSubmitting" type="submit" class="btn btn-primary mb-3 mb-xl-0 px-5"
