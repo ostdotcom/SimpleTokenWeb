@@ -128,7 +128,7 @@
   <%= stylesheet_link_tag 'web/default_simple_token' %>
   <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
 
-  <% if !is_simple_token_specific_page? %>
+  <% if !is_simple_token_specific_page? &&  @preview_template.blank? %>
 
     <% if @presenter_obj.gtm_pixel.present? %>
       <%= render :partial => "/shared/web/thirdparty/gtm_config.erb", locals: {gtm_id: @presenter_obj.gtm_pixel['id']} %>
