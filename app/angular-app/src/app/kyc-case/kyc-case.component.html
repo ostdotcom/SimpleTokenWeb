@@ -473,7 +473,7 @@
   (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
     <h5 class="modal-title">Are you sure you want to reopen this case?</h5>
-    <div *ngIf="caseDetails.kyc_status == 'approved'" class="sub-body mt-3">
+    <div *ngIf="caseDetails && caseDetails.kyc_status == 'approved'" class="sub-body mt-3">
       <div *ngIf="appConfig.getClientSetup().has_whitelist_setup == true; else noWhitelistSetup">
         <div>When a case is reopened, User is unwhitelisted.</div>
         <div class="mt-2">Once the user is qualified, the user will be whitelisted again.</div>
