@@ -4,7 +4,7 @@ class Admin::HomeController < Admin::BaseController
   before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
   before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account]
 
-  before_action :set_page_meta_info, :except => [:logout, :user_preview_pages]
+  before_action :set_page_meta_info, :except => [:user_preview_pages]
 
   # Admin login
   #
@@ -244,17 +244,6 @@ class Admin::HomeController < Admin::BaseController
   #   render :json => response and return
   #
   # end
-
-  # Admin logout
-  #
-  # * Author: Alpesh
-  # * Date: 09/10/2017
-  # * Reviewed By: Sunil Khedar
-  #
-  def logout
-    delete_admin_cookie
-    redirect_to "/admin/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
-  end
 
   # Admin dashboard
   #

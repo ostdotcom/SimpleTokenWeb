@@ -80,18 +80,6 @@ class Web::UserController < Web::BaseController
     set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
-  # Logout
-  #
-  # * Author: Aman
-  # * Date: 15/10/2017
-  # * Reviewed By:
-  #
-  def logout
-    # Clear cookie
-    delete_cookie(GlobalConstant::Cookie.user_cookie_name)
-    redirect_to "/login", status: GlobalConstant::ErrorCode.permanent_redirect and return
-  end
-
   # Reset password
   #
   # * Author: Tahir

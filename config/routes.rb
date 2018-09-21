@@ -66,7 +66,6 @@ Rails.application.routes.draw do
       get '/forgot-password' => :forgot_password
       get '/reset-password' => :reset_password
       get '/activate-account' => :activate_account
-      get '/logout' => :logout
       get '/authentication' => :authentication
       get '/change-password' => :change_password
 
@@ -128,7 +127,6 @@ Rails.application.routes.draw do
 
   scope '', controller: 'web/user' do
     get '/login' => :login
-    get '/logout' => :logout
     get '/sign-up' => :sign_up
     get '/dashboard' => :dashboard_home
     get '/update-kyc' => :update_kyc_form
