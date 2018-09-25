@@ -42,6 +42,10 @@ module Web
         token_sale_details['sale_end_timestamp']
       end
 
+      def registration_end_timestamp
+        token_sale_details['registration_end_timestamp']
+      end
+
       def has_ethereum_deposit_address?
         token_sale_details['has_ethereum_deposit_address']
       end
@@ -51,7 +55,6 @@ module Web
       end
 
       #### client settings ####
-
 
       def page_setting
         result['page_setting']
@@ -148,6 +151,10 @@ module Web
 
       def has_sale_ended?
         sale_end_timestamp <= current_timestamp
+      end
+
+      def has_registration_ended?
+        registration_end_timestamp <= current_timestamp
       end
 
 

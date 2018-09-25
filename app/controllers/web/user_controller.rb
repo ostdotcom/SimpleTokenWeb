@@ -31,7 +31,7 @@ class Web::UserController < Web::BaseController
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
 
     redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
-    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
+    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_registration_ended?
     set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 

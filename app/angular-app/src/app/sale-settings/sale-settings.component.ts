@@ -17,27 +17,37 @@ export class SaleSettingsComponent implements OnInit {
   errorMessage  : string  = null;
   errorResponse : object  = null;
 
+  invalidDateTimeErrorMsg : string = 'Please enter a valid date & time.';
+
   isSuperAdmin  : boolean = false;
 
   startHour     : string  = "";
   startMin      : string  = "";
   endHour       : string  = "";
   endMin        : string  = "";
+  regEndHour    : string  = "";
+  regEndMin     : string  = "";
   startDate     : string  = null;
   endDate       : string  = null;
+  regEndDate    : string  = null;
 
   saleStartDateError  : string = null;
   saleEndDateError    : string = null;
+  regEndDateError     : string = null;
+
+  allowRegistrationSetting : number = 0;
 
   btnText : string = "Apply";
 
   isSubmitting : boolean = false;
 
   previous = {
-    startHour : null,
-    startMin  : null,
-    endHour   : null,
-    endMin    : null
+    startHour  : null,
+    startMin   : null,
+    endHour    : null,
+    endMin     : null,
+    regEndHour : null,
+    regEndMin  : null
   };
 
   constructor(private http: OstHttp,
@@ -54,10 +64,13 @@ export class SaleSettingsComponent implements OnInit {
     this.http.get('api/admin/client/get-sale-setting').subscribe(
       response => {
         let res   = response.json(),
-            data  = res.data
+            data  = res.data ,
+            hasReg= data.has_registration_setting || 0
         ;
         if(res.success){
-          this.updateDateTimeValues( data.sale_start_timestamp, data.sale_end_timestamp );
+          this.allowRegistrationSetting = Number( hasReg );
+          this.updateDateTimeValues( data.sale_start_timestamp, data.sale_end_timestamp, data.registration_end_timestamp );
+
           this.stateHandler.updateRequestStatus(this,false,false);
         }
         else{
@@ -70,9 +83,10 @@ export class SaleSettingsComponent implements OnInit {
       })
   }
 
-  updateDateTimeValues( saleStartTimestamp  , saleEndTimestamp  ){
-    let startDateObj = saleStartTimestamp && new Date(saleStartTimestamp ) ,
-        endDateObj   = saleEndTimestamp && new Date(saleEndTimestamp )
+  updateDateTimeValues( saleStartTimestamp  , saleEndTimestamp , regEndTimeStamp ){
+    let startDateObj  = saleStartTimestamp && new Date(saleStartTimestamp ) ,
+        endDateObj    = saleEndTimestamp && new Date(saleEndTimestamp ) ,
+        regEndDateObj = regEndTimeStamp && new Date(regEndTimeStamp )
     ;
     if( startDateObj ){
       this.startDate  = this.getFormattedDate( startDateObj );
@@ -92,6 +106,16 @@ export class SaleSettingsComponent implements OnInit {
       //Store it for edit invalid update
       this.previous['endHour']  = this.endHour ;
       this.previous['endMin']   = this.endMin ;
+    }
+
+    if( regEndDateObj ){
+      this.regEndDate = regEndDateObj && this.getFormattedDate( regEndDateObj );
+      this.regEndHour = this.getNormalizedValue( regEndDateObj.getUTCHours() );
+      this.regEndMin  = this.getNormalizedValue( regEndDateObj.getUTCMinutes() );
+
+      //Store it for edit invalid update
+      this.previous['regEndHour']  = this.regEndHour ;
+      this.previous['regEndMin']   = this.regEndMin ;
     }
 
     setTimeout( () => {
@@ -119,28 +143,33 @@ export class SaleSettingsComponent implements OnInit {
 
   initDatePicker() {
     let oThis = this,
-        startDateConfig = this.getDatePickerConfig( this.startDate ),
-        endDateConfig   = this.getDatePickerConfig( this.endDate , this.startDate )
+        startDateConfig  = this.getDatePickerConfig( this.startDate ),
+        endDateConfig    = this.getDatePickerConfig( this.endDate , this.startDate ),
+        regEndDateConfig = this.getDatePickerConfig( this.regEndDate )
     ;
     $('.saleStartDate').datepicker( startDateConfig );
     $('.saleEndDate').datepicker( endDateConfig );
+    $('.regEndDate').datepicker( regEndDateConfig );
 
-    $('.saleStartDate, .saleEndDate').on('show' , function (e) {
+    $('.saleStartDate, .saleEndDate, .regEndDate').on('show' , function (e) {
       e.stopPropagation();
     });
 
     $('.saleStartDate').on('change blur' , function (e) {
       oThis.startDate = e.target.value ;
-      console.log("date changed" + e.target.value);
     });
 
     $('.saleEndDate').on('change blur', function(e) {
       oThis.endDate = e.target.value ;
     });
+
+    $('.regEndDate').on('change blur' , function (e) {
+      oThis.regEndDate = e.target.value ;
+    });
   }
 
   getDatePickerConfig( date,  startDate?  ) {
-    let startdate = startDate || date; 
+    let startdate = startDate || date;
     let config = {
       format: 'dd-mm-yyyy',
       autoclose: true,
@@ -152,8 +181,9 @@ export class SaleSettingsComponent implements OnInit {
   }
 
   submitSaleSettingsForm(saleSettings) {
-    this.saleEndDateError   =  null ;
+    this.saleEndDateError   = null ;
     this.saleStartDateError = null;
+    this.regEndDateError    = null;
     if( saleSettings.invalid ) {
       this.showFormInputErrors( saleSettings );
       return false ;
@@ -180,22 +210,27 @@ export class SaleSettingsComponent implements OnInit {
   }
 
   showFormInputErrors( saleSettings ) {
-    let controls      = saleSettings['controls'],
-        endDateTime   = controls.endDateTime,
-        startDateTime = controls.startDateTime
+    let controls       = saleSettings['controls'],
+        endDateTime    = controls.endDateTime,
+        startDateTime  = controls.startDateTime,
+        regEndDateTime = controls.regEndDateTime
     ;
     if( endDateTime.invalid ){
-      this.saleEndDateError = "Please enter a valid date & time."
+      this.saleEndDateError = this.invalidDateTimeErrorMsg;
     }
     if( startDateTime.invalid ){
-      this.saleStartDateError = "Please enter a valid date & time."
+      this.saleStartDateError = this.invalidDateTimeErrorMsg;
+    }
+    if( regEndDateTime.invalid ){
+      this.regEndDateError = this.invalidDateTimeErrorMsg;
     }
   }
 
   onFormSubmitSuccess( res ){
-    this.errorResponse = null;
+    this.errorResponse      = null;
     this.saleEndDateError   = null;
     this.saleStartDateError = null;
+    this.regEndDateError    = null;
     $('#sale-setting-success-modal').modal('show');
     this.onFormSubmitComplete();
   }
@@ -204,7 +239,8 @@ export class SaleSettingsComponent implements OnInit {
     let err       = error.err,
         errorData = err['error_data'],
         saleStartDateError  = errorData && errorData['sale_start_timestamp'],
-        saleEndDateError    = errorData && errorData['sale_end_timestamp']
+        saleEndDateError    = errorData && errorData['sale_end_timestamp'],
+        regEndDateError     = errorData && errorData['registration_end_timestamp']
     ;
     if( saleStartDateError ){
       this.saleStartDateError = saleStartDateError ;
@@ -213,6 +249,11 @@ export class SaleSettingsComponent implements OnInit {
     if( saleEndDateError ){
       this.saleEndDateError = saleEndDateError ;
     }
+
+    if( regEndDateError ){
+      this.regEndDateError = regEndDateError ;
+    }
+
     this.onFormSubmitComplete();
   }
 
@@ -222,15 +263,24 @@ export class SaleSettingsComponent implements OnInit {
   }
 
   getParams( ) {
-    let startTime     = this.getTime( this.startHour, this.startMin),
-        endTime       = this.getTime( this.endHour , this.endMin  ),
-        startDateTime = this.getTimeStamp( this.startDate , startTime ),
-        endDateTime   = this.getTimeStamp( this.endDate , endTime),
+    let startTime      = this.getTime( this.startHour, this.startMin),
+        endTime        = this.getTime( this.endHour , this.endMin  ),
+        startDateTime  = this.getTimeStamp( this.startDate , startTime ),
+        endDateTime    = this.getTimeStamp( this.endDate , endTime),
+        regEndDateTime , regEndTime ,
         params
         ;
+    if( this.allowRegistrationSetting == 1 ){
+      regEndTime     = this.getTime( this.regEndHour , this.regEndMin  );
+      regEndDateTime = this.getTimeStamp( this.regEndDate , regEndTime);
+    }
     params = {
-      'sale_start_timestamp' : startDateTime,
-      'sale_end_timestamp'   : endDateTime
+      'sale_start_timestamp'       : startDateTime,
+      'sale_end_timestamp'         : endDateTime,
+      'has_registration_setting'   : this.allowRegistrationSetting
+    };
+    if( regEndDateTime ){
+      params['registration_end_timestamp'] = regEndDateTime ;
     }
     return params;
   }
