@@ -35,7 +35,7 @@
   <script type="text/javascript">
     $(document).ready(function () {
       simpletoken.verification.home.init({
-        e_t: '<%=  params["e_t"] %>'
+        e_t: '<%=  (params["e_t"].to_i == 1) %>'
       });
     });
   </script>
