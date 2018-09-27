@@ -1,12 +1,17 @@
 @import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 .profile-settings{
   .company-profile-info{
-    border-bottom: 1px solid $custom-grey-7;
     .kyc-header{
       color: $yellow-500;
     }
     .company-profile-header{
       letter-spacing: 1px;
+    }
+    .view-only{
+      vertical-align: middle;
+      color: $white;
+      background-color: $green-1200;
+      font-size: $text5-size;
     }
     .read-only-fields{
       overflow-x: auto;
@@ -19,10 +24,6 @@
         }
     }
 
-  }
-
-  #adminChangePassword{
-    min-width: 218px;
   }
 
 

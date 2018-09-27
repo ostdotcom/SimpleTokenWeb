@@ -47,7 +47,7 @@ import { PageBaseComponent } from './page-base-component/page-base-component.com
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { AdminSettingMenusComponent } from './admin-settings/admin-setting-menus/admin-setting-menus.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
+import { ChangePasswordModalComponent } from './change-password/change-password-modal/change-password-modal.component';
 import { DevelopersIntegrationComponent } from './developers-integration/developers-integration.component';
 import { OstFormErrorHandlerComponent } from './ost-form-error-handler/ost-form-error-handler.component';
 import { ArtificialIntelligenceComponent } from './artificial-intelligence/artificial-intelligence.component';
@@ -58,6 +58,8 @@ import { UtilitiesService } from './services/utilities.service';
 import { FormConfiguratorComponent } from './form-configurator/form-configurator.component';
 import { SaleSettingsComponent } from './sale-settings/sale-settings.component';
 import { CountrySettingsComponent } from './country-settings/country-settings.component';
+import { AdvanceComplianceComponent } from './advance-compliance/advance-compliance.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -116,7 +118,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     KycCaseAlertComponent,
     FormConfiguratorComponent,
     SaleSettingsComponent,
-    CountrySettingsComponent
+    CountrySettingsComponent,
+    AdvanceComplianceComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -141,6 +145,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
             component: ProfileComponent
           },
           {
+            path:'settings/change-password',
+            component: ChangePasswordComponent
+          },
+          {
             path: 'settings/developer-integrations',
             component: DevelopersIntegrationComponent
           },
@@ -155,6 +163,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path: 'settings/artificial-intelligence',
             component: ArtificialIntelligenceComponent
+          },
+          {
+            path: 'settings/advance-compliance',
+            component: AdvanceComplianceComponent
           },
           {
             path: 'settings/form-configurator',

@@ -29,7 +29,27 @@
         </switch>
       </svg>
     </span>
-    <span class="pl-2">Profile</span>
+    <span class="pl-2">Account Information</span>
+  </div>
+
+  <div class="desktop-menu px-2 align-items-center d-flex" [routerLink]="['/admin/settings/change-password']"
+       [routerLinkActive]="['selected']">
+    <span>
+      <svg class="profile" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#password-icon"></use>
+        </switch>
+      </svg>
+    </span>
+
+    <span>
+      <svg class="profile-selected" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#password-selected-icon"></use>
+        </switch>
+      </svg>
+    </span>
+    <span class="pl-2">Change Password</span>
   </div>
 
   <div class="desktop-menu px-2 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']">
@@ -62,43 +82,42 @@
     <span class="pl-2">User Management</span>
   </div>
 
-  <div class="desktop-menu px-2 align-items-center d-flex" data-menu="admin"
-      [routerLink]="['/admin/settings/developer-integrations']"
-      [routerLinkActive]="['selected']">
-    <span>
-        <svg class="developer" height="20px" width="20px">
-          <switch>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-icon"></use>
-          </switch>
-        </svg>
-      </span>
-      <span>
-        <svg class="developer-selected" height="20px" width="20px">
-          <switch>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-selected-icon"></use>
-          </switch>
-        </svg>
-      </span>
-    <span class="pl-2">Developer Integrations</span>
-  </div>
-
   <div class="desktop-menu px-2 align-items-center d-flex"
        [routerLink]="['/admin/settings/sale-settings']" [routerLinkActive]="['selected']">
     <span>
         <svg class="developer" height="20px" width="20px">
           <switch>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sale-icon"></use>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-icon"></use>
           </switch>
         </svg>
       </span>
     <span>
         <svg class="developer-selected" height="20px" width="20px">
           <switch>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sale-selected-icon"></use>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-selected-icon"></use>
           </switch>
         </svg>
       </span>
-    <span class="pl-2">Sale Settings</span>
+    <span class="pl-2">Time Setting</span>
+  </div>
+
+  <div class="desktop-menu px-2 align-items-center d-flex"
+       [routerLink]="['/admin/settings/artificial-intelligence']" [routerLinkActive]="['selected']">
+    <span>
+        <svg class="developer" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span>
+        <svg class="developer-selected" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-selected-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span class="pl-2">Automation Setting</span>
   </div>
 
   <div class="desktop-menu px-2 align-items-center d-flex"
@@ -117,26 +136,46 @@
           </switch>
         </svg>
       </span>
-    <span class="pl-2">Country Settings</span>
+    <span class="pl-2">Country Setting</span>
   </div>
 
-  <div class="desktop-menu px-2 align-items-center d-flex"
-       [routerLink]="['/admin/settings/artificial-intelligence']" [routerLinkActive]="['selected']">
+  <div *ngIf="isSuperAdmin" class="desktop-menu px-2 align-items-center d-flex" data-menu="admin"
+       [routerLink]="['/admin/settings/developer-integrations']"
+       [routerLinkActive]="['selected']">
     <span>
         <svg class="developer" height="20px" width="20px">
           <switch>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-icon"></use>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-icon"></use>
           </switch>
         </svg>
       </span>
-      <span>
+    <span>
         <svg class="developer-selected" height="20px" width="20px">
           <switch>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-selected-icon"></use>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-selected-icon"></use>
           </switch>
         </svg>
       </span>
-    <span class="pl-2">Artificial Intelligence</span>
+    <span class="pl-2">Developer Integrations</span>
+  </div>
+
+  <div class="desktop-menu px-2 align-items-center d-flex"
+       [routerLink]="['/admin/settings/advance-compliance']" [routerLinkActive]="['selected']">
+    <span>
+        <svg class="developer" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compliance-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span>
+        <svg class="developer-selected" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compliance-selected-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span class="pl-2">AML/CTF Compliance</span>
   </div>
 
   <div class="desktop-menu px-2 align-items-center d-flex"
@@ -213,7 +252,28 @@
           </svg>
         </span>
 
-        <span class="pl-2">Profile</span>
+        <span class="pl-2">Account Information</span>
+      </div>
+
+      <div class="desktop-menu pl-2 align-items-center d-flex" [routerLink]="['/admin/settings/change-password']" [routerLinkActive]="['selected']">
+
+        <span>
+          <svg class="profile" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#password-icon"></use>
+            </switch>
+          </svg>
+        </span>
+
+        <span>
+          <svg class="profile-selected" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#password-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+
+        <span class="pl-2">Change Password</span>
       </div>
 
 
@@ -247,43 +307,43 @@
       </div>
 
       <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
-            [routerLink]="['/admin/settings/developer-integrations']"
-            [routerLinkActive]="['selected']">
-        <span>
-          <svg class="developer" height="20px" width="20px">
-            <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-icon"></use>
-            </switch>
-          </svg>
-        </span>
-        <span>
-          <svg class="developer-selected" height="20px" width="20px">
-            <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-selected-icon"></use>
-            </switch>
-          </svg>
-        </span>
-        <span class="pl-2">Developer Integrations</span>
-      </div>
-
-      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
            [routerLink]="['/admin/settings/sale-settings']"
            [routerLinkActive]="['selected']">
         <span>
           <svg class="developer" height="20px" width="20px">
             <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sale-icon"></use>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
           <svg class="developer-selected" height="20px" width="20px">
             <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sale-selected-icon"></use>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-selected-icon"></use>
             </switch>
           </svg>
         </span>
-        <span class="pl-2">Sale Settings</span>
+        <span class="pl-2">Time Setting</span>
+      </div>
+
+      <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
+           [routerLink]="['/admin/settings/artificial-intelligence']"
+           [routerLinkActive]="['selected']">
+        <span>
+          <svg class="ai-icon" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="ai-selected-icon" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Automation Setting</span>
       </div>
 
       <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
@@ -303,27 +363,47 @@
             </switch>
           </svg>
         </span>
-        <span class="pl-2">Country Settings</span>
+        <span class="pl-2">Country Setting</span>
+      </div>
+
+      <div *ngIf="isSuperAdmin" class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
+           [routerLink]="['/admin/settings/developer-integrations']"
+           [routerLinkActive]="['selected']">
+        <span>
+          <svg class="developer" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="developer-selected" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Developer Integrations</span>
       </div>
 
       <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
-            [routerLink]="['/admin/settings/artificial-intelligence']"
-            [routerLinkActive]="['selected']">
+           [routerLink]="['/admin/settings/advance-compliance']"
+           [routerLinkActive]="['selected']">
         <span>
-          <svg class="ai-icon" height="20px" width="20px">
+          <svg class="developer" height="20px" width="20px">
             <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-icon"></use>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compliance-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
-          <svg class="ai-selected-icon" height="20px" width="20px">
+          <svg class="developer-selected" height="20px" width="20px">
             <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-selected-icon"></use>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compliance-selected-icon"></use>
             </switch>
           </svg>
         </span>
-        <span class="pl-2">Artificial Intelligence</span>
+        <span class="pl-2">AML/CTF Compliance</span>
       </div>
 
       <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
