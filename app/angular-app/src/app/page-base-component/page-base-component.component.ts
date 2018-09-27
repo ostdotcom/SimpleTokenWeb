@@ -30,9 +30,9 @@ export class PageBaseComponent {
    * Overwrite exapmple start
    * defaultQueryParams {
    *    'search[q]': 'test',
-   *    'filters[kyc_submitted]': 'all',
+   *    'filters[is_kyc_submitted]': 'all',
    *    'filters[admin_status]': 'reviewed',
-   *    'sortings[sort_by]': 'desc',
+   *    'sortings[order]': 'desc',
    *    'page_number': 1
    * }
    */
@@ -42,7 +42,7 @@ export class PageBaseComponent {
   /*
    * Options for filter and sort example start
    * filterKeys: Array<any> = ['admin_status','admin_action_types','cynopsis_status','whitelist_status'];
-   * sortKeys: Array<any> = ['sort_by'];
+   * sortKeys: Array<any> = ['order'];
   */
 
   filterKeys  : Array<any> = null;

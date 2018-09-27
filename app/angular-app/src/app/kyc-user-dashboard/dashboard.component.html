@@ -52,8 +52,8 @@
     <div class="col-12 col-lg-4 ml-auto mt-3">
       <form class="col-lg-7 px-0 ml-auto pr-lg-0 form-group" #sortForm="ngForm" name='sorting'  (change)="onSortChange(sortForm)">
         <label class='form-label mb-2'>SORT BY</label>
-        <select class="form-control selectpicker" name="sortings[sort_by]" [(ngModel)]='sort_by'
-                ostOptions  [entityPath]="'entity_configs.kyc_user_details.sort_by'">
+        <select class="form-control selectpicker" name="sortings[order]" [(ngModel)]='sort_by'
+                ostOptions  [entityPath]="'entity_configs.kyc_user_details.order'">
         </select>
       </form>
     </div>

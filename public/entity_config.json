@@ -150,7 +150,7 @@
       }
     },
     "user_management_dashboard":{
-      "kyc_submitted":{
+      "is_kyc_submitted":{
         "values":[
           {
             "value": "all",
