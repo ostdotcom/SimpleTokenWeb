@@ -49,7 +49,7 @@ export class DashboardComponent extends PageBaseComponent implements OnInit {
   params;
 
   filterKeys: Array<any> = ['admin_status','admin_action_types','cynopsis_status','whitelist_status'];
-  sortKeys: Array<any> = ['sort_by'];
+  sortKeys: Array<any> = ['order'];
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((queryParams:any) => {

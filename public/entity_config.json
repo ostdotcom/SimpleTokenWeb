@@ -109,7 +109,7 @@
         ],
         "data_type": "array"
       },
-      "sort_by": {
+      "order": {
         "values": [
           {
             "value": "desc",
@@ -191,7 +191,7 @@
         ],
         "data_type": "array"
       },
-      "sort_by": {
+      "order": {
         "values": [
           {
             "value": "desc",
