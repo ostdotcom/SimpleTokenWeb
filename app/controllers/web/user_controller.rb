@@ -227,8 +227,8 @@ class Web::UserController < Web::BaseController
 
     # Check if error present or not?
     unless service_response.success?
-      error_data = service_response.error_data || {}
-      user_token_sale_state = error_data['user_token_sale_state']
+      error_extra_info = service_response.error_extra_info || {}
+      user_token_sale_state = error_extra_info['user_token_sale_state']
 
       if user_token_sale_state.present? && user_token_sale_state != GlobalConstant::TokenSaleUserState.profile_page
         # extra_param = params[:t].present? ? "?e_t=1" : ""
