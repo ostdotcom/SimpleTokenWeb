@@ -23,6 +23,11 @@ admin-dashboard {
     }
   }
 }
+
+.kyc-header {
+  color: $yellow-500;
+}
+
 .tooltip{
   &.bs-tooltip-left{
     .arrow::before{

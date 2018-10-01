@@ -1,14 +1,12 @@
 <div class="error">
-  <ng-container *ngIf="errorForTemplate">
-      <ng-container *ngIf="errorForTemplate.touched && !errorForTemplate.valid; else showServerErrors">
-        {{getErrorMessage()}}
-      </ng-container>
-      <ng-template #showServerErrors >
-        <ng-container *ngIf="errorForTemplate.serverError">
-            {{errorForTemplate.serverError}}
-        </ng-container>
-      </ng-template>
+    <ng-container *ngIf="isFrontEndError(); else showServerErrors">
+      {{getFrontEndErrorMessage()}}
     </ng-container>
+    <ng-template #showServerErrors >
+      <ng-container *ngIf="serverErrorMessage">
+          {{serverErrorMessage}}
+      </ng-container>
+    </ng-template>
 </div>
 
 

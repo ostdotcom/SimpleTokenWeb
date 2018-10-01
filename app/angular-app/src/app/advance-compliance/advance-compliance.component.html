@@ -1,0 +1,43 @@
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="error-content">
+    <div class="col-12">{{ errorMessage }}</div>
+  </ng-container>
+</request-state-handler>
+
+<div class="advance-compliance" *ngIf="!isProcessing && !hasError">
+  <div class="row mt-4 pt-2 ">
+    <div class="col-12">
+      <h4 class="kyc-header text-transform-upper">AML/CTF COMPLIANCE</h4>
+    </div>
+  </div>
+  <div class="my-3 pt-1 compliance-header">Cynopsys Artemis is OST KYC Compliance Partner. When a potential purchaser submits their detauls, they are processed against AML and CTF databases. When a user’s AML/CTF status is flagged ‘Pending’, it means that a manual verification is needed in the Artemis Dashboard. The details of the users have been matched against an individual that potentially is present in the AML/CTF databases and needs to be manually Approved or Rejected based on admin verification.
+
+    You hold an account in Cynopsys Artemis that you can access with the details below. Please utilise the ‘Forgot Password’ functionality on the login screen to set a password and gain access.
+  </div>
+  <div class="row mt-4">
+    <div class="form-group col-12 col-md-8 col-lg-5">
+      <div class="form-label">
+        LOGIN URL
+      </div>
+      <div class="read-only-fields p-2">
+      <small>{{amlLoginUrl}}</small>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="form-group col-12 col-md-8 col-lg-5">
+      <div class="form-label">
+      USERNAME
+      </div>
+      <div class="read-only-fields p-2">
+      <small>{{amlUsername}}</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 mb-4">
+    <div class="col-12">
+      <a href="{{amlLoginUrl}}" target="_blank" class="btn btn-primary">LOGIN TO ARTEMIS</a>
+    </div>
+  </div>
+</div>
