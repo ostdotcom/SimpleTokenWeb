@@ -41,7 +41,7 @@ export class PageBaseComponent {
 
   /*
    * Options for filter and sort example start
-   * filterKeys: Array<any> = ['admin_status','admin_action_types','cynopsis_status','whitelist_status'];
+   * filterKeys: Array<any> = ['admin_status','admin_action_types','aml_status','whitelist_status'];
    * sortKeys: Array<any> = ['order'];
   */
 

@@ -35,7 +35,7 @@ export class DashboardComponent extends PageBaseComponent implements OnInit {
   // Default parameters
   admin_status : any ;
   admin_action_types : any;
-  cynopsis_status: any;
+  aml_status: any;
   whitelist_status: any;
   sort_by : any;
   page_number: number;
@@ -48,7 +48,7 @@ export class DashboardComponent extends PageBaseComponent implements OnInit {
   errorMessage;
   params;
 
-  filterKeys: Array<any> = ['admin_status','admin_action_types','cynopsis_status','whitelist_status'];
+  filterKeys: Array<any> = ['admin_status','admin_action_types','aml_status','whitelist_status'];
   sortKeys: Array<any> = ['order'];
 
   ngOnInit() {

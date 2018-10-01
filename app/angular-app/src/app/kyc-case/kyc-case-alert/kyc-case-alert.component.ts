@@ -25,7 +25,7 @@ export class KycCaseAlertComponent  {
     var data =  this.response['data']
     ;
 
-    var cynopsis_status         = this.utilitites.deepGet(data ,  "case_detail.cynopsis_status"),
+    var aml_status         = this.utilitites.deepGet(data ,  "case_detail.aml_status"),
         admin_status            = this.utilitites.deepGet(data ,  "case_detail.admin_status"),
         approve_type            = this.utilitites.deepGet(data ,  "client_kyc_pass_setting.approve_type"),
         last_qualified_type     = this.utilitites.deepGet(data ,  "case_detail.last_qualified_type"),
@@ -64,7 +64,7 @@ export class KycCaseAlertComponent  {
 
 
      amlStatusCheck = () => {
-        if( cynopsis_status == "rejected"){
+        if( aml_status == "rejected"){
           setAlertMessageAndStatus("AML/CTF status denied, this case cannot be reopened." , "failed");
         }else {
           processFailedReasons();
@@ -83,7 +83,7 @@ export class KycCaseAlertComponent  {
      }
 
      onAdminStatusApproved = () => {
-      if( cynopsis_status == "pending" ||  cynopsis_status == "unprocessed" ){
+      if( aml_status == "pending" ||  aml_status == "unprocessed" ){
           setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified and is awaiting AML/CTF action by Admin on Artemis Dashboard." , "warning");
       }else if( kyc_status == "approved" ){
         if( isWhitelistSetup ){
@@ -105,7 +105,7 @@ export class KycCaseAlertComponent  {
      onManual = () =>{
        if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
         setAlertMessageAndStatus("Issue reported - " + last_issue_email_sent_humanized + " email sent" , "warning");
-       }else if( cynopsis_status == "pending" ) {
+       }else if( aml_status == "pending" ) {
          setAlertMessageAndStatus("Awaiting AML/CTF action by Admin on Artemis Dashboard." , "warning");
        }
      }
@@ -149,7 +149,7 @@ export class KycCaseAlertComponent  {
       }
 
       processFailedReasons = () =>{
-        if( approve_type != "auto") return ; 
+        if( approve_type != "auto") return ;
         let cnt , len = failedReasons.length ,
             reasonKey ,  reasonMsg;
         if( len <= 0 ) return ;

@@ -47,7 +47,7 @@
         ],
         "data_type": "array"
       },
-      "cynopsis_status": {
+      "aml_status": {
         "values": [
           {
             "value": "all",

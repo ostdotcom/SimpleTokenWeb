@@ -14,7 +14,7 @@
     {{row.admin_status}}
   </div>
   <div class="col p-0 pr-3 display-3 text-capitalize">
-    {{row.cynopsis_status}}
+    {{row.aml_status}}
   </div>
   <div class="col p-0 pr-3 display-3 text-capitalize" *ngIf="appConfigService.hasWhiteListSetUp()">
     {{row.whitelist_status}}
@@ -90,7 +90,7 @@
         <div class="row py-3 mx-0">
           <div class="col-6">
             <span class='font-weight-500 display-4 '>AML/CTF</span>
-            <div class='display-3 text-capitalize'>{{row.cynopsis_status}}</div>
+            <div class='display-3 text-capitalize'>{{row.aml_status}}</div>
 
           </div>
           <div class="col-6" *ngIf="appConfigService.hasWhiteListSetUp()">
