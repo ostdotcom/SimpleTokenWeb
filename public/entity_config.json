@@ -4,7 +4,7 @@
       "admin_status": {
         "values": [
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -25,7 +25,7 @@
       "admin_action_types": {
         "values": [
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -50,7 +50,7 @@
       "aml_status": {
         "values": [
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -87,7 +87,7 @@
       "whitelist_status": {
         "values": [
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -153,7 +153,7 @@
       "is_kyc_submitted":{
         "values":[
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -169,7 +169,7 @@
       "whitelist_status": {
         "values": [
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {

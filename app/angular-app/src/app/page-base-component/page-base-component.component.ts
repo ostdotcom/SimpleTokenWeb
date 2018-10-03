@@ -22,7 +22,7 @@ export class PageBaseComponent {
     }
 
   private gobalDefault:object = {
-    filter      : "all",
+    filter      : "",
     sort        : 'desc',
   }
 
