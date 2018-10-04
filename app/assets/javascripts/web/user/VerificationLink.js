@@ -9,7 +9,7 @@
 
 
         init: function (config) {
-           if (config.e_t == 1){
+           if (config.e_t == 'true'){
              oThis.onload();
            }
             oThis.bindButtonActions();

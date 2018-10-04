@@ -207,7 +207,8 @@ export class KycCaseAlertComponent  {
     investor_proof : "Case cannot be automatically qualified, due to Investor proof.",
     duplicate_kyc : "Case cannot be automatically qualified, due to duplicate status.",
     token_sale_ended: "Case cannot be automatically qualified, as the token sale ended.",
-    case_closed_for_auto_approve: "Case cannot be automatically qualified, as the case is closed for auto approve."
+    case_closed_for_auto_approve: "Case cannot be automatically qualified, as the case is closed for auto approve.",
+    human_labels_percentage_low: "Case cannot be automatically qualified, due to human facial characteristics not matching in facial recognition."
   }
 
 }

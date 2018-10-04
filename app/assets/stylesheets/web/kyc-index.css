@@ -12,6 +12,7 @@
  *= require web/kyc/SvgCheckbox
  *= require web/common/FooterLinks
  *= require web/common/SocialIcons
- *= require web/common/NewNavBar
+ *#= require web/common/NewNavBar
+ *= require web/common/NavBarSubMenu
  *= require plugins/bootstrap-datepicker/bootstrap-datepicker
  */
