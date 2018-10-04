@@ -37,7 +37,7 @@ export class DashboardComponent extends PageBaseComponent implements OnInit {
   admin_action_types : any;
   aml_status: any;
   whitelist_status: any;
-  sort_by : any;
+  order : any;
   page_number: number;
   isCSVDownloaded = false;
   securityCheckbox: boolean = false;
