@@ -33,9 +33,9 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
   message: string;
   successMessage: string;
   DataType: string;
-  kyc_submitted: string;
+  is_kyc_submitted: string;
   whitelist_status: string;
-  sort_by: string;
+  order: string;
 
   constructor(
     private entityConfigService: EntityConfigService ,

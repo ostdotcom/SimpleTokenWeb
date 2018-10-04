@@ -37,7 +37,7 @@
 
         <div class="col-12 col-lg-6 px-0 mt-3">
           <label class='form-label mb-2'>KYC SUBMITTED</label>
-          <select class="form-control selectpicker" name="filters[is_kyc_submitted]" [(ngModel)]='kyc_submitted'
+          <select class="form-control selectpicker" name="filters[is_kyc_submitted]" [(ngModel)]='is_kyc_submitted'
                   ostOptions [entityPath]="'entity_configs.user_management_dashboard.is_kyc_submitted'">
           </select>
         </div>
@@ -47,7 +47,7 @@
   <div class="col-12 col-lg-4 ml-auto mt-3">
       <form class="col-lg-5 px-0 ml-auto form-group" #sortForm="ngForm" (change)="onSortChange(sortForm)" name='sorting'>
         <label class='form-label mb-2'>SORT BY</label>
-        <select class="form-control selectpicker" name="sortings[order]" [(ngModel)]='sort_by'
+        <select class="form-control selectpicker" name="sortings[order]" [(ngModel)]='order'
                 ostOptions  [entityPath]="'entity_configs.user_management_dashboard.order'">
         </select>
       </form>
