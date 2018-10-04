@@ -18,8 +18,6 @@
       },
 
       showSuccessPage: function () {
-          var userEmail = $('#email').val();
-          $('#emailSuccess').text(userEmail);
           $('#resetPassword').hide();
           $('#forgotPasswordSuccess').show();
       }
