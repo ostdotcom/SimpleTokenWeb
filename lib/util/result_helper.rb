@@ -67,12 +67,12 @@ module Util
     # @param [String] msg (mandatory) - error message
     # @param [Integer] internal_code (mandatory) - internal code, on which conditions can be made
     # @param [String] data (optional) - error data
-    # @param [Hash] extended_data[:tracking_data] (optional) - tracking data to be sent in the response
-    # @param [Hash] extended_data[:segmentation_data] (optional) - segmentation data to be sent in the response
+    # @param [Hash] error_data (optional) - error_data
+    # @param [Hash] error_extra_info (optional) - error extra info
     #
     # @return [Result::Base] returns an object of Result::Base class
     #
-    def error_with_internal_code(code, msg, internal_code, data = {}, error_data = {}, error_display_text= '')
+    def error_with_internal_code(code, msg, internal_code, data = {}, error_data = {}, error_display_text= '', error_extra_info={})
 
       Result::Base.error(
           {
@@ -81,7 +81,8 @@ module Util
               error_display_text: error_display_text || msg,
               data: data,
               http_code: internal_code,
-              error_data: error_data
+              error_data: error_data,
+              error_extra_info: error_extra_info
           })
     end
 

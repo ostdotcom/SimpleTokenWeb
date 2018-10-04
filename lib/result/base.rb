@@ -8,7 +8,8 @@ module Result
                   :error_data,
                   :data,
                   :exception,
-                  :http_code
+                  :http_code,
+                  :error_extra_info
 
     # Initialize
     #
@@ -49,6 +50,19 @@ module Result
       @error_display_text = params[:error_display_text] if params.key?(:error_display_text)
       @error_data = params[:error_data] if params.key?(:error_data)
       @error_display_heading = params[:error_display_heading] if params.key?(:error_display_heading)
+      @error_extra_info = params[:error_extra_info] if params.key?(:error_extra_info)
+    end
+
+    # Set Error extra info
+    #
+    # * Author: Pankaj
+    # * Date: 28/09/2018
+    # * Reviewed By:
+    #
+    # @param [Hash] error_extra_info is an Hash of extra info to send with error
+    #
+    def set_error_extra_info(error_extra_info)
+      @error_extra_info = error_extra_info
     end
 
     # Set Exception
@@ -242,7 +256,8 @@ module Result
           :error,
           :error_display_text,
           :error_data,
-          :error_display_heading
+          :error_display_heading,
+          :error_extra_info
       ]
     end
 
@@ -295,7 +310,8 @@ module Result
                 code: hash[:error],
                 display_text: hash[:error_display_text] || 'Something went wrong.',
                 display_heading: hash[:error_display_heading] || 'Error.',
-                error_data: hash[:error_data] || {}
+                error_data: hash[:error_data] || {},
+                error_extra_info: hash[:error_extra_info] || {}
             },
             data: hash[:data] || {}
         }
