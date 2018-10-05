@@ -229,7 +229,7 @@ export class KycCaseComponent implements OnInit {
     let adminStatus = this.caseDetails.admin_status ;
     if(adminStatus == "unprocessed" ){
       this.adminStatusConfig = {
-        text:  "Pending",
+        text:  "Unprocessed",
         class: "yellow-bar"
        }
     }else if( adminStatus == "qualified" ){
