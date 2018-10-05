@@ -1,21 +1,18 @@
-<request-state-handler class="d-block w-100 page-loader" [isProcessing]="false" [hasError]="hasError">
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="error-content">
+    <div class="col-12">{{ errorMessage }}</div>
+  </ng-container>
+</request-state-handler>
 
-    <ng-container class="error-content">
-      <div class="col-12">{{ errorMessage }}</div>
-    </ng-container>
-  </request-state-handler>
-
-<div class="developer-integrations" *ngIf="!hasError">
+<div class="developer-integrations" *ngIf="!isProcessing && !hasError">
   <div class="integtration-info pb-4">
     <div class="row mt-4 pt-2 ">
       <div class="col-12">
-        <h4 class="kyc-header text-transform-upper">DEVELOPER INTEGRATIONS
-            <span class="view-only py-1 px-2 d-inline-block"> View only</span>
-        </h4>
+        <h4 class="kyc-header text-transform-upper">DEVELOPER INTEGRATIONS</h4>
       </div>
     </div>
-    <div class="my-3 integration-header">
-      API Information
+    <div class="mb-3 mt-1 integration-sub-header">
+      Connect your application or website directly to OST KYC via API. Collect your API Key and API Secret Key here below to proceed with the integration. Consult here the resources for the detailed API documentation.
     </div>
     <div class="row mt-4">
       <div class="form-group col-12 col-md-5">
@@ -37,44 +34,132 @@
         <div class="read-only-fields p-2">
           <small>{{apiSecret}}</small>
         </div>
+      </div>
+    </div>
 
+    <div class="row mt-4">
+      <div class="col-12">
+        <button [disabled]="isGenerating" type="button" (click)="showConfirmModal()" class="btn btn-primary">{{generateBtnText}}</button>
+        <div class="general_error error text-center">
+          <ost-form-error-handler [errorFor]="'general_error'" [serverError]="generateKeysErrorResponse">
+          </ost-form-error-handler>
+        </div>
       </div>
     </div>
   </div>
 
+  <div class="api-options">
+    <div class="row mt-2">
+      <div class="form-group col-12">
+        <div class="form-label mt-3">
+          API KYC FIELDS
+        </div>
+        <div class="integration-sub-header mb-3">
+          In this section you can select which KYC fields to to be fetched in the API response of the (ENDPOINT NAME) API.
+          This option is given in order to minimise the amount of personal data exiting the encrypted secured DB to those strictly required from the client side.
 
-  <div class="aml-ctf-info">
-      <div class="row mt-4">
-          <div class="form-group col-12 col-md-5">
-            <div class="form-label">
-                AML/CTF LOGIN URL
-                <span data-toggle="tooltip" 
-                data-placement="right"
-                [title]="'To change your password, use the URL with the username provided and click on lost password.'">
-                  <svg class="svg" style="height: 16px;width: 16px">
-                    <switch>
-                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
-                    </switch>
-                  </svg>
-                </span>
+          OST KYC will not be responsible for the security of these kyc data of users.
+        </div>
+      </div>
+    </div>
+    <div class="row mt-1">
+      <form class="col-12" #apiForm="ngForm" (ngSubmit)="submitForm(apiForm)" id="apiForm">
+        <div class="row">
+          <div class="form-group col-12">
+            <div class="pt-2 pr-2 pl-0 form-check" *ngFor="let option of apiOptions; let i = index">
+              <input  type="checkbox"
+                      class="form-check-input"
+                      (change)="onChange( option.value )"
+                      [checked]="isChecked( option.value )"
+                      name="{{option.key}}"
+                      id="{{option.value}}"  />
+              <label class="form-check-label"
+                     for="{{option.value}}">{{option.display_text}}</label>
             </div>
-            <div class="read-only-fields p-2">
-              <small>{{amlLoginUrl}}</small>
-            </div>
-
           </div>
         </div>
-
-        <div class="row mt-4">
-          <div class="form-group col-12 col-md-5">
-            <div class="form-label">
-                AML/CTF USERNAME
+        <div class="row">
+          <div class="form-group user-form-footer text-center text-sm-left col-12 mt-4 pt-4">
+            <button [disabled]="isSubmitting" type="submit" class="btn btn-primary mb-3 mb-xl-0"
+                    id="submitBtn"
+                    title="">{{btnText}}
+            </button>
+            <button type="button" class="btn btn-secondary ml-3 mb-3 mb-xl-0" (click)="onCancel()">
+              Cancel
+            </button>
+            <div class="general_error error text-center col-12">
+              <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">
+              </ost-form-error-handler>
             </div>
-            <div class="read-only-fields p-2">
-              <small>{{amlUsername}}</small>
-            </div>
-
           </div>
         </div>
+      </form>
+    </div>
   </div>
 </div>
+
+<div class="modal cms-modal fade" id="setting-apply-success-modal" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-lg h-100 my-0 pb-5">
+    <div class="modal-content">
+      <div class="modal-body p-5">
+        <div class='row'>
+          <div class="text-center col-12">
+            <svg class="icon" style="width:50px; height: 50px">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                </use>
+              </switch>
+            </svg>
+            <h5 class="my-3">Settings have been successfully applied.</h5>
+          </div>
+          <div class="col-12 form-group text-center">
+            <button class="btn btn-primary px-5" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal cms-modal fade" id="generate-keys-success-modal" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-lg h-100 my-0 pb-5">
+    <div class="modal-content">
+      <div class="modal-body p-5">
+        <div class='row'>
+          <div class="text-center col-12">
+            <svg class="icon" style="width:50px; height: 50px">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                </use>
+              </switch>
+            </svg>
+            <h5 class="my-3">API key has been successfully refreshed.</h5>
+          </div>
+          <div class="col-12 form-group text-center">
+            <button class="btn btn-primary px-5" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal cms-modal fade" id="generate-api-confirmation-modal" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-lg h-100 my-0 pb-5">
+    <div class="modal-content">
+      <div class="modal-body p-5">
+        <div class='row'>
+          <div class="text-center col-12">
+            <h5 class="my-3">Are you sure you want to refresh the API key?
+              This action will invalidate the previous keys.</h5>
+          </div>
+          <div class="col-12 form-group text-center">
+            <button class="btn btn-secondary px-5" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary px-5 ml-xl-3" (click)="generateApiKeys()" data-dismiss="modal">YES, CONTINUE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

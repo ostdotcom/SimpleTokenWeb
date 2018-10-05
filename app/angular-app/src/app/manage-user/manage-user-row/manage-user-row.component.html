@@ -17,7 +17,7 @@
 <div class="col-2 p-0 pr-3 display-3" *ngIf='row.registration_timestamp; else defaultForDesktop;'>
     {{row.registration_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm:ss' }}
 </div>
-<div class="col-2 p-0 pr-3 display-3" *ngIf='row.kyc_submitted; else kycNotSubmitted' >
+<div class="col-2 p-0 pr-3 display-3" *ngIf='row.is_kyc_submitted; else kycNotSubmitted' >
   Yes
 </div>
 <ng-template #kycNotSubmitted>
@@ -58,7 +58,7 @@
         <div class="row py-3 mx-0" >
           <div class="col-12">
               <span class='font-weight-600 display-4 text-transform-upper mb-1'>KYC SUBMITTED:</span>
-              <span class="display-3 text-capitalize" *ngIf='row.kyc_submitted; else kycNotSubmittedMobile'>
+              <span class="display-3 text-capitalize" *ngIf='row.is_kyc_submitted; else kycNotSubmittedMobile'>
                    Yes
               </span>
               <ng-template #kycNotSubmittedMobile>

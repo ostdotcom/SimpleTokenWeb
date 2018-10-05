@@ -1,10 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
-
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
-import { OstFormErrorHandlerComponent } from '../ost-form-error-handler/ost-form-error-handler.component';
-import { NgForm } from '../../../node_modules/@angular/forms';
-declare var $: any;
 
 @Component({
   selector: 'app-profile',
@@ -12,21 +8,19 @@ declare var $: any;
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  clientName: string = "";
-  domainName: string = "";
-  superAdminEmails: Array<string> = [""];
+
+  clientName       : string        = "";
+  domainName       : string        = "";
+  superAdminEmails : Array<string> = [""];
   dataUrl = "api/admin/client/profile";
-  hasError: boolean =false;
-  message: string;
-  btnText: string = "Update Password";
-  hasLoaded =false;
-  errorMessage: string;
+
+  hasError     : boolean = false;
+  hasLoaded    : boolean = false;
+  isProcessing : boolean = true;
+  errorMessage : string;
   errorResponse;
 
-  @ViewChild(OstFormErrorHandlerComponent) formErrorHandler:OstFormErrorHandlerComponent;
-
   constructor(private http: OstHttp,
-
               private stateHandler : RequestStateHandlerService) { }
 
   ngOnInit() {
@@ -53,38 +47,4 @@ export class ProfileComponent implements OnInit {
         this.stateHandler.updateRequestStatus(this, false,true, false, err);
       })
   }
-
-  changePasswordSubmit(changePassword) {
-    let params =  changePassword.value;
-    changePassword.isSubmitting = true;
-    this.btnText = "Updating...";
-    this.errorResponse = null;
-    if (changePassword.valid){
-      this.http.post('api/admin/profile/change-password' , {...params }  ).subscribe(
-        response => {
-          let res = response.json();
-          changePassword.isSubmitting = false;
-          this.btnText = "Update Password";
-          if( res.success ){
-            $("#changePasswordSuccess").modal("show");
-            changePassword.reset();
-          }else{
-            this.errorResponse = res;
-          }
-        },
-        error => {
-          let err = error.json();
-          changePassword.isSubmitting = false;
-          this.btnText = "Update Password";
-          this.errorResponse = err;
-        }
-      )
-    }
-  }
-
-  resetForm( changePassword){
-    this.errorResponse = null;
-    changePassword.reset();
-  }
-
 }

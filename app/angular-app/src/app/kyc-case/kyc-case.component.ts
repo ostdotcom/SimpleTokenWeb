@@ -182,8 +182,8 @@ export class KycCaseComponent implements OnInit {
         class: "red-bar"
         }
     }else if( image_processing_status == "processed" ){
-      let  className = "red-bar" , 
-           FRValue   = this.user_kyc_comparison_detail.face_match_percent; 
+      let  className = "red-bar" ,
+           FRValue   = this.user_kyc_comparison_detail.face_match_percent;
       if( this.ai_pass_detail.fr_pass_status ){
         className = "green-bar"
       }
@@ -214,7 +214,7 @@ export class KycCaseComponent implements OnInit {
         this.OCRconfig = {
           text:  "Match",
           class: "green-bar"
-        } 
+        }
       }else {
         this.OCRconfig = {
           text:  "Unmatch",
@@ -246,8 +246,8 @@ export class KycCaseComponent implements OnInit {
   }
 
   amlCtfStatusConfig = null ;
-  setAmlCtfStatusConfig(){  //TODO 
-    let amlCtfStatus = this.caseDetails.cynopsis_status ;
+  setAmlCtfStatusConfig(){
+    let amlCtfStatus = this.caseDetails.aml_status ;
     if( amlCtfStatus == "pending" || amlCtfStatus == "unprocessed"){
       this.amlCtfStatusConfig = {
         text: amlCtfStatus,
@@ -271,7 +271,7 @@ export class KycCaseComponent implements OnInit {
         let failedOcrFields  = this.ai_pass_detail.ocr_match_fields || [],
             clientOcrFields  = this.client_kyc_pass_setting.ocr_comparison_fields || []
         ;
-       return clientOcrFields.indexOf( key ) > -1 && !failedOcrFields[key] ; 
+       return clientOcrFields.indexOf( key ) > -1 && !failedOcrFields[key] ;
       }else{
         return false ;
       }

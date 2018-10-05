@@ -1,12 +1,9 @@
 @import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
-.developer-integrations{
-  .integtration-info{
-    border-bottom: 1px solid $custom-grey-7;
-  }
-  .integration-sub-header{
+
+.advance-compliance {
+  .compliance-header{
+    white-space: pre-line;
     letter-spacing: 1px;
-    white-space:pre-line;
-    line-height: normal;
   }
   .read-only-fields{
     overflow-x: auto;
@@ -14,9 +11,9 @@
     border-radius: 4px;
     background-color: $grey-bg;
     border: solid 1px $custom-grey-7;
-      small{
-        font-weight: 300;
-      }
+    small{
+      font-weight: 300;
+    }
   }
   svg {
     vertical-align: top;

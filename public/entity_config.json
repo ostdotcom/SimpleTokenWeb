@@ -4,7 +4,7 @@
       "admin_status": {
         "values": [
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -25,7 +25,7 @@
       "admin_action_types": {
         "values": [
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -47,10 +47,10 @@
         ],
         "data_type": "array"
       },
-      "cynopsis_status": {
+      "aml_status": {
         "values": [
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -87,7 +87,7 @@
       "whitelist_status": {
         "values": [
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -109,7 +109,7 @@
         ],
         "data_type": "array"
       },
-      "sort_by": {
+      "order": {
         "values": [
           {
             "value": "desc",
@@ -150,10 +150,10 @@
       }
     },
     "user_management_dashboard":{
-      "kyc_submitted":{
+      "is_kyc_submitted":{
         "values":[
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -169,7 +169,7 @@
       "whitelist_status": {
         "values": [
           {
-            "value": "all",
+            "value": "",
             "display_text": "All"
           },
           {
@@ -191,7 +191,7 @@
         ],
         "data_type": "array"
       },
-      "sort_by": {
+      "order": {
         "values": [
           {
             "value": "desc",
@@ -269,6 +269,76 @@
             "display_text": "Document ID Number"
           }
           ] 
+      }
+    },
+    "developer_integrations_component": {
+      "options": {
+        "values": [
+          { "key": "api-options",
+            "value": "first_name",
+            "display_text": "First Name"
+          },
+          {"key": "api-options",
+            "value": "last_name",
+            "display_text": "Last Name"
+          },
+          {"key": "api-options",
+            "value": "birthdate" ,
+            "display_text": "Birthdate"
+          },
+          {"key": "api-options",
+            "value": "street_address",
+            "display_text": "Street Address"
+          },
+          {"key": "api-options",
+            "value": "city",
+            "display_text": "City"
+          },
+          {"key": "api-options",
+            "value": "state",
+            "display_text": "State"
+          },
+          {"key": "api-options",
+            "value": "country",
+            "display_text": "Country"
+          },
+          {"key": "api-options",
+            "value": "postal_code",
+            "display_text": "Postal Code"
+          },
+          {"key": "api-options",
+            "value": "ethereum_address",
+            "display_text": "Ethereum Address"
+          },
+          {"key": "api-options",
+            "value": "document_id_number",
+            "display_text": "Document Id Number"
+          },
+          {"key": "api-options",
+            "value": "nationality",
+            "display_text": "Nationality"
+          },
+          {"key": "api-options",
+            "value": "document_id_file_path",
+            "display_text": "Document Id File Path"
+          },
+          {"key": "api-options",
+            "value": "selfie_file_path",
+            "display_text": "Selfie File Path"
+          },
+          {"key": "api-options",
+            "value": "residence_proof_file_path",
+            "display_text": "Residence Proof File Path"
+          },
+          {"key": "api-options",
+            "value": "estimated_participation_amount",
+            "display_text": "Estimated Participation Amount"
+          },
+          {"key": "api-options",
+            "value": "investor_proof_files_path",
+            "display_text": "Investor Proof Files Path"
+          }
+        ]
       }
     }
   }
