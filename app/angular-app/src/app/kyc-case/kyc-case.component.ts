@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
 import { OstHttp } from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import { AppConfigService } from '../services/app-config.service';
@@ -47,7 +46,6 @@ export class KycCaseComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     private http: OstHttp,
     private stateHandler : RequestStateHandlerService,
-    private domSanitizer: DomSanitizer,
     public appConfig: AppConfigService,
     private scrollTopService: ScrollTopService
   ) { }
@@ -128,10 +126,6 @@ export class KycCaseComponent implements OnInit {
     this.showCase = showCase;
     this.showReportIssue = showReportIssue;
     this.showUpdateEth = showUpdateEth;
-  }
-
-  bypassSecurityTrustResourceUrl(url){
-    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   onActionSuccess(e){

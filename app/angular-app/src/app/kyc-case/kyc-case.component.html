@@ -244,12 +244,10 @@
                     </svg>
                   </a>
                 </div>
-                <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.document_id_file_url}}"
-                />
-                <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
-
-                  <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.document_id_file_url)'></iframe>
-                </div>
+                <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.document_id_file_url}}"/>
+                <ng-container *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'">
+                  <ost-pdf-file class="h-100" [src]="userDetails.document_id_file_url"></ost-pdf-file>  
+                </ng-container>
               </div>
             </div>
           </div>
@@ -273,12 +271,10 @@
                     </svg>
                   </a>
                 </div>
-                <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.document_id_file_url}}"
-                />
-                <div *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
-
-                  <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.document_id_file_url)'></iframe>
-                </div>
+                <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.document_id_file_url}}" />
+                <ng-container *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" >
+                  <ost-pdf-file  class="h-100" [src]="userDetails.document_id_file_url"></ost-pdf-file>  
+                </ng-container>
               </div>
               <div class="card grey-background">
                 <div class="p-3 title-div">
@@ -292,13 +288,10 @@
                   </a>
 
                 </div>
-                <img *ngIf="getDocType(userDetails.selfie_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.selfie_file_url}}"
-                />
-                <div *ngIf="getDocType(userDetails.selfie_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
-
-
-                  <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.selfie_file_url)'></iframe>
-                </div>
+                <img *ngIf="getDocType(userDetails.selfie_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.selfie_file_url}}"/>
+                <ng-container *ngIf="getDocType(userDetails.selfie_file_url) == 'pdf'">
+                  <ost-pdf-file class="h-100" [src]="userDetails.selfie_file_url"></ost-pdf-file>  
+               </ng-container>
               </div>
             </div>
           </div>
@@ -323,11 +316,10 @@
                 </a>
 
               </div>
-              <img *ngIf="getDocType(userDetails.residence_proof_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.residence_proof_file_url}}"
-              />
-              <div *ngIf="getDocType(userDetails.residence_proof_file_url) == 'pdf'" class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.residence_proof_file_url)'></iframe>
-              </div>
+              <img *ngIf="getDocType(userDetails.residence_proof_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.residence_proof_file_url}}"/>
+              <ng-container *ngIf="getDocType(userDetails.residence_proof_file_url) == 'pdf'" >
+                <ost-pdf-file class="h-100" [src]="userDetails.residence_proof_file_url"></ost-pdf-file>  
+              </ng-container>
 
             </div>
 
@@ -346,11 +338,10 @@
                   </a>
 
                 </div>
-                <img *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.investor_proof_files_url[i]}}"
-                />
-                <div *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'pdf'" class="embed-responsive embed-responsive-4by3">
-                  <iframe class="embed-responsive-item" [src]='bypassSecurityTrustResourceUrl(userDetails.investor_proof_files_url[i])'></iframe>
-                </div>
+                <img *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.investor_proof_files_url[i]}}"/>
+                <ng-container *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'pdf'">
+                  <ost-pdf-file class="h-100" [src]="userDetails.investor_proof_files_url[i]"></ost-pdf-file>  
+                </ng-container>
 
               </div>
 
