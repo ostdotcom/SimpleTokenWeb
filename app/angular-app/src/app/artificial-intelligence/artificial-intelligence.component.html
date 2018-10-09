@@ -10,23 +10,16 @@
     <div class="intelligence-info pb-5">
       <div class="row mt-4 pt-4 ">
         <div class="col-12 ">
-          <h4 class="kyc-header text-transform-upper ">ARTIFICIAL INTELLIGENCE
-              <span *ngIf="isSuperAdmin"
-                    data-toggle="tooltip"
-                    data-placement="right"
-                    [title]="'The settings on this page can only be changed once every 60 minutes.'"
-                    class='ml-2'>
-                <svg class="svg" style="height: 20px;width: 20px">
-                  <switch>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
-                  </switch>
-                </svg>
-              </span>
+          <h4 class="kyc-header text-transform-upper ">AUTOMATION SETTING
               <span *ngIf="!isSuperAdmin" class="view-only py-1 px-2 d-inline-block"> View only</span>
           </h4>
+          <div *ngIf="isSuperAdmin" class='mt-3 ai-sub-header'>
+                Artificial Intelligence is a part of the Admin features set, independent of the selected qualification settings. The settings on this page can only be
+                changed once every 60 minutes.
+          </div>
         </div>
       </div>
-      <div class="my-3 intelligence-header form-group">
+      <div class="my-3 form-group">
         <span class="form-label">
         HOW DO YOU WANT TO QUALIFY THE USER?
         </span>

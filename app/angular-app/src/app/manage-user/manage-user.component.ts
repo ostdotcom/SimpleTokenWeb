@@ -23,8 +23,8 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
   placeholder: string = 'Search By Email';
   user;
 
-  filterKeys: Array<any> = [ 'kyc_submitted'];
-  sortKeys: Array<any> = ['sort_by'];
+  filterKeys: Array<any> = [ 'is_kyc_submitted'];
+  sortKeys: Array<any> = ['order'];
 
   page_number: number;
   postApi: string;
@@ -33,9 +33,9 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
   message: string;
   successMessage: string;
   DataType: string;
-  kyc_submitted: string;
+  is_kyc_submitted: string;
   whitelist_status: string;
-  sort_by: string;
+  order: string;
 
   constructor(
     private entityConfigService: EntityConfigService ,
@@ -86,7 +86,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
 
   onDeleteRowSucces(e){
     if( this.q ){
-      this.q = ""; //Reset the search , the table component will by default get all table data  
+      this.q = ""; //Reset the search , the table component will by default get all table data
     }else{
       this.tableComponent.getTableData();
     }
