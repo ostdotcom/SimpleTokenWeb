@@ -1,5 +1,4 @@
 <%
-   img_root = "//dxwfxs8b4lg24.cloudfront.net/ost-kyc/images/marketing/";
    documentation = [
    {
      title: "Setup & Architecture",
@@ -7,10 +6,10 @@
      readmore: "Read Docs",
      readmoreurl: "https://drive.google.com/open?id=1kwcMgZOsuaR0B-vxD_oYfJb5xr7iMqST",
      image:{
-       src: img_root + "documentation-setup-icon.png",
+       src: "documentation-setup-architecture-collaboration-icon",
        height: "75",
        width: "76",
-       alt: "Review process"
+       alt: "Setup & Architecture"
      }
    },
    {
@@ -19,10 +18,10 @@
      readmore: "API Documentation",
      readmoreurl: "https://drive.google.com/file/d/16MZGrayka1b4r6RT_na5Z7kRRVSdCvGB/view",
      image:{
-       src: img_root + "documentation-api-icon.png",
+       src: "documentation-api-reference-icon",
        height: "75",
-       width: "72",
-       alt: "Encryption"
+       width: "76",
+       alt: "API Reference"
      }
    },
    {
@@ -31,10 +30,10 @@
      readmore: "Read Docs",
      readmoreurl: "https://drive.google.com/file/d/1opZ2Xf53-cqIWUz4r0zpG83zM1tJGddk/view",
      image:{
-       src: img_root + "documentation-ui-icon.png",
+       src: "documentation-customizable-icon",
        height: "75",
-       width: "73",
-       alt: "Admin and 2FA"
+       width: "76",
+       alt: "Customizable Front-End"
      }
    }
    ]
@@ -49,7 +48,11 @@
           <% documentation.each_with_index do|member, index| %>
             <% if (index % 3) == 0 %><div class="row"><% end %>
             <div class="col-12 col-md-4 card mb-5" itemprop="member" itemscope itemtype="http://schema.org/Person">
-              <img class="img-fluid" src="<%=member[:image][:src] %>" alt="<%=member[:image][:alt] %>" height="<%=member[:image][:height] %>" width="<%=member[:image][:width] %>">
+              <svg width="<%=member[:image][:width] %>" height="<%=member[:image][:height] %>" class="d-block">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<%=member[:image][:src] %>"></use>
+                </switch>
+              </svg>
               <div class="card-body p-0 mt-3 mb-4">
                 <h5 class="card-title"><%= raw member[:title] %></h5>
                 <p class="card-text companies-desc"><%= raw member[:description] %></p>

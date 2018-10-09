@@ -1,12 +1,12 @@
 <%
-   img_root = "//dxwfxs8b4lg24.cloudfront.net/ost-kyc/images/marketing/";
    more_benefits = [
    {
      title: "Guidance",
      description: "Enjoy tech support & ICO advices throughout the setup and execution.",
      image:{
-       src: img_root + "more-benefits-guidance-icon.png",
+       src:  "more-benefits-guidance-icon",
        height: "75",
+       width: "72",
        alt: "Review process"
      }
    },
@@ -14,8 +14,9 @@
      title: "Security",
      description: "Two-way encrypted and secured server that ensures access just to you.",
      image:{
-       src: img_root + "more-benefits-security-icon.png",
+       src:  "more-benefits-security-icon",
        height: "75",
+       width: "88",
        alt: "Encryption"
      }
    },
@@ -23,8 +24,9 @@
      title: "Crypto-Powered",
      description: "Purchase OST KYC with $OST and get the most convenient price on the market.",
      image:{
-       src: img_root + "more-benefits-crypto-icon.png",
+       src: "more-benefits-crypto-powered-icon",
        height: "75",
+       width: "105",
        alt: "Admin and 2FA"
      }
    },
@@ -32,8 +34,9 @@
      title: "User Experience",
      description: "Leverage on our 10+ years UX experience to optimize users and admins conversion.",
      image:{
-       src: img_root + "more-benefits-ux-icon.png",
+       src: "more-benefits-user-experience-icon",
        height: "75",
+       width: "58",
        alt: "Transactional Emails"
      }
    },
@@ -41,8 +44,9 @@
      title: "Speed",
      description: "Quickly and safely process and verify thousands of customers every day.",
      image:{
-       src: img_root + "more-benefits-speed-icon.png",
+       src: "more-benefits-speed-icon",
        height: "75",
+       width: "121",
        alt: "Smart Filters"
      }
    },
@@ -50,8 +54,9 @@
      title: "Collaboration",
      description: "Activate and manage unlimited admins and lead your team to success.",
      image:{
-       src: img_root + "more-benefits-collaboration-icon.png",
+       src: "more-benefits-collaboration-icon",
        height: "75",
+       width: "83",
        alt: "Support"
      }
    },
@@ -66,7 +71,11 @@
         <% more_benefits.each_with_index do|member, index| %>
           <% if (index % 3) == 0 %><div class="row"><% end %>
           <div class="col-12 col-md-4" itemprop="member" itemscope itemtype="http://schema.org/Person">
-            <img itemprop="photo" src="<%=member[:image][:src] %>" alt="<%=member[:image][:alt] %>" height="<%=member[:image][:height] %>">
+            <svg width="<%=member[:image][:width] %>" height="<%=member[:image][:height] %>" class="d-block">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<%=member[:image][:src] %>"></use>
+              </switch>
+            </svg>
             <h3><%= raw member[:title] %></h3>
             <p class="companies-desc"><%= raw member[:description] %></p>
           </div>

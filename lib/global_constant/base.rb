@@ -43,6 +43,10 @@ module GlobalConstant
         simple_token_web['root_url']
       end
 
+      def placeholder_image_src
+        @placeholder_image_src ||= fetch_config.fetch('placeholder_image_src', '')
+      end
+
       # pepo campaigns config
       #
       # * Author: Kedar
