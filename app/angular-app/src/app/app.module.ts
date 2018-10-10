@@ -58,6 +58,8 @@ import { UtilitiesService } from './services/utilities.service';
 import { FormConfiguratorComponent } from './form-configurator/form-configurator.component';
 import { SaleSettingsComponent } from './sale-settings/sale-settings.component';
 import { CountrySettingsComponent } from './country-settings/country-settings.component';
+import { OstPdfFileComponent } from './ost-pdf-file/ost-pdf-file.component';
+import { OstPdfService } from './services/ost-pdf.service' ;
 
 
 
@@ -116,7 +118,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     KycCaseAlertComponent,
     FormConfiguratorComponent,
     SaleSettingsComponent,
-    CountrySettingsComponent
+    CountrySettingsComponent,
+    OstPdfFileComponent
   ],
   imports: [
     BrowserModule,
@@ -186,8 +189,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 AppConfigService,
                 RequestStateHandlerService,
                 ScrollTopService,
-                UtilitiesService
-
+                UtilitiesService,
+                OstPdfService
             ],
   bootstrap: [AppComponent]
 })
