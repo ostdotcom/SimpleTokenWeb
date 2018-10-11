@@ -61,7 +61,12 @@
                   <div class="row">
                     <div class="d-none d-sm-inline col-sm-1 col-lg-2"></div>
                     <div class="kyc-carousel-content col-11 col-sm-10 col-lg-8 mx-auto">
-                      <img src="<%= data[:img_src] %>" alt="Gorgeous Looking Emails Image" class="img-fluid" />
+                      <img class="img-fluid responsively-lazy"
+                           src="<%= data[:img_src] %>"
+                           alt="Gorgeous Looking Emails Image"
+                           data-srcset="<%= data[:img_src] %>"
+                           srcset="<%= raw GlobalConstant::Base.placeholder_image_src %>"
+                      />
                       <iframe class="embed-youtube-item" data-src="<%= data[:iframe_src] %>" allowfullscreen style="border:0"></iframe>
                       <button type="submit" class="btn btn-primary ost-kyc-play-btn" title="<%= data[:play_btn_text] %>">
                         <div class="btn-play">

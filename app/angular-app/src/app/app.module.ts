@@ -60,6 +60,8 @@ import { SaleSettingsComponent } from './sale-settings/sale-settings.component';
 import { CountrySettingsComponent } from './country-settings/country-settings.component';
 import { AdvanceComplianceComponent } from './advance-compliance/advance-compliance.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { OstPdfFileComponent } from './ost-pdf-file/ost-pdf-file.component';
+import { OstPdfService } from './services/ost-pdf.service' ;
 
 
 
@@ -119,6 +121,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     FormConfiguratorComponent,
     SaleSettingsComponent,
     CountrySettingsComponent,
+    OstPdfFileComponent,
     AdvanceComplianceComponent,
     ChangePasswordComponent
   ],
@@ -198,8 +201,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 AppConfigService,
                 RequestStateHandlerService,
                 ScrollTopService,
-                UtilitiesService
-
+                UtilitiesService,
+                OstPdfService
             ],
   bootstrap: [AppComponent]
 })
