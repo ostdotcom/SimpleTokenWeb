@@ -1,0 +1,27 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.contract-addresses {
+  .contract-sub-header {
+    letter-spacing: 1px;
+    font-weight: $font-weight-bold;
+  }
+  .contract-header-content {
+    letter-spacing: 1px;
+    white-space: pre-line;
+  }
+  .divider {
+    border-top: 1px solid $custom-grey-7;
+  }
+  .read-only-fields{
+    overflow-x: auto;
+    min-height: 42px;
+    border-radius: 4px;
+    background-color: $grey-bg;
+    border: solid 1px $custom-grey-7;
+    small{
+      font-weight: 300;
+    }
+  }
+  .rewhitelist_checkbox {
+    color: $blue-800;
+  }
+}

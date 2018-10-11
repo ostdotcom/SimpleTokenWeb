@@ -178,6 +178,25 @@
     <span class="pl-2">AML/CTF Compliance</span>
   </div>
 
+  <div *ngIf="isSuperAdmin" class="desktop-menu px-2 align-items-center d-flex"
+       [routerLink]="['/admin/settings/contract-addresses']" [routerLinkActive]="['selected']">
+    <span>
+        <svg class="developer" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#contract-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span>
+        <svg class="developer-selected" height="20px" width="20px">
+          <switch>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#contract-selected-icon"></use>
+          </switch>
+        </svg>
+      </span>
+    <span class="pl-2">Contract Addresses</span>
+  </div>
+
   <div class="desktop-menu px-2 align-items-center d-flex"
        [routerLink]="['/admin/settings/form-configurator']" [routerLinkActive]="['selected']">
     <span>
@@ -404,6 +423,26 @@
           </svg>
         </span>
         <span class="pl-2">AML/CTF Compliance</span>
+      </div>
+
+      <div *ngIf="isSuperAdmin" class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
+           [routerLink]="['/admin/settings/contract-addresses']"
+           [routerLinkActive]="['selected']">
+        <span>
+          <svg class="fc-icon" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#contract-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="fc-selected-icon" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#contract-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Contract Addresses</span>
       </div>
 
       <div class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"

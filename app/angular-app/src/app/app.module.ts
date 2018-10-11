@@ -61,7 +61,9 @@ import { CountrySettingsComponent } from './country-settings/country-settings.co
 import { AdvanceComplianceComponent } from './advance-compliance/advance-compliance.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { OstPdfFileComponent } from './ost-pdf-file/ost-pdf-file.component';
-import { OstPdfService } from './services/ost-pdf.service' ;
+import { OstPdfService } from './services/ost-pdf.service';
+import { ContractAddressesComponent } from './contract-addresses/contract-addresses.component';
+import { VerifyOtpComponent } from './contract-addresses/verify-otp/verify-otp.component' ;
 
 
 
@@ -123,7 +125,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     CountrySettingsComponent,
     AdvanceComplianceComponent,
     ChangePasswordComponent,
-    OstPdfFileComponent
+    OstPdfFileComponent,
+    ContractAddressesComponent,
+    VerifyOtpComponent
   ],
   imports: [
     BrowserModule,
@@ -170,6 +174,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path: 'settings/advance-compliance',
             component: AdvanceComplianceComponent
+          },
+          {
+            path: 'settings/contract-addresses',
+            component: ContractAddressesComponent
           },
           {
             path: 'settings/form-configurator',

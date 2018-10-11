@@ -52,4 +52,12 @@ export class AppConfigService {
       return this.data['client_setup'] && this.data['client_setup']['web_host_setup_done'];
     }
 
+    hasWhitelistAddOn() {
+      let client_plan = this.data['client_plan'] && this.data['client_plan']['add_ons'];
+      if ( client_plan ) {
+        return (client_plan.indexOf('whitelist') !== -1);
+      }
+      return false;
+    }
+
 }

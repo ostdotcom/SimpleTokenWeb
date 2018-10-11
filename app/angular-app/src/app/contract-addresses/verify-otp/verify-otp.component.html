@@ -1,0 +1,55 @@
+<div class="modal fade" id="verifyOTPPopup" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered  modal-lg h-100 my-0 pb-5">
+    <div class="modal-content">
+      <div class="modal-body px-2 p-md-5">
+        <div *ngIf= "!isProcessing && !hasError && !isSuccess" class="text-center p-1" >
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 form-group">
+              <h5 class="my-3">Please enter the OTP sent to your registered mobile device.</h5>
+              <input type="number" class="form-control w-50 mx-auto mt-4 mb-5 text-center py-3"
+                     [(ngModel)]="otp" placeholder="Enter OTP here"/>
+              <button class="btn btn-secondary px-5" data-dismiss="modal">Cancel</button>
+              <button class="btn btn-primary px-5 ml-xl-3" (click)="validateOTP()" >Validate OTP</button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="isProcessing || hasError" class="row">
+          <request-state-handler class="d-block w-100"
+                                 [isProcessing]="isProcessing"
+                                 [hasError]="hasError">
+            <div class="processing-content mt-3 p-5">
+              <ng-content select=".custom-processing-content" ></ng-content>
+            </div>
+            <div class="error-content col-12 text-center">
+              <div *ngIf="errorMessage">{{errorMessage}}</div>
+              <div *ngIf="!errorMessage">
+                <ng-content select=".custom-error-content"></ng-content>
+              </div>
+              <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
+            </div>
+          </request-state-handler>
+        </div>
+
+        <div class="row" *ngIf="isSuccess">
+          <div class="col-12 success-hanlder-wrap text-center p-2" >
+            <div class="success-icon-wrap mb-3">
+              <svg class="icon" style="width:50px; height: 50px">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                  </use>
+                </switch>
+              </svg>
+            </div>
+            <div class="mt-2 mb-3">
+              <ng-content select=".custom-success-content" ></ng-content>
+            </div>
+            <button class="btn btn-primary" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
