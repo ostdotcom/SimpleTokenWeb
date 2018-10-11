@@ -178,7 +178,7 @@
     <span class="pl-2">AML/CTF Compliance</span>
   </div>
 
-  <div *ngIf="isSuperAdmin" class="desktop-menu px-2 align-items-center d-flex"
+  <div *ngIf="isSuperAdmin && (web_host_setup_done || has_whitelist_add_on)" class="desktop-menu px-2 align-items-center d-flex"
        [routerLink]="['/admin/settings/contract-addresses']" [routerLinkActive]="['selected']">
     <span>
         <svg class="developer" height="20px" width="20px">
@@ -425,7 +425,7 @@
         <span class="pl-2">AML/CTF Compliance</span>
       </div>
 
-      <div *ngIf="isSuperAdmin" class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
+      <div *ngIf="isSuperAdmin && (web_host_setup_done || has_whitelist_add_on)" class="desktop-menu pl-2 align-items-center d-flex" data-menu="admin"
            [routerLink]="['/admin/settings/contract-addresses']"
            [routerLinkActive]="['selected']">
         <span>

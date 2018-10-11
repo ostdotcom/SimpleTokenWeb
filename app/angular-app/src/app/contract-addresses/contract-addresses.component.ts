@@ -75,8 +75,11 @@ export class ContractAddressesComponent implements OnInit {
     }
   }
 
-  handleError( error) {
-    this.errorResponse = error;
+  handleError( response ) {
+    if( response.success ) {
+      this.errorResponse = null;
+    }
+    this.errorResponse = response;
   }
 
 }

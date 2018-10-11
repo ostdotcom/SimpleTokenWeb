@@ -49,6 +49,7 @@ export class VerifyOtpComponent implements OnInit{
         response => {
           let res = response.json();
           if( res.success ){
+            this.serverError.emit(res);
             this.stateHandler.updateRequestStatus(this, false,false);
             this.onSuccess( res );
           }else{

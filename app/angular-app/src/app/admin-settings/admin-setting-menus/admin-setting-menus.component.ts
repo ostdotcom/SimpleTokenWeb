@@ -10,14 +10,18 @@ import { AppConfigService } from '../../services/app-config.service';
 })
 export class AdminSettingMenusComponent implements OnInit {
 
-  show:boolean;
-  isSuperAdmin: boolean = false;
+  show                :boolean;
+  isSuperAdmin        : boolean = false;
+  web_host_setup_done :boolean  = false;
+  has_whitelist_add_on:boolean  = false;
 
   constructor(public router: Router, private appConfigService: AppConfigService ) { }
 
   ngOnInit() {
     this.show=true;
     this.isSuperAdmin = this.appConfigService.isSuperAdmin();
+    this.web_host_setup_done  = this.appConfigService.hasClientOpted();
+    this.has_whitelist_add_on = this.appConfigService.hasWhitelistAddOn();
   }
 
   toggleShow(){
