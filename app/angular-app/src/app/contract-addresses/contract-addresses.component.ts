@@ -41,22 +41,27 @@ export class ContractAddressesComponent implements OnInit {
     this.web_host_setup_done  = this.appConfig.hasClientOpted();
     this.has_whitelist_add_on = this.appConfig.hasWhitelistAddOn();
 
-    this.http.get(this.dataUrl).subscribe(
-      response => {
-        let res = response.json();
-        if (res.success) {
-          this.ethereum_deposit_address   = res.data.ethereum_deposit_address;
-          this.whitelist_contract_address = res.data.whitelist_contract_address;
-          this.verified_operator_address  = res.data.verified_operator_address;
-          this.stateHandler.updateRequestStatus(this, false, false);
-        } else {
-          this.stateHandler.updateRequestStatus(this, false, true, false, res);
-        }
-      },
-      error => {
-        let err = error.json();
-        this.stateHandler.updateRequestStatus(this, false, true, false, err);
-      })
+    if(!this.web_host_setup_done && !this.has_whitelist_add_on) {
+      window.location.href = '/admin/dashboard';
+    } else {
+      this.http.get(this.dataUrl).subscribe(
+        response => {
+          let res = response.json();
+          if (res.success) {
+            this.ethereum_deposit_address   = res.data.ethereum_deposit_address;
+            this.whitelist_contract_address = res.data.whitelist_contract_address;
+            this.verified_operator_address  = res.data.verified_operator_address;
+            this.stateHandler.updateRequestStatus(this, false, false);
+          } else {
+            this.stateHandler.updateRequestStatus(this, false, true, false, res);
+          }
+        },
+        error => {
+          let err = error.json();
+          this.stateHandler.updateRequestStatus(this, false, true, false, err);
+        })
+    }
+
   }
 
   submitDepositAddress( depositAddressForm ) {
