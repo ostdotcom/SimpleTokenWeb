@@ -29,8 +29,7 @@
                  placeholder="<enter Deposit Contract Address here>"
                  id="deposit_address"
                  title="deposit contract address"
-                 pattern="(0x|0X)?[0-9a-fA-F]{40}"
-                 required />
+                 pattern="(0x|0X)?[0-9a-fA-F]{40}" />
           <ost-form-error-handler [errorFor]="deposit_address" [fieldName]="'Deposit Address'"
                                   [serverError]="errorResponse">
           </ost-form-error-handler>

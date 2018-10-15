@@ -8,9 +8,9 @@ import {AppConfigService} from "../services/app-config.service";
 })
 export class KycBannerComponent implements OnInit {
 
-  showBanner      : boolean = false;
-  hasLowEthBalance: boolean = false;
-  suspension_type : string  = '';
+  whitelistingStopped : boolean = false;
+  hasLowEthBalance    : boolean = false;
+  suspensionType      : string  = '';
 
   constructor( public appConfig: AppConfigService) { }
 
@@ -19,10 +19,10 @@ export class KycBannerComponent implements OnInit {
   }
 
   init() {
-    this.suspension_type  = this.appConfig.getSuspensionType();
+    this.suspensionType  = this.appConfig.getSuspensionType();
     this.hasLowEthBalance = this.appConfig.hasLowEthBalance();
-    if( this.suspension_type !== "no" ) {
-      this.showBanner = true;
+    if( this.suspensionType == "low_balance" ) {
+      this.whitelistingStopped = true;
     }
   }
 
