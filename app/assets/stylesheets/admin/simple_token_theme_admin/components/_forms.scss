@@ -8,6 +8,10 @@
       border-color: $cyanish-gray;
       box-shadow: none;
     }
+    &:disabled{
+      font-size: $small-font-size;
+      font-weight: $display4-weight;
+    }
   }
 
   .form-label {
