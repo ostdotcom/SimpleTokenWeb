@@ -60,4 +60,13 @@ export class AppConfigService {
       return false;
     }
 
+    getSuspensionType() {
+      let suspension_type = this.data['client_whitelist'] &&  this.data['client_whitelist']['suspension_type'];
+      return suspension_type;
+    }
+
+    hasLowEthBalance() {
+      return this.data['client_whitelist'] && this.data['client_whitelist']['low_eth_balance'];
+    }
+
 }

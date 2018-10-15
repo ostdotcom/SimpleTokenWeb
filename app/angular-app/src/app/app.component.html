@@ -1,8 +1,11 @@
 <div class="container-fluid">
 
-  <div class="row">
-    <kyc-navbar class="d-block w-100"></kyc-navbar>
+  <div #headerDiv class="fixed-top">
+      <kyc-banner class="d-block w-100"></kyc-banner>
+      <kyc-navbar class="d-block w-100"></kyc-navbar>
   </div>
+
+  <div class="phantom-el"></div>
 
   <router-outlet></router-outlet>
 </div>

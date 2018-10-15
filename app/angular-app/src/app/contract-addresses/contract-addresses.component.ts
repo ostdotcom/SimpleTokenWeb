@@ -20,6 +20,8 @@ export class ContractAddressesComponent implements OnInit {
   ethereum_deposit_address  : string  = null;
   whitelist_contract_address: string  = null;
   verified_operator_address : string  = null;
+  saved_eth_addr            : string  = null;
+  saved_whitelist_addr      : string  = null;
   web_host_setup_done       : boolean = false;
   has_whitelist_add_on      : boolean = false;
   rewhitelist_users         : boolean = false;
@@ -49,7 +51,9 @@ export class ContractAddressesComponent implements OnInit {
           let res = response.json();
           if (res.success) {
             this.ethereum_deposit_address   = res.data.ethereum_deposit_address;
+            this.saved_eth_addr             = this.ethereum_deposit_address;
             this.whitelist_contract_address = res.data.whitelist_contract_address;
+            this.saved_whitelist_addr       = this.whitelist_contract_address;
             this.verified_operator_address  = res.data.verified_operator_address;
             this.stateHandler.updateRequestStatus(this, false, false);
           } else {
@@ -68,7 +72,8 @@ export class ContractAddressesComponent implements OnInit {
     $('#verifyOTPPopup').modal('show');
     this.context = {
       'form' : depositAddressForm,
-      'url'  : 'api/admin/setting/update-deposit-address'
+      'url'  : 'api/admin/setting/update-deposit-address',
+      'fieldName' : 'Deposit Contract Address'
     }
   }
 
@@ -76,13 +81,16 @@ export class ContractAddressesComponent implements OnInit {
     $('#verifyOTPPopup').modal('show');
     this.context = {
       'form': whitelistAddressForm,
-      'url' : 'api/admin/setting/update-whitelist-address'
+      'url' : 'api/admin/setting/update-whitelist-address',
+      'fieldName' : 'Whitelisting Contract Address'
     }
   }
 
   handleError( response ) {
     if( response.success ) {
-      this.errorResponse = null;
+      this.errorResponse        = null;
+      this.saved_eth_addr       = this.ethereum_deposit_address;
+      this.saved_whitelist_addr = this.whitelist_contract_address;
     }
     this.errorResponse = response;
   }

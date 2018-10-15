@@ -31,13 +31,13 @@
                  title="deposit contract address"
                  pattern="(0x|0X)?[0-9a-fA-F]{40}"
                  required />
-          <ost-form-error-handler [errorFor]="deposit_address" [fieldName]="'DepositAddress'"
+          <ost-form-error-handler [errorFor]="deposit_address" [fieldName]="'Deposit Address'"
                                   [serverError]="errorResponse">
           </ost-form-error-handler>
         </div>
         <div class="form-group user-form-footer text-center text-sm-left row mt-3 mb-3">
           <div class="col-12">
-            <button type="submit" [disabled]="!depositAddress.valid" class="btn btn-primary">
+            <button type="submit" [disabled]="!depositAddress.valid || (ethereum_deposit_address == saved_eth_addr)" class="btn btn-primary">
               Apply
             </button>
           </div>
@@ -69,7 +69,7 @@
                  title="whitelisting contract address"
                  pattern="(0x|0X)?[0-9a-fA-F]{40}"
                  required />
-          <ost-form-error-handler [errorFor]="whitelisting_address" [fieldName]="'WhitelistingAddress'"
+          <ost-form-error-handler [errorFor]="whitelisting_address" [fieldName]="'Whitelisting Address'"
                                   [serverError]="errorResponse">
           </ost-form-error-handler>
         </div>
@@ -77,8 +77,8 @@
           <div class="form-label">
             VERIFIED OPERATOR ADDRESS
           </div>
-          <div class="read-only-fields p-2">
-            {{verified_operator_address}}
+          <div class="form-group">
+            <input disabled class="form-control" value="{{verified_operator_address}}"/>
           </div>
         </div>
         <div class="form-check mt-3 pl-0">
@@ -93,7 +93,7 @@
         </div>
         <div class="form-group user-form-footer text-center text-sm-left row mt-4">
           <div class="col-12">
-            <button [disabled]="!whitelistingAddress.valid" type="submit" class="btn btn-primary">
+            <button [disabled]="!whitelistingAddress.valid || (whitelist_contract_address == saved_whitelist_addr)" type="submit" class="btn btn-primary">
               Apply
             </button>
           </div>
@@ -104,11 +104,8 @@
 </div>
 
 <verify-otp-modal [context]="context" (serverError)="handleError($event)" >
-  <ng-container class="custom-processing-content">
-    <div>processing state message</div>
-  </ng-container>
   <ng-container class="custom-success-content">
-    <div>success state message</div>
+    <h5>The {{context.fieldName}} has been successfully updated.</h5>
   </ng-container>
 </verify-otp-modal>
 

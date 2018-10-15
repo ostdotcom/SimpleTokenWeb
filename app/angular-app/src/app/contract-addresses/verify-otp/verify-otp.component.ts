@@ -2,6 +2,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {RequestStateHandlerService} from "../../services/request-state-handler.service";
 import {OstHttp} from "../../services/ost-http.service";
 import {AppConfigService} from "../../services/app-config.service";
+import {UtilitiesService} from "../../services/utilities.service";
 
 declare var $: any;
 
@@ -19,20 +20,22 @@ export class VerifyOtpComponent implements OnInit{
   errorMessage : string  = null;
   isProcessing : boolean = false;
   hasError     : boolean = false;
-  errorResponse: boolean = false;
+  errorResponse: object = null;
 
   otp       : number  = null;
   isSuccess : boolean = false;
 
   constructor( public appConfig: AppConfigService,
+               public utilities: UtilitiesService,
                private http: OstHttp,
                private stateHandler: RequestStateHandlerService ) { }
 
   ngOnInit() {
     $("#verifyOTPPopup").on("hidden.bs.modal", () => {
       this.stateHandler.updateRequestStatus(this);
-      this.isSuccess = false;
-      this.otp       = null;
+      this.isSuccess     = false;
+      this.otp           = null;
+      this.errorResponse = null;
     });
   }
 

@@ -63,7 +63,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { OstPdfFileComponent } from './ost-pdf-file/ost-pdf-file.component';
 import { OstPdfService } from './services/ost-pdf.service';
 import { ContractAddressesComponent } from './contract-addresses/contract-addresses.component';
-import { VerifyOtpComponent } from './contract-addresses/verify-otp/verify-otp.component' ;
+import { VerifyOtpComponent } from './contract-addresses/verify-otp/verify-otp.component';
+import { KycBannerComponent } from './kyc-banner/kyc-banner.component' ;
 
 
 
@@ -127,7 +128,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ChangePasswordComponent,
     OstPdfFileComponent,
     ContractAddressesComponent,
-    VerifyOtpComponent
+    VerifyOtpComponent,
+    KycBannerComponent
   ],
   imports: [
     BrowserModule,
