@@ -68,7 +68,6 @@ import { KycBannerComponent } from './kyc-banner/kyc-banner.component' ;
 
 
 
-
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
   return () => entityConfigService.load();
 }

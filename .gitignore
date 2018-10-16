@@ -71,6 +71,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /angular-app/typings
+/angular-app/package-lock.json
 
 # e2e
 /e2e/*.js
