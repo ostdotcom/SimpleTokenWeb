@@ -91,4 +91,8 @@ export class VerifyOtpComponent implements OnInit{
     return params;
   }
 
+  isDisabled(){
+    return this.otp == undefined || this.isProcessing ;
+  }
+
 }
