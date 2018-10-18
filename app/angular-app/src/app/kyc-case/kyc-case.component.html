@@ -43,7 +43,7 @@
                     <span class="key">AML/CTF Status : </span>
                     <span class="value {{amlCtfStatusConfig.class}}">{{amlCtfStatusConfig.text}}</span>
                   </div>
-                  <span *ngIf="caseDetails.retry_cynopsis == 1" class="button-UI text-right text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>
+                  <span *ngIf="caseDetails.retry_aml == 1" class="button-UI text-right text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>
                 </div>
               </div>
             </div>
@@ -453,7 +453,7 @@
   </ng-container>
 </kyc-case-action-modal>
 
-<kyc-case-action-modal [postApi]="'api/admin/kyc/retry-cynopsis-upload'" [caseId]="caseId" [modalId]="'retryCynopsisModal'"
+<kyc-case-action-modal [postApi]="'api/admin/kyc/retry-aml-upload'" [caseId]="caseId" [modalId]="'retryCynopsisModal'"
   [actionBtnPrimaryName]="'RETRY'" (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
     <h5 class="modal-title text-center">Are you sure you want to Retry sending this users request to cynopsis?</h5>

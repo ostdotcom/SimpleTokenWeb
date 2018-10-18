@@ -6,7 +6,7 @@ import { NgModel } from '../../../node_modules/@angular/forms';
   templateUrl: './ost-form-error-handler.component.html',
   styleUrls: ['./ost-form-error-handler.component.scss']
 })
-export class OstFormErrorHandlerComponent implements OnInit{
+export class OstFormErrorHandlerComponent {
 
   @Input("errorFor") errorFor;
   @Input("fieldName") fieldName = "This field";
@@ -18,23 +18,15 @@ export class OstFormErrorHandlerComponent implements OnInit{
                    "maxlength":  + " maximum length is "
                   };
 
-  errorForTemplate : object = {}; 
+  serverErrorMessage : string = null;
 
-  ngOnChanges( changes ){
-    this.handleError();
+  ngOnChanges( ){
+    this.handleServerError();
   }
 
-  ngOnInit(){
-    if( this.errorFor instanceof Object ){
-      this.errorForTemplate = Object.create( this.errorFor ); 
-      console.log("this.errorFor " , this.errorFor ); 
-      console.log("this.clonedError" , this.errorForTemplate ); 
-    }
-  }
-
-  getErrorMessage(){
-    let errors =  this.errorForTemplate['errors'];
-    this.errorForTemplate["serverError"] = null;
+  //This is just a library of error messages which will keep on adding.
+  getFrontEndErrorMessage(){
+    let errors =  this.errorFor['errors'];
     if( errors.required ){
      return  this.fieldName + this.errorDictionary.required
     }else if( errors.minlength ){
@@ -46,38 +38,42 @@ export class OstFormErrorHandlerComponent implements OnInit{
     }
   }
 
-  handleError( ){
-    let error         = this.serverError && this.serverError.err 
+  handleServerError( ){
+    let error = this.serverError && this.serverError.err
         ;
     if( this.errorFor && error ) {
-      let inputName  = this.getName( ), 
+      let inputName  = this.getName( ),
           inputError = this.getError( inputName , error );
       if( inputError ){
-        this.errorForTemplate['serverError'] = inputError;
+        this.serverErrorMessage = inputError;
       }
     }  else {
-      this.errorForTemplate = {};
+      this.serverErrorMessage = "";
     }
+  }
+
+  isFrontEndError(){
+      return this.errorFor instanceof NgModel && this.errorFor.touched && !this.errorFor.valid ;
   }
 
   getName( ){
     if( this.errorFor instanceof NgModel ){
-      return this.errorFor['name']; 
+      return this.errorFor['name'];
     }else if( typeof this.errorFor == "string" ){
-      return this.errorFor; 
+      return this.errorFor;
     }else{
-      console.log("Name not found for error handler" , this.errorFor); 
-      return "no_name_found"; 
+      console.log("Name not found for error handler" , this.errorFor);
+      return "no_name_found";
     }
   }
 
   getError( name , error ) {
     let errorData = error && error.error_data ;
     if( name == 'general_error'){
-      return error && error["display_text"]; 
+      return error && error["display_text"];
     }
     if( this.isErrorData( errorData ) ){
-      return errorData[name]; 
+      return errorData[name];
     }
   }
 

@@ -109,7 +109,7 @@ class Admin::HomeController < Admin::BaseController
     #
     # @resp_data = service_response.data
     # @admin_status = params[:filters][:admin_status] if params[:filters].present?
-    # @cynopsis_status = params[:filters][:cynopsis_status] if params[:filters].present?
+    # @cynopsis_status = params[:filters][:aml_status] if params[:filters].present?
     # @admin_action_type = params[:filters][:admin_action_type] if params[:filters].present?
     # @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
     # @display_start = params[:display_start]
@@ -127,7 +127,7 @@ class Admin::HomeController < Admin::BaseController
 
     @resp_data = service_response.data
     @admin_status = params[:filters][:admin_status] if params[:filters].present?
-    @cynopsis_status = params[:filters][:cynopsis_status] if params[:filters].present?
+    @cynopsis_status = params[:filters][:aml_status] if params[:filters].present?
     @admin_action_type = params[:filters][:admin_action_type] if params[:filters].present?
     @sort_order = params[:sortings][:sort_order] if params[:sortings].present?
     @display_start = params[:display_start]

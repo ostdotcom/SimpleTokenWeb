@@ -35,8 +35,8 @@
           </div>
           <div class="col-12 col-lg-3 pr-lg-2 mt-3">
             <label class='form-label mb-2'>AML/CTF STATUS</label>
-            <select class="form-control selectpicker" name="filters[cynopsis_status]" [(ngModel)]='cynopsis_status'
-                    ostOptions [entityPath]="'entity_configs.kyc_user_details.cynopsis_status'">
+            <select class="form-control selectpicker" name="filters[aml_status]" [(ngModel)]='aml_status'
+                    ostOptions [entityPath]="'entity_configs.kyc_user_details.aml_status'">
             </select>
           </div>
           <div class="col-12 col-lg-3 pr-lg-2 mt-3" *ngIf="appConfigService.hasWhiteListSetUp()">
@@ -52,8 +52,8 @@
     <div class="col-12 col-lg-4 ml-auto mt-3">
       <form class="col-lg-7 px-0 ml-auto pr-lg-0 form-group" #sortForm="ngForm" name='sorting'  (change)="onSortChange(sortForm)">
         <label class='form-label mb-2'>SORT BY</label>
-        <select class="form-control selectpicker" name="sortings[sort_by]" [(ngModel)]='sort_by'
-                ostOptions  [entityPath]="'entity_configs.kyc_user_details.sort_by'">
+        <select class="form-control selectpicker" name="sortings[order]" [(ngModel)]='order'
+                ostOptions  [entityPath]="'entity_configs.kyc_user_details.order'">
         </select>
       </form>
     </div>
