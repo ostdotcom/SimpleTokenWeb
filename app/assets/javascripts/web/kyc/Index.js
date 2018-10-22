@@ -23,8 +23,8 @@
           if (response.success == true) {
             $('#successModal').modal('show');
             oThis.jContactForm[0].reset();
-            oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', false);
-            oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', new Date());
+//            oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', false);
+//            oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', new Date());
           }
         },
         complete: function (response) {
@@ -81,33 +81,33 @@
         }
       });
 
-      oThis.jContactForm .find('input[name=token_sale_start_date]')
-        .datepicker({
-          format: 'dd/mm/yyyy',
-          autoclose: true,
-          startDate: new Date(),
-          orientation: 'bottom'
-        })
-        .on('changeDate', function (e) {
-          $(this).valid();
-          var nextDate = new Date ($(this).datepicker('getDate'));
-          nextDate.setDate(nextDate.getDate()+1);
-          oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', nextDate);
-        });
-
-      oThis.jContactForm .find('input[name=token_sale_end_date]')
-        .datepicker({
-          format: 'dd/mm/yyyy',
-          autoclose: true,
-          startDate: new Date(),
-          orientation: 'bottom'
-        })
-        .on('changeDate', function (e) {
-          $(this).valid();
-          var nextDate = new Date ($(this).datepicker('getDate'));
-          nextDate.setDate(nextDate.getDate()-1);
-          oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', nextDate);
-        });
+//      oThis.jContactForm .find('input[name=token_sale_start_date]')
+//        .datepicker({
+//          format: 'dd/mm/yyyy',
+//          autoclose: true,
+//          startDate: new Date(),
+//          orientation: 'bottom'
+//        })
+//        .on('changeDate', function (e) {
+//          $(this).valid();
+//          var nextDate = new Date ($(this).datepicker('getDate'));
+//          nextDate.setDate(nextDate.getDate()+1);
+//          oThis.jContactForm.find('input[name=token_sale_end_date]').datepicker('setStartDate', nextDate);
+//        });
+//
+//      oThis.jContactForm .find('input[name=token_sale_end_date]')
+//        .datepicker({
+//          format: 'dd/mm/yyyy',
+//          autoclose: true,
+//          startDate: new Date(),
+//          orientation: 'bottom'
+//        })
+//        .on('changeDate', function (e) {
+//          $(this).valid();
+//          var nextDate = new Date ($(this).datepicker('getDate'));
+//          nextDate.setDate(nextDate.getDate()-1);
+//          oThis.jContactForm.find('input[name=token_sale_start_date]').datepicker('setEndDate', nextDate);
+//        });
 
       oThis.jContactForm.on("beforeSubmit", function (event) {
         if ( !oThis.isCaptchaValid ) {
