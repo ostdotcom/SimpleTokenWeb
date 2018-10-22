@@ -513,7 +513,6 @@
             oThis.verifyModal('hide-verifyModal');
             //oThis.verifyModal('status-text', response.err.display_text);
             oThis.showKycUpdateFailedDialog();
-           // utilities.displayAjaxError( response , $form);
             oThis.formHelper.showServerErrors( response );
           }
         },
