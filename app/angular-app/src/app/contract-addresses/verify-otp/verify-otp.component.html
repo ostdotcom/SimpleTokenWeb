@@ -5,7 +5,7 @@
         <div *ngIf= "!isSuccess" class="text-center p-1" >
           <div class="row d-flex justify-content-center">
             <div class="col-12 form-group">
-              <h5 class="my-3">Please enter the OTP sent to your registered mobile device.</h5>
+              <h5 class="my-3">Please enter the OTP from the account registered on Google Authenticator</h5>
               <input type="number" name="otp" class="form-control w-50 mt-4 mx-auto text-center py-3"
                      [(ngModel)]="otp" placeholder="Enter OTP here"/>
               <ost-form-error-handler [errorFor]="'otp'" [serverError]="errorResponse"  ></ost-form-error-handler>
