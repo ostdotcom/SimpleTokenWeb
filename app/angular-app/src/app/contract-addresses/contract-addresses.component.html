@@ -104,7 +104,7 @@
 
 <verify-otp-modal [context]="context" (serverError)="handleError($event)" >
   <ng-container class="custom-success-content">
-    <h5>The {{context.fieldName}} has been successfully updated.</h5>
+    <h5>The {{context['fieldName']}} has been successfully updated.</h5>
   </ng-container>
 </verify-otp-modal>
 
