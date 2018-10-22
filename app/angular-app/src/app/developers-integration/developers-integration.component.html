@@ -48,55 +48,55 @@
     </div>
   </div>
 
-  <div class="api-options">
-    <div class="row mt-2">
-      <div class="form-group col-12">
-        <div class="form-label mt-3">
-          API KYC FIELDS
-        </div>
-        <div class="integration-sub-header mb-3">
-          In this section you can select which KYC fields to to be fetched in the API response of the (ENDPOINT NAME) API.
-          This option is given in order to minimise the amount of personal data exiting the encrypted secured DB to those strictly required from the client side.
+  <!--<div class="api-options">-->
+    <!--<div class="row mt-2">-->
+      <!--<div class="form-group col-12">-->
+        <!--<div class="form-label mt-3">-->
+          <!--API KYC FIELDS-->
+        <!--</div>-->
+        <!--<div class="integration-sub-header mb-3">-->
+          <!--In this section you can select which KYC fields to to be fetched in the API response of the (ENDPOINT NAME) API.-->
+          <!--This option is given in order to minimise the amount of personal data exiting the encrypted secured DB to those strictly required from the client side.-->
 
-          OST KYC will not be responsible for the security of these kyc data of users.
-        </div>
-      </div>
-    </div>
-    <div class="row mt-1">
-      <form class="col-12" #apiForm="ngForm" (ngSubmit)="submitForm(apiForm)" id="apiForm">
-        <div class="row">
-          <div class="form-group col-12">
-            <div class="pt-2 pr-2 pl-0 form-check" *ngFor="let option of apiOptions; let i = index">
-              <input  type="checkbox"
-                      class="form-check-input"
-                      (change)="onChange( option.value )"
-                      [checked]="isChecked( option.value )"
-                      name="{{option.key}}"
-                      id="{{option.value}}"  />
-              <label class="form-check-label"
-                     for="{{option.value}}">{{option.display_text}}</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group user-form-footer text-center text-sm-left col-12 mt-4 pt-4">
-            <button [disabled]="isSubmitting" type="submit" class="btn btn-primary mb-3 mb-xl-0"
-                    id="submitBtn"
-                    title="">{{btnText}}
-            </button>
-            <button type="button" class="btn btn-secondary ml-3 mb-3 mb-xl-0" (click)="onCancel()">
-              Cancel
-            </button>
-            <div class="general_error error text-center col-12">
-              <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">
-              </ost-form-error-handler>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+          <!--OST KYC will not be responsible for the security of these kyc data of users.-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row mt-1">-->
+      <!--<form class="col-12" #apiForm="ngForm" (ngSubmit)="submitForm(apiForm)" id="apiForm">-->
+        <!--<div class="row">-->
+          <!--<div class="form-group col-12">-->
+            <!--<div class="pt-2 pr-2 pl-0 form-check" *ngFor="let option of apiOptions; let i = index">-->
+              <!--<input  type="checkbox"-->
+                      <!--class="form-check-input"-->
+                      <!--(change)="onChange( option.value )"-->
+                      <!--[checked]="isChecked( option.value )"-->
+                      <!--name="{{option.key}}"-->
+                      <!--id="{{option.value}}"  />-->
+              <!--<label class="form-check-label"-->
+                     <!--for="{{option.value}}">{{option.display_text}}</label>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+          <!--<div class="form-group user-form-footer text-center text-sm-left col-12 mt-4 pt-4">-->
+            <!--<button [disabled]="isSubmitting" type="submit" class="btn btn-primary mb-3 mb-xl-0"-->
+                    <!--id="submitBtn"-->
+                    <!--title="">{{btnText}}-->
+            <!--</button>-->
+            <!--<button type="button" class="btn btn-secondary ml-3 mb-3 mb-xl-0" (click)="onCancel()">-->
+              <!--Cancel-->
+            <!--</button>-->
+            <!--<div class="general_error error text-center col-12">-->
+              <!--<ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">-->
+              <!--</ost-form-error-handler>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</form>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 
 <div class="modal cms-modal fade" id="setting-apply-success-modal" data-keyboard="false">
   <div class="modal-dialog modal-dialog-centered modal-lg h-100 my-0 pb-5">
