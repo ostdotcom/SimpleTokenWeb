@@ -6,6 +6,8 @@ class Admin::HomeController < Admin::BaseController
 
   before_action :set_page_meta_info, :except => [:user_preview_pages]
 
+  # todo: start using fixed domains. will work now as routes has initializers on domain
+
   # Admin login
   #
   # * Author: Aman

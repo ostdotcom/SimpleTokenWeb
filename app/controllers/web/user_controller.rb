@@ -2,7 +2,9 @@ class Web::UserController < Web::BaseController
 
   layout "web"
 
-  before_action :reload_for_external_links_to_retain_cookie, except: [ :sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
+  before_action :check_request_host
+
+  before_action :reload_for_external_links_to_retain_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
 
   before_action :delete_user_cookie, only: [:sign_up, :login, :reset_password, :change_password]
   before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
@@ -309,6 +311,20 @@ class Web::UserController < Web::BaseController
     response.headers['Vary'] = '*'
     response.headers['Expires'] = '-1'
     response.headers['Last-Modified'] = "#{Time.now.gmtime.strftime("%a, %d %b %Y %T GMT")}"
+  end
+
+  # allow requests from whitelisted domains only
+  #
+  # * Author: Aman
+  # * Date: 01/11/2017
+  # * Reviewed By: Sunil
+  #
+  def check_request_host
+    return if ['http://', 'https://'].include?(request.protocol.downcase) &&
+        ((request.host =~ /\A[A-Z0-9]*#{GlobalConstant::WebDomain.kyc_subdomain}\Z/i) ||
+        GlobalConstant::WebDomain.allowed_external_subdomains.include?(request.host.downcase))
+
+    redirect_to GlobalConstant::Base.simple_token_web['kyc_root_url'], status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
 end
