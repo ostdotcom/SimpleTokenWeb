@@ -320,6 +320,7 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil
   #
   def check_request_host
+    Rails.logger.info("Request Received. Host:#{request.host} protocol:#{request.protocol}")
     return if ['http://', 'https://'].include?(request.protocol.downcase) &&
         ((request.host =~ /\A[A-Z0-9]*#{GlobalConstant::WebDomain.kyc_subdomain}\Z/i) ||
         GlobalConstant::WebDomain.allowed_external_subdomains.include?(request.host.downcase))
