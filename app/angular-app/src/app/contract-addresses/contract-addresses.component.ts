@@ -50,9 +50,9 @@ export class ContractAddressesComponent implements OnInit {
         response => {
           let res = response.json();
           if (res.success) {
-            this.ethereum_deposit_address   = res.data.ethereum_deposit_address;
+            this.ethereum_deposit_address   = res.data.ethereum_deposit_address ? res.data.ethereum_deposit_address : "";
             this.saved_eth_addr             = this.ethereum_deposit_address;
-            this.whitelist_contract_address = res.data.whitelist_contract_address;
+            this.whitelist_contract_address = res.data.whitelist_contract_address ? res.data.whitelist_contract_address : "";
             this.saved_whitelist_addr       = this.whitelist_contract_address;
             this.verified_operator_address  = res.data.verified_operator_address;
             this.stateHandler.updateRequestStatus(this, false, false);
