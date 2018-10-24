@@ -89,7 +89,9 @@ export class ContractAddressesComponent implements OnInit {
   handleError( response ) {
     if( response.success ) {
       this.errorResponse             = null;
-      this.verified_operator_address = response.data.verified_operator_address;
+      if( response.data.verified_operator_address ) {
+        this.verified_operator_address = response.data.verified_operator_address;
+      }
       this.saved_eth_addr            = this.ethereum_deposit_address;
       this.saved_whitelist_addr      = this.whitelist_contract_address;
     }
