@@ -130,11 +130,11 @@
 
   <% if !is_simple_token_specific_page? &&  @preview_template.blank? %>
 
-    <% if @presenter_obj.gtm_pixel.present? %>
+    <% if @presenter_obj.gtm_pixel.present? && @presenter_obj.gtm_pixel['id'].present? %>
       <%= render :partial => "/shared/web/thirdparty/gtm_config.erb", locals: {gtm_id: @presenter_obj.gtm_pixel['id']} %>
     <% end %>
 
-    <% if @presenter_obj.fb_pixel.present? %>
+    <% if @presenter_obj.fb_pixel.present? && @presenter_obj.fb_pixel['id'].present? %>
       <%= render :partial => "/shared/web/thirdparty/fb_config.erb" %>
     <% end %>
 
