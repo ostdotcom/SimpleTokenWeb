@@ -21,6 +21,7 @@
     "@angular/platform-browser": "4.2.4",
     "@angular/platform-browser-dynamic": "4.2.4",
     "@angular/router": "4.2.4",
+    "@types/pdfjs-dist": "0.1.2",
     "core-js": "2.4.1",
     "pdfjs-dist": "2.0.489",
     "rxjs": "5.4.2",

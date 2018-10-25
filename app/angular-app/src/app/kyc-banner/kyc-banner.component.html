@@ -1,0 +1,18 @@
+<ng-container *ngIf="whitelistingStopped || hasLowEthBalance">
+  <div class="kyc-banner w-100 px-2 px-md-0">
+    <div class="w-100 mx-auto text-center align-middle">
+      <svg class="align-top" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#empty-tank-icon"></use>
+        </switch>
+      </svg>
+      <ng-container *ngIf="whitelistingStopped">
+        <span class="p-2">The Whitelisting has stopped due to insufficient ETH in the VOA. Please contact support.</span>
+      </ng-container>
+      <ng-container *ngIf="hasLowEthBalance && !whitelistingStopped">
+        <span class="p-2">The VOA has a balance lower than 2 ETH. Please top it up to avoid Whitelisting to stop.</span>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+

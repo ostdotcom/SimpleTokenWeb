@@ -1,0 +1,43 @@
+<div class="modal fade" id="verifyOTPPopup" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered  modal-lg h-100 my-0 pb-5">
+    <div class="modal-content">
+      <div class="modal-body px-2 p-md-5">
+        <div *ngIf= "!isSuccess" class="text-center p-1" >
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 form-group">
+              <h5 class="my-3">Please enter the OTP from the account registered on Google Authenticator</h5>
+              <input type="text" name="otp" class="form-control w-50 mt-4 mx-auto text-center py-3"
+                     [(ngModel)]="otp" maxLength="6" pattern="[0-9]" (keydown)="checkForValidInput($event)" placeholder="Enter OTP here"/>
+              <ost-form-error-handler [errorFor]="'otp'" [serverError]="errorResponse"  ></ost-form-error-handler>
+              <button [disabled]="isDisabled()" class="btn btn-primary px-5 mt-3" (click)="validateOTP()" >
+               {{isProcessing ?   "Validating ..."  : 'Validate OTP'}}
+              </button>
+              <button class="btn btn-secondary px-5 mt-3 ml-xl-3" data-dismiss="modal">Cancel</button>
+              <ng-container *ngIf="!utilities.deepGet(errorResponse, 'err.error_data.otp')">
+                <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse" ></ost-form-error-handler>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="isSuccess">
+          <div class="col-12 success-hanlder-wrap text-center p-2" >
+            <div class="success-icon-wrap mb-3">
+              <svg class="icon" style="width:50px; height: 50px">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                  </use>
+                </switch>
+              </svg>
+            </div>
+            <div class="mt-2 mb-3">
+              <ng-content select=".custom-success-content" ></ng-content>
+            </div>
+            <button class="btn btn-primary" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

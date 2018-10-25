@@ -85,6 +85,7 @@ Rails.application.routes.draw do
       get '/settings/country-settings' => :angular_app
       get '/settings/artificial-intelligence' => :angular_app
       get '/settings/advance-compliance' => :angular_app
+      get '/settings/contract-addresses' => :angular_app
       get '/settings/form-configurator' => :angular_app
       
 

@@ -9,6 +9,7 @@
       outline: none;
       border-bottom: solid 1px $custom-grey-7;
       cursor: pointer;
+      font-size: $display3-size;
       &.first {
         border-top: solid 1px $custom-grey-7;
       }
@@ -45,10 +46,12 @@
       .desktop-menu {
         height: 56px;
         outline: none;
-        border-top: solid 1px $custom-grey-7;
+        border-bottom: solid 1px $custom-grey-7;
+        font-size: $display3-size;
         cursor: pointer;
       }
     }
+
   }
 
   .admin-dashboard {
