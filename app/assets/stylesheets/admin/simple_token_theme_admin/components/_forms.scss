@@ -135,3 +135,7 @@
   top: -10000px;
   left: -10000px;
 }
+
+.input-group > .input-group-append > .btn{
+  padding: $border-radius;
+}

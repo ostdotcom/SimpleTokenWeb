@@ -65,6 +65,9 @@ import { OstPdfService } from './services/ost-pdf.service';
 import { ContractAddressesComponent } from './contract-addresses/contract-addresses.component';
 import { VerifyOtpComponent } from './contract-addresses/verify-otp/verify-otp.component';
 import { KycBannerComponent } from './kyc-banner/kyc-banner.component' ;
+import { WebhooksComponent } from './webhooks/webhooks.component';
+import { ConfirmationModalComponent } from './webhooks/confirmation-modal/confirmation-modal.component' ;
+
 
 
 
@@ -128,7 +131,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     OstPdfFileComponent,
     ContractAddressesComponent,
     VerifyOtpComponent,
-    KycBannerComponent
+    KycBannerComponent,
+    ChangePasswordComponent,
+    WebhooksComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -183,6 +189,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path: 'settings/form-configurator',
             component: FormConfiguratorComponent
+          },
+          {
+            path: 'settings/webhooks',
+            component: WebhooksComponent
           }
        ]
 
