@@ -12,16 +12,28 @@ export class ConfirmationModalComponent implements OnInit {
   @Input()
   public callBack: Function;
 
-  @Input('success') isSuccess: boolean;
+  @Input('isSuccess') isSuccess       : boolean;
+  @Input('isProcessing') isProcessing : boolean;
+  @Input('hasError') hasError         : boolean;
 
   @Input('errorResponse') errorResponse;
 
-  btnText: string = "YES, CONTINUE";
+  btnText      : string = "YES, CONTINUE";
+  errorMessage : string = null;
 
   constructor() { }
 
   ngOnInit() {
 
+  }
+
+  hasErrorMessage() {
+    if( this.errorResponse ){
+      let err = this.errorResponse['err'];
+      this.errorMessage = err && err['display_text'] ;
+      return true;
+    }
+    return false;
   }
 
 }

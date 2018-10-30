@@ -9,8 +9,8 @@
       box-shadow: none;
     }
     &:disabled{
-      font-size: $small-font-size;
-      font-weight: $display4-weight;
+      color: $custom-gray-6;
+      font-weight: $font-weight-100;
     }
   }
 

@@ -340,6 +340,15 @@
           }
         ]
       }
+    },
+    "webhooks_config" : {
+        "id":"",
+        "url":"",
+        "decrypted_secret_key":"",
+        "event_sources_array": [],
+        "event_result_types_array" : [],
+        "isNew" : true,
+        "error": null
     }
   }
 }

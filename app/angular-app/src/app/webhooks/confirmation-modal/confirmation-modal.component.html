@@ -4,23 +4,34 @@
     <div class="modal-dialog modal-dialog-centered modal-lg h-100 my-0 pb-5">
       <div class="modal-content">
         <div class="modal-body p-5">
-          <div class='row' *ngIf="!isSuccess">
+          <div class='row p-2' *ngIf="!isSuccess && !isProcessing && !hasError">
             <div class="text-center col-12">
               <h5 class="my-4">
                 <ng-content select=".confirm-message"></ng-content>
               </h5>
             </div>
             <div class="col-12 mb-4 form-group text-center">
-              <button class="btn btn-secondary px-5" data-dismiss="modal">Cancel</button>
-              <button class="btn btn-primary px-5 ml-xl-3" (click)="callBack()">{{btnText}}</button>
-              <div class="pt-2">
-                <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse" ></ost-form-error-handler>
-              </div>
+              <button class="btn btn-secondary px-4" data-dismiss="modal">Cancel</button>
+              <button class="btn btn-primary px-4 mt-4 mt-sm-0 ml-xl-3" (click)="callBack()">{{btnText}}</button>
             </div>
           </div>
-          <div class="row" *ngIf="isSuccess">
+          <div class="row" *ngIf="isProcessing || hasError">
+            <request-state-handler class="d-block w-100"
+                                   [isProcessing]="isProcessing"
+                                   [hasError]="hasError">
+              <div class="processing-content p-4 my-3 text-center">
+                Processing your request, please wait.
+              </div>
+              <div class="error-content col-12 text-center">
+                <div *ngIf="hasErrorMessage()">{{errorMessage}}</div>
+                <div *ngIf="!hasErrorMessage()">Something went wrong, please try again.</div>
+                <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
+              </div>
+            </request-state-handler>
+          </div>
+          <div class="row p-1" *ngIf="isSuccess">
             <div class="col-12 success-hanlder-wrap text-center" >
-              <div class="success-icon-wrap my-2">
+              <div class="success-icon-wrap">
                 <svg class="icon" style="width:50px; height: 50px">
                   <switch>
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
@@ -28,10 +39,10 @@
                   </switch>
                 </svg>
               </div>
-              <div class="mb-3">
+              <div class="my-2">
                 <ng-content select=".success-content"></ng-content>
               </div>
-              <button class="btn mb-3 btn-primary" data-dismiss="modal">OK</button>
+              <button class="btn btn-primary" data-dismiss="modal">OK</button>
             </div>
           </div>
         </div>

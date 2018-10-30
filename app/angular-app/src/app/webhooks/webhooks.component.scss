@@ -29,4 +29,29 @@
 .refresh-btn {
   padding: 0.375rem 0.75rem;
   border: solid 1px $custom-grey-7;
+  svg {
+    &.refresh-key-hover-icon {
+      display: none;
+    }
+    &.refresh-key-icon {
+      display: block;
+    }
+  }
+  &:hover {
+    svg {
+      &.refresh-key-hover-icon {
+        display: block;
+      }
+      &.refresh-key-icon {
+        display: none;
+      }
+    }
+  }
 }
+
+.add-web-hook-btn {
+  &:disabled {
+    pointer-events: none;
+  }
+}
+

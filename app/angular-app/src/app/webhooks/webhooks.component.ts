@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OstHttp} from "../services/ost-http.service";
 import {RequestStateHandlerService} from "../services/request-state-handler.service";
+import {EntityConfigService} from "../services/entity-config.service";
 
 declare var $: any;
 
@@ -17,36 +18,47 @@ export class WebhooksComponent implements OnInit {
   errorResponse: boolean = false;
 
   webhooks                 : Array<object> = [];
-  dummyWebhook             : object        = {'id':'', 'url':'','decrypted_secret_key':'','event_sources_array': [], 'event_result_types_array' : [], 'isNew' : true, 'error': null};
-  config                   : object        = null;
+  defaultWebhookObj        : object        = {};
+  webhookConfig            : object        = null;
   maxWebhookCount          : number        = null;
-  btnText                  : string        = "Update";
   confirmationCallBack     : Function      = null;
-  action                   : string        = null;
-  processingCompleted      : boolean       = false;
+  actionType               : string        = null;
+  isSuccess                : boolean       = false;
+  isError                  : boolean       = false;
+  isActionProcessing       : boolean       = false;
   confirmationModalSelector: string        = "#confirmation-modal";
 
+  static ACTION_TYPES = {
+    "SAVE"   : "save",
+    "UPDATE" : "update",
+    "DELETE" : "delete"
+  };
+
+  dataURL : string = "api/admin/webhook/";
+
   constructor( private http: OstHttp,
-               private stateHandler: RequestStateHandlerService ) { }
+               private stateHandler: RequestStateHandlerService,
+               private entityConfig : EntityConfigService) { }
 
   ngOnInit() {
     this.init();
-    this.bindEvents();
   }
 
   init() {
-    this.http.get('api/admin/webhook/').subscribe(
+    this.defaultWebhookObj = this.entityConfig.getEntityConfig('entity_configs.webhooks_config');
+    this.http.get( this.dataURL ).subscribe(
       response => {
         let res = response.json();
         if (res.success) {
           this.webhooks        = res.data.webhooks;
-          this.config          = res.data.config;
+          this.webhookConfig   = res.data.config;
           this.maxWebhookCount = res.data.config.max_webhook_count;
-          this.populateDummyWebhook( this.config );
+          this.populateDummyWebhook( this.webhookConfig );
           this.stateHandler.updateRequestStatus(this, false, false);
         } else {
           this.stateHandler.updateRequestStatus(this, false, true, false, res);
         }
+        this.bindEvents();
       },
       error => {
         let err = error.json();
@@ -58,29 +70,43 @@ export class WebhooksComponent implements OnInit {
     let event_sources    = config.event_sources || [],
         event_result_types = config.event_result_types || [];
     for( let i in event_sources ) {
-      this.dummyWebhook['event_sources_array'].push(event_sources[i].value);
+      this.defaultWebhookObj['event_sources_array'].push(event_sources[i].value);
     }
     for( let i in event_result_types ) {
-      this.dummyWebhook['event_result_types_array'].push(event_result_types[i].value);
+      this.defaultWebhookObj['event_result_types_array'].push(event_result_types[i].value);
+    }
+  }
+
+  showTooltip(){
+    if( this.webhooks.length >= this.maxWebhookCount ){
+      $('.btn-disabled-tooltip').tooltip('enable')
+    }else {
+      $('.btn-disabled-tooltip').tooltip('disable');
     }
   }
 
   bindEvents() {
     $("#confirmation-modal").on("hidden.bs.modal", () => {
-      this.processingCompleted = false;
-      this.errorResponse       = false;
+      this.isSuccess = false;
+      this.isActionProcessing = false;
+      this.isError = false;
+      this.errorResponse       = null;
     });
+    setTimeout(() => {
+      $('.btn-disabled-tooltip').on('mouseenter' , () => {
+        this.showTooltip();
+      })
+    },0);
   }
 
   addWebHook() {
     let length     = this.webhooks.length,
         newId      = length + 1,
-        newWebhook = $.extend( true, {}, this.dummyWebhook );
-    if(length < 3) {
+        newWebhook = $.extend( true, {}, this.defaultWebhookObj );
+    if(length < this.maxWebhookCount) {
       newWebhook['id'] = newId.toString();
       this.webhooks.unshift(newWebhook);
     }
-    console.log( this.webhooks );
   }
 
   saveOrUpdateHook( webhookId, isNew, form){
@@ -88,14 +114,17 @@ export class WebhooksComponent implements OnInit {
         url,
         webhook = this.getWebHookById( webhookId );
     if( isNew ) {
-      url = 'api/admin/webhook/';
+      url = this.dataURL ;
     } else {
-      url = 'api/admin/webhook/' + webhookId;
+      url = this.dataURL + webhookId;
     }
     params.event_sources = webhook.event_sources_array;
     params.event_result_types = webhook.event_result_types_array;
+    webhook.error = null;
+    this.isActionProcessing = true;
     this.http.post( url , { ...params }  ).subscribe(
       response => {
+        this.isActionProcessing = false;
         let res = response.json();
         if( res.success ){
           let savedWebhook = res.data.webhook,
@@ -111,6 +140,7 @@ export class WebhooksComponent implements OnInit {
         }
       },
       error => {
+        this.isActionProcessing = false;
         let err = error.json();
         this.errorResponse = err;
         webhook.error = err;
@@ -129,9 +159,12 @@ export class WebhooksComponent implements OnInit {
         this.webhooks.splice(i,1);
       }
     }
+    webhook.error = null;
+    this.isActionProcessing = true;
     if( !isNew ) {
-      this.http.post( 'api/admin/webhook/'+ webhookId +'/delete' , { }  ).subscribe(
+      this.http.post( this.dataURL + webhookId +'/delete' , { }  ).subscribe(
         response => {
+          this.isActionProcessing = false;
           let res = response.json();
           if( res.success ){
             this.onSuccess( res );
@@ -142,6 +175,7 @@ export class WebhooksComponent implements OnInit {
           }
         },
         error => {
+          this.isActionProcessing = false;
           let err = error.json();
           this.errorResponse = err;
           webhook.error = err;
@@ -149,16 +183,19 @@ export class WebhooksComponent implements OnInit {
         }
       )
     } else {
-      this.processingCompleted = true;
+      this.isSuccess = true;
+      this.isActionProcessing = false;
+      this.isError = false;
     }
   }
 
   onSuccess( res ) {
-    this.processingCompleted = true;
+    this.isSuccess= true;
     this.onComplete( res );
   }
 
   onError( error ) {
+    this.isError = true;
     this.onComplete( error );
   }
 
@@ -173,16 +210,16 @@ export class WebhooksComponent implements OnInit {
   showDeleteModal( id, isNew) {
     $(this.confirmationModalSelector).modal('show');
     this.confirmationCallBack = this.deleteHook.bind( this, id, isNew );
-    this.action = "delete";
+    this.actionType = WebhooksComponent.ACTION_TYPES.DELETE;
   }
 
   showSaveOrUpdateModal(  webhookId , isNew, form) {
     $(this.confirmationModalSelector).modal('show');
     this.confirmationCallBack = this.saveOrUpdateHook.bind(this, webhookId, isNew, form);
     if( isNew ) {
-      this.action = "save";
+      this.actionType = WebhooksComponent.ACTION_TYPES.SAVE;
     } else {
-      this.action = "update";
+      this.actionType = WebhooksComponent.ACTION_TYPES.UPDATE;
     }
   }
 
@@ -190,7 +227,8 @@ export class WebhooksComponent implements OnInit {
     if( isNew) return;
     let webhookId = id,
         webhook = this.getWebHookById( webhookId );
-    this.http.post('api/admin/webhook/'+webhookId+'/reset-secret-key', {} ).subscribe(
+    webhook.error = null;
+    this.http.post(this.dataURL +webhookId+'/reset-secret-key', {} ).subscribe(
       response => {
         let res = response.json();
         if (res.success) {
@@ -227,8 +265,7 @@ export class WebhooksComponent implements OnInit {
     return false;
   }
 
-  isChecked( model, value, id ){
-    console.log('id'+ id);
+  isChecked( model, value){
     if( model.indexOf(value) > -1 ){
       return true;
     }else{
@@ -236,8 +273,7 @@ export class WebhooksComponent implements OnInit {
     }
   }
 
-  onChange( model, value, id ){
-    console.log('id'+ id);
+  onChange( model, value){
     let indexOf =  model.indexOf(value);
     if( indexOf > -1 ){
       model.splice( indexOf ,  1);

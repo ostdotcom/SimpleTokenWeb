@@ -39,3 +39,68 @@ input[type="checkbox"]:checked ~ label::after{
   display: inline-block;
 }
 /* Checkboxes CSS Ends */
+
+.label-cbx {
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    display: none;
+  }
+
+
+  user-select: none;
+  cursor: pointer;
+  input:checked{
+    & + .checkbox{
+      border-color: $blue-800;
+      svg{
+        path{
+          fill: $blue-800;
+        }
+        polyline{
+          stroke-dashoffset: 0;
+        }
+      }
+    }
+  }
+  .checkbox {
+    position: relative;
+    top: 2px;
+    float: left;
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid $blue-800;
+    svg {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      border: 0 solid $blue-800;
+      path {
+        fill: none;
+        stroke: #74989c;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 71px;
+        stroke-dashoffset: 71px;
+        transition: all 0.6s ease;
+      }
+      polyline {
+        fill: none;
+        stroke: #FFF;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 18px;
+        stroke-dashoffset: 18px;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+  span {
+    margin-left: 26px;
+    display: block;
+  }
+}
