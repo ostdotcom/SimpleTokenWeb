@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OstHttp} from "../services/ost-http.service";
 import {RequestStateHandlerService} from "../services/request-state-handler.service";
 import {EntityConfigService} from "../services/entity-config.service";
+import {UtilitiesService} from "../services/utilities.service";
 
 declare var $: any;
 
@@ -22,9 +23,11 @@ export class WebhooksComponent implements OnInit {
   webhookConfig            : object        = null;
   maxWebhookCount          : number        = null;
   confirmationCallBack     : Function      = null;
+
+  //actionType can be save. delete and update
   actionType               : string        = null;
-  isSuccess                : boolean       = false;
-  isError                  : boolean       = false;
+  isActionSuccess          : boolean       = false;
+  isActionError            : boolean       = false;
   isActionProcessing       : boolean       = false;
   confirmationModalSelector: string        = "#confirmation-modal";
 
@@ -38,7 +41,8 @@ export class WebhooksComponent implements OnInit {
 
   constructor( private http: OstHttp,
                private stateHandler: RequestStateHandlerService,
-               private entityConfig : EntityConfigService) { }
+               private entityConfig : EntityConfigService,
+               private utilities : UtilitiesService) { }
 
   ngOnInit() {
     this.init();
@@ -50,10 +54,13 @@ export class WebhooksComponent implements OnInit {
       response => {
         let res = response.json();
         if (res.success) {
-          this.webhooks        = res.data.webhooks;
-          this.webhookConfig   = res.data.config;
-          this.maxWebhookCount = res.data.config.max_webhook_count;
-          this.populateDummyWebhook( this.webhookConfig );
+          if(res.data) {
+            let data = res.data;
+            this.webhooks        = this.utilities.deepGet(data, 'webhooks');
+            this.webhookConfig   = this.utilities.deepGet(data, 'config');
+            this.maxWebhookCount = this.utilities.deepGet(data, 'config.max_webhook_count');
+            this.populateDefaultWebhook( this.webhookConfig );
+          }
           this.stateHandler.updateRequestStatus(this, false, false);
         } else {
           this.stateHandler.updateRequestStatus(this, false, true, false, res);
@@ -66,7 +73,8 @@ export class WebhooksComponent implements OnInit {
       })
   }
 
-  populateDummyWebhook( config ) {
+  populateDefaultWebhook( config ) {
+    if(!config) return;
     let event_sources    = config.event_sources || [],
         event_result_types = config.event_result_types || [];
     for( let i in event_sources ) {
@@ -87,9 +95,9 @@ export class WebhooksComponent implements OnInit {
 
   bindEvents() {
     $("#confirmation-modal").on("hidden.bs.modal", () => {
-      this.isSuccess = false;
+      this.isActionSuccess = false;
       this.isActionProcessing = false;
-      this.isError = false;
+      this.isActionError = false;
       this.errorResponse       = null;
     });
     setTimeout(() => {
@@ -127,8 +135,9 @@ export class WebhooksComponent implements OnInit {
         this.isActionProcessing = false;
         let res = response.json();
         if( res.success ){
-          let savedWebhook = res.data.webhook,
-              secretKey = savedWebhook.decrypted_secret_key;
+          let data         = res.data,
+              savedWebhook = this.utilities.deepGet(data, 'webhook'),
+              secretKey    = this.utilities.deepGet(data, 'webhook.decrypted_secret_key');
           webhook.isNew = false;
           webhook.id    = savedWebhook.id;
           this.setSecretKey( webhook.id, secretKey);
@@ -183,19 +192,19 @@ export class WebhooksComponent implements OnInit {
         }
       )
     } else {
-      this.isSuccess = true;
+      this.isActionSuccess = true;
       this.isActionProcessing = false;
-      this.isError = false;
+      this.isActionError = false;
     }
   }
 
   onSuccess( res ) {
-    this.isSuccess= true;
+    this.isActionSuccess= true;
     this.onComplete( res );
   }
 
   onError( error ) {
-    this.isError = true;
+    this.isActionError = true;
     this.onComplete( error );
   }
 
@@ -228,21 +237,25 @@ export class WebhooksComponent implements OnInit {
     let webhookId = id,
         webhook = this.getWebHookById( webhookId );
     webhook.error = null;
+    webhook.isSecretKeyRefreshing = true;
     this.http.post(this.dataURL +webhookId+'/reset-secret-key', {} ).subscribe(
       response => {
         let res = response.json();
         if (res.success) {
-          let secretKey = res.data.webhook.decrypted_secret_key;
+          let data = res.data,
+              secretKey = this.utilities.deepGet(data, 'webhook.decrypted_secret_key');
           this.setSecretKey( webhookId, secretKey);
         } else {
           this.errorResponse = res;
           webhook.error = res;
         }
+        webhook.isSecretKeyRefreshing = false;
       },
       error => {
         let err = error.json();
         this.errorResponse = err;
         webhook.error = err;
+        webhook.isSecretKeyRefreshing = false;
       })
   }
 
@@ -283,7 +296,9 @@ export class WebhooksComponent implements OnInit {
   }
 
   isValid( webhookId ) {
-    let hookObj = this.getWebHookById( webhookId );
-    return !(hookObj.event_sources_array.length == 0 || hookObj.event_result_types_array.length == 0);
+    let hookObj            = this.getWebHookById( webhookId ),
+        event_sources      = this.utilities.deepGet(hookObj, 'event_sources_array'),
+        event_result_types = this.utilities.deepGet(hookObj, 'event_result_types_array');
+    return !(event_sources.length == 0 || event_result_types.length == 0);
   }
 }

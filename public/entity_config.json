@@ -348,7 +348,8 @@
         "event_sources_array": [],
         "event_result_types_array" : [],
         "isNew" : true,
-        "error": null
+        "error": null,
+        "isSecretKeyRefreshing": false
     }
   }
 }

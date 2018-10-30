@@ -37,15 +37,15 @@
   </div>
   <ng-container *ngIf="webhooks">
     <div class="row modify-hook-section">
-      <div *ngFor="let hook of webhooks; let i = index" class="col-11 col-md-12 mx-auto hook-details my-4">
+      <div *ngFor="let webhook of webhooks; let i = index" class="col-11 col-md-12 mx-auto hook-details my-4">
         <form #webhooksForm="ngForm">
           <div class="row py-3">
             <div class="col-11 col-md-4">
               <div class="row pl-3 align-items-center form-group">
                 <label class="col-4 pl-0 form-label" for="url">URL</label>
                 <input type="url"  class="col-8 form-control" ngModel #url="ngModel" name="url" id="url"
-                       title="url" [(ngModel)]="hook.url" required/>
-                <ost-form-error-handler [errorFor]="url" [fieldName]="'URL'" [serverError]="hook.error">
+                       title="url" [(ngModel)]="webhook.url" required/>
+                <ost-form-error-handler [errorFor]="url" [fieldName]="'URL'" [serverError]="webhook.error">
                 </ost-form-error-handler>
               </div>
               <div class="row pl-3 mt-3 align-items-center form-group">
@@ -53,18 +53,30 @@
                 <div class="col-8 px-0">
                   <div class="input-group">
                     <input disabled type="text" class="form-control" ngModel #secret_key="ngModel" name="secret_key" id="secret_key"
-                           title="secret key" [(ngModel)]="hook.decrypted_secret_key"/>
+                           title="secret key" [(ngModel)]="webhook.decrypted_secret_key"/>
                     <div class="input-group-append">
-                      <button class="btn btn-secondary refresh-btn" type="button" (click)="refreshSecretKey( hook.id, hook.isNew )">
-                        <svg class="icon refresh-key-icon" style="width:30px; height: 20px">
+                      <button class="btn btn-secondary refresh-btn" type="button" (click)="refreshSecretKey( webhook.id, webhook.isNew )">
+                        <svg *ngIf="!webhook.isSecretKeyRefreshing" class="icon refresh-key-icon" style="width:30px; height: 20px">
                           <switch>
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#refresh-key-icon">
                             </use>
                           </switch>
                         </svg>
-                        <svg class="icon refresh-key-hover-icon" style="width:30px; height: 20px">
+                        <svg *ngIf="!webhook.isSecretKeyRefreshing" class="icon refresh-key-hover-icon" style="width:30px; height: 20px">
                           <switch>
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#refresh-key-hover-icon">
+                            </use>
+                          </switch>
+                        </svg>
+                        <svg *ngIf="webhook.isSecretKeyRefreshing" class="icon refresh-key-icon" style="width:30px; height: 28px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#refresh-key-processing-icon">
+                            </use>
+                          </switch>
+                        </svg>
+                        <svg *ngIf="webhook.isSecretKeyRefreshing" class="icon refresh-key-hover-icon" style="width:30px; height: 28px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#refresh-key-processing-hover-icon">
                             </use>
                           </switch>
                         </svg>
@@ -72,7 +84,7 @@
                     </div>
                   </div>
                 </div>
-                <ost-form-error-handler [errorFor]="secret_key" [fieldName]="'Secret Key'" [serverError]="hook.error">
+                <ost-form-error-handler [errorFor]="secret_key" [fieldName]="'Secret Key'" [serverError]="webhook.error">
                 </ost-form-error-handler>
               </div>
             </div>
@@ -84,8 +96,8 @@
                     <label for="event_sources-{{i}}{{j}}" class="label-cbx mb-0 w-100">
                       <input  type="checkbox"
                               class="form-check-input"
-                              (change)="onChange( hook.event_sources_array, option.value )"
-                              [checked]="isChecked( hook.event_sources_array, option.value )"
+                              (change)="onChange( webhook.event_sources_array, option.value )"
+                              [checked]="isChecked( webhook.event_sources_array, option.value )"
                               name="{{option.key}}"
                               id="event_sources-{{i}}{{j}}"/>
                       <div class="checkbox">
@@ -98,7 +110,7 @@
                     </label>
                   </div>
                   <div class="error">
-                    <ng-container *ngIf="hook.event_sources_array.length == 0">
+                    <ng-container *ngIf="webhook.event_sources_array.length == 0">
                       Please select at least one option
                     </ng-container>
                   </div>
@@ -110,8 +122,8 @@
                     <label for="event_types-{{i}}{{j}}" class="label-cbx mb-0 w-100">
                       <input  type="checkbox"
                               class="form-check-input"
-                              (change)="onChange( hook.event_result_types_array, option.value )"
-                              [checked]="isChecked( hook.event_result_types_array, option.value )"
+                              (change)="onChange( webhook.event_result_types_array, option.value )"
+                              [checked]="isChecked( webhook.event_result_types_array, option.value )"
                               name="{{option.key}}"
                               id="event_types-{{i}}{{j}}"/>
                       <div class="checkbox">
@@ -124,7 +136,7 @@
                     </label>
                   </div>
                   <div class="error">
-                    <ng-container *ngIf="hook.event_result_types_array.length == 0">
+                    <ng-container *ngIf="webhook.event_result_types_array.length == 0">
                       Please select at least one option
                     </ng-container>
                   </div>
@@ -135,10 +147,10 @@
             <div class="col-12 mt-4 mt-md-0 px-4 col-md-2">
               <div class="row pr-md-2">
                 <div class="col-sm-4 col-6 px-md-0 col-md-12">
-                  <button [disabled]="!webhooksForm.valid || !isValid( hook.id )" class="btn w-100 btn-primary" (click)="showSaveOrUpdateModal( hook.id, hook.isNew, webhooksForm )">{{getBtnText( hook.isNew )}}</button>
+                  <button [disabled]="!webhooksForm.valid || !isValid( webhook.id )" class="btn w-100 btn-primary" (click)="showSaveOrUpdateModal( webhook.id, webhook.isNew, webhooksForm )">{{getBtnText( webhook.isNew )}}</button>
                 </div>
                 <div class="col-sm-4 col-6 px-md-0 mt-md-4 col-md-12">
-                  <button class="btn w-100 btn-secondary" (click)="showDeleteModal( hook.id, hook.isNew )">DELETE</button>
+                  <button class="btn w-100 btn-secondary" (click)="showDeleteModal( webhook.id, webhook.isNew )">DELETE</button>
                 </div>
               </div>
             </div>
@@ -149,7 +161,7 @@
   </ng-container>
 </div>
 
-<confirmation-modal [callBack]="confirmationCallBack" [isSuccess]="isSuccess" [hasError]="isError" [isProcessing]="isActionProcessing" [errorResponse]="errorResponse">
+<confirmation-modal [callBack]="confirmationCallBack" [isSuccess]="isActionSuccess" [hasError]="isActionError" [isProcessing]="isActionProcessing" [errorResponse]="errorResponse">
   <div class="success-content">Settings have been successfully applied.</div>
   <div class="confirm-message">Are you sure you want to {{actionType}} ?</div>
 </confirmation-modal>
