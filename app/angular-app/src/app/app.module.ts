@@ -67,8 +67,7 @@ import { VerifyOtpComponent } from './contract-addresses/verify-otp/verify-otp.c
 import { KycBannerComponent } from './kyc-banner/kyc-banner.component' ;
 import { WebhooksComponent } from './webhooks/webhooks.component';
 import { ConfirmationModalComponent } from './webhooks/confirmation-modal/confirmation-modal.component' ;
-
-
+import { AuthGuardService } from "./services/auth-guard.service";
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -152,7 +151,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           },
           {
             path: 'settings/user',
-            component: ManageUserComponent
+            component: ManageUserComponent,
+            canActivate: [ AuthGuardService ]
           },
           {
             path:'settings/profile',
@@ -164,7 +164,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           },
           {
             path: 'settings/developer-integrations',
-            component: DevelopersIntegrationComponent
+            component: DevelopersIntegrationComponent,
+            canActivate: [ AuthGuardService ]
           },
           {
             path: 'settings/sale-settings',
@@ -184,7 +185,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           },
           {
             path: 'settings/contract-addresses',
-            component: ContractAddressesComponent
+            component: ContractAddressesComponent,
+            canActivate: [ AuthGuardService ]
           },
           {
             path: 'settings/form-configurator',
@@ -192,10 +194,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           },
           {
             path: 'settings/webhooks',
-            component: WebhooksComponent
+            component: WebhooksComponent,
+            canActivate: [ AuthGuardService ]
           }
        ]
-
       },
       {
         path: 'admin/dashboard',
@@ -221,7 +223,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 RequestStateHandlerService,
                 ScrollTopService,
                 UtilitiesService,
-                OstPdfService
+                OstPdfService,
+                AuthGuardService
             ],
   bootstrap: [AppComponent]
 })
