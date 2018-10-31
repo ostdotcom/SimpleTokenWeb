@@ -49,7 +49,7 @@ export class WebhooksComponent implements OnInit {
   }
 
   init() {
-    this.defaultWebhookObj = this.entityConfig.getEntityConfig('entity_configs.webhooks_config');
+    this.defaultWebhookObj = JSON.parse(JSON.stringify(this.entityConfig.getEntityConfig('entity_configs.webhooks_config')));
     this.http.get( this.dataURL ).subscribe(
       response => {
         let res = response.json();
@@ -110,7 +110,7 @@ export class WebhooksComponent implements OnInit {
   addWebHook() {
     let length     = this.webhooks.length,
         newId      = length + 1,
-        newWebhook = $.extend( true, {}, this.defaultWebhookObj );
+        newWebhook = JSON.parse(JSON.stringify(this.defaultWebhookObj));
     if(length < this.maxWebhookCount) {
       newWebhook['id'] = newId.toString();
       this.webhooks.unshift(newWebhook);
