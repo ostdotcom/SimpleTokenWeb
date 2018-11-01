@@ -49,7 +49,7 @@ export class WebhooksComponent implements OnInit {
   }
 
   init() {
-    this.defaultWebhookObj = JSON.parse(JSON.stringify(this.entityConfig.getEntityConfig('entity_configs.webhooks_config')));
+    this.defaultWebhookObj = this.entityConfig.getEntityConfig('entity_configs.webhooks_config');
     this.http.get( this.dataURL ).subscribe(
       response => {
         let res = response.json();

@@ -15,7 +15,7 @@ export class EntityConfigService {
     return this.http
         .get(this.entityConfigUrl)
         .toPromise()
-        .then((data: any) => this.entityConfig = data.json())
+        .then((data: any) => this.entityConfig = data.json() )
         .catch((err: any) => Promise.resolve());
   }
 
@@ -31,6 +31,6 @@ export class EntityConfigService {
         current = current[paths[i]];
       }
     }
-    return current;
+    return JSON.parse( JSON.stringify( current ) );
   }
 }
