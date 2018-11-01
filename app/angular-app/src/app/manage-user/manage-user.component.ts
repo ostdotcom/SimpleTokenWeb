@@ -42,7 +42,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
   isProcessing: boolean = false;
   hasError: boolean = false;
   checkboxError = '';
-  downloadURL = 'api/admin/kyc/get-kyc-report';
+  downloadURL = 'api/admin/kyc/get-user-report';
   modalSuccessMessage;
   errorMessage;
 
