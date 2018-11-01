@@ -45,10 +45,12 @@
                 <label class="col-4 pl-0 form-label" for="url">URL</label>
                 <input type="url"  class="col-8 form-control" ngModel #url="ngModel" name="url" id="url"
                        title="url" [(ngModel)]="webhook.url" required/>
-                <ost-form-error-handler [errorFor]="url" [fieldName]="'URL'" [serverError]="webhook.error">
-                </ost-form-error-handler>
+                <div class="col-12 pl-0">
+                  <ost-form-error-handler [errorFor]="url" [fieldName]="'URL'" [serverError]="webhook.error">
+                  </ost-form-error-handler>
+                </div>
               </div>
-              <div class="row pl-3 mt-3 align-items-center form-group">
+              <div class="row pl-3 mt-2 align-items-center form-group">
                 <label class="col-4 pl-0 form-label" for="url">SECRET KEY</label>
                 <div class="col-8 px-0">
                   <div class="input-group">
