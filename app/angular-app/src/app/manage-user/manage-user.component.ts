@@ -37,6 +37,16 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
   whitelist_status: string;
   order: string;
 
+  isCSVDownloaded = false;
+  securityCheckbox: boolean = false;
+  isProcessing: boolean = false;
+  hasError: boolean = false;
+  checkboxError = '';
+  downloadURL = 'api/admin/kyc/get-kyc-report';
+  modalSuccessMessage;
+  errorMessage;
+
+
   constructor(
     private entityConfigService: EntityConfigService ,
     private stateHandler: RequestStateHandlerService,
@@ -59,6 +69,10 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
         $('.selectpicker').selectpicker('render');
       },  0)
      });
+
+    $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
+      this.resetDownLoadCsvModal();
+    });
   }
 
   onDeleteRow( user ){
@@ -90,6 +104,45 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
     }else{
       this.tableComponent.getTableData();
     }
+  }
+
+  resetDownLoadCsvModal(){
+    this.stateHandler.updateRequestStatus(this);
+    this.checkboxError = '';
+    this.isCSVDownloaded = false;
+    this.securityCheckbox = false;
+  }
+
+  validateAndDownload(){
+    if (this.securityCheckbox){
+      this.downloadCSV();
+    }else {
+      this.checkboxError = 'Please confirm the above to download the CSV';
+    }
+  }
+
+  downloadCSV() {
+    this.stateHandler.updateRequestStatus(this ,  true );
+    this.http.get(this.downloadURL, {params: this.getQueryParams() }  ).subscribe(
+      response => {
+        let res = response.json();
+        if (!res.success) {
+          this.stateHandler.updateRequestStatus(this , false , true,  false  , res );
+          return;
+        }
+        this.stateHandler.updateRequestStatus(this);
+        this.isCSVDownloaded = true;
+        this.modalSuccessMessage  = res.data.success_message;
+      },
+      error => {
+        let err = error.json();
+        this.stateHandler.updateRequestStatus(this , false , true,  false  , err );
+
+      })
+  }
+
+  checkboxChecked() {
+    this.checkboxError = '';
   }
 
 }
