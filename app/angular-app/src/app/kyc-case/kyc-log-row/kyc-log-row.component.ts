@@ -14,7 +14,7 @@ export class KycLogRowComponent implements OnInit {
     'update_kyc': 'Updated KYC',
     'kyc_denied': 'KYC Denied',
     'kyc_qualified': 'KYC Approved',
-    'cynopsis_api_error': 'Cynopsis Api Error',
+    'aml_api_error': 'Aml Api Error',
     'update_ethereum_address': 'Ethereum Address Updated',
     'open_case': 'Case is Opened Again',
     'phase_changed_to_early_access': 'Phase Changed to Early Access',
