@@ -99,11 +99,13 @@ module GlobalConstant
       # @return [Array]
       #
       def nationalities
-        @nationalities = []
-        fetch_country_nationality_mapping.each do |country_nationality_mapping|
-          @nationalities << country_nationality_mapping.split(",")[0]
+        @nationalities ||= begin
+          data = []
+          fetch_country_nationality_mapping.each do |country_nationality_mapping|
+            data << country_nationality_mapping.split(",")[0]
+          end
+          data
         end
-        @nationalities
       end
 
 
