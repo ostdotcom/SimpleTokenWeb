@@ -67,7 +67,9 @@ class Web::BaseController < ApplicationController
         (render plain: Oj.dump(service_response.to_json, mode: :compat), status: service_response.http_code) and return
       else
         url_params = params[:t].present? ? "?t=#{params[:t]}" : ''
-        redirect_to "/login#{url_params}", status: GlobalConstant::ErrorCode.permanent_redirect and return
+        redirect_url = service_response["error_extra_info"]["redirect_url"]
+        redirect_url = redirect_url.present? ? redirect_url : "/login#{url_params}"
+        redirect_to redirect_url, status: GlobalConstant::ErrorCode.permanent_redirect and return
       end
     else
       render_error_response_for(service_response)
