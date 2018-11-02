@@ -49,9 +49,7 @@ module ApplicationHelper
   # * Reviewed By:
   #
   def is_simple_token_specific_page?
-    ['web/home', 'web/token_sale'].include?(params[:controller]) ||
-        (params[:controller] == 'web/user' &&
-            ['add_branded_token', 'update_branded_token'].include?(params[:action]))
+    ['web/home', 'web/token_sale'].include?(params[:controller])
   end
 
   # All static pages used in simple token but not a part of kyc

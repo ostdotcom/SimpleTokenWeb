@@ -8,7 +8,6 @@ class Web::UserController < Web::BaseController
 
   before_action :delete_user_cookie, only: [:sign_up, :login, :reset_password, :change_password]
   before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
-  before_action :set_page_meta_info, only: [:update_branded_token, :add_branded_token]
 
   after_action :remove_browser_caching
 
@@ -245,56 +244,6 @@ class Web::UserController < Web::BaseController
 
     @presenter_obj = ::Web::Client::Profile.new(service_response, params)
     set_page_meta_info(@presenter_obj.custom_meta_tags)
-  end
-
-
-  ########### only Simple token sale users  ######
-
-
-  # Branded token form
-  #
-  # * Author: Tahir
-  # * Date: 10/10/2017
-  # * Reviewed By: Sunil Khedar
-  #
-  def add_branded_token
-    # if GlobalConstant::StTokenSale.has_sale_ended?
-    redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return
-    # end
-
-    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
-
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    @user = service_response.data["user"]
-    redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.bt_page_allowed_states)
-    return if has_performed?
-  end
-
-  # update Branded token form
-  #
-  # * Author: Aman
-  # * Date: 15/10/2017
-  # * Reviewed By:
-  #
-  def update_branded_token
-    # allowed?
-    # redirect if not token sale client
-    service_response = SimpleTokenApi::Request::User.new(host_url_with_protocol, request.cookies, {"User-Agent" => http_user_agent}).basic_detail
-
-    # Check if error present or not?
-    unless service_response.success?
-      render_error_response(service_response)
-      return
-    end
-
-    @user = service_response.data["user"]
-    redirect_if_step_not_reachable(@user["user_token_sale_state"], GlobalConstant::TokenSaleUserState.profile_page_allowed_states)
-    return if has_performed?
   end
 
   private

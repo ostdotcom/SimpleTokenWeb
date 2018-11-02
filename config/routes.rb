@@ -121,11 +121,6 @@ Rails.application.routes.draw do
       get '/' => :index
     end
 
-    scope '', controller: 'web/user' do
-      get '/reserve-token' => :add_branded_token
-      get '/update-token' => :update_branded_token
-    end
-
   end
 
   scope '', controller: 'web/user' do
