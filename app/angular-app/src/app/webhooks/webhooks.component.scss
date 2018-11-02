@@ -1,0 +1,57 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.sub-header {
+  letter-spacing: 1px;
+  white-space:pre-line;
+  line-height: normal;
+}
+
+.modify-hook-section {
+  border-top: solid 1px $custom-grey-7;
+}
+
+.hook-details {
+  border-radius: 4px;
+  border: solid 1px $custom-grey-7;
+}
+
+.read-only-fields{
+  overflow-x: auto;
+  min-height: 42px;
+  border-radius: 4px;
+  background-color: $grey-bg;
+  border: solid 1px $custom-grey-7;
+  small{
+    font-weight: 300;
+  }
+}
+
+.refresh-btn {
+  padding: 0.375rem 0.75rem;
+  border: solid 1px $custom-grey-7;
+  svg {
+    &.refresh-key-hover-icon {
+      display: none;
+    }
+    &.refresh-key-icon {
+      display: block;
+    }
+  }
+  &:hover {
+    svg {
+      &.refresh-key-hover-icon {
+        display: block;
+      }
+      &.refresh-key-icon {
+        display: none;
+      }
+    }
+  }
+}
+
+.add-web-hook-btn {
+  &:disabled {
+    pointer-events: none;
+  }
+}
+
