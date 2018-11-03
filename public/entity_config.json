@@ -157,11 +157,11 @@
             "display_text": "All"
           },
           {
-            "value": "yes",
+            "value": true,
             "display_text": "Yes"
           },
           {
-            "value": "no",
+            "value": false,
             "display_text":"No"
           }    
         ]
