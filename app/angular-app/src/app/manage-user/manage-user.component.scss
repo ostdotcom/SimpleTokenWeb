@@ -18,6 +18,10 @@
 
 }
 
+.securityCheckbox{
+  line-height: 22px;
+}
+
 .download-csv-btn {
   @media (max-width: map-get($grid-breakpoints , 'lg')){
     float: left;
