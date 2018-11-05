@@ -34,8 +34,18 @@
     },
 
     initData : function ( data ) {
-      oThis.entityConfig  = data && data['entity_config'] || {};
-      oThis.formData      = data && data['form_data'] || {};
+      if( !data ) return ;
+
+      if( data.accordion_config ){
+        oSTNs.configuratorConfig = $.extend(true, oSTNs.configuratorConfig , data.accordion_config );
+      }
+
+      if( data.ui_config ){
+        oSTNs.configuratorConfig.entityConfig = $.extend(true, oSTNs.configuratorConfig.entityConfig , data.ui_config);
+      }
+
+      oThis.entityConfig  =  data['entity_config'] || {};
+      oThis.formData      =  data['form_data'] || {};
     },
 
     /*
@@ -123,8 +133,7 @@
           hasValidEntity  = true ;
         }
         entityConfig = oThis.getEntityConfig( entityKey, withFormData );
-        if ( oThis.isEligibleEntity( entityConfig )
-             && oThis.isBuildEntity( entityConfig ) ) {
+        if ( oThis.isBuildEntity( entityConfig ) && oThis.isEligibleEntity( entityConfig )) {
           oThis.buildEntity( entityConfig, jWrapper  );
         };
       }
@@ -152,9 +161,9 @@
      return entityConfig && entityConfig['not_eligible'] != 1 ;
     },
 
-    //Overwrite from outside
+    //Can be Overwritten from outside
     isBuildEntity : function ( entityConfig ) {
-      return true ;
+      return !!entityConfig ;
     },
 
     /*
@@ -203,8 +212,11 @@
      */
 
     getEntityConfig: function ( entityKey, withFormData ) {
-      var entityConfig  = oThis.getBEEntityConfig(entityKey),
-          uiConfig      = oThis.getUIEntityConfig(entityKey),
+      var entityConfig  = oThis.getBEEntityConfig(entityKey) ;
+
+      if( !entityConfig ) return false;
+
+      var uiConfig      = oThis.getUIEntityConfig(entityKey),
           formData      = withFormData ? oThis.getFormData(entityKey) : null,
           mergedConfig  = {}
       ;
