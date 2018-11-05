@@ -40,10 +40,10 @@
       <div *ngFor="let webhook of webhooks; let i = index" class="col-11 col-md-12 mx-auto hook-details my-4">
         <form #webhooksForm="ngForm">
           <div class="row py-3">
-            <div class="col-11 col-md-4">
+            <div class="col-11 col-md-5">
               <div class="row pl-3 align-items-center form-group">
-                <label class="col-4 pl-0 form-label" for="url">URL</label>
-                <input type="url"  class="col-8 form-control" ngModel #url="ngModel" name="url" id="url"
+                <label class="col-3 pl-0 form-label mb-0" for="url">URL</label>
+                <input type="url"  class="col-9 form-control" ngModel #url="ngModel" name="url" id="url"
                        title="url" [(ngModel)]="webhook.url" required/>
                 <div class="col-12 pl-0">
                   <ost-form-error-handler [errorFor]="url" [fieldName]="'URL'" [serverError]="webhook.error">
@@ -51,8 +51,8 @@
                 </div>
               </div>
               <div class="row pl-3 mt-2 align-items-center form-group">
-                <label class="col-4 pl-0 form-label" for="url">SECRET KEY</label>
-                <div class="col-8 px-0">
+                <label class="col-3 pl-0 form-label mb-0" for="url">SECRET KEY</label>
+                <div class="col-9 px-0">
                   <div class="input-group">
                     <input disabled type="text" class="form-control" ngModel #secret_key="ngModel" name="secret_key" id="secret_key"
                            title="secret key" [(ngModel)]="webhook.decrypted_secret_key"/>
@@ -98,9 +98,9 @@
                 </ost-form-error-handler>
               </div>
             </div>
-            <div class="col-12 mt-4 px-md-4 mt-md-0 col-md-6">
-              <div class="row pl-lg-4 ml-md-4">
-                <div class="form-group pr-0 pl-md-4 col-6">
+            <div class="col-12 mt-4 mt-md-0 col-md-5">
+              <div class="row ml-md-4">
+                <div class="form-group pl-3 pr-0 px-xl-3 col-6">
                   <div class="form-label">FILTER: EVENT SOURCE</div>
                   <div class="pt-2 pr-2 pl-0 form-check" *ngFor="let option of webhookConfig.event_sources; let j = index">
                     <label for="event_sources-{{i}}{{j}}" class="label-cbx mb-0 w-100">
@@ -157,10 +157,10 @@
             <div class="col-12 mt-4 mt-md-0 px-4 col-md-2">
               <div class="row pr-md-2">
                 <div class="col-sm-4 col-6 px-md-0 col-md-12">
-                  <button [disabled]="!webhooksForm.valid || !isValid( webhook.id )" class="btn w-100 btn-primary" (click)="showSaveOrUpdateModal( webhook.id, webhook.isNew, webhooksForm )">{{getBtnText( webhook.isNew )}}</button>
+                  <button [disabled]="!webhooksForm.valid || !isValid( webhook.id )" class="btn w-100 btn-primary px-md-3" (click)="showSaveOrUpdateModal( webhook.id, webhook.isNew, webhooksForm )">{{getBtnText( webhook.isNew )}}</button>
                 </div>
-                <div class="col-sm-4 col-6 px-md-0 mt-md-4 col-md-12">
-                  <button class="btn w-100 btn-secondary" (click)="showDeleteModal( webhook.id, webhook.isNew )">DELETE</button>
+                <div class="col-sm-4 col-6 px-md-0 mt-md-4 col-md-12 px">
+                  <button class="btn w-100 btn-secondary px-md-3" (click)="showDeleteModal( webhook.id, webhook.isNew )">DELETE</button>
                 </div>
               </div>
             </div>
