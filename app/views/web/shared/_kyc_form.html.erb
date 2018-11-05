@@ -133,8 +133,8 @@
               <% end %>
               <div class="col-12 col-sm-6">
                 <div class="form-group st-selectpicker">
-                  <label class="form-label" for="country">Country</label>
-                  <select class="form-control selectpicker" name="country" title="Select Country" tabindex="<%= tabindex_val %>" required>
+                  <label class="form-label" for="country">Country of Residence</label>
+                  <select class="form-control selectpicker" name="country" title="Select Country of Residence" tabindex="<%= tabindex_val %>" required>
                     <% tabindex_val += 1 %>
                     <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
                       <% next if @presenter_obj.blacklisted_countries.include?(country_name) %>
