@@ -36,7 +36,7 @@ module Web
       end
 
       def extra_kyc_field_info_text(field_key)
-        @page_spec_data["#{field_key}_instruction_text".to_sym]
+        @page_spec_data["#{field_key}_dynamic_kyc_field_instruction_text".to_sym]
       end
 
       def kyc_confirm_checkboxes
