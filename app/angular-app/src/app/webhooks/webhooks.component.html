@@ -57,7 +57,15 @@
                     <input disabled type="text" class="form-control" ngModel #secret_key="ngModel" name="secret_key" id="secret_key"
                            title="secret key" [(ngModel)]="webhook.decrypted_secret_key"/>
                     <div class="input-group-append">
-                      <button class="btn btn-secondary refresh-btn" type="button" (click)="refreshSecretKey( webhook.id, webhook.isNew )">
+                      <button [disabled]="webhook.isNew" data-toggle="tooltip" data-original-title="Copied!" class="btn btn-primary copy-btn" (click)="copySecretKey($event, '#secret_key')">
+                        <svg class="icon" style="width:30px; height: 20px; vertical-align: middle;">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#copy-icon">
+                            </use>
+                          </switch>
+                        </svg>
+                      </button>
+                      <button [disabled]="webhook.isNew" class="btn btn-secondary refresh-btn" type="button" (click)="refreshSecretKey( webhook.id, webhook.isNew )">
                         <svg *ngIf="!webhook.isSecretKeyRefreshing" class="icon refresh-key-icon" style="width:30px; height: 20px">
                           <switch>
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#refresh-key-icon">

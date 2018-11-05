@@ -49,6 +49,10 @@
   }
 }
 
+.copy-btn {
+  border: solid 1px $custom-grey-7;
+}
+
 .add-web-hook-btn {
   &:disabled {
     pointer-events: none;

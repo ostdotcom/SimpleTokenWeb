@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OstHttp} from "../services/ost-http.service";
 import {RequestStateHandlerService} from "../services/request-state-handler.service";
 import {EntityConfigService} from "../services/entity-config.service";
@@ -301,4 +301,20 @@ export class WebhooksComponent implements OnInit {
         event_result_types = this.utilities.deepGet(hookObj, 'event_result_types_array');
     return !(event_sources.length == 0 || event_result_types.length == 0);
   }
+
+  copySecretKey( event, elSelector ) {
+    let targetEl = event.target,
+        parent   = $(targetEl).closest('div'),
+        elValue  = parent.siblings(elSelector)[0].value,
+        copyBtn  = parent.find('.copy-btn');
+    this.utilities.copyToClipboard( elValue, function() {
+        $(copyBtn).tooltip('enable');
+        $(copyBtn).tooltip('show');
+        setTimeout(function() {
+          $(copyBtn).tooltip('hide');
+          $(copyBtn).tooltip('disable');
+        }, 500);
+    } );
+  }
+
 }
