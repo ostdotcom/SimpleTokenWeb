@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class UtilitiesService {
 
-  constructor() { }
+  pathToExclude: string = 'settings/';
+
+  constructor(private router: Router) { }
 
 
   deepGet(data , path) {
 
     if(!data || !path ){
-      return false; 
+      return false;
     }
 
     let paths = path.split('.')
@@ -24,6 +27,11 @@ export class UtilitiesService {
       }
     }
     return current;
+  }
+
+  hideEmailSearchField() {
+    let url = this.router.url;
+    return url.indexOf( this.pathToExclude ) == -1;
   }
 
 }

@@ -1,7 +1,7 @@
 @import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 .admin-settings {
   .desktop-menus-list {
-    background-color: $green-1000;
+    background-color: $teal-bg;
     min-height: 100vh;
 
     .desktop-menu {
@@ -41,7 +41,7 @@
     }
 
     .mobile-menus-list {
-      background-color: $green-1000;
+      background-color: $teal-bg;
 
       .desktop-menu {
         height: 56px;
@@ -54,69 +54,21 @@
 
   }
 
-  .admin-dashboard {
+  .unselected-icon {
     display: inline;
   }
-  .admin-dashboard-selected {
+  .selected-icon {
     display: none;
-  }
-  .profile {
-    display: inline;
-  }
-  .profile-selected {
-    display: none;
-  }
-  .developer {
-    display: inline;
-  }
-  .developer-selected {
-    display: none;
-  }
-  .ai-icon {
-    display: inline;
-  }
-  .ai-selected-icon {
-    display: none;
-  }
-  .fc-icon {
-    display: inline;
-  }
-  .fc-selected-icon {
-    display: none;
-  }
-  .user-dashboard {
-    fill: $blue-1100;
   }
 
   .selected {
-    background-color: $blue-1100;
+    background-color: $blue-400;
     color: $white;
-    .admin-dashboard {
+    .unselected-icon {
       display: none;
     }
-    .admin-dashboard-selected {
+    .selected-icon {
       display: inline;
-    }
-    .profile {
-      display: none;
-    }
-    .profile-selected {
-      display: inline;
-    }
-    .developer {
-      display: none;
-    }
-    .developer-selected {
-      display: inline;
-    }
-    .ai-icon {
-      display: none;
-    }
-    .ai-selected-icon {
-      display: inline;
-    }
-    .user-dashboard {
-      fill: $white;
     }
   }
 }

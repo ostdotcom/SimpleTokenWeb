@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppConfigService } from '../services/app-config.service';
+import {UtilitiesService} from "../services/utilities.service";
 
 @Component({
   selector: 'kyc-navbar',
@@ -13,7 +14,8 @@ export class NavbarComponent implements OnInit {
   isSuperAdmin         :boolean  = false;
 
   constructor(
-    public appConfig : AppConfigService
+    public appConfig : AppConfigService,
+    public utilities : UtilitiesService
   ) { }
 
   ngOnInit() {
