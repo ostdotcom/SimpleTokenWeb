@@ -113,7 +113,4 @@ export class DashboardComponent extends PageBaseComponent implements OnInit {
     this.checkboxError = '';
   }
 
-
-
-
 }

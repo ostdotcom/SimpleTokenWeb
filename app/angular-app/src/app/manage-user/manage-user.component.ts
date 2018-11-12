@@ -6,8 +6,13 @@ import { OstHttp } from '../services/ost-http.service';
 import { TableComponent } from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
 import { PageBaseComponent } from '../page-base-component/page-base-component.component';
+import { Headers } from '@angular/http';
 
 declare var $: any;
+
+const httpOptions = {
+  headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'})
+};
 
 
 @Component({
@@ -123,7 +128,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
 
   downloadCSV() {
     this.stateHandler.updateRequestStatus(this ,  true );
-    this.http.get(this.downloadURL, {params: this.getQueryParams()}   ).subscribe(
+    this.http.post(this.downloadURL, null, {params: this.getQueryParams() } ).subscribe(
       response => {
         let res = response.json();
         if (!res.success) {
