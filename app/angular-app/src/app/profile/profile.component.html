@@ -22,8 +22,8 @@
         <div class="form-label">
           client name
         </div>
-        <div class="read-only-fields p-2">
-          <small>{{clientName}}</small>
+        <div>
+          <input disabled type="text" class="form-control" title="Client Name" [ngModel]="clientName"/>
         </div>
       </div>
     </div>
@@ -33,13 +33,14 @@
         <div class="form-label">
           domain Name
         </div>
-        <div class="read-only-fields p-2">
-          <small *ngIf="domainName || ! hasLoaded; else domainNA">{{domainName}}</small>
-          <ng-template #domainNA>
-            <small >NA</small>
-          </ng-template>
+        <div *ngIf="domainName || ! hasLoaded; else domainNA">
+          <input disabled type="text" class="form-control" title="Domain Name" [ngModel]="domainName"/>
         </div>
-
+        <ng-template #domainNA>
+          <div>
+            <input disabled type="text" class="form-control" title="Domain Name" value="NA"/>
+          </div>
+        </ng-template>
       </div>
     </div>
 
@@ -48,10 +49,9 @@
         <div class="form-label">
           SUPER ADMIN EMAIL ID
         </div>
-        <div class="read-only-fields p-2 mb-2" *ngFor="let superAdminEmail of superAdminEmails">
-          <small>{{superAdminEmail}}</small>
+        <div class="mb-3" *ngFor="let superAdminEmail of superAdminEmails">
+          <input disabled type="text" class="form-control" title="Super Admin Email" [ngModel]="superAdminEmail"/>
         </div>
-
       </div>
     </div>
   </div>

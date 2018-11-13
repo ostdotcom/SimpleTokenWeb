@@ -1,0 +1,180 @@
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="error-content">
+    <div class="col-12">{{ errorMessage }}</div>
+  </ng-container>
+</request-state-handler>
+
+
+<div class="advance-compliance" *ngIf="!isProcessing && !hasError">
+  <div class="row mt-4 pt-2 ">
+    <div class="col-12">
+      <h4 class="kyc-header text-transform-upper">Webhooks</h4>
+    </div>
+  </div>
+  <div class="row sub-header mt-2">
+    <div class="col-12">
+      This section enables to setup Webhooks and to stay up-to-date with the status changes of KYC applicants.
+
+      Https POST requests with signature will be made to URLs provided here below in the Webhooks setup.
+
+      It is possible to activate, deactivate, or update a Webhook from the settings here below.
+      It is possible to filter on events type and sources to subscribe to specific events.
+
+      Each webhook has a Secret Key that is not changing on Webhook Update action, but it can be independently refreshed.
+
+      A 200 HTTP status code response shall be received within 5 sec from the server, otherwise event will be marked as failed.
+      Failed events will be retried up to 6 times at an interval of 1 hour increasing exponentially with a factor of 2.
+    </div>
+  </div>
+  <div class="row mt-4 mb-4">
+    <div class="col-12">
+      <span class="d-inline-block btn-disabled-tooltip"
+            data-toggle="tooltip" data-original-title="A maximum of 3 webhooks can be added at any time.">
+        <button  [disabled]="webhooks && webhooks.length == maxWebhookCount"
+                 class="btn btn-primary add-web-hook-btn" (click)="addWebHook()">ADD NEW WEBHOOK</button>
+      </span>
+    </div>
+  </div>
+  <ng-container *ngIf="webhooks">
+    <div class="row modify-hook-section">
+      <div *ngFor="let webhook of webhooks; let i = index" class="col-11 col-md-12 mx-auto hook-details my-4">
+        <form #webhooksForm="ngForm">
+          <div class="row py-3">
+            <div class="col-11 col-md-5">
+              <div class="row pl-3 align-items-center form-group">
+                <label class="col-3 pl-0 form-label mb-0" for="url">URL</label>
+                <input type="url"  class="col-9 form-control" ngModel #url="ngModel" name="url" id="url"
+                       title="url" [(ngModel)]="webhook.url" required/>
+                <div class="col-12 pl-0">
+                  <ost-form-error-handler [errorFor]="url" [fieldName]="'URL'" [serverError]="webhook.error">
+                  </ost-form-error-handler>
+                </div>
+              </div>
+              <div class="row pl-3 mt-2 align-items-center form-group">
+                <label class="col-3 pl-0 form-label mb-0" for="url">SECRET KEY</label>
+                <div class="col-9 px-0">
+                  <div class="input-group">
+                    <input disabled type="text" class="form-control" ngModel #secret_key="ngModel" name="secret_key" id="secret_key"
+                           title="secret key" [(ngModel)]="webhook.decrypted_secret_key"/>
+                    <div class="input-group-append">
+                      <button [disabled]="webhook.isNew" data-toggle="tooltip" data-original-title="Copied!" class="btn btn-primary copy-btn" (click)="copySecretKey($event, '#secret_key')">
+                        <svg class="icon" style="width:30px; height: 20px; vertical-align: middle;">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#copy-icon">
+                            </use>
+                          </switch>
+                        </svg>
+                      </button>
+                      <button [disabled]="webhook.isNew" class="btn btn-secondary refresh-btn" type="button" (click)="refreshSecretKey( webhook.id, webhook.isNew )">
+                        <svg *ngIf="!webhook.isSecretKeyRefreshing" class="icon refresh-key-icon" style="width:30px; height: 20px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#refresh-key-icon">
+                            </use>
+                          </switch>
+                        </svg>
+                        <svg *ngIf="!webhook.isSecretKeyRefreshing" class="icon refresh-key-hover-icon" style="width:30px; height: 20px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#refresh-key-hover-icon">
+                            </use>
+                          </switch>
+                        </svg>
+                        <svg *ngIf="webhook.isSecretKeyRefreshing" class="icon refresh-key-icon" style="width:30px; height: 28px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#refresh-key-processing-icon">
+                            </use>
+                          </switch>
+                        </svg>
+                        <svg *ngIf="webhook.isSecretKeyRefreshing" class="icon refresh-key-hover-icon" style="width:30px; height: 28px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#refresh-key-processing-hover-icon">
+                            </use>
+                          </switch>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <ost-form-error-handler [errorFor]="secret_key" [fieldName]="'Secret Key'" [serverError]="webhook.error">
+                </ost-form-error-handler>
+              </div>
+            </div>
+            <div class="col-12 mt-4 mt-md-0 col-md-5">
+              <div class="row ml-md-4">
+                <div class="form-group pl-3 pr-0 px-xl-3 col-6">
+                  <div class="form-label">FILTER: EVENT SOURCE</div>
+                  <div class="pt-2 pr-2 pl-0 form-check" *ngFor="let option of webhookConfig.event_sources; let j = index">
+                    <label for="event_sources-{{i}}{{j}}" class="label-cbx mb-0 w-100">
+                      <input  type="checkbox"
+                              class="form-check-input"
+                              (change)="onChange( webhook.event_sources_array, option.value )"
+                              [checked]="isChecked( webhook.event_sources_array, option.value )"
+                              name="{{option.key}}"
+                              id="event_sources-{{i}}{{j}}"/>
+                      <div class="checkbox">
+                        <svg width="18px" height="18px" viewBox="0 0 20 20">
+                          <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                          <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
+                      </div>
+                      <span>{{option.display_text}}</span>
+                    </label>
+                  </div>
+                  <div class="error">
+                    <ng-container *ngIf="webhook.event_sources_array.length == 0">
+                      Please select at least one option
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="form-group col-6">
+                  <div class="form-label">FILTER: EVENT TYPE</div>
+                  <div class="pt-2 pr-2 pl-0 form-check" *ngFor="let option of webhookConfig.event_result_types; let j = index">
+                    <label for="event_types-{{i}}{{j}}" class="label-cbx mb-0 w-100">
+                      <input  type="checkbox"
+                              class="form-check-input"
+                              (change)="onChange( webhook.event_result_types_array, option.value )"
+                              [checked]="isChecked( webhook.event_result_types_array, option.value )"
+                              name="{{option.key}}"
+                              id="event_types-{{i}}{{j}}"/>
+                      <div class="checkbox">
+                        <svg width="18px" height="18px" viewBox="0 0 20 20">
+                          <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                          <polyline points="4 11 8 15 16 6"></polyline>
+                        </svg>
+                      </div>
+                      <span>{{option.display_text}}</span>
+                    </label>
+                  </div>
+                  <div class="error">
+                    <ng-container *ngIf="webhook.event_result_types_array.length == 0">
+                      Please select at least one option
+                    </ng-container>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-12 mt-4 mt-md-0 px-4 col-md-2">
+              <div class="row pr-md-2">
+                <div class="col-sm-4 col-6 px-md-0 col-md-12">
+                  <button [disabled]="!webhooksForm.valid || !isValid( webhook.id )" class="btn w-100 btn-primary px-md-3" (click)="showSaveOrUpdateModal( webhook.id, webhook.isNew, webhooksForm )">{{getBtnText( webhook.isNew )}}</button>
+                </div>
+                <div class="col-sm-4 col-6 px-md-0 mt-md-4 col-md-12 px">
+                  <button class="btn w-100 btn-secondary px-md-3" (click)="showDeleteModal( webhook.id, webhook.isNew )">DELETE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<confirmation-modal [callBack]="confirmationCallBack" [isSuccess]="isActionSuccess" [hasError]="isActionError" [isProcessing]="isActionProcessing" [errorResponse]="errorResponse">
+  <div class="success-content">Settings have been successfully applied.</div>
+  <div class="confirm-message">Are you sure you want to {{actionType}} ?</div>
+</confirmation-modal>
+
+
+
