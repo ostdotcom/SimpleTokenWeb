@@ -129,8 +129,8 @@
               <% end %>
               <div class="col-12 col-sm-6">
                 <div class="form-group st-selectpicker">
-                  <label class="form-label" for="country">Country</label>
-                  <select class="form-control selectpicker" name="country" title="Select Country" tabindex="<%= tabindex_val %>" required>
+                  <label class="form-label" for="country">Country of Residence</label>
+                  <select class="form-control selectpicker" name="country" title="Select Country of Residence" tabindex="<%= tabindex_val %>" required>
                     <% tabindex_val += 1 %>
                     <% GlobalConstant::CountryNationality.countries.each do |country_name| %>
                       <% next if @presenter_obj.blacklisted_countries.include?(country_name) %>
@@ -232,6 +232,28 @@
                 </div>
               </div>
             </div>
+
+            <% @presenter_obj.extra_kyc_fields.each do |field_key, config| %>
+              <div class="row form-group ">
+                <div class="col-12 col-sm-6">
+                  <div>
+                    <label class="form-label" for="<%= field_key %>"><%= config["label"] %></label>
+                    <input type="<%= config["data_type"] %>" title="<%= config["label"] %>" class="form-control"
+                           name="<%= field_key %>" value="" tabindex="<%= tabindex_val %>" autocomplete="off" <%= config['validation']['required'] == 1 ?  'required' : nil %>/>
+                    <% tabindex_val += 1 %>
+                    <div class="invalid-feedback" data-forname="<%= field_key %>"></div>
+                  </div>
+                </div>
+                <% info_text = @presenter_obj.page_data.extra_kyc_field_info_text(field_key)
+                   if info_text.present? %>
+                  <div class="col-12 col-sm-6">
+                    <div class="form-instructions display-4 mt-1 pt-md-4 pb-3 pb-md-0">
+                      <%= raw info_text %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
 
             <!-- Identification Document wrapper start-->
             <div class="row form-group">

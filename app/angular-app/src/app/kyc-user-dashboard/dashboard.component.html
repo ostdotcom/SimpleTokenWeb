@@ -91,7 +91,7 @@
                     OST KYC is not responsible for the security of data
                   </label>
                   </div>
-                  <div class="mt-3">
+                  <div *ngIf="appConfigService.hasEthereumAddressField()" class="mt-3">
                   <input type="checkbox" class="form-check-input" id="securityEthCheckbox"
                         [(ngModel)]="securityEthCheckbox" (change)='checkboxChecked()'>
                   <label class="form-check-label display-3" for="securityEthCheckbox">

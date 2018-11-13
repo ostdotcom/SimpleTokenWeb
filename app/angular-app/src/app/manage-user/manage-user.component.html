@@ -2,7 +2,13 @@
     <div class="col-12 col-lg-6">
       <h4 class="kyc-header text-transform-upper">user management</h4>
     </div>
-
+  <div class="col-12 col-lg-6">
+    <button class="btn btn-primary download-csv-btn"
+            data-toggle="modal"
+            data-target="#confirmDownload">
+      DOWNLOAD CSV
+    </button>
+  </div>
 </div>
 <div class='row py-3 mb-3'>
 <div class="col-12 col-lg-4 search-wrapper">
@@ -15,7 +21,7 @@
                        #search="ngModel"
                        (keyup)="resetSearch(search)"
                        [placeholder]="placeholder"
-                       name="search[q]"
+                       name="filters[email]"
                        [(ngModel)]="q"
                        class="form-control"/>
                 <button type="submit" class="search-addon rounded-right" style='border:none;'>
@@ -98,3 +104,63 @@
           <span>{{successMessage}}</span>
       </ng-container>
   </manage-user-modal>
+
+<div class="modal fade" id="confirmDownload">
+  <div class="modal-dialog modal-dialog-centered h-100 my-0 pb-5">
+    <div class="modal-content">
+      <div class="modal-body px-sm-5">
+        <div class='row' *ngIf="!isProcessing && !hasError && !isCSVDownloaded">
+          <div class="modal-body m-md-4">
+            <div class="d-flex mb-4">
+              <h5 class="modal-title text-center">Please confirm to download CSV</h5>
+            </div>
+            <div>
+              <input type="checkbox" class="form-check-input" id="securityCheckbox"
+                     [(ngModel)]="securityCheckbox" (change)='checkboxChecked()'>
+              <label class="form-check-label display-3 securityCheckbox" for="securityCheckbox">
+                OST KYC is not responsible for the security of data
+              </label>
+            </div>
+            <div class="mb-3 form-group">
+              <div class="">
+                <span class="error text-center" > {{checkboxError}} </span>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-primary text-uppercase" (click)='validateAndDownload()'>I Agree</button>
+                <button type="button" class="btn btn-secondary ml-3 text-uppercase" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <request-state-handler class="d-block w-100"
+                                 [isProcessing]="isProcessing"
+                                 [hasError]="hasError">
+            <div class="processing-content mt-3">Downloading CSV, please wait ... </div>
+            <div class="error-content col-12 text-center">
+              <div *ngIf="errorMessage">{{errorMessage}}</div>
+              <div *ngIf="!errorMessage">There was some issue while downloading CSV.</div>
+              <button class="btn btn-primary mt-3" data-dismiss="modal">OK</button>
+            </div>
+          </request-state-handler>
+        </div>
+        <div class="row">
+          <div class="col-12 success-hanlder-wrap text-center p-1" *ngIf="isCSVDownloaded">
+            <div class="success-icon-wrap mb-1">
+              <svg class="icon" style="width:50px; height: 50px">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                  </use>
+                </switch>
+              </svg>
+            </div>
+            <span class='font-weight-500'>Success!</span>
+
+            <div class="mt-2 mb-3">{{modalSuccessMessage}}</div>
+            <button class="btn btn-primary" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

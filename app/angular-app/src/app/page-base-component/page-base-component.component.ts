@@ -79,7 +79,7 @@ export class PageBaseComponent {
   initSearch() {
     let currentQueryParams = this.getQueryParams()
     ;
-    this.q = currentQueryParams['search[q]'] ;
+    this.q = currentQueryParams['filters[email]'] ;
   }
 
   initPagination(){
