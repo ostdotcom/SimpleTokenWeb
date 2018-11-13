@@ -218,6 +218,12 @@ module SimpleTokenApi
             Rails.logger.info("=*=Simple-Token-API-ERROR=*= #{response_data.inspect}")
             error_with_internal_code('simple_token_api_redirect', 'simple token api redirect',
                                      GlobalConstant::ErrorCode.unauthorized_access, {}, {}, response_data['err']['display_text'],  response_data['err']['error_extra_info'])
+          when "Net::HTTPFound"
+            # 302
+            Rails.logger.info("=*=Simple-Token-API-redirect-ERROR=*= #{response_data.inspect}")
+            error_with_internal_code('simple_token_api_redirect', 'simple token api redirect',
+                                     GlobalConstant::ErrorCode.temporary_redirect, {}, {}, response_data['err']['display_text'],  response_data['err']['error_extra_info'])
+
           else
             # HTTP error status code (500, 504...)
             exception_with_internal_code(Exception.new("Simple Token API STATUS CODE #{http_response.code.to_i}"), 'simple_token_api_exception', 'simple_token api exception', GlobalConstant::ErrorCode.internal_server_error, debug_data)

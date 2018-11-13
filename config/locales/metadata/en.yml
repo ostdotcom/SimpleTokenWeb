@@ -57,17 +57,6 @@ en:
       :assets:
         :specific_js_required: 1
 
-    add_branded_token:
-      :meta:
-        :title: 'Reserve your Branded Token Name for the Simple Token Sale'
-        :description: 'Reserve your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-        :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
-        :robots: 'index, follow'
-      :assets:
-        :specific_js_required: 1
-
     dashboard_home:
      :meta:
        :title: 'Your Dashboard for the %{account_name} ICO'
@@ -89,17 +78,6 @@ en:
          :robots: 'index, follow'
        :assets:
          :specific_js_required: 1
-
-    update_branded_token:
-      :meta:
-        :title: 'Update your Branded Token Name for the Simple Token Sale'
-        :description: 'Update your Branded Token Name for the Simple Token Token Sale. Simple Token is the bridge between cryptocurrencies and consumer apps.'
-        :canonical: '%{canonical}'
-        :keywords: 'Simple Token'
-        :name: 'Simple Token'
-        :robots: 'index, follow'
-      :assets:
-        :specific_js_required: 1
 
     change_password:
       :meta:
