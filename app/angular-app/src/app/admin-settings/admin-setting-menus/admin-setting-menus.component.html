@@ -19,14 +19,14 @@
   <div *ngIf="isSuperAdmin && (web_host_setup_done || has_whitelist_add_on)" class="desktop-menu px-3 align-items-center d-flex"
        [routerLink]="['/admin/settings/contract-addresses']" [routerLinkActive]="['selected']">
     <span>
-        <svg class="developer" height="20px" width="20px">
+        <svg class="unselected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#contract-icon"></use>
           </switch>
         </svg>
       </span>
     <span>
-        <svg class="developer-selected" height="20px" width="20px">
+        <svg class="selected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#contract-selected-icon"></use>
           </switch>
@@ -38,14 +38,14 @@
   <div class="desktop-menu px-3 align-items-center d-flex"
        [routerLink]="['/admin/settings/sale-settings']" [routerLinkActive]="['selected']">
     <span>
-        <svg class="developer" height="20px" width="20px">
+        <svg class="unselected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-icon"></use>
           </switch>
         </svg>
       </span>
     <span>
-        <svg class="developer-selected" height="20px" width="20px">
+        <svg class="selected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-selected-icon"></use>
           </switch>
@@ -57,14 +57,14 @@
   <div class="desktop-menu px-3 align-items-center d-flex"
        [routerLink]="['/admin/settings/country-settings']" [routerLinkActive]="['selected']">
     <span>
-        <svg class="developer" height="20px" width="20px">
+        <svg class="unselected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#world-icon"></use>
           </switch>
         </svg>
       </span>
     <span>
-        <svg class="developer-selected" height="20px" width="20px">
+        <svg class="selected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#world-selected-icon"></use>
           </switch>
@@ -80,14 +80,14 @@
   <div class="desktop-menu px-3 align-items-center d-flex"
        [routerLink]="['/admin/settings/form-configurator']" [routerLinkActive]="['selected']">
     <span>
-        <svg class="developer" height="20px" width="20px">
+        <svg class="unselected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fc-icon"></use>
           </switch>
         </svg>
       </span>
     <span>
-        <svg class="developer-selected" height="20px" width="20px">
+        <svg class="selected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fc-selected-icon"></use>
           </switch>
@@ -99,14 +99,14 @@
   <div class="desktop-menu px-3 align-items-center d-flex"
        [routerLink]="['/admin/settings/artificial-intelligence']" [routerLinkActive]="['selected']">
     <span>
-        <svg class="developer" height="20px" width="20px">
+        <svg class="unselected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-icon"></use>
           </switch>
         </svg>
       </span>
     <span>
-        <svg class="developer-selected" height="20px" width="20px">
+        <svg class="selected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-selected-icon"></use>
           </switch>
@@ -119,14 +119,14 @@
        [routerLink]="['/admin/settings/developer-integrations']"
        [routerLinkActive]="['selected']">
     <span>
-        <svg class="developer" height="20px" width="20px">
+        <svg class="unselected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-icon"></use>
           </switch>
         </svg>
       </span>
     <span>
-        <svg class="developer-selected" height="20px" width="20px">
+        <svg class="selected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-selected-icon"></use>
           </switch>
@@ -157,14 +157,14 @@
   <div class="desktop-menu px-3 align-items-center d-flex"
        [routerLink]="['/admin/settings/advance-compliance']" [routerLinkActive]="['selected']">
     <span>
-        <svg class="developer" height="20px" width="20px">
+        <svg class="unselected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compliance-icon"></use>
           </switch>
         </svg>
       </span>
     <span>
-        <svg class="developer-selected" height="20px" width="20px">
+        <svg class="selected-icon" height="20px" width="20px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compliance-selected-icon"></use>
           </switch>
@@ -180,7 +180,7 @@
   <div class="desktop-menu px-3 align-items-center d-flex" [routerLink]="['/admin/settings/profile']"
    [routerLinkActive]="['selected']">
     <span>
-      <svg class="profile" height="20px" width="20px">
+      <svg class="unselected-icon" height="20px" width="20px">
         <switch>
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-icon"></use>
         </switch>
@@ -188,7 +188,7 @@
     </span>
 
     <span>
-      <svg class="profile-selected" height="20px" width="20px">
+      <svg class="selected-icon" height="20px" width="20px">
         <switch>
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-selected-icon"></use>
         </switch>
@@ -199,7 +199,7 @@
 
   <div class="desktop-menu px-3 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']">
     <span>
-      <svg class="admin-dashboard" height="20px" width="20px">
+      <svg class="unselected-icon" height="20px" width="20px">
         <switch>
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-icon"></use>
         </switch>
@@ -207,7 +207,7 @@
     </span>
 
     <span>
-      <svg class="admin-dashboard-selected" height="20px" width="20px">
+      <svg class="selected-icon" height="20px" width="20px">
         <switch>
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-selected-icon"></use>
         </switch>
@@ -219,9 +219,16 @@
   <div class="desktop-menu px-3 align-items-center d-flex" *ngIf="isSuperAdmin" data-menu="user" [routerLink]="['/admin/settings/user']"
        [routerLinkActive]="['selected']">
     <span>
-      <svg class="user-dashboard" height="20px" width="20px">
+      <svg class="unselected-icon" height="20px" width="20px">
         <switch>
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user-management-icon"></use>
+        </switch>
+      </svg>
+    </span>
+    <span>
+      <svg class="selected-icon" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user-management-selected-icon"></use>
         </switch>
       </svg>
     </span>
@@ -231,7 +238,7 @@
   <div class="desktop-menu px-3 align-items-center d-flex" [routerLink]="['/admin/settings/change-password']"
        [routerLinkActive]="['selected']">
     <span>
-      <svg class="profile" height="20px" width="20px">
+      <svg class="unselected-icon" height="20px" width="20px">
         <switch>
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#password-icon"></use>
         </switch>
@@ -239,7 +246,7 @@
     </span>
 
     <span>
-      <svg class="profile-selected" height="20px" width="20px">
+      <svg class="selected-icon" height="20px" width="20px">
         <switch>
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#password-selected-icon"></use>
         </switch>
@@ -292,14 +299,14 @@
            [routerLink]="['/admin/settings/contract-addresses']"
            [routerLinkActive]="['selected']">
         <span>
-          <svg class="fc-icon" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#contract-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
-          <svg class="fc-selected-icon" height="20px" width="20px">
+          <svg class="selected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#contract-selected-icon"></use>
             </switch>
@@ -312,14 +319,14 @@
            [routerLink]="['/admin/settings/sale-settings']"
            [routerLinkActive]="['selected']">
         <span>
-          <svg class="developer" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
-          <svg class="developer-selected" height="20px" width="20px">
+          <svg class="selected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#time-selected-icon"></use>
             </switch>
@@ -332,14 +339,14 @@
            [routerLink]="['/admin/settings/country-settings']"
            [routerLinkActive]="['selected']">
         <span>
-          <svg class="developer" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#world-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
-          <svg class="developer-selected" height="20px" width="20px">
+          <svg class="selected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#world-selected-icon"></use>
             </switch>
@@ -356,14 +363,14 @@
            [routerLink]="['/admin/settings/form-configurator']"
            [routerLinkActive]="['selected']">
         <span>
-          <svg class="fc-icon" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fc-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
-          <svg class="fc-selected-icon" height="20px" width="20px">
+          <svg class="selected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fc-selected-icon"></use>
             </switch>
@@ -376,14 +383,14 @@
            [routerLink]="['/admin/settings/artificial-intelligence']"
            [routerLinkActive]="['selected']">
         <span>
-          <svg class="ai-icon" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
-          <svg class="ai-selected-icon" height="20px" width="20px">
+          <svg class="selected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ai-selected-icon"></use>
             </switch>
@@ -396,14 +403,14 @@
            [routerLink]="['/admin/settings/developer-integrations']"
            [routerLinkActive]="['selected']">
         <span>
-          <svg class="developer" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
-          <svg class="developer-selected" height="20px" width="20px">
+          <svg class="selected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#developer-selected-icon"></use>
             </switch>
@@ -437,14 +444,14 @@
            [routerLink]="['/admin/settings/advance-compliance']"
            [routerLinkActive]="['selected']">
         <span>
-          <svg class="developer" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compliance-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
-          <svg class="developer-selected" height="20px" width="20px">
+          <svg class="selected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#compliance-selected-icon"></use>
             </switch>
@@ -460,7 +467,7 @@
       <div class="desktop-menu pl-3 align-items-center d-flex" [routerLink]="['/admin/settings/profile']" [routerLinkActive]="['selected']">
 
         <span>
-          <svg class="profile" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-icon"></use>
             </switch>
@@ -468,7 +475,7 @@
         </span>
 
         <span>
-          <svg class="profile-selected" height="20px" width="20px">
+          <svg class="selected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#profile-selected-icon"></use>
             </switch>
@@ -480,14 +487,14 @@
 
       <div class="desktop-menu pl-3 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']">
         <span>
-          <svg class="admin-dashboard" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
-          <svg class="admin-dashboard-selected" height="20px" width="20px">
+          <svg class="selected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-selected-icon"></use>
             </switch>
@@ -499,9 +506,16 @@
       <div class="desktop-menu pl-3 align-items-center d-flex" *ngIf="isSuperAdmin" data-menu="user" [routerLink]="['/admin/settings/user']"
            [routerLinkActive]="['selected']">
         <span>
-          <svg class="user-dashboard" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user-management-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="selected-icon" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user-management-selected-icon"></use>
             </switch>
           </svg>
         </span>
@@ -510,14 +524,14 @@
 
       <div class="desktop-menu pl-3 align-items-center d-flex" [routerLink]="['/admin/settings/change-password']" [routerLinkActive]="['selected']">
         <span>
-          <svg class="profile" height="20px" width="20px">
+          <svg class="unselected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#password-icon"></use>
             </switch>
           </svg>
         </span>
         <span>
-          <svg class="profile-selected" height="20px" width="20px">
+          <svg class="selected-icon" height="20px" width="20px">
             <switch>
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#password-selected-icon"></use>
             </switch>
