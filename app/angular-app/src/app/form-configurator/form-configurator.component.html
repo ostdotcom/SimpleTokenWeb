@@ -55,30 +55,10 @@
         <div *ngIf="!appConfig.isSuperAdmin()" class="content">
           The Super Admin will be able to publish the changes from Sandbox to Live.
         </div>
-        <form #form_configurator="ngForm" (ngSubmit)="importAndPublish(form_configurator)" class="mt-4">
-          <div class="row">
-            <div class="form-group col-12 col-md-5">
-              <label class="form-label" for="sandboxApiKey">Sandbox Api Key</label>
-              <input type="text" [disabled]="!appConfig.isSuperAdmin()" ngModel #sandbox_api_key="ngModel" name="sandbox_api_key" class="form-control api-key" name="api_key" required>
-              <ost-form-error-handler [errorFor]="sandbox_api_key"
-                                      [fieldName]="'Sandbox Api Key'"
-                                      [serverError]="importAndPublishError">
-              </ost-form-error-handler>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-12 col-md-5">
-              <label class="form-label" for="sandboxApiSecret">Sandbox Api Secret</label>
-              <input type="text" [disabled]="!appConfig.isSuperAdmin()" ngModel #sandbox_api_secret="ngModel" name="sandbox_api_secret" class="form-control api-secret" name="api_secret" required>
-              <ost-form-error-handler [errorFor]="sandbox_api_secret"
-                                      [fieldName]="'Sandbox Api Secret'"
-                                      [serverError]="importAndPublishError">
-              </ost-form-error-handler>
-            </div>
-          </div>
-          <button type="submit" [disabled]="!form_configurator.valid || isPublishing" class="btn btn-primary mt-4 mb-3 mb-xl-0">{{btnText}}</button>
+        <div class="mt-4">
+          <button type="button" (click)="importAndPublish()" [disabled]="isPublishing" class="btn btn-primary mt-4 mb-3 mb-xl-0">{{btnText}}</button>
           <ost-form-error-handler [errorFor]="'general_error'" [serverError]="importAndPublishError"></ost-form-error-handler>
-        </form>
+        </div>
       </div>
       <div *ngIf="!appConfig.hasClientOpted()">
         <div class="content">
