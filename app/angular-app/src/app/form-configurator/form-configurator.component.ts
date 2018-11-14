@@ -45,7 +45,7 @@ export class FormConfiguratorComponent implements OnInit {
 
   importAndPublish( ) {
       this.preImportAndPublish();
-      this.http.get('api/admin/configurator/fetch-published-version' , {}  ).subscribe(
+      this.http.get('api/admin/configurator/fetch-published-version').subscribe(
         response => {
           let res       = response.json() ;
           this.onImportAndPublishSuccess( res );
