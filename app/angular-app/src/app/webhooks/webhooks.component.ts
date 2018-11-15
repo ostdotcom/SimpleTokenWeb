@@ -159,15 +159,7 @@ export class WebhooksComponent implements OnInit {
   }
 
   deleteHook( webhookId, isNew ) {
-    let webhook = this.getWebHookById( webhookId ),
-        i = this.webhooks.length;
-    while(i--){
-      if( this.webhooks[i]
-        && this.webhooks[i].hasOwnProperty('id')
-        && (this.webhooks[i]['id'] === webhookId ) ){
-        this.webhooks.splice(i,1);
-      }
-    }
+    let webhook = this.getWebHookById( webhookId );
     webhook.error = null;
     this.isActionProcessing = true;
     if( !isNew ) {
@@ -176,6 +168,7 @@ export class WebhooksComponent implements OnInit {
           this.isActionProcessing = false;
           let res = response.json();
           if( res.success ){
+            this.deleteFromUI( webhookId );
             this.onSuccess( res );
           }else{
             this.errorResponse = res;
@@ -195,6 +188,17 @@ export class WebhooksComponent implements OnInit {
       this.isActionSuccess = true;
       this.isActionProcessing = false;
       this.isActionError = false;
+    }
+  }
+
+  deleteFromUI ( webhookId ) {
+    let i = this.webhooks.length;
+    while(i--){
+      if( this.webhooks[i]
+        && this.webhooks[i].hasOwnProperty('id')
+        && (this.webhooks[i]['id'] === webhookId ) ){
+        this.webhooks.splice(i,1);
+      }
     }
   }
 
