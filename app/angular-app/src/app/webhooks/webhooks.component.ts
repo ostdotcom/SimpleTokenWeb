@@ -168,7 +168,7 @@ export class WebhooksComponent implements OnInit {
           this.isActionProcessing = false;
           let res = response.json();
           if( res.success ){
-            this.deleteFromUI( webhookId );
+            this.deleteWebhookFromUI( webhookId );
             this.onSuccess( res );
           }else{
             this.errorResponse = res;
@@ -191,7 +191,7 @@ export class WebhooksComponent implements OnInit {
     }
   }
 
-  deleteFromUI ( webhookId ) {
+  deleteWebhookFromUI ( webhookId ) {
     let i = this.webhooks.length;
     while(i--){
       if( this.webhooks[i]
