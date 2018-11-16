@@ -188,6 +188,7 @@ export class WebhooksComponent implements OnInit {
       this.isActionSuccess = true;
       this.isActionProcessing = false;
       this.isActionError = false;
+      this.deleteWebhookFromUI( webhookId );
     }
   }
 
