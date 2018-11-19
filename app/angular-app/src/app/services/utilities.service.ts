@@ -29,9 +29,9 @@ export class UtilitiesService {
     return current;
   }
 
-  hideEmailSearchField() {
+  isSettingPage() {
     let url = this.router.url;
-    return url.indexOf( this.pathToExclude ) == -1;
+    return url.indexOf( this.pathToExclude )  > -1 ;
   }
 
 }
