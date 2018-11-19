@@ -54,7 +54,7 @@
         <div *ngIf="!appConfig.isSuperAdmin()" class="content">
           The Super Admin will be able to publish the changes from Sandbox to Live.
         </div>
-        <div class="mt-4">
+        <div class="mt-4" *ngIf="appConfig.isSuperAdmin()">
           <button type="button" (click)="importAndPublish()" [disabled]="isPublishing" class="btn btn-primary mt-4 mb-3 mb-xl-0">{{btnText}}</button>
           <ost-form-error-handler [errorFor]="'general_error'" [serverError]="importAndPublishError"></ost-form-error-handler>
         </div>
