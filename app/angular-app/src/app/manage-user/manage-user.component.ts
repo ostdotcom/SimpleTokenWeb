@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { EntityConfigService } from '../services/entity-config.service';
+import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import { OstHttp } from '../services/ost-http.service';
@@ -49,7 +48,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
 
 
   constructor(
-    private entityConfigService: EntityConfigService ,
+    private zone:NgZone,
     private stateHandler: RequestStateHandlerService,
     private http: OstHttp,
     public appConfigService: AppConfigService,
@@ -72,7 +71,9 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
     });
 
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
-      this.resetDownLoadCsvModal();
+      this.zone.run(() => { //NEED TO DEBUG MORE. 
+          this.resetDownLoadCsvModal();
+      });
     });
   }
 
