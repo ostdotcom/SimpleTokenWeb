@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import { OstHttp } from '../services/ost-http.service';
@@ -48,7 +48,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
 
 
   constructor(
-    private zone:NgZone,
+    private cdRef: ChangeDetectorRef,
     private stateHandler: RequestStateHandlerService,
     private http: OstHttp,
     public appConfigService: AppConfigService,
@@ -71,9 +71,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
     });
 
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
-      this.zone.run(() => { //NEED TO DEBUG MORE. 
-          this.resetDownLoadCsvModal();
-      });
+      this.resetDownLoadCsvModal();
     });
   }
 
@@ -113,6 +111,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
     this.checkboxError = '';
     this.isCSVDownloaded = false;
     this.securityCheckbox = false;
+    this.cdRef.detectChanges(); //NEED TO DEBUG MORE.
   }
 
   validateAndDownload(){
