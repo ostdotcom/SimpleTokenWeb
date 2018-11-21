@@ -157,10 +157,22 @@
             <div class="col-12 mt-4 mt-md-0 px-4 col-md-2">
               <div class="row pr-md-2">
                 <div class="col-sm-4 col-6 px-md-0 col-md-12">
-                  <button [disabled]="!webhooksForm.valid || !isValid( webhook.id )" class="btn w-100 btn-primary px-md-3" (click)="showSaveOrUpdateModal( webhook.id, webhook.isNew, webhooksForm )">{{getBtnText( webhook.isNew )}}</button>
+                  <button [disabled]="!webhooksForm.valid || !isValid( webhook.id )" 
+                          class="btn w-100 btn-primary px-md-3"
+                          (click)="showSaveOrUpdateModal( webhook.id, webhook.isNew, webhooksForm )">
+                          {{getBtnText( webhook.isNew )}}
+                  </button>
+                </div>
+                <div class="d-none d-sm-none d-md-block col-md-12 px-0 pt-3">
+                  <button [disabled]="webhook.isNew"
+                   class="btn w-100 btn-secondary px-md-3" 
+                   (click)="showEditModal( webhook.id )">
+                    TEST
+                  </button>
                 </div>
                 <div class="col-sm-4 col-6 px-md-0 mt-md-4 col-md-12 px">
-                  <button class="btn w-100 btn-secondary px-md-3" (click)="showDeleteModal( webhook.id, webhook.isNew )">DELETE</button>
+                  <button class="btn w-100 btn-secondary px-md-3" 
+                  (click)="showDeleteModal( webhook.id, webhook.isNew )">DELETE</button>
                 </div>
               </div>
             </div>
@@ -171,10 +183,25 @@
   </ng-container>
 </div>
 
-<confirmation-modal [callBack]="confirmationCallBack" [isSuccess]="isActionSuccess" [hasError]="isActionError" [isProcessing]="isActionProcessing" [errorResponse]="errorResponse">
+<confirmation-modal 
+  [callBack]="confirmationCallBack" 
+  [isSuccess]="isActionSuccess" 
+  [hasError]="isActionError" 
+  [isProcessing]="isActionProcessing" 
+  [errorResponse]="errorResponse">
   <div class="success-content">Settings have been successfully applied.</div>
   <div class="confirm-message">Are you sure you want to {{actionType}} ?</div>
 </confirmation-modal>
 
 
 
+<confirmation-modal 
+  [modalId] = "testHookModalSelector"
+  [callBack]="confirmationCallBack" 
+  [isSuccess]="isActionSuccess" 
+  [hasError]="isActionError" 
+  [isProcessing]="isActionProcessing" 
+  [errorResponse]="errorResponse">
+  <div class="success-content"> TODO Success Message </div>
+  <div class="confirm-message"> Action message </div>
+</confirmation-modal>

@@ -29,7 +29,8 @@ export class WebhooksComponent implements OnInit {
   isActionSuccess          : boolean       = false;
   isActionError            : boolean       = false;
   isActionProcessing       : boolean       = false;
-  confirmationModalSelector: string        = "#confirmation-modal";
+  confirmationModalSelector: string        = "confirmation-modal";
+  testHookModalSelector    : string        = "test-hook-modal"
 
   static ACTION_TYPES = {
     "SAVE"   : "save",
@@ -192,6 +193,27 @@ export class WebhooksComponent implements OnInit {
     }
   }
 
+  testHook( webhookId ) {
+    this.isActionProcessing = true;
+    this.http.post( this.dataURL + webhookId +'/test' , { }  ).subscribe(
+      response => {
+        this.isActionProcessing = false;
+        let res = response.json();
+        if( res.success ){
+          this.onSuccess( res );
+        }else{
+          this.errorResponse = res;
+          this.onError( res );
+        }
+      },
+      error => {
+        this.isActionProcessing = false;
+        let err = error.json();
+        this.errorResponse = err;
+        this.onError( err );
+    })
+  }
+
   deleteWebhookFromUI ( webhookId ) {
     let i = this.webhooks.length;
     while(i--){
@@ -222,19 +244,24 @@ export class WebhooksComponent implements OnInit {
   }
 
   showDeleteModal( id, isNew) {
-    $(this.confirmationModalSelector).modal('show');
+    $("#"+this.confirmationModalSelector).modal('show');
     this.confirmationCallBack = this.deleteHook.bind( this, id, isNew );
     this.actionType = WebhooksComponent.ACTION_TYPES.DELETE;
   }
 
   showSaveOrUpdateModal(  webhookId , isNew, form) {
-    $(this.confirmationModalSelector).modal('show');
+    $("#"+this.confirmationModalSelector).modal('show');
     this.confirmationCallBack = this.saveOrUpdateHook.bind(this, webhookId, isNew, form);
     if( isNew ) {
       this.actionType = WebhooksComponent.ACTION_TYPES.SAVE;
     } else {
       this.actionType = WebhooksComponent.ACTION_TYPES.UPDATE;
     }
+  }
+
+  showEditModal( id ){
+    $("#"+this.testHookModalSelector).modal('show');
+    this.confirmationCallBack = this.testHook.bind( this, id );
   }
 
   refreshSecretKey( id, isNew ) {
