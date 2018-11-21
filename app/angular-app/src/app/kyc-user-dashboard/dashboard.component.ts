@@ -76,7 +76,13 @@ export class DashboardComponent extends PageBaseComponent implements OnInit {
   }
 
   validateAndDownload(){
-    if ( this.securityEthCheckbox && this.securityCheckbox){
+    let isValid = false;
+    if( this.appConfigService.hasEthereumAddressField() && this.securityEthCheckbox && this.securityCheckbox ) {
+      isValid = true;
+    }else if ( !this.appConfigService.hasEthereumAddressField() && this.securityCheckbox){
+      isValid = true;
+    }
+    if( isValid ) {
       this.downloadCSV();
     }else {
       this.checkboxError = 'Please confirm the above to download the CSV';
@@ -106,8 +112,5 @@ export class DashboardComponent extends PageBaseComponent implements OnInit {
   checkboxChecked() {
     this.checkboxError = '';
   }
-
-
-
 
 }

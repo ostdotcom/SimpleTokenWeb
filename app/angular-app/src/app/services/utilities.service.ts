@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class UtilitiesService {
 
-  constructor() { }
+  pathToExclude: string = 'settings/';
+
+  constructor(private router: Router) { }
 
 
   deepGet(data , path) {
@@ -24,6 +27,11 @@ export class UtilitiesService {
       }
     }
     return current;
+  }
+
+  isSettingPage() {
+    let url = this.router.url;
+    return url.indexOf( this.pathToExclude )  > -1 ;
   }
 
   copyToClipboard( contentToCopy, callback) {
