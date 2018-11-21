@@ -73,19 +73,6 @@ module GlobalConstant
         @countries ||= cynopsis_country_to_maxmind_hash.keys
       end
 
-
-      # List of cynopsis nationalities
-      #
-      # * Author: Tejas
-      # * Date: 01/08/2018
-      # * Reviewed By: Aman
-      #
-      # @return [Array]
-      #
-      def nationalities
-        @nationalities ||= YAML.load_file(open(Rails.root.to_s + '/config/nationalities.yml'))[:nationalities]
-      end
-
       # Maxmind country name To Preferred Cynopsis Country name map
       #
       # * Author: Tejas
@@ -101,6 +88,24 @@ module GlobalConstant
             "SAINT MARTIN" => "SAINT MARTIN (FRANCE)",
             "UNITED STATES" => "UNITED STATES OF AMERICA"
         }
+      end
+
+      # List of cynopsis nationalities
+      #
+      # * Author: Tejas
+      # * Date: 01/08/2018
+      # * Reviewed By: Aman
+      #
+      # @return [Array]
+      #
+      def nationalities
+        @nationalities ||= begin
+          data = []
+          fetch_country_nationality_mapping.each do |country_nationality_mapping|
+            data << country_nationality_mapping.split(",")[0]
+          end
+          data
+        end
       end
 
 
@@ -160,6 +165,19 @@ module GlobalConstant
       #
       def cynopsis_country_to_maxmind_data
         @cynopsis_country_to_maxmind_data ||= CSV.read("#{Rails.root}/config/cynopsis_country_to_maxmind_mapping.csv")
+      end
+
+      # Fetch Country Nationality Mapping
+      #
+      # * Author: Tejas
+      # * Date: 09/07/2018
+      # * Reviewed By:
+      #
+      # @return Array[String] fetch_file_contents
+      #
+      def fetch_country_nationality_mapping
+        @fetch_file_contents ||= File.open("#{Rails.root}/config/nationality_and_country_mapping.csv",
+                                           "rb").read.split("\n")
       end
 
     end

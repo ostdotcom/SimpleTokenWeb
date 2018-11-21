@@ -16,6 +16,17 @@
       sDeleteWrapper        = ".form-group"
   ;
 
+  // var extra_field_config = {
+  //   document_id_instruction_text1 :{
+  //     data_key_name : "something",
+  //     data_kind : "html",
+  //     validations:{
+  //       max_length :400,
+  //       required :0
+  //     }
+  //   }
+  // }
+
   oSTNs.configuratorHelper = oThis = {
     jForm       : $('#configurator-form'),
     jFormBtn    : $('#save-and-preview-btn-click'),
@@ -73,6 +84,7 @@
           jAjaxProcessingWrap.show(); 
         },
         success: function( res  ) {
+         // $.extend(res.data.entity_config,extra_field_config);
           oThis.onConfiguratorGetSuccess( res , callback );
         },
         error : function ( jqXhr , error ) {
