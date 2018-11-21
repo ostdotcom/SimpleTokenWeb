@@ -80,6 +80,10 @@ module Web
         kyc_config_detail_data['kyc_fields']
       end
 
+      def extra_kyc_fields
+        kyc_config_detail_data['extra_kyc_fields']
+      end
+
       def residency_proof_nationalities
         kyc_config_detail_data['residency_proof_nationalities']
       end

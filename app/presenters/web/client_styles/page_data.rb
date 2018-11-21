@@ -35,6 +35,10 @@ module Web
         @page_spec_data[:document_id_instruction_text]
       end
 
+      def extra_kyc_field_info_text(field_key)
+        @page_spec_data["#{field_key}_dynamic_kyc_field_instruction_text".to_sym]
+      end
+
       def kyc_confirm_checkboxes
         @page_spec_data[:kyc_form_popup_checkboxes] || []
       end

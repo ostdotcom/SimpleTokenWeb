@@ -6,7 +6,7 @@ export SECRET_KEY_BASE="2c83f7055dfb1f11e8698764515bafeb85136f98d864a8fb2246b429
 export STW_CLOUDFRONT_DOMAIN="da3bndq04bonc.cloudfront.net"
 
 export STW_ROOT_URL="http://developmentsimpletoken.org:8080"
-export STW_SALE_ROOT_URL="http://sale.developmentsimpletoken.org:8080"
+export STW_SALE_ROOT_URL="http://sale.developmentsimpletokween.org:8080"
 export STW_KYC_ROOT_URL="http://kyc.developmentost.com:8080"
 
 export STW_CAMPAIGN_ENCRYPTED_CLIENT_ID="118e1817b0fa6360e19933fe8af41a34"

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import {AppConfigService} from "../services/app-config.service";
-import {EntityConfigService} from "../services/entity-config.service";
 
 declare var $: any ;
 
@@ -34,25 +33,13 @@ export class DevelopersIntegrationComponent implements OnInit {
   cachedSelectedApiOptions : Array<string> = [];
 
   constructor(private http: OstHttp, private stateHandler: RequestStateHandlerService,
-              private entityConfigService : EntityConfigService,
               public appConfig : AppConfigService ) { }
 
   ngOnInit() {
     setTimeout(function(){
       $('[data-toggle="tooltip"]').tooltip();
     },0);
-    this.initApiOptions();
     this.getIntegrationInfo();
-  }
-
-  initApiOptions() {
-    let options = this.entityConfigService.getEntityConfig('entity_configs.developer_integrations_component.options'),
-        values  = options && options['values']
-    ;
-    this.apiOptions = values || [];
-    for(let i =0 ;  i< values.length ; i++){
-      this.apiSelectedOptions.push( values[i]['value']);
-    }
   }
 
   getIntegrationInfo(){
@@ -64,6 +51,7 @@ export class DevelopersIntegrationComponent implements OnInit {
           this.apiSecret                = res.data.api_secret;
           this.apiApplicableOptions     = res.data.applicable_api_fields || [];
           this.apiSelectedOptions       = res.data.selected_api_fields || [];
+          this.apiOptions               = res.data.api_fields_config || [];
           this.apiOptions               = this.getFilteredOptions(this.apiOptions, this.apiApplicableOptions);
           this.cachedSelectedApiOptions = this.getObjectCopy(this.apiSelectedOptions );
           this.stateHandler.updateRequestStatus(this, false,false);
