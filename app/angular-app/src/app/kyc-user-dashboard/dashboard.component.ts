@@ -79,7 +79,7 @@ export class DashboardComponent extends PageBaseComponent implements OnInit {
     let isValid = false;
     if( this.appConfigService.hasEthereumAddressField() && this.securityEthCheckbox && this.securityCheckbox ) {
       isValid = true;
-    }else if ( this.securityCheckbox){
+    }else if ( !this.appConfigService.hasEthereumAddressField() && this.securityCheckbox){
       isValid = true;
     }
     if( isValid ) {
