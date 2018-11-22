@@ -163,14 +163,13 @@
                           {{getBtnText( webhook.isNew )}}
                   </button>
                 </div>
-                <div class="d-none d-sm-none d-md-block col-md-12 px-0 pt-3">
-                  <button [disabled]="webhook.isNew"
-                   class="btn w-100 btn-secondary px-md-3" 
+                <div *ngIf="!webhook.isNew" class="d-none d-sm-none d-md-none d-lg-block col-md-12 px-0 pt-3">
+                  <button class="btn w-100 btn-secondary px-md-3" 
                    (click)="showEditModal( webhook.id )">
                     TEST
                   </button>
                 </div>
-                <div class="col-sm-4 col-6 px-md-0 mt-md-4 col-md-12 px">
+                <div class="col-sm-4 col-6 px-md-0 mt-md-3 col-md-12 px">
                   <button class="btn w-100 btn-secondary px-md-3" 
                   (click)="showDeleteModal( webhook.id, webhook.isNew )">DELETE</button>
                 </div>
