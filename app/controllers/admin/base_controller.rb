@@ -48,7 +48,7 @@ class Admin::BaseController < ApplicationController
       if request.xhr?
         (render plain: Oj.dump(service_response.to_json, mode: :compat), status: service_response.http_code) and return
       else
-        redirect_to '/admin/login', status: GlobalConstant::ErrorCode.permanent_redirect and return
+        redirect_to '/admin/login', status: GlobalConstant::ErrorCode.temporary_redirect and return
       end
     else
       render_error_response_for(service_response)
