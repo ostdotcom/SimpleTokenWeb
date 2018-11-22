@@ -244,12 +244,16 @@ export class WebhooksComponent implements OnInit {
   }
 
   showDeleteModal( id, isNew) {
+    this.resetActionStatus(); 
     $("#"+this.confirmationModalSelector).modal('show');
     this.confirmationCallBack = this.deleteHook.bind( this, id, isNew );
     this.actionType = WebhooksComponent.ACTION_TYPES.DELETE;
+    this.isActionError = false ; 
+    this.isActionProcessing = false ; 
   }
 
   showSaveOrUpdateModal(  webhookId , isNew, form) {
+    this.resetActionStatus();  
     $("#"+this.confirmationModalSelector).modal('show');
     this.confirmationCallBack = this.saveOrUpdateHook.bind(this, webhookId, isNew, form);
     if( isNew ) {
@@ -260,8 +264,15 @@ export class WebhooksComponent implements OnInit {
   }
 
   showEditModal( id ){
+   this.resetActionStatus(); 
     $("#"+this.testHookModalSelector).modal('show');
     this.confirmationCallBack = this.testHook.bind( this, id );
+  }
+
+  resetActionStatus(){
+    this.isActionError = false ; 
+    this.isActionProcessing = false ; 
+    this.isActionSuccess = false ; 
   }
 
   refreshSecretKey( id, isNew ) {
