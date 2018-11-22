@@ -31,7 +31,7 @@ class Web::UserController < Web::BaseController
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
 
-    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
+    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
     redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_registration_ended?
     set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
@@ -55,7 +55,7 @@ class Web::UserController < Web::BaseController
     end
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
-    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
+    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
     set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
@@ -100,7 +100,7 @@ class Web::UserController < Web::BaseController
     end
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
-    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
+    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
     set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
@@ -123,7 +123,7 @@ class Web::UserController < Web::BaseController
     end
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
-    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
+    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
     set_page_meta_info(@presenter_obj.custom_meta_tags)
   end
 
@@ -147,7 +147,7 @@ class Web::UserController < Web::BaseController
     end
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
-    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
+    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
     redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
 
     @user = service_response.data["user"]
@@ -176,7 +176,7 @@ class Web::UserController < Web::BaseController
     end
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
-    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
+    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
     redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
 
     @user = service_response.data["user"]
@@ -207,7 +207,7 @@ class Web::UserController < Web::BaseController
     end
 
     @presenter_obj = ::Web::Client::Setup.new(service_response, params)
-    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.permanent_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
+    redirect_to '/token-sale-blocked-region', status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.is_blacklisted_ip?(get_ip_to_cynopsis_countries)
     redirect_to "/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if @presenter_obj.has_sale_ended?
 
     @user = service_response.data["user"]
@@ -273,7 +273,7 @@ class Web::UserController < Web::BaseController
         ((request.host =~ /\A[A-Z0-9]*#{GlobalConstant::WebDomain.kyc_subdomain}\Z/i) ||
         GlobalConstant::WebDomain.allowed_external_subdomains.include?(request.host.downcase))
 
-    redirect_to GlobalConstant::Base.simple_token_web['kyc_root_url'], status: GlobalConstant::ErrorCode.permanent_redirect and return
+    redirect_to GlobalConstant::Base.simple_token_web['kyc_root_url'], status: GlobalConstant::ErrorCode.temporary_redirect and return
   end
 
 end
