@@ -212,11 +212,8 @@
      */
 
     getEntityConfig: function ( entityKey, withFormData ) {
-      var entityConfig  = oThis.getBEEntityConfig(entityKey) ;
-
-      if( !entityConfig ) return false;
-
-      var uiConfig      = oThis.getUIEntityConfig(entityKey),
+      var entityConfig  = oThis.getBEEntityConfig(entityKey) ,
+          uiConfig      = oThis.getUIEntityConfig(entityKey),
           formData      = withFormData ? oThis.getFormData(entityKey) : null,
           mergedConfig  = {}
       ;
