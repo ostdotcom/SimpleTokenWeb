@@ -9,11 +9,12 @@
       toggleCmptEntityKey    = "ethereum_deposit_popup_checkboxes",
       sAddComponent          = ".add-component-el",
       sPopUpToggle           = '[name="show_ethereum_address_confirm_popup"]',
+      sTimerToggle           = '[name="show_timer"]' ,
+      sTimerToggleElements   = '.sale_timer_text_color , .sale_timer_background_gradient' ,
       oThis
   ;
 
   oSTNs.dashboardConfigurator  = oThis = {
-    jPopUpToggle : null,
 
     init: function ( config ) {
 
@@ -30,17 +31,25 @@
     },
 
     onSuccess : function ( data ) {
+      var jPopUpToggle  = null ,
+          jTimerToggle  = null
+      ;
       oThis.bindSortableStop();
       oThis.bindDeleteComponents();
       configuratorHelper.bindAccordionClick();
-      oThis.jPopUpToggle = $( sPopUpToggle );
+      jPopUpToggle = $( sPopUpToggle );
       configuratorHelper.bindDraggable( sParentSelector, sChildSelector );
 
       //not liking this code. Change it if time.
       configuratorHelper.bindAddComponent( sParentSelector, sAddComponent, null,  oThis.addComponentCallback);
-      configuratorHelper.bindPopUpToggleOption(  oThis.jPopUpToggle , toggleCmptEntityKey, sParentSelector, oThis.popUpToggleOptionCallback );
-      configuratorHelper.isToShowAddMoreForToggle(  oThis.jPopUpToggle,  toggleCmptEntityKey);
+      configuratorHelper.bindPopUpToggleOption(  jPopUpToggle , toggleCmptEntityKey, sParentSelector, oThis.popUpToggleOptionCallback );
+      configuratorHelper.isToShowAddMoreForToggle(  jPopUpToggle,  toggleCmptEntityKey);
       configuratorHelper.sanitizeDeleteIcon( toggleCmptEntityKey);
+      jTimerToggle = $( sTimerToggle );
+      if( jTimerToggle.val() == 0 ) {
+        $(sTimerToggleElements).hide();
+      }
+      configuratorHelper.bindToggleShowHide( jTimerToggle , sTimerToggleElements );
     },
 
     addComponentCallback : function( jElement ) {

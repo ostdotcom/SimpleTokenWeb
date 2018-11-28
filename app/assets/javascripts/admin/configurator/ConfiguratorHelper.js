@@ -753,6 +753,16 @@
         }
       });
     },
+    
+    bindToggleShowHide: function ( jEl ,  sElements ) {
+      jEl.off('change').on('change' , function () {
+        if( $(this).val() == 0 ){
+          $(sElements).hide();
+        }else {
+          $(sElements).show();
+        }
+      });
+    },
 
     /*
     * This function is used in common for pages kyc-form and dashboard.

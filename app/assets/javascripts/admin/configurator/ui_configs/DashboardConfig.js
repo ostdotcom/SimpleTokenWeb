@@ -13,7 +13,7 @@
        "top_banner_options" : {
           "header"      : "Top Banner Options",
           "tooltip"     : "Use the options in this section to customize how the KYC User Dashboard will look to your customers across all platforms.",
-          "entities"    : [ "dashboard_title_text_color", "sale_timer_text_color", "sale_timer_background_gradient" ]
+          "entities"    : [ "dashboard_title_text_color", 'show_timer' ,  "sale_timer_text_color", "sale_timer_background_gradient" ]
        },
        "middle_banner_options" : {
          "header"      : "Middle Banner Options",
@@ -59,7 +59,15 @@
        'label'          : "Title Text Color",
        "inputType"      : inputTypesEnum.colorPicker
      },
-
+  
+     show_timer : {
+       'label'          : "Show Timer",
+       "inputType"      : inputTypesEnum.toggle,
+       "toggleOnValue"  : 1,
+       "toggleOffValue" : 0,
+       'data_key_name'  : "show_timer" //Kept as the Backend entity config is not present
+     },
+     
      sale_timer_text_color : {
        'label'          : "Timer Text Color",
        "inputType"      : inputTypesEnum.colorPicker
@@ -117,7 +125,7 @@
        "inputType"      : inputTypesEnum.toggle,
        "toggleOnValue"  : 1,
        "toggleOffValue" : 0,
-       'data_key_name'  : "show_ethereum_address_confirm_popup"
+       'data_key_name'  : "show_ethereum_address_confirm_popup" //Kept as the Backend entity config is not present
      },
 
      ethereum_deposit_popup_checkboxes : {
