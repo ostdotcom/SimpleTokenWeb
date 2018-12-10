@@ -64,7 +64,7 @@ module GlobalConstant
       private
 
       def get_client_settings_from_memcache(params)
-        memcache_key_object = MemcacheKey.new('client.client_setting_detail')
+        memcache_key_object = MemcacheKey.new('client.client_setting_detail_host')
 
         key = memcache_key_object.key_template % {
             host_url: params[:host_url],
