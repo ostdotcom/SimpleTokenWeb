@@ -72,6 +72,16 @@ class ApplicationController < ActionController::Base
     "#{request.protocol}#{request.host}"
   end
 
+  # Get host_url
+  #
+  # * Author: Aman
+  # * Date: 29/01/2018
+  # * Reviewed By:
+  #
+  def host_url
+    request.host
+  end
+
   # Get Ip Address
   #
   # * Author: Aman

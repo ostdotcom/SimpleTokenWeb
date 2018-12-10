@@ -55,7 +55,36 @@ module GlobalConstant
         HashWithIndifferentAccess.new(res)
       end
 
+      def get_client_details(params)
+        res = get_client_settings_from_memcache(params)
+        res = res.success? ? res : get_client_settings_from_api(params)
+        res
+      end
+
       private
+
+      def get_client_settings_from_memcache(params)
+        memcache_key_object = MemcacheKey.new('client.client_setting_detail')
+
+        key = memcache_key_object.key_template % {
+            host_url: params[:host_url],
+            entity_type: params[:entity_type]
+        }
+
+        response = Memcache.get_set_memcached(key, memcache_key_object.expiry) do
+          get_client_settings_from_api(params)
+        end
+
+        Memcache.delete(key) unless response.success?
+        response
+      end
+
+      def get_client_settings_from_api(params)
+        SimpleTokenApi::Request::User.new(
+            params[:host_url_with_protocol],
+            {},
+            {}).client_detail(params[:entity_type])
+      end
 
       def get_token_sale_details_from_memcache
         memcache_key_object = MemcacheKey.new('token_sale.sale_details')
