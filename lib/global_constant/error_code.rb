@@ -29,6 +29,20 @@ module GlobalConstant
         500
       end
 
+      def http_code_map
+        {
+            permanent_redirect => 'PERMANENT_REDIRECT',
+            temporary_redirect => 'TEMPORARY_REDIRECT',
+            unauthorized_access => "UNAUTHORIZED",
+            not_found => "NOT_FOUND",
+            internal_server_error => 'INTERNAL_SERVER_ERROR',
+        }
+      end
+
+      def error_code_for_http_code(http_code)
+        http_code_map[http_code].to_s
+      end
+
     end
 
   end

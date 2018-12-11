@@ -304,10 +304,10 @@ module Result
         }.merge(hash)
         h
       else
-        {
+        h = {
             success: false,
             err: {
-                code: hash[:error],
+                internal_id: hash[:error],
                 display_text: hash[:error_display_text] || 'Something went wrong.',
                 display_heading: hash[:error_display_heading] || 'Error.',
                 error_data: hash[:error_data] || {},
@@ -315,7 +315,12 @@ module Result
             },
             data: hash[:data] || {}
         }
+        err_code = GlobalConstant::ErrorCode.error_code_for_http_code(http_code)
+
+        h[:code] = err_code
+        h
       end
+
 
     end
 
