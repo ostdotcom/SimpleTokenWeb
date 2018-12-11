@@ -3,3 +3,9 @@ token_sale:
     key_template: 'token_sale_stats'
     expiry_in_hours: 24
     used_in_shared_env: true
+
+client:
+  client_setting_detail_host:
+    key_template: 'client_setting_detail_host_%{host_url}_%{entity_type}'
+    expiry_in_hours: 0.08
+    used_in_shared_env: true

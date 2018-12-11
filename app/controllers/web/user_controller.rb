@@ -18,10 +18,12 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def sign_up
-    service_response = SimpleTokenApi::Request::User.new(
-        host_url_with_protocol,
-        request.cookies,
-        {"User-Agent" => http_user_agent}).client_detail(GlobalConstant::TemplateType.registration_template_type)
+    request_params = {
+        host_url_with_protocol: host_url_with_protocol,
+        host_url: host_url,
+        entity_type: GlobalConstant::TemplateType.registration_template_type
+    }
+    service_response =  GlobalConstant::StTokenSale.get_client_details(request_params)
 
     # Check if error present or not?
     unless service_response.success?
@@ -43,10 +45,12 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def login
-    service_response = SimpleTokenApi::Request::User.new(
-        host_url_with_protocol,
-        request.cookies,
-        {"User-Agent" => http_user_agent}).client_detail(GlobalConstant::TemplateType.login_template_type)
+    request_params = {
+        host_url_with_protocol: host_url_with_protocol,
+        host_url: host_url,
+        entity_type: GlobalConstant::TemplateType.login_template_type
+    }
+    service_response =  GlobalConstant::StTokenSale.get_client_details(request_params)
 
     # Check if error present or not?
     unless service_response.success?
@@ -66,10 +70,12 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil
   #
   def token_sale_blocked_region
-    service_response = SimpleTokenApi::Request::User.new(
-        host_url_with_protocol,
-        request.cookies,
-        {"User-Agent" => http_user_agent}).client_detail(GlobalConstant::TemplateType.token_sale_blocked_region_template_type)
+    request_params = {
+        host_url_with_protocol: host_url_with_protocol,
+        host_url: host_url,
+        entity_type: GlobalConstant::TemplateType.token_sale_blocked_region_template_type
+    }
+    service_response =  GlobalConstant::StTokenSale.get_client_details(request_params)
 
     # Check if error present or not?
     unless service_response.success?
@@ -88,10 +94,12 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def reset_password
-    service_response = SimpleTokenApi::Request::User.new(
-        host_url_with_protocol,
-        request.cookies,
-        {"User-Agent" => http_user_agent}).client_detail(GlobalConstant::TemplateType.reset_password_template_type)
+    request_params = {
+        host_url_with_protocol: host_url_with_protocol,
+        host_url: host_url,
+        entity_type: GlobalConstant::TemplateType.reset_password_template_type
+    }
+    service_response =  GlobalConstant::StTokenSale.get_client_details(request_params)
 
     # Check if error present or not?
     unless service_response.success?
@@ -111,10 +119,12 @@ class Web::UserController < Web::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def change_password
-    service_response = SimpleTokenApi::Request::User.new(
-        host_url_with_protocol,
-        request.cookies,
-        {"User-Agent" => http_user_agent}).client_detail(GlobalConstant::TemplateType.change_password_template_type)
+    request_params = {
+        host_url_with_protocol: host_url_with_protocol,
+        host_url: host_url,
+        entity_type: GlobalConstant::TemplateType.change_password_template_type
+    }
+    service_response =  GlobalConstant::StTokenSale.get_client_details(request_params)
 
     # Check if error present or not?
     unless service_response.success?
