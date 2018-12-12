@@ -13,7 +13,7 @@
        "top_banner_options" : {
           "header"      : "Top Banner Options",
           "tooltip"     : "Use the options in this section to customize how the KYC User Dashboard will look to your customers across all platforms.",
-          "entities"    : [ "dashboard_title_text_color", 'show_timer' ,  "sale_timer_text_color", "sale_timer_background_gradient" ]
+          "entities"    : [ "dashboard_title_text_color", 'show_sale_timer' ,  "sale_timer_text_color", "sale_timer_background_gradient" ]
        },
        "middle_banner_options" : {
          "header"      : "Middle Banner Options",

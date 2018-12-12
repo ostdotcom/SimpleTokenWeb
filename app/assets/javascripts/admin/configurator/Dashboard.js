@@ -9,7 +9,7 @@
       toggleCmptEntityKey    = "ethereum_deposit_popup_checkboxes",
       sAddComponent          = ".add-component-el",
       sPopUpToggle           = '[name="show_ethereum_address_confirm_popup"]',
-      sTimerToggle           = '[name="show_timer"]' ,
+      sTimerToggle           = '[name="show_sale_timer"]' ,
       sTimerToggleElements   = '.sale_timer_text_color , .sale_timer_background_gradient' ,
       oThis
   ;
