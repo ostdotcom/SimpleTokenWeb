@@ -13,7 +13,7 @@
        "top_banner_options" : {
           "header"      : "Top Banner Options",
           "tooltip"     : "Use the options in this section to customize how the KYC User Dashboard will look to your customers across all platforms.",
-          "entities"    : [ "dashboard_title_text_color", 'show_sale_timer' ,  "sale_timer_text_color", "sale_timer_background_gradient" ]
+          "entities"    : [  "show_sale_timer", "dashboard_title_text_color",  "sale_timer_text_color", "sale_timer_background_gradient" ]
        },
        "middle_banner_options" : {
          "header"      : "Middle Banner Options",
@@ -59,13 +59,12 @@
        'label'          : "Title Text Color",
        "inputType"      : inputTypesEnum.colorPicker
      },
-  
-     show_timer : {
+
+     show_sale_timer : {
        'label'          : "Show Timer",
        "inputType"      : inputTypesEnum.toggle,
        "toggleOnValue"  : 1,
-       "toggleOffValue" : 0,
-       'data_key_name'  : "show_timer" //Kept as the Backend entity config is not present
+       "toggleOffValue" : 0
      },
      
      sale_timer_text_color : {

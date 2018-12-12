@@ -10,7 +10,7 @@
       sAddComponent          = ".add-component-el",
       sPopUpToggle           = '[name="show_ethereum_address_confirm_popup"]',
       sTimerToggle           = '[name="show_sale_timer"]' ,
-      sTimerToggleElements   = '.sale_timer_text_color , .sale_timer_background_gradient' ,
+      sTimerToggleElements   = '.sale_timer_text_color , .sale_timer_background_gradient, .dashboard_title_text_color' ,
       oThis
   ;
 
@@ -32,7 +32,8 @@
 
     onSuccess : function ( data ) {
       var jPopUpToggle  = null ,
-          jTimerToggle  = null
+          jTimerToggle  = null,
+          showSaleTimer = data['form_data']['show_sale_timer']
       ;
       oThis.bindSortableStop();
       oThis.bindDeleteComponents();
@@ -46,7 +47,7 @@
       configuratorHelper.isToShowAddMoreForToggle(  jPopUpToggle,  toggleCmptEntityKey);
       configuratorHelper.sanitizeDeleteIcon( toggleCmptEntityKey);
       jTimerToggle = $( sTimerToggle );
-      if( jTimerToggle.val() == 0 ) {
+      if( showSaleTimer == 0 ) {
         $(sTimerToggleElements).hide();
       }
       configuratorHelper.bindToggleShowHide( jTimerToggle , sTimerToggleElements );
