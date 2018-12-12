@@ -37,6 +37,11 @@ export class AdminDashboardComponent extends PageBaseComponent implements OnInit
   showInviteUserSection(){
     this.showInviteUser = true;
   }
+  
+  tempDeployFunction(){
+    //Delete it whoever see's it first.
+  }
+  
 
   onDeleteRow( user ){
     this.user = user;
