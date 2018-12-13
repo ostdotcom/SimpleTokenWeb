@@ -13,7 +13,6 @@
   ;
 
   oSTNs.kycConfigurator  = oThis = {
-    jPopUpToggle: null ,
 
     init: function ( config ) {
       formBuilder.isBuildEntity =  function ( entityConfig ) {
@@ -29,16 +28,17 @@
     },
 
     onSuccess : function ( data ) {
+      var jPopUpToggle = null ;
       oThis.bindSortableStop();
       oThis.bindDeleteComponents();
-      oThis.jPopUpToggle = $( sPopUpToggle ) ;
+      jPopUpToggle = $( sPopUpToggle ) ;
       configuratorHelper.bindAccordionClick();
       configuratorHelper.bindDraggable( sParentSelector, sChildSelector );
 
       //not liking this code. Change it if time.
       configuratorHelper.bindAddComponent( sParentSelector, sAddComponent, null ,oThis.addComponentCallback );
-      configuratorHelper.bindPopUpToggleOption( oThis.jPopUpToggle , toggleCmptEntityKey, sParentSelector , oThis.popUpToggleOptionCallback );
-      configuratorHelper.isToShowAddMoreForToggle( oThis.jPopUpToggle,  toggleCmptEntityKey);
+      configuratorHelper.bindPopUpToggleOption( jPopUpToggle , toggleCmptEntityKey, sParentSelector , oThis.popUpToggleOptionCallback );
+      configuratorHelper.isToShowAddMoreForToggle( jPopUpToggle,  toggleCmptEntityKey);
       configuratorHelper.sanitizeDeleteIcon( toggleCmptEntityKey);
     },
 
