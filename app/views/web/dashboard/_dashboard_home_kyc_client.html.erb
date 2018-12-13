@@ -16,13 +16,17 @@
     <%= render :partial => "/web/dashboard/telegram" %>
   <% end %>
 <% elsif @presenter_obj.can_purchase? %>
-  <%= render :partial => "/web/dashboard/sale_open_timer" %>
+    <% if @presenter_obj.show_sale_timer == 1 %>
+      <%= render :partial => "/web/dashboard/sale_open_timer" %>
+    <% end %>
   <%= render :partial => "/web/dashboard/ethereum_deposit_address" %>
   <%= render :partial => "/web/dashboard/kyc_status" %>
   <!--<img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 35px auto 30px;display: block;">-->
   <%= render :partial => "/web/dashboard/telegram" %>
 <% else %>
-  <%= render :partial => "/web/dashboard/sale_open_timer" %>
+    <% if @presenter_obj.show_sale_timer == 1 %>
+      <%= render :partial => "/web/dashboard/sale_open_timer" %>
+    <% end %>
   <%= render :partial => "/web/dashboard/kyc_status" %>
   <!--<img src="https://d36lai1ppm9dxu.cloudfront.net/assets/image/join-team-divider-3x.png" width="124" style="margin: 35px auto 30px;display: block;">-->
   <%= render :partial => "/web/dashboard/telegram" %>
