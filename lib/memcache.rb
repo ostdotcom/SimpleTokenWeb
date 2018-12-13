@@ -31,6 +31,48 @@ class Memcache
       nil
     end
 
+    # get set memcached
+    #
+    # * Author: Aman
+    # * Date: 11/12/2018
+    # * Reviewed By:
+    #
+    # @params [String] key - memcache key.
+    # @params [Integer] ttl (optional) - memcache key expiry time in seconds
+    # @params [Boolean] marshaling (optional) - Marshal data or not?
+    #
+    # @return [] if memcache set data is already present, else create and return
+    #
+    def get_set_memcached(key, ttl = 0, marshaling = true)
+      raise 'block not given to get_set_memcached' unless block_given?
+
+      Rails.cache.fetch(key, {expires_in: get_ttl(ttl), raw: !marshaling}) do
+        yield
+      end
+
+    rescue => exc
+      Rails.logger.error { "MEMCACHE-ERROR: fetch: K: #{key.inspect}. M: #{exc.message}, I: #{exc.inspect}" }
+      nil
+    end
+
+    # Delete
+    #
+    # * Author: Aman
+    # * Date: 11/12/2018
+    # * Reviewed By:
+    #
+    # @params [String] key - memcache key.
+    # @params [Hash] options (optional)
+    #
+    # @return [Boolean] nil with current behavior, may return true and false if error handling done
+    #
+    def delete(key, options = nil)
+      Rails.cache.delete(key, options)
+    rescue => exc
+      Rails.logger.error { "MEMCACHE-ERROR: delete: K: #{key.inspect}. M: #{exc.message}, I: #{exc.inspect}" }
+      nil
+    end
+
   end
 
 end

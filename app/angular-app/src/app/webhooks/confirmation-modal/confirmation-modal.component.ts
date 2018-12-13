@@ -15,7 +15,7 @@ export class ConfirmationModalComponent implements OnInit {
   @Input('isSuccess') isSuccess       : boolean;
   @Input('isProcessing') isProcessing : boolean;
   @Input('hasError') hasError         : boolean;
-
+  @Input('modalId') modalId           : string  = this.modalId || "confirmation-modal" ;
   @Input('errorResponse') errorResponse;
 
   btnText      : string = "YES, CONTINUE";

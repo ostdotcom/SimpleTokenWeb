@@ -14,6 +14,8 @@
     init: function (config) {
 
       oThis.jLoginForm = $('#adminLoginForm');
+      //test dummy change
+      console.log("test");
       oThis.jLogin = $('#adminLogin');
         oThis.formHelper = oThis.jLoginForm.formHelper({
             success : function ( response ) {

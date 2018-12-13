@@ -157,10 +157,21 @@
             <div class="col-12 mt-4 mt-md-0 px-4 col-md-2">
               <div class="row pr-md-2">
                 <div class="col-sm-4 col-6 px-md-0 col-md-12">
-                  <button [disabled]="!webhooksForm.valid || !isValid( webhook.id )" class="btn w-100 btn-primary px-md-3" (click)="showSaveOrUpdateModal( webhook.id, webhook.isNew, webhooksForm )">{{getBtnText( webhook.isNew )}}</button>
+                  <button [disabled]="!webhooksForm.valid || !isValid( webhook.id )"
+                          class="btn w-100 btn-primary px-md-3"
+                          (click)="showSaveOrUpdateModal( webhook.id, webhook.isNew, webhooksForm )">
+                          {{getBtnText( webhook.isNew )}}
+                  </button>
                 </div>
-                <div class="col-sm-4 col-6 px-md-0 mt-md-4 col-md-12 px">
-                  <button class="btn w-100 btn-secondary px-md-3" (click)="showDeleteModal( webhook.id, webhook.isNew )">DELETE</button>
+                <div *ngIf="!webhook.isNew" class="d-none d-sm-none d-md-none d-lg-block col-md-12 px-0 pt-3">
+                  <button class="btn w-100 btn-secondary px-md-3"
+                   (click)="showEditModal( webhook.id )">
+                    TEST
+                  </button>
+                </div>
+                <div class="col-sm-4 col-6 px-md-0 mt-md-3 col-md-12 px">
+                  <button class="btn w-100 btn-secondary px-md-3"
+                  (click)="showDeleteModal( webhook.id, webhook.isNew )">DELETE</button>
                 </div>
               </div>
             </div>
@@ -171,10 +182,28 @@
   </ng-container>
 </div>
 
-<confirmation-modal [callBack]="confirmationCallBack" [isSuccess]="isActionSuccess" [hasError]="isActionError" [isProcessing]="isActionProcessing" [errorResponse]="errorResponse">
-  <div class="success-content">Settings have been successfully applied.</div>
+<confirmation-modal
+  [callBack]="confirmationCallBack"
+  [isSuccess]="isActionSuccess"
+  [hasError]="isActionError"
+  [isProcessing]="isActionProcessing"
+  [errorResponse]="errorResponse">
   <div class="confirm-message">Are you sure you want to {{actionType}} ?</div>
+  <div class="success-content">Settings have been successfully applied.</div>
 </confirmation-modal>
 
 
 
+<confirmation-modal
+  [modalId] = "testHookModalSelector"
+  [callBack]="confirmationCallBack"
+  [isSuccess]="isActionSuccess"
+  [hasError]="isActionError"
+  [isProcessing]="isActionProcessing"
+  [errorResponse]="errorResponse">
+  <div class="confirm-message"> The test will begin shortly and the results
+    will be delivered to you via email.
+  </div>
+  <div class="success-content"> Request to test webhook is successfully registered.</div>
+
+</confirmation-modal>
