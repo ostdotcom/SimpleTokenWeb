@@ -32,8 +32,7 @@
     },
 
     onSuccess : function ( data ) {
-      var jPopUpToggle  = null ,
-          showSaleTimer = data['form_data']['show_sale_timer']
+      var jPopUpToggle  = null
       ;
       oThis.bindSortableStop();
       oThis.bindDeleteComponents();
