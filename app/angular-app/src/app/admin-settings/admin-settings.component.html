@@ -1,8 +1,11 @@
 <div class="row">
-  <div class="col-12 col-lg-2 px-0">
+  <div class="col-12 col-lg-2 px-0 leftMenu">
     <admin-setting-menus></admin-setting-menus>
   </div>
-  <div class="col-12 col-lg-10 dynamic-component">
-    <router-outlet></router-outlet>
+  <div class="col-12 col-lg-10 px-0 rightSection">
+    <div class="dynamic-component">
+      <router-outlet></router-outlet>
+    </div>
+    <settings-footer></settings-footer>
   </div>
 </div>
