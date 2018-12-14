@@ -65,6 +65,32 @@ export class DashboardComponent extends PageBaseComponent implements OnInit {
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
       this.resetDownLoadCsvModal();
     });
+
+    this.bindStickyTableHeader();
+    this.bindStickyTableHeaderOnResize();
+  }
+
+  bindStickyTableHeader(){
+    setTimeout( function() {
+      var phantomEl = $('.header-phantom-el'),
+        dashboardTopSection = $('.dashboard-top-section').outerHeight();
+      $(window).off('scroll').on('scroll', ()=>{
+        var scrollPos = $(window).scrollTop();
+        if(scrollPos > dashboardTopSection){
+          phantomEl.height( $('.header-row').outerHeight()  );
+          $('.header-row').css({position: 'fixed', top: $('.nav-container').outerHeight() , zIndex: 2,left: '0px', width: '100%'});
+        } else{
+          phantomEl.height( 0 );
+          $('.header-row').css({position: 'static'});
+        };
+      });
+    }, 10);
+  }
+
+  bindStickyTableHeaderOnResize() {
+    $(window).on('resize', ()=> {
+      this.bindStickyTableHeader();
+    })
   }
 
   resetDownLoadCsvModal(){

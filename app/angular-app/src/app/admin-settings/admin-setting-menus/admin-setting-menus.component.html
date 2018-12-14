@@ -1,6 +1,6 @@
 <!--DESKTOP -->
 <div class="admin-settings h-100">
-<div class="d-none d-lg-block h-100 desktop-menus-list pt-5">
+<div class="d-none d-lg-block desktop-menus-list pt-5 leftMenuDesktop">
   <div class="desktop-menu px-2 align-items-center d-flex first" [routerLink]="['/admin/dashboard']">
     <span>
       <svg class="go-to-dashboard-icon" height="20px" width="20px">
@@ -235,7 +235,9 @@
     <span class="pl-2">User Management</span>
   </div>
 
-  <div class="desktop-menu px-3 align-items-center d-flex" [routerLink]="['/admin/settings/change-password']"
+  <div class="desktop-menu px-3 align-items-center d-flex"
+       style="margin-bottom: 150px;"
+       [routerLink]="['/admin/settings/change-password']"
        [routerLinkActive]="['selected']">
     <span>
       <svg class="unselected-icon" height="20px" width="20px">

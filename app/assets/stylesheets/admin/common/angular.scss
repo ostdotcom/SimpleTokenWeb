@@ -76,3 +76,20 @@ admin-dashboard {
 .something11221{
   text-align: inherit;
 }
+
+
+body.settings-page {
+  .leftMenu{
+    background-color: $teal-bg;
+  }
+  @media (min-width: map-get($grid-breakpoints , 'lg')) {
+    overflow: hidden !important;
+    .rightSection {
+      overflow: auto;
+    }
+    .leftMenuDesktop{
+      overflow: auto;
+    }
+  }
+
+}

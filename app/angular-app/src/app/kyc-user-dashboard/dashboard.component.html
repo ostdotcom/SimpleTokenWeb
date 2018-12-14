@@ -1,22 +1,22 @@
-<div class="row mt-4 pt-2">
-  <div class="col-12 col-lg-6">
-    <h4 class="kyc-header text-transform-upper">KYC DASHBOARD</h4>
-  </div>
-  <div class="col-12 col-lg-6"  *ngIf="appConfigService.isSuperAdmin()">
+<div class="dashboard-top-section pt-4 pb-3">
+  <div class="row pt-2">
+    <div class="col-12 col-lg-6">
+      <h4 class="kyc-header text-transform-upper">KYC DASHBOARD</h4>
+    </div>
+    <div class="col-12 col-lg-6"  *ngIf="appConfigService.isSuperAdmin()">
       <button class="btn btn-primary download-csv-btn"
               data-toggle="modal"
               data-target="#confirmDownload">
-              DOWNLOAD CSV
+        DOWNLOAD CSV
       </button>
+    </div>
   </div>
-</div>
-
-<div class="row py-3 mb-3 filters">
+  <div class="row py-3 filters">
     <div class="col-12 d-lg-none">
-        <ost-search  [searchApi]="'api/admin/kyc/get-cases-by-email'"
-                            [entityName]="'email'"
-                            [placeholder]="'Search by Email'">
-        </ost-search>
+      <ost-search  [searchApi]="'api/admin/kyc/get-cases-by-email'"
+                   [entityName]="'email'"
+                   [placeholder]="'Search by Email'">
+      </ost-search>
     </div>
     <div class="col-12 col-lg-8">
       <form class="form-group" #filterForm="ngForm" name='filters' (change)="onFilterChange(filterForm)">
@@ -58,6 +58,7 @@
       </form>
     </div>
   </div>
+</div>
 
 <div class="row" >
   <app-table class="w-100 alternate-style-lg"

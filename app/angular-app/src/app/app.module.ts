@@ -68,6 +68,7 @@ import { KycBannerComponent } from './kyc-banner/kyc-banner.component' ;
 import { WebhooksComponent } from './webhooks/webhooks.component';
 import { ConfirmationModalComponent } from './webhooks/confirmation-modal/confirmation-modal.component' ;
 import { AuthGuardService } from "./services/auth-guard.service";
+import { FooterComponent } from './admin-settings/footer/footer.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -133,7 +134,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     KycBannerComponent,
     ChangePasswordComponent,
     WebhooksComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
