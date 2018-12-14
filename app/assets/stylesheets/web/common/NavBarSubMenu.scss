@@ -1,6 +1,6 @@
 
 .ost-nav{
-
+  background-color: #ffffff;
   .ost-brand {
     padding: 0.8rem 1rem;
   }
@@ -23,6 +23,13 @@
     font-weight: 300;
     &:hover{
       text-decoration: none;
+    }
+  }
+
+  @media (min-width: 768px){
+    &.nav-box-shadow{
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.5s cubic-bezier(0,1,.5,1);
     }
   }
 
@@ -138,7 +145,7 @@
     }
 
     .ost-brand {
-      padding: 1rem 0.8rem;
+      padding: .65rem 1rem;
     }
 
     #toggle-menu,
