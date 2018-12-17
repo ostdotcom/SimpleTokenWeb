@@ -59,9 +59,14 @@ export class AppComponent implements AfterViewChecked {
   }
 
   setSettingsPageScroll() {
+    let mobileSettingsMenu = $('.mobile-list'),
+        isMobileView = mobileSettingsMenu && mobileSettingsMenu.css('display') == "block"
+    ;
     if( this.utilities.isSettingPage() ){
       this.disableBodyScroll();
-      this.scrollTop.scrollTop();
+      if(!isMobileView) {
+        this.scrollTop.scrollTop();
+      }
       this.scrollTop.scrollTop($('.rightSection')[0]);
     } else{
       this.enableBodyScroll();
