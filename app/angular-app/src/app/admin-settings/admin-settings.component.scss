@@ -1,7 +1,9 @@
 @import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
 .dynamic-component {
+  padding: 0px 15px 10px;
   @media (min-width: map-get($grid-breakpoints , 'md')) {
     padding: 0px 35px 20px;
+    min-height: calc(100vh - 60px);
   }
 }
