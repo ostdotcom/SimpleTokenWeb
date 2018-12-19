@@ -64,7 +64,7 @@
        "inputType"      : inputTypesEnum.toggle,
        "toggleOnValue"  : 1,
        "toggleOffValue" : 0,
-       "data_key_name"  : "show_kyc_confirm_popup"
+       "data_key_name"  : "show_kyc_confirm_popup" //Kept as the Backend entity config is not present
      },
 
      kyc_form_popup_checkboxes : {

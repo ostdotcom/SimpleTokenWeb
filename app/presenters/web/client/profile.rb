@@ -24,6 +24,10 @@ module Web
         page_data.ethereum_deposit_popup_checkboxes
       end
 
+      def show_sale_timer
+        page_data.show_sale_timer
+      end
+
       def show_ethereum_address_confirm_modal?
         ethereum_confirm_checkbox_points_html.present?
       end

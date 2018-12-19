@@ -65,6 +65,10 @@ module Web
         @page_spec_data[:ethereum_deposit_popup_checkboxes]
       end
 
+      def show_sale_timer
+        @page_spec_data[:show_sale_timer].to_i
+      end
+
     end
   end
 end
