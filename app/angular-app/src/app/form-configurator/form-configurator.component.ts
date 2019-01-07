@@ -33,14 +33,15 @@ export class FormConfiguratorComponent implements OnInit {
 
   environment  = this.appConfig.getEnvironment();
 
+  domainName : string  = "";
+  hasLoaded  : boolean = false;
+
   constructor( public appConfig : AppConfigService,
                private http: OstHttp,
                private stateHandler : RequestStateHandlerService ) { }
 
   ngOnInit() {
-    if( this.showSandboxSection() ){
-      this.getUnpublishedDraft();
-    }
+    this.getUnpublishedDraft();
   }
 
   importAndPublish( ) {
@@ -131,8 +132,10 @@ export class FormConfiguratorComponent implements OnInit {
         let res = response.json();
         if(res.success){
           this.stateHandler.updateRequestStatus(this, false,false);
+          this.hasLoaded = true;
           this.gid  = res.data.gid;
           this.uuid = res.data.uuid;
+          this.domainName = res.data.domain_name;
           if(this.gid && this.uuid){
             this.createBtnClass = 'btn-secondary';
             this.showButton     = true;

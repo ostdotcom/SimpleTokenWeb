@@ -78,7 +78,6 @@ Rails.application.routes.draw do
       get '/case-id/:id' => :angular_app
       get '/settings/admin' => :angular_app
       get '/settings/user' => :angular_app
-      get '/settings/profile' => :angular_app
       get '/settings/change-password' => :angular_app
       get '/settings/developer-integrations' => :angular_app
       get '/settings/sale-settings' => :angular_app
