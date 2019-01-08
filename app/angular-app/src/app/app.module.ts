@@ -157,10 +157,6 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
             canActivate: [ AuthGuardService ]
           },
           {
-            path:'settings/profile',
-            component: ProfileComponent
-          },
-          {
             path:'settings/change-password',
             component: ChangePasswordComponent
           },
