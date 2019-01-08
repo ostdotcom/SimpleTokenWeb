@@ -94,21 +94,6 @@
           Welcome to the Front-end configurator. This feature is not available in your current plan since you have opted for API-only integration.
           Please reach out to OST KYC Tech Support (kyc-support@ost.com) to access the configurator.
         </div>
-        <div class="row mt-4">
-          <div class="form-group col-12 col-md-5">
-            <div class="form-label">
-              domain Name
-            </div>
-            <div *ngIf="domainName || ! hasLoaded; else domainNA">
-              <input disabled type="text" class="form-control" title="Domain Name" [ngModel]="domainName"/>
-            </div>
-            <ng-template #domainNA>
-              <div>
-                <input disabled type="text" class="form-control" title="Domain Name" value="NA"/>
-              </div>
-            </ng-template>
-          </div>
-        </div>
       </div>
     </div>
   </div>
