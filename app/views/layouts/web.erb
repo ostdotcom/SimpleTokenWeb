@@ -213,9 +213,9 @@
     <%= yield %>
   </div>
 
-  <% if is_not_a_kyc_page? %>
-    <%= render :partial => "/shared/web/common/footer_links" %>
-  <% end %>
+  <%# if is_not_a_kyc_page? %>
+    <%#= render :partial => "/shared/web/common/footer_links" %>
+  <%# end %>
 
 </main>
 
@@ -224,7 +224,7 @@
 <% if !is_simple_token_specific_page? %>
   <%= render :partial => "/shared/web/common/kycaas_footer" %>
 <% else %>
-  <%= render :partial => "/shared/web/common/footer" %>
+  <%= render :partial => "/web/token_sale/footer" %>
 <% end %>
 <!--IMPORTANT Footer should always be outside site content start-->
 
