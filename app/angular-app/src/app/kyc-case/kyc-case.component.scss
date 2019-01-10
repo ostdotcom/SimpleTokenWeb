@@ -160,7 +160,7 @@
 
     &.grey-bar{
       border-left: 2px solid $gray-300;
-    }    
+    }
   }
 
   .button-UI{
@@ -267,4 +267,21 @@
 .error-info-icon {
   vertical-align: top;
   margin-top : 3px;
+}
+
+.aml-content{
+  border-top: solid 1px $blue-400;
+  text-align: center;
+  .card-col:nth-child(even){
+    background-color: $green-1000;
+  }
+}
+
+.no-hit-btn{
+  border: 1px solid $blue-400;
+  border-radius: $border-radius;
+  color: $blue-800;
+  &:active, &.active{
+    background-color: $blue-400;
+  }
 }

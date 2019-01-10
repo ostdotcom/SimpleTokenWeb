@@ -69,6 +69,7 @@ import { WebhooksComponent } from './webhooks/webhooks.component';
 import { ConfirmationModalComponent } from './webhooks/confirmation-modal/confirmation-modal.component' ;
 import { AuthGuardService } from "./services/auth-guard.service";
 import { FooterComponent } from './admin-settings/footer/footer.component';
+import { OstToggleComponent } from './ost-toggle/ost-toggle.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -135,7 +136,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ChangePasswordComponent,
     WebhooksComponent,
     ConfirmationModalComponent,
-    FooterComponent
+    FooterComponent,
+    OstToggleComponent
   ],
   imports: [
     BrowserModule,

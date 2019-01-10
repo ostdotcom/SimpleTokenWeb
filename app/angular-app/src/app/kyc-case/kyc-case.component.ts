@@ -19,7 +19,6 @@ export class KycCaseComponent implements OnInit {
   errorMessage: string = '';
   showCase: boolean = true;
   showReportIssue: boolean = false;
-  showUpdateEth: boolean = false;
   isInitDuplicateTable:boolean = false;
   isInitLogTabel:boolean = false;
   caseDetails;
@@ -41,6 +40,9 @@ export class KycCaseComponent implements OnInit {
   isWhitelisting:boolean =  false;
   submittedDetails = ['birthdate', 'country', 'document_id_number', 'email', 'first_name', 'last_name', 'nationality',
                       'postal_code', 'submitted_at', 'street_address', 'city', 'state'];
+
+  amlMatchList :Array<object> = [{},{}];
+  allNegativeMatches: boolean = false;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -122,10 +124,9 @@ export class KycCaseComponent implements OnInit {
     this.scrollTopService.scrollTop();
   }
 
-  showPageState(showCase = true, showReportIssue = false , showUpdateEth = false){
+  showPageState(showCase = true, showReportIssue = false){
     this.showCase = showCase;
     this.showReportIssue = showReportIssue;
-    this.showUpdateEth = showUpdateEth;
   }
 
   onActionSuccess(e){
@@ -269,6 +270,15 @@ export class KycCaseComponent implements OnInit {
       }else{
         return false ;
       }
+  }
+
+  allNegativeMatchesPressed( ){
+    this.allNegativeMatches = !this.allNegativeMatches;
+  }
+
+  deselectAllNegativeMatchesBtn(){
+    this.allNegativeMatches = false;
+    $('.no-hit-btn').removeClass('active');
   }
 
 

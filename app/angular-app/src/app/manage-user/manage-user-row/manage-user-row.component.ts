@@ -15,10 +15,16 @@ export class ManageUserRowComponent implements OnInit {
   @Input() row;
   constructor(public appConfigService: AppConfigService) { }
 
+  entityPath: string;
+  status: any;
+
   ngOnInit() {
     setTimeout(function(){
       $('[data-toggle="tooltip"]').tooltip();
     },0);
+    if(this.row){
+      this.entityPath = "entity_configs.user_management_dashboard.actions" ;
+    }
   }
 
   deleteUser(){
@@ -28,17 +34,17 @@ export class ManageUserRowComponent implements OnInit {
   isReopenInprocess():boolean{
     let performAction = this.row && this.row.action_to_perform || [];
     if(performAction.includes('case_reopen_inprocess') ){
-      return true; 
+      return true;
     }
-    return false; 
+    return false;
   }
 
   isWhitelistPending():boolean{
     let performAction = this.row && this.row.action_to_perform || [];
     if(performAction.includes('whitelist_confirmation_pending') ){
-      return true; 
+      return true;
     }
-    return false; 
+    return false;
   }
 
   getTooltipMsg():string{
@@ -47,6 +53,34 @@ export class ManageUserRowComponent implements OnInit {
     }else if(this.isWhitelistPending()){
       return "Whitelist confirmation is pending. Please wait to delete user.";
     }
+  }
+
+  onStatusChange( $event ){
+    switch( this.status ){
+      case "delete":{
+        this.onDelete();
+        break;
+      }
+      case "update_eth_addr":{
+        this.onUpdateEthAddr();
+        break;
+      }
+    }
+    this.resetSelectpicker( $event )
+  }
+
+  resetSelectpicker( $event  ){
+    let jEl = $($event.target);
+    jEl.val('default');
+    jEl.selectpicker("refresh");
+  }
+
+  onDelete( ){
+    this.deleteRowEvent.emit(this.row);
+  }
+
+  onUpdateEthAddr(  ) {
+
   }
 
 }

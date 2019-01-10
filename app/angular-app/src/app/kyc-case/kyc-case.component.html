@@ -246,7 +246,7 @@
                 </div>
                 <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.document_id_file_url}}"/>
                 <ng-container *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'">
-                  <ost-pdf-file class="h-100" [src]="userDetails.document_id_file_url"></ost-pdf-file>  
+                  <ost-pdf-file class="h-100" [src]="userDetails.document_id_file_url"></ost-pdf-file>
                 </ng-container>
               </div>
             </div>
@@ -273,7 +273,7 @@
                 </div>
                 <img *ngIf="getDocType(userDetails.document_id_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.document_id_file_url}}" />
                 <ng-container *ngIf="getDocType(userDetails.document_id_file_url) == 'pdf'" >
-                  <ost-pdf-file  class="h-100" [src]="userDetails.document_id_file_url"></ost-pdf-file>  
+                  <ost-pdf-file  class="h-100" [src]="userDetails.document_id_file_url"></ost-pdf-file>
                 </ng-container>
               </div>
               <div class="card grey-background">
@@ -290,7 +290,7 @@
                 </div>
                 <img *ngIf="getDocType(userDetails.selfie_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.selfie_file_url}}"/>
                 <ng-container *ngIf="getDocType(userDetails.selfie_file_url) == 'pdf'">
-                  <ost-pdf-file class="h-100" [src]="userDetails.selfie_file_url"></ost-pdf-file>  
+                  <ost-pdf-file class="h-100" [src]="userDetails.selfie_file_url"></ost-pdf-file>
                </ng-container>
               </div>
             </div>
@@ -318,7 +318,7 @@
               </div>
               <img *ngIf="getDocType(userDetails.residence_proof_file_url) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.residence_proof_file_url}}"/>
               <ng-container *ngIf="getDocType(userDetails.residence_proof_file_url) == 'pdf'" >
-                <ost-pdf-file class="h-100" [src]="userDetails.residence_proof_file_url"></ost-pdf-file>  
+                <ost-pdf-file class="h-100" [src]="userDetails.residence_proof_file_url"></ost-pdf-file>
               </ng-container>
 
             </div>
@@ -340,7 +340,7 @@
                 </div>
                 <img *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'image'" class="card-img-top mx-auto my-auto" src="{{userDetails.investor_proof_files_url[i]}}"/>
                 <ng-container *ngIf="getDocType(userDetails.investor_proof_files_url[i]) == 'pdf'">
-                  <ost-pdf-file class="h-100" [src]="userDetails.investor_proof_files_url[i]"></ost-pdf-file>  
+                  <ost-pdf-file class="h-100" [src]="userDetails.investor_proof_files_url[i]"></ost-pdf-file>
                 </ng-container>
 
               </div>
@@ -350,6 +350,57 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-12">
+            <h5 class='customized-h5 pt-3 pb-1 d-inline-block'>AML/CTF details</h5>
+            <div class="d-inline-block display-3">( 5 matches)
+            </div>
+          </div>
+          <div class="col-12 col-md-6 pr-0 mb-3">
+            <div class="card-group">
+              <div class="card">
+                <div class="card-body">
+
+                  <div class="card-title mb-3">AML/CTF data</div>
+                  <div class='row aml-content'>
+
+                    <div class="card-col col-12">
+                      <div class="row">
+                        <div class="col-4 my-auto">
+                          <h6 class="card-title">PROFILE REF NO.</h6>
+                        </div>
+                        <div class="col-4 my-auto">
+                          <h6 class="card-title">MATCH</h6>
+                        </div>
+                        <div class="col-4 my-auto">
+                          <div class="btn-group-toggle" data-toggle="buttons" (click)="allNegativeMatchesPressed()">
+                            <label class="btn p-2 no-hit-btn">
+                              <input type="checkbox" [(ngModel)]="allNegativeMatches"> <h6 class="mb-0 card-title">ALL NEGATIVE</h6>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngFor="let match of amlMatchList; let i = index" class="card-col col-12">
+                      <div class="row">
+                        <div class="col-4">
+                          50120
+                        </div>
+                        <div class="col-4">
+                          <ost-toggle [switchName]="'aml_match'+i"
+                                      [switchLabelYes]="'MATCH'"
+                                      [switchLabelNo]="'NO HIT'"
+                                      [switchCheckNo]="allNegativeMatches"
+                                      (switchCheckYesSelected)="deselectAllNegativeMatchesBtn()"></ost-toggle>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <kyc-log-modal *ngIf="isInitLogTabel" [lastActedByName]='caseDetails.last_acted_by' [caseId]='caseId'></kyc-log-modal>
         <kyc-duplicate-details-modal *ngIf="isInitDuplicateTable" [caseId]='caseId'> </kyc-duplicate-details-modal>
 
@@ -397,19 +448,20 @@
                   <ng-container *ngIf="caseDetails.kyc_status == 'denied'">has been denied and</ng-container>
                   is closed
                 </span>
-                <ng-container *ngIf="caseDetails.can_reopen_case == 1">
+                <ng-container *ngIf="caseDetails.can_reopen_case == 1"><!--allows always-->
                   <button type="button" class="btn btn-secondary text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
                 </ng-container>
               </ng-template>
             </div>
           </ng-template>
           <ng-template #caseOpen>
-            <button *ngIf="appConfig.hasEthereumAddressField()" type="button" class="btn btn-secondary text-uppercase mb-2" (click)="showPageState(false, false, true)">Update eth address</button>
             <div class="float-lg-right">
-              <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyActionModal">Deny</button>
-              <ng-container *ngIf="appConfig.hasEmailSetup()">
-                <button type="button" class="btn btn-secondary mr-2 mb-2 text-uppercase" (click)="showPageState(false, true, false)">Report Issue</button>
+              <ng-container *ngIf="appConfig.hasEmailSetup()"><!--same-->
+                <button type="button" class="btn btn-secondary mr-2 mb-2 text-uppercase" (click)="showPageState(false, true)">Report Issue</button>
               </ng-container>
+
+
+              <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyActionModal">Deny</button>
               <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyActionModal">Qualify</button>
             </div>
           </ng-template>
@@ -426,12 +478,6 @@
         </report-issues>
       </ng-container>
 
-      <ng-container *ngIf="showUpdateEth">
-        <update-ethaddress [caseId]='caseId'
-                           (actionSuccessEvent)="onActionSuccess( $event )"
-                           (closeEthAddressEvent)="showPageState()">
-        </update-ethaddress>
-      </ng-container>
     </div>
 
   </div>
@@ -469,7 +515,7 @@
         <div>When a case is reopened, User is unwhitelisted.</div>
         <div class="mt-2">Once the user is qualified, the user will be whitelisted again.</div>
       </div>
-      <ng-template #noWhitelistSetup>
+      <ng-template #noWhitelistSetup><!-- get a generic message-->
         <div>The user will not be able to take part in the ICO, until the case is closed again.</div>
       </ng-template>
     </div>

@@ -1,7 +1,7 @@
 @import "admin/simple_token_theme_admin/variables";
 
 
-admin-dashboard {
+admin-dashboard, .actions-select {
   .bootstrap-select {
     width: 170px!important;
     .dropdown-toggle {

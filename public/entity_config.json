@@ -203,6 +203,18 @@
           }
         ],
         "data_type": "array"
+      },
+      "actions": {
+        "values":[
+          {
+            "value": "update_eth_addr",
+            "display_text": "Update Eth Address"
+          },
+          {
+            "value": "delete",
+            "display_text": "Delete user"
+          }
+        ]
       }
     },
     "report_issue": {
