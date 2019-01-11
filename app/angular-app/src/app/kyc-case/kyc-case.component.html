@@ -379,57 +379,14 @@
 
       </div>
 
-      <div class="row" >
-        <div class="container-fluid button-container py-2">
-          <div class="container mt-2">
-            <ng-container *ngIf="caseDetails.is_case_closed == 1 then caseClosed else caseOpen"></ng-container>
-            <ng-template #caseClosed>
-              <div class="d-flex justify-content-center align-items-center mb-2">
-                <ng-container *ngIf="caseDetails.case_reopen_inprocess || caseDetails.whitelist_confirmation_pending then caseInProcess else caseNotReopening;">
-
-                </ng-container>
-                <ng-template #caseInProcess>
-                  <span class="mr-2 font-weight-normal text-center mt-1"
-                    *ngIf="caseDetails.whitelist_status == 'failed' || caseDetails.whitelist_confirmation_pending">
-                    {{caseDetails.whitelist_status == 'failed' ?
-                      "Whitelisting failed. Please proceed by contacting OST KYC support."
-                      : "Whitelist confirmation is pending. Please check back after some time." }}
-                  </span>
-                  <span class="mr-2 font-weight-normal text-center mt-1" *ngIf="caseDetails.case_reopen_inprocess">The case will be re-opened shortly. Please check back after some time.</span>
-                </ng-template>
-
-                <ng-template #caseNotReopening>
-                  <span class="mr-2 font-weight-normal">
-                    This case
-                    <ng-container *ngIf="caseDetails.kyc_status == 'approved'">has been approved and</ng-container>
-                    <ng-container *ngIf="caseDetails.kyc_status == 'denied'">has been denied and</ng-container>
-                    is closed
-                  </span>
-                  <ng-container *ngIf="caseDetails.can_reopen_case == 1"><!--allows always-->
-                    <button type="button" class="btn btn-secondary text-uppercase" data-toggle="modal" data-target="#reopenModal">Re-open</button>
-                  </ng-container>
-                </ng-template>
-              </div>
-            </ng-template>
-            <ng-template #caseOpen>
-              <div class="float-lg-right">
-                <ng-container *ngIf="appConfig.hasEmailSetup()"><!--same-->
-                  <button type="button" class="btn btn-secondary mr-2 mb-2 text-uppercase" (click)="showPageState(false, true)">Report Issue</button>
-                </ng-container>
-
-
-                <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyActionModal">Deny</button>
-                <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyActionModal">Qualify</button>
-              </div>
-            </ng-template>
-          </div>
-        </div>
-        <div class="container-fluid button-container-phantom"></div>
-      </div>
+      <!----BUTTON FOOTER SECTION START---->
+      <case-footer-section [response]="response" [showPageStateFn]="showPageStateFn"  >
+      </case-footer-section>
+       <!----BUTTON FOOTER SECTION END---->
 
     </ng-container>
 
-    <report-issues *ngIf="showReportIssue"  (actionSuccessEvent)="onActionSuccess($event)"
+    <report-issues *ngIf="showReportIssue" (actionSuccessEvent)="onActionSuccess($event)"
                   (closeReportIssueEvent)="showPageState()" [userDetails]='userDetails'
       [caseId]='caseId'>
     </report-issues>

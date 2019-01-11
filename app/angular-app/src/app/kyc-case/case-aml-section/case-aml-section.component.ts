@@ -10,7 +10,7 @@ declare var $: any;
 })
 export class CaseAmlSectionComponent implements OnInit {
 
-  constructor(  private utilitites      : UtilitiesService) { }
+  constructor(  private utilitites : UtilitiesService ) { }
 
   @Input('response') response : Object = null ;
   @Input('amlUnMatchedIds') amlUnMatchedIds : Array< string > = null;  

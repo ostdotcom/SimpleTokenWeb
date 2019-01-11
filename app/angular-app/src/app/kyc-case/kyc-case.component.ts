@@ -45,6 +45,8 @@ export class KycCaseComponent implements OnInit {
   amlMatchedIds: Array<string> = [];
   amlUnMatchedIds: Array<string> = [];
 
+  showPageStateFn : Function
+
   constructor(
     public activatedRoute: ActivatedRoute,
     private http: OstHttp,
@@ -60,6 +62,8 @@ export class KycCaseComponent implements OnInit {
       this.caseId = params.get('id');
       this.fetchCase();
     });
+
+    this.showPageStateFn = this.showPageState.bind( this );
   }
 
   ngAfterViewChecked(){
@@ -117,7 +121,6 @@ export class KycCaseComponent implements OnInit {
     this.meta = res.data.meta;
     this.stateHandler.updateRequestStatus( this, false,  false);
     this.getNextPrevious(res.data.meta);
-    this.showPageState();
     this.setAdminConfig();
     this.setFRText();
     this.setOpticalCharacterReg();
