@@ -1,0 +1,82 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.aml-content{
+    border-top: solid 1px $blue-400;
+    text-align: center;
+    .card-col:nth-child(even){
+      background-color: $green-1000;
+    }
+    & .disable{
+      opacity: 0.5;
+    }
+  }
+  
+  .no-hit-btn{
+    border: 1px solid $blue-400;
+    border-radius: $border-radius;
+    color: $blue-800;
+    &.active{
+      background-color: $blue-400;
+    }
+  }
+  
+  .redirect-hover-icon{
+    display: none;
+  }
+  
+  a.redirect:hover{
+    .redirect-icon{
+      display: none;
+    }
+    .redirect-hover-icon{
+      display: inline;
+    }
+  }
+  
+  .aml-msg{
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+  }
+
+  .card{ 
+    border: solid 1px $blue-400;
+    .row {
+
+    .card-row{
+      margin-right: -1.23rem;
+      margin-left: -1.23rem;
+      &:nth-child(even) {
+        background: $green-1000;
+      }
+      &:nth-child(odd) {
+        background: $white;
+      }
+    }
+    @media screen and (min-width: 576px){
+      .col-sm-6:nth-child(4n+1), .col-sm-6:nth-child(4n+2){
+        background-color: $green-1000;
+       }
+    }
+    @media screen and (max-width: 576px){
+      .col-sm-6:nth-child(odd){
+        background-color: $green-1000;
+       }
+    }
+
+    .card-col{
+      padding: 1rem 1.25rem;
+      .label{
+        color: $cyanish-gray;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        font-weight: 600;
+      }
+      .value{
+        color: $blue-800;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  }

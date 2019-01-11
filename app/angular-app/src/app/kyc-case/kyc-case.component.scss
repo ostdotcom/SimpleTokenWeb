@@ -1,20 +1,5 @@
 @import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
-.breadcrumb{
-  background-color: transparent;
-  padding: 0.75rem 0;
-  .breadcrumb-item + .breadcrumb-item::before{
-    content: '>'
-  }
-  .kyc-dashboard-breadcrumb{
-    color: $yellow-800;
-    border-bottom: none;
-    font-weight: $font-weight-normal;
-    font-weight: $font-weight-600;
-    letter-spacing: 1px;
-  }
-}
-
 .carousel-nav{
   position: fixed;
   top: 50%;
@@ -31,6 +16,7 @@
     border-radius: 0 5px 5px 0;
   }
 }
+
 @media screen and (min-width:576px){
 .other-documents{
   .col-sm-6{
@@ -269,40 +255,3 @@
   margin-top : 3px;
 }
 
-.aml-content{
-  border-top: solid 1px $blue-400;
-  text-align: center;
-  .card-col:nth-child(even){
-    background-color: $green-1000;
-  }
-  & .disable{
-    opacity: 0.5;
-  }
-}
-
-.no-hit-btn{
-  border: 1px solid $blue-400;
-  border-radius: $border-radius;
-  color: $blue-800;
-  &.active{
-    background-color: $blue-400;
-  }
-}
-
-.redirect-hover-icon{
-  display: none;
-}
-
-a.redirect:hover{
-  .redirect-icon{
-    display: none;
-  }
-  .redirect-hover-icon{
-    display: inline;
-  }
-}
-
-.aml-msg{
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-}

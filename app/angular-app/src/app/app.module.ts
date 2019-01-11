@@ -70,6 +70,8 @@ import { ConfirmationModalComponent } from './webhooks/confirmation-modal/confir
 import { AuthGuardService } from "./services/auth-guard.service";
 import { FooterComponent } from './admin-settings/footer/footer.component';
 import { OstToggleComponent } from './ost-toggle/ost-toggle.component';
+import { CaseBreadcrumbComponent } from './kyc-case/case-breadcrumb/case-breadcrumb.component';
+import { CaseAmlSectionComponent } from './kyc-case/case-aml-section/case-aml-section.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -137,7 +139,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     WebhooksComponent,
     ConfirmationModalComponent,
     FooterComponent,
-    OstToggleComponent
+    OstToggleComponent,
+    CaseBreadcrumbComponent,
+    CaseAmlSectionComponent
   ],
   imports: [
     BrowserModule,

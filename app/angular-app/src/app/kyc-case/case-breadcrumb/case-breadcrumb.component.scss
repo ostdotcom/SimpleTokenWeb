@@ -1,0 +1,16 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.breadcrumb{
+  background-color: transparent;
+  padding: 0.75rem 0;
+  .breadcrumb-item + .breadcrumb-item::before{
+    content: '>'
+  }
+  .kyc-dashboard-breadcrumb{
+    color: $yellow-800;
+    border-bottom: none;
+    font-weight: $font-weight-normal;
+    font-weight: $font-weight-600;
+    letter-spacing: 1px;
+  }
+}
