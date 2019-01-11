@@ -12,44 +12,50 @@ export class CaseFooterSectionComponent implements OnInit {
   constructor( private utilitites : UtilitiesService ,
                public appConfig: AppConfigService, ) { }
 
-  @Input('response') response : Object = null ; 
-  @Input('showPageStateFn') showPageState : Function; 
+  @Input('response') response : Object = null ;
+  @Input('showPageStateFn') showPageState : Function;
+  @Input('amlUnMatchedIds') amlUnMatchedIds : Array< string > = null;
+  @Input('amlMatchedIds') amlMatchedIds : Array< string > = null;
 
-  caseDetails : Object = null ; 
-  amlDetail   : Object = null ; 
-  adminStatus : string = null ; 
-  amlStatus   : string = null ; 
-  amlProcessingStatus : string = null ; 
+  caseDetails : Object = null ;
+  amlDetail   : Object = null ;
+  adminStatus : string = null ;
+  amlStatus   : string = null ;
+  amlProcessingStatus : string = null ;
 
   ngOnInit() {
     this.caseDetails = this.utilitites.deepGet( this.response ,  "data.case_detail") || {};
     this.adminStatus = this.caseDetails['admin_status']
-    this.amlStatus = this.caseDetails['aml_status'];  
-    this.amlDetail = this.utilitites.deepGet( this.response ,  "data.aml_detail") || {}; 
-    this.amlProcessingStatus = this.amlDetail['aml_processing_status']; 
+    this.amlStatus = this.caseDetails['aml_status'];
+    this.amlDetail = this.utilitites.deepGet( this.response ,  "data.aml_detail") || {};
+    this.amlProcessingStatus = this.amlDetail['aml_processing_status'];
   }
 
   /**
-   * AML status should be unproccessed 
-   * OR AML status should be processing && Admin status should not be qualified 
+   * AML status should be unproccessed
+   * OR AML status should be processing && Admin status should not be qualified
    **/
   isTZeroState(){
-    return this.amlProcessingStatus == "unprocessed" || 
-    ( this.amlProcessingStatus == "processing" && this.adminStatus != "qualified" ) ; 
+    return this.amlProcessingStatus == "unprocessed" ||
+    ( this.amlProcessingStatus == "processing" && this.adminStatus != "qualified" ) ;
   }
 
   /**
-   * AML processing status should be processing && Admin status is qualified 
+   * AML processing status should be processing && Admin status is qualified
    **/
   isPreTOneState(){
-    return this.amlProcessingStatus == "processing" && this.adminStatus == "qualified"; 
+    return this.amlProcessingStatus == "processing" && this.adminStatus == "qualified";
   }
 
   /**
-   * AML processing status should be processed && Admin status is qualified 
+   * AML processing status should be processed && Admin status is qualified
    **/
   isTOneState(){
-    return this.amlProcessingStatus == "processed" && this.adminStatus == "qualified" ; 
+    return this.amlProcessingStatus == "processed" && this.adminStatus == "qualified" ;
+  }
+
+  checkAMLActionTaken() {
+    return (this.amlMatchedIds.length >0 || this.amlUnMatchedIds.length >0);
   }
 
 

@@ -13,26 +13,30 @@ export class CaseAmlSectionComponent implements OnInit {
   constructor(  private utilitites : UtilitiesService ) { }
 
   @Input('response') response : Object = null ;
-  @Input('amlUnMatchedIds') amlUnMatchedIds : Array< string > = null;  
-  @Input('amlMatchedIds') amlMatchedIds : Array< string > = null;  
-  
+  @Input('amlUnMatchedIds') amlUnMatchedIds : Array< string > = null;
+  @Input('amlMatchedIds') amlMatchedIds : Array< string > = null;
 
-  caseDetails : Object =  null ; 
-  amlDetail : Object = null; 
-  amlStatus : string = null ; 
-  amlProcessingStatus : string = null ; 
-  amlMatchesPresent : boolean = null;  
-  allNegativeMatches : boolean = false; 
-  amlMatchList : Array< any > = null ; 
+
+  caseDetails : Object =  null ;
+  amlDetail : Object = null;
+  amlStatus : string = null ;
+  amlProcessingStatus : string = null ;
+  amlMatchesPresent : boolean = null;
+  allNegativeMatches : boolean = false;
+  amlMatchList : Array< any > = null ;
+  allAMLIds: Array<string> = [];
 
   ngOnInit() {
      this.caseDetails = this.utilitites.deepGet( this.response ,  "data.case_detail") || {};
-     this.amlStatus = this.caseDetails['aml_status'];  
-     this.amlDetail = this.utilitites.deepGet( this.response ,  "data.aml_detail") || {}; 
-     this.amlProcessingStatus = this.amlDetail['aml_processing_status']; 
+     this.amlStatus = this.caseDetails['aml_status'];
+     this.amlDetail = this.utilitites.deepGet( this.response ,  "data.aml_detail") || {};
+     this.amlProcessingStatus = this.amlDetail['aml_processing_status'];
 
      //TODO this.amlMatchList = this.amlDetail['aml_matches']; uncomment this once service integration done
     this.amlMatchList = [{"qr_code": 123, "status":""},{"qr_code": 134, "status":""}];
+    for(let match of this.amlMatchList) {
+      this.allAMLIds.push(match['qr_code']);
+    }
     this.amlMatchesPresent = this.amlMatchList && this.amlMatchList.length > 0;
 
   }
@@ -50,6 +54,7 @@ export class CaseAmlSectionComponent implements OnInit {
       return;
     }
     this.allNegativeMatches = !this.allNegativeMatches;
+    this.amlUnMatchedIds = JSON.parse(JSON.stringify(this.allAMLIds));
   }
 
   handleMatchSelection( amlMatchCode ){
@@ -64,7 +69,7 @@ export class CaseAmlSectionComponent implements OnInit {
     }
     this.amlMatchedIds.push ( amlMatchCode );
     this.allNegativeMatches = false;
-    $('.no-hit-btn').removeClass('active');  //TODO FLAGED BASED 
+    $('.no-hit-btn').removeClass('active');  //TODO FLAGED BASED
   }
 
   handleNoMatchSelection( amlMatchCode ){

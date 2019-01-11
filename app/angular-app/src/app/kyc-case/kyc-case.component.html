@@ -11,16 +11,16 @@
   <div class="mt-3">
 
     <ng-container *ngIf="showCase">
-      
+
       <div class="container mb-4">
-       
+
          <case-breadcrumb></case-breadcrumb>
 
          <kyc-case-alert [response]="response"></kyc-case-alert>
 
          <!----------------OCR FR SECTION START----------->
           <div class="row mt-4">
-            
+
             <div class="col-12 col-md-4 mb-3 d-flex">
               <div class="card box-border w-100">
                 <div class="card-body">
@@ -38,12 +38,12 @@
                       <span class="key">AML/CTF Status : </span>
                       <span class="value {{amlCtfStatusConfig.class}}">{{amlCtfStatusConfig.text}}</span>
                     </div>
-                    <span *ngIf="caseDetails.retry_aml == 1" class="button-UI text-right text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>
+                    <!--<span *ngIf="caseDetails.retry_aml == 1" class="button-UI text-right text-uppercase" data-toggle="modal" data-target="#retryCynopsisModal">Retry cynopsis</span>-->
                   </div>
                 </div>
               </div>
             </div>
-           
+
             <div class="col-12 col-md-4 mb-3 d-flex">
               <div class="card box-border w-100">
                 <div class="card-body">
@@ -60,7 +60,7 @@
                 </div>
               </div>
             </div>
-           
+
             <div class="col-12 col-md-4 mb-3 d-flex">
               <div class="card box-border w-100">
                 <div class="card-body">
@@ -355,8 +355,8 @@
 
           <!--AML SECTION START--->
             <case-aml-section [response]="response"
-                              [amlUnMatchedIds]='amlUnMatchedIds'  
-                              [amlMatchedIds]='amlMatchedIds'> 
+                              [amlUnMatchedIds]='amlUnMatchedIds'
+                              [amlMatchedIds]='amlMatchedIds'>
             </case-aml-section>
           <!--AML SECTION END----->
 
@@ -380,7 +380,10 @@
       </div>
 
       <!----BUTTON FOOTER SECTION START---->
-      <case-footer-section [response]="response" [showPageStateFn]="showPageStateFn"  >
+      <case-footer-section [response]="response"
+                           [showPageStateFn]="showPageStateFn"
+                           [amlUnMatchedIds]='amlUnMatchedIds'
+                           [amlMatchedIds]='amlMatchedIds'>
       </case-footer-section>
        <!----BUTTON FOOTER SECTION END---->
 
@@ -390,7 +393,7 @@
                   (closeReportIssueEvent)="showPageState()" [userDetails]='userDetails'
       [caseId]='caseId'>
     </report-issues>
-     
+
   </div>
 </ng-container>
 
@@ -410,6 +413,14 @@
   [actionBtnPrimaryClass]="'btn-success'" (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
     <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
+  </ng-container>
+</kyc-case-action-modal>
+
+<kyc-case-action-modal [postApi]="'api/admin/kyc/qualify'" [params]="getParams()" [modalId]="'approveDetailsModal'" [actionBtnPrimaryName]="'QUALIFY KYC'"
+                       [actionBtnPrimaryClass]="'btn-success'" (actionSuccessEvent)="onActionSuccess( $event )">
+  <ng-container class="modal-body-content">
+    <h5 class="modal-title text-center">There are potential risks in qualifying this user.
+      Are you sure you want to qualify the user?</h5>
   </ng-container>
 </kyc-case-action-modal>
 

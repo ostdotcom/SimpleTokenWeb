@@ -3,7 +3,7 @@
         <div class="container-fluid button-container py-2">
           <div class="container mt-2">
             <ng-container *ngIf="caseDetails.is_case_closed == 1 then caseClosed else caseOpen"></ng-container>
-          
+
             <!----Close case section start---->
             <ng-template #caseClosed>
               <div class="d-flex justify-content-center align-items-center mb-2">
@@ -34,56 +34,70 @@
               </div>
             </ng-template>
             <!----Close case section end---->
-          
-          
+
+
             <!----Open case section start---->
             <ng-template #caseOpen>
-              <div class="float-lg-right">
+              <div class="w-100">
 
                  <!----T-0 state start---->
                 <ng-container *ngIf="isTZeroState()">
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
-                      <button type="button" 
-                        class="btn btn-secondary mr-2 mb-2 text-uppercase pull-left"
+                      <button type="button"
+                        class="btn btn-secondary mr-2 mb-2 text-uppercase float-left"
                         (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
                   </ng-container>
-                  <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" 
-                          data-toggle="modal" data-target="#denyActionModal">Deny Case 
-                  </button>
-                  <button type="button" class="btn btn-success mb-2 text-uppercase" 
-                            data-toggle="modal" data-target="#approveDetailsModal">APPROVE DETAILS
-                  </button>
-                </ng-container> 
-                <!----T-0 state end----> 
-                
+                  <div class="float-right">
+                    <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase"
+                            data-toggle="modal" data-target="#denyActionModal">Deny Case
+                    </button>
+                    <button type="button" class="btn btn-success mb-2 text-uppercase"
+                              data-toggle="modal" data-target="#approveDetailsModal">APPROVE DETAILS
+                    </button>
+                  </div>
+                </ng-container>
+                <!----T-0 state end---->
+
                 <!----Pre T-1 state start---->
                 <ng-container *ngIf="isPreTOneState()">
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
-                      <button type="button" 
-                        class="btn btn-secondary mr-2 mb-2 text-uppercase pull-left"
+                      <button type="button"
+                        class="btn btn-secondary mr-2 mb-2 text-uppercase float-left"
                         (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
                   </ng-container>
-                  <button type="button" disabled class="btn btn-danger mr-2 mb-2 text-uppercase">Deny Case</button>
-                  <button type="button" disabled class="btn btn-success mb-2 text-uppercase" >APPROVE CASE</button>
+                  <div class="float-right">
+                    <button type="button" disabled class="btn btn-danger mr-2 mb-2 text-uppercase">Deny Case</button>
+                    <button type="button" disabled class="btn btn-success mb-2 text-uppercase" >APPROVE CASE</button>
+                  </div>
                 </ng-container>
                 <!----Pre T-1 state end---->
 
                 <!---- T-1 state start---->
-                <ng-container *ngIf="isTOneState()">
+                <ng-container *ngIf="true || isTOneState()">
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
-                      <button type="button" 
-                        class="btn btn-secondary mr-2 mb-2 text-uppercase pull-left"
+                      <button type="button"
+                        class="btn btn-secondary mr-2 mb-2 text-uppercase float-left"
                         (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
                   </ng-container>
-                  <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" 
-                            data-toggle="modal" data-target="#denyActionModal">Deny Case
-                  </button>
-                  <button type="button" class="btn btn-success mb-2 text-uppercase" 
-                            data-toggle="modal" data-target="#qualifyActionModal">Qualify CASE
-                  </button>
+                  <div class="float-right">
+                    <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase"
+                              data-toggle="modal" data-target="#denyActionModal">Deny Case
+                    </button>
+                    <ng-container *ngIf="!checkAMLActionTaken()">
+                      <button type="button" class="btn btn-success mb-2 text-uppercase"
+                              data-toggle="modal" data-target="#amlErrorModal">Qualify CASE
+                      </button>
+                    </ng-container>
+                    <ng-container *ngIf="checkAMLActionTaken()">
+                      <button type="button" class="btn btn-success mb-2 text-uppercase"
+                              data-toggle="modal" data-target="#qualifyActionModal">Qualify CASE
+                      </button>
+                    </ng-container>
+
+                  </div>
                 </ng-container>
                 <!---- T-1 state end---->
-                
+
               </div>
             </ng-template>
             <!----Open case section end---->
@@ -92,4 +106,23 @@
           </div>
         </div>
         <div class="container-fluid button-container-phantom"></div>
+      </div>
+
+      <div id="amlErrorModal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
+          <div class="modal-content rounded-0">
+            <div class="modal-body text-center py-4">
+              <svg class="icon" style="width:40px; height: 40px">
+                <switch>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon">
+                  </use>
+                </switch>
+              </svg>
+              <h5 class="my-3">Please take AML/CTF action before choosing to qualify the user.</h5>
+              <div class="col-12 mt-3 text-center">
+                <button class="btn btn-primary" data-dismiss="modal">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
