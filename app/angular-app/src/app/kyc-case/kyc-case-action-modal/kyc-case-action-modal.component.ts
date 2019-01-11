@@ -19,7 +19,7 @@ export class KycCaseActionModalComponent  {
   isProcessing: boolean = false;
 
   @Input('postApi') postApi ;
-  @Input('caseId')  caseId  ;
+  @Input('params') params;
   @Input('modalId') modalId ;
 
   //Inputs with defaults
@@ -37,7 +37,7 @@ export class KycCaseActionModalComponent  {
   }
 
   onAction(){
-    let params = { 'id' : this.caseId };
+    let params = this.params;
     this.stateHandler.updateRequestStatus(this, true);
     this.http.post( this.postApi , {...params}).subscribe(
       response => {

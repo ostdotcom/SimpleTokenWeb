@@ -350,7 +350,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div *ngIf="showAMLSection()" class="row aml-section">
           <div class="col-12">
             <h5 class='customized-h5 pt-3 pb-1 d-inline-block'>AML/CTF details</h5>
             <div class="d-inline-block display-3">( 5 matches)
@@ -361,7 +361,7 @@
               <div class="card">
                 <div class="card-body">
 
-                  <div class="card-title mb-3">AML/CTF data</div>
+                  <div class="aml-msg mb-3">{{getAMLStatusMsg()}}</div>
                   <div class='row aml-content'>
 
                     <div class="card-col col-12">
@@ -373,9 +373,10 @@
                           <h6 class="card-title">MATCH</h6>
                         </div>
                         <div class="col-4 my-auto">
-                          <div class="btn-group-toggle" data-toggle="buttons" (click)="allNegativeMatchesPressed()">
+                          <div class="btn-group-toggle" [ngClass]="caseDetails.is_case_closed ? 'disable':''" data-toggle="buttons" (click)="allNegativeMatchesPressed( $event )">
                             <label class="btn p-2 no-hit-btn">
-                              <input type="checkbox" [(ngModel)]="allNegativeMatches"> <h6 class="mb-0 card-title">ALL NEGATIVE</h6>
+                              <input type="checkbox" [(ngModel)]="allNegativeMatches">
+                              <h6 class="mb-0 card-title">ALL NEGATIVE</h6>
                             </label>
                           </div>
                         </div>
@@ -384,14 +385,27 @@
                     <div *ngFor="let match of amlMatchList; let i = index" class="card-col col-12">
                       <div class="row">
                         <div class="col-4">
-                          50120
+                          <a href="{{match.pdf_url}}" target="_blank" class="mr-2">{{match.qr_code}}</a>
+                          <a href="{{match.pdf_url}}" target="_blank" class="border-none redirect">
+                            <svg class="align-middle redirect-icon" style="height: 15px;width: 15px">
+                              <switch>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redirect-icon"></use>
+                              </switch>
+                            </svg>
+                            <svg class="align-middle redirect-hover-icon" style="height: 15px;width: 15px">
+                              <switch>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redirect-hover-icon"></use>
+                              </switch>
+                            </svg>
+                          </a>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4" [ngClass]="caseDetails.is_case_closed ? 'disable':''">
                           <ost-toggle [switchName]="'aml_match'+i"
                                       [switchLabelYes]="'MATCH'"
                                       [switchLabelNo]="'NO HIT'"
-                                      [switchCheckNo]="allNegativeMatches"
-                                      (switchCheckYesSelected)="deselectAllNegativeMatchesBtn()"></ost-toggle>
+                                      [switchSelectNo]="allNegativeMatches"
+                                      (switchYesSelected)="handleMatchSelection( match.qr_code)"
+                                      (switchNoSelected)="handleNoMatchSelection( match.qr_code )"></ost-toggle>
                         </div>
                       </div>
                     </div>
@@ -485,28 +499,28 @@
 </ng-container>
 
 
-<kyc-case-action-modal [postApi]="'api/admin/kyc/deny-kyc'" [caseId]="caseId" [modalId]="'denyActionModal'" [actionBtnPrimaryName]="'DENY KYC'"
+<kyc-case-action-modal [postApi]="'api/admin/kyc/deny-kyc'" [params]="getParams()" [modalId]="'denyActionModal'" [actionBtnPrimaryName]="'DENY KYC'"
   [actionBtnPrimaryClass]="'btn-danger'" (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
     <h5 class="modal-title text-center">Are you sure you want to Deny this user?</h5>
   </ng-container>
 </kyc-case-action-modal>
 
-<kyc-case-action-modal [postApi]="'api/admin/kyc/qualify'" [caseId]="caseId" [modalId]="'qualifyActionModal'" [actionBtnPrimaryName]="'QUALIFY KYC'"
+<kyc-case-action-modal [postApi]="'api/admin/kyc/qualify'" [params]="getParams()" [modalId]="'qualifyActionModal'" [actionBtnPrimaryName]="'QUALIFY KYC'"
   [actionBtnPrimaryClass]="'btn-success'" (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
     <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
   </ng-container>
 </kyc-case-action-modal>
 
-<kyc-case-action-modal [postApi]="'api/admin/kyc/retry-aml-upload'" [caseId]="caseId" [modalId]="'retryCynopsisModal'"
+<kyc-case-action-modal [postApi]="'api/admin/kyc/retry-aml-upload'" [params]="getParams()" [modalId]="'retryCynopsisModal'"
   [actionBtnPrimaryName]="'RETRY'" (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
     <h5 class="modal-title text-center">Are you sure you want to Retry sending this users request to cynopsis?</h5>
   </ng-container>
 </kyc-case-action-modal>
 
-<kyc-case-action-modal [postApi]="'api/admin/kyc/open-case'" [caseId]="caseId" [modalId]="'reopenModal'" [actionBtnPrimaryName]="'Re-open'"
+<kyc-case-action-modal [postApi]="'api/admin/kyc/open-case'" [params]="getParams()" [modalId]="'reopenModal'" [actionBtnPrimaryName]="'Re-open'"
   (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
     <h5 class="modal-title">Are you sure you want to reopen this case?</h5>

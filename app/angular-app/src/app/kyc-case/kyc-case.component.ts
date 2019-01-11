@@ -41,8 +41,18 @@ export class KycCaseComponent implements OnInit {
   submittedDetails = ['birthdate', 'country', 'document_id_number', 'email', 'first_name', 'last_name', 'nationality',
                       'postal_code', 'submitted_at', 'street_address', 'city', 'state'];
 
-  amlMatchList :Array<object> = [{},{}];
+  amlDetail: object = {};
+  amlMatchList :Array<object> = [];
+  amlStatus: string = "";
+  amlProcessingStatus: string = "";
+  amlMatchesPresent: boolean = false;
   allNegativeMatches: boolean = false;
+
+
+  amlMatchedIds: Array<string> = [];
+  amlUnMatchedIds: Array<string> = [];
+  approveCaseParams: object = {};
+
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -106,9 +116,19 @@ export class KycCaseComponent implements OnInit {
     this.response  = res;
     this.caseDetails = res.data.case_detail;
     this.userDetails = res.data.user_detail;
+    this.amlDetail = res.data.aml_detail;
     this.user_kyc_comparison_detail = res.data.user_kyc_comparison_detail;
     this.client_kyc_pass_setting = res.data.client_kyc_pass_setting;
     this.ai_pass_detail = res.data.ai_pass_detail;
+
+
+    //this.amlMatchList = this.amlDetail['aml_matches']; uncomment this once service integration done
+    this.amlMatchList = [{"qr_code": 123, "status":""},{"qr_code": 134, "status":""}];
+    this.amlMatchesPresent = this.amlMatchList && this.amlMatchList.length > 0;
+    this.amlStatus = this.caseDetails.aml_status;
+    this.amlProcessingStatus = this.amlDetail && this.amlDetail['aml_processing_status'];
+
+
     this.ocr_comparison_fields = this.client_kyc_pass_setting.ocr_comparison_fields;
     this.image_processing_status =  this.user_kyc_comparison_detail.image_processing_status;
     this.userDetails['extraDiv'] = this.checkForOddSections();
@@ -272,16 +292,86 @@ export class KycCaseComponent implements OnInit {
       }
   }
 
-  allNegativeMatchesPressed( ){
+  allNegativeMatchesPressed( event ){
+    if(this.caseDetails.is_case_closed){
+      event.stopPropagation();
+      event.preventDefault();
+      return;
+    }
     this.allNegativeMatches = !this.allNegativeMatches;
   }
 
-  deselectAllNegativeMatchesBtn(){
+  handleMatchSelection( amlMatchCode ){
+    if(this.caseDetails.is_case_closed){
+      event.stopPropagation();
+      event.preventDefault();
+      return;
+    }
+    let index = this.amlUnMatchedIds.indexOf(amlMatchCode);
+    if (index > -1) {
+      this.amlUnMatchedIds.splice(index, 1);
+    }
+    this.amlMatchedIds.push ( amlMatchCode );
     this.allNegativeMatches = false;
     $('.no-hit-btn').removeClass('active');
   }
 
+  handleNoMatchSelection( amlMatchCode ){
+    if(this.caseDetails.is_case_closed){
+      event.stopPropagation();
+      event.preventDefault();
+      return;
+    }
+    let index = this.amlMatchedIds.indexOf(amlMatchCode);
+    if (index > -1) {
+      this.amlMatchedIds.splice(index, 1);
+    }
+    this.amlUnMatchedIds.push( amlMatchCode );
+  }
 
+  getAMLStatusMsg(){
+    if(this.caseDetails.is_case_closed) {
+      if(this.amlStatus == 'approved' || this.amlStatus == 'cleared') {
+        if(this.amlMatchesPresent){
+          return "The AML/CTF has been automatically approved."
+        } else{
+          return "The AML/CTF has been manually approved."
+        }
+      } else if( this.amlStatus == 'rejected') {
+        return "The AML/CTF has been manually denied."
+      } else{
+        return this.getAMLMatchMsg();
+      }
+    } else{
+      if(this.amlProcessingStatus == 'processing' && this.caseDetails.admin_status == 'qualified') {
+        return "Awaiting AML/CTF data."
+      } else{
+        return this.getAMLMatchMsg();
+      }
+    }
+  }
+
+  getAMLMatchMsg(){
+    if(this.amlMatchesPresent){
+      return "AML/CTF Matches."
+    } else{
+      return "No matches found."
+    }
+  }
+
+  showAMLSection() {
+    return (this.caseDetails.is_case_closed ||
+      (this.amlProcessingStatus == 'processed' ||
+        (this.amlProcessingStatus == 'processing' && this.caseDetails.admin_status == 'qualified')))
+  }
+
+  getParams(){
+    return {
+      'id' : this.caseId,
+      'matched_ids' : this.amlMatchedIds,
+      'unmatched_ids' : this.amlUnMatchedIds
+    }
+  }
 }
 
 

@@ -14,21 +14,24 @@ export class OstToggleComponent implements OnInit, OnChanges {
   @Input('switchName') switchName : string;
   @Input('switchLabelYes') switchLabelYes : string;
   @Input('switchLabelNo') switchLabelNo : string;
-  @Input('switchCheckNo') switchCheckNo? : boolean;
-  @Output('switchCheckYesSelected') switchCheckYesSelectedEvent?: EventEmitter<any> = new EventEmitter();
+  @Input('switchSelectNo') switchSelectNo? : boolean;
+  @Output('switchYesSelected') switchYesSelectedEvent: EventEmitter<any> = new EventEmitter();
+  @Output('switchNoSelected') switchNoSelectedEvent: EventEmitter<any> = new EventEmitter();
 
   ngOnInit() {
   }
 
-  clicked(){
-    console.log('clicked');
-    this.switchCheckYesSelectedEvent.emit();
+  selectedYes(){
+    this.switchYesSelectedEvent.emit();
+  }
+
+  selectedNo(){
+    this.switchNoSelectedEvent.emit();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    debugger;
-    if (changes['switchCheckNo']) {
-      if(this.switchCheckNo){
+    if (changes['switchSelectNo']) {
+      if(this.switchSelectNo){
         $('.switch_yes').parent().removeClass('active');
       }
     }

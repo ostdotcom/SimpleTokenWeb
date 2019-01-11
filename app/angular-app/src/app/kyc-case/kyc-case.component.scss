@@ -275,13 +275,34 @@
   .card-col:nth-child(even){
     background-color: $green-1000;
   }
+  & .disable{
+    opacity: 0.5;
+  }
 }
 
 .no-hit-btn{
   border: 1px solid $blue-400;
   border-radius: $border-radius;
   color: $blue-800;
-  &:active, &.active{
+  &.active{
     background-color: $blue-400;
   }
+}
+
+.redirect-hover-icon{
+  display: none;
+}
+
+a.redirect:hover{
+  .redirect-icon{
+    display: none;
+  }
+  .redirect-hover-icon{
+    display: inline;
+  }
+}
+
+.aml-msg{
+  font-size: 0.8rem;
+  letter-spacing: 2px;
 }
