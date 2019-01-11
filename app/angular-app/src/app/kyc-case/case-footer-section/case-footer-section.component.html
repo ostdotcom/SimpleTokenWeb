@@ -3,6 +3,8 @@
         <div class="container-fluid button-container py-2">
           <div class="container mt-2">
             <ng-container *ngIf="caseDetails.is_case_closed == 1 then caseClosed else caseOpen"></ng-container>
+          
+            <!----Close case section start---->
             <ng-template #caseClosed>
               <div class="d-flex justify-content-center align-items-center mb-2">
                 <ng-container *ngIf="caseDetails.case_reopen_inprocess || caseDetails.whitelist_confirmation_pending then caseInProcess else caseNotReopening;">
@@ -31,17 +33,62 @@
                 </ng-template>
               </div>
             </ng-template>
+            <!----Close case section end---->
+          
+          
+            <!----Open case section start---->
             <ng-template #caseOpen>
               <div class="float-lg-right">
-                <ng-container *ngIf="appConfig.hasEmailSetup()"><!--same-->
-                  <button type="button" class="btn btn-secondary mr-2 mb-2 text-uppercase" (click)="showPageState(false, true)">Report Issue</button>
+
+                 <!----T-0 state start---->
+                <ng-container *ngIf="isTZeroState()">
+                  <ng-container *ngIf="appConfig.hasEmailSetup()">
+                      <button type="button" 
+                        class="btn btn-secondary mr-2 mb-2 text-uppercase pull-left"
+                        (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
+                  </ng-container>
+                  <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" 
+                          data-toggle="modal" data-target="#denyActionModal">Deny Case 
+                  </button>
+                  <button type="button" class="btn btn-success mb-2 text-uppercase" 
+                            data-toggle="modal" data-target="#approveDetailsModal">APPROVE DETAILS
+                  </button>
+                </ng-container> 
+                <!----T-0 state end----> 
+                
+                <!----Pre T-1 state start---->
+                <ng-container *ngIf="isPreTOneState()">
+                  <ng-container *ngIf="appConfig.hasEmailSetup()">
+                      <button type="button" 
+                        class="btn btn-secondary mr-2 mb-2 text-uppercase pull-left"
+                        (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
+                  </ng-container>
+                  <button type="button" disabled class="btn btn-danger mr-2 mb-2 text-uppercase">Deny Case</button>
+                  <button type="button" disabled class="btn btn-success mb-2 text-uppercase" >APPROVE CASE</button>
                 </ng-container>
+                <!----Pre T-1 state end---->
 
-
-                <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" data-toggle="modal" data-target="#denyActionModal">Deny</button>
-                <button type="button" class="btn btn-success mb-2 text-uppercase" data-toggle="modal" data-target="#qualifyActionModal">Qualify</button>
+                <!---- T-1 state start---->
+                <ng-container *ngIf="isTOneState()">
+                  <ng-container *ngIf="appConfig.hasEmailSetup()">
+                      <button type="button" 
+                        class="btn btn-secondary mr-2 mb-2 text-uppercase pull-left"
+                        (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
+                  </ng-container>
+                  <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase" 
+                            data-toggle="modal" data-target="#denyActionModal">Deny Case
+                  </button>
+                  <button type="button" class="btn btn-success mb-2 text-uppercase" 
+                            data-toggle="modal" data-target="#qualifyActionModal">Qualify CASE
+                  </button>
+                </ng-container>
+                <!---- T-1 state end---->
+                
               </div>
             </ng-template>
+            <!----Open case section end---->
+
+
           </div>
         </div>
         <div class="container-fluid button-container-phantom"></div>
