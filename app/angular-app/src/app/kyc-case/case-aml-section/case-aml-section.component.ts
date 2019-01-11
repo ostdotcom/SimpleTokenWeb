@@ -13,8 +13,8 @@ export class CaseAmlSectionComponent implements OnInit {
   constructor(  private utilitites : UtilitiesService ) { }
 
   @Input('response') response : Object = null ;
-  @Input('amlUnMatchedIds') amlUnMatchedIds : Array< string > = null;
-  @Input('amlMatchedIds') amlMatchedIds : Array< string > = null;
+  @Input('amlUnMatchedIds') amlUnMatchedIds : Array< string > ;
+  @Input('amlMatchedIds') amlMatchedIds : Array< string > ;
 
 
   caseDetails : Object =  null ;
