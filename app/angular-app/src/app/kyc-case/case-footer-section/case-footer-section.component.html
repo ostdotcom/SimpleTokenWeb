@@ -83,16 +83,10 @@
                     <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase"
                               data-toggle="modal" data-target="#denyActionModal">Deny Case
                     </button>
-                    <ng-container *ngIf="amlMatchesPresent && !amlActionTaken()">
-                      <button type="button" class="btn btn-success mb-2 text-uppercase"
-                              data-toggle="modal" data-target="#amlErrorModal">Qualify CASE
-                      </button>
-                    </ng-container>
-                    <ng-container *ngIf="amlMatchesPresent && amlActionTaken()">
-                      <button type="button" class="btn btn-success mb-2 text-uppercase"
-                              data-toggle="modal" data-target="#qualifyActionModal">Qualify CASE
-                      </button>
-                    </ng-container>
+                    <!-- refactor this-->
+                    <button type="button" class="btn btn-success mb-2 text-uppercase"
+                            (click)="qualifyCase()">Qualify CASE
+                    </button>
 
                   </div>
                 </ng-container>

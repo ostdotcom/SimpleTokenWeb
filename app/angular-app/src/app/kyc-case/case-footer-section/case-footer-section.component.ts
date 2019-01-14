@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UtilitiesService } from '../../services/utilities.service';
 import { AppConfigService } from '../../services/app-config.service';
 
+declare var $:any;
+
 @Component({
   selector: 'case-footer-section',
   templateUrl: './case-footer-section.component.html',
@@ -60,6 +62,18 @@ export class CaseFooterSectionComponent implements OnInit {
 
   amlActionTaken() {
     return (this.amlMatchedIds.length >0 || this.amlUnMatchedIds.length >0 );
+  }
+
+  qualifyCase() {
+    if( this.amlMatchesPresent ) {
+      if( this.amlActionTaken() ) {
+        $('#amlErrorModal').modal('show');
+      } else{
+        $('#qualifyActionModal').modal('show');
+      }
+    } else{
+      $('#qualifyActionModal').modal('show');
+    }
   }
 
 
