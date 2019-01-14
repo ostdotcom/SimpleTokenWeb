@@ -58,7 +58,7 @@ export class CaseAmlSectionComponent implements OnInit {
   getAMLStatusMsg(){
     if(this.caseDetails['is_case_closed']) {
       if(this.amlStatus == 'approved' || this.amlStatus == 'cleared') {
-        if(this.amlMatchesPresent){
+        if(!this.amlMatchesPresent){
           return "The AML/CTF has been automatically approved."
         } else{
           return "The AML/CTF has been manually approved."
