@@ -2,7 +2,7 @@
 <div  *ngIf="showAMLSection()"class="row aml-section">
   <div class="col-12">
     <h5 class='customized-h5 pt-3 pb-1 d-inline-block'>AML/CTF details</h5>
-    <div class="d-inline-block display-3">( {{getAMLMatchCount()}} matches)
+    <div *ngIf="amlMatchesPresent" class="d-inline-block display-3">( {{getAMLMatchCount()}} matches)
     </div>
   </div>
   <div class="col-12 col-md-6 pr-0 mb-3">
