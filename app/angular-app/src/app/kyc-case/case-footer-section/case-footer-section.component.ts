@@ -19,6 +19,8 @@ export class CaseFooterSectionComponent implements OnInit {
 
   caseDetails : Object = null ;
   amlDetail   : Object = null ;
+  amlMatchList: Array<any>;
+  amlMatchesPresent;
   adminStatus : string = null ;
   amlStatus   : string = null ;
   amlProcessingStatus : string = null ;
@@ -29,6 +31,8 @@ export class CaseFooterSectionComponent implements OnInit {
     this.amlStatus = this.caseDetails['aml_status'];
     this.amlDetail = this.utilities.deepGet( this.response ,  "data.aml_detail") || {};
     this.amlProcessingStatus = this.amlDetail['aml_processing_status'];
+    this.amlMatchList = this.amlDetail && this.amlDetail['aml_matches'] || [];
+    this.amlMatchesPresent  = this.amlMatchList && this.amlMatchList.length > 0;
   }
 
   /**
@@ -55,7 +59,7 @@ export class CaseFooterSectionComponent implements OnInit {
   }
 
   amlActionTaken() {
-    return (this.amlMatchedIds.length >0 || this.amlUnMatchedIds.length >0);
+    return (this.amlMatchedIds.length >0 || this.amlUnMatchedIds.length >0 );
   }
 
 

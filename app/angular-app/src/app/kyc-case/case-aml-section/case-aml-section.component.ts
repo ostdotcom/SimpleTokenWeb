@@ -91,7 +91,7 @@ export class CaseAmlSectionComponent implements OnInit {
   }
 
   amlActionTaken() {
-    return (this.amlMatchedIds.length >0 || this.amlUnMatchedIds.length >0 || !this.amlMatchesPresent);
+    return (this.amlMatchedIds.length >0 || this.amlUnMatchedIds.length >0 );
   }
 
   onOptionSelect( optionObj ){
