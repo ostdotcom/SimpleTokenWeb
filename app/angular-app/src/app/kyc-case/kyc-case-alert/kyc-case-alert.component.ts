@@ -24,8 +24,10 @@ export class KycCaseAlertComponent  {
   alertMessage  : string      = null;
   alertConfig   : object      = null;
   failedReason  : Array<any>  = [];
+  isMatchDetectedMsg : boolean = false;
 
   amlMatchCount: number;
+  amlProcessingStatus: string;
 
 
   ngAfterContentInit() {
@@ -65,6 +67,7 @@ export class KycCaseAlertComponent  {
         ;
 
     this.amlMatchCount = aml_matches.length
+    this.amlProcessingStatus = aml_processing_status
 
     if( last_qualified_type == "auto_approved" ){
       approve_type_text = " automatically ";
@@ -123,11 +126,12 @@ export class KycCaseAlertComponent  {
 
     checkForAMLProcessingStatus = () => {
       if( aml_processing_status == "processed"){
-        setAlertMessageAndStatus("AML checks were processed with (" , "success")
+        this.isMatchDetectedMsg =  true ;
+        setAlertMessageAndStatus("AML check was successfully processed" , "success")
       } else {
         setAlertMessageAndStatus("Case details have been qualified. Awaiting AML/CTF info.", "success")
       }
-    }
+    };
 
      whiteListHandling = () => {
         if (whitelist_status == 'unprocessed' || whitelist_status == 'started') {
