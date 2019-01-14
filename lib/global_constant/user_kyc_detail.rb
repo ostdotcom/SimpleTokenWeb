@@ -47,61 +47,6 @@ module GlobalConstant
 
       ### Admin Status End ###
 
-      ### Cynopsis Status Start ###
-
-      def all_cynopsis_status
-        'all'
-      end
-
-      def unprocessed_cynopsis_status
-        'unprocessed'
-      end
-
-      def cleared_cynopsis_status
-        'cleared'
-      end
-
-      def pending_cynopsis_status
-        'pending'
-      end
-
-      def approved_cynopsis_status
-        'approved'
-      end
-
-      def rejected_cynopsis_status
-        'rejected'
-      end
-
-      def failed_cynopsis_status
-        'failed'
-      end
-
-      def cynopsis_kyc_statuses
-        {
-            all_cynopsis_status => 'All',
-            unprocessed_cynopsis_status => 'Unprocessed',
-            cleared_cynopsis_status => 'Cleared',
-            pending_cynopsis_status => 'Pending',
-            approved_cynopsis_status => 'Approved',
-            rejected_cynopsis_status => 'Rejected',
-            failed_cynopsis_status => 'Failed'
-        }
-      end
-      def cynopsis_kyc_status_class
-        {
-            unprocessed_cynopsis_status => 'yello',
-            cleared_cynopsis_status => 'green',
-            pending_cynopsis_status => 'yello',
-            approved_cynopsis_status => 'green',
-            rejected_cynopsis_status => 'red',
-            failed_cynopsis_status => 'red'
-        }
-      end
-
-      ### Cynopsis Status End ###
-
-
 
       ### Admin Status End ###
 

@@ -7,7 +7,7 @@ module GlobalConstant
 
     class << self
 
-      # Get Cynopsis Countries From Ip
+      # Get Aml Countries From Ip
       #
       # * Author: Tejas
       # * Date: 01/08/2018
@@ -15,15 +15,15 @@ module GlobalConstant
       #
       # @return [Array]
       #
-      def get_cynopsis_countries_from_ip(ip_address)
+      def get_aml_countries_from_ip(ip_address)
         geoip_country = get_maxmind_country_from_ip(ip_address)
         return [] if geoip_country.blank?
-        blacklisted_countries = maxmind_to_cynopsis_country_hash[geoip_country.upcase]
+        blacklisted_countries = maxmind_to_aml_country_hash[geoip_country.upcase]
         blacklisted_countries.present? ? blacklisted_countries : []
       end
 
 
-      # Get Preferred Cynopsis Country From Ip
+      # Get Preferred Aml Country From Ip
       #
       # * Author: Tejas
       # * Date: 01/08/2018
@@ -31,19 +31,19 @@ module GlobalConstant
       #
       # @return [String]
       #
-      def get_preferred_cynopsis_country_from_ip(ip_address)
+      def get_preferred_aml_country_from_ip(ip_address)
         geoip_country = get_maxmind_country_from_ip(ip_address)
         return '' if geoip_country.blank?
 
-        cynopsis_geoip_countries = get_cynopsis_countries_from_ip(ip_address)
-        return '' if cynopsis_geoip_countries.blank?
+        aml_geoip_countries = get_aml_countries_from_ip(ip_address)
+        return '' if aml_geoip_countries.blank?
 
-        if cynopsis_geoip_countries.size == 1
-          return cynopsis_geoip_countries[0]
-        elsif  cynopsis_geoip_countries.include?(geoip_country)
+        if aml_geoip_countries.size == 1
+          return aml_geoip_countries[0]
+        elsif  aml_geoip_countries.include?(geoip_country)
           return geoip_country
         else
-          return maxmind_country_to_preferred_cynopsis_country_map[geoip_country].to_s
+          return maxmind_country_to_preferred_aml_country_map[geoip_country].to_s
         end
       end
 
@@ -61,7 +61,7 @@ module GlobalConstant
         geoip_country.to_s.upcase
       end
 
-      # list of cynopsis countries
+      # list of aml countries
       #
       # * Author: Tejas
       # * Date: 01/08/2018
@@ -70,10 +70,10 @@ module GlobalConstant
       # @return [Array]
       #
       def countries
-        @countries ||= cynopsis_country_to_maxmind_hash.keys
+        @countries ||= aml_country_to_maxmind_hash.keys
       end
 
-      # Maxmind country name To Preferred Cynopsis Country name map
+      # Maxmind country name To Preferred Aml Country name map
       #
       # * Author: Tejas
       # * Date: 01/08/2018
@@ -81,16 +81,16 @@ module GlobalConstant
       #
       # @return [Hash]
       #
-      def maxmind_country_to_preferred_cynopsis_country_map
+      def maxmind_country_to_preferred_aml_country_map
         {
-            "U.S. MINOR OUTLYING ISLANDS" => "UNITED STATES MINOR OUTLYING ISLANDS",
-            "REPUBLIC OF MOLDOVA" => "MOLDOVA",
-            "SAINT MARTIN" => "SAINT MARTIN (FRANCE)",
-            "UNITED STATES" => "UNITED STATES OF AMERICA"
+            # "U.S. MINOR OUTLYING ISLANDS" => "UNITED STATES MINOR OUTLYING ISLANDS",
+            # "REPUBLIC OF MOLDOVA" => "MOLDOVA",
+            # "SAINT MARTIN" => "ST. MAARTEN",
+            # "UNITED STATES" => "UNITED STATES OF AMERICA"
         }
       end
 
-      # List of cynopsis nationalities
+      # List of aml nationalities
       #
       # * Author: Tejas
       # * Date: 01/08/2018
@@ -112,18 +112,18 @@ module GlobalConstant
       private
 
 
-      # Cynopsis country name to Maxmind country hash
+      # Aml country name to Maxmind country hash
       #
       # * Author: Tejas
       # * Date: 01/08/2018
       # * Reviewed By: Aman
       #
-      # @return [Hash] one cynopsis country can have multiple maxmind country name
+      # @return [Hash] one aml country can have multiple maxmind country name
       #
-      def cynopsis_country_to_maxmind_hash
-        @cynopsis_country_to_maxmind_hash ||= begin
+      def aml_country_to_maxmind_hash
+        @aml_country_to_maxmind_hash ||= begin
           country_mapping = {}
-          cynopsis_country_to_maxmind_data.each do |row|
+          aml_country_to_maxmind_data.each do |row|
             key = row[0].upcase
             value = row.drop(1)
             country_mapping[key] = value
@@ -133,7 +133,7 @@ module GlobalConstant
       end
 
 
-      # Maxmind country name to Cynopsis country hash
+      # Maxmind country name to Aml country hash
       #
       # * Author: Tejas
       # * Date: 01/08/2018
@@ -141,14 +141,14 @@ module GlobalConstant
       #
       # @return [Hash]
       #
-      def maxmind_to_cynopsis_country_hash
-        @maxmind_to_cynopsis_country_hash ||= begin
+      def maxmind_to_aml_country_hash
+        @maxmind_to_aml_country_hash ||= begin
           inverse_hash = {}
-          cynopsis_country_to_maxmind_hash.each do |cynopsis_country, maxmind_countries|
+          aml_country_to_maxmind_hash.each do |aml_country, maxmind_countries|
             maxmind_countries.each do |maxmind_country|
               key = maxmind_country.upcase
               inverse_hash[key] ||= []
-              inverse_hash[key] << cynopsis_country
+              inverse_hash[key] << aml_country
             end
           end
           inverse_hash
@@ -163,8 +163,8 @@ module GlobalConstant
       #
       # @return [Hash]
       #
-      def cynopsis_country_to_maxmind_data
-        @cynopsis_country_to_maxmind_data ||= CSV.read("#{Rails.root}/config/cynopsis_country_to_maxmind_mapping.csv")
+      def aml_country_to_maxmind_data
+        @aml_country_to_maxmind_data ||= CSV.read("#{Rails.root}/config/aml_country_to_maxmind_mapping.csv")
       end
 
       # Fetch Country Nationality Mapping

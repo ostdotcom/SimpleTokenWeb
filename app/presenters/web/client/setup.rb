@@ -164,7 +164,7 @@ module Web
 
       # Validate ip of request
       #
-      # @param country_list_from_ip - Array of cynopsis_country
+      # @param country_list_from_ip - Array of aml_country
       #
       # * Author: Aman
       # * Date: 15/10/2017

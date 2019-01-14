@@ -91,7 +91,7 @@ class Web::BaseController < ApplicationController
     redirect_to "/#{path}#{extra_url_query_parameter}", status: http_status and return
   end
 
-  # Get IP Based Cynopsis Countries Name
+  # Get IP Based Aml Countries Name
   #
   # * Author: Sunil
   # * Date: 17/10/2017
@@ -99,13 +99,13 @@ class Web::BaseController < ApplicationController
   #
   # @returns [Array]
   #
-  def get_ip_to_cynopsis_countries
-    @ip_to_cynopsis_countries ||= begin
-      GlobalConstant::CountryNationality.get_cynopsis_countries_from_ip(ip_address)
+  def get_ip_to_aml_countries
+    @ip_to_aml_countries ||= begin
+      GlobalConstant::CountryNationality.get_aml_countries_from_ip(ip_address)
     end
   end
 
-  # Get IP Based Preferred Cynopsis Country Name
+  # Get IP Based Preferred Aml Country Name
   #
   # * Author: Tejas
   # * Date: 01/08/2018
@@ -113,9 +113,9 @@ class Web::BaseController < ApplicationController
   #
   # @returns [String]
   #
-  def get_ip_to_preferred_cynopsis_country
-    @ip_to_preferred_cynopsis_country ||= begin
-      GlobalConstant::CountryNationality.get_preferred_cynopsis_country_from_ip(ip_address)
+  def get_ip_to_preferred_aml_country
+    @ip_to_preferred_aml_country ||= begin
+      GlobalConstant::CountryNationality.get_preferred_aml_country_from_ip(ip_address)
     end
   end
 
