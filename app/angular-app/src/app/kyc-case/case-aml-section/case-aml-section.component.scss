@@ -6,9 +6,6 @@
     .card-col:nth-child(even){
       background-color: $green-1000;
     }
-    & .disable{
-      opacity: 0.65;
-    }
   }
 
   .no-hit-btn{
@@ -48,10 +45,6 @@
       word-wrap: break-word;
     }
 
-    &.card-body{
-      padding: 1rem;
-    }
-
     .card-row{
       margin-right: -1.23rem;
       margin-left: -1.23rem;
@@ -89,6 +82,9 @@
       }
     }
   }
+  }
+  .card-body{
+    padding: 0.95rem;
   }
 
 .error {

@@ -42,6 +42,8 @@ export class KycCaseComponent implements OnInit {
                       'postal_code', 'submitted_at', 'street_address', 'city', 'state'];
 
 
+  amlDetail;
+  amlMatchList;
   amlMatchedIds: Array<string> = [];
   amlUnMatchedIds: Array<string> = [];
 
@@ -111,6 +113,11 @@ export class KycCaseComponent implements OnInit {
     this.response  = res;
     this.caseDetails = res.data.case_detail;
     this.userDetails = res.data.user_detail;
+
+    this.amlDetail = res.data.aml_detail;
+    this.amlMatchList = this.amlDetail  && this.amlDetail['aml_matches'] || [];
+    this.createMatchLists();
+
     this.user_kyc_comparison_detail = res.data.user_kyc_comparison_detail;
     this.client_kyc_pass_setting = res.data.client_kyc_pass_setting;
     this.ai_pass_detail = res.data.ai_pass_detail;
@@ -127,6 +134,21 @@ export class KycCaseComponent implements OnInit {
     this.setAmlCtfStatusConfig();
     this.initTooltip();
     this.scrollTopService.scrollTop();
+  }
+
+  createMatchLists(){
+    this.amlMatchedIds = [];
+    this.amlUnMatchedIds = [];
+
+    for(let match of this.amlMatchList) {
+      let match_status = match['status'],
+        match_qr_code = match['qr_code'];
+      if( match_status == 'match' && this.amlMatchedIds.indexOf(match_qr_code) < 0 ){
+        this.amlMatchedIds.push(match_qr_code);
+      } else if( match_status == 'no_match' && this.amlUnMatchedIds.indexOf(match_qr_code) < 0 ) {
+        this.amlUnMatchedIds.push(match_qr_code);
+      }
+    }
   }
 
   showPageState(showCase = true, showReportIssue = false){

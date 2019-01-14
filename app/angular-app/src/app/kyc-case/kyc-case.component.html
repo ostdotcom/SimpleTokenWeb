@@ -407,14 +407,14 @@
   </ng-container>
 </kyc-case-action-modal>
 
-<kyc-case-action-modal [postApi]="'api/admin/kyc/qualify'" [params]="getParams()" [modalId]="'qualifyActionModal'" [actionBtnPrimaryName]="'QUALIFY KYC'"
+<kyc-case-action-modal [postApi]="'api/admin/kyc/approve-case'" [params]="getParams()" [modalId]="'qualifyActionModal'" [actionBtnPrimaryName]="'QUALIFY CASE'"
   [actionBtnPrimaryClass]="'btn-success'" (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
     <h5 class="modal-title text-center">Are you sure you want to qualify this user?</h5>
   </ng-container>
 </kyc-case-action-modal>
 
-<kyc-case-action-modal [postApi]="'api/admin/kyc/qualify'" [params]="getParams()" [modalId]="'approveDetailsModal'" [actionBtnPrimaryName]="'QUALIFY KYC'"
+<kyc-case-action-modal [postApi]="'api/admin/kyc/approve-details'" [params]="getParams()" [modalId]="'approveDetailsModal'" [actionBtnPrimaryName]="'APPROVE DETAILS'"
                        [actionBtnPrimaryClass]="'btn-success'" (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
     <h5 class="modal-title text-center">There are potential risks in qualifying this user.

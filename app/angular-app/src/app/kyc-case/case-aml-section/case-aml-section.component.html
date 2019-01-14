@@ -1,6 +1,5 @@
 
-<!---TODO REVERT--->
-<div  *ngIf="true || showAMLSection()"class="row aml-section">
+<div  *ngIf="showAMLSection()"class="row aml-section">
   <div class="col-12">
     <h5 class='customized-h5 pt-3 pb-1 d-inline-block'>AML/CTF details</h5>
     <div class="d-inline-block display-3">( {{getAMLMatchCount()}} matches)
@@ -47,7 +46,7 @@
                     </svg>
                   </a>
                 </div>
-                <div class="col-4" [ngClass]="caseDetails.is_case_closed ? 'disable':''">
+                <div class="col-4">
                   <aml-toggle [match]="match"
                               [amlMatchedIds]="amlMatchedIds"
                               [amlUnMatchedIds]="amlUnMatchedIds"
@@ -63,6 +62,6 @@
       </div>
     </div>
   </div>
+  <div class="error" *ngIf="!amlActionTaken()">Please confirm match status for at least one profile.</div>
 </div>
-<div class="error" *ngIf="!amlActionTaken()">Please confirm match status for at least one profile.</div>
 
