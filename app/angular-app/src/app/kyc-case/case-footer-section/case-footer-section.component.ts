@@ -64,16 +64,20 @@ export class CaseFooterSectionComponent implements OnInit {
     return (this.amlMatchedIds.length >0 || this.amlUnMatchedIds.length >0 );
   }
 
+  isSingleNoMatchSelected(){
+    return (this.amlMatchedIds.length == 0 || this.amlUnMatchedIds.length == 1 );
+  }
+
   qualifyCase() {
     if( this.amlMatchesPresent ) {
-      if( this.amlActionTaken() ) {
+      if( this.isSingleNoMatchSelected() ){
+        $('#amlErrorModal2').modal('show');
+      } else if( !this.amlActionTaken() ) {
         $('#amlErrorModal').modal('show');
-      } else{
-        $('#qualifyActionModal').modal('show');
       }
-    } else{
-      $('#qualifyActionModal').modal('show');
+      return ;
     }
+    $('#qualifyActionModal').modal('show');
   }
 
 
