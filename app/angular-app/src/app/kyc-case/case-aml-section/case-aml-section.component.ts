@@ -97,10 +97,8 @@ export class CaseAmlSectionComponent implements OnInit {
     let value = optionObj && optionObj.value  ;
     if( value == 1 ){
       this.allNegativeMatches = false ;
-    } else {
-        if(this.amlUnMatchedIds.length == this.amlMatchList.length){
-          this.allNegativeMatches = true ;
-        }
+    } else  if(this.amlUnMatchedIds.length == this.amlMatchList.length){
+      this.allNegativeMatches = true ;
     }
   }
 

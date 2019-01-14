@@ -37,6 +37,7 @@ export class AmlToggleComponent implements OnInit {
   }
 
   onSelect(  value ){
+    //TODO this code shouldnt be here , handle via input disabled state. 
     if(this.caseDetails['is_case_closed']){
       event.stopPropagation();
       event.preventDefault();
