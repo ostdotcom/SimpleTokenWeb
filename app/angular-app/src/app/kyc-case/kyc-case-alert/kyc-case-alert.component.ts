@@ -2,6 +2,9 @@ import { Component, Input } from '@angular/core';
 import { UtilitiesService } from '../../services/utilities.service';
 import { AppConfigService } from '../../services/app-config.service';
 import set = Reflect.set;
+import {ScrollTopService} from "../../services/scroll-top.service";
+
+declare var $:any;
 
 @Component({
   selector: 'kyc-case-alert',
@@ -13,13 +16,16 @@ export class KycCaseAlertComponent  {
   @Input('response') response : object = {};
 
   constructor(
-    private utilitites      : UtilitiesService,
-    private appConfig       : AppConfigService
+    private utilitites : UtilitiesService,
+    private appConfig  : AppConfigService,
+    private scrollTop  : ScrollTopService
   ) {}
 
   alertMessage  : string      = null;
   alertConfig   : object      = null;
   failedReason  : Array<any>  = [];
+
+  amlMatchCount: number;
 
 
   ngAfterContentInit() {
@@ -45,7 +51,6 @@ export class KycCaseAlertComponent  {
         alertStatus  = "",
         approve_type_text = null,
 
-        amlMatchCount = aml_matches.length,
 
         //All status functions.
         caseStatusCheck           : any,
@@ -58,6 +63,8 @@ export class KycCaseAlertComponent  {
         setAlertMessageAndStatus  : any,
         checkForAMLProcessingStatus: any
         ;
+
+    this.amlMatchCount = aml_matches.length
 
     if( last_qualified_type == "auto_approved" ){
       approve_type_text = " automatically ";
@@ -116,7 +123,7 @@ export class KycCaseAlertComponent  {
 
     checkForAMLProcessingStatus = () => {
       if( aml_processing_status == "processed"){
-        setAlertMessageAndStatus("AML checks were processed with ("+amlMatchCount+") matches" , "success")
+        setAlertMessageAndStatus("AML checks were processed with (" , "success")
       } else {
         setAlertMessageAndStatus("Case details have been qualified. Awaiting AML/CTF info.", "success")
       }
@@ -195,6 +202,12 @@ export class KycCaseAlertComponent  {
     token_sale_ended: "Case cannot be automatically qualified, as the token sale ended.",
     case_closed_for_auto_approve: "Case cannot be automatically qualified, as the case is closed for auto approve.",
     human_labels_percentage_low: "Case cannot be automatically qualified, due to human facial characteristics not matching in facial recognition."
+  }
+
+  scrollToAmlSection(){
+    let el = $('#aml-section-wrapper')[0],
+        fromEl = $('html,body');
+    this.scrollTop.scrollTo( el, fromEl);
   }
 
 }

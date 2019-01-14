@@ -1,24 +1,26 @@
-<div class="alert text-center px-0 
-            {{alertStyleClass}} 
-            {{viewMoreList && viewMoreList.length > 0 ? 'view-more-details-present':''}}" 
+<div class="alert text-center px-0
+            {{alertStyleClass}}
+            {{viewMoreList && viewMoreList.length > 0 ? 'view-more-details-present':''}}"
             role="alert" >
   <div class="message-container">
     <div class="message-content-wrap">
       <div class="d-inline-block">
         <ng-content select=".svg-container">
         </ng-content>
-        <div class="alert-message-wrap d-inline-block">{{alertMessage}}</div>
+        <div class="alert-message-wrap d-inline-block">
+          <ng-content select=".alert-message-content"></ng-content>
+        </div>
       </div>
     </div>
-    <div  class="d-inline-block view-more-details-wrap" 
+    <div  class="d-inline-block view-more-details-wrap"
           *ngIf="viewMoreList && viewMoreList.length > 0" >
-      <a class="view-more-details-text d-inline-block "  
+      <a class="view-more-details-text d-inline-block "
           (click)="onClick()"
-          data-toggle="collapse" 
-          data-target="#detailsList" 
+          data-toggle="collapse"
+          data-target="#detailsList"
           href="javascript:void(0)"
-          role="button" 
-          aria-expanded="false" 
+          role="button"
+          aria-expanded="false"
           aria-controls="detailsList">
         <span class="d-inline" *ngIf="isCollapsed">
             <span class="pr-1 display-4 font-weight-500">View More</span>
@@ -37,18 +39,18 @@
               </svg>
         </span>
       </a>
-    </div>  
-  </div> 
+    </div>
+  </div>
   <div id="detailsList" class="collapse ">
       <div class="list-details text-left ">
         <div class="list-details-container pt-2">
             <ul class="mb-0">
               <li class="list-item" *ngFor="let item of viewMoreList">
                   {{item}}
-              </li>  
-            </ul>  
-        </div>  
-      </div> 
-   </div> 
+              </li>
+            </ul>
+        </div>
+      </div>
+   </div>
 </div>
 

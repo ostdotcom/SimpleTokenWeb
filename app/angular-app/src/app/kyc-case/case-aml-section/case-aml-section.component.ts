@@ -43,9 +43,8 @@ export class CaseAmlSectionComponent implements OnInit {
 
   allNegativeMatchesPressed() {
     this.allNegativeMatches = !this.allNegativeMatches;
-    this.amlMatchedIds.splice(0,this.amlMatchedIds.length );
-    this.amlUnMatchedIds.splice(0,this.amlUnMatchedIds.length) ;
     if(this.allNegativeMatches){
+      this.amlUnMatchedIds.splice(0,this.amlUnMatchedIds.length) ;
       let qrCode = "";
       for(let cnt = 0 ; cnt < this.amlMatchList.length  ; cnt++ ){
         qrCode = this.amlMatchList[cnt]['qr_code'] ;

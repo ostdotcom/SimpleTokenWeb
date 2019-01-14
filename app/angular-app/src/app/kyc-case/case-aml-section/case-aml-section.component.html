@@ -1,5 +1,5 @@
 
-<div  *ngIf="showAMLSection()"class="row aml-section">
+<div  *ngIf="showAMLSection()"class="row aml-section" id="aml-section-wrapper">
   <div class="col-12">
     <h5 class='customized-h5 pt-3 pb-1 d-inline-block'>AML/CTF details</h5>
     <div *ngIf="amlMatchesPresent" class="d-inline-block display-3">( {{getAMLMatchCount()}} matches)

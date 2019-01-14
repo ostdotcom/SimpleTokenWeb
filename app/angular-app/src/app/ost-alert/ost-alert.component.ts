@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-declare var $:any; 
-
 @Component({
   selector: 'ost-alert',
   templateUrl: './ost-alert.component.html',
@@ -10,7 +8,6 @@ declare var $:any;
 export class OstAlertComponent implements OnInit {
 
   @Input("alertStyleClass")  alertStyleClass : string     = null
-  @Input("alertMessage")     alertMessage    : string     = null
   @Input("viewMoreList")     viewMoreList    : Array<any> = null;
 
   isCollapsed:boolean = true;
@@ -23,7 +20,7 @@ export class OstAlertComponent implements OnInit {
   onClick(){
     setTimeout( ()=> {
       this.isCollapsed = !this.isCollapsed;
-    }, 0)  
+    }, 0)
   }
 
 }

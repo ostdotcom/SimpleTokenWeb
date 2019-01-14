@@ -157,11 +157,7 @@ export class KycCaseComponent implements OnInit {
   }
 
   onActionSuccess( res ){
-    if( res && res.data && res.data.case_detail ) {
-      this.onSuccess( res );
-    } else{
-      this.fetchCase();
-    }
+    this.fetchCase();
   }
 
   initDuplicateTable(){

@@ -3,6 +3,8 @@
 .aml-content{
     border-top: solid 1px $blue-400;
     text-align: center;
+    max-height: 400px;
+    overflow-y: auto;
     .card-col:nth-child(even){
       background-color: $green-1000;
     }
