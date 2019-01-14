@@ -17,6 +17,7 @@ export class ManageUserRowComponent implements OnInit {
 
   entityPath: string;
   status: any;
+  jUpdateEthSuccessModal :any = $('#updateEthSuccessModal');
 
   ngOnInit() {
     setTimeout(function(){
@@ -25,10 +26,6 @@ export class ManageUserRowComponent implements OnInit {
     if(this.row){
       this.entityPath = "entity_configs.user_management_dashboard.actions" ;
     }
-  }
-
-  deleteUser(){
-    this.deleteRowEvent.emit(this.row);
   }
 
   isReopenInprocess():boolean{
@@ -58,7 +55,7 @@ export class ManageUserRowComponent implements OnInit {
   onStatusChange( $event ){
     switch( this.status ){
       case "delete":{
-        this.onDelete();
+        this.deleteUser();
         break;
       }
       case "update_eth_addr":{
@@ -75,12 +72,12 @@ export class ManageUserRowComponent implements OnInit {
     jEl.selectpicker("refresh");
   }
 
-  onDelete( ){
+  deleteUser( ){
     this.deleteRowEvent.emit(this.row);
   }
 
   onUpdateEthAddr(  ) {
-
+    this.jUpdateEthSuccessModal.modal('show');
   }
 
 }

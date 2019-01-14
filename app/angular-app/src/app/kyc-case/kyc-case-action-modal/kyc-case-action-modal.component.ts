@@ -18,6 +18,7 @@ export class KycCaseActionModalComponent  {
   hasError: boolean = false;
   isProcessing: boolean = false;
 
+
   @Input('postApi') postApi ;
   @Input('params') params;
   @Input('modalId') modalId ;
@@ -28,7 +29,7 @@ export class KycCaseActionModalComponent  {
   @Input('actionBtnPrimaryClass') actionBtnPrimaryClass?:string = "btn-primary";
 
   //Output
-  @Output('actionSuccessEvent') actionSuccessEvent = new EventEmitter();
+  @Output('actionSuccessEvent') actionSuccessEvent : EventEmitter<any> =  new EventEmitter();
 
   ngAfterViewInit() {
     $("#"+this.modalId).off('hidden.bs.modal').on("hidden.bs.modal", () => {
@@ -56,7 +57,7 @@ export class KycCaseActionModalComponent  {
     }
     this.stateHandler.updateRequestStatus(this, false);
     $("#"+this.modalId).modal('hide');
-    this.actionSuccessEvent.emit(true);
+    this.actionSuccessEvent.emit(response);
   }
 
   onError( error ){

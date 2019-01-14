@@ -1,8 +1,0 @@
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn switch-btn p-2" (click)="selectedYes()">
-    <input type="radio" class="switch_yes" name="{{switchName}}" value="1"> {{switchLabelYes}}
-  </label>
-  <label class="btn switch-btn p-2" (click)="selectedNo()" [ngClass]="switchSelectNo?'active':''">
-    <input type="radio" name="{{switchName}}" value="0" [checked]="switchSelectNo"> {{switchLabelNo}}
-  </label>
-</div>

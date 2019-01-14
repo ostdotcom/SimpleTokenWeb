@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, ɵelementEventFullName} from '@angular/core';
 import { UtilitiesService } from '../../services/utilities.service';
 
 declare var $: any;
@@ -13,8 +13,8 @@ export class CaseAmlSectionComponent implements OnInit {
   constructor(  private utilitites : UtilitiesService ) { }
 
   @Input('response') response : Object = null ;
-  @Input('amlUnMatchedIds') amlUnMatchedIds : Array< string > ;
-  @Input('amlMatchedIds') amlMatchedIds : Array< string > ;
+  @Input('amlUnMatchedIds') amlUnMatchedIds : Array< string >  = [];
+  @Input('amlMatchedIds') amlMatchedIds : Array< string > = [] ;
 
 
   caseDetails : Object =  null ;
@@ -23,7 +23,7 @@ export class CaseAmlSectionComponent implements OnInit {
   amlProcessingStatus : string = null ;
   amlMatchesPresent : boolean = null;
   allNegativeMatches : boolean = false;
-  amlMatchList : Array< any > = null ;
+  amlMatchList : Array< any > = [] ;
   allAMLIds: Array<string> = [];
 
   ngOnInit() {
@@ -33,12 +33,24 @@ export class CaseAmlSectionComponent implements OnInit {
      this.amlProcessingStatus = this.amlDetail['aml_processing_status'];
 
      //TODO this.amlMatchList = this.amlDetail['aml_matches']; uncomment this once service integration done
-    this.amlMatchList = [{"qr_code": 123, "status":""},{"qr_code": 134, "status":""}];
-    for(let match of this.amlMatchList) {
-      this.allAMLIds.push(match['qr_code']);
-    }
+    this.amlMatchList = [{"qr_code": 123, "status":"no_match"},
+      {"qr_code": 134, "status":"no_match"}, {"qr_code": 194, "status":"no_match"}];
+    this.createMatchLists();
+    this.allNegativeMatches = this.amlMatchList.length == this.amlUnMatchedIds.length;
     this.amlMatchesPresent = this.amlMatchList && this.amlMatchList.length > 0;
+  }
 
+  createMatchLists(){
+    for(let match of this.amlMatchList) {
+      let match_status = match['status'],
+          match_qr_code = match['qr_code'];
+      if( match_status == 'match' && this.amlMatchedIds.indexOf(match_qr_code) == -1 ){
+        this.amlMatchedIds.push(match_qr_code);
+      } else if( match_status == 'no_match' && this.amlUnMatchedIds.indexOf(match_qr_code) == -1 ) {
+        this.amlUnMatchedIds.push(match_qr_code);
+      }
+      this.allAMLIds.push(match_qr_code);
+    }
   }
 
   showAMLSection() {
@@ -47,42 +59,19 @@ export class CaseAmlSectionComponent implements OnInit {
         (this.amlProcessingStatus == 'processing' && this.caseDetails['admin_status'] == 'qualified')))
   }
 
-  allNegativeMatchesPressed( event ){
+  allNegativeMatchesPressed() {
     if(this.caseDetails['is_case_closed']){
       event.stopPropagation();
       event.preventDefault();
       return;
     }
     this.allNegativeMatches = !this.allNegativeMatches;
-    this.amlUnMatchedIds = JSON.parse(JSON.stringify(this.allAMLIds));
-  }
-
-  handleMatchSelection( amlMatchCode ){
-    if(this.caseDetails['is_case_closed']){
-      event.stopPropagation();
-      event.preventDefault();
-      return;
+    console.log("2------this.allNegativeMatches " , this.allNegativeMatches  );
+    this.amlMatchedIds.splice(0,this.amlMatchedIds.length);
+    this.amlUnMatchedIds.splice(0,this.amlUnMatchedIds.length);
+    if(this.allNegativeMatches){
+      this.amlUnMatchedIds.push(...this.allAMLIds);
     }
-    let index = this.amlUnMatchedIds.indexOf(amlMatchCode);
-    if (index > -1) {
-      this.amlUnMatchedIds.splice(index, 1);
-    }
-    this.amlMatchedIds.push ( amlMatchCode );
-    this.allNegativeMatches = false;
-    $('.no-hit-btn').removeClass('active');  //TODO FLAGED BASED
-  }
-
-  handleNoMatchSelection( amlMatchCode ){
-    if(this.caseDetails['is_case_closed']){
-      event.stopPropagation();
-      event.preventDefault();
-      return;
-    }
-    let index = this.amlMatchedIds.indexOf(amlMatchCode);
-    if (index > -1) {
-      this.amlMatchedIds.splice(index, 1);
-    }
-    this.amlUnMatchedIds.push( amlMatchCode );
   }
 
   getAMLStatusMsg(){
@@ -112,6 +101,21 @@ export class CaseAmlSectionComponent implements OnInit {
       return "AML/CTF Matches."
     } else{
       return "No matches found."
+    }
+  }
+
+  getAMLMatchCount(){
+    return this.amlMatchList.length;
+  }
+
+  amlActionTaken() {
+    return (this.amlMatchedIds.length >0 || this.amlUnMatchedIds.length >0);
+  }
+
+  onOptionSelect( optionObj ){
+    let value = optionObj && optionObj.value  ;
+    if( value == 1 ){
+      this.allNegativeMatches = false ;
     }
   }
 

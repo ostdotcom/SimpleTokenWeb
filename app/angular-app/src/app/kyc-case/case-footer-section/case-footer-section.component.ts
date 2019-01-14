@@ -9,7 +9,7 @@ import { AppConfigService } from '../../services/app-config.service';
 })
 export class CaseFooterSectionComponent implements OnInit {
 
-  constructor( private utilitites : UtilitiesService ,
+  constructor( private utilities : UtilitiesService ,
                public appConfig: AppConfigService, ) { }
 
   @Input('response') response : Object = null ;
@@ -24,10 +24,10 @@ export class CaseFooterSectionComponent implements OnInit {
   amlProcessingStatus : string = null ;
 
   ngOnInit() {
-    this.caseDetails = this.utilitites.deepGet( this.response ,  "data.case_detail") || {};
+    this.caseDetails = this.utilities.deepGet( this.response ,  "data.case_detail") || {};
     this.adminStatus = this.caseDetails['admin_status']
     this.amlStatus = this.caseDetails['aml_status'];
-    this.amlDetail = this.utilitites.deepGet( this.response ,  "data.aml_detail") || {};
+    this.amlDetail = this.utilities.deepGet( this.response ,  "data.aml_detail") || {};
     this.amlProcessingStatus = this.amlDetail['aml_processing_status'];
   }
 
@@ -54,10 +54,9 @@ export class CaseFooterSectionComponent implements OnInit {
     return this.amlProcessingStatus == "processed" && this.adminStatus == "qualified" ;
   }
 
-  checkAMLActionTaken() {
+  amlActionTaken() {
     return (this.amlMatchedIds.length >0 || this.amlUnMatchedIds.length >0);
   }
-
 
 
 }

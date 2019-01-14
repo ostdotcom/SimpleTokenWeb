@@ -27,7 +27,7 @@ export class UpdateEthaddressComponent implements OnInit {
   @Output('actionSuccessEvent') actionSuccessEvent =  new EventEmitter();
 
   ngOnInit() {
-    this.scrollTopService.scrollTop();
+    // this.scrollTopService.scrollTop();
   }
 
   updateEthAddress(updateEthAdressForm) {
