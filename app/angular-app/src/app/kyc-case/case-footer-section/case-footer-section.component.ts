@@ -51,7 +51,7 @@ export class CaseFooterSectionComponent implements OnInit {
    * AML processing status should be processed && Admin status is qualified
    **/
   isTOneState(){
-    return this.amlProcessingStatus == "processed" && this.adminStatus == "qualified" ;
+    return this.amlProcessingStatus == "processed" ;
   }
 
   amlActionTaken() {
