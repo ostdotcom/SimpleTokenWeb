@@ -29,10 +29,10 @@ export class CaseFooterSectionComponent implements OnInit {
 
   ngOnInit() {
     this.caseDetails = this.utilities.deepGet( this.response ,  "data.case_detail") || {};
-    this.adminStatus = this.caseDetails['admin_status']
-    this.amlStatus = this.caseDetails['aml_status'];
+    this.adminStatus = this.utilities.deepGet( this.response ,  "data.case_detail.admin_status") || {};
+    this.amlStatus = this.utilities.deepGet( this.response ,  "data.case_detail.aml_status") || {};
     this.amlDetail = this.utilities.deepGet( this.response ,  "data.aml_detail") || {};
-    this.amlProcessingStatus = this.amlDetail['aml_processing_status'];
+    this.amlProcessingStatus =this.utilities.deepGet( this.response ,  "data.aml_detail.aml_processing_status") || {};
     this.amlMatchList = this.amlDetail && this.amlDetail['aml_matches'] || [];
     this.amlMatchesPresent  = this.amlMatchList && this.amlMatchList.length > 0;
   }
@@ -64,13 +64,13 @@ export class CaseFooterSectionComponent implements OnInit {
     return (this.amlMatchedIds.length >0 || this.amlUnMatchedIds.length >0 );
   }
 
-  isSingleNoMatchSelected(){
-    return (this.amlMatchedIds.length == 0 || this.amlUnMatchedIds.length == 1 );
+  hasInvalidMatches(){
+    return (this.amlMatchedIds.length == 0 &&  this.amlUnMatchedIds.length < this.amlMatchList.length );
   }
 
   qualifyCase() {
     if( this.amlMatchesPresent ) {
-      if( this.isSingleNoMatchSelected() ){
+      if( this.hasInvalidMatches()){
         $('#amlErrorModal2').modal('show');
       } else if( !this.amlActionTaken() ) {
         $('#amlErrorModal').modal('show');
