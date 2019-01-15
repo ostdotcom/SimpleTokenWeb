@@ -12,6 +12,8 @@ declare var $: any;
 export class ManageUserRowComponent implements OnInit {
 
   @Output("deleteRowEvent") deleteRowEvent = new EventEmitter();
+  @Output("updatedEthAddressEvent") updatedEthAddressEvent = new EventEmitter();
+  
   @Input() row;
   constructor(public appConfigService: AppConfigService) { }
 
@@ -77,7 +79,7 @@ export class ManageUserRowComponent implements OnInit {
   }
 
   onUpdateEthAddr(  ) {
-    this.jUpdateEthAddressModal.modal('show');
+    this.updatedEthAddressEvent.emit(this.row);
   }
 
 }

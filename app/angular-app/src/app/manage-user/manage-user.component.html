@@ -75,6 +75,7 @@
         <ng-template #rowTemplate let-row >
           <manage-user-row [row]='row'
           (deleteRowEvent) = "onDeleteRow( $event )"
+          (updatedEthAddressEvent) = "onUpdateEthAddress( $event )"
           ></manage-user-row>
         </ng-template>
         </app-table>
@@ -104,6 +105,8 @@
           <span>{{successMessage}}</span>
       </ng-container>
   </manage-user-modal>
+
+  <update-eth-modal [user]="user" ></update-eth-modal>
 
 <div class="modal fade" id="confirmDownload" >
   <div class="modal-dialog modal-dialog-centered h-100 my-0 pb-5">
@@ -166,9 +169,6 @@
     </div>
   </div>
 </div>
-
-
-<update-eth-modal [modalId]="'updateEthAddressModal'" [user]="user" ></update-eth-modal>
 
 
 

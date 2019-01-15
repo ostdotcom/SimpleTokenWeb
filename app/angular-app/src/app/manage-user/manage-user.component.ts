@@ -101,6 +101,11 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
     $('#deleteUserModal').modal('show');
   }
 
+  onUpdateEthAddress( user ){
+    this.user =  user ; 
+    $('#updateEthAddressModal').modal('show'); 
+  }
+
   onDeleteRowSucces(e){
     if( this.q ){
       this.q = ""; //Reset the search , the table component will by default get all table data

@@ -10,35 +10,34 @@ declare var $:any;
 })
 export class UpdateEthModalComponent implements OnInit {
 
-  @Input() user;
-  @Input() modalId;
+  @Input('user') user;
 
-  errorMsg = '';
-  postUrl = 'api/admin/kyc/update-address';
-  data = {};
-  updateMsg = 'Update';
-  isUpdating = false;
-  ethAddrUpdated = false;
-  ethAddrInputDisabled = false;
+  data  : Object =  {};
+  errorResponse: Object = {}
+  postUrl : string = 'api/admin/kyc/update-address';
+  updateBtnText : string = 'Update';
+  isUpdating : boolean = false;
+  isSuccess  : boolean = false ; 
 
   constructor(private http: OstHttp) { }
 
   ngOnInit() {
-    $("#"+this.modalId).off('hidden.bs.modal').on("hidden.bs.modal", () => {
-      this.errorMsg='';
+    $("#updateEthAddressModal").off('hidden.bs.modal').on("hidden.bs.modal", () => {
+      this.isUpdating = false ; 
+      this.isSuccess = false ; 
+      this.updateBtnText = 'Update';
+      this.errorResponse = {}; 
     });
   }
 
-  updateEthAddress(updateEthAdressForm) {
-    let ethAddress = this.data['ethereum_address'] = updateEthAdressForm.value.address.trim(),
-        caseId = this.user && this.user['case_id'];
+  updateEthAddress( updateEthAdressForm ) {
+    let ethAddress = updateEthAdressForm.value.address.trim(), 
+        caseId = this.user && this.user['case_id']
+        ;
     this.data['id'] = caseId;
-    if (!ethAddress) {
-      this.errorMsg = 'Please enter eth address';
-      return;
-    }
+    this.data['ethereum_address'] = ethAddress; 
     this.isUpdating = true;
-    this.updateMsg = 'Updating ...';
+    this.updateBtnText = 'Updating ...';
     this.http.post(this.postUrl, this.data).subscribe(
       response => {
         let res = response.json();
@@ -56,22 +55,17 @@ export class UpdateEthModalComponent implements OnInit {
 
   onSuccess( res ) {
     this.onComplete();
-    this.ethAddrUpdated = true;
-    this.ethAddrInputDisabled = true;
+    this.isSuccess = true ; 
   }
 
   onError( res ){
+    this.errorResponse = res ; 
     this.onComplete();
-    this.errorMsg = res && res.err && res.err.display_text;
   }
 
   onComplete(){
     this.isUpdating = false;
-    this.updateMsg = 'update';
-  }
-
-  onKey(e){
-    this.errorMsg = '';
+    this.updateBtnText = 'update';
   }
 
 }

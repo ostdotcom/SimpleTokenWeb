@@ -1,22 +1,33 @@
-<div class="modal fade user-modal" id="{{modalId}}" role="dialog" tabindex="-1">
+<div class="modal fade user-modal" id="updateEthAddressModal" role="dialog" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
     <div class="modal-content rounded-0">
       <div class="modal-body text-center p-5">
-        <h5>Update the user’s Ethereum Address below:</h5>
-        <div class="mt-4 row">
-          <form #updateEthAdressForm="ngForm" class="col-12 col-md-8 mx-auto">
-            <input type="text" name="address" placeholder="<Enter eth address here>" (keyup)="onKey($event)" class="form-control text-center" ngModel>
-          </form>
-        </div>
+       
+       <ng-container *ngIf="!isSuccess">
+          <h5>Update the user’s Ethereum Address below:</h5>
+          <div class="mt-4 row">
+            <form #updateEthAdressForm="ngForm" (ngSubmit)="updateEthAddress(updateEthAdressForm)"
+                   class="col-12 col-md-8 mx-auto">
+              <input type="text" name="address" placeholder="<Enter eth address here>" required
+                     class="form-control text-center" #address="ngModel" ngModel>
+                <ost-form-error-handler [errorFor]="address" 
+                                        [fieldName]="'Ethereum address'" 
+                                        [serverError]="errorResponse">
+                </ost-form-error-handler>
+                <button type="submit" 
+                        [disabled]="!updateEthAdressForm.valid || isUpdating" 
+                        class="btn btn-primary text-uppercase mb-2 mr-2">{{updateBtnText}}
+              </button>
+              <button type="reset" class="btn btn-secondary text-uppercase mb-2" data-dismiss="modal"> Cancel</button>
+            </form>
+            <div class="general_error error text-center col-12">
+              <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">
+              </ost-form-error-handler>
+              </div>
+          </div>
+       </ng-container>
 
-        <div *ngIf='!ethAddrUpdated; else updated'>
-          <span class='error d-block my-2' >{{errorMsg}}</span>
-          <button type="button" [disabled]="isUpdating" class="btn btn-primary text-uppercase mb-2 mr-2"
-                  (click)=updateEthAddress(updateEthAdressForm)>{{updateMsg}}
-          </button>
-          <button type="button" class="btn btn-secondary text-uppercase mb-2" data-dismiss="modal">Cancel</button>
-        </div>
-        <ng-template #updated>
+        <ng-container *ngIf="isSuccess">
           <div class="success-icon-wrap my-3 ml-2 d-inline-block">
             <svg class="icon" style="width:30px; height: 30px">
               <switch>
@@ -27,7 +38,8 @@
           </div>
           <span class='display-1' style='vertical-align:super;'>Ethereum address successfully updated</span>
           <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-        </ng-template>
+        </ng-container>
+
       </div>
     </div>
   </div>
