@@ -1,0 +1,34 @@
+<div class="modal fade user-modal" id="{{modalId}}" role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
+    <div class="modal-content rounded-0">
+      <div class="modal-body text-center p-5">
+        <h5>Update the user’s Ethereum Address below:</h5>
+        <div class="mt-4 row">
+          <form #updateEthAdressForm="ngForm" class="col-12 col-md-8 mx-auto">
+            <input type="text" name="address" placeholder="<Enter eth address here>" (keyup)="onKey($event)" class="form-control text-center" ngModel>
+          </form>
+        </div>
+
+        <div *ngIf='!ethAddrUpdated; else updated'>
+          <span class='error d-block my-2' >{{errorMsg}}</span>
+          <button type="button" [disabled]="isUpdating" class="btn btn-primary text-uppercase mb-2 mr-2"
+                  (click)=updateEthAddress(updateEthAdressForm)>{{updateMsg}}
+          </button>
+          <button type="button" class="btn btn-secondary text-uppercase mb-2" data-dismiss="modal">Cancel</button>
+        </div>
+        <ng-template #updated>
+          <div class="success-icon-wrap my-3 ml-2 d-inline-block">
+            <svg class="icon" style="width:30px; height: 30px">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                </use>
+              </switch>
+            </svg>
+          </div>
+          <span class='display-1' style='vertical-align:super;'>Ethereum address successfully updated</span>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

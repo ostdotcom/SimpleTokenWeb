@@ -17,7 +17,7 @@ export class ManageUserRowComponent implements OnInit {
 
   entityPath: string;
   status: any;
-  jUpdateEthSuccessModal :any = $('#updateEthSuccessModal');
+  jUpdateEthAddressModal :any = $('#updateEthAddressModal');
 
   ngOnInit() {
     setTimeout(function(){
@@ -48,7 +48,7 @@ export class ManageUserRowComponent implements OnInit {
     if(this.isReopenInprocess()){
       return "Case reopening is in process. Please wait to delete user.";
     }else if(this.isWhitelistPending()){
-      return "Whitelist confirmation is pending. Please wait to delete user.";
+      return "Cannot delete a user or update ethereum address when whitelisting has started. Please try again once the process is complete.";
     }
   }
 
@@ -77,7 +77,7 @@ export class ManageUserRowComponent implements OnInit {
   }
 
   onUpdateEthAddr(  ) {
-    this.jUpdateEthSuccessModal.modal('show');
+    this.jUpdateEthAddressModal.modal('show');
   }
 
 }

@@ -73,6 +73,7 @@ import { AmlToggleComponent } from './kyc-case/aml-toggle/aml-toggle.component';
 import { CaseBreadcrumbComponent } from './kyc-case/case-breadcrumb/case-breadcrumb.component';
 import { CaseAmlSectionComponent } from './kyc-case/case-aml-section/case-aml-section.component';
 import { CaseFooterSectionComponent } from './kyc-case/case-footer-section/case-footer-section.component';
+import { UpdateEthModalComponent } from './manage-user/update-eth-modal/update-eth-modal.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -143,7 +144,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     AmlToggleComponent,
     CaseBreadcrumbComponent,
     CaseAmlSectionComponent,
-    CaseFooterSectionComponent
+    CaseFooterSectionComponent,
+    UpdateEthModalComponent
   ],
   imports: [
     BrowserModule,

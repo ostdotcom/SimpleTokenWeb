@@ -36,6 +36,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
   is_kyc_submitted: string;
   whitelist_status: string;
   order: string;
+  caseId: string;
 
   isCSVDownloaded = false;
   securityCheckbox: boolean = false;
@@ -71,7 +72,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
     });
 
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
-      this.zone.run(() => { 
+      this.zone.run(() => {
         this.resetDownLoadCsvModal();
       });
     });
