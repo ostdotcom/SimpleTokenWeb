@@ -59,7 +59,6 @@ export class CaseAmlSectionComponent implements OnInit {
 
   getAMLStatusMsg() {
 
-
     if (this.amlStatus == 'cleared') {
       return "The AML/CTF has been automatically approved.";
     } else if (this.amlStatus == 'approved') {
@@ -67,9 +66,7 @@ export class CaseAmlSectionComponent implements OnInit {
     } else if (this.amlStatus == 'denied') {
       return "The AML/CTF has been manually denied.";
     } else {
-      if (this.adminStatus != 'qualified') {
-        return ''
-      } else if (this.amlProcessingStatus == 'processing') {
+      if (this.amlProcessingStatus == 'processing') {
         return "Awaiting AML/CTF data.";
       } else if (this.amlProcessingStatus == 'processed') {
         return this.getAMLMatchMsg();
