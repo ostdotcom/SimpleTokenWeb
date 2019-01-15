@@ -2,7 +2,7 @@
       <div class="row" >
         <div class="container-fluid button-container py-2">
           <div class="container mt-2">
-            <ng-container *ngIf="caseDetails.is_case_closed == 1 then caseClosed else caseOpen"></ng-container>
+            <ng-container *ngIf="isCaseClosed() then caseClosed else caseOpen"></ng-container>
 
             <!----Close case section start---->
             <ng-template #caseClosed>

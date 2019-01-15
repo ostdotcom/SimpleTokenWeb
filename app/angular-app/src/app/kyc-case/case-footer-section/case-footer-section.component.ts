@@ -80,5 +80,9 @@ export class CaseFooterSectionComponent implements OnInit {
     $('#qualifyActionModal').modal('show');
   }
 
+  isCaseClosed() {
+    return this.caseDetails['is_case_closed'] == 1;
+  }
+
 
 }

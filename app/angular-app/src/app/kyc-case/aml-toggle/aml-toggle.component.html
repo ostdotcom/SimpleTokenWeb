@@ -1,8 +1,8 @@
 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn switch-btn p-2 {{caseDetails.is_case_closed ?'disabled':''}}" [ngClass]="isMatch()?'active':''">
-    <input type="radio" [disabled]="caseDetails.is_case_closed" value="1" (click)="onSelect( 1 )" [checked]="isMatch()"> MATCH
+  <label class="btn switch-btn p-2 {{caseDetails.is_case_closed ?'disabled':''}}" (click)="onSelect( 1 )" [ngClass]="isMatch()?'active':''">
+    <input type="radio" value="1" [checked]="isMatch()"> MATCH
   </label>
-  <label class="btn switch-btn p-2 {{caseDetails.is_case_closed ?'disabled':''}}" [ngClass]="isNoMatch()?'active':''">
-    <input type="radio" [disabled]="caseDetails.is_case_closed" value="0" (click)="onSelect( 0 )" [checked]="isNoMatch()"> NO HIT
+  <label class="btn switch-btn p-2 {{caseDetails.is_case_closed ?'disabled':''}}" (click)="onSelect( 0 )" [ngClass]="isNoMatch()?'active':''">
+    <input type="radio" value="0" [checked]="isNoMatch()"> NO HIT
   </label>
 </div>

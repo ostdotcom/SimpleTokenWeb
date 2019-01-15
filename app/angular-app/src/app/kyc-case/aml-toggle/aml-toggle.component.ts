@@ -37,6 +37,7 @@ export class AmlToggleComponent implements OnInit {
   }
 
   onSelect(  value ){
+    if(this.isCaseClosed()) return;
     this.removeFromMatchList( this.amlMatchedIds );
     this.removeFromMatchList( this.amlUnMatchedIds );
 
@@ -58,6 +59,10 @@ export class AmlToggleComponent implements OnInit {
     if (index > -1) {
       list.splice(index, 1);
     }
+  }
+
+  isCaseClosed() {
+    return this.caseDetails['is_case_closed'] == 1;
   }
 
 }
