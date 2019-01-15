@@ -69,15 +69,13 @@ export class CaseFooterSectionComponent implements OnInit {
   }
 
   qualifyCase() {
-    if( this.amlMatchesPresent ) {
-      if( !this.amlActionTaken() ) {
-        $('#amlErrorModal').modal('show');
-      } else if( this.hasInvalidMatches()){
-        $('#amlErrorModal2').modal('show');
-      }
-      return ;
+    if( this.amlMatchesPresent  && !this.amlActionTaken() ) {
+      $('#amlErrorModal').modal('show');
+    } else if( this.amlMatchesPresent && this.hasInvalidMatches()){
+      $('#amlErrorModal2').modal('show');
+    } else{
+      $('#qualifyActionModal').modal('show');
     }
-    $('#qualifyActionModal').modal('show');
   }
 
   isCaseClosed() {
