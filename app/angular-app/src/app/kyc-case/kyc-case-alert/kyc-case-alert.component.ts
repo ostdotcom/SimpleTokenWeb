@@ -83,11 +83,11 @@ export class KycCaseAlertComponent  {
           setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified." , "success");
         }
       } else if( kyc_status == "denied"){
-        processFailedReasons();
         setAlertMessageAndStatus("Case manually denied by admin." , "failed");
       } else{
         checkForAdminStatus();
       }
+      processFailedReasons();
     };
 
     checkForAdminStatus = () => {
