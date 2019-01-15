@@ -12,8 +12,7 @@
   <ng-container class="alert-message-content">
     {{alertMessage}}
     <ng-container *ngIf="isMatchDetectedMsg">
-      <!--TODO add css for link below-->
-      - <span class="alert-link" (click)="scrollToAmlSection( $event )" > {{amlMatchCount}} matches </span>detected.
+      - <a href="javascript:void(0)" (click)="scrollToAmlSection( $event )" > {{amlMatchCount}} matches </a>detected.
     </ng-container>
   </ng-container>
 
