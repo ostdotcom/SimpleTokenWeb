@@ -186,10 +186,6 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
             component: ArtificialIntelligenceComponent
           },
           {
-            path: 'settings/advance-compliance',
-            component: AdvanceComplianceComponent
-          },
-          {
             path: 'settings/contract-addresses',
             component: ContractAddressesComponent,
             canActivate: [ AuthGuardService ]

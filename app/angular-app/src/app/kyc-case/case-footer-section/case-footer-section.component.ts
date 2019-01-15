@@ -68,7 +68,7 @@ export class CaseFooterSectionComponent implements OnInit {
     return (this.amlMatchedIds.length == 0 &&  this.amlUnMatchedIds.length < this.amlMatchList.length );
   }
 
-  qualifyCase() {
+  approveCase() {
     if( this.amlMatchesPresent  && !this.amlActionTaken() ) {
       $('#amlErrorModal').modal('show');
     } else if( this.amlMatchesPresent && this.hasInvalidMatches()){
