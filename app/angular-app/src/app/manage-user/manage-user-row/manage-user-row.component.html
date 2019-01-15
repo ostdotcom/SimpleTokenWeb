@@ -31,12 +31,22 @@
   </div>
 </div>
 <div class="col-3 p-0 pr-2 display-3 actions-select">
-  <select class="form-control selectpicker" ostOptions
+
+  <!-----Optimise this code , prepare option data---->
+  <select class="form-control selectpicker"
           title="Action"
           [(ngModel)]="status"
-          (change)="onStatusChange( $event )"
-          [entityPath]="entityPath">
+          (change)="onStatusChange( $event )">
+    <ng-container *ngFor="let option of options" >
+      <ng-container *ngIf="isVisible(option)">
+        <option value="{{option.value}}" [disabled]="isDisabled( option )" >
+          {{option.display_text}}
+        </option>
+      </ng-container>
+    </ng-container>
+
   </select>
+
     <span *ngIf="isWhitelistPending() || isReopenInprocess()"  data-toggle="tooltip" data-placement="left"
       [title]="getTooltipMsg()" class='ml-2'>
       <svg class="svg" style="height: 16px;width: 16px">
@@ -83,13 +93,20 @@
         </div>
         <div class="col-12 delete-btn-div py-3 actions-select">
 
-          <!--<button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_confirmation_pending" (click)='deleteUser()'>delete user</button>-->
-          <select class="form-control selectpicker" ostOptions
+          <select class="form-control selectpicker"
                   title="Action"
                   [(ngModel)]="status"
-                  (change)="onStatusChange( $event )"
-                  [entityPath]="entityPath">
+                  (change)="onStatusChange( $event )">
+            <ng-container *ngFor="let option of options" >
+              <ng-container *ngIf="isVisible(option)">
+                <option value="{{option.value}}" [disabled]="isDisabled( option )" >
+                  {{option.display_text}}
+                </option>
+              </ng-container>
+            </ng-container>
+
           </select>
+
           <span *ngIf="row.whitelist_confirmation_pending"  data-toggle="tooltip" data-placement="bottom"
             title="Whitelist confirmation is pending. Please wait to delete user." class='ml-2'>
             <svg class="svg" style="height: 16px;width: 16px">

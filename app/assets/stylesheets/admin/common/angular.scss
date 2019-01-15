@@ -21,6 +21,9 @@ admin-dashboard, .actions-select {
     .filter-option {
       color: $blue-900!important;
     }
+    &.btn-group .dropdown-menu li.disabled{
+      opacity: 0.65;
+    }
   }
 }
 
