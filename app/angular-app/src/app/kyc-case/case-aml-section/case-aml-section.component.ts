@@ -38,8 +38,8 @@ export class CaseAmlSectionComponent implements OnInit {
   }
 
   showAMLSection() {
-    return ((this.caseDetails['is_case_closed'] && this.amlProcessingStatus != 'unprocessed')
-              || (this.amlProcessingStatus == 'processed')
+    return (this.caseDetails['is_case_closed']
+              || this.amlProcessingStatus == 'processed'
               || (this.amlProcessingStatus == 'processing' && this.caseDetails['admin_status'] == 'qualified'))
   }
 
