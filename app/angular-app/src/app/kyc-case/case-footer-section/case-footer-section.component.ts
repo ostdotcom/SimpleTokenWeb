@@ -70,10 +70,10 @@ export class CaseFooterSectionComponent implements OnInit {
 
   qualifyCase() {
     if( this.amlMatchesPresent ) {
-      if( this.hasInvalidMatches()){
-        $('#amlErrorModal2').modal('show');
-      } else if( !this.amlActionTaken() ) {
+      if( !this.amlActionTaken() ) {
         $('#amlErrorModal').modal('show');
+      } else if( this.hasInvalidMatches()){
+        $('#amlErrorModal2').modal('show');
       }
       return ;
     }

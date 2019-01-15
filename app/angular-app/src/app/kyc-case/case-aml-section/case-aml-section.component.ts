@@ -38,9 +38,9 @@ export class CaseAmlSectionComponent implements OnInit {
   }
 
   showAMLSection() {
-    return (this.caseDetails['is_case_closed'] ||
-      (this.amlProcessingStatus == 'processed' ||
-        (this.amlProcessingStatus == 'processing' && this.caseDetails['admin_status'] == 'qualified')))
+    return ((this.caseDetails['is_case_closed'] && this.amlProcessingStatus != 'unprocessed')
+              || (this.amlProcessingStatus == 'processed')
+              || (this.amlProcessingStatus == 'processing' && this.caseDetails['admin_status'] == 'qualified'))
   }
 
   allNegativeMatchesPressed() {
@@ -77,8 +77,6 @@ export class CaseAmlSectionComponent implements OnInit {
     }
 
   }
-
-
 
   getAMLMatchMsg(){
     if(this.amlMatchesPresent){
