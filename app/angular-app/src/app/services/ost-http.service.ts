@@ -31,22 +31,32 @@ export class OstHttp extends Http {
 
     public handleError = (error: Response) => {
       let  erroMsg = null ;
-
-      if (error.status === 0) {
-        erroMsg = 'Not able to connect to server. Please verify your internet connection.';
-      } else if (error.status == 404) {
-        erroMsg = 'Requested page not found.';
-      } else if (error.status == 500) {
-        erroMsg = 'Internal Server Error.';
-      } else if (error.status == 401) {
-        window.location.href = "/admin/login";
-      } else if (error.status == 408){
-        erroMsg = 'Time out error.';
-      }else {
-        erroMsg = "Unable to connect to server";
+    console.log('I am coming here');
+    console.log(error);
+    if (error.status === 0) {
+      erroMsg = 'Not able to connect to server. Please verify your internet connection.';
+    } else if (error.status == 404) {
+      erroMsg = 'Requested page not found.';
+    } else if (error.status == 500) {
+      erroMsg = 'Internal Server Error.';
+    } else if (error.status == 401) {
+      window.location.href = "/admin/login";
+    } else if (error.status == 302) {
+      var redirect_url;
+      try {
+        let _body = JSON.parse(error['_body']) || {},
+          _err = _body['err'] || {},
+          error_extra_info = _err['error_extra_info'] || {};
+          redirect_url = error_extra_info['redirect_url'];
+      } catch (e)  {
+         redirect_url = '/admin/login';
       }
-
-
+      window.location.href = redirect_url;
+    } else if (error.status == 408) {
+      erroMsg = 'Time out error.';
+    } else {
+      erroMsg = "Unable to connect to server";
+    }
         if( erroMsg ) {
           let _body =  error['_body'] || {};
           try {

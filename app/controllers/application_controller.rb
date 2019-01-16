@@ -166,6 +166,31 @@ class ApplicationController < ActionController::Base
     @page_assets_data = page_extended_data[:assets]
   end
 
+  # Render error response pages
+  #
+  # * Author: Aman
+  # * Date: 13/10/2017
+  # * Reviewed By: Sunil
+  #
+  def render_error_response(service_response)
+    # Clean critical data
+    service_response.data = {}
+
+    if service_response.http_code == GlobalConstant::ErrorCode.unauthorized_access
+      if request.xhr?
+        (render plain: Oj.dump(service_response.to_json, mode: :compat), status: service_response.http_code) and return
+      else
+        redirect_to default_unauthorized_redirect_url, status: GlobalConstant::ErrorCode.temporary_redirect and return
+      end
+    elsif service_response.http_code == GlobalConstant::ErrorCode.temporary_redirect
+      redirect_url = (service_response["error_extra_info"] || {})["redirect_url"]
+      redirect_url = redirect_url.present? ? redirect_url : GlobalConstant::Base.simple_token_web['kyc_root_url']
+      redirect_to redirect_url, status: GlobalConstant::ErrorCode.temporary_redirect and return
+    else
+      render_error_response_for(service_response)
+    end
+  end
+
   # Render error response for
   #
   # * Author: Kedar
