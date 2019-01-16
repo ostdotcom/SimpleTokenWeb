@@ -11,3 +11,10 @@
     box-shadow: none;
   }
 }
+
+@media (max-width: 768px) {
+  .switch-btn{
+    padding: 0.3rem !important;
+    font-size: $font-size-sm;
+  }
+}

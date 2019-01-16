@@ -23,37 +23,41 @@
                 </div>
                 <div class="col-4 my-auto">
                   <button type="button" [disabled]="caseDetails.is_case_closed"
-                          class="btn no-hit-btn {{allNegativeMatches ? 'active' : ''}}" (click)="allNegativeMatchesPressed()">
+                          class="btn no-hit-btn px-2 {{allNegativeMatches ? 'active' : ''}}" (click)="allNegativeMatchesPressed()">
                     <h6 class="mb-0 card-title">NO HIT</h6>
                   </button>
                 </div>
               </div>
             </div>
-            <div *ngFor="let match of amlMatchList; let i = index" class="card-col col-12">
+            <div class="match-list col-12">
               <div class="row">
-                <div class="col-4">
-                  <a href="{{match.pdf_url}}" target="_blank" class="mr-2">{{match.qr_code}}</a>
-                  <a href="{{match.pdf_url}}" target="_blank" class="border-none redirect">
-                    <svg class="align-middle redirect-icon" style="height: 15px;width: 15px">
-                      <switch>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redirect-icon"></use>
-                      </switch>
-                    </svg>
-                    <svg class="align-middle redirect-hover-icon" style="height: 15px;width: 15px">
-                      <switch>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redirect-hover-icon"></use>
-                      </switch>
-                    </svg>
-                  </a>
-                </div>
-                <div class="col-4">
-                  <aml-toggle [match]="match"
-                              [amlMatchedIds]="amlMatchedIds"
-                              [amlUnMatchedIds]="amlUnMatchedIds"
-                              [response]="response"
-                              [allNegativeMatches]="allNegativeMatches"
-                              (optionSelected)="onOptionSelect( $event ) ">
-                  </aml-toggle>
+                <div *ngFor="let match of amlMatchList; let i = index" class="card-col col-12">
+                  <div class="row">
+                    <div class="col-4 pr-0 pr-lg-3">
+                      <a href="{{match.pdf_url}}" target="_blank" class="mr-lg-2 match-code">{{match.qr_code}}</a>
+                      <a href="{{match.pdf_url}}" target="_blank" class="border-none redirect">
+                        <svg class="align-middle redirect-icon" style="height: 15px;width: 15px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redirect-icon"></use>
+                          </switch>
+                        </svg>
+                        <svg class="align-middle redirect-hover-icon" style="height: 15px;width: 15px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redirect-hover-icon"></use>
+                          </switch>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="col-5 col-lg-4">
+                      <aml-toggle [match]="match"
+                                  [amlMatchedIds]="amlMatchedIds"
+                                  [amlUnMatchedIds]="amlUnMatchedIds"
+                                  [response]="response"
+                                  [allNegativeMatches]="allNegativeMatches"
+                                  (optionSelected)="onOptionSelect( $event ) ">
+                      </aml-toggle>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -62,6 +66,6 @@
       </div>
     </div>
   </div>
-  <div class="col-12 error" *ngIf="amlMatchesPresent && !amlActionTaken()">Please confirm match status for at least one profile.</div>
+  <div class="col-12 error aml-error">Please confirm match status for at least one profile.</div>
 </div>
 

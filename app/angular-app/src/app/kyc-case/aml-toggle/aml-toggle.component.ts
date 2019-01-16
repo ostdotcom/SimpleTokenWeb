@@ -13,8 +13,8 @@ export class AmlToggleComponent implements OnInit {
   constructor(private utilities : UtilitiesService ) { }
 
   @Input('match') match: Object ;
-  @Input('amlMatchedIds') amlMatchedIds: Array<string>;
-  @Input('amlUnMatchedIds') amlUnMatchedIds: Array<string>;
+  @Input('amlMatchedIds') amlMatchedIds: Array<string> = [];
+  @Input('amlUnMatchedIds') amlUnMatchedIds: Array<string> = [];
   @Input('response') response: Object = null;
   @Input('allNegativeMatches') allNegativeMatches? : boolean;
 

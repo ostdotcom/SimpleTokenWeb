@@ -3,10 +3,12 @@
 .aml-content{
     border-top: solid 1px $blue-400;
     text-align: center;
-    max-height: 400px;
-    overflow-y: auto;
     .card-col:nth-child(even){
       background-color: $green-1000;
+    }
+    & .match-list{
+      max-height: 400px;
+      overflow-y: auto;
     }
   }
 
@@ -14,6 +16,7 @@
     border: 1px solid $blue-400;
     border-radius: $border-radius;
     color: $blue-800;
+    background-color: $white;
     &.active{
       background-color: $blue-400;
     }
@@ -45,6 +48,7 @@
       font-size: 0.8rem;
       letter-spacing: 2px;
       word-wrap: break-word;
+      margin-bottom: 0px;
     }
 
     .card-row{
@@ -94,4 +98,18 @@
   color: color('red');
   min-height: 25px;
   font-weight: $font-weight-500;
+  &.aml-error{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .match-code{
+    font-size: $font-size-sm;
+  }
+  .aml-content{
+    & .card-title{
+      font-size: $font-size-sm !important;
+    }
+  }
 }

@@ -16,8 +16,8 @@ export class CaseFooterSectionComponent implements OnInit {
 
   @Input('response') response : Object = null ;
   @Input('showPageStateFn') showPageState : Function;
-  @Input('amlUnMatchedIds') amlUnMatchedIds : Array< string > = null;
-  @Input('amlMatchedIds') amlMatchedIds : Array< string > = null;
+  @Input('amlUnMatchedIds') amlUnMatchedIds : Array< string > = [];
+  @Input('amlMatchedIds') amlMatchedIds : Array< string > = [];
 
   caseDetails : Object = null ;
   amlDetail   : Object = null ;
@@ -70,10 +70,14 @@ export class CaseFooterSectionComponent implements OnInit {
 
   approveCase() {
     if( this.amlMatchesPresent  && !this.amlActionTaken() ) {
+      //TODO refactor angular way
+      $('.aml-error').show();
       $('#amlErrorModal').modal('show');
     } else if( this.amlMatchesPresent && this.hasInvalidMatches()){
+      $('.aml-error').show();
       $('#amlErrorModal2').modal('show');
     } else{
+      $('.aml-error').hide();
       $('#qualifyActionModal').modal('show');
     }
   }

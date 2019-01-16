@@ -38,20 +38,24 @@
 
             <!----Open case section start---->
             <ng-template #caseOpen>
-              <div class="w-100">
+              <div class="row">
 
                  <!----T-0 state start---->
                 <ng-container *ngIf="isTZeroState()">
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
+                    <div class="col-12 col-md-6">
                       <button type="button"
-                        class="btn btn-secondary mr-2 mb-2 text-uppercase float-left"
-                        (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
+                              class="btn btn-secondary mr-2 mb-2 text-uppercase"
+                              (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
+                    </div>
                   </ng-container>
-                  <div class="float-right">
+                  <div class="col-12 col-md-3">
                     <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase"
                             data-toggle="modal" data-target="#denyActionModal">Deny Case
                     </button>
-                    <button type="button" class="btn btn-success mb-2 text-uppercase"
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <button type="button" class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase"
                               data-toggle="modal" data-target="#approveDetailsModal">APPROVE DETAILS
                     </button>
                   </div>
@@ -61,13 +65,17 @@
                 <!----Pre T-1 state start---->
                 <ng-container *ngIf="isPreTOneState()">
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
+                    <div class="col-12 col-md-6">
                       <button type="button"
-                        class="btn btn-secondary mr-2 mb-2 text-uppercase float-left"
-                        (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
+                              class="btn btn-secondary mr-2 mb-2 text-uppercase"
+                              (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
+                    </div>
                   </ng-container>
-                  <div class="float-right">
+                  <div class="col-12 col-md-3">
                     <button type="button" disabled class="btn btn-danger mr-2 mb-2 text-uppercase">Deny Case</button>
-                    <button type="button" disabled class="btn btn-success mb-2 text-uppercase" >Approve Case</button>
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <button type="button" disabled class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase" >Approve Case</button>
                   </div>
                 </ng-container>
                 <!----Pre T-1 state end---->
@@ -75,19 +83,22 @@
                 <!---- T-1 state start---->
                 <ng-container *ngIf="isTOneState()">
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
+                    <div class="col-12 col-md-6 col-lg-8">
                       <button type="button"
-                        class="btn btn-secondary mr-2 mb-2 text-uppercase float-left"
-                        (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
+                              class="btn btn-secondary mr-2 mb-2 text-uppercase"
+                              (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
+                    </div>
                   </ng-container>
-                  <div class="float-right">
+                  <div class="col-12 col-md-3 col-lg-2">
                     <button type="button" class="btn btn-danger mr-2 mb-2 text-uppercase"
-                              data-toggle="modal" data-target="#denyActionModal">Deny Case
+                            data-toggle="modal" data-target="#denyActionModal">Deny Case
                     </button>
+                  </div>
+                  <div class="col-12 col-md-3 col-lg-2">
                     <!-- refactor this-->
-                    <button type="button" class="btn btn-success mb-2 text-uppercase"
+                    <button type="button" class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase"
                             (click)="approveCase()">APPROVE CASE
                     </button>
-
                   </div>
                 </ng-container>
                 <!---- T-1 state end---->
