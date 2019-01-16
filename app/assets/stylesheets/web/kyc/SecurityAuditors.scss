@@ -1,5 +1,5 @@
-$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-2x-v20.png";
-$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-1x-v20.png";
+$sprite-retina-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-2x-v21.png";
+$sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page_sprite-1x-v21.png";
 
 @mixin icon-generator($width,$height,$posX,$posY,$offsetHover,$offsetActive,$scale:100) {
   background-image: url($sprite-location);
@@ -42,6 +42,9 @@ $sprite-location: "https://d36lai1ppm9dxu.cloudfront.net/assets/image/about-page
 }
 .cynopsis-logo{
   @include icon-generator(190px, 69px, -964px, -388px, -1222px, -1222px);
+}
+.acuris-logo{
+  @include icon-generator(190px, 69px, -964px, -484px, -1222px, -1222px);
 }
 
 .security-auditors{
