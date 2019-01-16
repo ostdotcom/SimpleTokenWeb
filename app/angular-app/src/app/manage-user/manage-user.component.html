@@ -84,14 +84,14 @@
 
     <manage-user-modal  [modalId]="'deleteUserModal'"
                         [user]="user"
-                        [postApi]="postApi"
-                        [actionButtonClass]="actionButtonClass"
-                        [actionBtnPrimaryName]="actionBtnPrimaryName"
-                        [DataType]="DataType"
+                        [postApi]="'api/admin/users/delete-user'"
+                        [actionButtonClass]="'delete-user'"
+                        [actionBtnPrimaryName]="'DELETE'"
+                        [DataType]="'user_id'"
                         (actionSuccessEvent)="onDeleteRowSucces( $event )">
       <ng-container class="modal-body-content">
           <div class="col-12">
-              <h5 class="text-center">{{message}}
+              <h5 class="text-center">Attention! You are about to delete this user. This action is permanent and cannot be undone. Are you sure you want to continue?
               </h5>
           </div>
       </ng-container>
@@ -102,9 +102,33 @@
           <span>There was some issue.<br>Please Try Again.</span>
       </ng-container>
       <ng-container class="custom-success-content">
-          <span>{{successMessage}}</span>
+          <span>User Deleted</span>
       </ng-container>
   </manage-user-modal>
+
+<manage-user-modal  [modalId]="'reopenCaseModal'"
+                    [user]="user"
+                    [postApi]="'api/admin/kyc/open-case'"
+                    [actionButtonClass]="'case-reopen'"
+                    [actionBtnPrimaryName]="'RE-OPEN'"
+                    [DataType]="'case_id'"
+                    (actionSuccessEvent)="onReopenSuccess( $event )">
+  <ng-container class="modal-body-content">
+    <div class="col-12">
+      <h5 class="text-center">To perform action on user who has already been qualified, you will need to reopen the case. Do you want to continue?
+      </h5>
+    </div>
+  </ng-container>
+  <ng-container class="custom-processing-content">
+    <span>Processing ...</span>
+  </ng-container>
+  <ng-container class="custom-error-content">
+    <span>There was some issue.<br>Please Try Again.</span>
+  </ng-container>
+  <ng-container class="custom-success-content">
+    <span>The case will be re-opened shortly. You will be able to perform action on the user once the case has been reopened.</span>
+  </ng-container>
+</manage-user-modal>
 
   <update-eth-modal [user]="user" ></update-eth-modal>
 
