@@ -8,9 +8,12 @@
           <div class="mt-4 row">
             <form #updateEthAdressForm="ngForm" (ngSubmit)="updateEthAddress(updateEthAdressForm)"
                    class="col-12 col-md-8 mx-auto">
-              <input type="text" name="ethereum_address"
-                     autocomplete="off" placeholder="<Enter eth address here>" required
-                     class="form-control text-center" #ethereum_address="ngModel" ngModel>
+              <div class="form-group">
+                <input type="text" name="ethereum_address"
+                       autocomplete="off" placeholder="Enter Ethereum address here" required
+                       class="form-control text-center" #ethereum_address="ngModel" ngModel>
+              </div>
+
                 <ost-form-error-handler [errorFor]="ethereum_address"
                                         [fieldName]="'Ethereum address'"
                                         [serverError]="errorResponse">
