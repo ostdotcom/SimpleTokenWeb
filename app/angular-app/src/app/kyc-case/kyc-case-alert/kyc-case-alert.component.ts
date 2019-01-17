@@ -80,7 +80,7 @@ export class KycCaseAlertComponent  {
         if( isWhitelistSetup ){
           whiteListHandling();
         }else{
-          setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified." , "success");
+          setAlertMessageAndStatus("The case has been" + approve_type_text + "approved." , "success");
         }
       } else if( kyc_status == "denied"){
         setAlertMessageAndStatus("Case manually denied by admin." , "failed");
@@ -95,7 +95,7 @@ export class KycCaseAlertComponent  {
         checkForAMLProcessingStatus();
       } else{
         if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
-          setAlertMessageAndStatus("Issue reported - " + last_issue_email_sent_humanized + " email sent" , "warning");
+          setAlertMessageAndStatus("Details update requested - " + last_issue_email_sent_humanized + " email sent" , "warning");
         } else {
           onAdminStatusPending();
         }
@@ -116,7 +116,7 @@ export class KycCaseAlertComponent  {
 
     onAutomation = () => {
       if( image_processing_status == "unprocessed" ){
-        setAlertMessageAndStatus("Awaiting automation response." , "warning");
+        setAlertMessageAndStatus("Processing automation." , "warning");
       }else if( image_processing_status == "failed" ){
         setAlertMessageAndStatus("Manual review needed." , "warning");
       }else {
@@ -127,21 +127,21 @@ export class KycCaseAlertComponent  {
     checkForAMLProcessingStatus = () => {
       if( aml_processing_status == "processed"){
         this.isMatchDetectedMsg =  true ;
-        setAlertMessageAndStatus("AML check was successfully processed" , "success")
+        setAlertMessageAndStatus("AML check was successfully processed" , "warning")
       } else {
-        setAlertMessageAndStatus("Case details have been qualified. Awaiting AML/CTF info.", "success")
+        setAlertMessageAndStatus("Case details have been approved. Processing AML/CTF check.", "warning")
       }
     };
 
      whiteListHandling = () => {
         if (whitelist_status == 'unprocessed' || whitelist_status == 'started') {
-            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified. Whitelisting in progress." , "warning");
+            setAlertMessageAndStatus("The case has been" + approve_type_text + "approved. Whitelisting in progress." , "warning");
         } else if ( whitelist_status == 'done' && whitelist_confirmation_pending ) {
             setAlertMessageAndStatus("Case"+ approve_type_text + "approved, whitelisting done. Awaiting confirmation." , "warning");
         } else if ( whitelist_status == 'done' && !whitelist_confirmation_pending) {
-            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified. Whitelisting done." , "success");
+            setAlertMessageAndStatus("The case has been" + approve_type_text + "approved. Whitelisting done." , "success");
         } else if (whitelist_status == 'failed') {
-            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified. Whitelisting failed." , "failed");
+            setAlertMessageAndStatus("The case has been" + approve_type_text + "approved. Whitelisting failed." , "failed");
         }
       }
 
