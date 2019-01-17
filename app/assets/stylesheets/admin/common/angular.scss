@@ -27,6 +27,10 @@ admin-dashboard, .actions-select {
   }
 }
 
+.btn.disabled{
+  opacity: 0.5;
+}
+
 .kyc-header {
   color: $yellow-500;
 }

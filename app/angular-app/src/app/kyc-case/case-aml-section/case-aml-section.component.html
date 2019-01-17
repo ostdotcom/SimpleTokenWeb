@@ -12,7 +12,7 @@
         <div class="card-header">
           <div class="aml-msg">
             {{getAMLStatusMsg()}}
-            <ng-container *ngIf="amlMatchesPresent">
+            <ng-container *ngIf="caseDetails['is_case_closed'] && amlMatchesPresent">
               <div data-toggle="collapse" data-target="#amlMatchContent"
                    aria-expanded="false"
                    aria-controls="amlMatchContent"
@@ -28,10 +28,9 @@
           </div>
         </div>
 
-        <div class="card-body p-0 collapse" id="amlMatchContent" >
+        <div *ngIf="amlMatchesPresent"  class="card-body p-0 {{caseDetails['is_case_closed'] ? 'collapse' :''}}" id="amlMatchContent" >
           <div style="height: 20px"></div>
-          <div *ngIf="amlMatchesPresent" class='aml-content '>
-
+          <div class='aml-content'>
             <div class="card-col col-12">
               <div class="row">
                 <div class="col-4 my-auto">
@@ -41,7 +40,7 @@
                   <h6 class="card-title">MATCH</h6>
                 </div>
                 <div class="col-4 my-auto">
-                  <button type="button" [disabled]="caseDetails.is_case_closed"
+                  <button type="button" [disabled]="caseDetails['is_case_closed']"
                           class="btn no-hit-btn px-2 {{allNegativeMatches ? 'active' : ''}}" (click)="allNegativeMatchesPressed()">
                     <h6 class="mb-0 card-title">NO HIT</h6>
                   </button>
