@@ -8,10 +8,29 @@
   <div class="col-12 col-md-6 mb-3">
     <div class="card-group">
       <div class="card">
-        <div class="card-body">
 
-          <div class="aml-msg mb-3">{{getAMLStatusMsg()}}</div>
-          <div *ngIf="amlMatchesPresent" class='row aml-content'>
+        <div class="card-header">
+          <div class="aml-msg">
+            {{getAMLStatusMsg()}}
+            <ng-container *ngIf="amlMatchesPresent">
+              <div data-toggle="collapse" data-target="#amlMatchContent"
+                   aria-expanded="false"
+                   aria-controls="amlMatchContent"
+                   class="show-details text-uppercase">
+                  <span class="collapsed">
+                    Show Details
+                  </span>
+                <span class="expanded">
+                    Hide Details
+                  </span>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="card-body p-0 collapse" id="amlMatchContent" >
+          <div style="height: 20px"></div>
+          <div *ngIf="amlMatchesPresent" class='aml-content '>
 
             <div class="card-col col-12">
               <div class="row">

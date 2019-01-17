@@ -69,13 +69,15 @@ export class KycCaseComponent implements OnInit {
   }
 
   ngAfterViewChecked(){
-    if ($(".card").length && ! this.widthComputed){
+    if ($(".card").length > 0 && ! this.widthComputed){
       this.widthComputed = true;
-      let computedWidth = $(".card.grey-background").css("width").slice(0,-2) - 100 + "px";
-      $(".card.grey-background").css("min-height", computedWidth);
-      $("img.card-img-top").on("load", function(){
-        $(".card.grey-background").css("min-height", '');
-      });
+      if($(".card.grey-background").length > 0) {
+        let computedWidth = $(".card.grey-background").css("width").slice(0,-2) - 100 + "px";
+        $(".card.grey-background").css("min-height", computedWidth);
+        $("img.card-img-top").on("load", function(){
+          $(".card.grey-background").css("min-height", '');
+        });
+      }
     }
   }
 
