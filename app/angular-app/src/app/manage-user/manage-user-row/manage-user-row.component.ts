@@ -30,6 +30,14 @@ export class ManageUserRowComponent implements OnInit {
     if(this.row){
       this.entityPath = "entity_configs.user_management_dashboard.actions" ;
       this.options = this.entityConfigService.getEntityConfig(this.entityPath)['values'];
+      this.processOptions();
+    }
+  }
+
+  processOptions(){
+    for(let option of this.options) {
+      option['disable'] = this.isDisabled( option );
+      option['visible'] = this.isVisible( option );
     }
   }
 

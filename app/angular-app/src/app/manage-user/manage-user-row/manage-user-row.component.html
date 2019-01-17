@@ -38,8 +38,8 @@
           [(ngModel)]="status"
           (change)="onStatusChange( $event )">
     <ng-container *ngFor="let option of options" >
-      <ng-container *ngIf="isVisible(option)">
-        <option value="{{option.value}}" [disabled]="isDisabled( option )" >
+      <ng-container *ngIf="option.visible">
+        <option value="{{option.value}}" [disabled]="option.disable" >
           {{option.display_text}}
         </option>
       </ng-container>
