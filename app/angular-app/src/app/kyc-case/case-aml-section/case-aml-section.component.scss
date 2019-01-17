@@ -1,7 +1,6 @@
 @import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
 
 .aml-content{
-    border-top: solid 1px $blue-400;
     text-align: center;
     .card-col:nth-child(even){
       background-color: $green-1000;
@@ -9,6 +8,16 @@
     & .match-list{
       max-height: 400px;
       overflow-y: auto;
+    }
+  }
+
+  .collapse.show{
+    .no-hit-btn{
+      &:disabled{
+        opacity: 0.65;
+        color: $blue-800;
+        transition: none!important;
+      }
     }
   }
 
@@ -38,10 +47,29 @@
   .aml-msg{
     font-size: 0.8rem;
     letter-spacing: 2px;
+
+    & .show-details{
+      float: right;
+      display: inline-block;
+      font-size: 12px;
+      font-weight: $font-weight-600;
+      letter-spacing: 1px;
+      color: $yellow-500;
+      cursor: pointer;
+      &:hover, &:active {
+        border-bottom: 1px solid $yellow-500;
+        color: $yellow-500;
+      }
+    }
   }
 
   .card{
     border: solid 1px $blue-400;
+    .card-header{
+      background-color: $white;
+      border-bottom: none;
+      border-radius: $border-radius;
+    }
     .row {
 
     .card-title{
@@ -91,6 +119,7 @@
   }
   .card-body{
     padding: 0.95rem;
+    border-top: solid 1px $blue-400;
   }
 
 .error {
@@ -112,4 +141,9 @@
       font-size: $font-size-sm !important;
     }
   }
+}
+
+[aria-expanded="false"] > .expanded,
+[aria-expanded="true"] > .collapsed {
+  display: none;
 }
