@@ -31,8 +31,6 @@ export class OstHttp extends Http {
 
     public handleError = (error: Response) => {
       let  erroMsg = null ;
-    console.log('I am coming here');
-    console.log(error);
     if (error.status === 0) {
       erroMsg = 'Not able to connect to server. Please verify your internet connection.';
     } else if (error.status == 404) {
