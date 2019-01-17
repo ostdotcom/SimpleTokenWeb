@@ -34,26 +34,14 @@ class Admin::BaseController < ApplicationController
     end
   end
 
-  # Render error response pages
+  # redirect to admin login page for unauthorized requests
   #
-  # * Author: Aman
-  # * Date: 13/10/2017
-  # * Reviewed By: Sunil
+  # * Author: Mayur
+  # * Date: 16/01/2019
+  # * Reviewed By: Aman
   #
-  def render_error_response(service_response)
-    # Clean critical data
-    service_response.data = {}
-
-    if service_response.http_code == GlobalConstant::ErrorCode.unauthorized_access
-      if request.xhr?
-        (render plain: Oj.dump(service_response.to_json, mode: :compat), status: service_response.http_code) and return
-      else
-        redirect_to '/admin/login', status: GlobalConstant::ErrorCode.temporary_redirect and return
-      end
-    else
-      render_error_response_for(service_response)
-    end
-
+  def default_unauthorized_redirect_url
+    '/admin/login'
   end
 
 end
