@@ -193,7 +193,7 @@ export class KycCaseAlertComponent  {
     "warning":{
       "alertStyleClass" : 'alert-warning',
       "svgClass" : 'alert-warning-svg',
-      "svgId" : '#kyc-warning-icon'
+      "svgId" : '#kyc-process-icon'
     }
   }
 
