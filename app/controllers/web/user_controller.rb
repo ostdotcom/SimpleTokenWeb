@@ -258,20 +258,6 @@ class Web::UserController < Web::BaseController
 
   private
 
-  # Dont allow browser caching for token sale pages
-  #
-  # * Author: Aman
-  # * Date: 01/11/2017
-  # * Reviewed By: Sunil
-  #
-  def remove_browser_caching
-    response.headers['Pragma'] = 'no-cache'
-    response.headers['Cache-Control'] = 'no-store, no-cache, max-age=0, must-revalidate, post-check=0, pre-check=0'
-    response.headers['Vary'] = '*'
-    response.headers['Expires'] = '-1'
-    response.headers['Last-Modified'] = "#{Time.now.gmtime.strftime("%a, %d %b %Y %T GMT")}"
-  end
-
   # allow requests from whitelisted domains only
   #
   # * Author: Aman

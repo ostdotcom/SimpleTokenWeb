@@ -9,6 +9,8 @@ class Admin::ConfiguratorController < Admin::BaseController
 
   before_action :set_configurator_accordion
 
+  after_action :remove_browser_caching
+
   def theme
 
   end
