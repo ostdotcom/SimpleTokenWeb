@@ -34,7 +34,7 @@
     } else if (jqXHR.status == 302) {
         var redirect_url;
         try {
-            let _body = JSON.parse(jqXHR.responseText) || {},
+            var _body = JSON.parse(jqXHR.responseText) || {},
                 _err = _body['err'] || {},
                 error_extra_info = _err['error_extra_info'] || {};
             redirect_url = error_extra_info['redirect_url'];
