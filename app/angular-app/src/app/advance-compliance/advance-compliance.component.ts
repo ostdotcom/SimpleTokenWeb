@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {RequestStateHandlerService} from "../services/request-state-handler.service";
 import {OstHttp} from "../services/ost-http.service";
 import {AppConfigService} from "../services/app-config.service";
-
+//TODO: check need to delete this unused component
 @Component({
   selector: 'app-advance-compliance',
   templateUrl: './advance-compliance.component.html',

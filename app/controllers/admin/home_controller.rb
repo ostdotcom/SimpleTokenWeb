@@ -93,6 +93,23 @@ class Admin::HomeController < Admin::BaseController
   def change_password
   end
 
+  # Terms and Conditions
+  #
+  # * Author: Preshita Shirke
+  # * Date: 17/01/2019
+  # * Reviewed By: Akshay Raje
+  #
+  def terms_and_conditions
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+                           .get_terms_and_conditions
+    unless service_response.success?
+      render_error_response(service_response)
+      return
+    end
+
+    @resp_data = service_response.data
+  end
+
   def angular_app
     service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_client_detail

@@ -422,6 +422,7 @@
   </ng-container>
 </kyc-case-action-modal>
 
+<!--TODO:check need to be removed-->
 <kyc-case-action-modal [postApi]="'api/admin/kyc/retry-aml-upload'" [params]="getParams()" [modalId]="'retryCynopsisModal'"
   [actionBtnPrimaryName]="'RETRY'" (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
