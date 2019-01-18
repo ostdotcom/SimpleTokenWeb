@@ -336,6 +336,14 @@ en:
       :assets:
         :specific_css_required: 1
 
+    terms_and_conditions:
+      :meta:
+        :title: OST KYC Admin Login Terms and Conditions
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 1
+        :specific_js_required: 0
+
     change_password:
       :meta:
         :title: OST KYC Admin Change Password
