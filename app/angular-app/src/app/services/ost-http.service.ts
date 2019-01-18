@@ -40,6 +40,7 @@ export class OstHttp extends Http {
     } else if (error.status == 401) {
       window.location.href = "/admin/login";
     } else if (error.status == 302) {
+      console.log('redirecting');
       var redirect_url;
       try {
         let _body = JSON.parse(error['_body']) || {},
@@ -49,6 +50,9 @@ export class OstHttp extends Http {
       } catch (e)  {
          redirect_url = '/admin/login';
       }
+
+      console.log('redirect_url-', redirect_url);
+
       window.location.href = redirect_url;
     } else if (error.status == 408) {
       erroMsg = 'Time out error.';
