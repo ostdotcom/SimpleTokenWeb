@@ -30,7 +30,6 @@ import { LogModalComponent } from './kyc-case/log-modal/log-modal.component';
 import { DuplicateDetailsModalComponent } from './kyc-case/duplicate-details-modal/duplicate-details-modal.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ReportIssuesComponent } from './report-issues/report-issues.component';
-import { UpdateEthaddressComponent } from './update-ethaddress/update-ethaddress.component';
 import { UserDashBoardHeaderComponent } from './admin-dashboard/user-dash-board-header/user-dash-board-header.component';
 import { UserDashBoardRowComponent } from './admin-dashboard/user-dash-board-row/user-dash-board-row.component';
 import { OstRowComponent } from './table/ost-row/ost-row.component';
@@ -58,7 +57,6 @@ import { UtilitiesService } from './services/utilities.service';
 import { FormConfiguratorComponent } from './form-configurator/form-configurator.component';
 import { SaleSettingsComponent } from './sale-settings/sale-settings.component';
 import { CountrySettingsComponent } from './country-settings/country-settings.component';
-import { AdvanceComplianceComponent } from './advance-compliance/advance-compliance.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { OstPdfFileComponent } from './ost-pdf-file/ost-pdf-file.component';
 import { OstPdfService } from './services/ost-pdf.service';
@@ -69,6 +67,11 @@ import { WebhooksComponent } from './webhooks/webhooks.component';
 import { ConfirmationModalComponent } from './webhooks/confirmation-modal/confirmation-modal.component' ;
 import { AuthGuardService } from "./services/auth-guard.service";
 import { FooterComponent } from './admin-settings/footer/footer.component';
+import { AmlToggleComponent } from './kyc-case/aml-toggle/aml-toggle.component';
+import { CaseBreadcrumbComponent } from './kyc-case/case-breadcrumb/case-breadcrumb.component';
+import { CaseAmlSectionComponent } from './kyc-case/case-aml-section/case-aml-section.component';
+import { CaseFooterSectionComponent } from './kyc-case/case-footer-section/case-footer-section.component';
+import { UpdateEthModalComponent } from './manage-user/update-eth-modal/update-eth-modal.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -100,7 +103,6 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     DuplicateDetailsModalComponent,
     AdminDashboardComponent,
     ReportIssuesComponent,
-    UpdateEthaddressComponent,
     UserDashBoardHeaderComponent,
     UserDashBoardRowComponent,
     OstRowComponent,
@@ -126,7 +128,6 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     FormConfiguratorComponent,
     SaleSettingsComponent,
     CountrySettingsComponent,
-    AdvanceComplianceComponent,
     ChangePasswordComponent,
     OstPdfFileComponent,
     ContractAddressesComponent,
@@ -135,7 +136,12 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     ChangePasswordComponent,
     WebhooksComponent,
     ConfirmationModalComponent,
-    FooterComponent
+    FooterComponent,
+    AmlToggleComponent,
+    CaseBreadcrumbComponent,
+    CaseAmlSectionComponent,
+    CaseFooterSectionComponent,
+    UpdateEthModalComponent
   ],
   imports: [
     BrowserModule,
@@ -176,10 +182,6 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path: 'settings/artificial-intelligence',
             component: ArtificialIntelligenceComponent
-          },
-          {
-            path: 'settings/advance-compliance',
-            component: AdvanceComplianceComponent
           },
           {
             path: 'settings/contract-addresses',

@@ -52,30 +52,15 @@ class Web::BaseController < ApplicationController
     end
   end
 
-  # Render error response pages
+  # redirect to clients login page for unauthorized requests
   #
-  # * Author: Aman
-  # * Date: 13/10/2017
-  # * Reviewed By: Sunil
+  # * Author: Mayur
+  # * Date: 16/01/2019
+  # * Reviewed By: Aman
   #
-  def render_error_response(service_response)
-    # Clean critical data
-    service_response.data = {}
-
-    if service_response.http_code == GlobalConstant::ErrorCode.unauthorized_access
-      if request.xhr?
-        (render plain: Oj.dump(service_response.to_json, mode: :compat), status: service_response.http_code) and return
-      else
-        url_params = params[:t].present? ? "?t=#{params[:t]}" : ''
-        redirect_to "/login#{url_params}", status: GlobalConstant::ErrorCode.temporary_redirect and return
-      end
-    elsif service_response.http_code == GlobalConstant::ErrorCode.temporary_redirect
-      redirect_url = (service_response["error_extra_info"] || {})["redirect_url"]
-      redirect_url = redirect_url.present? ? redirect_url : GlobalConstant::Base.simple_token_web['kyc_root_url']
-      redirect_to redirect_url, status: GlobalConstant::ErrorCode.temporary_redirect and return
-    else
-      render_error_response_for(service_response)
-    end
+  def default_unauthorized_redirect_url
+    url_params = params[:t].present? ? "?t=#{params[:t]}" : ''
+    "/login#{url_params}"
   end
 
   # Redirect to page if cannot access as per user state
@@ -91,7 +76,7 @@ class Web::BaseController < ApplicationController
     redirect_to "/#{path}#{extra_url_query_parameter}", status: http_status and return
   end
 
-  # Get IP Based Cynopsis Countries Name
+  # Get IP Based Aml Countries Name
   #
   # * Author: Sunil
   # * Date: 17/10/2017
@@ -99,13 +84,13 @@ class Web::BaseController < ApplicationController
   #
   # @returns [Array]
   #
-  def get_ip_to_cynopsis_countries
-    @ip_to_cynopsis_countries ||= begin
-      GlobalConstant::CountryNationality.get_cynopsis_countries_from_ip(ip_address)
+  def get_ip_to_aml_countries
+    @ip_to_aml_countries ||= begin
+      GlobalConstant::CountryNationality.get_aml_countries_from_ip(ip_address)
     end
   end
 
-  # Get IP Based Preferred Cynopsis Country Name
+  # Get IP Based Preferred Aml Country Name
   #
   # * Author: Tejas
   # * Date: 01/08/2018
@@ -113,9 +98,9 @@ class Web::BaseController < ApplicationController
   #
   # @returns [String]
   #
-  def get_ip_to_preferred_cynopsis_country
-    @ip_to_preferred_cynopsis_country ||= begin
-      GlobalConstant::CountryNationality.get_preferred_cynopsis_country_from_ip(ip_address)
+  def get_ip_to_preferred_aml_country
+    @ip_to_preferred_aml_country ||= begin
+      GlobalConstant::CountryNationality.get_preferred_aml_country_from_ip(ip_address)
     end
   end
 

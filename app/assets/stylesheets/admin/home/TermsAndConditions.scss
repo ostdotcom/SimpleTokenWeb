@@ -1,0 +1,21 @@
+@import "../simple_token_theme_admin/variables";
+.terms-conditions-container{
+  min-height: inherit;
+  background-image: url(https://dxwfxs8b4lg24.cloudfront.net/ost-kyc/images/ost-kyc-tnc-bg.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  h5{
+    color: $yellow-300;
+  }
+}
+
+input[type="checkbox"]{
+  display: inline-block !important;
+}
+
+.label-cbx {
+  input[type="checkbox"] {
+    display:  inline-block !important;
+  }
+}

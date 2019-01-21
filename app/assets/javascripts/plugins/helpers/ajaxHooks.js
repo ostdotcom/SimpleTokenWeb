@@ -18,8 +18,8 @@
   });
 
   
-  $( window.document ).ajaxError( function( event, jqXHR, settings, thrownError ) { 
-    
+  $( window.document ).ajaxError( function( event, jqXHR, settings, thrownError ) {
+
     var jParent = (jqXHR.ost && jqXHR.ost.jParent ) ? jqXHR.ost.jParent : $("body")
         , msg   = ''
     ;
@@ -31,6 +31,17 @@
       msg = 'Internal Server Error.';
     } else if (jqXHR.status == 401) {
         window.location = getStatus401redirect();
+    } else if (jqXHR.status == 302) {
+        var redirect_url;
+        try {
+            var _body = JSON.parse(jqXHR.responseText) || {},
+                _err = _body['err'] || {},
+                error_extra_info = _err['error_extra_info'] || {};
+            redirect_url = error_extra_info['redirect_url'];
+        } catch (e)  {
+            redirect_url = getStatus401redirect();
+        }
+        window.location.href = redirect_url;
     } else if (thrownError === 'parsererror') {
       msg = 'Requested JSON parse failed.';
     } else if (thrownError === 'timeout') {
@@ -52,7 +63,7 @@
       jParent
         .find('.general_error')
         .removeClass("is-invalid")
-          .text(msg || "&nbsp;")
+          .text(msg || "");
       ;
     }
 

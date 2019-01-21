@@ -1,0 +1,54 @@
+<div class="modal fade user-modal" id="updateEthAddressModal" role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
+    <div class="modal-content rounded-0">
+      <div class="modal-body text-center p-5">
+
+       <ng-container *ngIf="!isSuccess">
+          <h5>Update the user’s Ethereum Address below:</h5>
+          <div class="mt-4 row">
+            <form #updateEthAdressForm="ngForm" (ngSubmit)="updateEthAddress(updateEthAdressForm)"
+                   class="col-12 col-md-8 mx-auto">
+              <div class="form-group">
+                <input type="text" name="ethereum_address"
+                       autocomplete="off" placeholder="Enter Ethereum address here" required
+                       class="form-control text-center" #ethereum_address="ngModel" ngModel
+                       pattern="(0x|0X)?[0-9a-fA-F]{40}">
+              </div>
+
+                <ost-form-error-handler [errorFor]="ethereum_address"
+                                        [fieldName]="'Ethereum address'"
+                                        [serverError]="errorResponse">
+                </ost-form-error-handler>
+                <button type="submit"
+                        [disabled]="!updateEthAdressForm.valid || isUpdating"
+                        class="btn btn-primary text-uppercase mb-2 mr-2">{{updateBtnText}}
+              </button>
+              <button type="button" class="btn btn-secondary text-uppercase mb-2"
+                      (click)="resetForm( updateEthAdressForm )"> Cancel</button>
+            </form>
+            <div class="general_error error text-center col-12">
+              <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">
+              </ost-form-error-handler>
+              </div>
+          </div>
+       </ng-container>
+
+        <ng-container *ngIf="isSuccess">
+          <div class="success-icon-wrap my-3 mx-auto ml-2 d-inline-block">
+            <svg class="icon" style="width:30px; height: 30px">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                </use>
+              </switch>
+            </svg>
+          </div>
+          <div class='display-1' style='vertical-align:super;'>Ethereum address successfully updated</div>
+          <div class="mt-4">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+</div>

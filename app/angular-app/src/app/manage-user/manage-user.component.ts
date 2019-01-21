@@ -36,6 +36,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
   is_kyc_submitted: string;
   whitelist_status: string;
   order: string;
+  caseId: string;
 
   isCSVDownloaded = false;
   securityCheckbox: boolean = false;
@@ -71,7 +72,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
     });
 
     $('#confirmDownload').off('hidden.bs.modal').on('hidden.bs.modal', () => {
-      this.zone.run(() => { 
+      this.zone.run(() => {
         this.resetDownLoadCsvModal();
       });
     });
@@ -82,25 +83,34 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
     let performAction = this.user && this.user.action_to_perform || [];
 
     if (performAction.includes('reopen')){
-      this.postApi = 'api/admin/kyc/open-case';
-      this.actionBtnPrimaryName =  "RE-OPEN";
-      this.actionButtonClass = "case-reopen";
-      this.message = "To delete a user who has already been qualified, you will need to reopen the case. Do you want to continue?";
-      this.successMessage = "The case will be re-opened shortly. You will be able to delete the user once the case has been reopened."
-      this.DataType = 'case_id';
+      $('#reopenCaseModal').modal('show');
 
     }else if(performAction.includes('delete')){
-      this.postApi = 'api/admin/users/delete-user';
-      this.actionBtnPrimaryName =  "DELETE";
-      this.actionButtonClass = "delete-user";
-      this.message = "Attention! You are about to delete this user. This action is permanent and cannot be undone. Are you sure you want to continue?";
-      this.successMessage = "User Deleted";
-      this.DataType = 'user_id';
+      $('#deleteUserModal').modal('show');
     }
-    $('#deleteUserModal').modal('show');
+  }
+
+  onUpdateEthAddress( user ){
+    this.user =  user ;
+    let performAction = this.user && this.user.action_to_perform || [];
+
+    if (performAction.includes('reopen')){
+      $('#reopenCaseModal').modal('show');
+
+    }else if(performAction.includes('update_ethereum_address')){
+      $('#updateEthAddressModal').modal('show');
+    }
   }
 
   onDeleteRowSucces(e){
+    this.refreshTableData();
+  }
+
+  onReopenSuccess(e){
+    this.refreshTableData();
+  }
+
+  refreshTableData() {
     if( this.q ){
       this.q = ""; //Reset the search , the table component will by default get all table data
     }else{

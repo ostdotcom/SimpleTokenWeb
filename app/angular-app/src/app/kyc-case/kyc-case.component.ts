@@ -19,7 +19,6 @@ export class KycCaseComponent implements OnInit {
   errorMessage: string = '';
   showCase: boolean = true;
   showReportIssue: boolean = false;
-  showUpdateEth: boolean = false;
   isInitDuplicateTable:boolean = false;
   isInitLogTabel:boolean = false;
   caseDetails;
@@ -42,6 +41,14 @@ export class KycCaseComponent implements OnInit {
   submittedDetails = ['birthdate', 'country', 'document_id_number', 'email', 'first_name', 'last_name', 'nationality',
                       'postal_code', 'submitted_at', 'street_address', 'city', 'state'];
 
+
+  amlDetail;
+  amlMatchList;
+  amlMatchedIds: Array<string> = [];
+  amlUnMatchedIds: Array<string> = [];
+
+  showPageStateFn : Function
+
   constructor(
     public activatedRoute: ActivatedRoute,
     private http: OstHttp,
@@ -57,16 +64,20 @@ export class KycCaseComponent implements OnInit {
       this.caseId = params.get('id');
       this.fetchCase();
     });
+
+    this.showPageStateFn = this.showPageState.bind( this );
   }
 
   ngAfterViewChecked(){
-    if ($(".card").length && ! this.widthComputed){
+    if ($(".card").length > 0 && ! this.widthComputed){
       this.widthComputed = true;
-      let computedWidth = $(".card.grey-background").css("width").slice(0,-2) - 100 + "px";
-      $(".card.grey-background").css("min-height", computedWidth);
-      $("img.card-img-top").on("load", function(){
-        $(".card.grey-background").css("min-height", '');
-      });
+      if($(".card.grey-background").length > 0) {
+        let computedWidth = $(".card.grey-background").css("width").slice(0,-2) - 100 + "px";
+        $(".card.grey-background").css("min-height", computedWidth);
+        $("img.card-img-top").on("load", function(){
+          $(".card.grey-background").css("min-height", '');
+        });
+      }
     }
   }
 
@@ -104,16 +115,21 @@ export class KycCaseComponent implements OnInit {
     this.response  = res;
     this.caseDetails = res.data.case_detail;
     this.userDetails = res.data.user_detail;
+
+    this.amlDetail = res.data.aml_detail;
+    this.amlMatchList = this.amlDetail  && this.amlDetail['aml_matches'] || [];
+    this.createMatchLists();
+
     this.user_kyc_comparison_detail = res.data.user_kyc_comparison_detail;
     this.client_kyc_pass_setting = res.data.client_kyc_pass_setting;
     this.ai_pass_detail = res.data.ai_pass_detail;
+
     this.ocr_comparison_fields = this.client_kyc_pass_setting.ocr_comparison_fields;
     this.image_processing_status =  this.user_kyc_comparison_detail.image_processing_status;
     this.userDetails['extraDiv'] = this.checkForOddSections();
     this.meta = res.data.meta;
     this.stateHandler.updateRequestStatus( this, false,  false);
     this.getNextPrevious(res.data.meta);
-    this.showPageState();
     this.setAdminConfig();
     this.setFRText();
     this.setOpticalCharacterReg();
@@ -122,13 +138,27 @@ export class KycCaseComponent implements OnInit {
     this.scrollTopService.scrollTop();
   }
 
-  showPageState(showCase = true, showReportIssue = false , showUpdateEth = false){
-    this.showCase = showCase;
-    this.showReportIssue = showReportIssue;
-    this.showUpdateEth = showUpdateEth;
+  createMatchLists(){
+    this.amlMatchedIds = [];
+    this.amlUnMatchedIds = [];
+
+    for(let match of this.amlMatchList) {
+      let match_status = match['status'],
+        match_qr_code = match['qr_code'];
+      if( match_status == 'match' && this.amlMatchedIds.indexOf(match_qr_code) < 0 ){
+        this.amlMatchedIds.push(match_qr_code);
+      } else if( match_status == 'no_match' && this.amlUnMatchedIds.indexOf(match_qr_code) < 0 ) {
+        this.amlUnMatchedIds.push(match_qr_code);
+      }
+    }
   }
 
-  onActionSuccess(e){
+  showPageState(showCase = true, showReportIssue = false){
+    this.showCase = showCase;
+    this.showReportIssue = showReportIssue;
+  }
+
+  onActionSuccess( res ){
     this.fetchCase();
   }
 
@@ -271,7 +301,13 @@ export class KycCaseComponent implements OnInit {
       }
   }
 
-
+  getParams(){
+    return {
+      'id' : this.caseId,
+      'matched_ids' : this.amlMatchedIds,
+      'unmatched_ids' : this.amlUnMatchedIds
+    }
+  }
 }
 
 

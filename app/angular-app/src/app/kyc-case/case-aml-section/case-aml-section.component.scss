@@ -1,0 +1,149 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+.aml-content{
+    text-align: center;
+    .card-col:nth-child(even){
+      background-color: $green-1000;
+    }
+    & .match-list{
+      max-height: 400px;
+      overflow-y: auto;
+    }
+  }
+
+  .collapse.show{
+    .no-hit-btn{
+      &:disabled{
+        opacity: 0.65;
+        color: $blue-800;
+        transition: none!important;
+      }
+    }
+  }
+
+  .no-hit-btn{
+    border: 1px solid $blue-400;
+    border-radius: $border-radius;
+    color: $blue-800;
+    background-color: $white;
+    &.active{
+      background-color: $blue-400;
+    }
+  }
+
+  .redirect-hover-icon{
+    display: none;
+  }
+
+  a:hover{
+    .redirect-icon{
+      display: none;
+    }
+    .redirect-hover-icon{
+      display: inline;
+    }
+  }
+
+  .aml-msg{
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+
+    & .show-details{
+      float: right;
+      display: inline-block;
+      font-size: 12px;
+      font-weight: $font-weight-600;
+      letter-spacing: 1px;
+      color: $yellow-500;
+      cursor: pointer;
+      &:hover, &:active {
+        border-bottom: 1px solid $yellow-500;
+        color: $yellow-500;
+      }
+    }
+  }
+
+  .card{
+    border: solid 1px $blue-400;
+    .card-header{
+      background-color: $white;
+      border-bottom: none;
+      border-radius: $border-radius;
+    }
+    .row {
+
+    .card-title{
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      word-wrap: break-word;
+      margin-bottom: 0px;
+    }
+
+    .card-row{
+      margin-right: -1.23rem;
+      margin-left: -1.23rem;
+      &:nth-child(even) {
+        background: $green-1000;
+      }
+      &:nth-child(odd) {
+        background: $white;
+      }
+    }
+    @media screen and (min-width: 576px){
+      .col-sm-6:nth-child(4n+1), .col-sm-6:nth-child(4n+2){
+        background-color: $green-1000;
+       }
+    }
+    @media screen and (max-width: 576px){
+      .col-sm-6:nth-child(odd){
+        background-color: $green-1000;
+       }
+    }
+
+    .card-col{
+      padding: 1rem 1.25rem;
+      .label{
+        color: $cyanish-gray;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        font-weight: 600;
+      }
+      .value{
+        color: $blue-800;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  }
+  .card-body{
+    padding: 0.95rem;
+    border-top: solid 1px $blue-400;
+  }
+
+.error {
+  font-size: $text4-size;
+  color: color('red');
+  min-height: 25px;
+  font-weight: $font-weight-500;
+  &.aml-error{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .match-code{
+    font-size: $font-size-sm;
+  }
+  .aml-content{
+    & .card-title{
+      font-size: $font-size-sm !important;
+    }
+  }
+}
+
+[aria-expanded="false"] > .expanded,
+[aria-expanded="true"] > .collapsed {
+  display: none;
+}

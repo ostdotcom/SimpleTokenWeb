@@ -1,0 +1,30 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+
+@media screen and (min-width: 769px){
+
+    .button-container{
+      position: fixed;
+      bottom: 0;
+      background-color: $white;
+      box-shadow: 0 -2px 2px -0.5px rgba(155, 175, 181, 0.2);
+        .float-lg-right{
+          .btn{
+            width: 180px;
+          }
+        }
+      }
+    
+      .button-container-phantom {
+        height:  80px;
+      }
+    }
+    
+    @media screen and (max-width: 768px){
+    
+      .button-container{
+        background-color: $white;
+            .btn{
+              width: 100%;
+            }
+        }
+    }

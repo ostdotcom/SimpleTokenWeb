@@ -1,6 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { UtilitiesService } from '../../services/utilities.service';
 import { AppConfigService } from '../../services/app-config.service';
+import set = Reflect.set;
+import {ScrollTopService} from "../../services/scroll-top.service";
+
+declare var $:any;
 
 @Component({
   selector: 'kyc-case-alert',
@@ -12,21 +16,28 @@ export class KycCaseAlertComponent  {
   @Input('response') response : object = {};
 
   constructor(
-    private utilitites      : UtilitiesService,
-    private appConfig       : AppConfigService
+    private utilitites : UtilitiesService,
+    private appConfig  : AppConfigService,
+    private scrollTop  : ScrollTopService
   ) {}
 
   alertMessage  : string      = null;
   alertConfig   : object      = null;
   failedReason  : Array<any>  = [];
+  isMatchDetectedMsg : boolean = false;
+
+  amlMatchCount: number;
+  amlProcessingStatus: string;
 
 
   ngAfterContentInit() {
-    var data =  this.response['data']
+    let data =  this.response['data']
     ;
 
-    var aml_status         = this.utilitites.deepGet(data ,  "case_detail.aml_status"),
+    let aml_status              = this.utilitites.deepGet(data ,  "case_detail.aml_status"),
         admin_status            = this.utilitites.deepGet(data ,  "case_detail.admin_status"),
+        aml_processing_status   = this.utilitites.deepGet(data ,  "aml_detail.aml_processing_status") || "",
+        aml_matches             = this.utilitites.deepGet(data ,  "aml_detail.aml_matches") || [],
         approve_type            = this.utilitites.deepGet(data ,  "client_kyc_pass_setting.approve_type"),
         last_qualified_type     = this.utilitites.deepGet(data ,  "case_detail.last_qualified_type"),
         whitelist_status        = this.utilitites.deepGet(data ,  "case_detail.whitelist_status"),
@@ -42,109 +53,95 @@ export class KycCaseAlertComponent  {
         alertStatus  = "",
         approve_type_text = null,
 
+
         //All status functions.
-        amlStatusCheck            : any,
+        caseStatusCheck           : any,
         checkForAdminStatus       : any,
         whiteListHandling         : any,
-        onAdminStatusApproved     : any,
         onAdminStatusPending      : any,
         onAutomation              : any,
-        onAutomationPending       : any,
         onManual                  : any,
-        onImageProcessingComplete : any,
         processFailedReasons      : any,
-        setAlertMessageAndStatus  : any
+        setAlertMessageAndStatus  : any,
+        checkForAMLProcessingStatus: any
         ;
 
-      if( last_qualified_type == "auto_approved" ){
-        approve_type_text = " automatically ";
-      }else{
-        approve_type_text = " manually ";
-      }
+    this.amlMatchCount = aml_matches.length
+    this.amlProcessingStatus = aml_processing_status
 
+    if( last_qualified_type == "auto_approved" ){
+      approve_type_text = " automatically ";
+    }else{
+      approve_type_text = " manually ";
+    }
 
-     amlStatusCheck = () => {
-        if( aml_status == "rejected"){
-          setAlertMessageAndStatus("AML/CTF status denied, this case cannot be reopened." , "failed");
-        }else {
-          processFailedReasons();
-          checkForAdminStatus();
-        }
-     }
-
-     checkForAdminStatus = () =>{
-       if( admin_status == "denied" ){
-        setAlertMessageAndStatus("Case manually denied by admin." , "failed");
-       }else if( admin_status == "qualified"){
-        onAdminStatusApproved();
-       }else {
-         onAdminStatusPending();
-       }
-     }
-
-     onAdminStatusApproved = () => {
-      if( aml_status == "pending" ||  aml_status == "unprocessed" ){
-          setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified and is awaiting AML/CTF action by Admin on Artemis Dashboard." , "warning");
-      }else if( kyc_status == "approved" ){
+    caseStatusCheck = () =>{
+      if( kyc_status == "approved"){
         if( isWhitelistSetup ){
           whiteListHandling();
         }else{
-            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified." , "success");
+          setAlertMessageAndStatus("The case has been" + approve_type_text + "approved." , "success");
         }
+      } else if( kyc_status == "denied"){
+        setAlertMessageAndStatus("Case manually denied by admin." , "failed");
+      } else{
+        checkForAdminStatus();
       }
-     }
+      processFailedReasons();
+    };
 
-     onAdminStatusPending = () =>{
-       if( approve_type == "auto"){
-          onAutomation();
-       }else{
-          onManual();
-       }
-     }
-
-     onManual = () =>{
-       if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
-        setAlertMessageAndStatus("Issue reported - " + last_issue_email_sent_humanized + " email sent" , "warning");
-       }else if( aml_status == "pending" ) {
-         setAlertMessageAndStatus("Awaiting AML/CTF action by Admin on Artemis Dashboard." , "warning");
-       }
-     }
-
-     onAutomation = () => {
-        if( image_processing_status == "unprocessed" ){
-          onAutomationPending();
-        }else if( image_processing_status == "failed" ){
-          setAlertMessageAndStatus("Manual review needed." , "warning");
-        }else {
-          onImageProcessingComplete();
+    checkForAdminStatus = () => {
+      if( admin_status == "qualified"){
+        checkForAMLProcessingStatus();
+      } else{
+        if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
+          setAlertMessageAndStatus("Details update requested - " + last_issue_email_sent_humanized + " email sent" , "warning");
+        } else {
+          onAdminStatusPending();
         }
-     };
-
-    onAutomationPending = () => {
-      if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
-        setAlertMessageAndStatus("Issue reported - " + last_issue_email_sent_humanized + " email sent" , "warning");
-      }else{
-        setAlertMessageAndStatus("Awaiting automation response." , "warning");
       }
     }
 
-     onImageProcessingComplete = () =>{
-        if( last_issue_email_sent_humanized && last_issue_email_sent_humanized.length > 0 ){
-          setAlertMessageAndStatus("Issue reported - " + last_issue_email_sent_humanized + " email sent" , "warning");
-        }else if( !automation_passed ) {
-          setAlertMessageAndStatus("Manual review needed." , "warning");
-        }
-     }
+    onAdminStatusPending = () =>{
+      if( approve_type == "auto"){
+        onAutomation();
+      }else{
+        onManual();
+      }
+    }
+
+    onManual = () =>{
+      setAlertMessageAndStatus("Manual review needed." , "warning");
+    }
+
+    onAutomation = () => {
+      if( image_processing_status == "unprocessed" ){
+        setAlertMessageAndStatus("Processing automation." , "warning");
+      }else if( image_processing_status == "failed" ){
+        setAlertMessageAndStatus("Manual review needed." , "warning");
+      }else {
+        setAlertMessageAndStatus("Manual review needed." , "warning");
+      }
+    };
+
+    checkForAMLProcessingStatus = () => {
+      if( aml_processing_status == "processed"){
+        this.isMatchDetectedMsg =  true ;
+        setAlertMessageAndStatus("AML check was successfully processed" , "warning")
+      } else {
+        setAlertMessageAndStatus("Case details have been approved. Processing AML/CTF check.", "warning")
+      }
+    };
 
      whiteListHandling = () => {
         if (whitelist_status == 'unprocessed' || whitelist_status == 'started') {
-            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified. Whitelisting in progress." , "warning");
+            setAlertMessageAndStatus("The case has been" + approve_type_text + "approved. Whitelisting in progress." , "warning");
         } else if ( whitelist_status == 'done' && whitelist_confirmation_pending ) {
             setAlertMessageAndStatus("Case"+ approve_type_text + "approved, whitelisting done. Awaiting confirmation." , "warning");
         } else if ( whitelist_status == 'done' && !whitelist_confirmation_pending) {
-            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified. Whitelisting done." , "success");
+            setAlertMessageAndStatus("The case has been" + approve_type_text + "approved. Whitelisting done." , "success");
         } else if (whitelist_status == 'failed') {
-            setAlertMessageAndStatus("The case has been" + approve_type_text + "qualified. Whitelisting failed." , "failed");
+            setAlertMessageAndStatus("The case has been" + approve_type_text + "approved. Whitelisting failed." , "failed");
         }
       }
 
@@ -167,7 +164,7 @@ export class KycCaseAlertComponent  {
         alertStatus =  status;
       }
 
-      amlStatusCheck();
+      caseStatusCheck();
 
       console.log("kyc case reponses", data );
       console.log("alertStatus",  "alertStatus");
@@ -196,7 +193,7 @@ export class KycCaseAlertComponent  {
     "warning":{
       "alertStyleClass" : 'alert-warning',
       "svgClass" : 'alert-warning-svg',
-      "svgId" : '#kyc-warning-icon'
+      "svgId" : '#kyc-process-icon'
     }
   }
 
@@ -209,6 +206,12 @@ export class KycCaseAlertComponent  {
     token_sale_ended: "Case cannot be automatically qualified, as the token sale ended.",
     case_closed_for_auto_approve: "Case cannot be automatically qualified, as the case is closed for auto approve.",
     human_labels_percentage_low: "Case cannot be automatically qualified, due to human facial characteristics not matching in facial recognition."
+  }
+
+  scrollToAmlSection(){
+    let el = $('#aml-section-wrapper')[0],
+        fromEl = $('html,body');
+    this.scrollTop.scrollTo( el, fromEl);
   }
 
 }

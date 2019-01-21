@@ -55,6 +55,18 @@ module SimpleTokenApi
         get("get-ga-url")
       end
 
+      # Get Terms of use for admin
+      #
+      # * Author: Aman
+      # * Date: 09/01/2017
+      # * Reviewed By:
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def get_terms_and_conditions
+        get("profile/get-terms-and-conditions")
+      end
+
       # Get Admin preview pages
       #
       # * Author: Pankaj

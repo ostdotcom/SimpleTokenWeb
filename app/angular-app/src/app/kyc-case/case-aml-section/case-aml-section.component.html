@@ -1,0 +1,91 @@
+
+<div  *ngIf="showAMLSection()"class="row aml-section" id="aml-section-wrapper">
+  <div class="col-12">
+    <h5 class='customized-h5 pt-3 pb-1 d-inline-block'>AML/CTF details</h5>
+    <div *ngIf="amlMatchesPresent" class="d-inline-block display-3">( {{getAMLMatchCount()}} matches)
+    </div>
+  </div>
+  <div class="col-12 col-md-6 mb-3">
+    <div class="card-group">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="aml-msg">
+            {{getAMLStatusMsg()}}
+            <ng-container *ngIf="caseDetails['is_case_closed'] && amlMatchesPresent">
+              <div data-toggle="collapse" data-target="#amlMatchContent"
+                   aria-expanded="false"
+                   aria-controls="amlMatchContent"
+                   class="show-details text-uppercase">
+                  <span class="collapsed">
+                    Show Details
+                  </span>
+                <span class="expanded">
+                    Hide Details
+                  </span>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <div *ngIf="amlMatchesPresent"  class="card-body p-0 {{caseDetails['is_case_closed'] ? 'collapse' :''}}" id="amlMatchContent" >
+          <div style="height: 20px"></div>
+          <div class='aml-content'>
+            <div class="card-col col-12">
+              <div class="row">
+                <div class="col-4 my-auto">
+                  <h6 class="card-title">PROFILE REF NO.</h6>
+                </div>
+                <div class="col-4 my-auto">
+                  <h6 class="card-title">MATCH</h6>
+                </div>
+                <div class="col-4 my-auto">
+                  <button type="button" [disabled]="caseDetails['is_case_closed']"
+                          class="btn no-hit-btn px-2 {{allNegativeMatches ? 'active' : ''}}" (click)="allNegativeMatchesPressed()">
+                    <h6 class="mb-0 card-title">NO HIT</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="match-list col-12">
+              <div class="row">
+                <div *ngFor="let match of amlMatchList; let i = index" class="card-col col-12">
+                  <div class="row">
+                    <div class="col-4 pr-0 pr-lg-3">
+                      <a href="{{match.pdf_url}}" target="_blank" class="mr-lg-2 match-code">
+                        {{match.qr_code}}
+                        <span class="border-none">
+                           <svg class="align-middle redirect-icon" style="height: 15px;width: 15px">
+                          <switch>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redirect-icon"></use>
+                          </switch>
+                          </svg>
+                          <svg class="align-middle redirect-hover-icon" style="height: 15px;width: 15px">
+                            <switch>
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redirect-hover-icon"></use>
+                            </switch>
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
+                    <div class="col-5 col-lg-4">
+                      <aml-toggle [match]="match"
+                                  [amlMatchedIds]="amlMatchedIds"
+                                  [amlUnMatchedIds]="amlUnMatchedIds"
+                                  [response]="response"
+                                  [allNegativeMatches]="allNegativeMatches"
+                                  (optionSelected)="onOptionSelect( $event ) ">
+                      </aml-toggle>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 error aml-error">Please confirm match status for at least one profile.</div>
+</div>
+

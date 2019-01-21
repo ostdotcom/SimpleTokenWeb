@@ -1,0 +1,23 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.switch-btn{
+  border: 1px solid $blue-400;
+  border-radius: $border-radius;
+  color: $blue-800;
+  &.active{
+    background-color: $blue-400;
+    z-index:0;
+  }
+  &.focus{
+    box-shadow: none;
+  }
+  &.disabled{
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .switch-btn{
+    padding: 0.3rem !important;
+    font-size: $font-size-sm;
+  }
+}

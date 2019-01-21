@@ -68,6 +68,7 @@ Rails.application.routes.draw do
       get '/activate-account' => :activate_account
       get '/authentication' => :authentication
       get '/change-password' => :change_password
+      get '/terms-and-conditions' => :terms_and_conditions
 
       # Configurator is not allowed in production environment
       if !Rails.env.production?
@@ -83,7 +84,6 @@ Rails.application.routes.draw do
       get '/settings/sale-settings' => :angular_app
       get '/settings/country-settings' => :angular_app
       get '/settings/artificial-intelligence' => :angular_app
-      get '/settings/advance-compliance' => :angular_app
       get '/settings/contract-addresses' => :angular_app
       get '/settings/form-configurator' => :angular_app
       get '/settings/webhooks' => :angular_app

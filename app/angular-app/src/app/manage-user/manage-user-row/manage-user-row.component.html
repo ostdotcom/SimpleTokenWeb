@@ -30,14 +30,25 @@
       {{row.whitelist_status}}
   </div>
 </div>
-<div class="col-3 p-0 pr-2 display-3">
-    <button class='btn text-uppercase delete-button'
-            [disabled]="isWhitelistPending() || isReopenInprocess()"
-            (click)='deleteUser()'>delete user
-    </button>
+<div class="col-3 p-0 pr-2 display-3 actions-select">
+
+  <select class="form-control selectpicker"
+          title="Action"
+          [(ngModel)]="status"
+          (change)="onStatusChange( $event )">
+    <ng-container *ngFor="let option of options" >
+      <ng-container *ngIf="option.visible">
+        <option value="{{option.value}}" [disabled]="option.disable" >
+          {{option.display_text}}
+        </option>
+      </ng-container>
+    </ng-container>
+
+  </select>
+
     <span *ngIf="isWhitelistPending() || isReopenInprocess()"  data-toggle="tooltip" data-placement="left"
       [title]="getTooltipMsg()" class='ml-2'>
-      <svg class="svg" style="height: 16px;width: 16px">
+      <svg class="svg align-middle" style="height: 16px;width: 16px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
           </switch>
@@ -79,26 +90,30 @@
 
 
         </div>
-        <div class="col-12 delete-btn-div py-3">
+        <div class="col-12 delete-btn-div py-3 actions-select">
 
-          <button class='btn text-uppercase delete-button' [disabled]="row.case_reopen_inprocess || row.whitelist_confirmation_pending" (click)='deleteUser()'>delete user</button>
-          <span *ngIf="row.whitelist_confirmation_pending"  data-toggle="tooltip" data-placement="bottom"
-            title="Whitelist confirmation is pending. Please wait to delete user." class='ml-2'>
-            <svg class="svg" style="height: 16px;width: 16px">
-                <switch>
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
-                </switch>
-              </svg>
-          </span>
-          <span *ngIf="row.case_reopen_inprocess"  data-toggle="tooltip" data-placement="bottom"
-            title="Case reopening is in process. Please wait to delete user." class='ml-2'>
-            <svg class="svg" style="height: 16px;width: 16px">
-                <switch>
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
-                </switch>
-              </svg>
-          </span>
+          <select class="form-control selectpicker"
+                  title="Action"
+                  [(ngModel)]="status"
+                  (change)="onStatusChange( $event )">
+            <ng-container *ngFor="let option of options" >
+              <ng-container *ngIf="isVisible(option)">
+                <option value="{{option.value}}" [disabled]="isDisabled( option )" >
+                  {{option.display_text}}
+                </option>
+              </ng-container>
+            </ng-container>
 
+          </select>
+
+          <span *ngIf="isWhitelistPending() || isReopenInprocess()"  data-toggle="tooltip" data-placement="left"
+                [title]="getTooltipMsg()" class='ml-2'>
+            <svg class="svg align-middle" style="height: 16px;width: 16px">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#info-icon"></use>
+              </switch>
+            </svg>
+          </span>
 
         </div>
 

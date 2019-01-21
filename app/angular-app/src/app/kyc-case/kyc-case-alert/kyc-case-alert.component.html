@@ -1,6 +1,5 @@
 <ost-alert *ngIf="alertMessage"
            [alertStyleClass]="alertConfig.alertStyleClass"
-           [alertMessage]="alertMessage" 
            [viewMoreList]="failedReason">
   <ng-container class="svg-container">
     <svg attr.class="svg {{alertConfig.svgClass}}">
@@ -9,4 +8,12 @@
     </switch>
     </svg>
   </ng-container>
+
+  <ng-container class="alert-message-content">
+    {{alertMessage}}
+    <ng-container *ngIf="isMatchDetectedMsg">
+      - <a href="javascript:void(0)" (click)="scrollToAmlSection( $event )" > {{amlMatchCount}} possible matches </a>detected.
+    </ng-container>
+  </ng-container>
+
 </ost-alert>
