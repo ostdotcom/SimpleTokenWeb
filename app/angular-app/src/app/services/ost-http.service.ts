@@ -41,6 +41,7 @@ export class OstHttp extends Http {
       window.location.href = "/admin/login";
     } else if (error.status == 302) {
       var redirect_url;
+      erroMsg = 'Redirecting..';
       try {
         let _body = JSON.parse(error['_body']) || {},
           _err = _body['err'] || {},
