@@ -9,3 +9,13 @@
     color: $yellow-300;
   }
 }
+
+input[type="checkbox"]{
+  display: inline-block;!important;
+}
+
+.label-cbx {
+  input[type="checkbox"] {
+    display:  inline-block;!important;
+  }
+}

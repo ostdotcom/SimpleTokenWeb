@@ -30,7 +30,6 @@ import { LogModalComponent } from './kyc-case/log-modal/log-modal.component';
 import { DuplicateDetailsModalComponent } from './kyc-case/duplicate-details-modal/duplicate-details-modal.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ReportIssuesComponent } from './report-issues/report-issues.component';
-import { UpdateEthaddressComponent } from './update-ethaddress/update-ethaddress.component';
 import { UserDashBoardHeaderComponent } from './admin-dashboard/user-dash-board-header/user-dash-board-header.component';
 import { UserDashBoardRowComponent } from './admin-dashboard/user-dash-board-row/user-dash-board-row.component';
 import { OstRowComponent } from './table/ost-row/ost-row.component';
@@ -58,7 +57,6 @@ import { UtilitiesService } from './services/utilities.service';
 import { FormConfiguratorComponent } from './form-configurator/form-configurator.component';
 import { SaleSettingsComponent } from './sale-settings/sale-settings.component';
 import { CountrySettingsComponent } from './country-settings/country-settings.component';
-import { AdvanceComplianceComponent } from './advance-compliance/advance-compliance.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { OstPdfFileComponent } from './ost-pdf-file/ost-pdf-file.component';
 import { OstPdfService } from './services/ost-pdf.service';
@@ -105,7 +103,6 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     DuplicateDetailsModalComponent,
     AdminDashboardComponent,
     ReportIssuesComponent,
-    UpdateEthaddressComponent,
     UserDashBoardHeaderComponent,
     UserDashBoardRowComponent,
     OstRowComponent,
@@ -131,7 +128,6 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     FormConfiguratorComponent,
     SaleSettingsComponent,
     CountrySettingsComponent,
-    AdvanceComplianceComponent,
     ChangePasswordComponent,
     OstPdfFileComponent,
     ContractAddressesComponent,
