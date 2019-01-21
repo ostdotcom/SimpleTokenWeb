@@ -572,9 +572,8 @@
       var error   = res && res.err ,
           errMsg  = error && error['display_text']
       ;
-      if( errMsg ){
-        jModal.find('.error-message').html( errMsg );
-      }
+      if( !errMsg ) { return false } ;
+      jModal.find('.error-message').html( errMsg );
       jModal.find('.state-handler').hide();
       jModal.find('.error-state').show();
       jModal.modal('show');

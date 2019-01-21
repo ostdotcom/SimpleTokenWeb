@@ -32,7 +32,6 @@
     } else if (jqXHR.status == 401) {
         window.location = getStatus401redirect();
     } else if (jqXHR.status == 302) {
-        console.log('redirecting');
         var redirect_url;
         try {
             var _body = JSON.parse(jqXHR.responseText) || {},
@@ -42,7 +41,6 @@
         } catch (e)  {
             redirect_url = getStatus401redirect();
         }
-        console.log('redirect_url-', redirect_url);
         window.location.href = redirect_url;
     } else if (thrownError === 'parsererror') {
       msg = 'Requested JSON parse failed.';
@@ -65,7 +63,7 @@
       jParent
         .find('.general_error')
         .removeClass("is-invalid")
-          .text(msg || "&nbsp;")
+          .text(msg || "");
       ;
     }
 
