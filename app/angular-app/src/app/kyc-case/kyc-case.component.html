@@ -436,8 +436,8 @@
     <h5 class="modal-title">Are you sure you want to reopen this case?</h5>
     <div *ngIf="caseDetails && caseDetails.kyc_status == 'approved'" class="sub-body mt-3">
       <div *ngIf="appConfig.getClientSetup().has_whitelist_setup == true; else noWhitelistSetup">
-        <div>When a case is reopened, User is unwhitelisted.</div>
-        <div class="mt-2">Once the user is qualified, the user will be whitelisted again.</div>
+        <div>When a case is reopened, user is unwhitelisted.</div>
+        <div class="mt-2">Once the case is approved, the user will be whitelisted again.</div>
       </div>
       <ng-template #noWhitelistSetup><!-- get a generic message-->
         <div>The user will not be able to take part in the ICO, until the case is closed again.</div>
