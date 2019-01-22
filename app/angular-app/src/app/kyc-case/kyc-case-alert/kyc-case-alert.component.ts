@@ -198,14 +198,14 @@ export class KycCaseAlertComponent  {
   }
 
   failedReasonsMap = {
-    ocr_unmatch : "Case cannot be automatically qualified, due to Optical Character Recognition ( OCR ) unmatch.",
-    fr_unmatch : "Case cannot be automatically qualified, due to low facial recognition ( FR ) match.",
-    residency_proof : "Case cannot be automatically qualified, due to residency proof documents.",
-    investor_proof : "Case cannot be automatically qualified, due to Investor proof.",
-    duplicate_kyc : "Case cannot be automatically qualified, due to duplicate status.",
-    token_sale_ended: "Case cannot be automatically qualified, as the token sale ended.",
-    case_closed_for_auto_approve: "Case cannot be automatically qualified, as the case is closed for auto approve.",
-    human_labels_percentage_low: "Case cannot be automatically qualified, due to human facial characteristics not matching in facial recognition."
+    ocr_unmatch : "Case cannot be automatically approved, due to Optical Character Recognition ( OCR ) unmatch.",
+    fr_unmatch : "Case cannot be automatically approved, due to low facial recognition ( FR ) match.",
+    residency_proof : "Case cannot be automatically approved, due to residency proof documents.",
+    investor_proof : "Case cannot be automatically approved, due to Investor proof.",
+    duplicate_kyc : "Case cannot be automatically approved, due to duplicate status.",
+    token_sale_ended: "Case cannot be automatically approved, as the token sale ended.",
+    case_closed_for_auto_approve: "Case cannot be automatically approved, as the case is closed for auto approve.",
+    human_labels_percentage_low: "Case cannot be automatically approved, due to human facial characteristics not matching in facial recognition."
   }
 
   scrollToAmlSection(){
