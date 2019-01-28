@@ -13,6 +13,7 @@ export class EmailCardComponent implements OnInit {
   @Input('postData') postData: Object = {};
 
   sectionName : string = '';
+  sectionKey : string = '';
   adminOrder: Array<string> = [];
   adminChecked : Array<string> = [];
   adminDisabled : Array<string> = [];
@@ -21,12 +22,12 @@ export class EmailCardComponent implements OnInit {
 
   ngOnInit() {
     if(!this.section) return;
-    this.sectionName = this.section['data_key_name'];
+    this.sectionName = this.section['display_text'];
+    this.sectionKey = this.section['data_keyname'];
     this.adminOrder = this.section['order'];
     this.adminChecked = JSON.parse(JSON.stringify(this.section['checked']));
     this.adminDisabled = this.section['disabled'];
-    this.postData[this.sectionName] = this.adminChecked;
-    console.log(this.postData);
+    this.postData[this.sectionKey] = this.adminChecked;
   }
 
   isChecked( value){
@@ -44,6 +45,10 @@ export class EmailCardComponent implements OnInit {
     }else{
       this.adminChecked.push( value );
     }
+  }
+
+  isDisabled( adminId ){
+    return this.adminDisabled.indexOf(adminId) > -1;
   }
 
 }

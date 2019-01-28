@@ -11,7 +11,7 @@ import {UtilitiesService} from "../services/utilities.service";
 export class EmailNotificationComponent implements OnInit {
 
   hasError     : boolean = false;
-  isProcessing : boolean = false;
+  isProcessing : boolean = true;
   errorMessage : string;
 
   btnText       : string  = "Apply";
@@ -22,81 +22,22 @@ export class EmailNotificationComponent implements OnInit {
   sectionList: Array<Object> = [];
   adminList : Object = {};
 
-  dataURL : string = "api/admin/email-notification/";
-  postURL : string = "api/admin/";
+  dataURL : string = "api/admin/setting/email-notification";
 
   constructor(private http: OstHttp,
               private stateHandler: RequestStateHandlerService,
               private utilities : UtilitiesService) { }
 
   ngOnInit() {
-    //this.init();
-    let data = {
-      'sections': [{
-        'display_text': 'section 1',
-        'checked': [1,3],
-        'disabled': [1],
-        'order': [3,2,1,4,5,6],
-        'data_key_name': 'section 1'
-      }, {
-        'display_text': 'section 2',
-        'checked': [1,3],
-        'disabled': [1],
-        'order': [3,2,1,4,5,6],
-        'data_key_name': 'section 2'
-      }, {
-        'display_text': 'section 3',
-        'checked': [1,3],
-        'disabled': [1],
-        'order': [3,2,1,4,5,6],
-        'data_key_name': 'section 3'
-      }],
-      'admins' : {
-        '1' : {
-          'name': 'admin1',
-          'emailId':'admin1@ost.com',
-          'role':''
-        },
-        '2' : {
-          'name': 'admin2',
-          'emailId':'admin2@ost.com',
-          'role':''
-        },
-        '3' : {
-          'name': 'admin3',
-          'emailId':'admin3@ost.com',
-          'role':''
-        },
-        '4' : {
-          'name': 'admin4',
-          'emailId':'admin4@ost.com',
-          'role':''
-        },
-        '5' : {
-          'name': 'admin5',
-          'emailId':'admin5@ost.com',
-          'role':''
-        },
-        '6' : {
-          'name': 'admin6',
-          'emailId':'admin6@ost.com',
-          'role':''
-        }
-      }
-    };
-
-    this.sectionList = data && data['sections'];
-    this.adminList  = data && data['admins'];
-
+    this.init();
   }
-
 
   init() {
     this.http.get( this.dataURL ).subscribe(
       response => {
         let res = response.json();
         if (res.success) {
-          this.sectionList = this.utilities.deepGet(res, 'data.sections');
+          this.sectionList = this.utilities.deepGet(res, 'data.section');
           this.adminList = this.utilities.deepGet(res, 'data.admins');
           this.stateHandler.updateRequestStatus(this, false, false);
         } else {
@@ -111,7 +52,11 @@ export class EmailNotificationComponent implements OnInit {
 
   submitForm(){
     console.log("posting data....."+ this.postData);
-    this.http.post( this.postURL , this.postData ).subscribe(
+    let params = {
+      email_setting : this.postData
+    };
+    this.preFormSubmit();
+    this.http.post( this.dataURL , params ).subscribe(
       response => {
         let res = response.json();
         if (res.success) {

@@ -43,3 +43,9 @@
 [aria-expanded="true"] > .collapsed {
   display: none;
 }
+
+.label-cbx{
+  & .checkbox.disabled {
+    opacity: 0.5;
+  }
+}
