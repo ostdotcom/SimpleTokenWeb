@@ -51,7 +51,6 @@ export class EmailNotificationComponent implements OnInit {
   }
 
   submitForm(){
-    console.log("posting data....."+ this.postData);
     let params = {
       email_setting : this.postData
     };
