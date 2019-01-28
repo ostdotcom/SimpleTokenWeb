@@ -72,6 +72,8 @@ import { CaseBreadcrumbComponent } from './kyc-case/case-breadcrumb/case-breadcr
 import { CaseAmlSectionComponent } from './kyc-case/case-aml-section/case-aml-section.component';
 import { CaseFooterSectionComponent } from './kyc-case/case-footer-section/case-footer-section.component';
 import { UpdateEthModalComponent } from './manage-user/update-eth-modal/update-eth-modal.component';
+import { EmailNotificationComponent } from './email-notification/email-notification.component';
+import { EmailCardComponent } from './email-notification/email-card/email-card.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -141,7 +143,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     CaseBreadcrumbComponent,
     CaseAmlSectionComponent,
     CaseFooterSectionComponent,
-    UpdateEthModalComponent
+    UpdateEthModalComponent,
+    EmailNotificationComponent,
+    EmailCardComponent
   ],
   imports: [
     BrowserModule,
@@ -196,6 +200,10 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
             path: 'settings/webhooks',
             component: WebhooksComponent,
             canActivate: [ AuthGuardService ]
+          },
+          {
+            path: 'settings/email-notification',
+            component: EmailNotificationComponent,
           }
        ]
       },

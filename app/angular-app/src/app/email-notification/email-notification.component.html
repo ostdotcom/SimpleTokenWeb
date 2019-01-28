@@ -1,0 +1,38 @@
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="error-content">
+    <div class="col-12">{{ errorMessage }}</div>
+  </ng-container>
+</request-state-handler>
+
+<div class="email-notification" *ngIf="!isProcessing && !hasError">
+  <div class="row mt-4 pt-2">
+    <div class="col-12">
+      <h4 class="kyc-header text-transform-upper">EMAIL NOTIFICATION</h4>
+    </div>
+  </div>
+  <div class="mb-3 mt-1 email-sub-header">
+    In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. Integer et elit eget elit facilisis tristique. Nam vel iaculis mauris.
+    Sed ullamcorper tellus erat, non ultrices sem tincidu.
+  </div>
+  <div class="mt-5">
+    <form #emailNotifForm="ngForm" (ngSubmit)="submitForm()">
+      <ng-container *ngFor="let section of sectionList; let i = index">
+        <email-card [section] = "section"
+                    [sectionId] = "'section'+i"
+                    [adminList]="adminList"
+                    [postData]="postData"></email-card>
+      </ng-container>
+      <div class="form-group row mt-5">
+        <div class="col-12 col-md-7">
+          <button [disabled]="isSubmitting && admin.pristine" type="submit" class="btn btn-primary"
+                  id="applyBtn" title="Apply Changes">{{btnText}}
+          </button>
+        </div>
+        <div class="general_error error pl-3 col-12 col-md-7">
+          <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">
+          </ost-form-error-handler>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

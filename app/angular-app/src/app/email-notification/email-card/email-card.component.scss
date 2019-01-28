@@ -1,0 +1,45 @@
+@import "../../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.card{
+  border: solid 1px $custom-grey-7;
+  & .card-header{
+    background-color: $green-1000;
+    border-bottom: none;
+    border-radius: $border-radius;
+  }
+  & .card-title{
+    text-transform: uppercase;
+    font-size: $display4-size;
+    color: $cyanish-gray;
+    font-weight: $font-weight-bold;
+    letter-spacing: $letter-spacing;
+  }
+
+  svg {
+    vertical-align: top;
+  }
+  .down-arrow-icon,
+  .up-arrow-icon {
+    pointer-events: none;
+    stroke: $cyanish-gray;
+  }
+  .admin-list{
+    overflow-y: auto;
+    max-height: 185px;
+  }
+  .admin-name, .admin-email{
+    color: $blue-800;
+    letter-spacing: $letter-spacing;
+    font-weight: $font-weight-light;
+    font-size: $display3-size;
+    margin-left: 0px;
+    display: inline;
+  }
+  .admin-email{
+    font-size: $display4-size;
+  }
+}
+
+[aria-expanded="false"] > .expanded,
+[aria-expanded="true"] > .collapsed {
+  display: none;
+}
