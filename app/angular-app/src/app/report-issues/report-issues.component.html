@@ -1,6 +1,6 @@
 <div class="container">
-  <h4>Report Issue</h4>
-  <p class="lead">Please select the issues you see in the uploaded documents and forms</p>
+  <h4>Request Details Update</h4>
+  <p class="lead">Please select the field or document you want to request the user to update</p>
   <hr />
   <div class="row">
     <div class="col-12 col-lg-6">
@@ -51,7 +51,7 @@
             <div class="modal-body p-5">
                 <div class='row' *ngIf="!isProcessing && !hasError && !isMailSent">
                   <div class="col-12">
-                    <h5 class="text-center">Are you sure you want to report this issue and send the email?</h5>
+                    <h5 class="text-center">Are you sure you want to request via email the user to update the submitted details?</h5>
                   </div>
                   <div class="col-12 form-group mt-4 text-center">
                       <button class="btn btn-primary mr-md-2 mt-2" (click)="onReportIssue(form)">SEND EMAIL</button>
