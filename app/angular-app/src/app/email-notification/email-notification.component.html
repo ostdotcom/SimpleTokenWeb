@@ -16,12 +16,14 @@
   </div>
   <div class="mt-5">
     <form #emailNotifForm="ngForm" (ngSubmit)="submitForm()">
-      <ng-container *ngFor="let section of sectionList; let i = index">
-        <email-card [section] = "section"
-                    [sectionId] = "'section'+i"
-                    [adminList]="adminList"
-                    [postData]="postData"></email-card>
-      </ng-container>
+      <div id="emailAccordion">
+        <ng-container *ngFor="let section of sectionList; let i = index">
+          <email-card [section] = "section"
+                      [sectionId] = "'section'+i"
+                      [adminList]="adminList"
+                      [postData]="postData"></email-card>
+        </ng-container>
+      </div>
       <div class="form-group row mt-5">
         <div class="col-12 col-md-7">
           <button [disabled]="isSubmitting" type="submit" class="btn btn-primary"

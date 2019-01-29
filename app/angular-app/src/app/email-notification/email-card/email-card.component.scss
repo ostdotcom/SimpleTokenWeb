@@ -12,6 +12,7 @@
     color: $cyanish-gray;
     font-weight: $font-weight-bold;
     letter-spacing: $letter-spacing;
+    word-wrap: break-word;
   }
 
   svg {
@@ -39,8 +40,8 @@
   }
 }
 
-[aria-expanded="false"] > .expanded,
-[aria-expanded="true"] > .collapsed {
+[aria-expanded="false"] .expanded,
+[aria-expanded="true"] .collapsed {
   display: none;
 }
 

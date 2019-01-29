@@ -1,12 +1,12 @@
 <div class="row mb-3">
   <div class="col-12 col-md-7">
-    <div class="card">
-      <div class="card-header">
-        <span class="card-title">{{sectionName}}</span>
-        <div data-toggle="collapse" [attr.data-target]="'#' + sectionId"
-             aria-expanded="false"
-             [attr.aria-controls]="sectionId"
-             class="float-right text-uppercase">
+    <div class="card" id="card{{sectionId}}">
+      <div data-toggle="collapse" [attr.data-target]="'#' + sectionId"
+            aria-expanded="false"
+            [attr.aria-controls]="sectionId"
+            class="card-header">
+        <span class="card-title mr-1">{{sectionName}}</span>
+        <div class="float-right text-uppercase">
           <span class="collapsed">
             <svg class="up-arrow-icon collapsed" height="18px" width="18px">
               <switch>
@@ -23,7 +23,7 @@
           </span>
         </div>
       </div>
-      <div class="collapse admin-list" id="{{sectionId}}">
+      <div class="collapse admin-list" id="{{sectionId}}" [attr.aria-labelledby]="'card'+sectionId" data-parent="#emailAccordion">
         <ul class="p-3 list-group list-group-flush">
           <li class="pt-2 pr-2 pl-0 form-check" *ngFor="let id of adminOrder; let i = index">
             <label for="{{sectionName}}{{id}}{{i}}" class="label-cbx mb-0 w-100">
