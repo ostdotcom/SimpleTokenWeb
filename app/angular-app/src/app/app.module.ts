@@ -204,6 +204,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path: 'settings/email-notification',
             component: EmailNotificationComponent,
+            canActivate: [ AuthGuardService ]
           }
        ]
       },

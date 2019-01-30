@@ -7,12 +7,11 @@
 <div class="email-notification" *ngIf="!isProcessing && !hasError">
   <div class="row mt-4 pt-2">
     <div class="col-12">
-      <h4 class="kyc-header text-transform-upper">EMAIL NOTIFICATION</h4>
+      <h4 class="kyc-header text-transform-upper">EMAIL NOTIFICATIONS</h4>
     </div>
   </div>
   <div class="mb-3 mt-1 email-sub-header">
-    In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. Integer et elit eget elit facilisis tristique. Nam vel iaculis mauris.
-    Sed ullamcorper tellus erat, non ultrices sem tincidu.
+    OST KYC notifies via email when certain actions or events take place. In this section, super admins can select which admin receives them. Please note,  super admins are selected by default for crucial notifications.
   </div>
   <div class="mt-5">
     <form #emailNotifForm="ngForm" (ngSubmit)="submitForm()">
