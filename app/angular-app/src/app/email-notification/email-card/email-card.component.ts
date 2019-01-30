@@ -11,6 +11,7 @@ export class EmailCardComponent implements OnInit {
   @Input('section') section: Object = {};
   @Input('sectionId') sectionId: string = '';
   @Input('postData') postData: Object = {};
+  @Input('modified') modified : Array<any> = [];
 
   sectionName : string = '';
   sectionKey : string = '';
@@ -45,10 +46,20 @@ export class EmailCardComponent implements OnInit {
     }else{
       this.adminChecked.push( value );
     }
+    this.setModified( value );
   }
 
   isDisabled( adminId ){
     return this.adminDisabled.indexOf(adminId) > -1;
+  }
+
+  setModified( value ){
+    let indexOf =  this.modified.indexOf(value);
+    if( indexOf > -1 ){
+      this.modified.splice( indexOf ,  1);
+    }else{
+      this.modified.push( value );
+    }
   }
 
 }

@@ -21,6 +21,7 @@ export class EmailNotificationComponent implements OnInit {
   postData : Object = {};
   sectionList: Array<Object> = [];
   adminList : Object = {};
+  modified : Array<string> = [];
 
   dataURL : string = "api/admin/setting/email-notification";
 
