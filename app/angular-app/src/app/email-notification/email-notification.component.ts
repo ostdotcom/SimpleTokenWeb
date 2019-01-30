@@ -3,6 +3,8 @@ import {OstHttp} from "../services/ost-http.service";
 import {RequestStateHandlerService} from "../services/request-state-handler.service";
 import {UtilitiesService} from "../services/utilities.service";
 
+declare var $:any;
+
 @Component({
   selector: 'app-email-notification',
   templateUrl: './email-notification.component.html',
@@ -81,6 +83,7 @@ export class EmailNotificationComponent implements OnInit {
 
   onFormSubmitSuccess( res ){
     this.onFormSubmitComplete();
+    $('#email-notification-success-modal').modal('show');
   }
 
   onFormSubmitError( err ){
@@ -90,6 +93,7 @@ export class EmailNotificationComponent implements OnInit {
   onFormSubmitComplete() {
     this.btnText = 'Apply';
     this.isSubmitting = false;
+    this.modified.splice(0, this.modified.length);
   }
 
   isModified(){
