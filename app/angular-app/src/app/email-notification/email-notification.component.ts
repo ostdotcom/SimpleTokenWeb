@@ -92,6 +92,10 @@ export class EmailNotificationComponent implements OnInit {
     this.isSubmitting = false;
   }
 
+  isModified(){
+    return this.modified.length > 0;
+  }
+
 
 
 }

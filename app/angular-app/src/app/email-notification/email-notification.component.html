@@ -26,7 +26,7 @@
       </div>
       <div class="form-group row mt-5">
         <div class="col-12 col-md-7">
-          <button [disabled]="isSubmitting || (modified.length == 0)" type="submit" class="btn btn-primary"
+          <button [disabled]="isSubmitting || !isModified()" type="submit" class="btn btn-primary"
                   id="applyBtn" title="Apply Changes">{{btnText}}
           </button>
         </div>
