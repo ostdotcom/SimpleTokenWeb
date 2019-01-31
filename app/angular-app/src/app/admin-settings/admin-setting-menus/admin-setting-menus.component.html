@@ -158,6 +158,25 @@
     <span class="form-label">ACCOUNT MANAGEMENT</span>
   </div>
 
+  <div class="desktop-menu px-3 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']">
+    <span>
+      <svg class="unselected-icon" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-icon"></use>
+        </switch>
+      </svg>
+    </span>
+
+    <span>
+      <svg class="selected-icon" height="20px" width="20px">
+        <switch>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-selected-icon"></use>
+        </switch>
+      </svg>
+    </span>
+    <span class="pl-2">Admin Management</span>
+  </div>
+
   <div *ngIf="isSuperAdmin" class="desktop-menu px-3 align-items-center d-flex" [routerLink]="['/admin/settings/email-notification']" [routerLinkActive]="['selected']">
     <span>
       <svg class="unselected-icon" height="20px" width="20px">
@@ -177,25 +196,6 @@
     <span class="pl-2">Email Notifications</span>
   </div>
 
-
-  <div class="desktop-menu px-3 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']">
-    <span>
-      <svg class="unselected-icon" height="20px" width="20px">
-        <switch>
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-icon"></use>
-        </switch>
-      </svg>
-    </span>
-
-    <span>
-      <svg class="selected-icon" height="20px" width="20px">
-        <switch>
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#admin-management-selected-icon"></use>
-        </switch>
-      </svg>
-    </span>
-    <span class="pl-2">Admin Management</span>
-  </div>
 
   <div class="desktop-menu px-3 align-items-center d-flex" *ngIf="isSuperAdmin" data-menu="user" [routerLink]="['/admin/settings/user']"
        [routerLinkActive]="['selected']">
@@ -426,24 +426,6 @@
         <span class="form-label">ACCOUNT MANAGEMENT</span>
       </div>
 
-      <div *ngIf="isSuperAdmin" class="desktop-menu pl-3 align-items-center d-flex" [routerLink]="['/admin/settings/email-notification']" [routerLinkActive]="['selected']">
-        <span>
-          <svg class="unselected-icon" height="20px" width="20px">
-            <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#email-notification-icon"></use>
-            </switch>
-          </svg>
-        </span>
-        <span>
-          <svg class="selected-icon" height="20px" width="20px">
-            <switch>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#email-notification-selected-icon"></use>
-            </switch>
-          </svg>
-        </span>
-        <span class="pl-2">Email Notifications</span>
-      </div>
-
       <div class="desktop-menu pl-3 align-items-center d-flex" data-menu="admin" [routerLink]="['/admin/settings/admin']" [routerLinkActive]="['selected']">
         <span>
           <svg class="unselected-icon" height="20px" width="20px">
@@ -460,6 +442,24 @@
           </svg>
         </span>
         <span class="pl-2">Admin Management</span>
+      </div>
+
+      <div *ngIf="isSuperAdmin" class="desktop-menu pl-3 align-items-center d-flex" [routerLink]="['/admin/settings/email-notification']" [routerLinkActive]="['selected']">
+        <span>
+          <svg class="unselected-icon" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#email-notification-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span>
+          <svg class="selected-icon" height="20px" width="20px">
+            <switch>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#email-notification-selected-icon"></use>
+            </switch>
+          </svg>
+        </span>
+        <span class="pl-2">Email Notifications</span>
       </div>
 
       <div class="desktop-menu pl-3 align-items-center d-flex" *ngIf="isSuperAdmin" data-menu="user" [routerLink]="['/admin/settings/user']"
