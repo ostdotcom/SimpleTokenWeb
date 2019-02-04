@@ -11,7 +11,7 @@ export class EmailCardComponent implements OnInit {
   @Input('section') section: Object = {};
   @Input('sectionId') sectionId: string = '';
   @Input('postData') postData: Object = {};
-  @Input('modified') modified : Array<any> = [];
+  @Output('modified') modified : EventEmitter<boolean>= new EventEmitter<boolean>();
 
   sectionName : string = '';
   sectionKey : string = '';
@@ -46,20 +46,11 @@ export class EmailCardComponent implements OnInit {
     }else{
       this.adminChecked.push( value );
     }
-    this.setModified( value );
+    this.modified.emit(true);
   }
 
   isDisabled( adminId ){
     return this.adminDisabled.indexOf(adminId) > -1;
-  }
-
-  setModified( value ){
-    let indexOf =  this.modified.indexOf(value);
-    if( indexOf > -1 ){
-      this.modified.splice( indexOf ,  1);
-    }else{
-      this.modified.push( value );
-    }
   }
 
 }

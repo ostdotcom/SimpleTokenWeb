@@ -23,7 +23,7 @@ export class EmailNotificationComponent implements OnInit {
   postData : Object = {};
   sectionList: Array<Object> = [];
   adminList : Object = {};
-  modified : Array<string> = [];
+  modified : boolean = false;
 
   dataURL : string = "api/admin/setting/email-notification";
 
@@ -93,11 +93,15 @@ export class EmailNotificationComponent implements OnInit {
   onFormSubmitComplete() {
     this.btnText = 'Apply';
     this.isSubmitting = false;
-    this.modified.splice(0, this.modified.length);
+    this.modified = false;
   }
 
   isModified(){
-    return this.modified.length > 0;
+    return this.modified;
+  }
+
+  setModified( value ){
+    this.modified = value;
   }
 
 
