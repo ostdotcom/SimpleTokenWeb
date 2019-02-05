@@ -79,6 +79,7 @@ export class EmailNotificationComponent implements OnInit {
   preFormSubmit() {
     this.btnText = 'Applying...';
     this.isSubmitting = true;
+    this.errorResponse = null;
   }
 
   onFormSubmitSuccess( res ){
