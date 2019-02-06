@@ -19,6 +19,18 @@ module SimpleTokenApi
         @service_base_route = 'admin/'
       end
 
+      # Check if cookie is present for logged out page loads(includes 1FA page)
+      #
+      # * Author: Aman
+      # * Date: 05/02/2019
+      # * Reviewed By:
+      #
+      # @return [Result::Base] returns an object of Result::Base class
+      #
+      def check_logged_in
+        get("check-logged-in")
+      end
+
       # Get details for client info
       #
       # * Author: Aman

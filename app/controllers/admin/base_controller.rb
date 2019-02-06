@@ -4,17 +4,17 @@ class Admin::BaseController < ApplicationController
 
   private
 
-  # Delete admin cookies
-  #
-  # * Author: Aman
-  # * Date: 13/10/2017
-  # * Reviewed By: Sunil
-  #
-  #
-  def delete_admin_cookie
-    return if cookies[GlobalConstant::Cookie.admin_cookie_name.to_sym].blank?
-    delete_cookie(GlobalConstant::Cookie.admin_cookie_name)
-  end
+  # # Delete admin cookies
+  # #
+  # # * Author: Aman
+  # # * Date: 13/10/2017
+  # # * Reviewed By: Sunil
+  # #
+  # #
+  # def delete_admin_cookie
+  #   return if cookies[GlobalConstant::Cookie.admin_cookie_name.to_sym].blank?
+  #   delete_cookie(GlobalConstant::Cookie.admin_cookie_name)
+  # end
 
   # redirect to admin login page if cookie not present
   #
