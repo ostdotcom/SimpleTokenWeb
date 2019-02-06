@@ -12,11 +12,8 @@ class Web::BaseController < ApplicationController
   # * Reviewed By:
   #
   def reload_for_external_links_to_retain_cookie
-    return if request.referer.blank? || request.xhr? || cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].present?
-    referer_host = URI(request.referer).host rescue nil
-    if referer_host.to_s != (request.host.downcase)
-      render html: "", layout: "reload_url" and return
-    end
+    return if cookies[GlobalConstant::Cookie.user_cookie_name.to_sym].present?
+    super
   end
 
   # Delete user cookies
