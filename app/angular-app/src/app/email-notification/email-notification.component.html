@@ -1,0 +1,62 @@
+<request-state-handler class="d-block w-100 page-loader" [isProcessing]="isProcessing" [hasError]="hasError">
+  <ng-container class="error-content">
+    <div class="col-12">{{ errorMessage }}</div>
+  </ng-container>
+</request-state-handler>
+
+<div class="email-notification" *ngIf="!isProcessing && !hasError">
+  <div class="row mt-4 pt-2">
+    <div class="col-12">
+      <h4 class="kyc-header text-transform-upper">EMAIL NOTIFICATIONS</h4>
+    </div>
+  </div>
+  <div class="mb-3 mt-1 email-sub-header">
+    OST KYC notifies via email when certain actions or events take place. In this section, super admins can select which admin receives them. Please note,  super admins are selected by default for crucial notifications.
+  </div>
+  <div class="mt-5">
+    <form #emailNotifForm="ngForm" (ngSubmit)="submitForm()">
+      <div id="emailAccordion">
+        <ng-container *ngFor="let section of sectionList; let i = index">
+          <email-card [section] = "section"
+                      [sectionId] = "'section'+i"
+                      [adminList]="adminList"
+                      [postData]="postData"
+                      (modified)="setModified($event)" ></email-card>
+        </ng-container>
+      </div>
+      <div class="form-group row mt-5">
+        <div class="col-12 col-md-7">
+          <button [disabled]="isSubmitting || !isModified()" type="submit" class="btn btn-primary"
+                  id="applyBtn" title="Apply Changes">{{btnText}}
+          </button>
+        </div>
+        <div class="general_error error pl-3 col-12 col-md-7">
+          <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">
+          </ost-form-error-handler>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal cms-modal fade" id="email-notification-success-modal" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-lg h-100 my-0 pb-5">
+    <div class="modal-content">
+      <div class="modal-body p-5">
+        <div class='row'>
+          <div class="text-center col-12">
+            <svg class="icon" style="width:50px; height: 50px">
+              <switch>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
+                </use>
+              </switch>
+            </svg>
+            <h5 class="my-3">Settings have been successfully applied.</h5>
+          </div>
+          <div class="col-12 form-group text-center">
+            <button class="btn btn-primary px-5" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
