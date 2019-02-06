@@ -54,6 +54,7 @@ input[type="checkbox"]:checked ~ label::after{
   input:checked{
     & + .checkbox{
       border-color: $blue-800;
+      border-radius: 3px;
       svg{
         path{
           fill: $blue-800;
@@ -72,6 +73,7 @@ input[type="checkbox"]:checked ~ label::after{
     width: 18px;
     height: 18px;
     border: 2px solid $blue-800;
+    border-radius: 3px;
     svg {
       position: absolute;
       top: -2px;
