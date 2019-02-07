@@ -74,6 +74,8 @@ import { CaseFooterSectionComponent } from './kyc-case/case-footer-section/case-
 import { UpdateEthModalComponent } from './manage-user/update-eth-modal/update-eth-modal.component';
 import { EmailNotificationComponent } from './email-notification/email-notification.component';
 import { EmailCardComponent } from './email-notification/email-card/email-card.component';
+import { MfaSessionSettingsComponent } from './mfa-session-settings/mfa-session-settings.component';
+import { OstToggleComponent } from './ost-toggle/ost-toggle.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -145,7 +147,9 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     CaseFooterSectionComponent,
     UpdateEthModalComponent,
     EmailNotificationComponent,
-    EmailCardComponent
+    EmailCardComponent,
+    MfaSessionSettingsComponent,
+    OstToggleComponent
   ],
   imports: [
     BrowserModule,
@@ -204,6 +208,11 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
           {
             path: 'settings/email-notification',
             component: EmailNotificationComponent,
+            canActivate: [ AuthGuardService ]
+          },
+          {
+            path: 'settings/mfa-session',
+            component: MfaSessionSettingsComponent,
             canActivate: [ AuthGuardService ]
           }
        ]
