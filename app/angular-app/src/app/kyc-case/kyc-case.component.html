@@ -389,13 +389,15 @@
 
     </ng-container>
 
-    <report-issues *ngIf="showReportIssue" (actionSuccessEvent)="onActionSuccess($event)"
-                  (closeReportIssueEvent)="showPageState()" [userDetails]='userDetails'
-      [caseId]='caseId'>
-    </report-issues>
+
 
   </div>
 </ng-container>
+
+<report-issues *ngIf="showReportIssue" (actionSuccessEvent)="onActionSuccess($event)"
+               (closeReportIssueEvent)="showPageState()" [userDetails]='userDetails'
+               [caseId]='caseId'>
+</report-issues>
 
  <kyc-log-modal *ngIf="isInitLogTabel" [lastActedByName]='caseDetails.last_acted_by' [caseId]='caseId'></kyc-log-modal>
  <kyc-duplicate-details-modal *ngIf="isInitDuplicateTable" [caseId]='caseId'> </kyc-duplicate-details-modal>

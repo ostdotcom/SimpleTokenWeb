@@ -1,0 +1,14 @@
+<div class="toggle-header mt-3">
+  <span class="mr-md-5 form-label">{{labelTxt}}</span>
+  <span class="ml-2 ml-md-5 float-right">
+    <span>No</span>
+    <div class="switch switch--horizontal switch--no-label ml-auto">
+      <input type="radio" [(ngModel)]="modelValue" [value]="0"/>
+      <input type="radio" [(ngModel)]="modelValue" [value]="1"/>
+      <span class="toggle-outside">
+      <span class="toggle-inside"></span>
+    </span>
+    </div>
+    <span>Yes</span>
+  </span>
+</div>
