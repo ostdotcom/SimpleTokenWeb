@@ -61,13 +61,13 @@ export class MfaSessionSettingsComponent implements OnInit {
   }
 
   initData( data ){
-    this.adminMFAType = this.utilities.deepGet( data , 'admin_settings.mfa_type');
-    this.adminMFAFrequency = this.utilities.deepGet( data , 'admin_settings.mfa_frequency');
-    this.adminSessionTimeout = this.utilities.deepGet( data , 'admin_settings.session_timeout');
+    this.adminMFAType = this.utilities.deepGet( data , 'admin_setting.mfa_type');
+    this.adminMFAFrequency = this.utilities.deepGet( data , 'admin_setting.mfa_frequency');
+    this.adminSessionTimeout = this.utilities.deepGet( data , 'admin_setting.session_timeout');
     this.enableForSuperAdmin = this.utilities.deepGet( data , 'has_sa_setting');
-    this.sadminMFAType = this.utilities.deepGet( data , 'super_admin_settings.mfa_type');
-    this.sadminMFAFrequency = this.utilities.deepGet( data , 'super_admin_settings.mfa_frequency');
-    this.sadminSessionTimeout = this.utilities.deepGet( data , 'super_admin_settings.session_timeout');
+    this.sadminMFAType = this.utilities.deepGet( data , 'super_admin_setting.mfa_type');
+    this.sadminMFAFrequency = this.utilities.deepGet( data , 'super_admin_setting.mfa_frequency');
+    this.sadminSessionTimeout = this.utilities.deepGet( data , 'super_admin_setting.session_timeout');
   }
 
   mfaSessionSettingsSubmit( mfaSessionSettings ) {

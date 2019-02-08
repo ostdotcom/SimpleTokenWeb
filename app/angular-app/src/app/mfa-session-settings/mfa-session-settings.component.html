@@ -23,7 +23,7 @@
           <input  type="radio"
                   class="form-check-input radio-button"
                   id="mfa_frequency_always"
-                  name="admin_settings[mfa_type]" [value]="0" [(ngModel)]="adminMFAType" />
+                  name="admin_setting[mfa_type]" [value]="0" [(ngModel)]="adminMFAType" />
           <label class="radio-button-label position-relative" for="mfa_frequency_always" style="top: 5px;">
             <span class="radio-button-circle d-inline"></span>Each login attempt
           </label>
@@ -35,7 +35,7 @@
                 <input  type="radio"
                         class="form-check-input radio-button"
                         id="mfa_frequency_custom"
-                        name="admin_settings[mfa_type]" [value]="1" [(ngModel)]="adminMFAType" />
+                        name="admin_setting[mfa_type]" [value]="1" [(ngModel)]="adminMFAType" />
                 <label class="radio-button-label position-relative" for="mfa_frequency_custom" style="top: 5px;">
                   <span class="radio-button-circle d-inline"></span>Custom
                 </label>
@@ -43,7 +43,7 @@
             </div>
             <div *ngIf="adminMFAType == 1" class="col-8 d-flex pr-0 align-items-center">
               <span class="input-number-container">
-                <input class="form-control d-inline py-0" name="admin_settings[mfa_frequency]" #admin_mfa_freq="ngModel"
+                <input class="form-control d-inline py-0" name="admin_setting[mfa_frequency]" #admin_mfa_freq="ngModel"
                        [(ngModel)]="adminMFAFrequency" type="number"/>
                 <span class="button button-up pl-1" (click)="increment('adminMFAFrequency')"></span>
                 <span class="button button-down pl-1" (click)="decrement('adminMFAFrequency')"></span>
@@ -64,7 +64,7 @@
         <div class="mt-3 d-flex align-items-center">
           <span class="mr-2">Enable for</span>
           <span class="input-number-container ml-3">
-            <input class="form-control d-inline py-0" name="admin_settings[session_timeout]" #admin_session_timeout="ngModel"
+            <input class="form-control d-inline py-0" name="admin_setting[session_timeout]" #admin_session_timeout="ngModel"
                    [(ngModel)]="adminSessionTimeout" type="number"/>
             <span class="button button-up pl-1" (click)="increment('adminSessionTimeout')"></span>
             <span class="button button-down pl-1" (click)="decrement('adminSessionTimeout')"></span>
@@ -98,7 +98,7 @@
               <input  type="radio"
                       class="form-check-input radio-button"
                       id="sadmin_mfa_frequency_always"
-                      name="super_admin_settings[mfa_type]"  [value]="0" [(ngModel)]="sadminMFAType" />
+                      name="super_admin_setting[mfa_type]"  [value]="0" [(ngModel)]="sadminMFAType" />
               <label class="radio-button-label position-relative" for="sadmin_mfa_frequency_always" style="top: 5px;">
                 <span class="radio-button-circle d-inline"></span>Each login attempt
               </label>
@@ -110,7 +110,7 @@
                     <input  type="radio"
                             class="form-check-input radio-button"
                             id="sadmin_mfa_frequency_custom"
-                            name="super_admin_settings[mfa_type]" [value]="1" [(ngModel)]="sadminMFAType" />
+                            name="super_admin_setting[mfa_type]" [value]="1" [(ngModel)]="sadminMFAType" />
                     <label class="radio-button-label position-relative" for="sadmin_mfa_frequency_custom" style="top: 5px;">
                       <span class="radio-button-circle d-inline"></span>Custom
                     </label>
@@ -118,7 +118,7 @@
                 </div>
                 <div *ngIf="sadminMFAType == 1" class="col-8 d-flex pr-0 align-items-center">
                   <span class="input-number-container">
-                    <input class="form-control d-inline py-0" name="super_admin_settings[mfa_frequency]" #sadmin_mfa_freq="ngModel"
+                    <input class="form-control d-inline py-0" name="super_admin_setting[mfa_frequency]" #sadmin_mfa_freq="ngModel"
                            [(ngModel)]="sadminMFAFrequency" type="number"/>
 
                     <span class="button button-up pl-1" (click)="increment('sadminMFAFrequency' )"></span>
@@ -141,7 +141,7 @@
             <div class="mt-3 d-flex align-items-center">
               <span class="mr-2">Enable for</span>
               <span class="input-number-container ml-1 ml-md-3">
-                <input class="form-control d-inline py-0" name="super_admin_settings[session_timeout]" #sadmin_session_timeout="ngModel"
+                <input class="form-control d-inline py-0" name="super_admin_setting[session_timeout]" #sadmin_session_timeout="ngModel"
                        [(ngModel)]="sadminSessionTimeout"
                        type="number"/>
                 <span class="button button-up pl-1" (click)="increment( 'sadminSessionTimeout' )"></span>
