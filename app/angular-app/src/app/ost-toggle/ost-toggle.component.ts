@@ -1,19 +1,50 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ost-toggle',
   templateUrl: './ost-toggle.component.html',
-  styleUrls: ['./ost-toggle.component.scss']
+  styleUrls: ['./ost-toggle.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => OstToggleComponent),
+      multi: true
+    }
+  ]
 })
-export class OstToggleComponent implements OnInit {
+export class OstToggleComponent implements OnInit,ControlValueAccessor {
 
   @Input('labelTxt') labelTxt : string = '';
-  @Input('modelValue') modelValue : number = 0;
-  @Input('nameStr') nameStr : string = '';
+  @Input() _modelValue : number = 0;
+
+  get modelValue() {
+    return this._modelValue;
+  }
+
+  set modelValue(val) {
+    this._modelValue = val;
+    this.propagateChange(this._modelValue);
+  }
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  writeValue(value: any) {
+    if (value !== undefined) {
+      this.modelValue = value;
+    }
+  }
+
+  propagateChange = (_: any) => {};
+
+  registerOnChange(fn) {
+    this.propagateChange = fn;
+  }
+
+  registerOnTouched() {}
+
 
 }

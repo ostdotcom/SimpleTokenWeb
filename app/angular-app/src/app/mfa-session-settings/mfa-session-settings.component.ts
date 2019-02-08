@@ -36,8 +36,8 @@ export class MfaSessionSettingsComponent implements OnInit {
       'mfa_frequency' : 12,
       'session_timeout' : 2
     },
-    'has_sa_setting' : 1,
-    'sa_settings' : {
+    'has_sa_setting' : 0,
+    'super_admin_settings' : {
       'mfa_type' : 1,
       'mfa_frequency' : 10,
       'session_timeout' : 3
@@ -78,9 +78,9 @@ export class MfaSessionSettingsComponent implements OnInit {
     this.adminMFAFrequency = this.utilities.deepGet( data , 'admin_settings.mfa_frequency');
     this.adminSessionTimeout = this.utilities.deepGet( data , 'admin_settings.session_timeout');
     this.enableForSuperAdmin = this.utilities.deepGet( data , 'has_sa_setting');
-    this.sadminMFAType = this.utilities.deepGet( data , 'sa_settings.mfa_type');
-    this.sadminMFAFrequency = this.utilities.deepGet( data , 'sa_settings.mfa_frequency');
-    this.sadminSessionTimeout = this.utilities.deepGet( data , 'sa_settings.session_timeout');
+    this.sadminMFAType = this.utilities.deepGet( data , 'super_admin_settings.mfa_type');
+    this.sadminMFAFrequency = this.utilities.deepGet( data , 'super_admin_settings.mfa_frequency');
+    this.sadminSessionTimeout = this.utilities.deepGet( data , 'super_admin_settings.session_timeout');
   }
 
   mfaSessionSettingsSubmit( mfaSessionSettings ) {
@@ -124,36 +124,12 @@ export class MfaSessionSettingsComponent implements OnInit {
     this.isSubmitting = false;
   }
 
-  incrementSAdminSessionTimeout(){
-    this.sadminSessionTimeout++;
+  increment( modelStr ){
+    this[modelStr]++;
   }
 
-  decrementSAdminSessionTimeout(){
-    this.sadminSessionTimeout--;
-  }
-
-  incrementAdminSessionTimeout(){
-    this.adminSessionTimeout++;
-  }
-
-  decrementAdminSessionTimeout(){
-    this.adminSessionTimeout--;
-  }
-
-  incrementAdminMFAFreq(){
-    this.adminMFAFrequency++;
-  }
-
-  decrementAdminMFAFreq(){
-    this.adminMFAFrequency--;
-  }
-
-  incrementSAdminMFAFreq(){
-    this.sadminMFAFrequency++;
-  }
-
-  decrementSAdminMFAFreq(){
-    this.sadminMFAFrequency--;
+  decrement( modelStr ){
+    this[modelStr]--;
   }
 
   isInValidInput(){
