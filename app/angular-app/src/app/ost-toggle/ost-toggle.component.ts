@@ -13,7 +13,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class OstToggleComponent implements OnInit,ControlValueAccessor {
+export class OstToggleComponent implements ControlValueAccessor {
 
   @Input('labelTxt') labelTxt : string = '';
   @Input() _modelValue : number = 0;
@@ -28,9 +28,6 @@ export class OstToggleComponent implements OnInit,ControlValueAccessor {
   }
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
   writeValue(value: any) {
     if (value !== undefined) {

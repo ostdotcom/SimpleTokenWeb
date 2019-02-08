@@ -11,14 +11,15 @@ import {UtilitiesService} from "../services/utilities.service";
 export class MfaSessionSettingsComponent implements OnInit {
 
   hasError      : boolean = false;
-  isProcessing  : boolean = false;
+  isProcessing  : boolean = true;
   errorMessage  : string  = null;
 
   btnText       : string  = "Apply";
   isSubmitting  : boolean = false;
 
   errorResponse : object = null;
-  dataURL       : string = '/hjshjs';
+  getDataURL    : string = 'api/admin/setting/get-mfa-session-settings';
+  postDataURL    : string = 'api/admin/setting/update-mfa-session-settings';
 
   toggleLabel : string = 'ENABLE DIFFERENT SETTINGS FOR SUPER ADMINS';
   enableForSuperAdmin : number = 0;
@@ -30,32 +31,18 @@ export class MfaSessionSettingsComponent implements OnInit {
   adminMFAType        : number = 0;
   sadminMFAType       : number = 0;
 
-  testData = {
-    'admin_settings' : {
-      'mfa_type' : 1,
-      'mfa_frequency' : 12,
-      'session_timeout' : 2
-    },
-    'has_sa_setting' : 0,
-    'super_admin_settings' : {
-      'mfa_type' : 1,
-      'mfa_frequency' : 10,
-      'session_timeout' : 3
-    }
-
-  };
+  validationMessage : string = "Please select a number within the range mentioned";
 
   constructor(private http: OstHttp,
               private stateHandler : RequestStateHandlerService,
               private utilities : UtilitiesService) { }
 
   ngOnInit() {
-    //this.init();
-    this.initData( this.testData );
+    this.init();
   }
 
   init() {
-    this.http.get( this.dataURL ).subscribe(
+    this.http.get( this.getDataURL ).subscribe(
       response => {
         let res = response.json();
         if(res && res.success){
@@ -87,7 +74,7 @@ export class MfaSessionSettingsComponent implements OnInit {
     if( this.isInValidInput() ) return;
     let data = mfaSessionSettings.value;
     this.preFormSubmit();
-    this.http.post(this.dataURL, data ).subscribe(
+    this.http.post(this.postDataURL, data ).subscribe(
       response => {
         let res = response.json();
         if (res.success) {

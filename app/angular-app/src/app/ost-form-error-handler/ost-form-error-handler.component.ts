@@ -15,7 +15,9 @@ export class OstFormErrorHandlerComponent {
   errorDictionary = {
                    "required": " is required",
                    "minlength": " minimum length is ",
-                   "maxlength":  + " maximum length is "
+                   "maxlength": " maximum length is ",
+                   "min"  : "min value is",
+                   "max"  : "max value is"
                   };
 
   serverErrorMessage : string = null;

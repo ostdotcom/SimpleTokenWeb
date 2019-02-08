@@ -52,7 +52,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="!isValidMFAFrequency( adminMFAFrequency )" class="error">Please select a number within the range mentioned</div>
+        <div *ngIf="!isValidMFAFrequency( adminMFAFrequency )" class="error">{{validationMessage}}</div>
         <ost-form-error-handler [errorFor]="admin_mfa_freq"
                                 [fieldName]="'MFA Frequency'"
                                 [serverError]="errorResponse">
@@ -71,7 +71,7 @@
           </span>
           <span class="ml-2">Hours (1 - 3)</span>
         </div>
-        <div *ngIf="!isValidSessionTimeout( adminSessionTimeout )" class="error">Please select a number within the range mentioned</div>
+        <div *ngIf="!isValidSessionTimeout( adminSessionTimeout )" class="error">{{validationMessage}}</div>
         <ost-form-error-handler [errorFor]="admin_session_timeout"
                                 [fieldName]="'Session Timeout'"
                                 [serverError]="errorResponse">
@@ -91,7 +91,6 @@
                       aria-controls="superAdminSettings">>
           </ost-toggle>
         </div>
-        <!--<input type="hidden" name="has_sa_setting" [(ngModel)]="enableForSuperAdmin" />-->
         <div [ngClass]="enableForSuperAdmin ? 'show' : ''" class="collapse pl-1 pl-md-3" id="superAdminSettings">
           <div class="form-group pl-0 col-md-6 col-12">
             <div class="form-label">MFA FREQUENCY</div>
@@ -133,7 +132,7 @@
                                       [serverError]="errorResponse">
               </ost-form-error-handler>
             </div>
-            <div *ngIf="!isValidMFAFrequency( sadminMFAFrequency )" class="error">Please select a number within the range mentioned</div>
+            <div *ngIf="!isValidMFAFrequency( sadminMFAFrequency )" class="error">{{validationMessage}}</div>
 
           </div>
 
@@ -150,7 +149,7 @@
               </span>
               <span class="ml-2">Hours (1 - 3)</span>
             </div>
-            <div *ngIf="!isValidSessionTimeout( sadminSessionTimeout )" class="error">Please select a number within the range mentioned</div>
+            <div *ngIf="!isValidSessionTimeout( sadminSessionTimeout )" class="error">{{validationMessage}}</div>
             <ost-form-error-handler [errorFor]="sadmin_session_timeout"
                                     [fieldName]="'Session Timeout'"
                                     [serverError]="errorResponse">
