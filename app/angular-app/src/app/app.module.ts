@@ -76,6 +76,7 @@ import { EmailNotificationComponent } from './email-notification/email-notificat
 import { EmailCardComponent } from './email-notification/email-card/email-card.component';
 import { MfaSessionSettingsComponent } from './mfa-session-settings/mfa-session-settings.component';
 import { OstToggleComponent } from './ost-toggle/ost-toggle.component';
+import { OstInputNumberComponent } from './ost-input-number/ost-input-number.component';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -149,7 +150,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     EmailNotificationComponent,
     EmailCardComponent,
     MfaSessionSettingsComponent,
-    OstToggleComponent
+    OstToggleComponent,
+    OstInputNumberComponent
   ],
   imports: [
     BrowserModule,

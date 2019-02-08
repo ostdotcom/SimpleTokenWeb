@@ -8,7 +8,7 @@
     border-top: 1px solid $custom-grey-7;
   }
   input[type=number]{
-    max-width: 70px;
+    width: 70px;
     border-radius: $border-radius-sm;
     border: solid 2px $blue-200;
     min-height: 36px;
@@ -35,9 +35,11 @@
       width: 22px;
       &.button-up {
         top: 0;
+        border-top-right-radius: 0.2rem;
       }
       &.button-down {
         bottom: 0;
+        border-bottom-right-radius: 0.2rem;
       }
       &.button-up:before {
         content: "\25B2";

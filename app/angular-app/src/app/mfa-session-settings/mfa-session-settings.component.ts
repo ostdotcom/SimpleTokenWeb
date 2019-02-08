@@ -11,7 +11,7 @@ import {UtilitiesService} from "../services/utilities.service";
 export class MfaSessionSettingsComponent implements OnInit {
 
   hasError      : boolean = false;
-  isProcessing  : boolean = true;
+  isProcessing  : boolean = false;
   errorMessage  : string  = null;
 
   btnText       : string  = "Apply";
@@ -33,12 +33,27 @@ export class MfaSessionSettingsComponent implements OnInit {
 
   validationMessage : string = "Please select a number within the range mentioned";
 
+  testData : object = {
+    'admin_setting' : {
+      'mfa_type' : 1,
+      'mfa_frequency' : 12,
+      'session_timeout' : 2
+    },
+    'has_sa_setting' : 0,
+    'super_admin_setting' : {
+      'mfa_type' : 1,
+      'mfa_frequency' : 10,
+      'session_timeout' : 3
+    }
+  };
+
   constructor(private http: OstHttp,
               private stateHandler : RequestStateHandlerService,
               private utilities : UtilitiesService) { }
 
   ngOnInit() {
-    this.init();
+    //this.init();
+    this.initData( this.testData );
   }
 
   init() {

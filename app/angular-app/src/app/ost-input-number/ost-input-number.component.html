@@ -1,0 +1,10 @@
+<div class="col-8 d-flex pr-0 align-items-center">
+  <span class="input-number-container">
+    <input class="form-control d-inline py-0" name="admin_setting[mfa_frequency]"
+           #admin_mfa_freq="ngModel"
+           [(ngModel)]="modelValue" type="number" [min]="1" max="14"/>
+    <span class="button button-up pl-1" (click)="increment('adminMFAFrequency')"></span>
+    <span class="button button-down pl-1" (click)="decrement('adminMFAFrequency')"></span>
+  </span>
+  <span class="ml-2">{{textToAppend}}</span>
+</div>
