@@ -1,17 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'app-ost-input-number',
+  selector: 'ost-input-number',
   templateUrl: './ost-input-number.component.html',
-  styleUrls: ['./ost-input-number.component.scss']
+  styleUrls: ['./ost-input-number.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => OstInputNumberComponent),
+      multi: true
+    }
+  ]
 })
-export class OstInputNumberComponent implements OnInit {
+export class OstInputNumberComponent implements ControlValueAccessor {
 
-  textToAppend : string = '';
+  @Input('textToAppend') textToAppend : string = '';
+  @Input() _modelValue : number = 0;
+
+  get modelValue() {
+    return this._modelValue;
+  }
+
+  set modelValue(val) {
+    this._modelValue = val;
+    this.propagateChange(this._modelValue);
+  }
 
   constructor() { }
 
-  ngOnInit() {
+  writeValue(value: any) {
+    if (value !== undefined) {
+      this.modelValue = value;
+    }
   }
+
+  propagateChange = (_: any) => {};
+
+  registerOnChange(fn) {
+    this.propagateChange = fn;
+  }
+
+  registerOnTouched() {}
+
+  increment(){
+    this.modelValue++;
+  }
+
+  decrement(){
+    this.modelValue--;
+  }
+
 
 }

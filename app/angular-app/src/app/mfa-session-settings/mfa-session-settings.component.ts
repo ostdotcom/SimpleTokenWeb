@@ -31,7 +31,8 @@ export class MfaSessionSettingsComponent implements OnInit {
   adminMFAType        : number = 0;
   sadminMFAType       : number = 0;
 
-  validationMessage : string = "Please select a number within the range mentioned";
+  mfaInputLabel : string = 'Days (1 - 14)';
+  sessionInputLabel : string = 'Hours (1 - 3)';
 
   testData : object = {
     'admin_setting' : {
@@ -87,9 +88,9 @@ export class MfaSessionSettingsComponent implements OnInit {
 
   mfaSessionSettingsSubmit( mfaSessionSettings ) {
     if( this.isInValidInput() ) return;
-    let data = mfaSessionSettings.value;
+    let params = mfaSessionSettings.value;
     this.preFormSubmit();
-    this.http.post(this.postDataURL, data ).subscribe(
+    this.http.post(this.postDataURL, {...params} ).subscribe(
       response => {
         let res = response.json();
         if (res.success) {

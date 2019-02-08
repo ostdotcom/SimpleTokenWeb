@@ -42,17 +42,12 @@
               </div>
             </div>
             <ng-container *ngIf="adminMFAType == 1">
-              <div class="col-8 d-flex pr-0 align-items-center">
-              <span class="input-number-container">
-                <input class="form-control d-inline py-0" name="admin_setting[mfa_frequency]"
-                       #admin_mfa_freq="ngModel"
-                       [(ngModel)]="adminMFAFrequency" type="number" [min]="1" max="14"/>
-                <span class="button button-up pl-1" (click)="increment('adminMFAFrequency')"></span>
-                <span class="button button-down pl-1" (click)="decrement('adminMFAFrequency')"></span>
-              </span>
-              <span class="ml-2">Days (1 - 14)</span>
-              </div>
-              <ost-form-error-handler [errorFor]="admin_mfa_freq"
+              <ost-input-number     [textToAppend]="mfaInputLabel"
+                                    [(ngModel)]="adminMFAFrequency"
+                                    #adminMFAFrequencyModel="ngModel"
+                                    name="admin_setting[mfa_frequency]">
+              </ost-input-number>
+              <ost-form-error-handler [errorFor]="adminMFAFrequencyModel"
                                       [fieldName]="'Admin MFA Frequency'"
                                       [serverError]="errorResponse">
               </ost-form-error-handler>
@@ -63,17 +58,12 @@
 
       <div class="form-group pl-0 mt-4 col-md-6 col-12">
         <div class="form-label">SESSION TIMEOUT</div>
-        <div class="mt-3 d-flex align-items-center">
-          <span class="mr-2">Enable for</span>
-          <span class="input-number-container ml-3">
-            <input class="form-control d-inline py-0" name="admin_setting[session_timeout]" #admin_session_timeout="ngModel"
-                   [(ngModel)]="adminSessionTimeout" type="number" min="1" max="3"/>
-            <span class="button button-up pl-1" (click)="increment('adminSessionTimeout')"></span>
-            <span class="button button-down pl-1" (click)="decrement('adminSessionTimeout')"></span>
-          </span>
-          <span class="ml-2">Hours (1 - 3)</span>
-        </div>
-        <ost-form-error-handler [errorFor]="admin_session_timeout"
+        <ost-input-number     [textToAppend]="sessionInputLabel"
+                              #adminSessionTimeoutModel="ngModel"
+                              [(ngModel)]="adminSessionTimeout"
+                              name="admin_setting[session_timeout]">
+        </ost-input-number>
+          <ost-form-error-handler [errorFor]="adminSessionTimeoutModel"
                                 [fieldName]="'Admin Session Timeout'"
                                 [serverError]="errorResponse">
         </ost-form-error-handler>
@@ -118,17 +108,11 @@
                   </div>
                 </div>
                 <ng-container *ngIf="sadminMFAType == 1">
-                  <div class="col-8 d-flex pr-0 align-items-center">
-                  <span class="input-number-container">
-                    <input class="form-control d-inline py-0" name="super_admin_setting[mfa_frequency]" #sadmin_mfa_freq="ngModel"
-                           [(ngModel)]="sadminMFAFrequency" type="number" min="1" max="14"/>
-
-                    <span class="button button-up pl-1" (click)="increment('sadminMFAFrequency' )"></span>
-                    <span class="button button-down pl-1" (click)="decrement('sadminMFAFrequency')"></span>
-                  </span>
-                    <span class="ml-2">Days (1 - 14)</span>
-                  </div>
-                  <ost-form-error-handler [errorFor]="sadmin_mfa_freq"
+                  <ost-input-number [textToAppend]="mfaInputLabel"
+                                    [(ngModel)]="sadminMFAFrequency"
+                                    name="super_admin_setting[mfa_frequency]">
+                  </ost-input-number>
+                  <ost-form-error-handler [errorFor]="'sadminMFAFrequency'"
                                           [fieldName]="'Super Admin MFA Frequency'"
                                           [serverError]="errorResponse">
                   </ost-form-error-handler>
@@ -140,18 +124,11 @@
 
           <div class="form-group pl-0 mt-4 col-md-6 col-12">
             <div class="form-label">SESSION TIMEOUT</div>
-            <div class="mt-3 d-flex align-items-center">
-              <span class="mr-2">Enable for</span>
-              <span class="input-number-container ml-1 ml-md-3">
-                <input class="form-control d-inline py-0" name="super_admin_setting[session_timeout]" #sadmin_session_timeout="ngModel"
-                       [(ngModel)]="sadminSessionTimeout"
-                       type="number" min="1" max="3"/>
-                <span class="button button-up pl-1" (click)="increment( 'sadminSessionTimeout' )"></span>
-                <span class="button button-down pl-1" (click)="decrement( 'sadminSessionTimeout' )"></span>
-              </span>
-              <span class="ml-2">Hours (1 - 3)</span>
-            </div>
-            <ost-form-error-handler [errorFor]="sadmin_session_timeout"
+            <ost-input-number [textToAppend]="sessionInputLabel"
+                                  [(ngModel)]="sadminSessionTimeout"
+                                  name="super_admin_setting[session_timeout]">
+            </ost-input-number>
+            <ost-form-error-handler [errorFor]="'sadminSessionTimeout'"
                                     [fieldName]="'Super Admin Session Timeout'"
                                     [serverError]="errorResponse">
             </ost-form-error-handler>
