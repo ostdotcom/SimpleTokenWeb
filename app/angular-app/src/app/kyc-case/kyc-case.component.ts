@@ -93,14 +93,19 @@ export class KycCaseComponent implements OnInit {
     },0);
   }
 
-  fetchCase() {
+  preFetchCase(){
     this.widthComputed = false;
     this.isProcessing = true;
+  }
+
+  fetchCase() {
+   this.preFetchCase();
     let params = this.getFetchCaseData();
     this.http.get(this.fetchCaseApi , {params: params}).subscribe( response => {
       let json_response = response.json();
       if(json_response.success){
         this.onSuccess( response.json());
+        this.stateHandler.updateRequestStatus( this, false,  false);
       } else {
         this.stateHandler.updateRequestStatus( this, false,  true , false ,  json_response);
       }
@@ -137,7 +142,6 @@ export class KycCaseComponent implements OnInit {
     this.image_processing_status =  this.user_kyc_comparison_detail.image_processing_status;
     this.userDetails['extraDiv'] = this.checkForOddSections();
     this.meta = res.data.meta;
-    this.stateHandler.updateRequestStatus( this, false,  false);
     this.getNextPrevious(res.data.meta);
     this.setAdminConfig();
     this.setFRText();
@@ -194,9 +198,17 @@ export class KycCaseComponent implements OnInit {
     let data = response.data;
 
     if( this.utilities.deepGet(data, 'aml_detail.aml_processing_status') == 'processed'){
-      this.pollingService.stopPolling();
-      this.fetchCase();
+      this.updateWithPolledData( response );
     }
+  }
+
+  updateWithPolledData( response ){
+    this.pollingService.stopPolling();
+    this.preFetchCase();
+    setTimeout(()=>{
+      this.onSuccess( response );
+      this.stateHandler.updateRequestStatus( this, false,  false);
+    } , 2000)
   }
 
   initDuplicateTable(){
