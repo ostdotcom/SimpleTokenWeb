@@ -44,9 +44,11 @@ export class OstHttp extends Http {
       erroMsg = 'Redirecting..';
       try {
         let _body = JSON.parse(error['_body']) || {},
+          next = new URL(location.href).searchParams.get("next"),
+          qS = next ? "?next=" + encodeURIComponent(next)  : "",
           _err = _body['err'] || {},
           error_extra_info = _err['error_extra_info'] || {};
-          redirect_url = error_extra_info['redirect_url'];
+          redirect_url = error_extra_info['redirect_url'] + next;
       } catch (e)  {
          redirect_url = '/admin/login';
       }

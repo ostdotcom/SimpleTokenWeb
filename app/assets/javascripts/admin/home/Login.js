@@ -15,12 +15,13 @@
 
       oThis.jLoginForm = $('#adminLoginForm');
       //test dummy change
-      console.log("test");
       oThis.jLogin = $('#adminLogin');
         oThis.formHelper = oThis.jLoginForm.formHelper({
             success : function ( response ) {
                     if (response.success == true) {
-                        window.location = '/admin/authentication';
+                        var next = new URL(location.href).searchParams.get("next"),
+                            qS = next ? "?next=" + encodeURIComponent(next): "";
+                        window.location = '/admin/authentication' + qS;
                         return false;
                     } else {
                         if (response.err && response.err.code === "is_deleted" ){

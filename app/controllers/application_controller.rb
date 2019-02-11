@@ -40,6 +40,11 @@ class ApplicationController < ActionController::Base
     redirect_to "#{GlobalConstant::Base.company_other_product_urls['root_url']}#{path}", status: GlobalConstant::ErrorCode.permanent_redirect and return
   end
 
+  def is_next_domain_whitelisted?(url)
+    return false if url.blank?
+    GlobalConstant::WebDomain.kyc_subdomain == Addressable::URI.parse(url).host
+  end
+
   private
 
   # Dont allow browser caching for token sale pages
@@ -197,8 +202,10 @@ class ApplicationController < ActionController::Base
         redirect_to default_unauthorized_redirect_url, status: GlobalConstant::ErrorCode.temporary_redirect and return
       end
     elsif service_response.http_code == GlobalConstant::ErrorCode.temporary_redirect
+      request_params = request.query_parameters
+      next_url = request_params["next"].present? ? "?next=#{CGI.escape request_params['next']}" : ""
       redirect_url = (service_response["error_extra_info"] || {})["redirect_url"]
-      redirect_url = redirect_url.present? ? redirect_url : GlobalConstant::Base.simple_token_web['kyc_root_url']
+      redirect_url = redirect_url.present? ? redirect_url + next_url : GlobalConstant::Base.simple_token_web['kyc_root_url']
       redirect_to redirect_url, status: GlobalConstant::ErrorCode.temporary_redirect and return
     else
       render_error_response_for(service_response)

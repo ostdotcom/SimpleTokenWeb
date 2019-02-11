@@ -13,7 +13,9 @@
 
           if (response.success ) {
             var data = response.data,
-                redirect_url = data['redirect_url'];
+                next = new URL(location.href).searchParams.get("next"),
+                qS = next ? "?next=" + encodeURIComponent(next)  : "",
+                redirect_url = data['redirect_url'] + qS;
             window.location = redirect_url;
           }
         }

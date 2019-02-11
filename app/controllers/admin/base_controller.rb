@@ -41,7 +41,7 @@ class Admin::BaseController < ApplicationController
   # * Reviewed By: Aman
   #
   def default_unauthorized_redirect_url
-    '/admin/login'
+    "/admin/login?next=#{CGI.escape request.original_url}"
   end
 
 end

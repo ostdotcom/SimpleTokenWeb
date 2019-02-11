@@ -32,12 +32,14 @@
     } else if (jqXHR.status == 401) {
         window.location = getStatus401redirect();
     } else if (jqXHR.status == 302) {
-        var redirect_url;
+        var next = new URL(location.href).searchParams.get("next"),
+            qS = next ? "?next=" + encodeURIComponent(next)  : "",
+        redirect_url;
         try {
             var _body = JSON.parse(jqXHR.responseText) || {},
                 _err = _body['err'] || {},
                 error_extra_info = _err['error_extra_info'] || {};
-            redirect_url = error_extra_info['redirect_url'];
+            redirect_url = error_extra_info['redirect_url'] + qS;
         } catch (e)  {
             redirect_url = getStatus401redirect();
         }

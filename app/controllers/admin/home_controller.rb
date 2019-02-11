@@ -113,6 +113,11 @@ class Admin::HomeController < Admin::BaseController
   end
 
   def angular_app
+    request_params = request.query_parameters
+    next_host = Addressable::URI.parse(request_params["next"]).host
+
+    redirect_to request_params["next"], status: GlobalConstant::ErrorCode.temporary_redirect and return if is_next_domain_whitelisted?(request_params["next"])
+
     service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
                            .get_client_detail
 
