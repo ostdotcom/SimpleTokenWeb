@@ -257,13 +257,8 @@ export class TableComponent implements OnInit {
     if (this.searchForm){
       Object.assign(requestParams, this.getSeaching());
     }
-    if(this.getAction() == "post"){
-      let body = new URLSearchParams("" , new CustomEncoder());
-      for ( var pKey in requestParams ) {
-        if (!( requestParams.hasOwnProperty( pKey ) ) ) { continue; }
-        body.set( pKey, requestParams[ pKey ] );
-      }
-      return body ;
+    if(this.getAction().indexOf('post') >= 0 ){
+      return requestParams ;
     }else{
       return { params : requestParams };
     }
@@ -356,23 +351,4 @@ export class TableComponent implements OnInit {
   }
 
 
-}
-
-
-class CustomEncoder  {
-  encodeKey(key: string): string {
-    return encodeURIComponent(key);
-  }
-
-  encodeValue(value: string): string {
-    return encodeURIComponent(value);
-  }
-
-  decodeKey(key: string): string {
-    return decodeURIComponent(key);
-  }
-
-  decodeValue(value: string): string {
-    return decodeURIComponent(value);
-  }
 }
