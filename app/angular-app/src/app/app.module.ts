@@ -74,6 +74,7 @@ import { CaseFooterSectionComponent } from './kyc-case/case-footer-section/case-
 import { UpdateEthModalComponent } from './manage-user/update-eth-modal/update-eth-modal.component';
 import { EmailNotificationComponent } from './email-notification/email-notification.component';
 import { EmailCardComponent } from './email-notification/email-card/email-card.component';
+import { AmlPollingHelperService } from "./kyc-case/aml-polling-helper.service";
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -233,7 +234,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 ScrollTopService,
                 UtilitiesService,
                 OstPdfService,
-                AuthGuardService
+                AuthGuardService,
+                AmlPollingHelperService
             ],
   bootstrap: [AppComponent]
 })
