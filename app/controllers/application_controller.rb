@@ -12,6 +12,21 @@ class ApplicationController < ActionController::Base
   include CookieConcern
   include ApplicationHelper
 
+
+  # Reload the same url to retain cookie
+  #
+  # * Author: Aman
+  # * Date: 09/10/2017
+  # * Reviewed By:
+  #
+  def reload_for_external_links_to_retain_cookie
+    return if request.referer.blank? || request.xhr?
+    referer_host = URI(request.referer).host rescue nil
+    if referer_host.to_s != (request.host.downcase)
+      render html: "", layout: "reload_url" and return
+    end
+  end
+
   # Page not found action
   #
   # * Author: Kedar
