@@ -10,6 +10,8 @@ import {UtilitiesService} from "../services/utilities.service";
 })
 export class MfaSessionSettingsComponent implements OnInit {
 
+  test: number = 0;
+
   hasError      : boolean = false;
   isProcessing  : boolean = false;
   errorMessage  : string  = null;

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { OstHttp } from './services/ost-http.service';
@@ -77,6 +78,7 @@ import { EmailCardComponent } from './email-notification/email-card/email-card.c
 import { MfaSessionSettingsComponent } from './mfa-session-settings/mfa-session-settings.component';
 import { OstToggleComponent } from './ost-toggle/ost-toggle.component';
 import { OstInputNumberComponent } from './ost-input-number/ost-input-number.component';
+import { CustomInputValidatorDirective } from './directives/custom-input-validator.directive';
 
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -151,7 +153,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     EmailCardComponent,
     MfaSessionSettingsComponent,
     OstToggleComponent,
-    OstInputNumberComponent
+    OstInputNumberComponent,
+    CustomInputValidatorDirective
   ],
   imports: [
     BrowserModule,

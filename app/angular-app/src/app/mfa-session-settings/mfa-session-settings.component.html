@@ -45,9 +45,10 @@
               <div class="col-8 d-flex pr-0 align-items-center">
                 <ost-input-number [(ngModel)]="adminMFAFrequency"
                                   #adminMFAFrequencyModel="ngModel"
-                                  name="admin_setting[mfa_frequency]">
+                                  name="admin_setting[mfa_frequency]"
+                                  [minValue]="1" [maxValue]="14">
                 </ost-input-number>
-                <span class="ml-2">{{mfaInputLabel}}</span>
+                <span class="ml-2">{{mfaInputLabel}}</span>{{adminMFAFrequencyModel.errors}}
               </div>
               <ost-form-error-handler [errorFor]="adminMFAFrequencyModel"
                                       [fieldName]="'Admin MFA Frequency'"
@@ -64,9 +65,10 @@
           <span class="mr-3">Enable for</span>
           <ost-input-number     #adminSessionTimeoutModel="ngModel"
                                 [(ngModel)]="adminSessionTimeout"
-                                name="admin_setting[session_timeout]">
+                                name="admin_setting[session_timeout]"
+                                [minValue]="1" [maxValue]="3">
           </ost-input-number>
-          <span class="ml-2">{{sessionInputLabel}}</span>
+          <span class="ml-2">{{sessionInputLabel}}</span>{{adminSessionTimeoutModel.errors}}
         </div>
           <ost-form-error-handler [errorFor]="adminSessionTimeoutModel"
                                 [fieldName]="'Admin Session Timeout'"
@@ -116,9 +118,10 @@
                   <div class="col-8 d-flex pr-0 align-items-center">
                     <ost-input-number [(ngModel)]="sadminMFAFrequency"
                                       #sadminMFAFrequencyModel="ngModel"
-                                      name="super_admin_setting[mfa_frequency]">
+                                      name="super_admin_setting[mfa_frequency]"
+                                      [minValue]="1" [maxValue]="14">
                     </ost-input-number>
-                    <span class="ml-2">{{mfaInputLabel}}</span>
+                    <span class="ml-2">{{mfaInputLabel}}</span>{{sadminMFAFrequencyModel.errors}}
                   </div>
                   <ost-form-error-handler [errorFor]="sadminMFAFrequencyModel"
                                           [fieldName]="'Super Admin MFA Frequency'"
@@ -136,11 +139,12 @@
               <span class="mr-3">Enable for</span>
               <ost-input-number     #sadminSessionTimeoutModel="ngModel"
                                     [(ngModel)]="sadminSessionTimeout"
-                                    name="super_admin_setting[session_timeout]">
+                                    name="super_admin_setting[session_timeout]"
+                                    [minValue]="1" [maxValue]="3">
               </ost-input-number>
-              <span class="ml-2">{{sessionInputLabel}}</span>
+              <span class="ml-2">{{sessionInputLabel}}</span>{{sadminSessionTimeoutModel.errors}}
             </div>
-            <ost-form-error-handler [errorFor]="'sadminSessionTimeout'"
+            <ost-form-error-handler [errorFor]="sadminSessionTimeoutModel"
                                     [fieldName]="'Super Admin Session Timeout'"
                                     [serverError]="errorResponse">
             </ost-form-error-handler>

@@ -55,6 +55,7 @@ export class OstFormErrorHandlerComponent {
   }
 
   isFrontEndError(){
+    console.log(this.errorFor);
       return this.errorFor instanceof NgModel && this.errorFor.touched && !this.errorFor.valid ;
   }
 
