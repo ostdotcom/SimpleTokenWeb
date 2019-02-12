@@ -41,7 +41,11 @@ class Admin::BaseController < ApplicationController
   # * Reviewed By: Aman
   #
   def default_unauthorized_redirect_url
-    '/admin/login'
+    next_path = ""
+    if request.query_parameters["r_m"] == "1"
+      next_path = "?next=#{CGI.escape request.fullpath}"
+    end
+    "/admin/login#{next_path}"
   end
 
 end

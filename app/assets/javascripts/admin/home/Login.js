@@ -14,15 +14,21 @@
         init: function (config) {
 
             oThis.jLoginForm = $('#adminLoginForm');
-            //test dummy change
-            console.log("test");
             oThis.jLogin = $('#adminLogin');
+            var urlParams = new URLSearchParams(window.location.search),
+            next = urlParams.get('next');
+            if (next){
+                $("#next_url").val(encodeURIComponent(next));
+
+            }
             oThis.formHelper = oThis.jLoginForm.formHelper({
                 success: function (response) {
                     if (response.success == true) {
-
                         var data = response.data,
                             redirect_url = data['redirect_url'];
+                        if (next){
+                            redirect_url += "?next=" + encodeURIComponent(next)
+                        }
                         window.location = redirect_url;
                         // window.location = '/admin/authentication';
                         return false;
