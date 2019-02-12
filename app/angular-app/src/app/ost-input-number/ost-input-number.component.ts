@@ -15,7 +15,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class OstInputNumberComponent implements ControlValueAccessor {
 
-  @Input('textToAppend') textToAppend : string = '';
   @Input() _modelValue : number = 0;
 
   get modelValue() {

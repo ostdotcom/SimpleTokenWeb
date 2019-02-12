@@ -41,12 +41,14 @@
                 </label>
               </div>
             </div>
-            <ng-container *ngIf="adminMFAType == 1">
-              <ost-input-number     [textToAppend]="mfaInputLabel"
-                                    [(ngModel)]="adminMFAFrequency"
-                                    #adminMFAFrequencyModel="ngModel"
-                                    name="admin_setting[mfa_frequency]">
-              </ost-input-number>
+            <ng-container *ngIf="adminMFAType == 1" >
+              <div class="col-8 d-flex pr-0 align-items-center">
+                <ost-input-number [(ngModel)]="adminMFAFrequency"
+                                  #adminMFAFrequencyModel="ngModel"
+                                  name="admin_setting[mfa_frequency]">
+                </ost-input-number>
+                <span class="ml-2">{{mfaInputLabel}}</span>
+              </div>
               <ost-form-error-handler [errorFor]="adminMFAFrequencyModel"
                                       [fieldName]="'Admin MFA Frequency'"
                                       [serverError]="errorResponse">
@@ -58,11 +60,14 @@
 
       <div class="form-group pl-0 mt-4 col-md-6 col-12">
         <div class="form-label">SESSION TIMEOUT</div>
-        <ost-input-number     [textToAppend]="sessionInputLabel"
-                              #adminSessionTimeoutModel="ngModel"
-                              [(ngModel)]="adminSessionTimeout"
-                              name="admin_setting[session_timeout]">
-        </ost-input-number>
+        <div class="d-flex pr-0 align-items-center">
+          <span class="mr-3">Enable for</span>
+          <ost-input-number     #adminSessionTimeoutModel="ngModel"
+                                [(ngModel)]="adminSessionTimeout"
+                                name="admin_setting[session_timeout]">
+          </ost-input-number>
+          <span class="ml-2">{{sessionInputLabel}}</span>
+        </div>
           <ost-form-error-handler [errorFor]="adminSessionTimeoutModel"
                                 [fieldName]="'Admin Session Timeout'"
                                 [serverError]="errorResponse">
@@ -107,12 +112,15 @@
                     </label>
                   </div>
                 </div>
-                <ng-container *ngIf="sadminMFAType == 1">
-                  <ost-input-number [textToAppend]="mfaInputLabel"
-                                    [(ngModel)]="sadminMFAFrequency"
-                                    name="super_admin_setting[mfa_frequency]">
-                  </ost-input-number>
-                  <ost-form-error-handler [errorFor]="'sadminMFAFrequency'"
+                <ng-container *ngIf="adminMFAType == 1" >
+                  <div class="col-8 d-flex pr-0 align-items-center">
+                    <ost-input-number [(ngModel)]="sadminMFAFrequency"
+                                      #sadminMFAFrequencyModel="ngModel"
+                                      name="super_admin_setting[mfa_frequency]">
+                    </ost-input-number>
+                    <span class="ml-2">{{mfaInputLabel}}</span>
+                  </div>
+                  <ost-form-error-handler [errorFor]="sadminMFAFrequencyModel"
                                           [fieldName]="'Super Admin MFA Frequency'"
                                           [serverError]="errorResponse">
                   </ost-form-error-handler>
@@ -124,10 +132,14 @@
 
           <div class="form-group pl-0 mt-4 col-md-6 col-12">
             <div class="form-label">SESSION TIMEOUT</div>
-            <ost-input-number [textToAppend]="sessionInputLabel"
-                                  [(ngModel)]="sadminSessionTimeout"
-                                  name="super_admin_setting[session_timeout]">
-            </ost-input-number>
+            <div class="d-flex pr-0 align-items-center">
+              <span class="mr-3">Enable for</span>
+              <ost-input-number     #sadminSessionTimeoutModel="ngModel"
+                                    [(ngModel)]="sadminSessionTimeout"
+                                    name="super_admin_setting[session_timeout]">
+              </ost-input-number>
+              <span class="ml-2">{{sessionInputLabel}}</span>
+            </div>
             <ost-form-error-handler [errorFor]="'sadminSessionTimeout'"
                                     [fieldName]="'Super Admin Session Timeout'"
                                     [serverError]="errorResponse">

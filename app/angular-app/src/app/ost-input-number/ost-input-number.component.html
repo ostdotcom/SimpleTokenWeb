@@ -1,9 +1,6 @@
-<div class="col-8 d-flex pr-0 align-items-center">
-  <span class="input-number-container">
-    <input class="form-control d-inline py-0" [(ngModel)]="modelValue"
-            type="number" min="1" max="14"/>
-    <span class="button button-up pl-1" (click)="increment()"></span>
-    <span class="button button-down pl-1" (click)="decrement()"></span>
-  </span>
-  <span class="ml-2">{{textToAppend}}</span> <!--Not needed here-->
-</div>
+<span class="input-number-container d-flex align-items-center">
+  <input class="form-control d-inline py-0" [(ngModel)]="modelValue"
+          type="number" min="1" max="14"/>
+  <span class="button button-up pl-1" (click)="increment()"></span>
+  <span class="button button-down pl-1" (click)="decrement()"></span>
+</span>
