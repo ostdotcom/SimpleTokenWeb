@@ -412,7 +412,8 @@
 <kyc-case-action-modal [postApi]="'api/admin/kyc/approve-case'" [params]="getParams()" [modalId]="'qualifyActionModal'" [actionBtnPrimaryName]="'APPROVE CASE'"
   [actionBtnPrimaryClass]="'btn-success'" (actionSuccessEvent)="onActionSuccess( $event )">
   <ng-container class="modal-body-content">
-    <h5 class="modal-title text-center">There are potential risks in approving this case.
+    <h5 class="modal-title text-center">
+      <ng-container *ngIf="!hasNoAMLMatches()">There are potential risks in approving this case.</ng-container>
       Do you want to approve the case?</h5>
   </ng-container>
 </kyc-case-action-modal>

@@ -363,6 +363,10 @@ export class KycCaseComponent implements OnInit {
       this.pollingService.stopPolling();
     }
   }
+
+  hasNoAMLMatches(){
+    return this.amlUnMatchedIds.length == this.amlMatchList.length;
+  }
 }
 
 
