@@ -48,13 +48,13 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   }
 
   increment(){
-    if( this.modelValue < this.maxValue) {
+    if( this.modelValue >= this.minValue && this.modelValue < this.maxValue) {
       this.modelValue++;
     };
   }
 
   decrement(){
-    if( this.modelValue > this.minValue) {
+    if( this.modelValue <= this.maxValue && this.modelValue > this.minValue) {
       this.modelValue--;
     };
   }

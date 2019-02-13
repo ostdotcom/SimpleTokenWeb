@@ -11,10 +11,8 @@ import {RequestParamEncoderService} from "../services/request-param-encoder.serv
 })
 export class MfaSessionSettingsComponent implements OnInit {
 
-  test: number = 0;
-
   hasError      : boolean = false;
-  isProcessing  : boolean = false;
+  isProcessing  : boolean = true;
   errorMessage  : string  = null;
 
   btnText       : string  = "Apply";
@@ -37,20 +35,6 @@ export class MfaSessionSettingsComponent implements OnInit {
   mfaInputLabel : string = 'Days (1 - 14)';
   sessionInputLabel : string = 'Hours (1 - 3)';
 
-  testData : object = {
-    'admin_setting' : {
-      'mfa_type' : 1,
-      'mfa_frequency' : 12,
-      'session_timeout' : 2
-    },
-    'has_sa_setting' : 0,
-    'super_admin_setting' : {
-      'mfa_type' : 1,
-      'mfa_frequency' : 10,
-      'session_timeout' : 3
-    }
-  };
-
   errorDictionaryConfig: object = {
     "customMin"  : "Please select a number within the range mentioned",
     "customMax"  : "Please select a number within the range mentioned"
@@ -62,8 +46,7 @@ export class MfaSessionSettingsComponent implements OnInit {
               private requestParamEncoder : RequestParamEncoderService) { }
 
   ngOnInit() {
-    //this.init();
-    this.initData( this.testData );
+    this.init();
   }
 
   init() {
