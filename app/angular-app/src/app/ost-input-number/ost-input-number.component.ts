@@ -16,8 +16,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class OstInputNumberComponent implements ControlValueAccessor {
 
   @Input() _modelValue : number = 0;
-  @Input() minValue : number = 0;
-  @Input() maxValue : number = 0;
+  @Input('min') minValue : number = 0;
+  @Input('max') maxValue : number = 0;
 
   get modelValue() {
     return this._modelValue;

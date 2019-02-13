@@ -46,8 +46,7 @@
                   <ost-input-number [(ngModel)]="adminMFAFrequency"
                                     #adminMFAFrequencyModel="ngModel"
                                     name="admin_setting[mfa_frequency]"
-                                    [minValue]="1" [maxValue]="14"
-                                    min="1" max="14" customInputValidator required>
+                                    [min]="1" [max]="14"  customInputValidator required>
                   </ost-input-number>
                   <span class="ml-2">{{mfaInputLabel}}</span>
               </div>
@@ -70,15 +69,14 @@
           <ost-input-number     #adminSessionTimeoutModel="ngModel"
                                 [(ngModel)]="adminSessionTimeout"
                                 name="admin_setting[session_timeout]"
-                                 [minValue]="1" [maxValue]="3"
-                                min="1" max="3" customInputValidator required>
+                                [min]="1" [max]="3"  customInputValidator required>
           </ost-input-number>
           <span class="ml-2">{{sessionInputLabel}}</span>
         </div>
           <ost-form-error-handler [errorFor]="adminSessionTimeoutModel"
                                 [fieldName]="'Admin Session Timeout'"
                                 [serverError]="errorResponse"
-                                  [errorMsgConfig]="errorMsgConfig">
+                                [errorMsgConfig]="errorMsgConfig">
         </ost-form-error-handler>
       </div>
 
@@ -126,8 +124,7 @@
                       <ost-input-number [(ngModel)]="sadminMFAFrequency"
                                         #sadminMFAFrequencyModel="ngModel"
                                         name="super_admin_setting[mfa_frequency]"
-                                        [minValue]="1" [maxValue]="14"
-                                        min="1" max="14" customInputValidator required>
+                                        [min]="1" [max]="14" customInputValidator required >
                       </ost-input-number>
                       <span class="ml-2">{{mfaInputLabel}}</span>
                     </div>
@@ -150,8 +147,7 @@
                 <ost-input-number     #sadminSessionTimeoutModel="ngModel"
                                       [(ngModel)]="sadminSessionTimeout"
                                       name="super_admin_setting[session_timeout]"
-                                      [minValue]="1" [maxValue]="3"
-                                      min="1" max="3" customInputValidator required>
+                                      [min]="1" [max]="3" customInputValidator  required>
                 </ost-input-number>
                 <span class="ml-2">{{sessionInputLabel}}</span>
               </div>

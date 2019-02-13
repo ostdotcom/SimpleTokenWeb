@@ -79,7 +79,7 @@ import { AmlPollingHelperService } from "./kyc-case/aml-polling-helper.service";
 import { MfaSessionSettingsComponent } from './mfa-session-settings/mfa-session-settings.component';
 import { OstToggleComponent } from './ost-toggle/ost-toggle.component';
 import { OstInputNumberComponent } from './ost-input-number/ost-input-number.component';
-import { CustomInputValidatorDirective } from './directives/custom-input-validator.directive';
+import { NumberValidatorDirective } from './directives/number-validator.directive';
 import {RequestParamEncoderService} from "./services/request-param-encoder.service";
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
@@ -155,7 +155,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     MfaSessionSettingsComponent,
     OstToggleComponent,
     OstInputNumberComponent,
-    CustomInputValidatorDirective
+    NumberValidatorDirective
   ],
   imports: [
     BrowserModule,

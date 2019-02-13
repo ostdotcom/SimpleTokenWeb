@@ -1,4 +1,4 @@
-import { Directive, forwardRef, ElementRef } from '@angular/core';
+import {Directive, forwardRef, OnInit, Input} from '@angular/core';
 import { NG_VALIDATORS, FormControl } from '@angular/forms';
 
 function validateMinMax(min, max) {
@@ -27,18 +27,17 @@ function validateMinMax(min, max) {
 @Directive({
   selector: '[customInputValidator][ngModel]',
   providers: [
-    { provide: NG_VALIDATORS, useExisting: forwardRef(() => CustomInputValidatorDirective), multi: true }
+    { provide: NG_VALIDATORS, useExisting: forwardRef(() => NumberValidatorDirective), multi: true }
   ]
 })
-export class CustomInputValidatorDirective {
+export class NumberValidatorDirective implements OnInit {
 
   validator: Function;
+  @Input('min') min ;
+  @Input('max') max ;
 
-  constructor(private el: ElementRef) {
-    let elAttr = el.nativeElement.attributes,
-        min = elAttr.min && elAttr.min.value || 0,
-        max = elAttr.max && elAttr.max.value || 0;
-    this.validator = validateMinMax(min, max);
+  ngOnInit(){
+    this.validator = validateMinMax(this.min, this.max);
   }
 
   validate(c: FormControl) {
