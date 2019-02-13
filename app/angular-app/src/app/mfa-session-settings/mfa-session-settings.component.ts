@@ -14,7 +14,7 @@ declare var $:any;
 export class MfaSessionSettingsComponent implements OnInit {
 
   hasError      : boolean = false;
-  isProcessing  : boolean = false;
+  isProcessing  : boolean = true;
   errorMessage  : string  = null;
 
   btnText       : string  = "Apply";
@@ -48,7 +48,7 @@ export class MfaSessionSettingsComponent implements OnInit {
               private requestParamEncoder : RequestParamEncoderService) { }
 
   ngOnInit() {
-    //this.init();
+    this.init();
   }
 
   init() {
