@@ -48,13 +48,15 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   }
 
   increment(){
-    if( this.modelValue == this.maxValue) return;
-    this.modelValue++;
+    if( this.modelValue < this.maxValue) {
+      this.modelValue++;
+    };
   }
 
   decrement(){
-    if( this.modelValue == this.minValue) return;
-    this.modelValue--;
+    if( this.modelValue > this.minValue) {
+      this.modelValue--;
+    };
   }
 
   //Set touched on blur
