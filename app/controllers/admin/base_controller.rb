@@ -16,6 +16,17 @@ class Admin::BaseController < ApplicationController
   #   delete_cookie(GlobalConstant::Cookie.admin_cookie_name)
   # end
 
+  # Reload the same url to retain cookie
+  #
+  # * Author: Aman
+  # * Date: 09/10/2017
+  # * Reviewed By:
+  #
+  def reload_for_external_links_to_retain_cookie
+    return if cookies[GlobalConstant::Cookie.admin_cookie_name.to_sym].present?
+    super
+  end
+
   # redirect to admin login page if cookie not present
   #
   # * Author: Aman
