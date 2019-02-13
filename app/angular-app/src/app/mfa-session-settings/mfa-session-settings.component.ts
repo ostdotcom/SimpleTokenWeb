@@ -37,9 +37,9 @@ export class MfaSessionSettingsComponent implements OnInit {
   mfaInputLabel : string = 'Days (1 - 14)';
   sessionInputLabel : string = 'Hours (1 - 3)';
 
-  errorDictionaryConfig: object = {
-    "customMin"  : "Please select a number within the range mentioned",
-    "customMax"  : "Please select a number within the range mentioned"
+  errorMsgConfig: object = {
+    "min"  : "Please select a number within the range mentioned",
+    "max"  : "Please select a number within the range mentioned"
   };
 
   constructor(private http: OstHttp,
@@ -71,13 +71,13 @@ export class MfaSessionSettingsComponent implements OnInit {
   }
 
   initData( data ){
-    this.adminMFAType = this.utilities.deepGet( data , 'admin_setting.mfa_type');
-    this.adminMFAFrequency = this.utilities.deepGet( data , 'admin_setting.mfa_frequency');
-    this.adminSessionTimeout = this.utilities.deepGet( data , 'admin_setting.session_timeout');
-    this.enableForSuperAdmin = this.utilities.deepGet( data , 'has_sa_setting');
-    this.sadminMFAType = this.utilities.deepGet( data , 'super_admin_setting.mfa_type');
-    this.sadminMFAFrequency = this.utilities.deepGet( data , 'super_admin_setting.mfa_frequency');
-    this.sadminSessionTimeout = this.utilities.deepGet( data , 'super_admin_setting.session_timeout');
+    this.adminMFAType = this.utilities.deepGet( data , 'admin_setting.mfa_type') || 0;
+    this.adminMFAFrequency = this.utilities.deepGet( data , 'admin_setting.mfa_frequency') || 1;
+    this.adminSessionTimeout = this.utilities.deepGet( data , 'admin_setting.session_timeout') || 1;
+    this.enableForSuperAdmin = this.utilities.deepGet( data , 'has_sa_setting') || 0;
+    this.sadminMFAType = this.utilities.deepGet( data , 'super_admin_setting.mfa_type') || 0;
+    this.sadminMFAFrequency = this.utilities.deepGet( data , 'super_admin_setting.mfa_frequency') || 1;
+    this.sadminSessionTimeout = this.utilities.deepGet( data , 'super_admin_setting.session_timeout') || 1;
   }
 
   mfaSessionSettingsSubmit( mfaSessionSettings ) {
@@ -111,7 +111,7 @@ export class MfaSessionSettingsComponent implements OnInit {
 
   onFormSubmitSuccess( res ){
     this.onFormSubmitComplete();
-    $('#mfa-settings-success-modal').show();
+    $('#mfa-settings-success-modal').modal('show');
   }
 
   onFormSubmitError( err ){

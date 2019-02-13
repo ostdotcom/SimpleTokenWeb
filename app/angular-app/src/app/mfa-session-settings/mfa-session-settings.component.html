@@ -55,7 +55,7 @@
                 <ost-form-error-handler [errorFor]="adminMFAFrequencyModel"
                                         [fieldName]="'Admin MFA Frequency'"
                                         [serverError]="errorResponse"
-                                        [errorDictionaryConfig]="errorDictionaryConfig">
+                                        [errorMsgConfig]="errorMsgConfig">
                 </ost-form-error-handler>
               </div>
             </ng-container>
@@ -78,7 +78,7 @@
           <ost-form-error-handler [errorFor]="adminSessionTimeoutModel"
                                 [fieldName]="'Admin Session Timeout'"
                                 [serverError]="errorResponse"
-                                  [errorDictionaryConfig]="errorDictionaryConfig">
+                                  [errorMsgConfig]="errorMsgConfig">
         </ost-form-error-handler>
       </div>
 
@@ -135,7 +135,7 @@
                       <ost-form-error-handler [errorFor]="sadminMFAFrequencyModel"
                                               [fieldName]="'Super Admin MFA Frequency'"
                                               [serverError]="errorResponse"
-                                              [errorDictionaryConfig]="errorDictionaryConfig">
+                                              [errorMsgConfig]="errorMsgConfig">
                       </ost-form-error-handler>
                     </div>
                   </ng-container>
@@ -158,7 +158,7 @@
               <ost-form-error-handler [errorFor]="sadminSessionTimeoutModel"
                                       [fieldName]="'Super Admin Session Timeout'"
                                       [serverError]="errorResponse"
-                                      [errorDictionaryConfig]="errorDictionaryConfig">
+                                      [errorMsgConfig]="errorMsgConfig">
               </ost-form-error-handler>
             </div>
           </div>
