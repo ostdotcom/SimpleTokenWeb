@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OstHttp} from "../services/ost-http.service";
 import {RequestStateHandlerService} from "../services/request-state-handler.service";
 import {UtilitiesService} from "../services/utilities.service";
+import {RequestParamEncoderService} from "../services/request-param-encoder.service";
 
 @Component({
   selector: 'app-mfa-session-settings',
@@ -57,7 +58,8 @@ export class MfaSessionSettingsComponent implements OnInit {
 
   constructor(private http: OstHttp,
               private stateHandler : RequestStateHandlerService,
-              private utilities : UtilitiesService) { }
+              private utilities : UtilitiesService,
+              private requestParamEncoder : RequestParamEncoderService) { }
 
   ngOnInit() {
     //this.init();
@@ -95,9 +97,10 @@ export class MfaSessionSettingsComponent implements OnInit {
 
   mfaSessionSettingsSubmit( mfaSessionSettings ) {
     if( this.isInValidInput() ) return;
-    let params = mfaSessionSettings.value;
+    let params = mfaSessionSettings.value,
+        encodedParams = this.requestParamEncoder.getEncodedPOSTParams( params );
     this.preFormSubmit();
-    this.http.post(this.postDataURL, {...params} ).subscribe(
+    this.http.post(this.postDataURL, encodedParams ).subscribe(
       response => {
         let res = response.json();
         if (res.success) {

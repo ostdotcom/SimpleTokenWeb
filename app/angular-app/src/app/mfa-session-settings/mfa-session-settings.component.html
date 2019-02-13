@@ -95,73 +95,74 @@
                       aria-controls="superAdminSettings">>
           </ost-toggle>
         </div>
-        <div [ngClass]="enableForSuperAdmin ? 'show' : ''" class="collapse pl-1 pl-md-3" id="superAdminSettings">
-          <div class="form-group pl-0 col-md-6 col-12">
-            <div class="form-label">MFA FREQUENCY</div>
-            <div class="form-check form-check-inline">
-              <input  type="radio"
-                      class="form-check-input radio-button"
-                      id="sadmin_mfa_frequency_always"
-                      name="super_admin_setting[mfa_type]"  [value]="0" [(ngModel)]="sadminMFAType" />
-              <label class="radio-button-label position-relative" for="sadmin_mfa_frequency_always" style="top: 5px;">
-                <span class="radio-button-circle d-inline"></span>Each login attempt
-              </label>
-            </div>
-            <div class="mt-2">
-              <div class="row mfa-container">
-                <div class="col-4 col-md-3 col-lg-2">
-                  <div class="form-check form-check-inline">
-                    <input  type="radio"
-                            class="form-check-input radio-button"
-                            id="sadmin_mfa_frequency_custom"
-                            name="super_admin_setting[mfa_type]" [value]="1" [(ngModel)]="sadminMFAType" />
-                    <label class="radio-button-label position-relative" for="sadmin_mfa_frequency_custom" style="top: 5px;">
-                      <span class="radio-button-circle d-inline"></span>Custom
-                    </label>
+        <ng-container *ngIf="enableForSuperAdmin">
+          <div [ngClass]="enableForSuperAdmin ? 'show' : ''" class="collapse pl-1 pl-md-3" id="superAdminSettings">
+            <div class="form-group pl-0 col-md-6 col-12">
+              <div class="form-label">MFA FREQUENCY</div>
+              <div class="form-check form-check-inline">
+                <input  type="radio"
+                        class="form-check-input radio-button"
+                        id="sadmin_mfa_frequency_always"
+                        name="super_admin_setting[mfa_type]"  [value]="0" [(ngModel)]="sadminMFAType" />
+                <label class="radio-button-label position-relative" for="sadmin_mfa_frequency_always" style="top: 5px;">
+                  <span class="radio-button-circle d-inline"></span>Each login attempt
+                </label>
+              </div>
+              <div class="mt-2">
+                <div class="row mfa-container">
+                  <div class="col-4 col-md-3 col-lg-2">
+                    <div class="form-check form-check-inline">
+                      <input  type="radio"
+                              class="form-check-input radio-button"
+                              id="sadmin_mfa_frequency_custom"
+                              name="super_admin_setting[mfa_type]" [value]="1" [(ngModel)]="sadminMFAType" />
+                      <label class="radio-button-label position-relative" for="sadmin_mfa_frequency_custom" style="top: 5px;">
+                        <span class="radio-button-circle d-inline"></span>Custom
+                      </label>
+                    </div>
                   </div>
+                  <ng-container *ngIf="sadminMFAType == 1" >
+                    <div class="col-8 col-md-9 col-lg-10 d-flex pr-0 pl-0 pl-md-4 align-items-center">
+                      <ost-input-number [(ngModel)]="sadminMFAFrequency"
+                                        #sadminMFAFrequencyModel="ngModel"
+                                        name="super_admin_setting[mfa_frequency]"
+                                        [minValue]="1" [maxValue]="14"
+                                        min="1" max="14" customInputValidator>
+                      </ost-input-number>
+                      <span class="ml-2">{{mfaInputLabel}}</span>
+                    </div>
+                    <div class="col-12">
+                      <ost-form-error-handler [errorFor]="sadminMFAFrequencyModel"
+                                              [fieldName]="'Super Admin MFA Frequency'"
+                                              [serverError]="errorResponse"
+                                              [errorDictionaryConfig]="errorDictionaryConfig">
+                      </ost-form-error-handler>
+                    </div>
+                  </ng-container>
                 </div>
-                <ng-container *ngIf="adminMFAType == 1" >
-                  <div class="col-8 col-md-9 col-lg-10 d-flex pr-0 pl-0 pl-md-4 align-items-center">
-                    <ost-input-number [(ngModel)]="sadminMFAFrequency"
-                                      #sadminMFAFrequencyModel="ngModel"
-                                      name="super_admin_setting[mfa_frequency]"
-                                       [minValue]="1" [maxValue]="14"
-                                      min="1" max="14" customInputValidator>
-                    </ost-input-number>
-                    <span class="ml-2">{{mfaInputLabel}}</span>
-                  </div>
-                  <div class="col-12">
-                    <ost-form-error-handler [errorFor]="sadminMFAFrequencyModel"
-                                            [fieldName]="'Super Admin MFA Frequency'"
-                                            [serverError]="errorResponse"
-                                            [errorDictionaryConfig]="errorDictionaryConfig">
-                    </ost-form-error-handler>
-                  </div>
-                </ng-container>
               </div>
             </div>
 
-          </div>
-
-          <div class="form-group pl-0 mt-4 col-md-6 col-12">
-            <div class="form-label">SESSION TIMEOUT</div>
-            <div class="d-flex pr-0 align-items-center">
-              <span class="mr-3">Enable for</span>
-              <ost-input-number     #sadminSessionTimeoutModel="ngModel"
-                                    [(ngModel)]="sadminSessionTimeout"
-                                    name="super_admin_setting[session_timeout]"
-                                     [minValue]="1" [maxValue]="3"
-                                    min="1" max="3" customInputValidator>
-              </ost-input-number>
-              <span class="ml-2">{{sessionInputLabel}}</span>
+            <div class="form-group pl-0 mt-4 col-md-6 col-12">
+              <div class="form-label">SESSION TIMEOUT</div>
+              <div class="d-flex pr-0 align-items-center">
+                <span class="mr-3">Enable for</span>
+                <ost-input-number     #sadminSessionTimeoutModel="ngModel"
+                                      [(ngModel)]="sadminSessionTimeout"
+                                      name="super_admin_setting[session_timeout]"
+                                      [minValue]="1" [maxValue]="3"
+                                      min="1" max="3" customInputValidator>
+                </ost-input-number>
+                <span class="ml-2">{{sessionInputLabel}}</span>
+              </div>
+              <ost-form-error-handler [errorFor]="sadminSessionTimeoutModel"
+                                      [fieldName]="'Super Admin Session Timeout'"
+                                      [serverError]="errorResponse"
+                                      [errorDictionaryConfig]="errorDictionaryConfig">
+              </ost-form-error-handler>
             </div>
-            <ost-form-error-handler [errorFor]="sadminSessionTimeoutModel"
-                                    [fieldName]="'Super Admin Session Timeout'"
-                                    [serverError]="errorResponse"
-                                    [errorDictionaryConfig]="errorDictionaryConfig">
-            </ost-form-error-handler>
           </div>
-        </div>
+        </ng-container>
       </div>
 
       <div class="form-group user-form-footer text-sm-left row mt-4">

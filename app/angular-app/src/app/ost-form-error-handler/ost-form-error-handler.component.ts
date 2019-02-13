@@ -70,7 +70,6 @@ export class OstFormErrorHandlerComponent implements OnInit{
   }
 
   isFrontEndError(){
-    console.log(this.errorFor);
       return this.errorFor instanceof NgModel && this.errorFor.touched && !this.errorFor.valid ;
   }
 
