@@ -18,6 +18,10 @@ export STW_SK_ADMIN_PW=""
 
 export STW_GEOIP_FILE_WITH_PATH='../GeoIP2-City.mmdb'
 
+#valid FOR Local testing
+#export STW_RECAPTCHA_SITE_KEY="6LfbfzQUAAAAAObwp0iXySZxH69WXY6NsLdKZF6B"
+
+#does not ask for recaptcha
 export STW_RECAPTCHA_SITE_KEY="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
 
 export STW_EARLY_ACCESS_REGISTER_START_DATE='2017-11-01 13:00:00 UTC'

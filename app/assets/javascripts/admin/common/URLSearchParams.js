@@ -9,7 +9,7 @@
                 return null;
             }
             else {
-                return decodeURIComponent(results[1]) || 0;
+                return decodeURIComponent(results[1]) || '';
             }
         };
     }
