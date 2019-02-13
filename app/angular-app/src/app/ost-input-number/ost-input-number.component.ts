@@ -62,7 +62,7 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   }
 
   //Set touched on blur
-  onBlur() {
+  onKeyUp() {
     this.onTouchedCallback();
   }
 
