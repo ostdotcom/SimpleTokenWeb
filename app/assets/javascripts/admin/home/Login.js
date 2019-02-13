@@ -12,16 +12,23 @@
         jLoginForm: null,
 
         init: function (config) {
-
+            var formHelperGetData = FormHelper.prototype.getSerializedData;
             oThis.jLoginForm = $('#adminLoginForm');
             oThis.jLogin = $('#adminLogin');
-            var urlParams = new URLSearchParams(window.location.search),
-                next = urlParams.get('next');
-            if (next) {
-                $("#next_url").val(encodeURIComponent(next));
 
-            }
             oThis.formHelper = oThis.jLoginForm.formHelper({
+                getSerializedData : function(){
+                    var data = formHelperGetData.apply(this),
+                        urlParams = new URLSearchParams(window.location.search),
+                        next = urlParams.get('next');
+                    if (next){
+                        data.push({
+                            name: "next_url",
+                            value: encodeURIComponent(next)
+                        });
+                    }
+                    return data;
+                },
                 success: function (response) {
                     if (response.success == true) {
                         var data = response.data,
