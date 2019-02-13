@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { OstHttp } from './services/ost-http.service';
@@ -75,6 +74,8 @@ import { CaseFooterSectionComponent } from './kyc-case/case-footer-section/case-
 import { UpdateEthModalComponent } from './manage-user/update-eth-modal/update-eth-modal.component';
 import { EmailNotificationComponent } from './email-notification/email-notification.component';
 import { EmailCardComponent } from './email-notification/email-card/email-card.component';
+import { AmlPollingHelperService } from "./kyc-case/aml-polling-helper.service";
+
 import { MfaSessionSettingsComponent } from './mfa-session-settings/mfa-session-settings.component';
 import { OstToggleComponent } from './ost-toggle/ost-toggle.component';
 import { OstInputNumberComponent } from './ost-input-number/ost-input-number.component';
@@ -247,6 +248,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 ScrollTopService,
                 UtilitiesService,
                 OstPdfService,
+                AuthGuardService,
+                AmlPollingHelperService
                 AuthGuardService,
                 RequestParamEncoderService
             ],

@@ -4,6 +4,8 @@ import { OstHttp } from '../services/ost-http.service';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 import { AppConfigService } from '../services/app-config.service';
 import { ScrollTopService } from '../services/scroll-top.service';
+import {AmlPollingHelperService} from "./aml-polling-helper.service";
+import {UtilitiesService} from "../services/utilities.service";
 
 declare var $: any;
 
@@ -43,18 +45,22 @@ export class KycCaseComponent implements OnInit {
 
 
   amlDetail;
-  amlMatchList;
+  amlMatchList: Array<object> = [];
   amlMatchedIds: Array<string> = [];
   amlUnMatchedIds: Array<string> = [];
 
-  showPageStateFn : Function
+  showPageStateFn : Function;
+
+  fetchCaseApi : string = 'api/admin/kyc/check-details/' ;
 
   constructor(
     public activatedRoute: ActivatedRoute,
     private http: OstHttp,
     private stateHandler : RequestStateHandlerService,
     public appConfig: AppConfigService,
-    private scrollTopService: ScrollTopService
+    private scrollTopService: ScrollTopService,
+    private pollingService: AmlPollingHelperService,
+    private utilities : UtilitiesService
   ) { }
 
   ocr_comparison_fields;
@@ -87,17 +93,19 @@ export class KycCaseComponent implements OnInit {
     },0);
   }
 
-  fetchCase() {
+  preFetchCase(){
     this.widthComputed = false;
     this.isProcessing = true;
-    let params = Object.assign(
-      {id: this.caseId},
-      this.activatedRoute.snapshot.queryParams
-    );
-    this.http.get('api/admin/kyc/check-details/', {params: params}).subscribe( response => {
+  }
+
+  fetchCase() {
+   this.preFetchCase();
+    let params = this.getFetchCaseData();
+    this.http.get(this.fetchCaseApi , {params: params}).subscribe( response => {
       let json_response = response.json();
       if(json_response.success){
         this.onSuccess( response.json());
+        this.stateHandler.updateRequestStatus( this, false,  false);
       } else {
         this.stateHandler.updateRequestStatus( this, false,  true , false ,  json_response);
       }
@@ -106,6 +114,12 @@ export class KycCaseComponent implements OnInit {
     })
   }
 
+  getFetchCaseData(){
+    return Object.assign(
+      {id: this.caseId},
+      this.activatedRoute.snapshot.queryParams
+    );
+  }
 
   hideModal(){
     $("#detailsModal").modal('hide');
@@ -128,7 +142,6 @@ export class KycCaseComponent implements OnInit {
     this.image_processing_status =  this.user_kyc_comparison_detail.image_processing_status;
     this.userDetails['extraDiv'] = this.checkForOddSections();
     this.meta = res.data.meta;
-    this.stateHandler.updateRequestStatus( this, false,  false);
     this.getNextPrevious(res.data.meta);
     this.setAdminConfig();
     this.setFRText();
@@ -136,6 +149,10 @@ export class KycCaseComponent implements OnInit {
     this.setAmlCtfStatusConfig();
     this.initTooltip();
     this.scrollTopService.scrollTop();
+
+    if( this.utilities.deepGet( this.response, 'data.aml_detail.aml_processing_status') == 'processing' ){
+      this.pollForAMLData();
+    }
   }
 
   createMatchLists(){
@@ -158,8 +175,40 @@ export class KycCaseComponent implements OnInit {
     this.showReportIssue = showReportIssue;
   }
 
-  onActionSuccess( res ){
+  onActionSuccess( res  ){
     this.fetchCase();
+  }
+
+  pollForAMLData() {
+    var oThis = this ;
+    this.pollingService.pollingApi = this.fetchCaseApi;
+    this.pollingService.onPollingSuccess = function ( res ) {
+      oThis.onPollingSuccess( res );
+    } ;
+
+    this.pollingService.getData = function () {
+      return oThis.getFetchCaseData(  ) ;
+    };
+    this.pollingService.startPolling( );
+  }
+
+  onPollingSuccess( response ){
+    if( !response ) return false;
+
+    let data = response.data;
+
+    if( this.utilities.deepGet(data, 'aml_detail.aml_processing_status') == 'processed'){
+      this.updateWithPolledData( response );
+    }
+  }
+
+  updateWithPolledData( response ){
+    this.pollingService.stopPolling();
+    this.preFetchCase();
+    setTimeout(()=>{
+      this.onSuccess( response );
+      this.stateHandler.updateRequestStatus( this, false,  false);
+    } , 2000)
   }
 
   initDuplicateTable(){
@@ -307,6 +356,16 @@ export class KycCaseComponent implements OnInit {
       'matched_ids' : this.amlMatchedIds,
       'unmatched_ids' : this.amlUnMatchedIds
     }
+  }
+
+  ngOnDestroy(){
+    if( this.pollingService && this.pollingService.isPollingStarted()  ){
+      this.pollingService.stopPolling();
+    }
+  }
+
+  hasNoAMLMatches(){
+    return this.amlUnMatchedIds.length == this.amlMatchList.length;
   }
 }
 
