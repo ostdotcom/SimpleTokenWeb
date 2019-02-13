@@ -80,7 +80,6 @@ import { OstToggleComponent } from './ost-toggle/ost-toggle.component';
 import { OstInputNumberComponent } from './ost-input-number/ost-input-number.component';
 import { CustomInputValidatorDirective } from './directives/custom-input-validator.directive';
 
-
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
   return () => entityConfigService.load();
 }

@@ -50,6 +50,11 @@ export class MfaSessionSettingsComponent implements OnInit {
     }
   };
 
+  errorDictionaryConfig: object = {
+    "customMin"  : "Please select a number within the range mentioned",
+    "customMax"  : "Please select a number within the range mentioned"
+  };
+
   constructor(private http: OstHttp,
               private stateHandler : RequestStateHandlerService,
               private utilities : UtilitiesService) { }
@@ -129,19 +134,9 @@ export class MfaSessionSettingsComponent implements OnInit {
     this.isSubmitting = false;
   }
 
-  increment( modelStr ){
-    this[modelStr]++;
-  }
-
-  decrement( modelStr ){
-    this[modelStr]--;
-  }
-
   isInValidInput(){
-   return !this.isValidMFAFrequency( this.adminMFAFrequency ) ||
-         !this.isValidMFAFrequency( this.sadminMFAFrequency ) ||
-         !this.isValidSessionTimeout( this.adminSessionTimeout ) ||
-         !this.isValidSessionTimeout( this.sadminSessionTimeout )
+   return !this.isValidMFAFrequency( this.adminMFAFrequency ) || !this.isValidSessionTimeout( this.adminSessionTimeout ) ||
+     (this.enableForSuperAdmin && (!this.isValidMFAFrequency( this.sadminMFAFrequency ) || !this.isValidSessionTimeout( this.sadminSessionTimeout )))
   }
 
   isValidMFAFrequency( frequencyInDays ){

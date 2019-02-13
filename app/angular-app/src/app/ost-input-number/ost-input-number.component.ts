@@ -37,12 +37,15 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   }
 
   propagateChange = (_: any) => {};
+  onTouchedCallback = () => {};
 
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() {}
+  registerOnTouched(fn) {
+    this.onTouchedCallback = fn;
+  }
 
   increment(){
     if( this.modelValue == this.maxValue) return;
@@ -52,6 +55,11 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   decrement(){
     if( this.modelValue == this.minValue) return;
     this.modelValue--;
+  }
+
+  //Set touched on blur
+  onBlur() {
+    this.onTouchedCallback();
   }
 
 

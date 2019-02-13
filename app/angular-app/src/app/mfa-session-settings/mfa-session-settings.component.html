@@ -28,9 +28,9 @@
             <span class="radio-button-circle d-inline"></span>Each login attempt
           </label>
         </div>
-        <div class="mt-2 d-flex align-items-center">
+        <div class="mt-2">
           <div class="row mfa-container">
-            <div class="col-4 d-flex align-items-center">
+            <div class="col-4 col-md-3 col-lg-2">
               <div class="form-check form-check-inline">
                 <input  type="radio"
                         class="form-check-input radio-button"
@@ -42,18 +42,22 @@
               </div>
             </div>
             <ng-container *ngIf="adminMFAType == 1" >
-              <div class="col-8 d-flex pr-0 align-items-center">
-                <ost-input-number [(ngModel)]="adminMFAFrequency"
-                                  #adminMFAFrequencyModel="ngModel"
-                                  name="admin_setting[mfa_frequency]"
-                                  [minValue]="1" [maxValue]="14">
-                </ost-input-number>
-                <span class="ml-2">{{mfaInputLabel}}</span>{{adminMFAFrequencyModel.errors}}
+              <div class="col-8 col-md-9 col-lg-10 d-flex pr-0 pl-0 pl-md-3 align-items-center">
+                  <ost-input-number [(ngModel)]="adminMFAFrequency"
+                                    #adminMFAFrequencyModel="ngModel"
+                                    name="admin_setting[mfa_frequency]"
+                                    [minValue]="1" [maxValue]="14"
+                                    min="1" max="14" customInputValidator>
+                  </ost-input-number>
+                  <span class="ml-2">{{mfaInputLabel}}</span>
               </div>
-              <ost-form-error-handler [errorFor]="adminMFAFrequencyModel"
-                                      [fieldName]="'Admin MFA Frequency'"
-                                      [serverError]="errorResponse">
-              </ost-form-error-handler>
+              <div class="col-12">
+                <ost-form-error-handler [errorFor]="adminMFAFrequencyModel"
+                                        [fieldName]="'Admin MFA Frequency'"
+                                        [serverError]="errorResponse"
+                                        [errorDictionaryConfig]="errorDictionaryConfig">
+                </ost-form-error-handler>
+              </div>
             </ng-container>
           </div>
         </div>
@@ -66,13 +70,15 @@
           <ost-input-number     #adminSessionTimeoutModel="ngModel"
                                 [(ngModel)]="adminSessionTimeout"
                                 name="admin_setting[session_timeout]"
-                                [minValue]="1" [maxValue]="3">
+                                 [minValue]="1" [maxValue]="3"
+                                min="1" max="3" customInputValidator>
           </ost-input-number>
-          <span class="ml-2">{{sessionInputLabel}}</span>{{adminSessionTimeoutModel.errors}}
+          <span class="ml-2">{{sessionInputLabel}}</span>
         </div>
           <ost-form-error-handler [errorFor]="adminSessionTimeoutModel"
                                 [fieldName]="'Admin Session Timeout'"
-                                [serverError]="errorResponse">
+                                [serverError]="errorResponse"
+                                  [errorDictionaryConfig]="errorDictionaryConfig">
         </ost-form-error-handler>
       </div>
 
@@ -101,9 +107,9 @@
                 <span class="radio-button-circle d-inline"></span>Each login attempt
               </label>
             </div>
-            <div class="mt-2 d-flex align-items-center">
+            <div class="mt-2">
               <div class="row mfa-container">
-                <div class="col-4 d-flex align-items-center">
+                <div class="col-4 col-md-3 col-lg-2">
                   <div class="form-check form-check-inline">
                     <input  type="radio"
                             class="form-check-input radio-button"
@@ -115,18 +121,22 @@
                   </div>
                 </div>
                 <ng-container *ngIf="adminMFAType == 1" >
-                  <div class="col-8 d-flex pr-0 align-items-center">
+                  <div class="col-8 col-md-9 col-lg-10 d-flex pr-0 pl-0 pl-md-4 align-items-center">
                     <ost-input-number [(ngModel)]="sadminMFAFrequency"
                                       #sadminMFAFrequencyModel="ngModel"
                                       name="super_admin_setting[mfa_frequency]"
-                                      [minValue]="1" [maxValue]="14">
+                                       [minValue]="1" [maxValue]="14"
+                                      min="1" max="14" customInputValidator>
                     </ost-input-number>
-                    <span class="ml-2">{{mfaInputLabel}}</span>{{sadminMFAFrequencyModel.errors}}
+                    <span class="ml-2">{{mfaInputLabel}}</span>
                   </div>
-                  <ost-form-error-handler [errorFor]="sadminMFAFrequencyModel"
-                                          [fieldName]="'Super Admin MFA Frequency'"
-                                          [serverError]="errorResponse">
-                  </ost-form-error-handler>
+                  <div class="col-12">
+                    <ost-form-error-handler [errorFor]="sadminMFAFrequencyModel"
+                                            [fieldName]="'Super Admin MFA Frequency'"
+                                            [serverError]="errorResponse"
+                                            [errorDictionaryConfig]="errorDictionaryConfig">
+                    </ost-form-error-handler>
+                  </div>
                 </ng-container>
               </div>
             </div>
@@ -140,13 +150,15 @@
               <ost-input-number     #sadminSessionTimeoutModel="ngModel"
                                     [(ngModel)]="sadminSessionTimeout"
                                     name="super_admin_setting[session_timeout]"
-                                    [minValue]="1" [maxValue]="3">
+                                     [minValue]="1" [maxValue]="3"
+                                    min="1" max="3" customInputValidator>
               </ost-input-number>
-              <span class="ml-2">{{sessionInputLabel}}</span>{{sadminSessionTimeoutModel.errors}}
+              <span class="ml-2">{{sessionInputLabel}}</span>
             </div>
             <ost-form-error-handler [errorFor]="sadminSessionTimeoutModel"
                                     [fieldName]="'Super Admin Session Timeout'"
-                                    [serverError]="errorResponse">
+                                    [serverError]="errorResponse"
+                                    [errorDictionaryConfig]="errorDictionaryConfig">
             </ost-form-error-handler>
           </div>
         </div>
@@ -164,7 +176,6 @@
         </div>
       </div>
     </form>
-    <pre>{{ mfaSessionSettings.value | json }}</pre>
   </div>
 </div>
 
