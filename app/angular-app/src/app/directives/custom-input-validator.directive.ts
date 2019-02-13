@@ -1,4 +1,4 @@
-import { Directive, Input, forwardRef, ElementRef } from '@angular/core';
+import { Directive, forwardRef, ElementRef } from '@angular/core';
 import { NG_VALIDATORS, FormControl } from '@angular/forms';
 
 function validateMinMax(min, max) {
