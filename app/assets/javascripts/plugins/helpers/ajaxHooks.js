@@ -1,8 +1,9 @@
 ;
 (function(window, $){
 
-  function getNextUrl(){
+  function getNextParameter(){
       const urlParams = new URLSearchParams(window.location.search);
+      //gives decoded string
       const r_m = urlParams.get('r_m');
       if (r_m == "1"){
           return ("?next=" + encodeURIComponent( window.location.pathname + window.location.search));
@@ -13,9 +14,10 @@
 
   function getStatus401redirect(){
     if( typeof status401redirect == "string" &&  status401redirect.length > 0 ){
-      return status401redirect + getNextUrl();
+        //  do not use query paramters in status401redirect url
+      return status401redirect + getNextParameter();
     }else {
-      return "/login" + getNextUrl();
+      return "/login" + getNextParameter();
     }
   };
   

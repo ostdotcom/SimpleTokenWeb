@@ -16,8 +16,8 @@
             oThis.jLoginForm = $('#adminLoginForm');
             oThis.jLogin = $('#adminLogin');
             var urlParams = new URLSearchParams(window.location.search),
-            next = urlParams.get('next');
-            if (next){
+                next = urlParams.get('next');
+            if (next) {
                 $("#next_url").val(encodeURIComponent(next));
 
             }
@@ -26,11 +26,7 @@
                     if (response.success == true) {
                         var data = response.data,
                             redirect_url = data['redirect_url'];
-                        if (next){
-                            redirect_url += "?next=" + encodeURIComponent(next)
-                        }
                         window.location = redirect_url;
-                        // window.location = '/admin/authentication';
                         return false;
                     } else {
                         if (response.err && response.err.code === "is_deleted") {

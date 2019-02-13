@@ -42,7 +42,7 @@ class Admin::BaseController < ApplicationController
   #
   def default_unauthorized_redirect_url
     next_path = ""
-    if request.query_parameters["r_m"] == "1"
+    if params["r_m"] == "1"
       next_path = "?next=#{CGI.escape request.fullpath}"
     end
     "/admin/login#{next_path}"

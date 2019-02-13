@@ -29,8 +29,9 @@ export class OstHttp extends Http {
       .catch(this.handleError);
   }
 
-  public getNextUrl() {
+  public getNextParameter() {
     const urlParams = new URLSearchParams(window.location.search);
+    //gives decoded string
     const r_m = urlParams.get('r_m');
     if (r_m == "1") {
       return ("?next=" + encodeURIComponent(window.location.pathname + window.location.search));
@@ -48,7 +49,8 @@ export class OstHttp extends Http {
     } else if (error.status == 500) {
       erroMsg = 'Internal Server Error.';
     } else if (error.status == 401) {
-      window.location.href = "/admin/login" + this.getNextUrl();
+      //  do not use query paramters in status401redirect url
+      window.location.href = "/admin/login" + this.getNextParameter();
     } else if (error.status == 302) {
       var redirect_url;
       erroMsg = 'Redirecting..';
