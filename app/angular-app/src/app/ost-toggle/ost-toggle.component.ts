@@ -36,12 +36,20 @@ export class OstToggleComponent implements ControlValueAccessor {
   }
 
   propagateChange = (_: any) => {};
+  onTouchedCallback = () => {};
 
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() {}
+  registerOnTouched(fn) {
+    this.onTouchedCallback = fn;
+  }
+
+  //Set touched on click
+  onClick() {
+    this.onTouchedCallback();
+  }
 
 
 }
