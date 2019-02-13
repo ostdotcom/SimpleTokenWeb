@@ -6,6 +6,7 @@ import { TableComponent } from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
 import { PageBaseComponent } from '../page-base-component/page-base-component.component';
 import { URLSearchParams } from '@angular/http';
+import {RequestParamEncoderService} from "../services/request-param-encoder.service";
 
 declare var $: any;
 
@@ -52,6 +53,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
     private zone:NgZone,
     private stateHandler: RequestStateHandlerService,
     private http: OstHttp,
+    private requestParamEncoder : RequestParamEncoderService,
     public appConfigService: AppConfigService,
     activatedRoute: ActivatedRoute,
     router: Router
@@ -158,31 +160,8 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
   }
 
   getParams() {
-    let requestParams = this.getQueryParams(),
-      body = new URLSearchParams("" , new CustomEncoder());
-    for ( var pKey in requestParams ) {
-      if (!( requestParams.hasOwnProperty( pKey ) ) ) { continue; }
-      body.set( pKey, requestParams[ pKey ] );
-    }
-    return body ;
+    let requestParams = this.getQueryParams();
+      return this.requestParamEncoder.getEncodedPOSTParams( requestParams );
   }
 
-}
-
-class CustomEncoder  {
-  encodeKey(key: string): string {
-    return encodeURIComponent(key);
-  }
-
-  encodeValue(value: string): string {
-    return encodeURIComponent(value);
-  }
-
-  decodeKey(key: string): string {
-    return decodeURIComponent(key);
-  }
-
-  decodeValue(value: string): string {
-    return decodeURIComponent(value);
-  }
 }

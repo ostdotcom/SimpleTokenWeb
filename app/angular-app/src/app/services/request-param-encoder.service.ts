@@ -10,7 +10,8 @@ export class RequestParamEncoderService {
     this.customEncoder = new CustomEncoder();
   }
 
-  getEncodedGETParams( options?: RequestOptionsArgs ) {
+  getEncodedGETParams( requestParams ) {
+    let options = requestParams || {};
     if( options &&  options['params']) {
       let params : any = options['params'],
         finalParams =  new URLSearchParams("" , this.customEncoder );
@@ -24,7 +25,8 @@ export class RequestParamEncoderService {
     return options;
   }
 
-  getEncodedPOSTParams( body ) {
+  getEncodedPOSTParams( requestParams ) {
+    let body = requestParams || {};
     if( body ) {
       let finalBody =  new URLSearchParams("" , this.customEncoder );
       for ( var pKey in body ) {
