@@ -26,6 +26,7 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   set modelValue(val) {
     this._modelValue = val;
     this.propagateChange(this._modelValue);
+    this.onTouchedCallback();
   }
 
   constructor() { }
@@ -50,14 +51,12 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   increment(){
     if( this.modelValue >= this.minValue && this.modelValue < this.maxValue) {
       this.modelValue++;
-      this.onTouchedCallback();
     };
   }
 
   decrement(){
     if( this.modelValue <= this.maxValue && this.modelValue > this.minValue) {
       this.modelValue--;
-      this.onTouchedCallback();
     };
   }
 
