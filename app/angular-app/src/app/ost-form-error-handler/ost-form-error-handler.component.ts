@@ -6,11 +6,12 @@ import { NgModel } from '../../../node_modules/@angular/forms';
   templateUrl: './ost-form-error-handler.component.html',
   styleUrls: ['./ost-form-error-handler.component.scss']
 })
-export class OstFormErrorHandlerComponent {
+export class OstFormErrorHandlerComponent implements OnInit{
 
   @Input("errorFor") errorFor;
   @Input("fieldName") fieldName = "This field";
   @Input("serverError") serverError;
+  @Input("errorDictionaryConfig") errorDictionaryConfig? : object = {};
 
   errorDictionary = {
                    "required": " is required",
@@ -21,6 +22,16 @@ export class OstFormErrorHandlerComponent {
                   };
 
   serverErrorMessage : string = null;
+
+  ngOnInit(){
+    this.errorDictionary = Object.assign({
+      "required": " is required",
+      "minlength": " minimum length is ",
+      "maxlength": " maximum length is ",
+      "min"  : " min value is ",
+      "max"  : " max value is "
+    }, this.errorDictionaryConfig);
+  }
 
   ngOnChanges( ){
     this.handleServerError();
@@ -35,6 +46,10 @@ export class OstFormErrorHandlerComponent {
       return this.fieldName + this.errorDictionary.minlength + errors.minlength.requiredLength
     }else if( errors.maxlength){
       return this.fieldName + this.errorDictionary.maxlength + errors.maxlength.requiredLength
+    }else if( errors.min){
+      return this.errorDictionary['customMin'] ? this.errorDictionary['customMin'] : this.fieldName + this.errorDictionary.min + errors.min.requiredLength
+    }else if( errors.max){
+      return this.errorDictionary['customMax'] ? this.errorDictionary['customMax'] : this.fieldName + this.errorDictionary.max + errors.max.requiredLength
     }else {
       return "Input is invalid."
     }

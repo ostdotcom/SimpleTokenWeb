@@ -1,11 +1,23 @@
 ;
 (function(window, $){
 
+  function getNextParameter(){
+      const urlParams = new URLSearchParams(window.location.search);
+      //gives decoded string
+      const r_m = urlParams.get('r_m');
+      if (r_m == "1"){
+          return ("?next=" + encodeURIComponent( window.location.pathname + window.location.search));
+      } else{
+        return "";
+      }
+  }
+
   function getStatus401redirect(){
     if( typeof status401redirect == "string" &&  status401redirect.length > 0 ){
-      return status401redirect;
+        //  do not use query paramters in status401redirect url
+      return status401redirect + getNextParameter();
     }else {
-      return "/login";
+      return "/login" + getNextParameter();
     }
   };
   
@@ -30,8 +42,10 @@
     } else if (jqXHR.status == 500) {
       msg = 'Internal Server Error.';
     } else if (jqXHR.status == 401) {
+
         window.location = getStatus401redirect();
     } else if (jqXHR.status == 302) {
+        console.log("Yo i m here 3");
         var redirect_url;
         try {
             var _body = JSON.parse(jqXHR.responseText) || {},
