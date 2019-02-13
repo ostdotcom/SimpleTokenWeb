@@ -249,7 +249,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 UtilitiesService,
                 OstPdfService,
                 AuthGuardService,
-                AmlPollingHelperService
+                AmlPollingHelperService,
                 AuthGuardService,
                 RequestParamEncoderService
             ],
