@@ -7,49 +7,13 @@
   .divider{
     border-top: 1px solid $custom-grey-7;
   }
-  input[type=number]{
-    max-width: 70px;
-    border-radius: $border-radius-sm;
-    border: solid 2px $blue-200;
-    min-height: 36px;
-    -moz-appearance: textfield;
-  }
+
   .super-admin-settings{
     box-shadow: 0 2px 3.5px 1px rgba(0, 0, 0, 0.08);
   }
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button
-  {
-    -webkit-appearance: none;
-    margin: 0;
-  }
 
-  .input-number-container{
-    position: relative;
-    & .button{
-      position: absolute;
-      height: 50%;
-      right: 0;
-      background-color: $blue-200 ;
-      color: $white;
-      width: 22px;
-      &.button-up {
-        top: 0;
-      }
-      &.button-down {
-        bottom: 0;
-      }
-      &.button-up:before {
-        content: "\25B2";
-      }
-
-      &.button-down:before {
-        content: "\25BC";
-      }
-    }
-  }
   .mfa-container{
-    min-height: 36px;
+    min-height: 61px;
   }
   .error{
     min-height: 25px;
