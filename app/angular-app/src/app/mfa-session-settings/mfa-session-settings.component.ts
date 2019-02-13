@@ -4,6 +4,8 @@ import {RequestStateHandlerService} from "../services/request-state-handler.serv
 import {UtilitiesService} from "../services/utilities.service";
 import {RequestParamEncoderService} from "../services/request-param-encoder.service";
 
+declare var $:any;
+
 @Component({
   selector: 'app-mfa-session-settings',
   templateUrl: './mfa-session-settings.component.html',
@@ -12,7 +14,7 @@ import {RequestParamEncoderService} from "../services/request-param-encoder.serv
 export class MfaSessionSettingsComponent implements OnInit {
 
   hasError      : boolean = false;
-  isProcessing  : boolean = true;
+  isProcessing  : boolean = false;
   errorMessage  : string  = null;
 
   btnText       : string  = "Apply";
@@ -46,7 +48,7 @@ export class MfaSessionSettingsComponent implements OnInit {
               private requestParamEncoder : RequestParamEncoderService) { }
 
   ngOnInit() {
-    this.init();
+    //this.init();
   }
 
   init() {
@@ -109,6 +111,7 @@ export class MfaSessionSettingsComponent implements OnInit {
 
   onFormSubmitSuccess( res ){
     this.onFormSubmitComplete();
+    $('#mfa-settings-success-modal').show();
   }
 
   onFormSubmitError( err ){

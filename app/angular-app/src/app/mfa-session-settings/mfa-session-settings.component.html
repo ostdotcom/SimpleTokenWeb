@@ -47,7 +47,7 @@
                                     #adminMFAFrequencyModel="ngModel"
                                     name="admin_setting[mfa_frequency]"
                                     [minValue]="1" [maxValue]="14"
-                                    min="1" max="14" customInputValidator>
+                                    min="1" max="14" customInputValidator required>
                   </ost-input-number>
                   <span class="ml-2">{{mfaInputLabel}}</span>
               </div>
@@ -71,7 +71,7 @@
                                 [(ngModel)]="adminSessionTimeout"
                                 name="admin_setting[session_timeout]"
                                  [minValue]="1" [maxValue]="3"
-                                min="1" max="3" customInputValidator>
+                                min="1" max="3" customInputValidator required>
           </ost-input-number>
           <span class="ml-2">{{sessionInputLabel}}</span>
         </div>
@@ -127,7 +127,7 @@
                                         #sadminMFAFrequencyModel="ngModel"
                                         name="super_admin_setting[mfa_frequency]"
                                         [minValue]="1" [maxValue]="14"
-                                        min="1" max="14" customInputValidator>
+                                        min="1" max="14" customInputValidator required>
                       </ost-input-number>
                       <span class="ml-2">{{mfaInputLabel}}</span>
                     </div>
@@ -151,7 +151,7 @@
                                       [(ngModel)]="sadminSessionTimeout"
                                       name="super_admin_setting[session_timeout]"
                                       [minValue]="1" [maxValue]="3"
-                                      min="1" max="3" customInputValidator>
+                                      min="1" max="3" customInputValidator required>
                 </ost-input-number>
                 <span class="ml-2">{{sessionInputLabel}}</span>
               </div>
@@ -167,7 +167,7 @@
 
       <div class="form-group user-form-footer text-sm-left row mt-4">
         <div class="col-12">
-          <button [disabled]="isSubmitting || isInValidInput()" type="submit" class="btn btn-primary"
+          <button [disabled]="isSubmitting || isInValidInput() || !mfaSessionSettings.touched" type="submit" class="btn btn-primary"
                   id="applyChanges" title="Apply Changes">{{btnText}}
           </button>
           <div class="general_error error">
