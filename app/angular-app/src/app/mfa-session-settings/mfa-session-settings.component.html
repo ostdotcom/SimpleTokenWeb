@@ -24,7 +24,7 @@
                   class="form-check-input radio-button"
                   id="mfa_frequency_always"
                   name="admin_setting[mfa_type]" [value]="0" [(ngModel)]="adminMFAType" />
-          <label class="radio-button-label position-relative" for="mfa_frequency_always" style="top: 5px;">
+          <label (click)="onAdminMfaFrequencyTypeClick()"  class="radio-button-label position-relative" for="mfa_frequency_always" style="top: 5px;">
             <span class="radio-button-circle d-inline"></span>Each login attempt
           </label>
         </div>
@@ -86,10 +86,11 @@
         <div class="form-group px-1 px-md-3 pb-3">
           <ost-toggle [labelTxt]="toggleLabel"
                       [(ngModel)]="enableForSuperAdmin"
+                      (change)="onSuperAdminToggle( )"
                       name="has_sa_setting">
           </ost-toggle>
         </div>
-          <div [ngClass]="enableForSuperAdmin ? 'show' : ''" class="collapse pl-1 pl-md-3" id="superAdminSettings">
+          <div class="pl-1 pl-md-3" id="superAdminSettings">
             <div class="form-group pl-0 col-md-6 col-12">
               <div class="form-label">MFA FREQUENCY</div>
               <div class="form-check form-check-inline">

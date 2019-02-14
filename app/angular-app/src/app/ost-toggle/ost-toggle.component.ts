@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import {Component, Input, forwardRef, EventEmitter, Output} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -15,8 +15,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class OstToggleComponent implements ControlValueAccessor {
 
+  _modelValue : number = 0;
+
   @Input('labelTxt') labelTxt : string = '';
-  @Input() _modelValue : number = 0;
 
   get modelValue() {
     return this._modelValue;
@@ -44,11 +45,6 @@ export class OstToggleComponent implements ControlValueAccessor {
 
   registerOnTouched(fn) {
     this.onTouchedCallback = fn;
-  }
-
-  //Set touched on change
-  onChange() {
-   // this.onTouchedCallback();
   }
 
 

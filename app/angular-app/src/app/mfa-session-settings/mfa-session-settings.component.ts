@@ -32,6 +32,7 @@ export class MfaSessionSettingsComponent implements OnInit {
   sadminMFAFrequency  : number = 1;
   adminMFAType        : number = 0;
   sadminMFAType       : number = 0;
+  cachedAdminMFAFrequency : number = 0;
 
   mfaInputLabel : string = 'Days (1 - 14)';
   sessionInputLabel : string = 'Hours (1 - 3)';
@@ -41,7 +42,7 @@ export class MfaSessionSettingsComponent implements OnInit {
     "max"  : "Please select a number within the range mentioned"
   };
 
-  isTouched = false;
+  data = {};
 
   constructor(private http: OstHttp,
               private stateHandler : RequestStateHandlerService,
@@ -59,6 +60,7 @@ export class MfaSessionSettingsComponent implements OnInit {
           let data = res.data || {} ;
           this.initData( data );
           this.stateHandler.updateRequestStatus(this, false,false,false, res);
+          this.onDataSuccess(  data );
         }
         else{
           this.stateHandler.updateRequestStatus(this, false,true,false, res);
@@ -70,7 +72,17 @@ export class MfaSessionSettingsComponent implements OnInit {
       })
   }
 
+  onDataSuccess( data ){
+    console.log("enableForSuperAdmin" , this.enableForSuperAdmin);
+    if( this.enableForSuperAdmin == 1  ){
+      setTimeout( ()=> {
+        $('#superAdminSettings').show();
+      });
+    }
+  }
+
   initData( data ){
+    this.data = data ;
     this.adminMFAType = this.utilities.deepGet( data , 'admin_setting.mfa_type') || 0;
     this.adminMFAFrequency = this.utilities.deepGet( data , 'admin_setting.mfa_frequency') || 1;
     this.adminSessionTimeout = this.utilities.deepGet( data , 'admin_setting.session_timeout') || 1;
@@ -121,6 +133,31 @@ export class MfaSessionSettingsComponent implements OnInit {
   onFormSubmitComplete() {
     this.btnText = 'Apply';
     this.isSubmitting = false;
+  }
+
+  onAdminMfaFrequencyTypeClick(){
+    this.adminMFAFrequency = this.utilities.deepGet( this.data , 'admin_setting.mfa_frequency') || 1 ;
+  }
+
+  onSuperAdminToggle( ){
+    if( this.enableForSuperAdmin == 0 ){
+      this.resetSuperAdminValues();
+    }
+    this.showHideSuperAdminSection(  );
+  }
+
+  resetSuperAdminValues(){
+    this.sadminMFAType = this.utilities.deepGet( this.data , 'super_admin_setting.mfa_type') || 0;
+    this.sadminMFAFrequency = this.utilities.deepGet( this.data , 'super_admin_setting.mfa_frequency') || 1;
+    this.sadminSessionTimeout = this.utilities.deepGet( this.data , 'super_admin_setting.session_timeout') || 1;
+  }
+
+  showHideSuperAdminSection(  ){
+    if( this.enableForSuperAdmin == 1  ){
+      $('#superAdminSettings').slideDown();
+    }else {
+      $('#superAdminSettings').slideUp();
+    }
   }
 
 }
