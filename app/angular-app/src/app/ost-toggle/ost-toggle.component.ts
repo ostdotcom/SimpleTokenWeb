@@ -15,35 +15,41 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class OstToggleComponent implements ControlValueAccessor {
 
-  _modelValue : number = 0;
+  private _modelValue : number = 0;  //Private model
 
   @Input('labelTxt') labelTxt : string = '';
-
+  
+  //Inner model Getter
   get modelValue() {
+    //Storing it in private value to avoid recursive call of get Private model
     return this._modelValue;
   }
-
+  
+  //Inner model Setter
   set modelValue(val) {
-    this._modelValue = val;
-    this.propagateChange(this._modelValue);
+    //As we get it we need to set it as well Private model
+    this._modelValue = val ;
+    //Propagate event to outer element ngModel.
+    this.onChangeCallback( val );
   }
 
   constructor() { }
 
   writeValue(value: any) {
+    //Setting initially value on load , can be also done by Init
     if (value !== undefined) {
       this.modelValue = value;
     }
   }
 
-  propagateChange = (_: any) => {};
-  onTouchedCallback = () => {};
+  onChangeCallback = (_: any) => {};
+  onTouchedCallback = () => {};  //Not used anywhere as interface has mandatory
 
   registerOnChange(fn) {
-    this.propagateChange = fn;
+    this.onChangeCallback = fn;
   }
 
-  registerOnTouched(fn) {
+  registerOnTouched(fn) { //Required as interface has mandatory
     this.onTouchedCallback = fn;
   }
 

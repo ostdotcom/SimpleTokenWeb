@@ -14,71 +14,79 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class OstInputNumberComponent implements ControlValueAccessor {
-
-  @Input() _modelValue : number = 0;
-  @Input('min') minValue : number = 0;
-  @Input('max') maxValue : number = 0;
+  
+  innerModel : number = 0;  //Inner model
+  
+  @Input('min') minValue : number ;
+  @Input('max') maxValue : number ;
+  @Input('step') step    : number = 1;
 
   //disables the arrow used for increment/decrement
   minDisabled : boolean = false;
   maxDisabled : boolean = false;
-
-  get modelValue() {
-    return this._modelValue;
-  }
-
-  set modelValue(val) {
-    this._modelValue = val;
-    this.propagateChange(this._modelValue);
-    this.setMinDisabled();
-    this.setMaxDisabled();
-  }
-
+  
   constructor() { }
 
-  writeValue(value: any) {
+  ngOnInit(){
+    this.minValue = this.minValue && Number( this.minValue ) ;
+    this.maxValue = this.maxValue && Number( this.maxValue ) ;
+    this.step     = this.step && Number( this.step ) ;
+  }
+  
+  writeValue(value: any) { //Will update the inner input field text for View
+    console.log("writeValue" , value );
     if (value !== undefined) {
-      this.modelValue = value;
+      this.innerModel = value;
     }
   }
 
-  propagateChange = (_: any) => {};
+  onChangeCallback = (_: any) => {};
   onTouchedCallback = () => {};
 
+  //Triggerd when input value is changed from view
   registerOnChange(fn) {
-    this.propagateChange = fn;
+    this.onChangeCallback = fn;
   }
-
+  
+  //Triggerd when input value is touched in view
   registerOnTouched(fn) {
     this.onTouchedCallback = fn;
   }
 
   increment(){
-    if( this.modelValue < this.maxValue) {
-      this.modelValue++;
-      this.onTouchedCallback();
+    if( this.innerModel < this.maxValue) {
+      this.innerModel += this.step ;
+      this.onModelChange();
     };
   }
 
   decrement(){
-    if( this.modelValue > this.minValue) {
-      this.modelValue--;
-      this.onTouchedCallback();
+    if( this.innerModel > this.minValue) {
+      this.innerModel -= this.step ;
+      this.onModelChange();
     };
   }
 
   setMinDisabled(){
-    this.minDisabled = this.modelValue == null || this.modelValue <= this.minValue ;
+    this.minDisabled = this.innerModel == null || this.innerModel <= this.minValue ;
   }
 
   setMaxDisabled(){
-    this.maxDisabled = this.modelValue == null || this.modelValue >= this.maxValue ;
+    this.maxDisabled = this.innerModel == null || this.innerModel >= this.maxValue ;
   }
 
   //Set touched on keyup
   onKeyUp() {
-    this.onTouchedCallback();
+    this.onModelChange();
   }
-
-
+  
+  //Inner code logic nothing to do with Interface
+  //Not implemented by set and getter function as onTouchedCallback shouldnt be call there and i dont like it.
+  onModelChange(){
+    this.setMinDisabled();
+    this.setMaxDisabled();
+    this.onTouchedCallback();
+    this.onChangeCallback( this.innerModel );
+  }
+  
 }
