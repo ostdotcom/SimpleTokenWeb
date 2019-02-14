@@ -43,7 +43,6 @@
             </div>
             <ng-container *ngIf="adminMFAType == 1" >
               <div class="col-8 col-md-9 col-xl-10 d-flex pr-0 pl-0 pl-md-3 align-items-center">
-                  ======= {{adminMFAFrequency}} =======
                   <ost-input-number [(ngModel)]="adminMFAFrequency"
                                     #adminMFAFrequencyModel="ngModel"
                                     name="admin_setting[mfa_frequency]"
