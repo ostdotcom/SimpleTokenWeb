@@ -2,9 +2,9 @@
 (function(window, $){
 
   function getNextParameter(){
-      const urlParams = new URLSearchParams(window.location.search);
+      var urlParams = new URLSearchParams(window.location.search);
       //gives decoded string
-      const r_m = urlParams.get('r_m');
+      var r_m = urlParams.get('r_m');
       if (r_m == "1"){
           return ("?next=" + encodeURIComponent( window.location.pathname + window.location.search));
       } else{
