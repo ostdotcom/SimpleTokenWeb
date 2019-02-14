@@ -1,7 +1,7 @@
 <span class="input-number-container d-flex align-items-center">
-  <input class="form-control d-inline py-0" [(ngModel)]="modelValue"
-          type="number" (keyup)="onKeyUp()"/>
-  <span class="button button-up pl-1 d-flex align-top pt-2" (click)="increment()" [ngClass]="maxDisabled ? 'disable' :''">
+  <input class="form-control d-inline py-0 pl-2 pr-4" [(ngModel)]="modelValue" min="{{minValue}}" max="{{maxValue}}"
+          step="1" type="number" (keyup)="onKeyUp()"/>
+  <span class="button button-up px-1 d-flex align-top pt-2" (click)="increment()" [ngClass]="maxDisabled ? 'disable' :''">
     <svg class="icon mfa-session-up-arrow-icon" style="width:16px; height: 7px;">
       <switch>
         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mfa-session-up-arrow-icon">
@@ -15,7 +15,7 @@
       </switch>
     </svg>
   </span>
-  <span class="button button-down d-flex pt-1 align-top pl-1" (click)="decrement()" [ngClass]="minDisabled ? 'disable' :''">
+  <span class="button button-down d-flex pt-1 align-top px-1" (click)="decrement()" [ngClass]="minDisabled ? 'disable' :''">
     <svg class="icon mfa-session-down-arrow-icon" style="width:16px; height: 7px">
       <switch>
         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mfa-session-down-arrow-icon">

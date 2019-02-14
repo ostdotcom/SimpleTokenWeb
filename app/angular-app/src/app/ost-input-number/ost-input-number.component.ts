@@ -68,11 +68,11 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   }
 
   setMinDisabled(){
-    this.minDisabled = this.modelValue == this.minValue;
+    this.minDisabled = !this.modelValue || this.modelValue <= this.minValue || this.modelValue >= this.maxValue;
   }
 
   setMaxDisabled(){
-    this.maxDisabled = this.modelValue == this.maxValue;
+    this.maxDisabled = !this.modelValue || this.modelValue >= this.maxValue || this.modelValue <= this.minValue;
   }
 
   //Set touched on keyup
