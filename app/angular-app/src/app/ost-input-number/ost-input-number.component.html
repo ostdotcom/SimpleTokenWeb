@@ -1,6 +1,32 @@
 <span class="input-number-container d-flex align-items-center">
   <input class="form-control d-inline py-0" [(ngModel)]="modelValue"
           type="number" (keyup)="onKeyUp()"/>
-  <span class="button button-up pl-1" (click)="increment()"></span>
-  <span class="button button-down pl-1" (click)="decrement()"></span>
+  <span class="button button-up pl-1 d-flex align-top pt-2" (click)="increment()" [ngClass]="maxDisabled ? 'disable' :''">
+    <svg class="icon mfa-session-up-arrow-icon" style="width:16px; height: 7px;">
+      <switch>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mfa-session-up-arrow-icon">
+        </use>
+      </switch>
+    </svg>
+    <svg class="icon mfa-session-up-arrow-disabled-icon" style="width:16px; height: 7px;">
+      <switch>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mfa-session-up-arrow-disabled-icon">
+        </use>
+      </switch>
+    </svg>
+  </span>
+  <span class="button button-down d-flex pt-1 align-top pl-1" (click)="decrement()" [ngClass]="minDisabled ? 'disable' :''">
+    <svg class="icon mfa-session-down-arrow-icon" style="width:16px; height: 7px">
+      <switch>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mfa-session-down-arrow-icon">
+        </use>
+      </switch>
+    </svg>
+    <svg class="icon mfa-session-down-arrow-disabled-icon" style="width:16px; height: 7px;">
+      <switch>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mfa-session-down-arrow-disabled-icon">
+        </use>
+      </switch>
+    </svg>
+  </span>
 </span>

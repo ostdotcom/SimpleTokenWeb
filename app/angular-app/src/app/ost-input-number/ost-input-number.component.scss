@@ -34,12 +34,16 @@ input[type=number]::-webkit-outer-spin-button
       bottom: 0;
       border-bottom-right-radius: 0.2rem;
     }
-    &.button-up:before {
-      content: "\25B2";
+    & .mfa-session-down-arrow-disabled-icon, .mfa-session-up-arrow-disabled-icon {
+      display: none;
     }
-
-    &.button-down:before {
-      content: "\25BC";
+    &.disable {
+      .mfa-session-down-arrow-disabled-icon, .mfa-session-up-arrow-disabled-icon {
+        display: block;
+      }
+      .mfa-session-down-arrow-icon, .mfa-session-up-arrow-icon {
+        display: none;
+      }
     }
   }
 }

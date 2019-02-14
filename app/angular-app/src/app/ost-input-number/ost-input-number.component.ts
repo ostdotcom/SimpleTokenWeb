@@ -19,6 +19,10 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   @Input('min') minValue : number = 0;
   @Input('max') maxValue : number = 0;
 
+  //disables the arrow used for increment/decrement
+  minDisabled : boolean = false;
+  maxDisabled : boolean = false;
+
   get modelValue() {
     return this._modelValue;
   }
@@ -26,6 +30,8 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   set modelValue(val) {
     this._modelValue = val;
     this.propagateChange(this._modelValue);
+    this.setMinDisabled();
+    this.setMaxDisabled();
   }
 
   constructor() { }
@@ -59,6 +65,14 @@ export class OstInputNumberComponent implements ControlValueAccessor {
       this.modelValue--;
       this.onTouchedCallback();
     };
+  }
+
+  setMinDisabled(){
+    this.minDisabled = this.modelValue == this.minValue;
+  }
+
+  setMaxDisabled(){
+    this.maxDisabled = this.modelValue == this.maxValue;
   }
 
   //Set touched on keyup
