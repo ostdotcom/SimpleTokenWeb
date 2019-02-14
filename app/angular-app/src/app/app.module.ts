@@ -80,7 +80,6 @@ import { MfaSessionSettingsComponent } from './mfa-session-settings/mfa-session-
 import { OstToggleComponent } from './ost-toggle/ost-toggle.component';
 import { OstInputNumberComponent } from './ost-input-number/ost-input-number.component';
 import { NumberValidatorDirective } from './directives/number-validator.directive';
-import {RequestParamEncoderService} from "./services/request-param-encoder.service";
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
   return () => entityConfigService.load();
@@ -250,8 +249,7 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 OstPdfService,
                 AuthGuardService,
                 AmlPollingHelperService,
-                AuthGuardService,
-                RequestParamEncoderService
+                AuthGuardService
             ],
   bootstrap: [AppComponent]
 })

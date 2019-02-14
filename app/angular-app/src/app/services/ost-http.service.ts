@@ -1,4 +1,4 @@
-import {Http, Request, RequestOptions, RequestOptionsArgs, Response, XHRBackend} from "@angular/http"
+import {Http, Request, RequestOptions, RequestOptionsArgs, Response, URLSearchParams, XHRBackend} from "@angular/http"
 import {Injectable} from "@angular/core"
 import {Observable} from "rxjs/Rx"
 
@@ -13,6 +13,8 @@ import {Meta} from '@angular/platform-browser';
 @Injectable()
 export class OstHttp extends Http {
 
+  customEncoder = null ;
+
   constructor(
     backend: XHRBackend,
     options: RequestOptions,
@@ -22,11 +24,40 @@ export class OstHttp extends Http {
     super(backend, options);
     let csrf_token = meta.getTag('name=csrf-token').content;
     this._defaultOptions.headers.set('X-CSRF-Token', csrf_token);
+    this.customEncoder = new CustomEncoder();
   }
 
   public request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
     return super.request(url, options)
       .catch(this.handleError);
+  }
+
+  getEncodedGETParams( requestParams ) {
+    let options = requestParams || {};
+    if( options &&  options['params']) {
+      let params : any = options['params'],
+        finalParams =  new URLSearchParams("" , this.customEncoder );
+      ;
+      for ( var pKey in params ) {
+        if (!( params.hasOwnProperty( pKey ) ) ) { continue; }
+        finalParams.set( pKey, params[ pKey ] );
+      }
+      options['params'] = finalParams;
+    }
+    return options;
+  }
+
+  getEncodedPOSTParams( requestParams ) {
+    let body = requestParams || {};
+    if( body ) {
+      let finalBody =  new URLSearchParams("" , this.customEncoder );
+      for ( var pKey in body ) {
+        if (!( body.hasOwnProperty( pKey ) ) ) { continue; }
+        finalBody.set( pKey, body[ pKey ] );
+      }
+      body = finalBody;
+    }
+    return body;
   }
 
   public getNextParameter() {
@@ -84,5 +115,23 @@ export class OstHttp extends Http {
 
 
     return Observable.throw(error);
+  }
+}
+
+class CustomEncoder {
+  encodeKey(key: string): string {
+    return encodeURIComponent(key);
+  }
+
+  encodeValue(value: string): string {
+    return encodeURIComponent(value);
+  }
+
+  decodeKey(key: string): string {
+    return decodeURIComponent(key);
+  }
+
+  decodeValue(value: string): string {
+    return decodeURIComponent(value);
   }
 }

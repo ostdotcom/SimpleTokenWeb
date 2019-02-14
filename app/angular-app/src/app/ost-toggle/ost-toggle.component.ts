@@ -46,9 +46,9 @@ export class OstToggleComponent implements ControlValueAccessor {
     this.onTouchedCallback = fn;
   }
 
-  //Set touched on click
-  onClick() {
-    this.onTouchedCallback();
+  //Set touched on change
+  onChange() {
+   // this.onTouchedCallback();
   }
 
 

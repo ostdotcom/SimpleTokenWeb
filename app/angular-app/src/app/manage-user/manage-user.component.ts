@@ -5,8 +5,6 @@ import { OstHttp } from '../services/ost-http.service';
 import { TableComponent } from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
 import { PageBaseComponent } from '../page-base-component/page-base-component.component';
-import { URLSearchParams } from '@angular/http';
-import {RequestParamEncoderService} from "../services/request-param-encoder.service";
 
 declare var $: any;
 
@@ -53,7 +51,6 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
     private zone:NgZone,
     private stateHandler: RequestStateHandlerService,
     private http: OstHttp,
-    private requestParamEncoder : RequestParamEncoderService,
     public appConfigService: AppConfigService,
     activatedRoute: ActivatedRoute,
     router: Router
@@ -161,7 +158,7 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
 
   getParams() {
     let requestParams = this.getQueryParams();
-      return this.requestParamEncoder.getEncodedPOSTParams( requestParams );
+      return this.http.getEncodedPOSTParams( requestParams );
   }
 
 }

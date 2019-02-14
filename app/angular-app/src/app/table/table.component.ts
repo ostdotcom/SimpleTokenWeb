@@ -1,8 +1,6 @@
 import {Component, OnInit, Input, TemplateRef, ContentChild, Output, EventEmitter} from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
-import {Http, RequestOptionsArgs, ResponseContentType, URLSearchParams} from '@angular/http';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
-import {RequestParamEncoderService} from "../services/request-param-encoder.service";
 
 @Component({
   selector: 'app-table',
@@ -13,8 +11,7 @@ import {RequestParamEncoderService} from "../services/request-param-encoder.serv
 export class TableComponent implements OnInit {
 
   constructor(private http: OstHttp,
-              private stateHandler: RequestStateHandlerService,
-              private requestParamEncoder : RequestParamEncoderService) {
+              private stateHandler: RequestStateHandlerService) {
   }
 
   // Decide row template according to parent
@@ -261,7 +258,7 @@ export class TableComponent implements OnInit {
       Object.assign(requestParams, this.getSeaching());
     }
     if(this.getAction() == "post"){
-      return this.requestParamEncoder.getEncodedPOSTParams( requestParams );
+      return this.http.getEncodedPOSTParams( requestParams );
     }else{
       return { params : requestParams };
     }

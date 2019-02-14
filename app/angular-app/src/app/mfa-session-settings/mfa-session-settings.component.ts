@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {OstHttp} from "../services/ost-http.service";
 import {RequestStateHandlerService} from "../services/request-state-handler.service";
 import {UtilitiesService} from "../services/utilities.service";
-import {RequestParamEncoderService} from "../services/request-param-encoder.service";
 
 declare var $:any;
 
@@ -42,10 +41,11 @@ export class MfaSessionSettingsComponent implements OnInit {
     "max"  : "Please select a number within the range mentioned"
   };
 
+  isTouched = false;
+
   constructor(private http: OstHttp,
               private stateHandler : RequestStateHandlerService,
-              private utilities : UtilitiesService,
-              private requestParamEncoder : RequestParamEncoderService) { }
+              private utilities : UtilitiesService) { }
 
   ngOnInit() {
     this.init();
@@ -81,9 +81,9 @@ export class MfaSessionSettingsComponent implements OnInit {
   }
 
   mfaSessionSettingsSubmit( mfaSessionSettings ) {
-    if( this.isInValidInput() ) return;
+    if( !mfaSessionSettings.valid ) return;
     let params = mfaSessionSettings.value,
-        encodedParams = this.requestParamEncoder.getEncodedPOSTParams( params );
+        encodedParams = this.http.getEncodedPOSTParams( params );
     this.preFormSubmit();
     this.http.post(this.postDataURL, encodedParams ).subscribe(
       response => {
@@ -121,19 +121,6 @@ export class MfaSessionSettingsComponent implements OnInit {
   onFormSubmitComplete() {
     this.btnText = 'Apply';
     this.isSubmitting = false;
-  }
-
-  isInValidInput(){
-   return !this.isValidMFAFrequency( this.adminMFAFrequency ) || !this.isValidSessionTimeout( this.adminSessionTimeout ) ||
-     (this.enableForSuperAdmin && (!this.isValidMFAFrequency( this.sadminMFAFrequency ) || !this.isValidSessionTimeout( this.sadminSessionTimeout )))
-  }
-
-  isValidMFAFrequency( frequencyInDays ){
-    return (frequencyInDays >= 1 && frequencyInDays <= 14);
-  }
-
-  isValidSessionTimeout( timeoutInHrs ){
-    return (timeoutInHrs >= 1 && timeoutInHrs <= 3);
   }
 
 }
