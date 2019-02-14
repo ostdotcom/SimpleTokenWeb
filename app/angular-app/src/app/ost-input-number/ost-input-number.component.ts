@@ -54,25 +54,25 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   }
 
   increment(){
-    if( this.modelValue >= this.minValue && this.modelValue < this.maxValue) {
+    if( this.modelValue < this.maxValue) {
       this.modelValue++;
       this.onTouchedCallback();
     };
   }
 
   decrement(){
-    if( this.modelValue <= this.maxValue && this.modelValue > this.minValue) {
+    if( this.modelValue > this.minValue) {
       this.modelValue--;
       this.onTouchedCallback();
     };
   }
 
   setMinDisabled(){
-    this.minDisabled = !this.modelValue || this.modelValue <= this.minValue || this.modelValue >= this.maxValue;
+    this.minDisabled = this.modelValue == null || this.modelValue <= this.minValue ;
   }
 
   setMaxDisabled(){
-    this.maxDisabled = !this.modelValue || this.modelValue >= this.maxValue || this.modelValue <= this.minValue;
+    this.maxDisabled = this.modelValue == null || this.modelValue >= this.maxValue ;
   }
 
   //Set touched on keyup
