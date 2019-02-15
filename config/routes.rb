@@ -63,6 +63,7 @@ Rails.application.routes.draw do
 
     scope 'admin/', controller: 'admin/home' do
       get '/login' => :login
+      get '/iframe_poc' => :iframe_poc
       get '/forgot-password' => :forgot_password
       get '/reset-password' => :reset_password
       get '/activate-account' => :activate_account

@@ -4,7 +4,7 @@ class Admin::HomeController < Admin::BaseController
   before_action :reload_for_external_links_to_retain_cookie
 
   before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
-  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account]
+  before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account, :iframe_poc]
 
   before_action :set_page_meta_info, :except => [:user_preview_pages]
 
@@ -19,6 +19,9 @@ class Admin::HomeController < Admin::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def login
+  end
+
+  def iframe_poc
   end
 
   # Forgot password

@@ -308,6 +308,14 @@ en:
       :assets:
         :specific_css_required: 1
 
+    iframe_poc:
+      :meta:
+        :title: OST KYC Admin Login
+        :robots: 'noindex, nofollow'
+      :assets:
+        :specific_css_required: 0
+        :specific_js_required: 0
+
     forgot_password:
       :meta:
         :title: OST KYC Forgot Password
