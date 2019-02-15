@@ -32,6 +32,18 @@ module GlobalConstant
                            end
       end
 
+      def allowed_referer_domains
+        @allowed_referer_domains ||= [
+            "pepo.com",
+            "pepocampaigns.com",
+            "ost.com",
+            "sandboxost.com",
+            "stagingost.com",
+            "simpletoken.org",
+            "stagingsimpletoken.org",
+        ]
+      end
+
     end
 
   end
