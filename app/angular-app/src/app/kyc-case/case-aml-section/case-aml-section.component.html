@@ -5,7 +5,7 @@
     <div *ngIf="amlMatchesPresent" class="d-inline-block display-3">( {{getAMLMatchCount()}} matches)
     </div>
   </div>
-  <div class="col-12 col-md-6 mb-3">
+  <div class="col-12 col-md-6 pr-0 mb-3">
     <div class="card-group">
       <div class="card">
 
@@ -39,7 +39,7 @@
                 <div class="col-4 my-auto">
                   <h6 class="card-title">MATCH</h6>
                 </div>
-                <div class="col-4 my-auto">
+                <div class="col-4 pl-0 pl-sm-5 pl-md-0 pl-lg-5 my-auto">
                   <button type="button" [disabled]="caseDetails['is_case_closed']"
                           class="btn no-hit-btn px-2 {{allNegativeMatches ? 'active' : ''}}" (click)="allNegativeMatchesPressed()">
                     <h6 class="mb-0 card-title">NO HIT</h6>
