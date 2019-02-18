@@ -59,7 +59,7 @@
       {{row.last_acted_by}}
       <div *ngIf='row.last_acted_timestamp'>
           <span class='display-4'>
-             Last edited {{row.last_acted_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm' }}
+             {{row.last_acted_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm' }}
           </span>
         </div>
 
@@ -147,12 +147,12 @@
 
         <div class="row py-3 mx-0">
           <div class="col-12">
-            <span class='font-weight-500 display-4 '>ADMIN </span>
+            <span class='font-weight-500 display-4 '>LAST EDITED BY </span>
             <div *ngIf="row.last_acted_by; else elseBlock">
               <span class='display-3 text-capitalize'> {{row.last_acted_by}} </span>
               <div *ngIf='row.last_acted_timestamp'>
                 <span class='display-3'>
-                   Last Edited {{row.last_acted_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}
+                   {{row.last_acted_timestamp * 1000 | date: 'dd/MM/yyyy hh:mm'}}
                 </span>
               </div>
 

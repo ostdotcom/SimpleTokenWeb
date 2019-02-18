@@ -5,7 +5,6 @@ import { OstHttp } from '../services/ost-http.service';
 import { TableComponent } from '../table/table.component';
 import { AppConfigService } from '../services/app-config.service';
 import { PageBaseComponent } from '../page-base-component/page-base-component.component';
-import { URLSearchParams } from '@angular/http';
 
 declare var $: any;
 
@@ -158,31 +157,8 @@ export class ManageUserComponent extends PageBaseComponent implements OnInit {
   }
 
   getParams() {
-    let requestParams = this.getQueryParams(),
-      body = new URLSearchParams("" , new CustomEncoder());
-    for ( var pKey in requestParams ) {
-      if (!( requestParams.hasOwnProperty( pKey ) ) ) { continue; }
-      body.set( pKey, requestParams[ pKey ] );
-    }
-    return body ;
+    let requestParams = this.getQueryParams();
+      return this.http.getEncodedPOSTParams( requestParams );
   }
 
-}
-
-class CustomEncoder  {
-  encodeKey(key: string): string {
-    return encodeURIComponent(key);
-  }
-
-  encodeValue(value: string): string {
-    return encodeURIComponent(value);
-  }
-
-  decodeKey(key: string): string {
-    return decodeURIComponent(key);
-  }
-
-  decodeValue(value: string): string {
-    return decodeURIComponent(value);
-  }
 }

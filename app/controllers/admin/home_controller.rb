@@ -1,10 +1,11 @@
 class Admin::HomeController < Admin::BaseController
   layout "admin"
 
-  before_action :reload_for_external_links_to_retain_cookie
+  # before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
+  before_action :reload_for_external_links_to_retain_cookie, except: [:login, :forgot_password, :authentication, :terms_and_conditions]
 
-  before_action :delete_admin_cookie, only: [:login, :forgot_password, :reset_password, :activate_account]
   before_action :check_admin_cookie, except: [:login, :forgot_password, :reset_password, :activate_account]
+  before_action :check_logged_in, only: [:login, :forgot_password, :reset_password, :activate_account]
 
   before_action :set_page_meta_info, :except => [:user_preview_pages]
 
@@ -168,16 +169,33 @@ class Admin::HomeController < Admin::BaseController
 
   def get_template_from_entity(entity_type)
     case entity_type
-    when GlobalConstant::TemplateType.theme_template_type
-      'login'
-    when GlobalConstant::TemplateType.registration_template_type
-      'sign_up'
-    when GlobalConstant::TemplateType.kyc_template_type
-      'add_kyc_form'
-    when GlobalConstant::TemplateType.dashboard_template_type
-      'dashboard_home'
-    else
-      entity_type
+      when GlobalConstant::TemplateType.theme_template_type
+        'login'
+      when GlobalConstant::TemplateType.registration_template_type
+        'sign_up'
+      when GlobalConstant::TemplateType.kyc_template_type
+        'add_kyc_form'
+      when GlobalConstant::TemplateType.dashboard_template_type
+        'dashboard_home'
+      else
+        entity_type
+    end
+  end
+
+  # Check if cookie is present for logged out page loads(includes 1FA page)
+  #
+  # * Author: Aman
+  # * Date: 05/02/2019
+  # * Reviewed By:
+  #
+  def check_logged_in
+    return if cookies[GlobalConstant::Cookie.admin_cookie_name.to_sym].blank?
+    service_response = SimpleTokenApi::Request::Admin.new(host_url_with_protocol, request.cookies, {"USER-AGENT" => http_user_agent})
+                           .check_logged_in
+
+    if !service_response.success? && service_response.http_code == GlobalConstant::ErrorCode.temporary_redirect
+      render_error_response(service_response)
+      return
     end
   end
 

@@ -1,0 +1,26 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+.mfa-settings {
+  color: $blue-800;
+  .mfa-sub-header {
+    color: $blue-800;
+  }
+  .divider{
+    border-top: 1px solid $custom-grey-7;
+  }
+
+  .super-admin-settings{
+    box-shadow: 0 2px 3.5px 1px rgba(0, 0, 0, 0.08);
+  }
+
+  .mfa-container{
+    min-height: 61px;
+  }
+  .error{
+    min-height: 25px;
+  }
+}
+
+
+#superAdminSettings {
+  display: none;
+}

@@ -4,6 +4,17 @@ class Admin::BaseController < ApplicationController
 
   private
 
+  # # Delete admin cookies
+  # #
+  # # * Author: Aman
+  # # * Date: 13/10/2017
+  # # * Reviewed By: Sunil
+  # #
+  # #
+  # def delete_admin_cookie
+  #   return if cookies[GlobalConstant::Cookie.admin_cookie_name.to_sym].blank?
+  #   delete_cookie(GlobalConstant::Cookie.admin_cookie_name)
+  # end
 
   # Reload the same url to retain cookie
   #
@@ -14,18 +25,6 @@ class Admin::BaseController < ApplicationController
   def reload_for_external_links_to_retain_cookie
     return if cookies[GlobalConstant::Cookie.admin_cookie_name.to_sym].present?
     super
-  end
-
-  # Delete admin cookies
-  #
-  # * Author: Aman
-  # * Date: 13/10/2017
-  # * Reviewed By: Sunil
-  #
-  #
-  def delete_admin_cookie
-    return if cookies[GlobalConstant::Cookie.admin_cookie_name.to_sym].blank?
-    delete_cookie(GlobalConstant::Cookie.admin_cookie_name)
   end
 
   # redirect to admin login page if cookie not present
@@ -53,7 +52,11 @@ class Admin::BaseController < ApplicationController
   # * Reviewed By: Aman
   #
   def default_unauthorized_redirect_url
-    '/admin/login'
+    next_path = ""
+    if params["r_m"] == "1"
+      next_path = "?next=#{CGI.escape request.fullpath}"
+    end
+    "/admin/login#{next_path}"
   end
 
 end

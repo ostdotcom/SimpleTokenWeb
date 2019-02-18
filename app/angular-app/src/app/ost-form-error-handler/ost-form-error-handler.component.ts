@@ -6,19 +6,26 @@ import { NgModel } from '../../../node_modules/@angular/forms';
   templateUrl: './ost-form-error-handler.component.html',
   styleUrls: ['./ost-form-error-handler.component.scss']
 })
-export class OstFormErrorHandlerComponent {
+export class OstFormErrorHandlerComponent implements OnInit{
 
   @Input("errorFor") errorFor;
   @Input("fieldName") fieldName = "This field";
   @Input("serverError") serverError;
+  @Input("errorMsgConfig") errorMsgConfig? : object = {};
 
   errorDictionary = {
                    "required": " is required",
                    "minlength": " minimum length is ",
-                   "maxlength":  + " maximum length is "
+                   "maxlength": " maximum length is ",
+                   "min"  : "min value is",
+                   "max"  : "max value is"
                   };
 
   serverErrorMessage : string = null;
+
+  ngOnInit(){
+
+  }
 
   ngOnChanges( ){
     this.handleServerError();
@@ -27,15 +34,36 @@ export class OstFormErrorHandlerComponent {
   //This is just a library of error messages which will keep on adding.
   getFrontEndErrorMessage(){
     let errors =  this.errorFor['errors'];
+
     if( errors.required ){
+      if( this.errorMsgConfig['required'] ){
+        return this.errorMsgConfig['required'] ;
+      }
      return  this.fieldName + this.errorDictionary.required
     }else if( errors.minlength ){
+      if( this.errorMsgConfig['minlength'] ){
+        return this.errorMsgConfig['minlength'] ;
+      }
       return this.fieldName + this.errorDictionary.minlength + errors.minlength.requiredLength
     }else if( errors.maxlength){
+      if( this.errorMsgConfig['maxlength'] ){
+        return this.errorMsgConfig['maxlength'] ;
+      }
       return this.fieldName + this.errorDictionary.maxlength + errors.maxlength.requiredLength
-    }else {
-      return "Input is invalid."
+    }else if( errors.min){
+      if( this.errorMsgConfig['min'] ){
+        return this.errorMsgConfig['min'] ;
+      }
+      return this.fieldName + this.errorDictionary.min + errors.min.requiredLength ;
+    }else if( errors.max){
+      if( this.errorMsgConfig['max'] ){
+        return this.errorMsgConfig['max'] ;
+      }
+      return this.fieldName + this.errorDictionary.max + errors.max.requiredLength ;
     }
+
+    return "Input is invalid." ;
+
   }
 
   handleServerError( ){
