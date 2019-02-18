@@ -40,11 +40,9 @@
             </ng-template>
           </div>
         </div>
-        <div class="row mt-5">
-          <div class="col-12">
-            <button *ngIf="showButton" (click)="openUnpublishedDraft()" class="btn btn-primary mb-3 mr-3">Open Unpublished draft</button>
-            <button (click)="goToFormConfigurator()" class="btn {{createBtnClass}} mb-3 ">{{createDraftBtnText}}</button>
-          </div>
+        <div class="row mt-4" style="padding-left: 15px">
+          <button (click)="goToFormConfigurator()" [disabled]="isCreatingDraft" class="order-2 order-sm-1 btn {{createBtnClass}} mt-3">{{createDraftBtnText}}</button>
+          <button *ngIf="showButton" (click)="openUnpublishedDraft()" class="order-1 order-sm-2 btn btn-primary mt-3 ml-sm-3">Open Unpublished draft</button>
           <ost-form-error-handler [errorFor]="'general_error'" [serverError]="goToFormConfiguratorError"></ost-form-error-handler>
         </div>
       </div>
@@ -102,7 +100,10 @@
 <div id="successModal" class="modal fade user-modal" role="dialog" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
     <div class="modal-content rounded-0">
-      <div class="modal-body text-center py-4">
+      <div class="modal-header border-none">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body text-center pb-5 pt-0">
         <svg class="icon" style="width:50px; height: 50px">
           <switch>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#success-icon">
@@ -110,8 +111,8 @@
           </switch>
         </svg>
         <h5 class="mt-3">Settings have been imported from Sandbox and applied to Production successfully.</h5>
-        <div class="col-12 form-group mt-3 text-center">
-          <button class="btn btn-secondary mr-sm-2" data-dismiss="modal">CLOSE</button>
+        <div class="col-12 form-group mt-4 text-center">
+          <!--<button class="btn btn-secondary mr-sm-2" data-dismiss="modal">CLOSE</button>-->
           <ng-container *ngIf="clientURL">
             <a target="_blank" href="{{clientURL}}" class="btn btn-primary mt-1" >VIEW ON PRODUCTION</a>
           </ng-container>
