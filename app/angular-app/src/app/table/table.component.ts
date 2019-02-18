@@ -1,6 +1,5 @@
 import {Component, OnInit, Input, TemplateRef, ContentChild, Output, EventEmitter} from '@angular/core';
 import {OstHttp} from '../services/ost-http.service';
-import {Http, RequestOptionsArgs, ResponseContentType, URLSearchParams} from '@angular/http';
 import { RequestStateHandlerService } from '../services/request-state-handler.service';
 
 @Component({
@@ -11,7 +10,8 @@ import { RequestStateHandlerService } from '../services/request-state-handler.se
 
 export class TableComponent implements OnInit {
 
-  constructor(private http: OstHttp, private stateHandler: RequestStateHandlerService) {
+  constructor(private http: OstHttp,
+              private stateHandler: RequestStateHandlerService) {
   }
 
   // Decide row template according to parent
@@ -258,12 +258,7 @@ export class TableComponent implements OnInit {
       Object.assign(requestParams, this.getSeaching());
     }
     if(this.getAction() == "post"){
-      let body = new URLSearchParams("" , new CustomEncoder());
-      for ( var pKey in requestParams ) {
-        if (!( requestParams.hasOwnProperty( pKey ) ) ) { continue; }
-        body.set( pKey, requestParams[ pKey ] );
-      }
-      return body ;
+      return this.http.getEncodedPOSTParams( requestParams );
     }else{
       return { params : requestParams };
     }
@@ -355,24 +350,5 @@ export class TableComponent implements OnInit {
     return null;
   }
 
-
 }
 
-
-class CustomEncoder  {
-  encodeKey(key: string): string {
-    return encodeURIComponent(key);
-  }
-
-  encodeValue(value: string): string {
-    return encodeURIComponent(value);
-  }
-
-  decodeKey(key: string): string {
-    return decodeURIComponent(key);
-  }
-
-  decodeValue(value: string): string {
-    return decodeURIComponent(value);
-  }
-}

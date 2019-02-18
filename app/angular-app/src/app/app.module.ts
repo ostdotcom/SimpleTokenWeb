@@ -76,6 +76,10 @@ import { EmailNotificationComponent } from './email-notification/email-notificat
 import { EmailCardComponent } from './email-notification/email-card/email-card.component';
 import { AmlPollingHelperService } from "./kyc-case/aml-polling-helper.service";
 
+import { MfaSessionSettingsComponent } from './mfa-session-settings/mfa-session-settings.component';
+import { OstToggleComponent } from './ost-toggle/ost-toggle.component';
+import { OstInputNumberComponent } from './ost-input-number/ost-input-number.component';
+import { NumberValidatorDirective } from './directives/number-validator.directive';
 
 export function entityServiceFactory(entityConfigService: EntityConfigService): Function {
   return () => entityConfigService.load();
@@ -146,7 +150,11 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
     CaseFooterSectionComponent,
     UpdateEthModalComponent,
     EmailNotificationComponent,
-    EmailCardComponent
+    EmailCardComponent,
+    MfaSessionSettingsComponent,
+    OstToggleComponent,
+    OstInputNumberComponent,
+    NumberValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -206,6 +214,11 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
             path: 'settings/email-notification',
             component: EmailNotificationComponent,
             canActivate: [ AuthGuardService ]
+          },
+          {
+            path: 'settings/mfa-session',
+            component: MfaSessionSettingsComponent,
+            canActivate: [ AuthGuardService ]
           }
        ]
       },
@@ -235,7 +248,8 @@ export function entityServiceFactory(entityConfigService: EntityConfigService): 
                 UtilitiesService,
                 OstPdfService,
                 AuthGuardService,
-                AmlPollingHelperService
+                AmlPollingHelperService,
+                AuthGuardService
             ],
   bootstrap: [AppComponent]
 })

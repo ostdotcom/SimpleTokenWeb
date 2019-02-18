@@ -21,10 +21,20 @@ class ApplicationController < ActionController::Base
   #
   def reload_for_external_links_to_retain_cookie
     return if request.referer.blank? || request.xhr?
-    referer_host = URI(request.referer).host rescue nil
-    if referer_host.to_s != (request.host.downcase)
+    referer_host = URI(request.referer).host.to_s.downcase rescue nil
+    if referer_host != (request.host.downcase) && is_referer_domain_allowed?(referer_host)
       render html: "", layout: "reload_url" and return
     end
+  end
+
+  # check if referer is allowed domain
+  #
+  # * Author: Mayur
+  # * Date: 15/02/2019
+  # * Reviewed By:
+  #
+  def is_referer_domain_allowed? (referer_host)
+    GlobalConstant::WebDomain.allowed_referer_domains.include?(referer_host.split(".").last(2).join("."))
   end
 
   # Page not found action

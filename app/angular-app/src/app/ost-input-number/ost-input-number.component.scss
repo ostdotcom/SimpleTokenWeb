@@ -1,0 +1,49 @@
+@import "../../../../assets/stylesheets/admin/simple_token_theme_admin/_variables";
+input[type=number]{
+  width: 70px;
+  border-radius: $border-radius-sm;
+  border: solid 2px $blue-200;
+  min-height: 36px;
+  -moz-appearance: textfield;
+  &:focus{
+    border: solid 2px $blue-200;
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-number-container{
+  position: relative;
+  & .button{
+    position: absolute;
+    height: 50%;
+    right: 0;
+    background-color: $blue-200 ;
+    color: $white;
+    width: 22px;
+    &.button-up {
+      top: 0;
+      border-top-right-radius: 0.2rem;
+    }
+    &.button-down {
+      bottom: 0;
+      border-bottom-right-radius: 0.2rem;
+    }
+    & .mfa-session-down-arrow-disabled-icon, .mfa-session-up-arrow-disabled-icon {
+      display: none;
+    }
+    &.disable {
+      .mfa-session-down-arrow-disabled-icon, .mfa-session-up-arrow-disabled-icon {
+        display: block;
+      }
+      .mfa-session-down-arrow-icon, .mfa-session-up-arrow-icon {
+        display: none;
+      }
+    }
+  }
+}

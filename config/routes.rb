@@ -88,6 +88,7 @@ Rails.application.routes.draw do
       get '/settings/form-configurator' => :angular_app
       get '/settings/webhooks' => :angular_app
       get '/settings/email-notification' => :angular_app
+      get '/settings/mfa-session' => :angular_app
       
 
       # get '/get-kyc-dashboard' => :get_kyc_dashboard

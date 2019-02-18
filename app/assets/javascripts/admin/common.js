@@ -1,3 +1,4 @@
+//= require admin/common/URLSearchParams
 //= require plugins/jquery/jquery
 //= require plugins/popper/popper
 //= require plugins/bootstrap-4/bootstrap

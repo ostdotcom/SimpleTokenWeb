@@ -69,6 +69,7 @@ export class ReportIssuesComponent implements OnInit {
         this.actionSuccessEvent.emit();
       }
       this.isMailSent = false;
+      this.hideReportIssue();
     });
 
   }

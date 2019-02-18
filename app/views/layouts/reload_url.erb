@@ -18,7 +18,8 @@
 </main>
 
 <script type="text/javascript">
-  location.reload();
+  //do not use: location.reload(), does not change referer if reloaded in firefox
+  location.href = location.href;
 </script>
 
 </body>
