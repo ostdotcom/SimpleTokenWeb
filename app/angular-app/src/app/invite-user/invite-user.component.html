@@ -1,7 +1,7 @@
 <div class="container">
   <div class="invite-user-wrapper row">
     <div class="col-12 invite-user-header mb-3"><h4>Invite Admin</h4></div>
-    <div class="invite-user-form-wrapper col-12 col-sm-8 col-md-6  col-lg-4 ">
+    <div class="invite-user-form-wrapper col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 ">
       <form #inviteUserForm="ngForm" name="invite-user">
         <div class="form-group">
           <label class="form-label">email address</label>
@@ -32,12 +32,12 @@
           </div>
         </div>
       </form>
-      <div class="invite-user-btn-wrap">
-          <button [disabled]="!inviteUserForm.valid"
-                  data-toggle="modal"
-                  data-target="#inviteUser"
-                  class="btn btn-primary">INVITE</button>
-          <button class="btn btn-secondary ml-3" (click)="hideInviteUser()">CANCEL</button>
+      <div class="row invite-user-btn-wrap px-3">
+        <button class="col-12 col-sm-5 order-2 order-sm-1 btn btn-secondary mt-3" (click)="hideInviteUser()">CANCEL</button>
+        <button [disabled]="!inviteUserForm.valid"
+                data-toggle="modal"
+                data-target="#inviteUser"
+                class="col-12 col-sm-5 order-1 order-sm-2 btn btn-primary mt-3 ml-sm-3">INVITE</button>
       </div>
     </div>
   </div>
