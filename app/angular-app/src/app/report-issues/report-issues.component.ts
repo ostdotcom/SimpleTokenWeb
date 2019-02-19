@@ -67,9 +67,9 @@ export class ReportIssuesComponent implements OnInit {
       this.stateHandler.updateRequestStatus(this);
       if(this.isMailSent) {
         this.actionSuccessEvent.emit();
+        this.hideReportIssue();
       }
       this.isMailSent = false;
-      this.hideReportIssue();
     });
 
   }
