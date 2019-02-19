@@ -74,21 +74,15 @@
         </div>
         <div class="divider col-12"></div>
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 col-sm-7 col-md-8 col-xl-5 pr-4">
             <div class="registration-header mt-3">
-              <span class="mr-md-5">Registration Down Time</span>
-              <span class="ml-2 ml-md-5">
-                <span>No</span>
-                <div class="switch switch--horizontal switch--no-label ml-auto">
-                  <input type="radio" [(ngModel)]="allowRegistrationSetting" name="allowRegistration" [value]="0"/>
-                  <input type="radio" [(ngModel)]="allowRegistrationSetting" name="allowRegistration" [value]="1"/>
-                  <span class="toggle-outside">
-                  <span class="toggle-inside"></span>
-                </span>
-                </div>
-                <span>Yes</span>
-              </span>
+              <ost-toggle [labelTxt]="'Registration Down Time'"
+                          [(ngModel)]="allowRegistrationSetting"
+                          name="allowRegistration">
+              </ost-toggle>
             </div>
+          </div>
+          <div class="col-12">
             <div class="sale-sub-header mt-1">
               <ng-container *ngIf="allowRegistrationSetting">
                 Does your ICO require a registration down-time before the public sale events starts?
