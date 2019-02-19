@@ -42,63 +42,63 @@
 
                  <!----T-0 state start---->
                 <ng-container *ngIf="isTZeroState()">
+                  <div class="col-12 col-md-3 col-lg-2 order-md-3">
+                    <button type="button" class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase"
+                            data-toggle="modal" data-target="#approveDetailsModal">APPROVE DETAILS
+                    </button>
+                  </div>
+                  <div class="col-12 col-md-3 col-lg-2 order-md-2">
+                    <button type="button" class="btn btn-danger w-100 mb-2 text-uppercase"
+                            data-toggle="modal" data-target="#denyActionModal">Deny Case
+                    </button>
+                  </div>
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
-                    <div class="col-12 col-md-6 col-lg-8">
+                    <div class="col-12 col-md-6 col-lg-8 order-md-1">
                       <button type="button"
                               class="btn btn-secondary mr-2 mb-2 text-uppercase"
                               (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
                     </div>
                   </ng-container>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" class="btn btn-danger w-100 mb-2 text-uppercase"
-                            data-toggle="modal" data-target="#denyActionModal">Deny Case
-                    </button>
-                  </div>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase"
-                              data-toggle="modal" data-target="#approveDetailsModal">APPROVE DETAILS
-                    </button>
-                  </div>
                 </ng-container>
                 <!----T-0 state end---->
 
                 <!----Pre T-1 state start---->
                 <ng-container *ngIf="isPreTOneState()">
+                  <div class="col-12 col-md-3 col-lg-2 order-md-3">
+                    <button type="button" disabled class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase" >Approve Case</button>
+                  </div>
+                  <div class="col-12 col-md-3 col-lg-2 order-md-2">
+                    <button type="button" disabled class="btn btn-danger w-100 mb-2 text-uppercase">Deny Case</button>
+                  </div>
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
-                    <div class="col-12 col-md-6 col-lg-8">
+                    <div class="col-12 col-md-6 col-lg-8 order-md-1">
                       <button type="button"
                               class="btn btn-secondary mr-2 mb-2 text-uppercase"
                               (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
                     </div>
                   </ng-container>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" disabled class="btn btn-danger w-100 mb-2 text-uppercase">Deny Case</button>
-                  </div>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" disabled class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase" >Approve Case</button>
-                  </div>
                 </ng-container>
                 <!----Pre T-1 state end---->
 
                 <!---- T-1 state start---->
                 <ng-container *ngIf="isTOneState()">
+                  <div class="col-12 col-md-3 col-lg-2 order-md-3">
+                    <button type="button" class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase"
+                            (click)="approveCase()">APPROVE CASE
+                    </button>
+                  </div>
+                  <div class="col-12 col-md-3 col-lg-2 order-md-2">
+                    <button type="button" class="btn btn-danger w-100 mb-2 text-uppercase"
+                            data-toggle="modal" data-target="#denyActionModal">Deny Case
+                    </button>
+                  </div>
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
-                    <div class="col-12 col-md-6 col-lg-8">
+                    <div class="col-12 col-md-6 col-lg-8 order-md-1">
                       <button type="button"
                               class="btn btn-secondary mr-2 mb-2 text-uppercase"
                               (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
                     </div>
                   </ng-container>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" class="btn btn-danger w-100 mb-2 text-uppercase"
-                            data-toggle="modal" data-target="#denyActionModal">Deny Case
-                    </button>
-                  </div>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase"
-                            (click)="approveCase()">APPROVE CASE
-                    </button>
-                  </div>
                 </ng-container>
                 <!---- T-1 state end---->
 
