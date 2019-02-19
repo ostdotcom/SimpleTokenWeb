@@ -61,15 +61,13 @@ export class ReportIssuesComponent implements OnInit {
       other_issue_expln: '',
     });
 
-
-
     $('#confirmation').off('hidden.bs.modal').on('hidden.bs.modal', () => {
       this.stateHandler.updateRequestStatus(this);
       if(this.isMailSent) {
         this.actionSuccessEvent.emit();
+        this.hideReportIssue();
       }
       this.isMailSent = false;
-      this.hideReportIssue();
     });
 
   }
