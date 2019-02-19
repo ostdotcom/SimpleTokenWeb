@@ -14,9 +14,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class OstInputNumberComponent implements ControlValueAccessor {
-  
+
   innerModel : number = 0;  //Inner model
-  
+
   @Input('min') minValue : number ;
   @Input('max') maxValue : number ;
   @Input('step') step    : number = 1;
@@ -24,7 +24,7 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   //disables the arrow used for increment/decrement
   minDisabled : boolean = false;
   maxDisabled : boolean = false;
-  
+
   constructor() { }
 
   ngOnInit(){
@@ -32,11 +32,13 @@ export class OstInputNumberComponent implements ControlValueAccessor {
     this.maxValue = this.maxValue && Number( this.maxValue ) ;
     this.step     = this.step && Number( this.step ) ;
   }
-  
+
   writeValue(value: any) { //Will update the inner input field text for View
     console.log("writeValue" , value );
     if (value !== undefined) {
       this.innerModel = value;
+      this.setMinDisabled();
+      this.setMaxDisabled();
     }
   }
 
@@ -47,7 +49,7 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   registerOnChange(fn) {
     this.onChangeCallback = fn;
   }
-  
+
   //Triggerd when input value is touched in view
   registerOnTouched(fn) {
     this.onTouchedCallback = fn;
@@ -79,7 +81,7 @@ export class OstInputNumberComponent implements ControlValueAccessor {
   onKeyUp() {
     this.onModelChange();
   }
-  
+
   //Inner code logic nothing to do with Interface
   //Not implemented by set and getter function as onTouchedCallback shouldnt be call there and i dont like it.
   onModelChange(){
@@ -88,5 +90,5 @@ export class OstInputNumberComponent implements ControlValueAccessor {
     this.onTouchedCallback();
     this.onChangeCallback( this.innerModel );
   }
-  
+
 }
