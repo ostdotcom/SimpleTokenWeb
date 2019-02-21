@@ -137,6 +137,12 @@ Rails.application.routes.draw do
     get '/verification-link' => :verification_link
     get '/' => redirect('/login')
   end
+
+  scope "iframe_client" , controller: 'web/iframe' do
+    get "/" => :index
+  end
+
+
   match '/', to: 'application#not_found', via: :all
 
   match '*permalink', to: 'application#not_found', via: :all
