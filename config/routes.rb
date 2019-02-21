@@ -117,6 +117,13 @@ Rails.application.routes.draw do
     match '*permalink', to: 'application#not_found', via: :all
   end
 
+  # Kyc submission using Iframe Routes
+  constraints(InitKycIframe) do
+    scope '', controller: 'iframe/kyc' do
+      get '/kyc' => :kyc_form
+    end
+  end
+
   # Simple Token Routes
   constraints(InitTokenSale) do
     scope '', controller: 'web/token_sale' do

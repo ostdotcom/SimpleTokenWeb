@@ -1,7 +1,18 @@
 # Page Meta
 en:
-  web/user:
+  iframe/kyc:
+    add_kyc_form:
+      :meta:
+        :title: 'Verify your Identity'
+        :description: 'Verify your Identity'
+        :canonical: '%{canonical}'
+        :keywords: 'KYC'
+        :name: '%{account_name}'
+        :robots: 'index, follow'
+      :assets:
+        :specific_js_required: 1
 
+  web/user:
     login:
       :meta:
         :title: 'Log into %{account_name} ICO'

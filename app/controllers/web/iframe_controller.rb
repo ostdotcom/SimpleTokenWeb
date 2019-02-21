@@ -1,6 +1,6 @@
 class Web::IframeController < Web::BaseController
 
-  layout "iframe"
+  layout "client_iframe"
 
 
   def index

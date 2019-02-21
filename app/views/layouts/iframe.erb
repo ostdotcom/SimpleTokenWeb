@@ -1,7 +1,187 @@
 <!DOCTYPE html>
-<div>
-  <main id="site-content" class="<%= yield (:gradient_class) %>">
+<html lang="en-US">
+<head>
+  <title><%= @page_meta_data[:title] %></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  <meta name="description" content="<%= @page_meta_data[:description] %>">
+  <meta name="keywords" content="<%= @page_meta_data[:keywords] %>">
+  <meta name="robots" content="<%= @page_meta_data[:robots] %>">
+  <% if @page_meta_data[:canonical].present? %>
+    <link rel="canonical" href="<%= @page_meta_data[:canonical] %>"/>
+  <% end %>
+
+  <%
+    og_meta = @page_meta_data[:og]
+    if og_meta.present?
+  %>
+    <% if og_meta[:title].present? %>
+      <meta property="og:title" content="<%= og_meta[:title] %>"/>
+      <meta property="og:description" content="<%= og_meta[:description] %>"/>
+      <meta property="og:type" content="<%= og_meta[:type] %>"/>
+      <meta property="og:url" content="<%= og_meta[:url] %>"/>
+      <meta property="og:site_name" content="sale.simpletoken.org"/>
+      <meta property="og:image" content="<%= og_meta[:image] %>"/>
+    <% end %>
+  <% end %>
+
+  <%
+    tw_meta = @page_meta_data[:twitter]
+    if tw_meta.present?
+  %>
+    <meta name="twitter:card" content="<%= tw_meta[:card] %>"/>
+    <% if tw_meta[:site].present? %>
+      <meta name="twitter:site" content="<%= tw_meta[:site] %>"/>
+    <% end %>
+    <% if tw_meta[:title].present? %>
+      <meta name="twitter:title" content="<%= tw_meta[:title] %>"/>
+    <% end %>
+    <% if tw_meta[:description].present? %>
+      <meta name="twitter:description" content="<%= tw_meta[:description] %>"/>
+    <% end %>
+    <% if tw_meta[:creator].present? %>
+      <meta name="twitter:creator" content="<%= tw_meta[:creator] %>"/>
+    <% end %>
+    <% if tw_meta[:image].present? %>
+      <meta name="twitter:image" content="<%= tw_meta[:image] %>"/>
+    <% end %>
+    <% if tw_meta[:image_alt].present? %>
+      <meta name="twitter:image:alt" content="<%= tw_meta[:image_alt] %>"/>
+    <% end %>
+  <% end %>
+
+  <% if og_meta.present? %>
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "<%= @page_meta_data[:name] %>",
+  "url": "<%= og_meta[:url] %>",
+  "image": "<%= og_meta[:image] %>",
+}
+
+
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "<%= @page_meta_data[:name] %>",
+  "url": "<%= og_meta[:url] %>",
+  "logo": "<%= og_meta[:image] %>",
+  "sameAs": [
+    "https://www.facebook.com/simpletoken/",
+    "https://medium.com/@SimpleToken",
+    "https://www.linkedin.com/company/18209852/",
+    "https://twitter.com/TheSimpleToken"
+  ]
+}
+
+
+    </script>
+  <% end %>
+
+  <%= csrf_meta_tags %>
+
+  <script src="https://use.typekit.net/lde7yjs.js"></script>
+  <script>
+      window.name = "<%= [*('A'..'Z')].sample(8).join %>";
+      try {
+          Typekit.load({
+              async: true
+          });
+      } catch (e) {
+      }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+  <%= stylesheet_link_tag 'web/default_simple_token' %>
+  <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
+
+  <% if !is_kyc_iframe_page? %>
+
+    <% if @presenter_obj.gtm_pixel.present? && @presenter_obj.gtm_pixel['id'].present? %>
+      <%= render :partial => "/shared/web/thirdparty/gtm_config.erb", locals: {gtm_id: @presenter_obj.gtm_pixel['id']} %>
+    <% end %>
+
+    <% if @presenter_obj.fb_pixel.present? && @presenter_obj.fb_pixel['id'].present? %>
+      <%= render :partial => "/shared/web/thirdparty/fb_config.erb" %>
+    <% end %>
+
+  <% end %>
+
+  <% if is_kyc_iframe_page? && [
+      'kyc_form'
+  ].include?(params[:action]) %>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+  <% end %>
+
+
+    <style>
+      .btn-primary {
+        border-color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_border_color] %>;
+        background: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_background_color] %>;
+        color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_text_color] %>
+      }
+
+      .btn-primary.hover-cls, .btn-primary.active-cls, .btn-primary:hover, .client-primary-btn:active {
+        color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_text_color_active] %> !important;
+        text-decoration: none !important;
+        background-color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_background_color_active] %> !important;
+        border-color: <%= @presenter_obj.client_theme_style.theme_data[:primary_button_border_color_active] %> !important
+      }
+
+      .btn-secondary {
+        border-color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_border_color] %>;
+        background: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_background_color] %>;
+        color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_text_color] %>
+      }
+
+      .btn-secondary.hover-cls, .btn-secondary.active-cls, .btn-secondary:hover, .client-secondary-btn:active {
+        color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_text_color_active] %> !important;
+        text-decoration: none !important;
+        background-color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_background_color_active] %> !important;
+        border-color: <%= @presenter_obj.client_theme_style.theme_data[:secondary_button_border_color_active] %> !important
+      }
+
+      .bg-gradient {
+        background: linear-gradient(to bottom, <%= @presenter_obj.background_gradient_text %> )
+      }
+    </style>
+
+</head>
+
+<body contenteditable="false">
+
+
+<% if is_kyc_iframe_page? && @presenter_obj.gtm_pixel.present?  && @presenter_obj.gtm_pixel['id'].present? %>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-<%= @presenter_obj.gtm_pixel['id'] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+<% end %>
+
+
+<main id="site-content" class="<%= yield (:gradient_class) %>">
+
+  <div class="main-content">
     <%= yield %>
-  </main>
-</div>
+  </div>
+</main>
+
+
+  <%= render :partial => "/shared/web/common/kycaas_footer" %>
+
+<!--IMPORTANT Footer should always be outside site content start-->
+
+<%= javascript_include_tag "web/common-user" %>
+<%= javascript_include_tag "#{specific_manifest_file_path}" if has_specific_js_manifest_file? %>
+
+<%= yield(:end_js) %>
+
+</body>
 </html>

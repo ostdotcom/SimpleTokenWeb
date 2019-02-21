@@ -52,6 +52,17 @@ module ApplicationHelper
     ['web/home', 'web/token_sale'].include?(params[:controller])
   end
 
+
+  # All pages used only by simple token and not kyc clients
+  #
+  # * Author: Aman
+  # * Date: 09/02/2018
+  # * Reviewed By:
+  #
+  def is_kyc_iframe_page?
+    ['iframe/kyc'].include?(params[:controller])
+  end
+
   # All static pages used in simple token but not a part of kyc
   #
   # * Author: Aman
