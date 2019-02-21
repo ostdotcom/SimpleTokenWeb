@@ -29,6 +29,7 @@ class Iframe::KycController < Iframe::BaseController
 
     get_ip_to_preferred_aml_country
     set_page_meta_info(@presenter_obj.custom_meta_tags)
+
   end
 
 
