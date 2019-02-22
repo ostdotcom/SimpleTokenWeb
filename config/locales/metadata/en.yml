@@ -1,7 +1,7 @@
 # Page Meta
 en:
   iframe/kyc:
-    add_kyc_form:
+    kyc_form:
       :meta:
         :title: 'Verify your Identity'
         :description: 'Verify your Identity'
