@@ -4,6 +4,10 @@ class Web::IframeController < Web::BaseController
 
 
   def index
+    puts "==============index=======----index-----------------"
+    puts request.user_agent
+    puts "===============index======---------index------------"
+
   end
 
 end
