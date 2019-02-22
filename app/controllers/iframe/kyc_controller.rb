@@ -3,6 +3,7 @@ class Iframe::KycController < Iframe::BaseController
   layout "iframe"
 
   before_action :check_request_host
+  before_action :check_referer, only: [:kyc_form]
   # after_action :remove_browser_caching
 
 
@@ -29,8 +30,9 @@ class Iframe::KycController < Iframe::BaseController
 
     get_ip_to_preferred_aml_country
     set_page_meta_info(@presenter_obj.custom_meta_tags)
-    #response.headers["X-Frame-Options"] = "allow-from http://amankyc.developmentost.com:8080/"
-  end
+    response.headers["X-Frame-Options"] = "allow-from http://amankyc.developmentost.com:8080"
+    response.headers["Content-Security-Policy"] = "frame-ancestors http://amankyc.developmentost.com:8080"
+    end
 
 
   private
@@ -48,5 +50,14 @@ class Iframe::KycController < Iframe::BaseController
     # render error page
     redirect_to GlobalConstant::Base.simple_token_web['kyc_root_url'], status: GlobalConstant::ErrorCode.temporary_redirect and return
   end
+
+
+  def check_referer
+    referer_host = URI(request.referer).host.to_s.downcase
+    return if  referer_host == "amankyc.developmentost.com"
+
+    redirect_to GlobalConstant::Base.simple_token_web['kyc_root_url'], status: GlobalConstant::ErrorCode.temporary_redirect and return
+  end
+
 
 end

@@ -113,6 +113,10 @@
 
   <% end %>
 
+
+  <button class="btn btn-primary test-post-msg">Test Post message</button>
+
+
   <% if is_kyc_iframe_page? && [
       'kyc_form'
   ].include?(params[:action]) %>
@@ -178,10 +182,16 @@
 
 <!--IMPORTANT Footer should always be outside site content start-->
 
-<%= javascript_include_tag "web/common-user" %>
+
 <%= javascript_include_tag "#{specific_manifest_file_path}" if has_specific_js_manifest_file? %>
 
 <%= yield(:end_js) %>
+
+<script>
+    $(".test-post-msg").click(function (e) {
+        window.parent.postMessage({message: "message_string"}, "http://amankyc.developmentost.com:8080");
+    });
+</script>
 
 </body>
 </html>
