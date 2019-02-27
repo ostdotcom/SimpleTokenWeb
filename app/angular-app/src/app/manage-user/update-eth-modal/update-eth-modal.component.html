@@ -10,7 +10,7 @@
        <ng-container *ngIf="!isSuccess">
           <h5>Update the user’s Ethereum Address below:</h5>
           <div class="mt-4 row">
-            <form #updateEthAdressForm="ngForm" (ngSubmit)="updateEthAddress(updateEthAdressForm)"
+            <form id="updateEthAdressForm" #updateEthAdressForm="ngForm" (ngSubmit)="updateEthAddress(updateEthAdressForm)"
                    class="col-12 col-md-8 mx-auto">
               <div class="form-group">
                 <input type="text" name="ethereum_address"
