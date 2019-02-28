@@ -42,63 +42,63 @@
 
                  <!----T-0 state start---->
                 <ng-container *ngIf="isTZeroState()">
+                  <div class="col-12 col-md-3 col-lg-2 order-md-3">
+                    <button type="button" class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase"
+                            data-toggle="modal" data-target="#approveDetailsModal">APPROVE DETAILS
+                    </button>
+                  </div>
+                  <div class="col-12 col-md-3 col-lg-2 order-md-2">
+                    <button type="button" class="btn btn-danger w-100 mb-2 text-uppercase"
+                            data-toggle="modal" data-target="#denyActionModal">Deny Case
+                    </button>
+                  </div>
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
-                    <div class="col-12 col-md-6 col-lg-8">
+                    <div class="col-12 col-md-6 col-lg-8 order-md-1">
                       <button type="button"
                               class="btn btn-secondary mr-2 mb-2 text-uppercase"
                               (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
                     </div>
                   </ng-container>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" class="btn btn-danger w-100 mb-2 text-uppercase"
-                            data-toggle="modal" data-target="#denyActionModal">Deny Case
-                    </button>
-                  </div>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase"
-                              data-toggle="modal" data-target="#approveDetailsModal">APPROVE DETAILS
-                    </button>
-                  </div>
                 </ng-container>
                 <!----T-0 state end---->
 
                 <!----Pre T-1 state start---->
                 <ng-container *ngIf="isPreTOneState()">
+                  <div class="col-12 col-md-3 col-lg-2 order-md-3">
+                    <button type="button" disabled class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase" >Approve Case</button>
+                  </div>
+                  <div class="col-12 col-md-3 col-lg-2 order-md-2">
+                    <button type="button" disabled class="btn btn-danger w-100 mb-2 text-uppercase">Deny Case</button>
+                  </div>
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
-                    <div class="col-12 col-md-6 col-lg-8">
+                    <div class="col-12 col-md-6 col-lg-8 order-md-1">
                       <button type="button"
                               class="btn btn-secondary mr-2 mb-2 text-uppercase"
                               (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
                     </div>
                   </ng-container>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" disabled class="btn btn-danger w-100 mb-2 text-uppercase">Deny Case</button>
-                  </div>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" disabled class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase" >Approve Case</button>
-                  </div>
                 </ng-container>
                 <!----Pre T-1 state end---->
 
                 <!---- T-1 state start---->
                 <ng-container *ngIf="isTOneState()">
+                  <div class="col-12 col-md-3 col-lg-2 order-md-3">
+                    <button type="button" class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase"
+                            (click)="approveCase()">APPROVE CASE
+                    </button>
+                  </div>
+                  <div class="col-12 col-md-3 col-lg-2 order-md-2">
+                    <button type="button" class="btn btn-danger w-100 mb-2 text-uppercase"
+                            data-toggle="modal" data-target="#denyActionModal">Deny Case
+                    </button>
+                  </div>
                   <ng-container *ngIf="appConfig.hasEmailSetup()">
-                    <div class="col-12 col-md-6 col-lg-8">
+                    <div class="col-12 col-md-6 col-lg-8 order-md-1">
                       <button type="button"
                               class="btn btn-secondary mr-2 mb-2 text-uppercase"
                               (click)="showPageState(false, true)">REQUEST DETAILS UPDATE</button>
                     </div>
                   </ng-container>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" class="btn btn-danger w-100 mb-2 text-uppercase"
-                            data-toggle="modal" data-target="#denyActionModal">Deny Case
-                    </button>
-                  </div>
-                  <div class="col-12 col-md-3 col-lg-2">
-                    <button type="button" class="btn btn-success mb-2 px-md-2 px-lg-3 text-uppercase"
-                            (click)="approveCase()">APPROVE CASE
-                    </button>
-                  </div>
                 </ng-container>
                 <!---- T-1 state end---->
 
@@ -115,7 +115,7 @@
       <div id="amlErrorModal" class="modal fade" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
           <div class="modal-content rounded-0">
-            <div class="modal-body text-center py-4">
+            <div class="modal-body text-center p-5">
               <svg class="icon" style="width:40px; height: 40px">
                 <switch>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon">
@@ -134,7 +134,7 @@
       <div id="amlErrorModal2" class="modal fade" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
           <div class="modal-content rounded-0">
-            <div class="modal-body text-center py-4">
+            <div class="modal-body text-center p-5">
               <svg class="icon" style="width:40px; height: 40px">
                 <switch>
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#kyc-error-icon">

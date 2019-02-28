@@ -4,8 +4,7 @@
   <hr />
   <div class="row">
     <div class="col-12 col-lg-6">
-
-            <div [formGroup]="form">
+      <div [formGroup]="form">
             <div class="form-section">
             <label class="form-section-label">Data Mismatch</label>
             <div *ngFor="let data of data_mismatch; let i = index" formArrayName="data_mismatch">
@@ -37,26 +36,32 @@
             </div>
 
           </div>
-        <div class='form-group pb-4'>
-            <span class='error mb-1'> {{frontEndError}} </span>
-            <button type="button" class="btn btn-primary text-uppercase mb-2 mr-2" (click)='validateAndOpenModal()'>Send email</button>
-            <button type="button" class="btn btn-secondary text-uppercase mb-2" (click)="hideReportIssue()">Cancel</button>
-        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
+      <div class='row px-3 form-group pb-4'>
+        <span class='col-12 error mb-1'> {{frontEndError}} </span>
+        <button type="button" class="col-12 col-sm-5 order-1 order-sm-2 btn btn-primary mt-3 ml-sm-3" (click)='validateAndOpenModal()'>Send email</button>
+        <button type="button" class="col-12 col-sm-5 order-2 order-sm-1 mt-3 btn btn-secondary" (click)="hideReportIssue()">Cancel</button>
+      </div>
     </div>
   </div>
 
   <div class="modal fade" id="confirmation">
       <div class="modal-dialog modal-dialog-centered h-100 my-0 pb-5">
         <div class="modal-content">
-            <div class="modal-body p-5">
+          <div class="modal-header border-none">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body px-5 pb-5 pt-0">
                 <div class='row' *ngIf="!isProcessing && !hasError && !isMailSent">
                   <div class="col-12">
                     <h5 class="text-center">Are you sure you want to request via email the user to update the submitted details?</h5>
                   </div>
                   <div class="col-12 form-group mt-4 text-center">
                       <button class="btn btn-primary mr-md-2 mt-2" (click)="onReportIssue(form)">SEND EMAIL</button>
-                      <button class="btn btn-secondary mt-2" data-dismiss="modal">CANCEL</button>
-
+                      <!--<button class="btn btn-secondary mt-2" data-dismiss="modal">CANCEL</button>-->
                   </div>
                 </div>
 

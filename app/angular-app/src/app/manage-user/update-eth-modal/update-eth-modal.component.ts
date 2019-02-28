@@ -21,7 +21,8 @@ export class UpdateEthModalComponent implements OnInit {
   constructor(private http: OstHttp) { }
 
   ngOnInit() {
-    $("#updateEthAddressModal").off('hidden.bs.modal').on("hidden.bs.modal", () => {
+    $("#updateEthAddressModal").on("hidden.bs.modal", () => {
+      $('#updateEthAdressForm').trigger('reset');
       this.isUpdating = false ;
       this.isSuccess = false ;
       this.updateBtnText = 'Update';

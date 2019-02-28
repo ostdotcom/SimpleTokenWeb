@@ -30,6 +30,7 @@ export class FormConfiguratorComponent implements OnInit {
   btnText             : string  = 'Import from sandbox and publish live';
   createDraftBtnText  : string  = "Create New Draft" ;
   createBtnClass      : string  = 'btn-primary';
+  isCreatingDraft     : boolean = false;
 
   environment  = this.appConfig.getEnvironment();
 
@@ -104,6 +105,7 @@ export class FormConfiguratorComponent implements OnInit {
   preGoToFormConfigurator(){
     this.goToFormConfiguratorError  = null;
     this.createDraftBtnText         = "Creating...";
+    this.isCreatingDraft            = true;
   }
 
   onGoToFormConfiguratorSuccess( res ){
@@ -123,6 +125,7 @@ export class FormConfiguratorComponent implements OnInit {
 
   onGoToFormConfiguratorComplete(  ){
     this.createDraftBtnText = "Create New Draft" ;
+    this.isCreatingDraft    = false;
   }
 
   getUnpublishedDraft() {

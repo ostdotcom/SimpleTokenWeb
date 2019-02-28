@@ -1,14 +1,17 @@
 <div class="modal fade" id="inviteUser">
     <div class="modal-dialog modal-dialog-centered  modal-lg h-100 my-0 pb-5">
       <div class="modal-content">
-        <div class="modal-body p-5">
+        <div class="modal-header border-none">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body pb-5">
           <div class='row' *ngIf="!isProcessing && !hasError">
             <div class="col-12">
-              <h5 class="text-center">Please confrim to invite {{inviteUserForm.value.email}}</h5>
+              <h5 class="text-center">Please confirm to invite {{inviteUserForm.value.email}}</h5>
             </div>
             <div class="col-12 form-group mt-3 text-center">
                <button class="btn btn-primary mt-3" (click)="sendInvite()">INVITE USER</button>
-               <button class="btn btn-secondary ml-md-3 mt-3" data-dismiss="modal">CANCEL</button>
+               <!--<button class="btn btn-secondary ml-md-3 mt-3" data-dismiss="modal">CANCEL</button>-->
             </div>
           </div>
           <div class="row">

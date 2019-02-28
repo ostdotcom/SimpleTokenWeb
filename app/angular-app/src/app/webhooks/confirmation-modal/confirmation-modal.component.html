@@ -3,7 +3,10 @@
   <div class="modal fade" id="{{modalId}}" data-keyboard="false">
     <div class="modal-dialog modal-dialog-centered modal-lg h-100 my-0 pb-5">
       <div class="modal-content">
-        <div class="modal-body p-5">
+        <div class="modal-header border-none">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body pb-5 pt-0">
           <div class='row p-2' *ngIf="!isSuccess && !isProcessing && !hasError">
             <div class="text-center col-12">
               <h5 class="my-4">
@@ -11,7 +14,7 @@
               </h5>
             </div>
             <div class="col-12 mb-4 form-group text-center">
-              <button class="btn btn-secondary px-4" data-dismiss="modal">Cancel</button>
+              <!--<button class="btn btn-secondary px-4" data-dismiss="modal">Cancel</button>-->
               <button class="btn btn-primary px-4 mt-4 mt-sm-0 ml-xl-3" (click)="callBack()">{{btnText}}</button>
             </div>
           </div>
