@@ -122,6 +122,7 @@ Rails.application.routes.draw do
     scope '', controller: 'iframe/kyc' do
       get '/kyc' => :kyc_form
     end
+
   end
 
   # Simple Token Routes
@@ -129,7 +130,7 @@ Rails.application.routes.draw do
     scope '', controller: 'web/token_sale' do
       get '/' => :index
     end
-
+    match '*permalink', to: 'application#not_found', via: :all
   end
 
   scope '', controller: 'web/user' do

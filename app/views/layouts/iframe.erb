@@ -193,7 +193,9 @@
 
 <script>
     $(".test-post-msg").click(function (e) {
-        window.parent.postMessage({message: "message_string"}, "http://amankyc.developmentost.com:8080");
+        var referer = document.referrer.split('/'),
+        parentOrigin = referer[0] + "//" +  referer[2];
+        window.parent.postMessage({message: "message_string"}, parentOrigin);
     });
 </script>
 
