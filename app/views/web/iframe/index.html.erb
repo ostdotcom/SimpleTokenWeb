@@ -8,7 +8,7 @@
   window.addEventListener("message", receiveMessage, false);
   function receiveMessage(event)
   {
-      if (event.origin !== "http://iframekyc.developmentost.com:8080")
+      if (event.origin !== "https://iframekyc.stagingost.com")
           return;
       alert("data received successfully. Data: " + event.data.message);
   }
@@ -17,6 +17,12 @@
 
 
 <div>
-  <iframe width="100%" height="700px"   src="http://iframekyc.developmentost.com:8080/kyc"></iframe>
+  <% if Rails.env.staging?
+     src_1 = "https://iframekyc.stagingost.com/kyc" %>
+    else
+     src_1 = "https://iframekyc.developmentost.com:8080/kyc" %>
+
+  <iframe width="100%" height="700px"   src=<%= src_1 %>  ></iframe>
+
 <!--  frameBorder="0"-->
 </div>
