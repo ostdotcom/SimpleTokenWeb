@@ -5,8 +5,9 @@ class Web::KycController < Web::BaseController
   before_action :set_page_meta_info
 
   def index
-    response.headers["X-Frame-Options"] = "allow-from http://amankyc.developmentost.com:8080"
-    response.headers["Content-Security-Policy"] = "frame-ancestors http://amankyc.developmentost.com:8080"
+    allow_from = Rails.env.staging? ? "https://alliswellkyc.stagingost.com" : "http://amankyc.developmentost.com:8080" #for local testing
+    response.headers["X-Frame-Options"] = "allow-from #{allow_from}"
+    response.headers["Content-Security-Policy"] = "frame-ancestors #{allow_from}"
     redirect_to "/admin/login", status: GlobalConstant::ErrorCode.temporary_redirect and return if Rails.env.sandbox?
   end
 

@@ -14,6 +14,8 @@ class Iframe::KycController < Iframe::BaseController
   # * Reviewed By: Sunil Khedar
   #
   def kyc_form
+    allow_from = Rails.env.staging? ? "https://alliswellkyc.stagingost.com" : "http://amankyc.developmentost.com:8080" #for local testing
+     #
     service_response = SimpleTokenApi::Request::IframeKyc.new(
         host_url_with_protocol,
         {},
@@ -30,8 +32,8 @@ class Iframe::KycController < Iframe::BaseController
 
     get_ip_to_preferred_aml_country
     set_page_meta_info(@presenter_obj.custom_meta_tags)
-    response.headers["X-Frame-Options"] = "allow-from http://amankyc.developmentost.com:8080"
-    response.headers["Content-Security-Policy"] = "frame-ancestors http://amankyc.developmentost.com:8080"
+    response.headers["X-Frame-Options"] = "allow-from #{allow_from}"
+    response.headers["Content-Security-Policy"] = "frame-ancestors #{allow_from}"
     end
 
 
