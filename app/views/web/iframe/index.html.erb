@@ -18,11 +18,12 @@
 
 <div>
   <% if Rails.env.staging?
-     src_1 = "https://iframekyc.stagingost.com/kyc" %>
+     src_1 = "https://iframekyc.stagingost.com/kyc"
     else
-     src_1 = "https://iframekyc.developmentost.com:8080/kyc" %>
+     src_1 = "http://iframekyc.developmentost.com:8080/kyc"
+  %>
 
-  <iframe width="100%" height="700px"   src=<%= src_1 %>  ></iframe>
+  <iframe width="100%" height="700px"   src="<%= src_1 %>"  ></iframe>
 
 <!--  frameBorder="0"-->
 </div>
