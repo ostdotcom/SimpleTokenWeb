@@ -192,10 +192,12 @@
 <%= yield(:end_js) %>
 
 <script>
+    // accessing parent location gives exception
+    // console.log(window.parent.location.href);
     $(".test-post-msg").click(function (e) {
         var referer = document.referrer.split('/'),
         parentOrigin = referer[0] + "//" +  referer[2];
-        window.parent.postMessage({message: "message_string"}, parentOrigin);
+        window.parent.postMessage({message: {a: "message_string"}}, "*");
     });
 </script>
 

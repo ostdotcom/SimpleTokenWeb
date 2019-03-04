@@ -56,7 +56,7 @@ class Iframe::KycController < Iframe::BaseController
 
   def check_referer
     referer_host = URI(request.referer).host.to_s.downcase
-    return if  referer_host == "alliswellkyc.stagingost.com"
+    return if  (referer_host == "alliswellkyc.stagingost.com") || (referer_host == "amankyc.developmentost.com")
 
     redirect_to GlobalConstant::Base.simple_token_web['kyc_root_url'], status: GlobalConstant::ErrorCode.temporary_redirect and return
   end
