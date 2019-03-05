@@ -1,15 +1,15 @@
 <div class="modal fade" id="{{modalId}}">
     <div class="modal-dialog modal-dialog-centered  modal-lg h-100 my-0 pb-5">
       <div class="modal-content">
-        <div class="modal-header border-none">
+        <div class="d-md-none modal-header border-none">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="modal-body pb-5">
+        <div class="modal-body py-md-5 pt-0">
           <div class='row' *ngIf="!isProcessing && !hasError && !isSuccess">
             <ng-content select=".modal-body-content"></ng-content>
             <div class="col-12 form-group mt-3 text-center">
-               <button class="btn btn-primary mr-sm-2 mt-3" (click)="onAction()">{{actionBtnPrimaryName}}</button>
-               <!--<button class="btn btn-secondary mt-3" data-dismiss="modal">CANCEL</button>-->
+              <button class="btn btn-secondary mr-sm-2 mt-3 d-none d-md-inline" data-dismiss="modal">CANCEL</button>
+              <button class="btn btn-primary mt-3" (click)="onAction()">{{actionBtnPrimaryName}}</button>
             </div>
           </div>
 

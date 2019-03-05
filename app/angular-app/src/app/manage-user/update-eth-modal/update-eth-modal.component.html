@@ -1,10 +1,10 @@
 <div class="modal fade user-modal" id="updateEthAddressModal" role="dialog" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg h-100 mx-auto my-0">
     <div class="modal-content rounded-0">
-      <div class="modal-header border-none">
+      <div class="modal-header d-md-none border-none">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body text-center pb-5 pt-0">
+      <div class="modal-body text-center py-md-5 pt-0">
 
 
        <ng-container *ngIf="!isSuccess">
@@ -27,8 +27,8 @@
                         [disabled]="!updateEthAdressForm.valid || isUpdating"
                         class="btn btn-primary text-uppercase  ">{{updateBtnText}}
               </button>
-              <!--<button type="button" class="btn btn-secondary text-uppercase mb-2"-->
-                      <!--(click)="resetForm( updateEthAdressForm )"> Cancel</button>-->
+              <button type="button" class="btn btn-secondary d-none d-md-block text-uppercase mb-2"
+                      (click)="resetForm( updateEthAdressForm )"> Cancel</button>
             </form>
             <div class="general_error error text-center col-12">
               <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">

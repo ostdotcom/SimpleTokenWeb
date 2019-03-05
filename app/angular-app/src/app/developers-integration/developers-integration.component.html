@@ -147,17 +147,17 @@
 <div class="modal cms-modal fade" id="generate-api-confirmation-modal" data-keyboard="false">
   <div class="modal-dialog modal-dialog-centered modal-lg h-100 my-0 pb-5">
     <div class="modal-content">
-      <div class="modal-header border-none">
+      <div class="modal-header d-md-none border-none">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body pb-5 pt-0">
+      <div class="modal-body py-md-5 pt-0">
         <div class='row'>
           <div class="text-center col-12">
             <h5 class="my-3">Are you sure you want to refresh the API key?
               This action will invalidate the previous keys.</h5>
           </div>
           <div class="col-12 form-group text-center mt-3">
-            <!--<button class="btn btn-secondary px-5" data-dismiss="modal">Cancel</button>-->
+            <button class="btn btn-secondary d-none d-md-inline px-5" data-dismiss="modal">Cancel</button>
             <button class="btn btn-primary px-5 ml-xl-3" (click)="generateApiKeys()" data-dismiss="modal">YES, CONTINUE</button>
           </div>
         </div>
