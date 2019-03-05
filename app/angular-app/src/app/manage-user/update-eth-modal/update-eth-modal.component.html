@@ -23,12 +23,12 @@
                                         [fieldName]="'Ethereum address'"
                                         [serverError]="errorResponse">
                 </ost-form-error-handler>
+              <button type="button" class="btn btn-secondary d-none d-md-inline mr-3"
+                      (click)="resetForm( updateEthAdressForm )"> Cancel</button>
                 <button type="submit"
                         [disabled]="!updateEthAdressForm.valid || isUpdating"
-                        class="btn btn-primary text-uppercase  ">{{updateBtnText}}
+                        class="btn btn-primary">{{updateBtnText}}
               </button>
-              <button type="button" class="btn btn-secondary d-none d-md-block text-uppercase mb-2"
-                      (click)="resetForm( updateEthAdressForm )"> Cancel</button>
             </form>
             <div class="general_error error text-center col-12">
               <ost-form-error-handler [errorFor]="'general_error'" [serverError]="errorResponse">
