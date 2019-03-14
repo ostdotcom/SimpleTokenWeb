@@ -67,6 +67,9 @@ $sprite-location: "https://dxwfxs8b4lg24.cloudfront.net/ost-kit/images/ost-sprit
   @include icon-generator(98px, 98px, -520px, -444px, -637px, -637px, 30);
 }
 
+.header-social-gitter-icon{
+  @include icon-generator(98px, 98px, -520px, -338px, -637px, -637px, 30);
+}
 
 // Footer social icons CSS
 .footer-social-twitter-icon{
