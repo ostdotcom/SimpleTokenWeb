@@ -6,7 +6,9 @@
 
   homeNs.mfa = oThis = {
 
-    init: function () {
+    init: function (config) {
+      $.extend(oThis , config) ;
+      new QRCode($('.qr-image')[0], oThis.qr_code_string);
       var formHelperGetData = FormHelper.prototype.getSerializedData  ;
 
 
@@ -35,9 +37,5 @@
       });
     }
   };
-
-  $(document).ready(function () {
-    oThis.init();
-  });
 
 })(window);

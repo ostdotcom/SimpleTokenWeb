@@ -1,5 +1,5 @@
 <%
-   qr_code_url = @resp_data['qr_code_url']
+  qr_code_string = @resp_data['qr_code_string']
 
 %>
 <%= render :partial => "admin/shared/kyc_loggedin_header" %>
@@ -15,14 +15,14 @@
 
         <p class="text-center">Please enter an MFA code to complete sign-in.</p>
         <form class="user-form col-12 mx-auto
-              <%= qr_code_url.present? ? "col-md-8 col-lg-6 col-xl-5" : "col-md-6 col-lg-5 col-xl-4" %>"
+              <%= qr_code_string.present? ? "col-md-8 col-lg-6 col-xl-5" : "col-md-6 col-lg-5 col-xl-4" %>"
               method="POST" action="/api/admin/mfa" id="adminAuthForm">
-            <% if qr_code_url.present? %>    
+            <% if qr_code_string.present? %>
               <div class="row qr-code">
                 <div class="col-12 col-md-5 align-self-center text-center">
                   <div class="img-container">
                     <div class="qr-image">
-                      <a href="<%= qr_code_url %>" target="_blank"><img src="<%= qr_code_url %>" alt="QR CODE" width="180" ></a>
+
                     </div>
                   </div>
                 </div>
@@ -54,3 +54,13 @@
     </div>
   </div>
 </div>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      simpletokenadmin.home.mfa.init({
+        qr_code_string: "<%= qr_code_string %>"
+      })
+    });
+  </script>
+<% end %>
