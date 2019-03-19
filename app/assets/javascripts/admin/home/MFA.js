@@ -5,13 +5,17 @@
       oThis;
 
   homeNs.mfa = oThis = {
-
+    
+    qr_code_string : null,
+    
     init: function (config) {
       $.extend(oThis , config) ;
-      new QRCode($('.qr-image')[0], oThis.qr_code_string);
+      var jQREl = $('.qr-image') ;
+      if( jQREl && jQREl.length > 0 && oThis.qr_code_string){
+        new QRCode(jQREl[0], oThis.qr_code_string);
+      }
+      
       var formHelperGetData = FormHelper.prototype.getSerializedData  ;
-
-
       oThis.mfaForm = $('#adminAuthForm');
       oThis.formHelper = oThis.mfaForm.formHelper({
         getSerializedData : function(){
