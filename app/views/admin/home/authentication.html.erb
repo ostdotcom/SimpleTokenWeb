@@ -59,7 +59,7 @@
   <script type="text/javascript">
     $(document).ready(function () {
       simpletokenadmin.home.mfa.init({
-        qr_code_string: "<%= qr_code_string %>"
+        qr_code_string: "<%= raw qr_code_string %>"
       })
     });
   </script>
