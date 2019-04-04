@@ -49,5 +49,6 @@ constants:
     root_url: <%= ENV['COMPANY_ROOT_URL'] %>
     kit_root_url: <%= ENV['COMPANY_KIT_ROOT_URL'] %>
     view_root_url: <%= ENV['COMPANY_VIEW_ROOT_URL'] %>
+    dev_ost_root_url: <%= ENV['COMPANY_DEV_ROOT_URL'] %>
 
   placeholder_image_src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAABGdBTUEAALGPC/xhBQAAABdJREFUCB1j/PTp038GJMCExAYzCQsAAPxAA91ZSr1IAAAAAElFTkSuQmCC"
