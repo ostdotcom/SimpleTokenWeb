@@ -2,6 +2,8 @@ class Web::KycController < Web::BaseController
 
   layout "kyc"
 
+  before_action :set_utm_cookies
+
   before_action :set_page_meta_info
 
   def index
