@@ -13,3 +13,4 @@
 //= require web/common/TopNavBar
 //= require plugins/helpers/ajaxHooks
 //= require plugins/helpers/utilities
+//= require web/common/Cookie
