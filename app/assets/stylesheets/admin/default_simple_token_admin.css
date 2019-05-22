@@ -8,4 +8,5 @@
  * Common CSS
  *= require web/common/Icons
  *= require admin/user/Login
+ *= require admin/common/_cookie_consent
  */
