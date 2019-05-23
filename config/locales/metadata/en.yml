@@ -1,5 +1,31 @@
 # Page Meta
 en:
+  web/ost_payment_client:
+
+    test_page:
+      :meta:
+        :title: 'Log'
+        :description: 'Log into'
+        :canonical: '%{canonical}'
+        :keywords: 'ICO'
+        :name: 'aaa'
+        :robots: 'index, follow'
+      :assets:
+        :specific_js_required: 0
+        :specific_css_required: 0
+
+    pay_now:
+      :meta:
+        :title: 'Log'
+        :description: 'Log into'
+        :canonical: '%{canonical}'
+        :keywords: 'ICO'
+        :name: 'aaa'
+        :robots: 'index, follow'
+      :assets:
+        :specific_js_required: 0
+        :specific_css_required: 0
+
   web/user:
 
     login:

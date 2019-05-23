@@ -6,6 +6,14 @@ Rails.application.routes.draw do
     match '*permalink', to: 'application#handle_redirects_from_simple_token_domain', via: :all
   end
 
+  constraints(InitOstPaymentClient) do
+    scope '', controller: 'web/ost_payment_client' do
+      match '/test-page' => :test_page, via: :GET
+      match '/pay-now' => :pay_now, via: :GET
+    end
+  end
+
+
   constraints(InitStaticOst) do
 
     scope '', controller: 'web/home' do

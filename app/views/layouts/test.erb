@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'web/default_simple_token' %>
+  <%= stylesheet_link_tag "#{specific_manifest_file_path}", media: 'all' if has_specific_css_manifest_file? %>
+</head>
+
+<body contenteditable="false">
+
+<main id="site-content" class="<%= yield (:gradient_class) %>">
+  <%= yield %>
+</main>
+
+
+<!--<%= javascript_include_tag "web/common-user" %>-->
+<%= javascript_include_tag "#{specific_manifest_file_path}" if has_specific_js_manifest_file? %>
+
+<%= yield(:end_js) %>
+
+</body>
+</html>
+
+<%= render :partial => "/shared/web/common/index_svg_sprite" %>
