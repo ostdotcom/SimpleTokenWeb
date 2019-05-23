@@ -7,5 +7,5 @@
  * Common CSS
  *= require plugins/responsively_lazy/responsivelyLazy
  *= require web/common/Icons
-
+ *= require admin/common/_cookie_consent
  */
