@@ -35,7 +35,7 @@
 
 <main id="site-content">
   <%= yield %>
-  <% if show_cookie_consent_banner? %>
+  <% if show_cookie_consent_banner_admin? %>
     <%= render :partial => "/shared/web/common/cookie_banner" %>
   <% end %>
 </main>
@@ -54,7 +54,7 @@
     //  do not use query paramters in url
     status401redirect = "/admin/login";
 
-    <% if show_cookie_consent_banner? %>
+    <% if show_cookie_consent_banner_admin? %>
     //initialize cookie consent banner
     ost.utils.cookieConsent.init({
       domain: '<%= URI.parse(GlobalConstant::Base.company_other_product_urls['root_url']).host %>'
