@@ -13,4 +13,4 @@
 //= require plugins/bootstrap_select/bootstrap-select
 //= require plugins/handlebars/handlebars
 //= require web/common/UtmHelper
-//= require web/common/Cookie
+//= require admin/common/Cookie

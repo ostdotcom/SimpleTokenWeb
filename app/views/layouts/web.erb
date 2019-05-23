@@ -244,7 +244,7 @@
   <% if show_cookie_consent_banner? %>
   //initialize cookie consent banner
   ost.utils.cookieConsent.init({
-    domain: '<%= URI.parse(GlobalConstant::Base.simple_token_web['root_url']).host %>'
+    domain: '<%= URI.parse(GlobalConstant::Base.company_other_product_urls['root_url']).host %>'
   })
   <% end %>
 </script>
