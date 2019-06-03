@@ -11,6 +11,7 @@ class Admin::HomeController < Admin::BaseController
 
   after_action :remove_browser_caching
 
+  include HomeHelper
   # todo: start using fixed domains. will work now as routes has initializers on domain
 
   # Admin login

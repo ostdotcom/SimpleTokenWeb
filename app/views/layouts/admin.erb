@@ -35,6 +35,9 @@
 
 <main id="site-content">
   <%= yield %>
+  <% if show_cookie_consent_banner_admin? %>
+    <%= render :partial => "/shared/web/common/cookie_banner" %>
+  <% end %>
 </main>
 
 <%# unless (params[:controller] == 'admin/home' && ['angular_app'].include?(params[:action])) %>
@@ -50,6 +53,13 @@
   $(document).ready(function () {
     //  do not use query paramters in url
     status401redirect = "/admin/login";
+
+    <% if show_cookie_consent_banner_admin? %>
+    //initialize cookie consent banner
+    ost.utils.cookieConsent.init({
+      domain: '<%= URI.parse(GlobalConstant::Base.company_other_product_urls['root_url']).host %>'
+    })
+    <% end %>
   });
 </script>
 <%= render :partial => "/admin/shared/svg_sprite" %>

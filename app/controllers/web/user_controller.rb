@@ -10,7 +10,7 @@ class Web::UserController < Web::BaseController
   before_action :check_user_cookie, except: [:sign_up, :login, :reset_password, :change_password, :token_sale_blocked_region]
 
   after_action :remove_browser_caching
-
+  include UserHelper
   # Sign up
   #
   # * Author: Tahir

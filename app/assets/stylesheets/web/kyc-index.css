@@ -15,4 +15,5 @@
  *#= require web/common/NewNavBar
  *= require web/common/NavBarSubMenu
  *= require plugins/bootstrap-datepicker/bootstrap-datepicker
+ *= require web/common/_cookie_consent
  */

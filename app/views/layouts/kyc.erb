@@ -96,6 +96,7 @@
 
 <main id="site-content" class="<%= yield (:gradient_class) %>">
   <%= yield %>
+  <%= render :partial => "/shared/web/common/cookie_banner" %>
 </main>
 
 
@@ -118,6 +119,9 @@
         var responsivelyLazy = window.responsivelyLazy;
         responsivelyLazy && responsivelyLazy.forceLoadAll && responsivelyLazy.forceLoadAll();
       }, 100);
+    })
+    ost.utils.cookieConsent.init({
+      domain: '<%= URI.parse(GlobalConstant::Base.company_other_product_urls['root_url']).host %>'
     })
   });
 </script>
