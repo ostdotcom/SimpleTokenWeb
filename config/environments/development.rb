@@ -20,7 +20,7 @@ Rails.application.configure do
   config.action_controller.asset_host = "http://kyc.developmentost.com:8080/"
 
   # Incase we want to test asset precompile in development
-  config.assets.prefix = "/js-css/dev"
+  config.assets.prefix = "/js-css/common"
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
