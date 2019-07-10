@@ -5,7 +5,7 @@ namespace :devops do
   # rake devops:upload_assets_to_s3 RAILS_ENV=development
   task :upload_assets_to_s3 => :environment do
 
-    asset_bucket = "wa.ost.com"
+    asset_bucket = "wa.simpletoken.org"
 
     content_types = {
       '.gz' => 'gzip',
